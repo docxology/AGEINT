@@ -1,0 +1,11 @@
+{
+  "number": 4,
+  "roman": "IV",
+  "title": "OPEN SOURCE INTELLIGENCE (OSINT)",
+  "source_line": 138,
+  "chapter_files": [
+    "09-osint-foundations/chapter.json",
+    "10-osint-techniques-and-tools/chapter.json",
+    "11-geoint-and-imagery-intelligence/chapter.json"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "number": 13,
+  "title": "Advanced Persistent Threats (APTs)",
+  "citations": [
+    237,
+    258,
+    261,
+    273,
+    276,
+    285,
+    286,
+    290,
+    294,
+    72,
+    69,
+    71
+  ],
+  "source_line": 200,
+  "content_profile": "cyber_threat_intelligence",
+  "practice_lens": "defensive_cyber_intelligence"
+}

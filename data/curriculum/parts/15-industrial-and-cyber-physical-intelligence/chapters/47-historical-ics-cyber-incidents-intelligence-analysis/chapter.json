@@ -1,0 +1,22 @@
+{
+  "number": 47,
+  "title": "Historical ICS Cyber Incidents: Intelligence Analysis",
+  "citations": [
+    252,
+    255,
+    270,
+    279,
+    282,
+    284,
+    289,
+    291,
+    296,
+    217,
+    218,
+    219,
+    220
+  ],
+  "source_line": 882,
+  "content_profile": "ics_ot_defense",
+  "practice_lens": "cyber_physical_readiness"
+}

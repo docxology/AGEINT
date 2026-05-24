@@ -1,0 +1,70 @@
+# AGEINT manuscript configuration template
+# Copy to config.yaml and customize. Generated prose lives under output/manuscript/ —
+# do not add numbered chapter files under manuscript/.
+
+paper:
+  title: "AGEINT: Agentic Intelligence"
+  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
+  version: "0.1"
+  date: ""  # Auto-generated at render if empty
+
+authors:
+  - name: "Author Name"
+    orcid: "0000-0000-0000-0000"
+    email: "author@example.com"
+    affiliation: "Institution"
+    corresponding: true
+
+publication:
+  doi: ""  # Add when deposited (e.g. Zenodo)
+  repository_url: ""  # e.g. https://github.com/org/ageint
+  repository_label: ""  # e.g. GitHub repository
+  journal: ""
+  volume: ""
+  pages: ""
+  year: "2026"
+
+keywords:
+  - agentic intelligence
+  - AGEINT
+
+metadata:
+  license: "CC-BY-4.0"
+  language: "en"
+
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false
+
+# Stage 02: only these scripts run during pipeline analysis
+analysis:
+  scripts:
+    - build_curriculum.py
+
+llm:
+  reviews:
+    enabled: false
+    types:
+      - executive_summary
+  translations:
+    enabled: false
+    languages:
+      - zh
+
+testing:
+  max_test_failures: 0
+  max_infra_test_failures: 0
+  max_project_test_failures: 0
+
+project_config:
+  curriculum:
+    source_guide_optional_archive_name: "SIST-Guide-TOC-and-Bibliography-v2.md"
+    derived_outline: "data/curriculum/"
+    derived_outline_mirror: "output/data/curriculum_outline.json"
+    runtime_variables: "output/data/manuscript_variables.json"
+    counts_are_generated: true
+    safety_posture: "defensive, educational, non-operational, legally compliant"

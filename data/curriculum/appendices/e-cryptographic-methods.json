@@ -1,0 +1,39 @@
+{
+  "letter": "E",
+  "title": "Cryptographic Methods",
+  "items": [
+    {
+      "level": 1,
+      "title": "E.1 One-Time Pad: Theory and Python Implementation",
+      "raw": "E.1 One-Time Pad: Theory and Python Implementation",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "E.2 Signal Protocol and Modern E2E Encryption Architecture",
+      "raw": "E.2 Signal Protocol and Modern E2E Encryption Architecture",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "E.3 PGP/GPG for Operational Security: Key Management",
+      "raw": "E.3 PGP/GPG for Operational Security: Key Management",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "E.4 Steganography: LSB Insertion, DCT, Network-Layer ARP Dead Drop",
+      "raw": "E.4 Steganography: LSB Insertion, DCT, Network-Layer ARP Dead Drop[^28]",
+      "citations": [
+        28
+      ]
+    },
+    {
+      "level": 1,
+      "title": "E.5 Digital Dead Drop Implementation: Email/PasteBin/S3",
+      "raw": "E.5 Digital Dead Drop Implementation: Email/PasteBin/S3",
+      "citations": []
+    }
+  ],
+  "source_line": 979
+}

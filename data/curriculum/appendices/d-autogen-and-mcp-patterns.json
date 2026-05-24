@@ -1,0 +1,33 @@
+{
+  "letter": "D",
+  "title": "AutoGen and MCP Patterns",
+  "items": [
+    {
+      "level": 1,
+      "title": "D.1 AutoGen Code-Execution Exploit Chain (with Sandboxing Countermeasure)",
+      "raw": "D.1 AutoGen Code-Execution Exploit Chain (with Sandboxing Countermeasure)",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "D.2 MCP Server: Building a STIX/TAXII Intelligence Tool Server",
+      "raw": "D.2 MCP Server: Building a STIX/TAXII Intelligence Tool Server",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "D.3 MCP Security: NSA Guidance Implementation in Python",
+      "raw": "D.3 MCP Security: NSA Guidance Implementation in Python[^155]",
+      "citations": [
+        155
+      ]
+    },
+    {
+      "level": 1,
+      "title": "D.4 AutoGen GroupChat for Competing Hypothesis Analysis",
+      "raw": "D.4 AutoGen GroupChat for Competing Hypothesis Analysis",
+      "citations": []
+    }
+  ],
+  "source_line": 973
+}

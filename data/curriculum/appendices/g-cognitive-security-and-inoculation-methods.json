@@ -1,0 +1,43 @@
+{
+  "letter": "G",
+  "title": "Cognitive Security and Inoculation Methods",
+  "items": [
+    {
+      "level": 1,
+      "title": "G.1 CAMBREX Taxonomy of Manipulation Techniques (van der Linden)",
+      "raw": "G.1 CAMBREX Taxonomy of Manipulation Techniques (van der Linden)",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "G.2 Python Prebunking Agent: Manipulation Detection + Inoculation Content Generation",
+      "raw": "G.2 Python Prebunking Agent: Manipulation Detection + Inoculation Content Generation[^151]",
+      "citations": [
+        151
+      ]
+    },
+    {
+      "level": 1,
+      "title": "G.3 NASA-TLX Cognitive Load Measurement Implementation",
+      "raw": "G.3 NASA-TLX Cognitive Load Measurement Implementation[^179]",
+      "citations": [
+        179
+      ]
+    },
+    {
+      "level": 1,
+      "title": "G.4 Active Inference Agent: FEP-Based Decision Under Uncertainty (pymdp)",
+      "raw": "G.4 Active Inference Agent: FEP-Based Decision Under Uncertainty (pymdp)[^106]",
+      "citations": [
+        106
+      ]
+    },
+    {
+      "level": 1,
+      "title": "G.5 Bias Detection Pipeline: Automated ACH with Cognitive Bias Flagging",
+      "raw": "G.5 Bias Detection Pipeline: Automated ACH with Cognitive Bias Flagging",
+      "citations": []
+    }
+  ],
+  "source_line": 993
+}

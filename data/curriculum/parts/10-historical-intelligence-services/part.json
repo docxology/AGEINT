@@ -1,0 +1,12 @@
+{
+  "number": 10,
+  "roman": "X",
+  "title": "HISTORICAL INTELLIGENCE SERVICES",
+  "source_line": 386,
+  "chapter_files": [
+    "27-soviet-and-russian-intelligence/chapter.json",
+    "28-american-intelligence-history/chapter.json",
+    "29-british-and-allied-intelligence/chapter.json",
+    "30-israeli-and-continental-services/chapter.json"
+  ]
+}

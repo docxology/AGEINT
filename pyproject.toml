@@ -1,0 +1,39 @@
+# AGEINT Project Configuration
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ageint_curriculum"
+version = "0.1.0"
+description = "Shard-first Agentic Intelligence modular curriculum and manuscript build"
+authors = [{name = "DAF"}]
+requires-python = ">=3.10"
+dependencies = ["pillow>=10.0", "pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0"]
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "requires_mermaid: needs mmdc and Chrome headless shell for real Mermaid PNG renders",
+]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+omit = ["tests/*", "*/__init__.py", "*/test_*.py"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+precision = 2
+exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:", "raise NotImplementedError"]
+
+[tool.template]
+skip_combined_pytest = true

@@ -1,0 +1,23 @@
+{
+  "number": 14,
+  "title": "Supply Chain Intelligence Attacks",
+  "citations": [
+    258,
+    266,
+    268,
+    274,
+    278,
+    280,
+    287,
+    288,
+    295,
+    73,
+    74,
+    75,
+    76,
+    77
+  ],
+  "source_line": 212,
+  "content_profile": "cyber_threat_intelligence",
+  "practice_lens": "software_supply_chain_assurance"
+}

@@ -1,0 +1,12 @@
+{
+  "number": 5,
+  "roman": "V",
+  "title": "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
+  "source_line": 181,
+  "chapter_files": [
+    "12-cyber-intelligence-fundamentals/chapter.json",
+    "13-advanced-persistent-threats-apts/chapter.json",
+    "14-supply-chain-intelligence-attacks/chapter.json",
+    "15-electronic-and-emanations-intelligence/chapter.json"
+  ]
+}

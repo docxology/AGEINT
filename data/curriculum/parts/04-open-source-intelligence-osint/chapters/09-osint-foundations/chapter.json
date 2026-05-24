@@ -1,0 +1,21 @@
+{
+  "number": 9,
+  "title": "OSINT Foundations",
+  "citations": [
+    251,
+    253,
+    269,
+    273,
+    274,
+    275,
+    286,
+    287,
+    292,
+    47,
+    48,
+    49
+  ],
+  "source_line": 140,
+  "content_profile": "osint_geoint",
+  "practice_lens": "requirements_to_evidence"
+}

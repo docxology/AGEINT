@@ -1,0 +1,14 @@
+{
+  "number": 11,
+  "roman": "XI",
+  "title": "AGEINT — AGENTIC INTELLIGENCE",
+  "source_line": 451,
+  "chapter_files": [
+    "31-foundations-of-ageint/chapter.json",
+    "32-ageint-design-patterns-and-archetypes/chapter.json",
+    "33-ageint-frameworks-and-infrastructure/chapter.json",
+    "34-ageint-security-and-adversarial-considerations/chapter.json",
+    "35-active-inference-and-ageint/chapter.json",
+    "36-ageint-python-code-library/chapter.json"
+  ]
+}

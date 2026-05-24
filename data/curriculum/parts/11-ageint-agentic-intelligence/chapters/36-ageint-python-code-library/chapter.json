@@ -1,0 +1,18 @@
+{
+  "number": 36,
+  "title": "AGEINT Python Code Library",
+  "citations": [
+    242,
+    243,
+    246,
+    280,
+    281,
+    282,
+    292,
+    295,
+    296
+  ],
+  "source_line": 660,
+  "content_profile": "agentic_ai_governance",
+  "practice_lens": "agentic_tool_governance"
+}

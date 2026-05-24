@@ -1,0 +1,24 @@
+{
+  "number": 40,
+  "title": "Cognitive Security Operations",
+  "citations": [
+    238,
+    239,
+    246,
+    275,
+    276,
+    283,
+    286,
+    293,
+    295,
+    95,
+    105,
+    188,
+    106,
+    3,
+    96
+  ],
+  "source_line": 741,
+  "content_profile": "cognitive_influence_security",
+  "practice_lens": "cognitive_resilience"
+}

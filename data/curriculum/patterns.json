@@ -1,0 +1,216 @@
+[
+  {
+    "number": 1,
+    "name": "The Solo Reasoner",
+    "definition": "Single-agent ReAct loop for focused intelligence tasks",
+    "methods": "Chain-of-Thought, Self-Critique, Reflection Scoring",
+    "application": "Single-source report analysis, indicator enrichment",
+    "code_archetype": "LangChain LCEL ReAct agent with tool calling",
+    "citations": [
+      143
+    ]
+  },
+  {
+    "number": 2,
+    "name": "The Reflection Agent",
+    "definition": "Self-evaluation after each action step",
+    "methods": "Internal scoring, critic models, trajectory validation",
+    "application": "OSINT verification loop, analytic bias detection",
+    "code_archetype": "LangGraph state machine with reflexion node",
+    "citations": [
+      139
+    ]
+  },
+  {
+    "number": 3,
+    "name": "The Tool-Forager",
+    "definition": "Agent with comprehensive external tool access",
+    "methods": "Function calling, JSON schema execution, grounded output",
+    "application": "Multi-source data harvesting, real-time collection",
+    "code_archetype": "OpenAI function calling with Recon-ng, Shodan, STIX tools",
+    "citations": [
+      144
+    ]
+  },
+  {
+    "number": 4,
+    "name": "The Planner-Executor",
+    "definition": "Long-horizon task decomposition",
+    "methods": "Chain-of-thought with memory rehydration, execution DAGs",
+    "application": "Multi-phase operation planning, collection management",
+    "code_archetype": "LangGraph DAG flow with priority queues",
+    "citations": [
+      139,
+      145
+    ]
+  },
+  {
+    "number": 5,
+    "name": "The Parallel Collector",
+    "definition": "Concurrent multi-source collection",
+    "methods": "Concurrent tool invocation, aggregation, deduplication",
+    "application": "Simultaneous OSINT/SIGINT metadata collection",
+    "code_archetype": "CrewAI parallel task execution with consensus scoring",
+    "citations": [
+      144
+    ]
+  },
+  {
+    "number": 6,
+    "name": "The Multi-Agent Crew",
+    "definition": "Specialized agents in collaborative formation",
+    "methods": "Planner + Retriever + Executor + Validator + Reporter roles",
+    "application": "All-source intelligence fusion; Red/Blue Cell simulation",
+    "code_archetype": "CrewAI role-based crew with hierarchical process manager",
+    "citations": [
+      139,
+      146
+    ]
+  },
+  {
+    "number": 7,
+    "name": "The Debate Agent",
+    "definition": "Adversarial multi-agent reasoning",
+    "methods": "Devil's Advocacy automation, competing hypotheses generation",
+    "application": "Automated Analysis of Competing Hypotheses (ACH)",
+    "code_archetype": "AutoGen two-agent debate pattern with judge agent",
+    "citations": [
+      147
+    ]
+  },
+  {
+    "number": 8,
+    "name": "The RAG-Operator",
+    "definition": "Retrieval-Augmented Generation over intelligence corpora",
+    "methods": "Dense vector retrieval, hybrid BM25+dense, re-ranking",
+    "application": "All-source fusion from live document collections",
+    "code_archetype": "LangChain RAG with Chroma/Pinecone over STIX feeds",
+    "citations": [
+      148
+    ]
+  },
+  {
+    "number": 9,
+    "name": "The Memory-State Machine",
+    "definition": "Persistent episodic memory agent",
+    "methods": "Episodic memory write/read, consolidation, attention-weighted retrieval",
+    "application": "Long-term asset tracking, longitudinal pattern-of-life analysis",
+    "code_archetype": "LangGraph with PostgreSQL episodic memory and mem0/MemGPT",
+    "citations": [
+      138
+    ]
+  },
+  {
+    "number": 10,
+    "name": "The Control Plane Agent",
+    "definition": "Modular tool routing through single interface",
+    "methods": "\"Control Plane as a Tool\" abstraction, modular routing logic",
+    "application": "Scalable multi-source collection with single interface",
+    "code_archetype": "FastAPI meta-tool endpoint wrapping N sub-tools",
+    "citations": [
+      145
+    ]
+  },
+  {
+    "number": 11,
+    "name": "The Surveillance Agent",
+    "definition": "Continuous monitoring and alerting",
+    "methods": "Scheduled polling, anomaly detection, threshold alerting",
+    "application": "Persistent target monitoring, dark web alerting, infrastructure tracking",
+    "code_archetype": "n8n or LangGraph cron-triggered agent with Shodan/SpiderFoot APIs",
+    "citations": []
+  },
+  {
+    "number": 12,
+    "name": "The Red Team Agent",
+    "definition": "Adversarial attack simulation",
+    "methods": "Adversarial prompt generation, attack-tree traversal, kill chain simulation",
+    "application": "Penetration testing automation, vulnerability discovery",
+    "code_archetype": "AutoGen code execution agent with MITRE ATT&CK tool plugin",
+    "citations": [
+      147
+    ]
+  },
+  {
+    "number": 13,
+    "name": "The Cover Story Generator",
+    "definition": "Legend and cover document creation",
+    "methods": "Persona generation, document synthesis, consistency checking",
+    "application": "NOC legend maintenance, sock puppet operational security",
+    "code_archetype": "GPT-4o with structured output schemas for persona consistency",
+    "citations": []
+  },
+  {
+    "number": 14,
+    "name": "The Deception Detector",
+    "definition": "Verification and source reliability agent",
+    "methods": "Cross-source triangulation, metadata analysis, deepfake detection API calls",
+    "application": "Source vetting, product validation, disinformation identification",
+    "code_archetype": "LangChain agent with Hive Moderation, Sightengine, C2PA APIs",
+    "citations": []
+  },
+  {
+    "number": 15,
+    "name": "The Analyst in the Loop",
+    "definition": "Human-in-the-loop (HITL) intelligence agent",
+    "methods": "Interrupt-and-query, confidence-gated human escalation",
+    "application": "Supervised analysis; compliance-constrained environments",
+    "code_archetype": "LangGraph with human_approval node and async interrupt handlers",
+    "citations": [
+      4
+    ]
+  },
+  {
+    "number": 16,
+    "name": "The Cyber Sentinel",
+    "definition": "Autonomous threat intelligence and response",
+    "methods": "SIEM integration, SOAR automation, ATT&CK technique mapping",
+    "application": "Autonomous SOC tier-1 triage, IOC enrichment",
+    "code_archetype": "CrewAI crew with Splunk/Elastic SIEM tools and STIX/TAXII writer",
+    "citations": [
+      149,
+      150
+    ]
+  },
+  {
+    "number": 17,
+    "name": "The Supply Chain Inspector",
+    "definition": "Software provenance and integrity agent",
+    "methods": "SBOM parsing, dependency graph analysis, commit diff analysis",
+    "application": "Open-source supply chain threat hunting (post-XZ Utils)",
+    "code_archetype": "Python agent with Syft/Grype SBOM tools and GitHub commit analysis",
+    "citations": []
+  },
+  {
+    "number": 18,
+    "name": "The GEOINT Analyst",
+    "definition": "Automated satellite imagery analysis",
+    "methods": "Vision model object detection, change detection, chronolocation",
+    "application": "Facility monitoring, order-of-battle assessment",
+    "code_archetype": "GPT-4o Vision + Google Earth Engine API + LangChain agent loop",
+    "citations": []
+  },
+  {
+    "number": 19,
+    "name": "The Cognitive Inoculant",
+    "definition": "Prebunking and cognitive resilience agent",
+    "methods": "Manipulation technique detection, inoculation content generation, user adaptation",
+    "application": "Population-scale cognitive security intervention delivery",
+    "code_archetype": "LangChain agent with CAMBREX taxonomy + API delivery pipeline",
+    "citations": [
+      151
+    ]
+  },
+  {
+    "number": 20,
+    "name": "The Hierarchical Command",
+    "definition": "Orchestrator-subagent architecture",
+    "methods": "Goal decomposition, subagent delegation, output aggregation, failure recovery",
+    "application": "Complex multi-domain operations with role separation",
+    "code_archetype": "LangGraph supervisor pattern with specialized subagent nodes",
+    "citations": [
+      139,
+      137
+    ]
+  }
+]

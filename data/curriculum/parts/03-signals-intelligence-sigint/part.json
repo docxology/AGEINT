@@ -1,0 +1,10 @@
+{
+  "number": 3,
+  "roman": "III",
+  "title": "SIGNALS INTELLIGENCE (SIGINT)",
+  "source_line": 110,
+  "chapter_files": [
+    "07-sigint-fundamentals/chapter.json",
+    "08-modern-sigint-and-cryptography/chapter.json"
+  ]
+}

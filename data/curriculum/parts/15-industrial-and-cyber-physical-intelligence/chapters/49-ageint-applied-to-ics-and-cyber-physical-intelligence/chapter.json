@@ -1,0 +1,19 @@
+{
+  "number": 49,
+  "title": "AGEINT Applied to ICS and Cyber-Physical Intelligence",
+  "citations": [
+    255,
+    256,
+    257,
+    273,
+    274,
+    275,
+    286,
+    287,
+    292,
+    213
+  ],
+  "source_line": 909,
+  "content_profile": "ics_ot_defense",
+  "practice_lens": "cyber_physical_readiness"
+}

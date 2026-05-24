@@ -1,0 +1,12 @@
+domain: curriculum_research
+display_name: AGEINT Curriculum
+artifact_expectations:
+  - output/data/curriculum_outline.json
+  - output/data/manuscript_variables.json
+  - output/figures/figure_registry.json
+  - output/manuscript/config.yaml
+validation_gates:
+  - render_validation
+  - publication_readiness
+citation_policy: official_or_scholarly
+source_policy: "Shard-first curriculum under data/curriculum/; citations from verified anchors and guide references."

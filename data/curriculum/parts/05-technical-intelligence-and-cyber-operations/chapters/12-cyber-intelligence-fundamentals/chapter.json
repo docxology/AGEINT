@@ -1,0 +1,30 @@
+{
+  "number": 12,
+  "title": "Cyber Intelligence Fundamentals",
+  "citations": [
+    258,
+    261,
+    266,
+    280,
+    281,
+    282,
+    292,
+    295,
+    296,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    9,
+    70,
+    71
+  ],
+  "source_line": 183,
+  "content_profile": "cyber_threat_intelligence",
+  "practice_lens": "defensive_cyber_intelligence"
+}

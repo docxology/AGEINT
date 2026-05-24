@@ -1,0 +1,27 @@
+{
+  "number": 8,
+  "title": "Modern SIGINT and Cryptography",
+  "citations": [
+    258,
+    260,
+    261,
+    275,
+    276,
+    283,
+    286,
+    293,
+    295,
+    41,
+    42,
+    27,
+    28,
+    43,
+    44,
+    45,
+    46,
+    18
+  ],
+  "source_line": 122,
+  "content_profile": "collection_management",
+  "practice_lens": "requirements_to_evidence"
+}

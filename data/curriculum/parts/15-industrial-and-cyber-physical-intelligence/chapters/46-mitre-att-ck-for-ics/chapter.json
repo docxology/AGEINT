@@ -1,0 +1,22 @@
+{
+  "number": 46,
+  "title": "MITRE ATT&CK for ICS",
+  "citations": [
+    255,
+    257,
+    261,
+    274,
+    278,
+    280,
+    287,
+    288,
+    295,
+    213,
+    214,
+    215,
+    216
+  ],
+  "source_line": 862,
+  "content_profile": "ics_ot_defense",
+  "practice_lens": "cyber_physical_readiness"
+}

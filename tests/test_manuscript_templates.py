@@ -1,0 +1,181 @@
+"""Tests for AGEINT tokenized manuscript template generation."""
+
+from __future__ import annotations
+
+from pathlib import Path
+
+import src
+from curriculum import load_curriculum
+from intelligence_content import INTELLIGENCE_PROFILES, anchor_references
+from manuscript_templates import TEMPLATE_NAMES, write_manuscript_templates, write_template_library
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA = PROJECT_ROOT / "data" / "curriculum"
+
+
+def test_package_exports_runtime_helpers() -> None:
+    critical = {
+        "run_build",
+        "build_curriculum",
+        "render_manuscript",
+        "render_figures",
+        "generate_variables",
+        "write_bibtex_files",
+        "profile_for_titles",
+        "safe_curriculum_treatment",
+    }
+    assert critical.issubset(set(src.__all__))
+    assert len(src.__all__) >= 40
+    assert callable(src.run_build)
+    assert callable(src.render_manuscript)
+    assert callable(src.generate_variables)
+
+
+def test_write_template_library_rewrites_only_neutral_templates(tmp_path: Path) -> None:
+    curriculum = load_curriculum(DATA)
+    manuscript_dir = tmp_path / "manuscript"
+    manuscript_dir.mkdir()
+    preserved = manuscript_dir / "README.md"
+    stale = manuscript_dir / "43_chapter_031.md"
+    preserved.write_text("keep", encoding="utf-8")
+    stale.write_text("# Chapter 31 — stale", encoding="utf-8")
+
+    written = write_manuscript_templates(curriculum, manuscript_dir)
+
+    assert preserved.exists()
+    assert stale.exists()
+    assert len(written) == len(TEMPLATE_NAMES)
+    chapter_template = manuscript_dir / "templates" / "chapter.md"
+    assert chapter_template.exists()
+    text = chapter_template.read_text(encoding="utf-8")
+    assert "{{SECTION_TITLE}}" in text
+    assert "{{SECTION_BODY}}" in text
+    assert "{{CHAPTER_031_TITLE}}" not in text
+    assert "Foundations of AGEINT" not in text
+    assert "Chapter 31" not in text
+    assert {path.name for path in written} == set(TEMPLATE_NAMES)
+
+
+def test_neutral_appendix_template_uses_generic_runtime_tokens(tmp_path: Path) -> None:
+    write_template_library(tmp_path)
+    appendix = (tmp_path / "appendix.md").read_text(encoding="utf-8")
+    assert "{{SECTION_TITLE}}" in appendix
+    assert "{{SECTION_ROWS}}" in appendix
+    assert "{{APPENDIX_A_TITLE}}" not in appendix
+    assert "Python OSINT Library" not in appendix
+
+
+def test_research_profiles_route_sections_to_domain_content() -> None:
+    foundations = src.profile_for_titles(
+        "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
+        "The Nature of Intelligence",
+    )
+    ageint = src.profile_for_titles("AGEINT: Agentic Intelligence", "Foundations of AGEINT")
+    humint = src.profile_for_titles("HUMINT", "Agent Recruitment")
+    finint = src.profile_for_titles(
+        "IMAGERY AND FINANCIAL INTELLIGENCE",
+        "Financial Intelligence (FININT)",
+    )
+    history = src.profile_for_titles(
+        "HISTORICAL INTELLIGENCE SERVICES",
+        "American Intelligence History",
+    )
+    ci = src.profile_for_titles("Counterintelligence", "Source Protection")
+    cyber = src.profile_for_titles("Cyber Intelligence", "Supply Chain Intelligence Attacks")
+    ics = src.profile_for_titles(
+        "Industrial and Cyber-Physical Intelligence",
+        "MITRE ATT&CK for ICS",
+    )
+    supply_chain = src.profile_for_titles(
+        "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
+        "Supply Chain Intelligence Attacks",
+    )
+
+    assert foundations.identifier == "governed_intelligence_cycle"
+    assert ageint.identifier == "agentic_ai_governance"
+    assert humint.identifier == "collection_management"
+    assert finint.identifier == "financial_economic_security"
+    assert history.identifier == "historical_declassified_sources"
+    assert ci.identifier == "counterintelligence_source_integrity"
+    assert cyber.identifier == "cyber_threat_intelligence"
+    assert ics.identifier == "ics_ot_defense"
+    assert supply_chain.identifier == "cyber_threat_intelligence"
+    assert "official_owasp_llm_top_10" in src.research_anchor_rows()
+    assert "official_odni_icd_204" in src.research_anchor_rows()
+    assert "official_odni_icd_505" in src.research_anchor_rows()
+    assert "official_fincen_advisories" in src.research_anchor_rows()
+    assert "Requirements-to-Evidence Lens" in src.practice_lens_rows()
+
+
+def test_research_profile_anchor_keys_resolve_for_chapter_briefs() -> None:
+    for profile in INTELLIGENCE_PROFILES:
+        anchors = anchor_references(profile.anchor_keys)
+        assert [anchor.key for anchor in anchors] == list(profile.anchor_keys)
+
+
+def test_practice_lenses_route_subsections_to_fractal_contracts() -> None:
+    foundations = src.practice_lens_for_titles(
+        "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
+        "Intelligence Community Architectures",
+    )
+    ageint = src.practice_lens_for_titles("AGEINT: Agentic Intelligence", "MCP Frameworks")
+    finint = src.practice_lens_for_titles(
+        "IMAGERY AND FINANCIAL INTELLIGENCE",
+        "Financial Intelligence (FININT)",
+    )
+    history = src.practice_lens_for_titles(
+        "HISTORICAL INTELLIGENCE SERVICES",
+        "Soviet and Russian Intelligence",
+    )
+    cognitive = src.practice_lens_for_titles("Cognitive Security", "Prebunking")
+    ics = src.practice_lens_for_titles("Industrial Control Systems", "Incident Response")
+    supply_chain = src.practice_lens_for_titles(
+        "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
+        "Supply Chain Intelligence Attacks",
+    )
+
+    assert foundations.identifier == "dissemination_marking_control"
+    assert ageint.identifier == "agentic_tool_governance"
+    assert finint.identifier == "economic_security_due_diligence"
+    assert history.identifier == "historical_case_translation"
+    assert cognitive.identifier == "cognitive_resilience"
+    assert ics.identifier == "cyber_physical_readiness"
+    assert supply_chain.identifier == "software_supply_chain_assurance"
+
+
+def test_safe_coursebook_helpers_cover_edge_topic_fallbacks() -> None:
+    assert "non-sensitive synthetic change examples" in src.safe_curriculum_treatment(
+        "Google Earth Engine"
+    )
+    assert "no real targets" in src.safe_curriculum_treatment("persistent target monitoring")
+    assert "synthetic GEOINT uncertainty" in src.safe_curriculum_treatment("facility monitoring")
+    assert "fixed inputs" in src.safe_curriculum_treatment("multi-source data harvesting")
+    assert "fabricated alerts" in src.safe_curriculum_treatment("autonomous SOC")
+    assert "defensive tactics" in src.safe_curriculum_treatment("penetration testing automation")
+    assert "fictional classroom" in src.safe_curriculum_treatment(
+        "population-scale cognitive security intervention delivery"
+    )
+    assert "Malware-misuse control review" in src.safe_curriculum_treatment(
+        "Automated Weaponization: Malware Generation"
+    )
+    assert "Declassified source-protection" in src.safe_curriculum_treatment(
+        "Working with Agents (Declassified Manual)"
+    )
+    assert "Maintainer-contact" in src.safe_curriculum_treatment(
+        "Sock Puppetry as HUMINT Cover Tradecraft",
+        "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
+        "Supply Chain Intelligence Attacks",
+    )
+
+    part = {"title": "AGEINT: Agentic Intelligence"}
+    empty_chapter = {"title": "Fallback Coursebook Topic", "sections": []}
+    meta_only_chapter = {
+        "title": "Meta Only Topic",
+        "sections": [{"number": "1.1", "title": "V2 source-lane extension: source lane"}],
+    }
+
+    assert "Fallback Coursebook Topic" in src.chapter_learning_outcomes(empty_chapter, part)
+    assert "Meta Only Topic" in src.chapter_knowledge_check(meta_only_chapter, part)
+    fallback_rows = src.subsection_practice_rows(empty_chapter, part)
+    assert "Fallback Coursebook Topic" in fallback_rows
+    assert "Source-guide module" not in fallback_rows
