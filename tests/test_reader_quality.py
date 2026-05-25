@@ -109,6 +109,15 @@ def _anchors_lesson_title(text: str, title: str) -> bool:
     return len(haystack & keywords) >= min(2, len(keywords))
 
 
+def _anchors_lesson_title_or_sanitized_module(text: str, title: str) -> bool:
+    if _anchors_lesson_title(text, title):
+        return True
+    if "the module" not in text and "this module" not in text:
+        return False
+    haystack = set(re.findall(r"[a-z0-9]+", text.lower()))
+    return bool(haystack & _title_keywords(title))
+
+
 def test_generated_reader_prose_does_not_repeat_template_paragraphs(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     paragraph_locations: dict[str, list[str]] = {}
@@ -141,9 +150,13 @@ def test_topic_lessons_are_topic_specific_not_template_repeated(built_output: Pa
                 marker = f"**{field}.**"
                 assert marker in block
                 field_text = block.split(marker, 1)[1].split("\n", 1)[0]
-                assert _anchors_lesson_title(field_text, title), f"{path}: {title}: {field}"
+                assert _anchors_lesson_title_or_sanitized_module(field_text, title), (
+                    f"{path}: {title}: {field}"
+                )
             concept = block.split("**Concept.**", 1)[1].split("\n", 1)[0]
-            assert f"**{title}**" in concept, f"{path}: {title}"
+            bold_anchors = " ".join(re.findall(r"\*\*(.+?)\*\*", concept))
+            assert bold_anchors, f"{path}: {title}"
+            assert _anchors_lesson_title_or_sanitized_module(bold_anchors, title), f"{path}: {title}"
             assert not re.search(r"Use [A-Z][A-Za-z]+, [A-Z][A-Za-z]+,", concept), path
 
 

@@ -357,6 +357,7 @@ def render_manuscript(
     """Render the resolved semantic manuscript tree under ``output/manuscript``."""
     figures = figure_registry or []
     manifest = build_manuscript_manifest(curriculum, figures)
+    rendered_title_rules = section_title_rules(manifest.sections)
     root = Path(project_root)
     templates_dir = root / "manuscript" / "templates"
     out_dir = root / "output" / "manuscript"
@@ -387,6 +388,7 @@ def render_manuscript(
         if unresolved:
             unresolved_keys = ", ".join(sorted(set(unresolved)))
             raise ValueError(f"Unresolved AGEINT manuscript tokens: {unresolved_keys}")
+        rendered = sanitize_rendered_section_title_mentions(rendered, rendered_title_rules)
         fragments = _rendered_fragments(section, rendered)
         for relative_path, text in fragments:
             target = out_dir / relative_path

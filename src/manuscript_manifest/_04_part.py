@@ -7,15 +7,23 @@ def _import_prior_parts(*module_names: str) -> None:
         mod = importlib.import_module(f".{module_name}", __package__)
         globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
 
-
 _import_prior_parts("_01_part", "_02_part", "_03_part")
 
+def _appendix_topic_context(appendix: dict[str, Any], *, limit: int = 2) -> str:
+    """Return an appendix-specific source-item cue without repeating its generated title."""
 
-
+    titles = [
+        re.sub(r"^[A-Z]\.\d+\s+", "", str(item.get("title", "")).strip())
+        for item in appendix.get("items", [])[:limit]
+    ]
+    titles = [title for title in titles if title]
+    if not titles:
+        return "the appendix source-item set"
+    return "; ".join(titles)
 
 def _appendix_body(appendix: dict[str, Any]) -> str:
-    title = appendix["title"]
     letter = appendix["letter"]
+    topic_context = _appendix_topic_context(appendix)
     specialized = ""
     if letter == "H":
         specialized = (
@@ -49,41 +57,41 @@ def _appendix_body(appendix: dict[str, Any]) -> str:
     return "\n".join(
         [
             (
-                f"The **{title}** methods appendix is an evidence workbook for "
+                "The current appendix is an evidence workbook for "
                 "reusable classroom methods. It is educational and non-operational: "
                 "examples remain synthetic, defensive, lawful, and bounded to owned "
-                "labs, public sources, or tabletop exercises."
+                f"labs, public sources, or tabletop exercises. Source-item focus: {topic_context}."
             ),
             "",
             "## Purpose",
             (
-                f"The **{title}** methods appendix supports a reusable methods "
+                "The current appendix supports a reusable methods "
                 "workbook. Each source item is treated as a reviewable "
-                "classroom artifact rather than an operational instruction."
+                f"classroom artifact rather than an operational instruction; examples begin with {topic_context}."
             ),
             "",
             "## Allowed inputs",
             (
-                f"Allowed inputs for **{title}** are public official or scholarly sources, "
+                "Allowed inputs for the current appendix are public official or scholarly sources, "
                 "standards text, instructor-provided excerpts, synthetic "
                 "datasets, owned-lab logs, toy examples, and generated rubrics "
-                "that expose their provenance."
+                f"that expose their provenance for {topic_context}."
             ),
             "",
             "## Excluded actions",
             (
-                f"Excluded actions for **{title}** are unauthorized collection, private-data "
+                "Excluded actions for the current appendix are unauthorized collection, private-data "
                 "processing, credential use, contact with real targets, live "
                 "system interaction, exploit execution, deception, unsafe "
-                "cyber-physical action, or external deployment."
+                f"cyber-physical action, or external deployment while handling {topic_context}."
             ),
             "",
             "## Expected artifacts",
             (
-                f"Expected **{title}** artifacts are a purpose statement, allowed-inputs "
+                "Expected appendix artifacts are a purpose statement, allowed-inputs "
                 "card, excluded-actions card, source-lane map, provenance "
                 "record, claim ledger, safe-substitution note, output schema, "
-                "review rubric, and capstone handoff memo."
+                f"review rubric, and capstone handoff memo for {topic_context}."
             ),
             "",
             "## Safe artifact schema",
@@ -185,7 +193,6 @@ def _appendix_body(appendix: dict[str, Any]) -> str:
         ]
     ).strip()
 
-
 def _apply_section_metadata(
     sections: list[ManuscriptSection],
     figures: list[dict[str, Any]],
@@ -233,7 +240,6 @@ def _apply_section_metadata(
         )
     return refreshed
 
-
 def _visual_synthesis(
     project_root: Path,
     out_dir: Path,
@@ -257,6 +263,14 @@ def _visual_synthesis(
 
     figure_refs = figure_ref_list(reference_labels)
     nav = _section_navigation(section)
+    section_noun = {
+        "chapter": "the module",
+        "part": "the unit",
+        "appendix": "the current appendix",
+        "front": "the front-matter section",
+        "bibliography": "the bibliography appendix",
+    }.get(section.kind, "the current section")
+    artifact_context = f" Artifact path: `{section.relative_path}`."
     definitions = [
         figure_markdown(
             entry,
@@ -267,9 +281,9 @@ def _visual_synthesis(
         for entry in own_figures
     ]
     figure_sentence = (
-        f"Visual guide for **{section.title}** {figure_refs} gives this section a concrete map of evidence flow, safety boundaries, and review artifacts."
+        f"Visual guide for {section_noun} {figure_refs} gives this section a concrete map of evidence flow, safety boundaries, and review artifacts.{artifact_context}"
         if figure_refs
-        else f"Visual guide for **{section.title}** uses the adjacent part, appendix, or curriculum overview figure to orient the section."
+        else f"Visual guide for {section_noun} uses the adjacent part, appendix, or curriculum overview figure to orient the section.{artifact_context}"
     )
     definition_block = "\n\n".join(definitions)
     parts = [figure_sentence]
@@ -279,7 +293,6 @@ def _visual_synthesis(
         parts.append(definition_block)
     _ = manifest
     return "\n\n".join(parts)
-
 
 def _fallback_figure_labels(section: ManuscriptSection) -> list[str]:
     if section.kind == "references":
@@ -292,7 +305,6 @@ def _fallback_figure_labels(section: ManuscriptSection) -> list[str]:
     if section.kind == "appendix":
         return ["fig:ageint-safety-boundary-loop"]
     return []
-
 
 def _section_navigation(section: ManuscriptSection) -> str:
     refs: list[str] = []
@@ -307,7 +319,6 @@ def _section_navigation(section: ManuscriptSection) -> str:
     if not refs:
         return ""
     return "Course path: " + section_ref_list(refs) + "."
-
 
 def build_manuscript_manifest(
     curriculum: Curriculum,
@@ -389,6 +400,10 @@ def build_manuscript_manifest(
                         "SECTION_TITLE": chapter["title"],
                         "SECTION_LABEL": chapter_label,
                         "SECTION_BODY": _chapter_body(chapter, part),
+                        "SECTION_NAV_CONTEXT": (
+                            f"{_chapter_topic_context(chapter, part)}; "
+                            f"source path begins with {_chapter_source_context(chapter)}"
+                        ),
                         "SECTION_CROSSREFS": "",
                     },
                     order,
@@ -473,7 +488,6 @@ def build_manuscript_manifest(
     )
     sections = _apply_section_metadata(sections, figures or [])
     return ManuscriptManifest(sections, units, appendix_files)
-
 
 def _read_template(templates_dir: Path, template_name: str) -> str:
     template_path = templates_dir / template_name

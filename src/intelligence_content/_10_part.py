@@ -61,20 +61,19 @@ def _topic_transfer_task(
             "surprising observation, and the review point before any decision follows."
         )
     if entry.risk_category not in {"standard", "ageint_pattern_registry"}:
-        chapter_anchor = chapter_title or "this module"
         templates = (
             (
-                f"Transfer **{entry.display_title}** from **{chapter_anchor}** to a "
+                f"Transfer **{entry.display_title}** from this module to a "
                 f"second motif by preserving {coursebook.practice_focus}, replacing "
                 "action with audit, and naming the blocked use."
             ),
             (
-                f"Apply the **{chapter_anchor}** safe boundary for **{entry.display_title}** "
+                f"Apply this module's safe boundary for **{entry.display_title}** "
                 f"to another artifact while keeping {coursebook.practice_focus} and "
                 "reviewer ownership explicit."
             ),
             (
-                f"Reuse the **{entry.display_title}** audit pattern from **{chapter_anchor}** "
+                f"Reuse the **{entry.display_title}** audit pattern from this module "
                 "on a different fictional record set with a new reviewer and blocked-use note."
             ),
         )
@@ -111,12 +110,14 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
     topics = [entry.display_title for entry in entries[:3]]
     topic_sentence = "; ".join(topics)
     anchors = citation_cluster(profile.anchor_keys, limit=3)
+    source_context = _chapter_ref_context(chapter)
+    topic_context = _topic_context(chapter, part)
     return "\n\n".join(
         [
             (
-                f"**{title}** teaches {coursebook.disciplinary_frame}. "
+                f"This module teaches {coursebook.disciplinary_frame}. "
                 f"The chapter uses **{lens.title}** to connect definitions, "
-                "evidence tests, practice artifacts, and review gates."
+                f"evidence tests, practice artifacts, and review gates for {topic_context}."
             ),
             (
                 f"The central distinction is to {coursebook.key_distinction}. "
@@ -124,11 +125,11 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
                 "evidentiary support, common misconceptions, and safety boundaries."
             ),
             (
-                f"In **{title}**, verified anchors such as {anchors} ground definitions, examples, "
-                "uncertainty language, and artifact requirements."
+                f"In this module, verified anchors such as {anchors} ground definitions, examples, "
+                f"uncertainty language, and artifact requirements. Source context: {source_context}"
             ),
             (
-                f"Learners working on **{title}** move from vocabulary and the **{lens.title}** "
+                f"Learners working on this module move from vocabulary and the **{lens.title}** "
                 f"distinction through topic lessons on {topics[0] if topics else title} with "
                 "evidence and misconception checks, then "
                 f"assemble a **{lens.evidence_artifact}** with safety and rights gates."

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 """Build and render the AGEINT semantic manuscript manifest."""
 
-
 from dataclasses import dataclass
 import json
 from pathlib import Path
@@ -23,6 +22,10 @@ try:  # Support package and script-level imports.
     from .curriculum import Curriculum
     from .figures import figure_markdown, figures_for_section
     from .markdown_refs import figure_ref_list, section_ref_list
+    from .rendered_reference_audit import (
+        sanitize_rendered_section_title_mentions,
+        section_title_rules,
+    )
     from .intelligence_content import (
         accessibility_review_rows,
         adversarial_assurance_rows,
@@ -67,6 +70,10 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from curriculum import Curriculum  # type: ignore[no-redef]
     from figures import figure_markdown, figures_for_section  # type: ignore[no-redef]
     from markdown_refs import figure_ref_list, section_ref_list  # type: ignore[no-redef]
+    from rendered_reference_audit import (  # type: ignore[no-redef]
+        sanitize_rendered_section_title_mentions,
+        section_title_rules,
+    )
     from intelligence_content import (  # type: ignore[no-redef]
         accessibility_review_rows,
         adversarial_assurance_rows,
@@ -111,7 +118,6 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
         citation_spine,
     )
 
-
 @dataclass(frozen=True)
 class ManuscriptSection:
     """A generated manuscript section with semantic output path and context."""
@@ -129,7 +135,6 @@ class ManuscriptSection:
     figure_labels: tuple[str, ...] = ()
     chapter_number: int | None = None
     appendix_letter: str | None = None
-
 
 @dataclass(frozen=True)
 class ManuscriptManifest:
@@ -168,7 +173,6 @@ class ManuscriptManifest:
         """Return YAML ordering understood by infrastructure manuscript discovery."""
         return _ordering_config_yaml(["abstract.md", "orientation.md"], self.units, self.appendix_files)
 
-
 def _ordering_config_yaml(
     front_matter_files: list[str],
     units: list[dict[str, Any]],
@@ -204,7 +208,6 @@ def _ordering_config_yaml(
         lines.append(f"    - file: {file_name}")
     return "\n".join(lines) + "\n"
 
-
 class _SlugRegistry:
     def __init__(self) -> None:
         self._seen: dict[str, set[str]] = {}
@@ -222,44 +225,75 @@ class _SlugRegistry:
         seen.add(resolved)
         return resolved
 
-
 def _slug(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
     return slug or "section"
 
-
 def _label(kind: str, slug: str) -> str:
     return f"sec:{kind}-{slug}"
 
+def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
+    """Return a compact, body-safe source-spine phrase."""
+
+    selected = list(citation_numbers[:limit])
+    if not selected:
+        return "the surrounding verified source spine"
+    return citation_spine(selected)
+
+def _part_source_context(part: dict[str, Any]) -> str:
+    """Return a part-specific context phrase without repeating the part title."""
+
+    citations: list[int] = []
+    for chapter in part.get("chapters", []):
+        for number in chapter.get("citations", []):
+            if number not in citations:
+                citations.append(number)
+            if len(citations) >= 2:
+                break
+        if len(citations) >= 2:
+            break
+    return _citation_context(citations)
+
+def _chapter_source_context(chapter: dict[str, Any]) -> str:
+    """Return a chapter-specific source context without using its generated title."""
+
+    return _citation_context(list(chapter.get("citations", [])))
+
+def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
+    """Return a compact topic cluster for body prose."""
+
+    topics = [entry.display_title for entry in _safe_topic_entries(chapter, part)[:limit]]
+    if not topics:
+        return "the local source-topic cluster"
+    return "; ".join(topics)
 
 def _part_summary(part: dict[str, Any]) -> str:
-    title = part["title"]
+    source_context = _part_source_context(part)
     return (
-        f"The **{title}** unit introduction tells instructors what learners should do "
+        "This unit introduction tells instructors what learners should do "
         "before they enter the individual modules. Start with the unit's guiding "
         "question, identify the evidence artifacts students will produce, and "
-        "keep the capstone thread visible across this unit.\n\n"
-        f"Learners carry one **{title}** capstone thread through the part: define an "
+        f"keep the capstone thread visible across this unit. The source path begins with {source_context}\n\n"
+        "Learners carry one unit capstone thread through the part: define an "
         "authorized intelligence question, bind it to source-quality constraints, "
         "produce a reviewable artifact, test the artifact against failure modes, "
         "and hand it off with enough context for another analyst or instructor "
         "to audit. The capstone remains public, synthetic, or owned-lab "
-        "throughout.\n\n"
-        f"**{title}** deliverables are a source-canon card, claim/evidence ledger, "
+        f"throughout; its first source anchors are {source_context}\n\n"
+        "This unit's deliverables are a source-canon card, claim/evidence ledger, "
         "safe-practice lab packet, failure-mode note, instructor rubric, and "
         "debrief memo. The full source-lane and evidence-package ledgers appear "
         "in the orientation and appendices; this unit introduction keeps only "
-        "the learner-facing spine.\n\n"
-        f"**{title}** safety gates are scope authorization, rights review, data "
+        f"the learner-facing spine for {source_context}\n\n"
+        "This unit's safety gates are scope authorization, rights review, data "
         "provenance, tool allowlisting, human oversight, rollback, and "
         "non-operational output. A missing gate turns the activity into a "
         "tabletop, audit, or written governance exercise until the gate is "
-        "restored.\n\n"
+        f"restored against {source_context}\n\n"
         "Capstone thread:\n\n"
         f"{capstone_scaffold_rows()}\n\n"
         f"{part_research_brief(part)}"
     )
-
 
 def _part_chapter_rows(part: dict[str, Any], chapter_files: dict[int, str]) -> str:
     rows = ["| Module | Section reference | Source spine |", "|---|---|---|"]
@@ -272,12 +306,12 @@ def _part_chapter_rows(part: dict[str, Any], chapter_files: dict[int, str]) -> s
         )
     return "\n".join(rows)
 
-
 def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: str) -> str:
-    title = chapter["title"]
+    source_context = _chapter_source_context(chapter)
+    topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            f"The source canon for **{title}** has three tiers:",
+            f"The source canon for this module has three tiers; the local spine begins with {source_context}",
             "",
             "| Tier | What counts | How it is used |",
             "|---|---|---|",
@@ -289,27 +323,26 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
             ),
             (
                 "| Runtime profile | The profile matched to "
-                f"**{part['title']}** and **{chapter['title']}** | "
+                "the current unit and current module | "
                 "Selects the practice lens, method stack, failure modes, and "
                 "defensive boundary for generated prose. |"
             ),
             "",
-            f"Maintenance rule for **{title}**: Perplexity may suggest candidates, "
+            f"Maintenance rule for this module: Perplexity may suggest candidates for {topic_context} and {source_context}, "
             "but only directly verified source URLs are encoded as citations.",
         ]
     )
 
-
 def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    title = chapter["title"]
+    source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
             "| Claim class | Evidence required | Review gate |",
             "|---|---|---|",
             (
-                f"| Source-spine claim about **{title}** | Parsed module title, "
+                f"| Source-spine claim for this module | Parsed module title, "
                 "module section map, and curriculum citation spine | "
-                "Confirm the generated text does not invent counts, paths, or labels. |"
+                f"Confirm the generated text does not invent counts, paths, or labels; source context: {source_context} |"
             ),
             (
                 "| Research-backed governance claim | Direct official, standards, "
@@ -327,20 +360,19 @@ def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str
                 "manipulation, and unsafe cyber-physical action. |"
             ),
             (
-                f"| Cross-module claim | Link to **{part['title']}** and adjacent "
+                f"| Cross-module claim | Link to the current unit and adjacent "
                 "curriculum modules | Confirm the handoff names inputs, outputs, "
                 "uncertainty, and next-review owner. |"
             ),
         ]
     )
 
-
 def _safe_practice_lab(chapter: dict[str, Any]) -> str:
-    title = chapter["title"]
+    source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Build a safe lab packet for **{title}** using public, benign, "
-            "owned-lab, or synthetic material only.",
+            "Build a safe lab packet for this module using public, benign, "
+            f"owned-lab, or synthetic material only; source checks begin with {source_context}",
             "",
             "| Lab step | Required artifact | Safety gate |",
             "|---|---|---|",
@@ -368,13 +400,12 @@ def _safe_practice_lab(chapter: dict[str, Any]) -> str:
         ]
     )
 
-
 def _failure_mode_drill(chapter: dict[str, Any]) -> str:
-    title = chapter["title"]
+    source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Use the drill to stress-test **{title}** before treating the module "
-            "artifact as complete.",
+            "Use the drill to stress-test this module before treating the module "
+            f"artifact as complete; the drill starts from {source_context}",
             "",
             "| Failure mode | Drill question | Recovery move |",
             "|---|---|---|",
@@ -404,12 +435,11 @@ def _failure_mode_drill(chapter: dict[str, Any]) -> str:
         ]
     )
 
-
 def _instructor_artifact(chapter: dict[str, Any]) -> str:
-    title = chapter["title"]
+    source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Instructors should collect a compact artifact bundle for **{title}**:",
+            f"Instructors should collect a compact artifact bundle for this module and {source_context}",
             "",
             "| Artifact | Minimum contents |",
             "|---|---|",
@@ -421,14 +451,14 @@ def _instructor_artifact(chapter: dict[str, Any]) -> str:
         ]
     )
 
-
-def _review_checklist(chapter: dict[str, Any]) -> str:
-    title = chapter["title"]
+def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
+    source_context = _chapter_source_context(chapter)
+    topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
     return "\n".join(
         [
-            f"Before marking **{title}** complete, verify:",
+            f"Before marking this module complete, verify the local source spine beginning with {source_context}",
             "",
-            f"- The **{title}** source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose.",
+            f"- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose; source context: {source_context}; topic focus: {topic_context}",
             "- Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.",
             "- Agentic affordances are limited to retrieval, comparison, drafting, simulation, critique, and audit support.",
             "- The lab packet uses public, benign, owned-lab, or synthetic material only.",
@@ -437,19 +467,19 @@ def _review_checklist(chapter: dict[str, Any]) -> str:
         ]
     )
 
-
 def _authority_accountability_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    title = chapter["title"]
+    source_context = _chapter_source_context(chapter)
+    topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            f"Use this accountability model before applying **{title}** in any exercise:",
+            f"Use this accountability model before applying this module in any exercise; topic focus: {topic_context}.",
             "",
             "| Accountability layer | Required decision | Evidence retained |",
 
             "|---|---|---|",
             (
-                f"| Sponsor | Why **{part['title']}** needs this module now | "
-                "authorized learning objective and excluded actions |"
+                f"| Sponsor | Why this unit needs the module now | "
+                f"authorized learning objective, excluded actions, and source context {source_context} |"
             ),
             "| Instructor | Which data, tools, and roles are allowed | signed scope card and stop condition |",
             (

@@ -7,12 +7,9 @@ def _import_prior_parts(*module_names: str) -> None:
         mod = importlib.import_module(f".{module_name}", __package__)
         globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
 
-
 _import_prior_parts("_01_part", "_02_part", "_03_part", "_04_part", "_04b_part", "_05_part", "_06_part", "_07_part", "_08_part")
 
 # GENERIC_DISPLAY_TITLE_MARKERS and is_generic_display_title re-exported via _07_part merge.
-
-
 
 REMEDIATION_BACKLOG: Final[tuple[dict[str, str], ...]] = (
     {
@@ -37,7 +34,6 @@ REMEDIATION_BACKLOG: Final[tuple[dict[str, str], ...]] = (
     },
 )
 
-
 def source_lane_inventory() -> dict[str, list[ResearchAnchor]]:
     """Group curated anchors by source lane."""
     lanes: dict[str, list[ResearchAnchor]] = {}
@@ -45,7 +41,6 @@ def source_lane_inventory() -> dict[str, list[ResearchAnchor]]:
         lane = anchor.source_lane or anchor.domain
         lanes.setdefault(lane, []).append(anchor)
     return lanes
-
 
 def source_lane_rows() -> str:
     """Render source-lane coverage for generated manuscript surfaces."""
@@ -59,7 +54,6 @@ def source_lane_rows() -> str:
         rows.append(f"| {lane} | {len(anchors)} | {cadences} | {scope} |")
     return "\n".join(rows)
 
-
 def source_refresh_rows(limit: int | None = None) -> str:
     """Render source-refresh ledger rows for verified anchors."""
     rows = ["| Anchor | Lane | Tier | Checked | Cadence | Refresh trigger |", "|---|---|---|---|---|---|"]
@@ -71,7 +65,6 @@ def source_refresh_rows(limit: int | None = None) -> str:
             f"{anchor.refresh_cadence} | {anchor.refresh_trigger} |"
         )
     return "\n".join(rows)
-
 
 def safe_substitution_rows() -> str:
     """Render risky source motif to safe curriculum substitute rows."""
@@ -86,14 +79,12 @@ def safe_substitution_rows() -> str:
         )
     return "\n".join(rows)
 
-
 def capstone_scaffold_rows() -> str:
     """Render reusable capstone workflow rows."""
     rows = ["| Phase | Artifact | Review gate |", "|---|---|---|"]
     for item in CAPSTONE_SCAFFOLDS:
         rows.append(f"| {item['phase']} | {item['artifact']} | {item['review_gate']} |")
     return "\n".join(rows)
-
 
 def accessibility_review_rows() -> str:
     """Render accessibility and UDL review rows."""
@@ -102,14 +93,12 @@ def accessibility_review_rows() -> str:
         rows.append(f"| {item['step']} | {item['artifact']} | {item['review_question']} |")
     return "\n".join(rows)
 
-
 def procurement_oversight_rows() -> str:
     """Render procurement and vendor oversight rows."""
     rows = ["| Step | Artifact | Review question |", "|---|---|---|"]
     for item in PROCUREMENT_OVERSIGHT_STEPS:
         rows.append(f"| {item['step']} | {item['artifact']} | {item['review_question']} |")
     return "\n".join(rows)
-
 
 def hria_dpia_worksheet_rows() -> str:
     """Render HRIA and DPIA worksheet rows."""
@@ -118,14 +107,12 @@ def hria_dpia_worksheet_rows() -> str:
         rows.append(f"| {item['dimension']} | {item['prompt']} | {item['evidence']} |")
     return "\n".join(rows)
 
-
 def data_lineage_registry_rows() -> str:
     """Render data lineage registry rows."""
     rows = ["| Object | Lineage field | Quality gate |", "|---|---|---|"]
     for item in DATA_LINEAGE_REGISTRY:
         rows.append(f"| {item['object']} | {item['lineage_field']} | {item['quality_gate']} |")
     return "\n".join(rows)
-
 
 def assessment_integrity_rows() -> str:
     """Render assessment-integrity protocol rows."""
@@ -134,14 +121,12 @@ def assessment_integrity_rows() -> str:
         rows.append(f"| {item['control']} | {item['student_evidence']} | {item['instructor_check']} |")
     return "\n".join(rows)
 
-
 def agent_incident_response_rows() -> str:
     """Render agent incident response drill rows."""
     rows = ["| Phase | Drill action | Artifact |", "|---|---|---|"]
     for item in AGENT_INCIDENT_RESPONSE_DRILL:
         rows.append(f"| {item['phase']} | {item['drill_action']} | {item['artifact']} |")
     return "\n".join(rows)
-
 
 def role_competency_rows() -> str:
     """Render role-based competency map rows."""
@@ -150,14 +135,12 @@ def role_competency_rows() -> str:
         rows.append(f"| {item['role']} | {item['competency']} | {item['evidence']} |")
     return "\n".join(rows)
 
-
 def adversarial_assurance_rows() -> str:
     """Render adversarial assurance cycle rows."""
     rows = ["| Stage | Challenge question | Artifact |", "|---|---|---|"]
     for item in ADVERSARIAL_ASSURANCE_CYCLE:
         rows.append(f"| {item['stage']} | {item['question']} | {item['artifact']} |")
     return "\n".join(rows)
-
 
 def model_dataset_card_rows() -> str:
     """Render model-card and dataset-card documentation rows."""
@@ -169,14 +152,12 @@ def model_dataset_card_rows() -> str:
         )
     return "\n".join(rows)
 
-
 def transparency_notice_rows() -> str:
     """Render transparency notice workflow rows."""
     rows = ["| Step | Artifact | Review gate |", "|---|---|---|"]
     for item in TRANSPARENCY_NOTICE_WORKFLOW:
         rows.append(f"| {item['step']} | {item['artifact']} | {item['review_gate']} |")
     return "\n".join(rows)
-
 
 def retention_audit_rows() -> str:
     """Render records-retention and audit-trail rows."""
@@ -185,14 +166,12 @@ def retention_audit_rows() -> str:
         rows.append(f"| {item['record']} | {item['retained_fields']} | {item['audit_question']} |")
     return "\n".join(rows)
 
-
 def release_change_control_rows() -> str:
     """Render release and change-control gate rows."""
     rows = ["| Gate | Release evidence | Block condition |", "|---|---|---|"]
     for item in RELEASE_CHANGE_CONTROL_GATE:
         rows.append(f"| {item['gate']} | {item['release_evidence']} | {item['block_condition']} |")
     return "\n".join(rows)
-
 
 def risk_exception_rows() -> str:
     """Render risk exception memo rows."""
@@ -201,14 +180,12 @@ def risk_exception_rows() -> str:
         rows.append(f"| {item['field']} | {item['minimum_content']} | {item['approval_rule']} |")
     return "\n".join(rows)
 
-
 def learner_support_rows() -> str:
     """Render learner support and accommodation plan rows."""
     rows = ["| Need | Support | Evidence |", "|---|---|---|"]
     for item in LEARNER_SUPPORT_PLAN:
         rows.append(f"| {item['need']} | {item['support']} | {item['evidence']} |")
     return "\n".join(rows)
-
 
 def question_bank_rows() -> str:
     """Render instructor question-bank rows."""
@@ -217,7 +194,6 @@ def question_bank_rows() -> str:
         rows.append(f"| {item['question_type']} | {item['prompt']} | {item['evidence']} |")
     return "\n".join(rows)
 
-
 def remediation_backlog_rows() -> str:
     """Render remediation backlog rows."""
     rows = ["| Backlog item | Trigger | Closure evidence |", "|---|---|---|"]
@@ -225,11 +201,9 @@ def remediation_backlog_rows() -> str:
         rows.append(f"| {item['item']} | {item['trigger']} | {item['closure_evidence']} |")
     return "\n".join(rows)
 
-
 def citation_cluster(keys: tuple[str, ...], limit: int = 4) -> str:
     """Return a compact Pandoc citation cluster for a profile."""
     return citation_ref_list(keys[:limit]) + "."
-
 
 def research_anchor_rows() -> str:
     """Render a compact table of curated research anchors."""
@@ -246,7 +220,6 @@ def research_anchor_rows() -> str:
         )
     return "\n".join(rows)
 
-
 def practice_lens_rows() -> str:
     """Render a compact table of reusable intelligence practice lenses."""
     rows = [
@@ -260,7 +233,6 @@ def practice_lens_rows() -> str:
         )
     return "\n".join(rows)
 
-
 def research_spine_summary() -> str:
     """Return prose summary of the added research spine."""
     domains = ", ".join(sorted({anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS}))
@@ -273,48 +245,76 @@ def research_spine_summary() -> str:
         "the manuscript cites the verified source URLs directly."
     )
 
-
 def part_research_brief(part: dict[str, Any]) -> str:
     """Render a short part-level research brief."""
     profile = profile_for_titles(str(part["title"]))
     lens = practice_lens_for_titles(str(part["title"]))
+    source_context = _source_ref_context(_part_citation_numbers(part))
     return (
         f"**Research lane:** {profile.title}. "
         f"Core anchors: {citation_cluster(profile.anchor_keys, limit=3)} "
         f"Conceptual focus: {profile.conceptual_focus}. "
         f"Composability contract: {profile.composability_contract}. "
-        f"**Practice lens:** {lens.title}; {lens.planning_question}"
+        f"**Practice lens:** {lens.title}; {lens.planning_question} "
+        f"Unit source path begins with {source_context}"
     )
 
+def _part_citation_numbers(part: dict[str, Any], *, limit: int = 2) -> list[int]:
+    citations: list[int] = []
+    for chapter in part.get("chapters", []):
+        for number in chapter.get("citations", []):
+            if number not in citations:
+                citations.append(number)
+            if len(citations) >= limit:
+                return citations
+    return citations
+
+def _source_ref_context(citation_numbers: list[int], *, limit: int = 2) -> str:
+    selected = list(citation_numbers[:limit])
+    if not selected:
+        return "the surrounding verified source spine"
+    return citation_ref_list(f"ageint{number:03d}" for number in selected) + "."
+
+def _chapter_ref_context(chapter: dict[str, Any]) -> str:
+    return _source_ref_context(list(chapter.get("citations", [])))
+
+def _topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
+    topics = [entry.display_title for entry in _safe_topic_entries(chapter, part)[:limit]]
+    if not topics:
+        return "the local topic cluster"
+    return "; ".join(topics)
 
 def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render a chapter-level practice lens."""
     title = str(chapter["title"])
     lens = practice_lens_for_titles(str(part["title"]), title)
+    source_context = _chapter_ref_context(chapter)
+    topic_context = _topic_context(chapter, part)
     return "\n".join(
         [
-            f"**Practice lens for {title}:** {lens.title}.",
+            f"**Practice lens for this module:** {lens.title}. Source context: {source_context}",
             "",
-            f"**Planning question for {title}:** {lens.planning_question}",
+            f"**Planning question for this module:** {lens.planning_question} Apply it to {topic_context}.",
             "",
-            f"**Evidence artifact for {title}:** {lens.evidence_artifact}.",
+            f"**Evidence artifact for this module:** {lens.evidence_artifact}. Source context: {source_context}",
             "",
-            f"**Validation rule for {title}:** {lens.validation_rule}.",
+            f"**Validation rule for this module:** {lens.validation_rule}. Topic focus: {topic_context}.",
             "",
-            f"**Handoff contract for {title}:** {lens.handoff_contract}.",
+            f"**Handoff contract for this module:** {lens.handoff_contract}. Source context: {source_context}",
             "",
-            f"**Safety check for {title}:** {lens.safety_check}.",
+            f"**Safety check for this module:** {lens.safety_check}. Topic focus: {topic_context}.",
         ]
     )
-
 
 def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render chapter-level research synthesis."""
     title = str(chapter["title"])
     profile = profile_for_titles(str(part["title"]), title)
     distinct = list(dict.fromkeys(e.display_title for e in _safe_topic_entries(chapter, part)))[:3]
+    source_context = _chapter_ref_context(chapter)
+    topic_context = "; ".join(distinct[:2]) if distinct else "the local topic cluster"
     topic_line = (
-        f"**Curriculum topic spine for {title}:** "
+        "**Curriculum topic spine for this module:** "
         f"{', '.join(f'**{topic}**' for topic in distinct)}.\n\n"
         if distinct
         else ""
@@ -330,25 +330,24 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
         )
     return "\n".join(
         [
-            f"**Research lane for {title}:** {profile.title}.",
+            f"**Research lane for this module:** {profile.title}. Source context: {source_context}",
             "",
             topic_line.rstrip(),
-            f"**Verified anchor cluster for {title}:** {citation_cluster(profile.anchor_keys, limit=7)}",
+            f"**Verified anchor cluster for this module:** {citation_cluster(profile.anchor_keys, limit=7)} Topic focus: {topic_context}.",
             "",
-            f"**Conceptual depth for {title}:** {profile.conceptual_focus}.",
+            f"**Conceptual depth for this module:** {profile.conceptual_focus}. Apply it to {topic_context}.",
             "",
-            f"**Method stack for {title}:** {profile.method_stack}.",
+            f"**Method stack for this module:** {profile.method_stack}. Source context: {source_context}",
             "",
-            f"**Composability contract for {title}:** {profile.composability_contract}.",
+            f"**Composability contract for this module:** {profile.composability_contract}. Topic focus: {topic_context}.",
             "",
-            f"**Known failure modes for {title}:** {profile.failure_modes}.",
+            f"**Known failure modes for this module:** {profile.failure_modes}. Source context: {source_context}",
             "",
-            f"**Defensive boundary for {title}:** {profile.safety_boundary}.",
+            f"**Defensive boundary for this module:** {profile.safety_boundary}. Topic focus: {topic_context}.",
             "",
             *anchor_rows,
         ]
     ).replace("\n\n\n", "\n\n")
-
 
 META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = (
     "v2 source-lane extension:",
@@ -357,30 +356,24 @@ META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = (
     "v2 ageint-depth extension:",
 )
 
-
 def _table_cell(value: str) -> str:
     return value.replace("|", "\\|").replace("\n", " ").strip()
-
 
 def _coursebook_profile_for_titles(part_title: str, section_title: str = "") -> CoursebookProfile:
     profile = profile_for_titles(part_title, section_title)
     return COURSEBOOK_PROFILES[profile.identifier]
 
-
 def _is_meta_source_topic(title: str) -> bool:
     lower = title.strip().lower()
     return any(lower.startswith(prefix) for prefix in META_SOURCE_TOPIC_PREFIXES)
 
-
 def _normalize_display_key(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
-
 
 def _clean_display_title(title: str) -> str:
     cleaned = re.sub(r":\s*case\s+[\d.]+\s+review\s*$", "", title, flags=re.IGNORECASE)
     cleaned = re.sub(r"\s+review\s*$", "", cleaned, flags=re.IGNORECASE)
     return cleaned.strip() or title
-
 
 def _safe_topic_entries(chapter: dict[str, Any], part: dict[str, Any]) -> list[TopicEntry]:
     """Return safe, learner-facing source topics with provenance metadata."""
@@ -474,5 +467,4 @@ def _safe_topic_entries(chapter: dict[str, Any], part: dict[str, Any]) -> list[T
             risk_category="standard",
         )
     ]
-
 

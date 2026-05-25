@@ -7,6 +7,11 @@ from pathlib import Path
 import re
 
 from _inventory_helpers import manuscript_dir
+from rendered_reference_audit import (
+    TitleRule,
+    audit_rendered_references,
+    sanitize_rendered_section_title_mentions,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DOCS = PROJECT_ROOT / "docs"
@@ -95,6 +100,37 @@ def test_generated_section_references_resolve_without_raw_latex_or_hard_numbers(
     assert section_refs <= section_labels
     assert not RAW_LATEX_REF_RE.search(text)
     assert not HARD_CODED_NUMBER_RE.search(_generated_crossref_prose_text(output_manuscript))
+
+
+def test_rendered_reference_audit_allows_only_structural_title_mentions(built_output: Path) -> None:
+    violations = audit_rendered_references(built_output)
+
+    assert [violation.format(PROJECT_ROOT) for violation in violations] == []
+
+
+def test_rendered_reference_sanitizer_preserves_structural_titles_only() -> None:
+    text = "\n".join(
+        [
+            "# The Nature of Intelligence {#sec:chapter-the-nature-of-intelligence}",
+            "",
+            "Visual guide for **The Nature of Intelligence** [@fig:one] names the current topic.",
+            "![The Nature of Intelligence map](../figures/example.png){#fig:one}",
+            "| Module | Section reference |",
+            "|---|---|",
+            "| The Nature of Intelligence | [@sec:chapter-the-nature-of-intelligence] |",
+            "- Start **The Nature of Intelligence** with the authority card.",
+        ]
+    )
+    sanitized = sanitize_rendered_section_title_mentions(
+        text,
+        [TitleRule("The Nature of Intelligence", "the module", "chapter")],
+    )
+
+    assert "# The Nature of Intelligence {#sec:chapter-the-nature-of-intelligence}" in sanitized
+    assert "| The Nature of Intelligence | [@sec:chapter-the-nature-of-intelligence] |" in sanitized
+    assert "Visual guide for the module" in sanitized
+    assert "![the module map]" in sanitized
+    assert "- Start the module with the authority card." in sanitized
 
 
 def test_generated_equation_table_and_citation_references_resolve(built_output: Path) -> None:

@@ -74,21 +74,22 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
     coursebook = _coursebook_profile_for_titles(part_title, title)
     entries = _safe_topic_entries(chapter, part)
     anchor_topic = entries[0].display_title if entries else title
+    source_context = _chapter_ref_context(chapter)
     return "\n\n".join(
         [
-            f"Worked example for **{title}**: {coursebook.worked_scenario}.",
+            f"Worked example for this module: {coursebook.worked_scenario}. The source path begins with {source_context}",
             (
                 f"**Frame.** The classroom question centers on **{anchor_topic}**. "
                 f"Excluded actions stay explicit, and the **{lens.title}** planning "
                 f"question is: {lens.planning_question}"
             ),
             (
-                f"**Inputs.** For **{title}**, use {coursebook.worked_input}. Each input gets a "
+                f"**Inputs.** For this module's **{anchor_topic}** scenario, use {coursebook.worked_input}. Each input gets a "
                 f"documented intake note for the {lens.title}: provenance, sensitivity, "
                 "fit-to-purpose, and the reason the fixture is enough for this bounded exercise."
             ),
             (
-                f"**Analysis.** For **{anchor_topic}** in **{title}**, students "
+                f"**Analysis.** For **{anchor_topic}** in this module, students "
                 f"{coursebook.worked_process}. Pause whenever an inference about "
                 f"{anchor_topic} appears without evidence, confidence outruns support, "
                 "or an agent output is treated as judgment."
@@ -100,13 +101,13 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
                 "reviewer = instructor or named peer."
             ),
             (
-                f"**Flawed answer to revise.** In **{title}**, treating **{anchor_topic}** as "
+                f"**Flawed answer to revise.** In this module, treating **{anchor_topic}** as "
                 f"\"{lens.title} confirms it\" is not enough. The revision ties the claim to "
                 f"{coursebook.practice_focus}, adds the missing caveat, states confidence, "
                 "and records the reviewer who accepted the bounded judgment."
             ),
             (
-                f"**Debrief.** After **{title}**, the class writes a three-line reuse note: "
+                f"**Debrief.** After this module, the class writes a three-line reuse note: "
                 f"the defensible claim about **{anchor_topic}**, the assumption most likely "
                 "to fail, and the review condition that would stop reuse."
             ),
@@ -124,13 +125,10 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     entries = _safe_topic_entries(chapter, part)[:3]
     first_topics = ", ".join(entry.display_title for entry in entries)
     misconception = _topic_misconception(entries[0], coursebook)
-    return "\n\n".join(
+    topic_context = _topic_context(chapter, part)
+    source_context = _chapter_ref_context(chapter)
+    practice_rows = "\n".join(
         [
-            (
-                f"Use this **{title}** studio plan with the **{lens.title}** "
-                "lens. A short class can complete moves 1-3; a full seminar "
-                "should complete all moves and submit the handoff memo."
-            ),
             "| Move | Learner action | Output | Check |",
             "|---|---|---|---|",
             f"| 1. Distinguish | Compare {first_topics}; name what each topic can and cannot prove. | Glossary-and-contrast card. | Terms match the **{_table_cell(profile.title)}** lane. |",
@@ -138,18 +136,28 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
             f"| 3. Evidence | Fill the artifact fields for {entries[0].display_title}: {lens.evidence_artifact}. | Evidence packet. | Sources, caveats, confidence, and uncertainty stay separable. |",
             f"| 4. Challenge | Test the misconception {misconception}. | Failure-mode note. | The artifact applies the key distinction: {coursebook.key_distinction}. |",
             "| 5. Handoff | Prepare the artifact for another reviewer. | Handoff memo. | Inputs, transformations, reviewer, refresh trigger, and residual risk are visible. |",
+        ]
+    )
+    return "\n\n".join(
+        [
+            (
+                f"Use this module studio plan with the **{lens.title}** "
+                "lens. A short class can complete moves 1-3; a full seminar "
+                f"should complete all moves and submit the handoff memo for {topic_context}."
+            ),
+            practice_rows,
             "### Instructor notes",
             (
-                f"For **{title}**, ask learners to verbalize the difference between "
+                f"For this module, ask learners to verbalize the difference between "
                 "a source, an inference, and a decision. Require a revision whenever "
-                "a claim cannot be traced to a source descriptor or a human review point."
+                f"a claim cannot be traced to a source descriptor or a human review point. Source context: {source_context}; topic focus: {topic_context}."
             ),
             "### Extension",
             (
-                f"Have learners swap **{title}** artifacts and apply the **{lens.title}** "
+                f"Have learners swap this module's artifacts and apply the **{lens.title}** "
                 "validation rule to someone else's work. The receiving learner "
                 "must identify one strength, one missing caveat, and one refresh "
-                "trigger."
+                f"trigger for {topic_context}."
             ),
         ]
     )
