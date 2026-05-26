@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from _data_loaders import coursebook_profiles_as_dataclasses
+from _data_loaders import coursebook_profiles
 
 from ._01_part import (
     IntelligenceProfile,
@@ -16,7 +16,7 @@ from ._04b_part import INTELLIGENCE_PROFILES
 from ._05_part import PRACTICE_LENSES
 
 
-COURSEBOOK_PROFILES = coursebook_profiles_as_dataclasses()
+COURSEBOOK_PROFILES = coursebook_profiles()
 
 def _normalized_lookup_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()

@@ -11,23 +11,11 @@ if TYPE_CHECKING:
     from ._04b_part import IntelligenceProfile
 
 
-try:
-    from ._07_safe_titles import _topic_anchor_words, is_generic_display_title
-except ImportError:  # pragma: no cover - merged namespace
-    from intelligence_content._07_safe_titles import (  # type: ignore[no-redef]
-        _topic_anchor_words,
-        is_generic_display_title,
-    )
+from ._07_safe_titles import _topic_anchor_words, is_generic_display_title
 
 from _data_loaders import category_concept_frames
 
 CATEGORY_CONCEPT_FRAMES: dict[str, str] = category_concept_frames()
-
-
-
-def _topic_hook(entry: TopicEntry) -> str:
-    anchor = _topic_anchor_words(entry.display_title, limit=2)
-    return f"learners connect {anchor} to the chapter practice lens"
 
 
 def _analytic_subcategory(raw_lower: str) -> str | None:
@@ -127,16 +115,10 @@ def synthesized_evidence_prompt(entry: TopicEntry, lens: PracticeLens, courseboo
     )
 
 
-try:
-    from .topic_prompt_routes import (
-        artifact_prompt_for_entry as _artifact_prompt_from_routes,
-        evidence_prompt_for_entry as _evidence_prompt_from_routes,
-    )
-except ImportError:  # pragma: no cover - merged namespace
-    from intelligence_content.topic_prompt_routes import (  # type: ignore[no-redef]
-        artifact_prompt_for_entry as _artifact_prompt_from_routes,
-        evidence_prompt_for_entry as _evidence_prompt_from_routes,
-    )
+from .topic_prompt_routes import (
+    artifact_prompt_for_entry as _artifact_prompt_from_routes,
+    evidence_prompt_for_entry as _evidence_prompt_from_routes,
+)
 
 
 def evidence_prompt_for_entry(
@@ -154,18 +136,6 @@ def evidence_prompt_for_entry(
 
 def artifact_prompt_for_entry(entry: TopicEntry, lens: PracticeLens, coursebook: CoursebookProfile) -> str:
     return _artifact_prompt_from_routes(entry, lens, coursebook)
-
-
-try:
-    from .topic_rotation_templates import (
-        misconception_for_entry,
-        why_it_matters_for_entry,
-    )
-except ImportError:  # pragma: no cover - merged namespace
-    from intelligence_content.topic_rotation_templates import (  # type: ignore[no-redef]
-        misconception_for_entry,
-        why_it_matters_for_entry,
-    )
 
 
 def lesson_intro_paragraph(

@@ -92,13 +92,21 @@ def test_topic_rotation_template_loaders_return_non_empty() -> None:
 
 
 def test_coursebook_profiles_loader_returns_fourteen_profiles() -> None:
-    from _data_loaders import coursebook_profiles_as_dataclasses
+    from _data_loaders import coursebook_profiles
 
-    profiles = coursebook_profiles_as_dataclasses()
+    profiles = coursebook_profiles()
     assert len(profiles) == 14
     sample = profiles["analytic_tradecraft"]
     assert sample.identifier == "analytic_tradecraft"
     assert sample.vocabulary
+
+
+def test_safety_artifact_table_names_match_yaml() -> None:
+    from _data_loaders import SAFETY_ARTIFACT_TABLE_NAMES, safety_artifact_tables_payload
+
+    payload = safety_artifact_tables_payload()
+    assert set(payload) == set(SAFETY_ARTIFACT_TABLE_NAMES)
+    assert len(SAFETY_ARTIFACT_TABLE_NAMES) == 17
 
 
 def test_safety_artifact_table_loader_returns_rows() -> None:

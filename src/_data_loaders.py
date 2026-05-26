@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Final
 
 import yaml
 
@@ -206,50 +206,70 @@ def misconception_risk_templates() -> tuple[str, ...]:
     return tuple(str(row) for row in rows)
 
 
+SAFETY_ARTIFACT_TABLE_NAMES: Final[tuple[str, ...]] = (
+    "SAFE_SUBSTITUTION_PATTERNS",
+    "CAPSTONE_SCAFFOLDS",
+    "ACCESSIBILITY_REVIEW_STEPS",
+    "PROCUREMENT_OVERSIGHT_STEPS",
+    "HRIA_DPIA_WORKSHEET",
+    "DATA_LINEAGE_REGISTRY",
+    "ASSESSMENT_INTEGRITY_PROTOCOL",
+    "AGENT_INCIDENT_RESPONSE_DRILL",
+    "ROLE_BASED_COMPETENCY_MAP",
+    "ADVERSARIAL_ASSURANCE_CYCLE",
+    "MODEL_DATASET_CARD",
+    "TRANSPARENCY_NOTICE_WORKFLOW",
+    "RETENTION_AUDIT_TRAIL",
+    "RELEASE_CHANGE_CONTROL_GATE",
+    "RISK_EXCEPTION_MEMO",
+    "LEARNER_SUPPORT_PLAN",
+    "INSTRUCTOR_QUESTION_BANK",
+)
+
+
 @lru_cache(maxsize=1)
 def coursebook_profiles() -> dict[str, Any]:
-    """Return coursebook profile rows keyed by identifier."""
+    """Return ``CoursebookProfile`` instances keyed by identifier."""
+    from intelligence_content._01_part import CoursebookProfile
+
     payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "coursebook_profiles.yaml")
     profiles = payload.get("profiles", [])
     if not isinstance(profiles, list):
         raise ValueError("Expected list profiles in coursebook_profiles.yaml")
-    rendered: dict[str, Any] = {}
+    rendered: dict[str, CoursebookProfile] = {}
     for row in profiles:
         identifier = str(row["identifier"])
         vocabulary = tuple(
             (str(item["term"]), str(item["definition"])) for item in row["vocabulary"]
         )
-        rendered[identifier] = {
-            "identifier": identifier,
-            "disciplinary_frame": str(row["disciplinary_frame"]),
-            "key_distinction": str(row["key_distinction"]),
-            "vocabulary": vocabulary,
-            "worked_scenario": str(row["worked_scenario"]),
-            "worked_input": str(row["worked_input"]),
-            "worked_process": str(row["worked_process"]),
-            "worked_output": str(row["worked_output"]),
-            "practice_focus": str(row["practice_focus"]),
-            "review_question": str(row["review_question"]),
-        }
+        rendered[identifier] = CoursebookProfile(
+            identifier=identifier,
+            disciplinary_frame=str(row["disciplinary_frame"]),
+            key_distinction=str(row["key_distinction"]),
+            vocabulary=vocabulary,
+            worked_scenario=str(row["worked_scenario"]),
+            worked_input=str(row["worked_input"]),
+            worked_process=str(row["worked_process"]),
+            worked_output=str(row["worked_output"]),
+            practice_focus=str(row["practice_focus"]),
+            review_question=str(row["review_question"]),
+        )
     return rendered
-
-
-def coursebook_profiles_as_dataclasses() -> dict[str, Any]:
-    """Return ``CoursebookProfile`` instances keyed by identifier."""
-    from intelligence_content._01_part import CoursebookProfile
-
-    return {
-        identifier: CoursebookProfile(**payload)
-        for identifier, payload in coursebook_profiles().items()
-    }
 
 
 @lru_cache(maxsize=1)
 def safety_artifact_tables_payload() -> dict[str, Any]:
     """Return safety and artifact table rows keyed by constant name."""
     payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "safety_artifact_tables.yaml")
-    if not isinstance(payload, dict):
-        raise ValueError("Expected mapping in safety_artifact_tables.yaml")
+    yaml_keys = set(payload)
+    expected_keys = set(SAFETY_ARTIFACT_TABLE_NAMES)
+    if yaml_keys != expected_keys:
+        missing = expected_keys - yaml_keys
+        extra = yaml_keys - expected_keys
+        raise ValueError(
+            "safety_artifact_tables.yaml key drift: "
+            f"missing={sorted(missing)!r}; extra={sorted(extra)!r}"
+        )
     return payload
 
 

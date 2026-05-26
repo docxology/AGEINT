@@ -60,11 +60,14 @@ uv run python scripts/build_curriculum.py
 
 ## Shard import errors after intelligence_content edits
 
-Each part module must declare explicit imports (merge seeding is removed). Verify with:
+Each `intelligence_content` part module must declare explicit imports (merge seeding is removed for that package only). Verify with:
 
 ```bash
 uv run pytest tests/test_intelligence_content_imports.py -v
 ```
+
+`manuscript_manifest/`, `figures/`, and `manuscript_variables/` still use
+`merge_part_modules`; shard import isolation tests cover `intelligence_content` today.
 
 ## See also
 

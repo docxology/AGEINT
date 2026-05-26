@@ -166,7 +166,7 @@ def test_rotation_fields_match_curriculum_parity_fixture() -> None:
 
     from curriculum import load_curriculum
     from intelligence_content._11_part import _coursebook_profile_for_titles
-    from intelligence_content._12_topic_frames import (
+    from intelligence_content.topic_rotation_templates import (
         misconception_for_entry,
         why_it_matters_for_entry,
     )

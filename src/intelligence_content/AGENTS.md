@@ -28,11 +28,11 @@ Public entry points (called from `_11_part.py` via `topic_lessons.py`):
 | --- | --- | --- |
 | `resolve_topic_lesson_fields(...)` | `topic_lessons.py` | Single resolver for all lesson field strings |
 | `concept_frame_for_entry(entry, coursebook, profile)` | `topic_frame_api` → `_12_topic_frames` | Tier A/B/C concept paragraph |
-| `evidence_prompt_for_entry(entry, lens, coursebook)` | `topic_frame_api` → `topic_prompt_routes` | Evidence-to-inspect line (YAML-backed) |
-| `artifact_prompt_for_entry(entry, lens, coursebook)` | `topic_frame_api` → `topic_prompt_routes` | Student artifact prompt (YAML-backed) |
+| `evidence_prompt_for_entry(entry, lens, coursebook)` | `topic_frame_api` → `_12_topic_frames` → `topic_prompt_routes` | Evidence-to-inspect line (YAML-backed) |
+| `artifact_prompt_for_entry(entry, lens, coursebook)` | `topic_frame_api` → `_12_topic_frames` → `topic_prompt_routes` | Student artifact prompt (YAML-backed) |
 | `resolve_topic_misconception(...)` | `topic_lessons.py` | Misconception via unified resolver (practice/knowledge-check paths) |
-| `misconception_for_entry(...)` | `topic_rotation_templates.py` | Chapter-rotated misconception text (YAML templates + keyword branches) |
-| `why_it_matters_for_entry(...)` | `topic_rotation_templates.py` | Risk-category failure hints + rotated templates |
+| `misconception_for_entry(...)` | `topic_frame_api` → `topic_rotation_templates` | Chapter-rotated misconception text (YAML templates + keyword branches) |
+| `why_it_matters_for_entry(...)` | `topic_frame_api` → `topic_rotation_templates` | Risk-category failure hints + rotated templates |
 | `lesson_intro_paragraph(...)` | `_12_topic_frames` | Opener listing up to three distinct topic titles |
 | `lesson_educational_crossrefs(part, chapter)` | `markdown_refs` (called from `_11_part`) | Unit map figure, module overview, and atlas section refs in topic-lesson fragments |
 
@@ -101,6 +101,6 @@ Display-title contract (`topic_entries.safe_topic_entries`):
 ## Editing rules
 
 - Add domain depth via new keyword routes, category frames, or profiles—not hand-edited `output/manuscript/`.
-- Append routes to `data/concept_routes*.yaml`, `data/topic_risk_routes.yaml` (regenerate via `scripts/generate_risk_routes_yaml.py`), `data/topic_prompt_routes.yaml` (`scripts/generate_topic_prompt_routes_yaml.py`), `data/topic_rotation_templates.yaml` (`scripts/generate_topic_rotation_templates_yaml.py`), `data/coursebook_profiles.yaml` (`scripts/generate_coursebook_profiles_yaml.py`), or `data/safety_artifact_tables.yaml` (`scripts/generate_safety_artifact_tables_yaml.py`) before deleting Python tables.
+- Append routes to `data/concept_routes*.yaml`, `data/topic_risk_routes.yaml` (regenerate via `scripts/generate_risk_routes_yaml.py`), `data/topic_prompt_routes.yaml` (`scripts/generate_topic_prompt_routes_yaml.py`), or `data/topic_rotation_templates.yaml` (`scripts/generate_topic_rotation_templates_yaml.py`) before deleting Python tables. Edit `data/coursebook_profiles.yaml` and `data/safety_artifact_tables.yaml` directly (authoritative YAML; validate via `scripts/validate_declarative_yaml.py` and `tests/test_data_loaders.py`).
 - Never expose raw unsafe source titles in student-facing misconception or transfer text; use `display_title`, `chapter_title`, and `lesson_index` rotation.
 - Rebuild after changes: `uv run python scripts/build_curriculum.py`.

@@ -12,7 +12,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from curriculum import load_curriculum  # noqa: E402
 from intelligence_content._11_part import _coursebook_profile_for_titles  # noqa: E402
-from intelligence_content._12_topic_frames import (  # noqa: E402
+from intelligence_content.topic_rotation_templates import (  # noqa: E402
     misconception_for_entry,
     why_it_matters_for_entry,
 )

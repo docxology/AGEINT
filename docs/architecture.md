@@ -47,6 +47,16 @@ and `data/safety_artifact_tables.yaml` via `_data_loaders.py` (`_06_part.py`, `_
 `intelligence_content` shards use explicit imports (no `merge_part_modules`); package
 `__init__.py` re-exports the public API only.
 
+### Import model (P4 deferred)
+
+| Package | Import style |
+| --- | --- |
+| `intelligence_content/` | Explicit per-shard imports (P3 complete) |
+| `manuscript_manifest/`, `figures/`, `manuscript_variables/` | Still merged via `_package_loader.merge_part_modules` until P4 |
+
+When adding code under the merged packages, follow existing shard patterns; do not
+assume `intelligence_content`-style explicit imports apply repo-wide yet.
+
 `topic_entries.safe_topic_entries()` builds `TopicEntry` rows from curriculum sections before frame resolution. Template rotation uses `topic_rotation.template_index()` (`zlib.adler32`) with per-chapter offsets so adjacent modules do not repeat identical misconception strings. `topic_lessons.py` imports frame helpers through `topic_frame_api.py` and reader-voice helpers through `topic_lesson_voice.py`.
 
 See [`src/intelligence_content/AGENTS.md`](../src/intelligence_content/AGENTS.md) for the full routing table.

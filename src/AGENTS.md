@@ -30,7 +30,7 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 | `manuscript_templates.py` | Neutral source template library |
 | `_jsonl.py`, `_paths.py` | Shared JSONL reader, project path bootstrap, and `remove_tree()` cleanup |
 
-Public exports are declared in `src/__init__.py` (`run_build`, `run_build_figures`, `BuildConfig` consumers should import from `build_pipeline`). Part modules (`_01_part.py`, …) are implementation details merged at import time via `_package_loader.merge_part_modules`; prefer importing from the package root or subpackage `__init__.py`.
+Public exports are declared in `src/__init__.py` (`run_build`, `run_build_figures`, `BuildConfig` consumers should import from `build_pipeline`). Sharded subpackages split import styles: `intelligence_content/` uses explicit per-shard imports; `manuscript_manifest/`, `figures/`, and `manuscript_variables/` still merge part modules at import time via `_package_loader.merge_part_modules` (P4 migration). Prefer importing from the package root or subpackage `__init__.py`.
 
 Declarative routing and architecture tables live under `data/concept_routes.yaml`, `data/concept_routes_supplement.yaml`, `data/topic_risk_routes.yaml`, and `data/manuscript_architecture.yaml` (loaded by `_data_loaders.py`).
 

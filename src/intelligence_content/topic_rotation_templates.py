@@ -4,34 +4,18 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-try:
-    from _data_loaders import (
-        misconception_fallbacks,
-        misconception_risk_templates,
-        risk_why_failure_hints,
-        why_it_matters_templates,
-    )
-except ImportError:  # pragma: no cover - package import
-    from .._data_loaders import (  # type: ignore[no-redef]
-        misconception_fallbacks,
-        misconception_risk_templates,
-        risk_why_failure_hints,
-        why_it_matters_templates,
-    )
+from _data_loaders import (
+    misconception_fallbacks,
+    misconception_risk_templates,
+    risk_why_failure_hints,
+    why_it_matters_templates,
+)
+from ._12_concept_routes import _match_keywords
+from .topic_rotation import template_index
 
 if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, TopicEntry
     from ._04b_part import IntelligenceProfile
-
-try:
-    from intelligence_content._12_concept_routes import _match_keywords
-except ImportError:  # pragma: no cover - merged namespace
-    from ._12_concept_routes import _match_keywords  # type: ignore[no-redef]
-
-try:
-    from .topic_rotation import template_index
-except ImportError:  # pragma: no cover - merged namespace
-    from intelligence_content.topic_rotation import template_index  # type: ignore[no-redef]
 
 
 def why_it_matters_for_entry(

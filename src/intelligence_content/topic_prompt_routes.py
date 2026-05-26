@@ -5,33 +5,17 @@ from __future__ import annotations
 from collections.abc import Callable
 from typing import TYPE_CHECKING
 
-try:
-    from _data_loaders import (
-        artifact_keyword_routes,
-        artifact_risk_category_prompts,
-        evidence_category_prompts,
-        evidence_keyword_routes,
-    )
-except ImportError:  # pragma: no cover - package import
-    from .._data_loaders import (  # type: ignore[no-redef]
-        artifact_keyword_routes,
-        artifact_risk_category_prompts,
-        evidence_category_prompts,
-        evidence_keyword_routes,
-    )
+from _data_loaders import (
+    artifact_keyword_routes,
+    artifact_risk_category_prompts,
+    evidence_category_prompts,
+    evidence_keyword_routes,
+)
+from ._07_safe_titles import _topic_anchor_words
+from ._12_concept_routes import _first_matching_frame
 
 if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, PracticeLens, TopicEntry
-
-try:
-    from intelligence_content._07_safe_titles import _topic_anchor_words
-except ImportError:  # pragma: no cover - merged namespace
-    from ._07_safe_titles import _topic_anchor_words  # type: ignore[no-redef]
-
-try:
-    from intelligence_content._12_concept_routes import _first_matching_frame
-except ImportError:  # pragma: no cover - merged namespace
-    from ._12_concept_routes import _first_matching_frame  # type: ignore[no-redef]
 
 
 def evidence_prompt_for_entry(

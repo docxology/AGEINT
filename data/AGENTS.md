@@ -32,11 +32,17 @@ Regenerate `topic_rotation_templates.yaml` when rotation templates change:
 `tests/fixtures/topic_rotation_parity.json` via
 `uv run python scripts/generate_rotation_parity_fixture.py`.
 
-Regenerate `coursebook_profiles.yaml` from canonical Python when profile prose changes:
-`uv run python scripts/generate_coursebook_profiles_yaml.py`.
+**Authoritative YAML (edit files directly):** `coursebook_profiles.yaml` and
+`safety_artifact_tables.yaml` have no Python-canonical generator. Change the YAML
+and validate with:
 
-Regenerate `safety_artifact_tables.yaml` when assurance worksheet tables change:
-`uv run python scripts/generate_safety_artifact_tables_yaml.py`.
+```bash
+uv run python scripts/validate_declarative_yaml.py
+uv run pytest tests/test_data_loaders.py -v
+```
+
+**Generator-backed YAML** (Python tuples in `scripts/generate_*_yaml.py`):
+`topic_risk_routes.yaml`, `topic_prompt_routes.yaml`, `topic_rotation_templates.yaml`.
 
 If counts, titles, citations, appendices, profile identifiers, or pattern data
 drift, fix the shards or `src/curriculum.py`, rebuild with
