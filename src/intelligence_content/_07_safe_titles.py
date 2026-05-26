@@ -6,7 +6,7 @@ import re
 
 from typing import Final
 
-from ._07_risk_categories import _topic_risk_category
+from .risk_routes import topic_risk_category
 
 # Titles that must not stand alone as the sole lesson header without a domain suffix.
 GENERIC_DISPLAY_TITLE_MARKERS: Final[tuple[str, ...]] = (
@@ -333,7 +333,7 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
 
 def safe_curriculum_treatment(title: str, part_title: str = "", chapter_title: str = "") -> str:
     """Rewrite high-risk source-guide treatment labels into safe curriculum labels."""
-    risk_category = _topic_risk_category(title, part_title, chapter_title)
+    risk_category = topic_risk_category(title, part_title, chapter_title)
     if risk_category == "standard":
         return title
     base_title = (

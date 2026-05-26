@@ -36,7 +36,12 @@ Topic lessons inside each chapter resolve through `topic_lessons.resolve_topic_l
 2. **Category frames** — topic-first risk categories from `risk_routes.py` + `data/topic_risk_routes.yaml`; chapter defaults only when topic-level classification is `standard`.
 3. **Synthesis** — topic-anchored fallback prose; when `display_title` matches `GENERIC_DISPLAY_TITLE_MARKERS`, anchors on `raw_title` (`_12_topic_frames.py`).
 
-`topic_entries.safe_topic_entries()` builds `TopicEntry` rows from curriculum sections before frame resolution. Template rotation uses stable `template_index()` (`zlib.adler32`) with per-chapter offsets so adjacent modules do not repeat identical misconception strings.
+Evidence and artifact prompt strings resolve through `topic_prompt_routes.py` over
+`data/topic_prompt_routes.yaml` (keyword routes, category prompts, risk-category
+artifact prompts). `_12_topic_frames.py` delegates to that module and keeps only
+synthesized fallbacks.
+
+`topic_entries.safe_topic_entries()` builds `TopicEntry` rows from curriculum sections before frame resolution. Template rotation uses `topic_rotation.template_index()` (`zlib.adler32`) with per-chapter offsets so adjacent modules do not repeat identical misconception strings. `topic_lessons.py` imports `_12_topic_frames` at module load; the former cycle through `template_index` is broken by the leaf `topic_rotation.py` module.
 
 See [`src/intelligence_content/AGENTS.md`](../src/intelligence_content/AGENTS.md) for the full routing table.
 

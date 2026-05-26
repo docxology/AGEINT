@@ -1,0 +1,108 @@
+evidence_category_prompts:
+- category: agentic_cyber_misuse
+  prompt: 'Evidence packet: sample prompt records, tool-call logs, blocked-action
+    records, and the policy that denies the unsafe request.'
+- category: historical_humint_source_protection
+  prompt: 'Evidence packet: release metadata, redaction caveats, institutional setting,
+    and the governance lesson that can be defended from the record.'
+- category: ics_evasion_coverage
+  prompt: 'Evidence packet: synthetic alert records, expected operator observations,
+    control coverage, and recovery notes.'
+- category: ics_collection_detection
+  prompt: 'Evidence packet: synthetic tag histories, approved observation points,
+    operator annotations, and detection gaps.'
+- category: software_supply_chain_social_trust
+  prompt: 'Evidence packet: package provenance, maintainer-trust signals, build-integrity
+    evidence, and uncertainty about attribution.'
+- category: osint_tool_governance
+  prompt: 'Evidence packet: terms of use, source provenance, reproducibility notes,
+    minimization decisions, and identity-exposure risks.'
+- category: humint_recruitment_risk
+  prompt: 'Evidence packet: sample source notes for pressure, consent, escalation
+    duties, and excluded contact actions.'
+- category: cyber_taxonomy
+  prompt: 'Evidence packet: fabricated alerts, published taxonomy labels, confidence
+    language, and control implications.'
+- category: cognitive_resilience
+  prompt: 'Evidence packet: narrative provenance, audience-harm notes, attribution
+    evidence, and transparent education options.'
+- category: gray_zone_governance
+  prompt: 'Evidence packet: ambiguous-threshold indicators, attribution caveats, and
+    policy review fields in a sample scenario.'
+- category: financial_due_diligence
+  prompt: 'Evidence packet: transaction typology notes, source quality, escalation
+    thresholds, and uncertainty fields.'
+- category: analytic_tradecraft
+  prompt: 'Evidence packet: hypothesis tables, evidence matrices, confidence language,
+    and reviewer dissent fields.'
+- category: operational_tradecraft_governance
+  prompt: 'Evidence packet: sample OPSEC worksheets, compartmentation registers, and
+    cover-review notes with explicit oversight fields.'
+- category: cognitive_resilience_epistemic
+  prompt: 'Evidence packet: provenance chains, dissent channels, and correction options
+    for epistemic-security tabletop review.'
+- category: cognitive_resilience_inoculation
+  prompt: 'Evidence packet: inoculation lesson plans with transparent labels, source
+    checks, and non-manipulative correction options.'
+- category: critical_infrastructure_sharing
+  prompt: 'Evidence packet: sample ISAC packets for handling rules, anonymization,
+    confidence, and consumer duties.'
+evidence_keyword_routes:
+- keywords:
+  - ach
+  - competing hypotheses
+  prompt: 'Evidence packet: hypothesis table with evidence for and against each alternative
+    before confidence is assigned.'
+- keywords:
+  - mice
+  - recruitment
+  prompt: 'Evidence packet: sample source notes for pressure indicators, consent language,
+    validation steps, and excluded contact actions.'
+artifact_keyword_routes:
+- keywords:
+  - free energy
+  - predictive processing
+  prompt: Build a prediction-error concept card linking surprise, model assumption,
+    and reviewer checkpoint.
+- keywords:
+  - computational model
+  - active inference as computational
+  prompt: Build a toy agent-model card with beliefs, actions, observations, and a
+    human approval gate.
+- keywords:
+  - shared protentions
+  - multi-agent active inference
+  prompt: Build a shared-expectation register showing aligned expectations, dissent,
+    and review ownership.
+- keywords:
+  - social organization
+  - intelligence communit
+  prompt: Build an institutional feedback-loop map with incentives, review points,
+    and oversight hooks.
+- keywords:
+  - verses
+  - multi-scale active inference
+  prompt: Build an architecture-claim card separating research claims, implementation
+    assumptions, and governance limits.
+- keywords:
+  - cognitive security through the active inference
+  prompt: Build a sample narrative-risk map with provenance, audience harm, and transparent
+    response options.
+- keywords:
+  - deception detection
+  - surprise minimization
+  - threat modeling
+  prompt: Build a threat-model review card with assumptions, disconfirming evidence,
+    and confidence language.
+- keywords:
+  - tu delft
+  - applications of active inference and fep
+  prompt: Build a research question, method, evidence base, and classroom boundary
+    statement for the thesis topic.
+artifact_risk_category_prompts:
+- category: agentic_cyber_misuse
+  prompt: Build a blocked-request control card with tool permission, unsafe outcome,
+    deny rule, log evidence, and reviewer disposition.
+- category: software_supply_chain_social_trust
+  prompt: Build a maintainer-trust evidence card with provenance, communication-risk
+    signal, uncertainty, and escalation boundary.

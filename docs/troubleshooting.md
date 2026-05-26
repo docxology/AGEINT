@@ -36,6 +36,19 @@ Install headless Chrome for `mmdc`, or use placeholder figures for smoke runs (`
 
 Session fixture runs full `run_build()` once. Subsequent tests reuse `output/`.
 
+## Evidence or artifact prompt parity fails after YAML edits
+
+Regenerate the committed tables and parity fixture:
+
+```bash
+uv run python scripts/generate_topic_prompt_routes_yaml.py
+uv run python scripts/generate_prompt_parity_fixture.py
+uv run pytest tests/test_topic_frame_routing.py::test_evidence_and_artifact_prompts_match_curriculum_parity_fixture -v
+uv run python scripts/build_curriculum.py
+```
+
+Risk-category parity follows the same pattern with `scripts/generate_risk_routes_yaml.py` and `tests/fixtures/risk_category_parity.json`.
+
 ## See also
 
 - [`faq.md`](faq.md)

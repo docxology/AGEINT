@@ -57,7 +57,7 @@ try:  # Support package and script-level imports.
         chapter_textbook_primer,
         chapter_topic_lessons,
         chapter_worked_example,
-        _safe_topic_entries,
+        safe_topic_entries,
         anchor_references,
         data_lineage_registry_rows,
         hria_dpia_worksheet_rows,
@@ -107,7 +107,7 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
         chapter_textbook_primer,
         chapter_topic_lessons,
         chapter_worked_example,
-        _safe_topic_entries,
+        safe_topic_entries,
         anchor_references,
         data_lineage_registry_rows,
         hria_dpia_worksheet_rows,
@@ -165,7 +165,7 @@ def _chapter_source_context(chapter: dict[str, Any]) -> str:
 def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
     """Return a compact topic cluster for body prose."""
 
-    topics = [entry.display_title for entry in _safe_topic_entries(chapter, part)[:limit]]
+    topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local source-topic cluster"
     return "; ".join(topics)

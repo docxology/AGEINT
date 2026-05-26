@@ -2,26 +2,40 @@
 
 from __future__ import annotations
 
-import zlib
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 try:
-    from unit_education import unit_lesson_artifact_line, unit_lesson_evidence_line
+    from unit_education import UnitEducationProfile, unit_lesson_artifact_line, unit_lesson_evidence_line
 except ImportError:  # pragma: no cover - package import
-    from ..unit_education import unit_lesson_artifact_line, unit_lesson_evidence_line  # type: ignore[no-redef]
+    from ..unit_education import (  # type: ignore[no-redef]
+        UnitEducationProfile,
+        unit_lesson_artifact_line,
+        unit_lesson_evidence_line,
+    )
+
+try:
+    from intelligence_content._12_topic_frames import (
+        artifact_prompt_for_entry,
+        concept_frame_for_entry,
+        evidence_prompt_for_entry,
+        misconception_for_entry,
+        why_it_matters_for_entry,
+    )
+except ImportError:  # pragma: no cover - merged namespace
+    from ._12_topic_frames import (  # type: ignore[no-redef]
+        artifact_prompt_for_entry,
+        concept_frame_for_entry,
+        evidence_prompt_for_entry,
+        misconception_for_entry,
+        why_it_matters_for_entry,
+    )
+
+from .topic_rotation import template_index
 
 if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, PracticeLens, TopicEntry
     from ._04b_part import IntelligenceProfile
-
-
-def template_index(*parts: str, count: int) -> int:
-    """Return a stable template slot from joined identity parts."""
-    if count <= 0:
-        raise ValueError("template count must be positive")
-    seed = "|".join(parts).encode("utf-8")
-    return zlib.adler32(seed) % count
 
 
 @dataclass(frozen=True)
@@ -34,32 +48,6 @@ class TopicLessonFields:
     artifact_prompt: str
     misconception: str
     transfer_task: str
-
-
-def _topic_frame_helpers() -> tuple[Any, ...]:
-    try:
-        from intelligence_content._12_topic_frames import (
-            artifact_prompt_for_entry,
-            concept_frame_for_entry,
-            evidence_prompt_for_entry,
-            misconception_for_entry,
-            why_it_matters_for_entry,
-        )
-    except ImportError:  # pragma: no cover - merged namespace
-        from ._12_topic_frames import (  # type: ignore[no-redef]
-            artifact_prompt_for_entry,
-            concept_frame_for_entry,
-            evidence_prompt_for_entry,
-            misconception_for_entry,
-            why_it_matters_for_entry,
-        )
-    return (
-        artifact_prompt_for_entry,
-        concept_frame_for_entry,
-        evidence_prompt_for_entry,
-        misconception_for_entry,
-        why_it_matters_for_entry,
-    )
 
 
 def _lower_first_word(text: str) -> str:
@@ -106,7 +94,7 @@ def _evidence_packet_sentence(
     entry: TopicEntry,
     text: str,
     *,
-    unit_profile: Any | None = None,
+    unit_profile: UnitEducationProfile | None = None,
 ) -> str:
     rendered = _for_topic(entry, text)
     rendered = rendered.replace(", evidence packet:", ", the evidence packet contains", 1)
@@ -119,7 +107,7 @@ def _student_artifact_sentence(
     entry: TopicEntry,
     text: str,
     *,
-    unit_profile: Any | None = None,
+    unit_profile: UnitEducationProfile | None = None,
 ) -> str:
     rendered = _for_topic(entry, text)
     for source, replacement in (
@@ -191,16 +179,9 @@ def resolve_topic_lesson_fields(
     lens: PracticeLens,
     lesson_index: int,
     chapter_title: str,
-    unit_profile: Any | None = None,
+    unit_profile: UnitEducationProfile | None = None,
 ) -> TopicLessonFields:
     """Resolve all topic-lesson fields in canonical routing order."""
-    (
-        artifact_prompt_for_entry,
-        concept_frame_for_entry,
-        evidence_prompt_for_entry,
-        misconception_for_entry,
-        why_it_matters_for_entry,
-    ) = _topic_frame_helpers()
     concept = _reader_facing_concept(
         entry,
         concept_frame_for_entry(entry, coursebook, profile),
@@ -247,9 +228,32 @@ def resolve_topic_lesson_fields(
     )
 
 
+def resolve_topic_misconception(
+    entry: TopicEntry,
+    *,
+    coursebook: CoursebookProfile,
+    profile: IntelligenceProfile,
+    lens: PracticeLens,
+    lesson_index: int,
+    chapter_title: str,
+    unit_profile: UnitEducationProfile | None = None,
+) -> str:
+    """Return the misconception string via the unified lesson-field resolver."""
+    return resolve_topic_lesson_fields(
+        entry,
+        coursebook=coursebook,
+        profile=profile,
+        lens=lens,
+        lesson_index=lesson_index,
+        chapter_title=chapter_title,
+        unit_profile=unit_profile,
+    ).misconception
+
+
 __all__ = [
     "TopicLessonFields",
     "resolve_topic_lesson_fields",
+    "resolve_topic_misconception",
     "template_index",
     "transfer_task_for_entry",
 ]

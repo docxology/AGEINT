@@ -9,13 +9,13 @@ from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 
 try:
     from intelligence_content._01_part import TopicEntry
-    from intelligence_content._07_risk_categories import _topic_risk_category
+    from intelligence_content.risk_routes import topic_risk_category
     from intelligence_content._07_part import is_generic_display_title
     from intelligence_content._07_safe_titles import _topic_anchor_words
     from intelligence_content._08_part import safe_curriculum_treatment, safe_pattern_treatment
 except ImportError:  # pragma: no cover - merged namespace
     from ._01_part import TopicEntry  # type: ignore[no-redef]
-    from ._07_risk_categories import _topic_risk_category  # type: ignore[no-redef]
+    from .risk_routes import topic_risk_category  # type: ignore[no-redef]
     from ._07_part import is_generic_display_title  # type: ignore[no-redef]
     from ._07_safe_titles import _topic_anchor_words  # type: ignore[no-redef]
     from ._08_part import safe_curriculum_treatment, safe_pattern_treatment  # type: ignore[no-redef]
@@ -152,7 +152,7 @@ def safe_topic_entries(chapter: dict[str, Any], part: dict[str, Any]) -> list[To
         raw_title = str(section.get("title", "source-guide topic")).strip()
         source_locus = str(section.get("number") or "").strip()
         provenance_note = f"{source_locus} {raw_title}".strip()
-        risk_category = _topic_risk_category(raw_title, part_title, chapter_title)
+        risk_category = topic_risk_category(raw_title, part_title, chapter_title)
 
         working_title, active_pattern_number, pattern_locus, pattern_note = apply_pattern_registry(
             raw_title,

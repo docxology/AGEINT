@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Final
 
-from ._07_risk_categories import _topic_risk_category
+from .risk_routes import topic_risk_category
 from ._07_safe_titles import (
     GENERIC_DISPLAY_TITLE_MARKERS,
     _topic_anchor_words,

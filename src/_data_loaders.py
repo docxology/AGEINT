@@ -117,3 +117,51 @@ def topic_risk_routes_payload() -> dict[str, Any]:
         if key not in payload or not isinstance(payload[key], list):
             raise ValueError(f"Expected list {key!r} in topic_risk_routes.yaml")
     return payload
+
+
+@lru_cache(maxsize=1)
+def topic_prompt_routes_payload() -> dict[str, Any]:
+    """Return evidence and artifact prompt routing tables."""
+    payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "topic_prompt_routes.yaml")
+    for key in (
+        "evidence_category_prompts",
+        "evidence_keyword_routes",
+        "artifact_keyword_routes",
+        "artifact_risk_category_prompts",
+    ):
+        if key not in payload or not isinstance(payload[key], list):
+            raise ValueError(f"Expected list {key!r} in topic_prompt_routes.yaml")
+    return payload
+
+
+def _prompt_category_map(section: str) -> dict[str, str]:
+    rows = topic_prompt_routes_payload()[section]
+    return {str(row["category"]): str(row["prompt"]) for row in rows}
+
+
+def _prompt_keyword_routes(section: str) -> tuple[tuple[tuple[str, ...], str], ...]:
+    rows = topic_prompt_routes_payload()[section]
+    return tuple(
+        (tuple(str(keyword) for keyword in row["keywords"]), str(row["prompt"]))
+        for row in rows
+    )
+
+
+def evidence_category_prompts() -> dict[str, str]:
+    """Return risk-category to evidence-prompt text."""
+    return _prompt_category_map("evidence_category_prompts")
+
+
+def evidence_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
+    """Return ordered evidence keyword routes."""
+    return _prompt_keyword_routes("evidence_keyword_routes")
+
+
+def artifact_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
+    """Return ordered artifact keyword routes."""
+    return _prompt_keyword_routes("artifact_keyword_routes")
+
+
+def artifact_risk_category_prompts() -> dict[str, str]:
+    """Return risk-category to artifact-prompt text."""
+    return _prompt_category_map("artifact_risk_category_prompts")

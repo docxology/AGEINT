@@ -12,9 +12,9 @@ if TYPE_CHECKING:
 
 
 try:
-    from .topic_lessons import template_index
+    from .topic_rotation import template_index
 except ImportError:  # pragma: no cover - merged namespace
-    from intelligence_content.topic_lessons import template_index  # type: ignore[no-redef]
+    from intelligence_content.topic_rotation import template_index  # type: ignore[no-redef]
 
 from _data_loaders import category_concept_frames
 
@@ -124,87 +124,16 @@ def synthesized_evidence_prompt(entry: TopicEntry, lens: PracticeLens, courseboo
     )
 
 
-EVIDENCE_CATEGORY_PROMPTS: dict[str, str] = {
-    "agentic_cyber_misuse": (
-        "Evidence packet: sample prompt records, tool-call logs, blocked-action records, and the policy that denies the unsafe request."
-    ),
-    "historical_humint_source_protection": (
-        "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record."
-    ),
-    "ics_evasion_coverage": (
-        "Evidence packet: synthetic alert records, expected operator observations, control coverage, and recovery notes."
-    ),
-    "ics_collection_detection": (
-        "Evidence packet: synthetic tag histories, approved observation points, operator annotations, and detection gaps."
-    ),
-    "software_supply_chain_social_trust": (
-        "Evidence packet: package provenance, maintainer-trust signals, build-integrity evidence, and uncertainty about attribution."
-    ),
-    "osint_tool_governance": (
-        "Evidence packet: terms of use, source provenance, reproducibility notes, minimization decisions, and identity-exposure risks."
-    ),
-    "humint_recruitment_risk": (
-        "Evidence packet: sample source notes for pressure, consent, escalation duties, and excluded contact actions."
-    ),
-    "cyber_taxonomy": (
-        "Evidence packet: fabricated alerts, published taxonomy labels, confidence language, and control implications."
-    ),
-    "cognitive_resilience": (
-        "Evidence packet: narrative provenance, audience-harm notes, attribution evidence, and transparent education options."
-    ),
-    "gray_zone_governance": (
-        "Evidence packet: ambiguous-threshold indicators, attribution caveats, and policy review fields in a sample scenario."
-    ),
-    "financial_due_diligence": (
-        "Evidence packet: transaction typology notes, source quality, escalation thresholds, and uncertainty fields."
-    ),
-    "analytic_tradecraft": (
-        "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields."
-    ),
-    "operational_tradecraft_governance": (
-        "Evidence packet: sample OPSEC worksheets, compartmentation registers, and "
-        "cover-review notes with explicit oversight fields."
-    ),
-    "cognitive_resilience_epistemic": (
-        "Evidence packet: provenance chains, dissent channels, and correction options "
-        "for epistemic-security tabletop review."
-    ),
-    "cognitive_resilience_inoculation": (
-        "Evidence packet: inoculation lesson plans with transparent labels, source checks, "
-        "and non-manipulative correction options."
-    ),
-    "critical_infrastructure_sharing": (
-        "Evidence packet: sample ISAC packets for handling rules, anonymization, confidence, and consumer duties."
-    ),
-}
-
-
-ARTIFACT_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
-    (("free energy", "predictive processing"), (
-        "Build a prediction-error concept card linking surprise, model assumption, and reviewer checkpoint."
-    )),
-    (("computational model", "active inference as computational"), (
-        "Build a toy agent-model card with beliefs, actions, observations, and a human approval gate."
-    )),
-    (("shared protentions", "multi-agent active inference"), (
-        "Build a shared-expectation register showing aligned expectations, dissent, and review ownership."
-    )),
-    (("social organization", "intelligence communit"), (
-        "Build an institutional feedback-loop map with incentives, review points, and oversight hooks."
-    )),
-    (("verses", "multi-scale active inference"), (
-        "Build an architecture-claim card separating research claims, implementation assumptions, and governance limits."
-    )),
-    (("cognitive security through the active inference",), (
-        "Build a sample narrative-risk map with provenance, audience harm, and transparent response options."
-    )),
-    (("deception detection", "surprise minimization", "threat modeling"), (
-        "Build a threat-model review card with assumptions, disconfirming evidence, and confidence language."
-    )),
-    (("tu delft", "applications of active inference and fep"), (
-        "Build a research question, method, evidence base, and classroom boundary statement for the thesis topic."
-    )),
-)
+try:
+    from .topic_prompt_routes import (
+        artifact_prompt_for_entry as _artifact_prompt_from_routes,
+        evidence_prompt_for_entry as _evidence_prompt_from_routes,
+    )
+except ImportError:  # pragma: no cover - merged namespace
+    from intelligence_content.topic_prompt_routes import (  # type: ignore[no-redef]
+        artifact_prompt_for_entry as _artifact_prompt_from_routes,
+        evidence_prompt_for_entry as _evidence_prompt_from_routes,
+    )
 
 
 def evidence_prompt_for_entry(
@@ -212,49 +141,16 @@ def evidence_prompt_for_entry(
     lens: PracticeLens,
     coursebook: CoursebookProfile,
 ) -> str:
-    raw = entry.raw_title.lower()
-    if "ach" in raw or "competing hypotheses" in raw:
-        return (
-            "Evidence packet: hypothesis table with evidence for and against each alternative "
-            "before confidence is assigned."
-        )
-    if "mice" in raw or "recruitment" in raw:
-        return (
-            "Evidence packet: sample source notes for pressure indicators, consent language, "
-            "validation steps, and excluded contact actions."
-        )
-    category = EVIDENCE_CATEGORY_PROMPTS.get(entry.risk_category)
-    if category:
-        if "sample materials and transparent labels" in entry.display_title.lower():
-            anchor = _topic_anchor_words(entry.raw_title, limit=2)
-            return (
-                f"Evidence packet for **{entry.display_title}**: narrative provenance for {anchor}, "
-                "audience-harm notes, attribution evidence, and transparent education options."
-            )
-        return category
-    return synthesized_evidence_prompt(entry, lens, coursebook)
+    return _evidence_prompt_from_routes(
+        entry,
+        lens,
+        coursebook,
+        synthesized_evidence_prompt=synthesized_evidence_prompt,
+    )
 
 
 def artifact_prompt_for_entry(entry: TopicEntry, lens: PracticeLens, coursebook: CoursebookProfile) -> str:
-    raw = entry.raw_title.lower()
-    routed = _first_matching_frame(raw, ARTIFACT_KEYWORD_ROUTES)
-    if routed:
-        return routed
-    if entry.risk_category == "agentic_cyber_misuse":
-        return (
-            "Build a blocked-request control card with tool permission, unsafe outcome, "
-            "deny rule, log evidence, and reviewer disposition."
-        )
-    if entry.risk_category == "software_supply_chain_social_trust":
-        return (
-            "Build a maintainer-trust evidence card with provenance, communication-risk "
-            "signal, uncertainty, and escalation boundary."
-        )
-    return (
-        f"Build a **{lens.evidence_artifact}** for this {coursebook.practice_focus} "
-        f"topic. The artifact must name the source descriptor, bounded claim, caveat, "
-        "uncertainty note, blocked-use statement, and accountable reviewer."
-    )
+    return _artifact_prompt_from_routes(entry, lens, coursebook)
 
 
 WHY_IT_MATTERS_TEMPLATES: tuple[str, ...] = (

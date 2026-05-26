@@ -82,7 +82,10 @@ from ._09_part import (  # noqa: E402
     subsection_practice_rows,
     transparency_notice_rows,
 )
-from ._09_part import _safe_topic_entries  # noqa: E402
+from .topic_entries import safe_topic_entries  # noqa: E402
+from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception  # noqa: E402
+from .topic_rotation import template_index  # noqa: E402
+from .risk_routes import topic_risk_category  # noqa: E402
 
 __all__ = [
     "ResearchAnchor",
@@ -102,6 +105,10 @@ __all__ = [
     "safe_pattern_treatment",
     "safe_curriculum_treatment",
     "safe_topic_entries",
+    "resolve_topic_lesson_fields",
+    "resolve_topic_misconception",
+    "template_index",
+    "topic_risk_category",
     "source_lane_inventory",
     "source_lane_rows",
     "source_refresh_rows",

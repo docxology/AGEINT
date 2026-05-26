@@ -8,7 +8,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from intelligence_content._07_risk_categories import _topic_risk_category  # noqa: E402
+from intelligence_content.risk_routes import topic_risk_category  # noqa: E402
 from intelligence_content._12_concept_routes import (  # noqa: E402
     CONCEPT_KEYWORD_ROUTES,
     _first_matching_frame,
@@ -62,7 +62,7 @@ def test_sats_and_icd_routes_use_specific_frames() -> None:
 
 
 def test_opsec_title_routes_to_operational_tradecraft_not_analytic() -> None:
-    category = _topic_risk_category(
+    category = topic_risk_category(
         "Operations Security (OPSEC) Fundamentals",
         part_title="Foundations of Intelligence Tradecraft",
         chapter_title="Tradecraft: Core Principles",
@@ -71,7 +71,7 @@ def test_opsec_title_routes_to_operational_tradecraft_not_analytic() -> None:
 
 
 def test_compartmentation_title_routes_to_operational_tradecraft() -> None:
-    category = _topic_risk_category(
+    category = topic_risk_category(
         "Compartmentation and Need-to-Know",
         part_title="Foundations of Intelligence Tradecraft",
         chapter_title="Tradecraft: Core Principles",
@@ -82,7 +82,7 @@ def test_compartmentation_title_routes_to_operational_tradecraft() -> None:
 def test_stuxnet_title_routes_via_keyword_not_chapter_blanket() -> None:
     frame = _first_matching_frame("stuxnet case study review", CONCEPT_KEYWORD_ROUTES)
     assert frame is not None
-    category = _topic_risk_category(
+    category = topic_risk_category(
         "Stuxnet: Intelligence Analysis of a Landmark ICS Incident",
         part_title="Industrial and Cyber-Physical Intelligence",
         chapter_title="Historical ICS Cyber Incidents: Intelligence Analysis",
@@ -91,7 +91,7 @@ def test_stuxnet_title_routes_via_keyword_not_chapter_blanket() -> None:
 
 
 def test_epistemic_security_preserves_educational_title_category() -> None:
-    category = _topic_risk_category(
+    category = topic_risk_category(
         "Epistemic Security and Malign Influence",
         part_title="Cognitive Security",
         chapter_title="Cognitive Security Foundations and Definitions",
@@ -100,7 +100,7 @@ def test_epistemic_security_preserves_educational_title_category() -> None:
 
 
 def test_ach_title_routes_to_analytic_tradecraft_at_topic_level() -> None:
-    category = _topic_risk_category(
+    category = topic_risk_category(
         "Analysis of Competing Hypotheses (ACH)",
         part_title="Epistemic Rigor and Analytic Tradecraft",
         chapter_title="Structured Analytic Techniques (SATs)",
@@ -115,7 +115,47 @@ def test_topic_risk_category_matches_curriculum_parity_fixture() -> None:
     rows = json.loads(fixture.read_text(encoding="utf-8"))
     mismatches: list[str] = []
     for row in rows:
-        got = _topic_risk_category(row["title"], row["part_title"], row["chapter_title"])
+        got = topic_risk_category(row["title"], row["part_title"], row["chapter_title"])
         if got != row["category"]:
             mismatches.append(f"{row['title']!r}: expected {row['category']}, got {got}")
+    assert mismatches == []
+
+
+def test_evidence_and_artifact_prompts_match_curriculum_parity_fixture() -> None:
+    import json
+
+    from curriculum import load_curriculum
+    from intelligence_content._11_part import _coursebook_profile_for_titles
+    from intelligence_content._12_topic_frames import (
+        artifact_prompt_for_entry,
+        evidence_prompt_for_entry,
+    )
+    from intelligence_content import practice_lens_for_titles, profile_for_titles
+    from intelligence_content.topic_entries import safe_topic_entries
+
+    fixture = PROJECT_ROOT / "tests" / "fixtures" / "topic_prompt_parity.json"
+    expected_rows = json.loads(fixture.read_text(encoding="utf-8"))
+    curriculum = load_curriculum(PROJECT_ROOT / "data" / "curriculum")
+    mismatches: list[str] = []
+    index = 0
+    for part in curriculum.parts:
+        part_title = str(part["title"])
+        for chapter in part["chapters"]:
+            chapter_title = str(chapter["title"])
+            lens = practice_lens_for_titles(part_title, chapter_title, chapter=chapter)
+            coursebook = _coursebook_profile_for_titles(part_title, chapter_title)
+            for entry in safe_topic_entries(chapter, part):
+                expected = expected_rows[index]
+                index += 1
+                got_evidence = evidence_prompt_for_entry(entry, lens, coursebook)
+                got_artifact = artifact_prompt_for_entry(entry, lens, coursebook)
+                if got_evidence != expected["evidence_prompt"]:
+                    mismatches.append(
+                        f"{entry.display_title!r} evidence: fixture mismatch"
+                    )
+                if got_artifact != expected["artifact_prompt"]:
+                    mismatches.append(
+                        f"{entry.display_title!r} artifact: fixture mismatch"
+                    )
+    assert index == len(expected_rows)
     assert mismatches == []

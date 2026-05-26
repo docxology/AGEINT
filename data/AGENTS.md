@@ -10,6 +10,7 @@ Declarative routing tables:
 | --- | --- |
 | `concept_routes.yaml` (+ supplement) | Keyword and category concept frames for topic lessons |
 | `topic_risk_routes.yaml` | Ordered topic/chapter risk-category rules (`src/intelligence_content/risk_routes.py`) |
+| `topic_prompt_routes.yaml` | Evidence/artifact prompt routes (`src/intelligence_content/topic_prompt_routes.py`) |
 | `manuscript_architecture.yaml` | Module architecture rows by profile id |
 | `unit_education_profiles.yaml` | Unit-specific lesson evidence/artifact lines |
 | `source_support_expansion.yaml` | Citation routes for uncited source sections |
@@ -17,6 +18,11 @@ Declarative routing tables:
 Regenerate `topic_risk_routes.yaml` from canonical tuples when rule logic changes:
 `uv run python scripts/generate_risk_routes_yaml.py` (then verify
 `tests/fixtures/risk_category_parity.json` / `tests/test_topic_frame_routing.py`).
+
+Regenerate `topic_prompt_routes.yaml` when evidence/artifact prompt tables change:
+`uv run python scripts/generate_topic_prompt_routes_yaml.py`, then refresh
+`tests/fixtures/topic_prompt_parity.json` via
+`uv run python scripts/generate_prompt_parity_fixture.py` before deleting Python tables.
 
 If counts, titles, citations, appendices, profile identifiers, or pattern data
 drift, fix the shards or `src/curriculum.py`, rebuild with

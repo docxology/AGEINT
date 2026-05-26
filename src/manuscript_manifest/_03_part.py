@@ -166,7 +166,7 @@ def _topic_assessment_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
     rows: list[str] = []
     seen_topics: set[str] = set()
-    for entry in _safe_topic_entries(chapter, part):
+    for entry in safe_topic_entries(chapter, part):
         topic_key = entry.display_title.strip().lower()
         if topic_key in seen_topics:
             continue

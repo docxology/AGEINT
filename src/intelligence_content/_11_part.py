@@ -10,9 +10,9 @@ except ImportError:  # pragma: no cover - exercised by package imports
     from ..unit_education import unit_profile_for_part  # type: ignore[no-redef]
 
 try:
-    from intelligence_content.topic_lessons import resolve_topic_lesson_fields
+    from intelligence_content.topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 except ImportError:  # pragma: no cover - merged part module import
-    from .topic_lessons import resolve_topic_lesson_fields  # type: ignore[no-redef]
+    from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception  # type: ignore[no-redef]
 
 
 def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
@@ -141,11 +141,14 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     unit_profile = unit_profile_for_part(part)
     entries = safe_topic_entries(chapter, part)[:3]
     first_topics = ", ".join(entry.display_title for entry in entries)
-    misconception = misconception_for_entry(
+    misconception = resolve_topic_misconception(
         entries[0],
-        coursebook,
+        coursebook=coursebook,
+        profile=profile,
+        lens=lens,
         lesson_index=1,
         chapter_title=title,
+        unit_profile=unit_profile,
     )
     topic_context = _topic_context(chapter, part)
     source_context = _chapter_ref_context(chapter)
@@ -202,7 +205,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             f"2. Contrast **{topic.display_title}** with **{second_topic.display_title}** using the **{lens.title}** artifact fields.",
             f"3. Identify one failure mode from the **{profile.title}** lane and the evidence that would reveal it.",
             f"4. Answer the coursebook review question: {coursebook.review_question}",
-            f"5. Correct this misconception: {misconception_for_entry(topic, coursebook, lesson_index=1, chapter_title=title)}.",
+            f"5. Correct this misconception: {resolve_topic_misconception(topic, coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=title)}.",
             "",
             "### Answer quality rubric",
             "",
