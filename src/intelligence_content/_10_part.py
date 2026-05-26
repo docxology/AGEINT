@@ -1,5 +1,18 @@
 from __future__ import annotations
 
+from typing import Any
+
+from ._06_part import practice_lens_for_titles, profile_for_titles
+from ._07_safe_titles import _topic_anchor_words
+from ._09_part import (
+    _chapter_ref_context,
+    _coursebook_profile_for_titles,
+    _table_cell,
+    _topic_context,
+    citation_cluster,
+)
+from .topic_entries import safe_topic_entries
+
 
 def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render concrete coursebook primer prose for a generated chapter."""

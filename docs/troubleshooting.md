@@ -49,6 +49,23 @@ uv run python scripts/build_curriculum.py
 
 Risk-category parity follows the same pattern with `scripts/generate_risk_routes_yaml.py` and `tests/fixtures/risk_category_parity.json`.
 
+## Rotation field parity fails after YAML edits
+
+```bash
+uv run python scripts/generate_topic_rotation_templates_yaml.py
+uv run python scripts/generate_rotation_parity_fixture.py
+uv run pytest tests/test_topic_frame_routing.py::test_rotation_fields_match_curriculum_parity_fixture -v
+uv run python scripts/build_curriculum.py
+```
+
+## Shard import errors after intelligence_content edits
+
+Each part module must declare explicit imports (merge seeding is removed). Verify with:
+
+```bash
+uv run pytest tests/test_intelligence_content_imports.py -v
+```
+
 ## See also
 
 - [`faq.md`](faq.md)

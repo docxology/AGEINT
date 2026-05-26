@@ -5,8 +5,8 @@ and generated topic-lesson prose. Business logic for lesson **Concept**,
 **Why it matters**, **Evidence**, **Artifact**, **Misconception**, and
 **Transfer** fields lives here—not in `scripts/` or `output/manuscript/`.
 
-Part modules (`_01_part.py` … `_12_topic_frames.py`) merge at import time via
-`__init__.py`. Keep each file ≤500 lines (enforced by
+Part modules (`_01_part.py` … `_12_topic_frames.py`) use **explicit imports** per shard
+(no `merge_part_modules` in this package). Keep each file ≤500 lines (enforced by
 `tests/test_file_size_inventory.py`). Keyword routes split across
 Concept routes load from `data/concept_routes.yaml` and
 `data/concept_routes_supplement.yaml` via `_data_loaders.py`; `_12_concept_routes*.py`
@@ -27,12 +27,12 @@ Public entry points (called from `_11_part.py` via `topic_lessons.py`):
 | Function | Module | Role |
 | --- | --- | --- |
 | `resolve_topic_lesson_fields(...)` | `topic_lessons.py` | Single resolver for all lesson field strings |
-| `concept_frame_for_entry(entry, coursebook, profile)` | `_12_topic_frames` | Tier A/B/C concept paragraph |
-| `evidence_prompt_for_entry(entry, lens, coursebook)` | `_12_topic_frames` → `topic_prompt_routes` | Evidence-to-inspect line (YAML-backed) |
-| `artifact_prompt_for_entry(entry, lens, coursebook)` | `_12_topic_frames` → `topic_prompt_routes` | Student artifact prompt (YAML-backed) |
+| `concept_frame_for_entry(entry, coursebook, profile)` | `topic_frame_api` → `_12_topic_frames` | Tier A/B/C concept paragraph |
+| `evidence_prompt_for_entry(entry, lens, coursebook)` | `topic_frame_api` → `topic_prompt_routes` | Evidence-to-inspect line (YAML-backed) |
+| `artifact_prompt_for_entry(entry, lens, coursebook)` | `topic_frame_api` → `topic_prompt_routes` | Student artifact prompt (YAML-backed) |
 | `resolve_topic_misconception(...)` | `topic_lessons.py` | Misconception via unified resolver (practice/knowledge-check paths) |
-| `misconception_for_entry(entry, coursebook, *, lesson_index, chapter_title)` | `_12_topic_frames` | Chapter-rotated misconception text (`topic_rotation.template_index` + lesson slot) |
-| `why_it_matters_for_entry(entry, profile, coursebook, *, lesson_index, chapter_title)` | `_12_topic_frames` | Risk-category failure hints + rotated templates |
+| `misconception_for_entry(...)` | `topic_rotation_templates.py` | Chapter-rotated misconception text (YAML templates + keyword branches) |
+| `why_it_matters_for_entry(...)` | `topic_rotation_templates.py` | Risk-category failure hints + rotated templates |
 | `lesson_intro_paragraph(...)` | `_12_topic_frames` | Opener listing up to three distinct topic titles |
 | `lesson_educational_crossrefs(part, chapter)` | `markdown_refs` (called from `_11_part`) | Unit map figure, module overview, and atlas section refs in topic-lesson fragments |
 
@@ -47,6 +47,9 @@ Keyword matching (`_12_concept_routes._match_keywords`):
 | Module | Role |
 | --- | --- |
 | `topic_rotation.py` | Leaf module: stable `template_index()` (no upstream `intelligence_content` imports) |
+| `topic_rotation_templates.py` | YAML evaluators for why-it-matters and misconception rotation |
+| `topic_frame_api.py` | Stable re-export of frame helpers for `topic_lessons.py` |
+| `topic_lesson_voice.py` | Reader-voice helpers (`for_topic`, evidence/artifact sentence shaping) |
 | `topic_prompt_routes.py` | YAML evaluators for evidence/artifact prompts |
 | `_07_risk_categories.py` | Re-exports YAML evaluator from `risk_routes.py` |
 | `risk_routes.py` | Ordered rule evaluation over `data/topic_risk_routes.yaml`; import `topic_risk_category` from here |
@@ -78,11 +81,12 @@ Display-title contract (`topic_entries.safe_topic_entries`):
 | --- | --- |
 | `topic_entries.py` | `safe_topic_entries()` pipeline and display-title helpers |
 | `_07_safe_titles.py` | `GENERIC_DISPLAY_TITLE_MARKERS`, preserve-title categories, `_topic_anchor_words()`, contextual titles |
-| `_09_part.py` | Re-exports `safe_topic_entries`; chapter briefs and row renderers |
-| `_06_part.py` | `COURSEBOOK_PROFILES`, `safe_pattern_treatment()` for pattern registry chapter |
+| `_06_part.py` | Profile/lens matching, `COURSEBOOK_PROFILES` from `data/coursebook_profiles.yaml`, `safe_pattern_treatment()` |
+| `_08_part.py` | Thin re-exports of safety/artifact tables from `data/safety_artifact_tables.yaml` |
+| `_09_part.py` | Chapter briefs and row renderers |
 | `_10_part.py` | Primer/outcomes/vocabulary only |
 | `_11_part.py` | `chapter_topic_lessons()` via `topic_lessons.resolve_topic_lesson_fields()` |
-| `topic_lessons.py` | Unified lesson-field resolver; imports `_12_topic_frames` at module load (cycle broken via `topic_rotation.py`) |
+| `topic_lessons.py` | Unified lesson-field resolver; imports `topic_frame_api` and `topic_lesson_voice` only |
 | `topic_rotation.py` | Stable `template_index()` via `zlib.adler32` |
 
 ## Tests guarding this package
@@ -90,21 +94,13 @@ Display-title contract (`topic_entries.safe_topic_entries`):
 - `tests/test_topic_spine.py` — deduped display titles, no case-review stubs
 - `tests/test_topic_content_quality.py` — anti-fallback phrases, ≥80% title-keyword anchoring, Tier C ≤15%, teams-confuse ≤20%, collapsed cogsec ≤1/chapter, 16-chapter spot-check
 - `tests/test_chapter_fragment_quality.py` — overview primer, worked-practice profile refs, architecture-source echoes, required module sections
-- `tests/test_topic_frame_routing.py` — token-boundary keyword regressions; OPSEC/compartmentation/ACH routing; YAML risk- and prompt-route parity fixtures
+- `tests/test_topic_frame_routing.py` — token-boundary keyword regressions; OPSEC/compartmentation/ACH routing; YAML risk-, prompt-, and rotation-route parity fixtures
 - `tests/test_topic_lessons.py` — rotation stability, transfer-task branches, unified resolver smoke
+- `tests/test_intelligence_content_imports.py` — each shard imports without merge seeding
 
 ## Editing rules
 
 - Add domain depth via new keyword routes, category frames, or profiles—not hand-edited `output/manuscript/`.
-- Append routes to `data/concept_routes*.yaml`, `data/topic_risk_routes.yaml` (regenerate via `scripts/generate_risk_routes_yaml.py`), or `data/topic_prompt_routes.yaml` (regenerate via `scripts/generate_topic_prompt_routes_yaml.py`) before adding Python matchers.
+- Append routes to `data/concept_routes*.yaml`, `data/topic_risk_routes.yaml` (regenerate via `scripts/generate_risk_routes_yaml.py`), `data/topic_prompt_routes.yaml` (`scripts/generate_topic_prompt_routes_yaml.py`), `data/topic_rotation_templates.yaml` (`scripts/generate_topic_rotation_templates_yaml.py`), `data/coursebook_profiles.yaml` (`scripts/generate_coursebook_profiles_yaml.py`), or `data/safety_artifact_tables.yaml` (`scripts/generate_safety_artifact_tables_yaml.py`) before deleting Python tables.
 - Never expose raw unsafe source titles in student-facing misconception or transfer text; use `display_title`, `chapter_title`, and `lesson_index` rotation.
 - Rebuild after changes: `uv run python scripts/build_curriculum.py`.
-
-## Deferred (P3 backlog)
-
-Tracked separately; not in scope for P1/P2 thermo-nuclear follow-ups:
-
-- Dismantle `merge_part_modules` across the 17 intelligence_content shards.
-- YAML migration of `WHY_IT_MATTERS_TEMPLATES`, `MISCONCEPTION_FALLBACKS`, and `RISK_WHY_FAILURE_HINTS` in `_12_topic_frames.py`.
-- Extract `topic_frame_api.py` so `topic_lessons.py` does not import the full `_12_topic_frames` module (residual F1 coupling).
-- Raise `pdf_quality.py` audit-path coverage (not a `src/` floor blocker).

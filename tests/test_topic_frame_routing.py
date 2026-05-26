@@ -159,3 +159,50 @@ def test_evidence_and_artifact_prompts_match_curriculum_parity_fixture() -> None
                     )
     assert index == len(expected_rows)
     assert mismatches == []
+
+
+def test_rotation_fields_match_curriculum_parity_fixture() -> None:
+    import json
+
+    from curriculum import load_curriculum
+    from intelligence_content._11_part import _coursebook_profile_for_titles
+    from intelligence_content._12_topic_frames import (
+        misconception_for_entry,
+        why_it_matters_for_entry,
+    )
+    from intelligence_content import profile_for_titles
+    from intelligence_content.topic_entries import safe_topic_entries
+
+    fixture = PROJECT_ROOT / "tests" / "fixtures" / "topic_rotation_parity.json"
+    expected_rows = json.loads(fixture.read_text(encoding="utf-8"))
+    curriculum = load_curriculum(PROJECT_ROOT / "data" / "curriculum")
+    mismatches: list[str] = []
+    index = 0
+    for part in curriculum.parts:
+        part_title = str(part["title"])
+        for chapter in part["chapters"]:
+            chapter_title = str(chapter["title"])
+            profile = profile_for_titles(part_title, chapter_title, chapter=chapter)
+            coursebook = _coursebook_profile_for_titles(part_title, chapter_title)
+            for entry in safe_topic_entries(chapter, part):
+                expected = expected_rows[index]
+                index += 1
+                got_why = why_it_matters_for_entry(
+                    entry,
+                    profile,
+                    coursebook,
+                    lesson_index=1,
+                    chapter_title=chapter_title,
+                )
+                got_misconception = misconception_for_entry(
+                    entry,
+                    coursebook,
+                    lesson_index=1,
+                    chapter_title=chapter_title,
+                )
+                if got_why != expected["why_it_matters"]:
+                    mismatches.append(f"{entry.display_title!r} why_it_matters: fixture mismatch")
+                if got_misconception != expected["misconception"]:
+                    mismatches.append(f"{entry.display_title!r} misconception: fixture mismatch")
+    assert index == len(expected_rows)
+    assert mismatches == []

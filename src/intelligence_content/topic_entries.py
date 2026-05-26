@@ -9,16 +9,22 @@ from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 
 try:
     from intelligence_content._01_part import TopicEntry
+    from intelligence_content._06_part import safe_pattern_treatment
+    from intelligence_content._07_safe_titles import (
+        _topic_anchor_words,
+        is_generic_display_title,
+        safe_curriculum_treatment,
+    )
     from intelligence_content.risk_routes import topic_risk_category
-    from intelligence_content._07_part import is_generic_display_title
-    from intelligence_content._07_safe_titles import _topic_anchor_words
-    from intelligence_content._08_part import safe_curriculum_treatment, safe_pattern_treatment
-except ImportError:  # pragma: no cover - merged namespace
+except ImportError:  # pragma: no cover - package import
     from ._01_part import TopicEntry  # type: ignore[no-redef]
+    from ._06_part import safe_pattern_treatment  # type: ignore[no-redef]
+    from ._07_safe_titles import (  # type: ignore[no-redef]
+        _topic_anchor_words,
+        is_generic_display_title,
+        safe_curriculum_treatment,
+    )
     from .risk_routes import topic_risk_category  # type: ignore[no-redef]
-    from ._07_part import is_generic_display_title  # type: ignore[no-redef]
-    from ._07_safe_titles import _topic_anchor_words  # type: ignore[no-redef]
-    from ._08_part import safe_curriculum_treatment, safe_pattern_treatment  # type: ignore[no-redef]
 
 META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = (
     "v2 source-lane extension:",

@@ -165,3 +165,100 @@ def artifact_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
 def artifact_risk_category_prompts() -> dict[str, str]:
     """Return risk-category to artifact-prompt text."""
     return _prompt_category_map("artifact_risk_category_prompts")
+
+
+@lru_cache(maxsize=1)
+def topic_rotation_templates_payload() -> dict[str, Any]:
+    """Return why-it-matters and misconception rotation tables."""
+    payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "topic_rotation_templates.yaml")
+    for key in (
+        "why_it_matters_templates",
+        "risk_why_failure_hints",
+        "misconception_fallbacks",
+        "misconception_risk_templates",
+    ):
+        if key not in payload or not isinstance(payload[key], list):
+            raise ValueError(f"Expected list {key!r} in topic_rotation_templates.yaml")
+    return payload
+
+
+def why_it_matters_templates() -> tuple[str, ...]:
+    """Return ordered why-it-matters format templates."""
+    rows = topic_rotation_templates_payload()["why_it_matters_templates"]
+    return tuple(str(row) for row in rows)
+
+
+def risk_why_failure_hints() -> dict[str, str]:
+    """Return risk-category to failure-hint text."""
+    rows = topic_rotation_templates_payload()["risk_why_failure_hints"]
+    return {str(row["category"]): str(row["hint"]) for row in rows}
+
+
+def misconception_fallbacks() -> tuple[str, ...]:
+    """Return ordered standard misconception fallback templates."""
+    rows = topic_rotation_templates_payload()["misconception_fallbacks"]
+    return tuple(str(row) for row in rows)
+
+
+def misconception_risk_templates() -> tuple[str, ...]:
+    """Return ordered risk-category misconception templates."""
+    rows = topic_rotation_templates_payload()["misconception_risk_templates"]
+    return tuple(str(row) for row in rows)
+
+
+@lru_cache(maxsize=1)
+def coursebook_profiles() -> dict[str, Any]:
+    """Return coursebook profile rows keyed by identifier."""
+    payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "coursebook_profiles.yaml")
+    profiles = payload.get("profiles", [])
+    if not isinstance(profiles, list):
+        raise ValueError("Expected list profiles in coursebook_profiles.yaml")
+    rendered: dict[str, Any] = {}
+    for row in profiles:
+        identifier = str(row["identifier"])
+        vocabulary = tuple(
+            (str(item["term"]), str(item["definition"])) for item in row["vocabulary"]
+        )
+        rendered[identifier] = {
+            "identifier": identifier,
+            "disciplinary_frame": str(row["disciplinary_frame"]),
+            "key_distinction": str(row["key_distinction"]),
+            "vocabulary": vocabulary,
+            "worked_scenario": str(row["worked_scenario"]),
+            "worked_input": str(row["worked_input"]),
+            "worked_process": str(row["worked_process"]),
+            "worked_output": str(row["worked_output"]),
+            "practice_focus": str(row["practice_focus"]),
+            "review_question": str(row["review_question"]),
+        }
+    return rendered
+
+
+def coursebook_profiles_as_dataclasses() -> dict[str, Any]:
+    """Return ``CoursebookProfile`` instances keyed by identifier."""
+    from intelligence_content._01_part import CoursebookProfile
+
+    return {
+        identifier: CoursebookProfile(**payload)
+        for identifier, payload in coursebook_profiles().items()
+    }
+
+
+@lru_cache(maxsize=1)
+def safety_artifact_tables_payload() -> dict[str, Any]:
+    """Return safety and artifact table rows keyed by constant name."""
+    payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "safety_artifact_tables.yaml")
+    if not isinstance(payload, dict):
+        raise ValueError("Expected mapping in safety_artifact_tables.yaml")
+    return payload
+
+
+def safety_artifact_table(name: str) -> tuple[dict[str, str], ...]:
+    """Return one safety or artifact table as an immutable tuple of row dicts."""
+    payload = safety_artifact_tables_payload()
+    if name not in payload:
+        raise KeyError(f"Unknown safety artifact table: {name}")
+    rows = payload[name]
+    if not isinstance(rows, list):
+        raise ValueError(f"Expected list for safety artifact table {name!r}")
+    return tuple(dict(row) for row in rows)

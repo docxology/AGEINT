@@ -2,69 +2,45 @@
 
 from __future__ import annotations
 
-from _package_loader import merge_part_modules
-
-_PARTS = [
-    "_01_part",
-    "_02_part",
-    "_03_part",
-    "_04_part",
-    "_04b_part",
-    "_05_part",
-    "_06_part",
-    "_07_risk_categories",
-    "_07_safe_titles",
-    "_07_part",
-    "_08_part",
-    "_09_part",
-    "_12_concept_routes_domains",
-    "_12_concept_routes_b",
-    "_12_concept_routes",
-    "_12_topic_frames",
-    "_10_part",
-    "_11_part",
-]
-merge_part_modules(__name__, _PARTS)
-
 from ._01_part import (  # noqa: E402
     CoursebookProfile,
     IntelligenceProfile,
-    INTELLIGENCE_RESEARCH_ANCHORS,
     PracticeLens,
     ResearchAnchor,
     SafePatternProfile,
     TopicEntry,
 )
+from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS  # noqa: E402
 from ._04b_part import INTELLIGENCE_PROFILES  # noqa: E402
 from ._05_part import PRACTICE_LENSES  # noqa: E402
-from ._06_part import anchor_references, practice_lens_for_titles, profile_for_titles  # noqa: E402
-from ._08_part import safe_curriculum_treatment, safe_pattern_treatment  # noqa: E402
-from ._09_part import (  # noqa: E402
+from ._06_part import (  # noqa: E402
+    anchor_references,
+    practice_lens_for_titles,
+    profile_for_titles,
+    safe_pattern_rows,
+    safe_pattern_treatment,
+)
+from ._07_safe_titles import (  # noqa: E402
     GENERIC_DISPLAY_TITLE_MARKERS,
+    is_generic_display_title,
+    safe_curriculum_treatment,
+)
+from ._09_part import (  # noqa: E402
     accessibility_review_rows,
     adversarial_assurance_rows,
     agent_incident_response_rows,
     assessment_integrity_rows,
     capstone_scaffold_rows,
-    chapter_key_terms,
-    chapter_knowledge_check,
-    chapter_learning_outcomes,
     chapter_practice_lens,
-    chapter_practice_sequence,
     chapter_research_brief,
-    chapter_textbook_primer,
-    chapter_topic_lessons,
-    chapter_worked_example,
     citation_cluster,
     data_lineage_registry_rows,
     hria_dpia_worksheet_rows,
-    is_generic_display_title,
     learner_support_rows,
     model_dataset_card_rows,
     part_research_brief,
     practice_lens_rows,
     procurement_oversight_rows,
-    profile_inventory_rows,
     question_bank_rows,
     release_change_control_rows,
     remediation_backlog_rows,
@@ -73,18 +49,29 @@ from ._09_part import (  # noqa: E402
     retention_audit_rows,
     risk_exception_rows,
     role_competency_rows,
-    safe_pattern_rows,
     safe_substitution_rows,
     source_lane_inventory,
     source_lane_rows,
     source_refresh_rows,
-    subsection_practice_rows,
     transparency_notice_rows,
 )
+from ._10_part import (  # noqa: E402
+    chapter_key_terms,
+    chapter_learning_outcomes,
+    chapter_textbook_primer,
+)
+from ._11_part import (  # noqa: E402
+    chapter_knowledge_check,
+    chapter_practice_sequence,
+    chapter_topic_lessons,
+    chapter_worked_example,
+    profile_inventory_rows,
+    subsection_practice_rows,
+)
+from .risk_routes import topic_risk_category  # noqa: E402
 from .topic_entries import safe_topic_entries  # noqa: E402
 from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception  # noqa: E402
 from .topic_rotation import template_index  # noqa: E402
-from .risk_routes import topic_risk_category  # noqa: E402
 
 __all__ = [
     "ResearchAnchor",

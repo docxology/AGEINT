@@ -11,9 +11,14 @@ from _data_loaders import (
     evidence_category_prompts,
     evidence_keyword_routes,
     merged_concept_keyword_routes,
+    misconception_fallbacks,
+    misconception_risk_templates,
     module_architecture,
+    risk_why_failure_hints,
     topic_prompt_routes_payload,
+    topic_rotation_templates_payload,
     topic_risk_routes_payload,
+    why_it_matters_templates,
 )
 
 
@@ -65,3 +70,40 @@ def test_topic_prompt_route_loaders_return_non_empty() -> None:
     assert evidence_keyword_routes()
     assert artifact_keyword_routes()
     assert artifact_risk_category_prompts()
+
+
+def test_topic_rotation_templates_payload_has_required_sections() -> None:
+    payload = topic_rotation_templates_payload()
+    for key in (
+        "why_it_matters_templates",
+        "risk_why_failure_hints",
+        "misconception_fallbacks",
+        "misconception_risk_templates",
+    ):
+        assert isinstance(payload[key], list)
+        assert payload[key]
+
+
+def test_topic_rotation_template_loaders_return_non_empty() -> None:
+    assert why_it_matters_templates()
+    assert risk_why_failure_hints()
+    assert misconception_fallbacks()
+    assert misconception_risk_templates()
+
+
+def test_coursebook_profiles_loader_returns_fourteen_profiles() -> None:
+    from _data_loaders import coursebook_profiles_as_dataclasses
+
+    profiles = coursebook_profiles_as_dataclasses()
+    assert len(profiles) == 14
+    sample = profiles["analytic_tradecraft"]
+    assert sample.identifier == "analytic_tradecraft"
+    assert sample.vocabulary
+
+
+def test_safety_artifact_table_loader_returns_rows() -> None:
+    from _data_loaders import safety_artifact_table
+
+    rows = safety_artifact_table("SAFE_SUBSTITUTION_PATTERNS")
+    assert rows
+    assert "motif" in rows[0]

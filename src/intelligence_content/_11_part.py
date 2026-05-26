@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 try:  # Support package and script-level imports.
     from citation_workflow import source_citation_spine
     from markdown_refs import lesson_educational_crossrefs
@@ -9,10 +11,17 @@ except ImportError:  # pragma: no cover - exercised by package imports
     from ..markdown_refs import lesson_educational_crossrefs  # type: ignore[no-redef]
     from ..unit_education import unit_profile_for_part  # type: ignore[no-redef]
 
-try:
-    from intelligence_content.topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
-except ImportError:  # pragma: no cover - merged part module import
-    from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception  # type: ignore[no-redef]
+from ._04b_part import INTELLIGENCE_PROFILES
+from ._06_part import practice_lens_for_titles, profile_for_titles
+from ._09_part import (
+    _chapter_ref_context,
+    _coursebook_profile_for_titles,
+    _table_cell,
+    _topic_context,
+)
+from ._12_topic_frames import lesson_intro_paragraph
+from .topic_entries import safe_topic_entries
+from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 
 
 def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:

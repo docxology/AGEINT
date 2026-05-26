@@ -37,11 +37,17 @@ Topic lessons inside each chapter resolve through `topic_lessons.resolve_topic_l
 3. **Synthesis** — topic-anchored fallback prose; when `display_title` matches `GENERIC_DISPLAY_TITLE_MARKERS`, anchors on `raw_title` (`_12_topic_frames.py`).
 
 Evidence and artifact prompt strings resolve through `topic_prompt_routes.py` over
-`data/topic_prompt_routes.yaml` (keyword routes, category prompts, risk-category
-artifact prompts). `_12_topic_frames.py` delegates to that module and keeps only
-synthesized fallbacks.
+`data/topic_prompt_routes.yaml`. Why-it-matters and misconception rotation resolve
+through `topic_rotation_templates.py` over `data/topic_rotation_templates.yaml`.
+`_12_topic_frames.py` keeps concept synthesis and delegates prompts/rotation to those modules.
 
-`topic_entries.safe_topic_entries()` builds `TopicEntry` rows from curriculum sections before frame resolution. Template rotation uses `topic_rotation.template_index()` (`zlib.adler32`) with per-chapter offsets so adjacent modules do not repeat identical misconception strings. `topic_lessons.py` imports `_12_topic_frames` at module load; the former cycle through `template_index` is broken by the leaf `topic_rotation.py` module.
+Coursebook profiles and safety worksheet tables load from `data/coursebook_profiles.yaml`
+and `data/safety_artifact_tables.yaml` via `_data_loaders.py` (`_06_part.py`, `_08_part.py`).
+
+`intelligence_content` shards use explicit imports (no `merge_part_modules`); package
+`__init__.py` re-exports the public API only.
+
+`topic_entries.safe_topic_entries()` builds `TopicEntry` rows from curriculum sections before frame resolution. Template rotation uses `topic_rotation.template_index()` (`zlib.adler32`) with per-chapter offsets so adjacent modules do not repeat identical misconception strings. `topic_lessons.py` imports frame helpers through `topic_frame_api.py` and reader-voice helpers through `topic_lesson_voice.py`.
 
 See [`src/intelligence_content/AGENTS.md`](../src/intelligence_content/AGENTS.md) for the full routing table.
 

@@ -1,6 +1,40 @@
 from __future__ import annotations
 
-# GENERIC_DISPLAY_TITLE_MARKERS and is_generic_display_title re-exported via _07_part merge.
+from typing import Any, Final
+
+from markdown_refs import citation_ref_list
+
+from ._01_part import CoursebookProfile, ResearchAnchor
+from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS
+from ._05_part import PRACTICE_LENSES
+from ._06_part import (
+    COURSEBOOK_PROFILES,
+    anchor_references,
+    practice_lens_for_titles,
+    profile_for_titles,
+)
+from ._08_part import (
+    ACCESSIBILITY_REVIEW_STEPS,
+    ADVERSARIAL_ASSURANCE_CYCLE,
+    AGENT_INCIDENT_RESPONSE_DRILL,
+    ASSESSMENT_INTEGRITY_PROTOCOL,
+    CAPSTONE_SCAFFOLDS,
+    DATA_LINEAGE_REGISTRY,
+    HRIA_DPIA_WORKSHEET,
+    INSTRUCTOR_QUESTION_BANK,
+    LEARNER_SUPPORT_PLAN,
+    MODEL_DATASET_CARD,
+    PROCUREMENT_OVERSIGHT_STEPS,
+    RELEASE_CHANGE_CONTROL_GATE,
+    RETENTION_AUDIT_TRAIL,
+    RISK_EXCEPTION_MEMO,
+    ROLE_BASED_COMPETENCY_MAP,
+    SAFE_SUBSTITUTION_PATTERNS,
+    TRANSPARENCY_NOTICE_WORKFLOW,
+)
+from .topic_entries import safe_topic_entries
+
+# GENERIC_DISPLAY_TITLE_MARKERS and is_generic_display_title live in _07_safe_titles.
 
 REMEDIATION_BACKLOG: Final[tuple[dict[str, str], ...]] = (
     {
@@ -347,7 +381,3 @@ def _coursebook_profile_for_titles(part_title: str, section_title: str = "") -> 
     profile = profile_for_titles(part_title, section_title)
     return COURSEBOOK_PROFILES[profile.identifier]
 
-try:
-    from intelligence_content.topic_entries import safe_topic_entries
-except ImportError:  # pragma: no cover - merged namespace
-    from .topic_entries import safe_topic_entries  # type: ignore[no-redef]

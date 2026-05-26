@@ -1,5 +1,10 @@
 from __future__ import annotations
 
+from typing import Final
+
+from ._01_part import ResearchAnchor, SafePatternProfile
+from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS
+
 
 
 ANCHORS_BY_KEY: Final[dict[str, ResearchAnchor]] = {

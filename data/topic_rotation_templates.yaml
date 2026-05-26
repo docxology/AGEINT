@@ -1,0 +1,38 @@
+why_it_matters_templates:
+- Analysts use **{topic}** to {distinction}. A defensible treatment names the enabled
+  judgment, proof limit, and reviewer responsible for challenge.
+- '**{topic}** matters in the **{profile}** lane because {practice_focus} evidence
+  must stay separate from judgment; {failure_hint} is a common failure.'
+- '**{topic}** connects classroom vocabulary to {profile} practice: learners document
+  evidence, caveats, and reviewer ownership rather than repeating labels.'
+- Without explicit treatment of **{topic}**, {failure_hint} undermines {practice_focus}
+  review; the lesson builds the habit to {distinction}.
+risk_why_failure_hints:
+- category: cognitive_resilience
+  hint: treating resilience labels as permission to skip provenance review
+- category: humint_recruitment_risk
+  hint: confusing motivation literacy with contact authorization
+- category: operational_tradecraft_governance
+  hint: confusing governance vocabulary with operational authorization
+- category: analytic_tradecraft
+  hint: collapsing reporting, inference, and judgment into one line
+- category: cyber_taxonomy
+  hint: treating defensive taxonomy labels as an action sequence
+- category: ageint_pattern_registry
+  hint: treating pattern names as deployment playbooks
+- category: agentic_cyber_misuse
+  hint: treating misuse taxonomy as tool permission
+- category: financial_due_diligence
+  hint: treating typology match as proof of intent
+misconception_fallbacks:
+- that {topic} can be used while ignoring the rule to {focus}
+- that {topic} is optional whenever {focus} feels inconvenient
+- that {topic} proves intent without reviewing alternative explanations
+- that {topic} replaces human review whenever evidence looks plausible
+misconception_risk_templates:
+- that a safe curriculum label for **{display_title}** in **{chapter_anchor}** authorizes
+  the original operational source motif
+- that **{chapter_anchor}** classroom framing for **{display_title}** removes the
+  need for provenance and reviewer sign-off
+- that completing the **{display_title}** artifact in **{chapter_anchor}** proves
+  real-world authorization
