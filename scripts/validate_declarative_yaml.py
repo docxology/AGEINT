@@ -9,30 +9,14 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from _data_loaders import (  # noqa: E402
-    SAFETY_ARTIFACT_TABLE_NAMES,
-    coursebook_profiles,
-    safety_artifact_tables_payload,
-)
+from _data_loaders import SAFETY_ARTIFACT_TABLE_NAMES, validate_declarative_tables  # noqa: E402
 
 
 def main() -> None:
-    profiles = coursebook_profiles()
-    payload = safety_artifact_tables_payload()
-    yaml_keys = set(payload)
-    expected_keys = set(SAFETY_ARTIFACT_TABLE_NAMES)
-    missing = expected_keys - yaml_keys
-    extra = yaml_keys - expected_keys
-    if missing or extra:
-        missing_text = ", ".join(sorted(missing)) or "-"
-        extra_text = ", ".join(sorted(extra)) or "-"
-        raise SystemExit(
-            f"safety_artifact_tables.yaml key drift: missing={missing_text}; extra={extra_text}"
-        )
-    row_counts = {name: len(payload[name]) for name in SAFETY_ARTIFACT_TABLE_NAMES}
-    print(f"coursebook_profiles: {len(profiles)} profiles")
-    for name, count in row_counts.items():
-        print(f"{name}: {count} rows")
+    counts = validate_declarative_tables()
+    print(f"coursebook_profiles: {counts['coursebook_profiles']} profiles")
+    for name in SAFETY_ARTIFACT_TABLE_NAMES:
+        print(f"{name}: {counts[name]} rows")
     print("Declarative YAML validation passed.")
 
 

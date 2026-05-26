@@ -176,6 +176,7 @@ def topic_rotation_templates_payload() -> dict[str, Any]:
         "risk_why_failure_hints",
         "misconception_fallbacks",
         "misconception_risk_templates",
+        "misconception_keyword_routes",
     ):
         if key not in payload or not isinstance(payload[key], list):
             raise ValueError(f"Expected list {key!r} in topic_rotation_templates.yaml")
@@ -206,6 +207,15 @@ def misconception_risk_templates() -> tuple[str, ...]:
     return tuple(str(row) for row in rows)
 
 
+def misconception_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
+    """Return ordered misconception keyword routes."""
+    rows = topic_rotation_templates_payload()["misconception_keyword_routes"]
+    return tuple(
+        (tuple(str(keyword) for keyword in row["keywords"]), str(row["misconception"]))
+        for row in rows
+    )
+
+
 SAFETY_ARTIFACT_TABLE_NAMES: Final[tuple[str, ...]] = (
     "SAFE_SUBSTITUTION_PATTERNS",
     "CAPSTONE_SCAFFOLDS",
@@ -228,33 +238,44 @@ SAFETY_ARTIFACT_TABLE_NAMES: Final[tuple[str, ...]] = (
 
 
 @lru_cache(maxsize=1)
-def coursebook_profiles() -> dict[str, Any]:
-    """Return ``CoursebookProfile`` instances keyed by identifier."""
-    from intelligence_content._01_part import CoursebookProfile
-
+def coursebook_profiles_payload() -> list[dict[str, Any]]:
+    """Return normalized coursebook profile rows from authoritative YAML."""
     payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "coursebook_profiles.yaml")
     profiles = payload.get("profiles", [])
     if not isinstance(profiles, list):
         raise ValueError("Expected list profiles in coursebook_profiles.yaml")
-    rendered: dict[str, CoursebookProfile] = {}
+    rendered: list[dict[str, Any]] = []
     for row in profiles:
+        if not isinstance(row, dict):
+            raise ValueError("Expected mapping for each coursebook profile row")
         identifier = str(row["identifier"])
         vocabulary = tuple(
             (str(item["term"]), str(item["definition"])) for item in row["vocabulary"]
         )
-        rendered[identifier] = CoursebookProfile(
-            identifier=identifier,
-            disciplinary_frame=str(row["disciplinary_frame"]),
-            key_distinction=str(row["key_distinction"]),
-            vocabulary=vocabulary,
-            worked_scenario=str(row["worked_scenario"]),
-            worked_input=str(row["worked_input"]),
-            worked_process=str(row["worked_process"]),
-            worked_output=str(row["worked_output"]),
-            practice_focus=str(row["practice_focus"]),
-            review_question=str(row["review_question"]),
+        rendered.append(
+            {
+                "identifier": identifier,
+                "disciplinary_frame": str(row["disciplinary_frame"]),
+                "key_distinction": str(row["key_distinction"]),
+                "vocabulary": vocabulary,
+                "worked_scenario": str(row["worked_scenario"]),
+                "worked_input": str(row["worked_input"]),
+                "worked_process": str(row["worked_process"]),
+                "worked_output": str(row["worked_output"]),
+                "practice_focus": str(row["practice_focus"]),
+                "review_question": str(row["review_question"]),
+            }
         )
     return rendered
+
+
+def validate_declarative_tables() -> dict[str, int]:
+    """Validate authoritative YAML tables and return row counts for reporting."""
+    profile_count = len(coursebook_profiles_payload())
+    safety_payload = safety_artifact_tables_payload()
+    counts = {name: len(safety_payload[name]) for name in SAFETY_ARTIFACT_TABLE_NAMES}
+    counts["coursebook_profiles"] = profile_count
+    return counts
 
 
 @lru_cache(maxsize=1)

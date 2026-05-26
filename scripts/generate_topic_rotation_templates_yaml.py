@@ -59,6 +59,28 @@ MISCONCEPTION_RISK_TEMPLATES: tuple[str, ...] = (
     ),
 )
 
+MISCONCEPTION_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
+    (("mice",), "that a motivation taxonomy is a recruitment checklist"),
+    (("att&ck",), "that a defensive taxonomy is an instruction sequence"),
+    (("kill chain",), "that a defensive taxonomy is an instruction sequence"),
+    (
+        ("fisa", "executive order"),
+        "that a legal source grants authority without scope and oversight",
+    ),
+    (
+        ("beneficial ownership",),
+        "that ownership evidence removes uncertainty about control or intent",
+    ),
+    (
+        ("geoint", "imagery"),
+        "that a visible feature is enough for a confident geospatial claim",
+    ),
+    (
+        ("ach", "competing hypotheses"),
+        "that listing one favored hypothesis is enough without testing alternatives",
+    ),
+)
+
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
@@ -70,6 +92,10 @@ def main() -> None:
         ],
         "misconception_fallbacks": list(MISCONCEPTION_FALLBACKS),
         "misconception_risk_templates": list(MISCONCEPTION_RISK_TEMPLATES),
+        "misconception_keyword_routes": [
+            {"keywords": list(keywords), "misconception": misconception}
+            for keywords, misconception in MISCONCEPTION_KEYWORD_ROUTES
+        ],
     }
     out = root / "data" / "topic_rotation_templates.yaml"
     out.write_text(yaml.safe_dump(payload, sort_keys=False, allow_unicode=True), encoding="utf-8")

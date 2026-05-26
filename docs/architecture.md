@@ -51,7 +51,7 @@ and `data/safety_artifact_tables.yaml` via `_data_loaders.py` (`_06_part.py`, `_
 
 | Package | Import style |
 | --- | --- |
-| `intelligence_content/` | Explicit per-shard imports (P3 complete) |
+| `intelligence_content/` | Explicit per-shard imports (P3 complete except `_01_part` / `_11_part` sibling-package fallbacks) |
 | `manuscript_manifest/`, `figures/`, `manuscript_variables/` | Still merged via `_package_loader.merge_part_modules` until P4 |
 
 When adding code under the merged packages, follow existing shard patterns; do not

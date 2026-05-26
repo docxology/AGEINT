@@ -6,11 +6,12 @@ from typing import TYPE_CHECKING
 
 from _data_loaders import (
     misconception_fallbacks,
+    misconception_keyword_routes,
     misconception_risk_templates,
     risk_why_failure_hints,
     why_it_matters_templates,
 )
-from ._12_concept_routes import _match_keywords
+from ._12_concept_routes import _first_matching_frame
 from .topic_rotation import template_index
 
 if TYPE_CHECKING:
@@ -72,18 +73,9 @@ def misconception_for_entry(
             chapter_anchor=chapter_anchor,
         )
     raw = f"{entry.display_title} {entry.raw_title}".lower()
-    if _match_keywords(raw, ("mice",)):
-        return "that a motivation taxonomy is a recruitment checklist"
-    if _match_keywords(raw, ("att&ck",)) or "kill chain" in raw:
-        return "that a defensive taxonomy is an instruction sequence"
-    if "fisa" in raw or "executive order" in raw:
-        return "that a legal source grants authority without scope and oversight"
-    if "beneficial ownership" in raw:
-        return "that ownership evidence removes uncertainty about control or intent"
-    if "geoint" in raw or "imagery" in raw:
-        return "that a visible feature is enough for a confident geospatial claim"
-    if _match_keywords(raw, ("ach",)) or "competing hypotheses" in raw:
-        return "that listing one favored hypothesis is enough without testing alternatives"
+    routed = _first_matching_frame(raw, misconception_keyword_routes())
+    if routed:
+        return routed
     fallbacks = misconception_fallbacks()
     chapter_base = template_index(chapter_title, count=len(fallbacks))
     template_slot = (chapter_base + lesson_index - 1) % len(fallbacks)

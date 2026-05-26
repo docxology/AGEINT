@@ -79,6 +79,7 @@ def test_topic_rotation_templates_payload_has_required_sections() -> None:
         "risk_why_failure_hints",
         "misconception_fallbacks",
         "misconception_risk_templates",
+        "misconception_keyword_routes",
     ):
         assert isinstance(payload[key], list)
         assert payload[key]
@@ -89,14 +90,26 @@ def test_topic_rotation_template_loaders_return_non_empty() -> None:
     assert risk_why_failure_hints()
     assert misconception_fallbacks()
     assert misconception_risk_templates()
+    from _data_loaders import misconception_keyword_routes
+
+    assert misconception_keyword_routes()
 
 
-def test_coursebook_profiles_loader_returns_fourteen_profiles() -> None:
-    from _data_loaders import coursebook_profiles
+def test_coursebook_profiles_payload_returns_fourteen_rows() -> None:
+    from _data_loaders import coursebook_profiles_payload
 
-    profiles = coursebook_profiles()
-    assert len(profiles) == 14
-    sample = profiles["analytic_tradecraft"]
+    rows = coursebook_profiles_payload()
+    assert len(rows) == 14
+    sample = rows[0]
+    assert sample["identifier"]
+    assert sample["vocabulary"]
+
+
+def test_build_coursebook_profiles_returns_typed_profiles() -> None:
+    from intelligence_content._06_part import COURSEBOOK_PROFILES
+
+    assert len(COURSEBOOK_PROFILES) == 14
+    sample = COURSEBOOK_PROFILES["analytic_tradecraft"]
     assert sample.identifier == "analytic_tradecraft"
     assert sample.vocabulary
 

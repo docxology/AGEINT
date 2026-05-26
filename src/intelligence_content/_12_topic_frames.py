@@ -115,6 +115,7 @@ def synthesized_evidence_prompt(entry: TopicEntry, lens: PracticeLens, courseboo
     )
 
 
+# Deferred import: breaks cycle with topic_prompt_routes importing _12_concept_routes.
 from .topic_prompt_routes import (
     artifact_prompt_for_entry as _artifact_prompt_from_routes,
     evidence_prompt_for_entry as _evidence_prompt_from_routes,

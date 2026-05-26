@@ -5,11 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-try:
-    from unit_education import UnitEducationProfile
-except ImportError:  # pragma: no cover - package import
-    from ..unit_education import UnitEducationProfile  # type: ignore[no-redef]
-
+from unit_education import UnitEducationProfile
 from .topic_frame_api import (
     artifact_prompt_for_entry,
     concept_frame_for_entry,

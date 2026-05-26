@@ -36,3 +36,28 @@ misconception_risk_templates:
   need for provenance and reviewer sign-off
 - that completing the **{display_title}** artifact in **{chapter_anchor}** proves
   real-world authorization
+misconception_keyword_routes:
+- keywords:
+  - mice
+  misconception: that a motivation taxonomy is a recruitment checklist
+- keywords:
+  - att&ck
+  misconception: that a defensive taxonomy is an instruction sequence
+- keywords:
+  - kill chain
+  misconception: that a defensive taxonomy is an instruction sequence
+- keywords:
+  - fisa
+  - executive order
+  misconception: that a legal source grants authority without scope and oversight
+- keywords:
+  - beneficial ownership
+  misconception: that ownership evidence removes uncertainty about control or intent
+- keywords:
+  - geoint
+  - imagery
+  misconception: that a visible feature is enough for a confident geospatial claim
+- keywords:
+  - ach
+  - competing hypotheses
+  misconception: that listing one favored hypothesis is enough without testing alternatives

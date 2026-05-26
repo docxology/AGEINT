@@ -4,10 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-try:
-    from _data_loaders import topic_risk_routes_payload
-except ImportError:  # pragma: no cover - package import
-    from .._data_loaders import topic_risk_routes_payload  # type: ignore[no-redef]
+from _data_loaders import topic_risk_routes_payload
 
 
 def _any_phrase(text: str, phrases: tuple[str, ...]) -> bool:

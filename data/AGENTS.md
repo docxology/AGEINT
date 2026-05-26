@@ -41,6 +41,9 @@ uv run python scripts/validate_declarative_yaml.py
 uv run pytest tests/test_data_loaders.py -v
 ```
 
+Full builds also validate declarative tables at startup via `run_build()` in
+`src/build_pipeline.py`.
+
 **Generator-backed YAML** (Python tuples in `scripts/generate_*_yaml.py`):
 `topic_risk_routes.yaml`, `topic_prompt_routes.yaml`, `topic_rotation_templates.yaml`.
 

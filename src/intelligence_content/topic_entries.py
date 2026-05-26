@@ -7,24 +7,14 @@ from typing import Any, Final
 
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 
-try:
-    from intelligence_content._01_part import TopicEntry
-    from intelligence_content._06_part import safe_pattern_treatment
-    from intelligence_content._07_safe_titles import (
-        _topic_anchor_words,
-        is_generic_display_title,
-        safe_curriculum_treatment,
-    )
-    from intelligence_content.risk_routes import topic_risk_category
-except ImportError:  # pragma: no cover - package import
-    from ._01_part import TopicEntry  # type: ignore[no-redef]
-    from ._06_part import safe_pattern_treatment  # type: ignore[no-redef]
-    from ._07_safe_titles import (  # type: ignore[no-redef]
-        _topic_anchor_words,
-        is_generic_display_title,
-        safe_curriculum_treatment,
-    )
-    from .risk_routes import topic_risk_category  # type: ignore[no-redef]
+from ._01_part import TopicEntry
+from ._06_part import safe_pattern_treatment
+from ._07_safe_titles import (
+    _topic_anchor_words,
+    is_generic_display_title,
+    safe_curriculum_treatment,
+)
+from .risk_routes import topic_risk_category
 
 META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = (
     "v2 source-lane extension:",

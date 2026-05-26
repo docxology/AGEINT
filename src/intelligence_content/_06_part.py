@@ -3,9 +3,10 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from _data_loaders import coursebook_profiles
+from _data_loaders import coursebook_profiles_payload
 
 from ._01_part import (
+    CoursebookProfile,
     IntelligenceProfile,
     PracticeLens,
     ResearchAnchor,
@@ -16,7 +17,15 @@ from ._04b_part import INTELLIGENCE_PROFILES
 from ._05_part import PRACTICE_LENSES
 
 
-COURSEBOOK_PROFILES = coursebook_profiles()
+def build_coursebook_profiles() -> dict[str, CoursebookProfile]:
+    """Build typed coursebook profiles from declarative YAML rows."""
+    return {
+        str(row["identifier"]): CoursebookProfile(**row)
+        for row in coursebook_profiles_payload()
+    }
+
+
+COURSEBOOK_PROFILES = build_coursebook_profiles()
 
 def _normalized_lookup_key(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()

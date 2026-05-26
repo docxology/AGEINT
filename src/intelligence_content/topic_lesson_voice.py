@@ -4,14 +4,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-try:
-    from unit_education import UnitEducationProfile, unit_lesson_artifact_line, unit_lesson_evidence_line
-except ImportError:  # pragma: no cover - package import
-    from ..unit_education import (  # type: ignore[no-redef]
-        UnitEducationProfile,
-        unit_lesson_artifact_line,
-        unit_lesson_evidence_line,
-    )
+from unit_education import UnitEducationProfile, unit_lesson_artifact_line, unit_lesson_evidence_line
 
 if TYPE_CHECKING:
     from ._01_part import TopicEntry

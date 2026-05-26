@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+INTELLIGENCE_CONTENT = PROJECT_ROOT / "src" / "intelligence_content"
 
 _SHARDS = [
     "_01_part",
@@ -28,7 +29,16 @@ _SHARDS = [
     "_12_topic_frames",
     "_10_part",
     "_11_part",
+    "topic_entries",
+    "topic_lessons",
+    "topic_lesson_voice",
+    "risk_routes",
+    "topic_rotation_templates",
+    "topic_prompt_routes",
+    "topic_frame_api",
 ]
+
+_MERGE_IMPORT_FALLBACK_ALLOWLIST = {"_01_part.py", "_11_part.py"}
 
 
 def _isolated_import_script(shard: str) -> str:
@@ -67,3 +77,14 @@ def test_intelligence_content_package_imports_without_merge() -> None:
     assert hasattr(module, "profile_for_titles")
     assert hasattr(module, "safe_curriculum_treatment")
     assert hasattr(module, "safe_pattern_treatment")
+
+
+def test_intelligence_content_no_merge_import_fallbacks() -> None:
+    offenders: list[str] = []
+    for path in sorted(INTELLIGENCE_CONTENT.glob("*.py")):
+        if path.name in _MERGE_IMPORT_FALLBACK_ALLOWLIST:
+            continue
+        text = path.read_text(encoding="utf-8")
+        if "except ImportError" in text:
+            offenders.append(path.name)
+    assert offenders == []
