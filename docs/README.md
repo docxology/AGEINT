@@ -12,7 +12,7 @@ after a rebuild and docs refresh:
 | Parts | 16 | `data/curriculum/stats.json` |
 | Chapters | 51 | `data/curriculum/stats.json` |
 | Appendices | 9 | `data/curriculum/stats.json` |
-| Source-guide references | 296 | `data/curriculum/references/` |
+| Source-guide references | 312 | `data/curriculum/references/` |
 | Curated research anchors | 172 | `data/research_anchors/` |
 | Registered figures | 57 | `output/figures/figure_registry.json` |
 
@@ -30,6 +30,7 @@ public-domain, or scholarly sources encoded in the source layer.
 | [`rendering_pipeline.md`](rendering_pipeline.md) | Generated manuscript → PDF |
 | [`style_guide.md`](style_guide.md) | Defensive educational prose |
 | [`syntax_guide.md`](syntax_guide.md) | Citations and cross-refs |
+| [`citation_workflow.md`](citation_workflow.md) | Canonical citation authoring, counting, and validation workflow |
 | [`faq.md`](faq.md) | Common questions |
 | [`quickstart.md`](quickstart.md) | Command entry points |
 | [`output_conventions.md`](output_conventions.md) | `output/` layout |
@@ -40,7 +41,7 @@ public-domain, or scholarly sources encoded in the source layer.
 ## Domain docs
 
 - `safety.md`, `safety_audit.md` — non-operational dual-use boundary
-- `source_identity_stability.md`, `source_lane_map.md`, `source_refresh_ledger.md` — citation spine
+- `citation_workflow.md`, `source_identity_stability.md`, `source_lane_map.md`, `source_refresh_ledger.md` — citation spine
 - `research.md` — verified research anchor posture
 - `instructor_guide.md`, `learner_support_assessment.md` — pedagogy
 - `evidence_package_map.md`, `data_lineage_registry.md` — governance artifacts

@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part", "_02_part", "_03_part", "_04_part", "_04b_part", "_05_part")
-
 
 
 
@@ -32,7 +22,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Decision hygiene", "habits that keep requirements, evidence, and reviewer judgment aligned under load"),
             ("Information architecture", "how sources, notes, and products are organized so uncertainty stays visible"),
         ),
-        worked_scenario="a fictional analyst team rebuilds a storm-impact brief after discovering a stale requirement and overloaded reading queue",
+        worked_scenario="a synthetic analyst team rebuilds a storm-impact brief after discovering a stale requirement and overloaded reading queue",
         worked_input="public weather bulletins, public infrastructure maps, historical outage summaries, and instructor-provided toy records",
         worked_process="map the requirement, tag each source, separate observation from judgment, assign caveats, and record the dissemination audience",
         worked_output="a one-page release-neutral brief with source descriptors, confidence language, caveats, and a feedback owner",
@@ -54,7 +44,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Decision hygiene", "habits that preserve evidence review, handoffs, and rest boundaries under load"),
             ("Task switching", "context change with measurable recovery cost and explicit re-entry notes"),
         ),
-        worked_scenario="a fictional analyst cell rebuilds a weekly reading queue after workload scores spike during a surge brief",
+        worked_scenario="a synthetic analyst cell rebuilds a weekly reading queue after workload scores spike during a surge brief",
         worked_input="synthetic task lists, NASA-TLX self-ratings, instructor-provided focus blocks, and a handoff template",
         worked_process="capture open loops, score workload, schedule focus blocks, document handoffs, and assign reviewer checkpoints",
         worked_output="an operator workload card with queue state, TLX scores, focus plan, handoff owner, and rest boundary",
@@ -76,7 +66,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Confidence", "a calibrated expression of evidentiary strength and analytic uncertainty"),
             ("Dissent", "a documented disagreement that preserves minority reasoning for review"),
         ),
-        worked_scenario="a fictional analyst cell evaluates whether a benign supplier delay signals normal friction or elevated risk",
+        worked_scenario="a synthetic analyst cell evaluates whether a benign supplier delay signals normal friction or elevated risk",
         worked_input="synthetic shipment notes, public policy excerpts, and a short instructor-provided event timeline",
         worked_process="write hypotheses, list evidence for and against each, mark assumptions, and assign confidence only after alternatives are tested",
         worked_output="an analytic note with a hypothesis table, confidence statement, dissent field, and collection gap list",
@@ -99,7 +89,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Impact assessment", "a scored review that links system purpose, safeguards, and affected people"),
             ("Public register", "an accessible inventory entry that explains approved AI use and review status"),
         ),
-        worked_scenario="a fictional training office evaluates whether a summarization agent can support course readings",
+        worked_scenario="a synthetic training office evaluates whether a summarization agent can support course readings",
         worked_input="public source excerpts, synthetic learner questions, a model-use note, and an accessibility checklist",
         worked_process="define purpose, inspect data provenance, document limits, test sample summaries, and assign a human review owner",
         worked_output="an AI/data impact card with intended use, excluded use, evaluation evidence, and refresh trigger",
@@ -125,7 +115,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Pattern registry", "the catalog of approved agent behaviors, prompts, and evaluation hooks"),
             ("Adversarial eval", "structured tests that probe agent misuse, injection, and over-delegation before release"),
         ),
-        worked_scenario="a fictional research assistant agent organizes public readings for an instructor",
+        worked_scenario="a synthetic research assistant agent organizes public readings for an instructor",
         worked_input="public URLs, a fixed retrieval tool, a summarization prompt, a time budget, and a stop condition",
         worked_process="bind the agent identity, list allowed tools, set autonomy limits, capture sources, block unsafe requests, and log approvals",
         worked_output="an agent run card with tool calls, source links, blocked actions, reviewer notes, incident threshold, and recovery decision",
@@ -146,7 +136,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Geospatial quality", "accuracy, completeness, temporal fitness, and usability of location data"),
             ("Minimization", "limiting retained information to what the authorized question requires"),
         ),
-        worked_scenario="a fictional public-resilience team checks whether open data supports a non-sensitive evacuation-route map",
+        worked_scenario="a synthetic public-resilience team checks whether open data supports a non-sensitive evacuation-route map",
         worked_input="public road data, public weather notices, synthetic change examples, and instructor-provided metadata",
         worked_process="record provenance, test recency, compare independent sources, mark uncertainty, and remove unnecessary identity data",
         worked_output="a source-quality matrix and annotated map note with caveats and no tracking or targeting content",
@@ -170,7 +160,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Gray-zone indicator", "an observable signal of ambiguous coercion below armed conflict thresholds"),
             ("Proxy pattern", "a relationship suggesting indirect sponsorship without confirmed operational control"),
         ),
-        worked_scenario="a fictional policy cell compares public indicators of hybrid pressure against an authorized collection plan for a benign border-disruption exercise",
+        worked_scenario="a synthetic policy cell compares public indicators of hybrid pressure against an authorized collection plan for a benign border-disruption exercise",
         worked_input="public notices, synthetic interview summaries, public logistics records, and an instructor scope card",
         worked_process="rank requirements, choose the least intrusive source discipline, list excluded actions, and evaluate evidence quality",
         worked_output="a requirements-to-evidence matrix with discipline fit, source caveats, minimization notes, and gaps",
@@ -192,7 +182,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Red flag", "an indicator that triggers review rather than a standalone conclusion"),
             ("Compliance boundary", "the line between lawful screening or resilience analysis and prohibited evasion advice"),
         ),
-        worked_scenario="a fictional nonprofit screens a synthetic supplier record for classroom due-diligence practice",
+        worked_scenario="a sample nonprofit screens a synthetic supplier record for classroom due-diligence practice",
         worked_input="toy entity records, public sanctions-program descriptions, synthetic transaction summaries, and supplier-context notes",
         worked_process="check official list provenance, identify red flags, preserve beneficial-ownership uncertainty, and avoid evasion guidance",
         worked_output="an economic-security packet with source links, uncertainty, red-flag rationale, and a compliance review owner",
@@ -214,7 +204,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Insider risk", "risk created by trusted access combined with motive, pressure, or control failure"),
             ("Protected disclosure", "a safe channel for reporting concerns without exposing sensitive details"),
         ),
-        worked_scenario="a fictional research lab reviews a synthetic source-quality anomaly after a disputed report",
+        worked_scenario="a sample research lab reviews a synthetic source-quality anomaly after a disputed report",
         worked_input="toy access logs, public policy excerpts, synthetic source notes, and a reviewer escalation path",
         worked_process="separate identity from access, list anomaly hypotheses, seek corroboration, and route sensitive concerns to review",
         worked_output="a source-integrity memo with competing explanations, confidence, protected-disclosure note, and next-review owner",
@@ -237,8 +227,8 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("MISO boundary", "the line between authorized public messaging analysis and covert influence design"),
             ("Inoculation", "building recognition of manipulation tactics without deploying persuasion against a population"),
         ),
-        worked_scenario="a fictional public-library class evaluates a synthetic rumor about a community service and compares transparent correction options",
-        worked_input="fictional posts, source timestamps, public-service facts, and a media-literacy rubric",
+        worked_scenario="a sample public-library class evaluates a synthetic rumor about a community service and compares transparent correction options",
+        worked_input="sample posts, source timestamps, public-service facts, and a media-literacy rubric",
         worked_process="trace narrative provenance, separate observation from attribution, name audience harms, and design a transparent lesson",
         worked_output="a narrative-risk map with caveats, response options, and no microtargeted persuasion",
         practice_focus="information-integrity analysis and resilience education",
@@ -261,7 +251,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Oversight failure", "a documented breakdown in review, records, or accountability visible in the archive"),
             ("Source-protection lesson", "the historical principle about protecting people and methods without reconstructing live tradecraft"),
         ),
-        worked_scenario="a fictional seminar studies a declassified reform episode and extracts an oversight lesson without reconstructing current sources and methods",
+        worked_scenario="a sample seminar studies a declassified reform episode and extracts an oversight lesson without reconstructing current sources and methods",
         worked_input="public archive metadata, a short excerpt, a timeline template, and an oversight-question worksheet",
         worked_process="record provenance, mark redactions, build timeline, distinguish known from unknown, and extract a governance lesson",
         worked_output="a historical case card with release context, caveats, lesson, and non-operational boundary",
@@ -283,7 +273,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Handling rule", "a sharing, marking, or retention limit for threat information"),
             ("Lessons learned", "the post-incident evidence that changes controls or playbooks"),
         ),
-        worked_scenario="a fictional campus SOC reviews fabricated alert records after a tabletop incident",
+        worked_scenario="a sample campus SOC reviews fabricated alert records after a tabletop incident",
         worked_input="toy alerts, synthetic asset names, public ATT&CK technique descriptions, and a sharing-policy card",
         worked_process="normalize indicators, map TTPs defensively, rate confidence, mark sharing limits, and record lessons learned",
         worked_output="a CTI packet with indicators, TTP mapping, confidence, handling rule, and remediation owner",
@@ -302,10 +292,10 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Engineering state", "the physical or process condition that gives cyber evidence safety meaning"),
             ("Consequence", "the operational, safety, environmental, or service effect of a condition"),
             ("Defense in depth", "layered prevention, detection, response, and recovery controls"),
-            ("Tabletop inject", "a fictional event used to rehearse decisions without touching live systems"),
+            ("Tabletop inject", "a synthetic event used to rehearse decisions without touching live systems"),
             ("Recovery evidence", "proof that a safe state, service, or learning objective was restored"),
         ),
-        worked_scenario="a fictional water-utility tabletop reviews synthetic process logs after a simulated anomaly",
+        worked_scenario="a sample water-utility tabletop reviews synthetic process logs after a simulated anomaly",
         worked_input="toy HMI screenshots, fabricated network alerts, public ICS control guidance, and a safety stop card",
         worked_process="map assets to consequences, classify tabletop injects, identify human decisions, and preserve recovery evidence",
         worked_output="a cyber-physical tabletop packet with assets, consequences, ATT&CK mapping, decisions, and debrief",
@@ -328,7 +318,7 @@ COURSEBOOK_PROFILES: Final[dict[str, CoursebookProfile]] = {
             ("Redress", "a path for affected people to contest or correct harm"),
             ("Audit trail", "retained evidence that enables later review of decisions and outputs"),
         ),
-        worked_scenario="a fictional agency training team reviews whether a classroom AI workflow is allowed",
+        worked_scenario="a sample agency training team reviews whether a classroom AI workflow is allowed",
         worked_input="public policy excerpts, synthetic workflow notes, a rights-impact checklist, and an audit-log template",
         worked_process="map authority, test proportionality, name affected groups, assign oversight, and define redress or escalation",
         worked_output="an authority-and-impact register with approvals, limits, audit owner, and review date",
@@ -374,7 +364,7 @@ def profile_for_titles(
     if chapter and chapter.get("content_profile"):
         return _profile_by_identifier(str(chapter["content_profile"]))
 
-    haystack = f"{section_title} {section_title} {part_title}".lower()
+    haystack = f"{section_title} {part_title}".lower()
     best = INTELLIGENCE_PROFILES[0]
     best_score = -1
     for profile in INTELLIGENCE_PROFILES:
@@ -402,7 +392,7 @@ def practice_lens_for_titles(
     ):
         return _lens_by_identifier("cyber_physical_readiness")
 
-    haystack = f"{section_title} {section_title} {part_title}".lower()
+    haystack = f"{section_title} {part_title}".lower()
     best = PRACTICE_LENSES[0]
     best_score = -1
     for lens in PRACTICE_LENSES:

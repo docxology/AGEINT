@@ -4,7 +4,7 @@
 {"citations": [72], "level": 1, "number": "13.1", "raw": "13.1 APT Definitions, Lifecycle, and Attribution[^72]", "title": "APT Definitions, Lifecycle, and Attribution"}
 {"citations": [72], "level": 1, "number": "13.2", "raw": "13.2 APT Risk Propagation Models: ATT&CK-Based Analysis[^72]", "title": "APT Risk Propagation Models: ATT&CK-Based Analysis"}
 {"citations": [69], "level": 1, "number": "13.3", "raw": "13.3 Nation-State vs. Ideological Actor Attack Patterns[^69]", "title": "Nation-State vs. Ideological Actor Attack Patterns"}
-{"citations": [], "level": 1, "number": "13.4", "raw": "13.4 APT Infrastructure: C2 Frameworks, Domain Fronting, Bulletproof Hosting", "title": "APT Infrastructure: C2 Frameworks, Domain Fronting, Bulletproof Hosting"}
+{"citations": [300, 303, 304], "level": 1, "number": "13.4", "raw": "13.4 APT Infrastructure: C2 Frameworks, Domain Fronting, Bulletproof Hosting", "title": "APT Infrastructure: C2 Frameworks, Domain Fronting, Bulletproof Hosting"}
 {"citations": [71], "level": 1, "number": "13.5", "raw": "13.5 Incident Response on Nation-State Intrusions: Mandiant Methodology[^71]", "title": "Incident Response on Nation-State Intrusions: Mandiant Methodology"}
-{"citations": [], "level": 1, "number": "13.6", "raw": "13.6 Threat Hunting Against APT Actors", "title": "Threat Hunting Against APT Actors"}
-{"citations": [], "level": 1, "number": "13.7", "raw": "13.7 APT Attribution: Technical Indicators vs. Geopolitical Context", "title": "APT Attribution: Technical Indicators vs. Geopolitical Context"}
+{"citations": [300, 303, 304], "level": 1, "number": "13.6", "raw": "13.6 Threat Hunting Against APT Actors", "title": "Threat Hunting Against APT Actors"}
+{"citations": [309, 310, 300], "level": 1, "number": "13.7", "raw": "13.7 APT Attribution: Technical Indicators vs. Geopolitical Context", "title": "APT Attribution: Technical Indicators vs. Geopolitical Context"}

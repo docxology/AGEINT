@@ -36,6 +36,9 @@ EXCLUDED_PARTS = {
     "__pycache__",
 }
 EXCLUDED_NAMES = {"uv.lock"}
+EXCLUDED_RELATIVE_PREFIXES = (
+    "tests/fixtures/",
+)
 
 
 def _candidate_files() -> list[Path]:
@@ -55,6 +58,8 @@ def test_source_and_generated_text_files_stay_under_500_lines() -> None:
     for path in _candidate_files():
         relative = path.relative_to(PROJECT_ROOT)
         if path.suffix not in TEXT_SUFFIXES or path.name in EXCLUDED_NAMES:
+            continue
+        if any(relative.as_posix().startswith(prefix) for prefix in EXCLUDED_RELATIVE_PREFIXES):
             continue
         if any(part in EXCLUDED_PARTS for part in relative.parts):
             continue

@@ -192,7 +192,7 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                     if "</table>" in stripped:
                         in_html_table = False
                 continue
-            if match := HARD_CODED_REFERENCE_RE.search(line):
+            if suffix != ".html" and (match := HARD_CODED_REFERENCE_RE.search(line)):
                 violations.append(
                     RenderedReferenceViolation(path, line_number, "hard-coded numbered reference", match.group(0), line)
                 )

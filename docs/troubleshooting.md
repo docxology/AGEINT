@@ -4,6 +4,8 @@
 
 Run from AGEINT root or ensure template repo is on path via `src/template_resolver.py`. Set `AGEINT_TEMPLATE_REPO` or `DOCXOLOGY_TEMPLATE_REPO` when running standalone outside the template checkout.
 
+Manuscript variable substitution goes through `src/manuscript_injection.py`, which calls `ensure_template_repo_on_path()` then delegates to `infrastructure.rendering.manuscript_injection`. Standalone AGEINT builds and template-linked `./run.sh --project AGEINT` runs share this adapter.
+
 ## `output/manuscript/` missing
 
 ```bash

@@ -15,7 +15,7 @@ The major v2 pass expands AGEINT without changing its architecture:
   evidence-package expansion bullets.
 - Appendices increased from 7 to 9 with source verification and claim ledgers
   plus instructor capstone/rubric/red-team review packs.
-- Source-guide references increased from 231 to 296 by append-only expansion.
+- Source-guide references increased from 231 to 312 by append-only expansion.
 - Curated anchors increased to at least 172 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
 - Registered figures increased to 57 with new source verification, claim

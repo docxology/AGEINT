@@ -19,7 +19,7 @@ verification and claim-ledger workflow.
 ## Source Rules
 
 The source identity lock protects `ageint001` through `ageint231`; current
-append-only references extend through `ageint296`. Generated output remains a
+append-only references extend through `ageint312`. Generated output remains a
 rebuild product and should not be edited by hand.
 
 ## Safety Boundary

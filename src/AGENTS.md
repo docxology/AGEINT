@@ -12,16 +12,27 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 
 | Module / package | Role |
 | --- | --- |
-| `curriculum.py` | Load and query sharded curriculum under `data/curriculum/` |
-| `build_pipeline.py` | Canonical `run_build()` orchestration (data mirror, variables, BibTeX, figures, manuscript) |
+| `curriculum.py` | Load and query sharded curriculum under `data/curriculum/`; exports `PATTERN_REGISTRY_CHAPTER_NUMBER` (32) |
+| `build_pipeline.py` | Canonical `run_build()`, `run_build_figures()`, and `BuildConfig` orchestration (`source_path` override for tests) |
+| `_package_loader.py` | Ordered `merge_part_modules()` for sharded subpackages |
+| `_slug.py` | Numbered curriculum path helpers (`curriculum_sections_jsonl_path`, …) |
+| `_curriculum_shards.py` | Shard load, reference dedupe, source-support hydration |
+| `_data_loaders.py` | YAML loaders for concept routes, topic risk routes, and module architecture tables |
+| `_markdown_split.py` | Generic Markdown fragment splitting for manuscript output |
+| `prose_policy.py` | Shared reader-facing title/prose transforms |
+| `markdown_refs.py` | Validated Pandoc `@sec:` / `@fig:` / citekey helpers; `lesson_educational_crossrefs()` for topic-lesson cross-links |
+| `manuscript_injection.py` | Thin adapter to `infrastructure.rendering.manuscript_injection` (single import site for manifest render) |
+| `output_docs.py` | Generated README/AGENTS writers for output, manuscript, and figures |
 | `intelligence_content/` | Official/scholarly anchors, domain profiles, practice lenses, synthesis; see [intelligence_content/AGENTS.md](intelligence_content/AGENTS.md) |
-| `manuscript_manifest/` | Semantic manuscript paths, section context, chapter fragment directories |
+| `manuscript_manifest/` | Semantic manuscript paths, section context, chapter fragment directories; types in `manuscript_manifest/types.py` |
 | `manuscript_variables/` | Runtime variables, BibTeX generation (`write_bibtex_files`) |
 | `figures/` | Registry-backed figure rendering; see [figures/AGENTS.md](figures/AGENTS.md) |
 | `manuscript_templates.py` | Neutral source template library |
-| `_jsonl.py`, `_paths.py` | Shared JSONL reader and project path bootstrap |
+| `_jsonl.py`, `_paths.py` | Shared JSONL reader, project path bootstrap, and `remove_tree()` cleanup |
 
-Public exports are declared in `src/__init__.py`. Part modules (`_01_part.py`, …) are implementation details merged at import time; prefer importing from the package root or `__init__.py`.
+Public exports are declared in `src/__init__.py` (`run_build`, `run_build_figures`, `BuildConfig` consumers should import from `build_pipeline`). Part modules (`_01_part.py`, …) are implementation details merged at import time via `_package_loader.merge_part_modules`; prefer importing from the package root or subpackage `__init__.py`.
+
+Declarative routing and architecture tables live under `data/concept_routes.yaml`, `data/concept_routes_supplement.yaml`, `data/topic_risk_routes.yaml`, and `data/manuscript_architecture.yaml` (loaded by `_data_loaders.py`).
 
 Use `intelligence_content/` for official/scholarly source anchors, domain
 profiles, source lanes, safe substitutions, capstone workflows, practice
@@ -43,12 +54,12 @@ rights-impact privacy review.
 
 Preserve `data/source_identity/` for `ageint001` through `ageint231`.
 Append new guide references after that range; current append-only references
-extend through `ageint296`. Keep source-lane metadata auditable in generated
+extend through `ageint312`. Keep source-lane metadata auditable in generated
 BibTeX and bibliography atlas rows.
 
 Dual-use curriculum material must be bounded to authorized, synthetic, defensive, tabletop, or owned-lab contexts.
 
-`run_build()` defaults to placeholder figures when Mermaid/Chrome is unavailable; set `AGEINT_REQUIRE_RENDERED_FIGURES=1` for full PNG renders. `render_figures(..., allow_placeholder_figures=True)` is the default on direct calls; `scripts/generate_figures.py` mirrors the same env rule (`--no-allow-placeholder-figures` for strict local renders). See `figures/AGENTS.md`.
+`run_build()` reads build flags through `BuildConfig.from_env()` (`AGEINT_REQUIRE_RENDERED_FIGURES=1` disables placeholder figures). `scripts/generate_figures.py` and `run_build_figures()` use the same config. See `figures/AGENTS.md`.
 
 Tests should exercise public behavior through real guide data. Avoid mocks for
 the parser, manifest, source identity lock, source-lane metadata, safety audit,

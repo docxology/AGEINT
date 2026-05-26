@@ -3,13 +3,16 @@
 AGEINT v2 uses a source-lane ledger for curated anchors and an identity lock for
 the original source-guide references.
 
+For the step-by-step authoring, counting, rebuild, and validation workflow, use
+[`citation_workflow.md`](citation_workflow.md).
+
 ## Locked Range
 
 - `ageint001` through `ageint231` are locked in `data/source_identity/`.
 - Existing locked keys, titles, and URLs must remain stable unless the source
   identity actually changes and the lock is intentionally regenerated.
 - New source-guide references are append-only and currently span `ageint232`
-  through `ageint296`.
+  through `ageint312`.
 
 ## Curated Anchor Metadata
 

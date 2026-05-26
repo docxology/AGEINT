@@ -8,7 +8,7 @@ from pathlib import Path
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import SOURCE_QUALITY_ANCHORS
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MANUSCRIPT = PROJECT_ROOT / "manuscript"
 TEMPLATES = MANUSCRIPT / "templates"
 OUTPUT_MANUSCRIPT = PROJECT_ROOT / "output" / "manuscript"
@@ -21,6 +21,8 @@ def manuscript_dir(output_root: Path) -> Path:
 
 def _resolve_manuscript(output_manuscript: Path | None) -> Path:
     return output_manuscript if output_manuscript is not None else OUTPUT_MANUSCRIPT
+
+
 DATA = PROJECT_ROOT / "data" / "curriculum"
 TOKEN_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}")
 REQUIRED_MODULE_SECTIONS = {

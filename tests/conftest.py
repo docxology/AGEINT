@@ -24,12 +24,12 @@ TEMPLATE_REPO = ensure_template_repo_on_path(PROJECT_ROOT)
 
 import pytest  # noqa: E402
 
-from build_pipeline import run_build  # noqa: E402
+from build_pipeline import run_build, run_build_figures  # noqa: E402
 
 
 @pytest.fixture(scope="session")
 def built_output() -> Path:
-    """Ensure generated output exists for integration tests."""
+    """Ensure generated output exists for integration tests (cold run may take several minutes)."""
     output = PROJECT_ROOT / "output"
     needs_build = (
         not (output / "manuscript").exists()

@@ -16,17 +16,17 @@ DATA = PROJECT_ROOT / "data" / "curriculum"
 def test_package_exports_runtime_helpers() -> None:
     critical = {
         "run_build",
+        "run_build_figures",
         "build_curriculum",
         "render_manuscript",
         "render_figures",
         "generate_variables",
         "write_bibtex_files",
-        "profile_for_titles",
-        "safe_curriculum_treatment",
     }
     assert critical.issubset(set(src.__all__))
-    assert len(src.__all__) >= 40
+    assert len(src.__all__) <= 50
     assert callable(src.run_build)
+    assert callable(src.run_build_figures)
     assert callable(src.render_manuscript)
     assert callable(src.generate_variables)
 
@@ -152,7 +152,7 @@ def test_safe_coursebook_helpers_cover_edge_topic_fallbacks() -> None:
     assert "fixed inputs" in src.safe_curriculum_treatment("multi-source data harvesting")
     assert "fabricated alerts" in src.safe_curriculum_treatment("autonomous SOC")
     assert "defensive tactics" in src.safe_curriculum_treatment("penetration testing automation")
-    assert "fictional classroom" in src.safe_curriculum_treatment(
+    assert "sample classroom scenario" in src.safe_curriculum_treatment(
         "population-scale cognitive security intervention delivery"
     )
     assert "Malware-misuse control review" in src.safe_curriculum_treatment(

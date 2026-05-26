@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide
+from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide, resolve_curriculum_payload
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SOURCE = PROJECT_ROOT / "SIST-Guide-TOC-and-Bibliography-v2.md"
@@ -103,3 +103,8 @@ def test_all_chapter_shards_declare_profile_and_lens() -> None:
         for chapter in part["chapters"]:
             assert chapter.get("content_profile"), chapter["title"]
             assert chapter.get("practice_lens"), chapter["title"]
+
+
+def test_resolve_curriculum_payload_uses_sharded_data_when_guide_missing() -> None:
+    payload = resolve_curriculum_payload(PROJECT_ROOT / "missing-guide.md")
+    assert payload["stats"]["chapters"] == 51

@@ -106,3 +106,16 @@ def test_ach_title_routes_to_analytic_tradecraft_at_topic_level() -> None:
         chapter_title="Structured Analytic Techniques (SATs)",
     )
     assert category == "analytic_tradecraft"
+
+
+def test_topic_risk_category_matches_curriculum_parity_fixture() -> None:
+    import json
+
+    fixture = PROJECT_ROOT / "tests" / "fixtures" / "risk_category_parity.json"
+    rows = json.loads(fixture.read_text(encoding="utf-8"))
+    mismatches: list[str] = []
+    for row in rows:
+        got = _topic_risk_category(row["title"], row["part_title"], row["chapter_title"])
+        if got != row["category"]:
+            mismatches.append(f"{row['title']!r}: expected {row['category']}, got {got}")
+    assert mismatches == []

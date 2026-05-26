@@ -1,0 +1,225 @@
+profiles:
+  1:
+    unit_key: foundations
+    concept: intelligence-cycle governance
+    discipline_spine: Requirements, collection, processing, analysis, dissemination, feedback, records, and oversight remain distinct so learners can see when research becomes intelligence work.
+    source_use_contract: Use source-guide citations for inherited curriculum topics and official/standards anchors for claims about authority, quality, records, and review.
+    practice_artifact: requirements-to-product traceability ledger
+    safety_boundary: Activities stay inside public, synthetic, or instructor-provided materials and never become live collection or tasking.
+    learning_spine: Learners translate a decision need into an authorized question, identify evidence channels, write confidence language, and preserve audit context.
+    evidence_artifacts:
+      - requirement card
+      - source descriptor
+      - confidence statement
+      - dissemination and records note
+    anchor_numbers: [297, 298]
+  2:
+    unit_key: humint
+    concept: human-source literacy and source protection
+    discipline_spine: HUMINT lessons focus on motivation literacy, validation, consent, source risk, debrief hygiene, and oversight without teaching contact handling.
+    source_use_contract: Use guide citations for HUMINT vocabulary and official oversight anchors for source-risk, minimization, and governance claims.
+    practice_artifact: source-risk and validation ethics worksheet
+    safety_boundary: No elicitation, impersonation, covert contact, or operational source-management procedures; all cases use classroom fixtures.
+    learning_spine: Learners distinguish motivation frameworks from authorization, identify validation limits, and route sensitive concerns to oversight.
+    evidence_artifacts:
+      - validation note
+      - pressure-risk checklist
+      - source-protection boundary
+      - oversight escalation memo
+    anchor_numbers: [297, 298]
+  3:
+    unit_key: sigint
+    concept: signals-intelligence governance
+    discipline_spine: SIGINT is taught as legal, technical, and minimization-aware interpretation of signal-derived evidence, not interception procedure.
+    source_use_contract: Use source-guide citations for discipline concepts and directive/legal anchors for authority, minimization, retention, and dissemination claims.
+    practice_artifact: signal-evidence minimization card
+    safety_boundary: No interception, decryption, surveillance target selection, or collection-expansion guidance.
+    learning_spine: Learners separate signal availability, collection authority, analytic inference, and dissemination controls.
+    evidence_artifacts:
+      - authority boundary note
+      - minimization field
+      - signal-quality caveat
+      - dissemination restriction
+    anchor_numbers: [297, 298]
+  4:
+    unit_key: osint
+    concept: open-source intelligence governance
+    discipline_spine: OSINT work turns public availability into evaluated intelligence only after provenance, terms, reliability, minimization, and reproducibility are reviewed.
+    source_use_contract: Use IC OSINT strategy and tool-governance anchors for public-source quality, transparency, and ethics claims.
+    practice_artifact: OSINT provenance and minimization matrix
+    safety_boundary: No exposed-service lookup, credentialed access, identity exposure, doxxing, or live collection expansion.
+    learning_spine: Learners document source origin, recency, independence, transformation history, and what cannot be inferred.
+    evidence_artifacts:
+      - provenance chain
+      - terms-of-use note
+      - corroboration matrix
+      - minimization decision
+    anchor_numbers: [301, 298]
+  5:
+    unit_key: cyber_technical
+    concept: defensive cyber intelligence normalization
+    discipline_spine: Technical intelligence lessons normalize incidents, indicators, TTPs, supply-chain evidence, and sharing rules for defense and assurance.
+    source_use_contract: Use MITRE, NIST, CISA, STIX, and TAXII anchors for defensive taxonomy, secure development, sharing, and incident learning.
+    practice_artifact: defensive CTI evidence packet
+    safety_boundary: No exploit, persistence, evasion, scanning, or production response instructions.
+    learning_spine: Learners classify evidence defensively, state confidence, map controls, and preserve sharing restrictions.
+    evidence_artifacts:
+      - indicator context
+      - TTP mapping
+      - handling rule
+      - remediation owner
+    anchor_numbers: [300, 303, 304, 309, 310]
+  6:
+    unit_key: geoint_finint
+    concept: geospatial and financial intelligence uncertainty
+    discipline_spine: GEOINT and FININT lessons teach spatial, temporal, and entity-risk reasoning while preserving uncertainty and compliance boundaries.
+    source_use_contract: Use NGA definition and official compliance or due-diligence anchors for location quality, source limits, sanctions, ownership, and escalation claims.
+    practice_artifact: location-and-entity evidence ledger
+    safety_boundary: No facility targeting, pattern-of-life inference, evasion advice, or attribution certainty beyond evidence.
+    learning_spine: Learners assess geospatial fitness, entity uncertainty, red flags, and the evidence needed before escalation.
+    evidence_artifacts:
+      - geospatial quality note
+      - temporal caveat
+      - ownership uncertainty field
+      - escalation threshold
+    anchor_numbers: [302, 297]
+  7:
+    unit_key: influence
+    concept: information-integrity and influence analysis
+    discipline_spine: Influence lessons analyze narratives, provenance, audience harm, attribution caution, and transparent resilience education without persuasion design.
+    source_use_contract: Use CISA and NATO anchors for foreign influence, information threats, public resilience, and transparent mitigation claims.
+    practice_artifact: narrative-risk and resilience map
+    safety_boundary: No covert persuasion, microtargeting, manipulation, or campaign design.
+    learning_spine: Learners separate message observation from attribution, identify harm, and choose transparent education or correction options.
+    evidence_artifacts:
+      - narrative provenance chain
+      - audience-harm note
+      - attribution caveat
+      - transparent response option
+    anchor_numbers: [308, 311]
+  8:
+    unit_key: counterintelligence
+    concept: source-integrity defense
+    discipline_spine: CI lessons teach deception awareness, source integrity, insider-risk signals, corroboration, and protected escalation as defensive governance.
+    source_use_contract: Use guide citations and analytic-standards anchors to ground claims about deception, corroboration, uncertainty, and review.
+    practice_artifact: source-integrity challenge memo
+    safety_boundary: No surveillance, cover construction, handling, elicitation, or operational security playbooks.
+    learning_spine: Learners list competing explanations for compromise signals and preserve uncertainty until evidence justifies escalation.
+    evidence_artifacts:
+      - anomaly hypothesis table
+      - corroboration note
+      - protected-disclosure path
+      - uncertainty statement
+    anchor_numbers: [297, 298]
+  9:
+    unit_key: gray_zone
+    concept: hybrid-threat governance
+    discipline_spine: Gray-zone lessons analyze ambiguous coercion, proxy relationships, resilience choices, and policy thresholds without operationalizing response.
+    source_use_contract: Use official and alliance anchors for threshold language, information threats, and resilience governance.
+    practice_artifact: ambiguous-threshold indicator matrix
+    safety_boundary: No live targeting, covert action, retaliation planning, or attribution certainty beyond evidence.
+    learning_spine: Learners distinguish observable indicators from sponsorship claims and state the review needed before action.
+    evidence_artifacts:
+      - threshold indicator
+      - attribution caveat
+      - proxy-pattern note
+      - policy review field
+    anchor_numbers: [308, 311]
+  10:
+    unit_key: historical_services
+    concept: declassified-source interpretation
+    discipline_spine: Historical intelligence lessons use archives, redaction caveats, institutional context, and reform lessons without reconstructing live tradecraft.
+    source_use_contract: Use source-guide citations and official historical-source anchors for release context, provenance, and oversight lessons.
+    practice_artifact: declassified case-to-principle card
+    safety_boundary: No current sources-and-methods reconstruction, operational emulation, or tactical transfer.
+    learning_spine: Learners mark what the record proves, what redaction leaves unknown, and what institutional lesson survives context shift.
+    evidence_artifacts:
+      - release metadata
+      - redaction caveat
+      - timeline note
+      - institutional lesson
+    anchor_numbers: [297, 298]
+  11:
+    unit_key: ageint
+    concept: governed agentic intelligence
+    discipline_spine: AGEINT lessons treat agents as bounded delegated systems whose identity, tools, memory, logs, stop conditions, and review gates define safe use.
+    source_use_contract: Use MCP, AI assurance, secure-development, and public-sector agentic AI anchors for tool boundaries, interoperability, and governance claims.
+    practice_artifact: agent run and assurance card
+    safety_boundary: No autonomous external action, credentialed operations, live-target workflows, or uncontrolled tool use.
+    learning_spine: Learners design least-privilege agent roles, verify tool calls, record blocked actions, and define recovery.
+    evidence_artifacts:
+      - tool-allowlist record
+      - agent memory boundary
+      - blocked-action log
+      - recovery decision
+    anchor_numbers: [299, 306, 312]
+  12:
+    unit_key: cognitive_security
+    concept: cognitive resilience and epistemic integrity
+    discipline_spine: Cognitive-security lessons protect attention, trust, memory, and judgment by tracing provenance, correction paths, and transparent education.
+    source_use_contract: Use CISA, NATO, and analytic-tradecraft anchors for influence mitigation, information-threat analysis, and confidence discipline.
+    practice_artifact: epistemic-integrity review packet
+    safety_boundary: No manipulation, covert persuasion, medicalized claims, or population-level targeting.
+    learning_spine: Learners separate narrative spread from intent, document uncertainty, and choose transparent resilience moves.
+    evidence_artifacts:
+      - provenance chain
+      - correction option
+      - harm note
+      - confidence language
+    anchor_numbers: [308, 311, 297]
+  13:
+    unit_key: analytic_tradecraft
+    concept: structured analytic judgment
+    discipline_spine: Analytic tradecraft lessons keep evidence, assumptions, alternatives, confidence, dissent, and reviewer challenge visible.
+    source_use_contract: Use ODNI ICD 203 and guide citations for analytic standards, structured techniques, confidence, and uncertainty claims.
+    practice_artifact: competing-hypotheses evidence table
+    safety_boundary: No overclaiming, unsupported attribution, or bypass of reviewer challenge.
+    learning_spine: Learners test alternatives, expose assumptions, calibrate confidence, and record dissent before judgment.
+    evidence_artifacts:
+      - hypothesis table
+      - assumption register
+      - dissent field
+      - confidence statement
+    anchor_numbers: [297, 298]
+  14:
+    unit_key: productivity
+    concept: analyst cognitive performance
+    discipline_spine: Productivity lessons frame workload, attention, external memory, handoffs, and review rhythm as quality controls for intelligence work.
+    source_use_contract: Use source-guide and governance anchors for records, review, accessibility, and accountable workflow claims.
+    practice_artifact: workload and decision-hygiene card
+    safety_boundary: No productivity optimization may override safety, review, accessibility, rest, or records duties.
+    learning_spine: Learners identify overload, protect focus, preserve handoffs, and define re-entry context after interruption.
+    evidence_artifacts:
+      - workload signal
+      - focus-block plan
+      - handoff memo
+      - review checkpoint
+    anchor_numbers: [297, 298]
+  15:
+    unit_key: industrial_cyber_physical
+    concept: safety-aware ICS and OT intelligence
+    discipline_spine: ICS/OT lessons connect cyber observations to engineering state, consequence, operator decision, recovery evidence, and safety governance.
+    source_use_contract: Use CISA ICS, NIST secure-development, DevSecOps, and MITRE anchors for defensive coverage and controlled release claims.
+    practice_artifact: cyber-physical tabletop evidence packet
+    safety_boundary: No live device control, unsafe process change, exploit sequence, evasion, or operational response.
+    learning_spine: Learners map assets to consequence, classify observations defensively, and preserve recovery evidence.
+    evidence_artifacts:
+      - asset-consequence map
+      - operator decision log
+      - recovery evidence
+      - safety stop card
+    anchor_numbers: [307, 305, 304, 300]
+  16:
+    unit_key: legal_ethics
+    concept: authority, rights, oversight, and auditability
+    discipline_spine: Legal and ethics lessons make authority, proportionality, privacy, transparency, redress, audit trails, and public accountability design constraints.
+    source_use_contract: Use directive, public-sector AI, and agentic AI anchors for authority mapping, transparency, records, and rights-impact claims.
+    practice_artifact: authority-and-impact review register
+    safety_boundary: Capability never substitutes for legal authority, accountable review, affected-person safeguards, or auditability.
+    learning_spine: Learners map authority, affected groups, oversight owner, audit evidence, and redress path before release.
+    evidence_artifacts:
+      - authority map
+      - rights-impact note
+      - audit log
+      - redress or escalation path
+    anchor_numbers: [297, 306, 312]

@@ -1,0 +1,400 @@
+concept_keyword_routes_b:
+- keywords:
+  - information architecture
+  - knowledge management
+  frame: Design information flows so requirements, sources, judgments, and records remain discoverable and auditable.
+- keywords:
+  - cognitive load
+  - decision fatigue
+  - operator
+  frame: Manage analyst workload through prioritization, checklists, rest boundaries, and explicit handoff—not heroics.
+- keywords:
+  - scada
+  - dcs
+  - plc
+  - operational technology
+  - industrial control
+  frame: Map industrial assets, safety interlocks, operator roles, and consequence before any cyber-physical inference.
+- keywords:
+  - purdue model
+  - isa-95
+  frame: Use the Purdue model to separate IT and OT zones, monitoring points, and safety-critical controls in tabletop review.
+- keywords:
+  - isac
+  - information sharing
+  - critical infrastructure
+  frame: Evaluate ISAC sharing by handling rules, anonymization, confidence, and consumer responsibilities.
+- keywords:
+  - executive order
+  - fisa
+  - 'icd '
+  - e.o.
+  frame: Map the legal source to authority, oversight, retention, and redress fields before any workflow is allowed.
+- keywords:
+  - proportionality
+  - privacy
+  - civil liberties
+  - pcplob
+  frame: Test whether a method is no more intrusive than the authorized need justifies and whether affected groups have redress.
+- keywords:
+  - human rights
+  - hria
+  - dpia
+  frame: Connect rights-impact review to affected groups, mitigation, documentation, and accountable oversight.
+- keywords:
+  - ai governance
+  - ai ethics
+  - icd 505
+  frame: Bind AI use to purpose, evaluation, human review, rights impact, and retention before deployment in analysis.
+- keywords:
+  - ukusa
+  - five eyes
+  frame: Use the sharing arrangement to distinguish alliance governance, handling rules, legal authority, and source caveats.
+- keywords:
+  - tu delft
+  - thesis
+  - dissertation
+  frame: 'Read the thesis as a scholarly application source: identify its question, method, assumptions, and limits before
+    borrowing any intelligence lesson.'
+- keywords:
+  - perception
+  - memory
+  - reasoning
+  - brain
+  frame: 'Connect cognitive science claims to analytic bias literacy: what the brain prioritizes, what it misses, and how
+    review compensates.'
+- keywords:
+  - agent
+  - multi-agent
+  - llm agent
+  frame: Treat agents as software actors with explicit permissions, logs, stop conditions, and human approval—not autonomous
+    decision makers.
+- keywords:
+  - rag
+  - retrieval
+  - vector
+  frame: Evaluate retrieval pipelines by source provenance, injection risk, citation fidelity, and reviewer verification of
+    answers.
+- keywords:
+  - workflow
+  - orchestration
+  - pipeline
+  frame: Document workflow stages with inputs, transforms, reviewers, and blocked actions at each handoff.
+- keywords:
+  - getting things done
+  - gtd
+  frame: 'Use GTD as a decision-hygiene framework: capture, clarify, organize, review, and engage—with explicit authority
+    for what enters analysis.'
+- keywords:
+  - zettelkasten
+  frame: Treat linked notes as provenance-aware evidence cards, not a substitute for source validation or dissemination marking.
+- keywords:
+  - obsidian
+  - roam research
+  - logseq
+  - pkm
+  - personal knowledge
+  frame: Evaluate PKM tools by provenance, access control, exportability, and review gates—not by collection volume.
+- keywords:
+  - information diet
+  - source hygiene
+  - distraction architecture
+  frame: Design intake boundaries so requirements, sources, and judgments stay separate from noise and unverified feeds.
+- keywords:
+  - stuxnet
+  - olympic games
+  frame: Study the incident as a tabletop lesson in safety consequence, attribution caution, and defensive coverage—not as
+    attack replication.
+- keywords:
+  - blackenergy
+  - ukraine power
+  frame: Read the outage case through engineering state, operator decisions, and recovery evidence in a synthetic tabletop.
+- keywords:
+  - triton
+  - trisis
+  - safety instrumented
+  frame: Focus on safety-system integrity, operator escalation, and consequence mapping—not live process manipulation.
+- keywords:
+  - crashoverride
+  - industroyer
+  frame: Map protocol-aware disruption to defensive detection questions and recovery evidence in synthetic records.
+- keywords:
+  - havex
+  - irongate
+  frame: Use supply-chain and HMI-trust motifs to review provenance, segmentation, and tabletop detection gaps.
+- keywords:
+  - nerc cip
+  - nerc
+  frame: Connect NERC CIP requirements to asset inventory, access control, and audit evidence—not operational bypass.
+- keywords:
+  - executive order 12333
+  - eo 12333
+  frame: Map EO 12333 authorities to collection limits, oversight, retention, and accountable review before any workflow proceeds.
+- keywords:
+  - whistleblow
+  - leaking
+  - epistemic duty
+  frame: Separate lawful disclosure channels, source protection, and oversight from unauthorized release or targeting narratives.
+- keywords:
+  - gdpr
+  - ripa
+  - investigatory powers
+  frame: Compare allied legal frameworks by authority scope, retention, redress, and proportionality—not by capability alone.
+- keywords:
+  - proxy
+  - proxy war
+  - proxy indicator
+  frame: Treat proxy indicators as attribution-cautious evidence of indirect sponsorship, not proof of operational control.
+- keywords:
+  - information warfare
+  - info warfare
+  frame: Analyze information warfare through narrative provenance, audience harm, and transparent resilience—not influence
+    operations design.
+- keywords:
+  - flow state
+  - flow experience
+  - csikszentmihalyi
+  - peak performance
+  frame: 'Treat flow claims as operator-performance literacy: define task clarity, feedback, and review boundaries—not unsustainable
+    pace.'
+- keywords:
+  - nasa-tlx
+  - nasa tlx
+  - task load index
+  frame: Use workload indexes as review triggers for prioritization, handoff, and rest—not as heroics metrics.
+- keywords:
+  - biometric
+  - physiological monitoring
+  frame: Evaluate biometric monitoring by consent, minimization, purpose limits, and human review of alerts.
+- keywords:
+  - circadian
+  - chronotype
+  - sleep debt
+  frame: Connect circadian timing to scheduling, rest boundaries, and error-risk review—not operational timing advice.
+- keywords:
+  - red cell
+  - adversarial wargam
+  frame: Use red-cell review to surface disconfirming evidence and assumptions before dissemination.
+- keywords:
+  - network analysis
+  - link chart
+  - social network analysis
+  frame: Build link charts from sample entities with provenance, confidence, and explicit gaps—not live targeting.
+- keywords:
+  - timeline analysis
+  - event sequencing
+  frame: Sequence events with source timestamps, uncertainty bands, and alternative orderings before inferring causality.
+- keywords:
+  - collection management
+  - requirements gap
+  - tasking
+  frame: Map requirements to collection gaps, priorities, and reviewer sign-off.
+- keywords:
+  - writing intelligence
+  - intelligence products
+  - estimates
+  - warning
+  frame: Draft intelligence products with analytic line, caveats, audience, and dissemination marks.
+- keywords:
+  - communicating uncertainty
+  - analytic line
+  - raw reporting
+  frame: Separate raw reporting from assessed analytic line with explicit confidence and dissent.
+- keywords:
+  - machine-assisted
+  - when to automate
+  frame: Decide automation boundaries with logging, evaluation, and mandatory human review gates.
+- keywords:
+  - counterintelligence
+  - double-agent
+  - triple-cross
+  - polygraph
+  - damage assessment
+  frame: Frame CI topics as source-vetting, anomaly review, and institutional protection—not operational entrapment.
+- keywords:
+  - 'oss '
+  - office of strategic services
+  - simple sabotage
+  - morale operations
+  frame: Study OSS declassified manuals for oversight, ethics, and limits on translating history into practice.
+- keywords:
+  - alternative futures
+  - brainstorming
+  - divergent thinking
+  frame: Use structured ideation to widen alternatives before converging on evidence-tested judgments.
+- keywords:
+  - imint
+  - imagery intelligence
+  frame: Audit imagery products for resolution, temporal fit, and uncertainty before geospatial claims.
+- keywords:
+  - epistemic security
+  - epistemic governance
+  - malign influence
+  frame: Protect knowledge production with provenance, dissent channels, and transparent correction—not narrative control.
+- keywords:
+  - formal methods
+  - cognitive guarantees
+  frame: Evaluate formal guarantees as design claims requiring assumptions, limits, and independent review.
+- keywords:
+  - langchain
+  - langgraph
+  - langsmith
+  - crewai
+  - autogen
+  - semantic kernel
+  frame: Evaluate agent frameworks by logging, tool allowlists, human approval, and blocked external actions—not production
+    deployment recipes.
+- keywords:
+  - lcel
+  - expression language
+  frame: Treat orchestration languages as auditable workflow specs with reviewer gates at each transform.
+domain_concept_routes:
+- keywords:
+  - opsec
+  - operations security
+  frame: Apply the five-step OPSEC process—identify critical information, analyze threats, analyze vulnerabilities, assess
+    risk, apply countermeasures—in tabletop governance review only.
+- keywords:
+  - compartmentation
+  - need-to-know
+  frame: Map compartment boundaries, access lists, and need-to-know fields before any information moves across teams.
+- keywords:
+  - cover and legend
+  - cover identity
+  - legend management
+  frame: Review cover-and-legend governance as oversight, documentation, and source-protection literacy—not identity fabrication.
+- keywords:
+  - mitre att&ck for ics
+  - att&ck for ics
+  frame: Use ATT&CK for ICS as defensive vocabulary for sequencing observations over synthetic process records—not adversary
+    execution.
+- keywords:
+  - safety instrumented system
+  - 'sis '
+  - sis integrity
+  frame: Focus on safety-system integrity, operator escalation, and consequence mapping in tabletop review.
+- keywords:
+  - fincen
+  - financial crimes enforcement
+  frame: Read FinCEN advisories as typology-driven due-diligence signals with escalation thresholds—not proof of guilt.
+- keywords:
+  - fatf
+  - financial action task force
+  frame: Use FATF typologies to structure review of transactional patterns and beneficial-ownership gaps.
+- keywords:
+  - nist ai rmf
+  - ai risk management framework
+  frame: Bind AI use to NIST AI RMF functions—govern, map, measure, manage—with human review before analysis deployment.
+- keywords:
+  - nist ai 600
+  - generative ai profile
+  frame: Apply NIST AI 600-1 generative-AI profile controls to logging, evaluation, and human review gates.
+- keywords:
+  - oecd
+  - agentic ai
+  frame: 'Evaluate agentic-AI governance claims against OECD principles: transparency, accountability, and human oversight.'
+- keywords:
+  - gcsp
+  - geneva centre for security policy
+  frame: Use GCSP cognitive-security framing for provenance, audience harm, and transparent correction options.
+- keywords:
+  - darpa ics
+  - darpa cognitive security
+  frame: Read DARPA cognitive-security research as design claims requiring assumptions, limits, and independent review.
+- keywords:
+  - key assumptions check
+  - 'kac '
+  frame: List key assumptions explicitly and test which ones would change the judgment if falsified.
+- keywords:
+  - devil's advocacy
+  - devils advocacy
+  frame: Use structured devil's advocacy to surface disconfirming evidence and overconfidence before dissemination.
+- keywords:
+  - cognitive security operations
+  - cogsec operations
+  frame: Map cognitive-security operations to monitoring, provenance review, and transparent correction—not influence design.
+- keywords:
+  - pattern 1
+  - pattern 2
+  - pattern 3
+  - reflection pattern
+  - tool-use pattern
+  frame: Use the pattern name as safe architectural vocabulary for allowlisted, logged, revocable workflows.
+category_concept_frames:
+- category: agentic_cyber_misuse
+  frame: 'Treat the topic as a misuse-case control problem: identify the agent permission, prompt path, tool boundary, and
+    blocked outcome.'
+- category: historical_humint_source_protection
+  frame: Study the declassified record for institutional lessons about source protection, oversight, and the danger of translating
+    historical methods into current practice.
+- category: ics_evasion_coverage
+  frame: 'Use the tactic family as a defensive coverage question: which monitoring, logging, and operator-review controls
+    would reveal evasion in a tabletop scenario?'
+- category: ics_collection_detection
+  frame: Use the tactic family as a detection-design question over synthetic process tags, not as guidance for observing or
+    changing a real process.
+- category: software_supply_chain_social_trust
+  frame: Analyze how trust, maintainer contact, and package provenance become supply-chain assurance evidence without contacting
+    or profiling real maintainers.
+- category: osint_tool_governance
+  frame: Evaluate the tool class by provenance, legality, rate limits, identity exposure, and reproducibility before any public-source
+    claim is reused.
+- category: humint_recruitment_risk
+  frame: 'Read the concept as recruitment-risk literacy: identify pressure, consent, source-protection duties, and the line
+    that blocks contact activity.'
+- category: humint_handling_history
+  frame: Use the historical motif to discuss source-protection ethics, documentation, and oversight without recreating handling
+    procedures.
+- category: sigint_authority
+  frame: Connect the technical term to authority, minimization, communications-security risk, and public doctrine rather than
+    interception mechanics.
+- category: cyber_taxonomy
+  frame: Use the taxonomy label to organize fabricated defensive observations, confidence, and control implications without
+    describing adversary execution.
+- category: ics_safety
+  frame: Translate the technique family into safety, availability, operator decision, and recovery-evidence questions for
+    a tabletop.
+- category: cognitive_resilience
+  frame: 'Focus on transparent resilience education: provenance, audience harm, attribution caution, and non-manipulative
+    response options.'
+- category: gray_zone_governance
+  frame: Identify ambiguous-threshold activity through indicators, attribution caution, and policy review—not through prescribed
+    response actions.
+- category: non_state_actor_governance
+  frame: Study organizational and funding indicators with open-source evidence, minimization, and explicit uncertainty.
+- category: financial_due_diligence
+  frame: Structure financial-pattern review as typology-driven due diligence with escalation thresholds, not proof of wrongdoing.
+- category: counterintelligence_vetting
+  frame: Connect vetting and insider-threat review to access control, anomaly signals, and accountable escalation.
+- category: operator_decision_hygiene
+  frame: Manage workload and bias through prioritization, explicit handoffs, and review checkpoints—not unsustainable pace.
+- category: geoint_data_quality
+  frame: Audit imagery and map products for resolution, accuracy, temporal fitness, and uncertainty before any geospatial
+    claim.
+- category: geoint_uncertainty
+  frame: Treat geolocation and attribution claims as uncertainty problems with synthetic records and explicit caveats.
+- category: agentic_tool_isolation
+  frame: Review sandbox policy, tool isolation, and deny-by-default rules using toy fixtures only.
+- category: ageint_pattern_registry
+  frame: 'Use the pattern name as safe architectural vocabulary: allowlisted tools, logging, human approval, and blocked external
+    action.'
+- category: analytic_tradecraft
+  frame: Apply structured analytic methods with explicit alternatives, evidence tables, and calibrated confidence—not rhetorical
+    certainty.
+- category: analytic_tradecraft_sats
+  frame: Use structured analytic techniques to keep alternatives, disconfirming evidence, and confidence visible before convergence.
+- category: analytic_tradecraft_standards
+  frame: Apply ICD 203 tradecraft standards to sourcing, uncertainty, alternatives, and argumentation—not rhetorical certainty.
+- category: analytic_tradecraft_bias
+  frame: Connect cognitive bias literacy to review checkpoints, dissent channels, and explicit uncertainty language.
+- category: operational_tradecraft_governance
+  frame: 'Treat operational tradecraft as governance: OPSEC, compartmentation, cover discipline, and oversight—not contact
+    or evasion activity.'
+- category: cognitive_resilience_epistemic
+  frame: Protect knowledge production with provenance, dissent channels, and transparent correction—not narrative control.
+- category: cognitive_resilience_inoculation
+  frame: Build audience resilience with transparent labels, source checks, and non-manipulative corrections.
+- category: cognitive_resilience_neuro
+  frame: Connect neurocognitive claims to analytic bias literacy and review compensation—not operational timing advice.
+- category: critical_infrastructure_sharing
+  frame: Evaluate ISAC and sector sharing by handling rules, anonymization, confidence, and consumer responsibilities.

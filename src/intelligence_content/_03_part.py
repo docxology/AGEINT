@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part", "_02_part")
-
 
 
 ANCHORS_BY_KEY: Final[dict[str, ResearchAnchor]] = {
@@ -243,7 +233,7 @@ SAFE_PATTERN_PROFILES: Final[dict[int, SafePatternProfile]] = {
         key="cover_story_generator",
         safe_name="Identity-and-Provenance Fiction Audit",
         methods="synthetic persona-risk critique, provenance labeling, and consistency-error detection",
-        application="ethics exercise that detects fabricated identity artifacts in clearly fictional materials",
+        application="ethics exercise that detects fabricated identity artifacts in clearly synthetic materials",
         safety_boundary="prohibits impersonation, false identity creation, and operational-security support",
     ),
     14: SafePatternProfile(
@@ -289,7 +279,7 @@ SAFE_PATTERN_PROFILES: Final[dict[int, SafePatternProfile]] = {
         key="cognitive_inoculant",
         safe_name="Cognitive-Resilience Education Agent",
         methods="manipulation-technique labeling, transparent prebunking, and audience-harm review",
-        application="opt-in media-literacy micro-lesson for a fictional classroom scenario",
+        application="opt-in media-literacy micro-lesson for a sample classroom scenario",
         safety_boundary="does not design persuasion campaigns, microtargeting, or covert influence content",
     ),
     20: SafePatternProfile(

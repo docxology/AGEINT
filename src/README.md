@@ -58,4 +58,4 @@ navigation logic there when the change depends on parsed curriculum data.
 lock in `data/source_identity/` preserves `ageint001` through
 `ageint231`; append new guide references after that range instead of
 renumbering existing entries. Current append-only references extend through
-`ageint296`.
+`ageint312`.

@@ -44,7 +44,7 @@ flowchart LR
 - Generated manuscript: `output/manuscript/`.
 - Generated figures and registry: `output/figures/figure_registry.json`.
 - Bibliography surfaces: `manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
-- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 57 registered figures, 172 research anchors, 296 parsed guide references.
+- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 57 registered figures, 172 research anchors, 312 parsed guide references.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
 
 ## Editing rules
@@ -65,8 +65,12 @@ flowchart LR
 - Use label-backed section and figure prose references such as
   `[@sec:curriculum_orientation]` and `[@fig:ageint-curriculum-map]`
   rather than literal target names when pointing readers elsewhere.
+- Topic-lesson fragments include a generated **Cross-links** row (unit module
+  map figure, module overview section, curriculum atlas) via
+  `markdown_refs.lesson_educational_crossrefs()`.
 - Keep all dual-use material defensive, educational, authorized, synthetic, and non-operational: no live targets, evasion recipes, exploit instructions, manipulation playbooks, covert-action procedures, or unsafe cyber-physical actions.
 - Treat Perplexity as discovery or second opinion only. Final citations must point to directly verified official, standards, public-domain, or scholarly sources encoded in `src/intelligence_content/` or parsed from the guide.
+- Use `docs/citation_workflow.md` as the canonical workflow for choosing citation surfaces, preserving keys, rebuilding, counting, and validating citation coverage.
 - Deep-pass source lanes include accessibility/digital inclusion, procurement/vendor governance, agent incident response, AI red-team assurance, public-sector transparency, rights-impact privacy review, model card reporting, dataset documentation, algorithmic transparency reporting, records retention/auditability, secure release/change control, risk exception governance, learner support/accommodations, assurance evaluation evidence, and procurement performance monitoring.
 - Generated and inserted figures should remain roughly square; the renderer normalizes PNG assets and tests enforce readable aspect-ratio bounds.
 - Advisory overlays: `domain_profile.yaml` replaces the numerical `experiment_plan.yaml` pattern used by code-centric exemplars.

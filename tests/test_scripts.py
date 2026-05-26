@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
 
+from citation_workflow import source_citation_coverage_summary
+from curriculum import load_curriculum
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA = PROJECT_ROOT / "data" / "curriculum"
 
 
 def test_setup_hook_writes_output_docs() -> None:
@@ -61,3 +66,69 @@ def test_check_rendered_references_script_passes(built_output: Path) -> None:
     )
     assert result.returncode == 0, result.stderr
     assert "Rendered reference audit passed" in result.stdout
+
+
+def test_count_citations_script_reports_source_counts() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "scripts" / "count_citations.py"),
+            "--format",
+            "json",
+        ],
+        cwd=PROJECT_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(result.stdout)
+    summary = source_citation_coverage_summary(load_curriculum(DATA))
+    assert payload["source_sections"] == summary.section_count
+    assert payload["source_citation_occurrences"] == summary.citation_occurrences
+    assert payload["source_zero_citation_sections"] == summary.zero_citation_sections
+
+
+def test_audit_pdf_quality_script_reports_json_contract() -> None:
+    pdf = PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "scripts" / "audit_pdf_quality.py"),
+            "--pdf",
+            str(pdf),
+            "--format",
+            "json",
+        ],
+        cwd=PROJECT_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=180,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["flagged_pages"] == []
+    assert payload["stale_pdf"] is False
+
+
+def test_audit_heading_support_script_reports_json_contract() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"),
+            "--format",
+            "json",
+        ],
+        cwd=PROJECT_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["heading_count"] > 0
+    assert payload["unsupported_heading_count"] == 0
+    assert payload["unsupported_headings"] == []

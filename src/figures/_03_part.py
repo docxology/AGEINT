@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part", "_02_part")
-
 
 
 def _render_source_quality_spine(output: Path, spec: FigureSpec) -> None:

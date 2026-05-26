@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from _inventory_helpers import (
+from manuscript_quality.inventory_helpers import (
     REMOVED_GENERIC_CONCEPT_PHRASES,
     chapter_text,
     generated_chapter_files,
@@ -38,11 +38,9 @@ TITLE_KEYWORD_STOPWORDS = {
     "lesson",
 }
 
-COLLAPSED_COGSEC_BASE = (
-    "Cognitive-security resilience lesson using fictional materials and transparent labels"
-)
+COLLAPSED_COGSEC_BASE = "Cognitive-security resilience lesson using sample materials and transparent labels"
 GOVERNANCE_BOUNDED_GENERIC = (
-    "Governance-bounded intelligence topic review using instructor-provided fictional records"
+    "Governance-bounded intelligence topic review using instructor-provided sample records"
 )
 TEAMS_CONFUSE_MARKER = "teams confuse source material"
 

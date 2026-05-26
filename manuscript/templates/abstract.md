@@ -1,3 +1,19 @@
+---
+figPrefix:
+  - Figure
+  - Figures
+secPrefix:
+  - Section
+  - Sections
+eqnPrefix:
+  - Equation
+  - Equations
+tblPrefix:
+  - Table
+  - Tables
+nameInLink: true
+---
+
 # Abstract {#sec:abstract}
 
 AGEINT, or Agentic Intelligence, names the application of autonomous and

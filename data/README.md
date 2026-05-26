@@ -1,21 +1,14 @@
 # AGEINT Data
 
-This folder holds the committed curriculum spine for AGEINT.
+Declarative inputs consumed by `src/` loaders and the curriculum build.
 
-- Owner: AGEINT parser and build pipeline.
-- Primary spine: `data/curriculum/` sharded JSON (parts, chapters, appendices, patterns, references).
-- Optional archive input: `SIST-Guide-TOC-and-Bibliography-v2.md` when present locally.
-- Refresh: `uv run python scripts/build_curriculum.py` from the AGEINT root.
-- Safety: data supports educational, authorized, synthetic, defensive, and non-operational workflows only.
+| Path | Role |
+| --- | --- |
+| `curriculum/` | Sharded curriculum parts, chapters, sections, references |
+| `concept_routes.yaml` | Primary keyword concept routes |
+| `concept_routes_supplement.yaml` | Supplemental keyword, domain, and category concept routes |
+| `manuscript_architecture.yaml` | Chapter profile architecture tables (inputs/transforms/outputs/failures) |
+| `research_anchors/` | Curated official and scholarly anchor metadata |
+| `source_identity/` | Locked source-guide identity records |
 
-`data/curriculum/` is the runtime source of truth for parts, chapters, appendices,
-patterns, and parsed `ageintNNN` references. Each chapter shard may also declare
-`content_profile` and `practice_lens` identifiers used by the manuscript renderer.
-The build also writes a compact mirror at `output/data/curriculum_outline.json`.
-
-`data/source_identity/` preserves the original `ageint001` through `ageint231`
-source identities. New source-guide references are append-only after that locked
-range and currently extend through `ageint296`.
-
-`data/research_anchors/` stores JSONL shards for intelligence research anchors
-loaded at runtime by `src/intelligence_content/`.
+Edit these surfaces, then rebuild with `uv run python scripts/build_curriculum.py`.

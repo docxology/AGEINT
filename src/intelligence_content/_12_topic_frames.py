@@ -11,138 +11,15 @@ if TYPE_CHECKING:
     from ._04b_part import IntelligenceProfile
 
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
+try:
+    from .topic_lessons import template_index
+except ImportError:  # pragma: no cover - merged namespace
+    from intelligence_content.topic_lessons import template_index  # type: ignore[no-redef]
 
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
+from _data_loaders import category_concept_frames
 
+CATEGORY_CONCEPT_FRAMES: dict[str, str] = category_concept_frames()
 
-_import_prior_parts("_01_part", "_04b_part", "_07_safe_titles", "_09_part")
-
-CATEGORY_CONCEPT_FRAMES: dict[str, str] = {
-    "agentic_cyber_misuse": (
-        "Treat the topic as a misuse-case control problem: identify the agent permission, "
-        "prompt path, tool boundary, and blocked outcome."
-    ),
-    "historical_humint_source_protection": (
-        "Study the declassified record for institutional lessons about source protection, "
-        "oversight, and the danger of translating historical methods into current practice."
-    ),
-    "ics_evasion_coverage": (
-        "Use the tactic family as a defensive coverage question: which monitoring, logging, "
-        "and operator-review controls would reveal evasion in a tabletop scenario?"
-    ),
-    "ics_collection_detection": (
-        "Use the tactic family as a detection-design question over synthetic process tags, "
-        "not as guidance for observing or changing a real process."
-    ),
-    "software_supply_chain_social_trust": (
-        "Analyze how trust, maintainer contact, and package provenance become supply-chain "
-        "assurance evidence without contacting or profiling real maintainers."
-    ),
-    "osint_tool_governance": (
-        "Evaluate the tool class by provenance, legality, rate limits, identity exposure, "
-        "and reproducibility before any public-source claim is reused."
-    ),
-    "humint_recruitment_risk": (
-        "Read the concept as recruitment-risk literacy: identify pressure, consent, "
-        "source-protection duties, and the line that blocks contact activity."
-    ),
-    "humint_handling_history": (
-        "Use the historical motif to discuss source-protection ethics, documentation, "
-        "and oversight without recreating handling procedures."
-    ),
-    "sigint_authority": (
-        "Connect the technical term to authority, minimization, communications-security "
-        "risk, and public doctrine rather than interception mechanics."
-    ),
-    "cyber_taxonomy": (
-        "Use the taxonomy label to organize fabricated defensive observations, confidence, "
-        "and control implications without describing adversary execution."
-    ),
-    "ics_safety": (
-        "Translate the technique family into safety, availability, operator decision, "
-        "and recovery-evidence questions for a tabletop."
-    ),
-    "cognitive_resilience": (
-        "Focus on transparent resilience education: provenance, audience harm, attribution "
-        "caution, and non-manipulative response options."
-    ),
-    "gray_zone_governance": (
-        "Identify ambiguous-threshold activity through indicators, attribution caution, "
-        "and policy review—not through prescribed response actions."
-    ),
-    "non_state_actor_governance": (
-        "Study organizational and funding indicators with open-source evidence, "
-        "minimization, and explicit uncertainty."
-    ),
-    "financial_due_diligence": (
-        "Structure financial-pattern review as typology-driven due diligence with "
-        "escalation thresholds, not proof of wrongdoing."
-    ),
-    "counterintelligence_vetting": (
-        "Connect vetting and insider-threat review to access control, anomaly signals, "
-        "and accountable escalation."
-    ),
-    "operator_decision_hygiene": (
-        "Manage workload and bias through prioritization, explicit handoffs, and "
-        "review checkpoints—not unsustainable pace."
-    ),
-    "geoint_data_quality": (
-        "Audit imagery and map products for resolution, accuracy, temporal fitness, "
-        "and uncertainty before any geospatial claim."
-    ),
-    "geoint_uncertainty": (
-        "Treat geolocation and attribution claims as uncertainty problems with "
-        "synthetic records and explicit caveats."
-    ),
-    "agentic_tool_isolation": (
-        "Review sandbox policy, tool isolation, and deny-by-default rules using "
-        "toy fixtures only."
-    ),
-    "ageint_pattern_registry": (
-        "Use the pattern name as safe architectural vocabulary: allowlisted tools, "
-        "logging, human approval, and blocked external action."
-    ),
-    "analytic_tradecraft": (
-        "Apply structured analytic methods with explicit alternatives, evidence "
-        "tables, and calibrated confidence—not rhetorical certainty."
-    ),
-    "analytic_tradecraft_sats": (
-        "Use structured analytic techniques to keep alternatives, disconfirming "
-        "evidence, and confidence visible before convergence."
-    ),
-    "analytic_tradecraft_standards": (
-        "Apply ICD 203 tradecraft standards to sourcing, uncertainty, alternatives, "
-        "and argumentation—not rhetorical certainty."
-    ),
-    "analytic_tradecraft_bias": (
-        "Connect cognitive bias literacy to review checkpoints, dissent channels, "
-        "and explicit uncertainty language."
-    ),
-    "operational_tradecraft_governance": (
-        "Treat operational tradecraft as governance: OPSEC, compartmentation, cover "
-        "discipline, and oversight—not contact or evasion activity."
-    ),
-    "cognitive_resilience_epistemic": (
-        "Protect knowledge production with provenance, dissent channels, and "
-        "transparent correction—not narrative control."
-    ),
-    "cognitive_resilience_inoculation": (
-        "Build audience resilience with transparent labels, source checks, and "
-        "non-manipulative corrections."
-    ),
-    "cognitive_resilience_neuro": (
-        "Connect neurocognitive claims to analytic bias literacy and review "
-        "compensation—not operational timing advice."
-    ),
-    "critical_infrastructure_sharing": (
-        "Evaluate ISAC and sector sharing by handling rules, anonymization, "
-        "confidence, and consumer responsibilities."
-    ),
-}
 
 
 def _topic_hook(entry: TopicEntry) -> str:
@@ -240,92 +117,92 @@ def concept_frame_for_entry(
 
 def synthesized_evidence_prompt(entry: TopicEntry, lens: PracticeLens, coursebook: CoursebookProfile) -> str:
     anchor = _topic_anchor_words(entry.display_title, limit=2)
+    focus = coursebook.practice_focus.removesuffix(" review")
     return (
-        f"Inspect fictional records that show how {anchor} appears in "
-        f"{coursebook.practice_focus} review—mark provenance, gaps, and "
-        f"what would change the judgment."
+        f"The evidence packet for **{entry.display_title}** uses source descriptors, "
+        f"{focus} records, provenance gaps, and a documented judgment-change condition for {anchor}."
     )
 
 
 EVIDENCE_CATEGORY_PROMPTS: dict[str, str] = {
     "agentic_cyber_misuse": (
-        "Inspect fictional prompts, tool-call logs, blocked-action records, and the policy that denies the unsafe request."
+        "Evidence packet: sample prompt records, tool-call logs, blocked-action records, and the policy that denies the unsafe request."
     ),
     "historical_humint_source_protection": (
-        "Inspect release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record."
+        "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record."
     ),
     "ics_evasion_coverage": (
-        "Inspect synthetic alert records, expected operator observations, control coverage, and recovery notes."
+        "Evidence packet: synthetic alert records, expected operator observations, control coverage, and recovery notes."
     ),
     "ics_collection_detection": (
-        "Inspect synthetic tag histories, approved observation points, operator annotations, and detection gaps."
+        "Evidence packet: synthetic tag histories, approved observation points, operator annotations, and detection gaps."
     ),
     "software_supply_chain_social_trust": (
-        "Inspect package provenance, maintainer-trust signals, build-integrity evidence, and uncertainty about attribution."
+        "Evidence packet: package provenance, maintainer-trust signals, build-integrity evidence, and uncertainty about attribution."
     ),
     "osint_tool_governance": (
-        "Inspect terms of use, source provenance, reproducibility notes, minimization decisions, and identity-exposure risks."
+        "Evidence packet: terms of use, source provenance, reproducibility notes, minimization decisions, and identity-exposure risks."
     ),
     "humint_recruitment_risk": (
-        "Inspect fictional source notes for pressure, consent, escalation duties, and excluded contact actions."
+        "Evidence packet: sample source notes for pressure, consent, escalation duties, and excluded contact actions."
     ),
     "cyber_taxonomy": (
-        "Inspect fabricated alerts, published taxonomy labels, confidence language, and control implications."
+        "Evidence packet: fabricated alerts, published taxonomy labels, confidence language, and control implications."
     ),
     "cognitive_resilience": (
-        "Inspect narrative provenance, audience-harm notes, attribution evidence, and transparent education options."
+        "Evidence packet: narrative provenance, audience-harm notes, attribution evidence, and transparent education options."
     ),
     "gray_zone_governance": (
-        "Inspect ambiguous-threshold indicators, attribution caveats, and policy review fields in a fictional scenario."
+        "Evidence packet: ambiguous-threshold indicators, attribution caveats, and policy review fields in a sample scenario."
     ),
     "financial_due_diligence": (
-        "Inspect transaction typology notes, source quality, escalation thresholds, and uncertainty fields."
+        "Evidence packet: transaction typology notes, source quality, escalation thresholds, and uncertainty fields."
     ),
     "analytic_tradecraft": (
-        "Inspect hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields."
+        "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields."
     ),
     "operational_tradecraft_governance": (
-        "Inspect fictional OPSEC worksheets, compartmentation registers, and "
+        "Evidence packet: sample OPSEC worksheets, compartmentation registers, and "
         "cover-review notes with explicit oversight fields."
     ),
     "cognitive_resilience_epistemic": (
-        "Inspect provenance chains, dissent channels, and correction options "
+        "Evidence packet: provenance chains, dissent channels, and correction options "
         "for epistemic-security tabletop review."
     ),
     "cognitive_resilience_inoculation": (
-        "Inspect inoculation lesson plans with transparent labels, source checks, "
+        "Evidence packet: inoculation lesson plans with transparent labels, source checks, "
         "and non-manipulative correction options."
     ),
     "critical_infrastructure_sharing": (
-        "Inspect fictional ISAC packets for handling rules, anonymization, confidence, and consumer duties."
+        "Evidence packet: sample ISAC packets for handling rules, anonymization, confidence, and consumer duties."
     ),
 }
 
 
 ARTIFACT_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     (("free energy", "predictive processing"), (
-        "Submit a prediction-error concept card linking surprise, model assumption, and reviewer checkpoint."
+        "Build a prediction-error concept card linking surprise, model assumption, and reviewer checkpoint."
     )),
     (("computational model", "active inference as computational"), (
-        "Submit a toy agent-model card with beliefs, actions, observations, and a human approval gate."
+        "Build a toy agent-model card with beliefs, actions, observations, and a human approval gate."
     )),
     (("shared protentions", "multi-agent active inference"), (
-        "Submit a shared-expectation register showing aligned expectations, dissent, and review ownership."
+        "Build a shared-expectation register showing aligned expectations, dissent, and review ownership."
     )),
     (("social organization", "intelligence communit"), (
-        "Submit an institutional feedback-loop map with incentives, review points, and oversight hooks."
+        "Build an institutional feedback-loop map with incentives, review points, and oversight hooks."
     )),
     (("verses", "multi-scale active inference"), (
-        "Submit an architecture-claim card separating research claims, implementation assumptions, and governance limits."
+        "Build an architecture-claim card separating research claims, implementation assumptions, and governance limits."
     )),
     (("cognitive security through the active inference",), (
-        "Submit a fictional narrative-risk map with provenance, audience harm, and transparent response options."
+        "Build a sample narrative-risk map with provenance, audience harm, and transparent response options."
     )),
     (("deception detection", "surprise minimization", "threat modeling"), (
-        "Submit a threat-model review card with assumptions, disconfirming evidence, and confidence language."
+        "Build a threat-model review card with assumptions, disconfirming evidence, and confidence language."
     )),
     (("tu delft", "applications of active inference and fep"), (
-        "Submit a research question, method, evidence base, and classroom boundary statement for the thesis topic."
+        "Build a research question, method, evidence base, and classroom boundary statement for the thesis topic."
     )),
 )
 
@@ -338,20 +215,20 @@ def evidence_prompt_for_entry(
     raw = entry.raw_title.lower()
     if "ach" in raw or "competing hypotheses" in raw:
         return (
-            "Inspect a hypothesis table with evidence for and against each alternative "
-            "before assigning confidence."
+            "Evidence packet: hypothesis table with evidence for and against each alternative "
+            "before confidence is assigned."
         )
     if "mice" in raw or "recruitment" in raw:
         return (
-            "Inspect fictional source notes for pressure indicators, consent language, "
+            "Evidence packet: sample source notes for pressure indicators, consent language, "
             "validation steps, and excluded contact actions."
         )
     category = EVIDENCE_CATEGORY_PROMPTS.get(entry.risk_category)
     if category:
-        if "fictional materials and transparent labels" in entry.display_title.lower():
+        if "sample materials and transparent labels" in entry.display_title.lower():
             anchor = _topic_anchor_words(entry.raw_title, limit=2)
             return (
-                f"Inspect fictional records for {anchor}: narrative provenance, "
+                f"Evidence packet for **{entry.display_title}**: narrative provenance for {anchor}, "
                 "audience-harm notes, attribution evidence, and transparent education options."
             )
         return category
@@ -365,16 +242,16 @@ def artifact_prompt_for_entry(entry: TopicEntry, lens: PracticeLens, coursebook:
         return routed
     if entry.risk_category == "agentic_cyber_misuse":
         return (
-            "Submit a blocked-request control card with tool permission, unsafe outcome, "
+            "Build a blocked-request control card with tool permission, unsafe outcome, "
             "deny rule, log evidence, and reviewer disposition."
         )
     if entry.risk_category == "software_supply_chain_social_trust":
         return (
-            "Submit a maintainer-trust evidence card with provenance, communication-risk "
+            "Build a maintainer-trust evidence card with provenance, communication-risk "
             "signal, uncertainty, and escalation boundary."
         )
     return (
-        f"Submit a completed **{lens.evidence_artifact}** for this {coursebook.practice_focus} "
+        f"Build a **{lens.evidence_artifact}** for this {coursebook.practice_focus} "
         f"topic. The artifact must name the source descriptor, bounded claim, caveat, "
         "uncertainty note, blocked-use statement, and accountable reviewer."
     )
@@ -382,8 +259,8 @@ def artifact_prompt_for_entry(entry: TopicEntry, lens: PracticeLens, coursebook:
 
 WHY_IT_MATTERS_TEMPLATES: tuple[str, ...] = (
     (
-        "Analysts use **{topic}** to {distinction}. The answer should identify the "
-        "enabled judgment, the proof limit, and the reviewer responsible for challenge."
+        "Analysts use **{topic}** to {distinction}. A defensible treatment names the "
+        "enabled judgment, proof limit, and reviewer responsible for challenge."
     ),
     (
         "**{topic}** matters in the **{profile}** lane because {practice_focus} "
@@ -417,20 +294,25 @@ def why_it_matters_for_entry(
     coursebook: CoursebookProfile,
     *,
     lesson_index: int,
+    chapter_title: str = "",
 ) -> str:
     failure_hint = RISK_WHY_FAILURE_HINTS.get(
         entry.risk_category,
         profile.failure_modes.split(",")[0].strip() if profile.failure_modes else "overconfidence",
     )
-    template_index = lesson_index % len(WHY_IT_MATTERS_TEMPLATES)
-    if entry.risk_category in RISK_WHY_FAILURE_HINTS:
-        template_index = (lesson_index + len(entry.risk_category)) % len(WHY_IT_MATTERS_TEMPLATES)
-    template = WHY_IT_MATTERS_TEMPLATES[template_index]
+    chapter_slot = template_index(
+        chapter_title,
+        entry.risk_category,
+        count=len(WHY_IT_MATTERS_TEMPLATES),
+    )
+    template_index_value = (chapter_slot + lesson_index - 1) % len(WHY_IT_MATTERS_TEMPLATES)
+    template = WHY_IT_MATTERS_TEMPLATES[template_index_value]
+    practice_focus = coursebook.practice_focus.removesuffix(" review")
     return template.format(
         topic=entry.display_title,
         distinction=coursebook.key_distinction,
         profile=profile.title,
-        practice_focus=coursebook.practice_focus,
+        practice_focus=practice_focus,
         failure_hint=failure_hint,
     )
 
@@ -446,7 +328,7 @@ def lesson_intro_paragraph(
     return (
         f"**{chapter_title}** builds {coursebook.disciplinary_frame}. "
         f"The sequence opens with {topic_path} and applies the **{lens.title}** "
-        "lens through concept, evidence, artifact, misconception, and transfer tasks."
+        "practice frame through concept, evidence, artifact, misconception, and transfer tasks."
     )
 
 
@@ -481,7 +363,14 @@ def misconception_for_entry(
                 f"**{chapter_anchor}** proves real-world authorization"
             ),
         )
-        return templates[(lesson_index - 1) % len(templates)]
+        slot = template_index(
+            entry.display_title,
+            chapter_title,
+            str(lesson_index),
+            entry.risk_category,
+            count=len(templates),
+        )
+        return templates[slot]
     raw = f"{entry.display_title} {entry.raw_title}".lower()
     if _match_keywords(raw, ("mice",)):
         return "that a motivation taxonomy is a recruitment checklist"
@@ -495,5 +384,7 @@ def misconception_for_entry(
         return "that a visible feature is enough for a confident geospatial claim"
     if _match_keywords(raw, ("ach",)) or "competing hypotheses" in raw:
         return "that listing one favored hypothesis is enough without testing alternatives"
-    template = MISCONCEPTION_FALLBACKS[(lesson_index - 1) % len(MISCONCEPTION_FALLBACKS)]
+    chapter_base = template_index(chapter_title, count=len(MISCONCEPTION_FALLBACKS))
+    template_slot = (chapter_base + lesson_index - 1) % len(MISCONCEPTION_FALLBACKS)
+    template = MISCONCEPTION_FALLBACKS[template_slot]
     return template.format(topic=entry.display_title, focus=coursebook.key_distinction)

@@ -1,13 +1,6 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-_import_prior_parts("_01_part")
+from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 
 def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
@@ -387,14 +380,9 @@ def _reader_section_title(source_title: str, part_title: str = "", chapter_title
 
 def _reader_provenance_title(source_title: str) -> str:
     """Keep provenance useful without leaking scaffold wording into prose."""
-    return (
-        source_title.replace("Scaffolding", "Documentation")
-        .replace("scaffolding", "documentation")
-        .replace("Scaffolds", "Workflows")
-        .replace("scaffolds", "workflows")
-        .replace("Scaffold", "Workflow")
-        .replace("scaffold", "workflow")
-    )
+    from prose_policy import reader_source_title
+
+    return reader_source_title(source_title)
 
 def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render source-guide sections as polished runtime/provenance rows."""
@@ -416,7 +404,7 @@ def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         "| Rendered title | Source loci | Source provenance | Practice lens | Evidence artifact | Safety check |",
         "|---|---|---|---|---|---|",
     ]
-    safe_patterns = chapter.get("number") == 32
+    safe_patterns = chapter.get("number") == PATTERN_REGISTRY_CHAPTER_NUMBER
     active_pattern_number: int | None = None
     for section in sections:
         source_title = str(section.get("title", "module section"))

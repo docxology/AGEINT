@@ -5,11 +5,15 @@ from __future__ import annotations
 import pytest
 
 from markdown_refs import (
+    chapter_section_ref,
     citation_ref,
     citation_ref_list,
+    crossref_slug,
     equation_ref,
     figure_ref,
     figure_ref_list,
+    lesson_educational_crossrefs,
+    part_module_map_figure_label,
     section_ref,
     section_ref_list,
     table_ref,
@@ -23,6 +27,18 @@ def test_cross_reference_helpers_render_pandoc_syntax() -> None:
     assert table_ref("tbl:source-lanes") == "[@tbl:source-lanes]"
     assert citation_ref("ageint137") == "[@ageint137]"
     assert citation_ref("official_nist_ai_rmf") == "[@official_nist_ai_rmf]"
+
+
+def test_lesson_crossref_helpers_align_with_manifest_labels() -> None:
+    part = {"title": "Foundations of Intelligence Tradecraft"}
+    chapter = {"title": "The Nature of Intelligence"}
+    assert crossref_slug(part["title"]) == "foundations-of-intelligence-tradecraft"
+    assert part_module_map_figure_label(part) == "fig:part-foundations-of-intelligence-tradecraft-module-map"
+    assert chapter_section_ref(chapter) == "[@sec:chapter-the-nature-of-intelligence]"
+    crossrefs = lesson_educational_crossrefs(part, chapter)
+    assert "[@fig:part-foundations-of-intelligence-tradecraft-module-map]" in crossrefs
+    assert "[@sec:chapter-the-nature-of-intelligence]" in crossrefs
+    assert "[@sec:curriculum_orientation]" in crossrefs
 
 
 def test_reference_list_helpers_deduplicate_and_skip_empty_values() -> None:

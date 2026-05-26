@@ -16,16 +16,15 @@ LOCK_SCHEMA_VERSION = "1.0"
 
 
 def _source_payload(source_path: Path) -> dict[str, Any]:
+    from curriculum import resolve_curriculum_payload
+
     if source_path.exists():
         if source_path.suffix == ".json":
             return json.loads(source_path.read_text(encoding="utf-8"))
         if source_path.is_dir():
             return load_curriculum(source_path).payload
         return parse_curriculum_guide(source_path.read_text(encoding="utf-8"))
-    fallback = source_path.parent / "data" / "curriculum"
-    if fallback.exists():
-        return load_curriculum(fallback).payload
-    raise FileNotFoundError(f"No source identity input found: {source_path} or {fallback}")
+    return resolve_curriculum_payload(source_path)
 
 
 def build_source_identity_lock(
@@ -35,16 +34,18 @@ def build_source_identity_lock(
 ) -> dict[str, Any]:
     """Build a stable identity lock for existing source-guide references."""
     payload = _source_payload(guide_path)
-    locked = [
-        {
-            "number": reference["number"],
+    locked_by_number: dict[int, dict[str, Any]] = {}
+    for reference in payload["references"]:
+        number = int(reference["number"])
+        if number > max_reference or number in locked_by_number:
+            continue
+        locked_by_number[number] = {
+            "number": number,
             "key": reference["key"],
             "title": reference["title"],
             "url": reference["url"],
         }
-        for reference in payload["references"]
-        if reference["number"] <= max_reference
-    ]
+    locked = [locked_by_number[number] for number in sorted(locked_by_number)]
     return {
         "schema_version": LOCK_SCHEMA_VERSION,
         "source": guide_path.name,

@@ -4,9 +4,9 @@
 {"citations": [57], "level": 1, "number": "11.1", "raw": "11.1 Geospatial Intelligence Fundamentals: IMINT, GEOINT, Mapping[^57]", "title": "Geospatial Intelligence Fundamentals: IMINT, GEOINT, Mapping"}
 {"citations": [58], "level": 1, "number": "11.2", "raw": "11.2 GEOINT Essential Body of Knowledge (USGIF)[^58]", "title": "GEOINT Essential Body of Knowledge (USGIF)"}
 {"citations": [59], "level": 1, "number": "11.3", "raw": "11.3 Commercial Satellite Platforms: Maxar, Planet, Sentinel-1/2[^59]", "title": "Commercial Satellite Platforms: Maxar, Planet, Sentinel-1/2"}
-{"citations": [], "level": 1, "number": "11.4", "raw": "11.4 Change Detection and Pattern-of-Life Imagery Analysis", "title": "Change Detection and Pattern-of-Life Imagery Analysis"}
-{"citations": [], "level": 1, "number": "11.5", "raw": "11.5 GEOINT in Counterinsurgency and Strike Operations", "title": "GEOINT in Counterinsurgency and Strike Operations"}
+{"citations": [301, 298], "level": 1, "number": "11.4", "raw": "11.4 Change Detection and Pattern-of-Life Imagery Analysis", "title": "Change Detection and Pattern-of-Life Imagery Analysis"}
+{"citations": [301, 298], "level": 1, "number": "11.5", "raw": "11.5 GEOINT in Counterinsurgency and Strike Operations", "title": "GEOINT in Counterinsurgency and Strike Operations"}
 {"citations": [60], "level": 1, "number": "11.6", "raw": "11.6 DoD GEOINT Accreditation and Training Standards[^60]", "title": "DoD GEOINT Accreditation and Training Standards"}
 {"citations": [57], "level": 1, "number": "11.7", "raw": "11.7 MCRP 2-10B.4: USMC GEOINT Manual[^57]", "title": "MCRP 2-10B.4: USMC GEOINT Manual"}
-{"citations": [], "level": 1, "number": "11.8", "raw": "11.8 AI-Assisted Satellite Image Analysis: Object Detection and Chronolocation", "title": "AI-Assisted Satellite Image Analysis: Object Detection and Chronolocation"}
+{"citations": [301, 298], "level": 1, "number": "11.8", "raw": "11.8 AI-Assisted Satellite Image Analysis: Object Detection and Chronolocation", "title": "AI-Assisted Satellite Image Analysis: Object Detection and Chronolocation"}
 {"citations": [59], "level": 1, "number": "11.9", "raw": "11.9 Open-Source Geospatial Intelligence Library[^59]", "title": "Open-Source Geospatial Intelligence Library"}

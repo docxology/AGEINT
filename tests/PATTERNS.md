@@ -16,7 +16,7 @@ Runs `run_build(PROJECT_ROOT)` when manuscript or figure registry is absent. Mos
 
 ## Inventory helpers
 
-`tests/_inventory_helpers.py` provides:
+`tests/manuscript_quality/inventory_helpers.py` provides:
 
 - `manuscript_dir(built_output)` — path to `output/manuscript/`
 - `generated_chapter_files`, `generated_output_files`

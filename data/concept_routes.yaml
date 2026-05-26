@@ -1,0 +1,309 @@
+concept_keyword_routes:
+- keywords:
+  - free energy
+  - predictive processing
+  frame: Define prediction error, generative model, and uncertainty in plain language, then show how the theory helps an analyst
+    notice when a model is explaining too much from too little evidence.
+- keywords:
+  - computational model
+  - active inference
+  frame: 'Treat active inference as an agent-modeling vocabulary: beliefs, actions, expected observations, and policy selection
+    are classroom concepts, not proof that an intelligence agent should act autonomously.'
+- keywords:
+  - shared protentions
+  - multi-agent active inference
+  frame: Use shared protentions to discuss how several agents or analysts can hold compatible expectations while still preserving
+    dissent, uncertainty, and human review.
+- keywords:
+  - social organization
+  - intelligence communit
+  frame: 'Map the theory to institutions: priorities, feedback, incentives, review loops, and records shape what an intelligence
+    community notices and ignores.'
+- keywords:
+  - verses
+  - multi-scale
+  frame: 'Read the architecture claim as a layered-systems example: separate public research claims, implementation assumptions,
+    evaluation evidence, and governance limits.'
+- keywords:
+  - nature of intelligence
+  - definition of intelligence
+  frame: Define intelligence as information gathered to reduce decision uncertainty for an authorized customer, separating
+    collection, analysis, and covert action.
+- keywords:
+  - intelligence cycle
+  - intelligence process
+  frame: Trace requirements through collection, processing, analysis, dissemination, and feedback while naming authority and
+    audience at each transition.
+- keywords:
+  - ic architecture
+  - community architecture
+  - intelligence community
+  frame: Compare civilian, military, and technical components by mission, oversight chain, and product type rather than by
+    organizational chart alone.
+- keywords:
+  - tradecraft core principles
+  - core tradecraft principles
+  frame: State the tradecraft principle as a repeatable judgment rule with evidence burden, caveat language, and reviewer
+    accountability.
+- keywords:
+  - collection management
+  - requirements management
+  frame: Match intelligence requirements to least-intrusive source disciplines with explicit minimization and feedback to
+    the customer.
+- keywords:
+  - humint
+  - human source
+  - agent handling
+  - case officer
+  frame: 'Treat human-source work as a governed relationship: validation, consent, reporting, source protection, and oversight—not
+    contact activity.'
+- keywords:
+  - mice
+  - rascls
+  frame: Use the motivation taxonomy to recognize recruitment-risk narratives and ethics constraints, not to design persuasion.
+- keywords:
+  - recruitment
+  - spotting
+  - assessment and development
+  frame: 'Read recruitment doctrine as risk literacy: pressure, consent, validation, and the line that blocks operational
+    contact.'
+- keywords:
+  - source protection
+  - source validation
+  frame: Connect source-protection duties to reporting quality, compartmentation, and counterintelligence review without recreating
+    handling tradecraft.
+- keywords:
+  - comint
+  - elint
+  frame: Distinguish communications content from electronic signatures by evidence type, authority, minimization, and uncertainty.
+- keywords:
+  - sigint
+  - signals intelligence
+  frame: Frame SIGINT as authority-bound collection with minimization, handling rules, and communications-security implications.
+- keywords:
+  - metadata
+  - traffic analysis
+  frame: Treat metadata as a distinct evidence class with its own minimization, correlation limits, and legal review requirements.
+- keywords:
+  - cryptanalysis
+  frame: Explain cryptographic analysis as a technical discipline bounded by lawful access, key management policy, and communications
+    security.
+- keywords:
+  - cryptographic lawful
+  - cryptographic
+  - encryption
+  frame: Frame encryption as a policy and assurance trade-off among confidentiality, lawful process, communications security,
+    and trust.
+- keywords:
+  - lawful intercept
+  - lawful access
+  frame: Map lawful-access claims to authority, proportionality, oversight, and retention—not to interception mechanics.
+- keywords:
+  - osint
+  - open source
+  frame: Treat open sources as publicly available evidence that still requires provenance, corroboration, legality, and minimization
+    before reuse.
+- keywords:
+  - verification
+  - claim verification
+  frame: 'Apply verification steps: source identity, chain, recency, corroboration, and explicit uncertainty before a claim
+    enters analysis.'
+- keywords:
+  - social media
+  - platform osint
+  frame: Evaluate social-source claims by account provenance, manipulation risk, terms of use, and identity-exposure limits.
+- keywords:
+  - dark web
+  - darknet
+  frame: 'Discuss dark-web sources only through governance: legality, safety, provenance limits, and instructor-provided synthetic
+    records.'
+- keywords:
+  - geoint
+  - imagery
+  - geospatial
+  - imint
+  frame: Treat location evidence as a quality and uncertainty problem, separating map interpretation from targeting or attribution.
+- keywords:
+  - resolution
+  - accuracy
+  - scale
+  frame: Compare resolution, accuracy, and temporal fitness before drawing a geospatial conclusion from imagery or map products.
+- keywords:
+  - cyber intelligence
+  - cyber threat
+  - cti lifecycle
+  frame: 'Organize cyber intelligence as defensive evidence: indicators, context, confidence, handling rules, and control
+    implications.'
+- keywords:
+  - kill chain
+  - att&ck
+  - attack lifecycle
+  frame: Use the model as defensive vocabulary for sequencing observations, not as a checklist of adversary actions.
+- keywords:
+  - advanced persistent
+  - ' apt'
+  frame: 'Study APT reporting as attribution and confidence literacy: technical similarity, context, caveats, and geopolitical
+    inference stay separate.'
+- keywords:
+  - supply chain
+  - solarwinds
+  - sunburst
+  - xz utils
+  - sbom
+  frame: Shows how package provenance, social trust, build integrity, and assurance controls turn a software incident into
+    reviewable evidence.
+- keywords:
+  - stix
+  - taxii
+  - threat sharing
+  frame: Use sharing standards to document indicator context, handling, confidence, and consumer responsibilities—not raw
+    indicator hoarding.
+- keywords:
+  - incident response
+  - ir lifecycle
+  frame: Map incident phases to evidence preservation, stakeholder notification, learning loops, and defensive control updates.
+- keywords:
+  - cve-
+  - backdoor
+  - vulnerability
+  frame: 'Treat the vulnerability record as an assurance case: severity, affected component, provenance, mitigation status,
+    and uncertainty stay separate.'
+- keywords:
+  - attribution
+  - apt29
+  - svr
+  frame: Use attribution indicators cautiously by separating technical similarity, context, confidence, and geopolitical inference.
+- keywords:
+  - sbom
+  - slsa
+  - sigstore
+  frame: Use the control framework to document package identity, build provenance, signature evidence, and gaps in supplier
+    assurance.
+- keywords:
+  - financial intelligence
+  - finint
+  frame: Read financial intelligence as due-diligence evidence that triggers review rather than proof of intent or guilt.
+- keywords:
+  - beneficial ownership
+  - sanctions
+  - ofac
+  frame: Read ownership and sanctions signals as due-diligence evidence that triggers review rather than proof of intent.
+- keywords:
+  - money laundering
+  - suspicious activity
+  - sar
+  frame: Use typologies to structure review of transactional patterns, source quality, and escalation thresholds—not investigative
+    targeting.
+- keywords:
+  - psyop
+  - miso
+  - psychological operation
+  frame: Study influence doctrine as audience analysis, message integrity, and ethics—not as manipulation technique.
+- keywords:
+  - disinformation
+  - misinformation
+  - active measures
+  frame: Analyze influence campaigns through provenance, audience harm, attribution caution, and transparent response options.
+- keywords:
+  - social engineering
+  - phishing
+  - pretexting
+  frame: Teach defensive recognition of manipulation attempts using sample messages, consent boundaries, and reporting
+    duties.
+- keywords:
+  - prebunking
+  - inoculation
+  - debunking
+  frame: Use inoculation methods to build audience resilience with transparent labels, source checks, and non-manipulative
+    corrections.
+- keywords:
+  - counterintelligence
+  - source integrity
+  - mole
+  frame: Frame counterintelligence as source-vetting, anomaly review, and institutional protection—not operational entrapment.
+- keywords:
+  - insider threat
+  - vetting
+  frame: Connect insider-threat review to access control, behavior indicators, and accountable escalation paths.
+- keywords:
+  - deception detection
+  - deception
+  frame: Compare deception indicators with alternative explanations and uncertainty before any operational inference.
+- keywords:
+  - hybrid warfare
+  - gray zone
+  - irregular warfare
+  frame: Identify hybrid indicators—proxy activity, ambiguous attribution, sub-threshold pressure—without prescribing response
+    actions.
+- keywords:
+  - non-state
+  - terrorist
+  - insurgent
+  - militia
+  frame: Study non-state actors through organizational indicators, funding patterns, and open-source evidence with strict
+    minimization.
+- keywords:
+  - special operations
+  - unconventional warfare
+  frame: Read special-operations intelligence as support to authorized planning with explicit authority and oversight fields.
+- keywords:
+  - cia
+  - nsa
+  - kgb
+  - mi6
+  - mossad
+  - church committee
+  frame: Study the declassified record for institutional lessons about oversight, source protection, and limits on translating
+    history into practice.
+- keywords:
+  - agent run card
+  - run card
+  - agent identity
+  frame: Document agent identity, tool permissions, stop conditions, logs, and human approval points for every delegated run.
+- keywords:
+  - mcp
+  - model context protocol
+  - tool governance
+  frame: Evaluate tool protocols by allowlists, logging, provenance of retrieved content, and deny-by-default policies.
+- keywords:
+  - pattern registry
+  - design pattern
+  - archetype
+  frame: Use pattern names as architectural vocabulary for allowlisted, logged, revocable workflows—not as operational playbooks.
+- keywords:
+  - prompt injection
+  - jailbreak
+  - adversarial prompt
+  frame: Treat prompt attacks as trust-boundary failures requiring input sanitization, tool limits, and human review.
+- keywords:
+  - evaluation loop
+  - red team
+  - adversarial eval
+  frame: Structure evaluation as misuse-case testing with blocked outcomes, logged evidence, and reviewer disposition.
+- keywords:
+  - cognitive security
+  - cognitive attack surface
+  frame: 'Map cognitive attack surfaces: attention, belief formation, narrative provenance, and transparent correction options.'
+- keywords:
+  - structured analytic
+  - analysis of competing hypotheses
+  - ach
+  frame: Use the method to keep alternatives, disconfirming evidence, and confidence visible.
+- keywords:
+  - key assumptions
+  - assumption
+  frame: List assumptions explicitly and test which ones would change the judgment if falsified.
+- keywords:
+  - red team
+  - devil's advocate
+  frame: Use structured challenge to surface disconfirming evidence and overconfidence before dissemination.
+- keywords:
+  - confidence language
+  - icd 203
+  - analytic confidence
+  frame: Calibrate confidence to evidence strength, source quality, and alternative explanations—not to rhetorical certainty.
+- keywords:
+  - nine tradecraft
+  - analytic tradecraft standard
+  frame: 'Apply ICD 203 tradecraft standards: sourcing, uncertainty, distinctions, alternatives, relevance, argumentation,
+    consistency, accuracy, and visuals.'

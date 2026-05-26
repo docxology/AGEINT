@@ -1,27 +1,18 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
+try:  # Support package and script-level imports.
+    from citation_workflow import source_citation_spine
+    from markdown_refs import lesson_educational_crossrefs
+    from unit_education import unit_profile_for_part
+except ImportError:  # pragma: no cover - exercised by package imports
+    from ..citation_workflow import source_citation_spine  # type: ignore[no-redef]
+    from ..markdown_refs import lesson_educational_crossrefs  # type: ignore[no-redef]
+    from ..unit_education import unit_profile_for_part  # type: ignore[no-redef]
 
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts(
-    "_01_part",
-    "_02_part",
-    "_03_part",
-    "_04_part",
-    "_04b_part",
-    "_05_part",
-    "_06_part",
-    "_07_part",
-    "_08_part",
-    "_09_part",
-    "_10_part",
-    "_12_topic_frames",
-)
+try:
+    from intelligence_content.topic_lessons import resolve_topic_lesson_fields
+except ImportError:  # pragma: no cover - merged part module import
+    from .topic_lessons import resolve_topic_lesson_fields  # type: ignore[no-redef]
 
 
 def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
@@ -31,39 +22,57 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     profile = profile_for_titles(part_title, title, chapter=chapter)
     lens = practice_lens_for_titles(part_title, title, chapter=chapter)
     coursebook = _coursebook_profile_for_titles(part_title, title)
-    entries = _safe_topic_entries(chapter, part)
+    unit_profile = unit_profile_for_part(part)
+    entries = safe_topic_entries(chapter, part)
     distinct_openers = tuple(dict.fromkeys(entry.display_title for entry in entries[:3]))
-    lessons = [lesson_intro_paragraph(title, coursebook, lens, distinct_openers)]
+    lessons = [
+        lesson_intro_paragraph(title, coursebook, lens, distinct_openers),
+        lesson_educational_crossrefs(part, chapter),
+    ]
     for index, entry in enumerate(entries, 1):
-        concept = _reader_facing_concept(
+        fields = resolve_topic_lesson_fields(
             entry,
-            _topic_concept_frame(entry, coursebook, profile),
-        )
-        evidence_prompt = _for_topic(entry, _topic_evidence_prompt(entry, lens, coursebook))
-        artifact_prompt = _for_topic(entry, _topic_student_artifact(entry, lens, coursebook))
-        transfer_task = _for_topic(
-            entry,
-            _topic_transfer_task(entry, coursebook, lesson_index=index, chapter_title=title),
+            coursebook=coursebook,
+            profile=profile,
+            lens=lens,
+            lesson_index=index,
+            chapter_title=title,
+            unit_profile=unit_profile,
         )
         lessons.extend(
             [
                 f"### Lesson {index}: {entry.display_title}",
-                f"**Concept.** {concept}",
-                (
-                    f"**Why it matters.** "
-                    f"{why_it_matters_for_entry(entry, profile, coursebook, lesson_index=index)}"
-                ),
-                f"**Evidence to inspect.** {evidence_prompt}",
-                f"**Student artifact.** {artifact_prompt}",
+                f"**Concept.** {fields.concept}",
+                f"**Why it matters.** {fields.why_it_matters}",
+                f"**Source support.** {_topic_source_support(entry, chapter)}",
+                f"**Evidence to inspect.** {fields.evidence_prompt}",
+                f"**Student artifact.** {fields.artifact_prompt}",
                 (
                     f"**Misconception check.** Correct the misconception "
-                    f"for **{entry.display_title}**: "
-                    f"{_topic_misconception(entry, coursebook, lesson_index=index, chapter_title=title)}."
+                    f"for **{entry.display_title}**: {fields.misconception}."
                 ),
-                f"**Transfer task.** {transfer_task}",
+                f"**Transfer task.** {fields.transfer_task}",
             ]
         )
     return "\n\n".join(lessons)
+
+
+def _topic_source_support(entry: TopicEntry, chapter: dict[str, Any]) -> str:
+    """Render direct topic citations or an honest module-spine fallback."""
+
+    if entry.citation_numbers:
+        return (
+            f"Source-guide row {entry.source_locus} cites "
+            f"{source_citation_spine(entry.citation_numbers)} Use it for the topic definition, "
+            "scope boundary, and refresh check before transfer."
+        )
+    if chapter.get("citations"):
+        return (
+            "This source-topic row has no direct citation; the module source spine is "
+            f"{source_citation_spine(chapter['citations'])} It supplies context, and the "
+            "gap remains visible in the claim ledger."
+        )
+    return source_citation_spine([])
 
 
 def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str:
@@ -72,21 +81,27 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
     part_title = str(part["title"])
     lens = practice_lens_for_titles(part_title, title, chapter=chapter)
     coursebook = _coursebook_profile_for_titles(part_title, title)
-    entries = _safe_topic_entries(chapter, part)
+    unit_profile = unit_profile_for_part(part)
+    entries = safe_topic_entries(chapter, part)
     anchor_topic = entries[0].display_title if entries else title
     source_context = _chapter_ref_context(chapter)
     return "\n\n".join(
         [
             f"Worked example for this module: {coursebook.worked_scenario}. The source path begins with {source_context}",
             (
+                f"**Unit discipline spine.** This module belongs to **{unit_profile.concept}**. "
+                f"Learners use a **{unit_profile.practice_artifact}** and keep this boundary visible: "
+                f"{unit_profile.safety_boundary}"
+            ),
+            (
                 f"**Frame.** The classroom question centers on **{anchor_topic}**. "
                 f"Excluded actions stay explicit, and the **{lens.title}** planning "
                 f"question is: {lens.planning_question}"
             ),
             (
-                f"**Inputs.** For this module's **{anchor_topic}** scenario, use {coursebook.worked_input}. Each input gets a "
-                f"documented intake note for the {lens.title}: provenance, sensitivity, "
-                "fit-to-purpose, and the reason the fixture is enough for this bounded exercise."
+                f"**Inputs.** For this module's **{anchor_topic}** scenario, use {coursebook.worked_input}. "
+                f"The {lens.title} intake note records provenance, sensitivity, "
+                "fit-to-purpose, and why the fixture is enough for this bounded exercise."
             ),
             (
                 f"**Analysis.** For **{anchor_topic}** in this module, students "
@@ -96,6 +111,7 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
             ),
             (
                 f"**Filled artifact.** Purpose = **{anchor_topic}** classroom scenario; "
+                f"unit artifact = {unit_profile.practice_artifact}; "
                 f"evidence = allowed inputs; method = {coursebook.practice_focus}; "
                 f"output = {coursebook.worked_output}; boundary = no external action; "
                 "reviewer = instructor or named peer."
@@ -107,9 +123,9 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
                 "and records the reviewer who accepted the bounded judgment."
             ),
             (
-                f"**Debrief.** After this module, the class writes a three-line reuse note: "
-                f"the defensible claim about **{anchor_topic}**, the assumption most likely "
-                "to fail, and the review condition that would stop reuse."
+                f"**Debrief.** The reuse note for **{anchor_topic}** records the "
+                "defensible claim, the assumption most likely to fail, the evidence "
+                "that would change confidence, and the review condition for stopping reuse."
             ),
         ]
     )
@@ -122,9 +138,15 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     profile = profile_for_titles(part_title, title, chapter=chapter)
     lens = practice_lens_for_titles(part_title, title, chapter=chapter)
     coursebook = _coursebook_profile_for_titles(part_title, title)
-    entries = _safe_topic_entries(chapter, part)[:3]
+    unit_profile = unit_profile_for_part(part)
+    entries = safe_topic_entries(chapter, part)[:3]
     first_topics = ", ".join(entry.display_title for entry in entries)
-    misconception = _topic_misconception(entries[0], coursebook)
+    misconception = misconception_for_entry(
+        entries[0],
+        coursebook,
+        lesson_index=1,
+        chapter_title=title,
+    )
     topic_context = _topic_context(chapter, part)
     source_context = _chapter_ref_context(chapter)
     practice_rows = "\n".join(
@@ -134,6 +156,7 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
             f"| 1. Distinguish | Compare {first_topics}; name what each topic can and cannot prove. | Glossary-and-contrast card. | Terms match the **{_table_cell(profile.title)}** lane. |",
             f"| 2. Frame | Answer the lens question: {lens.planning_question} | Scope card. | Authority, excluded actions, data boundary, and reviewer are explicit. |",
             f"| 3. Evidence | Fill the artifact fields for {entries[0].display_title}: {lens.evidence_artifact}. | Evidence packet. | Sources, caveats, confidence, and uncertainty stay separable. |",
+            f"| 3a. Unit artifact | Add the {unit_profile.practice_artifact} fields for {entries[0].display_title}. | Unit profile note. | Evidence artifacts include {', '.join(unit_profile.evidence_artifacts[:2])}. |",
             f"| 4. Challenge | Test the misconception {misconception}. | Failure-mode note. | The artifact applies the key distinction: {coursebook.key_distinction}. |",
             "| 5. Handoff | Prepare the artifact for another reviewer. | Handoff memo. | Inputs, transformations, reviewer, refresh trigger, and residual risk are visible. |",
         ]
@@ -141,9 +164,9 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     return "\n\n".join(
         [
             (
-                f"Use this module studio plan with the **{lens.title}** "
-                "lens. A short class can complete moves 1-3; a full seminar "
-                f"should complete all moves and submit the handoff memo for {topic_context}."
+                f"The studio sequence for this module uses the **{lens.title}** "
+                "practice lens. Moves 1-3 form the compressed path; the full seminar "
+                f"path adds challenge, handoff, and a review memo for {topic_context}."
             ),
             practice_rows,
             "### Instructor notes",
@@ -170,16 +193,16 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
     profile = profile_for_titles(part_title, title, chapter=chapter)
     lens = practice_lens_for_titles(part_title, title, chapter=chapter)
     coursebook = _coursebook_profile_for_titles(part_title, title)
-    entries = _safe_topic_entries(chapter, part)
+    entries = safe_topic_entries(chapter, part)
     topic = entries[0]
     second_topic = entries[1] if len(entries) > 1 else entries[0]
     return "\n".join(
         [
-            f"1. Define **{topic.display_title}** and cite the evidence field that would support the definition.",
+            f"1. Explain how **{topic.display_title}** is defined in this module; name the source descriptor that supports the definition.",
             f"2. Contrast **{topic.display_title}** with **{second_topic.display_title}** using the **{lens.title}** artifact fields.",
             f"3. Identify one failure mode from the **{profile.title}** lane and the evidence that would reveal it.",
             f"4. Answer the coursebook review question: {coursebook.review_question}",
-            f"5. Correct this misconception: {_topic_misconception(topic, coursebook)}.",
+            f"5. Correct this misconception: {misconception_for_entry(topic, coursebook, lesson_index=1, chapter_title=title)}.",
             "",
             "### Answer quality rubric",
             "",
@@ -194,7 +217,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
 
 def subsection_practice_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render subsection-level practice lenses from runtime source-guide sections."""
-    entries = _safe_topic_entries(chapter, part)
+    entries = safe_topic_entries(chapter, part)
     if not chapter.get("sections"):
         lens = practice_lens_for_titles(str(part["title"]), str(chapter["title"]), chapter=chapter)
         return (

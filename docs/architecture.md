@@ -30,13 +30,15 @@ rebuild.
 
 ## Topic lesson frames
 
-Topic lessons inside each chapter resolve **Concept**, **Evidence**, and
-**Misconception** fields through three tiers (see
-[`src/intelligence_content/AGENTS.md`](../src/intelligence_content/AGENTS.md)):
+Topic lessons inside each chapter resolve through `topic_lessons.resolve_topic_lesson_fields()`:
 
-1. **Keyword routes** — token-bound matches on display/raw titles (`_12_concept_routes.py` + `_12_concept_routes_b.py` + `_12_concept_routes_domains.py`; **125** routes measured at build time).
-2. **Category frames** — topic-first risk categories with chapter defaults only when topic-level classification is `standard` (`_07_risk_categories.py`).
+1. **Keyword routes** — token-bound matches on display/raw titles (`_12_concept_routes*.py`; data in `data/concept_routes*.yaml`).
+2. **Category frames** — topic-first risk categories from `risk_routes.py` + `data/topic_risk_routes.yaml`; chapter defaults only when topic-level classification is `standard`.
 3. **Synthesis** — topic-anchored fallback prose; when `display_title` matches `GENERIC_DISPLAY_TITLE_MARKERS`, anchors on `raw_title` (`_12_topic_frames.py`).
+
+`topic_entries.safe_topic_entries()` builds `TopicEntry` rows from curriculum sections before frame resolution. Template rotation uses stable `template_index()` (`zlib.adler32`) with per-chapter offsets so adjacent modules do not repeat identical misconception strings.
+
+See [`src/intelligence_content/AGENTS.md`](../src/intelligence_content/AGENTS.md) for the full routing table.
 
 Quality gates in `tests/test_topic_content_quality.py` and
 `tests/test_chapter_fragment_quality.py` cap Tier C `in the … lane:` markers

@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-from _inventory_helpers import (
+from manuscript_quality.inventory_helpers import (
     REQUIRED_MODULE_SECTIONS,
     chapter_text,
     generated_chapter_files,
@@ -17,11 +17,9 @@ from _inventory_helpers import (
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
 
-COLLAPSED_COGSEC_BASE = (
-    "Cognitive-security resilience lesson using fictional materials and transparent labels"
-)
+COLLAPSED_COGSEC_BASE = "Cognitive-security resilience lesson using sample materials and transparent labels"
 GOVERNANCE_BOUNDED_GENERIC = (
-    "Governance-bounded intelligence topic review using instructor-provided fictional records"
+    "Governance-bounded intelligence topic review using instructor-provided sample records"
 )
 
 MIN_SECTION_CHARS = {
@@ -119,4 +117,30 @@ def test_required_module_sections_present_with_minimum_length(built_output: Path
             minimum = MIN_SECTION_CHARS.get(section, 20)
             if len(body.strip()) < minimum and section in MIN_SECTION_CHARS:
                 failures.append(f"{slug}: short section {section!r} ({len(body.strip())} chars)")
+    assert failures == []
+
+
+def test_topic_lessons_include_educational_cross_links(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    failures: list[str] = []
+    for path in generated_chapter_files(output_manuscript):
+        section = section_text(chapter_text(path), "Topic lessons")
+        if "**Cross-links.**" not in section:
+            failures.append(f"{_chapter_slug(path)}: missing lesson cross-links")
+        if "[@fig:part-" not in section:
+            failures.append(f"{_chapter_slug(path)}: missing unit module map figure ref")
+        if "[@sec:curriculum_orientation]" not in section:
+            failures.append(f"{_chapter_slug(path)}: missing curriculum atlas section ref")
+    assert failures == []
+
+
+def test_topic_lessons_include_source_support_lines(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    failures: list[str] = []
+    for path in generated_chapter_files(output_manuscript):
+        section = section_text(chapter_text(path), "Topic lessons")
+        lesson_count = len(re.findall(r"^### Lesson \d+:", section, flags=re.MULTILINE))
+        source_support_count = section.count("**Source support.**")
+        if lesson_count != source_support_count:
+            failures.append(f"{_chapter_slug(path)}: {source_support_count}/{lesson_count}")
     assert failures == []

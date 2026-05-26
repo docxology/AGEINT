@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 import re
+from typing import Any, Mapping
 
 _CROSSREF_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]*:[A-Za-z0-9][A-Za-z0-9_-]*$")
 _CITATION_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]*$")
@@ -82,12 +83,43 @@ def citation_ref_list(keys: Iterable[str], *, separator: str = "; ") -> str:
     return _ref_list(keys, citation_ref, separator=separator)
 
 
+def crossref_slug(value: str) -> str:
+    """Return a Pandoc-safe slug aligned with manuscript manifest labels."""
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "section"
+
+
+def part_module_map_figure_label(part: Mapping[str, Any]) -> str:
+    """Return the registry figure label for a curriculum part module map."""
+    return f"fig:part-{crossref_slug(str(part['title']))}-module-map"
+
+
+def chapter_section_ref(chapter: Mapping[str, Any]) -> str:
+    """Return a section reference for a generated chapter overview."""
+    return section_ref(f"sec:chapter-{crossref_slug(str(chapter['title']))}")
+
+
+def lesson_educational_crossrefs(part: Mapping[str, Any], chapter: Mapping[str, Any]) -> str:
+    """Return inline cross-links tying topic lessons to unit map and module overview."""
+    unit_map = figure_ref(part_module_map_figure_label(part))
+    module_overview = chapter_section_ref(chapter)
+    atlas = section_ref("sec:curriculum_orientation")
+    return (
+        f"**Cross-links.** Unit module map {unit_map}; "
+        f"module overview {module_overview}; curriculum atlas {atlas}."
+    )
+
+
 __all__ = [
     "citation_ref",
     "citation_ref_list",
+    "chapter_section_ref",
+    "crossref_slug",
     "equation_ref",
     "figure_ref",
     "figure_ref_list",
+    "lesson_educational_crossrefs",
+    "part_module_map_figure_label",
     "section_ref",
     "section_ref_list",
     "table_ref",

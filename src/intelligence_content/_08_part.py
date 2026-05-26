@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part", "_02_part", "_03_part", "_04_part", "_04b_part", "_05_part", "_06_part", "_07_part")
-
 
 
 SAFE_SUBSTITUTION_PATTERNS: Final[tuple[dict[str, str], ...]] = (
@@ -40,13 +30,13 @@ SAFE_SUBSTITUTION_PATTERNS: Final[tuple[dict[str, str], ...]] = (
     {
         "motif": "HUMINT and CI",
         "source_risk": "persona construction, contact handling, elicitation, deception, or source exposure",
-        "substitute": "fictional identity-and-provenance ethics audit with role-play records and review rubrics",
+        "substitute": "synthetic identity-and-provenance ethics audit with role-play records and review rubrics",
         "blocked_context": "impersonation, covert contact, or operational-security support",
     },
     {
         "motif": "Cognitive influence",
         "source_risk": "covert persuasion, microtargeting, audience manipulation, or intervention delivery",
-        "substitute": "opt-in media-literacy lesson plan using fictional materials and transparent prebunking labels",
+        "substitute": "opt-in media-literacy lesson plan using synthetic materials and transparent prebunking labels",
         "blocked_context": "campaign design or audience-targeted persuasion",
     },
     {

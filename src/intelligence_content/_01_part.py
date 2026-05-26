@@ -132,3 +132,4 @@ class TopicEntry:
     source_locus: str
     provenance_note: str
     risk_category: str
+    citation_numbers: tuple[int, ...] = ()

@@ -1,14 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-_import_prior_parts("_01_part", "_02_part", "_03_part", "_04_part", "_04b_part", "_05_part", "_06_part", "_07_part", "_08_part")
-
 # GENERIC_DISPLAY_TITLE_MARKERS and is_generic_display_title re-exported via _07_part merge.
 
 REMEDIATION_BACKLOG: Final[tuple[dict[str, str], ...]] = (
@@ -279,7 +270,7 @@ def _chapter_ref_context(chapter: dict[str, Any]) -> str:
     return _source_ref_context(list(chapter.get("citations", [])))
 
 def _topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
-    topics = [entry.display_title for entry in _safe_topic_entries(chapter, part)[:limit]]
+    topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local topic cluster"
     return "; ".join(topics)
@@ -310,7 +301,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
     """Render chapter-level research synthesis."""
     title = str(chapter["title"])
     profile = profile_for_titles(str(part["title"]), title)
-    distinct = list(dict.fromkeys(e.display_title for e in _safe_topic_entries(chapter, part)))[:3]
+    distinct = list(dict.fromkeys(e.display_title for e in safe_topic_entries(chapter, part)))[:3]
     source_context = _chapter_ref_context(chapter)
     topic_context = "; ".join(distinct[:2]) if distinct else "the local topic cluster"
     topic_line = (
@@ -349,13 +340,6 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
         ]
     ).replace("\n\n\n", "\n\n")
 
-META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = (
-    "v2 source-lane extension:",
-    "deep expansion:",
-    "evidence-package expansion:",
-    "v2 ageint-depth extension:",
-)
-
 def _table_cell(value: str) -> str:
     return value.replace("|", "\\|").replace("\n", " ").strip()
 
@@ -363,108 +347,9 @@ def _coursebook_profile_for_titles(part_title: str, section_title: str = "") -> 
     profile = profile_for_titles(part_title, section_title)
     return COURSEBOOK_PROFILES[profile.identifier]
 
-def _is_meta_source_topic(title: str) -> bool:
-    lower = title.strip().lower()
-    return any(lower.startswith(prefix) for prefix in META_SOURCE_TOPIC_PREFIXES)
+try:
+    from intelligence_content.topic_entries import safe_topic_entries
+except ImportError:  # pragma: no cover - merged namespace
+    from .topic_entries import safe_topic_entries  # type: ignore[no-redef]
 
-def _normalize_display_key(title: str) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
-
-def _clean_display_title(title: str) -> str:
-    cleaned = re.sub(r":\s*case\s+[\d.]+\s+review\s*$", "", title, flags=re.IGNORECASE)
-    cleaned = re.sub(r"\s+review\s*$", "", cleaned, flags=re.IGNORECASE)
-    return cleaned.strip() or title
-
-def _safe_topic_entries(chapter: dict[str, Any], part: dict[str, Any]) -> list[TopicEntry]:
-    """Return safe, learner-facing source topics with provenance metadata."""
-    part_title = str(part["title"])
-    chapter_title = str(chapter["title"])
-    sections = chapter.get("sections", [])
-    if not sections:
-        return [
-            TopicEntry(
-                raw_title=chapter_title,
-                display_title=chapter_title,
-                source_locus="chapter",
-                provenance_note="Parsed chapter title and citation spine",
-                risk_category="standard",
-            )
-        ]
-
-    entries: list[TopicEntry] = []
-    seen_raw_titles: set[str] = set()
-    seen_display_keys: set[str] = set()
-    safe_patterns = chapter.get("number") == 32
-    active_pattern_number: int | None = None
-    for section in sections:
-        raw_title = str(section.get("title", "source-guide topic")).strip()
-        if _is_meta_source_topic(raw_title):
-            continue
-        if raw_title in seen_raw_titles:
-            continue
-        seen_raw_titles.add(raw_title)
-
-        working_title = raw_title
-        source_locus = str(section.get("number") or "").strip()
-        provenance_note = f"{source_locus} {raw_title}".strip()
-        risk_category = _topic_risk_category(raw_title, part_title, chapter_title)
-        if safe_patterns:
-            working_title, active_pattern_number = safe_pattern_treatment(
-                working_title,
-                active_pattern_number,
-            )
-            risk_category = "ageint_pattern_registry"
-            source_locus = source_locus or (
-                f"Pattern {active_pattern_number}" if active_pattern_number else "AGEINT pattern registry"
-            )
-            provenance_note = "Original source identity preserved in AGEINT pattern registry"
-
-        display_title = (
-            working_title
-            if safe_patterns
-            else safe_curriculum_treatment(working_title, part_title, chapter_title)
-        )
-        display_title = _clean_display_title(display_title)
-        if not safe_patterns and is_generic_display_title(display_title):
-            shard_fallback = _clean_display_title(working_title)
-            if shard_fallback and not is_generic_display_title(shard_fallback):
-                display_title = shard_fallback
-        display_key = _normalize_display_key(display_title)
-        if display_key in seen_display_keys:
-            raw_key = _normalize_display_key(_clean_display_title(working_title))
-            if raw_key != display_key:
-                qualifier = source_locus or _topic_anchor_words(raw_title, limit=3)
-                display_title = f"{display_title} ({qualifier})"
-                display_key = _normalize_display_key(display_title)
-            else:
-                qualifier = _topic_anchor_words(raw_title, limit=4)
-                display_title = f"{_clean_display_title(working_title)} ({qualifier})"
-                display_key = _normalize_display_key(display_title)
-        seen_display_keys.add(display_key)
-        if risk_category != "standard" and risk_category != "ageint_pattern_registry":
-            provenance_note = (
-                f"{source_locus or 'chapter outline'} transformed from high-risk source title: "
-                f"{raw_title}"
-            )
-        entries.append(
-            TopicEntry(
-                raw_title=raw_title,
-                display_title=display_title,
-                source_locus=source_locus or "chapter outline",
-                provenance_note=provenance_note,
-                risk_category=risk_category,
-            )
-        )
-
-    if entries:
-        return entries
-    return [
-        TopicEntry(
-            raw_title=chapter_title,
-            display_title=chapter_title,
-            source_locus="chapter",
-            provenance_note="Parsed chapter title and citation spine",
-            risk_category="standard",
-        )
-    ]
-
+_safe_topic_entries = safe_topic_entries

@@ -10,8 +10,8 @@ from ._07_risk_categories import _topic_risk_category
 
 # Titles that must not stand alone as the sole lesson header without a domain suffix.
 GENERIC_DISPLAY_TITLE_MARKERS: Final[tuple[str, ...]] = (
-    "Cognitive-security resilience lesson using fictional materials and transparent labels",
-    "Governance-bounded intelligence topic review using instructor-provided fictional records",
+    "Cognitive-security resilience lesson using sample materials and transparent labels",
+    "Governance-bounded intelligence topic review using instructor-provided sample records",
     "AI-enabled recruitment-risk ethics and source-protection case study",
 )
 
@@ -44,7 +44,7 @@ def _clean_shard_title(title: str) -> str:
 def _safe_title_for_risk(risk_category: str) -> str:
     labels = {
         "agentic_cyber_misuse": (
-            "Agentic cyber-misuse control review using fictional prompts, "
+            "Agentic cyber-misuse control review using sample prompt records, "
             "fabricated logs, and deny-by-default tool policies"
         ),
         "historical_humint_source_protection": (
@@ -80,7 +80,7 @@ def _safe_title_for_risk(risk_category: str) -> str:
             "ICS defensive coverage and safety tabletop using synthetic process records"
         ),
         "cognitive_resilience": (
-            "Cognitive-security resilience lesson using fictional materials and transparent labels"
+            "Cognitive-security resilience lesson using sample materials and transparent labels"
         ),
         "software_supply_chain_social_trust": (
             "Maintainer-contact and social-engineering resilience review for software supply-chain governance"
@@ -107,9 +107,9 @@ def _safe_title_for_risk(risk_category: str) -> str:
         "identity_provenance": (
             "Identity-and-provenance ethics audit with no impersonation"
         ),
-        "media_literacy": "Opt-in media-literacy lesson plan for a fictional classroom scenario",
+        "media_literacy": "Opt-in media-literacy lesson plan for a sample classroom scenario",
         "gray_zone_governance": (
-            "Hybrid-threat indicator review using fictional scenarios and policy thresholds"
+            "Hybrid-threat indicator review using sample scenarios and policy thresholds"
         ),
         "non_state_actor_governance": (
             "Non-state actor indicator review with attribution caution and governance boundaries"
@@ -118,18 +118,18 @@ def _safe_title_for_risk(risk_category: str) -> str:
             "Financial due-diligence typology exercise using synthetic records and compliance boundaries"
         ),
         "counterintelligence_vetting": (
-            "Source-vetting and insider-threat review using fictional personnel records"
+            "Source-vetting and insider-threat review using sample personnel records"
         ),
         "operator_decision_hygiene": (
             "Operator decision-hygiene tabletop using workload, evidence, and review checkpoints"
         ),
         "operational_tradecraft_governance": (
-            "Operational tradecraft governance review using fictional scenarios and oversight checkpoints"
+            "Operational tradecraft governance review using sample scenarios and oversight checkpoints"
         ),
     }
     return labels.get(
         risk_category,
-        "Governance-bounded intelligence topic review using instructor-provided fictional records",
+        "Governance-bounded intelligence topic review using instructor-provided sample records",
     )
 
 
@@ -151,15 +151,15 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
         if "autogen" in lower or "unsandboxed code" in lower:
             return "AutoGen sandbox and code-execution approval review"
         if "llm-based" in lower or "autonomous cyberattacks" in lower:
-            return "LLM-agent cyber-misuse taxonomy review using fictional reports"
+            return "LLM-agent cyber-misuse taxonomy review using sample reports"
         if "multi-agent collaboration" in lower:
-            return "Multi-agent cyber-misuse coordination review using fictional reports"
+            return "Multi-agent cyber-misuse coordination review using sample reports"
         if "6g" in lower or "iot" in lower or "satellite" in lower or "uav" in lower:
-            return "Networked-device cyber-misuse risk review using fictional scenarios"
+            return "Networked-device cyber-misuse risk review using sample scenarios"
         if "malware" in lower or "weaponization" in lower:
-            return "Malware-misuse control review using fictional agent logs"
+            return "Malware-misuse control review using sample agent logs"
         if "phishing" in lower:
-            return "Phishing-resilience control review using fictional messages"
+            return "Phishing-resilience control review using sample messages"
         if "arbitrary code" in lower or "unsandboxed code" in lower:
             return "Code-execution sandbox and approval-gate review"
         return base_title
@@ -265,11 +265,11 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
         if "what is cognitive security" in lower or "cognitive security definition" in lower:
             return "Cognitive security definitions and scope review"
         if "psyop" in lower or "active measures" in lower or "synthetic influence" in lower:
-            return "Cognitive influence-analysis case review using fictional materials"
+            return "Cognitive influence-analysis case review using sample materials"
         if "intervention" in lower or "ai-assisted" in lower:
-            return "AI-assisted resilience-tool governance review using fictional materials"
+            return "AI-assisted resilience-tool governance review using sample materials"
         if "microtargeting" in lower or "persuasion" in lower:
-            return "Audience-resilience and persuasion-literacy review using fictional materials"
+            return "Audience-resilience and persuasion-literacy review using sample materials"
         return _clean_shard_title(raw_title)
     if risk_category == "geoint_data_quality":
         if any(

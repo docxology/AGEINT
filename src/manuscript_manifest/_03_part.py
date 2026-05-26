@@ -1,14 +1,6 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part", "_02_part")
+from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 
 
 
@@ -18,52 +10,9 @@ def _module_architecture(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
-    architecture = {
-        "governed_intelligence_cycle": (
-            "requirements, audience needs, public-source evidence, caveats, and feedback signals",
-            "requirement framing, collection scoping, source evaluation, analytic judgment, dissemination, and feedback review",
-            "release-neutral brief, audience map, caveat register, and feedback note",
-            "unscoped audiences, missing caveats, weak records, and product reuse without feedback",
-        ),
-        "analytic_tradecraft": (
-            "reporting, assumptions, alternatives, confidence language, dissent, and source descriptors",
-            "hypothesis generation, evidence sorting, assumption challenge, confidence calibration, and dissent capture",
-            "analytic note, hypothesis table, assumption list, and confidence statement",
-            "single-hypothesis reasoning, source laundering, confidence inflation, and suppressed dissent",
-        ),
-        "collection_management": (
-            "authorized requirements, source-discipline choices, minimization rules, source-risk notes, and evaluation criteria",
-            "priority mapping, source-discipline fit, least-intrusive evidence selection, and feedback review",
-            "requirements matrix, collection-limit note, source-quality card, and gap list",
-            "recruitment or interception drift, over-collection, weak minimization, and source exposure",
-        ),
-        "cyber_threat_intelligence": (
-            "fabricated alerts, public taxonomy labels, incident context, supplier evidence, and handling rules",
-            "indicator normalization, TTP mapping, confidence scoring, sharing review, and control-gap analysis",
-            "defensive CTI packet, handling note, control implication, and incident-learning memo",
-            "exploit detail leakage, indicator fixation, unvetted sharing, and unsupported attribution",
-        ),
-        "ics_ot_defense": (
-            "synthetic process logs, asset/consequence maps, operator decisions, safety stops, and recovery evidence",
-            "asset-consequence mapping, ATT&CK-for-ICS coverage review, operator-decision rehearsal, and after-action learning",
-            "cyber-physical tabletop packet, debrief rubric, recovery note, and control-coverage map",
-            "IT-first assumptions, unsafe actuation, live-control drift, and missing safety review",
-        ),
-        "legal_oversight": (
-            "legal authorities, policy constraints, affected groups, retention duties, oversight roles, and audit logs",
-            "authority mapping, proportionality review, rights-impact assessment, redress planning, and escalation routing",
-            "authority-and-impact register, audit trail, redress note, and unresolved-risk owner",
-            "authority laundering, missing audit trails, privacy overreach, and governance-as-afterthought",
-        ),
-    }.get(
-        profile.identifier,
-        (
-            "source materials, domain constraints, learner questions, verified anchors, and artifact requirements",
-            "evidence normalization, structured reasoning, source evaluation, governance review, and handoff preparation",
-            "annotated map, decision memo, rubric, tabletop packet, or audit artifact",
-            "over-automation, misplaced confidence, policy drift, and confusing simulation with deployment",
-        ),
-    )
+    from _data_loaders import module_architecture
+
+    architecture = module_architecture(profile.identifier)
     inputs, transforms, outputs, failures = architecture
     return "\n".join(
         [
@@ -263,10 +212,10 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
 
 def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     title = chapter["title"]
-    source_spine = citation_spine(chapter["citations"])
+    source_spine = source_citation_spine(chapter["citations"])
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
-    safe_patterns = chapter["number"] == 32
+    safe_patterns = chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
     safety_boundary = (
         "For this module, keep all practice authorized, synthetic, defensive, logged, "
         f"reversible, and non-operational while working from {source_context} and {topic_context}. Do not convert this module into "
@@ -369,7 +318,7 @@ manipulation, or cyber-physical action; examples stay tied to {topic_context}.
 
 The defensive utility of this module is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
-Work products should fit the current unit's education, policy review, lab
+Work products fit the current unit's education, policy review, lab
 exercises, and authorized defensive analysis for {topic_context}.
 
 ### Safety boundary

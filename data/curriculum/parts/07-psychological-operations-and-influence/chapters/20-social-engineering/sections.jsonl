@@ -5,7 +5,7 @@
 {"citations": [97], "level": 1, "number": "20.2", "raw": "20.2 History of Social Engineering[^97]", "title": "History of Social Engineering"}
 {"citations": [98], "level": 1, "number": "20.3", "raw": "20.3 Social Engineering: The Science of Human Hacking (Hadnagy, 2018)[^98]", "title": "Social Engineering: The Science of Human Hacking (Hadnagy, 2018)"}
 {"citations": [99], "level": 1, "number": "20.4", "raw": "20.4 The Art of Human Hacking (Hadnagy, 2010)[^99]", "title": "The Art of Human Hacking (Hadnagy, 2010)"}
-{"citations": [], "level": 1, "number": "20.5", "raw": "20.5 Phishing, Vishing, Smishing, Deepfake Voice Attacks", "title": "Phishing, Vishing, Smishing, Deepfake Voice Attacks"}
-{"citations": [], "level": 1, "number": "20.6", "raw": "20.6 Physical Social Engineering: Access, Elicitation, Impersonation", "title": "Physical Social Engineering: Access, Elicitation, Impersonation"}
+{"citations": [300, 304, 306], "level": 1, "number": "20.5", "raw": "20.5 Phishing, Vishing, Smishing, Deepfake Voice Attacks", "title": "Phishing, Vishing, Smishing, Deepfake Voice Attacks"}
+{"citations": [308, 311], "level": 1, "number": "20.6", "raw": "20.6 Physical Social Engineering: Access, Elicitation, Impersonation", "title": "Physical Social Engineering: Access, Elicitation, Impersonation"}
 {"citations": [100], "level": 1, "number": "20.7", "raw": "20.7 AI Automation of Social Engineering at Scale[^100]", "title": "AI Automation of Social Engineering at Scale"}
-{"citations": [], "level": 1, "number": "20.8", "raw": "20.8 Defense: Training, Simulation, Technical Controls", "title": "Defense: Training, Simulation, Technical Controls"}
+{"citations": [308, 311], "level": 1, "number": "20.8", "raw": "20.8 Defense: Training, Simulation, Technical Controls", "title": "Defense: Training, Simulation, Technical Controls"}

@@ -9,7 +9,7 @@ allowing v2 expansion.
   `data/source_identity/`.
 - Append new guide references after the locked range.
 - The prior deep-pass checkpoint ended at `ageint285`; current append-only
-  references extend through `ageint296`.
+  references extend through `ageint312`.
 - Keep generated citations, BibTeX rows, and bibliography atlas rows derived
   from parser output and source-anchor metadata.
 - Do not hand-edit generated bibliography files as the primary source of truth.

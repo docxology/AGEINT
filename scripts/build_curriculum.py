@@ -14,10 +14,11 @@ from _paths import ensure_project_paths  # noqa: E402
 
 ensure_project_paths(PROJECT_ROOT)
 
-from build_pipeline import run_build  # noqa: E402
 from template_resolver import ensure_template_repo_on_path  # noqa: E402
 
 ensure_template_repo_on_path(PROJECT_ROOT)
+
+from build_pipeline import run_build  # noqa: E402
 
 try:
     from infrastructure.core.logging.utils import get_logger

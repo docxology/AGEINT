@@ -28,7 +28,7 @@ legal and human oversight constraints.
 - Chapters: 51
 - Methods appendices: 9
 - AGEINT patterns: 20
-- Parsed references: 296
+- Parsed references: 312
 - Curated official/scholarly research anchors: 172
 - Registered figures: 57 (17 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
 
@@ -74,6 +74,8 @@ templates, manifest/content modules, or source-anchor data, then rebuild.
 Cross-references are label-backed (`[@sec:...]`, `[@fig:...]`, `[@ageintNNN]`)
 so prose points to generated identifiers instead of literal target names. Do
 not improve section titles or body prose by hand-editing `output/manuscript`.
+Use [`docs/citation_workflow.md`](docs/citation_workflow.md) as the canonical
+recipe for adding, extending, counting, and validating citations.
 
 See [`docs/output_inventory.md`](docs/output_inventory.md) for the generated artifact contract.
 
@@ -93,7 +95,7 @@ human-rights governance, agent interoperability standards, workforce
 governance, and model/data provenance. The original `ageint001` through
 `ageint231` source identities are locked in `data/source_identity/`;
 new guide references are append-only after that range and currently extend
-through `ageint296`. The deep pass adds accessibility and digital inclusion,
+through `ageint312`. The deep pass adds accessibility and digital inclusion,
 procurement/vendor governance, agent incident response, AI red-team assurance,
 public-sector transparency, and rights-impact privacy review. The evidence
 package pass adds model card reporting, dataset documentation, algorithmic

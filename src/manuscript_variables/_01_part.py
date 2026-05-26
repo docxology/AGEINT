@@ -11,6 +11,13 @@ import unicodedata
 
 try:  # Support both ``import src.manuscript_variables`` and script-level imports.
     from .curriculum import Curriculum, load_curriculum
+    from .citation_workflow import (
+        render_citation_workflow_markdown,
+        render_source_section_citation_rows,
+        source_citation_cell,
+        source_citation_coverage_summary,
+        source_citation_spine,
+    )
     from .markdown_refs import citation_ref_list
     from .intelligence_content import (
         INTELLIGENCE_RESEARCH_ANCHORS,
@@ -45,6 +52,13 @@ try:  # Support both ``import src.manuscript_variables`` and script-level import
     )
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from curriculum import Curriculum, load_curriculum  # type: ignore[no-redef]
+    from citation_workflow import (  # type: ignore[no-redef]
+        render_citation_workflow_markdown,
+        render_source_section_citation_rows,
+        source_citation_cell,
+        source_citation_coverage_summary,
+        source_citation_spine,
+    )
     from markdown_refs import citation_ref_list  # type: ignore[no-redef]
     from intelligence_content import (  # type: ignore[no-redef]
         INTELLIGENCE_RESEARCH_ANCHORS,
@@ -216,18 +230,11 @@ def section_label(kind: str, title: str, suffix: str = "") -> str:
 
 def citation_spine(citation_numbers: list[int]) -> str:
     """Return a Pandoc citation spine for source-guide reference numbers."""
-    if not citation_numbers:
-        return (
-            "No direct source-guide citation is attached to this module; "
-            "use the surrounding part bibliography and source-guide context."
-        )
-    return citation_ref_list(f"ageint{number:03d}" for number in citation_numbers) + "."
+    return source_citation_spine(citation_numbers)
 
 
 def _citation_cell(citation_numbers: list[int]) -> str:
-    if not citation_numbers:
-        return "-"
-    return citation_ref_list(f"ageint{number:03d}" for number in citation_numbers)
+    return source_citation_cell(citation_numbers)
 
 
 def _append_unique(values: list[Any], value: Any) -> None:
@@ -321,13 +328,13 @@ def _appendix_allowed_fixture(title: str) -> str:
     if "geoint" in lower or "geolocation" in lower or "imagery" in lower:
         return "provided imagery metadata, synthetic change examples, and uncertainty notes"
     if "humint" in lower or "identity" in lower or "source-protection" in lower:
-        return "fictional role records, ethics prompts, and reviewer notes"
+        return "sample role records, ethics cards, and reviewer notes"
     if "cyber" in lower or "soc" in lower or "control-coverage" in lower:
         return "fabricated alerts, published defensive taxonomy labels, and debrief notes"
     if "ics" in lower:
         return "synthetic process logs, operator-decision cards, and safety stop rules"
     if "cognitive" in lower or "media-literacy" in lower:
-        return "fictional messages, transparent labels, and opt-in classroom prompts"
+        return "sample messages, transparent labels, and opt-in classroom discussion cards"
     return "public sources, synthetic records, owned-lab notes, and instructor handouts"
 
 

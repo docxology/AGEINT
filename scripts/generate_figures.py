@@ -3,9 +3,8 @@
 
 from __future__ import annotations
 
-import os
-from pathlib import Path
 import sys
+from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
@@ -26,9 +25,8 @@ except ImportError:
     def get_logger(name: str) -> logging.Logger:
         return logging.getLogger(name)
 
-from curriculum import load_curriculum  # noqa: E402
-from figures import load_figure_registry, render_figures  # noqa: E402
-from manuscript_manifest import build_manuscript_manifest  # noqa: E402
+from build_pipeline import BuildConfig, run_build_figures  # noqa: E402
+from figures import load_figure_registry  # noqa: E402
 
 logger = get_logger(__name__)
 
@@ -36,7 +34,7 @@ logger = get_logger(__name__)
 def main() -> int:
     import argparse
 
-    default_placeholder = os.environ.get("AGEINT_REQUIRE_RENDERED_FIGURES", "") != "1"
+    default_placeholder = BuildConfig.from_env().allow_placeholder_figures
     parser = argparse.ArgumentParser(description="Render AGEINT figure assets and registry")
     parser.add_argument(
         "--allow-placeholder-figures",
@@ -53,12 +51,8 @@ def main() -> int:
     if registry_path.is_file() and not args.allow_placeholder_figures:
         logger.info("Existing figure registry at %s; re-rendering figures", registry_path)
 
-    curriculum = load_curriculum(PROJECT_ROOT / "data" / "curriculum")
-    manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(
+    registry_path = run_build_figures(
         PROJECT_ROOT,
-        curriculum,
-        manifest,
         allow_placeholder_figures=args.allow_placeholder_figures,
     )
     registry = load_figure_registry(registry_path)

@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part", "_03_part")
-
 from ._02b_mermaid import placeholder_or_fail, render_mermaid_figure
 
 
@@ -133,7 +123,7 @@ def render_figures(
     curriculum: Curriculum,
     manifest: Any | None = None,
     *,
-    allow_placeholder_figures: bool = True,
+    allow_placeholder_figures: bool = False,
 ) -> Path:
     """Render all AGEINT figures and write ``figure_registry.json``."""
     if manifest is None:
@@ -161,7 +151,9 @@ def render_figures(
     }
     registry_path = figures_dir / "figure_registry.json"
     registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True), encoding="utf-8")
-    _write_output_docs(figures_dir)
+    from output_docs import write_figures_output_docs
+
+    write_figures_output_docs(figures_dir)
     return registry_path
 
 

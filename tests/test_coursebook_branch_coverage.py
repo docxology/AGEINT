@@ -108,7 +108,7 @@ def test_safe_curriculum_treatment_covers_contextual_title_branches() -> None:
 
 
 def test_coursebook_lesson_helpers_cover_domain_specific_frames() -> None:
-    part = {"title": "AGEINT: Agentic Intelligence"}
+    part = {"number": 11, "title": "AGEINT: Agentic Intelligence"}
     chapter = {
         "title": "Active Inference and AGEINT",
         "number": 35,
@@ -131,11 +131,11 @@ def test_coursebook_lesson_helpers_cover_domain_specific_frames() -> None:
     assert "shared-expectation register" in lessons
     assert "institutional feedback-loop map" in lessons
     assert "architecture-claim card" in lessons
-    assert "fictional narrative-risk map" in lessons
+    assert "sample narrative-risk map" in lessons
     assert "threat-model review card" in lessons
     assert "research question, method, evidence base" in lessons
 
-    mixed_part = {"title": "Foundations"}
+    mixed_part = {"number": 1, "title": "Foundations"}
     mixed_chapter = {
         "title": "Mixed Coursebook Concepts",
         "sections": [

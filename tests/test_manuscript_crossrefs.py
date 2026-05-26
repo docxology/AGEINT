@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import re
 
-from _inventory_helpers import manuscript_dir
+from manuscript_quality.inventory_helpers import manuscript_dir
 from rendered_reference_audit import (
     TitleRule,
     audit_rendered_references,
@@ -33,6 +33,13 @@ HARD_CODED_NUMBER_RE = re.compile(
 )
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
 FORMALISM_REF_RE = re.compile(r"\b[Ff]ormalisms?\b")
+READER_FACING_CROSSREF_PREFIXES = (
+    "figPrefix:\n  - Figure\n  - Figures",
+    "secPrefix:\n  - Section\n  - Sections",
+    "eqnPrefix:\n  - Equation\n  - Equations",
+    "tblPrefix:\n  - Table\n  - Tables",
+    "nameInLink: true",
+)
 
 
 def _markdown_files(output_manuscript: Path) -> list[Path]:
@@ -133,6 +140,18 @@ def test_rendered_reference_sanitizer_preserves_structural_titles_only() -> None
     assert "- Start the module with the authority card." in sanitized
 
 
+def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path: Path) -> None:
+    web = tmp_path / "web"
+    web.mkdir()
+    (web / "index.html").write_text(
+        "<p>Visual guide for the section Figure&nbsp;1.</p>\n"
+        "<p>Course path: Section&nbsp;2, Section&nbsp;3.</p>\n",
+        encoding="utf-8",
+    )
+
+    assert audit_rendered_references(tmp_path) == []
+
+
 def test_generated_equation_table_and_citation_references_resolve(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     text = _all_output_text(output_manuscript)
@@ -173,12 +192,28 @@ def test_source_docs_explain_label_backed_reference_syntax() -> None:
     syntax = (MANUSCRIPT / "SYNTAX.md").read_text(encoding="utf-8")
     agents = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
     readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
+    citation_workflow = (PROJECT_ROOT / "docs" / "citation_workflow.md").read_text(encoding="utf-8")
 
     assert "[@sec:curriculum_orientation]" in syntax
     assert "[@fig:ageint-curriculum-map]" in syntax
     assert "[@ageint137]" in syntax
+    assert "../docs/citation_workflow.md" in syntax
+    assert "docs/citation_workflow.md" in agents
+    assert "docs/citation_workflow.md" in readme
+    assert "never hand-edit" in citation_workflow
     assert "Pandoc-crossref labels" in agents
     assert "label-backed" in readme
+
+
+def test_pdf_crossref_metadata_uses_reader_facing_prefixes(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    template = (MANUSCRIPT / "templates" / "abstract.md").read_text(encoding="utf-8")
+    rendered = (output_manuscript / "abstract.md").read_text(encoding="utf-8")
+
+    for text in (template, rendered):
+        assert text.startswith("---\n")
+        for prefix in READER_FACING_CROSSREF_PREFIXES:
+            assert prefix in text
 
 
 def test_manuscript_docs_and_templates_do_not_hard_code_numbered_references(built_output: Path) -> None:

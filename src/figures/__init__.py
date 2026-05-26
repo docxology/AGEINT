@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from _package_loader import merge_part_modules
 
-_PARTS = ["_01_part", "_02_part", "_03_part", "_04_part"]
+_PARTS = ["_01_part", "_03_part", "_02b_mermaid", "_02_part", "_04_part"]
 merge_part_modules(__name__, _PARTS)
 
 from ._01_part import (  # noqa: E402

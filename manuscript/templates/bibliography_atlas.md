@@ -12,6 +12,8 @@ with Pandoc citations.
 
 {{SOURCE_REFRESH_ROWS}}
 
+{{CITATION_WORKFLOW_GUIDE}}
+
 ## Bibliography rows
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}

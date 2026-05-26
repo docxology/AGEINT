@@ -16,7 +16,7 @@ material inside **Governance, rights, and assurance**, including
 
 ## Source Rules
 
-References remain append-only through `ageint296`. The `ageint001` through
+References remain append-only through `ageint312`. The `ageint001` through
 `ageint231` identity lock stays stable, and Perplexity remains discovery only.
 Final citations must be directly verified official, standards-body,
 public-domain, or scholarly sources.

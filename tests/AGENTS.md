@@ -16,7 +16,7 @@ review, procurement/vendor oversight, HRIA/DPIA worksheet, data lineage,
 assessment-integrity, agent incident response, role-competency, and
 adversarial-assurance sections.
 
-Shared inventory constants and helpers live in `tests/_inventory_helpers.py`.
+Shared inventory constants and helpers live in `tests/manuscript_quality/inventory_helpers.py`.
 Manuscript inventory checks are split across `test_manuscript_inventory_structure.py`
 (structural contracts) and `test_manuscript_inventory_quality.py` (reader-facing
 prose quality). Topic spine integrity lives in `test_topic_spine.py` (deduped
@@ -29,6 +29,4 @@ Fragment quality across all six module sections lives in
 `test_chapter_fragment_quality.py` (overview primer distinct titles, worked-practice
 profile/lens references, architecture-source echo caps, required module section
 lengths). Token-boundary keyword routing regressions live in
-`test_topic_frame_routing.py`. The session-scoped `built_output` fixture in `conftest.py`
-ensures generated output exists before integration tests run (rebuilds when manuscript or
-figure registry is missing); output-dependent tests request `built_output` and derive manuscript paths via `manuscript_dir()`.
+`test_topic_frame_routing.py`. The session-scoped `built_output` fixture in `conftest.py` ensures generated output exists before integration tests run (rebuilds when manuscript or figure registry is missing). A cold full `run_build()` can take several minutes locally; CI should cache `output/` when possible. Output-dependent tests request `built_output` and derive manuscript paths via `manuscript_dir()`.

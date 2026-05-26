@@ -8,6 +8,10 @@ from pathlib import Path
 import re
 from typing import Any
 
+from _slug import curriculum_chapter_dir_name, curriculum_part_dir_name, slug_for_path
+
+PATTERN_REGISTRY_CHAPTER_NUMBER = 32
+
 ROMAN = {
     "I": 1,
     "II": 2,
@@ -211,7 +215,7 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
             chapter
             for part in parts
             for chapter in part["chapters"]
-            if chapter["number"] == 32
+            if chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
         ),
         None,
     )
@@ -253,56 +257,7 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
     }
 
 
-from _jsonl import read_jsonl as _read_jsonl
-
-
-def _load_curriculum_shards(directory: Path) -> dict[str, Any]:
-    """Compose a curriculum payload from the sharded data directory."""
-    metadata_path = directory / "metadata.json"
-    stats_path = directory / "stats.json"
-    if not metadata_path.is_file() or not stats_path.is_file():
-        raise FileNotFoundError(f"No sharded AGEINT curriculum found in {directory}")
-
-    parts: list[dict[str, Any]] = []
-    for part_path in sorted((directory / "parts").glob("*/part.json")):
-        part = json.loads(part_path.read_text(encoding="utf-8"))
-        chapters = []
-        for path in sorted((part_path.parent / "chapters").iterdir()):
-            if path.is_dir():
-                chapter = json.loads((path / "chapter.json").read_text(encoding="utf-8"))
-                chapter["sections"] = _read_jsonl(path / "sections.jsonl")
-                chapters.append(chapter)
-            elif path.suffix == ".json":
-                chapters.append(json.loads(path.read_text(encoding="utf-8")))
-        part.pop("chapter_files", None)
-        part["chapters"] = chapters
-        parts.append(part)
-
-    appendices = [
-        json.loads(path.read_text(encoding="utf-8"))
-        for path in sorted((directory / "appendices").glob("*.json"))
-    ]
-    references = [
-        row
-        for path in sorted((directory / "references").glob("*.jsonl"))
-        for row in _read_jsonl(path)
-    ]
-    payload = {
-        **json.loads(metadata_path.read_text(encoding="utf-8")),
-        "parts": parts,
-        "appendices": appendices,
-        "patterns": json.loads((directory / "patterns.json").read_text(encoding="utf-8")),
-        "references": references,
-        "stats": json.loads(stats_path.read_text(encoding="utf-8")),
-    }
-    return payload
-
-
-def _slug_for_path(value: str) -> str:
-    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
-    return slug or "item"
-
-
+from _curriculum_shards import load_curriculum_shards_payload as _load_curriculum_shards
 def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
     """Write curriculum payload shards under ``directory``."""
     directory.mkdir(parents=True, exist_ok=True)
@@ -324,11 +279,11 @@ def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
         encoding="utf-8",
     )
     for part in payload["parts"]:
-        part_dir = directory / "parts" / f"{part['number']:02d}-{_slug_for_path(part['title'])}"
+        part_dir = directory / "parts" / curriculum_part_dir_name(part)
         part_dir.mkdir(parents=True, exist_ok=True)
         part_payload = {key: value for key, value in part.items() if key != "chapters"}
         part_payload["chapter_files"] = [
-            f"{chapter['number']:02d}-{_slug_for_path(chapter['title'])}/chapter.json"
+            f"{curriculum_chapter_dir_name(chapter)}/chapter.json"
             for chapter in part["chapters"]
         ]
         (part_dir / "part.json").write_text(
@@ -338,7 +293,7 @@ def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
         chapter_dir = part_dir / "chapters"
         chapter_dir.mkdir(exist_ok=True)
         for chapter in part["chapters"]:
-            chapter_path = chapter_dir / f"{chapter['number']:02d}-{_slug_for_path(chapter['title'])}"
+            chapter_path = chapter_dir / curriculum_chapter_dir_name(chapter)
             chapter_path.mkdir(exist_ok=True)
             chapter_payload = {key: value for key, value in chapter.items() if key != "sections"}
             (chapter_path / "chapter.json").write_text(
@@ -353,12 +308,14 @@ def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
     appendix_dir = directory / "appendices"
     appendix_dir.mkdir(exist_ok=True)
     for appendix in payload["appendices"]:
-        (appendix_dir / f"{appendix['letter'].lower()}-{_slug_for_path(appendix['title'])}.json").write_text(
+        (appendix_dir / f"{appendix['letter'].lower()}-{slug_for_path(appendix['title'])}.json").write_text(
             json.dumps(appendix, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
     reference_dir = directory / "references"
     reference_dir.mkdir(exist_ok=True)
+    for stale in reference_dir.glob("source-guide-*.jsonl"):
+        stale.unlink()
     references = payload["references"]
     for start in range(1, len(references) + 1, 75):
         end = min(start + 74, len(references))
@@ -378,20 +335,41 @@ def write_compact_curriculum_payload(payload: dict[str, Any], output_path: Path)
     return output_path
 
 
+def resolve_curriculum_payload(
+    source_path: Path,
+    *,
+    shard_path: Path | None = None,
+) -> dict[str, Any]:
+    """Resolve a curriculum payload from the guide file or sharded data."""
+    if source_path.is_file():
+        if source_path.suffix == ".json":
+            return json.loads(source_path.read_text(encoding="utf-8"))
+        return parse_curriculum_guide(source_path.read_text(encoding="utf-8"))
+    if source_path.is_dir():
+        return load_curriculum(source_path).payload
+
+    candidates: list[Path] = []
+    if shard_path is not None:
+        candidates.append(shard_path)
+    candidates.append(source_path.parent / "data" / "curriculum")
+    for candidate in candidates:
+        if candidate.exists():
+            return load_curriculum(candidate).payload
+    raise FileNotFoundError(
+        f"No AGEINT curriculum source found: {source_path} or "
+        f"{', '.join(str(path) for path in candidates)}"
+    )
+
+
 def build_curriculum(source_path: Path, output_path: Path) -> Curriculum:
     """Build a curriculum payload from the guide or sharded structured data."""
     if source_path.exists():
         payload = parse_curriculum_guide(source_path.read_text(encoding="utf-8"))
     else:
-        fallback_data = source_path.parent / "data" / "curriculum"
-        if output_path.exists():
-            payload = load_curriculum(output_path).payload
-        elif fallback_data.exists():
-            payload = load_curriculum(fallback_data).payload
-        else:
-            raise FileNotFoundError(
-                f"No AGEINT curriculum source found: {source_path}, {output_path}, or {fallback_data}"
-            )
+        payload = resolve_curriculum_payload(
+            source_path,
+            shard_path=output_path if output_path.exists() else None,
+        )
     if output_path.suffix == ".json":
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")

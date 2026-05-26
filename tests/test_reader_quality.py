@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 import re
 
-from _inventory_helpers import (
+from manuscript_quality.inventory_helpers import (
     chapter_text,
     generated_chapter_files,
     generated_output_files,
@@ -33,6 +33,24 @@ RENDERED_FORMULA_PHRASES = (
     "This section records when **",
     "The goal is to make governance",
     "The chapter keeps the local",
+    "The answer should identify",
+    "inspect fictional records that show how",
+    "fictional",
+    "Use this module studio plan",
+    "After this module, the class writes",
+    "cite the evidence field that would support the definition",
+    "review review",
+    "lens lens",
+    "Lens** lens",
+    "A short class can complete moves",
+    "what learners should do",
+    "Start with the unit's guiding question",
+    "Each input gets a",
+    ", submit a completed **",
+    ", submit a blocked-request control card",
+    "completed artifact is a",
+    "placeholder",
+    "boilerplate",
 )
 PDF_UNSUPPORTED_SOURCE_GLYPHS = ("🛰", "⃣")
 TITLE_KEYWORD_STOPWORDS = {

@@ -10,7 +10,7 @@ import re
 from intelligence_content import INTELLIGENCE_PROFILES, INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import generate_variables
 
-from _inventory_helpers import (
+from manuscript_quality.inventory_helpers import (
     BLOCKED_OPERATIONAL_PATTERN_PHRASES,
     PROJECT_ROOT,
     REQUIRED_REFRESHED_ANCHOR_KEYS,
@@ -325,7 +325,7 @@ def test_v2_docs_cover_source_lanes_identity_safety_and_capstone() -> None:
         "ageint001",
         "ageint231",
         "ageint285",
-        "ageint296",
+        "ageint312",
         "AI conformity/compliance",
         "Public-sector agentic AI",
         "Human-rights governance",

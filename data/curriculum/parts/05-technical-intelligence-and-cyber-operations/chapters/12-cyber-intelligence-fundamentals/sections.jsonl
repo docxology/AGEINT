@@ -5,11 +5,11 @@
 {"citations": [63, 64], "level": 1, "number": "12.2", "raw": "12.2 MITRE ATT&CK Framework: Enterprise Matrix v19[^63][^64]", "title": "MITRE ATT&CK Framework: Enterprise Matrix v19"}
 {"citations": [63], "level": 2, "number": "12.2.1", "raw": "12.2.1 Reconnaissance through Resource Development[^63]", "title": "Reconnaissance through Resource Development"}
 {"citations": [65], "level": 2, "number": "12.2.2", "raw": "12.2.2 Initial Access, Execution, Persistence, Privilege Escalation[^65]", "title": "Initial Access, Execution, Persistence, Privilege Escalation"}
-{"citations": [], "level": 2, "number": "12.2.3", "raw": "12.2.3 Defense Evasion, Credential Access, Discovery, Lateral Movement", "title": "Defense Evasion, Credential Access, Discovery, Lateral Movement"}
-{"citations": [], "level": 2, "number": "12.2.4", "raw": "12.2.4 Collection, Command & Control, Exfiltration, Impact", "title": "Collection, Command & Control, Exfiltration, Impact"}
+{"citations": [300, 303, 304], "level": 2, "number": "12.2.3", "raw": "12.2.3 Defense Evasion, Credential Access, Discovery, Lateral Movement", "title": "Defense Evasion, Credential Access, Discovery, Lateral Movement"}
+{"citations": [306, 312], "level": 2, "number": "12.2.4", "raw": "12.2.4 Collection, Command & Control, Exfiltration, Impact", "title": "Collection, Command & Control, Exfiltration, Impact"}
 {"citations": [62], "level": 1, "number": "12.3", "raw": "12.3 Unified Kill Chain: Extending Lockheed + MITRE[^62]", "title": "Unified Kill Chain: Extending Lockheed + MITRE"}
 {"citations": [66, 67, 68], "level": 1, "number": "12.4", "raw": "12.4 Threat Intelligence Sharing: STIX/TAXII Standards[^66][^67][^68]", "title": "Threat Intelligence Sharing: STIX/TAXII Standards"}
 {"citations": [69], "level": 1, "number": "12.5", "raw": "12.5 Nation-State Cyber Espionage: Motivations and Methods[^69]", "title": "Nation-State Cyber Espionage: Motivations and Methods"}
 {"citations": [9, 70], "level": 1, "number": "12.6", "raw": "12.6 Chinese State-Affiliated Hacking: APT10, APT41, Volt Typhoon[^9][^70]", "title": "Chinese State-Affiliated Hacking: APT10, APT41, Volt Typhoon"}
-{"citations": [], "level": 1, "number": "12.7", "raw": "12.7 Russian Cyber Operations: Sandworm, Cozy Bear, Fancy Bear", "title": "Russian Cyber Operations: Sandworm, Cozy Bear, Fancy Bear"}
+{"citations": [300, 303, 304], "level": 1, "number": "12.7", "raw": "12.7 Russian Cyber Operations: Sandworm, Cozy Bear, Fancy Bear", "title": "Russian Cyber Operations: Sandworm, Cozy Bear, Fancy Bear"}
 {"citations": [71], "level": 1, "number": "12.8", "raw": "12.8 Living-Off-The-Land (LOTL) Techniques in APT Operations[^71]", "title": "Living-Off-The-Land (LOTL) Techniques in APT Operations"}

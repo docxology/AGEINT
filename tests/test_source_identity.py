@@ -24,12 +24,12 @@ def test_locked_source_identities_remain_stable_for_existing_range() -> None:
 
 
 def test_v2_references_are_append_only_after_locked_range() -> None:
-    lock = build_source_identity_lock(SOURCE, max_reference=296)
+    lock = build_source_identity_lock(SOURCE, max_reference=312)
     keys = [entry["key"] for entry in lock["references"]]
 
     assert keys[:231] == [f"ageint{number:03d}" for number in range(1, 232)]
     assert keys[231] == "ageint232"
-    assert keys[-1] == "ageint296"
+    assert keys[-1] == "ageint312"
 
 
 def test_locked_source_identity_detects_mutated_title_or_url(tmp_path: Path) -> None:

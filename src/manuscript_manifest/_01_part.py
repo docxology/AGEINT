@@ -2,26 +2,42 @@ from __future__ import annotations
 
 """Build and render the AGEINT semantic manuscript manifest."""
 
-from dataclasses import dataclass
 import json
 from pathlib import Path
 import re
 import shutil
 from typing import Any
 
-try:  # Resolve the sibling template checkout for standalone AGEINT imports.
-    from .template_resolver import ensure_template_repo_on_path
-except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
-    from template_resolver import ensure_template_repo_on_path  # type: ignore[no-redef]
+try:
+    from manuscript_injection import substitute_manuscript_text
+except ImportError:  # pragma: no cover - package import
+    from ..manuscript_injection import substitute_manuscript_text  # type: ignore[no-redef]
 
-ensure_template_repo_on_path(Path(__file__).resolve())
-
-from infrastructure.rendering.manuscript_injection import substitute_manuscript_text  # noqa: E402
+try:
+    from .types import (
+        ManuscriptManifest,
+        ManuscriptSection,
+        SlugRegistry as _SlugRegistry,
+        ordering_config_yaml as _ordering_config_yaml,
+        section_label as _label,
+        slugify as _slug,
+    )
+except ImportError:  # pragma: no cover - merged part module
+    from manuscript_manifest.types import (  # type: ignore[no-redef]
+        ManuscriptManifest,
+        ManuscriptSection,
+        SlugRegistry as _SlugRegistry,
+        ordering_config_yaml as _ordering_config_yaml,
+        section_label as _label,
+        slugify as _slug,
+    )
 
 try:  # Support package and script-level imports.
     from .curriculum import Curriculum
+    from .citation_workflow import source_citation_spine
     from .figures import figure_markdown, figures_for_section
     from .markdown_refs import figure_ref_list, section_ref_list
+    from .unit_education import render_unit_profile_markdown
     from .rendered_reference_audit import (
         sanitize_rendered_section_title_mentions,
         section_title_rules,
@@ -65,11 +81,13 @@ try:  # Support package and script-level imports.
         transparency_notice_rows,
     )
     from .manuscript_templates import DEFAULT_TEMPLATES
-    from .manuscript_variables import appendix_rows, citation_spine
+    from .manuscript_variables import appendix_rows
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from curriculum import Curriculum  # type: ignore[no-redef]
+    from citation_workflow import source_citation_spine  # type: ignore[no-redef]
     from figures import figure_markdown, figures_for_section  # type: ignore[no-redef]
     from markdown_refs import figure_ref_list, section_ref_list  # type: ignore[no-redef]
+    from unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
     from rendered_reference_audit import (  # type: ignore[no-redef]
         sanitize_rendered_section_title_mentions,
         section_title_rules,
@@ -115,122 +133,7 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from manuscript_templates import DEFAULT_TEMPLATES  # type: ignore[no-redef]
     from manuscript_variables import (  # type: ignore[no-redef]
         appendix_rows,
-        citation_spine,
     )
-
-@dataclass(frozen=True)
-class ManuscriptSection:
-    """A generated manuscript section with semantic output path and context."""
-
-    kind: str
-    title: str
-    relative_path: str
-    template_name: str
-    context: dict[str, str]
-    order: int
-    section_label: str = ""
-    parent_label: str = ""
-    previous_label: str = ""
-    next_label: str = ""
-    figure_labels: tuple[str, ...] = ()
-    chapter_number: int | None = None
-    appendix_letter: str | None = None
-
-@dataclass(frozen=True)
-class ManuscriptManifest:
-    """Ordered AGEINT manuscript manifest."""
-
-    sections: list[ManuscriptSection]
-    units: list[dict[str, Any]]
-    appendix_files: list[str]
-
-    @property
-    def chapter_sections(self) -> list[ManuscriptSection]:
-        return [section for section in self.sections if section.kind == "chapter"]
-
-    @property
-    def part_sections(self) -> list[ManuscriptSection]:
-        return [section for section in self.sections if section.kind == "part"]
-
-    @property
-    def appendix_sections(self) -> list[ManuscriptSection]:
-        return [section for section in self.sections if section.kind == "appendix"]
-
-    def section_for_chapter(self, number: int) -> ManuscriptSection:
-        for section in self.chapter_sections:
-            if section.chapter_number == number:
-                return section
-        raise KeyError(f"No chapter section {number}")
-
-    def section_for_appendix(self, letter: str) -> ManuscriptSection:
-        normalized = letter.upper()
-        for section in self.appendix_sections:
-            if section.appendix_letter == normalized:
-                return section
-        raise KeyError(f"No appendix section {letter}")
-
-    def config_yaml(self) -> str:
-        """Return YAML ordering understood by infrastructure manuscript discovery."""
-        return _ordering_config_yaml(["abstract.md", "orientation.md"], self.units, self.appendix_files)
-
-def _ordering_config_yaml(
-    front_matter_files: list[str],
-    units: list[dict[str, Any]],
-    appendix_files: list[str],
-) -> str:
-    """Return YAML ordering understood by infrastructure manuscript discovery."""
-    lines = [
-        "front_matter:",
-        "  include_front_matter: true",
-        "  files:",
-    ]
-    lines.extend(f"    - file: {file_name}" for file_name in front_matter_files)
-    lines.append("units:")
-    for unit in units:
-        lines.extend(
-            [
-                f"  - id: {unit['id']}",
-                f"    directory: {unit['directory']}",
-                "    chapters:",
-            ]
-        )
-        for chapter_file in unit["chapters"]:
-            lines.append(f"      - file: {chapter_file}")
-
-    lines.extend(
-        [
-            "appendices:",
-            "  include_reference: true",
-            "  reference:",
-        ]
-    )
-    for file_name in appendix_files:
-        lines.append(f"    - file: {file_name}")
-    return "\n".join(lines) + "\n"
-
-class _SlugRegistry:
-    def __init__(self) -> None:
-        self._seen: dict[str, set[str]] = {}
-
-    def unique(self, namespace: str, value: str) -> str:
-        base = _slug(value)
-        seen = self._seen.setdefault(namespace, set())
-        if base not in seen:
-            seen.add(base)
-            return base
-        suffix = 2
-        while f"{base}-{suffix}" in seen:
-            suffix += 1
-        resolved = f"{base}-{suffix}"
-        seen.add(resolved)
-        return resolved
-
-def _slug(value: str) -> str:
-    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
-    return slug or "section"
-
-def _label(kind: str, slug: str) -> str:
-    return f"sec:{kind}-{slug}"
 
 def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
     """Return a compact, body-safe source-spine phrase."""
@@ -238,7 +141,7 @@ def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
     selected = list(citation_numbers[:limit])
     if not selected:
         return "the surrounding verified source spine"
-    return citation_spine(selected)
+    return source_citation_spine(selected)
 
 def _part_source_context(part: dict[str, Any]) -> str:
     """Return a part-specific context phrase without repeating the part title."""
@@ -270,10 +173,10 @@ def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, lim
 def _part_summary(part: dict[str, Any]) -> str:
     source_context = _part_source_context(part)
     return (
-        "This unit introduction tells instructors what learners should do "
-        "before they enter the individual modules. Start with the unit's guiding "
-        "question, identify the evidence artifacts students will produce, and "
-        f"keep the capstone thread visible across this unit. The source path begins with {source_context}\n\n"
+        f"{render_unit_profile_markdown(part)}\n\n"
+        "This unit introduces the part's governing question, evidence artifacts, "
+        "source-support spine, and capstone thread before the individual modules "
+        f"begin. The source path begins with {source_context}\n\n"
         "Learners carry one unit capstone thread through the part: define an "
         "authorized intelligence question, bind it to source-quality constraints, "
         "produce a reviewable artifact, test the artifact against failure modes, "
@@ -302,7 +205,7 @@ def _part_chapter_rows(part: dict[str, Any], chapter_files: dict[int, str]) -> s
         section_ref = f"[@{_label('chapter', chapter_slug)}]"
         rows.append(
             f"| {chapter['title']} | {section_ref} | "
-            f"{citation_spine(chapter['citations'])} |"
+            f"{source_citation_spine(chapter['citations'])} |"
         )
     return "\n".join(rows)
 

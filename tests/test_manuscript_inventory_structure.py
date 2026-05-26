@@ -7,7 +7,7 @@ from pathlib import Path
 from infrastructure.rendering.manuscript_discovery import discover_manuscript_files
 from curriculum import load_curriculum
 
-from _inventory_helpers import (
+from manuscript_quality.inventory_helpers import (
     DATA,
     MANUSCRIPT,
     REMOVED_REPEATED_MODULE_SECTIONS,

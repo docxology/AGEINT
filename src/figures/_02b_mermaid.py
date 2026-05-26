@@ -13,16 +13,6 @@ from curriculum import Curriculum
 from ._01_part import FigureSpec
 
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_03_part")
-
 
 def _discover_chrome_executable() -> str | None:
     """Return a chrome-headless-shell binary for mmdc/Puppeteer."""

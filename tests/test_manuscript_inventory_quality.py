@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from _inventory_helpers import (
+from manuscript_quality.inventory_helpers import (
     DIRECT_STUDENT_TASK_MOTIFS,
     REMOVED_FILLER_PHRASES,
     REMOVED_GENERATED_SCAFFOLD_PHRASES,

@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-def _import_prior_parts(*module_names: str) -> None:
-    import importlib
-
-    for module_name in module_names:
-        mod = importlib.import_module(f".{module_name}", __package__)
-        globals().update({k: v for k, v in vars(mod).items() if not k.startswith("__")})
-
-
-_import_prior_parts("_01_part")
-
 
 
 
@@ -95,6 +85,23 @@ def reference_bibtex(references: list[dict[str, Any]]) -> str:
     return "\n".join(reference_bibtex_files(references).values())
 
 
+def _source_citation_coverage_summary_text(curriculum: Curriculum) -> str:
+    """Return a compact prose summary for generated citation variables."""
+
+    summary = source_citation_coverage_summary(curriculum)
+    distribution = ", ".join(
+        f"{count} citation(s): {sections} section(s)"
+        for count, sections in summary.citation_count_distribution
+    )
+    return (
+        f"{summary.section_count} source sections; "
+        f"{summary.citation_occurrences} citation occurrences; "
+        f"{summary.unique_citation_keys} unique source-guide keys; "
+        f"{summary.zero_citation_sections} zero-citation source sections. "
+        f"Distribution: {distribution}."
+    )
+
+
 def generate_variables(project_root: Path) -> dict[str, str]:
     """Generate AGEINT manuscript variables from the parsed curriculum JSON."""
     curriculum_path = project_root / "data" / "curriculum"
@@ -124,6 +131,9 @@ def generate_variables(project_root: Path) -> dict[str, str]:
         "INTELLIGENCE_RESEARCH_ROWS": research_anchor_rows(),
         "INTELLIGENCE_SOURCE_LANE_ROWS": source_lane_rows(),
         "SOURCE_REFRESH_ROWS": source_refresh_rows(),
+        "CITATION_WORKFLOW_GUIDE": render_citation_workflow_markdown(curriculum),
+        "SOURCE_SECTION_CITATION_ROWS": render_source_section_citation_rows(curriculum),
+        "SOURCE_CITATION_COVERAGE_SUMMARY": _source_citation_coverage_summary_text(curriculum),
         "SAFE_SUBSTITUTION_ROWS": safe_substitution_rows(),
         "CAPSTONE_SCAFFOLD_ROWS": capstone_scaffold_rows(),
         "ACCESSIBILITY_REVIEW_ROWS": accessibility_review_rows(),

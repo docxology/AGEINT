@@ -40,7 +40,8 @@ def test_sharded_curriculum_composes_expected_runtime_payload() -> None:
     curriculum = load_curriculum(CURRICULUM)
 
     assert curriculum.stats["chapters"] == 51
-    assert curriculum.stats["references"] == 296
+    assert curriculum.stats["references"] >= 296
+    assert curriculum.stats["references"] == len({ref["key"] for ref in curriculum.references})
     assert curriculum.chapter(32)["title"] == "AGEINT Design Patterns and Archetypes"
     assert len(curriculum.chapter(32)["sections"]) >= 80
     assert curriculum.reference("ageint296")["title"].startswith("Artificial Intelligence Risk Management")

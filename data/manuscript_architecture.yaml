@@ -1,0 +1,37 @@
+profiles:
+  governed_intelligence_cycle:
+    inputs: requirements, audience needs, public-source evidence, caveats, and feedback signals
+    transforms: requirement framing, collection scoping, source evaluation, analytic judgment, dissemination, and feedback
+      review
+    outputs: release-neutral brief, audience map, caveat register, and feedback note
+    failures: unscoped audiences, missing caveats, weak records, and product reuse without feedback
+  analytic_tradecraft:
+    inputs: reporting, assumptions, alternatives, confidence language, dissent, and source descriptors
+    transforms: hypothesis generation, evidence sorting, assumption challenge, confidence calibration, and dissent capture
+    outputs: analytic note, hypothesis table, assumption list, and confidence statement
+    failures: single-hypothesis reasoning, source laundering, confidence inflation, and suppressed dissent
+  collection_management:
+    inputs: authorized requirements, source-discipline choices, minimization rules, source-risk notes, and evaluation criteria
+    transforms: priority mapping, source-discipline fit, least-intrusive evidence selection, and feedback review
+    outputs: requirements matrix, collection-limit note, source-quality card, and gap list
+    failures: recruitment or interception drift, over-collection, weak minimization, and source exposure
+  cyber_threat_intelligence:
+    inputs: fabricated alerts, public taxonomy labels, incident context, supplier evidence, and handling rules
+    transforms: indicator normalization, TTP mapping, confidence scoring, sharing review, and control-gap analysis
+    outputs: defensive CTI packet, handling note, control implication, and incident-learning memo
+    failures: exploit detail leakage, indicator fixation, unvetted sharing, and unsupported attribution
+  ics_ot_defense:
+    inputs: synthetic process logs, asset/consequence maps, operator decisions, safety stops, and recovery evidence
+    transforms: asset-consequence mapping, ATT&CK-for-ICS coverage review, operator-decision rehearsal, and after-action learning
+    outputs: cyber-physical tabletop packet, debrief rubric, recovery note, and control-coverage map
+    failures: IT-first assumptions, unsafe actuation, live-control drift, and missing safety review
+  legal_oversight:
+    inputs: legal authorities, policy constraints, affected groups, retention duties, oversight roles, and audit logs
+    transforms: authority mapping, proportionality review, rights-impact assessment, redress planning, and escalation routing
+    outputs: authority-and-impact register, audit trail, redress note, and unresolved-risk owner
+    failures: authority laundering, missing audit trails, privacy overreach, and governance-as-afterthought
+default:
+  inputs: source materials, domain constraints, learner questions, verified anchors, and artifact requirements
+  transforms: evidence normalization, structured reasoning, source evaluation, governance review, and handoff preparation
+  outputs: annotated map, decision memo, rubric, tabletop packet, or audit artifact
+  failures: over-automation, misplaced confidence, policy drift, and confusing simulation with deployment
