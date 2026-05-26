@@ -99,3 +99,12 @@ Display-title contract (`topic_entries.safe_topic_entries`):
 - Append routes to `data/concept_routes*.yaml`, `data/topic_risk_routes.yaml` (regenerate via `scripts/generate_risk_routes_yaml.py`), or `data/topic_prompt_routes.yaml` (regenerate via `scripts/generate_topic_prompt_routes_yaml.py`) before adding Python matchers.
 - Never expose raw unsafe source titles in student-facing misconception or transfer text; use `display_title`, `chapter_title`, and `lesson_index` rotation.
 - Rebuild after changes: `uv run python scripts/build_curriculum.py`.
+
+## Deferred (P3 backlog)
+
+Tracked separately; not in scope for P1/P2 thermo-nuclear follow-ups:
+
+- Dismantle `merge_part_modules` across the 17 intelligence_content shards.
+- YAML migration of `WHY_IT_MATTERS_TEMPLATES`, `MISCONCEPTION_FALLBACKS`, and `RISK_WHY_FAILURE_HINTS` in `_12_topic_frames.py`.
+- Extract `topic_frame_api.py` so `topic_lessons.py` does not import the full `_12_topic_frames` module (residual F1 coupling).
+- Raise `pdf_quality.py` audit-path coverage (not a `src/` floor blocker).

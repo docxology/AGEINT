@@ -24,14 +24,14 @@ if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, PracticeLens, TopicEntry
 
 try:
+    from intelligence_content._07_safe_titles import _topic_anchor_words
+except ImportError:  # pragma: no cover - merged namespace
+    from ._07_safe_titles import _topic_anchor_words  # type: ignore[no-redef]
+
+try:
     from intelligence_content._12_concept_routes import _first_matching_frame
 except ImportError:  # pragma: no cover - merged namespace
     from ._12_concept_routes import _first_matching_frame  # type: ignore[no-redef]
-
-
-def _topic_anchor_words(raw_title: str, *, limit: int = 2) -> str:
-    words = [word for word in raw_title.replace("-", " ").split() if word]
-    return " ".join(words[:limit]) if words else raw_title
 
 
 def evidence_prompt_for_entry(

@@ -16,6 +16,11 @@ try:
 except ImportError:  # pragma: no cover - merged namespace
     from intelligence_content.topic_rotation import template_index  # type: ignore[no-redef]
 
+try:
+    from ._07_safe_titles import _topic_anchor_words
+except ImportError:  # pragma: no cover - merged namespace
+    from intelligence_content._07_safe_titles import _topic_anchor_words  # type: ignore[no-redef]
+
 from _data_loaders import category_concept_frames
 
 CATEGORY_CONCEPT_FRAMES: dict[str, str] = category_concept_frames()

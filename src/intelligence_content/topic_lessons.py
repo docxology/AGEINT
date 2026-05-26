@@ -238,16 +238,14 @@ def resolve_topic_misconception(
     chapter_title: str,
     unit_profile: UnitEducationProfile | None = None,
 ) -> str:
-    """Return the misconception string via the unified lesson-field resolver."""
-    return resolve_topic_lesson_fields(
+    """Return the misconception string aligned with topic-lesson routing."""
+    del profile, lens, unit_profile
+    return misconception_for_entry(
         entry,
-        coursebook=coursebook,
-        profile=profile,
-        lens=lens,
+        coursebook,
         lesson_index=lesson_index,
         chapter_title=chapter_title,
-        unit_profile=unit_profile,
-    ).misconception
+    )
 
 
 __all__ = [

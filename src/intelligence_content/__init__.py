@@ -75,7 +75,6 @@ from ._09_part import (  # noqa: E402
     role_competency_rows,
     safe_pattern_rows,
     safe_substitution_rows,
-    safe_topic_entries,
     source_lane_inventory,
     source_lane_rows,
     source_refresh_rows,

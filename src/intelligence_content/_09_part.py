@@ -351,5 +351,3 @@ try:
     from intelligence_content.topic_entries import safe_topic_entries
 except ImportError:  # pragma: no cover - merged namespace
     from .topic_entries import safe_topic_entries  # type: ignore[no-redef]
-
-_safe_topic_entries = safe_topic_entries
