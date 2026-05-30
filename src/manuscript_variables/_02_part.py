@@ -1,16 +1,29 @@
 from __future__ import annotations
 
-
+try:
+    from intelligence_content.source_grounding import (
+        clean_source_title as _sg_clean_title,
+        safe_source_note as _sg_safe_note,
+    )
+except ImportError:  # pragma: no cover
+    def _sg_clean_title(t: str) -> str: return t  # type: ignore[misc]
+    def _sg_safe_note(n: str) -> str: return n   # type: ignore[misc]
 
 
 def _render_bibtex_entries(references: list[dict[str, Any]]) -> str:
     entries: list[str] = []
     for ref in references:
-        title = _clean_bibtex_text(ref["title"])
+        # Clean title: strip site-suffix noise and truncation markers
+        raw_title = ref.get("title") or ""
+        cleaned_title = _sg_clean_title(raw_title) if raw_title else raw_title
+        title = _clean_bibtex_text(cleaned_title)
         author = _reference_author(ref)
         year = _clean_bibtex_value(ref.get("year") or "2026")
         url = _clean_bibtex_value(ref.get("url") or "")
-        note_parts = [str(ref.get("note") or "SIST guide bibliography entry")]
+        # Use safe_source_note to get the best available cleaned description
+        raw_note = str(ref.get("note") or "")
+        cleaned_note = _sg_safe_note(raw_note) if raw_note else ""
+        note_parts = [cleaned_note or "SIST guide bibliography entry"]
         if ref.get("checked_as_of"):
             note_parts.append(f"Checked as of {ref['checked_as_of']}")
         if ref.get("citation_role"):

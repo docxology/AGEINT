@@ -20,6 +20,14 @@ from ._09_part import (
     _topic_context,
 )
 from ._12_topic_frames import lesson_intro_paragraph
+from .source_grounding import (
+    SourceRecord,
+    annotated_source_table,
+    cited_sources,
+    evidence_from_sources,
+    source_support_sentence,
+    sources_for_numbers,
+)
 from .topic_entries import safe_topic_entries
 from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 
@@ -48,13 +56,19 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             chapter_title=title,
             unit_profile=unit_profile,
         )
+        sources = cited_sources(entry, limit=3)
+        evidence = (
+            evidence_from_sources(entry.display_title, sources)
+            if sources
+            else fields.evidence_prompt
+        )
         lessons.extend(
             [
                 f"### Lesson {index}: {entry.display_title}",
                 f"**Concept.** {fields.concept}",
                 f"**Why it matters.** {fields.why_it_matters}",
-                f"**Source support.** {_topic_source_support(entry, chapter)}",
-                f"**Evidence to inspect.** {fields.evidence_prompt}",
+                f"**Source support.** {_topic_source_support(entry, chapter, sources)}",
+                f"**Evidence to inspect.** {evidence}",
                 f"**Student artifact.** {fields.artifact_prompt}",
                 (
                     f"**Misconception check.** Correct the misconception "
@@ -66,9 +80,34 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     return "\n\n".join(lessons)
 
 
-def _topic_source_support(entry: TopicEntry, chapter: dict[str, Any]) -> str:
+def chapter_source_annotations(chapter: dict[str, Any], limit: int = 30) -> str:
+    """Render a module's real annotated source list from its cited works."""
+    records = sources_for_numbers(chapter.get("citations", []), limit=limit)
+    if not records:
+        return (
+            "This module carries no direct source-guide citations; it inherits the "
+            "surrounding part bibliography, and the gap stays visible in the claim ledger."
+        )
+    table = annotated_source_table(records)
+    total = len(set(int(number) for number in chapter.get("citations", [])))
+    if total > len(records):
+        remaining = total - len(records)
+        table = (
+            f"{table}\n\nThe remaining {remaining} cited source(s) for this module "
+            "appear in the bibliography appendix with the same verification metadata."
+        )
+    return table
+
+
+def _topic_source_support(
+    entry: TopicEntry,
+    chapter: dict[str, Any],
+    sources: tuple[SourceRecord, ...] = (),
+) -> str:
     """Render direct topic citations or an honest module-spine fallback."""
 
+    if sources:
+        return source_support_sentence(entry.display_title, sources)
     if entry.citation_numbers:
         return (
             f"Source-guide row {entry.source_locus} cites "

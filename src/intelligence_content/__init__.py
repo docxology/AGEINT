@@ -63,6 +63,7 @@ from ._10_part import (  # noqa: E402
 from ._11_part import (  # noqa: E402
     chapter_knowledge_check,
     chapter_practice_sequence,
+    chapter_source_annotations,
     chapter_topic_lessons,
     chapter_worked_example,
     profile_inventory_rows,
@@ -127,6 +128,7 @@ __all__ = [
     "chapter_key_terms",
     "chapter_topic_lessons",
     "chapter_worked_example",
+    "chapter_source_annotations",
     "chapter_practice_sequence",
     "chapter_knowledge_check",
     "subsection_practice_rows",

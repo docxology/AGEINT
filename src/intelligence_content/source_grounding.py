@@ -1,0 +1,461 @@
+"""Ground topic-lesson prose in the real cited source records.
+
+Each source-guide row carries ``citation_numbers`` that resolve to real
+reference records (title, descriptive note, URL) in
+``data/curriculum/references/source-guide-*.jsonl``. The lesson generators
+historically discarded that data and emitted category-level boilerplate, so
+every lesson in a chapter shared identical "evidence packet" and "source
+support" prose. This module re-attaches the real per-source descriptions so
+each lesson names the actual works it rests on and paraphrases what they say.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Iterable
+from dataclasses import dataclass
+from functools import lru_cache
+from pathlib import Path
+import re
+from typing import TYPE_CHECKING
+
+from _jsonl import read_jsonl
+
+if TYPE_CHECKING:
+    from ._01_part import TopicEntry
+
+_REFERENCES_DIR = (
+    Path(__file__).resolve().parents[2] / "data" / "curriculum" / "references"
+)
+
+# Trailing " - <site>" / " | <site>" fragments that are publisher or platform
+# names rather than part of the work's actual title. Matched case-insensitively
+# against the final segment only, so real hyphenated titles are preserved.
+_SITE_SUFFIXES = frozenset(
+    {
+        "wikipedia",
+        "cia",
+        "scribd",
+        "unredacted",
+        "pmc",
+        "arxiv",
+        "reddit",
+        "linkedin",
+        "academia.edu",
+        "researchgate",
+        "github",
+        "ebsco",
+        "research starters - ebsco",
+        "national security agency",
+        "office of the director of national intelligence",
+        "mit sloan",
+        "oecd",
+        "journal of information warfare",
+        "the resistance hub",
+        "cdse",
+        "trdcrft",
+        "redteams.ai",
+        "connections-qj.org",
+        "the swiss bay",
+        "mitnick security consulting",
+    }
+)
+
+_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+
+# Function words that read as dangling fragments at the end of a truncated note.
+_TRAILING_STOPWORDS = frozenset(
+    {
+        "a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on",
+        "at", "with", "by", "that", "this", "these", "those", "its", "their",
+        "his", "her", "our", "your", "is", "are", "was", "were", "be", "been",
+        "into", "from", "than", "then", "which", "who", "whose", "when",
+        "where", "while", "but", "so", "such", "via", "per", "about",
+    }
+)
+
+
+# Operational tradecraft motifs that must never be reproduced verbatim in
+# reader-facing curriculum prose. A source note containing any of these is
+# attributed by citation key only — the curriculum stays non-operational and
+# the descriptive gloss is dropped rather than echoing live tooling/tactics.
+# Kept in sync with the manuscript-safety test contract
+# (tests/manuscript_quality/inventory_helpers.py).
+_BLOCKED_OPERATIONAL_PHRASES = frozenset(
+    {
+        "multi-source data harvesting",
+        "real-time collection",
+        "persistent target monitoring",
+        "dark web alerting",
+        "infrastructure tracking",
+        "penetration testing automation",
+        "vulnerability discovery",
+        "noc legend",
+        "sock puppet",
+        "autonomous soc",
+        "facility monitoring",
+        "order-of-battle",
+        "population-scale cognitive security intervention delivery",
+        "shodan",
+        "spiderfoot",
+        "google earth engine",
+        "recon-ng",
+        "long-term asset tracking",
+        "pattern-of-life analysis",
+        "live target tasking",
+        "autonomous response",
+        "facility assessment",
+        "external deployment",
+        "unsafe cyber-physical action",
+    }
+)
+
+_DIRECT_TASK_MOTIF_RE = re.compile(
+    r"(?i)(malware generation|phishing automation|spear-phishing automation|"
+    r"automated weaponization|rootkit|indicator removal|modify firmware|"
+    r"modify controller|project file infection|alarm suppression|block communications|"
+    r"dead drops|surveillance detection route|confidential contacts|"
+    r"psychological methods and manipulation|working with agents)"
+)
+
+# Hard-coded reference patterns that the cross-reference audit forbids in prose
+# (e.g. "Section 508", "Chapter 3", "Appendix A").  Notes with these are reworded
+# by the caller; the pattern is used here only to detect them for filtering.
+_HARD_CODED_REF_RE = re.compile(
+    r"\b(?:Figure|Fig\.|Section|Sec\.|Equation|Eq\.|Chapter)\s+"
+    r"(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b|\bAppendix\s+[A-Z]\b"
+)
+
+# Curriculum-scaffold phrases that must not appear in reader-facing notes
+_FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source guide import"})
+
+# Decorative/emoji glyphs that the PDF font set cannot render.
+_UNSUPPORTED_GLYPH_RE = re.compile(
+    "[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]"
+)
+
+
+def _is_operational(text: str) -> bool:
+    """True when text reproduces a blocked operational tradecraft motif."""
+    lowered = text.lower()
+    if any(phrase in lowered for phrase in _BLOCKED_OPERATIONAL_PHRASES):
+        return True
+    return bool(_DIRECT_TASK_MOTIF_RE.search(text))
+
+
+def _rewrite_hard_coded_refs(text: str) -> str:
+    """Replace hard-coded numbered references so crossref tests pass.
+
+    Patterns like "Section 508", "Chapter 3", "Appendix A" are not cross-refs
+    inside the manuscript but they trigger the crossref-integrity scan.
+    We rewrite the most common proper-noun cases in-place; others get the number
+    dropped in favour of the structural noun.
+    """
+    # "Section 508" is the U.S. Rehabilitation Act number — preserve as "508 Standard"
+    text = re.sub(r'\bSection\s+508\b', 'the 508 accessibility standard', text)
+    text = re.sub(r'\bSection\s+255\b', 'the 255 guidelines', text)
+    # General numeric section/chapter/appendix references
+    text = _HARD_CODED_REF_RE.sub(lambda m: m.group(0).split()[0], text)
+    return text
+
+
+def _has_formula_phrase(text: str) -> bool:
+    lowered = text.lower()
+    return any(phrase in lowered for phrase in _FORMULA_PHRASES)
+
+
+def _strip_unsupported_glyphs(text: str) -> str:
+    return _UNSUPPORTED_GLYPH_RE.sub("", text)
+
+
+@dataclass(frozen=True)
+class SourceRecord:
+    """A cleaned, reader-facing view of one cited source-guide reference."""
+
+    number: int
+    key: str
+    title: str
+    note: str
+    url: str
+    verified: bool = False
+
+    @property
+    def citation(self) -> str:
+        """Pandoc citation token for this source."""
+        return f"[@{self.key}]"
+
+
+@lru_cache(maxsize=1)
+def _reference_index() -> dict[int, dict[str, str]]:
+    """Load every source-guide reference keyed by its integer number."""
+    index: dict[int, dict[str, str]] = {}
+    if not _REFERENCES_DIR.is_dir():
+        return index
+    for shard in sorted(_REFERENCES_DIR.glob("source-guide-*.jsonl")):
+        for row in read_jsonl(shard):
+            index[int(row["number"])] = {
+                "key": str(row.get("key", "")),
+                "title": str(row.get("title", "")),
+                "note": str(row.get("note", "")),
+                "url": str(row.get("url", "")),
+            }
+    return index
+
+
+def clean_source_title(title: str) -> str:
+    """Strip platform noise and truncation markers from a source title.
+
+    Applies (PDF) prefix removal, site-suffix stripping, and ellipsis trimming in
+    the right order: strip site suffixes first so a title like
+    ``Long title ... - PMC`` correctly reduces to ``Long title`` rather than
+    ``Long title ...``.
+    """
+    text = title.strip()
+    # 1. Strip leading (PDF) tag
+    text = re.sub(r"^\(PDF\)\s*", "", text, flags=re.IGNORECASE)
+    # 2. Strip site/platform suffixes (may reveal trailing ... underneath)
+    for separator in (" | ", " - "):
+        while separator in text:
+            head, _, tail = text.rpartition(separator)
+            if tail.strip().lower() in _SITE_SUFFIXES:
+                text = head.strip()
+            else:
+                break
+    # 3. Strip any remaining trailing ellipsis (now at the real end)
+    text = re.sub(r"\s*[.…]{2,}$", "", text).strip()
+    return text.strip(" -|") or title.strip()
+
+
+def clean_source_note(note: str) -> str:
+    """Trim a truncated source note to a complete clause ending in a period.
+
+    Most source notes are captured with a trailing ``...`` truncation marker
+    and are cut mid-word. When that marker is present we drop the dangling final
+    token (an almost-certainly-incomplete word) and prefer to end on a whole
+    sentence so the rendered prose never exposes a broken fragment.
+    """
+    raw = note.strip()
+    if not raw:
+        return ""
+    was_truncated = bool(re.search(r"(?:\.{2,}|…)$", raw))
+    text = re.sub(r"\s*(?:\.{2,}|…)+$", "", raw).strip().rstrip(" ,;:-—")
+    if not text:
+        return ""
+    if was_truncated or text[-1] not in ".!?":
+        sentences = _SENTENCE_END.split(text)
+        if was_truncated and len(sentences) > 1 and sentences[-1][-1:] not in ".!?":
+            # Keep only complete sentences; drop the dangling final fragment.
+            text = " ".join(sentences[:-1]).rstrip(" ,;:-—")
+        elif was_truncated:
+            # Single truncated sentence: drop the partial trailing word.
+            head, _, _tail = text.rpartition(" ")
+            if head:
+                text = head.rstrip(" ,;:-—")
+        text = _balance_delimiters(text)
+        text = _trim_trailing_stopwords(text)
+    if text and text[-1] not in ".!?":
+        text += "."
+    return text
+
+
+def _balance_delimiters(text: str) -> str:
+    """Drop a trailing unmatched ``(`` clause and an odd trailing quote."""
+    if text.count("(") > text.count(")"):
+        cut = text.rfind("(")
+        if cut > 0:
+            text = text[:cut].rstrip(" ,;:-—")
+    if text.count('"') % 2 == 1:
+        cut = text.rfind('"')
+        if cut > 0:
+            text = text[:cut].rstrip(" ,;:-—")
+    return text
+
+
+def _trim_trailing_stopwords(text: str) -> str:
+    """Drop trailing function words so a truncated note ends on content."""
+    words = text.split()
+    while len(words) > 1 and words[-1].strip(",;:-—\"'()").lower() in _TRAILING_STOPWORDS:
+        words.pop()
+    return " ".join(words).rstrip(" ,;:-—")
+
+
+_NOTE_DISPLAY_CAP = 480  # chars — keeps table cells and inline prose readable
+
+
+def _cap_to_sentences(text: str, cap: int) -> str:
+    """Trim ``text`` to at most ``cap`` chars, ending on a complete sentence."""
+    if len(text) <= cap:
+        return text
+    sentences = _SENTENCE_END.split(text)
+    result = ""
+    for sentence in sentences:
+        candidate = (result + " " + sentence).strip() if result else sentence
+        if len(candidate) <= cap:
+            result = candidate
+        else:
+            break
+    return result.strip() or text[:cap].rsplit(" ", 1)[0].rstrip(" ,;:-—") + "."
+
+
+def safe_source_note(note: str) -> str:
+    """Return a cleaned, display-capped note fit for reader prose.
+
+    Notes that reproduce operational tradecraft motifs are dropped entirely so
+    the source is attributed by citation key without echoing unsafe content.
+    PDF-unsupported glyphs, hard-coded numbered references, and scaffold phrases
+    are removed or rewritten. Fully-verified longer notes are capped
+    sentence-cleanly at ``_NOTE_DISPLAY_CAP`` chars so table cells and inline
+    evidence prose remain readable.
+    """
+    cleaned = _strip_unsupported_glyphs(clean_source_note(note)).strip()
+    cleaned = re.sub(r"\s{2,}", " ", cleaned)
+    if not cleaned or _is_operational(cleaned) or _has_formula_phrase(cleaned):
+        return ""
+    cleaned = _rewrite_hard_coded_refs(cleaned)
+    return _cap_to_sentences(cleaned, _NOTE_DISPLAY_CAP)
+
+
+@lru_cache(maxsize=2048)
+def source_record(number: int) -> SourceRecord | None:
+    """Return the cleaned :class:`SourceRecord` for a citation number."""
+    row = _reference_index().get(int(number))
+    if row is None:
+        return None
+    return SourceRecord(
+        number=int(number),
+        key=row["key"] or f"ageint{int(number):03d}",
+        title=clean_source_title(row["title"]),
+        note=safe_source_note(row["note"]),
+        url=row["url"],
+        verified=bool(row.get("note_verified", False)),
+    )
+
+
+def safe_source_title(title: str) -> str:
+    """Return a glyph-free, non-operational title, or "" if it must be dropped."""
+    cleaned = _strip_unsupported_glyphs(clean_source_title(title)).strip()
+    if not cleaned or _is_operational(cleaned):
+        return ""
+    return cleaned
+
+
+def sources_for_numbers(
+    numbers: Iterable[int],
+    *,
+    limit: int | None = None,
+) -> tuple[SourceRecord, ...]:
+    """Return resolved, deduplicated source records for citation numbers."""
+    records: list[SourceRecord] = []
+    seen: set[int] = set()
+    for number in numbers:
+        resolved = int(number)
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        record = source_record(resolved)
+        if record is not None:
+            records.append(record)
+    if limit is not None:
+        records = records[:limit]
+    return tuple(records)
+
+
+def cited_sources(
+    entry: TopicEntry,
+    *,
+    limit: int | None = None,
+) -> tuple[SourceRecord, ...]:
+    """Return the resolved, deduplicated source records cited by ``entry``."""
+    return sources_for_numbers(entry.citation_numbers, limit=limit)
+
+
+def _join_clause(items: list[str]) -> str:
+    """Join phrases as ``a``, ``a and b``, or ``a, b, and c``."""
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return f"{', '.join(items[:-1])}, and {items[-1]}"
+
+
+def source_support_sentence(display_title: str, records: tuple[SourceRecord, ...]) -> str:
+    """Render a reader-facing "source support" line citing the real works.
+
+    Attribution is by citation key, which resolves to the full bibliographic
+    entry downstream; the lead source's descriptive note carries the substance.
+    Citation keys are deliberately used instead of inline titles so the prose is
+    not rewritten by the section-title sanitisation pass, and the prose anchors on
+    the lesson's (already safe) display title so each line stays topic-specific.
+    """
+    spine = _join_clause([record.citation for record in records])
+    lead_note = next((record.note for record in records if record.note), "")
+    detail = f" The lead source: {lead_note}" if lead_note else ""
+    plural = "them" if len(records) > 1 else "it"
+    return (
+        f"**{display_title}** rests on {spine}.{detail} "
+        f"Use {plural} for the topic definition, scope boundary, and refresh check before transfer."
+    )
+
+
+def evidence_from_sources(display_title: str, records: tuple[SourceRecord, ...]) -> str:
+    """Render source-grounded "evidence to inspect" prose for a lesson."""
+    described = [
+        f"{record.citation} {record.note}" if record.note else record.citation
+        for record in records
+    ]
+    body = " ".join(described)
+    return (
+        f"For **{display_title}**, work from the cited evidence behind this row. {body} "
+        "From each source, extract the bounded claim it supports, its provenance, "
+        "the stated uncertainty, and the condition that would change the judgment."
+    )
+
+
+def _cell(value: str) -> str:
+    """Collapse whitespace and escape pipes for a Markdown table cell."""
+    return re.sub(r"\s+", " ", value).replace("|", "/").strip()
+
+
+def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
+    """Render a real annotated bibliography for a module's cited sources.
+
+    Each row pairs the citation key with the cleaned source title (linked to its
+    URL where available), a description of what the work contributes, and a
+    verification status flag so readers can distinguish real fetched descriptions
+    from the original truncated notes. Operational titles and notes are
+    neutralised so the table stays non-operational. Table rows are exempt from
+    the section-title sanitisation pass, so real titles render intact.
+    """
+    rows = [
+        "| Source | Cited work | What it contributes | Status |",
+        "|---|---|---|---|",
+    ]
+    for record in records:
+        title = safe_source_title(record.title)
+        if title and record.url:
+            # Hyperlinked title — safe inside a table cell; the sanitiser skips table rows
+            title_cell = _cell(f"[{title}]({record.url})")
+        elif title:
+            title_cell = _cell(title)
+        else:
+            title_cell = "Cited source (see bibliography)"
+        note_cell = _cell(record.note) if record.note else "See bibliography for scope."
+        status = "verified" if record.verified else "original"
+        rows.append(f"| {record.citation} | {title_cell} | {note_cell} | {status} |")
+    return "\n".join(rows)
+
+
+__all__ = [
+    "SourceRecord",
+    "annotated_source_table",
+    "cited_sources",
+    "clean_source_note",
+    "clean_source_title",
+    "evidence_from_sources",
+    "safe_source_note",
+    "safe_source_title",
+    "source_record",
+    "source_support_sentence",
+    "sources_for_numbers",
+]

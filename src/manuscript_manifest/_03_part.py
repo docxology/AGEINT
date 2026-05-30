@@ -293,6 +293,14 @@ Primary guide citations for this module: {source_spine}
 
 {subsection_practice_rows(chapter, part)}
 
+### Annotated source list
+
+Each source cited by this **{profile.title}** module is paired below with its
+real title and a one-line note on what it contributes to {topic_context}.
+Verify every claim against these works.
+
+{chapter_source_annotations(chapter)}
+
 ## Research-backed synthesis
 
 {chapter_research_brief(chapter, part)}
