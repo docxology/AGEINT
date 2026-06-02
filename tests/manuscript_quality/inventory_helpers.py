@@ -7,6 +7,7 @@ from pathlib import Path
 
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import SOURCE_QUALITY_ANCHORS
+from safety_contract import BLOCKED_OPERATIONAL_PHRASES, DIRECT_TASK_MOTIF_RE
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MANUSCRIPT = PROJECT_ROOT / "manuscript"
@@ -117,13 +118,6 @@ REMOVED_GENERIC_CONCEPT_PHRASES = {
     "parsed AGEINT source spine",
     "study sequence has three passes",
 }
-DIRECT_STUDENT_TASK_MOTIFS = re.compile(
-    r"(?i)(malware generation|phishing automation|spear-phishing automation|"
-    r"automated weaponization|rootkit|indicator removal|modify firmware|"
-    r"modify controller|project file infection|alarm suppression|block communications|"
-    r"dead drops|surveillance detection route|confidential contacts|"
-    r"psychological methods and manipulation|working with agents)"
-)
 SOURCE_QUALITY_KEYS = {anchor["key"] for anchor in SOURCE_QUALITY_ANCHORS} | {
     anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS
 }
@@ -184,27 +178,9 @@ REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_cisa_ot_asset_inventory_guidance",
     "official_cisa_ot_definitive_architecture",
 }
-BLOCKED_OPERATIONAL_PATTERN_PHRASES = {
-    "multi-source data harvesting",
-    "real-time collection",
-    "persistent target monitoring",
-    "dark web alerting",
-    "infrastructure tracking",
-    "penetration testing automation",
-    "vulnerability discovery",
-    "noc legend",
-    "sock puppet",
-    "autonomous soc",
-    "facility monitoring",
-    "order-of-battle",
-    "population-scale cognitive security intervention delivery",
-    "shodan",
-    "spiderfoot",
-    "google earth engine",
-    "recon-ng",
-    "long-term asset tracking",
-    "pattern-of-life analysis",
-}
+# Re-export for manuscript-safety tests (canonical set lives in src/safety_contract.py).
+BLOCKED_OPERATIONAL_PATTERN_PHRASES = BLOCKED_OPERATIONAL_PHRASES
+DIRECT_STUDENT_TASK_MOTIFS = DIRECT_TASK_MOTIF_RE
 REQUIRED_SOURCE_LANES = {
     "ai_conformity_compliance",
     "education_assessment",

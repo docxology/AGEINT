@@ -37,6 +37,36 @@ class Curriculum:
     """Loaded curriculum payload with convenience accessors."""
 
     payload: dict[str, Any]
+    _parts_by_number: dict[int, dict[str, Any]]
+    _chapters_by_number: dict[int, dict[str, Any]]
+    _references_by_key: dict[str, dict[str, Any]]
+    _references_by_number: dict[int, dict[str, Any]]
+    _appendices_by_letter: dict[str, dict[str, Any]]
+
+    @classmethod
+    def from_payload(cls, payload: dict[str, Any]) -> Curriculum:
+        """Build indexed accessors once at load time."""
+        parts_by_number = {int(part["number"]): part for part in payload["parts"]}
+        chapters_by_number: dict[int, dict[str, Any]] = {}
+        for part in payload["parts"]:
+            for chapter in part.get("chapters", []):
+                chapters_by_number[int(chapter["number"])] = chapter
+        references_by_key: dict[str, dict[str, Any]] = {}
+        references_by_number: dict[int, dict[str, Any]] = {}
+        for reference in payload["references"]:
+            references_by_key[str(reference["key"])] = reference
+            references_by_number[int(reference["number"])] = reference
+        appendices_by_letter = {
+            str(appendix["letter"]).upper(): appendix for appendix in payload["appendices"]
+        }
+        return cls(
+            payload,
+            parts_by_number,
+            chapters_by_number,
+            references_by_key,
+            references_by_number,
+            appendices_by_letter,
+        )
 
     @property
     def stats(self) -> dict[str, int]:
@@ -63,35 +93,40 @@ class Curriculum:
         return list(self.payload["references"])
 
     def part(self, number: int) -> dict[str, Any]:
-        for part in self.parts:
-            if part["number"] == number:
-                return part
-        raise KeyError(f"No part {number}")
+        try:
+            return self._parts_by_number[number]
+        except KeyError as exc:
+            raise KeyError(f"No part {number}") from exc
 
     def chapter(self, number: int) -> dict[str, Any]:
-        for chapter in self.chapters:
-            if chapter["number"] == number:
-                return chapter
-        raise KeyError(f"No chapter {number}")
+        try:
+            return self._chapters_by_number[number]
+        except KeyError as exc:
+            raise KeyError(f"No chapter {number}") from exc
 
     def appendix(self, letter: str) -> dict[str, Any]:
         normalized = letter.upper()
-        for appendix in self.appendices:
-            if appendix["letter"] == normalized:
-                return appendix
-        raise KeyError(f"No appendix {letter}")
+        try:
+            return self._appendices_by_letter[normalized]
+        except KeyError as exc:
+            raise KeyError(f"No appendix {letter}") from exc
 
     def reference(self, key_or_number: str | int) -> dict[str, Any]:
         if isinstance(key_or_number, int):
-            key = f"ageint{key_or_number:03d}"
-        else:
-            key = key_or_number
-            if key.isdigit():
-                key = f"ageint{int(key):03d}"
-        for reference in self.references:
-            if reference["key"] == key or reference["number"] == key_or_number:
-                return reference
-        raise KeyError(f"No reference {key_or_number}")
+            try:
+                return self._references_by_number[key_or_number]
+            except KeyError as exc:
+                raise KeyError(f"No reference {key_or_number}") from exc
+        key = key_or_number
+        if key.isdigit():
+            try:
+                return self._references_by_number[int(key)]
+            except KeyError as exc:
+                raise KeyError(f"No reference {key_or_number}") from exc
+        try:
+            return self._references_by_key[key]
+        except KeyError as exc:
+            raise KeyError(f"No reference {key_or_number}") from exc
 
     def citations_for_chapter(self, number: int) -> list[str]:
         return [f"ageint{n:03d}" for n in self.chapter(number)["citations"]]
@@ -375,17 +410,17 @@ def build_curriculum(source_path: Path, output_path: Path) -> Curriculum:
         output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     else:
         write_curriculum_shards(payload, output_path)
-    return Curriculum(payload)
+    return Curriculum.from_payload(payload)
 
 
 def load_curriculum(path: Path) -> Curriculum:
     """Load a curriculum JSON file or sharded curriculum directory."""
     if path.is_dir():
-        return Curriculum(_load_curriculum_shards(path))
+        return Curriculum.from_payload(_load_curriculum_shards(path))
     if path.is_file():
-        return Curriculum(json.loads(path.read_text(encoding="utf-8")))
+        return Curriculum.from_payload(json.loads(path.read_text(encoding="utf-8")))
     if path.name == "curriculum_outline.json":
         shard_dir = path.parent / "curriculum"
         if shard_dir.is_dir():
-            return Curriculum(_load_curriculum_shards(shard_dir))
+            return Curriculum.from_payload(_load_curriculum_shards(shard_dir))
     raise FileNotFoundError(f"No AGEINT curriculum payload found: {path}")

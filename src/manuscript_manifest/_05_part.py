@@ -1,18 +1,31 @@
 from __future__ import annotations
 
+import json
+import shutil
+from pathlib import Path
+from typing import Any
+
+from curriculum import Curriculum
+from manuscript_injection import substitute_manuscript_text
+from rendered_heading_support import add_heading_support, ensure_heading_support_in_tree
+from rendered_reference_audit import (
+    sanitize_rendered_section_title_mentions,
+    section_title_rules,
+)
 from _markdown_split import (
     DEFAULT_MAX_TEXT_FILE_LINES,
     split_by_line_budget as _split_by_line_budget,
     split_h2_blocks as _split_h2_blocks,
 )
 
-try:
-    from ..rendered_heading_support import add_heading_support, ensure_heading_support_in_tree
-except ImportError:  # pragma: no cover - exercised by script-level imports
-    from rendered_heading_support import (  # type: ignore[no-redef]
-        add_heading_support,
-        ensure_heading_support_in_tree,
-    )
+from .types import (
+    ManuscriptManifest,
+    ManuscriptSection,
+    SlugRegistry as _SlugRegistry,
+    ordering_config_yaml as _ordering_config_yaml,
+    slugify as _slug,
+)
+from ._04_part import build_manuscript_manifest, _read_template, _visual_synthesis
 
 
 MAX_TEXT_FILE_LINES = DEFAULT_MAX_TEXT_FILE_LINES

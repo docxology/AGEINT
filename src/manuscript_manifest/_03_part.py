@@ -1,6 +1,44 @@
 from __future__ import annotations
 
+from typing import Any
+
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
+from intelligence_content import (
+    anchor_references,
+    chapter_key_terms,
+    chapter_knowledge_check,
+    chapter_learning_outcomes,
+    chapter_practice_lens,
+    chapter_practice_sequence,
+    chapter_research_brief,
+    chapter_source_annotations,
+    chapter_textbook_primer,
+    chapter_topic_lessons,
+    chapter_worked_example,
+    practice_lens_for_titles,
+    profile_for_titles,
+    safe_topic_entries,
+    subsection_practice_rows,
+)
+from citation_workflow import source_citation_spine
+
+from ._01_part import (
+    _chapter_source_context,
+    _chapter_topic_context,
+    _claim_evidence_ledger,
+    _failure_mode_drill,
+    _instructor_artifact,
+    _review_checklist,
+    _safe_practice_lab,
+    _source_canon,
+)
+from ._02_part import (
+    _capstone_deliverable,
+    _instructor_facilitation_notes,
+    _refresh_triggers,
+    _runtime_section_map,
+    _safe_substitution_patterns,
+)
 
 
 

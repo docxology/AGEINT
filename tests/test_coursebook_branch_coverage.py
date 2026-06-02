@@ -1,7 +1,8 @@
 """Focused regression coverage for AGEINT coursebook generator branches.
 
-Imports of ``manuscript_manifest._01_part`` and ``manuscript_variables._01_part``
-exercise private branch paths intentionally for coverage of part-module edges.
+Imports of ``manuscript_manifest._01_part``, ``_02_part``, ``_03_part``, and
+``manuscript_variables._01_part`` / ``_02_part`` exercise private branch paths
+intentionally for coverage of part-module edges.
 """
 
 from __future__ import annotations
@@ -12,8 +13,13 @@ import pytest
 
 import curriculum
 import intelligence_content as ic
-import manuscript_manifest._01_part as mm
-import manuscript_variables._01_part as mv
+from manuscript_manifest import _04_part as mm4
+from manuscript_manifest.types import ManuscriptManifest, ManuscriptSection, SlugRegistry
+import manuscript_manifest._01_part as mm1
+import manuscript_manifest._02_part as mm2
+import manuscript_manifest._03_part as mm3
+import manuscript_variables._01_part as mv1
+import manuscript_variables._02_part as mv2
 import source_identity
 import template_resolver
 
@@ -175,36 +181,36 @@ def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tm
     part = {"title": "Branch Coverage Part"}
 
     text_blocks = [
-        mm._safe_practice_lab(chapter),
-        mm._failure_mode_drill(chapter),
-        mm._instructor_artifact(chapter),
-        mm._authority_accountability_model(chapter, part),
-        mm._data_provenance_model(chapter, part),
-        mm._evaluation_assurance_protocol(chapter),
-        mm._compliance_rights_map(chapter),
-        mm._safe_substitution_patterns(chapter),
-        mm._capstone_deliverable(chapter, part),
-        mm._instructor_facilitation_notes(chapter),
-        mm._refresh_triggers(chapter),
-        mm._accessibility_udl_review(chapter),
-        mm._procurement_vendor_oversight(chapter),
-        mm._hria_dpia_worksheet(chapter),
-        mm._data_lineage_registry(chapter),
-        mm._assessment_integrity_protocol(chapter),
-        mm._agent_incident_response_drill(chapter),
-        mm._role_based_competency_map(chapter),
-        mm._adversarial_assurance_cycle(chapter),
-        mm._model_dataset_documentation_card(chapter),
-        mm._transparency_communication_notice(chapter),
-        mm._records_retention_audit_trail(chapter),
-        mm._release_change_control_gate(chapter),
-        mm._risk_exception_acceptance_memo(chapter),
-        mm._learner_support_accommodation_plan(chapter),
-        mm._instructor_question_bank(chapter),
-        mm._remediation_backlog(chapter),
-        mm._runtime_section_map(chapter, part),
-        mm._module_thesis(chapter, part),
-        mm._domain_practice_studio(chapter, part),
+        mm1._safe_practice_lab(chapter),
+        mm1._failure_mode_drill(chapter),
+        mm1._instructor_artifact(chapter),
+        mm1._authority_accountability_model(chapter, part),
+        mm2._data_provenance_model(chapter, part),
+        mm2._evaluation_assurance_protocol(chapter),
+        mm2._compliance_rights_map(chapter),
+        mm2._safe_substitution_patterns(chapter),
+        mm2._capstone_deliverable(chapter, part),
+        mm2._instructor_facilitation_notes(chapter),
+        mm2._refresh_triggers(chapter),
+        mm2._accessibility_udl_review(chapter),
+        mm2._procurement_vendor_oversight(chapter),
+        mm2._hria_dpia_worksheet(chapter),
+        mm2._data_lineage_registry(chapter),
+        mm2._assessment_integrity_protocol(chapter),
+        mm2._agent_incident_response_drill(chapter),
+        mm2._role_based_competency_map(chapter),
+        mm2._adversarial_assurance_cycle(chapter),
+        mm2._model_dataset_documentation_card(chapter),
+        mm2._transparency_communication_notice(chapter),
+        mm2._records_retention_audit_trail(chapter),
+        mm2._release_change_control_gate(chapter),
+        mm2._risk_exception_acceptance_memo(chapter),
+        mm2._learner_support_accommodation_plan(chapter),
+        mm2._instructor_question_bank(chapter),
+        mm2._remediation_backlog(chapter),
+        mm2._runtime_section_map(chapter, part),
+        mm2._module_thesis(chapter, part),
+        mm3._domain_practice_studio(chapter, part),
     ]
 
     joined = "\n".join(text_blocks)
@@ -212,11 +218,11 @@ def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tm
     assert "Module source spine" in joined
     assert "authorized learning question" in joined
 
-    registry = mm._SlugRegistry()
+    registry = SlugRegistry()
     assert registry.unique("chapter", "Same Title") == "same-title"
     assert registry.unique("chapter", "Same Title") == "same-title-2"
 
-    section = mm.ManuscriptSection(
+    section = ManuscriptSection(
         kind="chapter",
         title="No Figure Chapter",
         relative_path="parts/example/no-figure.md",
@@ -225,16 +231,16 @@ def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tm
         order=1,
         parent_label="sec:part-example",
     )
-    manifest = mm.ManuscriptManifest([section], [], [])
-    assert "No figure registry" in mm._visual_synthesis(tmp_path, tmp_path, section, manifest, [])
+    manifest = ManuscriptManifest([section], [], [])
+    assert "No figure registry" in mm4._visual_synthesis(tmp_path, tmp_path, section, manifest, [])
 
 
 def test_variable_helpers_cover_empty_inputs_safe_appendices_and_reference_fallbacks() -> None:
-    assert mv.section_label("Chapter", "A/B", "C") == "sec:chapter_a_b_c"
-    assert "No direct source-guide citation" in mv.citation_spine([])
-    assert "Module-level synthesis" in mv.section_rows([])
+    assert mv1.section_label("Chapter", "A/B", "C") == "sec:chapter_a_b_c"
+    assert "No direct source-guide citation" in mv1.citation_spine([])
+    assert "Module-level synthesis" in mv1.section_rows([])
 
-    pattern_rows = mv.section_rows(
+    pattern_rows = mv1.section_rows(
         [
             {"number": "32.1", "title": "Pattern 1: Solo Reasoner - test", "citations": [1]},
             {"number": "32.1a", "title": "Methods: bounded source reading", "citations": [2]},
@@ -250,7 +256,7 @@ def test_variable_helpers_cover_empty_inputs_safe_appendices_and_reference_fallb
             {"title": "Unsafe motif without prefix: Malware Generation", "citations": []},
         ]
     }
-    rows = mv.appendix_rows(appendix)
+    rows = mv1.appendix_rows(appendix)
     assert "A.1 Safe Item" in rows
     assert "operational wording transformed" in rows
     assert "source item retained for audit" in rows
@@ -264,11 +270,11 @@ def test_variable_helpers_cover_empty_inputs_safe_appendices_and_reference_fallb
         "Cognitive media-literacy",
         "plain title",
     ]:
-        assert mv._appendix_allowed_fixture(title)
-        assert mv._appendix_rejected_action(title)
-        assert mv._appendix_required_artifact(title)
+        assert mv1._appendix_allowed_fixture(title)
+        assert mv1._appendix_rejected_action(title)
+        assert mv1._appendix_required_artifact(title)
 
-    bib = mv.reference_bibtex(
+    bib = mv2.reference_bibtex(
         [
             {"key": "ageint999", "number": 999, "title": "Numbered", "url": "", "note": ""},
             {"key": "custom123", "title": "Key Digits", "url": "", "note": ""},

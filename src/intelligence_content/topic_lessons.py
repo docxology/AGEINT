@@ -5,7 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from _data_loaders import transfer_task_keyword_routes
 from unit_education import UnitEducationProfile
+from ._12_concept_routes import _match_keywords
 from .topic_frame_api import (
     artifact_prompt_for_entry,
     concept_frame_for_entry,
@@ -46,11 +48,9 @@ def transfer_task_for_entry(
     chapter_title: str = "",
 ) -> str:
     raw = entry.raw_title.lower()
-    if "active inference" in raw or "free energy" in raw or "predictive" in raw:
-        return (
-            "Transfer the idea to a non-AI chapter by naming the assumed model, the "
-            "surprising observation, and the review point before any decision follows."
-        )
+    for keywords, template in transfer_task_keyword_routes():
+        if _match_keywords(raw, keywords):
+            return template
     if entry.risk_category not in {"standard", "ageint_pattern_registry"}:
         templates = (
             (

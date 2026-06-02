@@ -1,9 +1,33 @@
 from __future__ import annotations
 
-try:
-    from ._appendix_support import appendix_body as _appendix_body
-except ImportError:  # pragma: no cover - exercised by script-level imports
-    from manuscript_manifest._appendix_support import appendix_body as _appendix_body  # type: ignore[no-redef]
+import json
+from pathlib import Path
+import re
+import shutil
+from typing import Any
+
+from curriculum import Curriculum
+from figures import figure_markdown, figures_for_section
+from markdown_refs import figure_ref_list, section_ref_list
+from manuscript_templates import DEFAULT_TEMPLATES
+from manuscript_variables import appendix_rows
+from unit_education import render_unit_profile_markdown
+
+from .types import (
+    ManuscriptManifest,
+    ManuscriptSection,
+    SlugRegistry as _SlugRegistry,
+    section_label as _label,
+    slugify as _slug,
+)
+from ._appendix_support import appendix_body as _appendix_body
+from ._01_part import (
+    _chapter_source_context,
+    _chapter_topic_context,
+    _part_chapter_rows,
+    _part_summary,
+)
+from ._03_part import _chapter_body
 
 def _apply_section_metadata(
     sections: list[ManuscriptSection],

@@ -55,6 +55,8 @@ class FigureSpec:
 
     def registry_entry(self, project_root: Path) -> dict[str, Any]:
         """Return a JSON-serializable registry row with current file hash."""
+        from ._03_part import _sha256, _validate_png_asset
+
         asset = project_root / self.output_path
         _validate_png_asset(asset, self)
         payload = asdict(self)

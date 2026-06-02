@@ -379,17 +379,10 @@ def test_risky_patterns_are_safety_transformed(built_output: Path) -> None:
 
 def test_coursebook_practice_sections_safety_transform_unsafe_motifs(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    blocked = BLOCKED_OPERATIONAL_PATTERN_PHRASES | {
-        "live target tasking",
-        "autonomous response",
-        "facility assessment",
-        "external deployment",
-        "unsafe cyber-physical action",
-    }
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path).lower()
         coursebook = text.split("## evidence and source canon", 1)[0]
-        for phrase in blocked:
+        for phrase in BLOCKED_OPERATIONAL_PATTERN_PHRASES:
             assert phrase not in coursebook, f"{path}: {phrase}"
 
 
@@ -419,13 +412,7 @@ def test_safety_audit_blocks_operational_phrases_outside_source_audit_contexts(b
         "safe curriculum treatment",
         "source title transformed",
     )
-    blocked = BLOCKED_OPERATIONAL_PATTERN_PHRASES | {
-        "live target tasking",
-        "autonomous response",
-        "facility assessment",
-        "external deployment",
-        "unsafe cyber-physical action",
-    }
+    blocked = BLOCKED_OPERATIONAL_PATTERN_PHRASES
     for path in generated_output_files(output_manuscript):
         if "bibliography-atlas" in path.parts or path.name == "references.md":
             continue

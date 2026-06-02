@@ -1,8 +1,84 @@
 from __future__ import annotations
 
+from dataclasses import asdict, dataclass
+from enum import Enum
+import hashlib
+from importlib import import_module
+import io
+import json
+import math
+from pathlib import Path
+import re
+import shutil
+import subprocess  # nosec B404 - fixed argv, no shell, local renderer.
+import textwrap
+import urllib.error
+import urllib.request
+from typing import Any, Sequence, cast
+
+from curriculum import Curriculum
+from markdown_refs import figure_ref
+
+from ._01_part import (
+    AI_CONCEPTUAL_PLATES,
+    FigureKind,
+    FigureSpec,
+    HISTORICAL_ASSETS,
+    PYTHON_VISUALS,
+)
+from ._03b_asset_renderers import (
+    _render_ai_concept_figure,
+    _render_citation_density,
+    _render_historical_figure,
+)
+from ._03_part import (
+    _download_bytes,
+    _draw_bar_chart,
+    _draw_concept_plate,
+    _draw_text_plate,
+    _entry,
+    _font,
+    _markdown_escape,
+    _normalize_png_canvas,
+    _pil_modules,
+    _png_asset_is_valid,
+    _relative_posix,
+    _render_accessibility_workflow,
+    _render_adversarial_assurance_cycle,
+    _render_agent_evaluation_loop,
+    _render_agent_incident_lifecycle,
+    _render_ai_compliance_map,
+    _render_ai_incident_reporting_loop,
+    _render_assessment_integrity_matrix,
+    _render_bounded_autonomy_recoverability,
+    _render_capstone_workflow,
+    _render_claim_ledger_flow,
+    _render_cross_border_data_flow,
+    _render_data_lineage_registry,
+    _render_hria_dpia_map,
+    _render_instructor_assessment_lifecycle,
+    _render_instructor_question_bank,
+    _render_learner_support_plan,
+    _render_model_dataset_card,
+    _render_ot_definitive_architecture_record,
+    _render_pattern_taxonomy,
+    _render_procurement_oversight_loop,
+    _render_public_ai_register_lifecycle,
+    _render_records_retention_audit,
+    _render_reference_coverage,
+    _render_release_change_control,
+    _render_remediation_backlog,
+    _render_risk_exception_memo,
+    _render_safe_substitution_matrix,
+    _render_safety_boundary_loop,
+    _render_section_composability_matrix,
+    _render_source_quality_spine,
+    _render_source_verification_flow,
+    _render_transparency_notice_flow,
+    _temporary_png_path,
+    _validate_png_asset,
+)
 from ._02b_mermaid import placeholder_or_fail, render_mermaid_figure
-
-
 
 
 def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec]:
@@ -406,49 +482,3 @@ def _render_python_figure(
     else:
         raise ValueError(f"Unknown AGEINT figure renderer: {renderer_id}")
 
-
-def _render_historical_figure(root: Path, spec: FigureSpec, output: Path | None = None) -> None:
-    if output is None:
-        output = root / spec.output_path
-    output.parent.mkdir(parents=True, exist_ok=True)
-    data = _download_bytes(spec.provenance["asset_url"])
-    if data is None:
-        _draw_text_plate(
-            output,
-            spec.title,
-            "Official historical image could not be refreshed; provenance remains in registry.",
-        )
-        return
-    image_mod, draw_mod, font_mod, ops_mod = _pil_modules()
-    try:
-        img_context = image_mod.open(io.BytesIO(data))
-    except (OSError, ValueError):
-        _draw_text_plate(
-            output,
-            spec.title,
-            "Official historical image response was unreadable; provenance remains in registry.",
-        )
-        return
-    with img_context as img:
-        canvas = image_mod.new("RGB", (1600, 1000), "#111827")
-        fitted = ops_mod.contain(img.convert("RGB"), (1520, 820))
-        x = (1600 - fitted.width) // 2
-        canvas.paste(fitted, (x, 40))
-        draw = draw_mod.Draw(canvas)
-        font = _font(font_mod, 34)
-        small = _font(font_mod, 24)
-        draw.rectangle((0, 870, 1600, 1000), fill="#f8fafc")
-        draw.text((42, 890), spec.title, fill="#111827", font=font)
-        draw.text((42, 940), "Source: USGS EROS | Usage: Public Domain", fill="#334155", font=small)
-        canvas.save(output, format="PNG", optimize=True)
-
-
-def _render_ai_concept_figure(root: Path, spec: FigureSpec, output: Path | None = None) -> None:
-    prompt = spec.provenance["prompt"]
-    _draw_concept_plate(output or root / spec.output_path, spec.title, prompt, spec.label)
-
-
-def _render_citation_density(output: Path, curriculum: Curriculum, spec: FigureSpec) -> None:
-    values = [len(chapter["citations"]) for chapter in curriculum.chapters]
-    labels = [str(chapter["number"]) for chapter in curriculum.chapters]
-    _draw_bar_chart(output, spec.title, labels, values, "#2563eb")

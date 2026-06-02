@@ -19,6 +19,7 @@ import re
 from typing import TYPE_CHECKING
 
 from _jsonl import read_jsonl
+from safety_contract import text_is_operational
 
 if TYPE_CHECKING:
     from ._01_part import TopicEntry
@@ -74,49 +75,6 @@ _TRAILING_STOPWORDS = frozenset(
 )
 
 
-# Operational tradecraft motifs that must never be reproduced verbatim in
-# reader-facing curriculum prose. A source note containing any of these is
-# attributed by citation key only — the curriculum stays non-operational and
-# the descriptive gloss is dropped rather than echoing live tooling/tactics.
-# Kept in sync with the manuscript-safety test contract
-# (tests/manuscript_quality/inventory_helpers.py).
-_BLOCKED_OPERATIONAL_PHRASES = frozenset(
-    {
-        "multi-source data harvesting",
-        "real-time collection",
-        "persistent target monitoring",
-        "dark web alerting",
-        "infrastructure tracking",
-        "penetration testing automation",
-        "vulnerability discovery",
-        "noc legend",
-        "sock puppet",
-        "autonomous soc",
-        "facility monitoring",
-        "order-of-battle",
-        "population-scale cognitive security intervention delivery",
-        "shodan",
-        "spiderfoot",
-        "google earth engine",
-        "recon-ng",
-        "long-term asset tracking",
-        "pattern-of-life analysis",
-        "live target tasking",
-        "autonomous response",
-        "facility assessment",
-        "external deployment",
-        "unsafe cyber-physical action",
-    }
-)
-
-_DIRECT_TASK_MOTIF_RE = re.compile(
-    r"(?i)(malware generation|phishing automation|spear-phishing automation|"
-    r"automated weaponization|rootkit|indicator removal|modify firmware|"
-    r"modify controller|project file infection|alarm suppression|block communications|"
-    r"dead drops|surveillance detection route|confidential contacts|"
-    r"psychological methods and manipulation|working with agents)"
-)
-
 # Hard-coded reference patterns that the cross-reference audit forbids in prose
 # (e.g. "Section 508", "Chapter 3", "Appendix A").  Notes with these are reworded
 # by the caller; the pattern is used here only to detect them for filtering.
@@ -132,14 +90,6 @@ _FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source 
 _UNSUPPORTED_GLYPH_RE = re.compile(
     "[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]"
 )
-
-
-def _is_operational(text: str) -> bool:
-    """True when text reproduces a blocked operational tradecraft motif."""
-    lowered = text.lower()
-    if any(phrase in lowered for phrase in _BLOCKED_OPERATIONAL_PHRASES):
-        return True
-    return bool(_DIRECT_TASK_MOTIF_RE.search(text))
 
 
 def _rewrite_hard_coded_refs(text: str) -> str:
@@ -308,7 +258,7 @@ def safe_source_note(note: str) -> str:
     """
     cleaned = _strip_unsupported_glyphs(clean_source_note(note)).strip()
     cleaned = re.sub(r"\s{2,}", " ", cleaned)
-    if not cleaned or _is_operational(cleaned) or _has_formula_phrase(cleaned):
+    if not cleaned or text_is_operational(cleaned) or _has_formula_phrase(cleaned):
         return ""
     cleaned = _rewrite_hard_coded_refs(cleaned)
     return _cap_to_sentences(cleaned, _NOTE_DISPLAY_CAP)
@@ -333,7 +283,7 @@ def source_record(number: int) -> SourceRecord | None:
 def safe_source_title(title: str) -> str:
     """Return a glyph-free, non-operational title, or "" if it must be dropped."""
     cleaned = _strip_unsupported_glyphs(clean_source_title(title)).strip()
-    if not cleaned or _is_operational(cleaned):
+    if not cleaned or text_is_operational(cleaned):
         return ""
     return cleaned
 

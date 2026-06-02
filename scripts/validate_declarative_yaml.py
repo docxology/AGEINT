@@ -17,6 +17,8 @@ def main() -> None:
     print(f"coursebook_profiles: {counts['coursebook_profiles']} profiles")
     for name in SAFETY_ARTIFACT_TABLE_NAMES:
         print(f"{name}: {counts[name]} rows")
+    print(f"topic_risk_rules: {counts['topic_risk_rules']} rules")
+    print(f"topic_risk_chapter_rules: {counts['topic_risk_chapter_rules']} chapter rules")
     print("Declarative YAML validation passed.")
 
 

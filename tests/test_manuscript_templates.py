@@ -6,7 +6,18 @@ from pathlib import Path
 
 import src
 from curriculum import load_curriculum
-from intelligence_content import INTELLIGENCE_PROFILES, anchor_references
+from intelligence_content import (
+    INTELLIGENCE_PROFILES,
+    anchor_references,
+    chapter_knowledge_check,
+    chapter_learning_outcomes,
+    practice_lens_for_titles,
+    practice_lens_rows,
+    profile_for_titles,
+    research_anchor_rows,
+    safe_curriculum_treatment,
+    subsection_practice_rows,
+)
 from manuscript_templates import TEMPLATE_NAMES, write_manuscript_templates, write_template_library
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -66,27 +77,27 @@ def test_neutral_appendix_template_uses_generic_runtime_tokens(tmp_path: Path) -
 
 
 def test_research_profiles_route_sections_to_domain_content() -> None:
-    foundations = src.profile_for_titles(
+    foundations = profile_for_titles(
         "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
         "The Nature of Intelligence",
     )
-    ageint = src.profile_for_titles("AGEINT: Agentic Intelligence", "Foundations of AGEINT")
-    humint = src.profile_for_titles("HUMINT", "Agent Recruitment")
-    finint = src.profile_for_titles(
+    ageint = profile_for_titles("AGEINT: Agentic Intelligence", "Foundations of AGEINT")
+    humint = profile_for_titles("HUMINT", "Agent Recruitment")
+    finint = profile_for_titles(
         "IMAGERY AND FINANCIAL INTELLIGENCE",
         "Financial Intelligence (FININT)",
     )
-    history = src.profile_for_titles(
+    history = profile_for_titles(
         "HISTORICAL INTELLIGENCE SERVICES",
         "American Intelligence History",
     )
-    ci = src.profile_for_titles("Counterintelligence", "Source Protection")
-    cyber = src.profile_for_titles("Cyber Intelligence", "Supply Chain Intelligence Attacks")
-    ics = src.profile_for_titles(
+    ci = profile_for_titles("Counterintelligence", "Source Protection")
+    cyber = profile_for_titles("Cyber Intelligence", "Supply Chain Intelligence Attacks")
+    ics = profile_for_titles(
         "Industrial and Cyber-Physical Intelligence",
         "MITRE ATT&CK for ICS",
     )
-    supply_chain = src.profile_for_titles(
+    supply_chain = profile_for_titles(
         "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
         "Supply Chain Intelligence Attacks",
     )
@@ -100,11 +111,11 @@ def test_research_profiles_route_sections_to_domain_content() -> None:
     assert cyber.identifier == "cyber_threat_intelligence"
     assert ics.identifier == "ics_ot_defense"
     assert supply_chain.identifier == "cyber_threat_intelligence"
-    assert "official_owasp_llm_top_10" in src.research_anchor_rows()
-    assert "official_odni_icd_204" in src.research_anchor_rows()
-    assert "official_odni_icd_505" in src.research_anchor_rows()
-    assert "official_fincen_advisories" in src.research_anchor_rows()
-    assert "Requirements-to-Evidence Lens" in src.practice_lens_rows()
+    assert "official_owasp_llm_top_10" in research_anchor_rows()
+    assert "official_odni_icd_204" in research_anchor_rows()
+    assert "official_odni_icd_505" in research_anchor_rows()
+    assert "official_fincen_advisories" in research_anchor_rows()
+    assert "Requirements-to-Evidence Lens" in practice_lens_rows()
 
 
 def test_research_profile_anchor_keys_resolve_for_chapter_briefs() -> None:
@@ -114,22 +125,22 @@ def test_research_profile_anchor_keys_resolve_for_chapter_briefs() -> None:
 
 
 def test_practice_lenses_route_subsections_to_fractal_contracts() -> None:
-    foundations = src.practice_lens_for_titles(
+    foundations = practice_lens_for_titles(
         "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
         "Intelligence Community Architectures",
     )
-    ageint = src.practice_lens_for_titles("AGEINT: Agentic Intelligence", "MCP Frameworks")
-    finint = src.practice_lens_for_titles(
+    ageint = practice_lens_for_titles("AGEINT: Agentic Intelligence", "MCP Frameworks")
+    finint = practice_lens_for_titles(
         "IMAGERY AND FINANCIAL INTELLIGENCE",
         "Financial Intelligence (FININT)",
     )
-    history = src.practice_lens_for_titles(
+    history = practice_lens_for_titles(
         "HISTORICAL INTELLIGENCE SERVICES",
         "Soviet and Russian Intelligence",
     )
-    cognitive = src.practice_lens_for_titles("Cognitive Security", "Prebunking")
-    ics = src.practice_lens_for_titles("Industrial Control Systems", "Incident Response")
-    supply_chain = src.practice_lens_for_titles(
+    cognitive = practice_lens_for_titles("Cognitive Security", "Prebunking")
+    ics = practice_lens_for_titles("Industrial Control Systems", "Incident Response")
+    supply_chain = practice_lens_for_titles(
         "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
         "Supply Chain Intelligence Attacks",
     )
@@ -144,24 +155,24 @@ def test_practice_lenses_route_subsections_to_fractal_contracts() -> None:
 
 
 def test_safe_coursebook_helpers_cover_edge_topic_fallbacks() -> None:
-    assert "non-sensitive synthetic change examples" in src.safe_curriculum_treatment(
+    assert "non-sensitive synthetic change examples" in safe_curriculum_treatment(
         "Google Earth Engine"
     )
-    assert "no real targets" in src.safe_curriculum_treatment("persistent target monitoring")
-    assert "synthetic GEOINT uncertainty" in src.safe_curriculum_treatment("facility monitoring")
-    assert "fixed inputs" in src.safe_curriculum_treatment("multi-source data harvesting")
-    assert "fabricated alerts" in src.safe_curriculum_treatment("autonomous SOC")
-    assert "defensive tactics" in src.safe_curriculum_treatment("penetration testing automation")
-    assert "sample classroom scenario" in src.safe_curriculum_treatment(
+    assert "no real targets" in safe_curriculum_treatment("persistent target monitoring")
+    assert "synthetic GEOINT uncertainty" in safe_curriculum_treatment("facility monitoring")
+    assert "fixed inputs" in safe_curriculum_treatment("multi-source data harvesting")
+    assert "fabricated alerts" in safe_curriculum_treatment("autonomous SOC")
+    assert "defensive tactics" in safe_curriculum_treatment("penetration testing automation")
+    assert "sample classroom scenario" in safe_curriculum_treatment(
         "population-scale cognitive security intervention delivery"
     )
-    assert "Malware-misuse control review" in src.safe_curriculum_treatment(
+    assert "Malware-misuse control review" in safe_curriculum_treatment(
         "Automated Weaponization: Malware Generation"
     )
-    assert "Declassified source-protection" in src.safe_curriculum_treatment(
+    assert "Declassified source-protection" in safe_curriculum_treatment(
         "Working with Agents (Declassified Manual)"
     )
-    assert "Maintainer-contact" in src.safe_curriculum_treatment(
+    assert "Maintainer-contact" in safe_curriculum_treatment(
         "Sock Puppetry as HUMINT Cover Tradecraft",
         "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
         "Supply Chain Intelligence Attacks",
@@ -174,8 +185,8 @@ def test_safe_coursebook_helpers_cover_edge_topic_fallbacks() -> None:
         "sections": [{"number": "1.1", "title": "V2 source-lane extension: source lane"}],
     }
 
-    assert "Fallback Coursebook Topic" in src.chapter_learning_outcomes(empty_chapter, part)
-    assert "Meta Only Topic" in src.chapter_knowledge_check(meta_only_chapter, part)
-    fallback_rows = src.subsection_practice_rows(empty_chapter, part)
+    assert "Fallback Coursebook Topic" in chapter_learning_outcomes(empty_chapter, part)
+    assert "Meta Only Topic" in chapter_knowledge_check(meta_only_chapter, part)
+    fallback_rows = subsection_practice_rows(empty_chapter, part)
     assert "Fallback Coursebook Topic" in fallback_rows
     assert "Source-guide module" not in fallback_rows

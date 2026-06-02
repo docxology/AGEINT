@@ -177,6 +177,7 @@ def topic_rotation_templates_payload() -> dict[str, Any]:
         "misconception_fallbacks",
         "misconception_risk_templates",
         "misconception_keyword_routes",
+        "transfer_task_keyword_routes",
     ):
         if key not in payload or not isinstance(payload[key], list):
             raise ValueError(f"Expected list {key!r} in topic_rotation_templates.yaml")
@@ -212,6 +213,15 @@ def misconception_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     rows = topic_rotation_templates_payload()["misconception_keyword_routes"]
     return tuple(
         (tuple(str(keyword) for keyword in row["keywords"]), str(row["misconception"]))
+        for row in rows
+    )
+
+
+def transfer_task_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
+    """Return ordered transfer-task keyword routes."""
+    rows = topic_rotation_templates_payload()["transfer_task_keyword_routes"]
+    return tuple(
+        (tuple(str(keyword) for keyword in row["keywords"]), str(row["template"]))
         for row in rows
     )
 
@@ -273,8 +283,11 @@ def validate_declarative_tables() -> dict[str, int]:
     """Validate authoritative YAML tables and return row counts for reporting."""
     profile_count = len(coursebook_profiles_payload())
     safety_payload = safety_artifact_tables_payload()
+    risk_payload = topic_risk_routes_payload()
     counts = {name: len(safety_payload[name]) for name in SAFETY_ARTIFACT_TABLE_NAMES}
     counts["coursebook_profiles"] = profile_count
+    counts["topic_risk_rules"] = len(risk_payload["topic_rules"])
+    counts["topic_risk_chapter_rules"] = len(risk_payload["chapter_context_rules"])
     return counts
 
 

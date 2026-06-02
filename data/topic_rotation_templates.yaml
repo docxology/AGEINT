@@ -61,3 +61,9 @@ misconception_keyword_routes:
   - ach
   - competing hypotheses
   misconception: that listing one favored hypothesis is enough without testing alternatives
+transfer_task_keyword_routes:
+- keywords:
+  - active inference
+  - free energy
+  - predictive
+  template: Transfer the idea to a non-AI chapter by naming the assumed model, the surprising observation, and the review point before any decision follows.

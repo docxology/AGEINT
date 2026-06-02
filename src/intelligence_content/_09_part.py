@@ -33,6 +33,7 @@ from ._08_part import (
     TRANSPARENCY_NOTICE_WORKFLOW,
 )
 from .topic_entries import safe_topic_entries
+from .markdown_table import render_dict_table, table_cell
 
 # GENERIC_DISPLAY_TITLE_MARKERS and is_generic_display_title live in _07_safe_titles.
 
@@ -93,138 +94,164 @@ def source_refresh_rows(limit: int | None = None) -> str:
 
 def safe_substitution_rows() -> str:
     """Render risky source motif to safe curriculum substitute rows."""
-    rows = [
-        "| Source motif | Unsafe source motif | Safe curriculum substitute | Blocked context |",
-        "|---|---|---|---|",
-    ]
-    for item in SAFE_SUBSTITUTION_PATTERNS:
-        rows.append(
-            f"| {item['motif']} | {item['source_risk']} | "
-            f"{item['substitute']} | {item['blocked_context']} |"
-        )
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Source motif", "Unsafe source motif", "Safe curriculum substitute", "Blocked context"),
+        SAFE_SUBSTITUTION_PATTERNS,
+        ("motif", "source_risk", "substitute", "blocked_context"),
+    )
+
 
 def capstone_scaffold_rows() -> str:
     """Render reusable capstone workflow rows."""
-    rows = ["| Phase | Artifact | Review gate |", "|---|---|---|"]
-    for item in CAPSTONE_SCAFFOLDS:
-        rows.append(f"| {item['phase']} | {item['artifact']} | {item['review_gate']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Phase", "Artifact", "Review gate"),
+        CAPSTONE_SCAFFOLDS,
+        ("phase", "artifact", "review_gate"),
+    )
+
 
 def accessibility_review_rows() -> str:
     """Render accessibility and UDL review rows."""
-    rows = ["| Step | Artifact | Review question |", "|---|---|---|"]
-    for item in ACCESSIBILITY_REVIEW_STEPS:
-        rows.append(f"| {item['step']} | {item['artifact']} | {item['review_question']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Step", "Artifact", "Review question"),
+        ACCESSIBILITY_REVIEW_STEPS,
+        ("step", "artifact", "review_question"),
+    )
+
 
 def procurement_oversight_rows() -> str:
     """Render procurement and vendor oversight rows."""
-    rows = ["| Step | Artifact | Review question |", "|---|---|---|"]
-    for item in PROCUREMENT_OVERSIGHT_STEPS:
-        rows.append(f"| {item['step']} | {item['artifact']} | {item['review_question']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Step", "Artifact", "Review question"),
+        PROCUREMENT_OVERSIGHT_STEPS,
+        ("step", "artifact", "review_question"),
+    )
+
 
 def hria_dpia_worksheet_rows() -> str:
     """Render HRIA and DPIA worksheet rows."""
-    rows = ["| Dimension | Prompt | Evidence |", "|---|---|---|"]
-    for item in HRIA_DPIA_WORKSHEET:
-        rows.append(f"| {item['dimension']} | {item['prompt']} | {item['evidence']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Dimension", "Prompt", "Evidence"),
+        HRIA_DPIA_WORKSHEET,
+        ("dimension", "prompt", "evidence"),
+    )
+
 
 def data_lineage_registry_rows() -> str:
     """Render data lineage registry rows."""
-    rows = ["| Object | Lineage field | Quality gate |", "|---|---|---|"]
-    for item in DATA_LINEAGE_REGISTRY:
-        rows.append(f"| {item['object']} | {item['lineage_field']} | {item['quality_gate']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Object", "Lineage field", "Quality gate"),
+        DATA_LINEAGE_REGISTRY,
+        ("object", "lineage_field", "quality_gate"),
+    )
+
 
 def assessment_integrity_rows() -> str:
     """Render assessment-integrity protocol rows."""
-    rows = ["| Control | Student evidence | Instructor check |", "|---|---|---|"]
-    for item in ASSESSMENT_INTEGRITY_PROTOCOL:
-        rows.append(f"| {item['control']} | {item['student_evidence']} | {item['instructor_check']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Control", "Student evidence", "Instructor check"),
+        ASSESSMENT_INTEGRITY_PROTOCOL,
+        ("control", "student_evidence", "instructor_check"),
+    )
+
 
 def agent_incident_response_rows() -> str:
     """Render agent incident response drill rows."""
-    rows = ["| Phase | Drill action | Artifact |", "|---|---|---|"]
-    for item in AGENT_INCIDENT_RESPONSE_DRILL:
-        rows.append(f"| {item['phase']} | {item['drill_action']} | {item['artifact']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Phase", "Drill action", "Artifact"),
+        AGENT_INCIDENT_RESPONSE_DRILL,
+        ("phase", "drill_action", "artifact"),
+    )
+
 
 def role_competency_rows() -> str:
     """Render role-based competency map rows."""
-    rows = ["| Role | Competency | Evidence |", "|---|---|---|"]
-    for item in ROLE_BASED_COMPETENCY_MAP:
-        rows.append(f"| {item['role']} | {item['competency']} | {item['evidence']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Role", "Competency", "Evidence"),
+        ROLE_BASED_COMPETENCY_MAP,
+        ("role", "competency", "evidence"),
+    )
+
 
 def adversarial_assurance_rows() -> str:
     """Render adversarial assurance cycle rows."""
-    rows = ["| Stage | Challenge question | Artifact |", "|---|---|---|"]
-    for item in ADVERSARIAL_ASSURANCE_CYCLE:
-        rows.append(f"| {item['stage']} | {item['question']} | {item['artifact']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Stage", "Challenge question", "Artifact"),
+        ADVERSARIAL_ASSURANCE_CYCLE,
+        ("stage", "question", "artifact"),
+    )
+
 
 def model_dataset_card_rows() -> str:
     """Render model-card and dataset-card documentation rows."""
-    rows = ["| Field | Model card evidence | Dataset card evidence | Review gate |", "|---|---|---|---|"]
-    for item in MODEL_DATASET_CARD:
-        rows.append(
-            f"| {item['field']} | {item['model_card']} | "
-            f"{item['dataset_card']} | {item['review_gate']} |"
-        )
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Field", "Model card evidence", "Dataset card evidence", "Review gate"),
+        MODEL_DATASET_CARD,
+        ("field", "model_card", "dataset_card", "review_gate"),
+    )
+
 
 def transparency_notice_rows() -> str:
     """Render transparency notice workflow rows."""
-    rows = ["| Step | Artifact | Review gate |", "|---|---|---|"]
-    for item in TRANSPARENCY_NOTICE_WORKFLOW:
-        rows.append(f"| {item['step']} | {item['artifact']} | {item['review_gate']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Step", "Artifact", "Review gate"),
+        TRANSPARENCY_NOTICE_WORKFLOW,
+        ("step", "artifact", "review_gate"),
+    )
+
 
 def retention_audit_rows() -> str:
     """Render records-retention and audit-trail rows."""
-    rows = ["| Record | Retained fields | Audit question |", "|---|---|---|"]
-    for item in RETENTION_AUDIT_TRAIL:
-        rows.append(f"| {item['record']} | {item['retained_fields']} | {item['audit_question']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Record", "Retained fields", "Audit question"),
+        RETENTION_AUDIT_TRAIL,
+        ("record", "retained_fields", "audit_question"),
+    )
+
 
 def release_change_control_rows() -> str:
     """Render release and change-control gate rows."""
-    rows = ["| Gate | Release evidence | Block condition |", "|---|---|---|"]
-    for item in RELEASE_CHANGE_CONTROL_GATE:
-        rows.append(f"| {item['gate']} | {item['release_evidence']} | {item['block_condition']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Gate", "Release evidence", "Block condition"),
+        RELEASE_CHANGE_CONTROL_GATE,
+        ("gate", "release_evidence", "block_condition"),
+    )
+
 
 def risk_exception_rows() -> str:
     """Render risk exception memo rows."""
-    rows = ["| Field | Minimum content | Approval rule |", "|---|---|---|"]
-    for item in RISK_EXCEPTION_MEMO:
-        rows.append(f"| {item['field']} | {item['minimum_content']} | {item['approval_rule']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Field", "Minimum content", "Approval rule"),
+        RISK_EXCEPTION_MEMO,
+        ("field", "minimum_content", "approval_rule"),
+    )
+
 
 def learner_support_rows() -> str:
     """Render learner support and accommodation plan rows."""
-    rows = ["| Need | Support | Evidence |", "|---|---|---|"]
-    for item in LEARNER_SUPPORT_PLAN:
-        rows.append(f"| {item['need']} | {item['support']} | {item['evidence']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Need", "Support", "Evidence"),
+        LEARNER_SUPPORT_PLAN,
+        ("need", "support", "evidence"),
+    )
+
 
 def question_bank_rows() -> str:
     """Render instructor question-bank rows."""
-    rows = ["| Question type | Prompt | Evidence |", "|---|---|---|"]
-    for item in INSTRUCTOR_QUESTION_BANK:
-        rows.append(f"| {item['question_type']} | {item['prompt']} | {item['evidence']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Question type", "Prompt", "Evidence"),
+        INSTRUCTOR_QUESTION_BANK,
+        ("question_type", "prompt", "evidence"),
+    )
+
 
 def remediation_backlog_rows() -> str:
     """Render remediation backlog rows."""
-    rows = ["| Backlog item | Trigger | Closure evidence |", "|---|---|---|"]
-    for item in REMEDIATION_BACKLOG:
-        rows.append(f"| {item['item']} | {item['trigger']} | {item['closure_evidence']} |")
-    return "\n".join(rows)
+    return render_dict_table(
+        ("Backlog item", "Trigger", "Closure evidence"),
+        REMEDIATION_BACKLOG,
+        ("item", "trigger", "closure_evidence"),
+    )
 
 def citation_cluster(keys: tuple[str, ...], limit: int = 4) -> str:
     """Return a compact Pandoc citation cluster for a profile."""
@@ -375,7 +402,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
     ).replace("\n\n\n", "\n\n")
 
 def _table_cell(value: str) -> str:
-    return value.replace("|", "\\|").replace("\n", " ").strip()
+    return table_cell(value)
 
 def _coursebook_profile_for_titles(part_title: str, section_title: str = "") -> CoursebookProfile:
     profile = profile_for_titles(part_title, section_title)

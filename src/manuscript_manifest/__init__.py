@@ -2,14 +2,9 @@
 
 from __future__ import annotations
 
-from _package_loader import merge_part_modules
-
-_PARTS = ["_01_part", "_02_part", "_03_part", "_04_part", "_05_part"]
-merge_part_modules(__name__, _PARTS)
-
-from ._04_part import build_manuscript_manifest  # noqa: E402
-from .types import ManuscriptManifest, ManuscriptSection  # noqa: E402
-from ._05_part import render_manuscript  # noqa: E402
+from .types import ManuscriptManifest, ManuscriptSection
+from ._04_part import build_manuscript_manifest
+from ._05_part import render_manuscript
 
 __all__ = [
     "ManuscriptManifest",

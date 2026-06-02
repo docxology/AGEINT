@@ -14,12 +14,12 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 | --- | --- |
 | `curriculum.py` | Load and query sharded curriculum under `data/curriculum/`; exports `PATTERN_REGISTRY_CHAPTER_NUMBER` (32) |
 | `build_pipeline.py` | Canonical `run_build()`, `run_build_figures()`, and `BuildConfig` orchestration (`source_path` override for tests) |
-| `_package_loader.py` | Ordered `merge_part_modules()` for sharded subpackages |
 | `_slug.py` | Numbered curriculum path helpers (`curriculum_sections_jsonl_path`, …) |
 | `_curriculum_shards.py` | Shard load, reference dedupe, source-support hydration |
 | `_data_loaders.py` | YAML loaders for concept routes, topic risk routes, and module architecture tables |
 | `_markdown_split.py` | Generic Markdown fragment splitting for manuscript output |
 | `prose_policy.py` | Shared reader-facing title/prose transforms |
+| `safety_contract.py` | Canonical blocked operational phrases and direct-task motifs; imported by `source_grounding` and manuscript-safety tests |
 | `markdown_refs.py` | Validated Pandoc `@sec:` / `@fig:` / citekey helpers; `lesson_educational_crossrefs()` for topic-lesson cross-links |
 | `manuscript_injection.py` | Thin adapter to `infrastructure.rendering.manuscript_injection` (single import site for manifest render) |
 | `output_docs.py` | Generated README/AGENTS writers for output, manuscript, and figures |
@@ -30,7 +30,7 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 | `manuscript_templates.py` | Neutral source template library |
 | `_jsonl.py`, `_paths.py` | Shared JSONL reader, project path bootstrap, and `remove_tree()` cleanup |
 
-Public exports are declared in `src/__init__.py` (`run_build`, `run_build_figures`, `BuildConfig` consumers should import from `build_pipeline`). Sharded subpackages split import styles: `intelligence_content/` uses explicit per-shard imports; `manuscript_manifest/`, `figures/`, and `manuscript_variables/` still merge part modules at import time via `_package_loader.merge_part_modules` (P4 migration). Prefer importing from the package root or subpackage `__init__.py`.
+Public exports are declared in `src/__init__.py` (pipeline and manifest surface only; import `intelligence_content` row helpers from that package). Sharded subpackages use explicit per-shard imports in package `__init__.py` files.
 
 Declarative routing and architecture tables live under `data/concept_routes.yaml`, `data/concept_routes_supplement.yaml`, `data/topic_risk_routes.yaml`, and `data/manuscript_architecture.yaml` (loaded by `_data_loaders.py`).
 

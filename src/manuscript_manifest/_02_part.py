@@ -1,6 +1,34 @@
 from __future__ import annotations
 
+from typing import Any
+
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
+from intelligence_content import (
+    accessibility_review_rows,
+    adversarial_assurance_rows,
+    agent_incident_response_rows,
+    assessment_integrity_rows,
+    capstone_scaffold_rows,
+    data_lineage_registry_rows,
+    hria_dpia_worksheet_rows,
+    learner_support_rows,
+    model_dataset_card_rows,
+    practice_lens_for_titles,
+    procurement_oversight_rows,
+    profile_for_titles,
+    question_bank_rows,
+    release_change_control_rows,
+    remediation_backlog_rows,
+    retention_audit_rows,
+    risk_exception_rows,
+    role_competency_rows,
+    safe_curriculum_treatment,
+    safe_pattern_treatment,
+    safe_substitution_rows,
+    transparency_notice_rows,
+)
+
+from ._01_part import _chapter_source_context, _chapter_topic_context
 
 def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)

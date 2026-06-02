@@ -1,6 +1,16 @@
 from __future__ import annotations
 
+import hashlib
+from importlib import import_module
+import math
+from pathlib import Path
+import re
+import textwrap
+import urllib.error
+import urllib.request
+from typing import Any, Sequence, cast
 
+from ._01_part import FigureSpec
 
 def _render_source_quality_spine(output: Path, spec: FigureSpec) -> None:
     anchors = [

@@ -66,8 +66,12 @@ Each `intelligence_content` part module must declare explicit imports (merge see
 uv run pytest tests/test_intelligence_content_imports.py -v
 ```
 
-`manuscript_manifest/`, `figures/`, and `manuscript_variables/` still use
-`merge_part_modules`; shard import isolation tests cover `intelligence_content` today.
+`manuscript_manifest/`, `figures/`, and `manuscript_variables/` also use explicit
+cross-part imports (no merge loader). Verify with:
+
+```bash
+uv run pytest tests/test_package_imports.py -v
+```
 
 ## See also
 

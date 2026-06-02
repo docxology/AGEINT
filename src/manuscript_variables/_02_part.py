@@ -1,5 +1,44 @@
 from __future__ import annotations
 
+import json
+from pathlib import Path
+from typing import Any
+
+from curriculum import Curriculum, load_curriculum
+from citation_workflow import (
+    render_citation_workflow_markdown,
+    render_source_section_citation_rows,
+    source_citation_coverage_summary,
+)
+from intelligence_content import (
+    INTELLIGENCE_RESEARCH_ANCHORS,
+    PRACTICE_LENSES,
+    accessibility_review_rows,
+    adversarial_assurance_rows,
+    agent_incident_response_rows,
+    assessment_integrity_rows,
+    capstone_scaffold_rows,
+    data_lineage_registry_rows,
+    hria_dpia_worksheet_rows,
+    learner_support_rows,
+    model_dataset_card_rows,
+    practice_lens_rows,
+    procurement_oversight_rows,
+    profile_inventory_rows,
+    question_bank_rows,
+    release_change_control_rows,
+    remediation_backlog_rows,
+    research_anchor_rows,
+    research_spine_summary,
+    retention_audit_rows,
+    risk_exception_rows,
+    role_competency_rows,
+    safe_substitution_rows,
+    source_lane_rows,
+    source_refresh_rows,
+    transparency_notice_rows,
+)
+
 try:
     from intelligence_content.source_grounding import (
         clean_source_title as _sg_clean_title,
@@ -8,6 +47,18 @@ try:
 except ImportError:  # pragma: no cover
     def _sg_clean_title(t: str) -> str: return t  # type: ignore[misc]
     def _sg_safe_note(n: str) -> str: return n   # type: ignore[misc]
+
+from ._01_part import (
+    SOURCE_QUALITY_ANCHORS,
+    _clean_bibtex_text,
+    _clean_bibtex_value,
+    _join_note_parts,
+    _reference_author,
+    _source_quality_references,
+    bibliography_rows,
+    part_rows,
+    pattern_rows,
+)
 
 
 def _render_bibtex_entries(references: list[dict[str, Any]]) -> str:

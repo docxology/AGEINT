@@ -2,8 +2,9 @@
 
 One-time pyfrag-to-subpackage migration tools from May 2026. These scripts are
 not part of normal AGEINT builds and are retained for historical reference only.
-Part-import wiring now uses `_package_loader.merge_part_modules()` in `src/`;
-do not re-run the removed `fix_part_imports.py` migrator.
+Part-import wiring uses explicit cross-part imports in each sharded package under
+`src/`; `_package_loader.merge_part_modules()` was retired in 2026-06. Do not
+re-run the removed `fix_part_imports.py` migrator.
 
 | Script | Purpose |
 | --- | --- |

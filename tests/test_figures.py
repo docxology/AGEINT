@@ -9,6 +9,7 @@ import pytest
 from PIL import Image
 
 from figures import _02_part as figure_rendering
+from figures import _02b_mermaid as mermaid_rendering
 from curriculum import load_curriculum
 from figures import (
     FigureKind,
@@ -105,7 +106,12 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
 def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest)
+    registry_path = render_figures(
+        PROJECT_ROOT,
+        curriculum,
+        manifest,
+        allow_placeholder_figures=True,
+    )
     registry = load_figure_registry(registry_path)
 
     assert registry_path == PROJECT_ROOT / "output" / "figures" / "figure_registry.json"
@@ -129,7 +135,12 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
 def test_rendered_figure_assets_are_readable_and_square_normalized() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest)
+    registry_path = render_figures(
+        PROJECT_ROOT,
+        curriculum,
+        manifest,
+        allow_placeholder_figures=True,
+    )
     registry = load_figure_registry(registry_path)
 
     for entry in registry["figures"]:
@@ -172,7 +183,7 @@ def test_historical_and_ai_figures_carry_local_provenance() -> None:
     if not registry_path.is_file():
         curriculum = load_curriculum(DATA)
         manifest = build_manuscript_manifest(curriculum)
-        render_figures(PROJECT_ROOT, curriculum, manifest)
+        render_figures(PROJECT_ROOT, curriculum, manifest, allow_placeholder_figures=True)
     registry = load_figure_registry(registry_path)
 
     historical = [entry for entry in registry["figures"] if entry["kind"] == FigureKind.HISTORICAL.value]
@@ -192,7 +203,12 @@ def test_historical_and_ai_figures_carry_local_provenance() -> None:
 def test_figures_for_section_filters_by_source_section() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest)
+    registry_path = render_figures(
+        PROJECT_ROOT,
+        curriculum,
+        manifest,
+        allow_placeholder_figures=True,
+    )
     registry = load_figure_registry(registry_path)
     figures = registry["figures"]
     orientation = figures_for_section(figures, "orientation.md")
@@ -205,6 +221,8 @@ def test_figures_for_section_filters_by_source_section() -> None:
 def test_render_figures_strict_mode_produces_real_mermaid_diagrams() -> None:
     if shutil.which("mmdc") is None:
         pytest.skip("mmdc not on PATH")
+    if mermaid_rendering._discover_chrome_executable() is None:
+        pytest.skip("chrome-headless-shell not available for mmdc")
 
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
@@ -238,7 +256,12 @@ def test_built_mermaid_figures_are_not_placeholder_plates(built_output: Path) ->
 def test_figure_markdown_renders_label_path_and_escaped_caption() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest)
+    registry_path = render_figures(
+        PROJECT_ROOT,
+        curriculum,
+        manifest,
+        allow_placeholder_figures=True,
+    )
     registry = load_figure_registry(registry_path)
     entry = next(item for item in registry["figures"] if item["label"] == "fig:ageint-curriculum-map")
     output_manuscript = PROJECT_ROOT / "output" / "manuscript"

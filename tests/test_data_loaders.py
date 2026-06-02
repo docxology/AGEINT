@@ -49,8 +49,16 @@ def test_module_architecture_falls_back_to_default_profile() -> None:
 
 def test_topic_risk_routes_payload_has_rule_lists() -> None:
     payload = topic_risk_routes_payload()
-    assert payload["topic_rules"]
-    assert payload["chapter_context_rules"]
+    assert len(payload["topic_rules"]) >= 30
+    assert len(payload["chapter_context_rules"]) >= 8
+
+
+def test_transfer_task_keyword_routes_loaded() -> None:
+    from _data_loaders import transfer_task_keyword_routes
+
+    routes = transfer_task_keyword_routes()
+    assert routes
+    assert any("active inference" in keywords for keywords, _ in routes)
 
 
 def test_topic_prompt_routes_payload_has_required_sections() -> None:
@@ -80,6 +88,7 @@ def test_topic_rotation_templates_payload_has_required_sections() -> None:
         "misconception_fallbacks",
         "misconception_risk_templates",
         "misconception_keyword_routes",
+        "transfer_task_keyword_routes",
     ):
         assert isinstance(payload[key], list)
         assert payload[key]
