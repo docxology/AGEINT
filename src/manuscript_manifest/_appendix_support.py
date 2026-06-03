@@ -124,6 +124,44 @@ def _appendix_topic_context(appendix: dict[str, Any], *, limit: int = 2) -> str:
 
 
 def _specialized_appendix_body(letter: str) -> str:
+    if letter == "G":
+        return (
+            "\n\n## Cognitive degradation as a staged cascade\n\n"
+            "The Cloud Security Alliance Cognitive Degradation Resilience model treats an attack on an "
+            "agent network not as a single breach but as a six-stage slide that stays below conventional "
+            "alerting thresholds, illustrated for this appendix in [@fig:ageint-cdr-degradation-cascade]. "
+            "Stage one is trigger injection, where adversarial inputs win a foothold in agent reasoning; "
+            "stage two is resource starvation, in which context windows and compute are deliberately "
+            "consumed to degrade decision quality; stage three is behavioral drift, where outputs deviate "
+            "from policy without tripping alerts; stage four is memory entrenchment, where corrupted "
+            "beliefs solidify in agent memory stores; stage five is functional override, where adversary "
+            "objectives supersede the legitimate task; and stage six is systemic collapse, where "
+            "coordinated agent behavior serves adversarial ends. The decisive observation is that the "
+            "intervention window opens early -- between resource starvation and behavioral drift -- "
+            "because once beliefs entrench in memory, remediation cost rises sharply "
+            "[@official_csa_cdr_framework].\n\n"
+            "Each stage is paired in the QSAF-BC control set with a named, testable countermeasure rather "
+            "than a single catch-all monitor: starvation detection (BC-001) and token-overload limits (BC-002) "
+            "defend the early stages, an entropy-drift monitor (BC-006) and a memory-integrity check "
+            "(BC-007) defend the middle, and override resistance (BC-005) defends the late stages. Treat "
+            "this cascade as a classroom tabletop: map a synthetic incident onto the six stages, identify "
+            "which control would have fired first, and record the evidence a reviewer would need to "
+            "confirm the agent recovered [@official_csa_securing_autonomous_ai_agents]; "
+            "[@scholarly_agentic_ai_security_survey].\n\n"
+            "## The decoherence-degradation isomorphism\n\n"
+            "The same dynamic appears one scale up. The CCDCOE reconception of cognitive warfare "
+            "describes how an adversary degrades a human organization by attacking systemic invariants "
+            "-- shared trust, identity, and epistemic standards -- driving it through initiation, "
+            "uncertainty amplification, polarization, hardened competing frameworks, narrative capture, "
+            "and a final state where the institution functions formally but can no longer coordinate. As "
+            "[@fig:ageint-cognitive-decoherence-cdr-isomorphism] makes explicit, those six "
+            "human-organization phases map one-to-one onto the CDR degradation stages in an agent "
+            "network, phase for phase from initiation to collapse "
+            "[@scholarly_ccdcoe_cognitive_warfare_reconception]. The pedagogical payoff is that a single "
+            "defensive vocabulary -- early detection, drift monitoring, integrity of stored belief -- "
+            "transfers across both the human and the machine layer, which is why this appendix teaches "
+            "them together rather than as separate disciplines."
+        )
     if letter == "H":
         return (
             "\n\n## Source verification workflow\n\n"

@@ -172,8 +172,70 @@ def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, lim
         return "the local source-topic cluster"
     return "; ".join(topics)
 
+def _cognitive_attack_framework() -> str:
+    return (
+        "## How adversaries target cognition\n\n"
+        "This unit is organized around the NATO/INSS reconception of cognitive warfare, summarized for "
+        "the unit in [@fig:ageint-cognitive-attack-layers], which distinguishes three layers of "
+        "engagement by their target. The biological layer targets cognitive capacity itself through "
+        "neuroscience-informed pressure on the nervous system, with AI optimizing delivery timing and "
+        "channel selection. The psychological layer targets cognitive interpretation, manipulating "
+        "individual cognition and exploiting biases at scale, with AI tailoring influence to "
+        "vulnerability profiles. The social layer targets cognitive cohesion, fracturing shared "
+        "narratives and weaponizing identity to manufacture epistemic chaos, with AI coordinating "
+        "synthetic influence across platforms [@scholarly_ccdcoe_cognitive_warfare_reconception]. "
+        "Holding the three layers apart matters because each demands a different defense -- resilience "
+        "of attention, inoculation against manipulation, and protection of shared sense-making -- and a "
+        "defender who conflates them will mismatch the countermeasure to the attack. Every exercise in "
+        "this unit stays defensive, synthetic, and non-operational: the taxonomy is taught to build "
+        "inoculation and detection, never to script influence "
+        "[@official_darpa_intrinsic_cognitive_security]."
+    )
+
+
+def _epistemic_stack_framework() -> str:
+    return (
+        "## The unified epistemic coherence stack\n\n"
+        "This unit synthesizes the book's defensive techniques into one five-layer architecture for "
+        "maintaining epistemic coherence, shown for the unit in [@fig:ageint-unified-epistemic-stack]. "
+        "The base is a technical substrate -- formal verification in the spirit of intrinsic cognitive "
+        "security, prompt-infection defense, sandboxing and worktree isolation, and provenance signals "
+        "such as SynthID and C2PA. Above it sits operational security -- MAESTRO threat modeling, CDR "
+        "degradation monitoring, zero-trust identity, and circuit breakers. Above that is structured "
+        "reasoning and tradecraft -- analysis of competing hypotheses, pre-mortem red teaming, and "
+        "key-assumptions auditing, now executable as AI-augmented structured analytic techniques at "
+        "scale. The fourth layer is epistemic integrity -- verifier agents and intent-alignment "
+        "monitoring that protect the trustworthiness of what the system believes. The top layer is "
+        "institutional governance -- analytic standards, red-team programs, and error-budget "
+        "governance. The load-bearing claim is that each layer is necessary but insufficient alone, and "
+        "the layers are mutually reinforcing: a technical fix without governance, or tradecraft without "
+        "integrity checks, leaves an exploitable seam [@scholarly_deepmind_epistemic_agent_trust]; "
+        "[@official_darpa_intrinsic_cognitive_security].\n\n"
+        "## From reliability theory to AI governance\n\n"
+        "The governance layer is not invented from scratch; it borrows from High-Reliability "
+        "Organization theory. As the crosswalk in [@fig:ageint-hro-governance-crosswalk] shows, Weick "
+        "and Sutcliffe's five HRO principles map directly onto observable AI-agent controls: "
+        "preoccupation with failure becomes safety-SLI monitoring and drift detection; reluctance to "
+        "simplify becomes multi-hypothesis behavioral analysis; sensitivity to operations becomes "
+        "real-time tool-invocation auditing and context-window analysis; commitment to resilience "
+        "becomes circuit breakers, chaos engineering, and progressive rollout behind "
+        "service-level-objective gates; and deference to expertise becomes human-in-the-loop authority "
+        "for high-stakes actions under least privilege. The crosswalk turns an organizational "
+        "philosophy into a checklist of testable mechanisms, which is exactly how this unit asks "
+        "learners to use it [@scholarly_mandel_tetlock_judgment_correctives]; "
+        "[@official_csa_nist_ai_agent_red_teaming_standards]."
+    )
+
+
 def _part_summary(part: dict[str, Any]) -> str:
     source_context = _part_source_context(part)
+    title = str(part["title"])
+    framework = ""
+    if title == "COGNITIVE SECURITY":
+        framework = _cognitive_attack_framework()
+    elif title == "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT":
+        framework = _epistemic_stack_framework()
+    framework_suffix = f"\n\n{framework}" if framework else ""
     return (
         f"{render_unit_profile_markdown(part)}\n\n"
         "This unit introduces the part's governing question, evidence artifacts, "
@@ -198,6 +260,7 @@ def _part_summary(part: dict[str, Any]) -> str:
         "Capstone thread:\n\n"
         f"{capstone_scaffold_rows()}\n\n"
         f"{part_research_brief(part)}"
+        f"{framework_suffix}"
     )
 
 def _part_chapter_rows(part: dict[str, Any], chapter_files: dict[int, str]) -> str:

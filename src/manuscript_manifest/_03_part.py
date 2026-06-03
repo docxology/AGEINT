@@ -250,12 +250,45 @@ visible.
 """
 
 
+def _security_synthesis_block() -> str:
+    return """### Threat-model framework: MAESTRO seven layers
+
+For this module specifically, the CSA MAESTRO model gives a concrete map of where an agentic
+system can be attacked, shown in [@fig:ageint-maestro-seven-layer]. It stacks seven layers of
+the agent lifecycle: foundation models (L1: adversarial examples, model stealing, backdoors),
+data operations (L2: poisoning, RAG-pipeline compromise), agent frameworks (L3: supply chain and
+input validation), deployment and infrastructure (L4: container escape, lateral movement),
+evaluation and observability (L5: metric manipulation, detection evasion), and the agent ecosystem
+(L7: impersonation, marketplace and goal manipulation). The layer that carries the sharpest
+lesson is L6, Security and Compliance, which is drawn cross-cutting every other layer rather than
+stacked among them: the security agents you deploy to watch the system are themselves an attack
+surface, so a mature design must monitor the monitors [@official_csa_maestro_threat_modeling];
+[@official_owasp_agentic_ai_threats_mitigations].
+
+### Governance control: SRE circuit breaker
+
+Knowing where attacks land is not the same as bounding their blast radius. Microsoft's
+site-reliability-engineering-for-agents pattern, depicted in [@fig:ageint-sre-circuit-breaker],
+governs an agent as a circuit breaker with three states. In CLOSED the agent operates normally,
+its autonomy earned by a clean safety record; when the safety error budget is exhausted -- for
+this curriculum, when the PolicyCompliance service-level indicator falls below 99 percent -- the
+breaker trips to OPEN and a human takes over; after a recovery period plus validation it moves to
+HALF_OPEN with limited capability, returning to CLOSED only if the clean record holds and snapping
+back to OPEN on any new violation. Activation triggers include policy-bypass attempts, LLM-provider
+errors, tool-timeout cascades, trust-score degradation, and reasoning loops or deadlocks. Teach
+this as a defensive governance exercise: define the PolicyCompliance SLI for a synthetic agent,
+set its error budget, and rehearse the OPEN-state human takeover as a tabletop rather than a live
+intervention [@scholarly_systems_security_agentic_computing]; [@official_unu_macau_agentic_ai_boundaries].
+"""
+
+
 def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     title = chapter["title"]
     source_spine = source_citation_spine(chapter["citations"])
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
     safe_patterns = chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
+    synthesis_block = _security_synthesis_block() if chapter["number"] == 34 else ""
     safety_boundary = (
         "For this module, keep all practice authorized, synthetic, defensive, logged, "
         f"reversible, and non-operational while working from {source_context} and {topic_context}. Do not convert this module into "
@@ -345,6 +378,7 @@ Verify every claim against these works.
 
 {chapter_research_brief(chapter, part)}
 
+{synthesis_block}
 ### Evidence standard
 
 Each module source is treated as an anchor, not a decoration. Official
