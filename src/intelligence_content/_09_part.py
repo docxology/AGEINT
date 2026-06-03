@@ -344,17 +344,19 @@ def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_context = _topic_context(chapter, part)
     return "\n".join(
         [
-            f"**Practice lens for this module:** {lens.title}. Source context: {source_context}",
+            f"This module works through the **{lens.title}** practice lens.",
             "",
-            f"**Planning question for this module:** {lens.planning_question} Apply it to {topic_context}.",
+            f"**Practice lens:** {lens.title}. Source context: {source_context}",
             "",
-            f"**Evidence artifact for this module:** {lens.evidence_artifact}. Source context: {source_context}",
+            f"**Planning question:** {lens.planning_question} Apply it to {topic_context}.",
             "",
-            f"**Validation rule for this module:** {lens.validation_rule}. Topic focus: {topic_context}.",
+            f"**Evidence artifact:** {lens.evidence_artifact}. Source context: {source_context}",
             "",
-            f"**Handoff contract for this module:** {lens.handoff_contract}. Source context: {source_context}",
+            f"**Validation rule:** {lens.validation_rule}. Topic focus: {topic_context}.",
             "",
-            f"**Safety check for this module:** {lens.safety_check}. Topic focus: {topic_context}.",
+            f"**Handoff contract:** {lens.handoff_contract}. Source context: {source_context}",
+            "",
+            f"**Safety check:** {lens.safety_check}. Topic focus: {topic_context}.",
         ]
     )
 
@@ -366,7 +368,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
     source_context = _chapter_ref_context(chapter)
     topic_context = "; ".join(distinct[:2]) if distinct else "the local topic cluster"
     topic_line = (
-        "**Curriculum topic spine for this module:** "
+        "**Curriculum topic spine:** "
         f"{', '.join(f'**{topic}**' for topic in distinct)}.\n\n"
         if distinct
         else ""
@@ -382,20 +384,22 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
         )
     return "\n".join(
         [
-            f"**Research lane for this module:** {profile.title}. Source context: {source_context}",
+            f"This module's research synthesis runs in the **{profile.title}** lane.",
+            "",
+            f"**Research lane:** {profile.title}. Source context: {source_context}",
             "",
             topic_line.rstrip(),
-            f"**Verified anchor cluster for this module:** {citation_cluster(profile.anchor_keys, limit=7)} Topic focus: {topic_context}.",
+            f"**Verified anchor cluster:** {citation_cluster(profile.anchor_keys, limit=7)} Topic focus: {topic_context}.",
             "",
-            f"**Conceptual depth for this module:** {profile.conceptual_focus}. Apply it to {topic_context}.",
+            f"**Conceptual depth:** {profile.conceptual_focus}. Apply it to {topic_context}.",
             "",
-            f"**Method stack for this module:** {profile.method_stack}. Source context: {source_context}",
+            f"**Method stack:** {profile.method_stack}. Source context: {source_context}",
             "",
-            f"**Composability contract for this module:** {profile.composability_contract}. Topic focus: {topic_context}.",
+            f"**Composability contract:** {profile.composability_contract}. Topic focus: {topic_context}.",
             "",
-            f"**Known failure modes for this module:** {profile.failure_modes}. Source context: {source_context}",
+            f"**Known failure modes:** {profile.failure_modes}. Source context: {source_context}",
             "",
-            f"**Defensive boundary for this module:** {profile.safety_boundary}. Topic focus: {topic_context}.",
+            f"**Defensive boundary:** {profile.safety_boundary}. Topic focus: {topic_context}.",
             "",
             *anchor_rows,
         ]

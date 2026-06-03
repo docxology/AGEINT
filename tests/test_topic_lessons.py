@@ -17,7 +17,9 @@ from intelligence_content.topic_lessons import (  # noqa: E402
     transfer_task_for_entry,
 )
 from intelligence_content import practice_lens_for_titles, profile_for_titles  # noqa: E402
+from intelligence_content._11_part import AnchorState, _anaphorize_field  # noqa: E402
 from intelligence_content.topic_entries import safe_topic_entries  # noqa: E402
+from intelligence_content.topic_lesson_voice import short_title  # noqa: E402
 
 DATA = PROJECT_ROOT / "data" / "curriculum"
 
@@ -128,3 +130,52 @@ def test_resolve_topic_misconception_matches_lesson_fields() -> None:
             assert direct == fields.misconception
             return
     raise AssertionError("curriculum produced no topic entries")
+
+
+def test_short_title_uses_pre_colon_head() -> None:
+    assert (
+        short_title("Defining Intelligence: Collection, Analysis, Production, Dissemination")
+        == "Defining Intelligence"
+    )
+
+
+def test_short_title_cuts_colon_free_qualifier() -> None:
+    assert (
+        short_title("AI-Enhanced Micro-Expression Analysis for Source Validation")
+        == "AI-Enhanced Micro-Expression Analysis"
+    )
+
+
+def test_short_title_keeps_already_compact_title() -> None:
+    assert short_title("Social Engineering") == "Social Engineering"
+
+
+def test_short_title_rejects_stranded_list_fragment() -> None:
+    # Cutting at " and " would strand "APT Definitions, Lifecycle," — keep full.
+    assert (
+        short_title("APT Definitions, Lifecycle, and Attribution")
+        == "APT Definitions, Lifecycle, and Attribution"
+    )
+
+
+def test_anaphorize_field_keeps_first_mention_collapses_rest() -> None:
+    title = "Defining Intelligence: Collection, Analysis, Production, Dissemination"
+    token = f"**{title}**"
+    field = f"For {token}, build the artifact. Shape {token} work as a ledger."
+    out = _anaphorize_field(title, field, anchor=AnchorState())
+    # First mention becomes the bolded short form; the second collapses to anaphora.
+    assert "**Defining Intelligence**" in out
+    assert out.count(token) == 0
+    assert "this subject" in out or "this topic" in out
+
+
+def test_anaphorize_field_respects_forbidden_short_form() -> None:
+    title = "Social Engineering: The Science of Human Hacking"
+    token = f"**{title}**"
+    field = f"Without explicit treatment of {token}, the failure mode dominates."
+    # "Social Engineering" collides with a chapter title; keep full title to retain
+    # keywords the section-title sanitiser would otherwise strip.
+    out = _anaphorize_field(
+        title, field, anchor=AnchorState(), forbidden={"social engineering"}
+    )
+    assert token in out

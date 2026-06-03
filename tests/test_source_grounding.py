@@ -81,6 +81,21 @@ def test_clean_source_note_handles_empty() -> None:
     assert clean_source_note("   ...") == ""
 
 
+def test_clean_source_note_cuts_dangling_adjective_clause() -> None:
+    note = "This policy paper examines the emergence of cognitive security as a distinct and critical strategic ..."
+    cleaned = clean_source_note(note)
+    assert cleaned == "This policy paper examines the emergence of cognitive security."
+    assert not cleaned.endswith("critical.")
+    assert not cleaned.endswith("and.")
+
+
+def test_clean_source_note_cuts_dangling_relative_clause() -> None:
+    note = "This article examines the concept of epistemic governance during crises, a situation that presents s..."
+    cleaned = clean_source_note(note)
+    assert cleaned == "This article examines the concept of epistemic governance during crises."
+    assert not cleaned.endswith("presents.")
+
+
 def test_safe_source_note_drops_operational_motifs() -> None:
     assert safe_source_note("Deploy autonomous SOC agents that detect threats") == ""
     assert safe_source_note("A primer on rootkit construction") == ""
