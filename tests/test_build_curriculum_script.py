@@ -125,7 +125,9 @@ def test_build_curriculum_script_smoke() -> None:
         check=False,
         capture_output=True,
         text=True,
-        timeout=120,
+        # Real Mermaid rendering (mmdc + headless Chrome) for ~24 figures takes
+        # well over the original 120s smoke budget; allow a realistic ceiling.
+        timeout=600,
     )
     assert result.returncode == 0
     combined = f"{result.stdout}\n{result.stderr}"
