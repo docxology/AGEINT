@@ -155,6 +155,16 @@ FirstPrinciples framing + a RedTeam adversarial audit (5 dims) drove 5 commit-if
 - VISUALIZATIONS (2d4f59f): shared _MERMAID_INIT theme (larger font/spacing), curriculum map → 4×4 grid, part maps → TB. Visually verified curriculum-map + MAESTRO render clear/correct with the new theme.
 - Build strict exit 0; banned phrases 0; registry 64; tree clean. Final coverage suite running for the 90% stamp.
 
+### Conciseness + relevance + regression-QA (turn 5 — commits 5bc75f6, 5a54db1)
+
+Subtraction pass (the "concise" signal): RedTeam conciseness/relevance/QA audit → 2 commits, QA found NO defects (prior 4 passes hold). Verified:
+- "for this module" tic 715 → 0; "Source context:/Topic focus:" wrapper prose 966 → 0 (the [@ageintNNN] anchors KEPT — heading-support stays 100%, 0 unsupported); "this module" 2002 → 419 (−79%).
+- compact_topic strips registry/qualifier boilerplate from topic_context; decorative aphorisms cut.
+- Manuscript bytes 5,708,542 (session start) → 5,123,480 (−585 KB / −10.2%) WHILE the session ADDED 7 figures, 14 citations, 27 formalisms, and framework prose — denser signal, less padding.
+- Build strict exit 0; full suite 242 passed / 92.17% cov; banned phrases 0; tree clean. Refined sections read as authored prose (crisp labels, consolidated citations) not mail-merge.
+
+Assessment: the document has now had 5 deep passes (de-boilerplate → citations+figures → rendering fix → quality → conciseness). Remaining ideas are churn-risk, not value. Recommend stopping unless a concrete new goal appears.
+
 ### Staged (next increment — approach + test constraints captured)
 - Table-collapse (ISC-2..9): the capstone/competency/claim-ledger/refresh/mastery tables are identical static content from `data/safety_artifact_tables.yaml` → template variables. Plan: emit each once in a new canonical "Method & Assurance Reference" front section (sec label), replace per-chapter emitters in `manuscript_manifest/_01_part.py` (`_claim_evidence_ledger`), `_02_part.py` (`_capstone_deliverable`, `_refresh_triggers`), `_03_part.py` (competency rubric, `_assessment_and_capstone_pathway`) with a substantive `[@sec:method-assurance-reference]` cross-ref line (>40 chars to satisfy `test_chapter_fragment_quality` min-length; sections must stay PRESENT per `REQUIRED_MODULE_SECTIONS`). Variable tests (`test_runtime_variables_are_auditable`) check the YAML→variable content, not per-chapter stamping, so they remain green. Also dedupe the 118× "### Safety boundary" to ≤1 per chapter.
 - New methods figures (ISC-11..17): add FigureSpec + a `_render_*` python renderer (per `figures/_03_part.py` pattern) OR mermaid dispatch (`figures/_02b_mermaid.py`) for CDR cascade, MAESTRO 7-layer, SRE circuit-breaker, CCDCOE↔CDR isomorphism, unified 5-layer stack, NATO 3-layer, HRO crosswalk. MUST sync figure count in README/AGENTS/docs (`test_reader_docs_match_live_counts`).
