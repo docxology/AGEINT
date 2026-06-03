@@ -50,12 +50,64 @@ def test_clean_source_title_preserves_real_hyphenated_titles() -> None:
     assert clean_source_title(title) == title
 
 
+def test_clean_source_title_strips_bracket_pdf_prefix() -> None:
+    assert clean_source_title("[PDF] BASIC CRYPTOGRAPHY") == "BASIC CRYPTOGRAPHY"
+    # Duplicated tags collapse fully.
+    assert clean_source_title("[PDF] [PDF] The Psychology of Intelligence Analysis") == (
+        "The Psychology of Intelligence Analysis"
+    )
+
+
+def test_clean_source_title_trims_trailing_function_word_without_ellipsis() -> None:
+    # A hard truncation with no ellipsis marker leaves a dangling function word.
+    assert clean_source_title("The Utility of Military Deception and Information Operations in") == (
+        "The Utility of Military Deception and Information Operations"
+    )
+    assert clean_source_title("Behavioral Outcomes of Human Cognitive Security within an") == (
+        "Behavioral Outcomes of Human Cognitive Security"
+    )
+
+
+_NOTE_DANGLING_TAIL_WORDS = frozenset(
+    {
+        "a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on",
+        "with", "by", "that", "which", "critical", "committed", "human",
+        "presents", "including", "distinct", "such",
+    }
+)
+
+
+def _ends_on_complete_clause(cleaned: str) -> bool:
+    """A cleaned note is complete only if non-empty and not ending on a dangler."""
+    if not cleaned:
+        return True  # title-only fallback is an acceptable outcome
+    if not cleaned.endswith((".", "!", "?")):
+        return False
+    words = cleaned.rstrip(".!?").split()
+    if not words:
+        return False
+    return words[-1].strip(",;:-\"'()").lower() not in _NOTE_DANGLING_TAIL_WORDS
+
+
 def test_clean_source_note_drops_truncated_partial_word() -> None:
     note = "We provide a comprehensive review of the current state, including its developm..."
     cleaned = clean_source_note(note)
     assert cleaned.endswith("state, including its.") is False
     assert "developm" not in cleaned
     assert cleaned.endswith(".")
+    # The clause must be complete, not a fabricated sentence ending on a dangler.
+    assert _ends_on_complete_clause(cleaned)
+
+
+def test_clean_source_note_drops_severed_attributive_adjective() -> None:
+    # Truncation that severs an adjective from its head noun must not be
+    # presented as a finished sentence; fall back to title-only ("").
+    assert clean_source_note(
+        "This research examined the possibility of using shared experiences to recruit committed hu..."
+    ) == ""
+    assert clean_source_note(
+        "Explore ICS Cybersecurity and learn how to protect critical infrastruct..."
+    ) == ""
 
 
 def test_clean_source_note_trims_trailing_function_words() -> None:

@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
+from intelligence_content.topic_entries import clean_display_title
 from intelligence_content import (
     accessibility_review_rows,
     adversarial_assurance_rows,
@@ -401,13 +402,20 @@ def _reader_section_title(source_title: str, part_title: str = "", chapter_title
         return "Model-card, recoverability, retention, and learner-support evidence package"
     if lower.startswith("v2 ageint-depth extension:"):
         return "AGEINT pattern registry, agent identity, and interface-contract studio"
-    return safe_curriculum_treatment(title, part_title, chapter_title)
+    # clean_display_title strips bare quantitative vendor-marketing claims so a
+    # source headline like "...: 500% Productivity Increase" never stands as the
+    # rendered section title (the figures are unsourced and unframed here).
+    return clean_display_title(safe_curriculum_treatment(title, part_title, chapter_title))
 
 def _reader_provenance_title(source_title: str) -> str:
-    """Keep provenance useful without leaking scaffold wording into prose."""
+    """Keep provenance useful without leaking scaffold wording into prose.
+
+    Bare quantitative marketing claims are stripped here too so the "original:
+    ..." provenance trail does not restate an unsourced vendor figure as fact.
+    """
     from prose_policy import reader_source_title
 
-    return reader_source_title(source_title)
+    return clean_display_title(reader_source_title(source_title))
 
 def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render source-guide sections as polished runtime/provenance rows."""

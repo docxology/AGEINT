@@ -152,6 +152,29 @@ def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path
     assert audit_rendered_references(tmp_path) == []
 
 
+def test_rendered_reference_audit_flags_unresolved_citation_key(tmp_path: Path) -> None:
+    manuscript = tmp_path / "manuscript"
+    parts = manuscript / "parts" / "unit" / "chapter"
+    parts.mkdir(parents=True)
+    (manuscript / "references-source-guide-001-050.bib").write_text(
+        '@misc{ageint001,\n  title = {Real entry},\n}\n', encoding="utf-8"
+    )
+    (parts / "01-topic-lessons.md").write_text(
+        "Topic rests on [@ageint001] and [@ageint999].\n"
+        "Cross-refs [@sec:foo] and [@fig:bar] are fine.\n"
+        "A URL like medium.com/@anil.jain.baba is not a citation.\n",
+        encoding="utf-8",
+    )
+
+    violations = audit_rendered_references(tmp_path)
+    reasons = {(v.reason, v.title) for v in violations}
+    assert ("unresolved citation key", "@ageint999") in reasons
+    # Defined key, crossref namespaces, and the bare @user in a URL must not flag.
+    assert ("unresolved citation key", "@ageint001") not in reasons
+    assert not any(v.reason == "unresolved citation key" and "anil" in v.title for v in violations)
+    assert not any(v.reason == "unresolved citation key" and v.title.startswith("@sec") for v in violations)
+
+
 def test_generated_equation_table_and_citation_references_resolve(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     text = _all_output_text(output_manuscript)

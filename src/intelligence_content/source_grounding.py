@@ -71,6 +71,7 @@ _TRAILING_STOPWORDS = frozenset(
         "his", "her", "our", "your", "is", "are", "was", "were", "be", "been",
         "into", "from", "than", "then", "which", "who", "whose", "when",
         "where", "while", "but", "so", "such", "via", "per", "about",
+        "within", "using", "toward", "towards", "between", "among",
     }
 )
 
@@ -157,11 +158,18 @@ def clean_source_title(title: str) -> str:
     Applies (PDF) prefix removal, site-suffix stripping, and ellipsis trimming in
     the right order: strip site suffixes first so a title like
     ``Long title ... - PMC`` correctly reduces to ``Long title`` rather than
-    ``Long title ...``.
+    ``Long title ...``. Titles that were captured without an ellipsis marker but
+    were nonetheless cut mid-phrase (ending on a function word such as ``in``,
+    ``and``, or a dangling ``: A <word>`` fragment) are trimmed so the rendered
+    hyperlink text never reads as a broken fragment.
     """
     text = title.strip()
-    # 1. Strip leading (PDF) tag
-    text = re.sub(r"^\(PDF\)\s*", "", text, flags=re.IGNORECASE)
+    # 1. Strip leading (PDF)/[PDF] tag — may appear duplicated, so loop.
+    while True:
+        stripped = re.sub(r"^[(\[]\s*PDF\s*[)\]]\s*", "", text, flags=re.IGNORECASE)
+        if stripped == text:
+            break
+        text = stripped.strip()
     # 2. Strip site/platform suffixes (may reveal trailing ... underneath)
     for separator in (" | ", " - "):
         while separator in text:
@@ -172,6 +180,11 @@ def clean_source_title(title: str) -> str:
                 break
     # 3. Strip any remaining trailing ellipsis (now at the real end)
     text = re.sub(r"\s*[.…]{2,}$", "", text).strip()
+    # 4. Trim trailing function words and dangling ": A <word>" fragments left by
+    #    a hard truncation that carried no ellipsis marker.
+    text = _trim_trailing_stopwords(text)
+    text = re.sub(r"[:,]\s+A\s+[A-Za-z]+$", "", text).rstrip(" ,;:-—")
+    text = _trim_trailing_stopwords(text)
     return text.strip(" -|") or title.strip()
 
 
@@ -221,9 +234,17 @@ _CLAUSE_INTRODUCERS = frozenset(
 )
 
 # Coordinating/adjective-joining words that, when trailing, signal an unfinished
-# noun phrase ("distinct and critical", "a situation that presents").
+# noun phrase ("distinct and critical", "a situation that presents"). Also
+# includes attributive adjectives that almost always require a following head
+# noun, so a truncation that dies on them ("protect critical", "committed human")
+# is a severed noun phrase rather than a finished clause.
 _TRAILING_MODIFIER_TAIL = frozenset(
-    {"and", "or", "but", "presents", "presented", "including", "such"}
+    {
+        "and", "or", "but", "presents", "presented", "including", "such",
+        "critical", "committed", "human", "conceptual", "various", "several",
+        "key", "core", "potential", "specific", "certain", "particular",
+        "significant", "major", "common", "emerging", "strategic", "modern",
+    }
 )
 
 

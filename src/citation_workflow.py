@@ -20,6 +20,20 @@ except ImportError:  # pragma: no cover - exercised by script-level imports
     from markdown_refs import citation_ref_list  # type: ignore[no-redef]
     from prose_policy import reader_source_title  # type: ignore[no-redef]
 
+
+def _clean_display_title(title: str) -> str:
+    """Lazy proxy for ``clean_display_title`` to avoid a circular import.
+
+    ``intelligence_content`` imports this module at package init, so importing
+    ``intelligence_content.topic_entries`` at module top-level would cycle. The
+    deferred import resolves cleanly at call time.
+    """
+    try:
+        from intelligence_content.topic_entries import clean_display_title
+    except ImportError:  # pragma: no cover - script-level fallback
+        return title
+    return clean_display_title(title)
+
 _PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -146,7 +160,7 @@ def render_source_section_citation_rows(curriculum: Curriculum) -> str:
     for row in source_section_citation_inventory(curriculum):
         rows.append(
             f"| {row.chapter_number}. {_table_cell(row.chapter_title)} | "
-            f"{_table_cell(row.section_number)} | {_table_cell(reader_source_title(row.title))} | "
+            f"{_table_cell(row.section_number)} | {_table_cell(_clean_display_title(reader_source_title(row.title)))} | "
             f"{row.citation_count} | {_table_cell('; '.join(row.citation_keys) or '-')} |"
         )
     return "\n".join(rows)

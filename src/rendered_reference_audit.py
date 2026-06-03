@@ -18,6 +18,15 @@ HARD_CODED_REFERENCE_RE = re.compile(
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
 UNRESOLVED_TEMPLATE_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}|\[\[(?:SEC|FIG|REF):")
 
+# Bracketed Pandoc citation tokens: ``[@key]`` (optionally ``[@key1; @key2]``).
+# Only the bracket form is matched so a bare ``@user`` inside a Markdown URL
+# (e.g. ``medium.com/@anil.jain.baba``) is never treated as a citation.
+BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
+# Cross-reference namespaces (handled by pandoc-crossref, not the bib) to skip.
+_CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
+# BibTeX entry header: ``@misc{key,`` / ``@article{key,`` etc.
+_BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
+
 
 @dataclass(frozen=True)
 class TitleRule:
@@ -138,11 +147,51 @@ def iter_rendered_text_files(output_root: Path) -> list[Path]:
     return sorted(dict.fromkeys(files))
 
 
+def load_bib_keys(output_root: Path) -> frozenset[str]:
+    """Return the set of citation keys defined across the manuscript ``.bib`` files.
+
+    Keys are read from every ``manuscript/references-*.bib`` entry header so the
+    audit can flag any rendered ``[@key]`` that resolves to no bibliography
+    entry (a dangling citation a generator might emit after a key renumber).
+    """
+    keys: set[str] = set()
+    bib_dir = output_root / "manuscript"
+    if not bib_dir.is_dir():
+        return frozenset()
+    for bib in sorted(bib_dir.glob("references-*.bib")):
+        text = bib.read_text(encoding="utf-8")
+        keys.update(match.group(1).strip() for match in _BIB_ENTRY_RE.finditer(text))
+    return frozenset(keys)
+
+
+def _unresolved_citation_keys(line: str, defined: frozenset[str]) -> list[str]:
+    """Return bracketed citation keys on ``line`` that are not defined in the bib.
+
+    Cross-reference namespaces (``@sec:``/``@fig:``/...) are skipped because they
+    are resolved by pandoc-crossref rather than the bibliography. A ``[@key]``
+    group may carry several semicolon-separated keys, each validated separately.
+    """
+    if not defined:
+        return []
+    unresolved: list[str] = []
+    for group in BRACKET_CITATION_RE.findall(line):
+        for token in re.split(r"[;,]", group):
+            key = token.strip().lstrip("@").strip()
+            if not key or key.lower().startswith(_CROSSREF_PREFIXES):
+                continue
+            # Ignore locator suffixes (``[@key, p. 4]`` → key already isolated).
+            key = key.split()[0]
+            if key and key not in defined:
+                unresolved.append(key)
+    return unresolved
+
+
 def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolation]:
     """Find hard-coded rendered references and disallowed section-title mentions."""
 
     titles = collect_rendered_section_titles(output_root)
     title_patterns = [(title, _title_pattern(title)) for title in sorted(titles, key=len, reverse=True)]
+    bib_keys = load_bib_keys(output_root)
     violations: list[RenderedReferenceViolation] = []
     for path in iter_rendered_text_files(output_root):
         suffix = path.suffix.lower()
@@ -204,6 +253,13 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                 violations.append(
                     RenderedReferenceViolation(path, line_number, "unresolved reference token", match.group(0), line)
                 )
+            if suffix == ".md":
+                for key in _unresolved_citation_keys(line, bib_keys):
+                    violations.append(
+                        RenderedReferenceViolation(
+                            path, line_number, "unresolved citation key", f"@{key}", line
+                        )
+                    )
             for title, pattern in title_patterns:
                 if pattern.search(line):
                     violations.append(

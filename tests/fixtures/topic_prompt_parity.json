@@ -4365,12 +4365,12 @@
     "artifact_prompt": "Build a **operator workload card with queue state, NASA-TLX ratings, focus plan, handoff owner, and rest boundary** for this workload-aware operator decision hygiene topic. The artifact must name the source descriptor, bounded claim, caveat, uncertainty note, blocked-use statement, and accountable reviewer."
   },
   {
-    "display_title": "Flow Research Collective: 500% Productivity Increase, 230% Skill Acquisition",
+    "display_title": "Flow Research Collective",
     "raw_title": "Flow Research Collective: 500% Productivity Increase, 230% Skill Acquisition",
     "risk_category": "operator_decision_hygiene",
     "part_title": "PRODUCTIVITY INTELLIGENCE AND COGNITIVE PERFORMANCE",
     "chapter_title": "The Intelligent Operator as Cognitive Athlete",
-    "evidence_prompt": "The evidence packet for **Flow Research Collective: 500% Productivity Increase, 230% Skill Acquisition** uses source descriptors, workload-aware operator decision hygiene records, provenance gaps, and a documented judgment-change condition for Flow, Research.",
+    "evidence_prompt": "The evidence packet for **Flow Research Collective** uses source descriptors, workload-aware operator decision hygiene records, provenance gaps, and a documented judgment-change condition for Flow, Research.",
     "artifact_prompt": "Build a **operator workload card with queue state, NASA-TLX ratings, focus plan, handoff owner, and rest boundary** for this workload-aware operator decision hygiene topic. The artifact must name the source descriptor, bounded claim, caveat, uncertainty note, blocked-use statement, and accountable reviewer."
   },
   {

@@ -50,6 +50,7 @@ try:  # Support both ``import src.manuscript_variables`` and script-level import
         source_refresh_rows,
         transparency_notice_rows,
     )
+    from .intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title  # noqa: E501
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from curriculum import Curriculum, load_curriculum  # type: ignore[no-redef]
     from citation_workflow import (  # type: ignore[no-redef]
@@ -91,6 +92,7 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
         source_refresh_rows,
         transparency_notice_rows,
     )
+    from intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title  # type: ignore[no-redef]  # noqa: E501
 
 
 SOURCE_QUALITY_ANCHORS: Final[list[dict[str, str]]] = [
@@ -411,9 +413,12 @@ def bibliography_rows(references: list[dict[str, Any]]) -> str:
         "|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for ref in _all_references(references):
-        note = ref.get("note") or "Source-guide bibliography entry."
+        # Route note + title through the same cleaners as the .bib emission so the
+        # atlas never shows a truncated fragment, [PDF] tag, or dangling title.
+        note = _sg_safe_note(str(ref.get("note") or "")) or "Source-guide bibliography entry."
         note = re.sub(r"https?://\S+", "source URL noted in guide", str(note))
-        title = re.sub(r"\bChapter\s+(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\s*:\s*", "Source-guide chapter: ", str(ref["title"]))
+        cleaned_title = _sg_safe_title(str(ref["title"])) or str(ref["title"])
+        title = re.sub(r"\bChapter\s+(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\s*:\s*", "Source-guide chapter: ", cleaned_title)
         role = ref.get("citation_role") or "source_guide_reference"
         lane = ref.get("source_lane") or "source_guide_reference"
         tier = ref.get("source_tier") or ref.get("source_type") or "source_guide_reference"

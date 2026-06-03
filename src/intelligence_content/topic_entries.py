@@ -33,9 +33,43 @@ def normalize_display_key(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
 
 
+# Quantitative marketing claims (e.g. "500% Productivity Increase", "230% Skill
+# Acquisition", "2x Improvement") lifted verbatim from a vendor's source title
+# read as established fact when they head a lesson. They are also unsourced: the
+# figures appear in no cited record. We strip them from titles so a vendor's
+# marketing number never stands as a section header or gets restated as fact
+# across every lesson slot. A retained quantitative claim must be attributed and
+# tagged ESTIMATE in prose per project rule; titles carry no such framing, so the
+# claim is dropped rather than displayed bare.
+_VENDOR_STAT_CLAUSE_RE = re.compile(
+    r"\b~?\d+(?:\.\d+)?\s*(?:%|x(?=[\s\b]|$))(?![\w-])[^,:;]*", flags=re.IGNORECASE
+)
+
+
+def _strip_vendor_stat_claims(title: str) -> str:
+    """Remove bare quantitative marketing claims from a source-derived title."""
+    if not _VENDOR_STAT_CLAUSE_RE.search(title):
+        return title
+    # Drop a trailing ": <stat>, <stat>" clause wholesale when the colon-suffix is
+    # entirely quantitative marketing copy (the common vendor-headline shape).
+    head, sep, tail = title.partition(":")
+    if sep and _VENDOR_STAT_CLAUSE_RE.search(tail):
+        stripped_tail = _VENDOR_STAT_CLAUSE_RE.sub("", tail)
+        # If removing the numeric claims leaves no substantive words, drop the
+        # whole suffix and keep the (named) entity before the colon.
+        if not re.search(r"[A-Za-z]{3,}", stripped_tail):
+            return head.strip(" -:,") or title
+    # Otherwise excise the numeric claim phrases in place.
+    cleaned = _VENDOR_STAT_CLAUSE_RE.sub("", title)
+    cleaned = re.sub(r"\s*[,:;]\s*(?=[,:;]|$)", "", cleaned)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" -:,")
+    return cleaned or title
+
+
 def clean_display_title(title: str) -> str:
     cleaned = re.sub(r":\s*case\s+[\d.]+\s+review\s*$", "", title, flags=re.IGNORECASE)
     cleaned = re.sub(r"\s+review\s*$", "", cleaned, flags=re.IGNORECASE)
+    cleaned = _strip_vendor_stat_claims(cleaned)
     return cleaned.strip() or title
 
 
