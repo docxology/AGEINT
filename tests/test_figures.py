@@ -55,7 +55,7 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
         FigureKind.HISTORICAL,
         FigureKind.AI_GENERATED,
     }
-    assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == curriculum.stats["parts"] + 1
+    assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == curriculum.stats["parts"] + 1 + 7
     assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 33
     assert sum(spec.kind == FigureKind.HISTORICAL for spec in specs) >= 4
     assert sum(spec.kind == FigureKind.AI_GENERATED for spec in specs) >= 3
@@ -92,6 +92,13 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
         "fig:ageint-learner-support-plan",
         "fig:ageint-instructor-question-bank",
         "fig:ageint-remediation-backlog",
+        "fig:ageint-cdr-degradation-cascade",
+        "fig:ageint-maestro-seven-layer",
+        "fig:ageint-sre-circuit-breaker",
+        "fig:ageint-cognitive-decoherence-cdr-isomorphism",
+        "fig:ageint-unified-epistemic-stack",
+        "fig:ageint-cognitive-attack-layers",
+        "fig:ageint-hro-governance-crosswalk",
     } <= set(labels)
     assert len(paths) == len(set(paths))
     for spec in specs:
@@ -234,7 +241,7 @@ def test_render_figures_strict_mode_produces_real_mermaid_diagrams() -> None:
     )
     registry = load_figure_registry(registry_path)
     mermaid_entries = [entry for entry in registry["figures"] if entry["kind"] == FigureKind.MERMAID.value]
-    assert len(mermaid_entries) == curriculum.stats["parts"] + 1
+    assert len(mermaid_entries) == curriculum.stats["parts"] + 1 + 7
     for entry in mermaid_entries:
         asset = PROJECT_ROOT / entry["output_path"]
         assert asset.is_file(), entry["label"]

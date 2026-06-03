@@ -78,7 +78,7 @@ from ._03_part import (
     _temporary_png_path,
     _validate_png_asset,
 )
-from ._02b_mermaid import placeholder_or_fail, render_mermaid_figure
+from ._02b_mermaid import SYNTHESIS_MERMAID, placeholder_or_fail, render_mermaid_figure
 
 
 def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec]:
@@ -125,6 +125,30 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                     "renderer": "mmdc",
                     "source": "data/curriculum/",
                     "diagram": "part_module_map",
+                },
+            )
+        )
+
+    for diagram in SYNTHESIS_MERMAID:
+        section = _resolve_source_section(diagram["source_section"], section_lookup)
+        specs.append(
+            FigureSpec(
+                label=f"fig:{diagram['slug']}",
+                title=diagram["title"],
+                caption=diagram["caption"],
+                alt_text=diagram["alt_text"],
+                kind=FigureKind.MERMAID,
+                output_path=f"output/figures/mermaid/{diagram['slug']}.png",
+                source_artifact_path=f"output/figures/mermaid/{diagram['slug']}.mmd",
+                source_section=section.relative_path,
+                section_label=section.section_label,
+                provenance={
+                    "renderer": "mmdc",
+                    "source": (
+                        "/Users/4d/Downloads/"
+                        "cognitive-security-agentic-intelligence.md"
+                    ),
+                    "diagram": diagram["diagram"],
                 },
             )
         )
@@ -413,72 +437,47 @@ def _render_python_figure(
     renderer_id = spec.provenance["renderer_id"]
     if output is None:
         output = root / spec.output_path
-    if renderer_id == "citation_density":
-        _render_citation_density(output, curriculum, spec)
-    elif renderer_id == "source_quality_spine":
-        _render_source_quality_spine(output, spec)
-    elif renderer_id == "pattern_taxonomy":
-        _render_pattern_taxonomy(output, curriculum, spec)
-    elif renderer_id == "safety_boundary_loop":
-        _render_safety_boundary_loop(output, spec)
-    elif renderer_id == "section_composability_matrix":
-        _render_section_composability_matrix(output, curriculum, spec)
-    elif renderer_id == "reference_coverage":
-        _render_reference_coverage(output, curriculum, spec)
-    elif renderer_id == "source_verification_flow":
-        _render_source_verification_flow(output, spec)
-    elif renderer_id == "claim_ledger_flow":
-        _render_claim_ledger_flow(output, spec)
-    elif renderer_id == "ai_compliance_map":
-        _render_ai_compliance_map(output, spec)
-    elif renderer_id == "agent_evaluation_loop":
-        _render_agent_evaluation_loop(output, spec)
-    elif renderer_id == "cross_border_data_flow":
-        _render_cross_border_data_flow(output, spec)
-    elif renderer_id == "capstone_workflow":
-        _render_capstone_workflow(output, spec)
-    elif renderer_id == "safe_substitution_matrix":
-        _render_safe_substitution_matrix(output, spec)
-    elif renderer_id == "instructor_assessment_lifecycle":
-        _render_instructor_assessment_lifecycle(output, spec)
-    elif renderer_id == "accessibility_workflow":
-        _render_accessibility_workflow(output, spec)
-    elif renderer_id == "hria_dpia_map":
-        _render_hria_dpia_map(output, spec)
-    elif renderer_id == "procurement_oversight_loop":
-        _render_procurement_oversight_loop(output, spec)
-    elif renderer_id == "agent_incident_lifecycle":
-        _render_agent_incident_lifecycle(output, spec)
-    elif renderer_id == "bounded_autonomy_recoverability":
-        _render_bounded_autonomy_recoverability(output, spec)
-    elif renderer_id == "public_ai_register_lifecycle":
-        _render_public_ai_register_lifecycle(output, spec)
-    elif renderer_id == "ai_incident_reporting_loop":
-        _render_ai_incident_reporting_loop(output, spec)
-    elif renderer_id == "ot_definitive_architecture_record":
-        _render_ot_definitive_architecture_record(output, spec)
-    elif renderer_id == "data_lineage_registry":
-        _render_data_lineage_registry(output, spec)
-    elif renderer_id == "assessment_integrity_matrix":
-        _render_assessment_integrity_matrix(output, spec)
-    elif renderer_id == "adversarial_assurance_cycle":
-        _render_adversarial_assurance_cycle(output, spec)
-    elif renderer_id == "model_dataset_card":
-        _render_model_dataset_card(output, spec)
-    elif renderer_id == "transparency_notice_flow":
-        _render_transparency_notice_flow(output, spec)
-    elif renderer_id == "records_retention_audit":
-        _render_records_retention_audit(output, spec)
-    elif renderer_id == "release_change_control":
-        _render_release_change_control(output, spec)
-    elif renderer_id == "risk_exception_memo":
-        _render_risk_exception_memo(output, spec)
-    elif renderer_id == "learner_support_plan":
-        _render_learner_support_plan(output, spec)
-    elif renderer_id == "instructor_question_bank":
-        _render_instructor_question_bank(output, spec)
-    elif renderer_id == "remediation_backlog":
-        _render_remediation_backlog(output, spec)
+    curriculum_renderers = {
+        "citation_density": _render_citation_density,
+        "pattern_taxonomy": _render_pattern_taxonomy,
+        "section_composability_matrix": _render_section_composability_matrix,
+        "reference_coverage": _render_reference_coverage,
+    }
+    spec_renderers = {
+        "source_quality_spine": _render_source_quality_spine,
+        "safety_boundary_loop": _render_safety_boundary_loop,
+        "source_verification_flow": _render_source_verification_flow,
+        "claim_ledger_flow": _render_claim_ledger_flow,
+        "ai_compliance_map": _render_ai_compliance_map,
+        "agent_evaluation_loop": _render_agent_evaluation_loop,
+        "cross_border_data_flow": _render_cross_border_data_flow,
+        "capstone_workflow": _render_capstone_workflow,
+        "safe_substitution_matrix": _render_safe_substitution_matrix,
+        "instructor_assessment_lifecycle": _render_instructor_assessment_lifecycle,
+        "accessibility_workflow": _render_accessibility_workflow,
+        "hria_dpia_map": _render_hria_dpia_map,
+        "procurement_oversight_loop": _render_procurement_oversight_loop,
+        "agent_incident_lifecycle": _render_agent_incident_lifecycle,
+        "bounded_autonomy_recoverability": _render_bounded_autonomy_recoverability,
+        "public_ai_register_lifecycle": _render_public_ai_register_lifecycle,
+        "ai_incident_reporting_loop": _render_ai_incident_reporting_loop,
+        "ot_definitive_architecture_record": _render_ot_definitive_architecture_record,
+        "data_lineage_registry": _render_data_lineage_registry,
+        "assessment_integrity_matrix": _render_assessment_integrity_matrix,
+        "adversarial_assurance_cycle": _render_adversarial_assurance_cycle,
+        "model_dataset_card": _render_model_dataset_card,
+        "transparency_notice_flow": _render_transparency_notice_flow,
+        "records_retention_audit": _render_records_retention_audit,
+        "release_change_control": _render_release_change_control,
+        "risk_exception_memo": _render_risk_exception_memo,
+        "learner_support_plan": _render_learner_support_plan,
+        "instructor_question_bank": _render_instructor_question_bank,
+        "remediation_backlog": _render_remediation_backlog,
+    }
+    if renderer_id in curriculum_renderers:
+        curriculum_renderers[renderer_id](output, curriculum, spec)
+    elif renderer_id in spec_renderers:
+        spec_renderers[renderer_id](output, spec)
     else:
         raise ValueError(f"Unknown AGEINT figure renderer: {renderer_id}")
 

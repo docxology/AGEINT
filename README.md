@@ -30,7 +30,7 @@ legal and human oversight constraints.
 - AGEINT patterns: 20
 - Parsed references: 312
 - Curated official/scholarly research anchors: 186
-- Registered figures: 57 (17 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
+- Registered figures: 64 (24 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
 
 ## Commands
 
