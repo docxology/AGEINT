@@ -64,7 +64,7 @@ generated chapters select them through reusable profiles and practice lenses
 rather than through hand-authored chapter prose.
 
 The v2, deep-expansion, and evidence-package passes add source-lane metadata to curated anchors
-and expand the curated anchor set to at least 172 official, standards,
+and expand the curated anchor set to at least 186 official, standards,
 public-domain, or scholarly sources. New lanes cover AI conformity/compliance,
 education and assessment, public-sector agentic AI, cross-border data/data
 spaces, human-rights governance, agent interoperability standards, workforce
@@ -165,7 +165,7 @@ and generated BibTeX:
 | I | Assurance and release control | NIST Dioptra, CISA secure AI deployment, CISA AI data-security best practices, and CISA AI red teaming/TEVV |
 | J | OT procurement and auditability | CISA Secure by Demand OT procurement, OT asset-inventory guidance, and definitive OT architecture guidance |
 
-Measured source-layer coverage after the current refresh: **172** curated
+Measured source-layer coverage after the current refresh: **186** curated
 research anchors and **125** keyword concept routes. The exact project test and
 coverage result is intentionally not hard-coded here; run
 `uv run pytest tests/ --cov=src --cov-fail-under=90` for the current gate.

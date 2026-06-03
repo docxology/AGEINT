@@ -51,7 +51,7 @@ def test_reference_bibtex_files_include_research_anchor_shards() -> None:
     files = reference_bibtex_files(curriculum.references)
 
     assert any(name.startswith("references-research-anchors-") for name in files)
-    assert "references-research-anchors-151-172.bib" in files
+    assert "references-research-anchors-151-186.bib" in files
     assert "references-source-quality.bib" in files
 
 

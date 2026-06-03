@@ -29,7 +29,7 @@ legal and human oversight constraints.
 - Methods appendices: 9
 - AGEINT patterns: 20
 - Parsed references: 312
-- Curated official/scholarly research anchors: 172
+- Curated official/scholarly research anchors: 186
 - Registered figures: 57 (17 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
 
 ## Commands
@@ -111,7 +111,14 @@ NIST Dioptra evaluation, secure AI deployment, OT procurement, OT asset
 inventory, and definitive OT architecture evidence. Earlier May 22 anchors
 remain for CISA AI red teaming/TEVV, CISA AI data-security best practices,
 NIST's critical-infrastructure AI RMF profile concept note, OECD public-sector
-AI governance, and the NARA 2025 AI compliance plan.
+AI governance, and the NARA 2025 AI compliance plan. A subsequent 2026-05-22
+verified batch raises the curated set to 186 anchors, adding NATO CCDCOE
+cognitive-warfare research, DARPA Intrinsic Cognitive Security, CSA frameworks
+(CDR, MAESTRO, securing autonomous agents, NIST agent red-teaming), the OWASP
+agentic threats-and-mitigations reference, frontier-lab agent research from
+Anthropic and Google DeepMind, multi-agent prompt-injection and agentic
+systems-security preprints, the Mandel-Tetlock analytic-debiasing study, and the
+UNU Macau bounded-agency policy analysis.
 
 ## Safety posture
 

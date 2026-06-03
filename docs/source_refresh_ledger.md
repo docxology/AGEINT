@@ -42,6 +42,19 @@ and definitive OT architecture evidence. These rows use
 `checked_as_of: "2026-05-24"` and the same direct-verification standard as the
 May 21 and May 22 shards.
 
+A further 2026-05-22 verified batch is encoded in
+`data/research_anchors/intelligence-anchors-173-186.jsonl`. It adds NATO CCDCOE
+cognitive-warfare research, DARPA Intrinsic Cognitive Security, Cloud Security
+Alliance frameworks (Cognitive Degradation Resilience, MAESTRO threat modeling,
+securing autonomous AI agents, and the CSA/NIST agent red-teaming standards
+note), the OWASP agentic AI threats-and-mitigations reference, frontier-lab agent
+research from Anthropic and Google DeepMind, the Prompt Infection and Systems
+Security Foundations for Agentic Computing preprints, the Mandel-Tetlock analytic
+judgment-correctives study, and the UNU Macau bounded-agency policy analysis.
+These rows use `checked_as_of: "2026-05-22"`. Any vendor or quantitative figures
+inside the cited pages (readiness percentages, success-rate statistics) are
+treated as ESTIMATE in the anchor notes, never asserted as fact.
+
 ## Refresh Triggers
 
 Refresh a source row when legal text, standards versions, official guidance,
