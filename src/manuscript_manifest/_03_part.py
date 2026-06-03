@@ -279,6 +279,25 @@ errors, tool-timeout cascades, trust-score degradation, and reasoning loops or d
 this as a defensive governance exercise: define the PolicyCompliance SLI for a synthetic agent,
 set its error budget, and rehearse the OPEN-state human takeover as a tabletop rather than a live
 intervention [@scholarly_systems_security_agentic_computing]; [@official_unu_macau_agentic_ai_boundaries].
+
+The PolicyCompliance service-level indicator makes the 99-percent threshold concrete. Over a
+review window of $N_{\\text{total}}$ governed actions with $N_{\\text{violations}}$ policy
+violations, define
+
+$$\\mathrm{PolicyCompliance}_{\\mathrm{SLI}} =
+\\frac{N_{\\text{total}} - N_{\\text{violations}}}{N_{\\text{total}}} \\;\\ge\\; 0.99,$$
+
+so the breaker's CLOSED state is exactly the region where this indicator clears its target. The
+complementary error budget is the count of violations the window can absorb before the indicator
+drops below target,
+
+$$\\text{ErrorBudget} = (1 - 0.99)\\,N_{\\text{total}} = 0.01\\,N_{\\text{total}},
+\\qquad \\text{breaker} \\to \\text{OPEN when } N_{\\text{violations}} > \\text{ErrorBudget}.$$
+
+The budget burns down as violations accrue and is restored when a fresh window opens, which is the
+quantity the safety-error-budget figure tracks. Have students compute the SLI on a synthetic action
+log, set $N_{\\text{total}}$ for one window, and identify the exact violation count that trips the
+breaker [@scholarly_systems_security_agentic_computing].
 """
 
 

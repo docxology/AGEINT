@@ -31,6 +31,7 @@ from .source_grounding import (
     sources_for_numbers,
 )
 from .topic_entries import safe_topic_entries
+from .topic_formalisms import lesson_formalism_field
 from .topic_lesson_voice import short_title, topic_reference
 from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 
@@ -85,6 +86,9 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             _anaphorize_field(entry.display_title, field, anchor=anchor, forbidden=forbidden)
             for field in body_fields
         ]
+        formalism = lesson_formalism_field(entry.display_title)
+        if formalism:
+            body_fields.append(formalism)
         lessons.extend(
             [
                 f"### Lesson {index}: {entry.display_title}",
