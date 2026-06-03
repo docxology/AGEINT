@@ -21,6 +21,27 @@ from curriculum import Curriculum
 from ._01_part import FigureSpec
 
 
+# Shared theme header applied to every Mermaid source. Larger base font and
+# generous node/rank spacing keep labels legible after the square-canvas
+# normalization in _normalize_png_canvas (output is force-fit to 1280px on a
+# 1400px square, so any wasted bounding-box area shrinks text). The
+# subGraphTitleMargin keeps subgraph titles clear of their first child node.
+_MERMAID_INIT = (
+    "%%{init: {"
+    "'theme':'neutral',"
+    "'themeVariables':{'fontSize':'20px'},"
+    "'flowchart':{'htmlLabels':true,'nodeSpacing':45,'rankSpacing':55,"
+    "'subGraphTitleMargin':{'top':8,'bottom':12}}"
+    "}}%%\n"
+)
+
+
+def _with_theme(source: str) -> str:
+    """Prepend the shared init header unless one is already present."""
+    if source.lstrip().startswith("%%{init"):
+        return source
+    return _MERMAID_INIT + source
+
 
 def _discover_chrome_executable() -> str | None:
     """Return a chrome-headless-shell binary for mmdc/Puppeteer."""
@@ -130,19 +151,44 @@ def render_mermaid_figure(
 def mermaid_source(curriculum: Curriculum, spec: FigureSpec) -> str:
     diagram = spec.provenance.get("diagram", "")
     if diagram in _SYNTHESIS_MERMAID_SOURCES:
-        return _SYNTHESIS_MERMAID_SOURCES[diagram]
+        return _with_theme(_SYNTHESIS_MERMAID_SOURCES[diagram])
     if spec.label == "fig:ageint-curriculum-map":
+        # The parts are siblings of one curriculum, not a linear dependency
+        # chain. Grouping them under stacked subgraph rows lets Mermaid lay
+        # them out as a wide multi-column grid that fills the square canvas and
+        # keeps labels large, instead of a single 16-deep ribbon.
+        parts = list(curriculum.parts)
         lines = [
             "flowchart TB",
             f'    root["AGEINT curriculum<br/>{curriculum.stats["parts"]} parts"]',
         ]
-        previous = "root"
-        for part in curriculum.parts:
-            node = f"p{part['number']}"
-            label = _mermaid_label(f"{part['roman']}. {part['title']}<br/>{len(part['chapters'])} modules")
-            lines.append(f"    {previous} --> {node}[\"{label}\"]")
-            previous = node
-        return "\n".join(lines) + "\n"
+        columns = 4
+        row_anchors: list[str] = []
+        for row_start in range(0, len(parts), columns):
+            row_parts = parts[row_start : row_start + columns]
+            row_id = f"row{row_start // columns}"
+            lines.append(f'    subgraph {row_id} [" "]')
+            lines.append("        direction LR")
+            row_nodes: list[str] = []
+            for part in row_parts:
+                node = f"p{part['number']}"
+                label = _mermaid_label(
+                    f"{part['roman']}. {part['title']}<br/>{len(part['chapters'])} modules"
+                )
+                lines.append(f'        {node}["{label}"]')
+                row_nodes.append(node)
+            # Invisible links between adjacent nodes force Mermaid to lay the row
+            # out left-to-right (otherwise edgeless nodes stack vertically).
+            for left, right in zip(row_nodes, row_nodes[1:]):
+                lines.append(f"        {left} ~~~ {right}")
+            lines.append("    end")
+            row_anchors.append(row_id)
+        # Spine connects root through the row groups top-to-bottom so the figure
+        # reads as one curriculum while staying near-square.
+        spine = ["root", *row_anchors]
+        for upper, lower in zip(spine, spine[1:]):
+            lines.append(f"    {upper} --> {lower}")
+        return _with_theme("\n".join(lines) + "\n")
 
     part_slug = Path(spec.output_path).stem.removeprefix("part-").removesuffix("-module-map")
     part = next(
@@ -150,8 +196,10 @@ def mermaid_source(curriculum: Curriculum, spec: FigureSpec) -> str:
         for item in curriculum.parts
         if _slug(item["title"]) == part_slug
     )
+    # Top-to-bottom chains turn 2-6 module nodes into a tall box that fills the
+    # square canvas; the old LR row collapsed to a thin band with tiny text.
     lines = [
-        "flowchart LR",
+        "flowchart TB",
         f'    part["{_mermaid_label(part["title"])}"]',
     ]
     previous = "part"
@@ -160,7 +208,7 @@ def mermaid_source(curriculum: Curriculum, spec: FigureSpec) -> str:
         label = _mermaid_label(chapter["title"])
         lines.append(f'    {previous} --> {node}["{label}"]')
         previous = node
-    return "\n".join(lines) + "\n"
+    return _with_theme("\n".join(lines) + "\n")
 
 
 _CDR_DEGRADATION_CASCADE = """flowchart TB
@@ -175,33 +223,31 @@ _CDR_DEGRADATION_CASCADE = """flowchart TB
     s3 -. decisive intervention point .-> s4
 """
 
-_MAESTRO_SEVEN_LAYER = """flowchart TB
-    l7["L7: Agent Ecosystem<br/>impersonation, marketplace<br/>manipulation, goal manipulation"]
-    l5["L5: Evaluation and Observability<br/>metric manipulation,<br/>detection evasion"]
-    l4["L4: Deployment and Infrastructure<br/>container escape,<br/>lateral movement"]
-    l3["L3: Agent Frameworks<br/>supply chain, compromised<br/>components, input validation"]
-    l2["L2: Data Operations<br/>data poisoning,<br/>RAG pipeline compromise"]
-    l1["L1: Foundation Models<br/>adversarial examples,<br/>model stealing, backdoors"]
-    l7 --> l5 --> l4 --> l3 --> l2 --> l1
+_MAESTRO_SEVEN_LAYER = """flowchart LR
+    subgraph STACK["MAESTRO lifecycle stack"]
+        direction TB
+        l7["L7: Agent Ecosystem<br/>impersonation, marketplace<br/>manipulation, goal manipulation"]
+        l5["L5: Evaluation and Observability<br/>metric manipulation,<br/>detection evasion"]
+        l4["L4: Deployment and Infrastructure<br/>container escape,<br/>lateral movement"]
+        l3["L3: Agent Frameworks<br/>supply chain, compromised<br/>components, input validation"]
+        l2["L2: Data Operations<br/>data poisoning,<br/>RAG pipeline compromise"]
+        l1["L1: Foundation Models<br/>adversarial examples,<br/>model stealing, backdoors"]
+        l7 --> l5 --> l4 --> l3 --> l2 --> l1
+    end
     l6["L6: Security and Compliance<br/>cross-cutting layer<br/>security agents are<br/>themselves attack surfaces<br/>monitor the monitors"]
-    l6 -.-> l7
-    l6 -.-> l5
-    l6 -.-> l4
-    l6 -.-> l3
-    l6 -.-> l2
-    l6 -.-> l1
+    l6 -. "spans every layer" .-> STACK
 """
 
-_SRE_CIRCUIT_BREAKER = """flowchart LR
+_SRE_CIRCUIT_BREAKER = """flowchart TB
     closed["CLOSED<br/>normal operation<br/>autonomy earned by<br/>clean safety record"]
     open["OPEN<br/>agent suspended<br/>human takeover"]
     half["HALF_OPEN<br/>limited capability<br/>restoration"]
+    trig["Activation triggers<br/>policy bypass attempts<br/>LLM provider errors<br/>tool timeout cascades<br/>trust score degradation<br/>reasoning loops and deadlocks"]
     closed -->|"safety budget exhausted<br/>PolicyCompliance below 99 percent"| open
     open -->|"recovery period<br/>plus validation"| half
     half -->|"clean record maintained"| closed
     half -->|"new violation"| open
-    trig["Activation triggers<br/>policy bypass attempts<br/>LLM provider errors<br/>tool timeout cascades<br/>trust score degradation<br/>reasoning loops and deadlocks"]
-    trig -.-> open
+    trig -.->|"force"| open
 """
 
 _COGNITIVE_DECOHERENCE_CDR_ISOMORPHISM = """flowchart TB
@@ -257,22 +303,34 @@ _UNIFIED_EPISTEMIC_STACK = """flowchart TB
 
 _COGNITIVE_ATTACK_LAYERS = """flowchart TB
     root["NATO/INSS Cognitive Warfare 2026<br/>three layers of engagement"]
-    root --> bio["Biological layer"]
-    root --> psy["Psychological layer"]
-    root --> soc["Social layer"]
-    bio --> bt["Target: cognitive capacity"]
-    bio --> bm["Mechanism: neuroscience-informed<br/>targeting of the nervous system"]
-    bio --> ba["AI role: optimized delivery<br/>timing and channel selection"]
-    psy --> pt["Target: cognitive interpretation"]
-    psy --> pm["Mechanism: manipulating individual<br/>cognition, exploiting biases at scale"]
-    psy --> pa["AI role: tailored influence matched<br/>to cognitive vulnerability profiles"]
-    soc --> st["Target: cognitive cohesion"]
-    soc --> sm["Mechanism: fracturing shared narratives,<br/>weaponizing identity, epistemic chaos"]
-    soc --> sa["AI role: coordinating synthetic<br/>influence campaigns across platforms"]
+    subgraph BIO["Biological layer"]
+        direction TB
+        bt["Target<br/>cognitive capacity"]
+        bm["Mechanism<br/>neuroscience-informed<br/>targeting of the<br/>nervous system"]
+        ba["AI role<br/>optimized delivery<br/>timing and channel<br/>selection"]
+        bt --> bm --> ba
+    end
+    subgraph PSY["Psychological layer"]
+        direction TB
+        pt["Target<br/>cognitive interpretation"]
+        pm["Mechanism<br/>manipulating individual<br/>cognition, exploiting<br/>biases at scale"]
+        pa["AI role<br/>tailored influence<br/>matched to cognitive<br/>vulnerability profiles"]
+        pt --> pm --> pa
+    end
+    subgraph SOC["Social layer"]
+        direction TB
+        st["Target<br/>cognitive cohesion"]
+        sm["Mechanism<br/>fracturing shared<br/>narratives, weaponizing<br/>identity, epistemic chaos"]
+        sa["AI role<br/>coordinating synthetic<br/>influence campaigns<br/>across platforms"]
+        st --> sm --> sa
+    end
+    root --> BIO
+    root --> PSY
+    root --> SOC
 """
 
 _HRO_GOVERNANCE_CROSSWALK = """flowchart LR
-    subgraph HRO["HRO Principles (Weick and Sutcliffe)"]
+    subgraph HRO["HRO Principles"]
         direction TB
         p1["Preoccupation with failure<br/>attention to near-misses<br/>and weak signals"]
         p2["Reluctance to simplify<br/>demand deep root cause;<br/>resist reductive explanations"]
@@ -280,7 +338,7 @@ _HRO_GOVERNANCE_CROSSWALK = """flowchart LR
         p4["Commitment to resilience<br/>invest in corrective<br/>and adaptive capacity"]
         p5["Deference to expertise<br/>authority follows<br/>demonstrated competence"]
     end
-    subgraph GOV["AI Agent Governance Mechanisms"]
+    subgraph GOV["AI Agent Governance"]
         direction TB
         g1["Safety SLI monitoring<br/>PolicyCompliance at or above 99 percent;<br/>CDR health probes; drift detection"]
         g2["MAESTRO seven-layer modeling;<br/>multi-hypothesis behavioral analysis"]

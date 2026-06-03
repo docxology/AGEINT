@@ -448,7 +448,9 @@ def _slug(value: str) -> str:
 
 
 def _mermaid_label(value: str) -> str:
-    return value.replace('"', "'").replace("&", "and")
+    # Mermaid renders HTML entities inside node text, so the ampersand survives
+    # as a proper "&" (e.g. "MITRE ATT&CK") instead of the lossy "and".
+    return value.replace('"', "'").replace("&", "&amp;")
 
 
 def _markdown_escape(value: str) -> str:
