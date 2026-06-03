@@ -204,33 +204,44 @@ _SRE_CIRCUIT_BREAKER = """flowchart LR
     trig -.-> open
 """
 
-_COGNITIVE_DECOHERENCE_CDR_ISOMORPHISM = """flowchart LR
-    subgraph HUM["Human Orgs: Cognitive Decoherence (CCDCOE)"]
-        direction TB
-        h1["Initiation<br/>adversary targets systemic<br/>invariants: trust, identity,<br/>epistemic standards"]
-        h2["Early degradation<br/>uncertainty amplification;<br/>inter-layer linkages weaken"]
-        h3["Drift<br/>polarization rises;<br/>coordination capacity erodes"]
-        h4["Entrenchment<br/>competing epistemic<br/>frameworks harden"]
-        h5["Override<br/>adversary narrative fills<br/>the institutional vacuum"]
-        h6["Collapse<br/>system functions formally<br/>but cannot coordinate"]
-        h1 --> h2 --> h3 --> h4 --> h5 --> h6
+_COGNITIVE_DECOHERENCE_CDR_ISOMORPHISM = """flowchart TB
+    subgraph P1["Phase 1 — Initiation"]
+        direction LR
+        h1["Human orgs / CCDCOE<br/>adversary targets systemic<br/>invariants: trust, identity,<br/>epistemic standards"]
+        a1["AI agents / CDR<br/>Trigger Injection: adversarial<br/>inputs establish foothold"]
+        h1 -.->|"isomorphic"| a1
     end
-    subgraph AGT["AI Agents: Cognitive Degradation (CDR)"]
-        direction TB
-        a1["Trigger Injection<br/>adversarial inputs<br/>establish foothold"]
-        a2["Resource Starvation<br/>compute and context<br/>consumed"]
-        a3["Behavioral Drift<br/>outputs deviate<br/>without alerts"]
-        a4["Memory Entrenchment<br/>corrupted beliefs<br/>solidify"]
-        a5["Functional Override<br/>adversary goals supersede<br/>legitimate tasks"]
-        a6["Systemic Collapse<br/>coordinated behavior<br/>serves adversary"]
-        a1 --> a2 --> a3 --> a4 --> a5 --> a6
+    subgraph P2["Phase 2 — Early degradation"]
+        direction LR
+        h2["Human orgs / CCDCOE<br/>uncertainty amplification;<br/>inter-layer linkages weaken"]
+        a2["AI agents / CDR<br/>Resource Starvation:<br/>compute and context consumed"]
+        h2 -.->|"isomorphic"| a2
     end
-    h1 -.->|"isomorphic"| a1
-    h2 -.->|"isomorphic"| a2
-    h3 -.->|"isomorphic"| a3
-    h4 -.->|"isomorphic"| a4
-    h5 -.->|"isomorphic"| a5
-    h6 -.->|"isomorphic"| a6
+    subgraph P3["Phase 3 — Drift"]
+        direction LR
+        h3["Human orgs / CCDCOE<br/>polarization rises;<br/>coordination capacity erodes"]
+        a3["AI agents / CDR<br/>Behavioral Drift: outputs<br/>deviate without alerts"]
+        h3 -.->|"isomorphic"| a3
+    end
+    subgraph P4["Phase 4 — Entrenchment"]
+        direction LR
+        h4["Human orgs / CCDCOE<br/>competing epistemic<br/>frameworks harden"]
+        a4["AI agents / CDR<br/>Memory Entrenchment:<br/>corrupted beliefs solidify"]
+        h4 -.->|"isomorphic"| a4
+    end
+    subgraph P5["Phase 5 — Override"]
+        direction LR
+        h5["Human orgs / CCDCOE<br/>adversary narrative fills<br/>the institutional vacuum"]
+        a5["AI agents / CDR<br/>Functional Override: adversary<br/>goals supersede legitimate tasks"]
+        h5 -.->|"isomorphic"| a5
+    end
+    subgraph P6["Phase 6 — Collapse"]
+        direction LR
+        h6["Human orgs / CCDCOE<br/>system functions formally<br/>but cannot coordinate"]
+        a6["AI agents / CDR<br/>Systemic Collapse: coordinated<br/>behavior serves adversary"]
+        h6 -.->|"isomorphic"| a6
+    end
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
 """
 
 _UNIFIED_EPISTEMIC_STACK = """flowchart TB
@@ -355,9 +366,9 @@ SYNTHESIS_MERMAID: tuple[dict[str, str], ...] = (
             "networks, exposing a shared adversarial dynamic."
         ),
         "alt_text": (
-            "Mermaid diagram with two vertical six-step columns, human cognitive "
-            "decoherence on the left and AI cognitive degradation on the right, joined "
-            "by horizontal isomorphism links at each aligned phase."
+            "Mermaid diagram of six stacked phase rows from Initiation to Collapse; "
+            "each row pairs the human-organization decoherence stage on the left with "
+            "the AI-agent degradation stage on the right, joined by an isomorphism link."
         ),
         "diagram": "cognitive_decoherence_cdr_isomorphism",
         "source_section": "appendix:g",
