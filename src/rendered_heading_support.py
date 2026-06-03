@@ -223,47 +223,19 @@ def _support_refs(text: str) -> list[str]:
 
 
 def _support_sentence(relative_path: Path, heading_title: str, file_text: str) -> str:
-    heading = _clean_heading_title(heading_title)
-    section_title = _section_name(relative_path, file_text)
-    scope = _scope_phrase(relative_path)
+    """Return a compact, non-repetitive evidence-support line for a heading.
+
+    Historically this emitted a ~30-word templated clause under every
+    unsupported heading, producing >1,200 near-identical sentences across the
+    manuscript. The reader-facing requirement is only that each heading carry a
+    resolvable citation/cross-reference anchor, so the line is now reduced to the
+    anchor itself behind a terse marker. This eliminates the duplicated filler
+    prose while still satisfying heading-support coverage.
+    """
+
     refs = _path_support_refs(relative_path, file_text)
     refs_text = "; ".join(refs)
-    lower = heading.lower()
-    if lower == "purpose":
-        body = f"The purpose in {scope} is bounded by {refs_text}; use it to connect the workbook aim to retained evidence rows and classroom scope."
-    elif lower == "allowed inputs":
-        body = f"Input choices in {scope} are checked through {refs_text}; use this heading to separate public, synthetic, instructor-provided, and owned-lab material."
-    elif lower == "excluded actions":
-        body = f"The exclusion rule in {scope} is checked through {refs_text}; use this heading to block live targets, private data, unsafe tool use, and external action."
-    elif lower == "expected artifacts":
-        body = f"Artifacts in {scope} are review products under {refs_text}; use this heading to tie deliverables to source lanes, provenance, and human approval."
-    elif lower == "safe artifact schema":
-        body = f"The schema in {scope} is governed by {refs_text}; use this heading to connect purpose, inputs, transform, output, and reviewer evidence."
-    elif lower == "input/output contract":
-        body = f"The contract in {scope} is governed by {refs_text}; use this heading to preserve source identity, accessibility, rights, tooling, and refresh evidence."
-    elif lower == "failure cases":
-        body = f"Failure cases in {scope} are anchored by {refs_text}; use this heading to recognize source laundering, boundary drift, access gaps, rights gaps, and tool opacity."
-    elif lower == "evidence package schemas":
-        body = f"Evidence packages in {scope} are organized by {refs_text}; use this heading to connect documentation cards, notices, logs, release gates, and remediation rows."
-    elif lower == "rubric scoring bands":
-        body = f"Rubric bands in {scope} are bounded by {refs_text}; use this heading to distinguish ready, revise, hold, and reject evidence."
-    elif lower == "refresh evidence":
-        body = f"Refresh evidence in {scope} is governed by {refs_text}; use this heading to tie source, safety, accessibility, rights, and vendor changes to retained proof."
-    elif lower == "validation rubric":
-        body = f"Validation in {scope} is checked through {refs_text}; use this heading to test source identity, verification, safety, reproducibility, and rights review."
-    elif lower == "debrief protocol":
-        body = f"Debrief work in {scope} is bounded by {refs_text}; use this heading to name proof limits, changed sources, avoided risk, approvals, and refresh timing."
-    elif lower == "figures and course links":
-        body = f"Visual navigation in {scope} is anchored by {refs_text}; use this heading to connect figures, captions, and nearby course links."
-    elif lower == "runtime item map":
-        body = f"Source-item rows in {scope} are governed by {refs_text}; use this heading to tie item titles to generated citations and safe substitutions."
-    elif lower == "contents":
-        body = f"The contents list in {scope} is generated under {refs_text}; use this heading to navigate semantic files without hard-coded numbering."
-    elif lower == section_title.lower():
-        body = f"This generated page is governed by {refs_text}; use it to verify local evidence, citations, and generated cross-links."
-    else:
-        body = f"{heading} material in {scope} is governed by {refs_text}; use this heading to verify claims against local evidence, citations, and generated cross-links."
-    return f"**Evidence link.** {body}"
+    return f"**Evidence link.** {refs_text}."
 
 
 def _path_support_refs(relative_path: Path, file_text: str) -> list[str]:
@@ -315,33 +287,6 @@ def _inferred_section_label(relative_path: Path) -> str:
     if relative_path.name == "references.md":
         return "sec:bibliography_atlas"
     return "sec:curriculum_orientation"
-
-
-def _section_name(relative_path: Path, file_text: str) -> str:
-    for block in _heading_blocks(file_text):
-        if block.level == 1:
-            return _clean_heading_title(block.title)
-    stem = relative_path.stem.replace("-", " ").strip()
-    return stem.title() if stem else "AGEINT manuscript output"
-
-
-def _scope_phrase(relative_path: Path) -> str:
-    parts = relative_path.parts
-    if parts and parts[0] == "appendices":
-        if len(parts) > 1 and parts[1] == "bibliography-atlas":
-            return "the bibliography appendix"
-        return "this appendix workbook"
-    if parts and parts[0] == "orientation":
-        return "the curriculum orientation"
-    if parts and parts[0] == "parts":
-        if len(parts) >= 3 and parts[2] not in {"README.md", "AGENTS.md"}:
-            return "this module fragment"
-        return "this unit folder"
-    if relative_path.name in {"README.md", "AGENTS.md"}:
-        return "this generated support page"
-    if relative_path.name == "references.md":
-        return "the references surface"
-    return "this generated manuscript file"
 
 
 def _clean_heading_title(title: str) -> str:
