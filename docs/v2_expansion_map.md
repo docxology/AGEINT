@@ -18,13 +18,18 @@ The major v2 pass expands AGEINT without changing its architecture:
 - Source-guide references increased from 231 to 312 by append-only expansion.
 - Curated anchors increased to at least 186 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
-- Registered figures increased to 57 with new source verification, claim
+- Registered figures increased to 64 with new source verification, claim
   ledger, compliance, agent evaluation, data flow, capstone, safe-substitution,
   instructor lifecycle, accessibility, HRIA/DPIA, procurement oversight, agent
   incident, data lineage, assessment integrity, adversarial assurance, model
   and dataset card, transparency notice, records-retention, release gate,
   risk exception, learner support, question bank, remediation, bounded-autonomy,
-  public-AI-register, AI-incident-reporting, and OT-architecture visuals.
+  public-AI-register, AI-incident-reporting, and OT-architecture visuals. The
+  cognitive-security synthesis pass adds 7 Mermaid methods diagrams: the CSA
+  CDR six-stage degradation cascade, the MAESTRO seven-layer threat model, the
+  SRE-for-agents circuit breaker, the cognitive-decoherence/CDR isomorphism, the
+  unified epistemic-coherence stack, the cognitive attack-layer taxonomy, and
+  the HRO-to-governance crosswalk.
 - Every generated chapter now uses a reader-facing architecture: module thesis,
   learning outcomes, module architecture, evidence/source canon,
   research-backed synthesis, agentic translation boundary, governance/rights/

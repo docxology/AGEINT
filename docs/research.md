@@ -169,3 +169,36 @@ Measured source-layer coverage after the current refresh: **186** curated
 research anchors and **125** keyword concept routes. The exact project test and
 coverage result is intentionally not hard-coded here; run
 `uv run pytest tests/ --cov=src --cov-fail-under=90` for the current gate.
+
+## 2026-05-22 cognitive-security synthesis pass (verified encode only)
+
+This pass added 14 directly verified anchors, raising the curated set from 172
+to 186, and 7 Mermaid methods diagrams synthesizing them. As with every
+refresh, vendor and blog discovery results are not encoded — only official,
+standards-body, or scholarly pages are admitted.
+
+| Anchor | Source | Role in synthesis |
+| --- | --- | --- |
+| `scholarly_ccdcoe_cognitive_warfare_reconception` | NATO CCDCOE | Cognitive warfare as a contest over interpretive structures and epistemic standards |
+| `official_darpa_intrinsic_cognitive_security` | DARPA | Intrinsic cognitive security framing |
+| `official_csa_cdr_framework` | Cloud Security Alliance | Cognitive Degradation/Recovery six-stage cascade |
+| `official_csa_maestro_threat_modeling` | Cloud Security Alliance | MAESTRO seven-layer agentic threat model |
+| `official_csa_securing_autonomous_ai_agents` | Cloud Security Alliance | Securing autonomous agents controls |
+| `official_csa_nist_ai_agent_red_teaming_standards` | CSA / NIST | Agent red-teaming standards |
+| `official_owasp_agentic_ai_threats_mitigations` | OWASP | Agentic AI threats-and-mitigations reference |
+| `scholarly_deepmind_epistemic_agent_trust` | Google DeepMind | Epistemic agent trust |
+| `scholarly_anthropic_building_effective_agents` | Anthropic | Effective-agent reliability patterns |
+| `scholarly_prompt_infection_multi_agent` | Preprint | Multi-agent prompt-infection threat |
+| `scholarly_systems_security_agentic_computing` | Preprint | Systems-security framing for agentic computing |
+| `scholarly_agentic_ai_security_survey` | Scholarly survey | Agentic AI security landscape |
+| `scholarly_mandel_tetlock_judgment_correctives` | Mandel & Tetlock | Analytic-debiasing / judgment correctives |
+| `official_unu_macau_agentic_ai_boundaries` | UNU Macau | Bounded-agency policy analysis |
+
+Two synthesis themes organize this material. **Epistemic coherence** treats
+trust, identity, and analytic standards as the systemic invariants that
+cognitive attacks degrade; the CDR cascade, decoherence/CDR isomorphism, and
+unified epistemic-coherence stack figures render this as a single defensible
+spine. The **tradecraft–reliability bridge** maps classical analytic tradecraft
+(ICD 203 standards, Mandel-Tetlock correctives) onto agentic-system reliability
+engineering (MAESTRO layers, SRE-for-agents circuit breakers, HRO governance),
+showing the same failure-and-recovery logic at human and machine scale.
