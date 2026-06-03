@@ -30,7 +30,7 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
     return "\n\n".join(
         [
             (
-                f"This module teaches {coursebook.disciplinary_frame}. "
+                f"This chapter teaches {coursebook.disciplinary_frame}. "
                 f"The chapter uses **{lens.title}** to connect definitions, "
                 f"evidence tests, practice artifacts, and review gates for {topic_context}."
             ),
@@ -40,11 +40,11 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
                 "evidentiary support, common misconceptions, and safety boundaries."
             ),
             (
-                f"In this module, verified anchors such as {anchors} ground definitions, examples, "
-                f"uncertainty language, and artifact requirements. Source context: {source_context}"
+                f"Verified anchors such as {anchors} ground definitions, examples, "
+                f"uncertainty language, and artifact requirements. {source_context}"
             ),
             (
-                f"Learners working on this module move from vocabulary and the **{lens.title}** "
+                f"Learners move from vocabulary and the **{lens.title}** "
                 f"distinction through topic lessons on {topics[0] if topics else title} with "
                 "evidence and misconception checks, then "
                 f"assemble a **{lens.evidence_artifact}** with safety and rights gates."
@@ -108,7 +108,7 @@ def chapter_key_terms(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         if label and any(label.lower() in row.lower() for row in rows):
             continue
         anchor = _topic_anchor_words(entry.display_title, limit=3)
-        definition = f"Topic focus: {anchor}."
+        definition = f"Key terms: {anchor}."
         if definition in seen_topic_defs:
             continue
         seen_topic_defs.add(definition)

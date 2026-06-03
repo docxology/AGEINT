@@ -240,7 +240,7 @@ def _part_summary(part: dict[str, Any]) -> str:
         f"{render_unit_profile_markdown(part)}\n\n"
         "This unit introduces the part's governing question, evidence artifacts, "
         "source-support spine, and capstone thread before the individual modules "
-        f"begin. The source path begins with {source_context}\n\n"
+        f"begin. {source_context}\n\n"
         "Learners carry one unit capstone thread through the part: define an "
         "authorized intelligence question, bind it to source-quality constraints, "
         "produce a reviewable artifact, test the artifact against failure modes, "
@@ -279,7 +279,7 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
     topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            f"The source canon for this module has three tiers; the local spine begins with {source_context}",
+            f"The source canon has three tiers; the local spine begins with {source_context}",
             "",
             "| Tier | What counts | How it is used |",
             "|---|---|---|",
@@ -296,7 +296,7 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
                 "defensive boundary for generated prose. |"
             ),
             "",
-            f"Maintenance rule for this module: Perplexity may suggest candidates for {topic_context} and {source_context}, "
+            f"Maintenance rule: Perplexity may suggest candidates for {topic_context} and {source_context}, "
             "but only directly verified source URLs are encoded as citations.",
         ]
     )
@@ -305,11 +305,11 @@ def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
     return (
-        "The claim and evidence ledger for this module follows the canonical "
+        "The claim and evidence ledger follows the canonical "
         "claim-class ladder in the shared method-and-assurance reference "
         "([@sec:method-assurance-reference]). Apply the source-spine, "
         "research-backed governance, agentic-workflow, safety, and cross-module "
-        "claim classes to every assertion in this module, attaching the required "
+        "claim classes to every assertion, attaching the required "
         "evidence and clearing the matching review gate before reuse. The local "
         f"topic cluster is {topic_context}, and the source spine for these checks "
         f"begins with {source_context}"
@@ -319,7 +319,7 @@ def _safe_practice_lab(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Build a safe lab packet for this module using public, benign, "
+            "Build a safe lab packet using public, benign, "
             f"owned-lab, or synthetic material only; source checks begin with {source_context}",
             "",
             "| Lab step | Required artifact | Safety gate |",
@@ -352,7 +352,7 @@ def _failure_mode_drill(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Use the drill to stress-test this module before treating the module "
+            "Use the drill to stress-test the work before treating the "
             f"artifact as complete; the drill starts from {source_context}",
             "",
             "| Failure mode | Drill question | Recovery move |",
@@ -387,7 +387,7 @@ def _instructor_artifact(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Instructors should collect a compact artifact bundle for this module and {source_context}",
+            f"Instructors should collect a compact artifact bundle anchored to {source_context}",
             "",
             "| Artifact | Minimum contents |",
             "|---|---|",
@@ -404,9 +404,9 @@ def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = Non
     topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
     return "\n".join(
         [
-            f"Before marking this module complete, verify the local source spine beginning with {source_context}",
+            f"Before marking the work complete, verify the local source spine beginning with {source_context}",
             "",
-            f"- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose; source context: {source_context}; topic focus: {topic_context}",
+            f"- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering {topic_context}. {source_context}",
             "- Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.",
             "- Agentic affordances are limited to retrieval, comparison, drafting, simulation, critique, and audit support.",
             "- The lab packet uses public, benign, owned-lab, or synthetic material only.",
@@ -420,7 +420,7 @@ def _authority_accountability_model(chapter: dict[str, Any], part: dict[str, Any
     topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            f"Use this accountability model before applying this module in any exercise; topic focus: {topic_context}.",
+            f"Use this accountability model before applying the work in any exercise. Topic: {topic_context}.",
             "",
             "| Accountability layer | Required decision | Evidence retained |",
 

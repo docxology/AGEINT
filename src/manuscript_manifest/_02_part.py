@@ -34,7 +34,7 @@ def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Treat this module as a provenance-first workflow. Data may enter "
+            "Treat the workflow as provenance-first. Data may enter "
             f"only through public, benign, owned-lab, or synthetic channels tied to {source_context}",
             "",
             "| Data object | Provenance field | Quality test |",
@@ -51,7 +51,7 @@ def _evaluation_assurance_protocol(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Evaluate this module with a short assurance protocol before any "
+            "Run a short assurance protocol before any "
             f"student artifact is accepted; source checks begin with {source_context}",
             "",
             "| Assurance step | Passing evidence | Failing condition |",
@@ -68,7 +68,7 @@ def _compliance_rights_map(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "The compliance and rights map for this module converts source lanes "
+            "The compliance and rights map converts source lanes "
             f"into review questions anchored by {source_context}",
             "",
             "| Source lane | Review question | Minimum artifact |",
@@ -88,8 +88,8 @@ def _safe_substitution_patterns(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Use the v2 safe-substitution table whenever this module inherits "
-            "a risky motif from the source guide. The source identity remains "
+            f"Use the v2 safe-substitution table whenever a "
+            "risky motif is inherited from the source guide. The source identity remains "
             f"visible through {source_context}, but the classroom treatment becomes bounded and non-operational.",
             "",
             safe_substitution_rows(),
@@ -101,7 +101,7 @@ def _capstone_deliverable(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            "The capstone deliverable for this module is a reviewable packet that "
+            "The capstone deliverable is a reviewable packet that "
             "plugs into the broader unit thread. Run it through the canonical "
             "phase, artifact, and review-gate ladder in the shared "
             f"method-and-assurance reference ([@sec:method-assurance-reference]); the local topic "
@@ -119,7 +119,7 @@ def _instructor_facilitation_notes(chapter: dict[str, Any], part: dict[str, Any]
     topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
     return "\n".join(
         [
-            f"Facilitate this module as a bounded studio around {topic_context}, not as a lecture-only module.",
+            f"Facilitate as a bounded studio around {topic_context}, not as a lecture-only session.",
             "",
             f"- Start with the authority card and excluded-action list before showing examples from {topic_context} and {source_context}",
             "- Assign one learner to maintain the claim ledger and one learner to challenge source quality.",
@@ -135,19 +135,19 @@ def _refresh_triggers(chapter: dict[str, Any], part: dict[str, Any] | None = Non
         _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
     )
     return (
-        "Refresh this module against the canonical trigger-and-action table in "
+        "Refresh against the canonical trigger-and-action table in "
         "the shared method-and-assurance reference ([@sec:method-assurance-reference]). "
         "When a source-guide reference, official standard, AI or public-sector "
         "policy, interface specification, safety audit, or instructor debrief "
         f"signal appears, take the matching required action before reuse for "
-        f"{topic_context}. The local signals for this module begin with {source_context}"
+        f"{topic_context}. The local signals begin with {source_context}"
     )
 
 def _accessibility_udl_review(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Review this module for accessibility and Universal Design for Learning before reuse; source context: {source_context}",
+            f"Review for accessibility and Universal Design for Learning before reuse. {source_context}",
             "",
             accessibility_review_rows(),
             "",
@@ -162,7 +162,7 @@ def _procurement_vendor_oversight(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Treat any tool, dataset, platform, or service used in this module as a governed vendor input; source context: {source_context}",
+            f"Treat any tool, dataset, platform, or service as a governed vendor input. {source_context}",
             "",
             procurement_oversight_rows(),
             "",
@@ -177,7 +177,7 @@ def _hria_dpia_worksheet(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Use this HRIA/DPIA worksheet when this module touches people, public services, education, or data reuse; source context: {source_context}",
+            f"Use this HRIA/DPIA worksheet when the work touches people, public services, education, or data reuse. {source_context}",
             "",
             hria_dpia_worksheet_rows(),
             "",
@@ -192,7 +192,7 @@ def _data_lineage_registry(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"The data lineage registry for this module keeps claims, examples, prompts, and outputs traceable; source context: {source_context}",
+            f"The data lineage registry keeps claims, examples, prompts, and outputs traceable. {source_context}",
             "",
             data_lineage_registry_rows(),
             "",
@@ -207,7 +207,7 @@ def _assessment_integrity_protocol(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Assessment integrity for this module depends on visible, bounded, and reviewable AI assistance; source context: {source_context}",
+            f"Assessment integrity depends on visible, bounded, and reviewable AI assistance. {source_context}",
             "",
             assessment_integrity_rows(),
             "",
@@ -222,7 +222,7 @@ def _agent_incident_response_drill(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Run an agent incident response drill for this module using synthetic tickets and bounded logs; source context: {source_context}",
+            f"Run an agent incident response drill using synthetic tickets and bounded logs. {source_context}",
             "",
             agent_incident_response_rows(),
             "",
@@ -237,7 +237,7 @@ def _role_based_competency_map(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"The role-based competency map for this module clarifies who must prove which skill; source context: {source_context}",
+            f"The role-based competency map clarifies who must prove which skill. {source_context}",
             "",
             role_competency_rows(),
             "",
@@ -252,7 +252,7 @@ def _adversarial_assurance_cycle(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Use the adversarial assurance cycle to stress-test this module before classroom reuse; source context: {source_context}",
+            f"Use the adversarial assurance cycle to stress-test the work before classroom reuse. {source_context}",
             "",
             adversarial_assurance_rows(),
             "",
@@ -267,7 +267,7 @@ def _model_dataset_documentation_card(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Use a model and dataset documentation card whenever this module relies on a model, dataset, example corpus, or synthetic fixture; source context: {source_context}",
+            f"Use a model and dataset documentation card whenever the work relies on a model, dataset, example corpus, or synthetic fixture. {source_context}",
             "",
             model_dataset_card_rows(),
             "",
@@ -282,7 +282,7 @@ def _transparency_communication_notice(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"The transparency notice for this module converts internal evidence into a plain-language accountability record; source context: {source_context}",
+            f"The transparency notice converts internal evidence into a plain-language accountability record. {source_context}",
             "",
             transparency_notice_rows(),
             "",
@@ -297,7 +297,7 @@ def _records_retention_audit_trail(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"The records-retention and audit trail for this module preserves enough evidence to review without retaining unnecessary sensitive material; source context: {source_context}",
+            f"The records-retention and audit trail preserves enough evidence to review without retaining unnecessary sensitive material. {source_context}",
             "",
             retention_audit_rows(),
             "",
@@ -312,7 +312,7 @@ def _release_change_control_gate(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Before a module artifact is reused, pass it through a release and change-control gate; source context: {source_context}",
+            f"Before an artifact is reused, pass it through a release and change-control gate. {source_context}",
             "",
             release_change_control_rows(),
             "",
@@ -327,7 +327,7 @@ def _risk_exception_acceptance_memo(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"If this module cannot satisfy a gate, use a risk exception memo instead of silently lowering the standard; source context: {source_context}",
+            f"If a gate cannot be satisfied, use a risk exception memo instead of silently lowering the standard. {source_context}",
             "",
             risk_exception_rows(),
             "",
@@ -342,7 +342,7 @@ def _learner_support_accommodation_plan(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"The learner support and accommodation plan for this module keeps access, cognitive load, and assessment fairness explicit; source context: {source_context}",
+            f"The learner support and accommodation plan keeps access, cognitive load, and assessment fairness explicit. {source_context}",
             "",
             learner_support_rows(),
             "",
@@ -357,7 +357,7 @@ def _instructor_question_bank(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"Use these instructor question prompts to deepen this module during facilitation and review; source context: {source_context}",
+            f"Use these instructor question prompts to deepen the work during facilitation and review. {source_context}",
             "",
             question_bank_rows(),
             "",
@@ -372,7 +372,7 @@ def _remediation_backlog(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            f"The remediation backlog for this module turns review findings into accountable follow-through; source context: {source_context}",
+            f"The remediation backlog turns review findings into accountable follow-through. {source_context}",
             "",
             remediation_backlog_rows(),
             "",
@@ -476,14 +476,14 @@ def _module_thesis(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     return "\n".join(
         [
             (
-                f"This module sits in the **{profile.title}** research lane and "
+                f"This sits in the **{profile.title}** research lane and "
                 f"uses the **{lens.title}** practice lens for {topic_context}."
             ),
             "",
             (
                 "The teaching claim is concrete: intelligence work becomes "
                 "reviewable when authority, evidence, provenance, accessibility, "
-                f"rights, assurance, and refresh duties are visible in the artifact. Source context: {source_context}"
+                f"rights, assurance, and refresh duties are visible in the artifact. {source_context}"
             ),
             "",
             (

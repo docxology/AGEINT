@@ -238,7 +238,7 @@ def chapter_source_annotations(chapter: dict[str, Any], limit: int = 30) -> str:
     if total > len(records):
         remaining = total - len(records)
         table = (
-            f"{table}\n\nThe remaining {remaining} cited source(s) for this module "
+            f"{table}\n\nThe remaining {remaining} cited source(s) "
             "appear in the bibliography appendix with the same verification metadata."
         )
     return table
@@ -261,7 +261,7 @@ def _topic_source_support(
         )
     if chapter.get("citations"):
         return (
-            "This source-topic row has no direct citation; the module source spine is "
+            "This row has no direct citation; the module source spine is "
             f"{source_citation_spine(chapter['citations'])} It supplies context, and the "
             "gap remains visible in the claim ledger."
         )
@@ -280,9 +280,9 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
     source_context = _chapter_ref_context(chapter)
     return "\n\n".join(
         [
-            f"Worked example for this module: {coursebook.worked_scenario}. The source path begins with {source_context}",
+            f"Worked example: {coursebook.worked_scenario}. {source_context}",
             (
-                f"**Unit discipline spine.** This module belongs to **{unit_profile.concept}**. "
+                f"**Unit discipline spine.** Discipline: **{unit_profile.concept}**. "
                 f"Learners use a **{unit_profile.practice_artifact}** and keep this boundary visible: "
                 f"{unit_profile.safety_boundary}"
             ),
@@ -292,12 +292,12 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
                 f"question is: {lens.planning_question}"
             ),
             (
-                f"**Inputs.** For this module's **{anchor_topic}** scenario, use {coursebook.worked_input}. "
+                f"**Inputs.** For the **{anchor_topic}** scenario, use {coursebook.worked_input}. "
                 f"The {lens.title} intake note records provenance, sensitivity, "
                 "fit-to-purpose, and why the fixture is enough for this bounded exercise."
             ),
             (
-                f"**Analysis.** For **{anchor_topic}** in this module, students "
+                f"**Analysis.** For **{anchor_topic}**, students "
                 f"{coursebook.worked_process}. Pause whenever an inference about "
                 f"{anchor_topic} appears without evidence, confidence outruns support, "
                 "or an agent output is treated as judgment."
@@ -310,7 +310,7 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
                 "reviewer = instructor or named peer."
             ),
             (
-                f"**Flawed answer to revise.** In this module, treating **{anchor_topic}** as "
+                f"**Flawed answer to revise.** Treating **{anchor_topic}** as "
                 f"\"{lens.title} confirms it\" is not enough. The revision ties the claim to "
                 f"{coursebook.practice_focus}, adds the missing caveat, states confidence, "
                 "and records the reviewer who accepted the bounded judgment."
@@ -360,20 +360,20 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     return "\n\n".join(
         [
             (
-                f"The studio sequence for this module uses the **{lens.title}** "
+                f"The studio sequence uses the **{lens.title}** "
                 "practice lens. Moves 1-3 form the compressed path; the full seminar "
                 f"path adds challenge, handoff, and a review memo for {topic_context}."
             ),
             practice_rows,
             "### Instructor notes",
             (
-                f"For this module, ask learners to verbalize the difference between "
+                "Ask learners to verbalize the difference between "
                 "a source, an inference, and a decision. Require a revision whenever "
-                f"a claim cannot be traced to a source descriptor or a human review point. Source context: {source_context}; topic focus: {topic_context}."
+                f"a claim cannot be traced to a source descriptor or a human review point. Keep the focus on {topic_context}. {source_context}"
             ),
             "### Extension",
             (
-                f"Have learners swap this module's artifacts and apply the **{lens.title}** "
+                f"Have learners swap artifacts and apply the **{lens.title}** "
                 "validation rule to someone else's work. The receiving learner "
                 "must identify one strength, one missing caveat, and one refresh "
                 f"trigger for {topic_context}."
@@ -394,7 +394,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
     second_topic = entries[1] if len(entries) > 1 else entries[0]
     return "\n".join(
         [
-            f"1. Explain how **{topic.display_title}** is defined in this module; name the source descriptor that supports the definition.",
+            f"1. Explain how **{topic.display_title}** is defined here; name the source descriptor that supports the definition.",
             f"2. Contrast **{topic.display_title}** with **{second_topic.display_title}** using the **{lens.title}** artifact fields.",
             f"3. Identify one failure mode from the **{profile.title}** lane and the evidence that would reveal it.",
             f"4. Answer the coursebook review question: {coursebook.review_question}",
@@ -402,7 +402,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             "",
             "### Answer quality rubric",
             "",
-            "Judge answers for this module with the canonical mastery evidence "
+            "Judge answers with the canonical mastery evidence "
             "standard in the shared method-and-assurance reference "
             "([@sec:method-assurance-reference]): a strong answer uses source "
             "evidence, distinguishes observation from judgment, names uncertainty, "

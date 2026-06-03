@@ -308,7 +308,7 @@ def part_research_brief(part: dict[str, Any]) -> str:
         f"Conceptual focus: {profile.conceptual_focus}. "
         f"Composability contract: {profile.composability_contract}. "
         f"**Practice lens:** {lens.title}; {lens.planning_question} "
-        f"Unit source path begins with {source_context}"
+        f"{source_context}"
     )
 
 def _part_citation_numbers(part: dict[str, Any], *, limit: int = 2) -> list[int]:
@@ -344,19 +344,17 @@ def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_context = _topic_context(chapter, part)
     return "\n".join(
         [
-            f"This module works through the **{lens.title}** practice lens.",
+            f"Practice lens: **{lens.title}** for {topic_context}. {source_context}",
             "",
-            f"**Practice lens:** {lens.title}. Source context: {source_context}",
+            f"**Planning question:** {lens.planning_question}",
             "",
-            f"**Planning question:** {lens.planning_question} Apply it to {topic_context}.",
+            f"**Evidence artifact:** {lens.evidence_artifact}.",
             "",
-            f"**Evidence artifact:** {lens.evidence_artifact}. Source context: {source_context}",
+            f"**Validation rule:** {lens.validation_rule}. Applied to {topic_context}.",
             "",
-            f"**Validation rule:** {lens.validation_rule}. Topic focus: {topic_context}.",
+            f"**Handoff contract:** {lens.handoff_contract}.",
             "",
-            f"**Handoff contract:** {lens.handoff_contract}. Source context: {source_context}",
-            "",
-            f"**Safety check:** {lens.safety_check}. Topic focus: {topic_context}.",
+            f"**Safety check:** {lens.safety_check}.",
         ]
     )
 
@@ -384,22 +382,20 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
         )
     return "\n".join(
         [
-            f"This module's research synthesis runs in the **{profile.title}** lane.",
-            "",
-            f"**Research lane:** {profile.title}. Source context: {source_context}",
+            f"Research lane: **{profile.title}** for {topic_context}. {source_context}",
             "",
             topic_line.rstrip(),
-            f"**Verified anchor cluster:** {citation_cluster(profile.anchor_keys, limit=7)} Topic focus: {topic_context}.",
+            f"**Verified anchor cluster:** {citation_cluster(profile.anchor_keys, limit=7)}",
             "",
-            f"**Conceptual depth:** {profile.conceptual_focus}. Apply it to {topic_context}.",
+            f"**Conceptual depth:** {profile.conceptual_focus}.",
             "",
-            f"**Method stack:** {profile.method_stack}. Source context: {source_context}",
+            f"**Method stack:** {profile.method_stack}.",
             "",
-            f"**Composability contract:** {profile.composability_contract}. Topic focus: {topic_context}.",
+            f"**Composability contract:** {profile.composability_contract}.",
             "",
-            f"**Known failure modes:** {profile.failure_modes}. Source context: {source_context}",
+            f"**Known failure modes:** {profile.failure_modes}.",
             "",
-            f"**Defensive boundary:** {profile.safety_boundary}. Topic focus: {topic_context}.",
+            f"**Defensive boundary:** {profile.safety_boundary}. Applied to {topic_context}.",
             "",
             *anchor_rows,
         ]

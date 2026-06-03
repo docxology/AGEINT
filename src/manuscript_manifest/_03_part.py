@@ -57,27 +57,27 @@ def _module_architecture(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             "### Historical lineage",
             "",
             (
-                f"This module sits in the **{profile.title}** lineage: "
-                f"{profile.conceptual_focus}. The source path begins with {source_context}"
+                f"This sits in the **{profile.title}** lineage: "
+                f"{profile.conceptual_focus}. {source_context}"
             ),
             "",
             "### Conceptual model",
             "",
             (
-                "This module is modeled as inputs, constraints, transforms, outputs, "
+                "The work is modeled as inputs, constraints, transforms, outputs, "
                 f"feedback, and oversight for {topic_context}, with provenance and reviewability throughout."
             ),
             "",
             "### Knowledge architecture",
             "",
-            f"- **Inputs for this module:** {inputs}. Source context: {source_context}",
+            f"- **Inputs:** {inputs}. {source_context}",
             f"- **Transforms:** {transforms}.",
             f"- **Outputs:** {outputs}.",
             f"- **Failure modes:** {failures}.",
             "",
             "### Composability contracts",
             "",
-            f"- **Authority contract:** define why this module is being practiced, who reviews it, and which actions are excluded for {topic_context}.",
+            f"- **Authority contract:** define why the work is being practiced, who reviews it, and which actions are excluded for {topic_context}.",
             f"- **Evidence contract:** keep the **{profile.title}** source descriptors, transformations, claims, uncertainty, and confidence separable.",
             "- **Tool contract:** bind any agent assistance to explicit tools, permissions, budgets, logging, and rollback conditions.",
             f"- **Output contract:** render the chapter artifact as {outputs} that another reviewer can audit.",
@@ -110,7 +110,7 @@ def _governance_rights_assurance(chapter: dict[str, Any], part: dict[str, Any]) 
 
 ### Evidence package pointer
 
-For this module, detailed model/data cards, transparency notices, retention
+Detailed model/data cards, transparency notices, retention
 rows, release gates, risk exceptions, incident drills, procurement checks, and
 learner-support workflows live in the generated appendices and source-support docs.
 The local **{lens.title}** evidence gate stays compact enough to apply during
@@ -138,9 +138,9 @@ def _current_source_assurance(
         "### Current-source assurance crosswalk",
         "",
         (
-            f"For this module, the source assurance check ties the current verified "
+            "The source assurance check ties the current verified "
             "anchor set to the local chapter artifact instead of relying on "
-            f"discovery summaries. Local source context: {source_context}; topic focus: {topic_context}."
+            f"discovery summaries, here covering {topic_context}. {source_context}"
         ),
         "",
         "| Assurance question | Direct source evidence | Chapter artifact |",
@@ -156,7 +156,7 @@ def _current_source_assurance(
             f"{_table_cell(lens.evidence_artifact)}; {_table_cell(use)} |"
         )
     rows.append(
-        f"| How is Perplexity handled for this module? | Discovery and second-opinion "
+        f"| How is Perplexity handled here? | Discovery and second-opinion "
         "notes are not citable authority unless converted into direct official, "
         "standards-body, public-domain, or scholarly anchors. | Claim ledger records "
         "the direct URL, checked date, source lane, refresh trigger, and reviewer. |"
@@ -168,7 +168,7 @@ def _domain_practice_studio(chapter: dict[str, Any], part: dict[str, Any]) -> st
     title = chapter["title"]
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
     topic_context = _chapter_topic_context(chapter, part)
-    return f"""The studio converts this module from reading into a reviewable artifact for {topic_context}. Start with
+    return f"""The studio converts reading into a reviewable artifact for {topic_context}. Start with
 the lens question: **{lens.planning_question}**
 
 ### Studio moves
@@ -239,7 +239,7 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
 
 ### Assessment rubric
 {topic_rubric}
-The general competency and mastery rubric for this module is the canonical
+The general competency and mastery rubric is the canonical
 five-row rubric in the shared method-and-assurance reference
 ([@sec:method-assurance-reference]), covering conceptual command, analytic
 rigor, agentic design, governance and rights, and safety posture. Score the
@@ -253,7 +253,7 @@ visible.
 def _security_synthesis_block() -> str:
     return """### Threat-model framework: MAESTRO seven layers
 
-For this module specifically, the CSA MAESTRO model gives a concrete map of where an agentic
+The CSA MAESTRO model gives a concrete map of where an agentic
 system can be attacked, shown in [@fig:ageint-maestro-seven-layer]. It stacks seven layers of
 the agent lifecycle: foundation models (L1: adversarial examples, model stealing, backdoors),
 data operations (L2: poisoning, RAG-pipeline compromise), agent frameworks (L3: supply chain and
@@ -309,14 +309,14 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     safe_patterns = chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
     synthesis_block = _security_synthesis_block() if chapter["number"] == 34 else ""
     safety_boundary = (
-        "For this module, keep all practice authorized, synthetic, defensive, logged, "
-        f"reversible, and non-operational while working from {source_context} and {topic_context}. Do not convert this module into "
+        "Keep all practice authorized, synthetic, defensive, logged, "
+        f"reversible, and non-operational while working from {source_context} and {topic_context}. Do not convert it into "
         "live targeting, evasion, exploitation, covert collection, "
         "manipulation, or unsafe cyber-physical action."
     )
     if safe_patterns:
         safety_boundary = (
-            "For this module, raw design-pattern motifs are transformed into authorized tabletop, "
+            "Raw design-pattern motifs are transformed into authorized tabletop, "
             "audit, provenance, control-coverage, and governance exercises. The "
             "module preserves source identity in the pattern registry while "
             f"rewriting methods, applications, and architecture artifacts for {topic_context} into "
@@ -324,7 +324,7 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         )
     profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    return f"""This module belongs to the current unit and teaches the **{profile.title}** lane through a bounded, source-backed coursebook chapter. Local source context: {source_context}
+    return f"""This module teaches the **{profile.title}** lane through a bounded, source-backed coursebook chapter. {source_context}
 
 ## Textbook primer
 
@@ -360,14 +360,14 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
 
 ## Evidence and source canon
 
-For this module, the source canon is the audit trail. Guide citations preserve
+The source canon is the audit trail. Guide citations preserve
 the inherited bibliography, verified anchors supply lane constraints, and the
 **{profile.title}** profile tells reviewers what evidence is strong enough for
 the module artifact built around {topic_context}.
 
 ### Source spine
 
-Primary guide citations for this module: {source_spine}
+Primary guide citations: {source_spine}
 
 ### Source canon
 
@@ -409,7 +409,7 @@ direct source URL in `references-*.bib`. Local checks start with {source_context
 
 ## Agentic translation boundary
 
-AGEINT translation for this module is bounded by the **{profile.title}** lane.
+AGEINT translation is bounded by the **{profile.title}** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
 checklists, summarize evidence, simulate benign scenarios, and audit reasoning.
 They do not initiate unauthorized collection, exploitation, covert targeting,
@@ -417,7 +417,7 @@ manipulation, or cyber-physical action; examples stay tied to {topic_context}.
 
 ### Defensive utility
 
-The defensive utility of this module is curriculum design, tabletop preparation,
+The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
 Work products fit the current unit's education, policy review, lab
 exercises, and authorized defensive analysis for {topic_context}.
@@ -428,7 +428,7 @@ exercises, and authorized defensive analysis for {topic_context}.
 
 ## Governance, rights, and assurance
 
-For this module, governance is practiced as a gate on the **{profile.title}**
+Governance is practiced as a gate on the **{profile.title}**
 lane. Learners use the **{lens.title}** to decide who authorized the exercise,
 which evidence is sufficient, what rights and access issues remain, and when an
 agent-assisted artifact must stop for human review while using {topic_context}.
@@ -441,7 +441,7 @@ agent-assisted artifact must stop for human review while using {topic_context}.
 
 ## Refresh, safety, and source maps
 
-Refresh handling for this module is maintenance evidence, not editorial memory.
+Refresh handling is maintenance evidence, not editorial memory.
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
 incidents, and instructor debrief findings all produce a visible owner, action,
 and retest condition before the module is reused against {source_context} and {topic_context}.
