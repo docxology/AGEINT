@@ -275,7 +275,11 @@ def _inferred_section_label(relative_path: Path) -> str:
     if parts[0] == "appendices":
         if len(parts) > 1 and parts[1] == "bibliography-atlas":
             return "sec:bibliography_atlas"
-        if len(parts) > 1 and parts[1].endswith(".md"):
+        if (
+            len(parts) > 1
+            and parts[1].endswith(".md")
+            and parts[1] not in {"README.md", "AGENTS.md"}
+        ):
             return f"sec:appendix-{parts[1].removesuffix('.md')}"
         return "sec:bibliography_atlas"
     if parts[0] == "parts":

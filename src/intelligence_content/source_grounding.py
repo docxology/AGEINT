@@ -136,9 +136,9 @@ class SourceRecord:
 
 
 @lru_cache(maxsize=1)
-def _reference_index() -> dict[int, dict[str, str]]:
+def _reference_index() -> dict[int, dict[str, str | bool]]:
     """Load every source-guide reference keyed by its integer number."""
-    index: dict[int, dict[str, str]] = {}
+    index: dict[int, dict[str, str | bool]] = {}
     if not _REFERENCES_DIR.is_dir():
         return index
     for shard in sorted(_REFERENCES_DIR.glob("source-guide-*.jsonl")):
@@ -148,6 +148,7 @@ def _reference_index() -> dict[int, dict[str, str]]:
                 "title": str(row.get("title", "")),
                 "note": str(row.get("note", "")),
                 "url": str(row.get("url", "")),
+                "note_verified": bool(row.get("note_verified", False)),
             }
     return index
 
@@ -358,10 +359,10 @@ def source_record(number: int) -> SourceRecord | None:
         return None
     return SourceRecord(
         number=int(number),
-        key=row["key"] or f"ageint{int(number):03d}",
-        title=clean_source_title(row["title"]),
-        note=safe_source_note(row["note"]),
-        url=row["url"],
+        key=str(row["key"]) or f"ageint{int(number):03d}",
+        title=clean_source_title(str(row["title"])),
+        note=safe_source_note(str(row["note"])),
+        url=str(row["url"]),
         verified=bool(row.get("note_verified", False)),
     )
 
