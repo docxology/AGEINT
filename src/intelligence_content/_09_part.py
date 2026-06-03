@@ -33,6 +33,7 @@ from ._08_part import (
     TRANSPARENCY_NOTICE_WORKFLOW,
 )
 from .topic_entries import safe_topic_entries
+from .topic_lesson_voice import compact_topic_cluster
 from .markdown_table import render_dict_table, table_cell
 
 # GENERIC_DISPLAY_TITLE_MARKERS and is_generic_display_title live in _07_safe_titles.
@@ -334,7 +335,7 @@ def _topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int 
     topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local topic cluster"
-    return "; ".join(topics)
+    return compact_topic_cluster(topics)
 
 def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render a chapter-level practice lens."""

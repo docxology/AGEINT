@@ -32,7 +32,7 @@ from .source_grounding import (
 )
 from .topic_entries import safe_topic_entries
 from .topic_formalisms import lesson_formalism_field
-from .topic_lesson_voice import short_title, topic_reference
+from .topic_lesson_voice import compact_topic, short_title, topic_reference
 from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 
 
@@ -278,6 +278,12 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
     entries = safe_topic_entries(chapter, part)
     anchor_topic = entries[0].display_title if entries else title
     source_context = _chapter_ref_context(chapter)
+    # The Frame field carries the full title once (keyword anchor); every later
+    # field uses the keyword-preserving compact form so the 200-char title is not
+    # restated bolded eight times per chapter.
+    short_anchor = compact_topic(anchor_topic)
+    if not _keeps_title_keywords(short_anchor, anchor_topic):
+        short_anchor = anchor_topic
     return "\n\n".join(
         [
             f"Worked example: {coursebook.worked_scenario}. {source_context}",
@@ -292,31 +298,31 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
                 f"question is: {lens.planning_question}"
             ),
             (
-                f"**Inputs.** For the **{anchor_topic}** scenario, use {coursebook.worked_input}. "
+                f"**Inputs.** For the **{short_anchor}** scenario, use {coursebook.worked_input}. "
                 f"The {lens.title} intake note records provenance, sensitivity, "
                 "fit-to-purpose, and why the fixture is enough for this bounded exercise."
             ),
             (
-                f"**Analysis.** For **{anchor_topic}**, students "
+                f"**Analysis.** For **{short_anchor}**, students "
                 f"{coursebook.worked_process}. Pause whenever an inference about "
-                f"{anchor_topic} appears without evidence, confidence outruns support, "
+                f"{short_anchor} appears without evidence, confidence outruns support, "
                 "or an agent output is treated as judgment."
             ),
             (
-                f"**Filled artifact.** Purpose = **{anchor_topic}** classroom scenario; "
+                f"**Filled artifact.** Purpose = **{short_anchor}** classroom scenario; "
                 f"unit artifact = {unit_profile.practice_artifact}; "
                 f"evidence = allowed inputs; method = {coursebook.practice_focus}; "
                 f"output = {coursebook.worked_output}; boundary = no external action; "
                 "reviewer = instructor or named peer."
             ),
             (
-                f"**Flawed answer to revise.** Treating **{anchor_topic}** as "
+                f"**Flawed answer to revise.** Treating **{short_anchor}** as "
                 f"\"{lens.title} confirms it\" is not enough. The revision ties the claim to "
                 f"{coursebook.practice_focus}, adds the missing caveat, states confidence, "
                 "and records the reviewer who accepted the bounded judgment."
             ),
             (
-                f"**Debrief.** The reuse note for **{anchor_topic}** records the "
+                f"**Debrief.** The reuse note for **{short_anchor}** records the "
                 "defensible claim, the assumption most likely to fail, the evidence "
                 "that would change confidence, and the review condition for stopping reuse."
             ),
@@ -333,7 +339,10 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     coursebook = _coursebook_profile_for_titles(part_title, title)
     unit_profile = unit_profile_for_part(part)
     entries = safe_topic_entries(chapter, part)[:3]
-    first_topics = ", ".join(entry.display_title for entry in entries)
+    first_topics = ", ".join(compact_topic(entry.display_title) for entry in entries)
+    first_entry_topic = compact_topic(entries[0].display_title)
+    if not _keeps_title_keywords(first_entry_topic, entries[0].display_title):
+        first_entry_topic = entries[0].display_title
     misconception = resolve_topic_misconception(
         entries[0],
         coursebook=coursebook,
@@ -351,8 +360,8 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
             "|---|---|---|---|",
             f"| 1. Distinguish | Compare {first_topics}; name what each topic can and cannot prove. | Glossary-and-contrast card. | Terms match the **{_table_cell(profile.title)}** lane. |",
             f"| 2. Frame | Answer the lens question: {lens.planning_question} | Scope card. | Authority, excluded actions, data boundary, and reviewer are explicit. |",
-            f"| 3. Evidence | Fill the artifact fields for {entries[0].display_title}: {lens.evidence_artifact}. | Evidence packet. | Sources, caveats, confidence, and uncertainty stay separable. |",
-            f"| 3a. Unit artifact | Add the {unit_profile.practice_artifact} fields for {entries[0].display_title}. | Unit profile note. | Evidence artifacts include {', '.join(unit_profile.evidence_artifacts[:2])}. |",
+            f"| 3. Evidence | Fill the artifact fields for {first_entry_topic}: {lens.evidence_artifact}. | Evidence packet. | Sources, caveats, confidence, and uncertainty stay separable. |",
+            f"| 3a. Unit artifact | Add the {unit_profile.practice_artifact} fields for {first_entry_topic}. | Unit profile note. | Evidence artifacts include {', '.join(unit_profile.evidence_artifacts[:2])}. |",
             f"| 4. Challenge | Test the misconception {misconception}. | Failure-mode note. | The artifact applies the key distinction: {coursebook.key_distinction}. |",
             "| 5. Handoff | Prepare the artifact for another reviewer. | Handoff memo. | Inputs, transformations, reviewer, refresh trigger, and residual risk are visible. |",
         ]
@@ -392,10 +401,18 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
     entries = safe_topic_entries(chapter, part)
     topic = entries[0]
     second_topic = entries[1] if len(entries) > 1 else entries[0]
+    # Q1 carries the full title once (keyword anchor); later mentions use the
+    # keyword-preserving compact form to avoid restating the 200-char title.
+    short_topic = compact_topic(topic.display_title)
+    if not _keeps_title_keywords(short_topic, topic.display_title):
+        short_topic = topic.display_title
+    short_second = compact_topic(second_topic.display_title)
+    if not _keeps_title_keywords(short_second, second_topic.display_title):
+        short_second = second_topic.display_title
     return "\n".join(
         [
             f"1. Explain how **{topic.display_title}** is defined here; name the source descriptor that supports the definition.",
-            f"2. Contrast **{topic.display_title}** with **{second_topic.display_title}** using the **{lens.title}** artifact fields.",
+            f"2. Contrast **{short_topic}** with **{short_second}** using the **{lens.title}** artifact fields.",
             f"3. Identify one failure mode from the **{profile.title}** lane and the evidence that would reveal it.",
             f"4. Answer the coursebook review question: {coursebook.review_question}",
             f"5. Correct this misconception: {resolve_topic_misconception(topic, coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=title)}.",
@@ -407,7 +424,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             "([@sec:method-assurance-reference]): a strong answer uses source "
             "evidence, distinguishes observation from judgment, names uncertainty, "
             "and states the safe boundary, while a revise-level answer gives a "
-            f"memorized definition of **{topic.display_title}** without source "
+            f"memorized definition of **{short_topic}** without source "
             "evidence, uncertainty, or a safe transfer task.",
         ]
     )

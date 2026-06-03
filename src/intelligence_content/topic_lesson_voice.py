@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 from unit_education import UnitEducationProfile, unit_lesson_artifact_line, unit_lesson_evidence_line
@@ -68,6 +69,40 @@ def short_title(display_title: str) -> str:
         ):
             return candidate
     return title
+
+
+# Registry-note parenthetical and trailing-qualifier patterns that pad design-
+# pattern titles ("Pattern 18: GEOINT Audit Agent (source identity preserved in
+# pattern registry) - limits work to ..."). These tails are byte-identical
+# boilerplate restated 15-17x per chapter wherever the title is interpolated.
+_REGISTRY_PARENTHETICAL = re.compile(r"\s*\([^()]*\)")
+_TRAILING_QUALIFIER = re.compile(r"\s+[-–—]\s+")
+
+
+def compact_topic(display_title: str) -> str:
+    """Return a keyword-preserving compact form of a topic title.
+
+    Unlike ``short_title`` (which cuts at the first colon and would reduce a
+    pattern title to a bare "Pattern 18"), this keeps the descriptive head and
+    its colon headline while shedding the registry parenthetical and the trailing
+    " - ..." qualifier clause. Titles without that padding are returned unchanged.
+    The result is never bolded — the caller decides emphasis.
+    """
+    title = display_title.strip()
+    compact = _REGISTRY_PARENTHETICAL.sub("", title)
+    compact = _TRAILING_QUALIFIER.split(compact, maxsplit=1)[0]
+    compact = compact.strip().rstrip(",;:")
+    # Only adopt the compact form when it is a real reduction and keeps keywords;
+    # otherwise the original title is safer for downstream anchor checks.
+    if compact and compact != title and len(compact) <= len(title) - 6:
+        return compact
+    return title
+
+
+def compact_topic_cluster(titles: list[str]) -> str:
+    """Join topic titles into a compact, semicolon-separated body phrase."""
+    compacted = [compact_topic(title) for title in titles]
+    return "; ".join(compacted)
 
 
 # Anaphoric references that stand in for the bold title after its first mention.
@@ -190,6 +225,8 @@ def student_artifact_sentence(
 
 
 __all__ = [
+    "compact_topic",
+    "compact_topic_cluster",
     "evidence_packet_sentence",
     "for_topic",
     "lower_first_word",

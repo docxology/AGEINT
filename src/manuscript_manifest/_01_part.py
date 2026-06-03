@@ -165,12 +165,19 @@ def _chapter_source_context(chapter: dict[str, Any]) -> str:
     return _citation_context(list(chapter.get("citations", [])))
 
 def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
-    """Return a compact topic cluster for body prose."""
+    """Return a compact topic cluster for body prose.
+
+    Routes raw display titles through ``compact_topic`` so the registry
+    parenthetical and trailing-qualifier boilerplate that pads design-pattern
+    titles is dropped before the cluster is interpolated across ~13 body sites.
+    """
+
+    from intelligence_content.topic_lesson_voice import compact_topic_cluster
 
     topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local source-topic cluster"
-    return "; ".join(topics)
+    return compact_topic_cluster(topics)
 
 def _cognitive_attack_framework() -> str:
     return (

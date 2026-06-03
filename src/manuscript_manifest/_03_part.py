@@ -360,10 +360,9 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
 
 ## Evidence and source canon
 
-The source canon is the audit trail. Guide citations preserve
-the inherited bibliography, verified anchors supply lane constraints, and the
-**{profile.title}** profile tells reviewers what evidence is strong enough for
-the module artifact built around {topic_context}.
+Guide citations preserve the inherited bibliography, verified anchors supply
+lane constraints, and the **{profile.title}** profile tells reviewers what
+evidence is strong enough for the module artifact built around {topic_context}.
 
 ### Source spine
 
@@ -389,7 +388,6 @@ Primary guide citations: {source_spine}
 
 Each source cited by this **{profile.title}** module is paired below with its
 real title and a one-line note on what it contributes to {topic_context}.
-Verify every claim against these works.
 
 {chapter_source_annotations(chapter)}
 
@@ -400,7 +398,7 @@ Verify every claim against these works.
 {synthesis_block}
 ### Evidence standard
 
-Each module source is treated as an anchor, not a decoration. Official
+Official
 guidance supplies governance, safety, and legal constraints for the **{profile.title}**
 lane; scholarly or policy-scholarship sources supply explanatory frames; source-guide
 citations preserve the inherited AGEINT bibliography. Perplexity-assisted discovery
@@ -441,9 +439,8 @@ agent-assisted artifact must stop for human review while using {topic_context}.
 
 ## Refresh, safety, and source maps
 
-Refresh handling is maintenance evidence, not editorial memory.
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
-incidents, and instructor debrief findings all produce a visible owner, action,
+incidents, and instructor debrief findings each produce a visible owner, action,
 and retest condition before the module is reused against {source_context} and {topic_context}.
 
 ### Refresh triggers
