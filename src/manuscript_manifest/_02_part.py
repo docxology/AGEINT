@@ -102,8 +102,8 @@ def _capstone_deliverable(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         [
             "The capstone deliverable for this module is a reviewable packet that "
             "plugs into the broader unit thread. Run it through the canonical "
-            "phase, artifact, and review-gate ladder in the Method & Assurance "
-            f"Reference ([@sec:method-assurance-reference]); the local topic "
+            "phase, artifact, and review-gate ladder in the shared "
+            f"method-and-assurance reference ([@sec:method-assurance-reference]); the local topic "
             f"cluster is {topic_context}.",
             "",
             "Minimum module submission: one-page analytic memo, source-lane map, "
@@ -135,7 +135,7 @@ def _refresh_triggers(chapter: dict[str, Any], part: dict[str, Any] | None = Non
     )
     return (
         "Refresh this module against the canonical trigger-and-action table in "
-        "the Method & Assurance Reference ([@sec:method-assurance-reference]). "
+        "the shared method-and-assurance reference ([@sec:method-assurance-reference]). "
         "When a source-guide reference, official standard, AI or public-sector "
         "policy, interface specification, safety audit, or instructor debrief "
         f"signal appears, take the matching required action before reuse for "

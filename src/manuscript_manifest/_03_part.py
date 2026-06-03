@@ -240,7 +240,7 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
 ### Assessment rubric
 {topic_rubric}
 The general competency and mastery rubric for this module is the canonical
-five-row rubric in the Method & Assurance Reference
+five-row rubric in the shared method-and-assurance reference
 ([@sec:method-assurance-reference]), covering conceptual command, analytic
 rigor, agentic design, governance and rights, and safety posture. Score the
 artifact for {topic_context} against that rubric together with the

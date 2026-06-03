@@ -258,7 +258,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             "### Answer quality rubric",
             "",
             "Judge answers for this module with the canonical mastery evidence "
-            "standard in the Method & Assurance Reference "
+            "standard in the shared method-and-assurance reference "
             "([@sec:method-assurance-reference]): a strong answer uses source "
             "evidence, distinguishes observation from judgment, names uncertainty, "
             "and states the safe boundary, while a revise-level answer gives a "

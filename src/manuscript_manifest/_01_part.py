@@ -243,7 +243,7 @@ def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str
     topic_context = _chapter_topic_context(chapter, part)
     return (
         "The claim and evidence ledger for this module follows the canonical "
-        "claim-class ladder in the Method & Assurance Reference "
+        "claim-class ladder in the shared method-and-assurance reference "
         "([@sec:method-assurance-reference]). Apply the source-spine, "
         "research-backed governance, agentic-workflow, safety, and cross-module "
         "claim classes to every assertion in this module, attaching the required "
