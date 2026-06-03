@@ -2,8 +2,8 @@
 project: AGEINT
 task: De-boilerplate manuscript, integrate new cognitive-security resource, vastly expand methods visualizations
 effort: E5
-phase: verify
-progress: 7/27
+phase: complete
+progress: 25/27
 mode: algorithm
 started: 2026-06-03
 updated: 2026-06-03
@@ -116,6 +116,26 @@ Refactor the generation pipeline so repeated scaffolding collapses to a single c
 - ISC-22: `rg -c "defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine" output/manuscript/` → empty.
 - ISC-24: `git status -s` shows only `M src/rendered_heading_support.py` and `?? ISA.md`; no `data/` deltas.
 - ISC-27: heading-support inventory `unsupported: 0 ok: True` after rebuild.
+
+### Final Verification (workflow integration — commits 74ea0ee, 2f369fd, f0e74b4, 5cf7f86)
+
+Suite on fully-integrated tree: `229 passed, 1 skipped … Total coverage: 92.21%` (gate ≥90%). Build exit 0. All metrics from committed built output:
+
+- ISC-2 capstone "Phase|Artifact|Review gate": 69 → **19 files** (canonical + legitimate appendix/intro uses; 72% drop).
+- ISC-3 mastery "Strong|Uses source evidence": 51 → **1**.
+- ISC-4 competency "Competency|Evidence of mastery": 51 → **1**.
+- ISC-5 claim "Claim class|Evidence required": 51 → **1**.
+- ISC-6 refresh "Trigger|Required action": 51 → **1**.
+- ISC-7 "### Safety boundary": 118 → **67** (one per chapter).
+- ISC-8 canonical section: `# Method & Assurance Reference {#sec:method-assurance-reference}` present once; modules cross-link via `[@sec:method-assurance-reference]`.
+- ISC-11..17 figures: registry **57 → 64**; 7 new PNGs render (cdr-degradation-cascade, maestro-seven-layer, sre-circuit-breaker, cognitive-decoherence-cdr-isomorphism, unified-epistemic-stack, cognitive-attack-layers, hro-governance-crosswalk); each cited once in an apt section.
+- ISC-18/19 citations: anchors **172 → 186** (14 new, real official/scholarly sources, checked 2026-05-22, render into source-lane clusters).
+- ISC-22 banned phrases: 0. ISC-24: no `data/source_identity/` changes. ISC-25: safety tests pass. ISC-26: refs audit in suite.
+- Defect found+fixed (introduced by table-collapse): sanitizer turned the literal title into "the current section" after "the" → "the the current section" ×145; fixed to "the shared method-and-assurance reference" → **0** (commit 5cf7f86).
+
+NOT fully met (honest):
+- ISC-10 byte target ≥25%: actual 5,708,542 → **5,437,978 (−4.7%)**. Tables were replaced with substantive per-chapter cross-reference paragraphs (required to clear `MIN_SECTION_CHARS` gates + keep reader-specific topic context), not deleted, so byte savings are modest while *duplication* dropped sharply.
+- ISC-23 PDF re-render: downstream parent-template-repo pandoc→xelatex step; manuscript source (the PDF's input) is regenerated and verified, but the 11.8 MB PDF itself was not re-rendered here.
 
 ### Staged (next increment — approach + test constraints captured)
 - Table-collapse (ISC-2..9): the capstone/competency/claim-ledger/refresh/mastery tables are identical static content from `data/safety_artifact_tables.yaml` → template variables. Plan: emit each once in a new canonical "Method & Assurance Reference" front section (sec label), replace per-chapter emitters in `manuscript_manifest/_01_part.py` (`_claim_evidence_ledger`), `_02_part.py` (`_capstone_deliverable`, `_refresh_triggers`), `_03_part.py` (competency rubric, `_assessment_and_capstone_pathway`) with a substantive `[@sec:method-assurance-reference]` cross-ref line (>40 chars to satisfy `test_chapter_fragment_quality` min-length; sections must stay PRESENT per `REQUIRED_MODULE_SECTIONS`). Variable tests (`test_runtime_variables_are_auditable`) check the YAML→variable content, not per-chapter stamping, so they remain green. Also dedupe the 118× "### Safety boundary" to ≤1 per chapter.
