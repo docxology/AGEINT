@@ -8,7 +8,6 @@ from intelligence_content import (
     adversarial_assurance_rows,
     agent_incident_response_rows,
     assessment_integrity_rows,
-    capstone_scaffold_rows,
     data_lineage_registry_rows,
     hria_dpia_worksheet_rows,
     learner_support_rows,
@@ -101,15 +100,16 @@ def _capstone_deliverable(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            "The capstone deliverable for this module is a reviewable packet "
-            f"that can plug into the broader unit thread; the local topic cluster is {topic_context}.",
+            "The capstone deliverable for this module is a reviewable packet that "
+            "plugs into the broader unit thread. Run it through the canonical "
+            "phase, artifact, and review-gate ladder in the Method & Assurance "
+            f"Reference ([@sec:method-assurance-reference]); the local topic "
+            f"cluster is {topic_context}.",
             "",
-            capstone_scaffold_rows(),
-            "",
-            f"Minimum module submission: one-page analytic memo, source-lane "
-            "map, claim ledger, safe-lab packet, rubric self-assessment, and "
-            "debrief note. The packet must name what is excluded, who may "
-            f"approve reuse, and what would trigger a source refresh for {topic_context} and {source_context}",
+            "Minimum module submission: one-page analytic memo, source-lane map, "
+            "claim ledger, safe-lab packet, rubric self-assessment, and debrief "
+            "note. The packet must name what is excluded, who may approve reuse, "
+            f"and what would trigger a source refresh for {topic_context} and {source_context}",
         ]
     )
 
@@ -128,21 +128,18 @@ def _instructor_facilitation_notes(chapter: dict[str, Any], part: dict[str, Any]
         ]
     )
 
-def _refresh_triggers(chapter: dict[str, Any]) -> str:
+def _refresh_triggers(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
     source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"Refresh this module when one of these signals appears in {source_context}",
-            "",
-            "| Trigger | Required action |",
-            "|---|---|",
-            "| Source guide reference changes | preserve existing `ageintNNN` identities and append new references only after the locked range |",
-            "| Official or standards source updates | update source-lane metadata, checked date, and bibliography note |",
-            "| AI law, public-sector policy, education guidance, or rights guidance changes | rerun the compliance and rights map |",
-            "| API, protocol, data-space, or provenance specification changes | rerun interface and data-provenance checks |",
-            "| Safety audit finds operational wording | replace the treatment with tabletop, audit, governance, or synthetic-data framing |",
-            "| Instructor debrief finds unreproducible evidence | rebuild the source canon and claim ledger before reuse |",
-        ]
+    topic_context = (
+        _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
+    )
+    return (
+        "Refresh this module against the canonical trigger-and-action table in "
+        "the Method & Assurance Reference ([@sec:method-assurance-reference]). "
+        "When a source-guide reference, official standard, AI or public-sector "
+        "policy, interface specification, safety audit, or instructor debrief "
+        f"signal appears, take the matching required action before reuse for "
+        f"{topic_context}. The local signals for this module begin with {source_context}"
     )
 
 def _accessibility_udl_review(chapter: dict[str, Any]) -> str:

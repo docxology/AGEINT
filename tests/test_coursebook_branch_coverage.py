@@ -216,7 +216,7 @@ def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tm
     joined = "\n".join(text_blocks)
     assert "Branch Coverage Chapter" in joined
     assert "Module source spine" in joined
-    assert "authorized learning question" in joined
+    assert "[@sec:method-assurance-reference]" in joined
 
     registry = SlugRegistry()
     assert registry.unique("chapter", "Same Title") == "same-title"

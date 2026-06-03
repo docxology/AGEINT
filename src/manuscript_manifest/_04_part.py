@@ -28,6 +28,13 @@ from ._01_part import (
     _part_summary,
 )
 from ._03_part import _chapter_body
+from ._canonical_reference import (
+    canonical_claim_ledger_rows,
+    canonical_competency_rubric_rows,
+    canonical_mastery_rows,
+    canonical_refresh_trigger_rows,
+    canonical_safety_boundary,
+)
 
 def _apply_section_metadata(
     sections: list[ManuscriptSection],
@@ -135,6 +142,8 @@ def _fallback_figure_labels(section: ManuscriptSection) -> list[str]:
         return []
     if section.relative_path == "abstract.md":
         return ["fig:ageint-curriculum-map"]
+    if section.relative_path == "method-assurance-reference.md":
+        return ["fig:ageint-safety-boundary-loop"]
     if section.kind == "chapter" and section.parent_label.startswith("sec:part-"):
         part_slug = section.parent_label.removeprefix("sec:part-")
         return [f"fig:part-{part_slug}-module-map"]
@@ -189,6 +198,24 @@ def build_manuscript_manifest(
             {},
             order,
             section_label="sec:curriculum_orientation",
+        )
+    )
+    order += 1
+    sections.append(
+        ManuscriptSection(
+            "front",
+            "Method & Assurance Reference",
+            "method-assurance-reference.md",
+            "method_assurance_reference.md",
+            {
+                "CANONICAL_CLAIM_LEDGER_ROWS": canonical_claim_ledger_rows(),
+                "CANONICAL_COMPETENCY_RUBRIC_ROWS": canonical_competency_rubric_rows(),
+                "CANONICAL_REFRESH_TRIGGER_ROWS": canonical_refresh_trigger_rows(),
+                "CANONICAL_MASTERY_ROWS": canonical_mastery_rows(),
+                "CANONICAL_SAFETY_BOUNDARY": canonical_safety_boundary(),
+            },
+            order,
+            section_label="sec:method-assurance-reference",
         )
     )
     order += 1

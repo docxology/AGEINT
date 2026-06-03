@@ -34,6 +34,7 @@ def test_source_uses_neutral_template_library_without_numbered_modules() -> None
         "appendix.md",
         "bibliography_atlas.md",
         "chapter.md",
+        "method_assurance_reference.md",
         "orientation.md",
         "part.md",
         "references.md",

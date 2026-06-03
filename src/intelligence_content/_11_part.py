@@ -257,11 +257,13 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             "",
             "### Answer quality rubric",
             "",
-            "| Level | Evidence in the answer |",
-            "|---|---|",
-            "| Strong | Uses source evidence, distinguishes observation from judgment, names uncertainty, and states the safe boundary. |",
-            "| Adequate | Defines the concept and names a relevant artifact, but leaves one caveat or review owner vague. |",
-            "| Revise | Gives a memorized definition without source evidence, uncertainty, or a safe transfer task. |",
+            "Judge answers for this module with the canonical mastery evidence "
+            "standard in the Method & Assurance Reference "
+            "([@sec:method-assurance-reference]): a strong answer uses source "
+            "evidence, distinguishes observation from judgment, names uncertainty, "
+            "and states the safe boundary, while a revise-level answer gives a "
+            f"memorized definition of **{topic.display_title}** without source "
+            "evidence, uncertainty, or a safe transfer task.",
         ]
     )
 

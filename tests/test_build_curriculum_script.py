@@ -111,7 +111,7 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path) ->
 
     result = run_build(project, regenerate_source_template_library=True)
 
-    assert result.written_source_templates == 7
+    assert result.written_source_templates == 8
     rewritten = template_file.read_text(encoding="utf-8")
     assert "TEMPLATE SENTINEL" not in rewritten
     assert "{{SECTION_TITLE}}" in rewritten

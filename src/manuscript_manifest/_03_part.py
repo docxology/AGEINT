@@ -221,6 +221,7 @@ def _topic_assessment_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str
 
 def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_rows = _topic_assessment_rows(chapter, part)
+    topic_context = _chapter_topic_context(chapter, part)
     topic_rubric = ""
     if topic_rows:
         topic_rubric = f"""
@@ -238,13 +239,14 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
 
 ### Assessment rubric
 {topic_rubric}
-| Competency | Evidence of mastery |
-|---|---|
-| Conceptual command | Terms are defined precisely and linked to the source spine. |
-| Analytic rigor | Assumptions, uncertainty, alternatives, and confidence are explicit. |
-| Agentic design | Human oversight, tool boundaries, logging, and rollback are specified. |
-| Governance and rights | Authority, procurement, privacy, accessibility, retention, and redress evidence are visible. |
-| Safety posture | Exercises remain authorized, synthetic, defensive, lawful, and non-operational. |
+The general competency and mastery rubric for this module is the canonical
+five-row rubric in the Method & Assurance Reference
+([@sec:method-assurance-reference]), covering conceptual command, analytic
+rigor, agentic design, governance and rights, and safety posture. Score the
+artifact for {topic_context} against that rubric together with the
+topic-specific evidence rows above so conceptual command, uncertainty
+handling, oversight design, rights evidence, and non-operational posture stay
+visible.
 """
 
 
@@ -393,11 +395,7 @@ and retest condition before the module is reused against {source_context} and {t
 
 ### Refresh triggers
 
-{_refresh_triggers(chapter)}
-
-### Safety boundary
-
-{safety_boundary}
+{_refresh_triggers(chapter, part)}
 
 ### Claim and evidence ledger
 

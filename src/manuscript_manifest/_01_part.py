@@ -240,36 +240,16 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
 
 def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            "| Claim class | Evidence required | Review gate |",
-            "|---|---|---|",
-            (
-                f"| Source-spine claim for this module | Parsed module title, "
-                "module section map, and curriculum citation spine | "
-                f"Confirm the generated text does not invent counts, paths, or labels; source context: {source_context} |"
-            ),
-            (
-                "| Research-backed governance claim | Direct official, standards, "
-                "public-domain, or scholarly anchor in `references-*.bib` | "
-                "Confirm the anchor has verification metadata and a stable URL. |"
-            ),
-            (
-                "| Agentic workflow claim | Tool boundary, authority contract, "
-                "human review point, and rollback condition | Confirm the workflow "
-                "remains educational, logged, reversible, and non-operational. |"
-            ),
-            (
-                "| Safety claim | Explicit prohibition plus safe alternative | Confirm "
-                "the module blocks live targeting, exploitation, covert collection, "
-                "manipulation, and unsafe cyber-physical action. |"
-            ),
-            (
-                f"| Cross-module claim | Link to the current unit and adjacent "
-                "curriculum modules | Confirm the handoff names inputs, outputs, "
-                "uncertainty, and next-review owner. |"
-            ),
-        ]
+    topic_context = _chapter_topic_context(chapter, part)
+    return (
+        "The claim and evidence ledger for this module follows the canonical "
+        "claim-class ladder in the Method & Assurance Reference "
+        "([@sec:method-assurance-reference]). Apply the source-spine, "
+        "research-backed governance, agentic-workflow, safety, and cross-module "
+        "claim classes to every assertion in this module, attaching the required "
+        "evidence and clearing the matching review gate before reuse. The local "
+        f"topic cluster is {topic_context}, and the source spine for these checks "
+        f"begins with {source_context}"
     )
 
 def _safe_practice_lab(chapter: dict[str, Any]) -> str:

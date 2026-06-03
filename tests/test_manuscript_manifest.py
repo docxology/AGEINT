@@ -19,6 +19,8 @@ def test_manifest_builds_ordered_semantic_sections_without_numbered_paths() -> N
 
     assert manifest.sections[0].relative_path == "abstract.md"
     assert manifest.sections[1].relative_path == "orientation.md"
+    assert manifest.sections[2].relative_path == "method-assurance-reference.md"
+    assert manifest.sections[2].section_label == "sec:method-assurance-reference"
     assert len(manifest.chapter_sections) == 51
     assert len(manifest.part_sections) == 16
     assert len(manifest.appendix_sections) == 9
