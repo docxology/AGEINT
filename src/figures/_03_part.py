@@ -237,10 +237,19 @@ def _draw_bar_chart(output: Path, title: str, labels: Sequence[str], values: Seq
         height = (value / max_value) * (chart[3] - chart[1])
         y0 = chart[3] - height
         draw.rectangle((x0, y0, x1, chart[3]), fill=color)
+        # Value label above each bar so the chart is readable without an axis.
+        draw.text((x0, y0 - 34), str(value), fill="#0f172a", font=_font(font_mod, 28))
         if len(values) <= 20:
-            draw.text((x0, chart[3] + 12), labels[index][:18], fill="#334155", font=label_font)
+            # Wrap long category labels onto two lines instead of truncating them.
+            words = labels[index].split()
+            if len(labels[index]) > 18 and len(words) > 1:
+                mid = (len(words) + 1) // 2
+                draw.text((x0, chart[3] + 12), " ".join(words[:mid]), fill="#334155", font=label_font)
+                draw.text((x0, chart[3] + 34), " ".join(words[mid:]), fill="#334155", font=label_font)
+            else:
+                draw.text((x0, chart[3] + 12), labels[index], fill="#334155", font=label_font)
     draw.line((chart[0], chart[3], chart[2], chart[3]), fill="#334155", width=2)
-    draw.text((80, 900), f"Max value: {max_value}", fill="#334155", font=_font(font_mod, 24))
+    draw.text((80, 905), f"Max value: {max_value}", fill="#334155", font=_font(font_mod, 24))
     canvas.save(output, format="PNG", optimize=True)
 
 
@@ -285,14 +294,28 @@ def _draw_loop(output: Path, title: str, steps: Sequence[str]) -> None:
     draw.text((60, 40), title, fill="#0f172a", font=_font(font_mod, 46))
     center = (800, 520)
     radius = 310
+    angles = [(2 * math.pi * i / len(steps)) - math.pi / 2 for i in range(len(steps))]
+    positions = [(center[0] + math.cos(a) * radius, center[1] + math.sin(a) * radius) for a in angles]
+    # Directed arrows around the ring make the loop read as an ordered sequence
+    # (previously the nodes floated with no connecting edges). Drawn under nodes.
+    count = len(positions)
+    for index in range(count):
+        x1, y1 = positions[index]
+        x2, y2 = positions[(index + 1) % count]
+        dx, dy = x2 - x1, y2 - y1
+        length = math.hypot(dx, dy) or 1.0
+        ux, uy = dx / length, dy / length
+        sx, sy, ex, ey = x1 + ux * 102, y1 + uy * 102, x2 - ux * 102, y2 - uy * 102
+        draw.line((sx, sy, ex, ey), fill="#334155", width=5)
+        head = math.atan2(ey - sy, ex - sx)
+        for off in (math.radians(152), -math.radians(152)):
+            draw.line((ex, ey, ex + math.cos(head + off) * 24, ey + math.sin(head + off) * 24), fill="#334155", width=5)
     for index, step in enumerate(steps):
-        angle = (2 * math.pi * index / len(steps)) - math.pi / 2
-        x = center[0] + math.cos(angle) * radius
-        y = center[1] + math.sin(angle) * radius
+        x, y = positions[index]
         draw.ellipse((x - 95, y - 55, x + 95, y + 55), fill="#0f766e", outline="#0f172a", width=3)
         draw.text((x - 70, y - 15), step, fill="#ffffff", font=_font(font_mod, 22))
     draw.ellipse((center[0] - 175, center[1] - 175, center[0] + 175, center[1] + 175), outline="#334155", width=8)
-    draw.text((center[0] - 125, center[1] - 18), "Non-operational", fill="#0f172a", font=_font(font_mod, 30))
+    draw.text((center[0] - 130, center[1] - 18), "Non-operational", fill="#0f172a", font=_font(font_mod, 30))
     canvas.save(output, format="PNG", optimize=True)
 
 
