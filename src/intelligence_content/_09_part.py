@@ -81,15 +81,53 @@ def source_lane_rows() -> str:
         rows.append(f"| {lane} | {len(anchors)} | {cadences} | {scope} |")
     return "\n".join(rows)
 
+def _verification_note_for_table(anchor: ResearchAnchor) -> str:
+    """Return a compact, reader-facing verification note for a source anchor."""
+    note = anchor.verification_note.strip()
+    if not note:
+        return "direct source review recorded"
+    if len(note) <= 320:
+        return note
+    return note[:317].rstrip() + "..."
+
+
 def source_refresh_rows(limit: int | None = None) -> str:
     """Render source-refresh ledger rows for verified anchors."""
-    rows = ["| Anchor | Lane | Tier | Checked | Cadence | Refresh trigger |", "|---|---|---|---|---|---|"]
+    rows = [
+        "| Anchor | Source | Lane | Tier | Checked | Cadence | Refresh trigger | Verification note |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
     anchors = INTELLIGENCE_RESEARCH_ANCHORS if limit is None else INTELLIGENCE_RESEARCH_ANCHORS[:limit]
     for anchor in anchors:
+        source = f"[{table_cell(anchor.title)}]({anchor.url})" if anchor.url else table_cell(anchor.title)
         rows.append(
-            f"| `@{anchor.key}` | {anchor.source_lane or anchor.domain} | "
-            f"{anchor.source_tier or anchor.source_type} | {anchor.checked_as_of} | "
-            f"{anchor.refresh_cadence} | {anchor.refresh_trigger} |"
+            f"| `@{anchor.key}` | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
+            f"{table_cell(anchor.source_tier or anchor.source_type)} | {anchor.checked_as_of} | "
+            f"{table_cell(anchor.refresh_cadence)} | {table_cell(anchor.refresh_trigger)} | "
+            f"{table_cell(_verification_note_for_table(anchor))} |"
+        )
+    return "\n".join(rows)
+
+
+def current_source_update_rows(cutoff: str = "2026-06-06") -> str:
+    """Render the current-source additions and refreshes from the latest audit pass."""
+    rows = [
+        "| Anchor | Source | Lane | Contribution to the manuscript | Verification caveat |",
+        "|---|---|---|---|---|",
+    ]
+    updates = [
+        anchor
+        for anchor in INTELLIGENCE_RESEARCH_ANCHORS
+        if anchor.checked_as_of >= cutoff or cutoff in anchor.verification_note
+    ]
+    for anchor in updates:
+        source = f"[{table_cell(anchor.title)}]({anchor.url})" if anchor.url else table_cell(anchor.title)
+        caveat = _verification_note_for_table(anchor)
+        if anchor.source_tier == "official_draft" and "draft status" not in caveat.lower():
+            caveat = f"Draft status retained. {caveat}"
+        rows.append(
+            f"| `@{anchor.key}` | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
+            f"{table_cell(anchor.claim_scope)} | {table_cell(caveat)} |"
         )
     return "\n".join(rows)
 
@@ -287,15 +325,23 @@ def practice_lens_rows() -> str:
     return "\n".join(rows)
 
 def research_spine_summary() -> str:
-    """Return prose summary of the added research spine."""
-    domains = ", ".join(sorted({anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS}))
-    lanes = ", ".join(sorted({anchor.source_lane or anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS}))
+    """Return prose summary of the added research spine.
+
+    The abstract carries counts and representative examples rather than the full
+    machine-readable slug lists; the complete domain and source-lane maps are
+    generated separately for the curriculum orientation.
+    """
+    domain_count = len({anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS})
+    lane_count = len({anchor.source_lane or anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS})
     return (
-        f"Additional research hydration adds {len(INTELLIGENCE_RESEARCH_ANCHORS)} "
-        f"directly citable official or scholarly anchors across domains {domains}. "
-        f"Source lanes include {lanes}. "
-        "Perplexity is used only for discovery and second-opinion synthesis; "
-        "the manuscript cites the verified source URLs directly."
+        f"The research layer adds {len(INTELLIGENCE_RESEARCH_ANCHORS)} directly "
+        f"citable official or scholarly anchors spanning {domain_count} domains — "
+        "including agentic AI governance, cyber threat intelligence, legal "
+        "oversight, cognitive influence security, and OSINT/GEOINT — across "
+        f"{lane_count} curated source lanes. The full domain and source-lane maps "
+        "appear in the curriculum orientation. Perplexity is used only for "
+        "discovery and second-opinion synthesis; the manuscript cites the verified "
+        "source URLs directly."
     )
 
 def part_research_brief(part: dict[str, Any]) -> str:

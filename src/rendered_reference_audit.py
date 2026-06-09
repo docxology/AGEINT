@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import re
-from typing import Iterable
+from typing import Iterable, Sequence
 
 
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md"}
@@ -26,6 +26,8 @@ BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
 # BibTeX entry header: ``@misc{key,`` / ``@article{key,`` etc.
 _BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
+# Strong-emphasis spans used to protect authored phrases from title matching.
+_BOLD_SPAN_RE = re.compile(r"\*\*(.+?)\*\*|__(.+?)__")
 
 
 @dataclass(frozen=True)
@@ -112,9 +114,7 @@ def sanitize_rendered_section_title_mentions(text: str, rules: Iterable[TitleRul
         if in_code or _is_markdown_structural_line(stripped):
             lines.append(line)
             continue
-        sanitized = line
-        for rule in sorted_rules:
-            sanitized = _replace_title(sanitized, rule.title, rule.replacement)
+        sanitized = _neutralize_title_mentions(line, sorted_rules)
         lines.append(_clean_generic_reference_grammar(sanitized))
     if text.endswith("\n"):
         return "\n".join(lines) + "\n"
@@ -191,6 +191,7 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
 
     titles = collect_rendered_section_titles(output_root)
     title_patterns = [(title, _title_pattern(title)) for title in sorted(titles, key=len, reverse=True)]
+    known_titles = frozenset(titles)
     bib_keys = load_bib_keys(output_root)
     violations: list[RenderedReferenceViolation] = []
     for path in iter_rendered_text_files(output_root):
@@ -260,8 +261,9 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                             path, line_number, "unresolved citation key", f"@{key}", line
                         )
                     )
+            protected = _authored_bold_ranges(line, known_titles)
             for title, pattern in title_patterns:
-                if pattern.search(line):
+                if any(not _within_ranges(m.start(), protected) for m in pattern.finditer(line)):
                     violations.append(
                         RenderedReferenceViolation(path, line_number, "generated title in prose", title, line)
                     )
@@ -305,10 +307,44 @@ def _replacement_for_kind(kind: str, title: str) -> str:
     return "the current section"
 
 
-def _replace_title(line: str, title: str, replacement: str) -> str:
-    line = line.replace(f"**{title}**", replacement)
-    line = line.replace(f"__{title}__", replacement)
-    return _title_pattern(title).sub(replacement, line)
+def _authored_bold_ranges(line: str, known_titles: frozenset[str]) -> list[tuple[int, int]]:
+    """Char ranges of ``**...**`` spans whose inner text is NOT a known section title (authored woven lesson titles), protected from matching."""
+    ranges: list[tuple[int, int]] = []
+    for match in _BOLD_SPAN_RE.finditer(line):
+        inner = (match.group(1) or match.group(2) or "").strip()
+        if inner and inner not in known_titles:
+            ranges.append((match.start(), match.end()))
+    return ranges
+
+
+def _within_ranges(index: int, ranges: list[tuple[int, int]]) -> bool:
+    return any(start <= index < end for start, end in ranges)
+
+
+def _neutralize_plain_text(text: str, rules: Sequence[TitleRule]) -> str:
+    """Replace bare (non-emphasised) section-title cross-references with generic
+    phrases. Titles inside authored ``**bold**`` spans are handled by the caller
+    (the topic-cluster generator bolds its lesson-title list so it is preserved);
+    bare matches here are genuine cross-references and are always neutralised."""
+    for rule in rules:
+        text = _title_pattern(rule.title).sub(rule.replacement, text)
+    return text
+
+
+def _neutralize_title_mentions(line: str, rules: Sequence[TitleRule]) -> str:
+    """Neutralise section-title cross-references in one line, leaving authored
+    bold spans verbatim (neutralised only when the whole span is a known title)."""
+    rule_by_title = {rule.title: rule for rule in rules}
+    pieces: list[str] = []
+    cursor = 0
+    for match in _BOLD_SPAN_RE.finditer(line):
+        pieces.append(_neutralize_plain_text(line[cursor : match.start()], rules))
+        inner = (match.group(1) or match.group(2) or "").strip()
+        rule = rule_by_title.get(inner)
+        pieces.append(rule.replacement if rule is not None else match.group(0))
+        cursor = match.end()
+    pieces.append(_neutralize_plain_text(line[cursor:], rules))
+    return "".join(pieces)
 
 
 def _title_pattern(title: str) -> re.Pattern[str]:

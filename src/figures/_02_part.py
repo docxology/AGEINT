@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from enum import Enum
-import hashlib
 from importlib import import_module
 import io
 import json
@@ -79,6 +78,7 @@ from ._03_part import (
     _validate_png_asset,
 )
 from ._02b_mermaid import SYNTHESIS_MERMAID, placeholder_or_fail, render_mermaid_figure
+from ._02b_mermaid import _mermaid_cache_marker, _mermaid_source_hash
 
 
 def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec]:
@@ -110,12 +110,11 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
             FigureSpec(
                 label=f"fig:part-{part_slug}-module-map",
                 title=f"{part['title']} Module Map",
-
                 caption=(
-                    f"The {part['title']} module map connects lessons, practice artifacts, "
-                    "and review gates for the part."
+                    f"The {part['title']} module map traces the part's chapters as a "
+                    "linear reading sequence."
                 ),
-                alt_text=f"Mermaid diagram of modules in {part['title']}.",
+                alt_text=f"Flow chart of {part['title']} chapter titles in reading order.",
                 kind=FigureKind.MERMAID,
                 output_path=f"output/figures/mermaid/part-{part_slug}-module-map.png",
                 source_artifact_path=f"output/figures/mermaid/part-{part_slug}-module-map.mmd",
@@ -326,16 +325,6 @@ def _validate_specs(specs: Sequence[FigureSpec]) -> None:
             raise ValueError(f"Figure {spec.label} needs provenance")
 
 
-def _placeholder_or_fail(
-    output_path: Path,
-    title: str,
-    message: str,
-    *,
-    allow_placeholder_figures: bool,
-) -> None:
-    placeholder_or_fail(output_path, title, message, allow_placeholder_figures=allow_placeholder_figures)
-
-
 def _ensure_registry_asset(
     root: Path,
     spec: FigureSpec,
@@ -345,7 +334,7 @@ def _ensure_registry_asset(
     """Ensure registry creation has a valid local PNG for every figure row."""
     asset = root / spec.output_path
     if not asset.is_file():
-        _placeholder_or_fail(
+        placeholder_or_fail(
             asset,
             spec.title,
             "Figure asset was unavailable after rendering; generated deterministic fallback.",
@@ -365,12 +354,29 @@ def _render_figure_asset(
     """Render one figure through a validated temporary PNG before publishing it."""
     final_path = root / spec.output_path
     final_path.parent.mkdir(parents=True, exist_ok=True)
+    # Mermaid content cache: skip the costly mmdc render when the diagram source
+    # is byte-identical to the source that last produced a REAL PNG on disk. The
+    # marker is written only after a verified real render, so plates never cache.
+    cache_marker: Path | None = None
+    cache_key: str | None = None
+    if spec.kind is FigureKind.MERMAID:
+        cache_key = _mermaid_source_hash(curriculum, spec)
+        cache_marker = _mermaid_cache_marker(root, spec)
+        if (
+            cache_key is not None
+            and final_path.is_file()
+            and _png_asset_is_valid(final_path)
+            and cache_marker.is_file()
+            and cache_marker.read_text(encoding="utf-8").strip() == cache_key
+        ):
+            return
     temp_path = _temporary_png_path(final_path)
     if temp_path.exists():
         temp_path.unlink()
+    real_render = True
     try:
         if spec.kind is FigureKind.MERMAID:
-            render_mermaid_figure(
+            real_render = render_mermaid_figure(
                 root,
                 curriculum,
                 spec,
@@ -386,7 +392,8 @@ def _render_figure_asset(
         else:  # pragma: no cover - enum coverage is enforced by spec tests
             raise ValueError(f"Unknown AGEINT figure kind: {spec.kind}")
         if not temp_path.is_file():
-            _placeholder_or_fail(
+            real_render = False
+            placeholder_or_fail(
                 temp_path,
                 spec.title,
                 "Figure renderer completed without creating an asset; generated deterministic fallback.",
@@ -395,7 +402,8 @@ def _render_figure_asset(
         try:
             _normalize_png_canvas(temp_path)
         except (OSError, SyntaxError, ValueError) as exc:
-            _placeholder_or_fail(
+            real_render = False
+            placeholder_or_fail(
                 temp_path,
                 spec.title,
                 f"Figure renderer produced an unreadable PNG during normalization: {exc}",
@@ -403,7 +411,8 @@ def _render_figure_asset(
             )
             _normalize_png_canvas(temp_path)
         if not _png_asset_is_valid(temp_path):
-            _placeholder_or_fail(
+            real_render = False
+            placeholder_or_fail(
                 temp_path,
                 spec.title,
                 "Figure renderer produced an invalid or missing asset; generated deterministic fallback.",
@@ -415,7 +424,8 @@ def _render_figure_asset(
         try:
             _validate_png_asset(final_path, spec)
         except (OSError, SyntaxError, ValueError) as exc:
-            _placeholder_or_fail(
+            real_render = False
+            placeholder_or_fail(
                 final_path,
                 spec.title,
                 f"Published figure asset was unreadable after replacement: {exc}",
@@ -423,6 +433,11 @@ def _render_figure_asset(
             )
             _normalize_png_canvas(final_path)
             _validate_png_asset(final_path, spec)
+        if cache_marker is not None:
+            if real_render and cache_key is not None:
+                cache_marker.write_text(cache_key, encoding="utf-8")
+            elif cache_marker.exists():
+                cache_marker.unlink()
     finally:
         if temp_path.exists():
             temp_path.unlink()

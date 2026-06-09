@@ -72,6 +72,7 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_dia_tradecraft_primer",
             "official_army_atp_2_33_4",
             "scholarly_heuer_psychology_intelligence_analysis",
+            "scholarly_heuer_pherson_sats",
         ),
         conceptual_focus=(
             "turning uncertainty into reviewable judgment through sourcing, "
@@ -201,6 +202,17 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_nist_ssdf",
             "official_cisa_secure_by_design",
             "official_nist_ai_100_2_adversarial_ml",
+            "scholarly_friston_2010_fep",
+            "scholarly_friston_2017_active_inference_process",
+            "scholarly_dacosta_2020_discrete_active_inference",
+            "scholarly_parr_2022_active_inference_textbook",
+            "scholarly_yao_2023_react",
+            "scholarly_shinn_2023_reflexion",
+            "scholarly_park_2023_generative_agents",
+            "scholarly_wei_2022_chain_of_thought",
+            "scholarly_schick_2023_toolformer",
+            "scholarly_wooldridge_1995_intelligent_agents",
+            "scholarly_wooldridge_2009_multiagent_systems",
         ),
         conceptual_focus=(
             "delegated action under explicit authority, identity, permissions, "
@@ -289,6 +301,10 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_odni_eo_12333",
             "official_nsa_fisa",
             "official_odni_icd_206",
+            "official_nist_fips_197_aes",
+            "official_nist_fips_186_5_dss",
+            "official_nist_fips_180_4_shs",
+            "official_nist_sp_800_57pt1r5_key_management",
         ),
         conceptual_focus=(
             "requirements-driven, authority-bounded collection where priorities, "

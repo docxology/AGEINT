@@ -49,7 +49,11 @@ def test_z_generate_manuscript_variables_prints_path() -> None:
         check=False,
         capture_output=True,
         text=True,
-        timeout=120,
+        # This script delegates to the full run_build() (template-compat contract),
+        # which re-renders all 64 figures (24 Mermaid/Chrome subprocesses, ~185s).
+        # Corpus growth pushed the full build to ~150-190s, past the 120s used by
+        # the lighter script tests; 300s gives headroom without masking a real hang.
+        timeout=300,
     )
     assert result.returncode == 0
     assert result.stdout.strip().endswith("manuscript_variables.json")

@@ -102,6 +102,16 @@ def test_audit_pdf_quality_flags_banned_phrase_on_page(tmp_path: Path) -> None:
     assert report.banned_phrase_hits[0].page == 2
 
 
+def test_audit_pdf_quality_ignores_words_containing_banned_tokens(tmp_path: Path) -> None:
+    pdf_path = tmp_path / "token-substring.pdf"
+    _write_pdf(pdf_path, ["Todoist, ORCID identifiers, and Notion are ordinary source text."])
+
+    report = audit_pdf_quality(pdf_path, banned_phrases=("TODO", "ORCID:"))
+
+    assert report.ok is True
+    assert report.banned_phrase_hits == ()
+
+
 def test_audit_pdf_quality_clean_pdf_is_ok(tmp_path: Path) -> None:
     pdf_path = tmp_path / "clean.pdf"
     _write_pdf(pdf_path, ["Curriculum-safe analyst workbook content."])

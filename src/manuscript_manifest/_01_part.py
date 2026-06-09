@@ -177,7 +177,11 @@ def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, lim
     topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local source-topic cluster"
-    return compact_topic_cluster(topics)
+    # Bold the cluster so the rendered-reference sanitiser treats it as an
+    # authored subject phrase: a lesson title like "History of Social
+    # Engineering" must not have its embedded chapter-title substring
+    # ("Social Engineering") neutralised into "History of the module".
+    return f"**{compact_topic_cluster(topics)}**"
 
 def _cognitive_attack_framework() -> str:
     return (

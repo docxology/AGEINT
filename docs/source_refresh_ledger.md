@@ -42,7 +42,7 @@ and definitive OT architecture evidence. These rows use
 `checked_as_of: "2026-05-24"` and the same direct-verification standard as the
 May 21 and May 22 shards.
 
-A further 2026-05-22 verified batch is encoded in
+A separate 2026-05-22 verified batch is encoded in
 `data/research_anchors/intelligence-anchors-173-186.jsonl`. It adds NATO CCDCOE
 cognitive-warfare research, DARPA Intrinsic Cognitive Security, Cloud Security
 Alliance frameworks (Cognitive Degradation Resilience, MAESTRO threat modeling,
@@ -51,9 +51,37 @@ note), the OWASP agentic AI threats-and-mitigations reference, frontier-lab agen
 research from Anthropic and Google DeepMind, the Prompt Infection and Systems
 Security Foundations for Agentic Computing preprints, the Mandel-Tetlock analytic
 judgment-correctives study, and the UNU Macau bounded-agency policy analysis.
-These rows use `checked_as_of: "2026-05-22"`. Any vendor or quantitative figures
+These rows use `checked_as_of: "2026-05-22"`; the date records direct source
+verification, not publication chronology. Any vendor or quantitative figures
 inside the cited pages (readiness percentages, success-rate statistics) are
 treated as ESTIMATE in the anchor notes, never asserted as fact.
+
+A 2026-06-06 internet-citation batch is encoded in
+`data/research_anchors/intelligence-anchors-187-194.jsonl`. It adds NIST AI
+100-4 synthetic-content transparency, NIST AI 100-5 global AI standards
+engagement, NIST AI 800-1 misuse-risk draft guidance, the International AI
+Safety Report 2026, Model Context Protocol specification and security
+best-practices pages, Agent2Agent protocol documentation, and NCSC secure-AI
+system-development guidance. These rows use `checked_as_of: "2026-06-06"`;
+`official_us_aisi_nist_ai_800_1_misuse_risk` intentionally carries
+`source_tier: "official_draft"` so manuscript prose treats it as draft guidance,
+not finalized policy.
+
+A second 2026-06-06 internet-citation batch is encoded in
+`data/research_anchors/intelligence-anchors-195-202.jsonl`. It adds MITRE
+D3FEND, OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore
+anchors for defensive-control provenance, machine-readable security advisories,
+SBOM/provenance documentation, control-assessment automation, supply-chain
+levels, signed attestations, and transparency-log backed release evidence. These
+rows also use `checked_as_of: "2026-06-06"` and are treated as standards or
+official project documentation rather than vendor marketing.
+
+A 2026-06-06 liveness sweep refreshed moved URLs for the CIA Heuer analytic
+psychology monograph, OECD public-sector AI, OECD AI and work, NIST Big Data
+Interoperability Framework, and C2PA specifications anchors without changing
+their citation keys. The same sweep found the UNESCO AI competency-frameworks
+article had moved; a likely successor URL is recorded in the anchor note, but
+UNESCO reset automated retrieval and still needs manual browser re-verification.
 
 ## Refresh Triggers
 

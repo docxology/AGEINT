@@ -140,6 +140,45 @@ def test_rendered_reference_sanitizer_preserves_structural_titles_only() -> None
     assert "- Start the module with the authority card." in sanitized
 
 
+def test_sanitize_preserves_authored_titles_but_neutralizes_bare_crossrefs() -> None:
+    """A chapter title embedded in a longer authored ``**bold**`` phrase (a woven
+    lesson title / bolded topic cluster) is preserved, while a bare standalone
+    cross-reference — even one opening with a capitalised word — is still
+    neutralised.
+
+    Regression guard for the 2026-06-09 fix: an earlier "preceded by a Title-Case
+    word" heuristic LEAKED bare cross-references such as "See Social Engineering
+    ..." through both the mutator and the (shared-logic) checker — a silent
+    under-neutralisation surfaced by cross-vendor review.
+    """
+    rule = [TitleRule("Social Engineering", "the module", "chapter")]
+    # Embedded in a longer bold lesson title -> preserved verbatim.
+    assert (
+        sanitize_rendered_section_title_mentions(
+            "**History of Social Engineering** teaches defensive recognition.", rule
+        )
+        == "**History of Social Engineering** teaches defensive recognition."
+    )
+    # Bold topic cluster containing the chapter title -> preserved.
+    assert "Social Engineering" in sanitize_rendered_section_title_mentions(
+        "The cluster is **Influence Tactics; History of Social Engineering**.", rule
+    )
+    # Bare cross-reference opening with a capital -> neutralised (no leak).
+    assert (
+        sanitize_rendered_section_title_mentions(
+            "See Social Engineering for the next exercise.", rule
+        )
+        == "See the module for the next exercise."
+    )
+    # Exact bold title mention (a genuine cross-reference) -> neutralised.
+    assert (
+        sanitize_rendered_section_title_mentions(
+            "Start **Social Engineering** with the authority card.", rule
+        )
+        == "Start the module with the authority card."
+    )
+
+
 def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path: Path) -> None:
     web = tmp_path / "web"
     web.mkdir()

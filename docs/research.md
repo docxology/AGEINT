@@ -64,7 +64,7 @@ generated chapters select them through reusable profiles and practice lenses
 rather than through hand-authored chapter prose.
 
 The v2, deep-expansion, and evidence-package passes add source-lane metadata to curated anchors
-and expand the curated anchor set to at least 186 official, standards,
+and expand the curated anchor set to at least 202 official, standards,
 public-domain, or scholarly sources. New lanes cover AI conformity/compliance,
 education and assessment, public-sector agentic AI, cross-border data/data
 spaces, human-rights governance, agent interoperability standards, workforce
@@ -98,7 +98,9 @@ Commission AI Office/GPAI/Data Act/Data Governance Act/data-space sources,
 UNESCO AI ethics and education guidance, OHCHR digital-rights and privacy
 materials, World Bank GovTech AI resources, ILO and OECD work sources, W3C
 WoT/VC/DID/PROV/DCAT/Data-on-the-Web recommendations, OpenAPI, DataCite, C2PA
-provenance specifications, W3C WCAG, CAST UDL, DOJ ADA Title II accessibility
+provenance specifications, Model Context Protocol specification and security
+best-practices pages, Agent2Agent protocol documentation, MITRE D3FEND, OASIS
+CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, Sigstore, W3C WCAG, CAST UDL, DOJ ADA Title II accessibility
 guidance, EDPB DPIA materials, OECD public procurement and open government
 legal instruments, the Open Contracting Data Standard, NIST SP 800-61 Rev. 3,
 ENISA AI cybersecurity guidance, NIST AI security/resilience resources, and W3C
@@ -107,7 +109,12 @@ The evidence-package source family adds model cards, datasheets for datasets,
 the UK Algorithmic Transparency Recording Standard, NIST SP 800-218A, the U.S.
 Access Board Revised 508 Standards, NIST ARIA, NARA AI use-case inventory, OMB
 M-25-21, OMB M-25-22, NIST AI 600-1, and the NIST AI Agent Standards
-Initiative. The May 22, 2026 refresh adds CISA AI red teaming/TEVV, CISA AI
+Initiative. The 2026-06-06 internet-citation pass adds NIST AI 100-4
+synthetic-content transparency, NIST AI 100-5 global AI standards engagement,
+NIST AI 800-1 misuse-risk draft guidance, the International AI Safety Report
+2026, MCP specification/security pages, the A2A protocol, NCSC secure-AI
+system-development guidance, MITRE D3FEND, OASIS CSAF, CycloneDX, SPDX, NIST
+OSCAL, SLSA, in-toto, and Sigstore. The May 22, 2026 refresh adds CISA AI red teaming/TEVV, CISA AI
 data-security best practices, NIST's critical-infrastructure AI RMF profile
 concept note, OECD public-sector AI governance, and the NARA 2025 AI compliance
 plan.
@@ -164,8 +171,10 @@ and generated BibTeX:
 | H | Rights and incident governance | Canada Algorithmic Impact Assessment, OECD AI risks/incidents, and OECD incident-reporting framework |
 | I | Assurance and release control | NIST Dioptra, CISA secure AI deployment, CISA AI data-security best practices, and CISA AI red teaming/TEVV |
 | J | OT procurement and auditability | CISA Secure by Demand OT procurement, OT asset-inventory guidance, and definitive OT architecture guidance |
+| K | Current AI safety, misuse, and interoperability | NIST AI 100-4/100-5/800-1, International AI Safety Report 2026, MCP specification/security, A2A protocol, and NCSC secure-AI-development guidance |
+| L | Supply-chain evidence and defensive-control provenance | MITRE D3FEND, OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore |
 
-Measured source-layer coverage after the current refresh: **186** curated
+Measured source-layer coverage after the current refresh: **202** curated
 research anchors and **125** keyword concept routes. The exact project test and
 coverage result is intentionally not hard-coded here; run
 `uv run pytest tests/ --cov=src --cov-fail-under=90` for the current gate.

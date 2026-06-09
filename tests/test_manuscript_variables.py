@@ -7,6 +7,7 @@ from pathlib import Path
 
 from build_pipeline import run_build
 from curriculum import load_curriculum
+from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import (
     generate_variables,
     reference_bibtex_files,
@@ -50,8 +51,10 @@ def test_reference_bibtex_files_include_research_anchor_shards() -> None:
     curriculum = load_curriculum(PROJECT_ROOT / "data" / "curriculum")
     files = reference_bibtex_files(curriculum.references)
 
+    last_anchor = len(INTELLIGENCE_RESEARCH_ANCHORS)
+    last_start = ((last_anchor - 1) // 50) * 50 + 1
     assert any(name.startswith("references-research-anchors-") for name in files)
-    assert "references-research-anchors-151-186.bib" in files
+    assert f"references-research-anchors-{last_start:03d}-{last_anchor:03d}.bib" in files
     assert "references-source-quality.bib" in files
 
 

@@ -369,3 +369,68 @@ def _topic_anchor_words(topic: str, limit: int = 3) -> str:
         }
     ]
     return ", ".join(words[:limit]) if words else topic
+
+
+# Function words that should not begin or end a distinguishing phrase.
+_PHRASE_EDGE_STOPWORDS: Final[frozenset[str]] = frozenset(
+    {
+        "the",
+        "a",
+        "an",
+        "and",
+        "or",
+        "of",
+        "in",
+        "on",
+        "for",
+        "to",
+        "with",
+        "from",
+        "as",
+        "at",
+        "by",
+        "vs",
+    }
+)
+
+# Pre-colon heads that are generic lead-ins; when the title carries a colon, the
+# topic-specific text after the colon is the better distinguisher.
+_GENERIC_PHRASE_HEADS: Final[frozenset[str]] = frozenset(
+    {
+        "historical foundations",
+        "methods",
+        "overview",
+        "introduction",
+        "definitions",
+        "background",
+        "case study",
+        "case",
+        "fundamentals",
+        "principles",
+    }
+)
+
+
+def distinguishing_phrase(raw_title: str, limit_words: int = 5) -> str:
+    """Return a short, contiguous, readable phrase that distinguishes a topic.
+
+    Unlike ``_topic_anchor_words`` (a comma-joined keyword list), this keeps a
+    contiguous noun phrase lifted from the raw source title with citation noise
+    (parentheticals, volume/issue markers, years) removed. Used to differentiate
+    sibling lessons that collapse to the same safe label, so headers read as
+    distinct topics rather than ``<same phrase> (7.2)``. The caller is
+    responsible for rejecting any phrase that reproduces a blocked motif.
+    """
+    text = re.sub(r"\([^()]*\)", "", raw_title.strip())
+    head, _, tail = text.partition(":")
+    head, tail = head.strip(), tail.strip()
+    chosen = tail if (head.lower() in _GENERIC_PHRASE_HEADS and tail) else (head or tail)
+    chosen = re.sub(r"\bvol\.?\s*\w+\b", "", chosen, flags=re.IGNORECASE)
+    chosen = re.sub(r"\bno\.?\s*\w+\b", "", chosen, flags=re.IGNORECASE)
+    chosen = re.sub(r"\b\d{4}(?:[–-]\d{2,4})?\b", "", chosen)
+    words = re.findall(r"[A-Za-z0-9][A-Za-z0-9'&/-]*", chosen)
+    while words and words[0].lower() in _PHRASE_EDGE_STOPWORDS:
+        words.pop(0)
+    while words and words[-1].lower() in _PHRASE_EDGE_STOPWORDS:
+        words.pop()
+    return " ".join(words[:limit_words]).strip(" ,;:-—")

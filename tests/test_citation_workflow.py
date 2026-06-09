@@ -46,10 +46,10 @@ def test_source_section_inventory_matches_current_curriculum() -> None:
 
     assert len(rows) == 723
     assert summary.section_count == 723
-    assert summary.citation_occurrences == 1484
+    assert summary.citation_occurrences == 1470
     assert summary.zero_citation_sections == 0
     assert summary.unique_citation_keys == 301
-    assert dict(summary.citation_count_distribution) == {1: 273, 2: 142, 3: 305, 4: 3}
+    assert dict(summary.citation_count_distribution) == {1: 275, 2: 152, 3: 293, 4: 3}
 
 
 def test_rendered_workflow_markdown_names_authoring_surfaces() -> None:

@@ -189,6 +189,23 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "learner_support_accommodations" in variables["INTELLIGENCE_SOURCE_LANE_ROWS"]
     assert "assurance_evaluation_evidence" in variables["INTELLIGENCE_SOURCE_LANE_ROWS"]
     assert "source URL, policy status" in variables["SOURCE_REFRESH_ROWS"]
+    assert "| Anchor | Source | Lane | Tier | Checked | Cadence | Refresh trigger | Verification note |" in variables["SOURCE_REFRESH_ROWS"]
+    assert "URL refreshed 2026-06-06" in variables["SOURCE_REFRESH_ROWS"]
+    assert "manual browser re-verification remains required" in variables["SOURCE_REFRESH_ROWS"]
+    assert "| Anchor | Source | Lane | Contribution to the manuscript | Verification caveat |" in variables[
+        "CURRENT_SOURCE_UPDATE_ROWS"
+    ]
+    assert "official_nist_ai_100_4_synthetic_content" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
+    assert "official_us_aisi_nist_ai_800_1_misuse_risk" in variables[
+        "CURRENT_SOURCE_UPDATE_ROWS"
+    ]
+    assert "Draft status retained" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
+    assert "official_model_context_protocol_security_best_practices" in variables[
+        "CURRENT_SOURCE_UPDATE_ROWS"
+    ]
+    assert "official_agent2agent_protocol_specification" in variables[
+        "CURRENT_SOURCE_UPDATE_ROWS"
+    ]
     assert "AGEINT patterns" in variables["SAFE_SUBSTITUTION_ROWS"]
     assert "authorized learning question" in variables["CAPSTONE_SCAFFOLD_ROWS"]
     assert "WCAG/UDL needs note" in variables["ACCESSIBILITY_REVIEW_ROWS"]
@@ -223,7 +240,7 @@ def test_research_anchors_include_verification_metadata() -> None:
         assert set(profile.anchor_keys) <= anchor_keys, profile.identifier
     for anchor in INTELLIGENCE_RESEARCH_ANCHORS:
         checked = date.fromisoformat(anchor.checked_as_of)
-        assert date(2026, 5, 21) <= checked <= date(2026, 5, 24)
+        assert date(2026, 5, 21) <= checked <= date.today()
         assert anchor.verification_note
         assert anchor.citation_role == "curriculum_anchor"
         assert anchor.source_lane or anchor.domain

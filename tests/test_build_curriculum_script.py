@@ -85,7 +85,7 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path) -> Non
     ).read_text(encoding="utf-8")
     assert "**Filled artifact.**" in worked
     assert "### Answer quality rubric" in worked
-    assert "Visual guide " in (
+    assert "are mapped in" in (
         project
         / "output"
         / "manuscript"

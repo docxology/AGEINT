@@ -83,6 +83,11 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "official_odni_icd_203",
             "official_cia_tradecraft_primer",
             "scholarly_heuer_psychology_intelligence_analysis",
+            "official_cia_burkett_rascls",
+            "scholarly_meissner_2017_hig",
+            "scholarly_brimbal_2020_rapport",
+            "scholarly_nunan_2020_chis_rapport",
+            "scholarly_kelly_2013_interrogation_taxonomy",
         ),
         conceptual_focus=(
             "defending institutions, sources, and judgments against deception, "
@@ -128,6 +133,7 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "official_ic_ai_ethics_framework",
             "official_nist_ai_rmf",
             "scholarly_heuer_psychology_intelligence_analysis",
+            "scholarly_mcguire_1961_inoculation",
         ),
         conceptual_focus=(
             "protecting attention, belief formation, and decision quality without "

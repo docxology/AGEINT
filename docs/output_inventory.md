@@ -20,7 +20,7 @@ Canonical orchestration: `src/build_pipeline.py::run_build()`.
 | `output/data/curriculum/` | Mirrored curriculum shards (parts, chapters, appendices) | `write_curriculum_shards()` in `src/curriculum.py` | Tests, figure assignment, manifest rendering |
 | `output/data/curriculum_outline.json` | Compact parsed curriculum mirror (stats, parts, citations) | `write_compact_curriculum_payload()` in `src/curriculum.py` | Runtime variables, evidence registry, validation |
 | `output/data/manuscript_variables.json` | `{TOKEN: value}` substitution map | `save_variables()` in `src/manuscript_variables/` | Manuscript hydration, PDF render when linked through template pipeline |
-| `output/figures/figure_registry.json` | Registry-backed figure metadata (64 figures: 24 Mermaid, 33 Python, 4 historical, 3 AI-generated) | `render_figures()` in `src/figures/` | Manuscript cross-refs, validation |
+| `output/figures/figure_registry.json` | Registry-backed figure metadata (142 figures: 102 Mermaid, 33 Python, 4 historical, 3 AI-generated) | `render_figures()` in `src/figures/` | Manuscript cross-refs, validation |
 | `output/figures/{mermaid,python,historical,ai}/` | Square-normalized PNG assets (+ `.mmd` sources) | `src/figures/` | Manuscript `[@fig:…]` references |
 | `output/figures/mermaid/` synthesis cluster | 7 cognitive-security methods diagrams (CDR cascade, MAESTRO layers, SRE circuit breaker, decoherence/CDR isomorphism, unified epistemic stack, attack-layer taxonomy, HRO crosswalk) | `src/figures/_02b_mermaid.py` | Methods appendices `[@fig:…]` references |
 | `output/manuscript/` | Semantic Markdown, BibTeX, `config.yaml`, chapter fragment dirs | `render_manuscript()` in `src/manuscript_manifest/` | Markdown/PDF validation, publication |

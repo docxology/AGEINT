@@ -16,6 +16,10 @@ nameInLink: true
 
 # Abstract {#sec:abstract}
 
+## Graphical Abstract
+
+{{VISUAL_SYNTHESIS}}
+
 AGEINT, or Agentic Intelligence, names the application of autonomous and
 semi-autonomous AI-agent systems to intelligence collection, processing,
 exploitation, analysis, production, dissemination, and governed action. This
@@ -38,7 +42,3 @@ The scholarship layer is deliberately conservative. Perplexity and other
 discovery tools can suggest candidate sources, but the manuscript cites only
 directly represented official, standards, or scholarly anchors that survive
 manual review and rebuild into the BibTeX corpus.
-
-## Figures and course links
-
-{{VISUAL_SYNTHESIS}}

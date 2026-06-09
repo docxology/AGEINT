@@ -40,14 +40,16 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
                 "evidentiary support, common misconceptions, and safety boundaries."
             ),
             (
-                f"Verified anchors such as {anchors} ground definitions, examples, "
-                f"uncertainty language, and artifact requirements. {source_context}"
+                f"Definitions, examples, uncertainty language, and artifact "
+                f"requirements are grounded in verified anchors such as {anchors} "
+                f"{source_context}"
             ),
             (
                 f"Learners move from vocabulary and the **{lens.title}** "
                 f"distinction through topic lessons on {topics[0] if topics else title} with "
                 "evidence and misconception checks, then "
-                f"assemble a **{lens.evidence_artifact}** with safety and rights gates."
+                f"assemble {_indefinite_article(lens.evidence_artifact)} "
+                f"**{lens.evidence_artifact}** with safety and rights gates."
             ),
         ]
     )
@@ -104,7 +106,9 @@ def chapter_key_terms(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_terms = safe_topic_entries(chapter, part)
     seen_topic_defs: set[str] = set()
     for entry in topic_terms:
-        label = entry.display_title[:48]
+        label = entry.display_title
+        if len(label) > 48:
+            label = label[:48].rsplit(" ", 1)[0] + "…"
         if label and any(label.lower() in row.lower() for row in rows):
             continue
         anchor = _topic_anchor_words(entry.display_title, limit=3)

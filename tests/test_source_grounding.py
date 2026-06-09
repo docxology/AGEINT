@@ -11,6 +11,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 from intelligence_content._01_part import TopicEntry  # noqa: E402
 from intelligence_content._11_part import chapter_source_annotations  # noqa: E402
 from intelligence_content.source_grounding import (  # noqa: E402
+    SourceRecord,
     annotated_source_table,
     cited_sources,
     clean_source_note,
@@ -194,7 +195,11 @@ def test_source_support_sentence_anchors_on_title() -> None:
 def test_evidence_from_sources_anchors_and_lists_citations() -> None:
     sources = cited_sources(_entry((2,)), limit=3)
     evidence = evidence_from_sources("My lesson topic", sources)
-    assert evidence.startswith("For **My lesson topic**, work from the cited evidence")
+    # The opening lead-in rotates deterministically across a small bank, but it
+    # always opens by weaving the bolded lesson title (no single verbatim stamp).
+    assert evidence.startswith(
+        ("For **My lesson topic**", "Ground **My lesson topic**", "Read **My lesson topic**")
+    )
     assert "[@ageint002]" in evidence
     assert "Use it" not in evidence  # single-source phrasing lives in source support
 
@@ -265,3 +270,20 @@ def test_annotated_source_table_links_url_when_available() -> None:
     row = table.splitlines()[-1]
     # If verified, title is wrapped as [title](url)
     assert "http" in row or "Cited source" in row  # either linked or fallback
+
+
+def test_annotated_source_table_escapes_at_signs_in_markdown_urls() -> None:
+    """Bare @ handles in source URLs must not be misread as citation keys."""
+    record = SourceRecord(
+        number=999,
+        key="ageint999",
+        title="Agentic AI Architectures",
+        note="Source note.",
+        url="https://medium.com/@anil.jain.baba/example",
+        verified=True,
+    )
+
+    table = annotated_source_table((record,))
+
+    assert "https://medium.com/%40anil.jain.baba/example" in table
+    assert "https://medium.com/@anil.jain.baba/example" not in table

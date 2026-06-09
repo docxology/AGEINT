@@ -1,6 +1,7 @@
 why_it_matters_templates:
-- Analysts use **{topic}** to {distinction}. A defensible treatment names the enabled
-  judgment, proof limit, and reviewer responsible for challenge.
+- Analysts use **{topic}** to {distinction}. A defensible treatment names the judgment
+  it enables for {practice_focus} review, the proof limit that {failure_hint} would
+  otherwise hide, and the reviewer accountable for challenge.
 - '**{topic}** matters in the **{profile}** lane because {practice_focus} evidence
   must stay separate from judgment; {failure_hint} is a common failure.'
 - '**{topic}** connects classroom vocabulary to {profile} practice: learners document
@@ -66,4 +67,31 @@ transfer_task_keyword_routes:
   - active inference
   - free energy
   - predictive
-  template: Transfer the idea to a non-AI chapter by naming the assumed model, the surprising observation, and the review point before any decision follows.
+  template: Transfer the idea to a non-AI chapter by naming the assumed model, the
+    surprising observation, and the review point before any decision follows.
+
+misconception_category_routes:
+  cognitive_resilience: "that a resilience label on a technique means it has been stress-tested, rather than a habit that still needs evidence, caveats, and reviewer challenge"
+  historical_humint_source_protection: "that a source identity is safe to discuss once the operation is historical, when protection obligations and re-identification risk outlast the case itself"
+  analytic_tradecraft: "that a confident narrative is the same as a tested, source-backed judgment with its alternatives and confidence stated"
+  operator_decision_hygiene: "that feeling certain in the moment substitutes for the checklist, pause, and second-look that decision hygiene exists to enforce"
+  gray_zone_governance: "that activity falling below an obvious threshold is therefore ungoverned, rather than still bound by escalation limits and accountable review"
+  sigint_authority: "that a named collection authority removes the minimization and retention limits on what may be kept"
+  cyber_taxonomy: "that a defensive taxonomy label is an action sequence rather than a vocabulary for describing and detecting behavior"
+  geoint_data_quality: "that a visible feature in imagery is enough for confident attribution without resolution, timing, and provenance caveats"
+  counterintelligence_vetting: "that a clean vetting result certifies present trustworthiness rather than a point-in-time judgment that must be continuously re-examined"
+  humint_recruitment_risk: "that motivation literacy is contact authorization"
+  humint_handling_history: "that a documented handling precedent licenses repeating the approach, rather than a case-bound record whose risks must be re-assessed each time"
+  agentic_cyber_misuse: "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
+  operational_tradecraft_governance: "that governance vocabulary about tradecraft confers operational authorization rather than the constraints under which any action must be approved"
+  osint_tool_governance: "that a source being publicly accessible means collecting it is unrestricted, ungoverned, and free of legal, ethical, and scoping limits"
+  ics_safety: "that an industrial control system behaving normally proves it is safe, rather than a state that depends on intact safeguards and monitoring"
+  critical_infrastructure_sharing: "that information being shareable for defense means it carries no sensitivity, attribution, or need-to-know limits on who receives it"
+  non_state_actor_governance: "that lacking a state sponsor places an actor outside the reach of governance, accountability, and applicable rules"
+  software_supply_chain_social_trust: "that a familiar maintainer name or popular package is a substitute for verifying provenance, integrity, and the chain of trust"
+  financial_due_diligence: "that a typology or pattern match is proof of intent rather than a flag requiring corroboration and alternative explanations"
+  evidence_change_memory: "that a current record reflects the original, when undocumented changes to evidence over time can silently rewrite what is remembered"
+  identity_provenance: "that a presented identity is an established one, when provenance requires tracing how that identity was created, verified, and could be forged"
+  ics_evasion_coverage: "that mapping how detection can be evaded in control systems is a how-to, rather than a defensive map of where monitoring coverage must be hardened"
+  ics_collection_detection: "that describing how collection against control systems is detected is an evasion guide, rather than knowledge for strengthening detection"
+  ageint_pattern_registry: "that naming an agent pattern certifies it is safe to deploy without governance gates"

@@ -21,7 +21,7 @@ keyword_routes:
     citations: [297, 298]
   - keywords: ["directive", "dni", "odni", "authority", "oversight", "legal", "ethic"]
     citations: [298, 297]
-  - keywords: ["mcp", "agentic", "agent", "tool", "memory", "delegat", "autonomy"]
+  - keywords: ["mcp", "agentic", "ai agent", "tool use", "agent memory", "delegat", "autonomy"]
     citations: [299, 306, 312]
   - keywords: ["atlas", "adversarial", "attack", "mitre", "red team", "misuse"]
     citations: [300, 304, 306]

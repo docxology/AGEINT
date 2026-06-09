@@ -177,6 +177,14 @@ REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_cisa_secure_by_demand_ot_procurement",
     "official_cisa_ot_asset_inventory_guidance",
     "official_cisa_ot_definitive_architecture",
+    "official_nist_ai_100_4_synthetic_content",
+    "official_nist_ai_100_5_global_ai_standards",
+    "official_us_aisi_nist_ai_800_1_misuse_risk",
+    "official_international_ai_safety_report_2026",
+    "official_model_context_protocol_specification",
+    "official_model_context_protocol_security_best_practices",
+    "official_agent2agent_protocol_specification",
+    "official_ncsc_secure_ai_system_development",
 }
 # Re-export for manuscript-safety tests (canonical set lives in src/safety_contract.py).
 BLOCKED_OPERATIONAL_PATTERN_PHRASES = BLOCKED_OPERATIONAL_PHRASES

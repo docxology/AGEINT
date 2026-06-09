@@ -217,6 +217,17 @@ def misconception_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     )
 
 
+def misconception_category_routes() -> dict[str, str]:
+    """Return risk-category-specific misconception clauses (risk_category -> clause).
+
+    Consulted after keyword routes and before the generic per-risk templates so a
+    topic whose risk category has a tailored misconception gets it instead of one
+    of three decoupled fallbacks. Absent key degrades gracefully to ``{}``.
+    """
+    rows = topic_rotation_templates_payload().get("misconception_category_routes", {})
+    return {str(key): str(value) for key, value in rows.items()}
+
+
 def transfer_task_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered transfer-task keyword routes."""
     rows = topic_rotation_templates_payload()["transfer_task_keyword_routes"]

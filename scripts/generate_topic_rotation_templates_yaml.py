@@ -10,7 +10,8 @@ import yaml
 WHY_IT_MATTERS_TEMPLATES: tuple[str, ...] = (
     (
         "Analysts use **{topic}** to {distinction}. A defensible treatment names the "
-        "enabled judgment, proof limit, and reviewer responsible for challenge."
+        "judgment it enables for {practice_focus} review, the proof limit that "
+        "{failure_hint} would otherwise hide, and the reviewer accountable for challenge."
     ),
     (
         "**{topic}** matters in the **{profile}** lane because {practice_focus} "
@@ -81,6 +82,18 @@ MISCONCEPTION_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     ),
 )
 
+# Keyword-routed transfer tasks. Kept here so the one-shot generator emits a
+# COMPLETE payload: the runtime loader (_data_loaders.topic_rotation_templates_payload)
+# requires this list, and an earlier revision of this script omitted it, so a
+# regenerate silently produced a YAML that failed the loader's contract.
+TRANSFER_TASK_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
+    (
+        ("active inference", "free energy", "predictive"),
+        "Transfer the idea to a non-AI chapter by naming the assumed model, the "
+        "surprising observation, and the review point before any decision follows.",
+    ),
+)
+
 
 def main() -> None:
     root = Path(__file__).resolve().parents[1]
@@ -95,6 +108,10 @@ def main() -> None:
         "misconception_keyword_routes": [
             {"keywords": list(keywords), "misconception": misconception}
             for keywords, misconception in MISCONCEPTION_KEYWORD_ROUTES
+        ],
+        "transfer_task_keyword_routes": [
+            {"keywords": list(keywords), "template": template}
+            for keywords, template in TRANSFER_TASK_KEYWORD_ROUTES
         ],
     }
     out = root / "data" / "topic_rotation_templates.yaml"

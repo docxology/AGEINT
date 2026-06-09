@@ -29,11 +29,17 @@ uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/
 
 ## Mermaid figures
 
-AGEINT renders 24 Mermaid figures via `mmdc` into `output/figures/mermaid/`: 17
-curriculum and part module maps plus 7 synthesis methods diagrams (CDR cascade,
+AGEINT renders 102 Mermaid figures via `mmdc` into `output/figures/mermaid/`: 17
+curriculum and part module maps, 7 synthesis methods diagrams (CDR cascade,
 MAESTRO layers, SRE circuit breaker, decoherence-degradation isomorphism, unified
-epistemic stack, cognitive attack layers, HRO governance crosswalk). Strict
-verification requires real diagram PNGs, not deterministic text-plate fallbacks.
+epistemic stack, cognitive attack layers, HRO governance crosswalk), and 77
+concept diagrams declared in `data/figures/synthesis_extra.jsonl` — one per
+chapter (51), one per part (16), plus cross-cutting and appendix diagrams (the
+intelligence cycle, oversight architecture, minimization gating, ACH workflow,
+ICS defensive zones, and more). Strict verification requires real diagram PNGs,
+not deterministic text-plate fallbacks. Unchanged Mermaid sources are not
+re-rendered: a per-figure content hash in `<diagram>.mmd.rendered` skips `mmdc`
+when the source is byte-identical to the last real render.
 
 ```bash
 # Strict build (fail instead of placeholder PNGs when mmdc/Chrome is missing)

@@ -31,6 +31,10 @@ TEMPLATE_NAMES: Final[tuple[str, ...]] = (
 DEFAULT_TEMPLATES: Final[dict[str, str]] = {
     "abstract.md": """# Abstract {#sec:abstract}
 
+## Graphical Abstract
+
+{{VISUAL_SYNTHESIS}}
+
 AGEINT, or Agentic Intelligence, names the application of autonomous and
 semi-autonomous AI-agent systems to intelligence collection, processing,
 exploitation, analysis, production, dissemination, and governed action. This
@@ -53,10 +57,6 @@ The scholarship layer is deliberately conservative. Perplexity and other
 discovery tools can suggest candidate sources, but the manuscript cites only
 directly represented official, standards, or scholarly anchors that survive
 manual review and rebuild into the BibTeX corpus.
-
-## Figures and course links
-
-{{VISUAL_SYNTHESIS}}
 """,
     "orientation.md": """# Curriculum Orientation {#sec:curriculum_orientation}
 
@@ -298,10 +298,7 @@ to the canonical table in this section.
 
 ## Cross-links
 
-Use these links to read this module in sequence: the curriculum orientation,
-the parent part, the previous module, and the next module when available. Keep
-this navigation paired with the module source spine and capstone artifact so
-readers can see what evidence carries forward. Context: {{SECTION_NAV_CONTEXT}}
+{{SECTION_NAV_PROSE}}
 
 {{SECTION_CROSSREFS}}
 """,
@@ -321,11 +318,24 @@ readers can see what evidence carries forward. Context: {{SECTION_NAV_CONTEXT}}
 
 The bibliography atlas is generated from the parsed source-guide reference
 list plus official source-quality anchors. Citation keys are cited in prose
-with Pandoc citations.
+with Pandoc citations. Treat this appendix as the source-audit surface: each
+curated anchor keeps its source URL, source lane, checked date, refresh trigger,
+and verification note visible so moved pages, blocked automated fetches, and
+volatile standards can be reviewed without changing citation keys.
 
 ## Figures and course links
 
 {{VISUAL_SYNTHESIS}}
+
+## Current-source additions and refreshes
+
+The current-source table isolates anchors added or materially refreshed in the
+latest internet-citation pass. It is deliberately narrower than the full ledger:
+rows appear here only when the source URL was verified for this pass, a moved URL
+was refreshed, or a retrieval caveat changed the claim boundary. Draft sources
+retain draft-status caveats rather than being treated as final guidance.
+
+{{CURRENT_SOURCE_UPDATE_ROWS}}
 
 ## Source refresh ledger
 

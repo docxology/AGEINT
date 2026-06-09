@@ -8,7 +8,7 @@ from typing import Any
 
 from curriculum import Curriculum
 from figures import figure_markdown, figures_for_section
-from markdown_refs import figure_ref_list, section_ref_list
+from markdown_refs import section_ref_list
 from manuscript_templates import DEFAULT_TEMPLATES
 from manuscript_variables import appendix_rows
 from unit_education import render_unit_profile_markdown
@@ -35,6 +35,46 @@ from ._canonical_reference import (
     canonical_refresh_trigger_rows,
     canonical_safety_boundary,
 )
+
+# Rotated framing for the per-chapter Cross-links block. The structural links
+# themselves (orientation, parent unit, previous/next module) are emitted as
+# ``[@sec:...]`` crossrefs by SECTION_CROSSREFS; this prose only frames them.
+# Rotating by part domain and embedding the chapter's own topic cluster keeps
+# the framing from collapsing into one verbatim block stamped across every module.
+_NAV_PROSE_VARIANTS = (
+    "Read this module in sequence with the curriculum orientation, its parent unit, "
+    "and the adjacent modules so the evidence behind {topic} carries forward intact. "
+    "Source anchors for this module begin at {sources}.",
+    "Use the cross-links below to place {topic} in the wider unit: the orientation "
+    "sets the frame, the parent unit supplies the shared safety posture, and the "
+    "neighbouring modules show what evidence enters and leaves. Lead sources: {sources}.",
+    "These links keep {topic} paired with the orientation atlas, the parent unit, and "
+    "the previous and next modules, so a reader can trace which claims and caveats are "
+    "inherited rather than re-derived here. Anchored at {sources}.",
+    "Follow the cross-links to move between {topic} and the rest of the curriculum "
+    "without losing the source spine: orientation first, then the parent unit, then the "
+    "modules on either side. Primary sources: {sources}.",
+)
+
+
+def _chapter_nav_prose(chapter: dict[str, Any], part: dict[str, Any]) -> str:
+    """Return per-chapter cross-link prose that varies by part domain and topic.
+
+    The structural navigation itself (orientation, parent unit, previous/next
+    module) is emitted as ``[@sec:...]`` crossrefs by ``SECTION_CROSSREFS``; this
+    prose only frames those links. Rotating by ``part['title']`` and embedding the
+    chapter's actual topic cluster keeps the framing from collapsing into one
+    verbatim block stamped across every module.
+    """
+    from intelligence_content.topic_rotation import template_index
+
+    topic = _chapter_topic_context(chapter, part)
+    sources = _chapter_source_context(chapter)
+    variant = _NAV_PROSE_VARIANTS[
+        template_index(str(part["title"]), count=len(_NAV_PROSE_VARIANTS))
+    ]
+    return variant.format(topic=topic, sources=sources)
+
 
 def _apply_section_metadata(
     sections: list[ManuscriptSection],
@@ -104,15 +144,24 @@ def _visual_synthesis(
         if label not in reference_labels:
             reference_labels.append(label)
 
-    figure_refs = figure_ref_list(reference_labels)
     nav = _section_navigation(section)
-    section_noun = {
-        "chapter": "the module",
-        "part": "the unit",
-        "appendix": "the current appendix",
-        "front": "the front-matter section",
-        "bibliography": "the bibliography appendix",
-    }.get(section.kind, "the current section")
+    section_word = {
+        "chapter": "module",
+        "part": "unit",
+        "appendix": "appendix",
+        "front": "front-matter section",
+        "bibliography": "bibliography appendix",
+    }.get(section.kind, "section")
+    # Join the figure references as a conjoined list ("Figure 1 and Figure 2",
+    # "Figure 1, Figure 2, and Figure 3") instead of space-joined bare refs. Each
+    # reference stays in its own [@fig:…] bracket so link-validation resolves it.
+    _refs = [f"[@{label}]" for label in reference_labels]
+    if len(_refs) <= 1:
+        figure_group = _refs[0] if _refs else ""
+    elif len(_refs) == 2:
+        figure_group = f"{_refs[0]} and {_refs[1]}"
+    else:
+        figure_group = ", ".join(_refs[:-1]) + ", and " + _refs[-1]
     artifact_context = f" Artifact path: `{section.relative_path}`."
     definitions = [
         figure_markdown(
@@ -124,9 +173,9 @@ def _visual_synthesis(
         for entry in own_figures
     ]
     figure_sentence = (
-        f"Visual guide for {section_noun} {figure_refs} gives this section a concrete map of evidence flow, safety boundaries, and review artifacts.{artifact_context}"
-        if figure_refs
-        else f"Visual guide for {section_noun} uses the adjacent part, appendix, or curriculum overview figure to orient the section.{artifact_context}"
+        f"This {section_word}'s evidence flow, safety boundaries, and review artifacts are mapped in {figure_group}.{artifact_context}"
+        if figure_group
+        else f"This {section_word} is oriented by the adjacent part, appendix, or curriculum-overview figure.{artifact_context}"
     )
     definition_block = "\n\n".join(definitions)
     parts = [figure_sentence]
@@ -263,10 +312,7 @@ def build_manuscript_manifest(
                         "SECTION_TITLE": chapter["title"],
                         "SECTION_LABEL": chapter_label,
                         "SECTION_BODY": _chapter_body(chapter, part),
-                        "SECTION_NAV_CONTEXT": (
-                            f"{_chapter_topic_context(chapter, part)}; "
-                            f"source path begins with {_chapter_source_context(chapter)}"
-                        ),
+                        "SECTION_NAV_PROSE": _chapter_nav_prose(chapter, part),
                         "SECTION_CROSSREFS": "",
                     },
                     order,

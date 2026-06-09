@@ -13,8 +13,8 @@ after a rebuild and docs refresh:
 | Chapters | 51 | `data/curriculum/stats.json` |
 | Appendices | 9 | `data/curriculum/stats.json` |
 | Source-guide references | 312 | `data/curriculum/references/` |
-| Curated research anchors | 186 | `data/research_anchors/` |
-| Registered figures | 64 | `output/figures/figure_registry.json` |
+| Curated research anchors | 224 | `data/research_anchors/` |
+| Registered figures | 142 | `output/figures/figure_registry.json` |
 
 Perplexity may be used for discovery and second-opinion research. Final claims
 in docs or generated output must cite direct official, standards-body,

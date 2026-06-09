@@ -1,9 +1,10 @@
 # AGEINT Project Agent Guide
 
-AGEINT is a local active curriculum project under
-`projects/active/AGEINT`. Keep it local-only unless Daniel explicitly asks
-for a publication or promotion workflow and the parent repository
-confidentiality checks have passed.
+AGEINT is a local lifecycle curriculum project. In this checkout it lives at
+`projects/working/AGEINT`; if it is promoted or hot-seated it may be linked as
+`projects/active/AGEINT` or `projects/AGEINT` by the parent template workflow.
+Keep it local-only unless Daniel explicitly asks for a publication or promotion
+workflow and the parent repository confidentiality checks have passed.
 
 ## System map
 
@@ -44,7 +45,7 @@ flowchart LR
 - Generated manuscript: `output/manuscript/`.
 - Generated figures and registry: `output/figures/figure_registry.json`.
 - Bibliography surfaces: `manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
-- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 64 registered figures, 186 research anchors, 312 parsed guide references.
+- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 142 registered figures, 224 research anchors, 312 parsed guide references.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
 
 ## Editing rules

@@ -51,6 +51,15 @@ RENDERED_FORMULA_PHRASES = (
     "completed artifact is a",
     "placeholder",
     "boilerplate",
+    # Retired fixed-tail boilerplate (deterministic rotations replaced these);
+    # each substring is unique to the old stamped form, so it can never silently
+    # return. See source_grounding/_source_prose, topic_prompt_routes, and the
+    # why_it_matters rotation slot 0.
+    "extract the bounded claim it supports",
+    "for the topic definition, scope boundary, and refresh check before transfer",
+    "source descriptor, bounded claim, caveat, uncertainty note, blocked-use statement",
+    "enabled judgment, proof limit, and reviewer responsible for challenge",
+    "Use these links to read this module in sequence",
 )
 PDF_UNSUPPORTED_SOURCE_GLYPHS = ("🛰", "⃣")
 TITLE_KEYWORD_STOPWORDS = {
@@ -222,3 +231,66 @@ def test_orientation_gives_reader_use_paths(built_output: Path) -> None:
     assert "Source lane" in text
     assert "## Capstone model-answer exemplars" in text
     assert "Safe-lab packet" in text
+
+
+# Max times any single source-support CLOSING sentence or artifact-verification
+# sentence may render verbatim across all topic-lesson files. The closing
+# sentence is title-woven (near-unique; repeats only when the SAME title recurs,
+# capped by the most-repeated title at ~6) and the artifact sentence is anchored
+# on topic words. The current measured live max is 20 (the pattern-registry
+# artifact sentence, whose anchor collapses to a short shared fragment for that
+# category). The cap is set just above that real recurrence so a partial-stamp
+# regression past today's level trips, rather than only a catastrophic revert:
+# dropping the {title} weave would spike the closing sentence back to ~70, and a
+# full boilerplate revert to 500+. (Tightened from 40 → 24 after the 2026-06-09
+# RedTeam audit flagged the old cap as ~2x the live max and blind to the
+# realistic regression it exists to prevent.)
+_MAX_GROUNDING_SENTENCE_REPEAT = 24
+
+# The two de-boilerplated grounding sentence families. The closing source-support
+# sentence always terminates its physical line, so it is captured to end-of-line
+# (robust to title-internal periods like "(11.5)" or "vs."). The artifact-
+# verification sentence is followed by more prose on the same line, so it is
+# bounded by its terminal period; its woven anchor words contain no periods.
+_SOURCE_SUPPORT_CLOSING_RE = re.compile(r"Use (?:them|it) for .+$", re.MULTILINE)
+_ARTIFACT_VERIFICATION_RE = re.compile(r"The artifact must [^.]+\.")
+
+
+def _topic_lesson_files(output_manuscript: Path) -> list[Path]:
+    return sorted(output_manuscript.rglob("01-topic-lessons*.md"))
+
+
+def test_grounding_closing_and_artifact_sentences_are_not_stamped(built_output: Path) -> None:
+    """Cap verbatim repetition of the source-support closing and artifact sentences.
+
+    Both are topic-woven now (title for the closing sentence, anchor words for the
+    artifact sentence), so neither should recur as one identical stamp. Navigation
+    prose, markdown table cells, and arbitrary repeated source NOTES are excluded:
+    we count ONLY these two grounding sentence families, and only in topic-lesson
+    files (the sole place they render), skipping any line bearing a table pipe.
+    """
+    from collections import Counter
+
+    output_manuscript = manuscript_dir(built_output)
+    counts: Counter[str] = Counter()
+    for path in _topic_lesson_files(output_manuscript):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if "|" in line:  # skip markdown table rows
+                continue
+            for match in _SOURCE_SUPPORT_CLOSING_RE.findall(line):
+                counts[f"closing::{match.strip()}"] += 1
+            for match in _ARTIFACT_VERIFICATION_RE.findall(line):
+                counts[f"artifact::{match.strip()}"] += 1
+
+    assert counts, "expected grounding sentences in generated topic lessons"
+    over = {
+        sentence: total
+        for sentence, total in counts.items()
+        if total > _MAX_GROUNDING_SENTENCE_REPEAT
+    }
+    assert over == {}, (
+        "grounding sentence repeated verbatim past the de-boilerplating cap: "
+        + "; ".join(f"{total}x {sentence[:90]!r}" for sentence, total in sorted(
+            over.items(), key=lambda kv: kv[1], reverse=True
+        )[:5])
+    )

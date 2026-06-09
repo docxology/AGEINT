@@ -50,7 +50,13 @@ def unit_profile_for_part(part: dict[str, Any]) -> UnitEducationProfile:
 def render_unit_profile_markdown(part: dict[str, Any]) -> str:
     """Render reader-facing unit education sections for a unit introduction."""
     profile = unit_profile_for_part(part)
-    artifact_list = "; ".join(profile.evidence_artifacts)
+    _arts = list(profile.evidence_artifacts)
+    if len(_arts) <= 1:
+        artifact_list = _arts[0] if _arts else "its evidence artifacts"
+    elif len(_arts) == 2:
+        artifact_list = f"{_arts[0]} and {_arts[1]}"
+    else:
+        artifact_list = ", ".join(_arts[:-1]) + ", and " + _arts[-1]
     return "\n\n".join(
         [
             "### Discipline spine",
@@ -62,9 +68,9 @@ def render_unit_profile_markdown(part: dict[str, Any]) -> str:
             profile.source_use_contract,
             "### Practice artifact",
             (
-                f"The recurring practice artifact is a **{profile.practice_artifact}**. "
-                f"It draws on {artifact_list} and keeps the unit's learning spine explicit: "
-                f"{profile.learning_spine}"
+                f"The recurring practice artifact is a **{profile.practice_artifact}** "
+                f"that draws on {artifact_list}. The unit keeps its learning spine "
+                f"explicit. {profile.learning_spine}"
             ),
             "### Safety boundary",
             profile.safety_boundary,
@@ -81,12 +87,44 @@ def unit_lesson_evidence_line(profile: UnitEducationProfile, topic_title: str) -
     )
 
 
+_VOWEL_SOUND_RE = re.compile(r"^[aeiouAEIOU]")
+
+# Rotated closers for the unit artifact line. A single verbatim tail ("names
+# evidence, uncertainty, reviewer, and stop condition.") was stamped onto every
+# unit lesson (~564x). Each variant names the same four fields (evidence,
+# uncertainty, reviewer, stop condition) in different words; the choice is
+# deterministic per topic so a given lesson always renders the same closer.
+_ARTIFACT_CARD_CLOSERS: tuple[str, ...] = (
+    "names evidence, uncertainty, reviewer, and stop condition.",
+    "records its evidence, the residual uncertainty, the named reviewer, and the stop condition.",
+    "states the evidence used, what stays uncertain, who reviews it, and when to stop.",
+    "logs the evidence, the uncertainty, the responsible reviewer, and the halt condition.",
+)
+
+
+def _indefinite_article(noun_phrase: str) -> str:
+    """Return 'a' or 'an' for the leading sound of ``noun_phrase`` (heuristic)."""
+    return "an" if _VOWEL_SOUND_RE.match(noun_phrase.strip()) else "a"
+
+
+def _stable_index(seed: str, modulo: int) -> int:
+    """Deterministic 0..modulo-1 index (fixed ordinal digest, not salted hash)."""
+    if modulo <= 1:
+        return 0
+    total = 0
+    for position, character in enumerate(seed):
+        total = (total * 131 + ord(character) + position) % 1_000_003
+    return total % modulo
+
+
 def unit_lesson_artifact_line(profile: UnitEducationProfile, topic_title: str) -> str:
     """Return a compact unit-specific artifact sentence for a topic lesson."""
-    return (
-        f"Shape **{topic_title}** work as a **{profile.practice_artifact}** that "
-        "names evidence, uncertainty, reviewer, and stop condition."
-    )
+    artifact = profile.practice_artifact
+    article = _indefinite_article(artifact)
+    closer = _ARTIFACT_CARD_CLOSERS[
+        _stable_index(f"{topic_title}|{artifact}", len(_ARTIFACT_CARD_CLOSERS))
+    ]
+    return f"Shape **{topic_title}** work as {article} **{artifact}** that {closer}"
 
 
 def unit_specific_terms(profile: UnitEducationProfile) -> set[str]:

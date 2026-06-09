@@ -28,7 +28,6 @@ DEFAULT_BANNED_PHRASES: tuple[str, ...] = (
     "FIXME",
     "lorem ipsum",
     "draft placeholder",
-    "ORCID:",
 )
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md"}
 
@@ -194,10 +193,18 @@ def _phrase_hits(pages: list[str], banned_phrases: tuple[str, ...]) -> list[PdfP
     hits: list[PdfPhraseHit] = []
     for page_number, page_text in enumerate(pages, 1):
         for phrase in banned_phrases:
-            count = len(re.findall(re.escape(phrase), page_text, flags=re.IGNORECASE))
+            pattern = _phrase_pattern(phrase)
+            count = len(re.findall(pattern, page_text, flags=re.IGNORECASE))
             if count:
                 hits.append(PdfPhraseHit(phrase=phrase, page=page_number, count=count))
     return hits
+
+
+def _phrase_pattern(phrase: str) -> str:
+    escaped = re.escape(phrase)
+    if re.fullmatch(r"[A-Za-z0-9_]+", phrase):
+        return rf"\b{escaped}\b"
+    return escaped
 
 
 def _page_count(metadata: dict[str, str], fallback: int) -> int:

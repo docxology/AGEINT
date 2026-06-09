@@ -17,7 +17,7 @@ from intelligence_content._12_topic_frames import (  # noqa: E402
     evidence_prompt_for_entry,
 )
 from intelligence_content.topic_entries import safe_topic_entries  # noqa: E402
-from intelligence_content import practice_lens_for_titles, profile_for_titles  # noqa: E402
+from intelligence_content import practice_lens_for_titles  # noqa: E402
 
 DATA = PROJECT_ROOT / "data" / "curriculum"
 OUT = PROJECT_ROOT / "tests" / "fixtures" / "topic_prompt_parity.json"
@@ -30,7 +30,6 @@ def main() -> None:
         part_title = str(part["title"])
         for chapter in part["chapters"]:
             chapter_title = str(chapter["title"])
-            profile = profile_for_titles(part_title, chapter_title, chapter=chapter)
             lens = practice_lens_for_titles(part_title, chapter_title, chapter=chapter)
             coursebook = _coursebook_profile_for_titles(part_title, chapter_title)
             for entry in safe_topic_entries(chapter, part):

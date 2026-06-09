@@ -7,7 +7,9 @@ The major v2 pass expands AGEINT without changing its architecture:
   substitutions, capstone scaffolds, figures, variables, and manifest prose.
 - `output/` remains generated.
 - Scripts stay thin.
-- AGEINT remains local under `projects/active/AGEINT`.
+- AGEINT remains local under the lifecycle workspace (`projects/working/AGEINT`
+  in this checkout; parent-template workflows may link it as
+  `projects/active/AGEINT` or `projects/AGEINT` during promotion/hot-seat runs).
 
 ## Structural Changes
 
@@ -16,7 +18,7 @@ The major v2 pass expands AGEINT without changing its architecture:
 - Appendices increased from 7 to 9 with source verification and claim ledgers
   plus instructor capstone/rubric/red-team review packs.
 - Source-guide references increased from 231 to 312 by append-only expansion.
-- Curated anchors increased to at least 186 with source-lane metadata,
+- Curated anchors increased to at least 202 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
 - Registered figures increased to 64 with new source verification, claim
   ledger, compliance, agent evaluation, data flow, capstone, safe-substitution,

@@ -53,6 +53,7 @@ from ._09_part import (  # noqa: E402
     source_lane_inventory,
     source_lane_rows,
     source_refresh_rows,
+    current_source_update_rows,
     transparency_notice_rows,
 )
 from ._10_part import (  # noqa: E402
@@ -99,6 +100,7 @@ __all__ = [
     "source_lane_inventory",
     "source_lane_rows",
     "source_refresh_rows",
+    "current_source_update_rows",
     "safe_substitution_rows",
     "capstone_scaffold_rows",
     "accessibility_review_rows",

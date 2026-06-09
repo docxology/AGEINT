@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import shutil
@@ -87,7 +88,14 @@ def render_mermaid_figure(
     output_path: Path,
     *,
     allow_placeholder_figures: bool = False,
-) -> None:
+) -> bool:
+    """Render ``spec`` to ``output_path`` via mmdc.
+
+    Returns ``True`` only when mmdc produced a real, valid PNG; returns ``False``
+    when a placeholder plate was substituted (mmdc missing, or a failed/invalid
+    render). The caller uses this to decide whether the content cache may record
+    this render — a placeholder must never be cached as a current diagram.
+    """
     source_path = root / spec.source_artifact_path
     source_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -102,7 +110,7 @@ def render_mermaid_figure(
             "Mermaid CLI unavailable; source saved locally.",
             allow_placeholder_figures=allow_placeholder_figures,
         )
-        return
+        return False
     puppeteer = source_path.parent / "puppeteer-config.json"
     puppeteer_config: dict[str, object] = {
         "args": ["--no-sandbox", "--disable-setuid-sandbox"],
@@ -146,6 +154,8 @@ def render_mermaid_figure(
             f"Mermaid fallback render\n{message[:220]}",
             allow_placeholder_figures=allow_placeholder_figures,
         )
+        return False
+    return True
 
 
 def mermaid_source(curriculum: Curriculum, spec: FigureSpec) -> str:
@@ -353,130 +363,58 @@ _HRO_GOVERNANCE_CROSSWALK = """flowchart LR
     p5 --> g5
 """
 
-_SYNTHESIS_MERMAID_SOURCES: dict[str, str] = {
-    "cdr_degradation_cascade": _CDR_DEGRADATION_CASCADE,
-    "maestro_seven_layer": _MAESTRO_SEVEN_LAYER,
-    "sre_circuit_breaker": _SRE_CIRCUIT_BREAKER,
-    "cognitive_decoherence_cdr_isomorphism": _COGNITIVE_DECOHERENCE_CDR_ISOMORPHISM,
-    "unified_epistemic_stack": _UNIFIED_EPISTEMIC_STACK,
-    "cognitive_attack_layers": _COGNITIVE_ATTACK_LAYERS,
-    "hro_governance_crosswalk": _HRO_GOVERNANCE_CROSSWALK,
-}
+# Synthesis and chapter-concept diagrams are declared as data in
+# data/figures/synthesis_extra.json and merged into these structures by the
+# loader below, keeping the large Mermaid sources out of this module.
+_SYNTHESIS_MERMAID_SOURCES: dict[str, str] = {}
+SYNTHESIS_MERMAID: tuple[dict[str, str], ...] = ()
 
 
-# Synthesis methods figures from the cognitive-security/agentic-intelligence
-# source guide. Each entry becomes a MERMAID FigureSpec in build_figure_specs;
-# the "diagram" key selects the static source above via mermaid_source().
-SYNTHESIS_MERMAID: tuple[dict[str, str], ...] = (
-    {
-        "slug": "ageint-cdr-degradation-cascade",
-        "title": "AGEINT CDR Six-Stage Degradation Cascade",
-        "caption": (
-            "The CSA Cognitive Degradation Resilience cascade traces how an agent "
-            "network slides from trigger injection to systemic collapse below "
-            "conventional alerting thresholds."
-        ),
-        "alt_text": (
-            "Mermaid flowchart of six CDR degradation stages with adversary action, "
-            "observed effect, and QSAF-BC control for each stage."
-        ),
-        "diagram": "cdr_degradation_cascade",
-        "source_section": "appendix:g",
-    },
-    {
-        "slug": "ageint-maestro-seven-layer",
-        "title": "AGEINT MAESTRO Seven-Layer Threat Model",
-        "caption": (
-            "The CSA MAESTRO model stacks seven layers of the agentic AI lifecycle, "
-            "with the L6 Security/Compliance layer cross-cutting every other layer "
-            "because security agents are themselves attack surfaces."
-        ),
-        "alt_text": (
-            "Mermaid diagram of MAESTRO layers L1 through L7 in a vertical stack, with "
-            "L6 Security and Compliance drawn as a cross-cutting node linked to all "
-            "other layers."
-        ),
-        "diagram": "maestro_seven_layer",
-        "source_section": "chapter:34",
-    },
-    {
-        "slug": "ageint-sre-circuit-breaker",
-        "title": "AGEINT SRE-for-Agents Circuit Breaker",
-        "caption": (
-            "Microsoft's SRE-for-agents governance circuit breaker cycles agents "
-            "through CLOSED, OPEN, and HALF_OPEN states as the safety error budget "
-            "burns down and is restored."
-        ),
-        "alt_text": (
-            "Mermaid state-style flowchart showing CLOSED, OPEN, and HALF_OPEN "
-            "circuit-breaker states with the transition triggers between them and a "
-            "list of activation triggers."
-        ),
-        "diagram": "sre_circuit_breaker",
-        "source_section": "chapter:34",
-    },
-    {
-        "slug": "ageint-cognitive-decoherence-cdr-isomorphism",
-        "title": "AGEINT Decoherence-Degradation Isomorphism",
-        "caption": (
-            "The six phases of CCDCOE cognitive decoherence in human organizations map "
-            "one-to-one onto the CSA CDR cognitive-degradation stages in AI agent "
-            "networks, exposing a shared adversarial dynamic."
-        ),
-        "alt_text": (
-            "Mermaid diagram of six stacked phase rows from Initiation to Collapse; "
-            "each row pairs the human-organization decoherence stage on the left with "
-            "the AI-agent degradation stage on the right, joined by an isomorphism link."
-        ),
-        "diagram": "cognitive_decoherence_cdr_isomorphism",
-        "source_section": "appendix:g",
-    },
-    {
-        "slug": "ageint-unified-epistemic-stack",
-        "title": "AGEINT Unified Epistemic Coherence Stack",
-        "caption": (
-            "The synthesis's five-layer architecture stacks technical substrate, "
-            "operational security, structured reasoning, epistemic integrity, and "
-            "institutional governance into one mutually reinforcing system for "
-            "maintaining epistemic coherence."
-        ),
-        "alt_text": (
-            "Mermaid flowchart of five stacked layers from Technical Substrate at the "
-            "base to Institutional Governance at the top, each annotated with its "
-            "representative mechanisms."
-        ),
-        "diagram": "unified_epistemic_stack",
-        "source_section": "part:epistemic rigor and analytic tradecraft",
-    },
-    {
-        "slug": "ageint-cognitive-attack-layers",
-        "title": "AGEINT Cognitive Attack Layer Taxonomy",
-        "caption": (
-            "The NATO/INSS cognitive warfare taxonomy distinguishes biological, "
-            "psychological, and social attack layers by their target, mechanism, and "
-            "the role AI plays in each."
-        ),
-        "alt_text": (
-            "Mermaid diagram with a root cognitive-attack node branching into "
-            "biological, psychological, and social layers, each expanding into its "
-            "attack target, mechanism, and AI role."
-        ),
-        "diagram": "cognitive_attack_layers",
-        "source_section": "part:cognitive security",
-    },
-    {
-        "slug": "ageint-hro-governance-crosswalk",
-        "title": "AGEINT HRO-to-Governance Crosswalk",
-        "caption": (
-            "Weick and Sutcliffe's five High-Reliability Organization principles map "
-            "directly onto concrete AI agent governance mechanisms, turning "
-            "organizational theory into observable controls."
-        ),
-        "alt_text": (
-            "Mermaid diagram pairing each of the five HRO principles on the left with "
-            "its corresponding AI agent governance mechanism on the right."
-        ),
-        "diagram": "hro_governance_crosswalk",
-        "source_section": "part:epistemic rigor and analytic tradecraft",
-    },
+# Synthesis and chapter-concept diagrams live as data in
+# data/figures/synthesis_extra.jsonl (one JSON object per line) so the large
+# Mermaid sources stay out of this module and the file stays within the 500-line
+# cap. Each row carries the same fields as an inline entry plus its own
+# ``mermaid_source``. Merging here keeps one rendering path: the specs flow
+# through build_figure_specs and mermaid_source() exactly like the inline set.
+_EXTRA_DIAGRAMS_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "figures" / "synthesis_extra.jsonl"
 )
+
+
+def _load_extra_synthesis_diagrams() -> list[dict[str, str]]:
+    """Return chapter-level synthesis diagrams declared in the JSONL data file."""
+    if not _EXTRA_DIAGRAMS_PATH.is_file():
+        return []
+    return [
+        dict(json.loads(line))
+        for line in _EXTRA_DIAGRAMS_PATH.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+
+
+_EXTRA_SYNTHESIS_DIAGRAMS = _load_extra_synthesis_diagrams()
+for _row in _EXTRA_SYNTHESIS_DIAGRAMS:
+    _SYNTHESIS_MERMAID_SOURCES[_row["diagram"]] = _row["mermaid_source"]
+SYNTHESIS_MERMAID = SYNTHESIS_MERMAID + tuple(
+    {key: row[key] for key in ("slug", "title", "caption", "alt_text", "diagram", "source_section")}
+    for row in _EXTRA_SYNTHESIS_DIAGRAMS
+)
+
+
+def _mermaid_cache_marker(root: Path, spec: FigureSpec) -> Path:
+    """Sidecar path that records the source hash of the last real mermaid render."""
+    return root / (spec.source_artifact_path + ".rendered")
+
+
+def _mermaid_source_hash(curriculum: Curriculum, spec: FigureSpec) -> str | None:
+    """SHA-256 of the themed mermaid source for ``spec`` (None if unavailable).
+
+    The source text — theme header included — fully determines the rendered PNG
+    (mmdc args and the square-canvas normalization are fixed), so it is a sound
+    content-cache key: unchanged source means an unchanged diagram.
+    """
+    try:
+        source = mermaid_source(curriculum, spec)
+    except Exception:  # pragma: no cover - defensive; falls back to re-render
+        return None
+    return hashlib.sha256(source.encode("utf-8")).hexdigest()

@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from _data_loaders import (
+    misconception_category_routes,
     misconception_fallbacks,
     misconception_keyword_routes,
     misconception_risk_templates,
@@ -33,12 +34,18 @@ def why_it_matters_for_entry(
         entry.risk_category,
         profile.failure_modes.split(",")[0].strip() if profile.failure_modes else "overconfidence",
     )
-    chapter_slot = template_index(
+    # Seed the template choice on a per-topic digest rather than the linear
+    # lesson_index. Adding lesson_index linearly made consecutive lessons march
+    # through the templates in a predictable A-B-C-D cadence; hashing the topic's
+    # identity decorrelates adjacent lessons while staying deterministic.
+    template_index_value = template_index(
+        entry.display_title,
+        entry.raw_title,
         chapter_title,
         entry.risk_category,
+        str(lesson_index),
         count=len(templates),
     )
-    template_index_value = (chapter_slot + lesson_index - 1) % len(templates)
     template = templates[template_index_value]
     practice_focus = coursebook.practice_focus.removesuffix(" review")
     return template.format(
@@ -57,7 +64,21 @@ def misconception_for_entry(
     lesson_index: int = 1,
     chapter_title: str = "",
 ) -> str:
-    """Resolve misconception text from YAML templates and keyword branches."""
+    """Resolve misconception text from YAML templates and keyword branches.
+
+    Precedence matches the other resolvers (route -> category -> fallback):
+    content-specific keyword routes (FISA, MICE, ATT&CK, GEOINT, ACH, ...) are
+    consulted first so a topic that matches one gets its tailored misconception
+    even when it also carries a non-standard risk category; only then do the
+    generic per-risk templates and round-robin fallbacks apply.
+    """
+    raw = f"{entry.display_title} {entry.raw_title}".lower()
+    routed = _first_matching_frame(raw, misconception_keyword_routes())
+    if routed:
+        return routed
+    category_route = misconception_category_routes().get(entry.risk_category)
+    if category_route:
+        return category_route
     if entry.risk_category != "standard" and entry.risk_category != "ageint_pattern_registry":
         chapter_anchor = chapter_title or "this module"
         templates = misconception_risk_templates()
@@ -72,10 +93,6 @@ def misconception_for_entry(
             display_title=entry.display_title,
             chapter_anchor=chapter_anchor,
         )
-    raw = f"{entry.display_title} {entry.raw_title}".lower()
-    routed = _first_matching_frame(raw, misconception_keyword_routes())
-    if routed:
-        return routed
     fallbacks = misconception_fallbacks()
     chapter_base = template_index(chapter_title, count=len(fallbacks))
     template_slot = (chapter_base + lesson_index - 1) % len(fallbacks)

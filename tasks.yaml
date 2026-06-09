@@ -1,0 +1,159 @@
+# tasks.yaml — task + Gantt source of truth for this project.
+# Managed by the projects/taskboard server (live read-write) and seed_tasks.py.
+# status: todo | in_progress | blocked | done. dates: YYYY-MM-DD. progress: 0-100.
+project:
+  name: AGEINT
+  title: AGEINT — Agentic Intelligence Curriculum
+  status: active
+  color: '#4C72B0'
+  lead: DAF
+tasks:
+- id: ageint-1
+  title: Convert source guide → semantic manuscript
+  status: done
+  start: '2026-05-22'
+  end: '2026-05-30'
+  progress: 100
+  milestone: false
+  deps: []
+  tags:
+  - manuscript
+  notes: ''
+- id: ageint-2
+  title: Registry-backed figure generation
+  status: done
+  start: '2026-05-30'
+  end: '2026-06-04'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-1
+  tags:
+  - figures
+  notes: ''
+- id: ageint-3
+  title: Generated BibTeX + auditable runtime variables
+  status: done
+  start: '2026-06-04'
+  end: '2026-06-09'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-1
+  tags:
+  - reproducibility
+  notes: 'Complete for the current generated BibTeX/runtime-variable surface. Evidence
+    on 2026-06-09: `uv run python scripts/build_curriculum.py` completed with
+    16 parts, 51 modules, 9 appendices, 20 AGEINT patterns, 312 references, rendered
+    `output/data/manuscript_variables.json`, split `output/manuscript/references-*.bib`
+    shards, and `output/figures/figure_registry.json` with 142 figures. Full project
+    gate passed: `uv run pytest tests/ --cov=src --cov-fail-under=90` (245 passed,
+    91.95% coverage).'
+- id: ageint-4
+  title: Expand course / cookbook / playbook modules
+  status: todo
+  start: '2026-06-14'
+  end: '2026-07-02'
+  progress: 0
+  milestone: false
+  deps:
+  - ageint-2
+  tags:
+  - content
+  notes: ''
+- id: ageint-5
+  title: Render from lifecycle checkout via template link
+  status: done
+  start: '2026-06-09'
+  end: '2026-06-09'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-3
+  tags:
+  - pipeline
+  notes: 'Complete for the current lifecycle-qualified template render path. Evidence
+    on 2026-06-09 from `/Users/4d/Documents/GitHub/template`: `uv run python -m
+    infrastructure.orchestration link-projects && uv run python scripts/03_render_pdf.py
+    --project working/AGEINT` completed, hydrated variables through the AGEINT build,
+    rendered 376 manuscript sections, verified 142/142 figure references, generated
+    `working/AGEINT/output/pdf/AGEINT_combined.pdf` (24.45 MB), and reported 1/1
+    valid PDF with the combined manuscript ready for validation.'
+- id: ageint-6
+  title: Expand research anchors to 202 (official/standards/scholarly)
+  status: done
+  start: '2026-06-04'
+  end: '2026-06-06'
+  progress: 100
+  milestone: false
+  deps: []
+  tags:
+  - research
+  notes: 'ISA turn 2: anchors 172→186→202, sources checked.'
+- id: ageint-7
+  title: Conciseness subtraction pass (−10% manuscript bytes)
+  status: done
+  start: '2026-06-07'
+  end: '2026-06-07'
+  progress: 100
+  milestone: false
+  deps: []
+  tags:
+  - manuscript
+  notes: 'ISA turn 5: 5.71MB→5.12MB (−585KB).'
+- id: ageint-8
+  title: Cross-link Method & Assurance Reference (ISC-8)
+  status: done
+  start: '2026-06-06'
+  end: '2026-06-09'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-3
+  tags:
+  - docs
+  notes: 'Complete for the current ISC-8 cross-link surface. Evidence on 2026-06-09:
+    generated `output/manuscript/method-assurance-reference.md` defines `sec:method-assurance-reference`,
+    module assessment/review sections link back to `[@sec:method-assurance-reference]`,
+    and topic lessons include unit map/module overview/curriculum atlas cross-links.
+    Full project gate passed: `uv run pytest tests/ --cov=src --cov-fail-under=90`
+    (245 passed, 91.95% coverage), including checks for runtime variables, current
+    source assurance crosswalks, and method-assurance reference linkage.'
+- id: ageint-9
+  title: 'v1 release-readiness gate: PDF re-render (template repo) + cross-vendor audit + ISA closure'
+  status: done
+  start: '2026-06-09'
+  end: '2026-06-09'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-3
+  - ageint-8
+  tags:
+  - release
+  notes: 'Closed for local v1 release-readiness evidence on 2026-06-09.
+    Template render evidence from `/Users/4d/Documents/GitHub/template`:
+    `uv run python scripts/03_render_pdf.py --project working/AGEINT`
+    completed with `PDF exit=0`, produced `AGEINT_combined.pdf` (24.49 MB),
+    and reported 1/1 valid PDFs. The remaining local blocker from the full
+    suite was the file-size inventory guard on `src/intelligence_content/source_grounding.py`;
+    the file now has 497 lines, and `.venv/bin/python -m pytest
+    tests/test_file_size_inventory.py tests/test_source_grounding.py -q -p
+    no:cacheprovider` passed 32 tests. Final controlled full-suite evidence:
+    `.venv/bin/python -m pytest tests/ --cov=src --cov-fail-under=90 -q -p
+    no:cacheprovider` passed 245 tests with 91.91% coverage. This closes the
+    local readiness gate only; `ageint-m1` remains open because `ageint-4` is
+    still todo and no release/publish action was performed.'
+- id: ageint-m1
+  title: AGEINT v1 curriculum release
+  status: todo
+  start: '2026-07-03'
+  end: '2026-07-03'
+  progress: 0
+  milestone: true
+  deps:
+  - ageint-4
+  - ageint-5
+  - ageint-9
+  tags: []
+  notes: ''

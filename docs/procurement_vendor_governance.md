@@ -3,8 +3,10 @@
 AGEINT uses procurement/vendor governance when a chapter mentions a tool,
 dataset, model, platform, service, or external dependency. The generated
 **Governance, rights, and assurance** section carries procurement/vendor
-monitoring so tool adoption stays reviewable inside the active local project at
-`projects/active/AGEINT`.
+monitoring so tool adoption stays reviewable inside the local lifecycle project
+checkout. This copy currently lives at `projects/working/AGEINT`; parent-template
+workflows may link it as `projects/active/AGEINT` or `projects/AGEINT` during
+promotion or hot-seat runs.
 
 ## Oversight Loop
 

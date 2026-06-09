@@ -1,7 +1,9 @@
-% AGEINT preamble: compact but readable atlas layout.
+% AGEINT preamble: compact dense atlas — smaller font, smaller margins, red links.
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{xcolor}
-\definecolor{ageintblue}{HTML}{1E3A8A}
-\definecolor{ageintteal}{HTML}{0F766E}
-\hypersetup{colorlinks=true, linkcolor=ageintblue, urlcolor=ageintteal, citecolor=ageintteal}
+\usepackage{scrextend}
+\changefontsizes{9pt}
+\geometry{margin=0.5in}
+\definecolor{ageintred}{HTML}{C00000}
+\hypersetup{colorlinks=true, linkcolor=ageintred, urlcolor=ageintred, citecolor=ageintred, anchorcolor=ageintred, filecolor=ageintred, menucolor=ageintred}

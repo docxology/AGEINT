@@ -21,12 +21,12 @@ from typing import TYPE_CHECKING
 from _jsonl import read_jsonl
 from safety_contract import text_is_operational
 
+from . import _source_prose as prose
+
 if TYPE_CHECKING:
     from ._01_part import TopicEntry
 
-_REFERENCES_DIR = (
-    Path(__file__).resolve().parents[2] / "data" / "curriculum" / "references"
-)
+_REFERENCES_DIR = Path(__file__).resolve().parents[2] / "data" / "curriculum" / "references"
 
 # Trailing " - <site>" / " | <site>" fragments that are publisher or platform
 # names rather than part of the work's actual title. Matched case-insensitively
@@ -66,15 +66,14 @@ _SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 # Function words that read as dangling fragments at the end of a truncated note.
 _TRAILING_STOPWORDS = frozenset(
     {
-        "a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on",
-        "at", "with", "by", "that", "this", "these", "those", "its", "their",
-        "his", "her", "our", "your", "is", "are", "was", "were", "be", "been",
-        "into", "from", "than", "then", "which", "who", "whose", "when",
-        "where", "while", "but", "so", "such", "via", "per", "about",
-        "within", "using", "toward", "towards", "between", "among",
+        "a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on", "at",
+        "with", "by", "that", "this", "these", "those", "its", "their", "his",
+        "her", "our", "your", "is", "are", "was", "were", "be", "been", "into",
+        "from", "than", "then", "which", "who", "whose", "when", "where", "while",
+        "but", "so", "such", "via", "per", "about", "within", "using", "toward",
+        "towards", "between", "among",
     }
 )
-
 
 # Hard-coded reference patterns that the cross-reference audit forbids in prose
 # (e.g. "Section 508", "Chapter 3", "Appendix A").  Notes with these are reworded
@@ -88,9 +87,7 @@ _HARD_CODED_REF_RE = re.compile(
 _FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source guide import"})
 
 # Decorative/emoji glyphs that the PDF font set cannot render.
-_UNSUPPORTED_GLYPH_RE = re.compile(
-    "[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]"
-)
+_UNSUPPORTED_GLYPH_RE = re.compile("[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]")
 
 
 def _rewrite_hard_coded_refs(text: str) -> str:
@@ -229,8 +226,8 @@ def clean_source_note(note: str) -> str:
 # we cut the note back to the clause boundary.
 _CLAUSE_INTRODUCERS = frozenset(
     {
-        "as", "that", "which", "who", "whose", "where", "when", "while",
-        "because", "since", "although", "though", "during", "via",
+        "as", "that", "which", "who", "whose", "where", "when", "while", "because",
+        "since", "although", "though", "during", "via",
     }
 )
 
@@ -241,10 +238,10 @@ _CLAUSE_INTRODUCERS = frozenset(
 # is a severed noun phrase rather than a finished clause.
 _TRAILING_MODIFIER_TAIL = frozenset(
     {
-        "and", "or", "but", "presents", "presented", "including", "such",
-        "critical", "committed", "human", "conceptual", "various", "several",
-        "key", "core", "potential", "specific", "certain", "particular",
-        "significant", "major", "common", "emerging", "strategic", "modern",
+        "and", "or", "but", "presents", "presented", "including", "such", "critical",
+        "committed", "human", "conceptual", "various", "several", "key", "core",
+        "potential", "specific", "certain", "particular", "significant", "major",
+        "common", "emerging", "strategic", "modern",
     }
 )
 
@@ -421,32 +418,33 @@ def source_support_sentence(display_title: str, records: tuple[SourceRecord, ...
 
     Attribution is by citation key, which resolves to the full bibliographic
     entry downstream; the lead source's descriptive note carries the substance.
-    Citation keys are deliberately used instead of inline titles so the prose is
-    not rewritten by the section-title sanitisation pass, and the prose anchors on
-    the lesson's (already safe) display title so each line stays topic-specific.
+    The lead-note intro and the closing instruction are rotated per lesson (see
+    :mod:`._source_prose`) so the line never reads as a verbatim stamp, and the
+    prose anchors on the lesson's (already safe) display title.
     """
     spine = _join_clause([record.citation for record in records])
-    lead_note = next((record.note for record in records if record.note), "")
-    detail = f" The lead source: {lead_note}" if lead_note else ""
-    plural = "them" if len(records) > 1 else "it"
-    return (
-        f"**{display_title}** rests on {spine}.{detail} "
-        f"Use {plural} for the topic definition, scope boundary, and refresh check before transfer."
+    seed = f"{display_title}|{len(records)}"
+    lead_note = prose.lead_clause(
+        prose.note_carrier(record.note for record in records), seed=seed + "|lead"
     )
+    intro = prose.NOTE_INTROS[prose.stable_index(seed + "|note", len(prose.NOTE_INTROS))]
+    detail = f" {intro} {lead_note}" if lead_note else ""
+    plural = "them" if len(records) > 1 else "it"
+    use_index = prose.stable_index(seed + "|use", len(prose.USE_CLAUSES))
+    use_clause = prose.USE_CLAUSES[use_index].format(title=display_title)
+    return f"**{display_title}** rests on {spine}.{detail} Use {plural} for {use_clause}"
 
 
 def evidence_from_sources(display_title: str, records: tuple[SourceRecord, ...]) -> str:
     """Render source-grounded "evidence to inspect" prose for a lesson."""
-    described = [
-        f"{record.citation} {record.note}" if record.note else record.citation
-        for record in records
-    ]
-    body = " ".join(described)
-    return (
-        f"For **{display_title}**, work from the cited evidence behind this row. {body} "
-        "From each source, extract the bounded claim it supports, its provenance, "
-        "the stated uncertainty, and the condition that would change the judgment."
-    )
+    # Only note-bearing records add substance inline; a bare citation key would
+    # render as a floating bracket number (it is already in the support spine).
+    described = [f"{record.citation} {record.note}" for record in records if record.note]
+    body = (" ".join(described) + " ") if described else ""
+    seed = f"{display_title}|{len(records)}"
+    lead = prose.EVIDENCE_LEADS[prose.stable_index(seed + "|lead2", len(prose.EVIDENCE_LEADS))]
+    closer = prose.EVIDENCE_CLOSERS[prose.stable_index(seed + "|evidence", len(prose.EVIDENCE_CLOSERS))]
+    return f"{lead.format(title=display_title)} {body}{closer.format(title=display_title)}"
 
 
 def _cell(value: str) -> str:
@@ -460,9 +458,8 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
     Each row pairs the citation key with the cleaned source title (linked to its
     URL where available), a description of what the work contributes, and a
     verification status flag so readers can distinguish real fetched descriptions
-    from the original truncated notes. Operational titles and notes are
-    neutralised so the table stays non-operational. Table rows are exempt from
-    the section-title sanitisation pass, so real titles render intact.
+    from the original truncated notes. Operational titles and notes are neutralised
+    so the table stays non-operational; table rows skip section-title sanitisation.
     """
     rows = [
         "| Source | Cited work | What it contributes | Status |",
@@ -472,7 +469,8 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
         title = safe_source_title(record.title)
         if title and record.url:
             # Hyperlinked title — safe inside a table cell; the sanitiser skips table rows
-            title_cell = _cell(f"[{title}]({record.url})")
+            safe_url = record.url.replace("@", "%40").replace(" ", "%20")
+            title_cell = _cell(f"[{title}]({safe_url})")
         elif title:
             title_cell = _cell(title)
         else:

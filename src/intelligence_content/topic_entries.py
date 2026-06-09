@@ -7,10 +7,13 @@ from typing import Any, Final
 
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 
+from safety_contract import text_is_operational
+
 from ._01_part import TopicEntry
 from ._06_part import safe_pattern_treatment
 from ._07_safe_titles import (
     _topic_anchor_words,
+    distinguishing_phrase,
     is_generic_display_title,
     safe_curriculum_treatment,
 )
@@ -147,8 +150,17 @@ def dedupe_display_title(
     if display_key in seen_display_keys:
         raw_key = normalize_display_key(clean_display_title(working_title))
         if raw_key != display_key:
-            qualifier = source_locus or _topic_anchor_words(raw_title, limit=3)
-            display_title = f"{display_title} ({qualifier})"
+            phrase = distinguishing_phrase(raw_title)
+            lead = f"{phrase}: {display_title}" if phrase else ""
+            if (
+                phrase
+                and not text_is_operational(phrase)
+                and normalize_display_key(lead) not in seen_display_keys
+            ):
+                display_title = lead
+            else:
+                qualifier = source_locus or _topic_anchor_words(raw_title, limit=3)
+                display_title = f"{display_title} ({qualifier})"
         else:
             qualifier = _topic_anchor_words(raw_title, limit=4)
             display_title = f"{clean_display_title(working_title)} ({qualifier})"

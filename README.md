@@ -3,7 +3,9 @@
 AGEINT is a modular curriculum for Agentic Intelligence: atlas, library, course,
 textbook, cookbook, and playbook. It converts a source guide into a semantic
 manuscript, registry-backed figures, generated BibTeX, and auditable runtime
-variables while rendering as an active local project under `projects/active/AGEINT`.
+variables while rendering from the local lifecycle checkout. This copy currently
+lives under `projects/working/AGEINT`; parent-template runs may link it as
+`projects/active/AGEINT` or `projects/AGEINT` when it is promoted or hot-seated.
 
 The project is deliberately non-operational. It can teach intelligence
 tradecraft, IC-cycle governance, OSINT/GEOINT integrity, FININT/economic
@@ -29,8 +31,8 @@ legal and human oversight constraints.
 - Methods appendices: 9
 - AGEINT patterns: 20
 - Parsed references: 312
-- Curated official/scholarly research anchors: 186
-- Registered figures: 64 (24 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
+- Curated official/scholarly research anchors: 224
+- Registered figures: 142 (102 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
 
 ## Commands
 
@@ -86,8 +88,9 @@ cites directly verified sources. The current anchor set includes official and
 standards sources from ODNI, CIA, DIA, NIST, CISA, NSA, Five Eyes partners,
 IMDA, OECD, ISO, IETF, OASIS, OWASP, MITRE, NATO, the EU, UNESCO, OHCHR,
 World Bank, ILO, W3C, OpenAPI, Council of Europe, PCLOB, NARA, NRO, NGA,
-FinCEN, OFAC, FATF, BIS, WIPO, DataCite, C2PA, and a policy-scholarship
-cognitive security source from GCSP.
+FinCEN, OFAC, FATF, BIS, WIPO, DataCite, C2PA, the Model Context Protocol
+Project, the Agent2Agent Protocol project, the UK NCSC, the International AI
+Safety Report, and a policy-scholarship cognitive security source from GCSP.
 
 The v2 source layer adds lane metadata for AI conformity/compliance, education
 and assessment, public-sector agentic AI, cross-border data/data spaces,
@@ -103,22 +106,50 @@ transparency reporting, records retention/auditability, secure release/change
 control, risk exception governance, learner support/accommodations, assurance
 evaluation evidence, and procurement performance monitoring.
 
-The May 24, 2026 source refresh brings the curated anchor set to 172 direct
-official, standards, public-domain, or scholarly sources. It adds current
+The May 24, 2026 source refresh brought the curated anchor set to 172 directly
+verified official, standards, public-domain, or scholarly sources. It adds
 Canada, OECD, UN, NIST, and CISA anchors for bounded agentic-AI governance,
 algorithmic impact assessment, public AI registers, AI incident reporting,
 NIST Dioptra evaluation, secure AI deployment, OT procurement, OT asset
 inventory, and definitive OT architecture evidence. Earlier May 22 anchors
 remain for CISA AI red teaming/TEVV, CISA AI data-security best practices,
 NIST's critical-infrastructure AI RMF profile concept note, OECD public-sector
-AI governance, and the NARA 2025 AI compliance plan. A subsequent 2026-05-22
+AI governance, and the NARA 2025 AI compliance plan. A separate 2026-05-22
 verified batch raises the curated set to 186 anchors, adding NATO CCDCOE
 cognitive-warfare research, DARPA Intrinsic Cognitive Security, CSA frameworks
 (CDR, MAESTRO, securing autonomous agents, NIST agent red-teaming), the OWASP
 agentic threats-and-mitigations reference, frontier-lab agent research from
 Anthropic and Google DeepMind, multi-agent prompt-injection and agentic
 systems-security preprints, the Mandel-Tetlock analytic-debiasing study, and the
-UNU Macau bounded-agency policy analysis.
+UNU Macau bounded-agency policy analysis. Two 2026-06-06 internet-citation
+passes raise the curated set to 202 anchors by adding NIST AI 100-4
+synthetic-content transparency, NIST AI 100-5 global AI standards engagement,
+the U.S. AI Safety Institute/NIST AI 800-1 misuse-risk draft, the International
+AI Safety Report 2026, MCP specification and security best practices, the A2A
+protocol specification, NCSC secure-AI-development guidance, MITRE D3FEND,
+OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore. Draft
+status is retained where applicable rather than treated as final policy.
+
+A 2026-06-08 primary-literature pass raises the curated set to 224 anchors,
+adding the foundational primaries behind the curriculum's theoretical and
+technical claims: Friston's free-energy-principle and active-inference papers
+plus the Parr-Pezzulo-Friston textbook (the unifying cognitive framework); the
+canonical agentic-LLM architecture papers (ReAct, Reflexion, Generative Agents,
+Chain-of-Thought, Toolformer) and the Wooldridge multi-agent-systems foundations;
+peer-reviewed HUMINT elicitation science (the CIA MICE-to-RASCLS article and the
+High-Value Detainee Interrogation Group / rapport-based-interviewing literature);
+Heuer & Pherson's structured-analytic-techniques reference; the NIST FIPS 197 /
+186-5 / 180-4 and SP 800-57 cryptographic standards behind the SIGINT assurance
+material; and McGuire's 1961 founding inoculation-theory experiment. These
+upgrade provenance for claims previously anchored to secondary sources without
+changing any argument.
+
+These counts are rebuild-time measurements, not hand-authored release claims:
+`output/data/curriculum_outline.json` carries the curriculum stats, and
+`output/figures/figure_registry.json` carries the figure count, hashes, and
+rendering provenance. Source-anchor rows include `checked_as_of` metadata and
+must be refreshed when source URLs, standards versions, legal text, or supported
+claim scope changes.
 
 ## Safety posture
 
