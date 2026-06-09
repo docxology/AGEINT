@@ -2,8 +2,8 @@
 project: AGEINT
 task: Comprehensively review + verify-then-land the uncommitted turn-7 expansion (anchors 202→224, figures 64→142, new src modules), RedTeam/Science/FirstPrinciples
 effort: E5
-phase: build
-progress: turn-7 baselined green (build exit 0; pytest in flight); RedTeam audit running
+phase: complete
+progress: turn-7 reviewed + 8 defects fixed + landed (779d450); 258 passed/91.92%; 3 follow-ups logged
 mode: algorithm
 started: 2026-06-03
 updated: 2026-06-09
@@ -90,10 +90,10 @@ This session reviews a large *uncommitted* turn-7 expansion (already run today p
 - [x] ISC-35: 8/8 confirmed MED+ findings fixed after refutation, 2 refuted findings left alone, 6 LOW documented (FIG-01, T7-01, PROSE-01/02/03/04, GW-1, GW-2)
 - [~] ISC-36: MAESTRO renders LEGIBLE + content-correct (visually read) but wide `flowchart LR` leaves ~60% whitespace after square-normalization. DEFERRED as documented cosmetic residual (figure-layout churn-risk; not a correctness/honesty defect). Follow-up: LR→TB relayout + visual re-verify
 - [x] ISC-37: Cross-vendor Forge (GPT-5.4) pass CAUGHT a real Anthropic-family blind spot — my first PROSE-01 fix used an `_embedded_in_longer_title` heuristic ("preceded by a Title-Case word ⇒ embedded") that LEAKED genuine cross-references (`See Social Engineering for...` → unneutralised) past BOTH the mutator AND the shared-logic checker (invisible false-negative; green tests couldn't see it). REVERTED the heuristic; kept only the safe bold-span protection + bolded-cluster; added regression test `test_sanitize_preserves_authored_titles_but_neutralizes_bare_crossrefs` encoding Forge's counterexamples. Forge also confirmed determinism sound. Cato ISA audit pending post-gate
-- [ ] ISC-38: Build re-green + full suite re-green AFTER my fixes (probe: build exit 0 + pytest ≥90%)
-- [ ] ISC-39: Turn-7 + my fixes committed in coherent, pathspec-isolated commits (probe: `git log --oneline`, clean tree)
-- [ ] ISC-40: ISA Verification section records artifact tokens for every landed ISC (probe: Read ISA)
-- [ ] ISC-41: Anti: no `ageintNNN` identity renumbered, no operational content introduced, no `output/` hand-edit (probe: `git diff data/source_identity` empty; safety tests pass)
+- [x] ISC-38: Build re-green + full suite re-green AFTER fixes — strict build exit 0; "258 passed, 1 skipped … Total coverage: 91.92%" (new modules _07_safe_titles 92.34% / _source_prose 89.74%; 1 skip is pre-existing PDF-not-rendered-locally, justified)
+- [x] ISC-39: Committed as `779d450` "feat(AGEINT): land turn-7 expansion + RedTeam review fixes"; `git status` clean (0 changes). Stale Jun-8 index.lock cleared (no active git process)
+- [x] ISC-40: ISA Verification section records artifact tokens per landed ISC (this block + the 2026-06-09 verification subsection)
+- [x] ISC-41: Anti satisfied — `git diff data/source_identity` empty (no renumber); safety dimension CLEAN at MED+; `output/` gitignored (not committed); no operational content introduced
 
 ## Test Strategy
 
