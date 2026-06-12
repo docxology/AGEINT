@@ -19,6 +19,12 @@ MANUSCRIPT = PROJECT_ROOT / "manuscript"
 TOKEN_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}")
 FIGURE_DEF_RE = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>fig:[a-z0-9-]+)\}")
 FIGURE_REF_RE = re.compile(r"\[@(?P<label>fig:[a-z0-9-]+)\]")
+MARKDOWN_FILE_LINK_RE = re.compile(
+    r"\[[^\]]+\]\([^)]*\.(?:md|markdown)(?:#[^)]*)?\)", re.IGNORECASE
+)
+HTML_MARKDOWN_FILE_LINK_RE = re.compile(
+    r"href=[\"'][^\"']*\.(?:md|markdown)(?:#[^\"']*)?[\"']", re.IGNORECASE
+)
 SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)\}")
 SECTION_REF_RE = re.compile(r"\[@(?P<label>sec:[a-zA-Z0-9_-]+)\]")
 EQUATION_LABEL_RE = re.compile(r"\{#(?P<label>eq:[a-zA-Z0-9_-]+)\}")
@@ -114,6 +120,27 @@ def test_generated_section_references_resolve_without_raw_latex_or_hard_numbers(
     assert section_refs <= section_labels
     assert not RAW_LATEX_REF_RE.search(text)
     assert not HARD_CODED_NUMBER_RE.search(_generated_crossref_prose_text(output_manuscript))
+
+
+def test_generated_reader_outputs_do_not_link_to_markdown_files(built_output: Path) -> None:
+    """Reader artifacts should link by labels/citations, not source Markdown paths."""
+
+    output_root = built_output
+    violations: list[str] = []
+    for path in sorted((output_root / "manuscript").rglob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        for match in MARKDOWN_FILE_LINK_RE.finditer(text):
+            rel = path.relative_to(PROJECT_ROOT).as_posix()
+            violations.append(f"{rel}: {match.group(0)}")
+    web = output_root / "web"
+    if web.is_dir():
+        for path in sorted(web.glob("*.html")):
+            text = path.read_text(encoding="utf-8")
+            for match in HTML_MARKDOWN_FILE_LINK_RE.finditer(text):
+                rel = path.relative_to(PROJECT_ROOT).as_posix()
+                violations.append(f"{rel}: {match.group(0)}")
+
+    assert violations == []
 
 
 def test_orientation_navigation_surfaces_are_label_backed(built_output: Path) -> None:

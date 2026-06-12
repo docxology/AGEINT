@@ -26,6 +26,8 @@ from manuscript_manifest import build_manuscript_manifest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
+MIN_READER_CAPTION_WORDS = 22
+MIN_ALT_TEXT_WORDS = 16
 
 
 def _assert_mermaid_png_is_diagram(path: Path) -> None:
@@ -43,6 +45,22 @@ def _assert_instructional_caption_and_alt_text(caption: str, alt_text: str) -> N
     assert alt_text.strip()
     assert not caption.startswith("Generated "), caption
     assert not alt_text.startswith("Generated "), alt_text
+
+
+def _word_count(text: str) -> int:
+    return len([word for word in text.replace("/", " ").split() if word.strip()])
+
+
+def _assert_informative_reader_text(spec: FigureSpec | dict[str, object]) -> None:
+    caption = str(spec["caption"] if isinstance(spec, dict) else spec.caption)
+    alt_text = str(spec["alt_text"] if isinstance(spec, dict) else spec.alt_text)
+    label = str(spec["label"] if isinstance(spec, dict) else spec.label)
+
+    _assert_instructional_caption_and_alt_text(caption, alt_text)
+    assert _word_count(caption) >= MIN_READER_CAPTION_WORDS, f"{label}: {caption}"
+    assert _word_count(alt_text) >= MIN_ALT_TEXT_WORDS, f"{label}: {alt_text}"
+    assert "caption forthcoming" not in caption.lower()
+    assert "alt text forthcoming" not in alt_text.lower()
 
 
 def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> None:
@@ -128,7 +146,7 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     for spec in specs:
         assert spec.label.startswith("fig:")
         assert spec.output_path.startswith("output/figures/")
-        _assert_instructional_caption_and_alt_text(spec.caption, spec.alt_text)
+        _assert_informative_reader_text(spec)
         assert spec.source_section in section_paths
         assert spec.section_label.startswith("sec:")
         assert spec.provenance
@@ -181,7 +199,7 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
         asset = PROJECT_ROOT / entry["output_path"]
         assert asset.is_file(), entry
         assert asset.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), entry["output_path"]
-        _assert_instructional_caption_and_alt_text(entry["caption"], entry["alt_text"])
+        _assert_informative_reader_text(entry)
         assert len(entry["sha256"]) == 64
         if entry["kind"] == FigureKind.MERMAID.value:
             mermaid_source = PROJECT_ROOT / entry["source_artifact_path"]

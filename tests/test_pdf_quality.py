@@ -68,6 +68,27 @@ def test_pdf_quality_script_reports_clean_rendered_pdf() -> None:
     assert payload["banned_phrase_hits"] == []
 
 
+def test_rendered_pdf_has_no_markdown_file_links() -> None:
+    pypdf = pytest.importorskip("pypdf")
+    pdf = PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf"
+    if not pdf.is_file():
+        pytest.skip("Rendered combined PDF not present")
+
+    reader = pypdf.PdfReader(str(pdf))
+    markdown_links: list[str] = []
+    for page_index, page in enumerate(reader.pages, 1):
+        for annotation_ref in page.get("/Annots") or []:
+            annotation = annotation_ref.get_object()
+            action = annotation.get("/A")
+            if not action:
+                continue
+            target = str(action.get("/URI") or action.get("/D") or "")
+            if ".md" in target.lower() or ".markdown" in target.lower():
+                markdown_links.append(f"page {page_index}: {target}")
+
+    assert markdown_links == []
+
+
 def test_pdf_quality_reports_missing_pdf_as_not_ok(tmp_path: Path) -> None:
     report = audit_pdf_quality(
         tmp_path / "missing.pdf",
