@@ -54,7 +54,8 @@ def _render_historical_figure(root: Path, spec: FigureSpec, output: Path | None 
 
 def _render_ai_concept_figure(root: Path, spec: FigureSpec, output: Path | None = None) -> None:
     prompt = spec.provenance["prompt"]
-    _draw_concept_plate(output or root / spec.output_path, spec.title, prompt, spec.label)
+    visual_text = spec.provenance.get("visual_text", "")
+    _draw_concept_plate(output or root / spec.output_path, spec.title, prompt, spec.label, visual_text)
 
 
 def _render_citation_density(output: Path, curriculum: Curriculum, spec: FigureSpec) -> None:

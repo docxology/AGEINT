@@ -45,7 +45,7 @@ flowchart LR
 - Generated manuscript: `output/manuscript/`.
 - Generated figures and registry: `output/figures/figure_registry.json`.
 - Bibliography surfaces: `manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
-- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 142 registered figures, 224 research anchors, 312 parsed guide references.
+- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 161 registered figures, 248 research anchors, 312 parsed guide references.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
 
 ## Editing rules

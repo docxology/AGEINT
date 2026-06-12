@@ -188,9 +188,10 @@ def generate_variables(project_root: Path) -> dict[str, str]:
         "INTELLIGENCE_PRACTICE_LENS_COUNT": str(len(PRACTICE_LENSES)),
         "SOURCE_QUALITY_SPINE": (
             "Official source-quality anchors include OECD agentic AI, NIST AI RMF, "
-            "NIST AI 600-1, NSA MCP security guidance, NIST SP 800-82 Rev. 3, "
-            "ISA/IEC 62443, ODNI ICD 203, the EU AI Act, CISA foreign influence "
-            "guidance, and NATO counter-information-threat guidance."
+            "NIST AI 600-1, version-pinned MCP specification and MCP security "
+            "guidance, NIST SP 800-82 Rev. 3, ISA/IEC 62443, ODNI ICD 203, the "
+            "EU AI Act, CISA foreign influence guidance, and NATO "
+            "counter-information-threat guidance."
         ),
         "INTELLIGENCE_RESEARCH_SPINE": research_spine_summary(),
         "INTELLIGENCE_RESEARCH_ROWS": research_anchor_rows(),

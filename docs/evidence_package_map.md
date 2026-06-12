@@ -9,7 +9,7 @@ support, instructor questions, and remediation backlogs.
 
 | Artifact | Minimum evidence | Reject condition |
 |---|---|---|
-| Model and dataset card | intended use, composition, evaluation evidence, limits, owner, and refresh trigger | model or dataset claims appear without provenance or lifecycle controls |
+| Model and dataset card | intended use, excluded use, stakeholders, provenance, collection process, rights/license, evaluation context, subgroup caveats, failure modes, owner, rollback path, and refresh trigger | model or dataset claims appear without provenance, caveats, or lifecycle controls |
 | Transparency notice | purpose, authority, data summary, human review, safeguards, contact point, and publication decision | public accountability fields are missing or hidden without justification |
 | Records-retention trail | source, prompt, decision, exception, incident, output, retention rule, and deletion or refresh condition | later reviewers cannot reconstruct the evidence path |
 | Release/change gate | scope, rights, security, version, rollback, monitoring, incident threshold, and retest | reuse occurs after material change without approval |
@@ -28,3 +28,9 @@ manuscript prose. `src/figures/` now covers bounded autonomy and
 recoverability, public AI register lifecycle, AI incident reporting, and the OT
 definitive architecture record as square Python figures with local PNG assets
 and `figure_registry.json` entries after rebuild.
+
+The Data Cards pass extends the model/dataset card row with stakeholder-centered
+dataset documentation, collection-process evidence, and answer-evaluation
+caveats. It also replaces the decorative agentic-boundary plate with a
+deterministic boundary-control matrix while keeping the same cross-reference
+label.

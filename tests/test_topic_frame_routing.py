@@ -37,6 +37,7 @@ def test_concept_routes_for_representative_titles() -> None:
         "Getting Things Done for analysts": "gtd",
         "Stuxnet tabletop lesson": "stuxnet",
         "MCP tool governance card": "mcp",
+        "Memory: In-Context, External VectorDB, Episodic, Semantic, Procedural": "pedagogical taxonomy",
         "Operations security five-step review": "opsec",
         "Compartmentation and need-to-know governance": "compartment",
     }

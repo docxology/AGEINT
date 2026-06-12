@@ -143,13 +143,13 @@ profiles:
     unit_key: ageint
     concept: governed agentic intelligence
     discipline_spine: AGEINT lessons treat agents as bounded delegated systems whose identity, tools, memory, logs, stop conditions, and review gates define safe use.
-    source_use_contract: Use MCP, AI assurance, secure-development, and public-sector agentic AI anchors for tool boundaries, interoperability, and governance claims.
+    source_use_contract: Use MCP, AI assurance, secure-development, and public-sector agentic AI anchors for tool boundaries, interoperability, external-memory governance, and oversight claims; use domain-specific agent-memory or cognitive literature for memory taxonomy claims.
     practice_artifact: agent run and assurance card
     safety_boundary: No autonomous external action, credentialed operations, live-target workflows, or uncontrolled tool use.
-    learning_spine: Learners design least-privilege agent roles, verify tool calls, record blocked actions, and define recovery.
+    learning_spine: Learners design least-privilege agent roles, verify tool calls, distinguish claim/source memory from cognitive-memory taxonomy, record blocked actions, and define recovery.
     evidence_artifacts:
       - tool-allowlist record
-      - agent memory boundary
+      - external-memory governance boundary
       - blocked-action log
       - recovery decision
     anchor_numbers: [299, 306, 312]
@@ -171,15 +171,16 @@ profiles:
     unit_key: analytic_tradecraft
     concept: structured analytic judgment
     discipline_spine: Analytic tradecraft lessons keep evidence, assumptions, alternatives, confidence, dissent, and reviewer challenge visible.
-    source_use_contract: Use ODNI ICD 203 and guide citations for analytic standards, structured techniques, confidence, and uncertainty claims.
+    source_use_contract: Use ODNI ICD 203, CIA/Kent/Heuer tradecraft, warning-intelligence, forecasting-calibration, and SAT-evaluation anchors for analytic standards, probability/confidence boundaries, structured techniques, and empirical limits.
     practice_artifact: competing-hypotheses evidence table
     safety_boundary: No overclaiming, unsupported attribution, or bypass of reviewer challenge.
-    learning_spine: Learners test alternatives, expose assumptions, calibrate confidence, and record dissent before judgment.
+    learning_spine: Learners test alternatives, expose assumptions, separate likelihood from confidence, calibrate forecasts, record dissent, and decide when SAT evidence is too thin for a strong claim.
     evidence_artifacts:
       - hypothesis table
       - assumption register
       - dissent field
-      - confidence statement
+      - likelihood-confidence boundary
+      - SAT evidence caveat
     anchor_numbers: [297, 298]
   14:
     unit_key: productivity

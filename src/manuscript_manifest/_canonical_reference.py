@@ -33,6 +33,24 @@ def canonical_claim_ledger_rows() -> str:
                 "educational, logged, reversible, and non-operational. |"
             ),
             (
+                "| Technical or theoretical claim | Direct domain source for the "
+                "formal expression, protocol, architecture, or theory, with analogy limits "
+                "spelled out | Confirm the prose does not cite governance guidance "
+                "as proof of technical performance or autonomous agency. |"
+            ),
+            (
+                "| Empirical or evaluated capability claim | Direct benchmark, field "
+                "evaluation, user study, incident evidence, or scholarly empirical "
+                "source with context and subgroup caveats | Confirm the claim is "
+                "not merely inferred from the AGEINT curriculum architecture. |"
+            ),
+            (
+                "| Source-construction claim | Search surface, query or prompt, "
+                "retrieval date, inclusion and exclusion rule, deduplication note, "
+                "source tier, and direct URL | Confirm discovery sources are not "
+                "treated as final citations unless directly verified. |"
+            ),
+            (
                 "| Safety claim | Explicit prohibition plus safe alternative | Confirm "
                 "the module blocks live targeting, exploitation, covert collection, "
                 "manipulation, and unsafe cyber-physical action. |"

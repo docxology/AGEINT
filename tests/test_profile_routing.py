@@ -12,6 +12,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
 
 FORMER_PROFILE_OVERRIDES = {
+    "ageint security and adversarial considerations": "agentic_ai_governance",
+    "active inference and ageint": "cognitive_active_inference",
     "cyber intelligence fundamentals": "cyber_threat_intelligence",
     "advanced persistent threats apts": "cyber_threat_intelligence",
     "supply chain intelligence attacks": "cyber_threat_intelligence",
@@ -29,6 +31,7 @@ FORMER_LENS_OVERRIDES = {
     "advanced persistent threats apts": "defensive_cyber_intelligence",
     "supply chain intelligence attacks": "software_supply_chain_assurance",
     "ageint security and adversarial considerations": "defensive_cyber_intelligence",
+    "active inference and ageint": "active_inference_boundary",
     "ageint python code library": "agentic_tool_governance",
     "mitre att ck for ics": "cyber_physical_readiness",
     "historical ics cyber incidents intelligence analysis": "cyber_physical_readiness",

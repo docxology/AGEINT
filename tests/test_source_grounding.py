@@ -258,8 +258,20 @@ def test_annotated_source_table_has_status_column() -> None:
     # Every data row has exactly 5 pipes
     for line in table.splitlines()[2:]:
         assert line.count("|") == 5
-    # Status is either "verified" or "original"
-    assert any("verified" in line or "original" in line for line in table.splitlines()[2:])
+    assert any("source-guide" in line for line in table.splitlines()[2:])
+
+
+def test_annotated_source_table_marks_practitioner_sources_as_secondary() -> None:
+    records = sources_for_numbers([139, 143, 144, 156])
+    table = annotated_source_table(records)
+    rows = table.splitlines()[2:]
+    assert len(rows) == 4
+    assert all("secondary evidence only" in row for row in rows)
+
+
+def test_annotated_source_table_flags_generic_mcp_spec_as_context() -> None:
+    table = annotated_source_table(sources_for_numbers([299]))
+    assert "use pinned MCP anchor for normative claims" in table
 
 
 def test_annotated_source_table_links_url_when_available() -> None:

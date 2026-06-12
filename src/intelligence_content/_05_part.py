@@ -85,8 +85,6 @@ PRACTICE_LENSES: Final[tuple[PracticeLens, ...]] = (
             "governance",
             "privacy",
             "data",
-            "active inference",
-            "adversarial considerations",
         ),
         planning_question=(
             "Which purpose, authority, data provenance, model limitation, "
@@ -107,6 +105,39 @@ PRACTICE_LENSES: Final[tuple[PracticeLens, ...]] = (
         safety_check=(
             "reject automated adverse action, hidden surveillance expansion, "
             "unowned outputs, unreviewed model drift, and opaque downstream reuse"
+        ),
+    ),
+    PracticeLens(
+        identifier="active_inference_boundary",
+        title="Active-Inference Boundary Lens",
+        match_terms=(
+            "active inference",
+            "free energy",
+            "predictive processing",
+            "expected free energy",
+            "generative model",
+            "shared protentions",
+        ),
+        planning_question=(
+            "Which layer is formal theory, which layer is classroom analogy, "
+            "which implementation claim needs evidence, and which governance "
+            "control prevents autonomy overreach?"
+        ),
+        evidence_artifact=(
+            "theory-to-governance card with source, analogy limit, assumption, "
+            "reviewer, and stop condition"
+        ),
+        validation_rule=(
+            "separate formal claim, pedagogical analogy, implementation "
+            "assumption, evaluation evidence, and governance duty before reuse"
+        ),
+        handoff_contract=(
+            "handoff preserves formal source, analogy scope, source limitation, "
+            "caveat, reviewer owner, and blocked autonomous-action claim"
+        ),
+        safety_check=(
+            "reject claims that the free-energy principle proves autonomous "
+            "agency, intent, detection performance, or oversight-free action"
         ),
     ),
     PracticeLens(

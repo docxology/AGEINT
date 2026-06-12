@@ -1,22 +1,10 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
-from enum import Enum
-from importlib import import_module
-import io
 import json
-import math
 from pathlib import Path
-import re
-import shutil
-import subprocess  # nosec B404 - fixed argv, no shell, local renderer.
-import textwrap
-import urllib.error
-import urllib.request
 from typing import Any, Sequence, cast
 
 from curriculum import Curriculum
-from markdown_refs import figure_ref
 
 from ._01_part import (
     AI_CONCEPTUAL_PLATES,
@@ -27,58 +15,20 @@ from ._01_part import (
 )
 from ._03b_asset_renderers import (
     _render_ai_concept_figure,
-    _render_citation_density,
     _render_historical_figure,
 )
-from ._03_part import (
-    _download_bytes,
-    _draw_bar_chart,
-    _draw_concept_plate,
-    _draw_text_plate,
+from ._04_part import (
     _entry,
-    _font,
     _markdown_escape,
     _normalize_png_canvas,
-    _pil_modules,
     _png_asset_is_valid,
     _relative_posix,
-    _render_accessibility_workflow,
-    _render_adversarial_assurance_cycle,
-    _render_agent_evaluation_loop,
-    _render_agent_incident_lifecycle,
-    _render_ai_compliance_map,
-    _render_ai_incident_reporting_loop,
-    _render_assessment_integrity_matrix,
-    _render_bounded_autonomy_recoverability,
-    _render_capstone_workflow,
-    _render_claim_ledger_flow,
-    _render_cross_border_data_flow,
-    _render_data_lineage_registry,
-    _render_hria_dpia_map,
-    _render_instructor_assessment_lifecycle,
-    _render_instructor_question_bank,
-    _render_learner_support_plan,
-    _render_model_dataset_card,
-    _render_ot_definitive_architecture_record,
-    _render_pattern_taxonomy,
-    _render_procurement_oversight_loop,
-    _render_public_ai_register_lifecycle,
-    _render_records_retention_audit,
-    _render_reference_coverage,
-    _render_release_change_control,
-    _render_remediation_backlog,
-    _render_risk_exception_memo,
-    _render_safe_substitution_matrix,
-    _render_safety_boundary_loop,
-    _render_section_composability_matrix,
-    _render_source_quality_spine,
-    _render_source_verification_flow,
-    _render_transparency_notice_flow,
     _temporary_png_path,
     _validate_png_asset,
 )
 from ._02b_mermaid import SYNTHESIS_MERMAID, placeholder_or_fail, render_mermaid_figure
 from ._02b_mermaid import _mermaid_cache_marker, _mermaid_source_hash
+from ._06_python_renderers import render_python_figure
 
 
 def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec]:
@@ -209,6 +159,7 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                 provenance={
                     "model": "local deterministic conceptual renderer",
                     "prompt": plate["prompt"],
+                    "visual_text": plate.get("visual_text", ""),
                     "safety": "synthetic, non-operational, no real people, no real targets",
                 },
             )
@@ -384,7 +335,7 @@ def _render_figure_asset(
                 allow_placeholder_figures=allow_placeholder_figures,
             )
         elif spec.kind is FigureKind.PYTHON:
-            _render_python_figure(root, curriculum, spec, temp_path)
+            render_python_figure(root, curriculum, spec, temp_path)
         elif spec.kind is FigureKind.HISTORICAL:
             _render_historical_figure(root, spec, temp_path)
         elif spec.kind is FigureKind.AI_GENERATED:
@@ -441,58 +392,3 @@ def _render_figure_asset(
     finally:
         if temp_path.exists():
             temp_path.unlink()
-
-
-def _render_python_figure(
-    root: Path,
-    curriculum: Curriculum,
-    spec: FigureSpec,
-    output: Path | None = None,
-) -> None:
-    renderer_id = spec.provenance["renderer_id"]
-    if output is None:
-        output = root / spec.output_path
-    curriculum_renderers = {
-        "citation_density": _render_citation_density,
-        "pattern_taxonomy": _render_pattern_taxonomy,
-        "section_composability_matrix": _render_section_composability_matrix,
-        "reference_coverage": _render_reference_coverage,
-    }
-    spec_renderers = {
-        "source_quality_spine": _render_source_quality_spine,
-        "safety_boundary_loop": _render_safety_boundary_loop,
-        "source_verification_flow": _render_source_verification_flow,
-        "claim_ledger_flow": _render_claim_ledger_flow,
-        "ai_compliance_map": _render_ai_compliance_map,
-        "agent_evaluation_loop": _render_agent_evaluation_loop,
-        "cross_border_data_flow": _render_cross_border_data_flow,
-        "capstone_workflow": _render_capstone_workflow,
-        "safe_substitution_matrix": _render_safe_substitution_matrix,
-        "instructor_assessment_lifecycle": _render_instructor_assessment_lifecycle,
-        "accessibility_workflow": _render_accessibility_workflow,
-        "hria_dpia_map": _render_hria_dpia_map,
-        "procurement_oversight_loop": _render_procurement_oversight_loop,
-        "agent_incident_lifecycle": _render_agent_incident_lifecycle,
-        "bounded_autonomy_recoverability": _render_bounded_autonomy_recoverability,
-        "public_ai_register_lifecycle": _render_public_ai_register_lifecycle,
-        "ai_incident_reporting_loop": _render_ai_incident_reporting_loop,
-        "ot_definitive_architecture_record": _render_ot_definitive_architecture_record,
-        "data_lineage_registry": _render_data_lineage_registry,
-        "assessment_integrity_matrix": _render_assessment_integrity_matrix,
-        "adversarial_assurance_cycle": _render_adversarial_assurance_cycle,
-        "model_dataset_card": _render_model_dataset_card,
-        "transparency_notice_flow": _render_transparency_notice_flow,
-        "records_retention_audit": _render_records_retention_audit,
-        "release_change_control": _render_release_change_control,
-        "risk_exception_memo": _render_risk_exception_memo,
-        "learner_support_plan": _render_learner_support_plan,
-        "instructor_question_bank": _render_instructor_question_bank,
-        "remediation_backlog": _render_remediation_backlog,
-    }
-    if renderer_id in curriculum_renderers:
-        curriculum_renderers[renderer_id](output, curriculum, spec)
-    elif renderer_id in spec_renderers:
-        spec_renderers[renderer_id](output, spec)
-    else:
-        raise ValueError(f"Unknown AGEINT figure renderer: {renderer_id}")
-

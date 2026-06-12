@@ -65,7 +65,9 @@ best-practices pages, Agent2Agent protocol documentation, and NCSC secure-AI
 system-development guidance. These rows use `checked_as_of: "2026-06-06"`;
 `official_us_aisi_nist_ai_800_1_misuse_risk` intentionally carries
 `source_tier: "official_draft"` so manuscript prose treats it as draft guidance,
-not finalized policy.
+not finalized policy. The 2026-06-11 internet-backed visualization pass
+re-verified the NIST AI 100-4 and MCP rows in this shard without changing their
+keys.
 
 A second 2026-06-06 internet-citation batch is encoded in
 `data/research_anchors/intelligence-anchors-195-202.jsonl`. It adds MITRE
@@ -82,6 +84,31 @@ Interoperability Framework, and C2PA specifications anchors without changing
 their citation keys. The same sweep found the UNESCO AI competency-frameworks
 article had moved; a likely successor URL is recorded in the anchor note, but
 UNESCO reset automated retrieval and still needs manual browser re-verification.
+
+A 2026-06-09 Data Cards pass adds
+`@scholarly_data_cards_dataset_documentation` as a directly verified scholarly
+dataset-documentation anchor. The pass also routes inherited blog, vendor, and
+practitioner source-guide rows to secondary context and replaces the decorative
+agentic-boundary concept plate with a deterministic boundary-control figure.
+
+A 2026-06-11 internet-backed visualization pass is encoded in
+`data/research_anchors/intelligence-anchors-229-232.jsonl`. It adds NIST AI
+800-2 draft benchmark-evaluation practices, the OECD agentic-AI landscape
+paper, NSA MCP security design guidance, and the Science Advances psychological
+inoculation study. The same pass refreshes existing NIST AI Agent Standards,
+NIST AI 600-1, NIST AI 100-4, MCP specification/security, CISA/NSA AI
+data-security, OWASP Agentic Applications Top 10, and MITRE ATLAS anchors with
+current `checked_as_of` dates and fuller evidence-lane metadata. Draft guidance
+keeps `source_tier: "official_draft"` so generated prose does not treat it as
+final policy.
+
+A 2026-06-11 analytic-tradecraft integration pass is encoded in
+`data/research_anchors/intelligence-anchors-233-248.jsonl`. It adds CIA/Kent
+tradecraft history, warning-intelligence, IRTPA, 9/11 and WMD postmortem,
+NATO alternative-analysis, SAT evaluation, forecasting-calibration, and
+failure-theory sources. These anchors support Chapters 41-42 and the four new
+tradecraft diagrams while keeping SAT claims evidence-bounded and separating
+likelihood, confidence, assumptions, dissent, and source quality.
 
 ## Refresh Triggers
 

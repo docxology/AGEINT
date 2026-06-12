@@ -3281,7 +3281,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **Agent Framework Security Vulnerabilities**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Agent Framework Security Vulnerabilities**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Agent Framework Security Vulnerabilities replaces human review whenever evidence looks plausible"
   },
   {
@@ -3290,7 +3290,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **Python REPL sandbox and approval-gate**, treating misuse taxonomy as tool permission undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Python REPL sandbox and approval-gate**, treating misuse taxonomy as tool permission undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3299,7 +3299,7 @@
     "risk_category": "cyber_taxonomy",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Cyber credential-and-movement taxonomy review using fabricated alerts** connects classroom vocabulary to AI Ethics, Data Governance, and Civil-Liberties Review practice: learners document evidence, caveats, and reviewer ownership rather than repeating labels.",
+    "why_it_matters": "**Cyber credential-and-movement taxonomy review using fabricated alerts** connects classroom vocabulary to Agentic AI Governance and Tool Security practice: learners document evidence, caveats, and reviewer ownership rather than repeating labels.",
     "misconception": "that a defensive taxonomy label is an action sequence rather than a vocabulary for describing and detecting behavior"
   },
   {
@@ -3308,7 +3308,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **AutoGen sandbox and code-execution approval**, treating misuse taxonomy as tool permission undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **AutoGen sandbox and code-execution approval**, treating misuse taxonomy as tool permission undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3317,7 +3317,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **MCP Server Poisoning and Prompt Injection**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **MCP Server Poisoning and Prompt Injection**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that MCP Server Poisoning and Prompt Injection replaces human review whenever evidence looks plausible"
   },
   {
@@ -3326,7 +3326,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Prompt Injection in Intelligence Agentic Systems** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**Prompt Injection in Intelligence Agentic Systems** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; excessive agency is a common failure.",
     "misconception": "that Prompt Injection in Intelligence Agentic Systems replaces human review whenever evidence looks plausible"
   },
   {
@@ -3335,7 +3335,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **Hallucination in Action: When Agents Act on Fabricated Intelligence**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Hallucination in Action: When Agents Act on Fabricated Intelligence**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Hallucination in Action: When Agents Act on Fabricated Intelligence replaces human review whenever evidence looks plausible"
   },
   {
@@ -3344,7 +3344,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **Infinite Loops and Runaway Agents: Detection and Kill Switches**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Infinite Loops and Runaway Agents: Detection and Kill Switches**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Infinite Loops and Runaway Agents: Detection and Kill Switches replaces human review whenever evidence looks plausible"
   },
   {
@@ -3353,7 +3353,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Agentic AI Governance Frameworks 2026** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**Agentic AI Governance Frameworks 2026** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; excessive agency is a common failure.",
     "misconception": "that Agentic AI Governance Frameworks 2026 replaces human review whenever evidence looks plausible"
   },
   {
@@ -3362,7 +3362,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **OWASP Top 10 for LLM Applications**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **OWASP Top 10 for LLM Applications**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that OWASP Top 10 for LLM Applications replaces human review whenever evidence looks plausible"
   },
   {
@@ -3371,7 +3371,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**IAPS Agentic AI Governance Framework** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**IAPS Agentic AI Governance Framework** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; excessive agency is a common failure.",
     "misconception": "that IAPS Agentic AI Governance Framework replaces human review whenever evidence looks plausible"
   },
   {
@@ -3380,7 +3380,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **UK AI Safety Institute: Agent Evaluations**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **UK AI Safety Institute: Agent Evaluations**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that UK AI Safety Institute: Agent Evaluations replaces human review whenever evidence looks plausible"
   },
   {
@@ -3389,7 +3389,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **LLM-agent cyber-misuse taxonomy review using sample reports**, treating misuse taxonomy as tool permission undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **LLM-agent cyber-misuse taxonomy review using sample reports**, treating misuse taxonomy as tool permission undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3398,7 +3398,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Threat Intelligence Gathering by LLM Agents** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**Threat Intelligence Gathering by LLM Agents** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; excessive agency is a common failure.",
     "misconception": "that Threat Intelligence Gathering by LLM Agents replaces human review whenever evidence looks plausible"
   },
   {
@@ -3407,7 +3407,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Malware-misuse control review using sample agent logs** connects classroom vocabulary to AI Ethics, Data Governance, and Civil-Liberties Review practice: learners document evidence, caveats, and reviewer ownership rather than repeating labels.",
+    "why_it_matters": "**Malware-misuse control review using sample agent logs** connects classroom vocabulary to Agentic AI Governance and Tool Security practice: learners document evidence, caveats, and reviewer ownership rather than repeating labels.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3416,7 +3416,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Phishing-resilience control review using sample messages** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; treating misuse taxonomy as tool permission is a common failure.",
+    "why_it_matters": "**Phishing-resilience control review using sample messages** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; treating misuse taxonomy as tool permission is a common failure.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3425,7 +3425,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Analysts use **Multi-agent cyber-misuse coordination review using sample reports** to separate technical capability from lawful, accountable, and rights-respecting use. A defensible treatment names the judgment it enables for model/data documentation and rights-aware review, the proof limit that treating misuse taxonomy as tool permission would otherwise hide, and the reviewer accountable for challenge.",
+    "why_it_matters": "Analysts use **Multi-agent cyber-misuse coordination review using sample reports** to separate agent assistance from autonomous external action. A defensible treatment names the judgment it enables for least-privilege agent design and run review, the proof limit that treating misuse taxonomy as tool permission would otherwise hide, and the reviewer accountable for challenge.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3434,7 +3434,7 @@
     "risk_category": "agentic_cyber_misuse",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Networked-device cyber-misuse risk review using sample scenarios** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; treating misuse taxonomy as tool permission is a common failure.",
+    "why_it_matters": "**Networked-device cyber-misuse risk review using sample scenarios** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; treating misuse taxonomy as tool permission is a common failure.",
     "misconception": "that a misuse taxonomy describing what an autonomous agent could do is permission or a recipe to make it do so"
   },
   {
@@ -3443,7 +3443,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **Observability as Control: Tracing, Logging, Audit for AGEINT Systems**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Observability as Control: Tracing, Logging, Audit for AGEINT Systems**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Observability as Control: Tracing, Logging, Audit for AGEINT Systems replaces human review whenever evidence looks plausible"
   },
   {
@@ -3452,7 +3452,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "Without explicit treatment of **Human-in-the-Loop Architectures: When and How to Mandate Oversight**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Human-in-the-Loop Architectures: When and How to Mandate Oversight**, excessive agency undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Human-in-the-Loop Architectures: When and How to Mandate Oversight replaces human review whenever evidence looks plausible"
   },
   {
@@ -3461,7 +3461,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "why_it_matters": "**Alignment and Trustworthiness in AGEINT: National Security Context** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**Alignment and Trustworthiness in AGEINT: National Security Context** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; excessive agency is a common failure.",
     "misconception": "that Alignment and Trustworthiness in AGEINT: National Security Context replaces human review whenever evidence looks plausible"
   },
   {
@@ -3470,7 +3470,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "**The Free Energy Principle and Predictive Processing** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**The Free Energy Principle and Predictive Processing** matters in the **Active-Inference Theory and Governed Agent Analogy** lane because least-privilege agent design and run evidence must stay separate from judgment; treating a formal theory as product evidence is a common failure.",
     "misconception": "that The Free Energy Principle and Predictive Processing replaces human review whenever evidence looks plausible"
   },
   {
@@ -3479,7 +3479,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "Without explicit treatment of **Active Inference as Computational Model of Intelligence Agent Behavior**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Active Inference as Computational Model of Intelligence Agent Behavior**, treating a formal theory as product evidence undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Active Inference as Computational Model of Intelligence Agent Behavior replaces human review whenever evidence looks plausible"
   },
   {
@@ -3488,7 +3488,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "Without explicit treatment of **Shared Protentions in Multi-Agent Active Inference**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Shared Protentions in Multi-Agent Active Inference**, treating a formal theory as product evidence undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Shared Protentions in Multi-Agent Active Inference replaces human review whenever evidence looks plausible"
   },
   {
@@ -3497,7 +3497,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "Without explicit treatment of **Active Inference for Social Organization and Intelligence Communities**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Active Inference for Social Organization and Intelligence Communities**, treating a formal theory as product evidence undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Active Inference for Social Organization and Intelligence Communities replaces human review whenever evidence looks plausible"
   },
   {
@@ -3506,7 +3506,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "**VERSES AI Research: Multi-Scale Active Inference Architectures** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**VERSES AI Research: Multi-Scale Active Inference Architectures** matters in the **Active-Inference Theory and Governed Agent Analogy** lane because least-privilege agent design and run evidence must stay separate from judgment; treating a formal theory as product evidence is a common failure.",
     "misconception": "that VERSES AI Research: Multi-Scale Active Inference Architectures replaces human review whenever evidence looks plausible"
   },
   {
@@ -3515,7 +3515,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "Without explicit treatment of **Cognitive Security Through the Active Inference Lens**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Cognitive Security Through the Active Inference Lens**, treating a formal theory as product evidence undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Cognitive Security Through the Active Inference Lens replaces human review whenever evidence looks plausible"
   },
   {
@@ -3524,7 +3524,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "Without explicit treatment of **Applications: Deception Detection, Surprise Minimization, Threat Modeling**, ethics slogans without controls undermines model/data documentation and rights-aware review; the lesson builds the habit to separate technical capability from lawful, accountable, and rights-respecting use.",
+    "why_it_matters": "Without explicit treatment of **Applications: Deception Detection, Surprise Minimization, Threat Modeling**, treating a formal theory as product evidence undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
     "misconception": "that Applications: Deception Detection, Surprise Minimization, Threat Modeling replaces human review whenever evidence looks plausible"
   },
   {
@@ -3533,7 +3533,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "why_it_matters": "**Applications of Active Inference and FEP in Intelligence (TU Delft Thesis)** matters in the **AI Ethics, Data Governance, and Civil-Liberties Review** lane because model/data documentation and rights-aware evidence must stay separate from judgment; ethics slogans without controls is a common failure.",
+    "why_it_matters": "**Applications of Active Inference and FEP in Intelligence (TU Delft Thesis)** matters in the **Active-Inference Theory and Governed Agent Analogy** lane because least-privilege agent design and run evidence must stay separate from judgment; treating a formal theory as product evidence is a common failure.",
     "misconception": "that Applications of Active Inference and FEP in Intelligence (TU Delft Thesis) replaces human review whenever evidence looks plausible"
   },
   {
@@ -3916,11 +3916,11 @@
   },
   {
     "display_title": "Inoculation Effect: Psychological inoculation and prebunking literacy",
-    "raw_title": "Inoculation Effect: ~2x Improvement in Manipulation Recognition",
+    "raw_title": "Inoculation Effect: Measured Improvement in Manipulation Recognition",
     "risk_category": "cognitive_resilience",
     "part_title": "COGNITIVE SECURITY",
     "chapter_title": "Psychological Inoculation and Prebunking",
-    "why_it_matters": "Analysts use **Inoculation Effect: Psychological inoculation and prebunking literacy** to separate analysis of influence from persuasion design. A defensible treatment names the judgment it enables for information-integrity analysis and resilience education review, the proof limit that treating resilience labels as permission to skip provenance review would otherwise hide, and the reviewer accountable for challenge.",
+    "why_it_matters": "**Inoculation Effect: Psychological inoculation and prebunking literacy** connects classroom vocabulary to Cognitive Security and Influence Resilience practice: learners document evidence, caveats, and reviewer ownership rather than repeating labels.",
     "misconception": "that a resilience label on a technique means it has been stress-tested, rather than a habit that still needs evidence, caveats, and reviewer challenge"
   },
   {
@@ -3960,12 +3960,12 @@
     "misconception": "that a resilience label on a technique means it has been stress-tested, rather than a habit that still needs evidence, caveats, and reviewer challenge"
   },
   {
-    "display_title": "Psychological inoculation and prebunking literacy (39.7)",
-    "raw_title": "Psychological Inoculation Against Misinformation: Current Evidence (ANNALS, 2022)",
+    "display_title": "Psychological inoculation evidence and boundary-condition",
+    "raw_title": "Psychological Inoculation Against Misinformation: Current Evidence and Boundary Conditions (ANNALS, 2022)",
     "risk_category": "cognitive_resilience",
     "part_title": "COGNITIVE SECURITY",
     "chapter_title": "Psychological Inoculation and Prebunking",
-    "why_it_matters": "Without explicit treatment of **Psychological inoculation and prebunking literacy (39.7)**, treating resilience labels as permission to skip provenance review undermines information-integrity analysis and resilience education review; the lesson builds the habit to separate analysis of influence from persuasion design.",
+    "why_it_matters": "Without explicit treatment of **Psychological inoculation evidence and boundary-condition**, treating resilience labels as permission to skip provenance review undermines information-integrity analysis and resilience education review; the lesson builds the habit to separate analysis of influence from persuasion design.",
     "misconception": "that a resilience label on a technique means it has been stress-tested, rather than a habit that still needs evidence, caveats, and reviewer challenge"
   },
   {
@@ -3996,12 +3996,12 @@
     "misconception": "that a resilience label on a technique means it has been stress-tested, rather than a habit that still needs evidence, caveats, and reviewer challenge"
   },
   {
-    "display_title": "Operationalizing Prebunking in AGEINT: Psychological inoculation and prebunking literacy",
-    "raw_title": "Operationalizing Prebunking in AGEINT: Autonomous Inoculation Delivery at Scale",
+    "display_title": "Transparent prebunking education and review workflow",
+    "raw_title": "Operationalizing Prebunking in AGEINT: Transparent Resilience Education and Review",
     "risk_category": "cognitive_resilience",
     "part_title": "COGNITIVE SECURITY",
     "chapter_title": "Psychological Inoculation and Prebunking",
-    "why_it_matters": "Without explicit treatment of **Operationalizing Prebunking in AGEINT: Psychological inoculation and prebunking literacy**, treating resilience labels as permission to skip provenance review undermines information-integrity analysis and resilience education review; the lesson builds the habit to separate analysis of influence from persuasion design.",
+    "why_it_matters": "Analysts use **Transparent prebunking education and review workflow** to separate analysis of influence from persuasion design. A defensible treatment names the judgment it enables for information-integrity analysis and resilience education review, the proof limit that treating resilience labels as permission to skip provenance review would otherwise hide, and the reviewer accountable for challenge.",
     "misconception": "that a resilience label on a technique means it has been stress-tested, rather than a habit that still needs evidence, caveats, and reviewer challenge"
   },
   {

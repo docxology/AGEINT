@@ -69,26 +69,46 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_odni_icd_206",
             "official_odni_objectivity",
             "official_cia_tradecraft_primer",
+            "official_cia_sherman_kent_profession",
+            "official_cia_kent_analyst_policymaker_relations",
             "official_dia_tradecraft_primer",
             "official_army_atp_2_33_4",
+            "official_irtpa_2004_analytic_integrity",
+            "official_911_commission_report",
+            "official_robb_silberman_wmd_report",
+            "official_nato_alternative_analysis_handbook",
+            "official_cia_grabo_warning_intelligence_handbook",
             "scholarly_heuer_psychology_intelligence_analysis",
             "scholarly_heuer_pherson_sats",
+            "scholarly_wohlstetter_1962_pearl_harbor_warning_decision",
+            "scholarly_rand_2016_sat_evaluation",
+            "scholarly_marcoci_2019_tradecraft_reliability",
+            "scholarly_barnes_mandel_2014_forecast_accuracy",
+            "scholarly_ard_2023_sat_pragmatic",
+            "scholarly_stromer_galley_2020_flexible_sat",
+            "scholarly_betts_1978_intelligence_failure",
+            "scholarly_jervis_2022_postmortems_fail",
+            "scholarly_wirtz_2023_intelligence_failures_inevitable",
         ),
         conceptual_focus=(
             "turning uncertainty into reviewable judgment through sourcing, "
-            "alternatives, confidence language, and explicit analytic lineage"
+            "alternatives, separated likelihood and confidence language, warning "
+            "indicators, and explicit analytic lineage"
         ),
         method_stack=(
             "key assumptions check, analysis of competing hypotheses, "
-            "indicators and warnings, red-team review, and source descriptor audit"
+            "diagnosticity review, indicators and warnings, probability calibration, "
+            "red-team review, collective tradecraft rating, and source descriptor audit"
         ),
         composability_contract=(
             "every agent output must preserve evidence, assumptions, judgments, "
-            "confidence, dissent, and change history as separable fields"
+            "likelihood, confidence, dissent, empirical limits, and change history "
+            "as separable fields"
         ),
         failure_modes=(
             "source laundering, automation bias, hidden assumptions, collapsed "
-            "confidence language, and visually persuasive but weakly sourced claims"
+            "likelihood/confidence language, hindsight certainty, SAT-as-bias-cure "
+            "overclaiming, and visually persuasive but weakly sourced claims"
         ),
         safety_boundary=(
             "analysis remains educational and decision-supportive; it does not "
@@ -105,8 +125,6 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "governance",
             "privacy",
             "data",
-            "active inference",
-            "adversarial considerations",
         ),
         anchor_keys=(
             "official_ic_ai_ethics_principles",
@@ -125,6 +143,9 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_iso_iec_23894_ai_risk_management",
             "official_nist_sp_1270_ai_bias",
             "official_cisa_ai_data_security_best_practices",
+            "scholarly_model_cards_model_reporting",
+            "scholarly_datasheets_for_datasets",
+            "scholarly_data_cards_dataset_documentation",
             "official_nara_2025_ai_compliance_plan",
             "official_federal_data_strategy",
             "official_pclob_oversight_reports",
@@ -181,6 +202,8 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_five_eyes_agentic_ai_adoption",
             "official_nsf_ai_agent_ecosystems",
             "official_cdc_agentic_research_public_health",
+            "official_model_context_protocol_specification",
+            "official_model_context_protocol_security_best_practices",
             "official_nsa_mcp_security",
             "official_nist_ai_agent_standards_initiative",
             "official_cisa_ai_red_teaming_tev",
@@ -202,10 +225,7 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_nist_ssdf",
             "official_cisa_secure_by_design",
             "official_nist_ai_100_2_adversarial_ml",
-            "scholarly_friston_2010_fep",
-            "scholarly_friston_2017_active_inference_process",
-            "scholarly_dacosta_2020_discrete_active_inference",
-            "scholarly_parr_2022_active_inference_textbook",
+            "scholarly_greshake_2023_indirect_prompt_injection",
             "scholarly_yao_2023_react",
             "scholarly_shinn_2023_reflexion",
             "scholarly_park_2023_generative_agents",

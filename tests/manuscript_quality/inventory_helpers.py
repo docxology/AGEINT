@@ -151,6 +151,7 @@ REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_w3c_vc_data_integrity",
     "scholarly_model_cards_model_reporting",
     "scholarly_datasheets_for_datasets",
+    "scholarly_data_cards_dataset_documentation",
     "official_uk_algorithmic_transparency_hub",
     "official_uk_algorithmic_transparency_guidance",
     "official_nist_sp_800_218a_ai_ssdf",
@@ -185,6 +186,10 @@ REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_model_context_protocol_security_best_practices",
     "official_agent2agent_protocol_specification",
     "official_ncsc_secure_ai_system_development",
+    "official_nist_ai_800_2_automated_benchmark_evaluations",
+    "official_oecd_agentic_ai_landscape",
+    "official_nsa_mcp_security_design_considerations",
+    "scholarly_roozenbeek_2022_psychological_inoculation",
 }
 # Re-export for manuscript-safety tests (canonical set lives in src/safety_contract.py).
 BLOCKED_OPERATIONAL_PATTERN_PHRASES = BLOCKED_OPERATIONAL_PHRASES

@@ -22,6 +22,7 @@ from _jsonl import read_jsonl
 from safety_contract import text_is_operational
 
 from . import _source_prose as prose
+from .source_tiers import source_evidence_status
 
 if TYPE_CHECKING:
     from ._01_part import TopicEntry
@@ -88,7 +89,6 @@ _FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source 
 
 # Decorative/emoji glyphs that the PDF font set cannot render.
 _UNSUPPORTED_GLYPH_RE = re.compile("[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]")
-
 
 def _rewrite_hard_coded_refs(text: str) -> str:
     """Replace hard-coded numbered references so crossref tests pass.
@@ -476,7 +476,7 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
         else:
             title_cell = "Cited source (see bibliography)"
         note_cell = _cell(record.note) if record.note else "See bibliography for scope."
-        status = "verified" if record.verified else "original"
+        status = source_evidence_status(record)
         rows.append(f"| {record.citation} | {title_cell} | {note_cell} | {status} |")
     return "\n".join(rows)
 

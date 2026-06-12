@@ -5,7 +5,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about Defining Intelligence, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -14,7 +14,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about Intelligence Cycle, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -23,7 +23,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about Types, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -32,7 +32,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about Intelligence as Social and Epistemological, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -41,7 +41,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about National Corporate and Private Intelligence, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -50,7 +50,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: probability term, confidence statement, source-quality basis, assumption register, and reviewer check that likelihood and confidence are not collapsed.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about Ethics of Intelligence, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -59,7 +59,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about Active Inference as a Unifying, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -68,7 +68,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "The Nature of Intelligence",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **dissemination map with audience, caveat, marking, records, and feedback fields** for this cycle mapping and audience-aware product design topic. The artifact must separate the source descriptor, the bounded judgment about AI Inflection Point, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -203,8 +203,8 @@
     "risk_category": "evidence_change_memory",
     "part_title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
     "chapter_title": "Tradecraft: Core Principles",
-    "evidence_prompt": "The evidence packet for **Claim-ledger memory exercise that tracks evidence changes rather than people** uses source descriptors, structured reasoning and source-integrity records, provenance gaps, and a documented judgment-change condition for Claim, ledger.",
-    "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must record the source descriptor, the bounded claim about Claim-ledger memory exercise that tracks, the revision caveat, the uncertainty note, the superseded-claim boundary, and the reviewer who logs the change."
+    "evidence_prompt": "Evidence packet: source-change ledger, retention rule, contamination check, and proof that memory tracks claims and sources rather than people, assets, or behavioral patterns.",
+    "artifact_prompt": "Build a claim-ledger memory card with source descriptor, source-change event, retention rule, contamination check, and reviewer disposition; it must not track real people, assets, or behavioral patterns."
   },
   {
     "display_title": "Situational Awareness: Urban and Rural Tradecraft",
@@ -779,8 +779,8 @@
     "risk_category": "evidence_change_memory",
     "part_title": "OPEN SOURCE INTELLIGENCE (OSINT)",
     "chapter_title": "GEOINT and Imagery Intelligence",
-    "evidence_prompt": "The evidence packet for **Claim-ledger memory exercise that tracks evidence changes rather than people** uses source descriptors, source-quality review and non-sensitive geospatial interpretation records, provenance gaps, and a documented judgment-change condition for Claim, ledger.",
-    "artifact_prompt": "Build a **requirements matrix with source descriptors, caveats, and collection limits** for this source-quality review and non-sensitive geospatial interpretation topic. The artifact must record the source descriptor, the bounded claim about Claim-ledger memory exercise that tracks, the revision caveat, the uncertainty note, the superseded-claim boundary, and the reviewer who logs the change."
+    "evidence_prompt": "Evidence packet: source-change ledger, retention rule, contamination check, and proof that memory tracks claims and sources rather than people, assets, or behavioral patterns.",
+    "artifact_prompt": "Build a claim-ledger memory card with source descriptor, source-change event, retention rule, contamination check, and reviewer disposition; it must not track real people, assets, or behavioral patterns."
   },
   {
     "display_title": "GEOINT in Counterinsurgency and Strike: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples",
@@ -1518,7 +1518,7 @@
     "part_title": "PSYCHOLOGICAL OPERATIONS AND INFLUENCE",
     "chapter_title": "Information Warfare and Cognitive Security",
     "evidence_prompt": "Evidence packet: narrative provenance, audience-harm notes, attribution evidence, and transparent education options.",
-    "artifact_prompt": "Build a prediction-error concept card linking surprise, model assumption, and reviewer checkpoint."
+    "artifact_prompt": "Build a prediction-error concept card linking formal source, surprise, model assumption, analogy limit, and reviewer checkpoint."
   },
   {
     "display_title": "Behavioral Outcomes of Human Cognitive Security (arXiv 2026)",
@@ -2238,7 +2238,7 @@
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Foundations of AGEINT",
     "evidence_prompt": "The evidence packet for **Memory: In-Context, External VectorDB, Episodic, Semantic, Procedural** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Memory, In.",
-    "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about Memory, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build an agent-memory boundary card that separates source/change ledgers, external stores, retention rules, and reviewer controls from unsupported cognitive-memory taxonomy claims."
   },
   {
     "display_title": "Agentic cyber-misuse control review using sample prompt records, fabricated logs, and deny-by-default tool policies",
@@ -3281,8 +3281,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Agent Framework Security Vulnerabilities** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Agent, Framework.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Agent Framework Security Vulnerabilities, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Agent Framework Security Vulnerabilities** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Agent, Framework.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Agent Framework Security Vulnerabilities, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Python REPL sandbox and approval-gate",
@@ -3300,7 +3300,7 @@
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
     "evidence_prompt": "Evidence packet: fabricated alerts, published taxonomy labels, confidence language, and control implications.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must map the indicator descriptor, the bounded claim about Cyber credential-and-movement taxonomy review using, the taxonomy caveat, the confidence note, the no-action boundary, and the reviewer who validates the labeling."
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must map the indicator descriptor, the bounded claim about Cyber credential-and-movement taxonomy review using, the taxonomy caveat, the confidence note, the no-action boundary, and the reviewer who validates the labeling."
   },
   {
     "display_title": "AutoGen sandbox and code-execution approval",
@@ -3317,8 +3317,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **MCP Server Poisoning and Prompt Injection** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for MCP, Server.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about MCP Server Poisoning and Prompt, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **MCP Server Poisoning and Prompt Injection** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for MCP, Server.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about MCP Server Poisoning and Prompt, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Prompt Injection in Intelligence Agentic Systems",
@@ -3326,8 +3326,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Prompt Injection in Intelligence Agentic Systems** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Prompt, Injection.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Prompt Injection in Intelligence Agentic, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Prompt Injection in Intelligence Agentic Systems** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Prompt, Injection.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Prompt Injection in Intelligence Agentic, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Hallucination in Action: When Agents Act on Fabricated Intelligence",
@@ -3335,8 +3335,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Hallucination in Action: When Agents Act on Fabricated Intelligence** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Hallucination, in.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Hallucination in Action, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Hallucination in Action: When Agents Act on Fabricated Intelligence** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Hallucination, in.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Hallucination in Action, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Infinite Loops and Runaway Agents: Detection and Kill Switches",
@@ -3344,8 +3344,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Infinite Loops and Runaway Agents: Detection and Kill Switches** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Infinite, Loops.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Infinite Loops and Runaway Agents, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Infinite Loops and Runaway Agents: Detection and Kill Switches** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Infinite, Loops.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Infinite Loops and Runaway Agents, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Agentic AI Governance Frameworks 2026",
@@ -3353,8 +3353,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Agentic AI Governance Frameworks 2026** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Agentic, AI.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Agentic AI Governance Frameworks, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Agentic AI Governance Frameworks 2026** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Agentic, AI.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Agentic AI Governance Frameworks, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "OWASP Top 10 for LLM Applications",
@@ -3362,8 +3362,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **OWASP Top 10 for LLM Applications** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for OWASP, Top.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about OWASP Top 10 for LLM, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **OWASP Top 10 for LLM Applications** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for OWASP, Top.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about OWASP Top 10 for LLM, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "IAPS Agentic AI Governance Framework",
@@ -3371,8 +3371,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **IAPS Agentic AI Governance Framework** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for IAPS, Agentic.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about IAPS Agentic AI Governance Framework, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **IAPS Agentic AI Governance Framework** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for IAPS, Agentic.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about IAPS Agentic AI Governance Framework, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "UK AI Safety Institute: Agent Evaluations",
@@ -3380,8 +3380,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **UK AI Safety Institute: Agent Evaluations** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for UK, AI.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about UK AI Safety Institute, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **UK AI Safety Institute: Agent Evaluations** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for UK, AI.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about UK AI Safety Institute, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "LLM-agent cyber-misuse taxonomy review using sample reports",
@@ -3398,8 +3398,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Threat Intelligence Gathering by LLM Agents** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Threat, Gathering.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Threat Intelligence Gathering by LLM, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Threat Intelligence Gathering by LLM Agents** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Threat, Gathering.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Threat Intelligence Gathering by LLM, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Malware-misuse control review using sample agent logs",
@@ -3443,8 +3443,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Observability as Control: Tracing, Logging, Audit for AGEINT Systems** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Observability, Control.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Observability as Control, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Observability as Control: Tracing, Logging, Audit for AGEINT Systems** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Observability, Control.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Observability as Control, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Human-in-the-Loop Architectures: When and How to Mandate Oversight",
@@ -3452,8 +3452,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Human-in-the-Loop Architectures: When and How to Mandate Oversight** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Human, in.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Human-in-the-Loop Architectures, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Human-in-the-Loop Architectures: When and How to Mandate Oversight** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Human, in.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Human-in-the-Loop Architectures, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Alignment and Trustworthiness in AGEINT: National Security Context",
@@ -3461,8 +3461,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Security and Adversarial Considerations",
-    "evidence_prompt": "The evidence packet for **Alignment and Trustworthiness in AGEINT: National Security Context** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Alignment, Trustworthiness.",
-    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this model/data documentation and rights-aware review topic. The artifact must name the source descriptor, the bounded claim about Alignment and Trustworthiness in AGEINT, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "evidence_prompt": "The evidence packet for **Alignment and Trustworthiness in AGEINT: National Security Context** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Alignment, Trustworthiness.",
+    "artifact_prompt": "Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** for this least-privilege agent design and run review topic. The artifact must name the source descriptor, the bounded claim about Alignment and Trustworthiness in AGEINT, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "The Free Energy Principle and Predictive Processing",
@@ -3470,8 +3470,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **The Free Energy Principle and Predictive Processing** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Free, Energy.",
-    "artifact_prompt": "Build a prediction-error concept card linking surprise, model assumption, and reviewer checkpoint."
+    "evidence_prompt": "The evidence packet for **The Free Energy Principle and Predictive Processing** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Free, Energy.",
+    "artifact_prompt": "Build a prediction-error concept card linking formal source, surprise, model assumption, analogy limit, and reviewer checkpoint."
   },
   {
     "display_title": "Active Inference as Computational Model of Intelligence Agent Behavior",
@@ -3479,8 +3479,8 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **Active Inference as Computational Model of Intelligence Agent Behavior** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Active, Inference.",
-    "artifact_prompt": "Build a toy agent-model card with beliefs, actions, observations, and a human approval gate."
+    "evidence_prompt": "The evidence packet for **Active Inference as Computational Model of Intelligence Agent Behavior** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Active, Inference.",
+    "artifact_prompt": "Build a toy agent-model card with beliefs, actions, observations, implementation assumption, and a human approval gate."
   },
   {
     "display_title": "Shared Protentions in Multi-Agent Active Inference",
@@ -3488,7 +3488,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **Shared Protentions in Multi-Agent Active Inference** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Shared, Protentions.",
+    "evidence_prompt": "The evidence packet for **Shared Protentions in Multi-Agent Active Inference** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Shared, Protentions.",
     "artifact_prompt": "Build a shared-expectation register showing aligned expectations, dissent, and review ownership."
   },
   {
@@ -3497,7 +3497,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **Active Inference for Social Organization and Intelligence Communities** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Active, Inference.",
+    "evidence_prompt": "The evidence packet for **Active Inference for Social Organization and Intelligence Communities** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Active, Inference.",
     "artifact_prompt": "Build an institutional feedback-loop map with incentives, review points, and oversight hooks."
   },
   {
@@ -3506,7 +3506,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **VERSES AI Research: Multi-Scale Active Inference Architectures** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for VERSES, AI.",
+    "evidence_prompt": "The evidence packet for **VERSES AI Research: Multi-Scale Active Inference Architectures** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for VERSES, AI.",
     "artifact_prompt": "Build an architecture-claim card separating research claims, implementation assumptions, and governance limits."
   },
   {
@@ -3515,7 +3515,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **Cognitive Security Through the Active Inference Lens** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Cognitive, Security.",
+    "evidence_prompt": "The evidence packet for **Cognitive Security Through the Active Inference Lens** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Cognitive, Security.",
     "artifact_prompt": "Build a sample narrative-risk map with provenance, audience harm, and transparent response options."
   },
   {
@@ -3524,7 +3524,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **Applications: Deception Detection, Surprise Minimization, Threat Modeling** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Applications, Deception.",
+    "evidence_prompt": "The evidence packet for **Applications: Deception Detection, Surprise Minimization, Threat Modeling** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Applications, Deception.",
     "artifact_prompt": "Build a threat-model review card with assumptions, disconfirming evidence, and confidence language."
   },
   {
@@ -3533,7 +3533,7 @@
     "risk_category": "standard",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "Active Inference and AGEINT",
-    "evidence_prompt": "The evidence packet for **Applications of Active Inference and FEP in Intelligence (TU Delft Thesis)** uses source descriptors, model/data documentation and rights-aware records, provenance gaps, and a documented judgment-change condition for Applications, Active.",
+    "evidence_prompt": "The evidence packet for **Applications of Active Inference and FEP in Intelligence (TU Delft Thesis)** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Applications, Active.",
     "artifact_prompt": "Build a research question, method, evidence base, and classroom boundary statement for the thesis topic."
   },
   {
@@ -3578,8 +3578,8 @@
     "risk_category": "evidence_change_memory",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Python Code Library",
-    "evidence_prompt": "The evidence packet for **Claim-ledger memory exercise that tracks evidence changes rather than people** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Claim, ledger.",
-    "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must record the source descriptor, the bounded claim about Claim-ledger memory exercise that tracks, the revision caveat, the uncertainty note, the superseded-claim boundary, and the reviewer who logs the change."
+    "evidence_prompt": "Evidence packet: source-change ledger, retention rule, contamination check, and proof that memory tracks claims and sources rather than people, assets, or behavioral patterns.",
+    "artifact_prompt": "Build a claim-ledger memory card with source descriptor, source-change event, retention rule, contamination check, and reviewer disposition; do not track real people, assets, or behavioral patterns."
   },
   {
     "display_title": "Psychological inoculation and prebunking literacy",
@@ -3916,7 +3916,7 @@
   },
   {
     "display_title": "Inoculation Effect: Psychological inoculation and prebunking literacy",
-    "raw_title": "Inoculation Effect: ~2x Improvement in Manipulation Recognition",
+    "raw_title": "Inoculation Effect: Measured Improvement in Manipulation Recognition",
     "risk_category": "cognitive_resilience",
     "part_title": "COGNITIVE SECURITY",
     "chapter_title": "Psychological Inoculation and Prebunking",
@@ -3960,13 +3960,13 @@
     "artifact_prompt": "Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** for this information-integrity analysis and resilience education topic. The artifact must record the narrative provenance, the bounded claim about Inoculation to Resist Misinformation, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
   },
   {
-    "display_title": "Psychological inoculation and prebunking literacy (39.7)",
-    "raw_title": "Psychological Inoculation Against Misinformation: Current Evidence (ANNALS, 2022)",
+    "display_title": "Psychological inoculation evidence and boundary-condition",
+    "raw_title": "Psychological Inoculation Against Misinformation: Current Evidence and Boundary Conditions (ANNALS, 2022)",
     "risk_category": "cognitive_resilience",
     "part_title": "COGNITIVE SECURITY",
     "chapter_title": "Psychological Inoculation and Prebunking",
     "evidence_prompt": "Evidence packet: narrative provenance, audience-harm notes, attribution evidence, and transparent education options.",
-    "artifact_prompt": "Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** for this information-integrity analysis and resilience education topic. The artifact must record the narrative provenance, the bounded claim about Psychological inoculation and prebunking literacy, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
+    "artifact_prompt": "Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** for this information-integrity analysis and resilience education topic. The artifact must record the narrative provenance, the bounded claim about Psychological inoculation evidence and boundary-condition, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
   },
   {
     "display_title": "NATO STRATCOM COE: Psychological inoculation and prebunking literacy",
@@ -3996,13 +3996,13 @@
     "artifact_prompt": "Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** for this information-integrity analysis and resilience education topic. The artifact must record the narrative provenance, the bounded claim about Critical Thinking Training vs Misinformation, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
   },
   {
-    "display_title": "Operationalizing Prebunking in AGEINT: Psychological inoculation and prebunking literacy",
-    "raw_title": "Operationalizing Prebunking in AGEINT: Autonomous Inoculation Delivery at Scale",
+    "display_title": "Transparent prebunking education and review workflow",
+    "raw_title": "Operationalizing Prebunking in AGEINT: Transparent Resilience Education and Review",
     "risk_category": "cognitive_resilience",
     "part_title": "COGNITIVE SECURITY",
     "chapter_title": "Psychological Inoculation and Prebunking",
     "evidence_prompt": "Evidence packet: narrative provenance, audience-harm notes, attribution evidence, and transparent education options.",
-    "artifact_prompt": "Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** for this information-integrity analysis and resilience education topic. The artifact must record the narrative provenance, the bounded claim about Operationalizing Prebunking in AGEINT, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
+    "artifact_prompt": "Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** for this information-integrity analysis and resilience education topic. The artifact must record the narrative provenance, the bounded claim about Transparent prebunking education and review, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
   },
   {
     "display_title": "The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making",
@@ -4082,7 +4082,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about CIA Tradecraft Primer, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4091,7 +4091,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: probability term, confidence statement, source-quality basis, assumption register, and reviewer check that likelihood and confidence are not collapsed.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about ICD 203 Analytic Standards, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4100,7 +4100,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Psychology of Intelligence Analysis, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4109,7 +4109,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: technique purpose, diagnosticity claim, empirical support limit, reviewer dissent, and caveat against treating the technique as a universal bias remedy.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Structured Analytic Techniques, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4127,7 +4127,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Devil's Advocacy and Red Teaming, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4136,7 +4136,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Alternative Futures Analysis, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4145,7 +4145,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Brainstorming and Divergent Thinking Techniques, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4154,7 +4154,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a threat-model review card with assumptions, disconfirming evidence, and confidence language."
   },
   {
@@ -4163,7 +4163,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Key Assumptions Check, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4172,7 +4172,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Indicators Validator, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4181,7 +4181,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about What If Pre-Mortem Analysis, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4190,7 +4190,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build an institutional feedback-loop map with incentives, review points, and oversight hooks."
   },
   {
@@ -4199,7 +4199,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Analytic Tradecraft Standards in Army, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4208,7 +4208,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Cognitive Biases, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4217,7 +4217,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Structured Analytic Techniques (SATs)",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Spycraft to Self-Mastery, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4226,7 +4226,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Red Cell Analysis and Adversarial, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4235,7 +4235,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Network Analysis, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4244,7 +4244,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Timeline Analysis and Event Sequencing, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4253,7 +4253,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Collection Management, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4262,7 +4262,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Writing Intelligence Products, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4271,7 +4271,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Communicating Uncertainty, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {
@@ -4280,7 +4280,7 @@
     "risk_category": "analytic_tradecraft",
     "part_title": "EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT",
     "chapter_title": "Advanced Analysis Methods",
-    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields.",
+    "evidence_prompt": "Evidence packet: hypothesis tables, evidence matrices, separated likelihood and confidence language, SAT evidence caveats, and reviewer dissent fields.",
     "artifact_prompt": "Build a **analytic note with hypotheses, evidence table, confidence, and dissent fields** for this structured reasoning and source-integrity review topic. The artifact must separate the source descriptor, the bounded judgment about Machine-Assisted Analysis, the analytic caveat, the confidence note, the excluded-inference boundary, and the reviewer who logs dissent."
   },
   {

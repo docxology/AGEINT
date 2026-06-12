@@ -15,6 +15,8 @@ Part modules merge at import via `figures/__init__.py`. Keep `_02_part.py`
 | `_02b_mermaid.py` | `render_mermaid_figure()`, `mermaid_source()`, `placeholder_or_fail()` |
 | `_03_part.py` | Matplotlib/Python chart renderers, `_draw_text_plate()`, canvas normalization |
 | `_04_part.py` | Public re-exports |
+| `_05_visual_style.py` | Shared palette, title/footer, wrapping, and arrow helpers |
+| `_06_python_renderers.py` | Python renderer dispatch and source-metadata charts |
 
 ## Placeholder figures (CI / headless builds)
 
@@ -60,6 +62,6 @@ Import from `figures` or `src/__init__.py`:
 
 ## Editing rules
 
-- Add new Python visuals in `_03_part.py` and register them in `build_figure_specs()`.
+- Add compact new Python visuals in `_03_part.py` or a small helper module, wire dispatch in `_06_python_renderers.py`, and register them through `PYTHON_VISUALS`.
 - Do not hard-code figure numbers; use `fig:` labels and Pandoc-crossref in manuscript prose.
 - Rebuild: `uv run python scripts/generate_figures.py` or full `scripts/build_curriculum.py`.

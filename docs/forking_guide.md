@@ -15,7 +15,7 @@ Generated prose is an artifact. Fork the **source spine** and renderer code.
 
 ## Template parity
 
-Keep `src/`, `tests/`, `scripts/`, `manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](../../../docs/guides/new-project-setup.md) for Layer 2 conventions.
+Keep `src/`, `tests/`, `scripts/`, `manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](../../../../template/docs/guides/new-project-setup.md) for Layer 2 conventions.
 
 ## Confidentiality
 

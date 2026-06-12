@@ -42,7 +42,8 @@ EVIDENCE_CATEGORY_PROMPTS: dict[str, str] = {
         "Evidence packet: transaction typology notes, source quality, escalation thresholds, and uncertainty fields."
     ),
     "analytic_tradecraft": (
-        "Evidence packet: hypothesis tables, evidence matrices, confidence language, and reviewer dissent fields."
+        "Evidence packet: hypothesis tables, evidence matrices, separated likelihood "
+        "and confidence language, SAT evidence caveats, and reviewer dissent fields."
     ),
     "operational_tradecraft_governance": (
         "Evidence packet: sample OPSEC worksheets, compartmentation registers, and "
@@ -53,11 +54,17 @@ EVIDENCE_CATEGORY_PROMPTS: dict[str, str] = {
         "for epistemic-security tabletop review."
     ),
     "cognitive_resilience_inoculation": (
-        "Evidence packet: inoculation lesson plans with transparent labels, source checks, "
-        "and non-manipulative correction options."
+        "Evidence packet: bounded inoculation lesson plans with transparent labels, "
+        "source checks, measurement limits, audience-harm notes, and non-manipulative "
+        "correction options."
     ),
     "critical_infrastructure_sharing": (
         "Evidence packet: sample ISAC packets for handling rules, anonymization, confidence, and consumer duties."
+    ),
+    "evidence_change_memory": (
+        "Evidence packet: source-change ledger, retention rule, contamination check, "
+        "and proof that memory tracks claims and sources rather than people, assets, "
+        "or behavioral patterns."
     ),
 }
 
@@ -65,6 +72,20 @@ EVIDENCE_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     (("ach", "competing hypotheses"), (
         "Evidence packet: hypothesis table with evidence for and against each alternative "
         "before confidence is assigned."
+    )),
+    (("icd 203", "confidence language", "analytic confidence", "likelihood"), (
+        "Evidence packet: probability term, confidence statement, source-quality "
+        "basis, assumption register, and reviewer check that likelihood and "
+        "confidence are not collapsed."
+    )),
+    (("warning intelligence", "indications and warning", "indicator register"), (
+        "Evidence packet: indicator register, assumption trace, collection gap, "
+        "decision-uptake note, and postmortem learning field."
+    )),
+    (("structured analytic technique", "structured analytic techniques", "sat evidence"), (
+        "Evidence packet: technique purpose, diagnosticity claim, empirical support "
+        "limit, reviewer dissent, and caveat against treating the technique as a "
+        "universal bias remedy."
     )),
     (("mice", "recruitment"), (
         "Evidence packet: sample source notes for pressure indicators, consent language, "
@@ -74,10 +95,12 @@ EVIDENCE_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
 
 ARTIFACT_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     (("free energy", "predictive processing"), (
-        "Build a prediction-error concept card linking surprise, model assumption, and reviewer checkpoint."
+        "Build a prediction-error concept card linking formal source, surprise, "
+        "model assumption, analogy limit, and reviewer checkpoint."
     )),
     (("computational model", "active inference as computational"), (
-        "Build a toy agent-model card with beliefs, actions, observations, and a human approval gate."
+        "Build a toy agent-model card with beliefs, actions, observations, "
+        "implementation assumption, and a human approval gate."
     )),
     (("shared protentions", "multi-agent active inference"), (
         "Build a shared-expectation register showing aligned expectations, dissent, and review ownership."
@@ -97,6 +120,16 @@ ARTIFACT_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     (("tu delft", "applications of active inference and fep"), (
         "Build a research question, method, evidence base, and classroom boundary statement for the thesis topic."
     )),
+    (("external vectordb", "in-context"), (
+        "Build an agent-memory boundary card that separates source/change ledgers, "
+        "external stores, retention rules, and reviewer controls from unsupported "
+        "cognitive-memory taxonomy claims."
+    )),
+    (("persistent memory",), (
+        "Build a claim-ledger memory card with source descriptor, source-change event, "
+        "retention rule, contamination check, and reviewer disposition; do not track "
+        "real people, assets, or behavioral patterns."
+    )),
 )
 
 ARTIFACT_RISK_CATEGORY_PROMPTS: dict[str, str] = {
@@ -107,6 +140,11 @@ ARTIFACT_RISK_CATEGORY_PROMPTS: dict[str, str] = {
     "software_supply_chain_social_trust": (
         "Build a maintainer-trust evidence card with provenance, communication-risk "
         "signal, uncertainty, and escalation boundary."
+    ),
+    "evidence_change_memory": (
+        "Build a claim-ledger memory card with source descriptor, source-change event, "
+        "retention rule, contamination check, and reviewer disposition; it must not "
+        "track real people, assets, or behavioral patterns."
     ),
 }
 

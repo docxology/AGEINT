@@ -273,7 +273,9 @@ def _model_dataset_documentation_card(chapter: dict[str, Any]) -> str:
             "",
             (
                 "Minimum gate: model and data claims must name intended use, excluded use, "
-                "composition limits, evaluation evidence, lifecycle owner, and refresh trigger."
+                "affected stakeholders, provenance, collection process, license or authority, "
+                "composition limits, evaluation context, subgroup caveats, failure modes, "
+                "lifecycle owner, rollback path, and refresh trigger."
             ),
         ]
     )

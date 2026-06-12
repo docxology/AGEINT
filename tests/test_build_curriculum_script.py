@@ -9,6 +9,7 @@ import sys
 
 import template_resolver
 from build_pipeline import run_build
+from figures import _02b_mermaid as mermaid_rendering
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = PROJECT_ROOT / "scripts" / "build_curriculum.py"
@@ -41,7 +42,12 @@ def _minimal_project(tmp_path: Path) -> Path:
     return project
 
 
-def test_default_build_preserves_neutral_template_library(tmp_path: Path) -> None:
+def _force_mermaid_placeholders(monkeypatch) -> None:
+    monkeypatch.setattr(mermaid_rendering.shutil, "which", lambda _name: None)
+
+
+def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkeypatch) -> None:
+    _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
     template_file = project / "manuscript" / "templates" / "chapter.md"
 
@@ -105,7 +111,8 @@ def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None
     assert str(repo) in sys.path
 
 
-def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path) -> None:
+def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, monkeypatch) -> None:
+    _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
     template_file = project / "manuscript" / "templates" / "chapter.md"
 

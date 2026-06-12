@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 from typing import Iterable, Sequence
 
+from rendered_reference_emphasis import authored_emphasis_ranges
+
 
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md"}
 REFERENCE_DOC_NAMES = {"references.md"}
@@ -26,9 +28,7 @@ BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
 # BibTeX entry header: ``@misc{key,`` / ``@article{key,`` etc.
 _BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
-# Strong-emphasis spans used to protect authored phrases from title matching.
 _BOLD_SPAN_RE = re.compile(r"\*\*(.+?)\*\*|__(.+?)__")
-
 
 @dataclass(frozen=True)
 class TitleRule:
@@ -199,9 +199,11 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
         in_code = False
         in_html_figure = False
         in_html_heading = False
+        in_html_emphasis = False
         in_html_nav = False
         in_html_table = False
         in_tex_table = False
+        in_tex_emphasis = False
         for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             stripped = line.strip()
             if suffix == ".md" and stripped.startswith("```"):
@@ -261,7 +263,13 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                             path, line_number, "unresolved citation key", f"@{key}", line
                         )
                     )
-            protected = _authored_bold_ranges(line, known_titles)
+            protected, in_html_emphasis, in_tex_emphasis = authored_emphasis_ranges(
+                line,
+                known_titles,
+                suffix,
+                in_html_emphasis,
+                in_tex_emphasis,
+            )
             for title, pattern in title_patterns:
                 if any(not _within_ranges(m.start(), protected) for m in pattern.finditer(line)):
                     violations.append(
@@ -305,16 +313,6 @@ def _replacement_for_kind(kind: str, title: str) -> str:
     if title == "Curriculum Orientation":
         return "the orientation section"
     return "the current section"
-
-
-def _authored_bold_ranges(line: str, known_titles: frozenset[str]) -> list[tuple[int, int]]:
-    """Char ranges of ``**...**`` spans whose inner text is NOT a known section title (authored woven lesson titles), protected from matching."""
-    ranges: list[tuple[int, int]] = []
-    for match in _BOLD_SPAN_RE.finditer(line):
-        inner = (match.group(1) or match.group(2) or "").strip()
-        if inner and inner not in known_titles:
-            ranges.append((match.start(), match.end()))
-    return ranges
 
 
 def _within_ranges(index: int, ranges: list[tuple[int, int]]) -> bool:

@@ -63,8 +63,8 @@ FININT/economic-security anchors. These additions remain source-profile entries:
 generated chapters select them through reusable profiles and practice lenses
 rather than through hand-authored chapter prose.
 
-The v2, deep-expansion, and evidence-package passes add source-lane metadata to curated anchors
-and expand the curated anchor set to at least 202 official, standards,
+The v2, deep-expansion, evidence-package, and Data Cards passes add source-lane metadata to curated anchors
+and expand the curated anchor set to at least 225 official, standards,
 public-domain, or scholarly sources. New lanes cover AI conformity/compliance,
 education and assessment, public-sector agentic AI, cross-border data/data
 spaces, human-rights governance, agent interoperability standards, workforce
@@ -106,6 +106,7 @@ legal instruments, the Open Contracting Data Standard, NIST SP 800-61 Rev. 3,
 ENISA AI cybersecurity guidance, NIST AI security/resilience resources, and W3C
 Verifiable Credential Data Integrity.
 The evidence-package source family adds model cards, datasheets for datasets,
+Data Cards for purposeful dataset documentation,
 the UK Algorithmic Transparency Recording Standard, NIST SP 800-218A, the U.S.
 Access Board Revised 508 Standards, NIST ARIA, NARA AI use-case inventory, OMB
 M-25-21, OMB M-25-22, NIST AI 600-1, and the NIST AI Agent Standards
@@ -171,13 +172,22 @@ and generated BibTeX:
 | H | Rights and incident governance | Canada Algorithmic Impact Assessment, OECD AI risks/incidents, and OECD incident-reporting framework |
 | I | Assurance and release control | NIST Dioptra, CISA secure AI deployment, CISA AI data-security best practices, and CISA AI red teaming/TEVV |
 | J | OT procurement and auditability | CISA Secure by Demand OT procurement, OT asset-inventory guidance, and definitive OT architecture guidance |
-| K | Current AI safety, misuse, and interoperability | NIST AI 100-4/100-5/800-1, International AI Safety Report 2026, MCP specification/security, A2A protocol, and NCSC secure-AI-development guidance |
+| K | Current AI safety, misuse, interoperability, and evaluation | NIST AI 100-4/100-5/800-1/800-2, International AI Safety Report 2026, MCP specification/security, A2A protocol, OECD agentic-AI foundations, NSA MCP security design, and NCSC secure-AI-development guidance |
 | L | Supply-chain evidence and defensive-control provenance | MITRE D3FEND, OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore |
+| M | Analytic tradecraft, warning, and failure evidence | CIA/Kent professionalization, ICD 203, IRTPA, 9/11 and WMD postmortems, NATO alternative analysis, warning-intelligence sources, SAT empirical evaluation, forecasting calibration, and intelligence-failure theory |
 
-Measured source-layer coverage after the current refresh: **202** curated
+Measured source-layer coverage after the current refresh: **248** curated
 research anchors and **125** keyword concept routes. The exact project test and
 coverage result is intentionally not hard-coded here; run
 `uv run pytest tests/ --cov=src --cov-fail-under=90` for the current gate.
+
+The 2026-06-11 analytic-tradecraft shard
+(`data/research_anchors/intelligence-anchors-233-248.jsonl`) adds CIA/Kent,
+warning-intelligence, post-9/11 and Iraq WMD postmortem, NATO
+alternative-analysis, SAT evaluation, forecasting-calibration, and
+failure-theory sources. These are routed as curriculum anchors for Chapters
+41-42 and for the new source-backed Mermaid boundary diagrams; they do not
+license universal claims that SATs cure bias or eliminate intelligence failure.
 
 ## 2026-05-22 cognitive-security synthesis pass (verified encode only)
 

@@ -267,18 +267,22 @@ surface, so a mature design must monitor the monitors [@official_csa_maestro_thr
 
 ### Governance control: SRE circuit breaker
 
-Knowing where attacks land is not the same as bounding their blast radius. Microsoft's
-site-reliability-engineering-for-agents pattern, depicted in [@fig:ageint-sre-circuit-breaker],
-governs an agent as a circuit breaker with three states. In CLOSED the agent operates normally,
-its autonomy earned by a clean safety record; when the safety error budget is exhausted -- for
-this curriculum, when the PolicyCompliance service-level indicator falls below 99 percent -- the
-breaker trips to OPEN and a human takes over; after a recovery period plus validation it moves to
-HALF_OPEN with limited capability, returning to CLOSED only if the clean record holds and snapping
-back to OPEN on any new violation. Activation triggers include policy-bypass attempts, LLM-provider
-errors, tool-timeout cascades, trust-score degradation, and reasoning loops or deadlocks. Teach
-this as a defensive governance exercise: define the PolicyCompliance SLI for a synthetic agent,
-set its error budget, and rehearse the OPEN-state human takeover as a tabletop rather than a live
-intervention [@scholarly_systems_security_agentic_computing]; [@official_unu_macau_agentic_ai_boundaries].
+Knowing where attacks land is not the same as bounding their blast radius. The
+SRE circuit-breaker teaching pattern, depicted in [@fig:ageint-sre-circuit-breaker],
+adapts reliability vocabulary into an author-defined governance exercise for
+agents with three states. In CLOSED the agent operates normally, its autonomy
+earned by a clean safety record; when the safety error budget is exhausted --
+for this curriculum, when the PolicyCompliance service-level indicator falls
+below 99 percent -- the breaker trips to OPEN and a human takes over; after a
+recovery period plus validation it moves to HALF_OPEN with limited capability,
+returning to CLOSED only if the clean record holds and snapping back to OPEN on
+any new violation. Activation triggers include policy-bypass attempts,
+LLM-provider errors, tool-timeout cascades, trust-score degradation, and
+reasoning loops or deadlocks. Teach this as a defensive governance exercise:
+define the PolicyCompliance SLI for a synthetic agent, set its error budget, and
+rehearse the OPEN-state human takeover as a tabletop rather than a live
+intervention [@scholarly_systems_security_agentic_computing];
+[@official_unu_macau_agentic_ai_boundaries].
 
 The PolicyCompliance service-level indicator makes the 99-percent threshold concrete. Over a
 review window of $N_{\\text{total}}$ governed actions with $N_{\\text{violations}}$ policy

@@ -29,10 +29,16 @@ uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/
 
 ## Mermaid figures
 
-AGEINT renders 102 Mermaid figures via `mmdc` into `output/figures/mermaid/`: 17
-curriculum and part module maps, 7 synthesis methods diagrams (CDR cascade,
+AGEINT renders 115 Mermaid figures via `mmdc` into `output/figures/mermaid/`: 17
+curriculum and part module maps, 20 synthesis and boundary diagrams (CDR cascade,
 MAESTRO layers, SRE circuit breaker, decoherence-degradation isomorphism, unified
-epistemic stack, cognitive attack layers, HRO governance crosswalk), and 77
+epistemic stack, cognitive attack layers, HRO governance crosswalk, claim-evidence
+fit, MCP version boundary, active-inference boundary stack, prebunking evidence
+boundary, agentic standards landscape, agent evaluation evidence ladder,
+synthetic-content provenance boundary, first-principles tradecraft decomposition,
+red-team negative-control loop, analytic tradecraft evidence ladder, ICD 203
+probability/confidence boundary, SAT evidence boundary, and warning/failure
+feedback loop), and 78
 concept diagrams declared in `data/figures/synthesis_extra.jsonl` — one per
 chapter (51), one per part (16), plus cross-cutting and appendix diagrams (the
 intelligence cycle, oversight architecture, minimization gating, ACH workflow,
@@ -52,7 +58,7 @@ npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
 Confirm `mmdc` and `pandoc-crossref` are on `PATH` before PDF render. Combined
 PDF rendering may also require `chrome-headless-shell` for inline Mermaid in
 other projects; AGEINT pre-rasterizes module maps under `output/figures/mermaid/`.
-See template [`docs/operational/troubleshooting/common-errors.md`](../../../docs/operational/troubleshooting/common-errors.md).
+See template [`docs/operational/troubleshooting/common-errors.md`](../../../../template/docs/operational/troubleshooting/common-errors.md).
 
 Run strict figure tests:
 

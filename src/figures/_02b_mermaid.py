@@ -22,16 +22,16 @@ from curriculum import Curriculum
 from ._01_part import FigureSpec
 
 
-# Shared theme header applied to every Mermaid source. Larger base font and
-# generous node/rank spacing keep labels legible after the square-canvas
-# normalization in _normalize_png_canvas (output is force-fit to 1280px on a
-# 1400px square, so any wasted bounding-box area shrinks text). The
-# subGraphTitleMargin keeps subgraph titles clear of their first child node.
+# Shared theme header applied to every Mermaid source. The font is compact
+# enough for PDF pages while node/rank spacing keeps normalized PNGs readable.
 _MERMAID_INIT = (
     "%%{init: {"
     "'theme':'neutral',"
-    "'themeVariables':{'fontSize':'20px'},"
-    "'flowchart':{'htmlLabels':true,'nodeSpacing':45,'rankSpacing':55,"
+    "'themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif',"
+    "'primaryColor':'#dbeafe','primaryBorderColor':'#475569',"
+    "'primaryTextColor':'#0f172a','lineColor':'#475569',"
+    "'secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},"
+    "'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis',"
     "'subGraphTitleMargin':{'top':8,'bottom':12}}"
     "}}%%\n"
 )
@@ -364,7 +364,7 @@ _HRO_GOVERNANCE_CROSSWALK = """flowchart LR
 """
 
 # Synthesis and chapter-concept diagrams are declared as data in
-# data/figures/synthesis_extra.json and merged into these structures by the
+# data/figures/synthesis_extra.jsonl and merged into these structures by the
 # loader below, keeping the large Mermaid sources out of this module.
 _SYNTHESIS_MERMAID_SOURCES: dict[str, str] = {}
 SYNTHESIS_MERMAID: tuple[dict[str, str], ...] = ()

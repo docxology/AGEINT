@@ -2,8 +2,9 @@ concept_keyword_routes:
 - keywords:
   - free energy
   - predictive processing
-  frame: Define prediction error, generative model, and uncertainty in plain language, then show how the theory helps an analyst
-    notice when a model is explaining too much from too little evidence.
+  frame: Treat the free-energy principle as computational-neuroscience theory, define prediction error, generative model,
+    and uncertainty in plain language, then show how the theory helps an analyst notice when a model is explaining too
+    much from too little evidence.
 - keywords:
   - computational model
   - active inference
@@ -24,6 +25,11 @@ concept_keyword_routes:
   - multi-scale
   frame: 'Read the architecture claim as a layered-systems example: separate public research claims, implementation assumptions,
     evaluation evidence, and governance limits.'
+- keywords:
+  - external vectordb
+  - persistent memory
+  frame: Treat agent memory terms as a pedagogical taxonomy unless a domain memory source is cited; MCP and official
+    agentic-AI guidance support external-memory governance, tool boundaries, logs, retention, and reviewer control.
 - keywords:
   - nature of intelligence
   - definition of intelligence
@@ -214,8 +220,8 @@ concept_keyword_routes:
   - prebunking
   - inoculation
   - debunking
-  frame: Use inoculation methods to build audience resilience with transparent labels, source checks, and non-manipulative
-    corrections.
+  frame: Use inoculation methods as evidence-informed, bounded, and context-dependent resilience education with transparent
+    labels, source checks, non-manipulative corrections, and explicit measurement limits.
 - keywords:
   - counterintelligence
   - source integrity

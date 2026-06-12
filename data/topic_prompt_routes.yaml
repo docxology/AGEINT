@@ -33,8 +33,8 @@ evidence_category_prompts:
   prompt: 'Evidence packet: transaction typology notes, source quality, escalation
     thresholds, and uncertainty fields.'
 - category: analytic_tradecraft
-  prompt: 'Evidence packet: hypothesis tables, evidence matrices, confidence language,
-    and reviewer dissent fields.'
+  prompt: 'Evidence packet: hypothesis tables, evidence matrices, separated likelihood
+    and confidence language, SAT evidence caveats, and reviewer dissent fields.'
 - category: operational_tradecraft_governance
   prompt: 'Evidence packet: sample OPSEC worksheets, compartmentation registers, and
     cover-review notes with explicit oversight fields.'
@@ -42,17 +42,43 @@ evidence_category_prompts:
   prompt: 'Evidence packet: provenance chains, dissent channels, and correction options
     for epistemic-security tabletop review.'
 - category: cognitive_resilience_inoculation
-  prompt: 'Evidence packet: inoculation lesson plans with transparent labels, source
-    checks, and non-manipulative correction options.'
+  prompt: 'Evidence packet: bounded inoculation lesson plans with transparent labels,
+    source checks, measurement limits, audience-harm notes, and non-manipulative correction
+    options.'
 - category: critical_infrastructure_sharing
   prompt: 'Evidence packet: sample ISAC packets for handling rules, anonymization,
     confidence, and consumer duties.'
+- category: evidence_change_memory
+  prompt: 'Evidence packet: source-change ledger, retention rule, contamination check,
+    and proof that memory tracks claims and sources rather than people, assets, or
+    behavioral patterns.'
 evidence_keyword_routes:
 - keywords:
   - ach
   - competing hypotheses
   prompt: 'Evidence packet: hypothesis table with evidence for and against each alternative
     before confidence is assigned.'
+- keywords:
+  - icd 203
+  - confidence language
+  - analytic confidence
+  - likelihood
+  prompt: 'Evidence packet: probability term, confidence statement, source-quality
+    basis, assumption register, and reviewer check that likelihood and confidence
+    are not collapsed.'
+- keywords:
+  - warning intelligence
+  - indications and warning
+  - indicator register
+  prompt: 'Evidence packet: indicator register, assumption trace, collection gap,
+    decision-uptake note, and postmortem learning field.'
+- keywords:
+  - structured analytic technique
+  - structured analytic techniques
+  - sat evidence
+  prompt: 'Evidence packet: technique purpose, diagnosticity claim, empirical support
+    limit, reviewer dissent, and caveat against treating the technique as a universal
+    bias remedy.'
 - keywords:
   - mice
   - recruitment
@@ -62,13 +88,13 @@ artifact_keyword_routes:
 - keywords:
   - free energy
   - predictive processing
-  prompt: Build a prediction-error concept card linking surprise, model assumption,
-    and reviewer checkpoint.
+  prompt: Build a prediction-error concept card linking formal source, surprise, model
+    assumption, analogy limit, and reviewer checkpoint.
 - keywords:
   - computational model
   - active inference as computational
-  prompt: Build a toy agent-model card with beliefs, actions, observations, and a
-    human approval gate.
+  prompt: Build a toy agent-model card with beliefs, actions, observations, implementation
+    assumption, and a human approval gate.
 - keywords:
   - shared protentions
   - multi-agent active inference
@@ -99,6 +125,17 @@ artifact_keyword_routes:
   - applications of active inference and fep
   prompt: Build a research question, method, evidence base, and classroom boundary
     statement for the thesis topic.
+- keywords:
+  - external vectordb
+  - in-context
+  prompt: Build an agent-memory boundary card that separates source/change ledgers,
+    external stores, retention rules, and reviewer controls from unsupported cognitive-memory
+    taxonomy claims.
+- keywords:
+  - persistent memory
+  prompt: Build a claim-ledger memory card with source descriptor, source-change event,
+    retention rule, contamination check, and reviewer disposition; do not track real
+    people, assets, or behavioral patterns.
 artifact_risk_category_prompts:
 - category: agentic_cyber_misuse
   prompt: Build a blocked-request control card with tool permission, unsafe outcome,
@@ -106,3 +143,7 @@ artifact_risk_category_prompts:
 - category: software_supply_chain_social_trust
   prompt: Build a maintainer-trust evidence card with provenance, communication-risk
     signal, uncertainty, and escalation boundary.
+- category: evidence_change_memory
+  prompt: Build a claim-ledger memory card with source descriptor, source-change event,
+    retention rule, contamination check, and reviewer disposition; it must not track
+    real people, assets, or behavioral patterns.

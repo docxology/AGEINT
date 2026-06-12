@@ -23,7 +23,7 @@ manuscript can rely on it.
 | Public-sector transparency | open-government, public accountability, stakeholder participation, disclosure, and civic-space sources |
 | Rights-impact privacy review | DPIA, HRIA, high-risk processing, safeguards, redress, and affected-group review sources |
 | Model card reporting | model and dataset cards for intended use, evaluation evidence, limitations, release context, and lifecycle controls |
-| Dataset documentation | dataset motivation, composition, collection process, recommended use, and accountability sources |
+| Dataset documentation | dataset motivation, stakeholder purpose, composition, collection process, recommended use, prohibited reuse, lifecycle revision, and accountability sources |
 | Algorithmic transparency reporting | transparency notices, public records, publication guidance, scope, exemptions, and accessible accountability fields |
 | Records retention/auditability | records-retention evidence, source/prompt registers, exception logs, incident records, and audit trails |
 | Secure release/change control | release gates, rollback, monitoring, secure-development lifecycle controls, and retest evidence |
@@ -49,6 +49,12 @@ inventory and definitive architecture guidance.
 Add lane metadata in `data/research_anchors/` and `src/intelligence_content/`, surface it through
 `src/manuscript_variables/`, and rebuild. Do not hand-edit generated
 source-lane tables under `output/`.
+
+Inherited source-guide rows from LinkedIn, Medium, cloud-vendor guidance,
+security blogs, and practitioner explainers remain useful provenance context.
+They should be surfaced as secondary or illustrative evidence, while official,
+standards, public-domain, and scholarly anchors carry definitions, governance
+requirements, and performance-sensitive claims.
 
 Visible generated headings should be reader-facing. Source-guide pseudo-headings
 such as `V2 source-lane extension:`, `Deep expansion:`, and

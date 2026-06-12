@@ -170,7 +170,7 @@ FirstPrinciples framing + a RedTeam adversarial audit (5 dims) drove 5 commit-if
 - WRITING (bbab63d): topic-lesson full-title restatement 8.9 → 3.01 per lesson; dangling/truncated annotations repaired. Generator fix in topic_lesson_voice.py / _11_part.py / source_grounding.py.
 - CITATIONS (6a02795): truncated source fragments ("…as a distinct and critical.") 12 → 0; vendor stats neutralized; keys validated.
 - FORMALISMS (5579a39): 0 → 27 math markers, all CORRECT + sourced — PolicyCompliance SLI = (N_total−N_violations)/N_total ≥ 0.99; ErrorBudget = 0.01·N_total with breaker→OPEN rule (agentic-security §); ACH diagnosticity as Bayesian posterior-odds P(Hi|E)/P(Hj|E) = [P(E|Hi)/P(E|Hj)]·[P(Hi)/P(Hj)] (SATs §); free-energy bound. Read the rendered LaTeX to confirm.
-- HYPERLINKING (6274c1f): resurrected dead verified/original status column + fixed 2 dangling appendix cross-refs. The ~918 "raw URLs" are legitimate [title](url) linked source titles in evidence tables, not prose violations — correctly judged.
+- HYPERLINKING (6274c1f): resurrected dead verified/original status column + fixed 2 dangling appendix cross-refs. The ~918 "raw URLs" are legitimate Markdown source-title links such as `[title](...)` in evidence tables, not prose violations — correctly judged.
 - VISUALIZATIONS (2d4f59f): shared _MERMAID_INIT theme (larger font/spacing), curriculum map → 4×4 grid, part maps → TB. Visually verified curriculum-map + MAESTRO render clear/correct with the new theme.
 - Build strict exit 0; banned phrases 0; registry 64; full suite passed above
   the 90% coverage gate; tree clean at that checkpoint.

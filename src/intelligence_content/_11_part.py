@@ -30,6 +30,11 @@ from .source_grounding import (
     source_support_sentence,
     sources_for_numbers,
 )
+from .tradecraft_source_support import (
+    curated_tradecraft_evidence,
+    primary_topic_sources,
+    tradecraft_context_support,
+)
 from .topic_entries import safe_topic_entries
 from .topic_formalisms import lesson_formalism_field
 from .topic_lesson_voice import compact_topic, short_title, topic_reference
@@ -61,9 +66,12 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             unit_profile=unit_profile,
         )
         sources = cited_sources(entry, limit=3)
+        support_sources = primary_topic_sources(entry.risk_category, sources)
         evidence = (
-            evidence_from_sources(entry.display_title, sources)
-            if sources
+            evidence_from_sources(entry.display_title, support_sources)
+            if support_sources
+            else curated_tradecraft_evidence(entry.display_title)
+            if entry.risk_category == "analytic_tradecraft" and sources
             else fields.evidence_prompt
         )
         # ``forbidden`` blocks short forms that collide with a chapter/part title,
@@ -72,7 +80,7 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         forbidden = {title.casefold(), part_title.casefold()}
         body_fields = [
             f"**Why it matters.** {fields.why_it_matters}",
-            f"**Source support.** {_topic_source_support(entry, chapter, sources)}",
+            f"**Source support.** {_topic_source_support(entry, chapter, support_sources, original_sources=sources)}",
             f"**Evidence to inspect.** {evidence}",
             f"**Student artifact.** {fields.artifact_prompt}",
             f"**Misconception check.** {_misconception_line(entry.display_title, fields.misconception, forbidden=forbidden)}",
@@ -118,7 +126,6 @@ _BARE_NOUNS = ("topic", "lesson topic", "subject")
 # Standalone anaphora used after a determiner is absent and the field already
 # carries title keywords from an earlier short-form mention.
 _STANDALONE = ("this topic", "the same topic", "this subject")
-
 
 def _anaphorize_field(
     display_title: str,
@@ -248,11 +255,18 @@ def _topic_source_support(
     entry: TopicEntry,
     chapter: dict[str, Any],
     sources: tuple[SourceRecord, ...] = (),
+    *,
+    original_sources: tuple[SourceRecord, ...] = (),
 ) -> str:
     """Render direct topic citations or an honest module-spine fallback."""
 
     if sources:
         return source_support_sentence(entry.display_title, sources)
+    if entry.risk_category == "analytic_tradecraft" and original_sources:
+        return tradecraft_context_support(
+            entry.display_title,
+            source_citation_spine(entry.citation_numbers),
+        )
     if entry.citation_numbers:
         return (
             f"Source-guide row {entry.source_locus} cites "

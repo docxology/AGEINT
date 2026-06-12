@@ -191,6 +191,26 @@ def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path
     assert audit_rendered_references(tmp_path) == []
 
 
+def test_rendered_reference_audit_preserves_rendered_authored_emphasis(tmp_path: Path) -> None:
+    manuscript = tmp_path / "manuscript"
+    manuscript.mkdir()
+    (manuscript / "chapter.md").write_text("# Social Engineering\n", encoding="utf-8")
+    web = tmp_path / "web"
+    web.mkdir()
+    (web / "index.html").write_text(
+        "<p><strong>History of Social Engineering</strong> teaches defensive recognition.</p>\n",
+        encoding="utf-8",
+    )
+    pdf = tmp_path / "pdf"
+    pdf.mkdir()
+    (pdf / "_combined_manuscript.tex").write_text(
+        "\\textbf{AI Automation of Social Engineering at\nScale} stays defensive.\n",
+        encoding="utf-8",
+    )
+
+    assert audit_rendered_references(tmp_path) == []
+
+
 def test_rendered_reference_audit_flags_unresolved_citation_key(tmp_path: Path) -> None:
     manuscript = tmp_path / "manuscript"
     parts = manuscript / "parts" / "unit" / "chapter"

@@ -125,18 +125,59 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-citation-density",
         "title": "AGEINT Citation Density",
-        "caption": "Citation density highlights modules that carry heavier source-review obligations.",
-        "alt_text": "Bar chart showing citation counts by generated AGEINT module.",
+        "caption": (
+            "Method-backed audit chart reporting direct external citation counts "
+            "per generated module; labels, denominators, and counting rule come "
+            "from the curriculum parser."
+        ),
+        "alt_text": (
+            "Bar chart of direct citation counts by generated AGEINT module, "
+            "used as a source-review workload signal rather than capability evidence."
+        ),
         "renderer": "citation_density",
         "source_section": "orientation.md",
     },
     {
         "slug": "ageint-source-quality-spine",
         "title": "AGEINT Source-Quality Spine",
-        "caption": "The source-quality spine links official anchors to manuscript evidence claims.",
-        "alt_text": "Horizontal bands for official source-quality anchors used by AGEINT.",
+        "caption": (
+            "Compact audit matrix listing official source-quality anchors, their "
+            "source tier, claim role, evidence use, and refresh duty; it is a "
+            "source-management view, not quantitative evidence."
+        ),
+        "alt_text": "Audit matrix of official source-quality anchors, source tiers, roles, and refresh duties.",
         "renderer": "source_quality_spine",
         "source_section": "bibliography-atlas.md",
+    },
+    {
+        "slug": "ageint-source-freshness-coverage",
+        "title": "AGEINT Source Freshness and Coverage",
+        "caption": (
+            "Evidence-derived chart summarizing curated research-anchor freshness, "
+            "source lanes, and evidence tiers from local metadata; counts are audit "
+            "coverage signals, not source-quality scores."
+        ),
+        "alt_text": (
+            "Chart of AGEINT research-anchor counts by freshness bucket, evidence "
+            "tier, and largest source lanes."
+        ),
+        "renderer": "source_freshness_coverage",
+        "source_section": "bibliography-atlas.md",
+    },
+    {
+        "slug": "ageint-analytic-source-quality-boundary",
+        "title": "Analytic Tradecraft Source Quality Boundary",
+        "caption": (
+            "Source-backed evidence-derived chart from local research-anchor metadata showing "
+            "official, standards, statutory, postmortem, scholarly evaluation, and "
+            "forecasting evidence lanes for analytic-tradecraft claims."
+        ),
+        "alt_text": (
+            "Chart grouping analytic-tradecraft research anchors by source lane, "
+            "evidence tier, verification method, and claim boundary."
+        ),
+        "renderer": "analytic_source_quality_boundary",
+        "source_section": "chapter:41",
     },
     {
         "slug": "ageint-pattern-taxonomy",
@@ -150,8 +191,8 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
         "slug": "ageint-safety-boundary-loop",
         "title": "AGEINT Safety Boundary Loop",
         "caption": (
-            "The safety boundary loop keeps authorization, synthetic fixtures, "
-            "human oversight, logging, and non-operational practice connected."
+            "Conceptual governance schematic showing how authorization, synthetic "
+            "fixtures, human oversight, logging, and non-operational practice stay connected."
         ),
         "alt_text": "Loop diagram showing defensive safety gates around AGEINT practice.",
         "renderer": "safety_boundary_loop",
@@ -168,8 +209,12 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-reference-coverage",
         "title": "AGEINT Reference Coverage",
-        "caption": "Reference coverage compares parsed guide references with curated official and scholarly anchors.",
-        "alt_text": "Reference coverage chart comparing parsed guide references and official anchors.",
+        "caption": (
+            "Audit table defining heterogeneous count types: parsed source-guide "
+            "references, curated research anchors, methods appendices, and named "
+            "AGEINT patterns."
+        ),
+        "alt_text": "Reference coverage table with count type, denominator, source surface, and use.",
         "renderer": "reference_coverage",
         "source_section": "bibliography-atlas.md",
     },
@@ -192,8 +237,12 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-ai-compliance-map",
         "title": "AGEINT AI Compliance Map",
-        "caption": "The AI compliance map ties governance lanes to curriculum evidence artifacts.",
-        "alt_text": "Matrix mapping AI compliance lanes to source, rights, assurance, and capstone evidence.",
+        "caption": (
+            "Conceptual compliance matrix with rows as governance lanes and "
+            "columns as source, rights, assurance, artifact, and refresh "
+            "obligations; color groups cells only."
+        ),
+        "alt_text": "Conceptual matrix mapping governance lanes to source, rights, assurance, artifact, and refresh obligations.",
         "renderer": "ai_compliance_map",
         "source_section": "orientation.md",
     },
@@ -328,9 +377,17 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-model-dataset-card",
         "title": "AGEINT Model and Dataset Card",
-        "caption": "The model and dataset card keeps intended use, composition, evaluation evidence, and lifecycle controls reviewable.",
-        "alt_text": "Matrix showing AGEINT model-card and dataset-card evidence fields.",
+        "caption": "The model and dataset card keeps purpose, provenance, collection process, evaluation caveats, lifecycle controls, and review ownership visible for model and dataset claims.",
+        "alt_text": "Matrix showing AGEINT model-card and dataset-card fields for intended use, provenance, composition limits, evaluation caveats, lifecycle controls, and review gates.",
         "renderer": "model_dataset_card",
+        "source_section": "orientation.md",
+    },
+    {
+        "slug": "ageint-agentic-intelligence-boundary",
+        "title": "AGEINT Agentic Intelligence Boundary Controls",
+        "caption": "The boundary-control matrix shows how purpose, tool permissions, data access, human review, logging, and rollback constrain agentic assistance before any external action can occur.",
+        "alt_text": "Matrix showing AGEINT agentic boundary controls across assist, approve, block, and recover states.",
+        "renderer": "agentic_intelligence_boundary",
         "source_section": "orientation.md",
     },
     {
@@ -391,50 +448,20 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     },
 )
 
-AI_CONCEPTUAL_PLATES: tuple[dict[str, str], ...] = (
-    {
-        "slug": "ageint-agentic-intelligence-boundary",
-        "title": "Agentic Intelligence Boundary Plate",
-        "caption": (
-            "Synthetic conceptual plate for AGEINT boundaries: agents support "
-            "analysis, governance, and rehearsal without live tasking."
-        ),
-        "alt_text": "Abstract layered interface showing bounded agentic intelligence workflows.",
-        "source_section": "orientation.md",
-        "prompt": (
-            "Create a non-operational conceptual image of agentic intelligence as "
-            "layered analysis, governance, provenance, and human oversight. No real "
-            "people, no official logos, no real target, no weapons, no exploit UI."
-        ),
-    },
-    {
-        "slug": "ageint-cognitive-security-plate",
-        "title": "Cognitive Security Concept Plate",
-        "caption": (
-            "Synthetic conceptual plate for cognitive security as defensive "
-            "inoculation, provenance tracking, and uncertainty management."
-        ),
-        "alt_text": "Abstract conceptual plate of cognitive security and evidence review.",
-        "source_section": "part:Cognitive Security",
-        "prompt": (
-            "Create a synthetic abstract image for cognitive security, showing "
-            "defensive inoculation, provenance trails, and uncertainty review. No "
-            "real people, no official logos, no real target, no manipulation scene."
-        ),
-    },
-    {
-        "slug": "ageint-ics-tabletop-plate",
-        "title": "ICS Tabletop Concept Plate",
-        "caption": (
-            "Synthetic conceptual plate for ICS tabletop learning with owned-lab "
-            "fixtures, logging, rollback, and defensive review."
-        ),
-        "alt_text": "Abstract plate of an industrial tabletop workflow with safety gates.",
-        "source_section": "chapter:49",
-        "prompt": (
-            "Create a non-operational conceptual image of an industrial-control "
-            "tabletop lab with safety gates, logs, rollback, and human review. No "
-            "real facility, no real target, no exploit steps, no official logos."
-        ),
-    },
+_CONCEPT_PLATES_PATH = (
+    Path(__file__).resolve().parents[2] / "data" / "figures" / "concept_plates.jsonl"
 )
+
+
+def _load_concept_plates() -> tuple[dict[str, str], ...]:
+    """Load deterministic teaching-plate specifications from JSONL data."""
+    if not _CONCEPT_PLATES_PATH.is_file():
+        return ()
+    rows: list[dict[str, str]] = []
+    for line in _CONCEPT_PLATES_PATH.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            rows.append(dict(json.loads(line)))
+    return tuple(rows)
+
+
+AI_CONCEPTUAL_PLATES: tuple[dict[str, str], ...] = _load_concept_plates()

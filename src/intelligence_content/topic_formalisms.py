@@ -47,7 +47,8 @@ _LESSON_FORMULAS: tuple[tuple[str, str], ...] = (
         "Because the Kullback-Leibler term is non-negative, minimizing $F$ over "
         "$q(s)$ tightens the bound on surprise -- the precise statement of this "
         "lesson's plain-language warning about a model explaining too much from "
-        "too little evidence [@ageint106]; [@ageint003].",
+        "too little evidence [@scholarly_friston_2010_fep]; "
+        "[@scholarly_buckley_2017_fep_mathematical_review].",
     ),
 )
 

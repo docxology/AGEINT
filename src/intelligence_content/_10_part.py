@@ -40,8 +40,10 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
                 "evidentiary support, common misconceptions, and safety boundaries."
             ),
             (
-                f"Definitions, examples, uncertainty language, and artifact "
-                f"requirements are grounded in verified anchors such as {anchors} "
+                f"Governance requirements use verified official, standards, "
+                f"public-domain, or scholarly anchors such as {anchors} "
+                "Technical, theoretical, or empirical statements require direct "
+                "domain sources and are limited to what those sources establish. "
                 f"{source_context}"
             ),
             (

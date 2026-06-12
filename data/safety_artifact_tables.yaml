@@ -222,24 +222,40 @@ ADVERSARIAL_ASSURANCE_CYCLE:
   artifact: owner, due date, retest result, and refresh trigger
 MODEL_DATASET_CARD:
 - field: Intended use
-  model_card: authorized task, out-of-scope uses, affected users, and reviewer
-  dataset_card: collection purpose, recommended use, prohibited reuse, and stewardship
-    owner
-  review_gate: claim is rejected if intended use or excluded use is missing
-- field: Composition and scope
-  model_card: model version, capability boundary, test context, and known limitations
-  dataset_card: data origin, composition, sampling frame, sensitivity class, and license
-  review_gate: artifact is held if population, coverage, or source limits are not
-    visible
-- field: Evaluation evidence
-  model_card: benchmarks, subgroup results, stress tests, and uncertainty notes
-  dataset_card: quality tests, missingness, bias review, transformation log, and caveats
-  review_gate: artifact is revised if performance or data-quality claims lack evidence
+  model_card: authorized task, excluded uses, affected users, human reviewer, and
+    accountable owner
+  dataset_card: Data Cards purpose statement, recommended use, prohibited reuse,
+    stewardship owner, and affected stakeholder groups
+  review_gate: claim is rejected if intended use, excluded use, affected users, or
+    owner is missing
+- field: Provenance and collection
+  model_card: model family, version, supplier or lab, training cutoff, deployment
+    context, and configuration hash
+  dataset_card: upstream source, collection process, annotation method, consent or
+    authority basis, sensitivity class, and license
+  review_gate: artifact is held if provenance, license, authority, or collection
+    process is opaque
+- field: Composition and limits
+  model_card: capability boundary, known failure modes, tool permissions, context
+    window limits, and unsupported conditions
+  dataset_card: population, sampling frame, coverage gaps, subgroup visibility,
+    missingness, transformations, and known caveats
+  review_gate: artifact is revised if population, coverage, or source limits are
+    invisible
+- field: Evaluation and caveats
+  model_card: benchmark suite, task-specific tests, subgroup or context results,
+    red-team findings, uncertainty notes, and failure examples
+  dataset_card: quality tests, label agreement, bias review, measurement limits,
+    transformation log, and Data Cards answer-evaluation notes
+  review_gate: empirical or performance claims are rejected unless test context,
+    subgroup caveats, and uncertainty are visible
 - field: Lifecycle controls
-  model_card: release gate, rollback path, monitoring signal, and refresh trigger
-  dataset_card: retention rule, access boundary, update cadence, and deletion path
-  review_gate: reuse is blocked without owner, retention, monitoring, and refresh
-    evidence
+  model_card: release gate, rollback path, monitoring signal, incident threshold,
+    refresh trigger, and model-card update owner
+  dataset_card: retention rule, access boundary, update cadence, deletion path,
+    stewardship handoff, and dataset-card revision trigger
+  review_gate: reuse is blocked without owner, retention, monitoring, rollback,
+    and refresh evidence
 TRANSPARENCY_NOTICE_WORKFLOW:
 - step: Public purpose
   artifact: plain-language purpose, authority, affected service, and decision role

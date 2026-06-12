@@ -256,6 +256,10 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
             return "Epistemic security and knowledge-integrity review"
         if "darpa" in lower and ("ics" in lower or "cognitive" in lower):
             return "DARPA cognitive-security research literacy review"
+        if "current evidence" in lower or "boundary condition" in lower:
+            return "Psychological inoculation evidence and boundary-condition review"
+        if "operationalizing prebunking" in lower:
+            return "Transparent prebunking education and review workflow"
         if "prebunking" in lower or "inoculation" in lower or "debunking" in lower:
             return "Psychological inoculation and prebunking literacy review"
         if "mixed-reality" in lower or "mixed reality" in lower:

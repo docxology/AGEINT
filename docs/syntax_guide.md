@@ -23,4 +23,4 @@ Runtime counts and paths inject via `output/data/manuscript_variables.json` at b
 ## See also
 
 - [`rendering_pipeline.md`](rendering_pipeline.md)
-- [`../../../docs/guides/manuscript-semantics.md`](../../../docs/guides/manuscript-semantics.md)
+- [`docs/guides/manuscript-semantics.md`](../../../../template/docs/guides/manuscript-semantics.md)

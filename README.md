@@ -31,8 +31,8 @@ legal and human oversight constraints.
 - Methods appendices: 9
 - AGEINT patterns: 20
 - Parsed references: 312
-- Curated official/scholarly research anchors: 224
-- Registered figures: 142 (102 Mermaid, 33 Python, 4 historical, 3 AI-generated; square-normalized canvases; current registry has no placeholder plates)
+- Curated official/scholarly research anchors: 248
+- Registered figures: 161 (115 Mermaid, 36 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates)
 
 ## Commands
 
@@ -130,8 +130,7 @@ protocol specification, NCSC secure-AI-development guidance, MITRE D3FEND,
 OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore. Draft
 status is retained where applicable rather than treated as final policy.
 
-A 2026-06-08 primary-literature pass raises the curated set to 224 anchors,
-adding the foundational primaries behind the curriculum's theoretical and
+A 2026-06-08 primary-literature pass added the foundational primaries behind the curriculum's theoretical and
 technical claims: Friston's free-energy-principle and active-inference papers
 plus the Parr-Pezzulo-Friston textbook (the unifying cognitive framework); the
 canonical agentic-LLM architecture papers (ReAct, Reflexion, Generative Agents,
@@ -143,6 +142,32 @@ Heuer & Pherson's structured-analytic-techniques reference; the NIST FIPS 197 /
 material; and McGuire's 1961 founding inoculation-theory experiment. These
 upgrade provenance for claims previously anchored to secondary sources without
 changing any argument.
+
+A 2026-06-09 Data Cards pass raises the curated set to 225 anchors by adding
+the Data Cards dataset-documentation paper, tightening source-tier language for
+practitioner and vendor source-guide rows, and replacing the decorative AGEINT
+boundary plate with a deterministic control matrix.
+
+A 2026-06-10 source-method and active-inference pass raises the curated set to
+228 anchors by adding Buckley et al. on active inference, PRISMA-S for
+source-construction reporting, and Greshake et al. on indirect prompt injection.
+
+A 2026-06-11 internet-backed visualization pass raises the curated set to 232
+anchors by adding NIST AI 800-2 benchmark-evaluation draft guidance, OECD's
+agentic-AI landscape paper, NSA MCP security design guidance, and the Science
+Advances psychological-inoculation study. It also raises the figure registry to
+154 with source-backed standards, evaluation, synthetic-content, data-security,
+source-refresh, and freshness/coverage visuals.
+
+A 2026-06-11 analytic-tradecraft integration pass raises the curated set to 248
+anchors by adding CIA/Kent tradecraft history, warning-intelligence, post-9/11
+and Iraq WMD reform/postmortem sources, NATO alternative analysis, SAT
+evaluation evidence, forecasting calibration, and failure-theory sources. It
+also raises the figure registry to 161 with source-backed tradecraft
+schematics and one evidence-derived chart for source-quality boundaries,
+first-principles claim decomposition, red-team negative controls, evidence
+ladders, probability/confidence separation, SAT evidence boundaries, and
+warning/failure feedback.
 
 These counts are rebuild-time measurements, not hand-authored release claims:
 `output/data/curriculum_outline.json` carries the curriculum stats, and

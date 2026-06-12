@@ -157,6 +157,52 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
         ),
     ),
     IntelligenceProfile(
+        identifier="cognitive_active_inference",
+        title="Active-Inference Theory and Governed Agent Analogy",
+        match_terms=(
+            "active inference",
+            "free energy",
+            "predictive processing",
+            "expected free energy",
+            "generative model",
+            "shared protentions",
+        ),
+        anchor_keys=(
+            "scholarly_friston_2010_fep",
+            "scholarly_buckley_2017_fep_mathematical_review",
+            "scholarly_friston_2017_active_inference_process",
+            "scholarly_dacosta_2020_discrete_active_inference",
+            "scholarly_parr_2022_active_inference_textbook",
+            "official_nist_ai_rmf",
+            "official_nist_ai_600_1",
+            "official_canada_agentic_ai_guide",
+        ),
+        conceptual_focus=(
+            "using free-energy and active-inference theory as a bounded "
+            "computational vocabulary for perception, action, uncertainty, and "
+            "policy selection while keeping AGEINT governance claims separate"
+        ),
+        method_stack=(
+            "formal-source review, theory-to-analogy mapping, assumption listing, "
+            "implementation-evidence check, governance-control mapping, and "
+            "human-review caveat"
+        ),
+        composability_contract=(
+            "formal claim, pedagogical analogy, implementation assumption, "
+            "evaluation evidence, and governance duty remain distinct fields"
+        ),
+        failure_modes=(
+            "treating a formal theory as product evidence, using analogy as "
+            "architecture proof, citing policy guidance for mathematical claims, "
+            "and letting autonomy language outrun evaluation evidence"
+        ),
+        safety_boundary=(
+            "active-inference material stays theoretical and classroom bounded; "
+            "it does not prove autonomous action, intent detection, operational "
+            "performance, or deployment without explicit authority and review"
+        ),
+    ),
+    IntelligenceProfile(
         identifier="historical_declassified_sources",
         title="Historical and Declassified Intelligence Services",
         match_terms=(

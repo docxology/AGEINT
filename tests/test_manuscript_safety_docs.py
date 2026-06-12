@@ -124,7 +124,7 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert variables["CURRICULUM_CHAPTER_COUNT"] == "51"
     assert variables["CURRICULUM_APPENDIX_COUNT"] == "9"
     assert int(variables["CURRICULUM_REFERENCE_COUNT"]) >= 296
-    assert int(variables["INTELLIGENCE_RESEARCH_ANCHOR_COUNT"]) >= 172
+    assert int(variables["INTELLIGENCE_RESEARCH_ANCHOR_COUNT"]) >= 228
     assert int(variables["INTELLIGENCE_PRACTICE_LENS_COUNT"]) >= 12
     assert not any(key.startswith("CHAPTER_") for key in variables)
     assert "Checked as of 2026-05-21" in variables["BIBTEX_REFERENCES"]
@@ -156,6 +156,14 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "Artificial Intelligence Cybersecurity Challenges" in variables["BIBTEX_REFERENCES"]
     assert "Model Cards for Model Reporting" in variables["BIBTEX_REFERENCES"]
     assert "Datasheets for Datasets" in variables["BIBTEX_REFERENCES"]
+    assert "Data Cards: Purposeful and Transparent Dataset Documentation" in variables[
+        "BIBTEX_REFERENCES"
+    ]
+    assert "The Free Energy Principle for Action and Perception" in variables["BIBTEX_REFERENCES"]
+    assert "PRISMA-S: An Extension to the PRISMA Statement" in variables["BIBTEX_REFERENCES"]
+    assert "Compromising Real-World LLM-Integrated Applications" in variables[
+        "BIBTEX_REFERENCES"
+    ]
     assert "Algorithmic Transparency Recording Standard Hub" in variables["BIBTEX_REFERENCES"]
     assert "Secure Software Development Practices for Generative AI" in variables["BIBTEX_REFERENCES"]
     assert "Revised 508 Standards and 255 Guidelines" in variables["BIBTEX_REFERENCES"]
@@ -203,6 +211,16 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "official_model_context_protocol_security_best_practices" in variables[
         "CURRENT_SOURCE_UPDATE_ROWS"
     ]
+    assert "scholarly_data_cards_dataset_documentation" in variables[
+        "CURRENT_SOURCE_UPDATE_ROWS"
+    ]
+    assert "scholarly_buckley_2017_fep_mathematical_review" in variables[
+        "BIBLIOGRAPHY_ATLAS_ROWS"
+    ]
+    assert "scholarly_rethlefsen_2021_prisma_s" in variables["BIBLIOGRAPHY_ATLAS_ROWS"]
+    assert "scholarly_greshake_2023_indirect_prompt_injection" in variables[
+        "BIBLIOGRAPHY_ATLAS_ROWS"
+    ]
     assert "official_agent2agent_protocol_specification" in variables[
         "CURRENT_SOURCE_UPDATE_ROWS"
     ]
@@ -217,6 +235,12 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "Assurance reviewer" in variables["ROLE_COMPETENCY_ROWS"]
     assert "misuse-case card" in variables["ADVERSARIAL_ASSURANCE_ROWS"]
     assert "Intended use" in variables["MODEL_DATASET_CARD_ROWS"]
+    assert "Provenance and collection" in variables["MODEL_DATASET_CARD_ROWS"]
+    assert "Evaluation and caveats" in variables["MODEL_DATASET_CARD_ROWS"]
+    assert "Data Cards purpose statement" in variables["MODEL_DATASET_CARD_ROWS"]
+    assert "empirical or performance claims are rejected" in variables[
+        "MODEL_DATASET_CARD_ROWS"
+    ]
     assert "Public purpose" in variables["TRANSPARENCY_NOTICE_ROWS"]
     assert "Source and prompt register" in variables["RETENTION_AUDIT_ROWS"]
     assert "Scope freeze" in variables["RELEASE_CHANGE_CONTROL_ROWS"]
@@ -227,10 +251,11 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "Requirements-to-Evidence Lens" in variables["INTELLIGENCE_PRACTICE_LENS_ROWS"]
     assert "Economic-Security Due-Diligence Lens" in variables["INTELLIGENCE_PRACTICE_LENS_ROWS"]
     assert "Software-Supply-Chain Assurance Lens" in variables["INTELLIGENCE_PRACTICE_LENS_ROWS"]
+    assert "Active-Inference Boundary Lens" in variables["INTELLIGENCE_PRACTICE_LENS_ROWS"]
 
 
 def test_research_anchors_include_verification_metadata() -> None:
-    assert len(INTELLIGENCE_RESEARCH_ANCHORS) >= 172
+    assert len(INTELLIGENCE_RESEARCH_ANCHORS) == 248
     assert REQUIRED_REFRESHED_ANCHOR_KEYS <= {anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
     assert REQUIRED_SOURCE_LANES <= {
         anchor.source_lane or anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS
@@ -304,7 +329,7 @@ def test_generated_chapters_include_current_source_assurance_crosswalk(built_out
         crosswalk = section_text(text, "Governance, rights, and assurance")
         assert "Discovery and second-opinion" in crosswalk, path
         assert "Claim ledger records the direct URL" in crosswalk, path
-        assert "checked 2026-05-" in crosswalk, path
+        assert re.search(r"checked 2026-(05|06)-", crosswalk), path
 
 
 def test_meaningful_folders_have_readme_and_agent_notes() -> None:
@@ -352,6 +377,7 @@ def test_v2_docs_cover_source_lanes_identity_safety_and_capstone() -> None:
         "AI red-team assurance",
         "Public-sector transparency",
         "model and dataset cards",
+        "Data Cards",
         "transparency notices",
         "records-retention evidence",
         "release gates",
@@ -364,8 +390,32 @@ def test_v2_docs_cover_source_lanes_identity_safety_and_capstone() -> None:
         "authorized learning question",
         "source verification and claim ledgers",
         "instructor capstone/rubric/red-team review",
+        "secondary or illustrative evidence",
     ):
         assert phrase in combined
+
+
+def test_abstract_and_claim_ledger_calibrate_empirical_claims(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    abstract = (output_manuscript / "abstract.md").read_text(encoding="utf-8")
+    orientation = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in sorted((output_manuscript / "orientation").glob("*.md"))
+    )
+    method_ref = (
+        output_manuscript / "method-assurance-reference.md"
+    ).read_text(encoding="utf-8")
+    abstract_normalized = re.sub(r"\s+", " ", abstract)
+
+    assert "curriculum-and-assurance atlas" in abstract_normalized
+    assert "does not claim to measure AGEINT performance" in abstract_normalized
+    assert (
+        "Practitioner, vendor, and blog sources inherited through the source guide"
+        in abstract_normalized
+    )
+    assert "Empirical or evaluated capability claim" in method_ref
+    assert "not merely inferred from the AGEINT curriculum architecture" in method_ref
+    assert "proposed design guidance and an assurance framework" in orientation
 
 
 def test_risky_patterns_are_safety_transformed(built_output: Path) -> None:
