@@ -79,24 +79,24 @@ NOTE_INTROS: tuple[str, ...] = (
 # same method (define, bound, refresh) in different words AND weaves the lesson's
 # safe display title ({title}), so the rendered closing sentence is topic-specific
 # instead of one of four clauses stamped verbatim onto ~70 lessons each. The title
-# already opens the sentence in bold ("**{title}** rests on ..."), so it is woven
-# here un-bolded and in object position to avoid a clunky double-title. Selection
-# stays deterministic via stable_index; ``source_support_sentence`` calls
+# is bolded here so longer authored lesson-title fragments survive the
+# rendered-reference sanitizer instead of collapsing embedded chapter names.
+# Selection stays deterministic via stable_index; ``source_support_sentence`` calls
 # ``.format(title=display_title)`` exactly as ``EVIDENCE_CLOSERS`` already does.
 USE_CLAUSES: tuple[str, ...] = (
-    "the working definition that {title} can defend, where that scope ends, and the refresh check owed before this evidence transfers.",
-    "fixing what {title} covers, marking the boundary it must not cross, and timing the next source refresh.",
-    "the claim that {title} lets you defend here, the limit it has to respect, and the re-check owed before reuse.",
-    "pinning down the scope of {title}, the edge of that scope, and when these citations need re-verifying before transfer.",
+    "the working definition that **{title}** can defend, where that scope ends, and the refresh check owed before this evidence transfers.",
+    "fixing what **{title}** covers, marking the boundary it must not cross, and timing the next source refresh.",
+    "the claim that **{title}** lets you defend here, the limit it has to respect, and the re-check owed before reuse.",
+    "pinning down the scope of **{title}**, the edge of that scope, and when these citations need re-verifying before transfer.",
 )
 
 # Rotated closers for the "evidence to inspect" prose. ``{title}`` is the
 # lesson's safe display title, woven in so each closer is topic-specific.
 EVIDENCE_CLOSERS: tuple[str, ...] = (
-    "From each source, pull the bounded claim it can carry for {title}, its provenance, the stated uncertainty, and the one condition that would overturn that judgment.",
-    "Read each cited work for what it actually proves about {title}, where that claim originated, how confident it is, and what evidence would flip it.",
-    "Work source by source: name the bounded claim, its origin, the residual uncertainty, and the trigger that would change how {title} is judged.",
-    "Each source above earns its place in {title} only when you can state its bounded claim, its provenance, its uncertainty, and the fact that would retire it.",
+    "From each source, pull the bounded claim it can carry for **{title}**, its provenance, the stated uncertainty, and the one condition that would overturn that judgment.",
+    "Read each cited work for what it actually proves about **{title}**, where that claim originated, how confident it is, and what evidence would flip it.",
+    "Work source by source: name the bounded claim, its origin, the residual uncertainty, and the trigger that would change how **{title}** is judged.",
+    "Each source above earns its place in **{title}** only when you can state its bounded claim, its provenance, its uncertainty, and the fact that would retire it.",
 )
 
 # Rotated lead-ins for the "evidence to inspect" prose. Previously a single

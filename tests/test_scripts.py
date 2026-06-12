@@ -3,15 +3,45 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
+from build_pipeline import generated_output_is_stale
 from citation_workflow import source_citation_coverage_summary
 from curriculum import load_curriculum
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
+
+
+def _write_at(path: Path, text: str, timestamp: float) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+    os.utime(path, (timestamp, timestamp))
+
+
+def test_generated_output_staleness_detects_newer_source(tmp_path: Path) -> None:
+    output = tmp_path / "output"
+    _write_at(tmp_path / "data" / "curriculum" / "sections.jsonl", "{}", 100.0)
+    _write_at(tmp_path / "src" / "renderer.py", "VALUE = 1\n", 100.0)
+    _write_at(tmp_path / "manuscript" / "templates" / "chapter.md", "{{BODY}}\n", 100.0)
+    _write_at(tmp_path / "scripts" / "build_curriculum.py", "print('build')\n", 100.0)
+    _write_at(tmp_path / "pyproject.toml", "[project]\nname = 'fixture'\n", 100.0)
+    for relative in (
+        "data/curriculum_outline.json",
+        "data/manuscript_variables.json",
+        "figures/figure_registry.json",
+        "manuscript/README.md",
+    ):
+        _write_at(output / relative, "built\n", 200.0)
+
+    assert generated_output_is_stale(tmp_path, output) is False
+
+    _write_at(tmp_path / "data" / "source_support_expansion.yaml", "default_citations: []\n", 300.0)
+
+    assert generated_output_is_stale(tmp_path, output) is True
 
 
 def test_setup_hook_writes_output_docs() -> None:

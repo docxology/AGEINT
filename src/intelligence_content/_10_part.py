@@ -23,7 +23,8 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
     coursebook = _coursebook_profile_for_titles(part_title, title)
     entries = safe_topic_entries(chapter, part)
     topics = [entry.display_title for entry in entries[:3]]
-    topic_sentence = "; ".join(topics)
+    topic_sentence = f"**{'; '.join(topics)}**" if topics else "the local topic cluster"
+    first_topic = f"**{topics[0]}**" if topics else "the local topic cluster"
     anchors = citation_cluster(profile.anchor_keys, limit=3)
     source_context = _chapter_ref_context(chapter)
     topic_context = _topic_context(chapter, part)
@@ -48,7 +49,7 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
             ),
             (
                 f"Learners move from vocabulary and the **{lens.title}** "
-                f"distinction through topic lessons on {topics[0] if topics else title} with "
+                f"distinction through topic lessons on {first_topic} with "
                 "evidence and misconception checks, then "
                 f"assemble {_indefinite_article(lens.evidence_artifact)} "
                 f"**{lens.evidence_artifact}** with safety and rights gates."

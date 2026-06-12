@@ -42,25 +42,35 @@ tasks:
   - ageint-1
   tags:
   - reproducibility
-  notes: 'Complete for the current generated BibTeX/runtime-variable surface. Evidence
-    on 2026-06-09: `uv run python scripts/build_curriculum.py` completed with
-    16 parts, 51 modules, 9 appendices, 20 AGEINT patterns, 312 references, rendered
-    `output/data/manuscript_variables.json`, split `output/manuscript/references-*.bib`
-    shards, and `output/figures/figure_registry.json` with 142 figures. Full project
-    gate passed: `uv run pytest tests/ --cov=src --cov-fail-under=90` (245 passed,
-    91.95% coverage).'
+  notes: 'Complete for the generated BibTeX/runtime-variable surface. Historical
+    evidence on 2026-06-09: `uv run python scripts/build_curriculum.py` completed
+    with 16 parts, 51 modules, 9 appendices, 20 AGEINT patterns, 312 references,
+    rendered `output/data/manuscript_variables.json`, split `output/manuscript/references-*.bib`
+    shards, and then-current `output/figures/figure_registry.json` with 142 figures.
+    Current source snapshot supersedes the historical figure count: 161 registered
+    figures and 248 curated research anchors. Refresh render/test evidence before
+    using this row as a current readiness gate.'
 - id: ageint-4
   title: Expand course / cookbook / playbook modules
-  status: todo
-  start: '2026-06-14'
-  end: '2026-07-02'
-  progress: 0
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
   milestone: false
   deps:
   - ageint-2
   tags:
   - content
-  notes: ''
+  notes: 'Closed by the 2026-06-12 verifier-hardening and residual TODO pass.
+    Implemented source-owned citation punctuation fixes, keyword-specific source-support
+    hydration, protected authored lesson-title fragments, MAESTRO TB relayout, official
+    CSAF / International AI Safety Report URL refreshes, stale-output rebuild oracle,
+    and docs/taskboard cleanup. Validation evidence: strict build with `AGEINT_REQUIRE_RENDERED_FIGURES=1`
+    passed; focused plan tests passed 50/50; generated-output greps for `History of
+    the module`, citation punctuation joins, and banned fallback phrases returned no
+    matches; `uv run pytest tests/ --cov=src --cov-fail-under=90` passed 276 tests
+    with 92.15% coverage; template markdown and prerender validators passed against
+    `projects/working/AGEINT/output/manuscript`.'
 - id: ageint-5
   title: Render from lifecycle checkout via template link
   status: done
@@ -72,15 +82,17 @@ tasks:
   - ageint-3
   tags:
   - pipeline
-  notes: 'Complete for the current lifecycle-qualified template render path. Evidence
-    on 2026-06-09 from `/Users/4d/Documents/GitHub/template`: `uv run python -m
-    infrastructure.orchestration link-projects && uv run python scripts/03_render_pdf.py
+  notes: 'Complete for the lifecycle-qualified template render path. Historical
+    evidence on 2026-06-09 from `/Users/4d/Documents/GitHub/template`: `uv run
+    python -m infrastructure.orchestration link-projects && uv run python scripts/03_render_pdf.py
     --project working/AGEINT` completed, hydrated variables through the AGEINT build,
-    rendered 376 manuscript sections, verified 142/142 figure references, generated
-    `working/AGEINT/output/pdf/AGEINT_combined.pdf` (24.45 MB), and reported 1/1
-    valid PDF with the combined manuscript ready for validation.'
+    rendered 376 manuscript sections, verified the then-current 142/142 figure
+    references, generated `working/AGEINT/output/pdf/AGEINT_combined.pdf` (24.45 MB),
+    and reported 1/1 valid PDF. Current snapshot: 161 registered figures; refresh
+    render/test evidence before using this historical PDF row as a current readiness
+    gate.'
 - id: ageint-6
-  title: Expand research anchors to 202 (official/standards/scholarly)
+  title: Initial research-anchor expansion through 202 (superseded by 248 snapshot)
   status: done
   start: '2026-06-04'
   end: '2026-06-06'
@@ -89,7 +101,8 @@ tasks:
   deps: []
   tags:
   - research
-  notes: 'ISA turn 2: anchors 172→186→202, sources checked.'
+  notes: 'Historical ISA turn 2 evidence: anchors 172→186→202, sources checked.
+    Superseded by the current 248-anchor source snapshot.'
 - id: ageint-7
   title: Conciseness subtraction pass (−10% manuscript bytes)
   status: done
@@ -131,7 +144,7 @@ tasks:
   - ageint-8
   tags:
   - release
-  notes: 'Closed for local v1 release-readiness evidence on 2026-06-09.
+  notes: 'Closed for local v1 release-readiness evidence on 2026-06-09 (historical).
     Template render evidence from `/Users/4d/Documents/GitHub/template`:
     `uv run python scripts/03_render_pdf.py --project working/AGEINT`
     completed with `PDF exit=0`, produced `AGEINT_combined.pdf` (24.49 MB),
@@ -142,8 +155,27 @@ tasks:
     no:cacheprovider` passed 32 tests. Final controlled full-suite evidence:
     `.venv/bin/python -m pytest tests/ --cov=src --cov-fail-under=90 -q -p
     no:cacheprovider` passed 245 tests with 91.91% coverage. This closes the
-    local readiness gate only; `ageint-m1` remains open because `ageint-4` is
-    still todo and no release/publish action was performed.'
+    local readiness gate only; `ageint-m1` remains open because no release/publish
+    action was requested. Current snapshot: 161 registered figures; latest local
+    PDF artifact is `output/pdf/AGEINT_combined.pdf` at 28,530,473 bytes from
+    2026-06-11, so rerun render/validation before treating this row as current
+    release evidence.'
+- id: ageint-10
+  title: Harden legacy research-anchor lane/tier metadata
+  status: todo
+  start: '2026-07-04'
+  end: '2026-07-10'
+  progress: 0
+  milestone: false
+  deps:
+  - ageint-6
+  tags:
+  - research
+  - metadata
+  notes: 'Future hardening task: 109 legacy anchors still rely on ResearchAnchor
+    fallback semantics (`source_lane or domain`, `source_tier or source_type`).
+    Exit condition: explicit lane/tier metadata for those anchors plus an inventory
+    or test proving no unintended source-lane drift.'
 - id: ageint-m1
   title: AGEINT v1 curriculum release
   status: todo

@@ -91,7 +91,9 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         # reference so a single lesson never restates the bold title ~9 times.
         anchor = AnchorState()
         body_fields = [
-            _anaphorize_field(entry.display_title, field, anchor=anchor, forbidden=forbidden)
+            field
+            if field.startswith("**Source support.**")
+            else _anaphorize_field(entry.display_title, field, anchor=anchor, forbidden=forbidden)
             for field in body_fields
         ]
         formalism = lesson_formalism_field(entry.display_title)

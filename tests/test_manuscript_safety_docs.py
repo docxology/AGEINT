@@ -309,17 +309,20 @@ def test_reader_docs_match_live_counts_and_perplexity_method() -> None:
     docs_readme = (PROJECT_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
     output_inventory = (PROJECT_ROOT / "docs" / "output_inventory.md").read_text(encoding="utf-8")
     research = (PROJECT_ROOT / "docs" / "research.md").read_text(encoding="utf-8")
+    v2_map = (PROJECT_ROOT / "docs" / "v2_expansion_map.md").read_text(encoding="utf-8")
 
     assert f"Curated official/scholarly research anchors: {anchor_count}" in readme
     assert f"{anchor_count} research anchors" in agents
     assert f"| Curated research anchors | {anchor_count} |" in docs_readme
     assert f"| Source-guide references | {reference_count} |" in docs_readme
     assert f"Registered figures: {figure_count}" in readme
+    assert f"Curated anchors increased to {anchor_count}" in v2_map
+    assert f"Registered figures increased to {figure_count}" in v2_map
     assert f"figure metadata ({figure_count} figures" in output_inventory
     assert "current registry has no placeholder plates" in readme
     assert "Perplexity (`llm -m sonar-pro`) timed out" not in research
+    assert f"expand the curated anchor set to {anchor_count}" in research
     assert "Vendor/blog results from discovery are not encoded" in research.replace("\n", " ")
-
 
 def test_generated_chapters_include_current_source_assurance_crosswalk(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
@@ -488,7 +491,6 @@ def test_safety_audit_blocks_operational_phrases_outside_source_audit_contexts(b
                 if phrase not in line:
                     continue
                 assert any(context in line for context in allowed_contexts), f"{path}: {phrase}: {line}"
-
 
 def test_safety_boundary_is_documented() -> None:
     safety = (PROJECT_ROOT / "docs" / "safety.md").read_text(encoding="utf-8").lower()

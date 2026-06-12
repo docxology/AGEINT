@@ -34,3 +34,7 @@ dataset documentation, collection-process evidence, and answer-evaluation
 caveats. It also replaces the decorative agentic-boundary plate with a
 deterministic boundary-control matrix while keeping the same cross-reference
 label.
+
+The 2026-06-11 and 2026-06-12 hardening passes keep this package tied to the
+expanded source and figure surface: 248 curated research anchors, 161 registered
+figures, and refreshed CSAF / International AI Safety Report URL metadata.

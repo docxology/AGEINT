@@ -64,7 +64,7 @@ generated chapters select them through reusable profiles and practice lenses
 rather than through hand-authored chapter prose.
 
 The v2, deep-expansion, evidence-package, and Data Cards passes add source-lane metadata to curated anchors
-and expand the curated anchor set to at least 225 official, standards,
+and expand the curated anchor set to 248 official, standards,
 public-domain, or scholarly sources. New lanes cover AI conformity/compliance,
 education and assessment, public-sector agentic AI, cross-border data/data
 spaces, human-rights governance, agent interoperability standards, workforce
@@ -188,6 +188,11 @@ alternative-analysis, SAT evaluation, forecasting-calibration, and
 failure-theory sources. These are routed as curriculum anchors for Chapters
 41-42 and for the new source-backed Mermaid boundary diagrams; they do not
 license universal claims that SATs cure bias or eliminate intelligence failure.
+
+The 2026-06-12 verifier-hardening pass refreshes two older URL metadata rows:
+OASIS CSAF now points at the canonical OASIS Standard HTML page, and the
+International AI Safety Report 2026 anchor points at the official report
+landing page, with the PDF and arXiv record treated as secondary evidence.
 
 ## 2026-05-22 cognitive-security synthesis pass (verified encode only)
 

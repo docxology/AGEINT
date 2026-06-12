@@ -18,20 +18,21 @@ The major v2 pass expands AGEINT without changing its architecture:
 - Appendices increased from 7 to 9 with source verification and claim ledgers
   plus instructor capstone/rubric/red-team review packs.
 - Source-guide references increased from 231 to 312 by append-only expansion.
-- Curated anchors increased to at least 202 with source-lane metadata,
+- Curated anchors increased to 248 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
-- Registered figures increased to 64 with new source verification, claim
-  ledger, compliance, agent evaluation, data flow, capstone, safe-substitution,
-  instructor lifecycle, accessibility, HRIA/DPIA, procurement oversight, agent
-  incident, data lineage, assessment integrity, adversarial assurance, model
-  and dataset card, transparency notice, records-retention, release gate,
-  risk exception, learner support, question bank, remediation, bounded-autonomy,
-  public-AI-register, AI-incident-reporting, and OT-architecture visuals. The
-  cognitive-security synthesis pass adds 7 Mermaid methods diagrams: the CSA
-  CDR six-stage degradation cascade, the MAESTRO seven-layer threat model, the
-  SRE-for-agents circuit breaker, the cognitive-decoherence/CDR isomorphism, the
-  unified epistemic-coherence stack, the cognitive attack-layer taxonomy, and
-  the HRO-to-governance crosswalk.
+- Registered figures increased to 161, spanning curriculum and part maps,
+  per-chapter concept diagrams, source verification, claim ledger, compliance,
+  agent evaluation, data flow, capstone, safe-substitution, instructor
+  lifecycle, accessibility, HRIA/DPIA, procurement oversight, agent incident,
+  data lineage, assessment integrity, adversarial assurance, model and dataset
+  card, transparency notice, records-retention, release gate, risk exception,
+  learner support, question bank, remediation, bounded-autonomy,
+  public-AI-register, AI-incident-reporting, OT-architecture, and
+  cognitive-security synthesis visuals. The cognitive-security synthesis pass
+  includes the CSA CDR six-stage degradation cascade, the MAESTRO seven-layer
+  threat model, the SRE-for-agents circuit breaker, the
+  cognitive-decoherence/CDR isomorphism, the unified epistemic-coherence stack,
+  the cognitive attack-layer taxonomy, and the HRO-to-governance crosswalk.
 - Every generated chapter now uses a reader-facing architecture: module thesis,
   learning outcomes, module architecture, evidence/source canon,
   research-backed synthesis, agentic translation boundary, governance/rights/

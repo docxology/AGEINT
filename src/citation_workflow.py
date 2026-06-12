@@ -89,12 +89,26 @@ def source_citation_spine(
 ) -> str:
     """Return a compact Pandoc citation spine for source-guide numbers."""
 
+    inline = source_citation_spine_inline(numbers, limit=limit, fallback=fallback)
+    if inline == fallback:
+        return inline
+    return inline + "."
+
+
+def source_citation_spine_inline(
+    numbers: Iterable[int],
+    *,
+    limit: int | None = None,
+    fallback: str = DEFAULT_SOURCE_FALLBACK,
+) -> str:
+    """Return a compact Pandoc citation spine without sentence punctuation."""
+
     selected = _unique_numbers(numbers)
     if limit is not None:
         selected = selected[:limit]
     if not selected:
         return fallback
-    return citation_ref_list(source_key(number) for number in selected) + "."
+    return citation_ref_list(source_key(number) for number in selected)
 
 
 def source_citation_cell(numbers: Iterable[int]) -> str:

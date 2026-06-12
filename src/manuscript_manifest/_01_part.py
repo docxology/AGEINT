@@ -34,7 +34,7 @@ except ImportError:  # pragma: no cover - merged part module
 
 try:  # Support package and script-level imports.
     from .curriculum import Curriculum
-    from .citation_workflow import source_citation_spine
+    from .citation_workflow import source_citation_spine, source_citation_spine_inline
     from .figures import figure_markdown, figures_for_section
     from .markdown_refs import figure_ref_list, section_ref_list
     from .unit_education import render_unit_profile_markdown
@@ -85,7 +85,7 @@ try:  # Support package and script-level imports.
     from .manuscript_variables import appendix_rows
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from curriculum import Curriculum  # type: ignore[no-redef]
-    from citation_workflow import source_citation_spine  # type: ignore[no-redef]
+    from citation_workflow import source_citation_spine, source_citation_spine_inline  # type: ignore[no-redef]
     from figures import figure_markdown, figures_for_section  # type: ignore[no-redef]
     from markdown_refs import figure_ref_list, section_ref_list  # type: ignore[no-redef]
     from unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
@@ -145,6 +145,14 @@ def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
         return "the surrounding verified source spine"
     return source_citation_spine(selected)
 
+def _citation_context_inline(citation_numbers: list[int], *, limit: int = 2) -> str:
+    """Return a compact source-spine phrase for mid-sentence joins."""
+
+    selected = list(citation_numbers[:limit])
+    if not selected:
+        return "the surrounding verified source spine"
+    return source_citation_spine_inline(selected)
+
 def _part_source_context(part: dict[str, Any]) -> str:
     """Return a part-specific context phrase without repeating the part title."""
 
@@ -163,6 +171,11 @@ def _chapter_source_context(chapter: dict[str, Any]) -> str:
     """Return a chapter-specific source context without using its generated title."""
 
     return _citation_context(list(chapter.get("citations", [])))
+
+def _chapter_source_context_inline(chapter: dict[str, Any]) -> str:
+    """Return chapter source context without terminal punctuation."""
+
+    return _citation_context_inline(list(chapter.get("citations", [])))
 
 def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
     """Return a compact topic cluster for body prose.
@@ -287,6 +300,7 @@ def _part_chapter_rows(part: dict[str, Any], chapter_files: dict[int, str]) -> s
 
 def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: str) -> str:
     source_context = _chapter_source_context(chapter)
+    source_context_inline = _chapter_source_context_inline(chapter)
     topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
@@ -307,7 +321,7 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
                 "defensive boundary for generated prose. |"
             ),
             "",
-            f"Maintenance rule: Perplexity may suggest candidates for {topic_context} and {source_context}, "
+            f"Maintenance rule: Perplexity may suggest candidates for {topic_context} and {source_context_inline}, "
             "but only directly verified source URLs are encoded as citations.",
         ]
     )

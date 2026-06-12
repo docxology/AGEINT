@@ -381,7 +381,7 @@ def _topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int 
     topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local topic cluster"
-    return compact_topic_cluster(topics)
+    return f"**{compact_topic_cluster(topics)}**"
 
 def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render a chapter-level practice lens."""
@@ -411,7 +411,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
     profile = profile_for_titles(str(part["title"]), title)
     distinct = list(dict.fromkeys(e.display_title for e in safe_topic_entries(chapter, part)))[:3]
     source_context = _chapter_ref_context(chapter)
-    topic_context = "; ".join(distinct[:2]) if distinct else "the local topic cluster"
+    topic_context = f"**{'; '.join(distinct[:2])}**" if distinct else "the local topic cluster"
     topic_line = (
         "**Curriculum topic spine:** "
         f"{', '.join(f'**{topic}**' for topic in distinct)}.\n\n"
@@ -454,4 +454,3 @@ def _table_cell(value: str) -> str:
 def _coursebook_profile_for_titles(part_title: str, section_title: str = "") -> CoursebookProfile:
     profile = profile_for_titles(part_title, section_title)
     return COURSEBOOK_PROFILES[profile.identifier]
-

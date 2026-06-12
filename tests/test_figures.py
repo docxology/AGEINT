@@ -145,6 +145,22 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     assert "external action" in boundary.caption
 
 
+def test_maestro_mermaid_source_uses_top_to_bottom_layout() -> None:
+    curriculum = load_curriculum(DATA)
+    manifest = build_manuscript_manifest(curriculum)
+    spec = next(
+        figure
+        for figure in build_figure_specs(curriculum, manifest)
+        if figure.label == "fig:ageint-maestro-seven-layer"
+    )
+    source = mermaid_rendering.mermaid_source(curriculum, spec)
+
+    assert "\nflowchart TB\n" in source
+    assert "\nflowchart LR\n" not in source
+    assert 'subgraph STACK["MAESTRO lifecycle stack"]' in source
+    assert "direction TB" in source
+
+
 def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)

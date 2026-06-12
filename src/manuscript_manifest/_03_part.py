@@ -24,6 +24,7 @@ from citation_workflow import source_citation_spine
 
 from ._01_part import (
     _chapter_source_context,
+    _chapter_source_context_inline,
     _chapter_topic_context,
     _claim_evidence_ledger,
     _failure_mode_drill,
@@ -309,12 +310,13 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     title = chapter["title"]
     source_spine = source_citation_spine(chapter["citations"])
     source_context = _chapter_source_context(chapter)
+    source_context_inline = _chapter_source_context_inline(chapter)
     topic_context = _chapter_topic_context(chapter, part)
     safe_patterns = chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
     synthesis_block = _security_synthesis_block() if chapter["number"] == 34 else ""
     safety_boundary = (
         "Keep all practice authorized, synthetic, defensive, logged, "
-        f"reversible, and non-operational while working from {source_context} and {topic_context}. Do not convert it into "
+        f"reversible, and non-operational while working from {source_context_inline} and {topic_context}. Do not convert it into "
         "live targeting, evasion, exploitation, covert collection, "
         "manipulation, or unsafe cyber-physical action."
     )
@@ -445,7 +447,7 @@ agent-assisted artifact must stop for human review while using {topic_context}.
 
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
 incidents, and instructor debrief findings each produce a visible owner, action,
-and retest condition before the module is reused against {source_context} and {topic_context}.
+and retest condition before the module is reused against {source_context_inline} and {topic_context}.
 
 ### Refresh triggers
 

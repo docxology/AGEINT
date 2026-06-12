@@ -15,16 +15,16 @@ uv run python scripts/build_curriculum.py
 From template repo root after build and PDF render:
 
 ```bash
-uv run python scripts/03_render_pdf.py --project AGEINT
-uv run python scripts/05_copy_outputs.py --project AGEINT
-uv run python -m infrastructure.validation.cli pdf output/AGEINT/pdf/AGEINT_combined.pdf
+uv run python scripts/03_render_pdf.py --project working/AGEINT
+uv run python scripts/05_copy_outputs.py --project working/AGEINT
+uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf
 ```
 
 ## Pre-flight validation
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Mermaid figures

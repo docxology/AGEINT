@@ -23,7 +23,8 @@ Locked in `data/source_identity/`. Do not renumber; append new references after 
 ## How do I validate before PDF render?
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
 ## See also

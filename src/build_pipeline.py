@@ -14,6 +14,23 @@ from manuscript_variables import generate_variables, reference_bibtex_files, sav
 from output_docs import write_output_directory_docs
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SOURCE_FRESHNESS_DIRS = (
+    Path("data"),
+    Path("manuscript/templates"),
+    Path("src"),
+)
+SOURCE_FRESHNESS_FILES = (
+    Path("pyproject.toml"),
+    Path("scripts/build_curriculum.py"),
+    Path("scripts/generate_figures.py"),
+    Path("scripts/z_generate_manuscript_variables.py"),
+)
+OUTPUT_BUILD_SENTINELS = (
+    Path("data/curriculum_outline.json"),
+    Path("data/manuscript_variables.json"),
+    Path("figures/figure_registry.json"),
+    Path("manuscript/README.md"),
+)
 
 
 @dataclass(frozen=True)
@@ -47,6 +64,41 @@ class BuildResult(NamedTuple):
     variables_path: Path
     figure_registry_path: Path
     output_manuscript: Path
+
+
+def _iter_files(path: Path) -> list[Path]:
+    if path.is_file():
+        return [path]
+    if not path.is_dir():
+        return []
+    return [
+        candidate
+        for candidate in path.rglob("*")
+        if candidate.is_file()
+        and "__pycache__" not in candidate.parts
+        and ".pytest_cache" not in candidate.parts
+    ]
+
+
+def _latest_mtime(paths: list[Path]) -> float:
+    latest = 0.0
+    for path in paths:
+        for candidate in _iter_files(path):
+            latest = max(latest, candidate.stat().st_mtime)
+    return latest
+
+
+def generated_output_is_stale(project_root: Path, output: Path) -> bool:
+    """Return true when source inputs are newer than build sentinel artifacts."""
+
+    source_paths = [project_root / path for path in SOURCE_FRESHNESS_DIRS]
+    source_paths.extend(project_root / path for path in SOURCE_FRESHNESS_FILES)
+    latest_source = _latest_mtime(source_paths)
+    sentinels = [output / path for path in OUTPUT_BUILD_SENTINELS]
+    if latest_source == 0.0 or any(not path.is_file() for path in sentinels):
+        return True
+    oldest_sentinel = min(path.stat().st_mtime for path in sentinels)
+    return latest_source > oldest_sentinel
 
 
 def _mirror_curriculum_data(curriculum: Curriculum, destination: Path) -> None:

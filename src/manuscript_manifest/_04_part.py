@@ -22,7 +22,7 @@ from .types import (
 )
 from ._appendix_support import appendix_body as _appendix_body
 from ._01_part import (
-    _chapter_source_context,
+    _chapter_source_context_inline,
     _chapter_topic_context,
     _part_chapter_rows,
     _part_summary,
@@ -69,7 +69,7 @@ def _chapter_nav_prose(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     from intelligence_content.topic_rotation import template_index
 
     topic = _chapter_topic_context(chapter, part)
-    sources = _chapter_source_context(chapter)
+    sources = _chapter_source_context_inline(chapter)
     variant = _NAV_PROSE_VARIANTS[
         template_index(str(part["title"]), count=len(_NAV_PROSE_VARIANTS))
     ]

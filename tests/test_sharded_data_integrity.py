@@ -47,6 +47,19 @@ def test_sharded_curriculum_composes_expected_runtime_payload() -> None:
     assert curriculum.reference("ageint296")["title"].startswith("Artificial Intelligence Risk Management")
 
 
+def test_keyword_source_support_replaces_only_part_default_citations() -> None:
+    curriculum = load_curriculum(CURRICULUM)
+    chapter = curriculum.chapter(36)
+    citations_by_section = {section["number"]: section["citations"] for section in chapter["sections"]}
+
+    assert citations_by_section["36.1"] == [309, 310, 300]
+    assert citations_by_section["36.3"] == [300, 304, 306]
+    assert citations_by_section["36.6"] == [308, 311]
+    assert citations_by_section["36.7"] == [303, 304, 305]
+    assert citations_by_section["36.8"] == [307, 305, 304]
+    assert citations_by_section["36.99"] == [242, 243, 246]
+
+
 def test_source_identity_shards_preserve_locked_reference_keys() -> None:
     lock = load_source_identity_lock(SOURCE_IDENTITY)
     rebuilt = build_source_identity_lock(SOURCE, max_reference=231)

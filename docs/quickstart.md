@@ -1,6 +1,6 @@
 # Quickstart
 
-Run the parser/build step and tests from the AGEINT root. Run markdown/prerender validation from the sibling template root when AGEINT is linked as `projects/AGEINT`.
+Run the parser/build step and tests from the AGEINT root. Run markdown/prerender validation from the sibling template root against the working checkout path.
 
 ```bash
 uv run python scripts/build_curriculum.py
@@ -12,8 +12,8 @@ uv run pytest tests/test_source_identity.py
 AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
 
 # From the template repo root:
-uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Editing workflow

@@ -205,7 +205,8 @@ def artifact_prompt_for_entry(
     # distinguishing_phrase can strip a citation-noise title (e.g. "2021",
     # "Case Study: 2019") to "", which would render a dangling object
     # ("the bounded claim about , ..."); fall back to a readable noun phrase.
-    anchor = distinguishing_phrase(entry.display_title) or "this topic"
+    anchor_phrase = distinguishing_phrase(entry.display_title) or "this topic"
+    anchor = f"**{anchor_phrase}**" if anchor_phrase != "this topic" else anchor_phrase
     verification = _ARTIFACT_VERIFICATION_BY_RISK.get(
         entry.risk_category, _DEFAULT_ARTIFACT_VERIFICATION
     ).format(a=anchor)

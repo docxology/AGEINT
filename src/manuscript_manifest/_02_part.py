@@ -28,7 +28,7 @@ from intelligence_content import (
     transparency_notice_rows,
 )
 
-from ._01_part import _chapter_source_context, _chapter_topic_context
+from ._01_part import _chapter_source_context, _chapter_source_context_inline, _chapter_topic_context
 
 def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
@@ -85,7 +85,7 @@ def _compliance_rights_map(chapter: dict[str, Any]) -> str:
     )
 
 def _safe_substitution_patterns(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
+    source_context = _chapter_source_context_inline(chapter)
     return "\n".join(
         [
             f"Use the v2 safe-substitution table whenever a "

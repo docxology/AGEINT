@@ -18,7 +18,8 @@ Dual-use material stays defensive, educational, authorized, synthetic, and non-o
 
 ```bash
 uv run pytest tests/ --cov=src --cov-fail-under=90
-uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
 ## See also

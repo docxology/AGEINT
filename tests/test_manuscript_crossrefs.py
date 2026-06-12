@@ -115,6 +115,15 @@ def test_rendered_reference_audit_allows_only_structural_title_mentions(built_ou
     assert [violation.format(PROJECT_ROOT) for violation in violations] == []
 
 
+def test_generated_manuscript_has_no_sanitizer_fragments_or_citation_punctuation(
+    built_output: Path,
+) -> None:
+    text = _generated_crossref_prose_text(manuscript_dir(built_output))
+
+    assert "History of the module" not in text
+    assert not re.search(r"\]\. and|\]\.\.", text)
+
+
 def test_rendered_reference_sanitizer_preserves_structural_titles_only() -> None:
     text = "\n".join(
         [

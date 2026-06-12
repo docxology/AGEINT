@@ -100,8 +100,8 @@ rg "defensible claim whose meaning|treats each source topic through|parsed AGEIN
 For manuscript checks from the template repo root, also run:
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Package documentation

@@ -10,6 +10,7 @@ from citation_workflow import (
     source_citation_cell,
     source_citation_coverage_summary,
     source_citation_spine,
+    source_citation_spine_inline,
     source_key,
     source_section_citation_inventory,
 )
@@ -24,9 +25,11 @@ def test_source_keys_and_citation_spines_are_stable() -> None:
     assert source_key(1) == "ageint001"
     assert source_key(312) == "ageint312"
     assert source_citation_spine([137, 137, 155], limit=2) == "[@ageint137]; [@ageint155]."
+    assert source_citation_spine_inline([137, 137, 155], limit=2) == "[@ageint137]; [@ageint155]"
     assert source_citation_cell([137, 137, 155]) == "[@ageint137]; [@ageint155]"
     assert source_citation_cell([]) == "-"
     assert source_citation_spine([], fallback="No source.") == "No source."
+    assert source_citation_spine_inline([], fallback="No source") == "No source"
 
 
 def test_source_section_inventory_paths_match_curriculum_shards() -> None:
@@ -46,10 +49,10 @@ def test_source_section_inventory_matches_current_curriculum() -> None:
 
     assert len(rows) == 723
     assert summary.section_count == 723
-    assert summary.citation_occurrences == 1470
+    assert summary.citation_occurrences == 1468
     assert summary.zero_citation_sections == 0
     assert summary.unique_citation_keys == 301
-    assert dict(summary.citation_count_distribution) == {1: 275, 2: 152, 3: 293, 4: 3}
+    assert dict(summary.citation_count_distribution) == {1: 275, 2: 154, 3: 291, 4: 3}
 
 
 def test_rendered_workflow_markdown_names_authoring_surfaces() -> None:

@@ -81,7 +81,7 @@ def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
 
 def hydrate_source_support(payload: dict[str, Any]) -> None:
-    """Attach configured source support to uncited source sections."""
+    """Attach configured source support to uncited or part-default source sections."""
 
     reference_numbers = {
         int(reference["number"])
@@ -100,8 +100,9 @@ def hydrate_source_support(payload: dict[str, Any]) -> None:
             chapter_citations = unique_ints(chapter.get("citations", []))
             for section in chapter.get("sections", []):
                 section_citations = unique_ints(section.get("citations", []))
-                if not section_citations:
-                    section_citations = source_support_numbers_for_section(
+                can_route = not section_citations or section_citations == part_default
+                if can_route:
+                    routed_citations = source_support_numbers_for_section(
                         expansion,
                         part,
                         chapter,
@@ -109,7 +110,9 @@ def hydrate_source_support(payload: dict[str, Any]) -> None:
                         reference_numbers,
                         part_default=part_default,
                     )
-                    section["citations"] = section_citations
+                    if routed_citations and (not section_citations or routed_citations != section_citations):
+                        section_citations = routed_citations
+                        section["citations"] = section_citations
                 for number in section_citations:
                     if number not in chapter_citations:
                         chapter_citations.append(number)
@@ -125,22 +128,35 @@ def source_support_numbers_for_section(
     *,
     part_default: list[int],
 ) -> list[int]:
-    haystack = " ".join(
+    section_haystack = " ".join(
         str(value)
         for value in (
-            part.get("title", ""),
-            chapter.get("title", ""),
             section.get("number", ""),
             section.get("title", ""),
             section.get("raw", ""),
         )
     ).lower()
+    context_haystack = " ".join(
+        str(value)
+        for value in (
+            part.get("title", ""),
+            chapter.get("title", ""),
+        )
+    ).lower()
+    best_routed: list[int] = []
+    best_score = 0
     for row in expansion.get("keyword_routes", []):
         keywords = tuple(str(keyword).lower() for keyword in row.get("keywords", ()))
-        if any(keyword in haystack for keyword in keywords):
+        section_score = sum(1 for keyword in keywords if keyword in section_haystack)
+        context_score = sum(1 for keyword in keywords if keyword in context_haystack)
+        score = section_score * 10 + context_score
+        if score > best_score:
             routed = filtered_citation_numbers(row.get("citations", ()), reference_numbers)
             if routed:
-                return routed
+                best_routed = routed
+                best_score = score
+    if best_routed:
+        return best_routed
     if part_default:
         return part_default
     return filtered_citation_numbers(expansion.get("default_citations", ()), reference_numbers)

@@ -24,7 +24,7 @@ TEMPLATE_REPO = ensure_template_repo_on_path(PROJECT_ROOT)
 
 import pytest  # noqa: E402
 
-from build_pipeline import run_build, run_build_figures  # noqa: E402
+from build_pipeline import generated_output_is_stale, run_build, run_build_figures  # noqa: E402
 
 
 @pytest.fixture(scope="session")
@@ -34,6 +34,7 @@ def built_output() -> Path:
     needs_build = (
         not (output / "manuscript").exists()
         or not (output / "figures" / "figure_registry.json").is_file()
+        or generated_output_is_stale(PROJECT_ROOT, output)
     )
     if needs_build:
         run_build(PROJECT_ROOT)
