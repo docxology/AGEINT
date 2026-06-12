@@ -9,7 +9,7 @@ version = "0.1.0"
 description = "Shard-first Agentic Intelligence modular curriculum and manuscript build"
 authors = [{name = "DAF"}]
 requires-python = ">=3.10"
-dependencies = ["pillow>=10.0", "pyyaml>=6.0"]
+dependencies = ["pillow>=10.0", "pyyaml>=6.0", "pypdf>=5.0"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "reportlab>=4.0"]

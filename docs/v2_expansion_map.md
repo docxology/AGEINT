@@ -49,7 +49,10 @@ The major v2 pass expands AGEINT without changing its architecture:
   rather than backticked `@key` text.
 - Current local rendered evidence after the section/reference hardening pass:
   377 generated manuscript files, 11,417 generated Markdown citation
-  occurrences, 0 zero-citation source sections, and a 1,696-page combined PDF.
+  occurrences, 0 zero-citation source sections, and a 1,697-page combined PDF.
+  Figure-reader text is also registry-enforced: all 161 captions meet the
+  40-word minimum, all alt-text rows meet the 24-word minimum, and the final PDF
+  annotation audit reports 0 Markdown-file link targets.
 
 ## Guardrails
 

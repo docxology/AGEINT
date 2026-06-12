@@ -201,7 +201,9 @@ intro and module-map figure, and research-anchor / bibliography / source-refresh
 key tables use Pandoc citations rather than literal `@key` text. The current
 local citation inventory reports 377 generated Markdown files, 11,417 generated
 Markdown citation occurrences, 723 source sections, and 0 zero-citation source
-sections.
+sections. The same local artifact pass confirms 161 registered figures with
+substantial captions and alt text, a 1,697-page combined PDF, and 0 Markdown-file
+link targets in PDF annotations.
 
 ## 2026-05-22 cognitive-security synthesis pass (verified encode only)
 

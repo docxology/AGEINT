@@ -200,8 +200,37 @@ tasks:
     zero-citation source sections; clean template core-pipeline project tests
     passed 278/279 tests with one pre-render PDF-artifact skip and 91.38% coverage;
     strict build passed with 161 registered figures; PDF render produced
-    `output/pdf/AGEINT_combined.pdf` at 27.62 MB and 1,696 pages; PDF validator
+    `output/pdf/AGEINT_combined.pdf` at 27.66 MB and 1,697 pages; PDF validator
     reported 0 issues. Local-only task; no release, push, PR, or publication
+    action was requested.'
+- id: ageint-12
+  title: Figure caption and PDF-link hardening
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-11
+  tags:
+  - manuscript
+  - figures
+  - pdf
+  - validation
+  notes: 'Closed by the 2026-06-12 local figure-caption and rendered-link pass.
+    Implemented source-owned enrichment so every registered figure caption has
+    at least 40 words and every alt-text row has at least 24 words; normalized
+    all-uppercase curriculum-map part titles for PDF layout; widened the generated
+    curriculum-map table; added tests for informative figure reader text, no
+    Markdown-file links in generated reader outputs, and no Markdown-file PDF
+    annotation targets. Validation evidence: 161 registered figures, 0 short
+    captions, 0 short alt-text rows, 0 caption/alt placeholder rows, 0 generated
+    Markdown/HTML links to `.md` or `.markdown` files, source and copied PDFs
+    each with 1,697 pages, 33,334 link annotations, and 0 Markdown-file link
+    targets; final PDF render produced `output/pdf/AGEINT_combined.pdf` at 27.66
+    MB; template markdown/prerender/PDF validators passed with 0 issues; visual
+    spot checks confirmed curriculum-map, module-map, and longer figure captions
+    render without overlap. Local-only task; no release, push, PR, or publication
     action was requested.'
 - id: ageint-m1
   title: AGEINT v1 curriculum release

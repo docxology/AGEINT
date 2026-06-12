@@ -9,6 +9,7 @@ Operational constraints for agents editing this project. Full system map: [`../A
 - Do not edit `output/manuscript/` by hand — update `data/curriculum/`, templates, `src/manuscript_manifest/`, or `src/intelligence_content/`.
 - Preserve citation keys `ageintNNN` when source identity is unchanged; append new guide references after the locked range.
 - Use label-backed cross-refs (`[@sec:…]`, `[@fig:…]`, `[@ageintNNN]`), not hard-coded figure or section numbers.
+- Keep figure captions and alt text source-owned, substantial, and reader-informative; generated PDFs must link to sections, figures, citations, or external sources, not local `.md` files.
 
 ## Safety posture
 

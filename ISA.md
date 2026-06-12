@@ -104,8 +104,22 @@ Completed against current auto-link artifacts on 2026-06-12:
 - Clean template core-pipeline project-test gate → 278 passed, 1 pre-render PDF-artifact skip, 91.38% coverage.
 - `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 161 registered figures.
 - From `/Users/4d/Documents/GitHub/template`:
-  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.62 MB after the template clean stage.
-- `uv run python scripts/audit_pdf_quality.py` → 1696 pages; stale PDF false; OK true.
+  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.66 MB after the template clean stage.
+- `uv run python scripts/audit_pdf_quality.py` → 1697 pages; stale PDF false; OK true.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf` → 0 issues.
+
+Completed against current figure-caption and PDF-link artifacts on 2026-06-12:
+
+- Figure registry validation → 161 figures; 0 captions under 40 words; 0 alt-text rows under 24 words; 0 caption/alt placeholder rows; 0 caption/alt Markdown-file references.
+- Generated-output scans → 0 Markdown-file links in generated Markdown/HTML; 0 placeholder or banned fallback phrases in generated manuscript.
+- PDF annotation audit → source and copied PDFs each have 1697 pages, 33334 link annotations, and 0 `.md` / `.markdown` link targets.
+- Visual PDF spot check → curriculum-map table no longer collides across columns; representative curriculum-map, part module-map, and cognitive-security figure captions fit without overlap.
+- `uv run python scripts/audit_pdf_quality.py` → 1697 pages; stale PDF false; OK true.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .` → no issues found.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .` → no render-blocking pitfalls or undefined citations found.
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf` → 0 issues.
 
@@ -115,5 +129,6 @@ Completed against current auto-link artifacts on 2026-06-12:
 |---|---|---|---|
 | AGEINT-VERIFY-2026-06-12 | done | Complete this verifier-hardening pass. | All gates above passed; `ageint-4` is marked done in `tasks.yaml`. |
 | AGEINT-AUTOLINK-2026-06-12 | done | Complete section/reference auto-link hardening and PDF rerender. | Orientation labels, curriculum map links, citation-link tables, full tests, rendered-reference audit, template validators, and PDF audit passed; `ageint-11` is marked done in `tasks.yaml`. |
+| AGEINT-FIGLINK-2026-06-12 | done | Complete figure caption, visual layout, and PDF-link hardening. | All 161 figure captions/alt-text rows pass the expanded reader-text gate; source/copy PDFs have 0 Markdown-file link annotations; visual spot checks and validators passed; `ageint-12` is marked done in `tasks.yaml`. |
 | AGEINT-METADATA-LEGACY-1 | todo | 109 legacy anchors still rely on `domain` / `source_type` fallback semantics for lane/tier. | Each legacy anchor has explicit `source_lane` and `source_tier`, plus tests or inventory proving no unintended lane drift. |
 | AGEINT-M1 | todo | Release/publish milestone. | Daniel explicitly requests release or publication workflow, confidentiality checks pass, and `ageint-m1` gates are updated from current evidence. |

@@ -75,11 +75,13 @@ uv run pytest tests/test_figures.py -m requires_mermaid -v
 
 ## Current local artifact evidence
 
-The 2026-06-12 section/reference auto-link pass rendered 377 generated
-manuscript files with 161 registered figures. The combined AGEINT PDF rendered
-to `output/pdf/AGEINT_combined.pdf` at 27.62 MB, 1696 pages, letter page size,
-and PDF version 1.7. The template PDF validator reported 0 issues, and the
-AGEINT PDF quality audit reported `stale PDF: false` and `OK: true`.
+The 2026-06-12 section/reference and figure-caption hardening passes rendered
+377 generated manuscript files with 161 registered figures. The combined AGEINT
+PDF rendered to `output/pdf/AGEINT_combined.pdf` at 27.66 MB, 1697 pages,
+letter page size, and PDF version 1.7. The template PDF validator reported 0
+issues, the AGEINT PDF quality audit reported `stale PDF: false` and `OK:
+true`, and a PDF annotation audit found 33334 link annotations with 0 `.md` or
+`.markdown` link targets in both the source and copied PDFs.
 
 ## See also
 

@@ -231,16 +231,37 @@ def part_rows(curriculum: Curriculum) -> str:
     """Render the top-level curriculum map."""
     rows = [
         "| Curriculum area | Part intro | Modules | Unit map | Runtime source |",
-        "|---|---|---:|---|---|",
+        "|:--------------------------------------|:----------|--------:|:---------|:----------------|",
     ]
     for part in curriculum.parts:
-        title = str(part["title"])
+        title = _curriculum_area_title(str(part["title"]))
         part_intro = section_ref(f"sec:part-{crossref_slug(title)}")
         unit_map = figure_ref(part_module_map_figure_label(part))
         rows.append(
             f"| {title} | {part_intro} | {len(part['chapters'])} | {unit_map} | parsed source guide |"
         )
     return "\n".join(rows)
+
+
+def _curriculum_area_title(title: str) -> str:
+    """Render source guide part titles in a PDF-friendly curriculum-map cell."""
+    if not title.isupper():
+        return title
+    words = []
+    acronyms = {"AGEINT", "HUMINT", "SIGINT", "OSINT", "FININT", "ICS"}
+    lowercase = {"and", "of", "the", "to", "in"}
+    for raw in title.split():
+        stripped = raw.strip("()")
+        if stripped in acronyms:
+            word = stripped
+        else:
+            word = raw.lower().capitalize()
+            if word.lower() in lowercase:
+                word = word.lower()
+        if raw.startswith("(") and raw.endswith(")"):
+            word = f"({word})"
+        words.append(word)
+    return " ".join(words)
 
 
 def appendix_rows(appendix: dict[str, Any]) -> str:

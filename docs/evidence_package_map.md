@@ -42,4 +42,7 @@ label-backed navigation across the orientation, curriculum map, source-lane
 map, research-anchor atlas, bibliography atlas, and figure/course-link
 surfaces. The current local artifact evidence is 377 generated manuscript files,
 11,417 generated Markdown citation occurrences, 0 zero-citation source sections,
-and a 1,696-page combined PDF with 0 template PDF-validator issues.
+and a 1,697-page combined PDF with 0 template PDF-validator issues. Figure
+captions and alt text are registry-enforced reader aids: all 161 rows now meet
+the expanded 40-word caption and 24-word alt-text gates, and the rendered PDFs
+contain no `.md` or `.markdown` link annotations.

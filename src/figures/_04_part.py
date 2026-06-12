@@ -1,13 +1,15 @@
-from __future__ import annotations
-
 """Figure registry helpers merged from historical part shards."""
+
+from __future__ import annotations
 
 from dataclasses import asdict
 from importlib import import_module
+import os
 from pathlib import Path
 import re
 import urllib.error
 import urllib.request
+import uuid
 from typing import Any, cast
 
 from ._01_part import FigureSpec
@@ -37,7 +39,8 @@ def _normalize_png_canvas(output: Path, size: int = 1400) -> None:
 
 
 def _temporary_png_path(output: Path) -> Path:
-    return output.with_name(f".{output.stem}.tmp{output.suffix}")
+    unique = f"{os.getpid()}.{uuid.uuid4().hex}"
+    return output.with_name(f".{output.stem}.{unique}.tmp{output.suffix}")
 
 
 def _png_asset_is_valid(path: Path) -> bool:
@@ -131,11 +134,14 @@ def _relpath(path: Path, start: Path) -> str:
 
 
 __all__ = [
-    "FigureKind",
     "FigureSpec",
-    "build_figure_specs",
-    "figure_markdown",
-    "figures_for_section",
-    "load_figure_registry",
-    "render_figures",
+    "_entry",
+    "_font",
+    "_markdown_escape",
+    "_mermaid_label",
+    "_normalize_png_canvas",
+    "_png_asset_is_valid",
+    "_relative_posix",
+    "_temporary_png_path",
+    "_validate_png_asset",
 ]

@@ -184,6 +184,8 @@ def test_curriculum_map_links_each_part_and_unit_map(built_output: Path) -> None
     assert "| Curriculum area | Part intro | Modules | Unit map | Runtime source |" in curriculum_map
     assert len(part_refs) == 16
     assert len(map_refs) == 16
+    assert "| Counterintelligence |" in curriculum_map
+    assert "| COUNTERINTELLIGENCE |" not in curriculum_map
     assert not re.search(
         r"^\| [^|]+ \| [0-9]+ \| parsed source guide \|$",
         curriculum_map,

@@ -26,8 +26,8 @@ from manuscript_manifest import build_manuscript_manifest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
-MIN_READER_CAPTION_WORDS = 22
-MIN_ALT_TEXT_WORDS = 16
+MIN_READER_CAPTION_WORDS = 40
+MIN_ALT_TEXT_WORDS = 24
 
 
 def _assert_mermaid_png_is_diagram(path: Path) -> None:
