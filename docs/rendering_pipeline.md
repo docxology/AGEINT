@@ -12,7 +12,14 @@ AGEINT does not use numbered source chapters under `manuscript/`. The PDF pipeli
 uv run python scripts/build_curriculum.py
 ```
 
-From template repo root after build and PDF render:
+For local continuation hardening, prefer the template core pipeline so the clean
+stage removes stale standalone web/PDF files before rebuild and copy:
+
+```bash
+AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/execute_pipeline.py --project working/AGEINT --skip-llm --core-only
+```
+
+From template repo root after a direct build and PDF render:
 
 ```bash
 uv run python scripts/03_render_pdf.py --project working/AGEINT
@@ -65,6 +72,14 @@ Run strict figure tests:
 ```bash
 uv run pytest tests/test_figures.py -m requires_mermaid -v
 ```
+
+## Current local artifact evidence
+
+The 2026-06-12 section/reference auto-link pass rendered 377 generated
+manuscript files with 161 registered figures. The combined AGEINT PDF rendered
+to `output/pdf/AGEINT_combined.pdf` at 27.62 MB, 1696 pages, letter page size,
+and PDF version 1.7. The template PDF validator reported 0 issues, and the
+AGEINT PDF quality audit reported `stale PDF: false` and `OK: true`.
 
 ## See also
 

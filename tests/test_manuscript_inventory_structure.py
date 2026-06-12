@@ -74,7 +74,10 @@ def test_generated_config_orders_semantic_files(built_output: Path) -> None:
         path.relative_to(output_manuscript).as_posix()
         for path in discover_manuscript_files(output_manuscript)
     ]
-    assert ordered[:2] == ["abstract.md", "orientation/00-runtime-inventory.md"]
+    assert ordered[:2] == [
+        "abstract.md",
+        "orientation/00-runtime-inventory-sec-runtime-inventory.md",
+    ]
     assert "parts/ageint-agentic-intelligence/unit_intro.md" in ordered
     assert "parts/ageint-agentic-intelligence/foundations-of-ageint/00-overview.md" in ordered
     assert ordered[-1] == "references.md"

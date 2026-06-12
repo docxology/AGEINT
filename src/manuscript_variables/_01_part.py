@@ -1,26 +1,19 @@
-from __future__ import annotations
-
 """Runtime manuscript-variable generation for the AGEINT curriculum atlas."""
 
+from __future__ import annotations
 
-import json
-from pathlib import Path
 import re
 from typing import Any, Final
 import unicodedata
 
 try:  # Support both ``import src.manuscript_variables`` and script-level imports.
-    from .curriculum import Curriculum, load_curriculum
+    from .curriculum import Curriculum
     from .citation_workflow import (
-        render_citation_workflow_markdown,
-        render_source_section_citation_rows,
         source_citation_cell,
-        source_citation_coverage_summary,
         source_citation_spine,
     )
     from .markdown_refs import (
         citation_ref,
-        citation_ref_list,
         crossref_slug,
         figure_ref,
         part_module_map_figure_label,
@@ -28,48 +21,19 @@ try:  # Support both ``import src.manuscript_variables`` and script-level import
     )
     from .intelligence_content import (
         INTELLIGENCE_RESEARCH_ANCHORS,
-        PRACTICE_LENSES,
-        accessibility_review_rows,
-        adversarial_assurance_rows,
-        agent_incident_response_rows,
-        assessment_integrity_rows,
-        capstone_scaffold_rows,
-        data_lineage_registry_rows,
-        hria_dpia_worksheet_rows,
-        learner_support_rows,
-        model_dataset_card_rows,
-        practice_lens_rows,
-        procurement_oversight_rows,
-        question_bank_rows,
-        release_change_control_rows,
-        remediation_backlog_rows,
-        profile_inventory_rows,
-        research_anchor_rows,
-        research_spine_summary,
-        retention_audit_rows,
-        risk_exception_rows,
-        role_competency_rows,
         safe_curriculum_treatment,
         safe_pattern_rows,
         safe_pattern_treatment,
-        safe_substitution_rows,
-        source_lane_rows,
-        source_refresh_rows,
-        transparency_notice_rows,
     )
     from .intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title  # noqa: E501
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
-    from curriculum import Curriculum, load_curriculum  # type: ignore[no-redef]
+    from curriculum import Curriculum  # type: ignore[no-redef]
     from citation_workflow import (  # type: ignore[no-redef]
-        render_citation_workflow_markdown,
-        render_source_section_citation_rows,
         source_citation_cell,
-        source_citation_coverage_summary,
         source_citation_spine,
     )
     from markdown_refs import (  # type: ignore[no-redef]
         citation_ref,
-        citation_ref_list,
         crossref_slug,
         figure_ref,
         part_module_map_figure_label,
@@ -77,34 +41,9 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     )
     from intelligence_content import (  # type: ignore[no-redef]
         INTELLIGENCE_RESEARCH_ANCHORS,
-        PRACTICE_LENSES,
-        accessibility_review_rows,
-        adversarial_assurance_rows,
-        agent_incident_response_rows,
-        assessment_integrity_rows,
-        capstone_scaffold_rows,
-        data_lineage_registry_rows,
-        hria_dpia_worksheet_rows,
-        learner_support_rows,
-        model_dataset_card_rows,
-        practice_lens_rows,
-        procurement_oversight_rows,
-        question_bank_rows,
-        release_change_control_rows,
-        remediation_backlog_rows,
-        profile_inventory_rows,
-        research_anchor_rows,
-        research_spine_summary,
-        retention_audit_rows,
-        risk_exception_rows,
-        role_competency_rows,
         safe_curriculum_treatment,
         safe_pattern_rows,
         safe_pattern_treatment,
-        safe_substitution_rows,
-        source_lane_rows,
-        source_refresh_rows,
-        transparency_notice_rows,
     )
     from intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title  # type: ignore[no-redef]  # noqa: E501
 

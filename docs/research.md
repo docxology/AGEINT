@@ -63,8 +63,8 @@ FININT/economic-security anchors. These additions remain source-profile entries:
 generated chapters select them through reusable profiles and practice lenses
 rather than through hand-authored chapter prose.
 
-The v2, deep-expansion, evidence-package, and Data Cards passes add source-lane metadata to curated anchors
-and expand the curated anchor set to 248 official, standards,
+The v2, deep-expansion, evidence-package, Data Cards, and local auto-link
+hardening passes add source-lane metadata to curated anchors and expand the curated anchor set to 248 official, standards,
 public-domain, or scholarly sources. New lanes cover AI conformity/compliance,
 education and assessment, public-sector agentic AI, cross-border data/data
 spaces, human-rights governance, agent interoperability standards, workforce
@@ -193,6 +193,15 @@ The 2026-06-12 verifier-hardening pass refreshes two older URL metadata rows:
 OASIS CSAF now points at the canonical OASIS Standard HTML page, and the
 International AI Safety Report 2026 anchor points at the official report
 landing page, with the PDF and arXiv record treated as secondary evidence.
+
+The 2026-06-12 section/reference auto-link pass keeps the same source corpus but
+turns the generated navigation and bibliography surfaces into real links:
+orientation sections carry stable labels, curriculum-map rows link each part
+intro and module-map figure, and research-anchor / bibliography / source-refresh
+key tables use Pandoc citations rather than literal `@key` text. The current
+local citation inventory reports 377 generated Markdown files, 11,417 generated
+Markdown citation occurrences, 723 source sections, and 0 zero-citation source
+sections.
 
 ## 2026-05-22 cognitive-security synthesis pass (verified encode only)
 

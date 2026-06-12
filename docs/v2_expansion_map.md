@@ -43,6 +43,13 @@ The major v2 pass expands AGEINT without changing its architecture:
   identical top-level headings.
 - Source-guide pseudo-headings are normalized in visible output; provenance
   tables preserve source-guide identity where needed.
+- Orientation and bibliography navigation now uses label-backed section,
+  figure, and citation links: curriculum-map rows include each part intro and
+  part module-map figure, and reference-key tables render Pandoc citations
+  rather than backticked `@key` text.
+- Current local rendered evidence after the section/reference hardening pass:
+  377 generated manuscript files, 11,417 generated Markdown citation
+  occurrences, 0 zero-citation source sections, and a 1,696-page combined PDF.
 
 ## Guardrails
 
@@ -57,3 +64,5 @@ The major v2 pass expands AGEINT without changing its architecture:
   source-audit, or safe-substitution contexts.
 - Template validation is run from the sibling `template` checkout against the
   active AGEINT output path.
+- The template core pipeline clean stage should be used before trusting
+  standalone web output after generated section labels or filenames change.

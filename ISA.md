@@ -58,6 +58,28 @@ later expansions:
   `checked_as_of` metadata.
 - Sync docs and command paths to the current working checkout.
 
+## 2026-06-12 Section/Reference Auto-Link Hardening Scope
+
+The follow-on local hardening pass makes the generated navigation surface
+reader-clickable without changing source identity or publication scope:
+
+- Orientation navigation sections now carry stable labels for reader paths,
+  curriculum map, research-anchor atlas, source-lane map, safe-substitution
+  matrix, capstone workflow, figures/course links, and related governance
+  surfaces.
+- Early orientation prose and curriculum-map rows now use label-backed
+  section/figure references for part intros, part module-map figures,
+  bibliography atlas, source lane map, research anchor atlas, and figures/course
+  links.
+- Reference-key tables now render Pandoc citation links such as
+  `[@official_cia_tradecraft_primer]`, `[@scholarly_rethlefsen_2021_prisma_s]`,
+  and `[@ageint001]` instead of backticked literal `@key` cells.
+- The generated-manuscript ordering assertion tracks the label-bearing
+  orientation filenames emitted after the split.
+- Direct render-only reuse is not sufficient after filename-bearing section
+  labels change; use the template pipeline clean stage before trusting standalone
+  web output directories.
+
 ## Verification Gates
 
 Completed against current artifacts on 2026-06-12:
@@ -74,10 +96,24 @@ Completed against current artifacts on 2026-06-12:
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .` → no render-blocking pitfalls or undefined citations found.
 
+Completed against current auto-link artifacts on 2026-06-12:
+
+- `uv run pytest tests/test_manuscript_crossrefs.py tests/test_markdown_refs.py tests/test_manuscript_variables.py -q` → 36 passed.
+- `uv run python scripts/check_rendered_references.py` → rendered reference audit passed.
+- `uv run python scripts/count_citations.py --format json` → generated Markdown files 377; generated citation occurrences 11417; source sections 723; zero-citation source sections 0.
+- `uv run pytest tests/ --cov=src --cov-fail-under=90` → 279 passed; 92.12% coverage.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 161 registered figures.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.62 MB.
+- `uv run python scripts/audit_pdf_quality.py` → 1696 pages; stale PDF false; OK true.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf` → 0 issues.
+
 ## Current Follow-Up Ledger
 
 | ID | Status | Scope | Exit condition |
 |---|---|---|---|
 | AGEINT-VERIFY-2026-06-12 | done | Complete this verifier-hardening pass. | All gates above passed; `ageint-4` is marked done in `tasks.yaml`. |
+| AGEINT-AUTOLINK-2026-06-12 | done | Complete section/reference auto-link hardening and PDF rerender. | Orientation labels, curriculum map links, citation-link tables, full tests, rendered-reference audit, template validators, and PDF audit passed; `ageint-11` is marked done in `tasks.yaml`. |
 | AGEINT-METADATA-LEGACY-1 | todo | 109 legacy anchors still rely on `domain` / `source_type` fallback semantics for lane/tier. | Each legacy anchor has explicit `source_lane` and `source_tier`, plus tests or inventory proving no unintended lane drift. |
 | AGEINT-M1 | todo | Release/publish milestone. | Daniel explicitly requests release or publication workflow, confidentiality checks pass, and `ageint-m1` gates are updated from current evidence. |

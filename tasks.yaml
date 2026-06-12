@@ -176,6 +176,32 @@ tasks:
     fallback semantics (`source_lane or domain`, `source_tier or source_type`).
     Exit condition: explicit lane/tier metadata for those anchors plus an inventory
     or test proving no unintended source-lane drift.'
+- id: ageint-11
+  title: Section and reference auto-link hardening
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-4
+  - ageint-8
+  tags:
+  - manuscript
+  - links
+  - validation
+  notes: 'Closed by the 2026-06-12 local section/reference auto-link hardening
+    pass. Implemented source-owned orientation labels, label-backed early navigation
+    prose, curriculum-map part intro and module-map links, and Pandoc citation-link
+    reference table cells. Validation evidence before the clean-pipeline rerender:
+    focused cross-reference/Markdown/runtime-variable tests passed 36/36; rendered
+    reference audit passed; citation counts reported 377 generated Markdown files,
+    11,417 generated Markdown citation occurrences, 723 source sections, and 0
+    zero-citation source sections; full suite passed 279 tests with 92.12% coverage;
+    strict build passed with 161 registered figures; PDF render produced
+    `output/pdf/AGEINT_combined.pdf` at 27.62 MB and 1,696 pages; PDF validator
+    reported 0 issues. Local-only task; no release, push, PR, or publication
+    action was requested.'
 - id: ageint-m1
   title: AGEINT v1 curriculum release
   status: todo

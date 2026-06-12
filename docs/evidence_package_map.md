@@ -37,4 +37,9 @@ label.
 
 The 2026-06-11 and 2026-06-12 hardening passes keep this package tied to the
 expanded source and figure surface: 248 curated research anchors, 161 registered
-figures, and refreshed CSAF / International AI Safety Report URL metadata.
+figures, refreshed CSAF / International AI Safety Report URL metadata, and
+label-backed navigation across the orientation, curriculum map, source-lane
+map, research-anchor atlas, bibliography atlas, and figure/course-link
+surfaces. The current local artifact evidence is 377 generated manuscript files,
+11,417 generated Markdown citation occurrences, 0 zero-citation source sections,
+and a 1,696-page combined PDF with 0 template PDF-validator issues.
