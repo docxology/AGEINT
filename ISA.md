@@ -101,10 +101,10 @@ Completed against current auto-link artifacts on 2026-06-12:
 - `uv run pytest tests/test_manuscript_crossrefs.py tests/test_markdown_refs.py tests/test_manuscript_inventory_structure.py tests/test_manuscript_variables.py -q` → 42 passed.
 - `uv run python scripts/check_rendered_references.py` → rendered reference audit passed.
 - `uv run python scripts/count_citations.py --format json` → generated Markdown files 377; generated citation occurrences 11417; source sections 723; zero-citation source sections 0.
-- `uv run pytest tests/ --cov=src --cov-fail-under=90` → 279 passed; 92.12% coverage.
+- Clean template core-pipeline project-test gate → 278 passed, 1 pre-render PDF-artifact skip, 91.38% coverage.
 - `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 161 registered figures.
 - From `/Users/4d/Documents/GitHub/template`:
-  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.61 MB after the template clean stage.
+  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.62 MB after the template clean stage.
 - `uv run python scripts/audit_pdf_quality.py` → 1696 pages; stale PDF false; OK true.
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf` → 0 issues.
