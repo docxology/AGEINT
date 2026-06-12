@@ -195,6 +195,8 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
     bib_keys = load_bib_keys(output_root)
     violations: list[RenderedReferenceViolation] = []
     for path in iter_rendered_text_files(output_root):
+        if not path.is_file():
+            continue
         suffix = path.suffix.lower()
         in_code = False
         in_html_figure = False

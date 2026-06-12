@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -87,6 +88,20 @@ def test_rendered_pdf_has_no_markdown_file_links() -> None:
                 markdown_links.append(f"page {page_index}: {target}")
 
     assert markdown_links == []
+
+
+def test_rendered_pdf_has_no_raw_cross_reference_tokens() -> None:
+    pdf = PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf"
+    if not pdf.is_file():
+        pytest.skip("Rendered combined PDF not present")
+
+    text = extract_pdf_text(pdf)
+    raw_tokens = re.findall(
+        r"\[@(?:sec|fig|eq):[A-Za-z0-9_.:-]+\]|@(?:sec|fig|eq):[A-Za-z0-9_.:-]+",
+        text,
+    )
+
+    assert raw_tokens == []
 
 
 def test_pdf_quality_reports_missing_pdf_as_not_ok(tmp_path: Path) -> None:
