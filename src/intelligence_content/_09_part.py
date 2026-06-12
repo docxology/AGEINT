@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any, Final
 
-from markdown_refs import citation_ref_list
+from markdown_refs import citation_ref, citation_ref_list
 
 from ._01_part import CoursebookProfile, ResearchAnchor
 from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS
@@ -101,7 +101,7 @@ def source_refresh_rows(limit: int | None = None) -> str:
     for anchor in anchors:
         source = f"[{table_cell(anchor.title)}]({anchor.url})" if anchor.url else table_cell(anchor.title)
         rows.append(
-            f"| `@{anchor.key}` | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
+            f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
             f"{table_cell(anchor.source_tier or anchor.source_type)} | {anchor.checked_as_of} | "
             f"{table_cell(anchor.refresh_cadence)} | {table_cell(anchor.refresh_trigger)} | "
             f"{table_cell(_verification_note_for_table(anchor))} |"
@@ -126,7 +126,7 @@ def current_source_update_rows(cutoff: str = "2026-06-06") -> str:
         if anchor.source_tier == "official_draft" and "draft status" not in caveat.lower():
             caveat = f"Draft status retained. {caveat}"
         rows.append(
-            f"| `@{anchor.key}` | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
+            f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
             f"{table_cell(anchor.claim_scope)} | {table_cell(caveat)} |"
         )
     return "\n".join(rows)
@@ -305,7 +305,7 @@ def research_anchor_rows() -> str:
     ]
     for anchor in INTELLIGENCE_RESEARCH_ANCHORS:
         rows.append(
-            f"| `@{anchor.key}` | {anchor.domain} | {anchor.source_lane or anchor.domain} | "
+            f"| {citation_ref(anchor.key)} | {anchor.domain} | {anchor.source_lane or anchor.domain} | "
             f"{anchor.source_tier or anchor.source_type} | {anchor.checked_as_of} | "
             f"{anchor.refresh_cadence} | {anchor.note} |"
         )
@@ -424,7 +424,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
     ]
     for anchor in anchor_references(profile.anchor_keys)[:7]:
         anchor_rows.append(
-            f"| `@{anchor.key}` | {anchor.note} Checked as of "
+            f"| {citation_ref(anchor.key)} | {anchor.note} Checked as of "
             f"{anchor.checked_as_of}; role: {anchor.citation_role}. |"
         )
     return "\n".join(

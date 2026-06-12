@@ -65,7 +65,7 @@ keep guide-derived values as neutral tokens, while the resolved manuscript in
 `output/manuscript/` injects titles, labels, counts, source spines, semantic
 paths, and bibliography rows from `data/curriculum/`.
 
-## Runtime inventory
+## Runtime inventory {#sec:runtime-inventory}
 
 | Derived artifact | Runtime value |
 |---|---:|
@@ -78,66 +78,67 @@ paths, and bibliography rows from `data/curriculum/`.
 | Intelligence research anchors | {{INTELLIGENCE_RESEARCH_ANCHOR_COUNT}} |
 | Intelligence practice lenses | {{INTELLIGENCE_PRACTICE_LENS_COUNT}} |
 
-## How to use this atlas
+## How to use this atlas {#sec:how-to-use-this-atlas}
 
 Read AGEINT as a navigable atlas rather than a linear textbook. Start with
-the curriculum map to choose the part, open the part introduction to see the
-module sequence, then use the chapter overview for the figures, source lane,
-and assessment artifact that matter for the current decision. Keep the
-bibliography atlas open when checking a claim, because it preserves source
-identity, provenance type, and refresh context in one place.
+[@sec:curriculum-map] and [@fig:ageint-curriculum-map] to choose the part, open
+the linked part introduction to see the module sequence, then use the chapter
+overview for the figures, source lane, and assessment artifact that matter for
+the current decision. Keep [@sec:bibliography_atlas] open when checking a claim,
+because it preserves source identity, provenance type, and refresh context in
+one place.
 
-## Reader paths
+## Reader paths {#sec:reader-paths}
 
 | Reader | Fast path | Evidence to keep |
 |---|---|---|
-| Instructor | Pair the part introduction with the module review checklist before assigning a studio exercise. | rubric row, excluded-action note, and source refresh trigger |
+| Instructor | Pair the linked part introduction from [@sec:curriculum-map] with the module review checklist before assigning a studio exercise. | rubric row, excluded-action note, and source refresh trigger |
 | Learner | Read the primer, topic lessons, worked safe example, and knowledge check before drafting a capstone packet. | claim ledger entry, uncertainty note, and blocked-use statement |
-| Assurance reviewer | Follow the source lane map, governance card, figure registry, and bibliography row for each material claim. | source key, review owner, caveat, and reproducible artifact path |
+| Assurance reviewer | Follow [@sec:source-lane-map], governance card, [@sec:orientation-figures-and-course-links], and [@sec:bibliography_atlas] for each material claim. | source key, review owner, caveat, and reproducible artifact path |
 | Builder or maintainer | Treat generated output as an audit surface; update data, templates, manifest code, or figure specs, then rebuild. | changed source file, regeneration command, and validation result |
 
-## Consolidated glossary and index
+## Consolidated glossary and index {#sec:consolidated-glossary-and-index}
 
 Use this compact index to route common terms to the right audit surface before
 reading a chapter in detail.
 
 | Term | Working meaning | Primary audit surface |
 |---|---|---|
-| Source lane | The provenance, source tier, and refresh context that govern a claim. | Source lane map and bibliography rows |
-| Claim ledger | A reviewable record of claim, evidence, caveat, confidence, and owner. | Research governance and capstone workflow |
-| Safe substitution | A replacement of unsafe operational action with synthetic, public, tabletop, or governance work. | Safe substitution matrix |
+| Source lane | The provenance, source tier, and refresh context that govern a claim. | [@sec:source-lane-map] and [@sec:bibliography_atlas] |
+| Claim ledger | A reviewable record of claim, evidence, caveat, confidence, and owner. | Research governance and [@sec:capstone-workflow] |
+| Safe substitution | A replacement of unsafe operational action with synthetic, public, tabletop, or governance work. | [@sec:safe-substitution-matrix] |
 | Reviewer gate | A named human approval or challenge point before reuse, presentation, or tool execution. | Assessment review and assurance rows |
-| Figure registry | The reproducible map from figure label to generated asset, caption, and source section. | Figures and course links |
+| Figure registry | The reproducible map from figure label to generated asset, caption, and source section. | [@sec:orientation-figures-and-course-links] |
 
-## Curriculum map
+## Curriculum map {#sec:curriculum-map}
 
 {{CURRICULUM_PART_ROWS}}
 
-## Intelligence research profiles
+## Intelligence research profiles {#sec:intelligence-research-profiles}
 
 {{INTELLIGENCE_PROFILE_ROWS}}
 
-## Intelligence practice lenses
+## Intelligence practice lenses {#sec:intelligence-practice-lenses}
 
 {{INTELLIGENCE_PRACTICE_LENS_ROWS}}
 
-## Research anchor atlas
+## Research anchor atlas {#sec:research-anchor-atlas}
 
 {{INTELLIGENCE_RESEARCH_ROWS}}
 
-## Source lane map
+## Source lane map {#sec:source-lane-map}
 
 {{INTELLIGENCE_SOURCE_LANE_ROWS}}
 
-## Safe substitution matrix
+## Safe substitution matrix {#sec:safe-substitution-matrix}
 
 {{SAFE_SUBSTITUTION_ROWS}}
 
-## Capstone workflow
+## Capstone workflow {#sec:capstone-workflow}
 
 {{CAPSTONE_SCAFFOLD_ROWS}}
 
-## Capstone model-answer exemplars
+## Capstone model-answer exemplars {#sec:capstone-model-answer-exemplars}
 
 These exemplars show the expected shape of a strong answer without prescribing
 a single conclusion. Use them as answer-key patterns for selected capstone
@@ -149,71 +150,71 @@ reviews.
 | Safe-lab packet | States the learning question, allowed inputs, excluded actions, tool allowlist, stop condition, and reviewer gate. | Uses private data, live targets, credentialed access, or an unreviewed tool path. |
 | Assurance packet | Connects rubric score, rights impact, accessibility check, remediation owner, and debrief handoff. | Treats the score as proof, omits affected users, or leaves no owner for retest. |
 
-## Accessibility and UDL review
+## Accessibility and UDL review {#sec:accessibility-and-udl-review}
 
 {{ACCESSIBILITY_REVIEW_ROWS}}
 
-## Procurement and vendor oversight
+## Procurement and vendor oversight {#sec:procurement-and-vendor-oversight}
 
 {{PROCUREMENT_OVERSIGHT_ROWS}}
 
-## HRIA and DPIA worksheet
+## HRIA and DPIA worksheet {#sec:hria-and-dpia-worksheet}
 
 {{HRIA_DPIA_WORKSHEET_ROWS}}
 
-## Data lineage registry
+## Data lineage registry {#sec:data-lineage-registry}
 
 {{DATA_LINEAGE_REGISTRY_ROWS}}
 
-## Assessment integrity protocol
+## Assessment integrity protocol {#sec:assessment-integrity-protocol}
 
 {{ASSESSMENT_INTEGRITY_ROWS}}
 
-## Agent incident response drill
+## Agent incident response drill {#sec:agent-incident-response-drill}
 
 {{AGENT_INCIDENT_RESPONSE_ROWS}}
 
-## Role-based competency map
+## Role-based competency map {#sec:role-based-competency-map}
 
 {{ROLE_COMPETENCY_ROWS}}
 
-## Adversarial assurance cycle
+## Adversarial assurance cycle {#sec:adversarial-assurance-cycle}
 
 {{ADVERSARIAL_ASSURANCE_ROWS}}
 
-## Model and dataset documentation card
+## Model and dataset documentation card {#sec:model-and-dataset-documentation-card}
 
 {{MODEL_DATASET_CARD_ROWS}}
 
-## Transparency and communication notice
+## Transparency and communication notice {#sec:transparency-and-communication-notice}
 
 {{TRANSPARENCY_NOTICE_ROWS}}
 
-## Records retention and audit trail
+## Records retention and audit trail {#sec:records-retention-and-audit-trail}
 
 {{RETENTION_AUDIT_ROWS}}
 
-## Release and change-control gate
+## Release and change-control gate {#sec:release-and-change-control-gate}
 
 {{RELEASE_CHANGE_CONTROL_ROWS}}
 
-## Risk exception and acceptance memo
+## Risk exception and acceptance memo {#sec:risk-exception-and-acceptance-memo}
 
 {{RISK_EXCEPTION_ROWS}}
 
-## Learner support and accommodation plan
+## Learner support and accommodation plan {#sec:learner-support-and-accommodation-plan}
 
 {{LEARNER_SUPPORT_ROWS}}
 
-## Instructor question bank
+## Instructor question bank {#sec:instructor-question-bank}
 
 {{QUESTION_BANK_ROWS}}
 
-## Remediation backlog
+## Remediation backlog {#sec:remediation-backlog}
 
 {{REMEDIATION_BACKLOG_ROWS}}
 
-## Scholarship and governance stance
+## Scholarship and governance stance {#sec:scholarship-and-governance-stance}
 
 AGEINT treats agentic intelligence as a governed socio-technical practice, not
 as a bag of prompts or autonomous tricks. The curriculum therefore keeps AI
@@ -223,15 +224,15 @@ one source-backed frame. Each source anchor has a curriculum role, a domain,
 and a provenance type so readers can distinguish law, standards, official
 guidance, public-domain historical material, and scholarly synthesis.
 
-## Figures and course links
+## Figures and course links {#sec:orientation-figures-and-course-links}
 
 {{VISUAL_SYNTHESIS}}
 
-## AGEINT pattern library
+## AGEINT pattern library {#sec:ageint-pattern-library}
 
 {{AGEINT_PATTERN_ROWS}}
 
-## Safety rail
+## Safety rail {#sec:safety-rail}
 
 All exercises remain educational, lawful, defensive, historical, synthetic,
 and non-operational. Modules may discuss intelligence, cyber, influence,

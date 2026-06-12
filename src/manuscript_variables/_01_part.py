@@ -18,7 +18,14 @@ try:  # Support both ``import src.manuscript_variables`` and script-level import
         source_citation_coverage_summary,
         source_citation_spine,
     )
-    from .markdown_refs import citation_ref_list
+    from .markdown_refs import (
+        citation_ref,
+        citation_ref_list,
+        crossref_slug,
+        figure_ref,
+        part_module_map_figure_label,
+        section_ref,
+    )
     from .intelligence_content import (
         INTELLIGENCE_RESEARCH_ANCHORS,
         PRACTICE_LENSES,
@@ -60,7 +67,14 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
         source_citation_coverage_summary,
         source_citation_spine,
     )
-    from markdown_refs import citation_ref_list  # type: ignore[no-redef]
+    from markdown_refs import (  # type: ignore[no-redef]
+        citation_ref,
+        citation_ref_list,
+        crossref_slug,
+        figure_ref,
+        part_module_map_figure_label,
+        section_ref,
+    )
     from intelligence_content import (  # type: ignore[no-redef]
         INTELLIGENCE_RESEARCH_ANCHORS,
         PRACTICE_LENSES,
@@ -276,9 +290,17 @@ def section_rows(sections: list[dict[str, Any]], *, safe_patterns: bool = False)
 
 def part_rows(curriculum: Curriculum) -> str:
     """Render the top-level curriculum map."""
-    rows = ["| Curriculum area | Modules | Runtime source |", "|---|---:|---|"]
+    rows = [
+        "| Curriculum area | Part intro | Modules | Unit map | Runtime source |",
+        "|---|---|---:|---|---|",
+    ]
     for part in curriculum.parts:
-        rows.append(f"| {part['title']} | {len(part['chapters'])} | parsed source guide |")
+        title = str(part["title"])
+        part_intro = section_ref(f"sec:part-{crossref_slug(title)}")
+        unit_map = figure_ref(part_module_map_figure_label(part))
+        rows.append(
+            f"| {title} | {part_intro} | {len(part['chapters'])} | {unit_map} | parsed source guide |"
+        )
     return "\n".join(rows)
 
 
@@ -428,7 +450,7 @@ def bibliography_rows(references: list[dict[str, Any]]) -> str:
         assurance = ref.get("assurance_use") or "bibliography traceability"
         rights = ref.get("rights_dimension") or "source guide context"
         rows.append(
-            f"| `@{ref['key']}` | {_clean_markdown_table_cell(title)} | {_clean_markdown_table_cell(role)} | "
+            f"| {citation_ref(str(ref['key']))} | {_clean_markdown_table_cell(title)} | {_clean_markdown_table_cell(role)} | "
             f"{_clean_markdown_table_cell(lane)} | {_clean_markdown_table_cell(tier)} | "
             f"{_clean_markdown_table_cell(checked)} | {_clean_markdown_table_cell(refresh)} | "
             f"{_clean_markdown_table_cell(stakeholder)} | {_clean_markdown_table_cell(assurance)} | "

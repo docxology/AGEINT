@@ -83,6 +83,13 @@ def _generated_crossref_prose_text(output_manuscript: Path) -> str:
     )
 
 
+def _orientation_text(output_manuscript: Path) -> str:
+    return "\n\n".join(
+        path.read_text(encoding="utf-8")
+        for path in sorted((output_manuscript / "orientation").glob("*.md"))
+    )
+
+
 def test_generated_figures_and_references_resolve_through_registry(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     figure_registry = built_output / "figures" / "figure_registry.json"
@@ -107,6 +114,64 @@ def test_generated_section_references_resolve_without_raw_latex_or_hard_numbers(
     assert section_refs <= section_labels
     assert not RAW_LATEX_REF_RE.search(text)
     assert not HARD_CODED_NUMBER_RE.search(_generated_crossref_prose_text(output_manuscript))
+
+
+def test_orientation_navigation_surfaces_are_label_backed(built_output: Path) -> None:
+    text = _orientation_text(manuscript_dir(built_output))
+    required_labels = {
+        "sec:reader-paths",
+        "sec:consolidated-glossary-and-index",
+        "sec:curriculum-map",
+        "sec:research-anchor-atlas",
+        "sec:source-lane-map",
+        "sec:safe-substitution-matrix",
+        "sec:capstone-workflow",
+        "sec:orientation-figures-and-course-links",
+    }
+    required_refs = {
+        "sec:curriculum-map",
+        "sec:bibliography_atlas",
+        "sec:source-lane-map",
+        "sec:research-anchor-atlas",
+        "sec:safe-substitution-matrix",
+        "sec:capstone-workflow",
+        "sec:orientation-figures-and-course-links",
+        "fig:ageint-curriculum-map",
+    }
+
+    for label in required_labels:
+        assert f"{{#{label}}}" in text
+    for label in required_refs:
+        assert f"[@{label}]" in text
+
+
+def test_curriculum_map_links_each_part_and_unit_map(built_output: Path) -> None:
+    [curriculum_map_path] = sorted(
+        (manuscript_dir(built_output) / "orientation").glob("*curriculum-map*.md")
+    )
+    curriculum_map = curriculum_map_path.read_text(encoding="utf-8")
+    part_refs = set(re.findall(r"\[@(sec:part-[a-z0-9-]+)\]", curriculum_map))
+    map_refs = set(re.findall(r"\[@(fig:part-[a-z0-9-]+-module-map)\]", curriculum_map))
+
+    assert "| Curriculum area | Part intro | Modules | Unit map | Runtime source |" in curriculum_map
+    assert len(part_refs) == 16
+    assert len(map_refs) == 16
+    assert not re.search(
+        r"^\| [^|]+ \| [0-9]+ \| parsed source guide \|$",
+        curriculum_map,
+        flags=re.MULTILINE,
+    )
+
+
+def test_reference_key_tables_use_pandoc_citations_not_literal_keys(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    text = _all_output_text(output_manuscript)
+
+    assert "[@official_cia_tradecraft_primer]" in text
+    assert "[@scholarly_rethlefsen_2021_prisma_s]" in text
+    assert "[@ageint001]" in text
+    assert not re.search(r"`@(?:official|scholarly)_[A-Za-z0-9_-]+`", text)
+    assert not re.search(r"`@ageint\d{3}`", text)
 
 
 def test_rendered_reference_audit_allows_only_structural_title_mentions(built_output: Path) -> None:
