@@ -136,6 +136,7 @@ def test_orientation_navigation_surfaces_are_label_backed(built_output: Path) ->
         "sec:safe-substitution-matrix",
         "sec:capstone-workflow",
         "sec:orientation-figures-and-course-links",
+        "sec:source-refresh-ledger",
         "fig:ageint-curriculum-map",
     }
 

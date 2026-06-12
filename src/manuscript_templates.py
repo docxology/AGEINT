@@ -328,7 +328,7 @@ volatile standards can be reviewed without changing citation keys.
 
 {{VISUAL_SYNTHESIS}}
 
-## Current-source additions and refreshes
+## Current-source additions and refreshes {#sec:current-source-additions-and-refreshes}
 
 The current-source table isolates anchors added or materially refreshed in the
 latest internet-citation pass. It is deliberately narrower than the full ledger:
@@ -338,11 +338,11 @@ retain draft-status caveats rather than being treated as final guidance.
 
 {{CURRENT_SOURCE_UPDATE_ROWS}}
 
-## Source refresh ledger
+## Source refresh ledger {#sec:source-refresh-ledger}
 
 {{SOURCE_REFRESH_ROWS}}
 
-## Bibliography rows
+## Bibliography rows {#sec:bibliography-rows}
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}
 """,

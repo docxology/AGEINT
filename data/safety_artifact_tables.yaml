@@ -192,7 +192,7 @@ ROLE_BASED_COMPETENCY_MAP:
   evidence: rubric, UDL review, and debrief notes
 - role: Source steward
   competency: lock source identities, verify new anchors, and maintain refresh triggers
-  evidence: source lane map and source refresh ledger
+  evidence: '[@sec:source-lane-map] and [@sec:source-refresh-ledger]'
 - role: Assurance reviewer
   competency: test failure modes, adversarial assumptions, tool boundaries, and incident
     response
