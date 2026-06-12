@@ -77,7 +77,7 @@ uv run pytest tests/test_figures.py -m requires_mermaid -v
 
 The 2026-06-12 section/reference auto-link pass rendered 377 generated
 manuscript files with 161 registered figures. The combined AGEINT PDF rendered
-to `output/pdf/AGEINT_combined.pdf` at 27.62 MB, 1696 pages, letter page size,
+to `output/pdf/AGEINT_combined.pdf` at 27.61 MB, 1696 pages, letter page size,
 and PDF version 1.7. The template PDF validator reported 0 issues, and the
 AGEINT PDF quality audit reported `stale PDF: false` and `OK: true`.
 

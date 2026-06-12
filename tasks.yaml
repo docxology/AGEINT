@@ -193,13 +193,13 @@ tasks:
   notes: 'Closed by the 2026-06-12 local section/reference auto-link hardening
     pass. Implemented source-owned orientation labels, label-backed early navigation
     prose, curriculum-map part intro and module-map links, and Pandoc citation-link
-    reference table cells. Validation evidence before the clean-pipeline rerender:
-    focused cross-reference/Markdown/runtime-variable tests passed 36/36; rendered
+    reference table cells. Validation evidence after the clean-stage recovery render:
+    focused cross-reference/Markdown/inventory/runtime-variable tests passed 42/42; rendered
     reference audit passed; citation counts reported 377 generated Markdown files,
     11,417 generated Markdown citation occurrences, 723 source sections, and 0
     zero-citation source sections; full suite passed 279 tests with 92.12% coverage;
     strict build passed with 161 registered figures; PDF render produced
-    `output/pdf/AGEINT_combined.pdf` at 27.62 MB and 1,696 pages; PDF validator
+    `output/pdf/AGEINT_combined.pdf` at 27.61 MB and 1,696 pages; PDF validator
     reported 0 issues. Local-only task; no release, push, PR, or publication
     action was requested.'
 - id: ageint-m1

@@ -51,7 +51,11 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     project = _minimal_project(tmp_path)
     template_file = project / "manuscript" / "templates" / "chapter.md"
 
-    result = run_build(project, regenerate_source_template_library=False)
+    result = run_build(
+        project,
+        regenerate_source_template_library=False,
+        allow_placeholder_figures=True,
+    )
 
     assert result.written_source_templates == 0
     assert "TEMPLATE SENTINEL" in template_file.read_text(encoding="utf-8")
@@ -116,7 +120,11 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, mo
     project = _minimal_project(tmp_path)
     template_file = project / "manuscript" / "templates" / "chapter.md"
 
-    result = run_build(project, regenerate_source_template_library=True)
+    result = run_build(
+        project,
+        regenerate_source_template_library=True,
+        allow_placeholder_figures=True,
+    )
 
     assert result.written_source_templates == 8
     rewritten = template_file.read_text(encoding="utf-8")

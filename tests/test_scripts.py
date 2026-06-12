@@ -8,12 +8,21 @@ import subprocess
 import sys
 from pathlib import Path
 
+from reportlab.pdfgen import canvas
+
 from build_pipeline import generated_output_is_stale
 from citation_workflow import source_citation_coverage_summary
 from curriculum import load_curriculum
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
+
+
+def _write_pdf(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pdf = canvas.Canvas(str(path))
+    pdf.drawString(72, 720, text)
+    pdf.save()
 
 
 def _write_at(path: Path, text: str, timestamp: float) -> None:
@@ -124,8 +133,9 @@ def test_count_citations_script_reports_source_counts() -> None:
     assert payload["source_zero_citation_sections"] == summary.zero_citation_sections
 
 
-def test_audit_pdf_quality_script_reports_json_contract() -> None:
-    pdf = PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf"
+def test_audit_pdf_quality_script_reports_json_contract(tmp_path: Path) -> None:
+    pdf = tmp_path / "quality-contract.pdf"
+    _write_pdf(pdf, "AGEINT rendered quality contract.")
     result = subprocess.run(
         [
             sys.executable,
