@@ -2,10 +2,10 @@
 
 {{SECTION_SUMMARY}}
 
-## Figures and course links
+## {{SECTION_TITLE}} visual navigation and module map
 
 {{VISUAL_SYNTHESIS}}
 
-## Runtime module list
+## {{SECTION_TITLE}} module roster and source-lane inventory
 
 {{SECTION_ROWS}}

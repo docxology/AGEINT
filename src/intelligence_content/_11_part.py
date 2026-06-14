@@ -14,12 +14,15 @@ except ImportError:  # pragma: no cover - exercised by package imports
     from ..unit_education import unit_profile_for_part  # type: ignore[no-redef]
 
 from ._04b_part import INTELLIGENCE_PROFILES
+from ._01_part import TopicEntry
 from ._06_part import practice_lens_for_titles, profile_for_titles
 from ._09_part import (
     _chapter_ref_context,
     _coursebook_profile_for_titles,
     _table_cell,
     _topic_context,
+    citation_cluster,
+    profile_triangulation_anchors,
 )
 from ._12_topic_frames import lesson_intro_paragraph
 from .source_grounding import (
@@ -37,7 +40,7 @@ from .tradecraft_source_support import (
 )
 from .topic_entries import safe_topic_entries
 from .topic_formalisms import lesson_formalism_field
-from .topic_lesson_voice import compact_topic, short_title, topic_reference
+from .topic_lesson_voice import compact_topic, short_title
 from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 
 
@@ -54,6 +57,7 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     lessons = [
         lesson_intro_paragraph(title, coursebook, lens, distinct_openers),
         lesson_educational_crossrefs(part, chapter),
+        profile_triangulation_anchors(part_title, title, chapter=chapter, surface="topic-lessons section"),
     ]
     for index, entry in enumerate(entries, 1):
         fields = resolve_topic_lesson_fields(
@@ -80,7 +84,10 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         forbidden = {title.casefold(), part_title.casefold()}
         body_fields = [
             f"**Why it matters.** {fields.why_it_matters}",
-            f"**Source support.** {_topic_source_support(entry, chapter, support_sources, original_sources=sources)}",
+            (
+                f"**Source support.** {_topic_source_support(entry, chapter, support_sources, original_sources=sources)} "
+                f"External triangulation uses {citation_cluster(profile.anchor_keys, limit=2)}"
+            ),
             f"**Evidence to inspect.** {evidence}",
             f"**Student artifact.** {fields.artifact_prompt}",
             f"**Misconception check.** {_misconception_line(entry.display_title, fields.misconception, forbidden=forbidden)}",
@@ -101,7 +108,7 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             body_fields.append(formalism)
         lessons.extend(
             [
-                f"### Lesson {index}: {entry.display_title}",
+                f"#### Lesson {index}: {entry.display_title}",
                 f"**Concept.** {fields.concept}",
                 *body_fields,
             ]
@@ -303,6 +310,7 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
     return "\n\n".join(
         [
             f"Worked example: {coursebook.worked_scenario}. {source_context}",
+            profile_triangulation_anchors(part_title, title, chapter=chapter, surface="worked-example section"),
             (
                 f"**Unit discipline spine.** Discipline: **{unit_profile.concept}**. "
                 f"Learners use a **{unit_profile.practice_artifact}** and keep this boundary visible: "
@@ -389,14 +397,15 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
                 "practice lens. Moves 1-3 form the compressed path; the full seminar "
                 f"path adds challenge, handoff, and a review memo for {topic_context}."
             ),
+            profile_triangulation_anchors(part_title, title, chapter=chapter, surface="practice-sequence section"),
             practice_rows,
-            "### Instructor notes",
+            "#### Instructor notes",
             (
                 "Ask learners to verbalize the difference between "
                 "a source, an inference, and a decision. Require a revision whenever "
                 f"a claim cannot be traced to a source descriptor or a human review point. Keep the focus on {topic_context}. {source_context}"
             ),
-            "### Extension",
+            "#### Extension",
             (
                 f"Have learners swap artifacts and apply the **{lens.title}** "
                 "validation rule to someone else's work. The receiving learner "
@@ -433,7 +442,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             f"4. Answer the coursebook review question: {coursebook.review_question}",
             f"5. Correct this misconception: {resolve_topic_misconception(topic, coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=title)}.",
             "",
-            "### Answer quality rubric",
+            "#### Answer quality rubric",
             "",
             "Judge answers with the canonical mastery evidence "
             "standard in the shared method-and-assurance reference "

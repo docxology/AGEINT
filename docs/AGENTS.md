@@ -16,8 +16,9 @@ defensive, educational, authorized, synthetic, and non-operational.
 ## Current Count Contract
 
 The live documentation count contract is 16 parts, 51 chapters, 9 appendices,
-312 source-guide references, 248 curated research anchors, and 161 registered
-figures. If a source-anchor shard, curriculum shard, or figure registry changes,
+312 source-guide references, 248 curated research anchors, 10 source-quality
+support anchors, 258 source-metadata rows, and 170 registered figures. If a
+source-anchor shard, curriculum shard, metadata audit, or figure registry changes,
 refresh these counts in `README.md`, `docs/README.md`, `docs/output_inventory.md`,
 and related docs before claiming the documentation is current.
 

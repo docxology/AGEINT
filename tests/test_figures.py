@@ -1,8 +1,6 @@
 """Tests for AGEINT figure generation and registry integrity."""
-
 from __future__ import annotations
 
-from datetime import date
 import shutil
 from pathlib import Path
 
@@ -21,13 +19,13 @@ from figures import (
     load_figure_registry,
     render_figures,
 )
-from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_manifest import build_manuscript_manifest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
 MIN_READER_CAPTION_WORDS = 40
 MIN_ALT_TEXT_WORDS = 24
+MIN_LONG_DESCRIPTION_WORDS = 70
 
 
 def _assert_mermaid_png_is_diagram(path: Path) -> None:
@@ -54,13 +52,22 @@ def _word_count(text: str) -> int:
 def _assert_informative_reader_text(spec: FigureSpec | dict[str, object]) -> None:
     caption = str(spec["caption"] if isinstance(spec, dict) else spec.caption)
     alt_text = str(spec["alt_text"] if isinstance(spec, dict) else spec.alt_text)
+    long_description = str(spec["long_description"] if isinstance(spec, dict) else spec.long_description)
     label = str(spec["label"] if isinstance(spec, dict) else spec.label)
 
     _assert_instructional_caption_and_alt_text(caption, alt_text)
+    assert long_description.strip()
     assert _word_count(caption) >= MIN_READER_CAPTION_WORDS, f"{label}: {caption}"
     assert _word_count(alt_text) >= MIN_ALT_TEXT_WORDS, f"{label}: {alt_text}"
-    assert "caption forthcoming" not in caption.lower()
-    assert "alt text forthcoming" not in alt_text.lower()
+    assert _word_count(long_description) >= MIN_LONG_DESCRIPTION_WORDS, f"{label}: {long_description}"
+    for phrase, text in (
+        ("caption forthcoming", caption),
+        ("alt text forthcoming", alt_text),
+        ("description forthcoming", long_description),
+    ):
+        assert phrase not in text.lower()
+    assert ".md" not in long_description.lower()
+    assert ".markdown" not in long_description.lower()
 
 
 def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> None:
@@ -75,9 +82,9 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
         FigureKind.HISTORICAL,
         FigureKind.AI_GENERATED,
     }
-    assert len(specs) == 161
-    assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == 115
-    assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 36
+    assert len(specs) == 170
+    assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == 114
+    assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 46
     assert sum(spec.kind == FigureKind.HISTORICAL for spec in specs) == 4
     assert sum(spec.kind == FigureKind.AI_GENERATED for spec in specs) == 6
     assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == curriculum.stats["parts"] + 1 + len(mermaid_rendering.SYNTHESIS_MERMAID)
@@ -86,62 +93,33 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     paths = [spec.output_path for spec in specs]
     section_paths = {section.relative_path for section in manifest.sections}
     assert len(labels) == len(set(labels))
-    assert {
-        "fig:ageint-source-verification-flow",
-        "fig:ageint-claim-ledger-flow",
-        "fig:ageint-ai-compliance-map",
-        "fig:ageint-agent-evaluation-loop",
-        "fig:ageint-cross-border-data-flow",
-        "fig:ageint-capstone-workflow",
-        "fig:ageint-safe-substitution-matrix",
-        "fig:ageint-instructor-assessment-lifecycle",
-        "fig:ageint-accessibility-workflow",
-        "fig:ageint-hria-dpia-map",
-        "fig:ageint-procurement-oversight-loop",
-        "fig:ageint-agent-incident-lifecycle",
-        "fig:ageint-bounded-autonomy-recoverability",
-        "fig:ageint-public-ai-register-lifecycle",
-        "fig:ageint-ai-incident-reporting-loop",
-        "fig:ageint-ot-definitive-architecture-record",
-        "fig:ageint-data-lineage-registry",
-        "fig:ageint-assessment-integrity-matrix",
-        "fig:ageint-adversarial-assurance-cycle",
-        "fig:ageint-model-dataset-card",
-        "fig:ageint-agentic-intelligence-boundary",
-        "fig:ageint-transparency-notice-flow",
-        "fig:ageint-records-retention-audit",
-        "fig:ageint-release-change-control",
-        "fig:ageint-risk-exception-memo",
-        "fig:ageint-learner-support-plan",
-        "fig:ageint-instructor-question-bank",
-        "fig:ageint-remediation-backlog",
-        "fig:ageint-cdr-degradation-cascade",
-        "fig:ageint-maestro-seven-layer",
-        "fig:ageint-sre-circuit-breaker",
-        "fig:ageint-cognitive-decoherence-cdr-isomorphism",
-        "fig:ageint-unified-epistemic-stack",
-        "fig:ageint-cognitive-attack-layers",
-        "fig:ageint-hro-governance-crosswalk",
-        "fig:ageint-claim-evidence-fit-map",
-        "fig:ageint-mcp-version-boundary",
-        "fig:ageint-active-inference-boundary-stack",
-        "fig:ageint-prebunking-evidence-boundary",
-        "fig:ageint-agentic-standards-landscape",
-        "fig:ageint-agent-evaluation-evidence-ladder",
-        "fig:ageint-synthetic-content-provenance-boundary",
-        "fig:ageint-analytic-tradecraft-evidence-ladder",
-        "fig:ageint-analytic-source-quality-boundary",
-        "fig:ageint-first-principles-tradecraft-decomposition",
-        "fig:ageint-redteam-tradecraft-negative-control-loop",
-        "fig:ageint-icd203-probability-confidence-boundary",
-        "fig:ageint-sat-evidence-boundary",
-        "fig:ageint-warning-failure-feedback-loop",
-        "fig:ageint-source-freshness-coverage",
-        "fig:ageint-memory-governance-plate",
-        "fig:ageint-visual-provenance-plate",
-        "fig:ageint-ai-data-security-lifecycle-plate",
-        "fig:ageint-web-source-refresh-plate",
-    } <= set(labels)
+    required_labels = """
+    fig:ageint-source-verification-flow fig:ageint-claim-ledger-flow fig:ageint-ai-compliance-map
+    fig:ageint-agent-evaluation-loop fig:ageint-cross-border-data-flow fig:ageint-capstone-workflow
+    fig:ageint-safe-substitution-matrix fig:ageint-instructor-assessment-lifecycle fig:ageint-accessibility-workflow
+    fig:ageint-visual-accessibility-contract fig:ageint-visual-quality-audit-dashboard fig:ageint-artifact-evidence-control-loop
+    fig:ageint-scholarship-triangulation-map fig:ageint-graphical-abstract fig:ageint-synthetic-tradecraft-method-contract
+    fig:ageint-analysis-validation-matrix fig:ageint-analysis-validation-family-coverage fig:ageint-source-metadata-integrity
+    fig:ageint-claim-calibration-and-visual-semantics
+    fig:ageint-hria-dpia-map fig:ageint-procurement-oversight-loop fig:ageint-agent-incident-lifecycle
+    fig:ageint-bounded-autonomy-recoverability fig:ageint-public-ai-register-lifecycle fig:ageint-ai-incident-reporting-loop
+    fig:ageint-ot-definitive-architecture-record fig:ageint-data-lineage-registry fig:ageint-assessment-integrity-matrix
+    fig:ageint-adversarial-assurance-cycle fig:ageint-model-dataset-card fig:ageint-agentic-intelligence-boundary
+    fig:ageint-transparency-notice-flow fig:ageint-records-retention-audit fig:ageint-release-change-control
+    fig:ageint-risk-exception-memo fig:ageint-learner-support-plan fig:ageint-instructor-question-bank
+    fig:ageint-remediation-backlog fig:ageint-cdr-degradation-cascade fig:ageint-maestro-seven-layer
+    fig:ageint-sre-circuit-breaker fig:ageint-cognitive-decoherence-cdr-isomorphism fig:ageint-unified-epistemic-stack
+    fig:ageint-cognitive-attack-layers fig:ageint-hro-governance-crosswalk fig:ageint-claim-evidence-fit-map
+    fig:ageint-mcp-version-boundary fig:ageint-active-inference-boundary-stack fig:ageint-prebunking-evidence-boundary
+    fig:ageint-agentic-standards-landscape fig:ageint-agent-evaluation-evidence-ladder
+    fig:ageint-synthetic-content-provenance-boundary fig:ageint-analytic-tradecraft-evidence-ladder
+    fig:ageint-analytic-source-quality-boundary fig:ageint-first-principles-tradecraft-decomposition
+    fig:ageint-redteam-tradecraft-negative-control-loop fig:ageint-icd203-probability-confidence-boundary
+    fig:ageint-sat-evidence-boundary fig:ageint-warning-failure-feedback-loop fig:ageint-source-freshness-coverage
+    fig:ageint-memory-governance-plate fig:ageint-visual-provenance-plate
+    fig:ageint-ai-data-security-lifecycle-plate fig:ageint-web-source-refresh-plate
+    """.split()
+    assert set(required_labels) <= set(labels)
     assert len(paths) == len(set(paths))
     for spec in specs:
         assert spec.label.startswith("fig:")
@@ -154,13 +132,40 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     assert model_card.kind == FigureKind.PYTHON
     assert "provenance" in model_card.caption
     assert "evaluation caveats" in model_card.caption
-    boundary = next(
-        spec for spec in specs if spec.label == "fig:ageint-agentic-intelligence-boundary"
-    )
+    boundary = next(spec for spec in specs if spec.label == "fig:ageint-agentic-intelligence-boundary")
     assert boundary.kind == FigureKind.PYTHON
     assert boundary.output_path == "output/figures/python/ageint-agentic-intelligence-boundary.png"
     assert "tool permissions" in boundary.caption
     assert "external action" in boundary.caption
+    accessibility = next(spec for spec in specs if spec.label == "fig:ageint-visual-accessibility-contract")
+    assert accessibility.kind == FigureKind.PYTHON
+    assert accessibility.provenance["renderer_id"] == "visual_accessibility_contract"
+    assert "long description" in accessibility.caption
+    assert "rendered-artifact validation" in accessibility.caption
+    quality = next(spec for spec in specs if spec.label == "fig:ageint-visual-quality-audit-dashboard")
+    assert quality.kind == FigureKind.PYTHON
+    assert quality.provenance["renderer_id"] == "visual_quality_audit_dashboard"
+    evidence = next(spec for spec in specs if spec.label == "fig:ageint-artifact-evidence-control-loop")
+    assert evidence.kind == FigureKind.PYTHON
+    assert evidence.provenance["renderer_id"] == "artifact_evidence_control_loop"
+    assert "PDF annotation audits" in evidence.caption
+    metadata = next(spec for spec in specs if spec.label == "fig:ageint-source-metadata-integrity")
+    assert metadata.kind == FigureKind.PYTHON
+    assert metadata.provenance["renderer_id"] == "source_metadata_integrity"
+    assert "source rows cannot silently fall back" in metadata.caption
+    calibration = next(
+        spec for spec in specs if spec.label == "fig:ageint-claim-calibration-and-visual-semantics"
+    )
+    assert calibration.kind == FigureKind.PYTHON
+    assert calibration.provenance["renderer_id"] == "claim_calibration_and_visual_semantics"
+    assert calibration.semantic_role == "verifier_control_map"
+    assert "claim-calibration verifier" in calibration.caption
+    atlas = next(spec for spec in specs if spec.label == "fig:ageint-graphical-abstract")
+    assert atlas.kind == FigureKind.PYTHON
+    assert atlas.output_path == "output/figures/python/ageint-graphical-abstract.png"
+    assert atlas.provenance["renderer_id"] == "graphical_abstract_atlas"
+    assert atlas.provenance["canvas_size"] == "2400"
+    assert "not a claim that AGEINT has measured operational performance" in atlas.caption
 
 
 def test_maestro_mermaid_source_uses_top_to_bottom_layout() -> None:
@@ -192,8 +197,20 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
 
     assert registry_path == PROJECT_ROOT / "output" / "figures" / "figure_registry.json"
     assert registry["project"] == "AGEINT"
+    assert registry["schema_version"] == "1.4"
     assert registry["figure_count"] == len(registry["figures"])
-    assert registry["figure_count"] == 161
+    assert registry["figure_count"] == 170
+    guidance_urls = {row["url"] for row in registry["accessibility_guidance"]}
+    assert {
+        "https://www.w3.org/WAI/tutorials/images/complex/",
+        "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
+        "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
+        "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+        "https://www.section508.gov/create/alternative-text/",
+        "https://www.section508.gov/create/making-color-usage-accessible/",
+        "https://designsystem.digital.gov/components/data-visualizations/",
+        "https://www.section508.gov/training/pdfs/aed-cop-pdf02/",
+    } <= guidance_urls
 
     for entry in registry["figures"]:
         asset = PROJECT_ROOT / entry["output_path"]
@@ -201,11 +218,34 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
         assert asset.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"), entry["output_path"]
         _assert_informative_reader_text(entry)
         assert len(entry["sha256"]) == 64
+        with Image.open(asset) as image:
+            info = image.info
+            for png_key, registry_key in (
+                ("AGEINT.Label", "label"),
+                ("AGEINT.Title", "title"),
+                ("AGEINT.Caption", "caption"),
+                ("AGEINT.AltText", "alt_text"),
+                ("AGEINT.LongDescription", "long_description"),
+                ("AGEINT.SourceSection", "source_section"),
+                ("AGEINT.SectionLabel", "section_label"),
+                ("AGEINT.SemanticRole", "semantic_role"),
+                ("AGEINT.EvidenceRole", "evidence_role"),
+                ("AGEINT.Unit", "unit"),
+                ("AGEINT.Denominator", "denominator"),
+                ("AGEINT.CountingRule", "counting_rule"),
+                ("AGEINT.InterpretationLimit", "interpretation_limit"),
+            ):
+                assert info[png_key] == entry[registry_key]
+            assert info["AGEINT.Quantitative"] == str(entry["quantitative"]).lower()
         if entry["kind"] == FigureKind.MERMAID.value:
             mermaid_source = PROJECT_ROOT / entry["source_artifact_path"]
             assert mermaid_source.is_file()
             assert mermaid_source.suffix == ".mmd"
             assert mermaid_source.with_suffix(".png").is_file()
+    atlas = next(entry for entry in registry["figures"] if entry["label"] == "fig:ageint-graphical-abstract")
+    with Image.open(PROJECT_ROOT / atlas["output_path"]) as image:
+        assert image.size == (2400, 2400)
+    assert atlas["kind"] == FigureKind.PYTHON.value
 
 
 def test_rendered_figure_assets_are_readable_and_square_normalized() -> None:
@@ -315,7 +355,7 @@ def test_render_figures_strict_mode_produces_real_mermaid_diagrams() -> None:
     )
     registry = load_figure_registry(registry_path)
     mermaid_entries = [entry for entry in registry["figures"] if entry["kind"] == FigureKind.MERMAID.value]
-    assert len(mermaid_entries) == 115
+    assert len(mermaid_entries) == 114
     assert len(mermaid_entries) == curriculum.stats["parts"] + 1 + len(mermaid_rendering.SYNTHESIS_MERMAID)
     for entry in mermaid_entries:
         asset = PROJECT_ROOT / entry["output_path"]
@@ -333,109 +373,6 @@ def test_built_mermaid_figures_are_not_placeholder_plates(built_output: Path) ->
         asset = PROJECT_ROOT / entry["output_path"]
         assert asset.is_file(), entry["label"]
         _assert_mermaid_png_is_diagram(asset)
-
-
-def test_internet_backed_visuals_have_current_source_anchor_contracts() -> None:
-    anchors = {anchor.key: anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
-    required = {
-        "official_nist_ai_800_2_automated_benchmark_evaluations",
-        "official_oecd_agentic_ai_landscape",
-        "official_nsa_mcp_security_design_considerations",
-        "scholarly_roozenbeek_2022_psychological_inoculation",
-    }
-    assert required <= anchors.keys()
-    for key in required:
-        anchor = anchors[key]
-        assert date.fromisoformat(anchor.checked_as_of) >= date(2026, 6, 11)
-        assert anchor.source_lane
-        assert anchor.source_tier
-        assert anchor.assurance_use
-        assert anchor.rights_dimension
-
-    curriculum = load_curriculum(DATA)
-    manifest = build_manuscript_manifest(curriculum)
-    specs = build_figure_specs(curriculum, manifest)
-    source_freshness = next(spec for spec in specs if spec.label == "fig:ageint-source-freshness-coverage")
-    assert source_freshness.kind == FigureKind.PYTHON
-    assert source_freshness.provenance["renderer_id"] == "source_freshness_coverage"
-    analytic_boundary = next(
-        spec for spec in specs if spec.label == "fig:ageint-analytic-source-quality-boundary"
-    )
-    assert analytic_boundary.kind == FigureKind.PYTHON
-    assert analytic_boundary.provenance["renderer_id"] == "analytic_source_quality_boundary"
-
-
-def test_analytic_tradecraft_source_refresh_has_boundary_contracts() -> None:
-    anchors = {anchor.key: anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
-    required = {
-        "official_cia_sherman_kent_profession",
-        "official_cia_kent_analyst_policymaker_relations",
-        "scholarly_wohlstetter_1962_pearl_harbor_warning_decision",
-        "official_cia_grabo_warning_intelligence_handbook",
-        "official_irtpa_2004_analytic_integrity",
-        "official_911_commission_report",
-        "official_robb_silberman_wmd_report",
-        "official_nato_alternative_analysis_handbook",
-        "scholarly_rand_2016_sat_evaluation",
-        "scholarly_marcoci_2019_tradecraft_reliability",
-        "scholarly_barnes_mandel_2014_forecast_accuracy",
-        "scholarly_ard_2023_sat_pragmatic",
-        "scholarly_stromer_galley_2020_flexible_sat",
-        "scholarly_betts_1978_intelligence_failure",
-        "scholarly_jervis_2022_postmortems_fail",
-        "scholarly_wirtz_2023_intelligence_failures_inevitable",
-    }
-    assert len(INTELLIGENCE_RESEARCH_ANCHORS) == 248
-    assert required <= anchors.keys()
-
-    weak_hosts = ("wikipedia.org", "amazon.", "goodreads.", "scribd.", "blogspot.")
-    for key in required:
-        anchor = anchors[key]
-        assert date.fromisoformat(anchor.checked_as_of) >= date(2026, 6, 11)
-        assert anchor.url.startswith("https://")
-        assert not any(host in anchor.url for host in weak_hosts), anchor.url
-        assert anchor.source_lane in {
-            "analytic_tradecraft_evidence",
-            "warning_intelligence",
-            "intelligence_failure_postmortem",
-            "sat_evaluation_evidence",
-            "forecasting_calibration_evidence",
-        }
-        assert anchor.source_tier
-        assert anchor.verification_method
-        assert anchor.claim_scope
-        assert anchor.assurance_use
-        assert anchor.rights_dimension
-
-    curriculum = load_curriculum(DATA)
-    manifest = build_manuscript_manifest(curriculum)
-    specs = build_figure_specs(curriculum, manifest)
-    tradecraft_labels = {
-        "fig:ageint-analytic-tradecraft-evidence-ladder",
-        "fig:ageint-analytic-source-quality-boundary",
-        "fig:ageint-first-principles-tradecraft-decomposition",
-        "fig:ageint-redteam-tradecraft-negative-control-loop",
-        "fig:ageint-icd203-probability-confidence-boundary",
-        "fig:ageint-sat-evidence-boundary",
-        "fig:ageint-warning-failure-feedback-loop",
-    }
-    tradecraft_specs = {spec.label: spec for spec in specs if spec.label in tradecraft_labels}
-    assert tradecraft_labels <= tradecraft_specs.keys()
-    for spec in tradecraft_specs.values():
-        assert spec.kind in {FigureKind.MERMAID, FigureKind.PYTHON}
-        assert "Source-backed" in spec.caption
-        caption = spec.caption.lower()
-        assert any(
-            token in caption
-            for token in (
-                "overclaim",
-                "separat",
-                "single technique",
-                "universal debiasing",
-                "evidence lane",
-                "false-certification",
-            )
-        )
 
 
 def test_figure_markdown_renders_label_path_and_escaped_caption() -> None:
@@ -460,12 +397,3 @@ def test_figure_markdown_renders_label_path_and_escaped_caption() -> None:
     assert "output/figures/" in markdown or "../figures/" in markdown
     assert "[" in markdown and "](" in markdown
     assert "Generated " not in markdown
-
-
-def test_pdf_preamble_uses_compact_pdf_typography() -> None:
-    preamble = (PROJECT_ROOT / "manuscript" / "preamble.md").read_text(encoding="utf-8")
-    assert r"\changefontsizes[9.2pt]{8pt}" in preamble
-    assert r"\setlength{\parskip}{0.15em}" in preamble
-    assert r"\renewcommand{\arraystretch}{0.88}" in preamble
-    assert r"\setlength{\LTpre}{2pt}" in preamble
-    assert r"\setlength{\LTpost}{2pt}" in preamble

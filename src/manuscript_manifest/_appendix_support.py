@@ -7,7 +7,6 @@ from typing import Any
 
 try:
     from ..intelligence_content import (
-        accessibility_review_rows,
         adversarial_assurance_rows,
         assessment_integrity_rows,
         capstone_scaffold_rows,
@@ -26,7 +25,6 @@ try:
     )
 except ImportError:  # pragma: no cover - exercised by script-level imports
     from intelligence_content import (  # type: ignore[no-redef]
-        accessibility_review_rows,
         adversarial_assurance_rows,
         assessment_integrity_rows,
         capstone_scaffold_rows,
@@ -49,6 +47,7 @@ def appendix_body(appendix: dict[str, Any]) -> str:
     """Return the generated methods-workbook body for an appendix."""
 
     letter = appendix["letter"]
+    title = str(appendix["title"])
     topic_context = _appendix_topic_context(appendix)
     specialized = _specialized_appendix_body(letter)
     return "\n".join(
@@ -60,51 +59,51 @@ def appendix_body(appendix: dict[str, Any]) -> str:
                 f"Source-item focus: {topic_context}."
             ),
             "",
-            "## Purpose",
+            f"## {title} operating purpose",
             (
                 "The current appendix supports a reusable methods workbook. Each source item is "
                 "treated as a reviewable classroom artifact rather than an operational instruction; "
                 f"examples begin with {topic_context}."
             ),
             "",
-            "## Allowed inputs",
+            f"## {title} allowed-input boundary",
             (
                 "Allowed inputs for the current appendix are public official or scholarly sources, "
                 "standards text, instructor-provided excerpts, synthetic datasets, owned-lab logs, "
                 f"toy examples, and generated rubrics that expose their provenance for {topic_context}."
             ),
             "",
-            "## Excluded actions",
+            f"## {title} excluded-action boundary",
             (
                 "Excluded actions for the current appendix are unauthorized collection, private-data "
                 "processing, credential use, contact with real targets, live system interaction, "
                 f"exploit execution, deception, unsafe cyber-physical action, or external deployment while handling {topic_context}."
             ),
             "",
-            "## Expected artifacts",
+            f"## {title} expected artifact package",
             (
                 "Expected appendix artifacts are a purpose statement, allowed-inputs card, "
                 "excluded-actions card, source-lane map, provenance record, claim ledger, "
                 f"safe-substitution note, output schema, review rubric, and capstone handoff memo for {topic_context}."
             ),
             "",
-            _safe_artifact_schema(),
+            _safe_artifact_schema(title),
             "",
-            _io_contract(),
+            _io_contract(title),
             "",
-            _failure_cases(),
+            _failure_cases(title),
             "",
-            _evidence_package_schemas(),
+            _evidence_package_schemas(title),
             "",
-            _rubric_scoring_bands(),
+            _rubric_scoring_bands(title),
             "",
-            _refresh_evidence(),
+            _refresh_evidence(title),
             "",
-            _validation_rubric(),
+            _validation_rubric(title),
             "",
-            "## Debrief protocol",
+            f"## {title} debrief protocol and reuse decision",
             (
-                "Debrief by naming what the artifact proves, what it does not prove, what source "
+                "Debrief by naming what the artifact can support, what it does not establish, what source "
                 "changed, what risk was avoided by safe substitution, what human approval is still "
                 f"required, and when the appendix should be refreshed for {topic_context}."
             ),
@@ -124,6 +123,46 @@ def _appendix_topic_context(appendix: dict[str, Any], *, limit: int = 2) -> str:
 
 
 def _specialized_appendix_body(letter: str) -> str:
+    if letter == "D":
+        return (
+            "\n\n## MCP and AutoGen source boundary\n\n"
+            "This appendix separates protocol claims, framework-pattern claims, and security "
+            "claims before learners build any classroom artifact. MCP interoperability language "
+            "is grounded in the version-pinned official specification; tool-consent, confused-"
+            "deputy, token-handling, and least-privilege language is grounded in the official "
+            "MCP security guidance and NSA security-design guidance. STIX/TAXII examples are "
+            "treated as standards-governed data-exchange examples, not as permission to connect "
+            "to external systems [@official_model_context_protocol_specification]; "
+            "[@official_model_context_protocol_security_best_practices]; "
+            "[@official_nsa_mcp_security_design_considerations]; "
+            "[@official_oasis_stix_21]; [@official_oasis_taxii_21].\n\n"
+            "AutoGen and multi-agent framework rows remain a safe-substitution exercise: the "
+            "learner may compare orchestration patterns, sandbox policies, denied-action logs, "
+            "and reviewer evidence, but may not run external code, contact live services, or "
+            "treat framework names as assurance evidence. When the source guide supplies only "
+            "framework or security context, this appendix records the limitation and routes "
+            "normative claims back to the official protocol, standards, and security anchors "
+            "rather than laundering them through an agent-generated summary [@ageint147]; "
+            "[@ageint153]; [@ageint155]; [@ageint299]; [@ageint309]; [@ageint310]."
+        )
+    if letter == "E":
+        return (
+            "\n\n## Cryptographic standards boundary\n\n"
+            "This appendix treats cryptography as an assurance and governance subject. "
+            "Confidentiality, hashing, digital signatures, and key management are grounded in "
+            "NIST standards and lifecycle guidance; classroom work may inspect properties, "
+            "terminology, and review evidence, but it must not become operational secrecy, "
+            "covert communications, evasion, or live key-management instruction "
+            "[@official_nist_fips_197_aes]; [@official_nist_fips_180_4_shs]; "
+            "[@official_nist_fips_186_5_dss]; "
+            "[@official_nist_sp_800_57pt1r5_key_management].\n\n"
+            "The source-guide material on dead drops and steganography is retained only as "
+            "historical or detection-literacy context. A learner-facing artifact should map "
+            "claim type to evidence type: standards for cryptographic properties, scholarly "
+            "or official sources for evaluation claims, and explicit blocked-use notes for "
+            "anything that could drift toward covert channels or uncontrolled deployment "
+            "[@ageint027]; [@ageint028]; [@fig:appendix-crypto-assurance-methods]."
+        )
     if letter == "G":
         return (
             "\n\n## Cognitive degradation as a staged cascade\n\n"
@@ -191,10 +230,10 @@ def _specialized_appendix_body(letter: str) -> str:
     return ""
 
 
-def _safe_artifact_schema() -> str:
+def _safe_artifact_schema(title: str) -> str:
     return "\n".join(
         [
-            "## Safe artifact schema",
+            f"## {title} safe artifact schema",
             "| Field | Required evidence | Reject condition |",
             "|---|---|---|",
             "| Purpose | lawful educational, governance, research, or defensive purpose | vague operational objective or missing authority |",
@@ -206,10 +245,10 @@ def _safe_artifact_schema() -> str:
     )
 
 
-def _io_contract() -> str:
+def _io_contract(title: str) -> str:
     return "\n".join(
         [
-            "## Input/output contract",
+            f"## {title} input/output contract",
             "| Contract term | Input rule | Output rule |",
             "|---|---|---|",
             "| Source identity | retain `ageintNNN`, title, URL, and checked status | cite with Pandoc keys and avoid pasted raw URLs in prose |",
@@ -221,10 +260,10 @@ def _io_contract() -> str:
     )
 
 
-def _failure_cases() -> str:
+def _failure_cases(title: str) -> str:
     return "\n".join(
         [
-            "## Failure cases",
+            f"## {title} failure cases and required responses",
             "| Failure case | Signal | Required response |",
             "|---|---|---|",
             "| Source laundering | claim cites an agent summary instead of a verified source | rebuild the claim ledger from direct sources |",
@@ -236,10 +275,10 @@ def _failure_cases() -> str:
     )
 
 
-def _evidence_package_schemas() -> str:
+def _evidence_package_schemas(title: str) -> str:
     return "\n\n".join(
         [
-            "## Evidence package schemas",
+            f"## {title} evidence package schemas",
             "Model and dataset card:",
             model_dataset_card_rows(),
             "Transparency notice:",
@@ -260,10 +299,10 @@ def _evidence_package_schemas() -> str:
     )
 
 
-def _rubric_scoring_bands() -> str:
+def _rubric_scoring_bands(title: str) -> str:
     return "\n".join(
         [
-            "## Rubric scoring bands",
+            f"## {title} rubric scoring bands",
             "| Band | Evidence standard | Disposition |",
             "|---|---|---|",
             "| 4 - ready | source identity, accessibility, rights, safety, and reviewer evidence are complete | may be reused after normal refresh review |",
@@ -274,11 +313,11 @@ def _rubric_scoring_bands() -> str:
     )
 
 
-def _refresh_evidence() -> str:
+def _refresh_evidence(title: str) -> str:
     return "\n".join(
         [
-            "## Refresh evidence",
-            "| Evidence item | Refresh trigger | Retained proof |",
+            f"## {title} refresh evidence",
+            "| Evidence item | Refresh trigger | Retained support |",
             "|---|---|---|",
             "| Source lane | official source, standard, or legal text changes | checked-as-of date and source note |",
             "| Safety treatment | operational wording or unsafe motif appears | safe-substitution decision and blocked context |",
@@ -289,10 +328,10 @@ def _refresh_evidence() -> str:
     )
 
 
-def _validation_rubric() -> str:
+def _validation_rubric(title: str) -> str:
     return "\n".join(
         [
-            "## Validation rubric",
+            f"## {title} validation rubric",
             "| Criterion | Passing evidence |",
             "|---|---|",
             "| Source identity | existing `ageintNNN` keys remain stable or new references are append-only |",

@@ -81,9 +81,9 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
         / "parts"
         / "ageint-agentic-intelligence"
         / "foundations-of-ageint"
-        / "01-topic-lessons.md"
+        / "01-practice-studio.md"
     ).read_text(encoding="utf-8")
-    assert "### Lesson 1:" in foundations
+    assert "#### Lesson 1:" in foundations
     worked = (
         project
         / "output"
@@ -91,11 +91,11 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
         / "parts"
         / "ageint-agentic-intelligence"
         / "foundations-of-ageint"
-        / "02-worked-practice.md"
+        / "01-practice-studio.md"
     ).read_text(encoding="utf-8")
     assert "**Filled artifact.**" in worked
-    assert "### Answer quality rubric" in worked
-    assert "are mapped in" in (
+    assert "#### Answer quality rubric" in worked
+    assert "uses [@fig:" in (
         project
         / "output"
         / "manuscript"

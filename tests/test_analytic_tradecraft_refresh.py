@@ -44,7 +44,7 @@ def test_analytic_tradecraft_primary_support_demotes_weak_guide_rows(
     )
     lesson_text = "\n".join(
         path.read_text(encoding="utf-8")
-        for path in sorted(tradecraft_root.glob("*/01-topic-lessons.md"))
+        for path in sorted(tradecraft_root.glob("*/01-practice-studio.md"))
     )
     assert "curated analytic-tradecraft anchors" in lesson_text
     assert "remain context only" in lesson_text

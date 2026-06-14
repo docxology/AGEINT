@@ -14,7 +14,20 @@ after a rebuild and docs refresh:
 | Appendices | 9 | `data/curriculum/stats.json` |
 | Source-guide references | 312 | `data/curriculum/references/` |
 | Curated research anchors | 248 | `data/research_anchors/` |
-| Registered figures | 161 | `output/figures/figure_registry.json` |
+| Source-quality support anchors | 10 | `data/research_anchors/source-quality-anchors.jsonl` |
+| Source metadata rows | 258 | `output/reports/source_metadata.json` |
+| Registered figures | 170 | `output/figures/figure_registry.json` |
+| Non-numbered cover art | 1 | `output/figures/cover/ageint-cover-synthesis.png` |
+
+The numbered graphical abstract is the Python-rendered
+`fig:ageint-graphical-abstract` Synthetic Tradecraft System Atlas in the
+orientation section. PDF TOC entries are limited to H1/H2 reader landmarks; the
+repeated teaching scaffolds remain as H3/H4 body headings.
+
+The current verifier stack includes `claim_calibration_ok`: generated
+manuscript rows with proof-language, p-values, measured-performance language,
+unsupported formalisms, or weak-source-only high-risk claims must fail unless
+the row is explicit boundary or misconception-control prose.
 
 Perplexity may be used for discovery and second-opinion research. Final claims
 in docs or generated output must cite direct official, standards-body,

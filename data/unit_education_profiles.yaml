@@ -132,7 +132,7 @@ profiles:
     source_use_contract: Use source-guide citations and official historical-source anchors for release context, provenance, and oversight lessons.
     practice_artifact: declassified case-to-principle card
     safety_boundary: No current sources-and-methods reconstruction, operational emulation, or tactical transfer.
-    learning_spine: Learners mark what the record proves, what redaction leaves unknown, and what institutional lesson survives context shift.
+    learning_spine: Learners mark what the record can support, what redaction leaves unknown, and what institutional lesson survives context shift.
     evidence_artifacts:
       - release metadata
       - redaction caveat

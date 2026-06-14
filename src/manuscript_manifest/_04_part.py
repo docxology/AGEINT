@@ -1,24 +1,19 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
-import re
-import shutil
 from typing import Any
 
 from curriculum import Curriculum
 from figures import figure_markdown, figures_for_section
 from markdown_refs import section_ref_list
-from manuscript_templates import DEFAULT_TEMPLATES
+from manuscript_templates import template_text
 from manuscript_variables import appendix_rows
-from unit_education import render_unit_profile_markdown
 
 from .types import (
     ManuscriptManifest,
     ManuscriptSection,
     SlugRegistry as _SlugRegistry,
     section_label as _label,
-    slugify as _slug,
 )
 from ._appendix_support import appendix_body as _appendix_body
 from ._01_part import (
@@ -149,7 +144,7 @@ def _visual_synthesis(
         "chapter": "module",
         "part": "unit",
         "appendix": "appendix",
-        "front": "front-matter section",
+        "front": "orientation",
         "bibliography": "bibliography appendix",
     }.get(section.kind, "section")
     # Join the figure references as a conjoined list ("Figure 1 and Figure 2",
@@ -162,7 +157,6 @@ def _visual_synthesis(
         figure_group = f"{_refs[0]} and {_refs[1]}"
     else:
         figure_group = ", ".join(_refs[:-1]) + ", and " + _refs[-1]
-    artifact_context = f" Artifact path: `{section.relative_path}`."
     definitions = [
         figure_markdown(
             entry,
@@ -173,9 +167,9 @@ def _visual_synthesis(
         for entry in own_figures
     ]
     figure_sentence = (
-        f"This {section_word}'s evidence flow, safety boundaries, and review artifacts are mapped in {figure_group}.{artifact_context}"
+        f"The {section_word} uses {figure_group} to map its evidence flow, safety boundaries, review artifacts, and refresh cues."
         if figure_group
-        else f"This {section_word} is oriented by the adjacent part, appendix, or curriculum-overview figure.{artifact_context}"
+        else f"The {section_word} is oriented by the adjacent part, appendix, or curriculum-overview figure."
     )
     definition_block = "\n\n".join(definitions)
     parts = [figure_sentence]
@@ -212,7 +206,7 @@ def _section_navigation(section: ManuscriptSection) -> str:
         refs.append(section.next_label)
     if not refs:
         return ""
-    return "Course path: " + section_ref_list(refs) + "."
+    return "Navigation links: " + section_ref_list(refs) + "."
 
 def build_manuscript_manifest(
     curriculum: Curriculum,
@@ -402,4 +396,4 @@ def _read_template(templates_dir: Path, template_name: str) -> str:
     template_path = templates_dir / template_name
     if template_path.is_file():
         return template_path.read_text(encoding="utf-8")
-    return DEFAULT_TEMPLATES[template_name]
+    return template_text(template_name)

@@ -47,8 +47,8 @@ tasks:
     with 16 parts, 51 modules, 9 appendices, 20 AGEINT patterns, 312 references,
     rendered `output/data/manuscript_variables.json`, split `output/manuscript/references-*.bib`
     shards, and then-current `output/figures/figure_registry.json` with 142 figures.
-    Current source snapshot supersedes the historical figure count: 161 registered
-    figures and 248 curated research anchors. Refresh render/test evidence before
+    Current source snapshot supersedes the historical figure count: 170 registered
+    figures, 248 curated research anchors, and 10 source-quality support anchors. Refresh render/test evidence before
     using this row as a current readiness gate.'
 - id: ageint-4
   title: Expand course / cookbook / playbook modules
@@ -88,7 +88,7 @@ tasks:
     --project working/AGEINT` completed, hydrated variables through the AGEINT build,
     rendered 376 manuscript sections, verified the then-current 142/142 figure
     references, generated `working/AGEINT/output/pdf/AGEINT_combined.pdf` (24.45 MB),
-    and reported 1/1 valid PDF. Current snapshot: 161 registered figures; refresh
+    and reported 1/1 valid PDF. Current snapshot: 170 registered figures; refresh
     render/test evidence before using this historical PDF row as a current readiness
     gate.'
 - id: ageint-6
@@ -156,26 +156,37 @@ tasks:
     `.venv/bin/python -m pytest tests/ --cov=src --cov-fail-under=90 -q -p
     no:cacheprovider` passed 245 tests with 91.91% coverage. This closes the
     local readiness gate only; `ageint-m1` remains open because no release/publish
-    action was requested. Current snapshot: 161 registered figures; latest local
-    PDF artifact is `output/pdf/AGEINT_combined.pdf` at 28,530,473 bytes from
-    2026-06-11, so rerun render/validation before treating this row as current
-    release evidence.'
+    action was requested. Current snapshot: 170 registered figures; latest local
+    PDF artifact is `output/pdf/AGEINT_combined.pdf` at 29,866,565 bytes from
+    2026-06-12; `ageint-m1` still requires an explicit release/publication
+    request before this row can become release action evidence.'
 - id: ageint-10
   title: Harden legacy research-anchor lane/tier metadata
-  status: todo
-  start: '2026-07-04'
-  end: '2026-07-10'
-  progress: 0
+  status: done
+  start: '2026-06-13'
+  end: '2026-06-13'
+  progress: 100
   milestone: false
   deps:
   - ageint-6
   tags:
   - research
   - metadata
-  notes: 'Future hardening task: 109 legacy anchors still rely on ResearchAnchor
-    fallback semantics (`source_lane or domain`, `source_tier or source_type`).
-    Exit condition: explicit lane/tier metadata for those anchors plus an inventory
-    or test proving no unintended source-lane drift.'
+  notes: 'Closed by the 2026-06-13 source-metadata verifier hardening pass.
+    Filled 119 blank lane/tier metadata rows: 109 legacy intelligence anchors
+    now use their existing `domain` as `source_lane` and existing `source_type`
+    as `source_tier`, while 10 source-quality support anchors use
+    `source_quality_spine` / `source_quality_anchor`. Added `src/source_metadata.py`,
+    `scripts/audit_source_metadata.py`, source-metadata negative controls, the
+    `source_metadata_ok` artifact-evidence gate, and the
+    `ageint-source-metadata-integrity` Python figure. Final local validation:
+    `current_artifact_evidence` is `ok: true`, `source_metadata_ok: true`, 258
+    metadata rows, 0 blank lane/tier rows, 0 fallback-dependent rows, 169 figures,
+    14,771 generated Markdown citation occurrences, a fresh 1,704-page 29.69 MB
+    PDF, template markdown/prerender/PDF validators with 0 issues, and `uv run
+    pytest tests/ --cov=src --cov-fail-under=90` passed 312 tests with 1 skipped
+    and 91.52% coverage. Local-only task; no release, push, PR, or publication
+    action was requested.'
 - id: ageint-11
   title: Section and reference auto-link hardening
   status: done
@@ -199,8 +210,8 @@ tasks:
     11,417 generated Markdown citation occurrences, 723 source sections, and 0
     zero-citation source sections; clean template core-pipeline project tests
     passed 278/279 tests with one pre-render PDF-artifact skip and 91.38% coverage;
-    strict build passed with 161 registered figures; PDF render produced
-    `output/pdf/AGEINT_combined.pdf` at 27.66 MB and 1,697 pages; PDF validator
+    strict build passed with the then-current 162 registered figures; PDF render produced
+    `output/pdf/AGEINT_combined.pdf` at 27.87 MB and 1,698 pages; PDF validator
     reported 0 issues. Local-only task; no release, push, PR, or publication
     action was requested.'
 - id: ageint-12
@@ -223,15 +234,558 @@ tasks:
     all-uppercase curriculum-map part titles for PDF layout; widened the generated
     curriculum-map table; added tests for informative figure reader text, no
     Markdown-file links in generated reader outputs, and no Markdown-file PDF
-    annotation targets. Validation evidence: 161 registered figures, 0 short
+    annotation targets. Validation evidence: 162 registered figures, 0 short
     captions, 0 short alt-text rows, 0 caption/alt placeholder rows, 0 generated
     Markdown/HTML links to `.md` or `.markdown` files, source and copied PDFs
-    each with 1,697 pages, 33,334 link annotations, and 0 Markdown-file link
-    targets; final PDF render produced `output/pdf/AGEINT_combined.pdf` at 27.66
+    each with 1,698 pages, 33,335 link annotations, and 0 Markdown-file link
+    targets; final PDF render produced `output/pdf/AGEINT_combined.pdf` at 27.87
     MB; template markdown/prerender/PDF validators passed with 0 issues; visual
     spot checks confirmed curriculum-map, module-map, and longer figure captions
     render without overlap. Local-only task; no release, push, PR, or publication
     action was requested.'
+- id: ageint-13
+  title: Visual accessibility contract hardening
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-12
+  tags:
+  - figures
+  - accessibility
+  - validation
+  notes: 'Closed by the 2026-06-12 local visual-accessibility hardening pass.
+    Attempted the requested Perplexity CLI discovery lane, but the local API
+    call returned `401 insufficient_quota`; no Perplexity-derived claim was
+    encoded. Directly verified W3C WAI Complex Images, WCAG 2.2 Understanding
+    SC 1.1.1, Section508.gov alternative-text/PDF guidance, and USWDS data-visualization
+    guidance, then encoded those official URLs into figure-registry accessibility
+    metadata. Added the `ageint-visual-accessibility-contract` Python figure,
+    bumped the then-current registry schema to 1.1 (superseded by `ageint-14`
+    schema 1.2, now superseded by `ageint-15` schema 1.3), added long descriptions to every figure row, and tightened
+    tests so the then-current 162 figures passed caption, alt-text, and long-description gates.
+    Validation evidence: touched figure modules passed
+    Ruff; `uv run pytest tests/test_figures.py tests/test_file_size_inventory.py
+    -q` passed 14/14; strict build passed with the then-current 162 registered figures; `uv run
+    pytest tests/ --cov=src --cov-fail-under=90` passed 282/282 with 92.14%
+    coverage; template markdown, prerender, and PDF validators passed with 0
+    issues; rerendered `output/pdf/AGEINT_combined.pdf` at 27.87 MB and 1,698
+    pages; source and copied PDFs each have 33,335 link annotations and 0 Markdown-file
+    or file-URI targets. Local-only task; no release, push, PR, or publication
+    action was requested.'
+- id: ageint-14
+  title: Portable figure metadata and color-safe guidance
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-13
+  tags:
+  - figures
+  - accessibility
+  - validation
+  notes: 'Closed by the follow-on 2026-06-12 visualization hardening pass. Retried
+    the requested Perplexity CLI lane with `llm -m sonar`, but it again returned
+    `401 insufficient_quota`; no Perplexity-derived claim was encoded. Direct
+    verification added Section508.gov color-usage guidance to the registry contract,
+    bumped the figure-registry schema to 1.2 (now superseded by `ageint-15`
+    schema 1.3), updated the visual-accessibility
+    contract figure to include color-safe labels and PNG metadata, and embedded
+    label, title, caption, alt text, long description, source section, section
+    label, kind, and provenance in every generated PNG text chunk. Validation
+    evidence: touched figure modules passed Ruff; `uv run pytest tests/test_figures.py
+    tests/test_file_size_inventory.py -q` passed 14/14; strict rebuild passed with
+    the then-current 162 registered figures; direct registry audit confirmed schema
+    1.2, six official guidance URLs, and PNG metadata in all 162 figure assets; `uv run pytest tests/
+    --cov=src --cov-fail-under=90` passed 282/282 with 92.14% coverage; template
+    markdown, prerender, and PDF validators passed with 0 issues; rerendered
+    `output/pdf/AGEINT_combined.pdf` at 27.87 MB and 1,698 pages; source and
+    copied PDFs each have 33,335 link annotations and 0 Markdown-file or file-URI
+    targets. Local-only task; no release, push, PR, or publication action was
+    requested.'
+- id: ageint-15
+  title: Visual quality audit artifact and dashboard
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-14
+  tags:
+  - figures
+  - accessibility
+  - validation
+  notes: 'Closed by the 2026-06-12 visualization audit pass. Retried the requested
+    Perplexity CLI lane with `llm -m sonar`, but it again returned `401 insufficient_quota`;
+    no Perplexity-derived claim was encoded. Direct verification added W3C WCAG
+    2.2 Use of Color and Non-text Contrast guidance to the figure-registry contract,
+    bumped the registry schema to 1.3, added `output/figures/visual_quality_audit.json`,
+    and added the `ageint-visual-quality-audit-dashboard` Python figure. The
+    then-current focused tests asserted 163 registered figures, 38 Python figures, eight official
+    guidance URLs, visual-quality audit parity with the registry, and 100% pass
+    counts for readable PNGs, square layout, reader-text thresholds, PNG metadata,
+    provenance, and source-section binding. Validation evidence: touched figure
+    modules passed Ruff; focused figure/file-size tests passed 16/16; strict
+    rebuild passed with 163 registered figures and registry schema 1.3; rendered
+    reference audit passed; citation counts reported 377 generated Markdown
+    files, 11,417 generated Markdown citation occurrences, 723 source sections,
+    and 0 zero-citation source sections; full suite passed 284/284 with 92.15%
+    coverage; template PDF render found 163/163 figure references and produced
+    `output/pdf/AGEINT_combined.pdf` at 28.06 MB and 1,699 pages; copy stage
+    copied 981 files; template markdown, prerender, and PDF validators passed
+    with 0 issues; PDF quality audit reported stale PDF false and OK true; source
+    and copied PDFs each had 4,285 URI links and 0 `.md`, `.markdown`, or `file:`
+    targets. Local-only task; no release, push, PR, or publication action was
+    requested.'
+- id: ageint-16
+  title: Section links, table layout, and PDF typography hardening
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-11
+  - ageint-15
+  tags:
+  - manuscript
+  - links
+  - pdf
+  - validation
+  notes: 'Closed by the 2026-06-12 local section-link, source-section coverage
+    table, and compact-typography pass. Implemented source-owned heading-support
+    wording so source-section coverage uses a coverage anchor instead of generic
+    evidence prose, reshaped the generated source-section citation rows into
+    narrow numeric columns plus wider descriptive/citation-link columns, fixed
+    Markdown table splitting so adjacent tables under one heading preserve their
+    separator rows, and reduced the compact PDF preamble to 7.8 pt body text
+    with 8.9 pt leading. Validation evidence: touched files passed Ruff; focused
+    cross-reference/table/figure tests passed 65/65; strict rebuild passed with
+    377 generated manuscript files and 163 registered figures; citation counts
+    reported 12,802 generated Markdown citation occurrences, 723 source sections,
+    and 0 zero-citation source sections; rendered-reference audit passed; targeted
+    scans found no stale `Section 80; [Jr., 2007]` coverage join, old source-section
+    table header, or Markdown-file links in PDF-bound generated content; copied
+    PDF output is 28.12 MB and 1,671 pages; template markdown, prerender, and
+    PDF validators reported 0 issues; source and copied PDFs each have 4,180
+    URI links and 0 `.md`, `.markdown`, `file:`, or launch targets; full suite
+    passed 288/288 with 92.12% coverage. Local-only task; no release, push, PR,
+    or publication action was requested.'
+- id: ageint-17
+  title: Verifier-first artifact evidence and visualization hardening
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-16
+  tags:
+  - validation
+  - figures
+  - pdf
+  - pipeline
+  - docs
+  notes: 'Closed by the 2026-06-12 local RedTeam artifact-evidence pass. Added
+    `src/artifact_evidence.py`, `scripts/audit_artifact_evidence.py`, PDF link-audit
+    fields in `src/pdf_quality.py`, the `ageint-artifact-evidence-control-loop`
+    Python figure, and source-owned orientation/docs prose explaining verifier-first
+    artifact evidence. Also patched the parent template renderer so render-only
+    web passes remove stale standalone HTML before regenerating current section
+    pages. Validation evidence: AGEINT and template touched files passed Ruff;
+    template renderer regression passed; AGEINT focused artifact/PDF/figure/cross-reference
+    tests passed 64/64; strict build and corrected template render produced 378
+    generated manuscript files, 164 registered figures, 12,805 generated Markdown
+    citation occurrences, and `output/pdf/AGEINT_combined.pdf` at 28.30 MB and
+    1,673 pages; source and copied web outputs each contain 379 HTML files (378
+    section pages plus `index.html`) with stale pre-label orientation filenames
+    removed; `current_artifact_evidence.{json,md}` reports `ok: true`, 723 source
+    sections, 0 zero-citation source sections, visual-quality pass for all 164
+    figures, 4,180 PDF URI links, and 0 `.md`, `.markdown`, `file:`, or launch
+    targets; rendered-reference audit, targeted stale-output scans, template
+    markdown/prerender/PDF validators, and direct PDF quality audit passed. Local-only
+    task; no release, push, PR, or publication action was requested.'
+- id: ageint-18
+  title: Scholarship-quality verifier and triangulation visualization
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-17
+  tags:
+  - research
+  - validation
+  - figures
+  - docs
+  notes: 'Closed by the 2026-06-12 local RedTeam scholarship-quality pass. Added
+    `src/scholarship_quality.py`, `scripts/audit_scholarship_quality.py`, the
+    `ageint-scholarship-triangulation-map` Python figure, scholarship-quality
+    artifact-evidence integration, and source-owned appendix prose for MCP /
+    AutoGen and cryptographic standards boundaries using existing official,
+    standards, scholarly, and source-guide citation keys. Also tightened the
+    parent template figure validator so AGEINT registry envelopes and code-span
+    reference examples do not create false figure warnings. Validation evidence:
+    clean template core pipeline completed; project tests passed 293/298 with
+    5 pre-render PDF-stage skips and 90.18% coverage; focused artifact/PDF/scholarship
+    tests passed 21/21 after the PDF render; strict build produced 378 generated
+    manuscript files, 165 registered figures, and 12,825 generated Markdown citation
+    occurrences; `scholarship_quality.{json,md}` reports `ok: true`, 0 uncited
+    claim-bearing files, 0 thin claim-bearing files, and follow-on single-source-family
+    warning rows for `ageint-19` to close; `current_artifact_evidence.{json,md}` reports `ok: true`,
+    a 1,674-page 28.48 MB PDF, 4,180 PDF URI links, 0 bad PDF link targets,
+    0 file actions, and visual-quality pass for all 165 figures; rendered-reference
+    audit, stale-output scans, template markdown/prerender/PDF validators, AGEINT
+    PDF quality audit, and focused template figure-validator tests passed. Local-only
+    task; no release, push, PR, or publication action was requested.'
+- id: ageint-19
+  title: Profile-anchor scholarship support in generated claim surfaces
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-18
+  tags:
+  - research
+  - validation
+  - manuscript
+  - docs
+  notes: 'Closed by the 2026-06-12 local RedTeam profile-anchor scholarship
+    continuation. Added `profile_triangulation_anchors(...)` and routed existing
+    official, standards, scholarly, and source-guide anchors into topic lessons,
+    worked examples, source-canon sections, and review-checklist sections without
+    adding or renumbering citation keys. Tightened scholarship and fragment-quality
+    tests so the then-current generated output exposed no single-source-family
+    claim-bearing warning rows and claim-bearing fragments included direct triangulation
+    anchors. Validation evidence: touched files passed Ruff; strict build then
+    produced 378 generated manuscript files and 165 registered figures; focused
+    file-size, reader-quality, scholarship, and chapter-fragment tests passed
+    19/19; clean template core pipeline completed with infrastructure tests
+    120/120 and project tests 294/299, including 5 pre-render PDF-stage skips
+    and 90.23% coverage;
+    `scholarship_quality.{json,md}` reports `ok: true`, 0 uncited claim-bearing
+    files, 0 thin claim-bearing files, and 0 single-source-family claim-bearing
+    warnings; `current_artifact_evidence.{json,md}` then reported `ok: true`, 378
+    generated Markdown files, 14,765 generated Markdown citation occurrences,
+    723 source sections, 0 zero-citation source sections, 165 figures, a 1,698-page
+    28.79 MB PDF, 4,180 PDF URI links, 0 bad PDF link targets, and 0 file actions;
+    rendered-reference audit, stale-output scans, template markdown/prerender/PDF
+    validators, and AGEINT PDF quality audit passed. Local-only task; no release,
+    push, PR, or publication action was requested.'
+- id: ageint-20
+  title: Synthetic Analytic Tradecraft early-section framing
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-19
+  tags:
+  - manuscript
+  - validation
+  - docs
+  notes: 'Closed by the 2026-06-12 local Synthetic Analytic Tradecraft orientation
+    pass. Strengthened `manuscript/templates/abstract.md` and
+    `manuscript/templates/orientation.md` so the early reader contract describes
+    AGEINT as a source-governed, synthetic-fixture workbench for producing
+    reviewable analytic artifacts, not an operational manual or autonomous
+    analytic benchmark. Added the label-backed
+    `sec:synthetic-analytic-tradecraft-thesis` orientation section, cross-linked
+    SAT framing to the graphical abstract, evidence ladder, SAT evidence-boundary,
+    and first-principles decomposition figures, extended the glossary, and
+    guarded template regeneration so checked-in neutral templates remain the
+    canonical source. Validation evidence: Ruff passed for the touched source and
+    test files; strict build produced 379 generated manuscript files, 165
+    registered figures, and 14,771 generated Markdown citation occurrences;
+    scholarship and artifact-evidence audits reported `ok: true`, 0 uncited
+    claim-bearing files, 0 thin claim-bearing files, 0 single-source-family
+    claim-bearing warning rows, 723 source sections, 0 zero-citation source
+    sections, and a 1,699-page 28.79 MB PDF before `ageint-21` superseded the
+    current figure/PDF counts. Local-only task; no release, push, PR, or publication
+    action was requested.'
+- id: ageint-21
+  title: Synthetic Analytic Tradecraft method-contract verifier
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-20
+  tags:
+  - scholarship
+  - figures
+  - validation
+  - manuscript
+  notes: 'Closed by the 2026-06-12 local SAT method-contract pass. Added the
+    `ageint-synthetic-tradecraft-method-contract` Python figure, cross-linked
+    it from the abstract and Synthetic Analytic Tradecraft orientation section,
+    and extended `src/scholarship_quality.py` so the generated abstract/orientation
+    must retain the SAT thesis, source-family triangulation language, negative-control
+    testing language, and method-contract figure reference. The unified
+    `current_artifact_evidence.{json,md}` manifest now exposes that contract.
+    Validation evidence: strict build produced 379 generated manuscript files,
+    166 registered figures, and 14,771 generated Markdown citation occurrences;
+    scholarship and artifact-evidence audits report `ok: true`, a passing SAT
+    method contract, 0 uncited claim-bearing files, 0 thin claim-bearing files,
+    0 single-source-family warning rows, 723 source sections, a fresh 1,700-page
+    28.98 MB PDF, 4,180 PDF URI links, 0 bad PDF link targets, and 0 file
+    actions. Local-only task; no release, push, PR, or publication action was
+    requested.'
+- id: ageint-22
+  title: Analysis-validation protocol and matrix verifier
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-21
+  tags:
+  - scholarship
+  - figures
+  - validation
+  - manuscript
+  notes: 'Closed by the 2026-06-12 local analysis-validation pass. Added the
+    `ageint-analysis-validation-matrix` Python figure, the label-backed
+    `sec:analysis-validation-protocol` orientation section, abstract/orientation
+    cross-references, and an analysis-validation contract in `src/scholarship_quality.py`.
+    The unified `current_artifact_evidence.{json,md}` manifest now exposes both
+    SAT method and analysis-validation contracts. Validation evidence: strict
+    build produced 380 generated manuscript files, a then-current 167-figure
+    registry, and 14,771 generated Markdown citation occurrences; scholarship and artifact-evidence
+    audits report `ok: true`, passing SAT and analysis-validation contracts,
+    0 uncited claim-bearing files, 0 thin claim-bearing files, 0 single-source-family
+    warning rows, 723 source sections, a fresh 1,702-page 29.17 MB PDF, 4,180
+    PDF URI links, 0 bad PDF link targets, and 0 file actions. Local-only task;
+    no release, push, PR, or publication action was requested.'
+- id: ageint-23
+  title: Analysis-validation lane contract hardening
+  status: done
+  start: '2026-06-12'
+  end: '2026-06-12'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-22
+  tags:
+  - scholarship
+  - redteam
+  - validation
+  - figures
+  notes: 'Closed by the 2026-06-12 local RedTeam follow-on pass. Added canonical
+    analysis-validation lanes in `src/analysis_validation.py`, wired the
+    `ageint-analysis-validation-matrix` renderer to those lanes, and extended
+    `src/scholarship_quality.py` plus `src/artifact_evidence.py` so a manuscript
+    fails if it keeps the protocol heading and figure reference but drops a
+    claim class, validation question, evidence packet, or failure mode. Negative
+    control: a fixture with only the Design guidance row now fails the
+    analysis-validation lane contract. That pass produced 380 generated manuscript
+    files, a then-current 167-figure registry, 14,771 generated Markdown citation
+    occurrences, 723 source sections, a fresh 1,702-page 29.23 MB PDF, 4,180 PDF
+    URI links, 0 bad PDF link targets, 0 file actions, and passing SAT method,
+    analysis-validation, and lane contracts before the family-coverage pass
+    superseded current artifact counts.
+    Local-only task; no release, push, PR, or publication action was requested.'
+- id: ageint-24
+  title: Analysis-validation family coverage verifier
+  status: done
+  start: '2026-06-13'
+  end: '2026-06-13'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-23
+  tags:
+  - scholarship
+  - redteam
+  - validation
+  - figures
+  notes: 'Closed by the 2026-06-13 local RedTeam family-coverage pass. Added
+    canonical claim-bearing manuscript-family to analysis-validation lane routing
+    in `src/analysis_validation.py`, the
+    `ageint-analysis-validation-family-coverage` Python figure, and scholarship
+    plus artifact-evidence report fields that fail if a new claim-bearing
+    generated family is not mapped to a review lane, evidence signal, and failure
+    signal. Negative control: an unmapped claim-bearing family fixture now fails
+    the family-coverage check. Validation evidence after strict rebuild and
+    PDF rerender/copy: 380
+    generated manuscript files, then-current 168 registered figures, 14,771 generated Markdown
+    citation occurrences, 723 source sections, a fresh 1,703-page 29.52 MB PDF,
+    4,180 PDF URI links, 0 bad PDF link targets, 0 file actions, and passing SAT
+    method, analysis-validation, lane-contract, and family-coverage scholarship
+    checks. Local-only task; no release, push, PR, or publication action was
+    requested.'
+- id: ageint-28
+  title: Cover, abstract, and TOC hardening
+  status: done
+  start: '2026-06-13'
+  end: '2026-06-13'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-24
+  tags:
+  - manuscript
+  - figures
+  - pdf
+  - validation
+  notes: 'Closed by the 2026-06-13 local cover, abstract, and TOC hardening
+    pass. Added deterministic non-numbered cover art at
+    `output/figures/cover/ageint-cover-synthesis.png` with a metadata sidecar,
+    wired `book.cover.image` in `manuscript/config.yaml`, and kept the cover
+    outside `figure_registry.json` so it does not become a numbered manuscript
+    figure. Replaced the
+    graphical-abstract wrapper with one 1,226-word plaintext Synthetic Analytic
+    Tradecraft abstract, moved the governed-system-map figure into orientation
+    support, reordered early orientation for reader comprehension, renamed
+    repeated generated H2/H3 scaffolds, and limited the PDF TOC to H1/H2 entries
+    with spacing controls for multi-digit section numbers. Validation evidence:
+    strict rebuild passed with 380 generated manuscript files, 169 registered
+    figures plus one non-numbered cover PNG; focused cover/figure/crossref/inventory/typography
+    tests passed 43/43; rendered-reference audit passed; template markdown,
+    prerender, and PDF validators reported 0 issues; scans for abstract boilerplate,
+    Markdown-file links, stale headings, and tight TOC joins returned no matches;
+    that pass artifact evidence reported `ok: true`, 14,771 generated Markdown
+    citation occurrences, 723 source sections, 0 zero-citation source sections,
+    source metadata explicit, scholarship quality OK, 1,680 PDF pages, 4,181
+    URI links, 0 bad PDF link targets, and 0 file actions. Visual inspection
+    confirmed the cover renders on the PDF title page. Local-only task; no release,
+    push, PR, or publication action was requested.'
+- id: ageint-29
+  title: Graphical abstract and TOC title hardening
+  status: done
+  start: '2026-06-13'
+  end: '2026-06-13'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-28
+  tags:
+  - manuscript
+  - figures
+  - pdf
+  - validation
+  notes: 'Closed by the 2026-06-13 local graphical-abstract and TOC-title hardening
+    pass. Replaced the old Mermaid-backed `fig:ageint-graphical-abstract` with
+    the deterministic Python `graphical_abstract_atlas` renderer and a 2400px
+    square `AGEINT Synthetic Tradecraft System Atlas` in
+    `output/figures/python/ageint-graphical-abstract.png`, preserving the stable
+    label and orientation placement. Added long caption, alt text, and
+    long-description metadata for the source spine, discipline lanes, Synthetic
+    Analytic Tradecraft core, bounded agent assistance, verification gates, human
+    review, product handoff, and halt conditions. Replaced repeated module H2
+    scaffolds with five chapter-specific reader landmarks and kept repeated body
+    scaffolds below PDF TOC depth. Validation evidence: strict rebuild passed
+    with 383 manuscript-bound files, 369 generated Markdown files, 330 configured
+    manuscript files, 169 registered figures plus one non-numbered cover PNG;
+    focused graphical-abstract/figure/crossref/inventory/typography/scholarship
+    tests passed 67/67; rendered-reference audit passed; template core pipeline
+    completed all stages with project tests 313/318, 5 expected pre-render skips,
+    and 90.39% coverage; template markdown/prerender/PDF validators reported 0
+    issues; `current_artifact_evidence` reports `ok: true`, 15,382 generated
+    Markdown citation occurrences, 723 source sections, 0 zero-citation source
+    sections, source metadata explicit, scholarship quality OK, 1,619 PDF pages,
+    4,181 URI links, 0 bad PDF link targets, and 0 file actions. Post-render
+    direct chunks passed PDF/artifact tests 16/16, manuscript-variable tests 5/5,
+    and remaining tail chunks 31/31, 49/49, and 52/52. Local-only task; no release,
+    push, PR, or publication action was requested.'
+- id: ageint-30
+  title: Claim calibration, source-strength, statistics, and visualization semantics hardening
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-29
+  tags:
+  - scholarship
+  - validation
+  - figures
+  - source-strength
+  notes: 'Closed by the 2026-06-14 local claim-calibration and visual-semantics
+    hardening pass. Added `src/source_support_strength.py`,
+    `src/claim_calibration.py`, `scripts/audit_claim_calibration.py`, the
+    `claim_calibration_ok` artifact-evidence gate, negative controls for
+    unsupported measured-performance, fake p-value/statistical, weak-source-only,
+    and formalism claims, registry schema `1.4` visual-semantics metadata, and
+    the `ageint-claim-calibration-and-visual-semantics` Python control figure.
+    Calibrated generated manuscript wording so artifact telemetry is not framed
+    as empirical learning, safety, statistical, or operational-performance
+    evidence. Current evidence: strict rebuild passed; claim calibration reports
+    `ok: true`, 8,748 candidate rows, 0 hard-fail rows, 471 boundary-allowed rows,
+    and 5,181 review-warning rows; artifact evidence reports `ok: true`,
+    `claim_calibration_ok: true`, `source_metadata_ok: true`,
+    `scholarship_quality_ok: true`, 170 registered figures, 15,382 generated
+    Markdown citation occurrences, 723 source sections, 0 zero-citation source
+    sections, source metadata explicit, scholarship quality OK with six
+    single-source-family review warnings, a 1,619-page PDF audit, 0 bad PDF link
+    targets, and no stale proof wording, banned fallback phrases, or Markdown-file
+    links in generated manuscript. Local-only task; no release, push, PR, or
+    publication action was requested.'
+- id: ageint-25
+  title: Source-refresh due-date dashboard
+  status: todo
+  start: '2026-07-11'
+  end: '2026-07-17'
+  progress: 0
+  milestone: false
+  deps:
+  - ageint-10
+  tags:
+  - research
+  - metadata
+  - visualization
+  notes: 'Future hardening task: add a source-refresh due-date dashboard over
+    source metadata. Exit condition: report and optional figure group rows by
+    refresh cadence, checked_as_of date, due/soon/stale bucket, source lane,
+    source tier, and review owner without changing source identities or dates.'
+- id: ageint-26
+  title: Template artifact-manifest contract cleanup
+  status: todo
+  start: '2026-07-18'
+  end: '2026-07-24'
+  progress: 0
+  milestone: false
+  deps:
+  - ageint-17
+  tags:
+  - pipeline
+  - validation
+  notes: 'Future pipeline-contract task: the parent template artifact manifest
+    currently reports repeated non-PDF-blocking advisories for missing declared
+    output `projects/AGEINT/output`. Exit condition: AGEINT outputs are declared
+    or ignored intentionally so template evidence no longer repeats that issue.'
+- id: ageint-27
+  title: v1 release preflight evidence bundle
+  status: todo
+  start: '2026-07-25'
+  end: '2026-07-31'
+  progress: 0
+  milestone: false
+  deps:
+  - ageint-10
+  - ageint-29
+  - ageint-30
+  - ageint-25
+  - ageint-26
+  tags:
+  - release
+  - validation
+  notes: 'Future task only after an explicit release/publication request. Exit
+    condition: current local evidence, confidentiality checks, artifact manifest
+    status, source metadata, PDF/link/citation/figure audits, and taskboard gates
+    are refreshed into a release preflight bundle.'
 - id: ageint-m1
   title: AGEINT v1 curriculum release
   status: todo
@@ -243,5 +797,21 @@ tasks:
   - ageint-4
   - ageint-5
   - ageint-9
+  - ageint-13
+  - ageint-14
+  - ageint-15
+  - ageint-16
+  - ageint-17
+  - ageint-18
+  - ageint-19
+  - ageint-20
+  - ageint-21
+  - ageint-22
+  - ageint-23
+  - ageint-24
+  - ageint-28
+  - ageint-29
+  - ageint-30
+  - ageint-27
   tags: []
   notes: ''

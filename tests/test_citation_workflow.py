@@ -7,6 +7,7 @@ from pathlib import Path
 from citation_workflow import (
     generated_markdown_citation_inventory,
     render_citation_workflow_markdown,
+    render_source_section_citation_rows,
     source_citation_cell,
     source_citation_coverage_summary,
     source_citation_spine,
@@ -64,11 +65,24 @@ def test_rendered_workflow_markdown_names_authoring_surfaces() -> None:
     assert "`src/intelligence_content/`" in rendered
     assert "never hand-edit `output/manuscript/`" in rendered
     assert "| Source sections | 723 |" in rendered
+    assert "| Section | Module and source section | Citations | Citation links |" in rendered
+    assert "|---:|---|---:|---|" in rendered
+
+
+def test_source_section_rows_use_linked_pdf_friendly_columns() -> None:
+    curriculum = load_curriculum(DATA)
+    rendered = render_source_section_citation_rows(curriculum)
+
+    assert "| Chapter | Section | Source title | Citation count | Citation keys |" not in rendered
+    assert "| Section | Module and source section | Citations | Citation links |" in rendered
+    assert "|---:|---|---:|---|" in rendered
+    assert "The Nature of Intelligence - V2 source-lane extension" in rendered
+    assert "[@ageint238]; [@ageint237]; [@ageint270]" in rendered
 
 
 def test_generated_markdown_inventory_reports_topic_lesson_citations(built_output: Path) -> None:
     rows = generated_markdown_citation_inventory(manuscript_dir(built_output))
-    topic_rows = [row for row in rows if row.family == "topic-lessons"]
+    topic_rows = [row for row in rows if row.family == "practice-studio"]
 
     assert topic_rows
     assert sum(row.citation_count for row in topic_rows) > 0

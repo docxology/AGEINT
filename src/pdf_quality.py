@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 import json
 import re
@@ -42,6 +42,52 @@ class PdfPhraseHit:
 
 
 @dataclass(frozen=True)
+class PdfLinkIssue:
+    """A PDF annotation target that should not appear in reader output."""
+
+    page: int
+    issue: str
+    target: str
+
+
+@dataclass(frozen=True)
+class PdfLinkAudit:
+    """Structured annotation audit for rendered PDF links."""
+
+    available: bool = True
+    uri_links: int = 0
+    file_actions: int = 0
+    bad_targets: tuple[PdfLinkIssue, ...] = ()
+    skipped_reason: str = ""
+
+    @property
+    def bad_target_count(self) -> int:
+        return len(self.bad_targets)
+
+    @property
+    def ok(self) -> bool:
+        return self.available and self.file_actions == 0 and not self.bad_targets
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "available": self.available,
+            "uri_links": self.uri_links,
+            "file_actions": self.file_actions,
+            "bad_target_count": self.bad_target_count,
+            "bad_targets": [
+                {
+                    "page": issue.page,
+                    "issue": issue.issue,
+                    "target": issue.target,
+                }
+                for issue in self.bad_targets
+            ],
+            "skipped_reason": self.skipped_reason,
+            "ok": self.ok,
+        }
+
+
+@dataclass(frozen=True)
 class PdfQualityReport:
     """Structured result from auditing a rendered AGEINT PDF."""
 
@@ -55,6 +101,7 @@ class PdfQualityReport:
     stale_pdf: bool
     banned_phrase_hits: tuple[PdfPhraseHit, ...]
     flagged_pages: tuple[int, ...]
+    link_audit: PdfLinkAudit = field(default_factory=PdfLinkAudit)
 
     @property
     def ok(self) -> bool:
@@ -64,6 +111,7 @@ class PdfQualityReport:
             and self.text_character_count > 0
             and not self.stale_pdf
             and not self.banned_phrase_hits
+            and self.link_audit.ok
         )
 
     def as_dict(self) -> dict[str, Any]:
@@ -81,6 +129,7 @@ class PdfQualityReport:
                 for hit in self.banned_phrase_hits
             ],
             "flagged_pages": list(self.flagged_pages),
+            "link_audit": self.link_audit.as_dict(),
             "ok": self.ok,
         }
 
@@ -133,12 +182,14 @@ def audit_pdf_quality(
             stale_pdf=True,
             banned_phrase_hits=(),
             flagged_pages=(),
+            link_audit=PdfLinkAudit(available=pdf_path.is_file()),
         )
 
     metadata = pdf_metadata(pdf_path)
     text = extract_pdf_text(pdf_path)
     pages = _split_pages(text)
     hits = _phrase_hits(pages, banned_phrases)
+    link_audit = audit_pdf_links(pdf_path)
     newest_manuscript_mtime = _newest_pdf_source_mtime(pdf_path, manuscript_dir)
     pdf_mtime = pdf_path.stat().st_mtime
     flagged_pages = tuple(sorted({hit.page for hit in hits}))
@@ -153,6 +204,7 @@ def audit_pdf_quality(
         stale_pdf=bool(newest_manuscript_mtime and pdf_mtime < newest_manuscript_mtime),
         banned_phrase_hits=tuple(hits),
         flagged_pages=flagged_pages,
+        link_audit=link_audit,
     )
 
 
@@ -168,18 +220,67 @@ def render_pdf_quality_markdown(report: PdfQualityReport) -> str:
         f"| Extracted text characters | {report.text_character_count} |",
         f"| Stale PDF | {str(report.stale_pdf).lower()} |",
         f"| Flagged pages | {', '.join(str(page) for page in report.flagged_pages) or '-' } |",
+        f"| URI links | {report.link_audit.uri_links} |",
+        f"| File actions | {report.link_audit.file_actions} |",
+        f"| Bad link targets | {report.link_audit.bad_target_count} |",
         f"| OK | {str(report.ok).lower()} |",
     ]
     if report.banned_phrase_hits:
         lines.extend(["", "## Banned Phrase Hits", "", "| Phrase | Page | Count |", "|---|---:|---:|"])
         for hit in report.banned_phrase_hits:
             lines.append(f"| {_table_cell(hit.phrase)} | {hit.page} | {hit.count} |")
+    if report.link_audit.bad_targets:
+        lines.extend(["", "## Bad Link Targets", "", "| Page | Issue | Target |", "|---:|---|---|"])
+        for issue in report.link_audit.bad_targets:
+            lines.append(
+                f"| {issue.page} | {_table_cell(issue.issue)} | {_table_cell(issue.target)} |"
+            )
     return "\n".join(lines)
 
 
 def report_json(report: PdfQualityReport) -> str:
     """Return the report as stable JSON."""
     return json.dumps(report.as_dict(), indent=2, sort_keys=True)
+
+
+def audit_pdf_links(pdf_path: Path) -> PdfLinkAudit:
+    """Audit PDF annotations for Markdown-file links and file/launch actions."""
+    try:
+        from pypdf import PdfReader
+    except ImportError:  # pragma: no cover - dependency is present in test/runtime env.
+        return PdfLinkAudit(available=False, skipped_reason="pypdf is not installed")
+
+    uri_links = 0
+    file_actions = 0
+    issues: list[PdfLinkIssue] = []
+    try:
+        reader = PdfReader(str(pdf_path))
+    except Exception as exc:  # pragma: no cover - corrupt PDFs fail earlier via pdfinfo.
+        return PdfLinkAudit(
+            available=False,
+            skipped_reason=f"pypdf could not read PDF annotations: {exc}",
+        )
+
+    for page_number, page in enumerate(reader.pages, 1):
+        annotations = page.get("/Annots") or []
+        for annotation_ref in annotations:
+            annotation = annotation_ref.get_object()
+            action = annotation.get("/A") or {}
+            uri = action.get("/URI")
+            if uri:
+                uri_links += 1
+                target = str(uri)
+                if _forbidden_pdf_target(target):
+                    issues.append(PdfLinkIssue(page_number, "forbidden_uri_target", target))
+            if action.get("/S") == "/Launch" or action.get("/F"):
+                file_actions += 1
+                issues.append(PdfLinkIssue(page_number, "file_or_launch_action", str(action)))
+    return PdfLinkAudit(
+        available=True,
+        uri_links=uri_links,
+        file_actions=file_actions,
+        bad_targets=tuple(issues),
+    )
 
 
 def _split_pages(text: str) -> list[str]:
@@ -210,6 +311,11 @@ def _phrase_pattern(phrase: str) -> str:
 def _page_count(metadata: dict[str, str], fallback: int) -> int:
     raw = metadata.get("Pages", "")
     return int(raw) if raw.isdigit() else fallback
+
+
+def _forbidden_pdf_target(target: str) -> bool:
+    lowered = target.lower()
+    return lowered.startswith("file:") or ".md" in lowered or ".markdown" in lowered
 
 
 def _newest_markdown_mtime(manuscript_dir: Path | None) -> float:
@@ -244,8 +350,11 @@ def _table_cell(value: object) -> str:
 
 __all__ = [
     "DEFAULT_BANNED_PHRASES",
+    "PdfLinkAudit",
+    "PdfLinkIssue",
     "PdfPhraseHit",
     "PdfQualityReport",
+    "audit_pdf_links",
     "audit_pdf_quality",
     "extract_pdf_text",
     "pdf_metadata",

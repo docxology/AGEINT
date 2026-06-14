@@ -32,7 +32,9 @@ legal and human oversight constraints.
 - AGEINT patterns: 20
 - Parsed references: 312
 - Curated official/scholarly research anchors: 248
-- Registered figures: 161 (115 Mermaid, 36 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates)
+- Source-quality support anchors: 10
+- Registered figures: 170 (114 Mermaid, 46 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
+- Non-numbered cover art: 1 deterministic Python-rendered title-page image at `output/figures/cover/ageint-cover-synthesis.png`
 
 ## Commands
 
@@ -41,6 +43,10 @@ uv run python scripts/build_curriculum.py
 AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py  # strict Mermaid PNGs
 uv run python scripts/generate_figures.py
 uv run pytest tests/ --cov=src --cov-fail-under=90
+uv run python scripts/audit_artifact_evidence.py --write --format markdown
+uv run python scripts/audit_scholarship_quality.py --write --format markdown
+uv run python scripts/audit_source_metadata.py --write --format markdown
+uv run python scripts/audit_claim_calibration.py --write --format markdown
 
 # Coverage floor: 90% for `src/`; use the test command above for the current measured result.
 # Stage 02 pipeline analysis runs build_curriculum.py only (see manuscript/config.yaml analysis.scripts).
@@ -60,15 +66,25 @@ sharded curriculum, `src/build_pipeline.py` orchestrates the build,
 `src/manuscript_manifest/` creates semantic output paths and generated section
 contexts, `src/manuscript_variables/` writes runtime variables and BibTeX,
 `src/intelligence_content/` owns verified research profiles and three-tier topic
-lesson frames (keyword → category → synthesis), and `src/figures/` renders all
-registry-backed figures. Smoke builds may fall back to deterministic text plates
+lesson frames (keyword → category → synthesis), `src/source_metadata.py` audits
+explicit lane/tier metadata for curated and support anchors, and `src/figures/`
+renders all registry-backed figures. Smoke builds may fall back to deterministic text plates
 when Mermaid/Chrome is unavailable, but the checked-in registry should remain
 free of placeholders; set `AGEINT_REQUIRE_RENDERED_FIGURES=1` to fail instead of
 falling back. Generated chapter architecture lives in
 `src/manuscript_manifest/`: source-guide H1 chapter titles stay stable, while
 repeated governance, rights, assurance, practice, assessment, capstone,
 refresh, and source-map material is composed into reader-facing sections at
-build time.
+build time. `src/scholarship_quality.py` audits generated claim-bearing
+sections for uncited or thin support and flags single-source-family sections as
+review warnings; `src/source_metadata.py` audits the 248 curated anchors plus
+10 source-quality support anchors so blank lane/tier fields cannot silently
+fall back while rendered artifacts remain green; and `src/claim_calibration.py`
+audits high-risk empirical, statistical, governance, safety, visual,
+artifact-readiness, and formalism language against source-support strength and
+boundary wording. The current rendered output has six single-source-family
+claim-bearing review warnings under the stricter source-strength classifier;
+they are visible review rows, not readiness blockers.
 
 Generated files under `output/` are not primary authoring surfaces. Edit
 `data/curriculum/` shards first when the guide is absent; otherwise update
@@ -163,11 +179,77 @@ A 2026-06-11 analytic-tradecraft integration pass raises the curated set to 248
 anchors by adding CIA/Kent tradecraft history, warning-intelligence, post-9/11
 and Iraq WMD reform/postmortem sources, NATO alternative analysis, SAT
 evaluation evidence, forecasting calibration, and failure-theory sources. It
-also raises the figure registry to 161 with source-backed tradecraft
+also raised the then-current figure registry to 163 with source-backed tradecraft
 schematics and one evidence-derived chart for source-quality boundaries,
 first-principles claim decomposition, red-team negative controls, evidence
 ladders, probability/confidence separation, SAT evidence boundaries, and
 warning/failure feedback.
+
+A 2026-06-12 local verifier-first, scholarship-quality, and Synthetic Analytic
+Tradecraft orientation pass keeps the same source corpus but raises the figure
+registry to 168 with the
+`ageint-artifact-evidence-control-loop` and
+`ageint-scholarship-triangulation-map` control figures and the
+`ageint-synthetic-tradecraft-method-contract` and
+`ageint-analysis-validation-matrix` method figures plus the
+`ageint-analysis-validation-family-coverage` coverage figure. It adds generated
+evidence manifests that bind the rebuilt manuscript, citation inventory,
+scholarship source-family audit, figure quality audit, rendered-reference audit,
+PDF quality/link audit, and stale-output scans into
+`output/reports/current_artifact_evidence.{json,md}` and
+`output/reports/scholarship_quality.{json,md}`. The current local manifest
+reports 369 generated Markdown files, 15,382 generated citation occurrences,
+170 registered figures plus one non-numbered cover-art PNG, a 1,619-page
+30.26 MB PDF, 4,181 PDF URI links, 0 Markdown-file, `file:`, or launch-action
+PDF targets, 0 uncited or thin claim-bearing generated files, and six
+single-source-family claim-bearing review warnings, with passing SAT method and
+analysis-validation contracts plus source-metadata explicitness and
+claim-calibration checks. A follow-on RedTeam pass makes the analysis-validation claim classes
+canonical in `src/analysis_validation.py`, so the prose protocol, matrix
+renderer, scholarship audit, and artifact-evidence manifest now fail if a lane
+such as artifact readiness or reviewer disposition drops out while the heading
+and figure reference still remain. A second RedTeam follow-up adds a canonical
+manuscript-family-to-validation-lane map so a new claim-bearing generated family
+cannot enter the manuscript surface without a matching review lane, evidence
+signal, failure signal, and registry-backed coverage visual.
+
+A 2026-06-13 metadata-verifier hardening pass keeps the same source corpus but
+closes the legacy lane/tier fallback dependency. It makes 119 previously blank
+metadata rows explicit: 109 legacy intelligence anchors now carry
+`source_lane` from their existing `domain` and `source_tier` from their existing
+`source_type`, while 10 source-quality support anchors carry
+`source_quality_spine` / `source_quality_anchor` semantics. The new
+`scripts/audit_source_metadata.py` report writes
+`output/reports/source_metadata.{json,md}` and is wired into
+`current_artifact_evidence.{json,md}` as `source_metadata_ok`, so a blank
+lane/tier row or support-anchor semantic mismatch fails local readiness. The
+same pass raised the then-current registry to 169 figures with
+`ageint-source-metadata-integrity`, a Python control-matrix figure for source
+metadata explicitness and refresh coverage.
+
+A 2026-06-13 cover, abstract, and TOC hardening pass keeps the same source
+corpus and figure registry count while adding deterministic cover art outside
+the numbered figure registry. The abstract is now one substantial plaintext
+Synthetic Analytic Tradecraft contract rather than a graphical-abstract wrapper.
+The graphical abstract itself is now the registry-backed Python
+`ageint-graphical-abstract` Synthetic Tradecraft System Atlas in orientation,
+not a Mermaid stack or title-page cover. The PDF table of contents is
+intentionally limited to H1/H2 entries; each module exposes five chapter-specific
+H2 landmarks, while H3/H4 scaffolds remain in the body for local navigation and
+cross-reference targets. The compact LaTeX preamble also carries TOC spacing
+controls so multi-digit section numbers do not collide with headings.
+
+A 2026-06-14 claim-calibration and visual-semantics hardening pass keeps the
+same source corpus and adds the registry-backed
+`ageint-claim-calibration-and-visual-semantics` control figure. The figure
+registry schema is now `1.4`: every row declares semantic role, evidence role,
+quantitative status, unit, denominator, counting rule, and interpretation limit,
+and generated PNG metadata embeds the same fields. The new
+`scripts/audit_claim_calibration.py` report writes
+`output/reports/claim_calibration.{json,md}` and is wired into
+`current_artifact_evidence.{json,md}` as `claim_calibration_ok`, so unsupported
+proof-language, p-value language, measured-performance claims, unsupported
+formalisms, or weak-source-only high-risk claims fail local readiness.
 
 These counts are rebuild-time measurements, not hand-authored release claims:
 `output/data/curriculum_outline.json` carries the curriculum stats, and

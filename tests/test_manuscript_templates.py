@@ -18,7 +18,14 @@ from intelligence_content import (
     safe_curriculum_treatment,
     subsection_practice_rows,
 )
-from manuscript_templates import TEMPLATE_NAMES, write_manuscript_templates, write_template_library
+from manuscript_templates import (
+    DEFAULT_TEMPLATES,
+    SOURCE_OWNED_TEMPLATE_NAMES,
+    TEMPLATE_NAMES,
+    template_text,
+    write_manuscript_templates,
+    write_template_library,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
@@ -64,7 +71,20 @@ def test_write_template_library_rewrites_only_neutral_templates(tmp_path: Path) 
     assert "{{CHAPTER_031_TITLE}}" not in text
     assert "Foundations of AGEINT" not in text
     assert "Chapter 31" not in text
+    orientation = (manuscript_dir / "templates" / "orientation.md").read_text(encoding="utf-8")
+    assert "Synthetic Analytic Tradecraft thesis" in orientation
+    assert "{#sec:synthetic-analytic-tradecraft-thesis}" in orientation
     assert {path.name for path in written} == set(TEMPLATE_NAMES)
+
+
+def test_source_owned_templates_do_not_have_stale_embedded_fallbacks() -> None:
+    assert SOURCE_OWNED_TEMPLATE_NAMES == {"abstract.md", "orientation.md"}
+    assert set(DEFAULT_TEMPLATES) == set(TEMPLATE_NAMES) - SOURCE_OWNED_TEMPLATE_NAMES
+    for name in SOURCE_OWNED_TEMPLATE_NAMES:
+        source_text = (PROJECT_ROOT / "manuscript" / "templates" / name).read_text(
+            encoding="utf-8"
+        )
+        assert template_text(name) == source_text
 
 
 def test_neutral_appendix_template_uses_generic_runtime_tokens(tmp_path: Path) -> None:

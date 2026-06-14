@@ -1,141 +1,33 @@
-from __future__ import annotations
-
 """Build and render the AGEINT semantic manuscript manifest."""
 
-import json
+from __future__ import annotations
+
 from pathlib import Path
-import re
-import shutil
 from typing import Any
 
 try:
-    from manuscript_injection import substitute_manuscript_text
-except ImportError:  # pragma: no cover - package import
-    from ..manuscript_injection import substitute_manuscript_text  # type: ignore[no-redef]
-
-try:
-    from .types import (
-        ManuscriptManifest,
-        ManuscriptSection,
-        SlugRegistry as _SlugRegistry,
-        ordering_config_yaml as _ordering_config_yaml,
-        section_label as _label,
-        slugify as _slug,
-    )
-except ImportError:  # pragma: no cover - merged part module
-    from manuscript_manifest.types import (  # type: ignore[no-redef]
-        ManuscriptManifest,
-        ManuscriptSection,
-        SlugRegistry as _SlugRegistry,
-        ordering_config_yaml as _ordering_config_yaml,
-        section_label as _label,
-        slugify as _slug,
-    )
-
-try:  # Support package and script-level imports.
-    from .curriculum import Curriculum
-    from .citation_workflow import source_citation_spine, source_citation_spine_inline
-    from .figures import figure_markdown, figures_for_section
-    from .markdown_refs import figure_ref_list, section_ref_list
-    from .unit_education import render_unit_profile_markdown
-    from .rendered_reference_audit import (
-        sanitize_rendered_section_title_mentions,
-        section_title_rules,
-    )
-    from .intelligence_content import (
-        accessibility_review_rows,
-        adversarial_assurance_rows,
-        agent_incident_response_rows,
-        assessment_integrity_rows,
-        chapter_key_terms,
-        chapter_knowledge_check,
-        chapter_learning_outcomes,
+    from citation_workflow import source_citation_spine, source_citation_spine_inline
+    from intelligence_content import (
         capstone_scaffold_rows,
-        chapter_practice_lens,
-        chapter_practice_sequence,
-        chapter_research_brief,
-        chapter_source_annotations,
-        chapter_textbook_primer,
-        chapter_topic_lessons,
-        chapter_worked_example,
-        safe_topic_entries,
-        anchor_references,
-        data_lineage_registry_rows,
-        hria_dpia_worksheet_rows,
-        learner_support_rows,
-        model_dataset_card_rows,
         part_research_brief,
-        practice_lens_for_titles,
-        procurement_oversight_rows,
-        profile_for_titles,
-        question_bank_rows,
-        release_change_control_rows,
-        remediation_backlog_rows,
-        retention_audit_rows,
-        risk_exception_rows,
-        role_competency_rows,
-        safe_curriculum_treatment,
-        safe_pattern_treatment,
-        safe_substitution_rows,
-        source_lane_rows,
-        subsection_practice_rows,
-        transparency_notice_rows,
+        profile_triangulation_anchors,
+        safe_topic_entries,
     )
-    from .manuscript_templates import DEFAULT_TEMPLATES
-    from .manuscript_variables import appendix_rows
+    from manuscript_manifest.types import section_label as _label
+    from unit_education import render_unit_profile_markdown
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
-    from curriculum import Curriculum  # type: ignore[no-redef]
-    from citation_workflow import source_citation_spine, source_citation_spine_inline  # type: ignore[no-redef]
-    from figures import figure_markdown, figures_for_section  # type: ignore[no-redef]
-    from markdown_refs import figure_ref_list, section_ref_list  # type: ignore[no-redef]
-    from unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
-    from rendered_reference_audit import (  # type: ignore[no-redef]
-        sanitize_rendered_section_title_mentions,
-        section_title_rules,
+    from ..citation_workflow import (  # type: ignore[no-redef]
+        source_citation_spine,
+        source_citation_spine_inline,
     )
-    from intelligence_content import (  # type: ignore[no-redef]
-        accessibility_review_rows,
-        adversarial_assurance_rows,
-        agent_incident_response_rows,
-        assessment_integrity_rows,
-        chapter_key_terms,
-        chapter_knowledge_check,
-        chapter_learning_outcomes,
+    from ..intelligence_content import (  # type: ignore[no-redef]
         capstone_scaffold_rows,
-        chapter_practice_lens,
-        chapter_practice_sequence,
-        chapter_research_brief,
-        chapter_source_annotations,
-        chapter_textbook_primer,
-        chapter_topic_lessons,
-        chapter_worked_example,
-        safe_topic_entries,
-        anchor_references,
-        data_lineage_registry_rows,
-        hria_dpia_worksheet_rows,
-        learner_support_rows,
-        model_dataset_card_rows,
         part_research_brief,
-        practice_lens_for_titles,
-        procurement_oversight_rows,
-        profile_for_titles,
-        question_bank_rows,
-        release_change_control_rows,
-        remediation_backlog_rows,
-        retention_audit_rows,
-        risk_exception_rows,
-        role_competency_rows,
-        safe_curriculum_treatment,
-        safe_pattern_treatment,
-        safe_substitution_rows,
-        source_lane_rows,
-        subsection_practice_rows,
-        transparency_notice_rows,
+        profile_triangulation_anchors,
+        safe_topic_entries,
     )
-    from manuscript_templates import DEFAULT_TEMPLATES  # type: ignore[no-redef]
-    from manuscript_variables import (  # type: ignore[no-redef]
-        appendix_rows,
-    )
+    from ..unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
+    from .types import section_label as _label  # type: ignore[no-redef]
 
 def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
     """Return a compact, body-safe source-spine phrase."""
@@ -302,6 +194,12 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
     source_context = _chapter_source_context(chapter)
     source_context_inline = _chapter_source_context_inline(chapter)
     topic_context = _chapter_topic_context(chapter, part)
+    triangulation = profile_triangulation_anchors(
+        str(part["title"]),
+        str(chapter["title"]),
+        chapter=chapter,
+        surface="source-canon section",
+    )
     return "\n".join(
         [
             f"The source canon has three tiers; the local spine begins with {source_context}",
@@ -320,6 +218,8 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
                 "Selects the practice lens, method stack, failure modes, and "
                 "defensive boundary for generated prose. |"
             ),
+            "",
+            triangulation,
             "",
             f"Maintenance rule: Perplexity may suggest candidates for {topic_context} and {source_context_inline}, "
             "but only directly verified source URLs are encoded as citations.",
@@ -428,9 +328,19 @@ def _instructor_artifact(chapter: dict[str, Any]) -> str:
 def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
+    triangulation = ""
+    if part is not None:
+        triangulation = profile_triangulation_anchors(
+            str(part["title"]),
+            str(chapter["title"]),
+            chapter=chapter,
+            surface="review-checklist section",
+        )
     return "\n".join(
         [
             f"Before marking the work complete, verify the local source spine beginning with {source_context}",
+            "",
+            triangulation,
             "",
             f"- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering {topic_context}. {source_context}",
             "- Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.",

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 DEFAULT_MAX_TEXT_FILE_LINES = 500
 
@@ -44,25 +45,70 @@ def split_long_table(
     max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES,
 ) -> list[tuple[str, str]]:
     lines = text.splitlines()
-    table_start = next((index for index, line in enumerate(lines) if line.startswith("| ")), -1)
-    if table_start < 0 or table_start + 1 >= len(lines):
+    table_spans = _pipe_table_spans(lines)
+    if not table_spans:
         return []
+    table_start, table_end = max(table_spans, key=lambda span: span[1] - span[0])
     heading = lines[0].removeprefix("## ").strip() if lines and lines[0].startswith("## ") else "continued"
     prefix = lines[:table_start]
     header = lines[table_start : table_start + 2]
-    rows = [line for line in lines[table_start + 2 :] if line.startswith("| ")]
+    rows = lines[table_start + 2 : table_end]
+    suffix = lines[table_end:]
     if not rows:
         return []
-    capacity = max(25, max_lines - len(prefix) - len(header) - 8)
+    first_capacity = max_lines - len(prefix) - len(header) - 2
+    if first_capacity < 1:
+        return []
+    continued_capacity = max_lines - len(header) - 3
+    if continued_capacity < 1:
+        return []
     fragments: list[tuple[str, str]] = []
-    for index in range(0, len(rows), capacity):
+    index = 0
+    while index < len(rows):
+        capacity = first_capacity if index == 0 else continued_capacity
         chunk = rows[index : index + capacity]
         if index == 0:
             body = [*prefix, *header, *chunk]
         else:
             body = [f"## {heading} (continued {len(fragments) + 1})", *header, *chunk]
+        index += len(chunk)
+        if index >= len(rows) and suffix and len(body) + len(suffix) <= max_lines:
+            body.extend(suffix)
         fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(body).rstrip()))
+    if suffix and not fragments[-1][1].splitlines()[-len(suffix) :] == suffix:
+        fragments.append(
+            (
+                path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"),
+                "\n".join([f"## {heading} (continued {len(fragments) + 1})", *suffix]).rstrip(),
+            )
+        )
     return fragments
+
+
+def _pipe_table_spans(lines: list[str]) -> list[tuple[int, int]]:
+    spans: list[tuple[int, int]] = []
+    index = 0
+    while index < len(lines) - 1:
+        if _is_pipe_table_row(lines[index]) and _is_pipe_table_separator(lines[index + 1]):
+            start = index
+            index += 2
+            while index < len(lines) and _is_pipe_table_row(lines[index]):
+                index += 1
+            spans.append((start, index))
+            continue
+        index += 1
+    return spans
+
+
+def _is_pipe_table_row(line: str) -> bool:
+    stripped = line.strip()
+    return stripped.startswith("|") and stripped.endswith("|")
+
+
+def _is_pipe_table_separator(line: str) -> bool:
+    stripped = line.strip().strip("|")
+    cells = [cell.strip() for cell in stripped.split("|")]
+    return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells)
 
 
 def split_at_h3(

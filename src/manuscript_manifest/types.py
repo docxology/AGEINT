@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import json
 import re
 from typing import Any
 
@@ -73,9 +74,8 @@ def ordering_config_yaml(
     lines = [
         "front_matter:",
         "  include_front_matter: true",
-        "  files:",
+        f"  files: {_flow_file_entries(front_matter_files)}",
     ]
-    lines.extend(f"    - file: {file_name}" for file_name in front_matter_files)
     lines.append("units:")
     for unit in units:
         lines.extend(
@@ -92,12 +92,15 @@ def ordering_config_yaml(
         [
             "appendices:",
             "  include_reference: true",
-            "  reference:",
+            f"  reference: {_flow_file_entries(appendix_files)}",
         ]
     )
-    for file_name in appendix_files:
-        lines.append(f"    - file: {file_name}")
     return "\n".join(lines) + "\n"
+
+
+def _flow_file_entries(file_names: list[str]) -> str:
+    """Return compact YAML file-entry list for long generated ordering surfaces."""
+    return "[" + ", ".join(f'{{file: {json.dumps(file_name)}}}' for file_name in file_names) + "]"
 
 
 class SlugRegistry:
@@ -139,6 +142,7 @@ __all__ = [
     "ManuscriptManifest",
     "ManuscriptSection",
     "SlugRegistry",
+    "_flow_file_entries",
     "ordering_config_yaml",
     "section_label",
     "slugify",

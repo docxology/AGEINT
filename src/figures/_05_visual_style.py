@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 import textwrap
-from typing import Any, Sequence
+from typing import Any
 
 CANVAS_BG = "#f8fafc"
 INK = "#0f172a"
@@ -32,9 +32,17 @@ def draw_title_band(
 ) -> None:
     draw.rectangle((0, 0, width, height), fill="#ffffff")
     draw.rectangle((0, 0, 18, height), fill=accent)
-    draw.text((52, 24), title, fill=INK, font=font_fn(font_mod, 38))
+    title_width = 55 if width >= 1600 else 45
+    title_lines = wrap_lines(title, width=title_width, max_lines=2)
+    title_size = 38 if len(title_lines) == 1 else 31
+    for index, line in enumerate(title_lines):
+        draw.text((52, 20 + index * 36), line, fill=INK, font=font_fn(font_mod, title_size))
     if subtitle:
-        draw.text((54, 76), subtitle, fill=MUTED, font=font_fn(font_mod, 20))
+        subtitle_width = 108 if width >= 1600 else 86
+        subtitle_lines = wrap_lines(subtitle, width=subtitle_width, max_lines=1 if len(title_lines) > 1 else 2)
+        subtitle_y = 76 if len(title_lines) == 1 else 88
+        for index, line in enumerate(subtitle_lines):
+            draw.text((54, subtitle_y + index * 24), line, fill=MUTED, font=font_fn(font_mod, 20))
     draw.line((0, height, width, height), fill=GRID, width=2)
 
 

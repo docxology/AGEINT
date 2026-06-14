@@ -7,7 +7,7 @@ curated anchor keeps its source URL, source lane, checked date, refresh trigger,
 and verification note visible so moved pages, blocked automated fetches, and
 volatile standards can be reviewed without changing citation keys.
 
-## Figures and course links
+## Bibliography atlas navigation figures and source links
 
 {{VISUAL_SYNTHESIS}}
 
@@ -27,6 +27,6 @@ retain draft-status caveats rather than being treated as final guidance.
 
 {{CITATION_WORKFLOW_GUIDE}}
 
-## Bibliography rows {#sec:bibliography-rows}
+## Bibliography atlas rows: guide, anchor, and support-source keys {#sec:bibliography-rows}
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}

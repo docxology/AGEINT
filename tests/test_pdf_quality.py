@@ -40,6 +40,13 @@ def _write_pdf(path: Path, pages: list[str]) -> None:
     pdf.save()
 
 
+def _write_pdf_with_uri(path: Path, text: str, uri: str) -> None:
+    pdf = canvas.Canvas(str(path))
+    pdf.drawString(72, 720, text)
+    pdf.linkURL(uri, (72, 700, 300, 735), relative=0)
+    pdf.save()
+
+
 def test_pdf_quality_script_reports_clean_rendered_pdf() -> None:
     pdf = PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf"
     if not pdf.is_file():
@@ -67,6 +74,8 @@ def test_pdf_quality_script_reports_clean_rendered_pdf() -> None:
     assert payload["stale_pdf"] is False
     assert payload["flagged_pages"] == []
     assert payload["banned_phrase_hits"] == []
+    assert payload["link_audit"]["ok"] is True
+    assert payload["link_audit"]["bad_target_count"] == 0
 
 
 def test_rendered_pdf_has_no_markdown_file_links() -> None:
@@ -158,6 +167,21 @@ def test_audit_pdf_quality_clean_pdf_is_ok(tmp_path: Path) -> None:
     assert report.banned_phrase_hits == ()
     assert report.flagged_pages == ()
     assert report.stale_pdf is False
+    assert report.link_audit.ok is True
+    assert report.link_audit.bad_target_count == 0
+
+
+def test_audit_pdf_quality_flags_markdown_uri_targets(tmp_path: Path) -> None:
+    pdf_path = tmp_path / "bad-link.pdf"
+    _write_pdf_with_uri(pdf_path, "Reader-facing link fixture.", "https://example.test/source.md")
+
+    report = audit_pdf_quality(pdf_path)
+
+    assert report.ok is False
+    assert report.link_audit.uri_links == 1
+    assert report.link_audit.bad_target_count == 1
+    assert report.link_audit.bad_targets[0].issue == "forbidden_uri_target"
+    assert report.link_audit.bad_targets[0].target.endswith("source.md")
 
 
 def test_audit_pdf_quality_detects_stale_pdf_from_manuscript_dir(tmp_path: Path) -> None:
@@ -218,6 +242,7 @@ def test_render_pdf_quality_markdown_includes_hits(tmp_path: Path) -> None:
 
     assert "Banned Phrase Hits" in markdown
     assert "TODO" in markdown
+    assert "| Bad link targets | 0 |" in markdown
     assert "| OK | false |" in markdown
 
 
@@ -260,6 +285,7 @@ def test_report_json_round_trip() -> None:
     assert payload["ok"] is True
     assert payload["page_count"] == 3
     assert payload["banned_phrase_hits"] == []
+    assert payload["link_audit"]["bad_target_count"] == 0
 
 
 def test_extract_pdf_text_and_metadata(tmp_path: Path) -> None:

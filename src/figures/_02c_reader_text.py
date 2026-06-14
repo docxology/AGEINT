@@ -12,6 +12,7 @@ from ._02b_mermaid import mermaid_source
 
 MIN_READER_CAPTION_WORDS = 40
 MIN_ALT_TEXT_WORDS = 24
+MIN_LONG_DESCRIPTION_WORDS = 70
 
 
 def _with_informative_reader_text(spec: FigureSpec, curriculum: Curriculum) -> FigureSpec:
@@ -19,9 +20,14 @@ def _with_informative_reader_text(spec: FigureSpec, curriculum: Curriculum) -> F
 
     caption = _expand_caption(spec, curriculum)
     alt_text = _expand_alt_text(spec, curriculum)
-    if caption == spec.caption and alt_text == spec.alt_text:
+    long_description = _expand_long_description(spec, curriculum, caption=caption, alt_text=alt_text)
+    if (
+        caption == spec.caption
+        and alt_text == spec.alt_text
+        and long_description == spec.long_description
+    ):
         return spec
-    return replace(spec, caption=caption, alt_text=alt_text)
+    return replace(spec, caption=caption, alt_text=alt_text, long_description=long_description)
 
 
 def _expand_caption(spec: FigureSpec, curriculum: Curriculum) -> str:
@@ -59,6 +65,30 @@ def _expand_alt_text(spec: FigureSpec, curriculum: Curriculum) -> str:
     return (
         f"{_terminal(spec.alt_text)} Labeled content highlights {detail}, "
         f"with the visual tied back to {context}."
+    )
+
+
+def _expand_long_description(
+    spec: FigureSpec,
+    curriculum: Curriculum,
+    *,
+    caption: str,
+    alt_text: str,
+) -> str:
+    if _word_count(spec.long_description) >= MIN_LONG_DESCRIPTION_WORDS:
+        return spec.long_description
+    detail = _figure_detail(spec, curriculum, limit=8)
+    context = _source_context(spec.source_section)
+    visual_type = _visual_type(spec)
+    return (
+        f"This {visual_type} is assigned to {context} and should be read as an accessible "
+        f"equivalent for {spec.title}. The short alternative identifies the figure as: "
+        f"{_terminal(alt_text)} The full visual conveys {detail}. The caption explains "
+        f"the reader task as follows: {_terminal(caption)} Use the figure to inspect "
+        "structure, evidence boundaries, provenance cues, review ownership, and refresh "
+        "triggers; do not treat color, placement, or arrow direction as hidden scoring, "
+        "operational instruction, or empirical measurement unless the caption explicitly "
+        "says a count or metric is being shown."
     )
 
 
@@ -152,6 +182,22 @@ def _source_context(source_section: str) -> str:
     return source_section.removesuffix(".md").replace("-", " ")
 
 
+def _visual_type(spec: FigureSpec) -> str:
+    renderer_id = spec.provenance.get("renderer_id", "")
+    text = f"{spec.title} {spec.caption} {spec.alt_text} {renderer_id}".lower()
+    if any(token in text for token in ("matrix", "registry", "table", "map")):
+        return "matrix-style figure"
+    if any(token in text for token in ("loop", "flow", "lifecycle", "workflow", "cycle")):
+        return "process-flow figure"
+    if any(token in text for token in ("chart", "coverage", "density", "bar", "count")):
+        return "data-visualization figure"
+    if spec.kind is FigureKind.HISTORICAL:
+        return "historical imagery figure"
+    if spec.kind is FigureKind.AI_GENERATED:
+        return "synthetic concept plate"
+    return "diagram"
+
+
 def _python_visual_detail(renderer_id: str) -> str:
     label = renderer_id.replace("_", " ")
     if any(token in renderer_id for token in ("loop", "flow", "lifecycle", "cycle", "workflow")):
@@ -195,6 +241,7 @@ def _stable_variant(value: str) -> int:
 
 __all__ = [
     "MIN_ALT_TEXT_WORDS",
+    "MIN_LONG_DESCRIPTION_WORDS",
     "MIN_READER_CAPTION_WORDS",
     "_with_informative_reader_text",
 ]

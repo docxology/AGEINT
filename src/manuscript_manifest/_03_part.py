@@ -16,6 +16,7 @@ from intelligence_content import (
     chapter_topic_lessons,
     chapter_worked_example,
     practice_lens_for_titles,
+    profile_triangulation_anchors,
     profile_for_titles,
     safe_topic_entries,
     subsection_practice_rows,
@@ -40,6 +41,7 @@ from ._02_part import (
     _runtime_section_map,
     _safe_substitution_patterns,
 )
+from ._heading_titles import chapter_landmark_titles
 
 
 
@@ -55,35 +57,35 @@ def _module_architecture(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     inputs, transforms, outputs, failures = architecture
     return "\n".join(
         [
-            "### Historical lineage",
+            "#### Lineage and source tradition",
             "",
             (
                 f"This sits in the **{profile.title}** lineage: "
                 f"{profile.conceptual_focus}. {source_context}"
             ),
             "",
-            "### Conceptual model",
+            "#### Working model",
             "",
             (
                 "The work is modeled as inputs, constraints, transforms, outputs, "
                 f"feedback, and oversight for {topic_context}, with provenance and reviewability throughout."
             ),
             "",
-            "### Knowledge architecture",
+            "#### Knowledge architecture: inputs, transforms, outputs",
             "",
             f"- **Inputs:** {inputs}. {source_context}",
             f"- **Transforms:** {transforms}.",
             f"- **Outputs:** {outputs}.",
             f"- **Failure modes:** {failures}.",
             "",
-            "### Composability contracts",
+            "#### Transfer contracts",
             "",
             f"- **Authority contract:** define why the work is being practiced, who reviews it, and which actions are excluded for {topic_context}.",
             f"- **Evidence contract:** keep the **{profile.title}** source descriptors, transformations, claims, uncertainty, and confidence separable.",
             "- **Tool contract:** bind any agent assistance to explicit tools, permissions, budgets, logging, and rollback conditions.",
             f"- **Output contract:** render the chapter artifact as {outputs} that another reviewer can audit.",
             "",
-            "### Profile-specific emphasis",
+            "#### Profile emphasis and local focus",
             "",
             (
                 f"The matched profile emphasizes {profile.conceptual_focus}. "
@@ -99,7 +101,7 @@ def _governance_rights_assurance(chapter: dict[str, Any], part: dict[str, Any]) 
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
-    return f"""### Chapter governance card
+    return f"""#### Governance card
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
@@ -109,7 +111,7 @@ def _governance_rights_assurance(chapter: dict[str, Any], part: dict[str, Any]) 
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **{profile.title}** failure modes and the **{lens.title}** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
-### Evidence package pointer
+#### Evidence package handoff
 
 Detailed model/data cards, transparency notices, retention
 rows, release gates, risk exceptions, incident drills, procurement checks, and
@@ -132,11 +134,10 @@ def _current_source_assurance(
     lens: Any,
 ) -> str:
     """Render a chapter-specific source assurance crosswalk."""
-    title = str(chapter["title"])
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
     rows = [
-        "### Current-source assurance crosswalk",
+        "#### Current-source assurance",
         "",
         (
             "The source assurance check ties the current verified "
@@ -157,7 +158,7 @@ def _current_source_assurance(
             f"{_table_cell(lens.evidence_artifact)}; {_table_cell(use)} |"
         )
     rows.append(
-        f"| How is Perplexity handled here? | Discovery and second-opinion "
+        "| How is Perplexity handled here? | Discovery and second-opinion "
         "notes are not citable authority unless converted into direct official, "
         "standards-body, public-domain, or scholarly anchors. | Claim ledger records "
         "the direct URL, checked date, source lane, refresh trigger, and reviewer. |"
@@ -230,15 +231,15 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
 |---|---|
 {topic_rows}
 """
-    return f"""### Capstone pathway
+    return f"""#### Capstone pathway
 
 {_capstone_deliverable(chapter, part)}
 
-### Instructor facilitation notes
+#### Instructor facilitation notes
 
 {_instructor_facilitation_notes(chapter, part)}
 
-### Assessment rubric
+#### Assessment rubric
 {topic_rubric}
 The general competency and mastery rubric is the canonical
 five-row rubric in the shared method-and-assurance reference
@@ -252,7 +253,7 @@ visible.
 
 
 def _security_synthesis_block() -> str:
-    return """### Threat-model framework: MAESTRO seven layers
+    return """#### Threat-model framework: MAESTRO seven layers
 
 The CSA MAESTRO model gives a concrete map of where an agentic
 system can be attacked, shown in [@fig:ageint-maestro-seven-layer]. It stacks seven layers of
@@ -266,7 +267,7 @@ stacked among them: the security agents you deploy to watch the system are thems
 surface, so a mature design must monitor the monitors [@official_csa_maestro_threat_modeling];
 [@official_owasp_agentic_ai_threats_mitigations].
 
-### Governance control: SRE circuit breaker
+#### Governance control: SRE circuit breaker
 
 Knowing where attacks land is not the same as bounding their blast radius. The
 SRE circuit-breaker teaching pattern, depicted in [@fig:ageint-sre-circuit-breaker],
@@ -314,6 +315,7 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_context = _chapter_topic_context(chapter, part)
     safe_patterns = chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
     synthesis_block = _security_synthesis_block() if chapter["number"] == 34 else ""
+    headings = chapter_landmark_titles(title)
     safety_boundary = (
         "Keep all practice authorized, synthetic, defensive, logged, "
         f"reversible, and non-operational while working from {source_context_inline} and {topic_context}. Do not convert it into "
@@ -332,77 +334,87 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
     return f"""This module teaches the **{profile.title}** lane through a bounded, source-backed coursebook chapter. {source_context}
 
-## Textbook primer
+## {headings["orientation"]}
+
+### Textbook primer
 
 {chapter_textbook_primer(chapter, part)}
 
-## Learning outcomes
+### Learning outcomes
 
 {chapter_learning_outcomes(chapter, part)}
 
-## Core vocabulary
+### Core vocabulary
 
 {chapter_key_terms(chapter, part)}
 
-## Topic lessons
+## {headings["practice"]}
+
+### Topic lessons
 
 {chapter_topic_lessons(chapter, part)}
 
-## Worked safe example
+### Worked safe example
 
 {chapter_worked_example(chapter, part)}
 
-## Practice sequence
+### Practice sequence
 
 {chapter_practice_sequence(chapter, part)}
 
-## Knowledge check
+### Knowledge check
 
 {chapter_knowledge_check(chapter, part)}
 
-## Module architecture
+## {headings["evidence"]}
+
+### Module architecture and transfer contract
 
 {_module_architecture(chapter, part)}
 
-## Evidence and source canon
+### Evidence canon and source spine
 
 Guide citations preserve the inherited bibliography, verified anchors supply
 lane constraints, and the **{profile.title}** profile tells reviewers what
 evidence is strong enough for the module artifact built around {topic_context}.
 
-### Source spine
+#### Guide source spine
 
 Primary guide citations: {source_spine}
 
-### Source canon
+#### Verified source canon
 
 {_source_canon(chapter, part, source_spine)}
 
-### Intelligence practice lens
+#### Intelligence practice lens
 
 {chapter_practice_lens(chapter, part)}
 
-### Runtime section map
+#### Runtime-to-reader map
 
 {_runtime_section_map(chapter, part)}
 
-### Fractal subsection map
+#### Reusable subsection contract
 
 {subsection_practice_rows(chapter, part)}
 
-### Annotated source list
+#### Annotated source ledger
 
 Each source cited by this **{profile.title}** module is paired below with its
 real title and a one-line note on what it contributes to {topic_context}.
 
 {chapter_source_annotations(chapter)}
 
-## Research-backed synthesis
+## {headings["governance"]}
+
+### Source-backed analytic synthesis
+
+{profile_triangulation_anchors(str(part["title"]), title, chapter=chapter, surface="governance-boundary section")}
 
 {chapter_research_brief(chapter, part)}
 
 {synthesis_block}
-### Evidence standard
+#### Evidence standard and citation floor
 
 Official
 guidance supplies governance, safety, and legal constraints for the **{profile.title}**
@@ -411,7 +423,7 @@ citations preserve the inherited AGEINT bibliography. Perplexity-assisted discov
 is allowed during maintenance, but the manuscript citation itself must resolve to a
 direct source URL in `references-*.bib`. Local checks start with {source_context}
 
-## Agentic translation boundary
+### Agentic translation: assist, approve, block
 
 AGEINT translation is bounded by the **{profile.title}** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -419,18 +431,18 @@ checklists, summarize evidence, simulate benign scenarios, and audit reasoning.
 They do not initiate unauthorized collection, exploitation, covert targeting,
 manipulation, or cyber-physical action; examples stay tied to {topic_context}.
 
-### Defensive utility
+#### Permitted defensive utility
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
 Work products fit the current unit's education, policy review, lab
 exercises, and authorized defensive analysis for {topic_context}.
 
-### Safety boundary
+#### Excluded operational boundary
 
 {safety_boundary}
 
-## Governance, rights, and assurance
+### Governance, rights, and assurance
 
 Governance is practiced as a gate on the **{profile.title}**
 lane. Learners use the **{lens.title}** to decide who authorized the exercise,
@@ -439,25 +451,27 @@ agent-assisted artifact must stop for human review while using {topic_context}.
 
 {_governance_rights_assurance(chapter, part)}
 
-## Assessment artifacts and capstone pathway
+## {headings["assessment"]}
+
+### Assessment artifacts and capstone pathway
 
 {_assessment_and_capstone_pathway(chapter, part)}
 
-## Refresh, safety, and source maps
+### Refresh, safety, and source maps
 
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
 incidents, and instructor debrief findings each produce a visible owner, action,
 and retest condition before the module is reused against {source_context_inline} and {topic_context}.
 
-### Refresh triggers
+#### Refresh triggers
 
 {_refresh_triggers(chapter, part)}
 
-### Claim and evidence ledger
+#### Claim and evidence ledger
 
 {_claim_evidence_ledger(chapter, part)}
 
-## Review checklist
+### Reviewer challenge checklist
 
 {_review_checklist(chapter, part)}
 """

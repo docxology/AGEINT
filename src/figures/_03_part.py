@@ -1,31 +1,16 @@
 from __future__ import annotations
 
 import hashlib
-from importlib import import_module
 import math
 from pathlib import Path
-import re
 import textwrap
-import urllib.error
-import urllib.request
-from typing import Any, Sequence, cast
+from typing import Sequence
+
+from curriculum import Curriculum
 
 from ._01_part import FigureSpec
 from ._03c_control_matrix import draw_control_matrix, draw_matrix
-from ._04_part import (
-    _download_bytes,
-    _entry,
-    _font,
-    _markdown_escape,
-    _mermaid_label,
-    _normalize_png_canvas,
-    _pil_modules,
-    _png_asset_is_valid,
-    _relative_posix,
-    _slug,
-    _temporary_png_path,
-    _validate_png_asset,
-)
+from ._04_part import _font, _pil_modules
 from ._05_visual_style import (
     CANVAS_BG,
     INK,

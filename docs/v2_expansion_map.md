@@ -20,24 +20,35 @@ The major v2 pass expands AGEINT without changing its architecture:
 - Source-guide references increased from 231 to 312 by append-only expansion.
 - Curated anchors increased to 248 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
-- Registered figures increased to 161, spanning curriculum and part maps,
+- Registered figures increased to 170, spanning curriculum and part maps,
   per-chapter concept diagrams, source verification, claim ledger, compliance,
   agent evaluation, data flow, capstone, safe-substitution, instructor
   lifecycle, accessibility, HRIA/DPIA, procurement oversight, agent incident,
   data lineage, assessment integrity, adversarial assurance, model and dataset
   card, transparency notice, records-retention, release gate, risk exception,
   learner support, question bank, remediation, bounded-autonomy,
-  public-AI-register, AI-incident-reporting, OT-architecture, and
+  public-AI-register, AI-incident-reporting, OT-architecture, visual
+  accessibility contract, verifier-first artifact evidence, scholarship
+  triangulation, analysis-validation, analysis-validation family coverage,
+  source-metadata integrity, claim-calibration and visual-semantics control,
   cognitive-security synthesis visuals. The cognitive-security synthesis pass
   includes the CSA CDR six-stage degradation cascade, the MAESTRO seven-layer
   threat model, the SRE-for-agents circuit breaker, the
   cognitive-decoherence/CDR isomorphism, the unified epistemic-coherence stack,
   the cognitive attack-layer taxonomy, and the HRO-to-governance crosswalk.
-- Every generated chapter now uses a reader-facing architecture: module thesis,
-  learning outcomes, module architecture, evidence/source canon,
-  research-backed synthesis, agentic translation boundary, governance/rights/
-  assurance, domain practice studio, assessment/capstone pathway, refresh/
-  safety/source maps, review checklist, and cross-links.
+- A deterministic non-numbered cover-art PNG now lives outside the figure
+  registry at `output/figures/cover/ageint-cover-synthesis.png`; it is consumed
+  by the PDF title page and should not become a numbered manuscript figure.
+- The orientation graphical abstract is now the Python-rendered
+  `ageint-graphical-abstract` Synthetic Tradecraft System Atlas rather than a
+  Mermaid stack; it preserves the stable figure label while adding a richer
+  source-spine, tradecraft-core, agentic-boundary, verification, and human-review
+  layout.
+- Every generated chapter now uses five reader-facing H2 landmarks: orientation,
+  practice studio, evidence contract, governance boundary, and assessment route.
+  Repeated scaffold headings such as topic lessons, evidence canon, agentic
+  translation, reviewer challenge checklist, and learning-path cross-links are
+  retained as H3/H4 body headings so they do not flood the PDF TOC.
 - Repeated governance items now sit under the expanded
   **Governance, rights, and assurance** section rather than as dozens of
   identical top-level headings.
@@ -47,12 +58,32 @@ The major v2 pass expands AGEINT without changing its architecture:
   figure, and citation links: curriculum-map rows include each part intro and
   part module-map figure, and reference-key tables render Pandoc citations
   rather than backticked `@key` text.
-- Current local rendered evidence after the section/reference hardening pass:
-  377 generated manuscript files, 11,417 generated Markdown citation
-  occurrences, 0 zero-citation source sections, and a 1,697-page combined PDF.
-  Figure-reader text is also registry-enforced: all 161 captions meet the
-  40-word minimum, all alt-text rows meet the 24-word minimum, and the final PDF
-  annotation audit reports 0 Markdown-file link targets.
+- Current local rendered evidence after the section/reference, visual-quality,
+  table-layout, typography, verifier-first artifact-evidence, scholarship,
+  Synthetic Analytic Tradecraft orientation, SAT method-contract, analysis-validation,
+  family-coverage, source-metadata, cover/abstract/TOC, and graphical-abstract/TOC-title hardening passes:
+  369 generated Markdown files, 383 manuscript-bound files, 15,382 generated Markdown citation occurrences, 0
+  zero-citation source sections, and a 1,619-page combined PDF with 4,181 URI links.
+  Source metadata is also verifier-enforced: 258 metadata rows cover 248
+  curated anchors plus 10 source-quality support anchors, with 0 blank lane/tier
+  fields and 0 fallback-dependent rows after the 119-row hardening baseline.
+  Figure-reader text is also registry-enforced: all 170 captions meet the
+  40-word minimum, all alt-text
+  rows meet the 24-word minimum, all long descriptions meet the 70-word
+  minimum, generated PNGs embed compact accessibility/provenance and visual-semantics metadata,
+  `visual_quality_audit.json` records the rendered-asset checks, the
+  `source_metadata.{json,md}` reports lane/tier distributions and refresh-cadence
+  buckets, `scholarship_quality.{json,md}` reports source-family mix, 0 uncited
+  claim-bearing files, 0 thin claim-bearing files, and six single-source-family
+  claim-bearing review-warning rows, with passing SAT method-contract, analysis-validation, lane-contract, and family-coverage checks,
+  `claim_calibration.{json,md}` reports high-risk claim-language and source-strength dispositions, the
+  bibliography-atlas source-section coverage rows use narrow numeric columns
+  and wider descriptive citation-link columns, and the final PDF annotation
+  audit reports 0 Markdown-file link targets.
+- The PDF table of contents is intentionally limited to H1/H2 entries; H3/H4
+  scaffolds remain in the body and HTML output but are hidden from the PDF TOC.
+  Module H2 entries are chapter-specific landmarks rather than repeated generic
+  scaffold labels.
 
 ## Guardrails
 
@@ -67,5 +98,6 @@ The major v2 pass expands AGEINT without changing its architecture:
   source-audit, or safe-substitution contexts.
 - Template validation is run from the sibling `template` checkout against the
   active AGEINT output path.
-- The template core pipeline clean stage should be used before trusting
-  standalone web output after generated section labels or filenames change.
+- The template renderer removes stale standalone HTML before per-file web
+  rendering; the template core pipeline clean stage remains the safest path
+  after generated section labels or filenames change.

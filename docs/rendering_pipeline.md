@@ -27,6 +27,28 @@ uv run python scripts/05_copy_outputs.py --project working/AGEINT
 uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf
 ```
 
+From the AGEINT root after the rendered PDF exists, bind the current local
+artifact evidence into one machine-readable report:
+
+```bash
+uv run python scripts/audit_artifact_evidence.py --write --format markdown
+uv run python scripts/audit_scholarship_quality.py --write --format markdown
+uv run python scripts/audit_source_metadata.py --write --format markdown
+uv run python scripts/audit_claim_calibration.py --write --format markdown
+```
+
+This writes `output/reports/current_artifact_evidence.json` and
+`output/reports/current_artifact_evidence.md`; the scholarship command writes
+`output/reports/scholarship_quality.json` and `.md`, and the source-metadata
+command writes `output/reports/source_metadata.json` and `.md`; the
+claim-calibration command writes `output/reports/claim_calibration.json` and
+`.md`. The artifact report joins generated manuscript counts, source-section
+citation coverage, scholarship quality, source-metadata explicitness,
+claim-calibration status, figure-registry quality, rendered-reference audit
+status, stale-output scans, PDF quality, and PDF annotation/link checks so a
+stale, overclaimed, or partially copied artifact cannot be certified by one
+green gate alone.
+
 ## Pre-flight validation
 
 ```bash
@@ -36,18 +58,13 @@ uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT
 
 ## Mermaid figures
 
-AGEINT renders 115 Mermaid figures via `mmdc` into `output/figures/mermaid/`: 17
-curriculum and part module maps, 20 synthesis and boundary diagrams (CDR cascade,
-MAESTRO layers, SRE circuit breaker, decoherence-degradation isomorphism, unified
-epistemic stack, cognitive attack layers, HRO governance crosswalk, claim-evidence
-fit, MCP version boundary, active-inference boundary stack, prebunking evidence
-boundary, agentic standards landscape, agent evaluation evidence ladder,
-synthetic-content provenance boundary, first-principles tradecraft decomposition,
-red-team negative-control loop, analytic tradecraft evidence ladder, ICD 203
-probability/confidence boundary, SAT evidence boundary, and warning/failure
-feedback loop), and 78
-concept diagrams declared in `data/figures/synthesis_extra.jsonl` — one per
-chapter (51), one per part (16), plus cross-cutting and appendix diagrams (the
+AGEINT renders 114 Mermaid figures via `mmdc` into `output/figures/mermaid/`:
+17 curriculum and part module maps plus 97 JSONL-declared synthesis, boundary,
+chapter, part, cross-cutting, and appendix diagrams. The graphical abstract no
+longer lives in this Mermaid set; it is the Python-rendered
+`ageint-graphical-abstract` atlas under `output/figures/python/`. The remaining
+Mermaid rows cover CDR/MAESTRO/SRE agent-safety boundaries, analytic-tradecraft
+evidence boundaries, chapter concept maps, part maps, and appendix diagrams (the
 intelligence cycle, oversight architecture, minimization gating, ACH workflow,
 ICS defensive zones, and more). Strict verification requires real diagram PNGs,
 not deterministic text-plate fallbacks. Unchanged Mermaid sources are not
@@ -73,15 +90,54 @@ Run strict figure tests:
 uv run pytest tests/test_figures.py -m requires_mermaid -v
 ```
 
+## Cover, abstract, and TOC policy
+
+The PDF title page uses deterministic non-numbered cover art from
+`output/figures/cover/ageint-cover-synthesis.png`, with a JSON sidecar beside
+it. The cover is rendered by `src/figures/` and referenced from
+`manuscript/config.yaml` as `book.cover.image`; it is not registered in
+`output/figures/figure_registry.json` and should not be cited as a manuscript
+figure.
+
+The abstract is a single plaintext Synthetic Analytic Tradecraft contract. It
+should not regain a `Graphical Abstract` subsection, an artifact-path note, a
+course-path note, or an embedded image token. The governed-system map formerly
+used as graphical-abstract support now belongs in orientation material.
+
+The PDF table of contents intentionally exposes H1/H2 entries only through
+`\setcounter{tocdepth}{2}` in `manuscript/preamble.md`. H3/H4 scaffolds remain
+available in body text and generated HTML, but they are hidden from the PDF TOC
+to keep navigation useful at the manuscript scale. Generated modules expose five
+chapter-specific H2 landmarks: orientation, practice studio, evidence contract,
+governance boundary, and assessment route. Repeated teaching scaffolds such as
+topic lessons, evidence canon, reviewer checklist, and learning-path cross-links
+are H3/H4 body headings. The same preamble owns TOC spacing controls so entries
+such as `42.10 Evidence...` do not collapse into `42.10Evidence...`.
+
 ## Current local artifact evidence
 
-The 2026-06-12 section/reference and figure-caption hardening passes rendered
-377 generated manuscript files with 161 registered figures. The combined AGEINT
-PDF rendered to `output/pdf/AGEINT_combined.pdf` at 27.66 MB, 1697 pages,
-letter page size, and PDF version 1.7. The template PDF validator reported 0
-issues, the AGEINT PDF quality audit reported `stale PDF: false` and `OK:
-true`, and a PDF annotation audit found 33334 link annotations with 0 `.md` or
-`.markdown` link targets in both the source and copied PDFs.
+The 2026-06-12 and 2026-06-13 section/reference, figure-caption, visual-accessibility,
+table-layout/typography, verifier-first artifact-evidence, scholarship-quality,
+profile-anchor triangulation, Synthetic Analytic Tradecraft orientation, SAT
+method-contract, analysis-validation, analysis-validation family-coverage,
+source-metadata, cover/abstract/TOC, and graphical-abstract/TOC-title
+hardening passes render 369 generated Markdown files and 383 manuscript-bound
+files with 170 registered figures plus one non-numbered cover-art PNG. Figure
+PNGs carry embedded
+accessibility/provenance and visual-semantics metadata in addition to the JSON registry and
+`visual_quality_audit.json`. The combined AGEINT PDF rendered to
+`output/pdf/AGEINT_combined.pdf` at 30.26 MB, 1,619 pages, letter page size, and
+PDF version 1.7. The template PDF validator reported 0 issues, the AGEINT PDF
+quality audit reported `stale PDF: false` and `OK: true`, and the integrated
+PDF annotation audit found 4,181 URI links with 0 `.md`, `.markdown`, `file:`,
+or launch targets in both the source and copied PDFs. The scholarship audit
+reports 0 uncited claim-bearing files, 0 thin claim-bearing files, and six
+single-source-family claim-bearing review-warning rows plus passing SAT method-contract,
+analysis-validation, analysis-validation lane, claim-bearing family-coverage,
+`source_metadata_ok`, and `claim_calibration_ok` contracts after profile-specific external triangulation was added to topic lessons,
+worked examples, source-canon sections, and review-checklist sections. Local and copied web outputs now
+contain 384 web files each, including 380 section pages and index/combined views, with stale
+pre-label orientation filenames removed by the renderer cleanup hook.
 
 ## See also
 

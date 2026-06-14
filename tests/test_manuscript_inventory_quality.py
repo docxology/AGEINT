@@ -40,36 +40,36 @@ def test_generated_chapters_are_coursebook_not_meta_scaffold(built_output: Path)
         text = chapter_text(path)
         for phrase in REMOVED_META_PHRASES:
             assert phrase not in text, f"{path.name}: {phrase}"
-        teaching_body = text.split("## Evidence and source canon", 1)[0]
+        teaching_body = text.split("### Evidence canon and source spine", 1)[0]
         for phrase in REMOVED_FILLER_PHRASES:
             assert phrase not in teaching_body, f"{path.name}: {phrase}"
-        assert "## Topic lessons" in text
-        assert "## Worked safe example" in text
-        assert "## Knowledge check" in text
-        before_runtime_map = text.split("### Runtime section map", 1)[0]
-        assert "## Topic lessons" in before_runtime_map
-        assert "## Practice sequence" in before_runtime_map
-        assert "### Lesson 1:" in before_runtime_map
+        assert "### Topic lessons" in text
+        assert "### Worked safe example" in text
+        assert "### Knowledge check" in text
+        before_runtime_map = text.split("#### Runtime-to-reader map", 1)[0]
+        assert "### Topic lessons" in before_runtime_map
+        assert "### Practice sequence" in before_runtime_map
+        assert "#### Lesson 1:" in before_runtime_map
         assert "**Misconception check.**" in before_runtime_map
         assert "**Filled artifact.**" in before_runtime_map
-        assert "### Answer quality rubric" in before_runtime_map
+        assert "#### Answer quality rubric" in before_runtime_map
         assert before_runtime_map.count("|") < 220, path
 
 
 def test_coursebook_sections_precede_runtime_maps_in_fixed_order(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     expected_order = [
-        "## Textbook primer",
-        "## Learning outcomes",
-        "## Core vocabulary",
-        "## Topic lessons",
-        "## Worked safe example",
-        "## Practice sequence",
-        "## Knowledge check",
-        "## Module architecture",
-        "## Evidence and source canon",
-        "### Runtime section map",
-        "### Fractal subsection map",
+        "### Textbook primer",
+        "### Learning outcomes",
+        "### Core vocabulary",
+        "### Topic lessons",
+        "### Worked safe example",
+        "### Practice sequence",
+        "### Knowledge check",
+        "### Module architecture and transfer contract",
+        "### Evidence canon and source spine",
+        "#### Runtime-to-reader map",
+        "#### Reusable subsection contract",
     ]
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
@@ -80,10 +80,10 @@ def test_coursebook_sections_precede_runtime_maps_in_fixed_order(built_output: P
 def test_major_module_sections_have_reader_facing_introductions(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     intro_sections = {
-        "Evidence and source canon",
+        "Evidence canon and source spine",
         "Governance, rights, and assurance",
         "Refresh, safety, and source maps",
-        "Cross-links",
+        "Learning-path cross-links",
     }
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
@@ -151,5 +151,5 @@ def test_coursebook_topic_lessons_cover_representative_int_domains(built_output:
     for relative, phrase in expected.items():
         path = output_manuscript / "parts" / relative / "00-overview.md"
         text = chapter_text(path)
-        textbook_body = text.split("### Runtime section map", 1)[0]
+        textbook_body = text.split("### Runtime-to-reader map", 1)[0]
         assert phrase in textbook_body, f"{relative}: {phrase}"

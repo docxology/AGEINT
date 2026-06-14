@@ -7,17 +7,19 @@ from typing import Any, Sequence, cast
 from curriculum import Curriculum
 
 from ._01_part import (
-    AI_CONCEPTUAL_PLATES,
     FigureKind,
     FigureSpec,
     HISTORICAL_ASSETS,
     PYTHON_VISUALS,
 )
+from ._01b_accessibility import FIGURE_ACCESSIBILITY_GUIDANCE
+from ._01g_concept_plates import AI_CONCEPTUAL_PLATES
 from ._03b_asset_renderers import (
     _render_ai_concept_figure,
     _render_historical_figure,
 )
 from ._04_part import (
+    _embed_png_metadata,
     _entry,
     _markdown_escape,
     _normalize_png_canvas,
@@ -29,7 +31,12 @@ from ._04_part import (
 from ._02b_mermaid import SYNTHESIS_MERMAID, placeholder_or_fail, render_mermaid_figure
 from ._02b_mermaid import _mermaid_cache_marker, _mermaid_source_hash
 from ._02c_reader_text import _with_informative_reader_text
+from ._02d_quality_audit import write_visual_quality_audit
+from ._02e_visual_semantics import _with_visual_semantics
+from ._03l_cover_art import render_cover_art
 from ._06_python_renderers import render_python_figure
+
+FIGURE_REGISTRY_SCHEMA_VERSION = "1.4"
 
 
 def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec]:
@@ -105,6 +112,13 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
 
     for visual in PYTHON_VISUALS:
         section = _resolve_source_section(visual["source_section"], section_lookup)
+        provenance = {
+            "renderer": "python",
+            "renderer_id": visual["renderer"],
+            "source": "data/curriculum/",
+        }
+        if "canvas_size" in visual:
+            provenance["canvas_size"] = visual["canvas_size"]
         specs.append(
             FigureSpec(
                 label=f"fig:{visual['slug']}",
@@ -115,11 +129,27 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                 output_path=f"output/figures/python/{visual['slug']}.png",
                 source_section=section.relative_path,
                 section_label=section.section_label,
-                provenance={
-                    "renderer": "python",
-                    "renderer_id": visual["renderer"],
-                    "source": "data/curriculum/",
-                },
+                provenance=provenance,
+                semantic_role=str(visual.get("semantic_role", "conceptual_or_audit_visual")),
+                evidence_role=str(
+                    visual.get(
+                        "evidence_role",
+                        "reader navigation, explanation, or local artifact-audit support",
+                    )
+                ),
+                quantitative=bool(visual.get("quantitative", False)),
+                unit=str(visual.get("unit", "not_applicable")),
+                denominator=str(visual.get("denominator", "not_applicable")),
+                counting_rule=str(visual.get("counting_rule", "not_applicable")),
+                interpretation_limit=str(
+                    visual.get(
+                        "interpretation_limit",
+                        (
+                            "Visual structure is explanatory and not a measured capability score, "
+                            "benchmark result, statistical finding, or hidden source-quality ranking."
+                        ),
+                    )
+                ),
             )
         )
 
@@ -165,7 +195,10 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                 },
             )
         )
-    specs = [_with_informative_reader_text(spec, curriculum) for spec in specs]
+    specs = [
+        _with_visual_semantics(_with_informative_reader_text(spec, curriculum))
+        for spec in specs
+    ]
     _validate_specs(specs)
     return specs
 
@@ -194,11 +227,20 @@ def render_figures(
         _render_figure_asset(root, curriculum, spec, allow_placeholder_figures=allow_placeholder_figures)
     for spec in specs:
         _ensure_registry_asset(root, spec, allow_placeholder_figures=allow_placeholder_figures)
+    render_cover_art(root, curriculum)
 
+    quality_audit = write_visual_quality_audit(
+        root,
+        specs,
+        registry_schema=FIGURE_REGISTRY_SCHEMA_VERSION,
+    )
     registry = {
         "project": "AGEINT",
-        "schema_version": "1.0",
+        "schema_version": FIGURE_REGISTRY_SCHEMA_VERSION,
         "figure_count": len(specs),
+        "accessibility_guidance": FIGURE_ACCESSIBILITY_GUIDANCE,
+        "quality_audit_path": "output/figures/visual_quality_audit.json",
+        "quality_summary": quality_audit["summary"],
         "figures": [spec.registry_entry(root) for spec in specs],
     }
     registry_path = figures_dir / "figure_registry.json"
@@ -270,12 +312,22 @@ def _validate_specs(specs: Sequence[FigureSpec]) -> None:
     for spec in specs:
         if not spec.label.startswith("fig:"):
             raise ValueError(f"Figure label must start with fig:: {spec.label}")
-        if not spec.caption or not spec.alt_text:
-            raise ValueError(f"Figure {spec.label} needs caption and alt text")
+        if not spec.caption or not spec.alt_text or not spec.long_description:
+            raise ValueError(f"Figure {spec.label} needs caption, alt text, and long description")
         if not spec.output_path.startswith("output/figures/"):
             raise ValueError(f"Figure {spec.label} must render under output/figures")
         if not spec.provenance:
             raise ValueError(f"Figure {spec.label} needs provenance")
+        if not spec.semantic_role or not spec.evidence_role or not spec.interpretation_limit:
+            raise ValueError(f"Figure {spec.label} needs visual-semantic metadata")
+        if spec.quantitative and (
+            spec.unit == "not_applicable"
+            or spec.denominator == "not_applicable"
+            or spec.counting_rule == "not_applicable"
+        ):
+            raise ValueError(f"Quantitative figure {spec.label} needs unit, denominator, and counting rule")
+        if not spec.quantitative and "not a measured" not in spec.interpretation_limit.lower():
+            raise ValueError(f"Conceptual figure {spec.label} needs a non-measurement interpretation limit")
 
 
 def _ensure_registry_asset(
@@ -295,6 +347,7 @@ def _ensure_registry_asset(
         )
         _normalize_png_canvas(asset)
     _validate_png_asset(asset, spec)
+    _embed_png_metadata(asset, spec)
 
 
 def _render_figure_asset(
@@ -327,6 +380,7 @@ def _render_figure_asset(
     if temp_path.exists():
         temp_path.unlink()
     real_render = True
+    canvas_size = int(spec.provenance.get("canvas_size", "1400"))
     try:
         if spec.kind is FigureKind.MERMAID:
             real_render = render_mermaid_figure(
@@ -353,7 +407,7 @@ def _render_figure_asset(
                 allow_placeholder_figures=allow_placeholder_figures,
             )
         try:
-            _normalize_png_canvas(temp_path)
+            _normalize_png_canvas(temp_path, size=canvas_size)
         except (OSError, SyntaxError, ValueError) as exc:
             real_render = False
             placeholder_or_fail(
@@ -362,7 +416,7 @@ def _render_figure_asset(
                 f"Figure renderer produced an unreadable PNG during normalization: {exc}",
                 allow_placeholder_figures=allow_placeholder_figures,
             )
-            _normalize_png_canvas(temp_path)
+            _normalize_png_canvas(temp_path, size=canvas_size)
         if not _png_asset_is_valid(temp_path):
             real_render = False
             placeholder_or_fail(
@@ -371,7 +425,7 @@ def _render_figure_asset(
                 "Figure renderer produced an invalid or missing asset; generated deterministic fallback.",
                 allow_placeholder_figures=allow_placeholder_figures,
             )
-            _normalize_png_canvas(temp_path)
+            _normalize_png_canvas(temp_path, size=canvas_size)
         _validate_png_asset(temp_path, spec)
         temp_path.replace(final_path)
         try:
@@ -384,7 +438,7 @@ def _render_figure_asset(
                 f"Published figure asset was unreadable after replacement: {exc}",
                 allow_placeholder_figures=allow_placeholder_figures,
             )
-            _normalize_png_canvas(final_path)
+            _normalize_png_canvas(final_path, size=canvas_size)
             _validate_png_asset(final_path, spec)
         if cache_marker is not None:
             if real_render and cache_key is not None:

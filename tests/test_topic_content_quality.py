@@ -55,7 +55,7 @@ def _title_keywords(title: str) -> set[str]:
 
 
 def _topic_lesson_files(output_manuscript: Path) -> list[Path]:
-    return sorted(output_manuscript.rglob("01-topic-lessons*.md"))
+    return sorted(output_manuscript.rglob("01-practice-studio*.md"))
 
 
 def test_topic_lessons_contain_no_generic_concept_fallback(built_output: Path) -> None:
@@ -75,8 +75,8 @@ def test_topic_lesson_concepts_anchor_title_keywords(built_output: Path) -> None
     chapter_failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = section_text(chapter_text(path), "Topic lessons")
-        lesson_titles = re.findall(r"^### Lesson \d+: (.+)$", section, flags=re.MULTILINE)
-        lesson_blocks = re.split(r"^### Lesson \d+: .+$", section, flags=re.MULTILINE)[1:]
+        lesson_titles = re.findall(r"^#{3,4} Lesson \d+: (.+)$", section, flags=re.MULTILINE)
+        lesson_blocks = re.split(r"^#{3,4} Lesson \d+: .+$", section, flags=re.MULTILINE)[1:]
         if not lesson_titles:
             continue
         hits = 0
@@ -109,7 +109,7 @@ def test_tier_c_concept_repetition_capped_per_chapter(built_output: Path) -> Non
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = _chapter_topic_lessons_section(path)
-        lesson_count = len(re.findall(r"^### Lesson \d+:", section, flags=re.MULTILINE))
+        lesson_count = len(re.findall(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE))
         if lesson_count == 0:
             continue
         tier_c_hits = 0
@@ -118,7 +118,7 @@ def test_tier_c_concept_repetition_capped_per_chapter(built_output: Path) -> Non
                 tier_c_hits,
                 sum(
                     1
-                    for block in re.split(r"^### Lesson \d+:", section, flags=re.MULTILINE)[1:]
+                    for block in re.split(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE)[1:]
                     if left in block.split("**Concept.**", 1)[-1].lower()
                     and right in block.split("**Concept.**", 1)[-1].lower()
                 ),
@@ -133,7 +133,7 @@ def test_generic_misconception_repetition_capped_per_chapter(built_output: Path)
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = _chapter_topic_lessons_section(path)
-        lesson_count = len(re.findall(r"^### Lesson \d+:", section, flags=re.MULTILINE))
+        lesson_count = len(re.findall(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE))
         if lesson_count == 0:
             continue
         generic_hits = section.lower().count(GENERIC_MISCONCEPTION_MARKER)
@@ -147,7 +147,7 @@ def test_teams_confuse_boilerplate_capped_per_chapter(built_output: Path) -> Non
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = _chapter_topic_lessons_section(path)
-        lesson_count = len(re.findall(r"^### Lesson \d+:", section, flags=re.MULTILINE))
+        lesson_count = len(re.findall(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE))
         if lesson_count == 0:
             continue
         hits = section.lower().count(TEAMS_CONFUSE_MARKER)
@@ -172,7 +172,7 @@ def test_governance_bounded_titles_absent_from_lesson_headers(built_output: Path
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = _chapter_topic_lessons_section(path)
-        headers = re.findall(r"^### Lesson \d+: (.+)$", section, flags=re.MULTILINE)
+        headers = re.findall(r"^#{3,4} Lesson \d+: (.+)$", section, flags=re.MULTILINE)
         hits = sum(1 for header in headers if GOVERNANCE_BOUNDED_GENERIC in header)
         if hits > 0:
             failures.append(f"{path.parent.name}: governance_bounded_headers={hits}")
@@ -186,7 +186,7 @@ def test_category_concept_repetition_capped_per_chapter(built_output: Path) -> N
         section = _chapter_topic_lessons_section(path)
         concepts = [
             block.split("**Concept.**", 1)[1].split("\n", 1)[0].strip()
-            for block in re.split(r"^### Lesson \d+:", section, flags=re.MULTILINE)[1:]
+            for block in re.split(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE)[1:]
             if "**Concept.**" in block
         ]
         if not concepts:
@@ -250,7 +250,7 @@ def test_spot_check_chapters_use_domain_titles_not_generic_fallback(built_output
     failures: list[str] = []
     generic = GOVERNANCE_BOUNDED_GENERIC
     for slug in SPOT_CHECK_CHAPTER_SLUGS:
-        matches = sorted(output_manuscript.rglob(f"*/{slug}/01-topic-lessons*.md"))
+        matches = sorted(output_manuscript.rglob(f"*/{slug}/01-practice-studio*.md"))
         assert matches, f"missing topic lessons for {slug}"
         text = "\n".join(path.read_text(encoding="utf-8") for path in matches)
         if text.count(generic) > 2:

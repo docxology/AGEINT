@@ -1,9 +1,17 @@
 # Adversarial Assurance
 
 AGEINT uses adversarial assurance to stress-test generated chapters, appendices,
-source lanes, and instructor artifacts before reuse. This is the RedTeam-style
-quality gate for bloat, unsafe wording, unverified claims, brittle tests, stale
-docs, and boundary drift.
+source lanes, rendered PDFs, figure assets, and instructor artifacts before
+reuse. This is the RedTeam-style quality gate for bloat, unsafe wording,
+unverified claims, brittle tests, stale docs, broken cross-references,
+Markdown-file PDF links, and boundary drift.
+
+The current implementation treats the validator itself as an artifact. A render
+is not considered locally ready until `scripts/audit_artifact_evidence.py` can
+bind the rebuilt manuscript, citation inventory, scholarship-quality audit,
+source-metadata audit, claim-calibration audit, figure quality audit, PDF quality report, PDF annotation
+audit, and rendered-reference audit into
+`output/reports/current_artifact_evidence.json`.
 
 ## Assurance Cycle
 
@@ -13,15 +21,59 @@ docs, and boundary drift.
   controls.
 - Evidence attack: challenge source identity, provenance, counter-evidence, and
   confidence.
+- Verifier attack: introduce a negative control that should fail, such as a
+  Markdown-file PDF link, stale generated output, unresolved section reference,
+  old source-section coverage table shape, or claim-bearing generated section
+  collapsed to one citation key. For the Synthetic Analytic Tradecraft claim,
+  remove the method-contract figure reference or the source-family triangulation
+  language from the abstract/orientation; for analysis validation, remove the
+  analysis-matrix figure reference, the protocol section, or the failure-mode
+  language. A second negative-control path removes a claim-class lane such as
+  artifact readiness or reviewer disposition while leaving the protocol heading
+  and figure reference intact; the scholarship-quality verifier must still fail
+  even if ordinary citation counts remain high. A third negative-control path
+  adds a curated source-anchor row with an empty `source_lane` or `source_tier`,
+  or a source-quality support row whose lane/tier is not
+  `source_quality_spine` / `source_quality_anchor`; `source_metadata_ok` must
+  fail even if the PDF, citations, and figure registry are otherwise current.
+  A fourth negative-control path adds proof-language, p-value language,
+  measured-performance language, or an unsupported formalism whose only support
+  is weak source-guide context; `claim_calibration_ok` must fail even if
+  citation counts and PDF links remain green.
 - Incident rehearsal: use synthetic tickets to test pause, revoke, preserve,
   recover, and debrief actions.
-- Remediation: assign owner, due date, retest result, and refresh trigger.
+- Remediation: assign owner, due date, retest result, refresh trigger, and the
+  evidence-manifest field that proves closure.
 
 ## Source Rules
 
-Adversarial assurance cites directly verified sources such as ENISA AI
-cybersecurity guidance, NIST AI security and resilience resources, and the NIST
-AI Resource Center. Perplexity remains a discovery lane only.
+Adversarial assurance cites directly verified sources such as CISA AI
+red-teaming/TEVV guidance, NIST ARIA evaluation work, NIST AI 600-1,
+NIST Dioptra, MITRE ATLAS, OWASP agentic-AI security guidance, and the
+source-guide citation spine. Perplexity remains a discovery lane only.
+
+## Local Command
+
+After a strict build and PDF render, run:
+
+```bash
+uv run python scripts/audit_artifact_evidence.py --write --format markdown
+uv run python scripts/audit_scholarship_quality.py --write --format markdown
+uv run python scripts/audit_source_metadata.py --write --format markdown
+uv run python scripts/audit_claim_calibration.py --write --format markdown
+```
+
+The JSON report is the preferred machine-readable evidence surface. The
+Markdown report is for review notes and ISA/task closeout summaries.
+
+The analysis-validation lane source of truth is `src/analysis_validation.py`.
+It feeds the Python matrix renderer and the scholarship-quality lane contract,
+while the generated orientation output must retain the same claim classes,
+validation questions, evidence packets, and failure modes.
+The same module also maps claim-bearing generated manuscript families to
+analysis-validation lanes. A new family that carries claim-bearing prose but has
+no lane mapping is a verifier failure, even if citation counts and rendered
+references still pass.
 
 ## Safety Boundary
 

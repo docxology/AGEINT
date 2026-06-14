@@ -7,7 +7,6 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 import re
-from typing import Any
 
 try:
     from ._slug import curriculum_sections_jsonl_path
@@ -168,14 +167,19 @@ def render_source_section_citation_rows(curriculum: Curriculum) -> str:
     """Render a source-section citation inventory as a Markdown table."""
 
     rows = [
-        "| Chapter | Section | Source title | Citation count | Citation keys |",
-        "|---|---|---|---:|---|",
+        "| Section | Module and source section | Citations | Citation links |",
+        "|---:|---|---:|---|",
     ]
     for row in source_section_citation_inventory(curriculum):
+        source_context = (
+            f"{row.chapter_title} - "
+            f"{_clean_display_title(reader_source_title(row.title))}"
+        )
         rows.append(
-            f"| {row.chapter_number}. {_table_cell(row.chapter_title)} | "
-            f"{_table_cell(row.section_number)} | {_table_cell(_clean_display_title(reader_source_title(row.title)))} | "
-            f"{row.citation_count} | {_table_cell('; '.join(row.citation_keys) or '-')} |"
+            f"| {_table_cell(row.section_number)} | "
+            f"{_table_cell(source_context)} | "
+            f"{row.citation_count} | "
+            f"{_table_cell(citation_ref_list(row.citation_keys) if row.citation_keys else '-')} |"
         )
     return "\n".join(rows)
 
@@ -261,8 +265,14 @@ def _generated_family(path: Path) -> str:
             return "part unit intros"
         if len(parts) >= 4:
             stem = path.stem
-            if stem.startswith("01-topic-lessons"):
-                return "topic-lessons"
+            if stem.startswith("01-practice-studio"):
+                return "practice-studio"
+            if stem.startswith("02-evidence-contract"):
+                return "evidence-contract"
+            if stem.startswith("03-governance-boundary"):
+                return "governance-boundary"
+            if stem.startswith("04-assessment-route"):
+                return "assessment-route"
             return stem.split("-", 1)[1] if "-" in stem else stem
         return "part other"
     if parts[0] in {"orientation", "appendices"}:

@@ -43,6 +43,16 @@ from ._03_part import (
     _render_source_verification_flow,
     _render_transparency_notice_flow,
 )
+from ._03d_accessibility import _render_visual_accessibility_contract
+from ._03e_quality_dashboard import _render_visual_quality_audit_dashboard
+from ._03f_artifact_evidence import _render_artifact_evidence_control_loop
+from ._03g_scholarship_quality import _render_scholarship_triangulation_map
+from ._03h_sat_method import _render_synthetic_tradecraft_method_contract
+from ._03i_analysis_validation import _render_analysis_validation_matrix
+from ._03j_analysis_family_coverage import _render_analysis_validation_family_coverage
+from ._03k_source_metadata import _render_source_metadata_integrity
+from ._03m_graphical_abstract import _render_graphical_abstract_atlas
+from ._03n_claim_calibration import _render_claim_calibration_and_visual_semantics
 from ._03b_asset_renderers import _render_citation_density
 from ._04_part import _font, _pil_modules
 from ._05_visual_style import (
@@ -89,6 +99,16 @@ def render_python_figure(
         "safe_substitution_matrix": _render_safe_substitution_matrix,
         "instructor_assessment_lifecycle": _render_instructor_assessment_lifecycle,
         "accessibility_workflow": _render_accessibility_workflow,
+        "visual_accessibility_contract": _render_visual_accessibility_contract,
+        "visual_quality_audit_dashboard": _render_visual_quality_audit_dashboard,
+        "artifact_evidence_control_loop": _render_artifact_evidence_control_loop,
+        "scholarship_triangulation_map": _render_scholarship_triangulation_map,
+        "graphical_abstract_atlas": _render_graphical_abstract_atlas,
+        "synthetic_tradecraft_method_contract": _render_synthetic_tradecraft_method_contract,
+        "analysis_validation_matrix": _render_analysis_validation_matrix,
+        "analysis_validation_family_coverage": _render_analysis_validation_family_coverage,
+        "source_metadata_integrity": _render_source_metadata_integrity,
+        "claim_calibration_and_visual_semantics": _render_claim_calibration_and_visual_semantics,
         "hria_dpia_map": _render_hria_dpia_map,
         "procurement_oversight_loop": _render_procurement_oversight_loop,
         "agent_incident_lifecycle": _render_agent_incident_lifecycle,

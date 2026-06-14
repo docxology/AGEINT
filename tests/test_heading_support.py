@@ -18,9 +18,46 @@ def test_add_heading_support_adds_contextual_reference_line() -> None:
     rendered = "# Sample Section {#sec:sample-section}\n\n## Purpose\n\nExplain the bounded exercise.\n"
     revised = add_heading_support(rendered, "appendices/sample-section.md")
 
-    assert "**Evidence link.**" in revised
+    assert "**Section anchor.**" in revised
     assert "[@sec:sample-section]" in revised
     assert unsupported_heading_rows_for_text(revised) == []
+
+
+def test_add_heading_support_treats_presplit_bibliography_as_structural() -> None:
+    rendered = "\n\n".join(
+        [
+            "# Bibliography Atlas {#sec:bibliography_atlas}",
+            "Introductory citation example [@scholarly_heuer_psychology_intelligence_analysis].",
+            "## Add Or Extend A Citation",
+            "Use source-owned citation workflow steps.",
+        ]
+    )
+    revised = add_heading_support(rendered, "bibliography-atlas.md")
+
+    assert "**Section anchor.** [@sec:bibliography_atlas]." in revised
+    anchor_line = next(line for line in revised.splitlines() if line.startswith("**Section anchor.**"))
+    assert "scholarly_heuer_psychology_intelligence_analysis" not in anchor_line
+
+
+def test_add_heading_support_uses_coverage_language_for_source_inventory() -> None:
+    rendered = "\n\n".join(
+        [
+            "## Add Or Extend A Citation",
+            "### Current source-section coverage",
+            "| Measure | Count |",
+            "|---|---:|",
+            "| Source sections | 723 |",
+            "### Source-section citation rows",
+            "[@scholarly_heuer_psychology_intelligence_analysis]",
+        ]
+    )
+    revised = add_heading_support(rendered, "appendices/bibliography-atlas/coverage.md")
+
+    assert "**Coverage anchor.** Parent appendix: [@sec:bibliography_atlas]." in revised
+    assert "Source-section coverage values are validated from the generated citation inventory" in revised
+    coverage_line = next(line for line in revised.splitlines() if line.startswith("**Coverage anchor.**"))
+    assert "scholarly_heuer_psychology_intelligence_analysis" not in coverage_line
+    assert "**Evidence link.**" not in revised
 
 
 def test_generated_heading_support_covers_every_heading(built_output: Path) -> None:

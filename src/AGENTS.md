@@ -20,7 +20,10 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 | `_markdown_split.py` | Generic Markdown fragment splitting for manuscript output |
 | `prose_policy.py` | Shared reader-facing title/prose transforms |
 | `safety_contract.py` | Canonical blocked operational phrases and direct-task motifs; imported by `source_grounding` and manuscript-safety tests |
+| `analysis_validation.py` | Canonical analysis-validation claim-class lanes used by orientation prose, matrix rendering, and scholarship verifier contracts |
 | `markdown_refs.py` | Validated Pandoc `@sec:` / `@fig:` / citekey helpers; `lesson_educational_crossrefs()` for topic-lesson cross-links |
+| `citation_workflow.py` | Generated/source-section citation inventories and source-guide citation spine helpers |
+| `scholarship_quality.py` | Generated-manuscript scholarship audit: source-family mix, thin claim-bearing support, and report rendering |
 | `manuscript_injection.py` | Thin adapter to `infrastructure.rendering.manuscript_injection` (single import site for manifest render) |
 | `output_docs.py` | Generated README/AGENTS writers for output, manuscript, and figures |
 | `intelligence_content/` | Official/scholarly anchors, domain profiles, practice lenses, synthesis; see [intelligence_content/AGENTS.md](intelligence_content/AGENTS.md) |

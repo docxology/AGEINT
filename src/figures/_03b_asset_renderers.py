@@ -7,13 +7,13 @@ from curriculum import Curriculum
 
 from ._01_part import FigureSpec
 from ._03_part import (
-    _download_bytes,
     _draw_bar_chart,
     _draw_concept_plate,
     _draw_text_plate,
     _font,
     _pil_modules,
 )
+from ._04_part import _download_bytes
 
 
 def _render_historical_figure(root: Path, spec: FigureSpec, output: Path | None = None) -> None:

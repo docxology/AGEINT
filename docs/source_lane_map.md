@@ -50,6 +50,15 @@ Add lane metadata in `data/research_anchors/` and `src/intelligence_content/`, s
 `src/manuscript_variables/`, and rebuild. Do not hand-edit generated
 source-lane tables under `output/`.
 
+Lane/tier metadata must be explicit on source-anchor rows. The 2026-06-13
+metadata hardening pass closed 119 blank fields across 109 legacy intelligence
+anchors and 10 source-quality support anchors. Legacy rows preserve their
+existing semantics by setting `source_lane` from `domain` and `source_tier` from
+`source_type`; source-quality rows use `source_quality_spine` and
+`source_quality_anchor`. `scripts/audit_source_metadata.py` and the
+`source_metadata_ok` artifact-evidence check now fail if a row depends on that
+fallback behavior again.
+
 Inherited source-guide rows from LinkedIn, Medium, cloud-vendor guidance,
 security blogs, and practitioner explainers remain useful provenance context.
 They should be surfaced as secondary or illustrative evidence, while official,

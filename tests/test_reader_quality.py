@@ -166,12 +166,12 @@ def test_topic_lessons_are_topic_specific_not_template_repeated(built_output: Pa
     output_manuscript = manuscript_dir(built_output)
     for path in generated_chapter_files(output_manuscript):
         section = section_text(chapter_text(path), "Topic lessons")
-        lesson_titles = re.findall(r"^### Lesson \d+: (.+)$", section, flags=re.MULTILINE)
+        lesson_titles = re.findall(r"^#{3,4} Lesson \d+: (.+)$", section, flags=re.MULTILINE)
         assert lesson_titles, path
         assert len(lesson_titles) == len(set(lesson_titles)), path
         for title in lesson_titles:
             assert len(title.split()) >= 2, f"{path}: {title}"
-        lesson_blocks = re.split(r"^### Lesson \d+: .+$", section, flags=re.MULTILINE)[1:]
+        lesson_blocks = re.split(r"^#{3,4} Lesson \d+: .+$", section, flags=re.MULTILINE)[1:]
         for title, block in zip(lesson_titles, lesson_blocks, strict=True):
             for field in LESSON_FIELD_LABELS:
                 marker = f"**{field}.**"
@@ -257,7 +257,7 @@ _ARTIFACT_VERIFICATION_RE = re.compile(r"The artifact must [^.]+\.")
 
 
 def _topic_lesson_files(output_manuscript: Path) -> list[Path]:
-    return sorted(output_manuscript.rglob("01-topic-lessons*.md"))
+    return sorted(output_manuscript.rglob("01-practice-studio*.md"))
 
 
 def test_grounding_closing_and_artifact_sentences_are_not_stamped(built_output: Path) -> None:

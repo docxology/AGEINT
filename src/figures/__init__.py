@@ -10,12 +10,15 @@ from ._02_part import (
     load_figure_registry,
     render_figures,
 )
+from ._03l_cover_art import COVER_OUTPUT_PATH, render_cover_art
 
 __all__ = [
     "FigureKind",
     "FigureSpec",
+    "COVER_OUTPUT_PATH",
     "build_figure_specs",
     "render_figures",
+    "render_cover_art",
     "load_figure_registry",
     "figures_for_section",
     "figure_markdown",

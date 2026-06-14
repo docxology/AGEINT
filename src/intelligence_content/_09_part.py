@@ -296,6 +296,27 @@ def citation_cluster(keys: tuple[str, ...], limit: int = 4) -> str:
     """Return a compact Pandoc citation cluster for a profile."""
     return citation_ref_list(keys[:limit]) + "."
 
+
+def profile_triangulation_anchors(
+    part_title: str,
+    section_title: str = "",
+    *,
+    chapter: dict[str, object] | None = None,
+    limit: int = 4,
+    surface: str = "section",
+) -> str:
+    """Return a profile-specific triangulation sentence for claim-bearing sections."""
+    profile = profile_for_titles(part_title, section_title, chapter=chapter)
+    anchors = citation_cluster(profile.anchor_keys, limit=limit)
+    module_number = str(chapter.get("number", "")).strip() if chapter else ""
+    local_scope = f"module {module_number}" if module_number else "this module"
+    return (
+        f"**Triangulation anchors.** In {local_scope}'s {surface}, directly "
+        f"verified anchors for the **{profile.title}** lane include {anchors} Use "
+        "them to test source-guide claims, method boundaries, governance constraints, "
+        "and safety gates without replacing the module's `ageintNNN` provenance."
+    )
+
 def research_anchor_rows() -> str:
     """Render a compact table of curated research anchors."""
     rows = [

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 from pathlib import Path
 from typing import Any
@@ -19,16 +20,19 @@ from _markdown_split import (
 )
 
 from .types import (
-    ManuscriptManifest,
     ManuscriptSection,
-    SlugRegistry as _SlugRegistry,
     ordering_config_yaml as _ordering_config_yaml,
     slugify as _slug,
 )
 from ._04_part import build_manuscript_manifest, _read_template, _visual_synthesis
+from ._heading_titles import chapter_landmark_titles
 
 
 MAX_TEXT_FILE_LINES = DEFAULT_MAX_TEXT_FILE_LINES
+
+
+def _demote_chapter_continuation_headings(text: str) -> str:
+    return re.sub(r"^## (.+ \(continued \d+\))$", r"### \1", text, flags=re.MULTILINE)
 
 
 def _first_fragment_path(section: ManuscriptSection) -> str:
@@ -45,6 +49,7 @@ def _first_fragment_path(section: ManuscriptSection) -> str:
 def _chapter_fragments(section: ManuscriptSection, rendered: str) -> list[tuple[str, str]]:
     lead, blocks = _split_h2_blocks(rendered)
     block_map = {heading: block for heading, block in blocks}
+    headings = chapter_landmark_titles(section.title)
     path = Path(section.relative_path)
     base_dir = path.parent / path.stem
     grouped = [
@@ -52,51 +57,22 @@ def _chapter_fragments(section: ManuscriptSection, rendered: str) -> list[tuple[
             "00-overview.md",
             [
                 lead,
-                block_map.get("Figures and course links", ""),
-                block_map.get("Textbook primer", ""),
-                block_map.get("Learning outcomes", ""),
-                block_map.get("Core vocabulary", ""),
+                block_map.get(headings["orientation"], ""),
             ],
         ),
-        ("01-topic-lessons.md", [block_map.get("Topic lessons", "")]),
-        (
-            "02-worked-practice.md",
-            [
-                block_map.get("Worked safe example", ""),
-                block_map.get("Practice sequence", ""),
-                block_map.get("Knowledge check", ""),
-            ],
-        ),
-        (
-            "03-architecture-sources.md",
-            [
-                block_map.get("Module architecture", ""),
-                block_map.get("Evidence and source canon", ""),
-            ],
-        ),
-        (
-            "04-research-governance.md",
-            [
-                block_map.get("Research-backed synthesis", ""),
-                block_map.get("Agentic translation boundary", ""),
-                block_map.get("Governance, rights, and assurance", ""),
-            ],
-        ),
-        (
-            "05-assessment-review.md",
-            [
-                block_map.get("Assessment artifacts and capstone pathway", ""),
-                block_map.get("Refresh, safety, and source maps", ""),
-                block_map.get("Review checklist", ""),
-                block_map.get("Cross-links", ""),
-            ],
-        ),
+        ("01-practice-studio.md", [block_map.get(headings["practice"], "")]),
+        ("02-evidence-contract.md", [block_map.get(headings["evidence"], "")]),
+        ("03-governance-boundary.md", [block_map.get(headings["governance"], "")]),
+        ("04-assessment-route.md", [block_map.get(headings["assessment"], "")]),
     ]
     fragments: list[tuple[str, str]] = []
     for file_name, parts in grouped:
         text = "\n\n".join(part for part in parts if part).rstrip()
         if text:
-            fragments.extend(_split_by_line_budget((base_dir / file_name).as_posix(), text))
+            fragments.extend(
+                (path, _demote_chapter_continuation_headings(fragment))
+                for path, fragment in _split_by_line_budget((base_dir / file_name).as_posix(), text)
+            )
     return fragments
 
 
@@ -138,7 +114,6 @@ def _write_generated_config(
     base = source_config.read_text(encoding="utf-8").rstrip() if source_config.is_file() else ""
     config = (
         f"{base}\n\n"
-        "# Generated figure registry\n"
         "figures:\n"
         "  registry: ../figures/figure_registry.json\n\n"
         "# Generated manuscript ordering\n"

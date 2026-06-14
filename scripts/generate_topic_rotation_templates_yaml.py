@@ -41,7 +41,7 @@ RISK_WHY_FAILURE_HINTS: dict[str, str] = {
 MISCONCEPTION_FALLBACKS: tuple[str, ...] = (
     "that {topic} can be used while ignoring the rule to {focus}",
     "that {topic} is optional whenever {focus} feels inconvenient",
-    "that {topic} proves intent without reviewing alternative explanations",
+    "that {topic} establishes intent without reviewing alternative explanations",
     "that {topic} replaces human review whenever evidence looks plausible",
 )
 
@@ -56,7 +56,7 @@ MISCONCEPTION_RISK_TEMPLATES: tuple[str, ...] = (
     ),
     (
         "that completing the **{display_title}** artifact in "
-        "**{chapter_anchor}** proves real-world authorization"
+        "**{chapter_anchor}** establishes real-world authorization without separate approval evidence"
     ),
 )
 

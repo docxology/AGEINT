@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 """Registry-backed AGEINT figure generation.
 
 The figure pipeline keeps visual assets generated and auditable. Mermaid
@@ -8,25 +6,18 @@ synthetic conceptual plates all resolve to local PNG files under
 ``output/figures/`` and a registry JSON that manuscript rendering consumes.
 """
 
+from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from enum import Enum
-import hashlib
-from importlib import import_module
-import io
-import json
-import math
 from pathlib import Path
-import re
-import shutil
-import subprocess  # nosec B404 - fixed argv, no shell, local renderer.
-import textwrap
-import urllib.error
-import urllib.request
-from typing import Any, Sequence, cast
+from typing import Any
 
-from curriculum import Curriculum
-from markdown_refs import figure_ref
+from ._01c_artifact_evidence_spec import ARTIFACT_EVIDENCE_VISUALS
+from ._01d_scholarship_quality_spec import SCHOLARSHIP_QUALITY_VISUALS
+from ._01e_sat_method_spec import SAT_METHOD_VISUALS
+from ._01f_source_metadata_spec import SOURCE_METADATA_VISUALS
+from ._01h_claim_calibration_spec import CLAIM_CALIBRATION_VISUALS
 
 
 class FigureKind(str, Enum):
@@ -52,10 +43,22 @@ class FigureSpec:
     section_label: str
     provenance: dict[str, str]
     source_artifact_path: str = ""
+    long_description: str = ""
+    semantic_role: str = "conceptual_or_audit_visual"
+    evidence_role: str = "reader navigation, explanation, or local artifact-audit support"
+    quantitative: bool = False
+    unit: str = "not_applicable"
+    denominator: str = "not_applicable"
+    counting_rule: str = "not_applicable"
+    interpretation_limit: str = (
+        "Visual structure is explanatory and not a measured capability score, "
+        "benchmark result, statistical finding, or hidden source-quality ranking."
+    )
 
     def registry_entry(self, project_root: Path) -> dict[str, Any]:
         """Return a JSON-serializable registry row with current file hash."""
-        from ._03_part import _sha256, _validate_png_asset
+        from ._03_part import _sha256
+        from ._04_part import _validate_png_asset
 
         asset = project_root / self.output_path
         _validate_png_asset(asset, self)
@@ -295,6 +298,48 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
         "source_section": "orientation.md",
     },
     {
+        "slug": "ageint-visual-accessibility-contract",
+        "title": "AGEINT Visual Accessibility Contract",
+        "caption": (
+            "Source-backed accessibility contract mapping W3C WAI complex-image guidance, "
+            "WCAG 2.2 non-text-content requirements, Section508 alternative-text and PDF "
+            "checking guidance, and USWDS data-visualization guidance to AGEINT's generated "
+            "figure registry. It shows how each figure carries a caption, short alt text, "
+            "long description, source section, provenance, and rendered-artifact validation "
+            "before PDF or web use."
+        ),
+        "alt_text": (
+            "Matrix showing how short alt text, long descriptions, captions, direct visual "
+            "labels, provenance, and rendered-output audits make AGEINT figures accessible "
+            "and traceable."
+        ),
+        "renderer": "visual_accessibility_contract",
+        "source_section": "orientation.md",
+    },
+    {
+        "slug": "ageint-visual-quality-audit-dashboard",
+        "title": "AGEINT Visual Quality Audit Dashboard",
+        "caption": (
+            "Machine-checkable dashboard for the generated figure pipeline. It summarizes "
+            "the quality gates that every AGEINT visual must pass: readable PNG assets, "
+            "square-normalized layout, informative captions, short alt text, long "
+            "descriptions, embedded PNG metadata, local provenance, and rendered-output "
+            "link safety. The companion machine-readable artifact is "
+            "`output/figures/visual_quality_audit.json`."
+        ),
+        "alt_text": (
+            "Matrix-style dashboard listing AGEINT figure quality gates for readable "
+            "assets, layout, reader text, metadata, provenance, and PDF or web link safety."
+        ),
+        "renderer": "visual_quality_audit_dashboard",
+        "source_section": "orientation.md",
+    },
+    *ARTIFACT_EVIDENCE_VISUALS,
+    *SCHOLARSHIP_QUALITY_VISUALS,
+    *SAT_METHOD_VISUALS,
+    *SOURCE_METADATA_VISUALS,
+    *CLAIM_CALIBRATION_VISUALS,
+    {
         "slug": "ageint-hria-dpia-map",
         "title": "AGEINT HRIA/DPIA Map",
         "caption": "The HRIA/DPIA map separates purpose, affected groups, high-risk triggers, safeguards, and residual risk.",
@@ -447,21 +492,3 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
         "source_section": "appendix:i",
     },
 )
-
-_CONCEPT_PLATES_PATH = (
-    Path(__file__).resolve().parents[2] / "data" / "figures" / "concept_plates.jsonl"
-)
-
-
-def _load_concept_plates() -> tuple[dict[str, str], ...]:
-    """Load deterministic teaching-plate specifications from JSONL data."""
-    if not _CONCEPT_PLATES_PATH.is_file():
-        return ()
-    rows: list[dict[str, str]] = []
-    for line in _CONCEPT_PLATES_PATH.read_text(encoding="utf-8").splitlines():
-        if line.strip():
-            rows.append(dict(json.loads(line)))
-    return tuple(rows)
-
-
-AI_CONCEPTUAL_PLATES: tuple[dict[str, str], ...] = _load_concept_plates()

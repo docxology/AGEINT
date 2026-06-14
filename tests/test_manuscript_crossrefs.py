@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import re
 
-from manuscript_quality.inventory_helpers import manuscript_dir
+from manuscript_quality.inventory_helpers import manuscript_dir, section_text
 from rendered_reference_audit import (
     TitleRule,
     audit_rendered_references,
@@ -38,7 +38,9 @@ HARD_CODED_NUMBER_RE = re.compile(
     r"(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b|\bAppendix\s+[A-Z]\b"
 )
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
-FORMALISM_REF_RE = re.compile(r"\b[Ff]ormalisms?\b")
+FORMALISM_REF_RE = re.compile(
+    r"\b[Ff]ormalisms?\s+(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b"
+)
 READER_FACING_CROSSREF_PREFIXES = (
     "figPrefix:\n  - Figure\n  - Figures",
     "secPrefix:\n  - Section\n  - Sections",
@@ -288,7 +290,7 @@ def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path
     web.mkdir()
     (web / "index.html").write_text(
         "<p>Visual guide for the section Figure&nbsp;1.</p>\n"
-        "<p>Course path: Section&nbsp;2, Section&nbsp;3.</p>\n",
+        "<p>Navigation links: Section&nbsp;2, Section&nbsp;3.</p>\n",
         encoding="utf-8",
     )
 
@@ -322,7 +324,7 @@ def test_rendered_reference_audit_flags_unresolved_citation_key(tmp_path: Path) 
     (manuscript / "references-source-guide-001-050.bib").write_text(
         '@misc{ageint001,\n  title = {Real entry},\n}\n', encoding="utf-8"
     )
-    (parts / "01-topic-lessons.md").write_text(
+    (parts / "01-practice-studio.md").write_text(
         "Topic rests on [@ageint001] and [@ageint999].\n"
         "Cross-refs [@sec:foo] and [@fig:bar] are fine.\n"
         "A URL like medium.com/@anil.jain.baba is not a citation.\n",
@@ -366,7 +368,7 @@ def test_generated_cross_links_are_label_backed_not_title_prose(built_output: Pa
             fragment.read_text(encoding="utf-8")
             for fragment in sorted(path.parent.glob("*.md"))
         )
-        cross_links = text.split("## Cross-links", 1)[1].split("\n## ", 1)[0]
+        cross_links = section_text(text, "Learning-path cross-links")
         if "[@sec:" not in cross_links or "adjacent AGEINT architecture" in cross_links:
             rel = path.relative_to(PROJECT_ROOT).as_posix()
             violations.append(f"{rel}: {cross_links.strip()}")
@@ -453,7 +455,7 @@ def test_overview_fragments_define_local_figures_when_assigned(built_output: Pat
         for label in labels:
             if f"{{#{label}}}" not in combined:
                 violations.append(f"{source_section}: missing definition for {label}")
-        if "## Figures and course links" in combined and not FIGURE_REF_RE.search(combined):
+        if "Figures and course links" in combined and not FIGURE_REF_RE.search(combined):
             violations.append(f"{source_section}: figures block without [@fig:…] references")
     assert violations == []
 
@@ -465,5 +467,5 @@ def test_every_generated_manuscript_file_has_resolved_tokens_and_figure_links(bu
         assert not TOKEN_RE.search(text), path
         if path.name in {"references.md", "preamble.md"}:
             continue
-        if "## Figures and course links" in text:
+        if "Figures and course links" in text:
             assert list(FIGURE_REF_RE.finditer(text)), path

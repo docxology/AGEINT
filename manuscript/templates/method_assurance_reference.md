@@ -27,6 +27,29 @@ analogy, lesson design, or governance rationale, the generated prose must not
 promote it into a benchmark, deployment claim, or proof of autonomous
 performance.
 
+## Claim calibration and statistical limits
+
+AGEINT treats citation counts, generated file counts, figure counts, PDF page
+counts, URI-link counts, and validator outcomes as **artifact telemetry**. They
+show what the local build produced and what the verifier checked; they are not
+learning-effect estimates, operational-performance measures, safety guarantees,
+or statistical evidence that the curriculum improves real-world analytic
+decisions. Stronger empirical or evaluated-capability language requires a
+direct benchmark, study, field evaluation, incident dataset, or scholarly
+empirical source with the method, denominator, subgroup/context caveat, and
+refresh trigger visible.
+
+The claim-calibration audit enforces that separation after manuscript
+generation. It scans high-risk empirical, statistical, governance, safety,
+visualization, artifact-readiness, and formalism language; records the citation
+keys and source-support strength visible in the same row; allows explicit
+boundary language such as "not a benchmark" or "correct the misconception";
+and fails unsupported proof-language, p-values, measured-performance claims, or
+formalisms without citations and limitations. The companion visual
+[@fig:ageint-claim-calibration-and-visual-semantics] makes the control surface
+readable, while `output/reports/claim_calibration.json` and `.md` make the
+same disposition auditable by script.
+
 Protocol claims are version-sensitive. MCP references use the 2025-06-18
 specification for interoperability language and the current MCP security
 best-practice page for confused-deputy, token-handling, consent, and

@@ -17,7 +17,9 @@ dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "reportlab>=4.0"]
 [tool.setuptools]
 package-dir = {"" = "src"}
 py-modules = [
+    "artifact_evidence",
     "build_pipeline",
+    "claim_calibration",
     "citation_workflow",
     "curriculum",
     "manuscript_templates",
@@ -25,6 +27,9 @@ py-modules = [
     "output_docs",
     "rendered_heading_support",
     "rendered_reference_audit",
+    "scholarship_quality",
+    "source_metadata",
+    "source_support_strength",
     "source_identity",
     "template_resolver",
     "safety_contract",

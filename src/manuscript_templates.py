@@ -28,218 +28,14 @@ TEMPLATE_NAMES: Final[tuple[str, ...]] = (
     "references.md",
 )
 
+SOURCE_OWNED_TEMPLATE_NAMES: Final[frozenset[str]] = frozenset(
+    {"abstract.md", "orientation.md"}
+)
+
 DEFAULT_TEMPLATES: Final[dict[str, str]] = {
-    "abstract.md": """# Abstract {#sec:abstract}
-
-## Graphical Abstract
-
-{{VISUAL_SYNTHESIS}}
-
-AGEINT, or Agentic Intelligence, names the application of autonomous and
-semi-autonomous AI-agent systems to intelligence collection, processing,
-exploitation, analysis, production, dissemination, and governed action. This
-project turns {{CURRICULUM_SOURCE_GUIDE}} into a modular curriculum with
-**{{CURRICULUM_PART_COUNT}} parts**, **{{CURRICULUM_CHAPTER_COUNT}} modules**,
-**{{CURRICULUM_APPENDIX_COUNT}} methods appendices**,
-**{{CURRICULUM_PATTERN_COUNT}} named AGEINT patterns**, and
-**{{CURRICULUM_REFERENCE_COUNT}} parsed source-guide references**.
-
-{{SOURCE_QUALITY_SPINE}}
-
-{{INTELLIGENCE_RESEARCH_SPINE}}
-
-The operational stance is defensive and educational: examples use synthetic
-fixtures, public declassified materials, owned lab ranges, or tabletop
-scenarios, and every module foregrounds provenance, uncertainty, legal
-authority, human oversight, and cognitive security.
-
-The scholarship layer is deliberately conservative. Perplexity and other
-discovery tools can suggest candidate sources, but the manuscript cites only
-directly represented official, standards, or scholarly anchors that survive
-manual review and rebuild into the BibTeX corpus.
-""",
-    "orientation.md": """# Curriculum Orientation {#sec:curriculum_orientation}
-
-This manuscript is a runtime-hydrated curriculum atlas. The source templates
-keep guide-derived values as neutral tokens, while the resolved manuscript in
-`output/manuscript/` injects titles, labels, counts, source spines, semantic
-paths, and bibliography rows from `data/curriculum/`.
-
-## Runtime inventory {#sec:runtime-inventory}
-
-| Derived artifact | Runtime value |
-|---|---:|
-| Curriculum parts | {{CURRICULUM_PART_COUNT}} |
-| Curriculum modules | {{CURRICULUM_CHAPTER_COUNT}} |
-| Methods appendices | {{CURRICULUM_APPENDIX_COUNT}} |
-| AGEINT patterns | {{CURRICULUM_PATTERN_COUNT}} |
-| Parsed references | {{CURRICULUM_REFERENCE_COUNT}} |
-| Official source-quality anchors | {{SOURCE_QUALITY_ANCHOR_COUNT}} |
-| Intelligence research anchors | {{INTELLIGENCE_RESEARCH_ANCHOR_COUNT}} |
-| Intelligence practice lenses | {{INTELLIGENCE_PRACTICE_LENS_COUNT}} |
-
-## How to use this atlas {#sec:how-to-use-this-atlas}
-
-Read AGEINT as a navigable atlas rather than a linear textbook. Start with
-[@sec:curriculum-map] and [@fig:ageint-curriculum-map] to choose the part, open
-the linked part introduction to see the module sequence, then use the chapter
-overview for the figures, source lane, and assessment artifact that matter for
-the current decision. Keep [@sec:bibliography_atlas] open when checking a claim,
-because it preserves source identity, provenance type, and refresh context in
-one place.
-
-## Reader paths {#sec:reader-paths}
-
-| Reader | Fast path | Evidence to keep |
-|---|---|---|
-| Instructor | Pair the linked part introduction from [@sec:curriculum-map] with the module review checklist before assigning a studio exercise. | rubric row, excluded-action note, and source refresh trigger |
-| Learner | Read the primer, topic lessons, worked safe example, and knowledge check before drafting a capstone packet. | claim ledger entry, uncertainty note, and blocked-use statement |
-| Assurance reviewer | Follow [@sec:source-lane-map], governance card, [@sec:orientation-figures-and-course-links], and [@sec:bibliography_atlas] for each material claim. | source key, review owner, caveat, and reproducible artifact path |
-| Builder or maintainer | Treat generated output as an audit surface; update data, templates, manifest code, or figure specs, then rebuild. | changed source file, regeneration command, and validation result |
-
-## Consolidated glossary and index {#sec:consolidated-glossary-and-index}
-
-Use this compact index to route common terms to the right audit surface before
-reading a chapter in detail.
-
-| Term | Working meaning | Primary audit surface |
-|---|---|---|
-| Source lane | The provenance, source tier, and refresh context that govern a claim. | [@sec:source-lane-map] and [@sec:bibliography_atlas] |
-| Claim ledger | A reviewable record of claim, evidence, caveat, confidence, and owner. | Research governance and [@sec:capstone-workflow] |
-| Safe substitution | A replacement of unsafe operational action with synthetic, public, tabletop, or governance work. | [@sec:safe-substitution-matrix] |
-| Reviewer gate | A named human approval or challenge point before reuse, presentation, or tool execution. | Assessment review and assurance rows |
-| Figure registry | The reproducible map from figure label to generated asset, caption, and source section. | [@sec:orientation-figures-and-course-links] |
-
-## Curriculum map {#sec:curriculum-map}
-
-{{CURRICULUM_PART_ROWS}}
-
-## Intelligence research profiles {#sec:intelligence-research-profiles}
-
-{{INTELLIGENCE_PROFILE_ROWS}}
-
-## Intelligence practice lenses {#sec:intelligence-practice-lenses}
-
-{{INTELLIGENCE_PRACTICE_LENS_ROWS}}
-
-## Research anchor atlas {#sec:research-anchor-atlas}
-
-{{INTELLIGENCE_RESEARCH_ROWS}}
-
-## Source lane map {#sec:source-lane-map}
-
-{{INTELLIGENCE_SOURCE_LANE_ROWS}}
-
-## Safe substitution matrix {#sec:safe-substitution-matrix}
-
-{{SAFE_SUBSTITUTION_ROWS}}
-
-## Capstone workflow {#sec:capstone-workflow}
-
-{{CAPSTONE_SCAFFOLD_ROWS}}
-
-## Capstone model-answer exemplars {#sec:capstone-model-answer-exemplars}
-
-These exemplars show the expected shape of a strong answer without prescribing
-a single conclusion. Use them as answer-key patterns for selected capstone
-reviews.
-
-| Capstone pattern | Model-answer evidence | What earns revision |
-|---|---|---|
-| Source-quality packet | Names the `ageintNNN` source key, source lane, direct evidence, caveat, uncertainty, and refresh trigger. | Claim cites a summary, omits the source key, or hides uncertainty. |
-| Safe-lab packet | States the learning question, allowed inputs, excluded actions, tool allowlist, stop condition, and reviewer gate. | Uses private data, live targets, credentialed access, or an unreviewed tool path. |
-| Assurance packet | Connects rubric score, rights impact, accessibility check, remediation owner, and debrief handoff. | Treats the score as proof, omits affected users, or leaves no owner for retest. |
-
-## Accessibility and UDL review {#sec:accessibility-and-udl-review}
-
-{{ACCESSIBILITY_REVIEW_ROWS}}
-
-## Procurement and vendor oversight {#sec:procurement-and-vendor-oversight}
-
-{{PROCUREMENT_OVERSIGHT_ROWS}}
-
-## HRIA and DPIA worksheet {#sec:hria-and-dpia-worksheet}
-
-{{HRIA_DPIA_WORKSHEET_ROWS}}
-
-## Data lineage registry {#sec:data-lineage-registry}
-
-{{DATA_LINEAGE_REGISTRY_ROWS}}
-
-## Assessment integrity protocol {#sec:assessment-integrity-protocol}
-
-{{ASSESSMENT_INTEGRITY_ROWS}}
-
-## Agent incident response drill {#sec:agent-incident-response-drill}
-
-{{AGENT_INCIDENT_RESPONSE_ROWS}}
-
-## Role-based competency map {#sec:role-based-competency-map}
-
-{{ROLE_COMPETENCY_ROWS}}
-
-## Adversarial assurance cycle {#sec:adversarial-assurance-cycle}
-
-{{ADVERSARIAL_ASSURANCE_ROWS}}
-
-## Model and dataset documentation card {#sec:model-and-dataset-documentation-card}
-
-{{MODEL_DATASET_CARD_ROWS}}
-
-## Transparency and communication notice {#sec:transparency-and-communication-notice}
-
-{{TRANSPARENCY_NOTICE_ROWS}}
-
-## Records retention and audit trail {#sec:records-retention-and-audit-trail}
-
-{{RETENTION_AUDIT_ROWS}}
-
-## Release and change-control gate {#sec:release-and-change-control-gate}
-
-{{RELEASE_CHANGE_CONTROL_ROWS}}
-
-## Risk exception and acceptance memo {#sec:risk-exception-and-acceptance-memo}
-
-{{RISK_EXCEPTION_ROWS}}
-
-## Learner support and accommodation plan {#sec:learner-support-and-accommodation-plan}
-
-{{LEARNER_SUPPORT_ROWS}}
-
-## Instructor question bank {#sec:instructor-question-bank}
-
-{{QUESTION_BANK_ROWS}}
-
-## Remediation backlog {#sec:remediation-backlog}
-
-{{REMEDIATION_BACKLOG_ROWS}}
-
-## Scholarship and governance stance {#sec:scholarship-and-governance-stance}
-
-AGEINT treats agentic intelligence as a governed socio-technical practice, not
-as a bag of prompts or autonomous tricks. The curriculum therefore keeps AI
-agent evaluation, identity, authorization, secure tool use, structured analytic
-tradecraft, cognitive security, OSINT/GEOINT integrity, and ICS/OT safety in
-one source-backed frame. Each source anchor has a curriculum role, a domain,
-and a provenance type so readers can distinguish law, standards, official
-guidance, public-domain historical material, and scholarly synthesis.
-
-## Figures and course links {#sec:orientation-figures-and-course-links}
-
-{{VISUAL_SYNTHESIS}}
-
-## AGEINT pattern library {#sec:ageint-pattern-library}
-
-{{AGEINT_PATTERN_ROWS}}
-
-## Safety rail {#sec:safety-rail}
-
-All exercises remain educational, lawful, defensive, historical, synthetic,
-and non-operational. Modules may discuss intelligence, cyber, influence,
-counterintelligence, and industrial systems as objects of study, but they do
-not provide instructions for unauthorized collection, evasion, exploitation,
-manipulation, covert targeting, or real-world harm.
-""",
+    # Abstract and orientation are authored source templates. Keeping stale
+    # embedded fallbacks for them risks silently dropping reader-contract
+    # changes in non-repo render contexts.
     "method_assurance_reference.md": """# Method & Assurance Reference {#sec:method-assurance-reference}
 
 This reference holds the shared method, governance, and assurance tables that
@@ -281,23 +77,23 @@ to the canonical table in this section.
 
 {{SECTION_SUMMARY}}
 
-## Figures and course links
+## {{SECTION_TITLE}} visual navigation and module map
 
 {{VISUAL_SYNTHESIS}}
 
-## Runtime module list
+## {{SECTION_TITLE}} module roster and source-lane inventory
 
 {{SECTION_ROWS}}
 """,
     "chapter.md": """# {{SECTION_TITLE}} {#{{SECTION_LABEL}}}
 
-## Figures and course links
+### Figures and course links
 
 {{VISUAL_SYNTHESIS}}
 
 {{SECTION_BODY}}
 
-## Cross-links
+### Learning-path cross-links
 
 {{SECTION_NAV_PROSE}}
 
@@ -307,11 +103,11 @@ to the canonical table in this section.
 
 {{SECTION_BODY}}
 
-## Figures and course links
+## {{SECTION_TITLE}} visual navigation and evidence figures
 
 {{VISUAL_SYNTHESIS}}
 
-## Runtime item map
+## {{SECTION_TITLE}} runtime item map and source roster
 
 {{SECTION_ROWS}}
 """,
@@ -324,7 +120,7 @@ curated anchor keeps its source URL, source lane, checked date, refresh trigger,
 and verification note visible so moved pages, blocked automated fetches, and
 volatile standards can be reviewed without changing citation keys.
 
-## Figures and course links
+## Bibliography atlas navigation figures and source links
 
 {{VISUAL_SYNTHESIS}}
 
@@ -342,7 +138,7 @@ retain draft-status caveats rather than being treated as final guidance.
 
 {{SOURCE_REFRESH_ROWS}}
 
-## Bibliography rows {#sec:bibliography-rows}
+## Bibliography atlas rows: guide, anchor, and support-source keys {#sec:bibliography-rows}
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}
 """,
@@ -356,6 +152,21 @@ bibliography entries into source prose.
 }
 
 
+def template_text(name: str) -> str:
+    """Return the canonical template text for ``name``."""
+
+    canonical = Path(__file__).resolve().parents[1] / "manuscript" / "templates" / name
+    if canonical.is_file():
+        return canonical.read_text(encoding="utf-8")
+    if name in SOURCE_OWNED_TEMPLATE_NAMES:
+        raise FileNotFoundError(
+            f"{name} is a source-owned manuscript template and has no embedded "
+            "fallback; keep manuscript/templates available to avoid stale "
+            "abstract or orientation prose."
+        )
+    return DEFAULT_TEMPLATES[name]
+
+
 def _write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text.rstrip() + "\n", encoding="utf-8")
@@ -367,7 +178,7 @@ def write_template_library(templates_dir: Path) -> list[Path]:
     written: list[Path] = []
     for name in TEMPLATE_NAMES:
         path = templates_dir / name
-        _write(path, DEFAULT_TEMPLATES[name])
+        _write(path, template_text(name))
         written.append(path)
     return written
 

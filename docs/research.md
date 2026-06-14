@@ -194,16 +194,76 @@ OASIS CSAF now points at the canonical OASIS Standard HTML page, and the
 International AI Safety Report 2026 anchor points at the official report
 landing page, with the PDF and arXiv record treated as secondary evidence.
 
-The 2026-06-12 section/reference auto-link pass keeps the same source corpus but
-turns the generated navigation and bibliography surfaces into real links:
-orientation sections carry stable labels, curriculum-map rows link each part
-intro and module-map figure, and research-anchor / bibliography / source-refresh
-key tables use Pandoc citations rather than literal `@key` text. The current
-local citation inventory reports 377 generated Markdown files, 11,417 generated
-Markdown citation occurrences, 723 source sections, and 0 zero-citation source
-sections. The same local artifact pass confirms 161 registered figures with
-substantial captions and alt text, a 1,697-page combined PDF, and 0 Markdown-file
-link targets in PDF annotations.
+The 2026-06-12 section/reference auto-link, profile-anchor, and Synthetic
+Analytic Tradecraft orientation passes keep the same source corpus while turning
+the generated navigation and bibliography surfaces into real links and making
+the early reader contract explicit: orientation sections carry stable labels,
+curriculum-map rows link each part intro and module-map figure, and research-anchor /
+bibliography / source-refresh key tables use Pandoc citations rather than
+literal `@key` text. The
+verifier-first artifact-evidence manifest now reports 369 generated Markdown files,
+15,382 generated Markdown citation occurrences, 723 source sections, and 0
+zero-citation source sections. The same local artifact manifest confirms 170
+registered figures plus one non-numbered cover-art PNG, with substantial
+captions, alt text, long descriptions,
+official accessibility guidance metadata, embedded PNG accessibility/provenance
+and visual-semantics metadata, machine-readable visual-quality audit metadata, a 1,619-page combined
+PDF, 4,181 URI links, 0 Markdown-file link targets in PDF annotations, and passing
+`source_metadata_ok` over 258 metadata rows. The bibliography-atlas
+source-section coverage output now uses explicit coverage-anchor prose rather
+than generic evidence prose, and its citation rows use compact numeric columns
+with wider descriptive/citation-link columns for PDF readability.
+The scholarship-quality audit additionally reports 0 uncited claim-bearing
+generated files, 0 thin claim-bearing generated files, and six single-source-family
+claim-bearing review-warning rows. Topic lessons, worked examples, source-canon
+sections, and review-checklist sections now carry profile-specific external
+triangulation anchors while preserving the locked source-guide citation spine.
+The follow-on SAT method-contract check makes the early abstract/orientation
+framing testable: the generated manuscript must keep the Synthetic Analytic
+Tradecraft thesis, the source-family triangulation language, the negative-control
+testing language, and the registry-backed
+`fig:ageint-synthetic-tradecraft-method-contract` reference. The analysis-validation
+check likewise requires the abstract figure reference, the
+`sec:analysis-validation-protocol` orientation section, claim-class validation
+questions, failure-mode language, and the
+`fig:ageint-analysis-validation-matrix` reference. If those terms are removed
+while citation counts remain high, `scripts/audit_scholarship_quality.py` and
+the unified artifact-evidence manifest must fail.
+The RedTeam family-coverage follow-up also requires every claim-bearing
+generated manuscript family to map to a canonical analysis-validation lane,
+evidence signal, and failure signal before it can be treated as current.
+
+The 2026-06-13 metadata-verifier hardening pass adds no new external citations
+and does not change `checked_as_of` dates. It makes the source metadata explicit
+for 119 rows that previously depended on fallback semantics: 109 legacy
+intelligence anchors now carry `source_lane` from their existing `domain` and
+`source_tier` from their existing `source_type`, and 10 source-quality support
+anchors use `source_quality_spine` / `source_quality_anchor`. The new
+`source_metadata_ok` artifact-evidence check fails on blank lane/tier fields,
+fallback-dependent rows, or source-quality semantic mismatches. The same pass
+raised the then-current figure registry to 169 with the source-metadata integrity visual.
+
+The 2026-06-14 claim-calibration and visual-semantics pass adds no new external
+citations and does not change `checked_as_of` dates. It adds
+`src/claim_calibration.py`, `scripts/audit_claim_calibration.py`, source-support
+strength classification for source-guide and curated-anchor keys, registry
+schema `1.4` visual-semantics fields, and the
+`fig:ageint-claim-calibration-and-visual-semantics` control-map figure. The
+unified artifact-evidence manifest exposes `claim_calibration_ok`, so
+unsupported proof-language, p-value language, measured-performance claims,
+decorative formalisms, or weak-source-only high-risk claims fail even when
+ordinary citation counts, PDF links, and figure rendering remain green.
+
+The 2026-06-13 cover, abstract, and TOC hardening pass also adds no new
+external citations. It moves the former graphical-abstract role into
+orientation support, gives the PDF title page deterministic non-numbered cover
+art, and keeps the abstract as one plaintext Synthetic Analytic Tradecraft
+contract. The follow-up graphical-abstract/TOC-title pass makes
+`fig:ageint-graphical-abstract` a Python-rendered Synthetic Tradecraft System
+Atlas and changes module H2 entries into chapter-specific orientation,
+practice-studio, evidence-contract, governance-boundary, and assessment-route
+landmarks. The PDF TOC intentionally exposes H1/H2 entries only; deeper
+generated scaffolds remain in the body and generated HTML for local navigation.
 
 ## 2026-05-22 cognitive-security synthesis pass (verified encode only)
 

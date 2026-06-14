@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from importlib import import_module
+import json
 import os
 from pathlib import Path
 import re
@@ -27,7 +28,7 @@ def _normalize_png_canvas(output: Path, size: int = 1400) -> None:
     x = (size - fitted.width) // 2
     y = (size - fitted.height) // 2
     canvas.alpha_composite(fitted, (x, y))
-    normalized = output.with_name(f".{output.stem}.normalized{output.suffix}")
+    normalized = _temporary_png_path(output)
     if normalized.exists():
         normalized.unlink()
     try:
@@ -66,6 +67,47 @@ def _validate_png_asset(path: Path, spec: FigureSpec | None = None) -> None:
         image.verify()
     if width <= 0 or height <= 0:
         raise ValueError(f"Figure asset has invalid dimensions{label}: {path}")
+
+
+def _embed_png_metadata(path: Path, spec: FigureSpec) -> None:
+    """Write a compact accessibility/provenance contract into PNG text chunks."""
+    _validate_png_asset(path, spec)
+    image_mod, _, _, _ = _pil_modules()
+    pnginfo_mod = import_module("PIL.PngImagePlugin")
+    png_info = pnginfo_mod.PngInfo()
+    metadata = {
+        "AGEINT.Label": spec.label,
+        "AGEINT.Title": spec.title,
+        "AGEINT.Caption": spec.caption,
+        "AGEINT.AltText": spec.alt_text,
+        "AGEINT.LongDescription": spec.long_description,
+        "AGEINT.SourceSection": spec.source_section,
+        "AGEINT.SectionLabel": spec.section_label,
+        "AGEINT.Kind": spec.kind.value,
+        "AGEINT.SemanticRole": spec.semantic_role,
+        "AGEINT.EvidenceRole": spec.evidence_role,
+        "AGEINT.Quantitative": str(spec.quantitative).lower(),
+        "AGEINT.Unit": spec.unit,
+        "AGEINT.Denominator": spec.denominator,
+        "AGEINT.CountingRule": spec.counting_rule,
+        "AGEINT.InterpretationLimit": spec.interpretation_limit,
+        "AGEINT.Provenance": json.dumps(spec.provenance, sort_keys=True),
+    }
+    for key, value in metadata.items():
+        png_info.add_text(key, str(value), zip=len(str(value)) > 160)
+    with image_mod.open(path) as image:
+        image.load()
+        payload = image.convert("RGB")
+    normalized = _temporary_png_path(path)
+    if normalized.exists():
+        normalized.unlink()
+    try:
+        payload.save(normalized, format="PNG", compress_level=3, pnginfo=png_info)
+        normalized.replace(path)
+    finally:
+        if normalized.exists():
+            normalized.unlink()
+    _validate_png_asset(path, spec)
 
 
 def _pil_modules() -> tuple[Any, Any, Any, Any]:
@@ -135,6 +177,7 @@ def _relpath(path: Path, start: Path) -> str:
 
 __all__ = [
     "FigureSpec",
+    "_embed_png_metadata",
     "_entry",
     "_font",
     "_markdown_escape",

@@ -2,10 +2,10 @@
 
 {{SECTION_BODY}}
 
-## Figures and course links
+## {{SECTION_TITLE}} visual navigation and evidence figures
 
 {{VISUAL_SYNTHESIS}}
 
-## Runtime item map
+## {{SECTION_TITLE}} runtime item map and source roster
 
 {{SECTION_ROWS}}

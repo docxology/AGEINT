@@ -4,7 +4,7 @@ task: Verifier hardening, TODO execution, and current-ledger cleanup
 effort: E5
 phase: complete
 started: 2026-06-03
-updated: 2026-06-12
+updated: 2026-06-13
 ---
 
 # AGEINT ISA Closeout And Current Ledger
@@ -32,9 +32,11 @@ Historical checkpoints from the closed ISA remain useful context only:
 - The original 7 synthesis methods figures landed and rendered, including the
   CDR cascade, MAESTRO, SRE circuit breaker, decoherence/CDR isomorphism,
   unified epistemic stack, cognitive attack layers, and HRO crosswalk.
-- Later expansion increased the current project surface to 16 parts, 51
-  chapters, 9 appendices, 312 source-guide references, 248 curated research
-  anchors, and 161 registered figures.
+- Later expansion, visual-accessibility hardening, and metadata-verifier
+  hardening increased the current project surface to 16 parts, 51 chapters,
+  9 appendices, 312 source-guide references, 248 curated research anchors,
+  10 source-quality support anchors, 258 source-metadata rows, and 170
+  registered figures.
 - Previous URL follow-ups for OASIS CSAF and the International AI Safety Report
   are closed in the 2026-06-12 pass by switching to directly verified official
   pages.
@@ -80,9 +82,149 @@ reader-clickable without changing source identity or publication scope:
   labels change; use the template pipeline clean stage before trusting standalone
   web output directories.
 
+## 2026-06-12 RedTeam Artifact-Evidence And Visualization Scope
+
+The RedTeam pass classified AGEINT as a structured repo artifact with a useful
+but attackable verifier oracle: individual gates could be green while a copied
+PDF, standalone web directory, or prose evidence note was stale. The current
+hardening pass closes that false-certification path by binding the source build,
+rendered manuscript, citation inventory, figure registry, visual-quality audit,
+PDF quality/link audit, rendered-reference audit, and stale-output scans into a
+single current evidence manifest.
+
+- `scripts/audit_artifact_evidence.py --write` writes
+  `output/reports/current_artifact_evidence.json` and `.md`.
+- `src/pdf_quality.py` now audits PDF URI annotations, local Markdown-file
+  targets, `file:` targets, and launch/file actions in addition to page and
+  stale-PDF checks.
+- The new `ageint-artifact-evidence-control-loop` Python figure makes the
+  verifier contract visible in the orientation navigation surface.
+- The parent template renderer removes stale standalone HTML before per-file web
+  rendering, preventing old label-derived filenames from surviving render-only
+  reruns.
+
+## 2026-06-12 Scholarship-Quality And Triangulation Scope
+
+The current local RedTeam pass extends artifact evidence from "citations exist"
+to "claim-bearing sections have enough support to be reviewable." It does not
+renumber sources, publish AGEINT, or add unverified web citations.
+
+- `src/scholarship_quality.py` classifies generated manuscript citations by
+  source family, flags uncited or one-citation claim-bearing sections as hard
+  failures, and keeps multi-citation single-family sections as review warnings.
+- `scripts/audit_scholarship_quality.py --write` writes
+  `output/reports/scholarship_quality.json` and `.md`.
+- `src/artifact_evidence.py` now includes `scholarship_quality_ok` and the
+  scholarship report summary in the unified current-evidence manifest.
+- The new `ageint-scholarship-triangulation-map` Python figure makes the
+  scholarship gate visible in the orientation navigation surface.
+- The MCP/AutoGen and cryptographic-methods appendices now include direct
+  official, standards, and source-guide citations from existing AGEINT keys so
+  their source boundaries are informative rather than thin.
+
+## 2026-06-13 Source-Metadata Verifier Scope
+
+The RedTeam pass classified the artifact-evidence oracle as still incomplete:
+PDF/link/citation/figure gates could pass while curated source anchors silently
+fell back from blank `source_lane` / `source_tier` fields to `domain` /
+`source_type`. The first-principles fix is source-layer explicitness plus a
+negative-control verifier, not more generated prose.
+
+- Closed 119 blank metadata rows: 109 legacy intelligence anchors now carry
+  `source_lane` from their existing `domain` and `source_tier` from their
+  existing `source_type`, and 10 source-quality support anchors now carry
+  `source_quality_spine` / `source_quality_anchor`.
+- Added `src/source_metadata.py` and `scripts/audit_source_metadata.py` to
+  report total metadata records, curated intelligence anchors, support anchors,
+  blank lane/tier counts, fallback-dependent rows, lane/tier distributions,
+  refresh-cadence buckets, and issue rows.
+- Wired `source_metadata_ok` into `src/artifact_evidence.py`, so the unified
+  current-evidence manifest fails on blank lane/tier fields or source-quality
+  semantic mismatches even when rendered artifacts are otherwise current.
+- Added the registry-backed `ageint-source-metadata-integrity` Python figure to
+  make the metadata-integrity and refresh-coverage gate visible in the reader
+  surface.
+- Deferred the parent-template artifact-manifest advisory (`missing declared
+  output: projects/AGEINT/output`) to a separate pipeline contract task because
+  it is not a PDF/link/citation correctness blocker.
+
+## 2026-06-13 Cover, Abstract, And TOC Hardening Scope
+
+This local pass improves the first-reader surface without changing the locked
+curriculum order, source identities, or publication status:
+
+- Added deterministic non-numbered cover art at
+  `output/figures/cover/ageint-cover-synthesis.png` with a JSON sidecar and
+  wired it through `book.cover.image` in `manuscript/config.yaml`.
+- Kept the cover out of `output/figures/figure_registry.json`, so the registry
+  remains 169 figures and the cover does not become a numbered manuscript
+  figure.
+- Replaced the former graphical-abstract wrapper with one 1,226-word plaintext
+  Abstract centered on Synthetic Analytic Tradecraft, source governance,
+  evidence packets, safety boundaries, refusal scope, and validation.
+- Moved the former `fig:ageint-graphical-abstract` role into orientation as a
+  governed-system map rather than an abstract subsection.
+- Reordered early orientation around reader comprehension, renamed repeated H2
+  scaffold headings, and kept the PDF TOC at H1/H2 depth with LaTeX spacing
+  controls for multi-digit section numbers.
+
+## 2026-06-13 Graphical Abstract And TOC Title Hardening Scope
+
+This local pass supersedes the prior orientation graphical-abstract treatment
+without changing the cover-art contract, locked curriculum order, source
+identities, citation keys, or publication status:
+
+- Replaced the old Mermaid-backed `fig:ageint-graphical-abstract` with the
+  registry-backed Python `graphical_abstract_atlas` renderer and a deterministic
+  2400px square `AGEINT Synthetic Tradecraft System Atlas` in
+  `output/figures/python/ageint-graphical-abstract.png`.
+- Preserved the stable label `fig:ageint-graphical-abstract` and orientation
+  source-section placement while adding long caption, alt text, and
+  long-description metadata that explain the source spine, discipline lanes,
+  Synthetic Analytic Tradecraft core, bounded agent assistance, verification
+  gates, human review, product handoff, and halt conditions.
+- Replaced repeated module H2 scaffolds with five chapter-specific reader
+  landmarks: orientation, practice studio, evidence contract, governance
+  boundary, and assessment route. Repeated body scaffolds such as module
+  architecture, evidence canon, reviewer checklist, and learning-path
+  cross-links now sit below the PDF TOC depth.
+- Kept part and appendix navigation titles reader-specific and preserved
+  existing section, figure, citation, and formalism label semantics.
+
+## 2026-06-14 Claim Calibration And Visual-Semantics Scope
+
+This local RedTeam/Science/FirstPrinciples pass attacks the remaining oracle
+gap: citation, figure, link, and PDF readiness could be green while claim
+language, source strength, formulas, or visual semantics were overclaimed. The
+fix is verifier coverage first, then calibrated manuscript wording.
+
+- Added `src/source_support_strength.py` to classify source-guide and curated
+  anchor keys as official/standard/scholarly/law-policy/public-domain primary
+  support, source-quality support, source-guide context, practitioner/vendor
+  context, social/video context, mirror/copy context, or unknown.
+- Added `src/claim_calibration.py` and
+  `scripts/audit_claim_calibration.py`; the audit scans generated manuscript
+  rows for high-risk empirical, statistical, governance, safety, visualization,
+  artifact-readiness, and formalism language, fails unsupported proof/p-value/
+  measured-performance/formalism claims, and allows explicit boundary language.
+- Wired `claim_calibration_ok` into the unified artifact evidence manifest with
+  negative controls for unsupported measured-performance claims, fake p-value
+  language, and weak-source-only high-risk claims.
+- Extended figure-registry schema `1.4` with visual-semantics fields:
+  semantic role, evidence role, quantitative flag, unit, denominator, counting
+  rule, and interpretation limit. Conceptual figures now state that layout,
+  color, and arrows are explanatory unless a metric is declared; quantitative
+  figures declare units, denominators, counting rules, and limits.
+- Added the registry-backed
+  `fig:ageint-claim-calibration-and-visual-semantics` Python control visual.
+- Added a manuscript method note clarifying that citation counts, file counts,
+  figure counts, PDF page counts, URI-link counts, and validator outcomes are
+  artifact telemetry, not empirical learning, safety, statistical, or
+  operational-performance results.
+
 ## Verification Gates
 
-Completed against current artifacts on 2026-06-12:
+Completed against verifier-hardening artifacts earlier on 2026-06-12:
 
 - `uv run pytest tests/test_manuscript_crossrefs.py tests/test_citation_workflow.py tests/test_sharded_data_integrity.py tests/test_figures.py tests/test_scripts.py -q` → 50 passed.
 - `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0.
@@ -96,32 +238,248 @@ Completed against current artifacts on 2026-06-12:
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .` → no render-blocking pitfalls or undefined citations found.
 
-Completed against current auto-link artifacts on 2026-06-12:
+Completed against section/reference auto-link artifacts earlier on 2026-06-12:
 
 - `uv run pytest tests/test_manuscript_crossrefs.py tests/test_markdown_refs.py tests/test_manuscript_inventory_structure.py tests/test_manuscript_variables.py -q` → 42 passed.
 - `uv run python scripts/check_rendered_references.py` → rendered reference audit passed.
 - `uv run python scripts/count_citations.py --format json` → generated Markdown files 377; generated citation occurrences 11417; source sections 723; zero-citation source sections 0.
 - Clean template core-pipeline project-test gate → 278 passed, 1 pre-render PDF-artifact skip, 91.38% coverage.
-- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 161 registered figures.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 163 registered figures.
 - From `/Users/4d/Documents/GitHub/template`:
-  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.66 MB after the template clean stage.
-- `uv run python scripts/audit_pdf_quality.py` → 1697 pages; stale PDF false; OK true.
+  `uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated `output/pdf/AGEINT_combined.pdf` at 27.87 MB after the template clean stage.
+- `uv run python scripts/audit_pdf_quality.py` → 1698 pages; stale PDF false; OK true.
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf` → 0 issues.
 
-Completed against current figure-caption and PDF-link artifacts on 2026-06-12:
+Completed against figure-caption and PDF-link artifacts earlier on 2026-06-12:
 
 - Figure registry validation → 161 figures; 0 captions under 40 words; 0 alt-text rows under 24 words; 0 caption/alt placeholder rows; 0 caption/alt Markdown-file references.
 - Generated-output scans → 0 Markdown-file links in generated Markdown/HTML; 0 placeholder or banned fallback phrases in generated manuscript.
-- PDF annotation audit → source and copied PDFs each have 1697 pages, 33334 link annotations, and 0 `.md` / `.markdown` link targets.
+- PDF annotation audit → source and copied PDFs each have 1698 pages, 33335 link annotations, and 0 `.md` / `.markdown` link targets.
 - Visual PDF spot check → curriculum-map table no longer collides across columns; representative curriculum-map, part module-map, and cognitive-security figure captions fit without overlap.
-- `uv run python scripts/audit_pdf_quality.py` → 1697 pages; stale PDF false; OK true.
+- `uv run python scripts/audit_pdf_quality.py` → 1698 pages; stale PDF false; OK true.
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .` → no issues found.
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .` → no render-blocking pitfalls or undefined citations found.
 - From `/Users/4d/Documents/GitHub/template`:
   `uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf` → 0 issues.
+
+Completed against visual-quality artifacts earlier on 2026-06-12:
+
+- Perplexity CLI discovery attempt → `401 insufficient_quota`; no Perplexity-derived claim was encoded.
+- Official fallback source verification → W3C WAI Complex Images, WCAG 2.2 Understanding SC 1.1.1, SC 1.4.1 Use of Color, SC 1.4.11 Non-text Contrast, Section508.gov alternative-text/PDF/color-usage guidance, and USWDS data-visualization guidance encoded into the figure-registry accessibility contract.
+- `uv run ruff check src/figures/_01_part.py src/figures/_01b_accessibility.py src/figures/_02_part.py src/figures/_02b_mermaid.py src/figures/_02c_reader_text.py src/figures/_03_part.py src/figures/_03b_asset_renderers.py src/figures/_03d_accessibility.py src/figures/_05_visual_style.py src/figures/_06_python_renderers.py tests/test_figures.py` → all checks passed.
+- `uv run pytest tests/test_figures.py tests/test_file_size_inventory.py -q` → 14 passed.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 163 registered figures and figure-registry schema `1.3`.
+- Figure registry validation → 163 figures; 115 Mermaid, 38 Python, 4 historical, 6 AI-generated; official accessibility-guidance metadata, PNG text-chunk accessibility metadata, and `visual_quality_audit.json` present; all captions, alt-text rows, and long descriptions pass the expanded tests.
+- `uv run pytest tests/ --cov=src --cov-fail-under=90` → 284 passed; 92.15% coverage.
+- From `/Users/4d/Documents/GitHub/template`:
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/03_render_pdf.py --project working/AGEINT` → generated a 1,699-page, 28.06 MB combined PDF with 163/163 figure references found.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python scripts/05_copy_outputs.py --project working/AGEINT` → copied 981 output files, including 163 PNGs and the 28.06 MB combined PDF.
+- From `/Users/4d/Documents/GitHub/template`: markdown, prerender, and PDF validators → 0 issues.
+- `uv run python scripts/audit_pdf_quality.py` → 1,699 pages; stale PDF false; OK true.
+- PDF annotation audit → source and copied PDFs each have 4,285 URI links and 0 `.md`, `.markdown`, or `file:` targets.
+
+Completed against section-link, table-layout, and compact-typography artifacts on 2026-06-12:
+
+- Source-owned fixes landed in `_markdown_split.py`, `citation_workflow.py`,
+  `rendered_heading_support.py`, the compact PDF preamble, and focused
+  regression tests; `output/manuscript/` was rebuilt rather than hand-edited.
+- `uv run ruff check src/_markdown_split.py src/citation_workflow.py src/rendered_heading_support.py tests/test_markdown_split.py tests/test_citation_workflow.py tests/test_heading_support.py tests/test_manuscript_variables.py tests/test_figures.py` → all checks passed.
+- Focused gate:
+  `uv run pytest tests/test_markdown_split.py tests/test_heading_support.py tests/test_citation_workflow.py tests/test_manuscript_crossrefs.py tests/test_markdown_refs.py tests/test_manuscript_variables.py tests/test_figures.py -q` → 65 passed.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 377 generated manuscript files and 163 registered figures.
+- `uv run python scripts/count_citations.py --format json` → generated Markdown files 377; generated citation occurrences 12802; source sections 723; zero-citation source sections 0.
+- `uv run python scripts/check_rendered_references.py` → rendered reference audit passed.
+- Targeted scan for stale coverage wording, old source-section table headers, and Markdown-file links in PDF-bound generated content → no matches.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python scripts/03_render_pdf.py --project working/AGEINT` and
+  `uv run python scripts/05_copy_outputs.py --project working/AGEINT` → generated and copied `AGEINT_combined.pdf` at 28.12 MB with 981 copied output files.
+- From `/Users/4d/Documents/GitHub/template`: markdown, prerender, and PDF validators → 0 issues.
+- `uv run python scripts/audit_pdf_quality.py` → 1671 pages; stale PDF false; OK true.
+- PDF annotation audit → source and copied PDFs each have 4,180 URI links and 0 `.md`, `.markdown`, `file:`, or launch targets.
+- Visual PDF spot check of the source-section coverage page confirms narrow numeric columns, a wider descriptive column, separate citation-link column, and no merged adjacent tables.
+- `uv run pytest tests/ --cov=src --cov-fail-under=90` → 288 passed; 92.12% coverage.
+
+Completed against RedTeam artifact-evidence and visualization artifacts on 2026-06-12:
+
+- AGEINT Ruff gate for touched source, figure, script, and test files → all checks passed.
+- Template renderer Ruff gate and regression for stale web artifact cleanup → all checks passed; 2 focused template tests passed.
+- `uv run pytest tests/test_artifact_evidence.py tests/test_pdf_quality.py tests/test_figures.py tests/test_figure_quality_audit.py tests/test_manuscript_crossrefs.py tests/test_markdown_refs.py -q` → 64 passed.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` → exit 0 with 378 generated manuscript files and 164 registered figures.
+- Corrected template render and copy:
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/03_render_pdf.py --project working/AGEINT`
+  and `uv run python scripts/05_copy_outputs.py --project working/AGEINT` → source PDF 28.30 MB, 1,673 pages; copied output root PDF 29,670,685 bytes.
+- Standalone web freshness check → source and copied web outputs each contain 379 HTML files: 378 section pages plus `index.html`; stale pre-label orientation filenames are absent.
+- `uv run python scripts/audit_artifact_evidence.py --write --format json` → `ok: true`; 12,805 generated Markdown citation occurrences; 723 source sections; 0 zero-citation source sections; all 164 figures pass the visual-quality audit; PDF link audit reports 4,180 URI links and 0 `.md`, `.markdown`, `file:`, or launch targets.
+- `uv run python scripts/check_rendered_references.py` → rendered reference audit passed.
+- Targeted scan for stale coverage wording, old source-section table headers, Markdown-file links, and banned fallback phrases in generated/PDF-bound content → no matches.
+- From `/Users/4d/Documents/GitHub/template`: markdown, prerender, and PDF validators → 0 issues.
+- `uv run python scripts/audit_pdf_quality.py --format json` → stale PDF false, OK true, 1,673 pages, 10,779,643 extracted text characters, and clean link audit.
+
+Completed against RedTeam scholarship-quality, profile-anchor triangulation, and
+current-artifact visualization artifacts on 2026-06-12:
+
+- AGEINT touched-file Ruff gate for scholarship, artifact-evidence, figure,
+  appendix-support, manifest, intelligence-content, and focused test files →
+  all checks passed.
+- Parent template figure-validator Ruff gate and focused regression suite →
+  all checks passed; 21 validator tests passed.
+- Added `profile_triangulation_anchors(...)` and routed existing official,
+  standards, scholarly, and source-guide anchors into topic lessons, worked
+  examples, source-canon sections, and review-checklist sections without adding
+  or renumbering citation keys.
+- `uv run pytest tests/test_file_size_inventory.py tests/test_reader_quality.py tests/test_scholarship_quality.py tests/test_chapter_fragment_quality.py -q`
+  after the profile-anchor pass → 19 passed.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py`
+  after the profile-anchor pass → exit 0 with 378 generated manuscript files
+  and 165 registered figures.
+- Clean template core pipeline:
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/execute_pipeline.py --project working/AGEINT --skip-llm --core-only`
+  → all stages completed; infrastructure tests passed 120/120; project test
+  stage passed 294/299 with 5 pre-render PDF-stage skips and 90.23% coverage;
+  PDF render and copy completed.
+- `uv run python scripts/audit_scholarship_quality.py --write --format json`
+  → `ok: true`; 0 uncited claim-bearing files; 0 thin claim-bearing files; 0
+  single-source-family claim-bearing warning rows.
+- `uv run python scripts/audit_artifact_evidence.py --write --format json`
+  after the profile-anchor pass → `ok: true`; 378 generated Markdown files; 14,765 generated Markdown
+  citation occurrences; 723 source sections; 0 zero-citation source sections;
+  all 165 figures pass visual-quality checks; rendered-reference, freshness,
+  PDF quality, stale-output, and scholarship checks pass.
+- `uv run python scripts/check_rendered_references.py` → rendered reference
+  audit passed.
+- Targeted scans for banned fallback phrases, `History of the module`, citation
+  punctuation joins, Markdown-file links, and stale literal reference-key cells
+  in generated manuscript output → no matches.
+- `uv run python scripts/audit_pdf_quality.py` → stale PDF false, OK true,
+  1,698 pages, 10,926,085 extracted text characters, 4,180 URI links, 0 file
+  actions, and 0 bad PDF link targets.
+- From `/Users/4d/Documents/GitHub/template`: markdown, prerender, and PDF
+  validators → 0 issues. The clean pipeline still reports only the broad
+  non-critical artifact-manifest advisory; AGEINT's stricter
+  `current_artifact_evidence.{json,md}` report is clean.
+
+Completed against source-metadata verifier hardening artifacts on 2026-06-13:
+
+- Focused metadata/artifact/figure/safety gate:
+  `uv run pytest tests/test_source_metadata.py tests/test_artifact_evidence.py tests/test_scholarship_quality.py tests/test_figures.py tests/test_figure_quality_audit.py tests/test_manuscript_safety_docs.py -q` → 49 passed, 1 skipped.
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py`
+  → exit 0 with 380 generated manuscript files and 169 registered figures.
+- From `/Users/4d/Documents/GitHub/template`:
+  `uv run python scripts/03_render_pdf.py --project working/AGEINT` and
+  `uv run python scripts/05_copy_outputs.py --project working/AGEINT` →
+  regenerated and copied the 29.69 MB combined PDF.
+- `uv run python scripts/audit_artifact_evidence.py --write --format json` →
+  `ok: true`; `source_metadata_ok: true`; 380 generated Markdown files; 14,771
+  generated Markdown citation occurrences; 258 source-metadata rows; 248 curated
+  intelligence anchors; 10 source-quality support anchors; 0 blank lane/tier
+  rows; 0 fallback-dependent rows; all 169 figures pass visual-quality checks.
+- `uv run python scripts/audit_pdf_quality.py --format json` → stale PDF false,
+  OK true, 1,704 pages, 4,180 URI links, 0 bad PDF link targets, and 0 file
+  actions.
+- From `/Users/4d/Documents/GitHub/template`: markdown, prerender, and PDF
+  validators → 0 issues.
+- `uv run pytest tests/ --cov=src --cov-fail-under=90` → 312 passed, 1 skipped,
+  91.52% coverage.
+- Touched-file Ruff checks passed. The broad `uv run ruff check src tests
+  scripts` gate still reports 60 pre-existing repo-wide style findings, mostly
+  unused package re-exports, star-import fallout, and deferred import placement;
+  track that separately from metadata-verifier correctness.
+
+Completed against cover, abstract, and TOC hardening artifacts on 2026-06-13:
+
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py`
+  → exit 0 with 380 generated manuscript files and 169 registered figures plus
+  one non-numbered cover-art PNG.
+- `uv run pytest tests/test_cover_abstract_toc.py tests/test_figures.py tests/test_manuscript_crossrefs.py tests/test_manuscript_inventory_structure.py tests/test_pdf_typography.py -q`
+  → 43 passed.
+- From `/Users/4d/Documents/GitHub/template`:
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/03_render_pdf.py --project working/AGEINT`
+  and `uv run python scripts/05_copy_outputs.py --project working/AGEINT` →
+  rendered and copied a 1,680-page, 31,115,574-byte / 29.67 MB PDF.
+- Template markdown, prerender, and PDF validators → 0 issues.
+- `uv run python scripts/check_rendered_references.py` → rendered reference
+  audit passed.
+- Targeted scans for `Graphical Abstract`, abstract boilerplate, Markdown-file
+  links, stale generic headings, and tight TOC joins → no matches.
+- `uv run python scripts/audit_pdf_quality.py` → stale PDF false, OK true,
+  1,680 pages, 4,181 URI links, 0 bad PDF link targets, and 0 file actions.
+- `uv run python scripts/count_citations.py --format json` → 380 generated
+  Markdown files, 14,771 generated Markdown citation occurrences, 723 source
+  sections, and 0 zero-citation source sections.
+- `uv run python scripts/audit_artifact_evidence.py --write --format markdown`
+  → `ok: true`, `source_metadata_ok: true`, `scholarship_quality_ok: true`,
+  169 registered figures, 1,680 PDF pages, and 0 bad PDF link targets.
+- Visual inspection of the rendered PDF title page confirmed the deterministic
+  cover art appears on the cover page without clipping or missing assets.
+
+Completed against graphical-abstract and TOC-title hardening artifacts on
+2026-06-13:
+
+- `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py`
+  → exit 0 with 383 manuscript-bound files, 369 generated Markdown files, 330
+  configured manuscript files, 169 registered figures, and one non-numbered
+  cover-art PNG.
+- `uv run pytest tests/test_cover_abstract_toc.py tests/test_figures.py tests/test_manuscript_crossrefs.py tests/test_manuscript_inventory_structure.py tests/test_manuscript_inventory_quality.py tests/test_pdf_typography.py tests/test_scholarship_quality.py tests/test_chapter_fragment_quality.py -q`
+  → 67 passed.
+- `uv run ruff check` over the files touched by the graphical-abstract,
+  manuscript-heading, and TOC-title pass → all checks passed. Broad repo-wide
+  Ruff remains a separate cleanup task because legacy package-export and
+  split-module style findings predate this pass.
+- `uv run python scripts/check_rendered_references.py` → rendered reference
+  audit passed.
+- Targeted scans for stale graphical-abstract subsection text, abstract
+  boilerplate, Markdown-file links, stale H2 scaffold headings, banned fallback
+  phrases, and tight TOC joins → no matches in the rendered outputs/PDF text.
+- From `/Users/4d/Documents/GitHub/template`:
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/execute_pipeline.py --project working/AGEINT --skip-llm --core-only`
+  → all stages completed successfully; project gate passed 313/318 tests with 5
+  expected pre-render skips and 90.39% coverage; PDF render/copy completed.
+- Template validators after render:
+  markdown and prerender validators → 0 issues; PDF validator → 0 issues.
+- `uv run python scripts/audit_pdf_quality.py` → stale PDF false, OK true,
+  1,619 pages, 4,181 URI links, 0 bad PDF link targets, and 0 file actions.
+- `uv run python scripts/count_citations.py --format json` → 330 generated
+  citation-inventory Markdown rows, 15,382 generated Markdown citation
+  occurrences, 723 source sections, and 0 zero-citation source sections.
+- `uv run python scripts/audit_artifact_evidence.py --write --format json` and
+  `uv run python scripts/audit_scholarship_quality.py --write --format json` →
+  `ok: true`; `source_metadata_ok: true`; `scholarship_quality_ok: true`;
+  six single-family claim-bearing review warnings.
+- Post-render direct test chunks covered the monolithic direct-run SIGTERM gap:
+  PDF/artifact tests 16/16 passed, manuscript-variable tests 5/5 passed, and
+  remaining tail chunks passed 31/31, 49/49, and 52/52.
+
+Completed against claim-calibration, source-strength, statistics, formalism, and
+visual-semantics artifacts on 2026-06-14:
+
+- `uv run ruff check src/claim_calibration.py tests/test_claim_calibration.py`
+  → all checks passed.
+- `uv run pytest tests/test_claim_calibration.py -q` → 9 passed.
+- `uv run python scripts/audit_claim_calibration.py --write --format json` →
+  `ok: true`, 8,748 candidate rows, 0 hard-fail rows, 471 boundary-allowed
+  rows, and 5,181 review-warning rows.
+- `uv run python scripts/audit_scholarship_quality.py --write --format json`
+  → `ok: true`, 0 uncited claim-bearing files, 0 thin claim-bearing files, and
+  six single-source-family claim-bearing review warnings under the stricter
+  source-strength classifier.
+- `uv run python scripts/audit_source_metadata.py --write --format json` →
+  `ok: true`, 258 metadata records, 248 curated intelligence anchors,
+  10 source-quality support anchors, 0 blank lane/tier rows, and
+  0 fallback-dependent rows.
+- `uv run python scripts/audit_artifact_evidence.py --write --format json` →
+  `ok: true`; `claim_calibration_ok`, `source_metadata_ok`,
+  `scholarship_quality_ok`, `figure_quality_ok`, `pdf_quality_ok`, rendered
+  references, stale-output scans, and citation source-section coverage all true;
+  170 registered figures; 15,382 generated Markdown citation occurrences; and
+  a current 1,619-page PDF audit with 0 bad link targets.
+- `uv run python scripts/check_rendered_references.py` → rendered reference
+  audit passed.
+- Targeted scans for stale proof wording, banned fallback phrases, and
+  Markdown-file links in generated manuscript → no matches.
 
 ## Current Follow-Up Ledger
 
@@ -130,5 +488,23 @@ Completed against current figure-caption and PDF-link artifacts on 2026-06-12:
 | AGEINT-VERIFY-2026-06-12 | done | Complete this verifier-hardening pass. | All gates above passed; `ageint-4` is marked done in `tasks.yaml`. |
 | AGEINT-AUTOLINK-2026-06-12 | done | Complete section/reference auto-link hardening and PDF rerender. | Orientation labels, curriculum map links, citation-link tables, full tests, rendered-reference audit, template validators, and PDF audit passed; `ageint-11` is marked done in `tasks.yaml`. |
 | AGEINT-FIGLINK-2026-06-12 | done | Complete figure caption, visual layout, and PDF-link hardening. | All 161 figure captions/alt-text rows pass the expanded reader-text gate; source/copy PDFs have 0 Markdown-file link annotations; visual spot checks and validators passed; `ageint-12` is marked done in `tasks.yaml`. |
-| AGEINT-METADATA-LEGACY-1 | todo | 109 legacy anchors still rely on `domain` / `source_type` fallback semantics for lane/tier. | Each legacy anchor has explicit `source_lane` and `source_tier`, plus tests or inventory proving no unintended lane drift. |
+| AGEINT-VISACCESS-2026-06-12 | done | Add official visual-accessibility guidance, a long-description registry contract, and a source-backed visual accessibility contract figure. | All 162 figure captions, alt-text rows, and long descriptions pass tests; strict build reports schema `1.2`; full suite, template validators, PDF audit, and annotation audit pass; `ageint-13` is marked done in `tasks.yaml`. |
+| AGEINT-PNGMETA-2026-06-12 | done | Add color-safe visual guidance and embed figure accessibility/provenance metadata into generated PNGs. | Registry schema `1.2` includes Section508 color-usage guidance; all 162 generated PNGs carry metadata text chunks; full suite, strict build, rendered-reference audit, template validators, PDF validator, PDF quality audit, and PDF annotation audit pass; `ageint-14` is marked done in `tasks.yaml`. |
+| AGEINT-VISQA-2026-06-12 | done | Add W3C color/contrast guidance, a generated visual-quality audit JSON artifact, and a visual-quality dashboard figure. | Registry schema `1.3` includes eight official guidance URLs; all 163 figures pass visual-quality audit checks; 284-test full suite, strict build, rendered-reference audit, template validators, PDF validator, PDF quality audit, and annotation audit pass; `ageint-15` is marked done in `tasks.yaml`. |
+| AGEINT-SECLINK-TABLETYPO-2026-06-12 | done | Complete section-link, source-section coverage table, PDF-link, and compact-typography hardening. | Coverage wording no longer pairs bibliography-atlas refs with unrelated citations; adjacent tables split cleanly; source/copy PDFs have 0 Markdown-file or file-action targets; final full suite passed 288 tests with 92.12% coverage; `ageint-16` is marked done in `tasks.yaml`. |
+| AGEINT-ARTIFACT-EVIDENCE-2026-06-12 | done | Add verifier-first artifact evidence, PDF link audit, stale web cleanup, and the artifact-evidence control-loop figure. | That pass proved the unified evidence manifest and stale-web cleanup path; `ageint-17` is marked done in `tasks.yaml`, with current metrics superseded by `ageint-19`. |
+| AGEINT-SCHOLARSHIP-TRIANGULATION-2026-06-12 | done | Add scholarship-quality verifier, source-family report, appendix source-boundary improvements, and the scholarship triangulation figure. | `scholarship_quality.{json,md}` and `current_artifact_evidence.{json,md}` report `ok: true`; `ageint-18` introduced the verifier and `ageint-19` closes the source-family warnings it surfaced. |
+| AGEINT-PROFILE-ANCHORS-2026-06-12 | done | Add profile-specific external triangulation anchors to generated claim-bearing sections and tighten the scholarship verifier. | That pass produced 378 manuscript files, 165 figures, and 14,765 generated citation occurrences before the SAT orientation pass superseded the current artifact counts; `ageint-19` is marked done in `tasks.yaml`. |
+| AGEINT-SAT-ORIENTATION-2026-06-12 | done | Strengthen the abstract and early orientation sections around Synthetic Analytic Tradecraft as a source-governed, synthetic-fixture workbench. | That pass produced 379 manuscript files, 165 figures, 14,771 generated citation occurrences, and a 1,699-page PDF before the SAT method-contract pass superseded current artifact counts; `ageint-20` is marked done in `tasks.yaml`. |
+| AGEINT-SAT-METHOD-2026-06-12 | done | Add a falsifiable SAT method-contract figure and verifier gate for early abstract/orientation scholarship claims. | That pass produced 379 manuscript files, 166 figures, 14,771 generated citation occurrences, and a 1,700-page 28.98 MB PDF before the analysis-validation pass superseded current artifact counts; `ageint-21` is marked done in `tasks.yaml`. |
+| AGEINT-ANALYSIS-VALIDATION-2026-06-12 | done | Add a label-backed analysis-validation protocol, validation-matrix figure, and verifier gate for claim-class review. | The follow-on RedTeam lane-contract pass superseded current artifact counts; `ageint-22` is marked done in `tasks.yaml`. |
+| AGEINT-ANALYSIS-LANE-CONTRACT-2026-06-12 | done | Add canonical analysis-validation lanes and a negative control for dropped claim classes. | That pass added the lane contract and is superseded for current artifact counts by `AGEINT-ANALYSIS-FAMILY-COVERAGE-2026-06-13`; `ageint-23` is marked done in `tasks.yaml`. |
+| AGEINT-ANALYSIS-FAMILY-COVERAGE-2026-06-13 | done | Add canonical claim-bearing manuscript-family coverage and a registry-backed coverage visual. | That render had 380 manuscript files, 168 figures, 14,771 generated citation occurrences, a 1,703-page 29.52 MB PDF, 4,180 URI links, 0 bad PDF link targets, 0 file actions, and passing SAT method-contract, analysis-validation, lane-contract, and family-coverage checks; current counts are superseded by metadata-verifier hardening. |
+| AGEINT-METADATA-VERIFIER-2026-06-13 | done | Close 119 blank lane/tier metadata rows and add source-metadata oracle coverage. | `source_metadata_ok` covers 258 metadata rows, 248 curated intelligence anchors, 10 source-quality support anchors, 0 blank lane/tier rows, 0 fallback-dependent rows, and the 109+10 closure baseline; final gates passed with 312 tests, 91.52% coverage, 0 template markdown/prerender/PDF issues, and a fresh 1,704-page 29.69 MB PDF; `ageint-10` is marked done in `tasks.yaml`. |
+| AGEINT-COVER-ABSTRACT-TOC-2026-06-13 | done | Add deterministic cover art, replace the graphical-abstract wrapper with one plaintext Abstract, and harden PDF TOC depth/spacing. | That pass reported 380 manuscript files, 169 registered figures plus one non-numbered cover, 14,771 generated citation occurrences, a 1,680-page 29.67 MB PDF, 4,181 URI links, 0 bad PDF link targets, 0 file actions, 0 template markdown/prerender/PDF issues, and clean scans for abstract boilerplate, Markdown-file links, stale headings, and tight TOC joins; current counts are superseded by `AGEINT-GRAPHICAL-ABSTRACT-TOC-TITLES-2026-06-13`; `ageint-28` is marked done in `tasks.yaml`. |
+| AGEINT-GRAPHICAL-ABSTRACT-TOC-TITLES-2026-06-13 | done | Replace `fig:ageint-graphical-abstract` with the Python Synthetic Tradecraft System Atlas and make chapter/part/appendix TOC landmarks reader-specific. | That pass reported 383 manuscript-bound files, 369 generated Markdown files, 330 configured manuscript files, 169 registered figures plus one non-numbered cover, 15,382 generated citation occurrences, a 1,619-page 30.26 MB PDF, 4,181 URI links, 0 bad PDF link targets, 0 file actions, 0 template markdown/prerender/PDF issues, clean rendered-reference and TOC scans, and passing post-render PDF/artifact/manuscript-variable/tail test chunks; current counts are superseded by `AGEINT-CLAIM-CALIBRATION-2026-06-14`; `ageint-29` is marked done in `tasks.yaml`. |
+| AGEINT-CLAIM-CALIBRATION-2026-06-14 | done | Add claim-calibration, source-strength, statistics/formalism, and visual-semantics verifier coverage. | `claim_calibration_ok` is true with 8,748 candidate rows, 0 hard fails, 471 boundary-allowed rows, and 5,181 review-warning rows; figure registry schema `1.4` reports 170 figures with visual-semantics metadata; source metadata remains explicit; scholarship quality is OK with six non-blocking single-source-family review warnings; current artifact evidence is OK with 15,382 generated citation occurrences and a 1,619-page PDF audit with 0 bad link targets; `ageint-30` is marked done in `tasks.yaml`. |
+| AGEINT-SOURCE-REFRESH-DASHBOARD | todo | Add a source-refresh due-date dashboard. | Report stale/soon-due source rows by cadence, checked date, lane, tier, and owner without changing source identity. |
+| AGEINT-TEMPLATE-MANIFEST-CONTRACT | todo | Clean up the template artifact-manifest contract advisory. | The parent-template evidence no longer reports repeated `missing declared output: projects/AGEINT/output` issues for AGEINT. |
+| AGEINT-V1-PREFLIGHT | todo | Prepare a v1 release preflight bundle only after an explicit release request. | Current local evidence is refreshed, confidentiality checks pass, and release/publish actions are explicitly requested. |
 | AGEINT-M1 | todo | Release/publish milestone. | Daniel explicitly requests release or publication workflow, confidentiality checks pass, and `ageint-m1` gates are updated from current evidence. |

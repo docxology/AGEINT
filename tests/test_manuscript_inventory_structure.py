@@ -19,6 +19,12 @@ from manuscript_quality.inventory_helpers import (
     generated_chapter_files,
     manuscript_dir,
 )
+from manuscript_manifest._heading_titles import chapter_landmark_titles
+
+
+def _chapter_title(text: str) -> str:
+    first_line = next(line for line in text.splitlines() if line.startswith("# "))
+    return first_line.removeprefix("# ").split(" {#", 1)[0]
 
 
 def test_source_uses_neutral_template_library_without_numbered_modules() -> None:
@@ -76,8 +82,9 @@ def test_generated_config_orders_semantic_files(built_output: Path) -> None:
     ]
     assert ordered[:2] == [
         "abstract.md",
-        "orientation/00-runtime-inventory-sec-runtime-inventory.md",
+        "orientation/00-how-to-use-this-atlas-sec-how-to-use-this-atlas.md",
     ]
+    assert ordered[2] == "orientation/01-synthetic-analytic-tradecraft-thesis-sec-synthetic-analytic-tradecraft-thesis.md"
     assert "parts/ageint-agentic-intelligence/unit_intro.md" in ordered
     assert "parts/ageint-agentic-intelligence/foundations-of-ageint/00-overview.md" in ordered
     assert ordered[-1] == "references.md"
@@ -112,10 +119,21 @@ def test_generated_chapter_modules_have_consistent_expansion_sections(built_outp
             for line in text.splitlines()
             if line.startswith("## ") and not line.startswith("### ")
         }
-        missing = REQUIRED_MODULE_SECTIONS - h2_headings
+        expected_h2 = set(chapter_landmark_titles(_chapter_title(text)).values())
+        assert h2_headings == expected_h2, f"{path.name}: {sorted(h2_headings)}"
+        missing = {
+            section
+            for section in REQUIRED_MODULE_SECTIONS
+            if not any(
+                line.startswith(("### ", "#### ")) and line.lstrip("#").strip() == section
+                for line in text.splitlines()
+            )
+        }
         assert missing == set(), f"{path.name}: {sorted(missing)}"
         repeated = REMOVED_REPEATED_MODULE_SECTIONS & h2_headings
         assert repeated == set(), f"{path.name}: {sorted(repeated)}"
+        generic_h2 = REQUIRED_MODULE_SECTIONS & h2_headings
+        assert generic_h2 == set(), f"{path.name}: generic H2s in PDF TOC: {sorted(generic_h2)}"
         for heading in h2_headings:
             assert not any(prefix in heading for prefix in RAW_PSEUDO_HEADING_PREFIXES), heading
 

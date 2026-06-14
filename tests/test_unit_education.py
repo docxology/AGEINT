@@ -55,9 +55,9 @@ def test_topic_lessons_include_unit_specific_terms(built_output: Path) -> None:
                 / "parts"
                 / slug_for_path(part["title"])
                 / slug_for_path(chapter["title"])
-                / "01-topic-lessons.md"
+                / "01-practice-studio.md"
             )
-            paths = sorted(lesson_path.parent.glob("01-topic-lessons*.md"))
+            paths = sorted(lesson_path.parent.glob("01-practice-studio*.md"))
             assert paths, lesson_path.parent
             text = "\n".join(path.read_text(encoding="utf-8") for path in paths).lower()
             assert any(term in text for term in terms), lesson_path.parent

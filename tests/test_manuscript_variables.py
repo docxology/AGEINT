@@ -81,6 +81,6 @@ def test_generate_variables_matches_curriculum_stats() -> None:
     assert "never hand-edit `output/manuscript/`" in variables["CITATION_WORKFLOW_GUIDE"]
     assert "| Source sections | 723 |" in variables["CITATION_WORKFLOW_GUIDE"]
     assert "723 source sections" in variables["SOURCE_CITATION_COVERAGE_SUMMARY"]
-    assert "| Chapter | Section | Source title | Citation count | Citation keys |" in variables[
+    assert "| Section | Module and source section | Citations | Citation links |" in variables[
         "SOURCE_SECTION_CITATION_ROWS"
     ]

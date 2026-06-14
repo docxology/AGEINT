@@ -162,12 +162,17 @@ SOURCE_QUALITY_ANCHORS: Final[list[dict[str, str]]] = [
 ]
 
 SOURCE_QUALITY_DEFAULTS: Final[dict[str, str]] = {
+    "domain": "source_quality_spine",
+    "source_type": "source_quality_anchor",
     "source_lane": "source_quality_spine",
     "source_tier": "source_quality_anchor",
     "refresh_cadence": "semiannual",
     "refresh_trigger": "source version, legal status, standard revision, or official guidance changes",
     "verification_method": "direct_source_url_review",
     "claim_scope": "baseline source-quality guardrail for generated AGEINT curriculum claims",
+    "stakeholder_role": "curriculum maintainer, instructor, reviewer, and learner",
+    "assurance_use": "source-quality triangulation and claim-boundary review",
+    "rights_dimension": "source transparency, accountability, and evidence traceability",
 }
 
 

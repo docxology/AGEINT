@@ -1,12 +1,12 @@
 # {{SECTION_TITLE}} {#{{SECTION_LABEL}}}
 
-## Figures and course links
+### Figures and course links
 
 {{VISUAL_SYNTHESIS}}
 
 {{SECTION_BODY}}
 
-## Cross-links
+### Learning-path cross-links
 
 {{SECTION_NAV_PROSE}}
 

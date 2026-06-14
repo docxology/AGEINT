@@ -94,7 +94,7 @@ USE_CLAUSES: tuple[str, ...] = (
 # lesson's safe display title, woven in so each closer is topic-specific.
 EVIDENCE_CLOSERS: tuple[str, ...] = (
     "From each source, pull the bounded claim it can carry for **{title}**, its provenance, the stated uncertainty, and the one condition that would overturn that judgment.",
-    "Read each cited work for what it actually proves about **{title}**, where that claim originated, how confident it is, and what evidence would flip it.",
+    "Read each cited work for what it can support about **{title}**, where that claim originated, how confident it is, and what evidence would change it.",
     "Work source by source: name the bounded claim, its origin, the residual uncertainty, and the trigger that would change how **{title}** is judged.",
     "Each source above earns its place in **{title}** only when you can state its bounded claim, its provenance, its uncertainty, and the fact that would retire it.",
 )

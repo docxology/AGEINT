@@ -21,6 +21,7 @@ COLLAPSED_COGSEC_BASE = "Cognitive-security resilience lesson using sample mater
 GOVERNANCE_BOUNDED_GENERIC = (
     "Governance-bounded intelligence topic review using instructor-provided sample records"
 )
+DIRECT_ANCHOR_RE = re.compile(r"\[@(?:official|scholarly)_")
 
 MIN_SECTION_CHARS = {
     "Textbook primer": 120,
@@ -28,8 +29,8 @@ MIN_SECTION_CHARS = {
     "Core vocabulary": 40,
     "Topic lessons": 200,
     "Worked safe example": 80,
-    "Module architecture": 60,
-    "Evidence and source canon": 40,
+    "Module architecture and transfer contract": 60,
+    "Evidence canon and source spine": 40,
     "Assessment artifacts and capstone pathway": 40,
 }
 
@@ -50,7 +51,7 @@ def test_overview_primer_references_distinct_topic_titles(built_output: Path) ->
     output_manuscript = manuscript_dir(built_output)
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
-        overview_path = path.parent / path.name.replace("01-topic-lessons", "00-overview")
+        overview_path = path.parent / "00-overview.md"
         if not overview_path.exists():
             continue
         overview = chapter_text(overview_path)
@@ -60,7 +61,7 @@ def test_overview_primer_references_distinct_topic_titles(built_output: Path) ->
         if primer.count(GOVERNANCE_BOUNDED_GENERIC) > 1:
             failures.append(f"{_chapter_slug(path)}: generic_titles_in_primer")
         topic_section = section_text(chapter_text(path), "Topic lessons")
-        headers = re.findall(r"^### Lesson \d+: (.+)$", topic_section, flags=re.MULTILINE)
+        headers = re.findall(r"^#{3,4} Lesson \d+: (.+)$", topic_section, flags=re.MULTILINE)
         distinct_headers = {header for header in headers[:3]}
         if len(headers) >= 3 and len(distinct_headers) < 2:
             failures.append(f"{_chapter_slug(path)}: primer_topic_collapse")
@@ -75,7 +76,7 @@ def test_worked_practice_names_chapter_profile(built_output: Path) -> None:
         profile_id, lens_id = _chapter_json_profile(slug)
         if not profile_id:
             continue
-        practice_path = path.parent / path.name.replace("01-topic-lessons", "02-worked-practice")
+        practice_path = path.parent / "01-practice-studio.md"
         if not practice_path.exists():
             continue
         text = chapter_text(practice_path).lower()
@@ -90,7 +91,7 @@ def test_architecture_sources_avoids_collapsed_title_echoes(built_output: Path) 
     output_manuscript = manuscript_dir(built_output)
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
-        arch_path = path.parent / path.name.replace("01-topic-lessons", "03-architecture-sources")
+        arch_path = path.parent / "02-evidence-contract.md"
         if not arch_path.exists():
             continue
         text = chapter_text(arch_path)
@@ -139,8 +140,31 @@ def test_topic_lessons_include_source_support_lines(built_output: Path) -> None:
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = section_text(chapter_text(path), "Topic lessons")
-        lesson_count = len(re.findall(r"^### Lesson \d+:", section, flags=re.MULTILINE))
+        lesson_count = len(re.findall(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE))
         source_support_count = section.count("**Source support.**")
         if lesson_count != source_support_count:
             failures.append(f"{_chapter_slug(path)}: {source_support_count}/{lesson_count}")
+    assert failures == []
+
+
+def test_claim_bearing_fragments_include_profile_triangulation_anchors(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    fragment_names = (
+        "01-practice-studio",
+        "02-evidence-contract",
+        "03-governance-boundary",
+        "04-assessment-route",
+    )
+    failures: list[str] = []
+    for path in generated_chapter_files(output_manuscript):
+        for fragment_name in fragment_names:
+            fragment_paths = sorted(path.parent.glob(f"{fragment_name}*.md"))
+            if not fragment_paths:
+                failures.append(f"{_chapter_slug(path)}: missing {fragment_name}")
+                continue
+            text = "\n\n".join(fragment.read_text(encoding="utf-8") for fragment in fragment_paths)
+            if "**Triangulation anchors.**" not in text:
+                failures.append(f"{_chapter_slug(path)}: missing anchors in {fragment_name}")
+            if not DIRECT_ANCHOR_RE.search(text):
+                failures.append(f"{_chapter_slug(path)}: missing direct citation in {fragment_name}")
     assert failures == []

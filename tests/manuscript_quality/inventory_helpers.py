@@ -34,15 +34,15 @@ REQUIRED_MODULE_SECTIONS = {
     "Worked safe example",
     "Practice sequence",
     "Knowledge check",
-    "Module architecture",
-    "Evidence and source canon",
-    "Research-backed synthesis",
-    "Agentic translation boundary",
+    "Module architecture and transfer contract",
+    "Evidence canon and source spine",
+    "Source-backed analytic synthesis",
+    "Agentic translation: assist, approve, block",
     "Governance, rights, and assurance",
     "Assessment artifacts and capstone pathway",
     "Refresh, safety, and source maps",
-    "Review checklist",
-    "Cross-links",
+    "Reviewer challenge checklist",
+    "Learning-path cross-links",
 }
 RAW_PSEUDO_HEADING_PREFIXES = {
     "V2 source-lane extension:",
@@ -269,9 +269,17 @@ def chapter_relative(path: Path, output_manuscript: Path | None = None) -> str:
 
 
 def section_text(text: str, heading: str) -> str:
-    marker = f"## {heading}"
-    assert marker in text
-    return text.split(marker, 1)[1].split("\n## ", 1)[0]
+    pattern = re.compile(
+        rf"^(?P<marks>#+)\s+{re.escape(heading)}(?:\s+\{{#[^}}]+\}})?\s*$",
+        flags=re.MULTILINE,
+    )
+    match = pattern.search(text)
+    assert match is not None, heading
+    level = len(match.group("marks"))
+    next_heading = re.compile(rf"^#{{1,{level}}}\s+", flags=re.MULTILINE)
+    next_match = next_heading.search(text, match.end())
+    end = next_match.start() if next_match else len(text)
+    return text[match.end() : end]
 
 
 def markdown_table_rows(section: str) -> list[list[str]]:

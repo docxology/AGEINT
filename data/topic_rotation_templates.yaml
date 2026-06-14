@@ -28,15 +28,15 @@ risk_why_failure_hints:
 misconception_fallbacks:
 - that {topic} can be used while ignoring the rule to {focus}
 - that {topic} is optional whenever {focus} feels inconvenient
-- that {topic} proves intent without reviewing alternative explanations
+- that {topic} establishes intent without reviewing alternative explanations
 - that {topic} replaces human review whenever evidence looks plausible
 misconception_risk_templates:
 - that a safe curriculum label for **{display_title}** in **{chapter_anchor}** authorizes
   the original operational source motif
 - that **{chapter_anchor}** classroom framing for **{display_title}** removes the
   need for provenance and reviewer sign-off
-- that completing the **{display_title}** artifact in **{chapter_anchor}** proves
-  real-world authorization
+- that completing the **{display_title}** artifact in **{chapter_anchor}** establishes
+  real-world authorization without separate approval evidence
 misconception_keyword_routes:
 - keywords:
   - mice

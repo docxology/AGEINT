@@ -5,6 +5,16 @@ paper:
   version: "0.1"
   date: ""
 
+book:
+  title: "AGEINT: Agentic Intelligence"
+  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
+  edition: "0.1"
+  year: "2026"
+  license: "CC BY 4.0"
+  code_license: "Apache-2.0"
+  cover:
+    image: "../figures/cover/ageint-cover-synthesis.png"
+
 authors:
   - name: "Daniel Ari Friedman"
     orcid: "0000-0001-6232-9096"

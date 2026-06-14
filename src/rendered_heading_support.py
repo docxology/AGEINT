@@ -233,18 +233,49 @@ def _support_sentence(relative_path: Path, heading_title: str, file_text: str) -
     prose while still satisfying heading-support coverage.
     """
 
-    refs = _path_support_refs(relative_path, file_text)
+    structural = _uses_structural_anchor(relative_path, heading_title)
+    refs = _path_support_refs(relative_path, file_text, include_citation=not structural)
     refs_text = "; ".join(refs)
-    return f"**Evidence link.** {refs_text}."
+    title = _clean_heading_title(heading_title).lower()
+    if "current source-section coverage" in title:
+        return (
+            f"**Coverage anchor.** Parent appendix: {refs[0]}. "
+            "Source-section coverage values are validated from the generated citation inventory."
+        )
+    if "source-section citation rows" in title:
+        return (
+            f"**Coverage inventory.** See the bibliography atlas {refs[0]}; "
+            "each row is generated from the curriculum source-section inventory."
+        )
+    if structural:
+        return f"**Section anchor.** {refs_text}."
+    return f"**Evidence anchor.** {refs_text}."
 
 
-def _path_support_refs(relative_path: Path, file_text: str) -> list[str]:
+def _uses_structural_anchor(relative_path: Path, heading_title: str) -> bool:
+    parts = relative_path.parts
+    title = _clean_heading_title(heading_title).lower()
+    return (
+        bool(parts and parts[0] in {"orientation", "appendices"})
+        or relative_path.name in {"orientation.md", "bibliography-atlas.md"}
+        or "source-section coverage" in title
+        or "source-section citation rows" in title
+    )
+
+
+def _path_support_refs(
+    relative_path: Path,
+    file_text: str,
+    *,
+    include_citation: bool = True,
+) -> list[str]:
     refs: list[str] = []
     label = _first_section_label(file_text) or _inferred_section_label(relative_path)
     refs.append(f"[@{label}]" if label else "[@sec:curriculum_orientation]")
-    citation = _first_citation_ref(file_text)
-    if citation and citation not in refs:
-        refs.append(citation)
+    if include_citation:
+        citation = _first_citation_ref(file_text)
+        if citation and citation not in refs:
+            refs.append(citation)
     return refs
 
 
