@@ -13,6 +13,7 @@ from reportlab.pdfgen import canvas
 from build_pipeline import generated_output_is_stale
 from citation_workflow import source_citation_coverage_summary
 from curriculum import load_curriculum
+from orchestration_contracts import output_build_sentinels
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
@@ -38,12 +39,7 @@ def test_generated_output_staleness_detects_newer_source(tmp_path: Path) -> None
     _write_at(tmp_path / "manuscript" / "templates" / "chapter.md", "{{BODY}}\n", 100.0)
     _write_at(tmp_path / "scripts" / "build_curriculum.py", "print('build')\n", 100.0)
     _write_at(tmp_path / "pyproject.toml", "[project]\nname = 'fixture'\n", 100.0)
-    for relative in (
-        "data/curriculum_outline.json",
-        "data/manuscript_variables.json",
-        "figures/figure_registry.json",
-        "manuscript/README.md",
-    ):
+    for relative in output_build_sentinels():
         _write_at(output / relative, "built\n", 200.0)
 
     assert generated_output_is_stale(tmp_path, output) is False
@@ -176,3 +172,25 @@ def test_audit_heading_support_script_reports_json_contract() -> None:
     assert payload["heading_count"] > 0
     assert payload["unsupported_heading_count"] == 0
     assert payload["unsupported_headings"] == []
+
+
+def test_audit_orchestration_contract_script_reports_json_contract() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(PROJECT_ROOT / "scripts" / "audit_orchestration_contract.py"),
+            "--format",
+            "json",
+        ],
+        cwd=PROJECT_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=120,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["ok"] is True
+    assert payload["pipeline"]["stage_count"] >= 8
+    assert payload["audits"]["contract_count"] >= 10
+    assert payload["source_packs"]["registry_count"] == 2

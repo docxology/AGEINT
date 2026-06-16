@@ -10,6 +10,8 @@ import json
 import re
 from typing import Any
 
+from agency_source_coverage import collect_agency_source_coverage, write_agency_source_coverage
+from audit_contracts import audit_contract_report, audit_contracts, false_certification_control
 from build_pipeline import generated_output_is_stale
 from claim_calibration import collect_claim_calibration, write_claim_calibration
 from citation_workflow import (
@@ -18,9 +20,11 @@ from citation_workflow import (
 )
 from curriculum import load_curriculum
 from pdf_quality import audit_pdf_quality
+from reference_quality import collect_reference_quality, write_reference_quality
 from rendered_reference_audit import audit_rendered_references
 from scholarship_quality import collect_scholarship_quality, write_scholarship_quality
 from source_metadata import collect_source_metadata, write_source_metadata
+from source_refresh_due import collect_source_refresh_due, write_source_refresh_due
 
 STALE_OUTPUT_PATTERNS: tuple[str, ...] = (
     r"Evidence link.*scholarly_heuer_psychology_intelligence_analysis",
@@ -60,24 +64,32 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
     citation_counts = _citation_counts(source_summary, generated_rows)
     scholarship_report = collect_scholarship_quality(manuscript)
     source_metadata_report = collect_source_metadata(root)
+    source_refresh_due_report = collect_source_refresh_due(root)
+    agency_source_coverage_report = collect_agency_source_coverage(root)
     claim_calibration_report = collect_claim_calibration(manuscript, project_root=root)
-    checks = {
+    reference_quality_report = collect_reference_quality(root)
+    raw_checks = {
         "generated_output_fresh": not generated_output_is_stale(root, output),
         "rendered_references_resolve": not rendered_reference_violations,
+        "reference_quality_ok": reference_quality_report.ok,
         "stale_output_scans_clean": not scan_hits,
         "pdf_quality_ok": pdf_report.ok,
         "figure_quality_ok": figure_summary["quality_pass"] is True,
         "citation_source_sections_covered": source_summary.zero_citation_sections == 0,
         "scholarship_quality_ok": scholarship_report.ok,
         "source_metadata_ok": source_metadata_report.ok,
+        "source_refresh_due_ok": source_refresh_due_report.ok,
+        "agency_source_coverage_ok": agency_source_coverage_report.ok,
         "claim_calibration_ok": claim_calibration_report.ok,
     }
+    checks = _ordered_audit_checks(raw_checks)
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "ok": all(checks.values()),
         "checks": checks,
+        "audit_contracts": audit_contract_report()["contracts"],
         "curriculum": {
             "parts": curriculum.stats["parts"],
             "chapters": curriculum.stats["chapters"],
@@ -113,6 +125,26 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
             "issue_row_count": source_metadata_report.payload["issue_row_count"],
             "issue_rows": source_metadata_report.payload["issue_rows"],
         },
+        "source_refresh_due": {
+            "report_paths": [
+                "output/reports/source_refresh_due.json",
+                "output/reports/source_refresh_due.md",
+            ],
+            "summary": source_refresh_due_report.payload["summary"],
+            "issue_row_count": source_refresh_due_report.payload["issue_row_count"],
+            "issue_rows": source_refresh_due_report.payload["issue_rows"],
+        },
+        "agency_source_coverage": {
+            "report_paths": [
+                "output/reports/agency_source_coverage.json",
+                "output/reports/agency_source_coverage.md",
+            ],
+            "summary": agency_source_coverage_report.payload["summary"],
+            "global_issue_count": agency_source_coverage_report.payload["global_issue_count"],
+            "global_issues": agency_source_coverage_report.payload["global_issues"],
+            "issue_row_count": agency_source_coverage_report.payload["issue_row_count"],
+            "issue_rows": agency_source_coverage_report.payload["issue_rows"],
+        },
         "claim_calibration": {
             "report_paths": [
                 "output/reports/claim_calibration.json",
@@ -123,8 +155,17 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
             "hard_fail_rows": claim_calibration_report.payload["hard_fail_rows"],
             "warning_row_count": claim_calibration_report.payload["warning_row_count"],
         },
+        "reference_quality": {
+            "report_paths": [
+                "output/reports/reference_quality.json",
+                "output/reports/reference_quality.md",
+            ],
+            "summary": reference_quality_report.payload["summary"],
+            "issue_rows": reference_quality_report.payload["issue_rows"],
+            "negative_control": reference_quality_report.payload["negative_control"],
+        },
         "figures": figure_summary,
-        "pdf": pdf_report.as_dict(),
+        "pdf": _pdf_report_payload(pdf_report.as_dict(), root),
         "rendered_references": {
             "violation_count": len(rendered_reference_violations),
             "violations": [violation.format(root) for violation in rendered_reference_violations],
@@ -134,28 +175,7 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
             "hit_count": len(scan_hits),
             "hits": scan_hits,
         },
-        "false_certification_control": {
-            "scenario": (
-                "A reviewer trusts a copied PDF, citation count, or current-evidence note "
-                "without proving that rendered references, PDF annotations, figure metadata, "
-                "and generated citation counts came from the same rebuilt artifact set."
-            ),
-            "negative_control": (
-                "Add a generated Markdown link to a local .md file, restore the old "
-                "source-section coverage table header, or make the PDF older than the "
-                "combined manuscript; collapse a claim-bearing generated section to a "
-                "single citation key; or remove the Synthetic Analytic Tradecraft method "
-                "figure reference, analysis-validation matrix reference, or analysis "
-                "validation protocol from the abstract or orientation; or remove one "
-                "analysis-validation claim class such as Artifact readiness claim from "
-                "the orientation protocol; introduce a new claim-bearing manuscript "
-                "family without adding it to the analysis-validation family coverage "
-                "map; or add one curated source-anchor row with an empty source_lane "
-                "or source_tier; or add an unsupported measured-performance, p-value, "
-                "or proof-language claim whose only citation is a weak source-guide "
-                "context row. This evidence manifest must fail."
-            ),
-        },
+        "false_certification_control": false_certification_control(),
     }
     return ArtifactEvidence(payload)
 
@@ -165,7 +185,10 @@ def write_artifact_evidence(project_root: Path) -> tuple[Path, Path, ArtifactEvi
     root = Path(project_root)
     write_scholarship_quality(root)
     write_source_metadata(root)
+    write_source_refresh_due(root)
+    write_agency_source_coverage(root)
     write_claim_calibration(root)
+    write_reference_quality(root)
     evidence = collect_artifact_evidence(root)
     reports = root / "output" / "reports"
     reports.mkdir(parents=True, exist_ok=True)
@@ -183,7 +206,10 @@ def render_artifact_evidence_markdown(evidence: ArtifactEvidence) -> str:
     citations = payload["citations"]
     scholarship = payload["scholarship_quality"]["summary"]
     source_metadata = payload["source_metadata"]["summary"]
+    source_refresh_due = payload["source_refresh_due"]["summary"]
+    agency_source_coverage = payload["agency_source_coverage"]["summary"]
     claim_calibration = payload["claim_calibration"]["summary"]
+    reference_quality = payload["reference_quality"]["summary"]
     figures = payload["figures"]
     pdf = payload["pdf"]
     link_audit = pdf["link_audit"]
@@ -207,10 +233,21 @@ def render_artifact_evidence_markdown(evidence: ArtifactEvidence) -> str:
         f"| Source metadata fallback rows | {source_metadata['fallback_dependent_row_count']} |",
         f"| Blank source lanes | {source_metadata['blank_source_lane_count']} |",
         f"| Blank source tiers | {source_metadata['blank_source_tier_count']} |",
+        f"| Source refresh due pass | {str(checks['source_refresh_due_ok']).lower()} |",
+        f"| Source refresh due/stale rows | {source_refresh_due['due_or_stale_count']} |",
+        f"| Source refresh missing checked dates | {source_refresh_due['missing_checked_as_of_count']} |",
+        f"| Agency source coverage pass | {str(checks['agency_source_coverage_ok']).lower()} |",
+        f"| New official US IC anchors | {agency_source_coverage['new_official_us_ic_anchor_count']} |",
+        f"| Agency-source unrouted rows | {agency_source_coverage['unrouted_new_anchor_count']} |",
+        f"| Agency-source missing metadata | {agency_source_coverage['missing_required_metadata_count']} |",
         f"| Claim calibration pass | {str(checks['claim_calibration_ok']).lower()} |",
         f"| Claim-calibration candidate rows | {claim_calibration['candidate_rows']} |",
         f"| Claim-calibration hard fails | {claim_calibration['hard_fail_rows']} |",
         f"| Claim-calibration review warnings | {claim_calibration['warning_rows']} |",
+        f"| Reference quality pass | {str(checks['reference_quality_ok']).lower()} |",
+        f"| Reference-quality issue rows | {reference_quality['issue_count']} |",
+        f"| Generic detail-heading issues | {reference_quality['generic_heading_issues']} |",
+        f"| Citation-context issues | {reference_quality['citation_context_issues']} |",
         f"| Source sections | {citations['source_sections']} |",
         f"| Zero-citation source sections | {citations['source_zero_citation_sections']} |",
         f"| Registered figures | {figures['figure_count']} |",
@@ -234,9 +271,31 @@ def render_artifact_evidence_markdown(evidence: ArtifactEvidence) -> str:
             f"**Scenario.** {payload['false_certification_control']['scenario']}",
             "",
             f"**Negative control.** {payload['false_certification_control']['negative_control']}",
+            "",
+            "## Audit Contract Negative Controls",
+            "",
+            "| Contract | Check | Negative control |",
+            "|---|---|---|",
         ]
     )
+    for contract in payload.get("audit_contracts", []):
+        lines.append(
+            f"| `{contract['contract_id']}` | `{contract['check_id']}` | {contract['negative_control']} |"
+        )
     return "\n".join(lines) + "\n"
+
+
+def _ordered_audit_checks(raw_checks: dict[str, bool]) -> dict[str, bool]:
+    """Order and validate artifact-evidence checks through the audit contract registry."""
+    ordered: dict[str, bool] = {}
+    for contract in audit_contracts():
+        if contract.check_id not in raw_checks:
+            raise KeyError(f"Audit contract {contract.contract_id} has no collected check")
+        ordered[contract.check_id] = raw_checks[contract.check_id]
+    extras = sorted(set(raw_checks) - set(ordered))
+    for extra in extras:
+        ordered[extra] = raw_checks[extra]
+    return ordered
 
 
 def _citation_counts(source_summary: Any, generated_rows: list[Any]) -> dict[str, Any]:
@@ -266,6 +325,16 @@ def _figure_summary(registry: dict[str, Any], visual_audit: dict[str, Any]) -> d
         "quality_pass": visual_audit.get("pass") if visual_audit else False,
         "quality_summary": visual_audit.get("summary", {}),
     }
+
+
+def _pdf_report_payload(pdf_payload: dict[str, Any], project_root: Path) -> dict[str, Any]:
+    sanitized = dict(pdf_payload)
+    raw_path = Path(str(sanitized.get("pdf_path") or ""))
+    try:
+        sanitized["pdf_path"] = raw_path.relative_to(project_root).as_posix()
+    except ValueError:
+        sanitized["pdf_path"] = raw_path.name
+    return sanitized
 
 
 def _scan_generated_text(project_root: Path) -> list[dict[str, Any]]:

@@ -15,7 +15,11 @@ except ImportError:  # pragma: no cover - exercised by package imports
 
 from ._04b_part import INTELLIGENCE_PROFILES
 from ._01_part import TopicEntry
-from ._06_part import practice_lens_for_titles, profile_for_titles
+from ._06_part import (
+    expanded_profile_anchor_keys,
+    practice_lens_for_titles,
+    profile_for_titles,
+)
 from ._09_part import (
     _chapter_ref_context,
     _coursebook_profile_for_titles,
@@ -86,7 +90,7 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             f"**Why it matters.** {fields.why_it_matters}",
             (
                 f"**Source support.** {_topic_source_support(entry, chapter, support_sources, original_sources=sources)} "
-                f"External triangulation uses {citation_cluster(profile.anchor_keys, limit=2)}"
+                f"External triangulation uses {citation_cluster(expanded_profile_anchor_keys(profile), limit=2)}"
             ),
             f"**Evidence to inspect.** {evidence}",
             f"**Student artifact.** {fields.artifact_prompt}",
@@ -399,13 +403,13 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
             ),
             profile_triangulation_anchors(part_title, title, chapter=chapter, surface="practice-sequence section"),
             practice_rows,
-            "#### Instructor notes",
+            f"#### {title} instructor notes: source reasoning, review points, and studio focus",
             (
                 "Ask learners to verbalize the difference between "
                 "a source, an inference, and a decision. Require a revision whenever "
                 f"a claim cannot be traced to a source descriptor or a human review point. Keep the focus on {topic_context}. {source_context}"
             ),
-            "#### Extension",
+            f"#### {title} extension exercise: peer validation and refresh trigger review",
             (
                 f"Have learners swap artifacts and apply the **{lens.title}** "
                 "validation rule to someone else's work. The receiving learner "
@@ -442,7 +446,7 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
             f"4. Answer the coursebook review question: {coursebook.review_question}",
             f"5. Correct this misconception: {resolve_topic_misconception(topic, coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=title)}.",
             "",
-            "#### Answer quality rubric",
+            f"#### {title} answer quality rubric: source evidence, uncertainty, and safe transfer",
             "",
             "Judge answers with the canonical mastery evidence "
             "standard in the shared method-and-assurance reference "
@@ -488,7 +492,7 @@ def profile_inventory_rows() -> str:
     ]
     for profile in INTELLIGENCE_PROFILES:
         rows.append(
-            f"| {profile.title} | {len(profile.anchor_keys)} | "
+            f"| {profile.title} | {len(expanded_profile_anchor_keys(profile))} | "
             f"{profile.composability_contract} |"
         )
     return "\n".join(rows)

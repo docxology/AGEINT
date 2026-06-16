@@ -1,0 +1,144 @@
+# Research source packs for non-agency scholarly, professional, public-domain,
+# standards, and international-body anchors added after the agency-source tranche.
+packs:
+  research_agentic_ai_appendices:
+    - official_nist_fips_203_ml_kem
+    - official_nist_fips_204_ml_dsa
+    - official_nist_fips_205_slh_dsa
+    - scholarly_russell_norvig_2020_aima
+    - scholarly_rao_georgeff_1995_bdi
+    - scholarly_vaswani_2017_attention
+    - scholarly_yao_2023_tree_of_thoughts
+    - scholarly_lewis_2020_rag
+    - scholarly_patil_2023_gorilla
+    - scholarly_qin_2023_toolllm
+    - scholarly_wu_2023_autogen
+    - professional_langchain_documentation
+    - professional_langgraph_documentation
+    - professional_crewai_documentation
+    - scholarly_liang_2022_helm
+    - scholarly_srivastava_2022_bigbench
+    - scholarly_perez_2022_prompt_injection
+    - scholarly_ericsson_1993_deliberate_practice
+    - scholarly_cepeda_2006_spaced_repetition
+    - scholarly_walker_stickgold_2006_sleep_memory
+    - scholarly_kaplan_kaplan_1989_attention_restoration
+    - official_nist_pqc_migration_ir8547
+    - professional_weng_2023_agent_survey
+  research_collection_disciplines:
+    - official_army_fm_2_22_3_humint
+    - official_odni_icd_304_humint
+    - official_odni_icd_310_clandestine_humint_outside_us
+    - official_odni_icd_302_domex
+    - official_jp_2_01_intelligence_support_2012
+    - official_nsa_tempest_signal_problem
+    - official_odni_cai_report_2022
+    - official_jp_2_03_geoint_joint_ops_2017
+    - scholarly_clark_2020_geospatial_intelligence
+    - scholarly_van_puyvelde_2025_rise_osint
+    - official_odni_icd_206_sourcing_osint_pai
+    - official_nga_geoint_pub1_doctrine_2018
+    - official_odni_cai_fact_sheet_2024
+    - official_dod_jp3_05_special_operations
+    - official_dod_jp2_0_joint_intelligence
+  research_cyber_ics:
+    - professional_hutchins_2011_kill_chain
+    - professional_caltagirone_2013_diamond_model
+    - official_cisa_aa24_038a_volt_typhoon
+    - official_cisa_aa23_144a_volt_typhoon_lotl
+    - official_cisa_aa22_103a_apt_ics_scada
+    - official_cisa_aa20_352a_solarwinds
+    - official_eisac_sans_ukraine_2016
+    - official_enisa_threat_landscape_2024
+    - official_nist_sp_800_161r1_scrm
+    - official_whitehouse_eo_14028
+    - official_first_tlp_v2
+    - official_nerc_cip_standards
+    - professional_eset_win32_industroyer_2017
+    - official_cisa_isc_cert_stuxnet_advisory
+    - official_cisa_nsa_ics_know_opponent_2022
+    - official_nerc_eisac_ukraine_duc6_2017
+    - official_enisa_protecting_ics_2011
+  research_history_cogsec_sat_legal:
+    - public_church_committee_book_i_1976
+    - public_church_committee_book_iii_nsasurveillance_1976
+    - official_nsa_center_cryptologic_history_publications
+    - scholarly_andrew_gordievsky_1990_kgb_inside_story
+    - scholarly_andrew_mitrokhin_1999_sword_shield
+    - scholarly_andrew_2009_defend_realm
+    - scholarly_weiner_2007_legacy_ashes
+    - public_church_committee_1976_final_report
+    - scholarly_tversky_kahneman_1974_judgment_uncertainty
+    - scholarly_kahneman_2011_thinking_fast_slow
+    - scholarly_tetlock_2005_expert_political_judgment
+    - scholarly_tetlock_gardner_2015_superforecasting
+    - official_fisa_1978_statute
+    - official_usa_patriot_act_2001
+    - official_usa_freedom_act_2015
+    - official_eo_12333_odni_text
+    - scholarly_quinlan_2007_just_intelligence
+    - scholarly_omand_2010_securing_the_state
+    - scholarly_omand_phythian_2018_principled_spying
+  research_influence_ci_gray_zone:
+    - official_dod_jp3_13_information_operations
+    - official_dod_jp3_13_2_miso
+    - professional_rand_paul_matthews_firehose_falsehood
+    - scholarly_lazer_2018_science_fake_news
+    - official_fincen_sar_narrative_guidance
+    - official_egmont_group_fiu_principles
+    - official_unodc_money_laundering_overview
+    - official_worldbank_aml_reference_guide
+    - official_ncsc_national_ci_strategy_2024
+    - official_ncsc_national_ci_strategy_2020
+    - scholarly_pennycook_rand_2021_psychology_fake_news
+    - scholarly_starbird_arif_wilson_2019_disinfo_collaborative
+    - scholarly_hoffman_2007_hybrid_wars
+    - scholarly_mazarr_2015_gray_zone
+    - official_dod_iw_annex_2020
+    - scholarly_cialdini_1984_influence_psychology
+    - official_nato_stratcom_hybrid_threats_toolkit
+    - official_nato_stratcom_attributing_iio
+    - scholarly_lewandowsky_vanderlinden_2021_inoculation_review
+    - scholarly_lewandowsky_cook_2020_debunking_handbook
+    - scholarly_pennycook_2021_accuracy_nudge_nature
+profile_routes:
+  agentic_ai_governance:
+    - research_agentic_ai_appendices
+    - research_cyber_ics
+  agentic_ai_security:
+    - research_agentic_ai_appendices
+    - research_cyber_ics
+  ai_ethics_data_governance:
+    - research_agentic_ai_appendices
+    - research_history_cogsec_sat_legal
+  analytic_tradecraft:
+    - research_history_cogsec_sat_legal
+    - research_collection_disciplines
+  cognitive_influence_security:
+    - research_influence_ci_gray_zone
+    - research_history_cogsec_sat_legal
+  collection_management:
+    - research_collection_disciplines
+    - research_cyber_ics
+  counterintelligence_source_integrity:
+    - research_influence_ci_gray_zone
+    - research_collection_disciplines
+  cyber_threat_intelligence:
+    - research_cyber_ics
+    - research_agentic_ai_appendices
+  education_assessment:
+    - research_agentic_ai_appendices
+    - research_history_cogsec_sat_legal
+  financial_economic_security:
+    - research_influence_ci_gray_zone
+  governed_intelligence_cycle:
+    - research_collection_disciplines
+    - research_history_cogsec_sat_legal
+  ics_ot_defense:
+    - research_cyber_ics
+  legal_oversight:
+    - research_history_cogsec_sat_legal
+    - research_collection_disciplines
+  osint_geoint:
+    - research_collection_disciplines
+    - research_history_cogsec_sat_legal

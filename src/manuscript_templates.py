@@ -36,7 +36,7 @@ DEFAULT_TEMPLATES: Final[dict[str, str]] = {
     # Abstract and orientation are authored source templates. Keeping stale
     # embedded fallbacks for them risks silently dropping reader-contract
     # changes in non-repo render contexts.
-    "method_assurance_reference.md": """# Method & Assurance Reference {#sec:method-assurance-reference}
+    "method_assurance_reference.md": """# Method & Assurance Reference: claim evidence, safety gates, and refresh duties {#sec:method-assurance-reference}
 
 This reference holds the shared method, governance, and assurance tables that
 every module applies. Each module links here instead of restamping the same
@@ -45,55 +45,57 @@ ledger, competency rubric, refresh triggers, safety boundary, and mastery
 evidence. Module sections name their local source spine and topic, then point
 to the canonical table in this section.
 
-## Figures and course links
+## Method figures and course links: assurance visuals and navigation
 
 {{VISUAL_SYNTHESIS}}
 
-## Capstone phase, artifact, and review-gate ladder
+## Capstone phase, artifact, and review-gate ladder: required handoff sequence
 
 {{CAPSTONE_SCAFFOLD_ROWS}}
 
-## Claim and evidence ledger
+## Claim and evidence ledger: claim classes, evidence floors, and review duties
 
 {{CANONICAL_CLAIM_LEDGER_ROWS}}
 
-## Competency and mastery rubric
+## Competency and mastery rubric: scoring dimensions and visible proof
 
 {{CANONICAL_COMPETENCY_RUBRIC_ROWS}}
 
-## Refresh triggers and required actions
+## Refresh triggers and required actions: source, safety, and tool-change duties
 
 {{CANONICAL_REFRESH_TRIGGER_ROWS}}
 
-## Safety boundary
+## Safety boundary: authorized, synthetic, defensive, and non-operational practice
 
 {{CANONICAL_SAFETY_BOUNDARY}}
 
-## Mastery evidence standard
+## Mastery evidence standard: retained artifacts, reviewer challenge, and transfer
 
 {{CANONICAL_MASTERY_ROWS}}
 """,
     "part.md": """# {{SECTION_TITLE}} {#{{SECTION_LABEL}}}
 
+## {{SECTION_TITLE}} learning spine and source route: unit purpose, module order, and evidence handoff
+
 {{SECTION_SUMMARY}}
 
-## {{SECTION_TITLE}} visual navigation and module map
+### {{SECTION_TITLE}} visual navigation and module map: evidence flow, order, and safety cues
 
 {{VISUAL_SYNTHESIS}}
 
-## {{SECTION_TITLE}} module roster and source-lane inventory
+### {{SECTION_TITLE}} module roster and source-lane inventory: citations, lanes, and learner route
 
 {{SECTION_ROWS}}
 """,
     "chapter.md": """# {{SECTION_TITLE}} {#{{SECTION_LABEL}}}
 
-### Figures and course links
+### {{SECTION_TITLE}} figures and course links: visual evidence, source flow, and navigation
 
 {{VISUAL_SYNTHESIS}}
 
 {{SECTION_BODY}}
 
-### Learning-path cross-links
+### {{SECTION_TITLE}} learning-path links: module map, overview, and curriculum atlas
 
 {{SECTION_NAV_PROSE}}
 
@@ -103,15 +105,15 @@ to the canonical table in this section.
 
 {{SECTION_BODY}}
 
-## {{SECTION_TITLE}} visual navigation and evidence figures
+### {{SECTION_TITLE}} visual navigation and evidence figures: purpose, source flow, and limits
 
 {{VISUAL_SYNTHESIS}}
 
-## {{SECTION_TITLE}} runtime item map and source roster
+### {{SECTION_TITLE}} runtime item map and source roster: generated rows and citation support
 
 {{SECTION_ROWS}}
 """,
-    "bibliography_atlas.md": """# Bibliography Atlas {#sec:bibliography_atlas}
+    "bibliography_atlas.md": """# Bibliography Atlas: source keys, refresh evidence, and citation workflow {#sec:bibliography_atlas}
 
 The bibliography atlas is generated from the parsed source-guide reference
 list plus official source-quality anchors. Citation keys are cited in prose
@@ -120,11 +122,11 @@ curated anchor keeps its source URL, source lane, checked date, refresh trigger,
 and verification note visible so moved pages, blocked automated fetches, and
 volatile standards can be reviewed without changing citation keys.
 
-## Bibliography atlas navigation figures and source links
+## Bibliography atlas navigation figures and source links: visual route through citation evidence
 
 {{VISUAL_SYNTHESIS}}
 
-## Current-source additions and refreshes {#sec:current-source-additions-and-refreshes}
+## Current-source additions and refreshes: newly checked anchors and changed caveats {#sec:current-source-additions-and-refreshes}
 
 The current-source table isolates anchors added or materially refreshed in the
 latest internet-citation pass. It is deliberately narrower than the full ledger:
@@ -134,11 +136,11 @@ retain draft-status caveats rather than being treated as final guidance.
 
 {{CURRENT_SOURCE_UPDATE_ROWS}}
 
-## Source refresh ledger {#sec:source-refresh-ledger}
+## Source refresh ledger: cadence, checked dates, and due-status evidence {#sec:source-refresh-ledger}
 
 {{SOURCE_REFRESH_ROWS}}
 
-## Bibliography atlas rows: guide, anchor, and support-source keys {#sec:bibliography-rows}
+## Bibliography atlas rows: guide keys, curated anchors, and support-source roles {#sec:bibliography-rows}
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}
 """,

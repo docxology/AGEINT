@@ -17,6 +17,8 @@ Declarative routing tables:
 | `manuscript_architecture.yaml` | Module architecture rows by profile id |
 | `unit_education_profiles.yaml` | Unit-specific lesson evidence/artifact lines |
 | `source_support_expansion.yaml` | Citation routes for uncited source sections |
+| `agency_source_packs.yaml` | Official US IC source-pack routes validated by `SourcePackRegistry` |
+| `research_source_packs.yaml` | Non-agency research-pack and profile routes validated by `SourcePackRegistry` |
 
 Regenerate `topic_risk_routes.yaml` from canonical tuples when rule logic changes:
 `uv run python scripts/generate_risk_routes_yaml.py` (then verify
@@ -43,6 +45,17 @@ uv run pytest tests/test_data_loaders.py -v
 
 Full builds also validate declarative tables at startup via `run_build()` in
 `src/build_pipeline.py`.
+
+Source-pack YAML is loaded through `src/intelligence_content/source_packs.py`.
+Keep agency and research packs in their existing files, preserve deterministic
+key order, avoid duplicate source keys, and run:
+
+```bash
+uv run python scripts/audit_orchestration_contract.py --format json
+```
+
+The contract report fails on pack keys that do not exist in the current source
+anchor universe.
 
 **Generator-backed YAML** (Python tuples in `scripts/generate_*_yaml.py`):
 `topic_risk_routes.yaml`, `topic_prompt_routes.yaml`, `topic_rotation_templates.yaml`.

@@ -59,28 +59,30 @@ def appendix_body(appendix: dict[str, Any]) -> str:
                 f"Source-item focus: {topic_context}."
             ),
             "",
-            f"## {title} operating purpose",
+            f"## {title} workbook scope: purpose, safety envelope, and reuse decision",
+            "",
+            f"### {title} operating purpose",
             (
                 "The current appendix supports a reusable methods workbook. Each source item is "
                 "treated as a reviewable classroom artifact rather than an operational instruction; "
                 f"examples begin with {topic_context}."
             ),
             "",
-            f"## {title} allowed-input boundary",
+            f"### {title} allowed-input boundary",
             (
                 "Allowed inputs for the current appendix are public official or scholarly sources, "
                 "standards text, instructor-provided excerpts, synthetic datasets, owned-lab logs, "
                 f"toy examples, and generated rubrics that expose their provenance for {topic_context}."
             ),
             "",
-            f"## {title} excluded-action boundary",
+            f"### {title} excluded-action boundary",
             (
                 "Excluded actions for the current appendix are unauthorized collection, private-data "
                 "processing, credential use, contact with real targets, live system interaction, "
                 f"exploit execution, deception, unsafe cyber-physical action, or external deployment while handling {topic_context}."
             ),
             "",
-            f"## {title} expected artifact package",
+            f"### {title} expected artifact package",
             (
                 "Expected appendix artifacts are a purpose statement, allowed-inputs card, "
                 "excluded-actions card, source-lane map, provenance record, claim ledger, "
@@ -101,7 +103,7 @@ def appendix_body(appendix: dict[str, Any]) -> str:
             "",
             _validation_rubric(title),
             "",
-            f"## {title} debrief protocol and reuse decision",
+            f"### {title} debrief protocol and reuse decision",
             (
                 "Debrief by naming what the artifact can support, what it does not establish, what source "
                 "changed, what risk was avoided by safe substitution, what human approval is still "
@@ -233,7 +235,7 @@ def _specialized_appendix_body(letter: str) -> str:
 def _safe_artifact_schema(title: str) -> str:
     return "\n".join(
         [
-            f"## {title} safe artifact schema",
+            f"### {title} safe artifact schema",
             "| Field | Required evidence | Reject condition |",
             "|---|---|---|",
             "| Purpose | lawful educational, governance, research, or defensive purpose | vague operational objective or missing authority |",
@@ -248,7 +250,7 @@ def _safe_artifact_schema(title: str) -> str:
 def _io_contract(title: str) -> str:
     return "\n".join(
         [
-            f"## {title} input/output contract",
+            f"### {title} input/output contract",
             "| Contract term | Input rule | Output rule |",
             "|---|---|---|",
             "| Source identity | retain `ageintNNN`, title, URL, and checked status | cite with Pandoc keys and avoid pasted raw URLs in prose |",
@@ -263,7 +265,7 @@ def _io_contract(title: str) -> str:
 def _failure_cases(title: str) -> str:
     return "\n".join(
         [
-            f"## {title} failure cases and required responses",
+            f"### {title} failure cases and required responses",
             "| Failure case | Signal | Required response |",
             "|---|---|---|",
             "| Source laundering | claim cites an agent summary instead of a verified source | rebuild the claim ledger from direct sources |",
@@ -278,7 +280,7 @@ def _failure_cases(title: str) -> str:
 def _evidence_package_schemas(title: str) -> str:
     return "\n\n".join(
         [
-            f"## {title} evidence package schemas",
+            f"### {title} evidence package schemas",
             "Model and dataset card:",
             model_dataset_card_rows(),
             "Transparency notice:",
@@ -302,7 +304,7 @@ def _evidence_package_schemas(title: str) -> str:
 def _rubric_scoring_bands(title: str) -> str:
     return "\n".join(
         [
-            f"## {title} rubric scoring bands",
+            f"### {title} rubric scoring bands",
             "| Band | Evidence standard | Disposition |",
             "|---|---|---|",
             "| 4 - ready | source identity, accessibility, rights, safety, and reviewer evidence are complete | may be reused after normal refresh review |",
@@ -316,7 +318,7 @@ def _rubric_scoring_bands(title: str) -> str:
 def _refresh_evidence(title: str) -> str:
     return "\n".join(
         [
-            f"## {title} refresh evidence",
+            f"### {title} refresh evidence",
             "| Evidence item | Refresh trigger | Retained support |",
             "|---|---|---|",
             "| Source lane | official source, standard, or legal text changes | checked-as-of date and source note |",
@@ -331,7 +333,7 @@ def _refresh_evidence(title: str) -> str:
 def _validation_rubric(title: str) -> str:
     return "\n".join(
         [
-            f"## {title} validation rubric",
+            f"### {title} validation rubric",
             "| Criterion | Passing evidence |",
             "|---|---|",
             "| Source identity | existing `ageintNNN` keys remain stable or new references are append-only |",

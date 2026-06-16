@@ -1,4 +1,4 @@
-# Method & Assurance Reference {#sec:method-assurance-reference}
+# Method & Assurance Reference: claim evidence, safety gates, and refresh duties {#sec:method-assurance-reference}
 
 This reference holds the shared method, governance, and assurance tables that
 every module applies. Each module links here instead of restamping the same
@@ -7,7 +7,7 @@ ledger, competency rubric, refresh triggers, safety boundary, and mastery
 evidence. Module sections name their local source spine and topic, then point
 to the canonical table in this section.
 
-## Source-construction and reporting protocol
+## Source-construction and reporting protocol: discovery records and citation boundaries
 
 AGEINT is a curriculum-and-assurance atlas, not a PRISMA systematic review.
 Where a module makes a source-construction or literature-search claim, however,
@@ -27,7 +27,7 @@ analogy, lesson design, or governance rationale, the generated prose must not
 promote it into a benchmark, deployment claim, or proof of autonomous
 performance.
 
-## Claim calibration and statistical limits
+## Claim calibration and statistical limits: artifact telemetry versus empirical evidence
 
 AGEINT treats citation counts, generated file counts, figure counts, PDF page
 counts, URI-link counts, and validator outcomes as **artifact telemetry**. They
@@ -62,30 +62,30 @@ support external-memory governance, tool boundaries, logging, and retention, not
 cognitive-taxonomy claims about episodic, semantic, or procedural memory unless
 a domain source is cited for that narrower taxonomy.
 
-## Figures and course links
+## Method figures and course links: assurance visuals and navigation
 
 {{VISUAL_SYNTHESIS}}
 
-## Capstone phase, artifact, and review-gate ladder
+## Capstone phase, artifact, and review-gate ladder: required handoff sequence
 
 {{CAPSTONE_SCAFFOLD_ROWS}}
 
-## Claim and evidence ledger
+## Claim and evidence ledger: claim classes, evidence floors, and review duties
 
 {{CANONICAL_CLAIM_LEDGER_ROWS}}
 
-## Competency and mastery rubric
+## Competency and mastery rubric: scoring dimensions and visible proof
 
 {{CANONICAL_COMPETENCY_RUBRIC_ROWS}}
 
-## Refresh triggers and required actions
+## Refresh triggers and required actions: source, safety, and tool-change duties
 
 {{CANONICAL_REFRESH_TRIGGER_ROWS}}
 
-## Safety boundary
+## Safety boundary: authorized, synthetic, defensive, and non-operational practice
 
 {{CANONICAL_SAFETY_BOUNDARY}}
 
-## Mastery evidence standard
+## Mastery evidence standard: retained artifacts, reviewer challenge, and transfer
 
 {{CANONICAL_MASTERY_ROWS}}

@@ -1,10 +1,10 @@
-# Instructor Guide
+# Instructor Guide: facilitation flow, artifacts, and review gates
 
 AGEINT modules are generated as bounded studios. Instructors should treat every
 chapter as a capstone-compatible artifact workflow rather than an operational
 playbook.
 
-## Facilitation Flow
+## Facilitation flow: prepare, run, pause, and debrief the studio
 
 1. Start with an authorized learning question and excluded-action list.
 2. Build a source-lane map from guide citations and verified anchors.
@@ -15,7 +15,7 @@ playbook.
 5. Score the output with the rubric, require revisions, and close with a
    debrief memo.
 
-## Required Artifacts
+## Required artifacts: source cards, rubrics, debriefs, and retained evidence
 
 - Authority card
 - Allowed-inputs card

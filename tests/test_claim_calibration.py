@@ -92,6 +92,24 @@ def test_claim_calibration_allows_explicit_boundary_language(tmp_path: Path) -> 
     assert report.payload["rows"][0]["disposition"] == "boundary_allowed"
 
 
+def test_claim_calibration_allows_negated_benchmark_metadata_language(tmp_path: Path) -> None:
+    _write_markdown(
+        tmp_path / "source-lane-map.md",
+        "# Source Lane Map\n\n"
+        "| Lane | Scope |\n"
+        "|---|---|\n"
+        "| agentic_ai_security_governance | Agentic AI adoption context, not an AGEINT benchmark. |\n"
+        "| current_threat_baseline | Public warning context, not operational targeting or AGEINT benchmark evidence. |\n",
+    )
+
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+
+    assert report.ok is True
+    assert report.payload["summary"]["candidate_rows"] == 2
+    assert report.payload["summary"]["boundary_allowed_rows"] == 2
+    assert {row["disposition"] for row in report.payload["rows"]} == {"boundary_allowed"}
+
+
 def test_claim_calibration_allows_empirical_requirement_lists(tmp_path: Path) -> None:
     _write_markdown(
         tmp_path / "methods.md",

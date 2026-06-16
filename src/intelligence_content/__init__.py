@@ -14,9 +14,15 @@ from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS  # noqa: E402
 from ._04b_part import INTELLIGENCE_PROFILES  # noqa: E402
 from ._05_part import PRACTICE_LENSES  # noqa: E402
 from ._06_part import (  # noqa: E402
+    agency_source_pack_keys,
+    agency_source_pack_payload,
     anchor_references,
+    expanded_profile_anchor_keys,
     practice_lens_for_titles,
     profile_for_titles,
+    research_source_pack_keys,
+    research_source_pack_payload,
+    research_source_profile_routes,
     safe_pattern_rows,
     safe_pattern_treatment,
 )
@@ -89,6 +95,12 @@ __all__ = [
     "profile_for_titles",
     "practice_lens_for_titles",
     "anchor_references",
+    "agency_source_pack_keys",
+    "agency_source_pack_payload",
+    "expanded_profile_anchor_keys",
+    "research_source_pack_keys",
+    "research_source_pack_payload",
+    "research_source_profile_routes",
     "citation_cluster",
     "safe_pattern_rows",
     "safe_pattern_treatment",

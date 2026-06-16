@@ -53,6 +53,8 @@ from ._03j_analysis_family_coverage import _render_analysis_validation_family_co
 from ._03k_source_metadata import _render_source_metadata_integrity
 from ._03m_graphical_abstract import _render_graphical_abstract_atlas
 from ._03n_claim_calibration import _render_claim_calibration_and_visual_semantics
+from ._03o_source_refresh_due import _render_source_refresh_due_dashboard
+from ._03p_agency_source_coverage import _render_agency_source_coverage_dashboard
 from ._03b_asset_renderers import _render_citation_density
 from ._04_part import _font, _pil_modules
 from ._05_visual_style import (
@@ -108,6 +110,8 @@ def render_python_figure(
         "analysis_validation_matrix": _render_analysis_validation_matrix,
         "analysis_validation_family_coverage": _render_analysis_validation_family_coverage,
         "source_metadata_integrity": _render_source_metadata_integrity,
+        "source_refresh_due_dashboard": _render_source_refresh_due_dashboard,
+        "agency_source_coverage_dashboard": _render_agency_source_coverage_dashboard,
         "claim_calibration_and_visual_semantics": _render_claim_calibration_and_visual_semantics,
         "hria_dpia_map": _render_hria_dpia_map,
         "procurement_oversight_loop": _render_procurement_oversight_loop,

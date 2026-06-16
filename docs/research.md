@@ -1,4 +1,4 @@
-# Research Spine
+# Research Spine: verified additions, source lanes, and encoded evidence
 
 AGEINT uses Perplexity as a discovery and second-opinion lane, not as a cited authority. Final manuscript citations point to direct official, standards, or scholarly URLs encoded in `data/research_anchors/`, `src/intelligence_content/`, and `src/manuscript_variables/`.
 
@@ -63,9 +63,10 @@ FININT/economic-security anchors. These additions remain source-profile entries:
 generated chapters select them through reusable profiles and practice lenses
 rather than through hand-authored chapter prose.
 
-The v2, deep-expansion, evidence-package, Data Cards, and local auto-link
-hardening passes add source-lane metadata to curated anchors and expand the curated anchor set to 248 official, standards,
-public-domain, or scholarly sources. New lanes cover AI conformity/compliance,
+The v2, deep-expansion, evidence-package, Data Cards, local auto-link, US
+IC source-pack, literature-integration, and SAT-integration hardening passes add source-lane metadata to curated anchors and
+expand the curated anchor set to 462 official, standards,
+public-domain, scholarly, and professional sources. New lanes cover AI conformity/compliance,
 education and assessment, public-sector agentic AI, cross-border data/data
 spaces, human-rights governance, agent interoperability standards, workforce
 governance, model/data provenance, accessibility and digital inclusion,
@@ -128,6 +129,24 @@ architecture guidance. These anchors support bounded autonomy, recoverability,
 public AI registers, incident reporting, OT evidence, and source-refresh
 governance without adding vendor or blog citations.
 
+The June 15, 2026 literature-integration pass adds verified sources for
+synthetic intelligence, LLM support to national-security analysis, synthetic
+reality and deepfake provenance, adversarial ML, AI incident regimes, ACH and
+confirmation-bias evidence, OPSEC doctrine, OSINT leakage, DISARM and
+disinformation analysis, cognitive warfare, social-engineering cognition, and
+active-inference theory. The two pasted literature reviews remain discovery
+inventories only; cited manuscript support comes from directly verified source
+URLs encoded in `data/research_anchors/intelligence-anchors-305-340.jsonl`.
+
+The June 15, 2026 SAT literature-integration pass adds verified sources for
+analytic pathologies, groupthink, SAT adoption, SAT evidence evaluation, ACH
+experiments and critiques, decision science, forecasting calibration, Delphi,
+premortem, morphological analysis, Alternative Futures Analysis, official
+IARPA ACE/REASON programs, official FOI/JIPS method guides, Senate Iraq WMD
+postmortem evidence, and SAT pedagogy texts. The attached SAT report remains a
+discovery inventory only; cited manuscript support comes from directly verified
+source URLs encoded in `data/research_anchors/intelligence-anchors-341-367.jsonl`.
+
 Generated chapters now use a compact reader-facing architecture instead of a
 flat repeated scaffold. `src/manuscript_manifest/` keeps source-guide H1
 titles stable, converts pseudo-headings such as `V2 source-lane extension:`,
@@ -142,13 +161,15 @@ standards, or scholarly grounding for generated synthesis; Perplexity remains
 only a discovery trail. A new anchor should include title, authoring
 organization, year, direct URL, source type, domain, and a short curriculum-use
 note. New v2 anchors should also include source lane, source tier, checked date,
-verification method, claim scope, refresh cadence, and refresh trigger.
+verification method, claim scope, refresh cadence, and refresh trigger. New
+official US IC anchors also require `source_agency` and `source_pack`, and the
+named pack must route deterministically through `data/agency_source_packs.yaml`.
 
 Do not cite broad web summaries, vendor marketing, uncited Perplexity prose, or
 unverified claims. If a source is volatile or current, verify the direct URL
 again before changing the anchor year, title, or note.
 
-## May 2026 full-section content pass (verified encode only)
+## May 2026 full-section content pass: verified encode-only source expansion
 
 Perplexity (`llm -m sonar-pro`) is used as a discovery and second-opinion lane
 for current source coverage. The May 24, 2026 pass checked agentic-AI
@@ -175,8 +196,9 @@ and generated BibTeX:
 | K | Current AI safety, misuse, interoperability, and evaluation | NIST AI 100-4/100-5/800-1/800-2, International AI Safety Report 2026, MCP specification/security, A2A protocol, OECD agentic-AI foundations, NSA MCP security design, and NCSC secure-AI-development guidance |
 | L | Supply-chain evidence and defensive-control provenance | MITRE D3FEND, OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore |
 | M | Analytic tradecraft, warning, and failure evidence | CIA/Kent professionalization, ICD 203, IRTPA, 9/11 and WMD postmortems, NATO alternative analysis, warning-intelligence sources, SAT empirical evaluation, forecasting calibration, and intelligence-failure theory |
+| N | Official US IC source-pack spine | CIA analytic uncertainty and professional literature, DIA defense OSINT governance, ODNI directives and tearlines, Intelligence.gov transparency pages, NSA agentic-AI and cyber guidance, NGA doctrine/data strategy, NRO history, and FBI counterintelligence context |
 
-Measured source-layer coverage after the current refresh: **248** curated
+Measured source-layer coverage after the current refresh: **462** curated
 research anchors and **125** keyword concept routes. The exact project test and
 coverage result is intentionally not hard-coded here; run
 `uv run pytest tests/ --cov=src --cov-fail-under=90` for the current gate.
@@ -188,6 +210,53 @@ alternative-analysis, SAT evaluation, forecasting-calibration, and
 failure-theory sources. These are routed as curriculum anchors for Chapters
 41-42 and for the new source-backed Mermaid boundary diagrams; they do not
 license universal claims that SATs cure bias or eliminate intelligence failure.
+
+The 2026-06-14 official US IC shard
+(`data/research_anchors/intelligence-anchors-249-304.jsonl`) adds 56 directly
+verified public CIA, DIA, ODNI, Intelligence.gov, NSA, NGA, FBI, and NRO
+anchors. These sources are routed through named source packs for analytic
+uncertainty, intelligence professional literature, defense OSINT governance,
+disclosure/tearlines, privacy/oversight, current threat context, cyber/GEOINT
+governance, and declassified history. CIA Studies/CSI professional literature is
+encoded as official public professional context, not automatically as current
+agency policy or AGEINT benchmark evidence.
+
+The 2026-06-15 literature-integration shard
+(`data/research_anchors/intelligence-anchors-305-340.jsonl`) adds 36 directly
+verified scholarly, official, and public-domain anchors from the attached
+literature inventories after dedupe against the existing source layer. They are
+routed through analytic tradecraft, agentic AI governance, OSINT/GEOINT,
+collection management, cognitive influence security, cognitive active inference,
+cyber threat intelligence, and legal oversight profiles. Bounded support remains
+explicit: no autonomous strategic-judgment claim, OPSEC playbook, manipulation
+guidance, live-targeting workflow, or unsupported cognitive-security efficacy
+claim is licensed by the new sources.
+
+The 2026-06-15 SAT literature-integration shard
+(`data/research_anchors/intelligence-anchors-341-367.jsonl`) adds 27 directly
+verified scholarly, official, public, and publisher-backed SAT sources after
+dedupe against existing Heuer, Heuer/Pherson, CIA tradecraft, ICD 203, RAND,
+Dhami, Mandel/Tetlock, Barnes/Mandel, Ard, and related tradecraft anchors. They
+are routed through analytic tradecraft, SAT evidence, analytic cognition,
+forecasting calibration, warning, postmortem, method-pedagogy, and
+agentic-analytic-assistance lanes. Bounded support remains explicit: SATs are
+reasoning-visibility, diagnostic, and review scaffolds; the sources do not
+license autonomous strategic judgment, operational targeting, or claims that
+SATs are proven universal debiasing tools.
+
+The 2026-06-16 citation-expansion tranche reviews 106 proposed citation
+headings from the pasted import document. It treats that file as a candidate
+set, not paste-ready manuscript prose: 102 records have full citation fields,
+95 are accepted after direct-source review, deduplication, weak-host
+replacement, and tier/key normalization, and 11 are deferred in
+[`citation_expansion_2026_06_16.md`](citation_expansion_2026_06_16.md). The
+accepted shards are
+`data/research_anchors/intelligence-anchors-368-417.jsonl` and
+`data/research_anchors/intelligence-anchors-418-462.jsonl`. They route through
+`data/research_source_packs.yaml` rather than the agency-source pack file, so
+non-agency scholarly, professional, public-domain, and international-body
+sources enrich chapter evidence while the official US IC audit remains scoped
+to the 56-anchor agency tranche.
 
 The 2026-06-12 verifier-hardening pass refreshes two older URL metadata rows:
 OASIS CSAF now points at the canonical OASIS Standard HTML page, and the
@@ -201,15 +270,16 @@ the early reader contract explicit: orientation sections carry stable labels,
 curriculum-map rows link each part intro and module-map figure, and research-anchor /
 bibliography / source-refresh key tables use Pandoc citations rather than
 literal `@key` text. The
-verifier-first artifact-evidence manifest now reports 369 generated Markdown files,
-15,382 generated Markdown citation occurrences, 723 source sections, and 0
-zero-citation source sections. The same local artifact manifest confirms 170
+verifier-first artifact-evidence manifest now reports 330 generated Markdown files,
+16,057 generated Markdown citation occurrences, 723 source sections, and 0
+zero-citation source sections. The same local artifact manifest confirms 173
 registered figures plus one non-numbered cover-art PNG, with substantial
 captions, alt text, long descriptions,
 official accessibility guidance metadata, embedded PNG accessibility/provenance
-and visual-semantics metadata, machine-readable visual-quality audit metadata, a 1,619-page combined
-PDF, 4,181 URI links, 0 Markdown-file link targets in PDF annotations, and passing
-`source_metadata_ok` over 258 metadata rows. The bibliography-atlas
+and visual-semantics metadata, machine-readable visual-quality audit metadata, a 1,854-page combined
+PDF, 6,289 URI links, 0 Markdown-file link targets in PDF annotations, and passing
+`source_metadata_ok` over 472 metadata rows plus `agency_source_coverage_ok` for
+the official US IC source-pack tranche. The bibliography-atlas
 source-section coverage output now uses explicit coverage-anchor prose rather
 than generic evidence prose, and its citation rows use compact numeric columns
 with wider descriptive/citation-link columns for PDF readability.
@@ -247,7 +317,7 @@ The 2026-06-14 claim-calibration and visual-semantics pass adds no new external
 citations and does not change `checked_as_of` dates. It adds
 `src/claim_calibration.py`, `scripts/audit_claim_calibration.py`, source-support
 strength classification for source-guide and curated-anchor keys, registry
-schema `1.4` visual-semantics fields, and the
+schema `1.5` visual-semantics fields, and the
 `fig:ageint-claim-calibration-and-visual-semantics` control-map figure. The
 unified artifact-evidence manifest exposes `claim_calibration_ok`, so
 unsupported proof-language, p-value language, measured-performance claims,
@@ -265,7 +335,7 @@ practice-studio, evidence-contract, governance-boundary, and assessment-route
 landmarks. The PDF TOC intentionally exposes H1/H2 entries only; deeper
 generated scaffolds remain in the body and generated HTML for local navigation.
 
-## 2026-05-22 cognitive-security synthesis pass (verified encode only)
+## 2026-05-22 cognitive-security synthesis pass: verified encode-only anchors
 
 This pass added 14 directly verified anchors, raising the curated set from 172
 to 186, and 7 Mermaid methods diagrams synthesizing them. As with every

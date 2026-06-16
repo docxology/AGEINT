@@ -237,12 +237,12 @@ def _support_sentence(relative_path: Path, heading_title: str, file_text: str) -
     refs = _path_support_refs(relative_path, file_text, include_citation=not structural)
     refs_text = "; ".join(refs)
     title = _clean_heading_title(heading_title).lower()
-    if "current source-section coverage" in title:
+    if "current source-section coverage" in title or "current citation coverage by source section" in title:
         return (
             f"**Coverage anchor.** Parent appendix: {refs[0]}. "
-            "Source-section coverage values are validated from the generated citation inventory."
+            "Citation coverage by source section is validated from the generated citation inventory."
         )
-    if "source-section citation rows" in title:
+    if "source-section citation rows" in title or "citation rows by source section" in title:
         return (
             f"**Coverage inventory.** See the bibliography atlas {refs[0]}; "
             "each row is generated from the curriculum source-section inventory."
@@ -259,7 +259,9 @@ def _uses_structural_anchor(relative_path: Path, heading_title: str) -> bool:
         bool(parts and parts[0] in {"orientation", "appendices"})
         or relative_path.name in {"orientation.md", "bibliography-atlas.md"}
         or "source-section coverage" in title
+        or "current citation coverage by source section" in title
         or "source-section citation rows" in title
+        or "citation rows by source section" in title
     )
 
 

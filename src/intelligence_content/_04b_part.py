@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import Final
 
-from ._04_part import _INTELLIGENCE_PROFILES_CORE  # noqa: F401
-from ._04_part import *  # noqa: F403
+from ._01_part import IntelligenceProfile
+from ._04_part import _INTELLIGENCE_PROFILES_CORE
 
 
 _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
@@ -61,6 +61,7 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "and resilience oriented; they do not explain how to launder funds, "
             "evade sanctions, bypass export controls, or target real firms"
         ),
+        source_pack_ids=("odni_governance_directives",),
     ),
     IntelligenceProfile(
         identifier="counterintelligence_source_integrity",
@@ -109,6 +110,10 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "CI content supports defensive awareness, source protection, and "
             "analytic integrity; it does not provide surveillance or handling playbooks"
         ),
+        source_pack_ids=(
+            "odni_privacy_oversight",
+            "ic_current_threat_baseline",
+        ),
     ),
     IntelligenceProfile(
         identifier="cognitive_influence_security",
@@ -134,6 +139,18 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "official_nist_ai_rmf",
             "scholarly_heuer_psychology_intelligence_analysis",
             "scholarly_mcguire_1961_inoculation",
+            "scholarly_cardenuto_2023_synthetic_realities",
+            "public_council_europe_information_disorder",
+            "official_csis_crossing_deepfake_rubicon",
+            "official_nsa_cisa_contextualizing_deepfake_threats",
+            "scholarly_huang_2023_ai_cognitive_security_safety",
+            "scholarly_deppe_schaal_2024_cognitive_warfare_nato",
+            "scholarly_terp_breuer_2022_disarm",
+            "scholarly_shah_2024_llm_disinformation",
+            "scholarly_williams_2025_llm_election_disinformation",
+            "scholarly_uchendu_2023_llm_disinformation_detection",
+            "scholarly_farid_bohacek_2022_deepfake_leaders",
+            "scholarly_golob_2020_social_engineering_cognition",
         ),
         conceptual_focus=(
             "protecting attention, belief formation, and decision quality without "
@@ -173,6 +190,10 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "scholarly_friston_2017_active_inference_process",
             "scholarly_dacosta_2020_discrete_active_inference",
             "scholarly_parr_2022_active_inference_textbook",
+            "scholarly_friston_2015_active_inference_epistemic_value",
+            "scholarly_friston_2017_uncertainty_epistemics",
+            "scholarly_smith_2022_active_inference_tutorial",
+            "scholarly_friedman_2021_active_inference_conflict",
             "official_nist_ai_rmf",
             "official_nist_ai_600_1",
             "official_canada_agentic_ai_guide",
@@ -250,6 +271,10 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "and governance lessons only; they do not reconstruct live tactics, "
             "sources, methods, or current operational workflows"
         ),
+        source_pack_ids=(
+            "declassified_history",
+            "cia_intelligence_profession",
+        ),
     ),
     IntelligenceProfile(
         identifier="cyber_threat_intelligence",
@@ -280,6 +305,11 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "official_nist_ssdf",
             "official_mitre_atlas",
             "official_cisa_deploying_ai_systems_securely",
+            "official_cset_adversarial_ml_cybersecurity_2022",
+            "scholarly_taddeo_floridi_2018_ai_cyber_arms_race",
+            "official_darpa_active_social_engineering_defense",
+            "scholarly_penmetsa_2025_adversarial_ml_cybersecurity",
+            "scholarly_wasil_2024_ai_emergency_preparedness",
         ),
         conceptual_focus=(
             "turning indicators, TTPs, incidents, vendor risk, and response "
@@ -300,6 +330,10 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
         safety_boundary=(
             "cyber material stays defensive and tabletop-based; it does not "
             "provide exploit, persistence, evasion, or live-response instructions"
+        ),
+        source_pack_ids=(
+            "ic_cyber_geoint_history",
+            "odni_governance_directives",
         ),
     ),
     IntelligenceProfile(
@@ -383,6 +417,7 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "official_wipo_ai_ip_policy",
             "official_odni_icd_203",
             "official_odni_icd_206",
+            "scholarly_ortega_2025_ai_incident_regime",
         ),
         conceptual_focus=(
             "turning authority, accountability, transparency, and review into "
@@ -403,6 +438,10 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
         safety_boundary=(
             "governance content supports lawful design, education, and review; it "
             "does not justify unauthorized collection or deployment"
+        ),
+        source_pack_ids=(
+            "odni_privacy_oversight",
+            "odni_disclosure_and_tearlines",
         ),
     ),
     IntelligenceProfile(

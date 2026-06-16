@@ -8,8 +8,9 @@ import subprocess
 import sys
 
 import template_resolver
-from build_pipeline import run_build
+from build_pipeline import generated_output_is_stale, run_build
 from figures import _02b_mermaid as mermaid_rendering
+from orchestration_contracts import output_build_sentinels, source_freshness_roots
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = PROJECT_ROOT / "scripts" / "build_curriculum.py"
@@ -94,7 +95,10 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
         / "01-practice-studio.md"
     ).read_text(encoding="utf-8")
     assert "**Filled artifact.**" in worked
-    assert "#### Answer quality rubric" in worked
+    assert (
+        "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer"
+        in worked
+    )
     assert "uses [@fig:" in (
         project
         / "output"
@@ -113,6 +117,18 @@ def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None
     assert repo is not None
     assert (repo / "infrastructure" / "validation" / "cli" / "__init__.py").is_file()
     assert str(repo) in sys.path
+
+
+def test_build_freshness_uses_registered_stage_contracts(tmp_path: Path, monkeypatch) -> None:
+    _force_mermaid_placeholders(monkeypatch)
+    project = _minimal_project(tmp_path)
+
+    assert Path("data") in source_freshness_roots()
+    assert Path("figures/figure_registry.json") in output_build_sentinels()
+    result = run_build(project, allow_placeholder_figures=True)
+
+    assert result.figure_registry_path.is_file()
+    assert generated_output_is_stale(project, project / "output") is False
 
 
 def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, monkeypatch) -> None:

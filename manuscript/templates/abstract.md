@@ -14,124 +14,127 @@ tblPrefix:
 nameInLink: true
 ---
 
-# Abstract {#sec:abstract}
+# Abstract: Synthetic Analytic Tradecraft contract {#sec:abstract}
 
 AGEINT, or Agentic Intelligence, is a local curriculum-and-assurance atlas for
-teaching bounded AI-agent support inside intelligence education. It converts
+teaching bounded AI-agent support inside intelligence education by making the
+machinery of Synthetic Analytic Tradecraft visible on the page. It converts
 {{CURRICULUM_SOURCE_GUIDE}} into **{{CURRICULUM_PART_COUNT}} parts**,
 **{{CURRICULUM_CHAPTER_COUNT}} modules**, **{{CURRICULUM_APPENDIX_COUNT}}
 methods appendices**, **{{CURRICULUM_PATTERN_COUNT}} named AGEINT patterns**,
 and **{{CURRICULUM_REFERENCE_COUNT}} parsed source-guide references** without
-renumbering inherited source identities. The manuscript is designed to be read
-as a workbench rather than a manifesto: a learner enters through a part map,
-opens a module, reads the source spine, builds a small reviewable artifact,
-records what the artifact can and cannot support, and leaves behind enough
-evidence for another analyst, instructor, or assurance reviewer to challenge the
-claim. The governing question is not whether an agent can sound persuasive. The
-governing question is whether every step can show authority, source keys, data
-boundary, tool permission, uncertainty, human review, and rollback evidence
-before the output is reused.
-
-The central contribution is **Synthetic Analytic Tradecraft**: synthetic in its fixtures, not in its standards. Synthetic means the exercises use classroom
-fixtures, toy records, public declassified examples, owned-lab logs, rendered
-figures, and tabletop scenarios instead of private records, live targets, covert
-collection, or operational action. Analytic tradecraft means those safe
-materials are still held to hard standards: observation is separated from
-inference; probability is separated from confidence; source quality from
-narrative fluency; dissent is recorded rather than smoothed away; and a
-reviewer can see which assumptions would change the conclusion. The method
-contract in [@fig:ageint-synthetic-tradecraft-method-contract] makes that
-standard visible as a claim-to-evidence pathway rather than an aspirational
-label. The manuscript therefore treats AI assistance as a drafting, retrieval,
-comparison, simulation, critique, and audit aid whose value depends on retained
-evidence, not on stylistic polish [@official_odni_icd_203];
-[@official_cia_tradecraft_primer];
-[@scholarly_heuer_psychology_intelligence_analysis].
-
-A strong AGEINT exercise leaves a physical trail in the manuscript and in the
-student artifact. It starts with an authorized learning question and an excluded
-action list. It names the source guide keys and the verified anchors that can
-support the claim. It states caveats, competing explanations, confidence basis,
-and refresh triggers. It marks whether any agent was used, which tools were
-allowlisted, what data boundary applied, which prompt or run card was retained,
-what stop condition would halt the workflow, and who performed human review.
-It includes negative controls: examples or checks that should fail if the
-artifact is overclaiming, relying on a stale citation, treating a decorative
-figure as evidence, or smuggling operational instructions into a classroom
-activity. The expected product is not an uninspected essay. It is an evidence
-packet containing source keys, caveats, assumptions, alternatives, reviewer
-challenge, safety boundary, and refresh duty.
-
-The source layer is intentionally conservative. Perplexity and other discovery
-tools may suggest candidates, but the manuscript cites only directly represented
-official, standards, public-domain, or scholarly anchors after they have been
-encoded in the source corpus and rebuilt into the BibTeX outputs. Practitioner,
-vendor, and blog sources inherited through the source guide can preserve provenance
-context, but it does not become foundational support for governance,
-performance, or rights claims unless a stronger verified source bears that
-claim. This distinction matters because AGEINT covers high-risk domains:
-HUMINT, SIGINT, OSINT, GEOINT and IMINT, FININT, cyber threat intelligence,
-counterintelligence, cognitive security, agentic AI infrastructure, active
-inference, structured analytic techniques, source verification, and governance.
-The manuscript keeps those domains useful by translating risky motifs into
-defensive reviews, synthetic packets, public-source provenance checks,
-instructor-provided logs, or governance memos.
-
-{{SOURCE_QUALITY_SPINE}}
-
-{{INTELLIGENCE_RESEARCH_SPINE}}
-
-The technical architecture is built to make stale or decorative readiness hard
-to hide. Curriculum shards generate semantic manuscript files; figures are
+renumbering inherited source identities, then asks the reader to inspect the
+same things an instructor or assurance reviewer would inspect: the part map
+that frames the domain, the module overview that names the learner task, the
+source spine that separates official, standards, scholarly, public-domain,
+practitioner, vendor, and provenance-only support while separating source
+quality from narrative fluency, the evidence packet that a student would retain,
+the reviewer challenge that should break a weak claim, and the validators that
+prevent a polished artifact from masquerading as a verified one. A learner does
+not enter through a slogan. The learner opens a
+module, sees which authority and source keys are allowed to carry the claim,
+reads a textbook primer that distinguishes observation from inference,
+confidence from probability, and source quality from fluency, works through a
+synthetic practice studio using classroom records, public declassified
+examples, owned-lab logs, toy datasets, rendered figures, or tabletop
+incidents, and then produces a bounded artifact with caveats, assumptions,
+alternatives, excluded actions, human review, rollback evidence, and refresh
+triggers written into the record before reuse. The method contract in
+[@fig:ageint-synthetic-tradecraft-method-contract] shows that flow as a
+claim-to-evidence pathway rather than as an aspirational ethics statement:
+authority must be named before the task begins, source support must be
+traceable before a claim is promoted, unsafe action must be replaced by safe
+substitution, and agentic assistance must remain a drafting, retrieval,
+comparison, simulation, critique, or audit aid whose output is never treated as
+self-authenticating [@official_odni_icd_203]
+[@official_cia_tradecraft_primer]
+[@scholarly_heuer_psychology_intelligence_analysis]. AGEINT remains synthetic in its fixtures, not in its standards: the word synthetic is therefore a control, not a downgrade. AGEINT keeps the fixture safe while
+keeping the standard difficult: HUMINT, SIGINT, OSINT, GEOINT and IMINT,
+FININT, counterintelligence, cyber threat intelligence, cognitive security,
+agent orchestration, active inference, source verification, public-sector
+governance, privacy review, and industrial-control-system defense can be
+discussed because the student is not handed live targets, evasion recipes,
+exploit instructions, manipulation playbooks, covert-action procedures, or
+unsafe cyber-physical steps. When a source topic could invite misuse, the module
+turns the risky motif into a provenance card, detection-coverage note,
+rights-impact worksheet, model or dataset card, source-refresh memo, release
+gate, risk-exception log, remediation backlog, or debrief protocol, and the
+exercise fails if it cannot show where authority, data boundary, tool
+permission, uncertainty, and review enter the workflow. The source layer is
+intentionally conservative: Perplexity and similar discovery tools may suggest
+candidates, but the manuscript cites verified official, standards,
+public-domain, or scholarly anchors encoded in the source corpus and rebuilt
+into BibTeX; Practitioner, vendor, and blog sources inherited through the source
+guide, plus social or other guide-inherited rows, can preserve provenance
+context without becoming foundational support for governance, rights, safety,
+empirical, statistical, or performance claims unless a stronger verified source
+bears the specific point. The same source posture is
+visible in the counts: {{SOURCE_QUALITY_ANCHOR_COUNT}} source-quality anchors
+cover the governing standards and assurance spine, while
+{{INTELLIGENCE_RESEARCH_ANCHOR_COUNT}} curated intelligence research anchors
+span the domain lanes that route claim-bearing prose to direct evidence rather
+than decorative citations. A strong AGEINT artifact is therefore not an
+uninspected essay. It is an evidence packet that names the question, allowed
+inputs, excluded actions, source keys, claim type, caveats, competing
+explanations, confidence basis, prompt or run card, tool allowlist, data
+boundary, stop condition, reviewer challenge, safety boundary, refresh trigger,
+and human disposition. It also contains negative controls: stale citations that
+should be caught, weak-source-only claims that should be downgraded, figure
+positions or colors that should not be mistaken for quantitative evidence,
+overbroad statistical language that should fail, and operational substitutions
+that should halt until an instructor or reviewer approves a safer artifact. A
+reviewer can trace a finished packet in both directions: from a polished
+sentence back to the claim class, source family, cited anchor, caveat, and
+source-refresh duty, or from a source row forward to the modules, figures,
+tables, and exercises that rely on it. A student can see why a governance claim
+needs law, policy, standard, or official guidance support; why a cyber or
+industrial-control-system scenario must remain defensive and synthetic; why a
+social or cognitive-security lesson must become resilience education rather
+than persuasion practice; why a vendor or practitioner note can motivate a
+question but cannot by itself carry a public-rights or safety assertion; why a
+figure caption must say whether arrows are explanatory or quantitative; and why
+a model-generated draft is only useful after it has been constrained by
+authority, reviewed by a person, and attached to evidence that another person
+can contest. The early orientation pages, part maps, chapter landmarks,
+appendices, bibliography atlas, source-lane map, and generated reports are
+designed to make that trace visible instead of leaving it to instructor memory.
+They show the learner what to keep: the source keys behind each claim, the
+reason a safer substitute was chosen, the assumption that would change the
+answer, the dissent that should not be smoothed away, the review note that
+records who accepted residual risk, the rollback path if a source or permission
+changes, and the refresh trigger that turns a current claim back into a review
+item. They also show what the curriculum refuses to keep: unverifiable authority
+theater, live-target instructions, metric-looking diagrams without units or
+denominators, statistical decorations without empirical design, citation
+clusters that do not bear the sentence they decorate, and agent outputs whose
+provenance cannot be reconstructed. The technical build is part of that scholarship. Curriculum shards generate
+semantic manuscript files; cross-references use label-backed section, figure,
+table, and equation links; citations route through Pandoc keys; figures are
 registry-backed PNG assets with captions, alt text, long descriptions,
-provenance, and hashes; citations are counted and routed through Pandoc keys;
-cross-reference labels are explicit and link-backed; source
-metadata carries explicit lane and tier fields; PDF audits check links, stale
-outputs, file actions, and banned filler language. The analysis-validation
-matrix in [@fig:ageint-analysis-validation-matrix] names which claim classes
-need empirical evidence, source-family support, negative controls, or rendered
-artifact checks before they are treated as ready. These validators are part of
-the scholarship. They are not merely build hygiene. AGEINT assumes that the
-artifact itself can mislead if its references, figures, table layouts, or
-generated counts drift out of sync, so the validation surface is treated as a
-red-team target. A green build is meaningful only when manuscript, citations,
-figures, bibliography, metadata, and rendered PDF all come from the same rebuild.
-
-The content stance is equally bounded. AGEINT can discuss intelligence
-disciplines, cyber and industrial-control-system defense, influence-resilience
-education, source protection, agent orchestration, and cognitive security
-because the learning tasks are framed as authorized analysis, evidence review,
-safe substitution, incident tabletop, control mapping, or governance critique.
-It does not provide live targeting, evasion recipes, exploit instructions,
-manipulation playbooks, covert-action procedures, or unsafe cyber-physical
-actions. When a source topic could invite misuse, the module is expected to name
-the risk and replace the unsafe action with a defensive artifact: a provenance
-card, detection-coverage note, rights-impact worksheet, model or dataset card,
-release gate, risk exception memo, remediation backlog, or debrief protocol.
-
-The claim boundary is deliberately narrow. This work proposes a reviewable
-design and teaching architecture; it does not claim to measure AGEINT
-performance, operational effectiveness, learning outcomes, or public-sector
-impact unless a cited empirical or evaluation source directly supports that
-narrower claim. Its strongest claim is methodological: agentic assistance can be
-taught responsibly when the curriculum requires explicit authority, source
-quality, evidence packets, negative controls, human review, rollback, and
-refresh triggers before reuse. The resulting manuscript is meant to let readers
-see the machinery of judgment. A module is good when it teaches the learner how
-to preserve provenance, uncertainty, dissent, rights constraints, tool limits,
-and audit evidence in one inspectable artifact. A figure is good when its
-caption and long description explain what the visual lets the reader compare.
-A citation is good when it carries a specific claim rather than decorating a
-paragraph. A workflow is good when its safest failure mode is to stop, document,
-and ask for review.
-
-AGEINT should therefore be regarded as a Synthetic Analytic Tradecraft atlas:
-not a promise that machines can replace analysts, and not a disguised
-operational manual, but a dense, rebuildable local system for teaching how
-agentic tools, source discipline, structured analytic methods, cognitive
-security, and governance can meet inside a defensible classroom or assurance
-setting. Its value is the way it makes the invisible parts of analytic work
-visible: the source key behind a sentence, the caveat behind a confidence
-statement, the blocked use behind a tempting automation, the reviewer challenge
-behind a polished answer, and the refresh trigger behind every current-source
-claim.
+provenance, hashes, and visual-semantics metadata; source anchors carry explicit
+lane and tier fields; claim calibration audits high-risk empirical,
+statistical, governance, safety, visualization, artifact-readiness, and
+formalism language; scholarship and source-metadata reports expose review
+warnings instead of hiding them; PDF audits check stale output, URI targets,
+file actions, and banned filler language. The analysis-validation matrix in
+[@fig:ageint-analysis-validation-matrix] names which claim classes require
+empirical evidence, direct source-family support, negative controls, figure
+semantics, or rendered-artifact checks before they can be treated as ready, and
+that matrix is a boundary on what the manuscript can honestly say. AGEINT is
+not a benchmark and does not claim to measure AGEINT performance, model
+capability, analyst replacement, learning outcomes, operational effectiveness,
+public-sector impact, statistical significance, or safety performance; page
+counts, citation counts, figure counts, validator passes, and link audits are
+artifact telemetry, not empirical outcome evidence.
+Its strongest claim is methodological and inspectable: agentic assistance can
+be taught inside intelligence education when every reuse path is forced through
+authority, source support, safe substitution, evidence packet, negative
+controls, human review, rollback, and refresh triggers, and when the safest
+failure mode is to stop, document the unresolved condition, and ask for review.
+The resulting work should be read as a Synthetic Analytic Tradecraft atlas, not
+as a public-release certificate or a disguised operational manual: the reader
+can see the source key behind a sentence, the caveat behind a confidence
+statement, the assumption behind a scenario, the blocked use behind a tempting
+automation, the challenge behind a polished answer, the caption that limits a
+visual, the validator that rejects an overclaim, and the refresh duty that keeps
+current-source prose from becoming stale authority.

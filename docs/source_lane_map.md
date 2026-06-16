@@ -1,10 +1,10 @@
-# Source Lane Map
+# Source Lane Map: provenance lanes, tiers, and refresh duties
 
 AGEINT v2 uses source lanes to keep generated claims auditable. Lanes are not
 marketing categories; they decide what evidence a claim needs before the
 manuscript can rely on it.
 
-## Required V2 Lanes
+## Required V2 lanes: governance, rights, assurance, and monitoring coverage
 
 | Lane | Evidence expectation |
 |---|---|
@@ -32,7 +32,7 @@ manuscript can rely on it.
 | Assurance evaluation evidence | scenario design, model testing, red teaming, field testing, measurement trees, and evaluation evidence |
 | Procurement performance monitoring | vendor demonstrations, QASP-style monitoring, performance metrics, and post-award review |
 
-## May 24, 2026 Source Refresh
+## May 24, 2026 source refresh: expanded lanes and verified anchors
 
 The May 24 refresh extends these lanes with official Canada, OECD, UN, NIST,
 and CISA anchors. Public-sector agentic AI now includes Canada's agentic-AI
@@ -44,7 +44,7 @@ includes CISA secure AI deployment; procurement/vendor governance includes CISA
 Secure by Demand for OT; and OT auditability/evidence lanes include CISA asset
 inventory and definitive architecture guidance.
 
-## Authoring Rule
+## Authoring rule: record lane and tier metadata before citation use
 
 Add lane metadata in `data/research_anchors/` and `src/intelligence_content/`, surface it through
 `src/manuscript_variables/`, and rebuild. Do not hand-edit generated

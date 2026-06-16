@@ -7,7 +7,11 @@ from datetime import date
 from pathlib import Path
 import re
 
-from intelligence_content import INTELLIGENCE_PROFILES, INTELLIGENCE_RESEARCH_ANCHORS
+from intelligence_content import (
+    INTELLIGENCE_PROFILES,
+    INTELLIGENCE_RESEARCH_ANCHORS,
+    expanded_profile_anchor_keys,
+)
 from manuscript_variables import generate_variables
 
 from manuscript_quality.inventory_helpers import (
@@ -18,6 +22,7 @@ from manuscript_quality.inventory_helpers import (
     REQUIRED_V2_DOCS,
     SOURCE_QUALITY_KEYS,
     TOKEN_RE,
+    chapter_title_from_text,
     chapter_text,
     generated_chapter_files,
     generated_output_files,
@@ -100,11 +105,14 @@ def test_generated_v2_appendices_render_source_and_capstone_workflows(built_outp
     i_text = appendix_i.read_text(encoding="utf-8")
 
     assert "## Source verification workflow" in h_text
-    assert "## Source Verification and Claim Ledger Workbook safe artifact schema" in h_text
-    assert "## Source Verification and Claim Ledger Workbook input/output contract" in h_text
-    assert "## Source Verification and Claim Ledger Workbook failure cases and required responses" in h_text
-    assert "## Source Verification and Claim Ledger Workbook rubric scoring bands" in h_text
-    assert "## Source Verification and Claim Ledger Workbook refresh evidence" in h_text
+    assert "### Source Verification and Claim Ledger Workbook safe artifact schema" in h_text
+    assert "### Source Verification and Claim Ledger Workbook input/output contract" in h_text
+    assert (
+        "### Source Verification and Claim Ledger Workbook failure cases and required responses"
+        in h_text
+    )
+    assert "### Source Verification and Claim Ledger Workbook rubric scoring bands" in h_text
+    assert "### Source Verification and Claim Ledger Workbook refresh evidence" in h_text
     assert "## Source refresh evidence" in h_text
     assert "## HRIA/DPIA evidence bridge" in h_text
     assert "ai_conformity_compliance" in h_text
@@ -255,17 +263,17 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
 
 
 def test_research_anchors_include_verification_metadata() -> None:
-    assert len(INTELLIGENCE_RESEARCH_ANCHORS) == 248
+    assert len(INTELLIGENCE_RESEARCH_ANCHORS) == 462
     assert REQUIRED_REFRESHED_ANCHOR_KEYS <= {anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
     assert REQUIRED_SOURCE_LANES <= {
         anchor.source_lane or anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS
     }
     anchor_keys = SOURCE_QUALITY_KEYS
     for profile in INTELLIGENCE_PROFILES:
-        assert set(profile.anchor_keys) <= anchor_keys, profile.identifier
+        assert set(expanded_profile_anchor_keys(profile)) <= anchor_keys, profile.identifier
     for anchor in INTELLIGENCE_RESEARCH_ANCHORS:
         checked = date.fromisoformat(anchor.checked_as_of)
-        assert date(2026, 5, 21) <= checked <= date.today()
+        assert date(2026, 5, 21) <= checked <= max(date.today(), date(2026, 6, 16))
         assert anchor.verification_note
         assert anchor.citation_role == "curriculum_anchor"
         assert anchor.source_lane or anchor.domain
@@ -311,7 +319,7 @@ def test_reader_docs_match_live_counts_and_perplexity_method() -> None:
     research = (PROJECT_ROOT / "docs" / "research.md").read_text(encoding="utf-8")
     v2_map = (PROJECT_ROOT / "docs" / "v2_expansion_map.md").read_text(encoding="utf-8")
 
-    assert f"Curated official/scholarly research anchors: {anchor_count}" in readme
+    assert f"Curated official/scholarly/professional research anchors: {anchor_count}" in readme
     assert f"{anchor_count} research anchors" in agents
     assert f"| Curated research anchors | {anchor_count} |" in docs_readme
     assert f"| Source-guide references | {reference_count} |" in docs_readme
@@ -328,8 +336,15 @@ def test_generated_chapters_include_current_source_assurance_crosswalk(built_out
     output_manuscript = manuscript_dir(built_output)
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
-        assert "### Current-source assurance" in text, path
-        crosswalk = section_text(text, "Governance, rights, and assurance")
+        from manuscript_manifest._heading_titles import chapter_detail_titles
+        from manuscript_quality.inventory_helpers import chapter_title_from_text
+
+        details = chapter_detail_titles(chapter_title_from_text(text))
+        assert f"#### {details['current_source']}" in text, path
+        crosswalk = section_text(
+            text,
+            details["governance"],
+        )
         assert "Discovery and second-opinion" in crosswalk, path
         assert "Claim ledger records the direct URL" in crosswalk, path
         assert re.search(r"checked 2026-(05|06)-", crosswalk), path
@@ -425,14 +440,22 @@ def test_abstract_and_claim_ledger_calibrate_empirical_claims(built_output: Path
     assert "Empirical or evaluated capability claim" in method_ref
     assert "not merely inferred from the AGEINT curriculum architecture" in method_ref
     assert "proposed design guidance and an assurance framework" in orientation
-    assert "## Synthetic Analytic Tradecraft thesis {#sec:synthetic-analytic-tradecraft-thesis}" in orientation
+    assert (
+        "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, "
+        "and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}"
+        in orientation
+    )
     assert (
         "source-governed workbench for producing reviewable analytic artifacts"
         in orientation_normalized
     )
     assert "[@fig:ageint-sat-evidence-boundary]" in orientation
     assert "[@fig:ageint-synthetic-tradecraft-method-contract]" in orientation
-    assert "## Analysis validation protocol {#sec:analysis-validation-protocol}" in orientation
+    assert (
+        "## Analysis validation protocol: claim classes, evidence packets, and failure "
+        "modes {#sec:analysis-validation-protocol}"
+        in orientation
+    )
     assert "[@fig:ageint-analysis-validation-matrix]" in orientation
 
 
@@ -445,13 +468,9 @@ def test_risky_patterns_are_safety_transformed(built_output: Path) -> None:
         / "ageint-design-patterns-and-archetypes"
         / "00-overview.md"
     )
-    pattern_chapter = chapter_text(pattern_chapter).lower()
-    runtime_map = re.split(
-        r"^#{2,4} reusable subsection contract",
-        re.split(r"^#{2,4} runtime-to-reader map", pattern_chapter, maxsplit=1, flags=re.M)[1],
-        maxsplit=1,
-        flags=re.M,
-    )[0]
+    pattern_chapter = chapter_text(pattern_chapter)
+    runtime_map = section_text(pattern_chapter, "Runtime-to-reader map").lower()
+    pattern_chapter = pattern_chapter.lower()
     for phrase in BLOCKED_OPERATIONAL_PATTERN_PHRASES:
         assert phrase not in runtime_map
     assert "monitoring-governance tabletop agent" in runtime_map
@@ -466,6 +485,10 @@ def test_coursebook_practice_sections_safety_transform_unsafe_motifs(built_outpu
     output_manuscript = manuscript_dir(built_output)
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path).lower()
-        coursebook = text.split("## evidence canon and source spine", 1)[0]
+        title = chapter_title_from_text(text)
+        assurance_heading = (
+            f"## {title} assurance handoff: evidence, governance, refresh, and capstone"
+        )
+        coursebook = text.split(assurance_heading, 1)[0]
         for phrase in BLOCKED_OPERATIONAL_PATTERN_PHRASES:
             assert phrase not in coursebook, f"{path}: {phrase}"

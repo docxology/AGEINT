@@ -1,6 +1,6 @@
-# Forking Guide — AGEINT
+# Forking Guide - AGEINT shard-first reuse and confidentiality checks
 
-## Shard-first fork workflow
+## Shard-first fork workflow: copy source inputs, not generated output
 
 1. Copy project tree (or promote from private `projects/active/`).
 2. Replace `data/curriculum/` shards with your curriculum structure (keep JSON/JSONL schema).
@@ -9,19 +9,19 @@
 5. Adjust neutral templates in `manuscript/templates/` if section shapes change.
 6. Run `uv run python scripts/build_curriculum.py` and fix test failures before render.
 
-## Do not fork by copying `output/manuscript/`
+## Do not fork by copying `output/manuscript/`: generated files are disposable
 
 Generated prose is an artifact. Fork the **source spine** and renderer code.
 
-## Template parity
+## Template parity: preserve validation and output-contract behavior
 
 Keep `src/`, `tests/`, `scripts/`, `manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](../../../../template/docs/guides/new-project-setup.md) for Layer 2 conventions.
 
-## Confidentiality
+## Confidentiality: keep AGEINT local unless promotion is approved
 
 AGEINT in the public template repo is local-only (symlink). Do not commit non-exemplar projects to the public template remote.
 
-## See also
+## Related documentation: architecture, output, syntax, and agent rules
 
 - [`architecture.md`](architecture.md)
 - [`agent_instructions.md`](agent_instructions.md)

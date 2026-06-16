@@ -10,6 +10,7 @@ from ._05_part import PRACTICE_LENSES
 from ._06_part import (
     COURSEBOOK_PROFILES,
     anchor_references,
+    expanded_profile_anchor_keys,
     practice_lens_for_titles,
     profile_for_titles,
 )
@@ -307,7 +308,7 @@ def profile_triangulation_anchors(
 ) -> str:
     """Return a profile-specific triangulation sentence for claim-bearing sections."""
     profile = profile_for_titles(part_title, section_title, chapter=chapter)
-    anchors = citation_cluster(profile.anchor_keys, limit=limit)
+    anchors = citation_cluster(expanded_profile_anchor_keys(profile), limit=limit)
     module_number = str(chapter.get("number", "")).strip() if chapter else ""
     local_scope = f"module {module_number}" if module_number else "this module"
     return (
@@ -372,7 +373,7 @@ def part_research_brief(part: dict[str, Any]) -> str:
     source_context = _source_ref_context(_part_citation_numbers(part))
     return (
         f"**Research lane:** {profile.title}. "
-        f"Core anchors: {citation_cluster(profile.anchor_keys, limit=3)} "
+        f"Core anchors: {citation_cluster(expanded_profile_anchor_keys(profile), limit=3)} "
         f"Conceptual focus: {profile.conceptual_focus}. "
         f"Composability contract: {profile.composability_contract}. "
         f"**Practice lens:** {lens.title}; {lens.planning_question} "
@@ -443,7 +444,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
         "| Anchor | Why it matters here |",
         "|---|---|",
     ]
-    for anchor in anchor_references(profile.anchor_keys)[:7]:
+    for anchor in anchor_references(expanded_profile_anchor_keys(profile))[:7]:
         anchor_rows.append(
             f"| {citation_ref(anchor.key)} | {anchor.note} Checked as of "
             f"{anchor.checked_as_of}; role: {anchor.citation_role}. |"
@@ -453,7 +454,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
             f"Research lane: **{profile.title}** for {topic_context}. {source_context}",
             "",
             topic_line.rstrip(),
-            f"**Verified anchor cluster:** {citation_cluster(profile.anchor_keys, limit=7)}",
+            f"**Verified anchor cluster:** {citation_cluster(expanded_profile_anchor_keys(profile), limit=7)}",
             "",
             f"**Conceptual depth:** {profile.conceptual_focus}.",
             "",

@@ -131,7 +131,7 @@ def test_evidence_and_artifact_prompts_match_curriculum_parity_fixture() -> None
         artifact_prompt_for_entry,
         evidence_prompt_for_entry,
     )
-    from intelligence_content import practice_lens_for_titles, profile_for_titles
+    from intelligence_content import practice_lens_for_titles
     from intelligence_content.topic_entries import safe_topic_entries
 
     fixture = PROJECT_ROOT / "tests" / "fixtures" / "topic_prompt_parity.json"

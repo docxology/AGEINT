@@ -1,10 +1,10 @@
-# Transparency Notice Workflow
+# Transparency Notice Workflow: public-facing purpose, safeguards, and limits
 
 The AGEINT transparency notice converts internal evidence into a plain-language
 record that a learner, instructor, public reviewer, or affected community can
 inspect.
 
-## Workflow
+## Workflow: draft, review, publish boundary, and retain notice evidence
 
 | Step | Required evidence |
 |---|---|

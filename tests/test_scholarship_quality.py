@@ -96,7 +96,9 @@ def test_scholarship_quality_warns_for_single_family_without_failing(tmp_path: P
 def test_scholarship_quality_flags_broken_sat_method_contract(tmp_path: Path) -> None:
     (tmp_path / "abstract.md").write_text("# Abstract\n\nSynthetic framing without method figure.\n", encoding="utf-8")
     (tmp_path / "orientation.md").write_text(
-        "# Orientation\n\n## Synthetic Analytic Tradecraft thesis {#sec:synthetic-analytic-tradecraft-thesis}\n",
+        "# Orientation\n\n"
+        "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, "
+        "and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}\n",
         encoding="utf-8",
     )
 
@@ -117,7 +119,9 @@ def test_scholarship_quality_flags_broken_analysis_validation_contract(tmp_path:
         encoding="utf-8",
     )
     (tmp_path / "orientation.md").write_text(
-        "# Orientation\n\n## Synthetic Analytic Tradecraft thesis {#sec:synthetic-analytic-tradecraft-thesis}\n\n"
+        "# Orientation\n\n"
+        "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, "
+        "and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}\n\n"
         "source-family triangulation and negative-control testing "
         "[@fig:ageint-synthetic-tradecraft-method-contract].\n",
         encoding="utf-8",
@@ -142,10 +146,12 @@ def test_scholarship_quality_flags_incomplete_analysis_validation_lanes(tmp_path
     )
     (tmp_path / "orientation.md").write_text(
         "# Orientation\n\n"
-        "## Synthetic Analytic Tradecraft thesis {#sec:synthetic-analytic-tradecraft-thesis}\n\n"
+        "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, "
+        "and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}\n\n"
         "source-family triangulation and negative-control testing "
         "[@fig:ageint-synthetic-tradecraft-method-contract].\n\n"
-        "## Analysis validation protocol {#sec:analysis-validation-protocol}\n\n"
+        "## Analysis validation protocol: claim classes, evidence packets, and failure "
+        "modes {#sec:analysis-validation-protocol}\n\n"
         "The analysis validation matrix [@fig:ageint-analysis-validation-matrix] has a table.\n\n"
         "| Claim class | Validation question | Required evidence | Failure mode |\n"
         "|---|---|---|---|\n"

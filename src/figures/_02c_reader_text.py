@@ -108,6 +108,9 @@ def _figure_detail(spec: FigureSpec, curriculum: Curriculum, *, limit: int) -> s
                         "plus the unit's ordered source-backed route"
                     )
     if spec.kind is FigureKind.MERMAID:
+        reader_detail = str(spec.provenance.get("reader_detail", "")).strip()
+        if reader_detail:
+            return _reader_detail_items(reader_detail, limit=limit)
         labels = _mermaid_labels(mermaid_source(curriculum, spec), limit=limit)
         if labels:
             return _join_items(labels)
@@ -137,6 +140,15 @@ def _mermaid_labels(source: str, *, limit: int) -> list[str]:
         if len(labels) >= limit:
             break
     return labels
+
+
+def _reader_detail_items(detail: str, *, limit: int) -> str:
+    items = [
+        item.strip(" .;:")
+        for item in re.split(r";|\\n", detail)
+        if len(item.split()) >= 2
+    ]
+    return _join_items(items[:limit]) if items else detail
 
 
 def _clean_label(raw: str) -> str:
@@ -199,6 +211,33 @@ def _visual_type(spec: FigureSpec) -> str:
 
 
 def _python_visual_detail(renderer_id: str) -> str:
+    dashboard_details = {
+        "source_metadata_integrity": (
+            "source metadata denominator, explicit lane and tier fields, checked_as_of "
+            "and refresh-cadence evidence, source_metadata_ok failure path, reviewer "
+            "metadata checks, and the limit that the counts are local telemetry rather "
+            "than source-quality scores"
+        ),
+        "source_refresh_due_dashboard": (
+            "source refresh denominator, current and stale date states, cadence "
+            "coverage, missing-date checks, source_refresh_due_ok failure path, reviewer "
+            "refresh action, and the limit that the view is release-readiness telemetry "
+            "rather than empirical source performance"
+        ),
+        "agency_source_coverage_dashboard": (
+            "official-source denominator, agency distribution, source-pack routing, "
+            "profile coverage, agency_source_coverage_ok failure path, reviewer routing "
+            "checks, and the limit that coverage telemetry is not an agency ranking"
+        ),
+        "claim_calibration_and_visual_semantics": (
+            "claim-calibration triggers, required evidence lanes, weak-source "
+            "separation, formalism limits, visual-semantic metadata, fail-closed "
+            "artifact gates, reviewer revision actions, and the limit that the map is "
+            "not a capability score or measured performance claim"
+        ),
+    }
+    if renderer_id in dashboard_details:
+        return dashboard_details[renderer_id]
     label = renderer_id.replace("_", " ")
     if any(token in renderer_id for token in ("loop", "flow", "lifecycle", "cycle", "workflow")):
         return f"{label} steps, decision gates, owner handoffs, refresh triggers, and closure evidence"

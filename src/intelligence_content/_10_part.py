@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from ._06_part import practice_lens_for_titles, profile_for_titles
+from ._06_part import expanded_profile_anchor_keys, practice_lens_for_titles, profile_for_titles
 from ._07_safe_titles import _topic_anchor_words
 from ._09_part import (
     _chapter_ref_context,
@@ -25,7 +25,7 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
     topics = [entry.display_title for entry in entries[:3]]
     topic_sentence = f"**{'; '.join(topics)}**" if topics else "the local topic cluster"
     first_topic = f"**{topics[0]}**" if topics else "the local topic cluster"
-    anchors = citation_cluster(profile.anchor_keys, limit=3)
+    anchors = citation_cluster(expanded_profile_anchor_keys(profile), limit=3)
     source_context = _chapter_ref_context(chapter)
     topic_context = _topic_context(chapter, part)
     return "\n\n".join(

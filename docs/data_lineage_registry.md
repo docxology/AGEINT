@@ -1,10 +1,10 @@
-# Data Lineage Registry
+# Data Lineage Registry: source identity, transformations, retention, and review
 
 The data lineage registry keeps AGEINT generated chapters and appendices
 auditable. It appears in every chapter and is expanded in the source
 verification and claim-ledger workflow.
 
-## Registry Objects
+## Registry objects: source, dataset, prompt, output, and handoff records
 
 - Source citation: `ageintNNN`, title, URL, checked date, and lock status.
 - Verified anchor: lane, tier, verification method, claim scope, stakeholder
@@ -16,13 +16,13 @@ verification and claim-ledger workflow.
 - Final artifact: claim ledger, uncertainty note, accessibility status, rights
   review, and refresh owner.
 
-## Source Rules
+## Source rules: provenance anchors and traceability requirements
 
 The source identity lock protects `ageint001` through `ageint231`; current
 append-only references extend through `ageint312`. Generated output remains a
 rebuild product and should not be edited by hand.
 
-## Safety Boundary
+## Safety boundary: retain review evidence without exposing sensitive data
 
 Lineage records may describe blocked unsafe motifs for audit purposes. They
 must not include private data, live system secrets, credential material,

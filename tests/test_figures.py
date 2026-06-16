@@ -19,6 +19,7 @@ from figures import (
     load_figure_registry,
     render_figures,
 )
+from figures.mermaid_contracts import mermaid_type_contracts
 from manuscript_manifest import build_manuscript_manifest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -82,9 +83,9 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
         FigureKind.HISTORICAL,
         FigureKind.AI_GENERATED,
     }
-    assert len(specs) == 170
-    assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == 114
-    assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 46
+    assert len(specs) == 173
+    assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == 115
+    assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 48
     assert sum(spec.kind == FigureKind.HISTORICAL for spec in specs) == 4
     assert sum(spec.kind == FigureKind.AI_GENERATED for spec in specs) == 6
     assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == curriculum.stats["parts"] + 1 + len(mermaid_rendering.SYNTHESIS_MERMAID)
@@ -100,6 +101,7 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     fig:ageint-visual-accessibility-contract fig:ageint-visual-quality-audit-dashboard fig:ageint-artifact-evidence-control-loop
     fig:ageint-scholarship-triangulation-map fig:ageint-graphical-abstract fig:ageint-synthetic-tradecraft-method-contract
     fig:ageint-analysis-validation-matrix fig:ageint-analysis-validation-family-coverage fig:ageint-source-metadata-integrity
+    fig:ageint-source-refresh-due-dashboard fig:ageint-agency-source-coverage
     fig:ageint-claim-calibration-and-visual-semantics
     fig:ageint-hria-dpia-map fig:ageint-procurement-oversight-loop fig:ageint-agent-incident-lifecycle
     fig:ageint-bounded-autonomy-recoverability fig:ageint-public-ai-register-lifecycle fig:ageint-ai-incident-reporting-loop
@@ -116,6 +118,7 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     fig:ageint-analytic-source-quality-boundary fig:ageint-first-principles-tradecraft-decomposition
     fig:ageint-redteam-tradecraft-negative-control-loop fig:ageint-icd203-probability-confidence-boundary
     fig:ageint-sat-evidence-boundary fig:ageint-warning-failure-feedback-loop fig:ageint-source-freshness-coverage
+    fig:ageint-source-refresh-due-dashboard
     fig:ageint-memory-governance-plate fig:ageint-visual-provenance-plate
     fig:ageint-ai-data-security-lifecycle-plate fig:ageint-web-source-refresh-plate
     """.split()
@@ -153,6 +156,20 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     assert metadata.kind == FigureKind.PYTHON
     assert metadata.provenance["renderer_id"] == "source_metadata_integrity"
     assert "source rows cannot silently fall back" in metadata.caption
+    assert "denominator context" in metadata.caption
+    assert "not a quality score" in metadata.caption
+    refresh_due = next(spec for spec in specs if spec.label == "fig:ageint-source-refresh-due-dashboard")
+    assert refresh_due.kind == FigureKind.PYTHON
+    assert refresh_due.provenance["renderer_id"] == "source_refresh_due_dashboard"
+    assert "source refresh due-date dashboard" in refresh_due.caption
+    assert "472-row local source denominator" in refresh_due.caption
+    assert "not a score or empirical performance claim" in refresh_due.caption
+    agency_coverage = next(spec for spec in specs if spec.label == "fig:ageint-agency-source-coverage")
+    assert agency_coverage.kind == FigureKind.PYTHON
+    assert agency_coverage.provenance["renderer_id"] == "agency_source_coverage_dashboard"
+    assert "agency-source coverage" in agency_coverage.caption
+    assert "56-anchor denominator" in agency_coverage.caption
+    assert "artifact-evidence failure path" in agency_coverage.caption
     calibration = next(
         spec for spec in specs if spec.label == "fig:ageint-claim-calibration-and-visual-semantics"
     )
@@ -160,6 +177,8 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     assert calibration.provenance["renderer_id"] == "claim_calibration_and_visual_semantics"
     assert calibration.semantic_role == "verifier_control_map"
     assert "claim-calibration verifier" in calibration.caption
+    assert "reviewer inputs" in calibration.caption
+    assert "not read the visual as a score" in calibration.caption
     atlas = next(spec for spec in specs if spec.label == "fig:ageint-graphical-abstract")
     assert atlas.kind == FigureKind.PYTHON
     assert atlas.output_path == "output/figures/python/ageint-graphical-abstract.png"
@@ -184,6 +203,42 @@ def test_maestro_mermaid_source_uses_top_to_bottom_layout() -> None:
     assert "direction TB" in source
 
 
+def test_mermaid_sources_use_reader_task_specific_chart_types() -> None:
+    curriculum = load_curriculum(DATA)
+    manifest = build_manuscript_manifest(curriculum)
+    specs = build_figure_specs(curriculum, manifest)
+    mermaid_specs = [spec for spec in specs if spec.kind == FigureKind.MERMAID]
+    types = {str(spec.provenance["diagram_type"]) for spec in mermaid_specs}
+    converted = {
+        "fig:ageint-sre-circuit-breaker": "stateDiagram-v2",
+        "fig:ageint-agent-evaluation-evidence-ladder": "sequenceDiagram",
+        "fig:osint-collection-to-verification-pipeline": "sequenceDiagram",
+        "fig:osint-provenance-verification-workflow": "sequenceDiagram",
+        "fig:appendix-capstone-redteam-review": "journey",
+        "fig:ageint-cdr-degradation-cascade": "timeline",
+        "fig:ageint-claim-evidence-fit-map": "quadrantChart",
+    }
+
+    assert {
+        "flowchart",
+        "stateDiagram-v2",
+        "sequenceDiagram",
+        "journey",
+        "timeline",
+        "quadrantChart",
+    } <= types
+    assert {contract.diagram_type for contract in mermaid_type_contracts()} <= types
+    by_label = {spec.label: spec for spec in mermaid_specs}
+    for label, diagram_type in converted.items():
+        spec = by_label[label]
+        source = mermaid_rendering.mermaid_source(curriculum, spec)
+        assert spec.provenance["diagram_type"] == diagram_type
+        assert spec.provenance["reader_detail"]
+        assert f"\n{diagram_type}\n" in source
+        assert _word_count(spec.long_description) >= MIN_LONG_DESCRIPTION_WORDS
+        assert "The full visual conveys" in spec.long_description
+
+
 def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
@@ -197,9 +252,9 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
 
     assert registry_path == PROJECT_ROOT / "output" / "figures" / "figure_registry.json"
     assert registry["project"] == "AGEINT"
-    assert registry["schema_version"] == "1.4"
+    assert registry["schema_version"] == "1.5"
     assert registry["figure_count"] == len(registry["figures"])
-    assert registry["figure_count"] == 170
+    assert registry["figure_count"] == 173
     guidance_urls = {row["url"] for row in registry["accessibility_guidance"]}
     assert {
         "https://www.w3.org/WAI/tutorials/images/complex/",
@@ -238,6 +293,7 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
                 assert info[png_key] == entry[registry_key]
             assert info["AGEINT.Quantitative"] == str(entry["quantitative"]).lower()
         if entry["kind"] == FigureKind.MERMAID.value:
+            assert entry["provenance"]["diagram_type"]
             mermaid_source = PROJECT_ROOT / entry["source_artifact_path"]
             assert mermaid_source.is_file()
             assert mermaid_source.suffix == ".mmd"
@@ -355,7 +411,7 @@ def test_render_figures_strict_mode_produces_real_mermaid_diagrams() -> None:
     )
     registry = load_figure_registry(registry_path)
     mermaid_entries = [entry for entry in registry["figures"] if entry["kind"] == FigureKind.MERMAID.value]
-    assert len(mermaid_entries) == 114
+    assert len(mermaid_entries) == 115
     assert len(mermaid_entries) == curriculum.stats["parts"] + 1 + len(mermaid_rendering.SYNTHESIS_MERMAID)
     for entry in mermaid_entries:
         asset = PROJECT_ROOT / entry["output_path"]

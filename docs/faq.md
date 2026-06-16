@@ -1,4 +1,4 @@
-# FAQ — AGEINT
+# FAQ - AGEINT build, source identity, and validation answers
 
 ## Why is there no `01_introduction.md` under `manuscript/`?
 
@@ -27,7 +27,7 @@ uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/
 uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
-## See also
+## Related documentation: build, syntax, output, and troubleshooting references
 
 - [`quickstart.md`](quickstart.md)
 - [`troubleshooting.md`](troubleshooting.md)

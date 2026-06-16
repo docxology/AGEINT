@@ -1,0 +1,131 @@
+{
+  "accepted_count": 95,
+  "accepted_shards": [
+    "intelligence-anchors-368-417.jsonl",
+    "intelligence-anchors-418-462.jsonl"
+  ],
+  "accepted_source_packs": {
+    "research_agentic_ai_appendices": 23,
+    "research_collection_disciplines": 15,
+    "research_cyber_ics": 17,
+    "research_history_cogsec_sat_legal": 19,
+    "research_influence_ci_gray_zone": 21
+  },
+  "candidate_heading_count": 106,
+  "checked_as_of": "2026-06-16",
+  "deferred": [
+    {
+      "original_key": "official_odni_ic_osint_strategy_2024_2026",
+      "reason": "duplicate_existing_url: already covered by official_ic_osint_strategy",
+      "status": "deferred"
+    },
+    {
+      "original_key": "official_atp_2_22_9_1_pai_osint_2023",
+      "reason": "no_direct_public_source: proposal uses an indirect doctrine smartbook listing for a CAC-restricted source rather than a public official text",
+      "status": "deferred"
+    },
+    {
+      "original_key": "official_nist_sp_800_61r3_new",
+      "reason": "duplicate_existing_anchor_key_family: existing NIST SP 800-61r3 incident-response anchors already cover this source family",
+      "status": "deferred"
+    },
+    {
+      "original_key": "official_mitre_attack_ics_v17",
+      "reason": "duplicate_existing_url: already covered by official_mitre_attack_ics",
+      "status": "deferred"
+    },
+    {
+      "original_key": "official_nist_sp_800_150_cti_sharing",
+      "reason": "duplicate_existing_url: already covered by official_nist_sp_800_150",
+      "status": "deferred"
+    },
+    {
+      "original_key": "official_nist_csf_2_0",
+      "reason": "duplicate_existing_anchor_key_family: existing official_nist_csf_2 anchor already covers CSF 2.0",
+      "status": "deferred"
+    },
+    {
+      "original_key": "official_cisa_ics_alert_bb19_339a",
+      "reason": "candidate_note_only: proposal lacks full citation fields and points to a different confirmed advisory family",
+      "status": "deferred"
+    },
+    {
+      "original_key": "scholarly_roozenbeek_2022_inoculation_videos_sciadv",
+      "reason": "duplicate_existing_url: already covered by scholarly_roozenbeek_2022_psychological_inoculation",
+      "status": "deferred"
+    },
+    {
+      "original_key": "scholarly_heuer_1978_ach_original",
+      "reason": "duplicate_existing_url: already covered by scholarly_heuer_psychology_intelligence_analysis",
+      "status": "deferred"
+    },
+    {
+      "original_key": "scholarly_anthropic_2024_building_effective_agents",
+      "reason": "duplicate_existing_url: already covered by scholarly_anthropic_building_effective_agents",
+      "status": "deferred"
+    },
+    {
+      "original_key": "scholarly_microsoft_autogen_2024",
+      "reason": "duplicate_replacement: proposal explicitly replaces this with scholarly_wu_2023_autogen",
+      "status": "deferred"
+    }
+  ],
+  "deferred_count": 11,
+  "new_intelligence_anchor_count_after_import": 462,
+  "new_metadata_row_count_after_import": 472,
+  "normalized_keys": [
+    {
+      "key": "professional_hutchins_2011_kill_chain",
+      "original_key": "scholarly_hutchins_2011_kill_chain",
+      "source_host": "www.lockheedmartin.com",
+      "source_lane": "cyber_threat_intelligence",
+      "source_pack": "research_cyber_ics",
+      "source_tier": "professional_documentation",
+      "source_type": "professional_documentation",
+      "url": "https://www.lockheedmartin.com/content/dam/lockheed-martin/rms/documents/cyber/LM-White-Paper-Intel-Driven-Defense.pdf"
+    },
+    {
+      "key": "professional_caltagirone_2013_diamond_model",
+      "original_key": "scholarly_caltagirone_2013_diamond_model",
+      "source_host": "apps.dtic.mil",
+      "source_lane": "cyber_threat_intelligence",
+      "source_pack": "research_cyber_ics",
+      "source_tier": "professional_documentation",
+      "source_type": "professional_documentation",
+      "url": "https://apps.dtic.mil/sti/pdfs/ADA586960.pdf"
+    },
+    {
+      "key": "professional_eset_win32_industroyer_2017",
+      "original_key": "official_eset_win32_industroyer_2017",
+      "source_host": "web-assets.esetstatic.com",
+      "source_lane": "historical_ics_incidents",
+      "source_pack": "research_cyber_ics",
+      "source_tier": "professional_documentation",
+      "source_type": "professional_documentation",
+      "url": "https://web-assets.esetstatic.com/wls/2017/06/Win32_Industroyer.pdf"
+    },
+    {
+      "key": "professional_rand_paul_matthews_firehose_falsehood",
+      "original_key": "official_rand_paul_matthews_firehose_falsehood",
+      "source_host": "www.rand.org",
+      "source_lane": "active_measures_disinformation",
+      "source_pack": "research_influence_ci_gray_zone",
+      "source_tier": "professional_documentation",
+      "source_type": "professional_documentation",
+      "url": "https://www.rand.org/pubs/perspectives/PE198.html"
+    },
+    {
+      "key": "professional_weng_2023_agent_survey",
+      "original_key": "scholarly_weng_2023_agent_survey",
+      "source_host": "lilianweng.github.io",
+      "source_lane": "agentic_design_principles",
+      "source_pack": "research_agentic_ai_appendices",
+      "source_tier": "professional_documentation",
+      "source_type": "professional_documentation",
+      "url": "https://lilianweng.github.io/posts/2023-06-23-agent/"
+    }
+  ],
+  "schema_version": "1.0",
+  "source_attachment": "/Users/4d/.codex/attachments/3cac103b-ad1a-45f5-a001-1efeacb2020c/pasted-text.txt",
+  "structurally_importable_count": 102
+}

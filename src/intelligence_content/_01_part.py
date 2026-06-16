@@ -1,16 +1,8 @@
-from __future__ import annotations
-
 """Research-backed AGEINT content profiles and source anchors."""
 
+from __future__ import annotations
 
 from dataclasses import dataclass
-import re
-from typing import Any, Final
-
-try:  # Support package and script-level imports.
-    from .markdown_refs import citation_ref_list
-except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
-    from markdown_refs import citation_ref_list  # type: ignore[no-redef]
 
 
 @dataclass(frozen=True)
@@ -40,6 +32,8 @@ class ResearchAnchor:
     stakeholder_role: str = ""
     assurance_use: str = ""
     rights_dimension: str = ""
+    source_agency: str = ""
+    source_pack: str = ""
 
     def as_reference(self) -> dict[str, str]:
         """Return a manuscript-variable compatible reference dictionary."""
@@ -64,6 +58,8 @@ class ResearchAnchor:
             "stakeholder_role": self.stakeholder_role,
             "assurance_use": self.assurance_use,
             "rights_dimension": self.rights_dimension,
+            "source_agency": self.source_agency,
+            "source_pack": self.source_pack,
         }
 
 
@@ -80,6 +76,7 @@ class IntelligenceProfile:
     composability_contract: str
     failure_modes: str
     safety_boundary: str
+    source_pack_ids: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)

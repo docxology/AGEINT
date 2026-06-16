@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from ._01_part import *  # noqa: F403
-from ._02_part import *  # noqa: F403
-from ._03_part import *  # noqa: F403
+from typing import Final
+
+from ._01_part import IntelligenceProfile
 
 
 _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
@@ -51,6 +51,11 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "it never handles classified content, live release decisions, or "
             "source-method exposure"
         ),
+        source_pack_ids=(
+            "odni_governance_directives",
+            "odni_disclosure_and_tearlines",
+            "ic_current_threat_baseline",
+        ),
     ),
     IntelligenceProfile(
         identifier="analytic_tradecraft",
@@ -76,19 +81,52 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_irtpa_2004_analytic_integrity",
             "official_911_commission_report",
             "official_robb_silberman_wmd_report",
+            "official_senate_2004_prewar_iraq_assessment",
             "official_nato_alternative_analysis_handbook",
             "official_cia_grabo_warning_intelligence_handbook",
+            "official_cia_cooper_2005_analytic_pathologies",
+            "official_cia_analytic_culture_us_ic",
             "scholarly_heuer_psychology_intelligence_analysis",
             "scholarly_heuer_pherson_sats",
+            "scholarly_janis_1982_groupthink",
             "scholarly_wohlstetter_1962_pearl_harbor_warning_decision",
             "scholarly_rand_2016_sat_evaluation",
+            "scholarly_coulthart_2016_sat_use",
+            "scholarly_coulthart_2017_core_sat_evaluation",
+            "scholarly_chang_2018_restructuring_sats",
             "scholarly_marcoci_2019_tradecraft_reliability",
             "scholarly_barnes_mandel_2014_forecast_accuracy",
             "scholarly_ard_2023_sat_pragmatic",
             "scholarly_stromer_galley_2020_flexible_sat",
+            "scholarly_whitesmith_2019_ach_bias",
+            "scholarly_karvetski_mandel_2020_ach_coherence",
+            "scholarly_mandel_karvetski_dhami_2018_boosting_accuracy",
+            "scholarly_dhami_mandel_mellers_tetlock_2015_decision_science",
+            "scholarly_denzler_2024_sat_psychology",
+            "scholarly_wilcox_mandel_2024_ach_critical_review",
+            "scholarly_miksa_2024_assessment_tabling",
+            "scholarly_landon_murray_2025_fusion_centre_sats",
+            "scholarly_borg_gustafson_2025_teaching_sats_across_nations",
+            "scholarly_mccarthy_2024_alternative_futures_analysis",
+            "scholarly_ritchey_2013_general_morphological_analysis",
+            "scholarly_beebe_pherson_2014_cases_intelligence_analysis",
+            "scholarly_pherson_pherson_2020_critical_thinking_strategic_intelligence",
             "scholarly_betts_1978_intelligence_failure",
             "scholarly_jervis_2022_postmortems_fail",
             "scholarly_wirtz_2023_intelligence_failures_inevitable",
+            "official_national_academies_2011_intelligence_analysis_tomorrow",
+            "official_iarpa_ace_program",
+            "official_iarpa_reason_program",
+            "scholarly_dalkey_helmer_1963_delphi",
+            "professional_klein_2007_project_premortem",
+            "scholarly_marrin_2012_improving_intelligence_analysis",
+            "official_foi_2021_structured_analytic_techniques",
+            "official_jips_2021_jsat",
+            "official_belfer_mcmahon_2024_ai_tradecraft_standards",
+            "scholarly_reddy_2023_smartbook_intelligence_reports",
+            "scholarly_dhami_2019_ach_intelligence_analysis",
+            "scholarly_dhami_2024_confirmation_bias_hypotheses",
+            "scholarly_gaeta_2021_situation_awareness_intelligence",
         ),
         conceptual_focus=(
             "turning uncertainty into reviewable judgment through sourcing, "
@@ -113,6 +151,10 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
         safety_boundary=(
             "analysis remains educational and decision-supportive; it does not "
             "become tasking, targeting, covert collection, or policy advocacy"
+        ),
+        source_pack_ids=(
+            "cia_analytic_uncertainty",
+            "cia_intelligence_profession",
         ),
     ),
     IntelligenceProfile(
@@ -174,6 +216,10 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "review-oriented; it does not authorize surveillance, targeting, or "
             "automated adverse action"
         ),
+        source_pack_ids=(
+            "odni_privacy_oversight",
+            "odni_disclosure_and_tearlines",
+        ),
     ),
     IntelligenceProfile(
         identifier="agentic_ai_governance",
@@ -225,6 +271,15 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_nist_ssdf",
             "official_cisa_secure_by_design",
             "official_nist_ai_100_2_adversarial_ml",
+            "scholarly_dylan_stivang_2025_emerging_tech_intelligence",
+            "scholarly_caballero_jenkins_2024_llm_national_security",
+            "scholarly_mikhailov_2023_llm_national_security_strategy",
+            "scholarly_khlaaf_2024_foundation_models_military_istar",
+            "scholarly_brundage_2018_malicious_use_ai",
+            "official_cset_adversarial_ml_cybersecurity_2022",
+            "official_scsp_aspi_future_intelligence_analysis_ai_hmt",
+            "official_unidir_synthetic_data_autonomous_systems",
+            "scholarly_wasil_2024_ai_emergency_preparedness",
             "scholarly_greshake_2023_indirect_prompt_injection",
             "scholarly_yao_2023_react",
             "scholarly_shinn_2023_reflexion",
@@ -254,6 +309,11 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "agentic workflows stay synthetic, owned-lab, supervised, logged, "
             "rate-limited, and reversible unless a lawful production authority exists"
         ),
+        source_pack_ids=(
+            "cia_ai_analysis_and_production",
+            "ic_cyber_geoint_history",
+            "odni_privacy_oversight",
+        ),
     ),
     IntelligenceProfile(
         identifier="osint_geoint",
@@ -275,6 +335,7 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_odni_icd_206",
             "official_odni_icd_203",
             "official_cia_tradecraft_primer",
+            "scholarly_kozera_2020_fitness_osint",
         ),
         conceptual_focus=(
             "public-source discovery converted into accountable intelligence "
@@ -295,6 +356,10 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
         safety_boundary=(
             "OSINT work uses lawful public or authorized sources and avoids "
             "doxxing, harassment, live tracking, or operational targeting"
+        ),
+        source_pack_ids=(
+            "dia_osint_governance",
+            "ic_cyber_geoint_history",
         ),
     ),
     IntelligenceProfile(
@@ -325,6 +390,7 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "official_nist_fips_186_5_dss",
             "official_nist_fips_180_4_shs",
             "official_nist_sp_800_57pt1r5_key_management",
+            "official_reagan_nsdd_298_opsec",
         ),
         conceptual_focus=(
             "requirements-driven, authority-bounded collection where priorities, "
@@ -345,6 +411,10 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
         safety_boundary=(
             "collection material remains doctrinal and governance-oriented; it does "
             "not teach recruitment, interception, surveillance, or tasking procedures"
+        ),
+        source_pack_ids=(
+            "odni_governance_directives",
+            "odni_disclosure_and_tearlines",
         ),
     ),
 )

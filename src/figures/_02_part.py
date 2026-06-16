@@ -35,8 +35,9 @@ from ._02d_quality_audit import write_visual_quality_audit
 from ._02e_visual_semantics import _with_visual_semantics
 from ._03l_cover_art import render_cover_art
 from ._06_python_renderers import render_python_figure
+from .mermaid_contracts import mermaid_type_contract
 
-FIGURE_REGISTRY_SCHEMA_VERSION = "1.4"
+FIGURE_REGISTRY_SCHEMA_VERSION = "1.5"
 
 
 def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec]:
@@ -53,11 +54,12 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
             source_artifact_path="output/figures/mermaid/ageint-curriculum-map.mmd",
             source_section="orientation.md",
             section_label="sec:curriculum_orientation",
-            provenance={
-                "renderer": "mmdc",
-                "source": "data/curriculum/",
-                "diagram": "curriculum_map",
-            },
+                provenance={
+                    "renderer": "mmdc",
+                    "source": "data/curriculum/",
+                    "diagram": "curriculum_map",
+                    "diagram_type": "flowchart",
+                },
         )
     ]
 
@@ -82,6 +84,7 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                     "renderer": "mmdc",
                     "source": "data/curriculum/",
                     "diagram": "part_module_map",
+                    "diagram_type": "flowchart",
                 },
             )
         )
@@ -101,11 +104,10 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                 section_label=section.section_label,
                 provenance={
                     "renderer": "mmdc",
-                    "source": (
-                        "/Users/4d/Downloads/"
-                        "cognitive-security-agentic-intelligence.md"
-                    ),
+                    "source": "data/figures/synthesis_extra.jsonl and generated curriculum maps",
                     "diagram": diagram["diagram"],
+                    "diagram_type": diagram.get("diagram_type", "flowchart"),
+                    "reader_detail": diagram.get("reader_detail", ""),
                 },
             )
         )
@@ -318,6 +320,12 @@ def _validate_specs(specs: Sequence[FigureSpec]) -> None:
             raise ValueError(f"Figure {spec.label} must render under output/figures")
         if not spec.provenance:
             raise ValueError(f"Figure {spec.label} needs provenance")
+        if spec.kind is FigureKind.MERMAID:
+            diagram_type = str(spec.provenance.get("diagram_type", "flowchart") or "flowchart")
+            contract = mermaid_type_contract(diagram_type)
+            reader_detail = str(spec.provenance.get("reader_detail", "") or "")
+            if contract.requires_reader_detail and len(reader_detail.split()) < 12:
+                raise ValueError(f"Mermaid figure {spec.label} needs reader_detail for {diagram_type}")
         if not spec.semantic_role or not spec.evidence_role or not spec.interpretation_limit:
             raise ValueError(f"Figure {spec.label} needs visual-semantic metadata")
         if spec.quantitative and (

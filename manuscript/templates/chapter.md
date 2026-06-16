@@ -1,12 +1,12 @@
 # {{SECTION_TITLE}} {#{{SECTION_LABEL}}}
 
-### Figures and course links
+### {{SECTION_TITLE}} figures and course links: visual evidence, source flow, and navigation
 
 {{VISUAL_SYNTHESIS}}
 
 {{SECTION_BODY}}
 
-### Learning-path cross-links
+### {{SECTION_TITLE}} learning-path links: module map, overview, and curriculum atlas
 
 {{SECTION_NAV_PROSE}}
 

@@ -1,4 +1,4 @@
-# V2 And Deep Expansion Map
+# V2 and Deep Expansion Map: source lanes, governance depth, and guardrails
 
 The major v2 pass expands AGEINT without changing its architecture:
 
@@ -11,16 +11,16 @@ The major v2 pass expands AGEINT without changing its architecture:
   in this checkout; parent-template workflows may link it as
   `projects/active/AGEINT` or `projects/AGEINT` during promotion/hot-seat runs).
 
-## Structural Changes
+## Structural changes: source anchors, figures, reports, and reader contracts
 
 - 51 chapters now include v2 guide bullets, deep-expansion bullets, and
   evidence-package expansion bullets.
 - Appendices increased from 7 to 9 with source verification and claim ledgers
   plus instructor capstone/rubric/red-team review packs.
 - Source-guide references increased from 231 to 312 by append-only expansion.
-- Curated anchors increased to 248 with source-lane metadata,
+- Curated anchors increased to 462 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
-- Registered figures increased to 170, spanning curriculum and part maps,
+- Registered figures increased to 173, spanning curriculum and part maps,
   per-chapter concept diagrams, source verification, claim ledger, compliance,
   agent evaluation, data flow, capstone, safe-substitution, instructor
   lifecycle, accessibility, HRIA/DPIA, procurement oversight, agent incident,
@@ -30,7 +30,9 @@ The major v2 pass expands AGEINT without changing its architecture:
   public-AI-register, AI-incident-reporting, OT-architecture, visual
   accessibility contract, verifier-first artifact evidence, scholarship
   triangulation, analysis-validation, analysis-validation family coverage,
-  source-metadata integrity, claim-calibration and visual-semantics control,
+  source-metadata integrity, source-refresh due-date readiness,
+  agency-source coverage and profile routing,
+  claim-calibration and visual-semantics control,
   cognitive-security synthesis visuals. The cognitive-security synthesis pass
   includes the CSA CDR six-stage degradation cascade, the MAESTRO seven-layer
   threat model, the SRE-for-agents circuit breaker, the
@@ -62,12 +64,16 @@ The major v2 pass expands AGEINT without changing its architecture:
   table-layout, typography, verifier-first artifact-evidence, scholarship,
   Synthetic Analytic Tradecraft orientation, SAT method-contract, analysis-validation,
   family-coverage, source-metadata, cover/abstract/TOC, and graphical-abstract/TOC-title hardening passes:
-  369 generated Markdown files, 383 manuscript-bound files, 15,382 generated Markdown citation occurrences, 0
-  zero-citation source sections, and a 1,619-page combined PDF with 4,181 URI links.
-  Source metadata is also verifier-enforced: 258 metadata rows cover 248
+  330 configured generated Markdown files, 16,057 generated Markdown citation
+  occurrences, 0 zero-citation source sections, and a 1,854-page combined PDF
+  with 6,289 URI links.
+  Source metadata is also verifier-enforced: 472 metadata rows cover 462
   curated anchors plus 10 source-quality support anchors, with 0 blank lane/tier
   fields and 0 fallback-dependent rows after the 119-row hardening baseline.
-  Figure-reader text is also registry-enforced: all 170 captions meet the
+  The agency-source coverage report separately verifies the 56-anchor official
+  US IC expansion for agency, pack, lane, tier, checked-date, claim-scope,
+  assurance, rights, duplicate/collision, and profile-routing completeness.
+  Figure-reader text is also registry-enforced: all 173 captions meet the
   40-word minimum, all alt-text
   rows meet the 24-word minimum, all long descriptions meet the 70-word
   minimum, generated PNGs embed compact accessibility/provenance and visual-semantics metadata,
@@ -85,7 +91,7 @@ The major v2 pass expands AGEINT without changing its architecture:
   Module H2 entries are chapter-specific landmarks rather than repeated generic
   scaffold labels.
 
-## Guardrails
+## Guardrails: safety, citation, metadata, and publication boundaries
 
 - `data/source_identity/` protects `ageint001` through `ageint231`.
 - Tests assert all generated chapters contain the expanded reader-facing

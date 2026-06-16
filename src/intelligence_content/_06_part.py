@@ -15,6 +15,14 @@ from ._01_part import (
 from ._03_part import ALL_PROFILE_ANCHORS_BY_KEY, SAFE_PATTERN_PROFILES
 from ._04b_part import INTELLIGENCE_PROFILES
 from ._05_part import PRACTICE_LENSES
+from .source_packs import (
+    agency_source_pack_keys,  # noqa: F401 - compatibility re-export
+    agency_source_pack_payload,  # noqa: F401 - compatibility re-export
+    expanded_profile_anchor_keys,  # noqa: F401 - compatibility re-export
+    research_source_pack_keys,  # noqa: F401 - compatibility re-export
+    research_source_pack_payload,  # noqa: F401 - compatibility re-export
+    research_source_profile_routes,  # noqa: F401 - compatibility re-export
+)
 
 
 def build_coursebook_profiles() -> dict[str, CoursebookProfile]:

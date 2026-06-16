@@ -1,10 +1,10 @@
-# Records Retention and Audit
+# Records Retention and Audit: retained evidence, owners, and deletion rules
 
 AGEINT records retention is evidence-minimal and review-complete: retain what a
 future reviewer needs to reproduce, challenge, and remediate an artifact, while
 avoiding unnecessary sensitive material.
 
-## Retained Records
+## Retained records: prompts, sources, decisions, incidents, and remediation
 
 | Record | Required fields |
 |---|---|

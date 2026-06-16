@@ -24,10 +24,12 @@ Part modules merge at import via `figures/__init__.py`. Keep `_02_part.py`
 | `_01h_claim_calibration_spec.py` | Registry rows for claim-calibration and visual-semantics visuals |
 | `_02_part.py` | `render_figures()`, `_render_figure_asset()`, Python/historical/AI render dispatch |
 | `_02b_mermaid.py` | `render_mermaid_figure()`, `mermaid_source()`, `placeholder_or_fail()` |
+| `_02e_visual_semantics.py` | Semantic-role, evidence-role, quantitative, counting-rule, and interpretation-limit defaults |
 | `_03_part.py` | Matplotlib/Python chart renderers, `_draw_text_plate()`, canvas normalization |
 | `_03f_artifact_evidence.py` | Verifier-first artifact-evidence control-loop visual |
 | `_03g_scholarship_quality.py` | Scholarship triangulation audit visual |
 | `_03n_claim_calibration.py` | Claim-calibration and visual-semantics control visual |
+| `_03o_source_refresh_due.py` | Source-refresh due-date readiness dashboard |
 | `_04_part.py` | Public re-exports |
 | `_05_visual_style.py` | Shared palette, title/footer, wrapping, and arrow helpers |
 | `_06_python_renderers.py` | Python renderer dispatch and source-metadata charts |

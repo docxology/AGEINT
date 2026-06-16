@@ -1,4 +1,4 @@
-# Safety Boundary
+# Safety Boundary: authorized, synthetic, defensive, and non-operational work
 
 AGEINT includes cyber, HUMINT, influence, FININT, export-control, sanctions,
 historical, AI-governance, and intelligence-cycle topics. This project frames

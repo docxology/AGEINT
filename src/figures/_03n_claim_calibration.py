@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from ._01_part import FigureSpec
-from ._03c_control_matrix import draw_control_matrix
+from ._03c_control_matrix import draw_evidence_dashboard
 
 
 def _render_claim_calibration_and_visual_semantics(output: Path, spec: FigureSpec) -> None:
@@ -41,7 +41,7 @@ def _render_claim_calibration_and_visual_semantics(output: Path, spec: FigureSpe
                 "semantic role",
                 "unit and denominator",
                 "interpretation limit",
-                "registry schema 1.4",
+                "registry schema 1.5",
             ),
         ),
         (
@@ -54,13 +54,18 @@ def _render_claim_calibration_and_visual_semantics(output: Path, spec: FigureSpe
             ),
         ),
     ]
-    draw_control_matrix(
+    draw_evidence_dashboard(
         output,
         spec.title,
         rows,
         ("Trigger", "Required evidence", "Failure rule", "Report surface"),
         "#bae6fd",
         "#dcfce7",
+        subtitle="Claim calibration joins prose, source-support profiles, formalism checks, and figure semantics into one reviewer gate.",
+        denominator="Current generated manuscript, figure registry, source-support profiles, and audit reports.",
+        failure_path="Unsupported strong claims, weak-only evidence, missing limitations, or absent visual semantics fail closed",
+        reviewer_action="Downgrade the claim, add direct support, bind the denominator, or revise the figure semantics before release.",
+        footer="Source: AGEINT claim calibration and visual semantics audits | Local verifier telemetry, not a capability score.",
     )
 
 

@@ -317,6 +317,29 @@ def test_rendered_reference_audit_preserves_rendered_authored_emphasis(tmp_path:
     assert audit_rendered_references(tmp_path) == []
 
 
+def test_rendered_reference_audit_allows_wrapped_tex_section_titles(tmp_path: Path) -> None:
+    title = (
+        "Governed Intelligence Cycle and Dissemination Architecture frame for The Nature of "
+        "Intelligence: source context, topic focus, and reader task"
+    )
+    manuscript = tmp_path / "manuscript"
+    manuscript.mkdir()
+    (manuscript / "chapter.md").write_text(f"# {title}\n", encoding="utf-8")
+    pdf = tmp_path / "pdf"
+    pdf.mkdir()
+    (pdf / "_combined_manuscript.tex").write_text(
+        "\\subsection{Governed Intelligence Cycle and Dissemination Architecture\n"
+        "frame for The Nature of Intelligence: source context, topic focus, and\n"
+        "reader\n"
+        "task}\\label{fixture-heading}\n"
+        f"This prose sentence should still flag {title} as a bare title reference.\n",
+        encoding="utf-8",
+    )
+    violations = audit_rendered_references(tmp_path)
+
+    assert [(v.reason, v.line_number) for v in violations] == [("generated title in prose", 5)]
+
+
 def test_rendered_reference_audit_flags_unresolved_citation_key(tmp_path: Path) -> None:
     manuscript = tmp_path / "manuscript"
     parts = manuscript / "parts" / "unit" / "chapter"
@@ -368,7 +391,13 @@ def test_generated_cross_links_are_label_backed_not_title_prose(built_output: Pa
             fragment.read_text(encoding="utf-8")
             for fragment in sorted(path.parent.glob("*.md"))
         )
-        cross_links = section_text(text, "Learning-path cross-links")
+        from manuscript_manifest._heading_titles import chapter_detail_titles
+        from manuscript_quality.inventory_helpers import chapter_title_from_text
+
+        cross_links = section_text(
+            text,
+            chapter_detail_titles(chapter_title_from_text(text))["links"],
+        )
         if "[@sec:" not in cross_links or "adjacent AGEINT architecture" in cross_links:
             rel = path.relative_to(PROJECT_ROOT).as_posix()
             violations.append(f"{rel}: {cross_links.strip()}")

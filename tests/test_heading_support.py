@@ -43,18 +43,18 @@ def test_add_heading_support_uses_coverage_language_for_source_inventory() -> No
     rendered = "\n\n".join(
         [
             "## Add Or Extend A Citation",
-            "### Current source-section coverage",
+            "### Current citation coverage by source section",
             "| Measure | Count |",
             "|---|---:|",
             "| Source sections | 723 |",
-            "### Source-section citation rows",
+            "### Citation rows by source section",
             "[@scholarly_heuer_psychology_intelligence_analysis]",
         ]
     )
     revised = add_heading_support(rendered, "appendices/bibliography-atlas/coverage.md")
 
     assert "**Coverage anchor.** Parent appendix: [@sec:bibliography_atlas]." in revised
-    assert "Source-section coverage values are validated from the generated citation inventory" in revised
+    assert "Citation coverage by source section is validated from the generated citation inventory" in revised
     coverage_line = next(line for line in revised.splitlines() if line.startswith("**Coverage anchor.**"))
     assert "scholarly_heuer_psychology_intelligence_analysis" not in coverage_line
     assert "**Evidence link.**" not in revised

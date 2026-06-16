@@ -103,14 +103,12 @@ def apply_pattern_registry(
     working_title = raw_title
     source_locus = ""
     provenance_note = raw_title
-    risk_category = "standard"
     if not safe_patterns:
         return working_title, active_pattern_number, source_locus, provenance_note
     working_title, active_pattern_number = safe_pattern_treatment(
         working_title,
         active_pattern_number,
     )
-    risk_category = "ageint_pattern_registry"
     source_locus = (
         f"Pattern {active_pattern_number}" if active_pattern_number else "AGEINT pattern registry"
     )

@@ -20,15 +20,13 @@ HARD_CODED_REFERENCE_RE = re.compile(
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
 UNRESOLVED_TEMPLATE_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}|\[\[(?:SEC|FIG|REF):")
 
-# Bracketed Pandoc citation tokens: ``[@key]`` (optionally ``[@key1; @key2]``).
-# Only the bracket form is matched so a bare ``@user`` inside a Markdown URL
-# (e.g. ``medium.com/@anil.jain.baba``) is never treated as a citation.
 BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
-# Cross-reference namespaces (handled by pandoc-crossref, not the bib) to skip.
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
-# BibTeX entry header: ``@misc{key,`` / ``@article{key,`` etc.
 _BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
 _BOLD_SPAN_RE = re.compile(r"\*\*(.+?)\*\*|__(.+?)__")
+_TEX_HEADING_COMMAND_RE = re.compile(
+    r"\\(?:part|chapter|section|subsection|subsubsection|paragraph)\*?\{"
+)
 
 @dataclass(frozen=True)
 class TitleRule:
@@ -205,6 +203,7 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
         in_html_nav = False
         in_html_table = False
         in_tex_table = False
+        tex_heading_depth = 0
         in_tex_emphasis = False
         for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             stripped = line.strip()
@@ -226,6 +225,10 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                 if re.match(r"\\end\{(?:longtable|tabular|tabularx)\}", stripped):
                     in_tex_table = False
                     continue
+            in_tex_heading, next_tex_heading_depth = _tex_heading_line_state(
+                stripped,
+                tex_heading_depth,
+            )
             if _line_allows_titles(
                 path,
                 stripped,
@@ -235,6 +238,7 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                 in_html_nav=in_html_nav,
                 in_html_table=in_html_table,
                 in_tex_table=in_tex_table,
+                in_tex_heading=in_tex_heading,
             ):
                 if suffix == ".html":
                     if "</nav>" in stripped:
@@ -245,6 +249,8 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                         in_html_figure = False
                     if "</table>" in stripped:
                         in_html_table = False
+                if suffix == ".tex":
+                    tex_heading_depth = next_tex_heading_depth
                 continue
             if suffix != ".html" and (match := HARD_CODED_REFERENCE_RE.search(line)):
                 violations.append(
@@ -287,6 +293,8 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                     in_html_figure = False
                 if "</table>" in stripped:
                     in_html_table = False
+            if suffix == ".tex":
+                tex_heading_depth = next_tex_heading_depth
     return violations
 
 
@@ -386,6 +394,7 @@ def _line_allows_titles(
     in_html_nav: bool,
     in_html_table: bool,
     in_tex_table: bool,
+    in_tex_heading: bool,
 ) -> bool:
     if in_code:
         return True
@@ -401,7 +410,7 @@ def _line_allows_titles(
             or _is_html_structural_line(stripped)
         )
     if suffix == ".tex":
-        return in_tex_table or _is_tex_structural_line(stripped)
+        return in_tex_table or in_tex_heading or _is_tex_structural_line(stripped)
     return True
 
 
@@ -426,13 +435,28 @@ def _is_tex_structural_line(stripped: str) -> bool:
     return bool(
         not stripped
         or stripped.startswith("%")
-        or re.match(r"\\(?:part|chapter|section|subsection|subsubsection|paragraph)\*?\{", stripped)
+        or _TEX_HEADING_COMMAND_RE.match(stripped)
         or stripped.startswith(r"\label{")
         or stripped.startswith(r"\hypertarget{")
         or stripped.startswith(r"\addcontentsline")
         or stripped.startswith(r"\begin{document}")
         or stripped.startswith(r"\end{document}")
     )
+
+
+def _tex_heading_line_state(stripped: str, current_depth: int) -> tuple[bool, int]:
+    """Return whether this TeX line is part of a wrapped heading command."""
+
+    starts_heading = bool(_TEX_HEADING_COMMAND_RE.match(stripped))
+    if current_depth <= 0 and not starts_heading:
+        return False, 0
+    next_depth = current_depth + _unescaped_brace_delta(stripped)
+    return True, max(next_depth, 0)
+
+
+def _unescaped_brace_delta(text: str) -> int:
+    text = re.sub(r"\\.", "", text)
+    return text.count("{") - text.count("}")
 
 
 def _clean_generic_reference_grammar(line: str) -> str:

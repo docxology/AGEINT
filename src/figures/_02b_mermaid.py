@@ -16,32 +16,18 @@ from ._04_part import (
     _png_asset_is_valid,
     _slug,
 )
+from .mermaid_contracts import mermaid_type_contract, validate_mermaid_source_contract
 
 from curriculum import Curriculum
 
 from ._01_part import FigureSpec
 
 
-# Shared theme header applied to every Mermaid source. The font is compact
-# enough for PDF pages while node/rank spacing keeps normalized PNGs readable.
-_MERMAID_INIT = (
-    "%%{init: {"
-    "'theme':'neutral',"
-    "'themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif',"
-    "'primaryColor':'#dbeafe','primaryBorderColor':'#475569',"
-    "'primaryTextColor':'#0f172a','lineColor':'#475569',"
-    "'secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},"
-    "'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis',"
-    "'subGraphTitleMargin':{'top':8,'bottom':12}}"
-    "}}%%\n"
-)
-
-
-def _with_theme(source: str) -> str:
-    """Prepend the shared init header unless one is already present."""
+def _with_theme(source: str, diagram_type: str) -> str:
+    """Prepend the diagram-type init header unless one is already present."""
     if source.lstrip().startswith("%%{init"):
         return source
-    return _MERMAID_INIT + source
+    return mermaid_type_contract(diagram_type).init_block + source
 
 
 def _discover_chrome_executable() -> str | None:
@@ -159,47 +145,69 @@ def render_mermaid_figure(
 
 
 def mermaid_source(curriculum: Curriculum, spec: FigureSpec) -> str:
+    diagram_type = str(spec.provenance.get("diagram_type", "flowchart") or "flowchart")
+    reader_detail = str(spec.provenance.get("reader_detail", "") or "")
     diagram = spec.provenance.get("diagram", "")
     if diagram in _SYNTHESIS_MERMAID_SOURCES:
-        return _with_theme(_SYNTHESIS_MERMAID_SOURCES[diagram])
+        return _synthesis_mermaid_source(diagram, diagram_type, reader_detail)
     if spec.label == "fig:ageint-curriculum-map":
-        # The parts are siblings of one curriculum, not a linear dependency
-        # chain. Grouping them under stacked subgraph rows lets Mermaid lay
-        # them out as a wide multi-column grid that fills the square canvas and
-        # keeps labels large, instead of a single 16-deep ribbon.
-        parts = list(curriculum.parts)
-        lines = [
-            "flowchart TB",
-            f'    root["AGEINT curriculum<br/>{curriculum.stats["parts"]} parts"]',
-        ]
-        columns = 4
-        row_anchors: list[str] = []
-        for row_start in range(0, len(parts), columns):
-            row_parts = parts[row_start : row_start + columns]
-            row_id = f"row{row_start // columns}"
-            lines.append(f'    subgraph {row_id} [" "]')
-            lines.append("        direction LR")
-            row_nodes: list[str] = []
-            for part in row_parts:
-                node = f"p{part['number']}"
-                label = _mermaid_label(
-                    f"{part['roman']}. {part['title']}<br/>{len(part['chapters'])} modules"
-                )
-                lines.append(f'        {node}["{label}"]')
-                row_nodes.append(node)
-            # Invisible links between adjacent nodes force Mermaid to lay the row
-            # out left-to-right (otherwise edgeless nodes stack vertically).
-            for left, right in zip(row_nodes, row_nodes[1:]):
-                lines.append(f"        {left} ~~~ {right}")
-            lines.append("    end")
-            row_anchors.append(row_id)
-        # Spine connects root through the row groups top-to-bottom so the figure
-        # reads as one curriculum while staying near-square.
-        spine = ["root", *row_anchors]
-        for upper, lower in zip(spine, spine[1:]):
-            lines.append(f"    {upper} --> {lower}")
-        return _with_theme("\n".join(lines) + "\n")
+        return _curriculum_map_mermaid_source(curriculum, diagram_type, reader_detail)
 
+    return _part_module_map_mermaid_source(curriculum, spec, diagram_type, reader_detail)
+
+
+def _synthesis_mermaid_source(diagram: str, diagram_type: str, reader_detail: str) -> str:
+    source = _with_theme(_SYNTHESIS_MERMAID_SOURCES[diagram], diagram_type)
+    validate_mermaid_source_contract(diagram_type, source, reader_detail)
+    return source
+
+
+def _curriculum_map_mermaid_source(
+    curriculum: Curriculum,
+    diagram_type: str,
+    reader_detail: str,
+) -> str:
+    # The parts are siblings of one curriculum, not a linear dependency chain.
+    # Grouping them under stacked subgraph rows lets Mermaid lay them out as a
+    # wide multi-column grid that fills the square canvas and keeps labels large.
+    parts = list(curriculum.parts)
+    lines = [
+        "flowchart TB",
+        f'    root["AGEINT curriculum<br/>{curriculum.stats["parts"]} parts"]',
+    ]
+    columns = 4
+    row_anchors: list[str] = []
+    for row_start in range(0, len(parts), columns):
+        row_parts = parts[row_start : row_start + columns]
+        row_id = f"row{row_start // columns}"
+        lines.append(f'    subgraph {row_id} [" "]')
+        lines.append("        direction LR")
+        row_nodes: list[str] = []
+        for part in row_parts:
+            node = f"p{part['number']}"
+            label = _mermaid_label(
+                f"{part['roman']}. {part['title']}<br/>{len(part['chapters'])} modules"
+            )
+            lines.append(f'        {node}["{label}"]')
+            row_nodes.append(node)
+        for left, right in zip(row_nodes, row_nodes[1:]):
+            lines.append(f"        {left} ~~~ {right}")
+        lines.append("    end")
+        row_anchors.append(row_id)
+    spine = ["root", *row_anchors]
+    for upper, lower in zip(spine, spine[1:]):
+        lines.append(f"    {upper} --> {lower}")
+    source = _with_theme("\n".join(lines) + "\n", diagram_type)
+    validate_mermaid_source_contract(diagram_type, source, reader_detail)
+    return source
+
+
+def _part_module_map_mermaid_source(
+    curriculum: Curriculum,
+    spec: FigureSpec,
+    diagram_type: str,
+    reader_detail: str,
+) -> str:
     part_slug = Path(spec.output_path).stem.removeprefix("part-").removesuffix("-module-map")
     part = next(
         item
@@ -218,7 +226,9 @@ def mermaid_source(curriculum: Curriculum, spec: FigureSpec) -> str:
         label = _mermaid_label(chapter["title"])
         lines.append(f'    {previous} --> {node}["{label}"]')
         previous = node
-    return _with_theme("\n".join(lines) + "\n")
+    source = _with_theme("\n".join(lines) + "\n", diagram_type)
+    validate_mermaid_source_contract(diagram_type, source, reader_detail)
+    return source
 
 
 _CDR_DEGRADATION_CASCADE = """flowchart TB
@@ -396,7 +406,20 @@ _EXTRA_SYNTHESIS_DIAGRAMS = _load_extra_synthesis_diagrams()
 for _row in _EXTRA_SYNTHESIS_DIAGRAMS:
     _SYNTHESIS_MERMAID_SOURCES[_row["diagram"]] = _row["mermaid_source"]
 SYNTHESIS_MERMAID = SYNTHESIS_MERMAID + tuple(
-    {key: row[key] for key in ("slug", "title", "caption", "alt_text", "diagram", "source_section")}
+    {
+        key: row[key]
+        for key in (
+            "slug",
+            "title",
+            "caption",
+            "alt_text",
+            "diagram",
+            "source_section",
+            "diagram_type",
+            "reader_detail",
+        )
+        if key in row
+    }
     for row in _EXTRA_SYNTHESIS_DIAGRAMS
 )
 

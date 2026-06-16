@@ -105,7 +105,7 @@ def lesson_educational_crossrefs(part: Mapping[str, Any], chapter: Mapping[str, 
     module_overview = chapter_section_ref(chapter)
     atlas = section_ref("sec:curriculum_orientation")
     return (
-        f"**Cross-links.** Unit module map {unit_map}; "
+        f"**Learning-path links.** Unit module map {unit_map}; "
         f"module overview {module_overview}; curriculum atlas {atlas}."
     )
 

@@ -20,11 +20,6 @@ from .curriculum import (
     parse_curriculum_guide,
 )
 from .figures import (
-    FigureKind,
-    FigureSpec,
-    build_figure_specs,
-    figure_markdown,
-    figures_for_section,
     load_figure_registry,
     render_figures,
 )
@@ -33,21 +28,6 @@ from .manuscript_manifest import (
     ManuscriptSection,
     build_manuscript_manifest,
     render_manuscript,
-)
-from .markdown_refs import (
-    citation_ref,
-    citation_ref_list,
-    equation_ref,
-    figure_ref,
-    figure_ref_list,
-    section_ref,
-    section_ref_list,
-    table_ref,
-)
-from .manuscript_templates import (
-    TEMPLATE_NAMES,
-    write_manuscript_templates,
-    write_template_library,
 )
 from .manuscript_variables import (
     generate_variables,
@@ -102,21 +82,22 @@ __all__ = [
     "build_manuscript_manifest",
     "build_source_identity_lock",
     "ensure_template_repo_on_path",
+    "extract_pdf_text",
     "generated_markdown_citation_inventory",
     "generate_variables",
+    "heading_support_inventory",
+    "heading_support_summary",
     "load_curriculum",
     "load_figure_registry",
     "load_source_identity_lock",
-    "pdf_metadata",
-    "heading_support_inventory",
-    "heading_support_summary",
     "parse_curriculum_guide",
+    "pdf_metadata",
     "reference_bibtex_files",
-    "render_pdf_quality_markdown",
     "render_citation_workflow_markdown",
     "render_figures",
     "render_heading_support_markdown",
     "render_manuscript",
+    "render_pdf_quality_markdown",
     "render_source_section_citation_rows",
     "render_unit_profile_markdown",
     "report_json",
@@ -128,7 +109,6 @@ __all__ = [
     "source_citation_coverage_summary",
     "source_citation_spine",
     "source_identity_mismatches",
-    "extract_pdf_text",
     "source_key",
     "source_section_citation_inventory",
     "unit_profile_for_number",

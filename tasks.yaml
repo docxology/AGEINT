@@ -47,8 +47,8 @@ tasks:
     with 16 parts, 51 modules, 9 appendices, 20 AGEINT patterns, 312 references,
     rendered `output/data/manuscript_variables.json`, split `output/manuscript/references-*.bib`
     shards, and then-current `output/figures/figure_registry.json` with 142 figures.
-    Current source snapshot supersedes the historical figure count: 170 registered
-    figures, 248 curated research anchors, and 10 source-quality support anchors. Refresh render/test evidence before
+    Current source snapshot supersedes the historical figure count: 172 registered
+    figures, 304 curated research anchors, and 10 source-quality support anchors. Refresh render/test evidence before
     using this row as a current readiness gate.'
 - id: ageint-4
   title: Expand course / cookbook / playbook modules
@@ -692,7 +692,7 @@ tasks:
     tests passed 67/67; rendered-reference audit passed; template core pipeline
     completed all stages with project tests 313/318, 5 expected pre-render skips,
     and 90.39% coverage; template markdown/prerender/PDF validators reported 0
-    issues; `current_artifact_evidence` reports `ok: true`, 15,382 generated
+    issues; that pass `current_artifact_evidence` reported `ok: true`, 15,382 generated
     Markdown citation occurrences, 723 source sections, 0 zero-citation source
     sections, source metadata explicit, scholarship quality OK, 1,619 PDF pages,
     4,181 URI links, 0 bad PDF link targets, and 0 file actions. Post-render
@@ -722,9 +722,9 @@ tasks:
     the `ageint-claim-calibration-and-visual-semantics` Python control figure.
     Calibrated generated manuscript wording so artifact telemetry is not framed
     as empirical learning, safety, statistical, or operational-performance
-    evidence. Current evidence: strict rebuild passed; claim calibration reports
+    evidence. That pass evidence: strict rebuild passed; claim calibration reported
     `ok: true`, 8,748 candidate rows, 0 hard-fail rows, 471 boundary-allowed rows,
-    and 5,181 review-warning rows; artifact evidence reports `ok: true`,
+    and 5,181 review-warning rows; artifact evidence reported `ok: true`,
     `claim_calibration_ok: true`, `source_metadata_ok: true`,
     `scholarship_quality_ok: true`, 170 registered figures, 15,382 generated
     Markdown citation occurrences, 723 source sections, 0 zero-citation source
@@ -733,12 +733,49 @@ tasks:
     targets, and no stale proof wording, banned fallback phrases, or Markdown-file
     links in generated manuscript. Local-only task; no release, push, PR, or
     publication action was requested.'
+- id: ageint-31
+  title: Single-paragraph abstract and public-readiness assessment
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-30
+  tags:
+  - manuscript
+  - validation
+  - release-readiness
+  notes: 'Closed by the 2026-06-14 local abstract/readiness hardening pass.
+    Converted the Abstract into one continuous 1,258-word rendered Markdown
+    paragraph after `# Abstract {#sec:abstract}`, removed standalone abstract
+    spine variables, integrated source-quality and research-anchor counts into
+    the prose, preserved SAT method-contract and analysis-validation figure
+    references, and added release-boundary language that artifact telemetry is
+    not a benchmark for model capability, learning outcomes, operational
+    effectiveness, statistical significance, or safety performance. Validation
+    evidence: focused abstract/crossref/safety gate passed 38/38; strict rebuild
+    passed; rendered-reference audit passed; claim calibration reports `ok:
+    true`, 8,751 candidate rows, 0 hard fails, 472 boundary-allowed rows, and
+    5,177 review rows; scholarship quality reports `ok: true`, 0 hard fails,
+    and six non-blocking single-source-family warnings; artifact evidence reported
+    `ok: true`, all checks true, 330 generated Markdown files, 15,382 generated
+    Markdown citation occurrences, 723 source sections, 0 zero-citation source
+    sections, 170 registered figures, and a non-stale 1,620-page PDF. Template
+    core pipeline passed with 324 project tests, 5 expected pre-render skips,
+    90.3% coverage, a 30.46 MB combined PDF, copied outputs, and 1 non-critical
+    artifact-manifest warning. Template markdown, prerender, and PDF validators
+    reported 0 issues; AGEINT PDF audit reported 4,181 URI links, 0 file actions,
+    0 bad link targets, and `OK: true`. At that point public readiness remained
+    blocked pending the release-preflight work that `ageint-27` later closed;
+    `ageint-m1` remained and remains the explicit release milestone. Local-only task; no
+    release, push, PR, archive, promotion, or publication action was requested.'
 - id: ageint-25
   title: Source-refresh due-date dashboard
-  status: todo
-  start: '2026-07-11'
-  end: '2026-07-17'
-  progress: 0
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
   milestone: false
   deps:
   - ageint-10
@@ -746,46 +783,134 @@ tasks:
   - research
   - metadata
   - visualization
-  notes: 'Future hardening task: add a source-refresh due-date dashboard over
-    source metadata. Exit condition: report and optional figure group rows by
-    refresh cadence, checked_as_of date, due/soon/stale bucket, source lane,
-    source tier, and review owner without changing source identities or dates.'
+  notes: 'Closed by the 2026-06-14 publication-readiness preflight pass. Added
+    `src/source_refresh_due.py`, `scripts/audit_source_refresh_due.py`, regression
+    tests, `output/reports/source_refresh_due.{json,md}`, and the registry-backed
+    `ageint-source-refresh-due-dashboard` Python figure without changing
+    `checked_as_of` dates. Current evidence: source-refresh report `ok: true`,
+    314 metadata rows, 314 current rows, 0 due-soon rows, 0 due/stale rows,
+    0 missing checked-as-of rows, and cadence buckets of 210 annual, 50
+    semiannual, 51 quarterly, and 3 biennial anchors. The artifact-evidence
+    manifest now includes `source_refresh_due_ok: true`. Local-only task; no
+    release, push, PR, archive, promotion, or publication action was taken.'
 - id: ageint-26
   title: Template artifact-manifest contract cleanup
-  status: todo
-  start: '2026-07-18'
-  end: '2026-07-24'
-  progress: 0
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
   milestone: false
   deps:
   - ageint-17
   tags:
   - pipeline
   - validation
-  notes: 'Future pipeline-contract task: the parent template artifact manifest
-    currently reports repeated non-PDF-blocking advisories for missing declared
-    output `projects/AGEINT/output`. Exit condition: AGEINT outputs are declared
-    or ignored intentionally so template evidence no longer repeats that issue.'
+  notes: 'Closed by the 2026-06-14 parent-template lifecycle-slug fix. Updated
+    the template artifact manifest path resolver so symlinked/private projects
+    such as `working/AGEINT` declare `projects/working/AGEINT/...` and
+    `output/working/AGEINT/...`, not stale `projects/AGEINT/...` paths. Added
+    parent-template regression coverage for lifecycle-qualified project IDs and
+    verified focused infrastructure tests passed. Current AGEINT evidence:
+    `output/reports/artifact_manifest.json` exists with `issues: []`, parent
+    output copy used `output/working/AGEINT`, and template markdown, prerender,
+    and PDF validators reported 0 issues. Local-only task; no release, push,
+    PR, archive, promotion, or publication action was taken.'
 - id: ageint-27
   title: v1 release preflight evidence bundle
-  status: todo
-  start: '2026-07-25'
-  end: '2026-07-31'
-  progress: 0
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
   milestone: false
   deps:
   - ageint-10
   - ageint-29
   - ageint-30
+  - ageint-31
   - ageint-25
   - ageint-26
   tags:
   - release
   - validation
-  notes: 'Future task only after an explicit release/publication request. Exit
-    condition: current local evidence, confidentiality checks, artifact manifest
-    status, source metadata, PDF/link/citation/figure audits, and taskboard gates
-    are refreshed into a release preflight bundle.'
+  notes: 'Closed by the 2026-06-14 local publication-readiness preflight pass.
+    Added `src/publication_readiness.py`, `scripts/audit_publication_readiness.py`,
+    regression tests, and `output/reports/publication_readiness.{json,md}`.
+    Current evidence: preflight report `ok: true`; artifact evidence `ok: true`;
+    330 generated Markdown files; 15,606 generated Markdown citation
+    occurrences; 172 registered figures plus one non-numbered cover-art PNG;
+    a fresh 1,658-page, 30.89 MB PDF; 4,704 URI links; 0 bad PDF link targets;
+    0 PDF file actions; source-refresh report `ok: true` with 314 current rows
+    and 0 due-soon/due/stale rows; artifact manifest `issues: []`; parent
+    tracked-project confidentiality guard `ok: true`; release-surface scan
+    found 0 private/local path or Markdown-file-link issues; source/license
+    posture is recorded as CC BY 4.0 book, Apache-2.0 code, and CC-BY-4.0
+    metadata. Full project validation passed 347 tests with 7 expected skips and
+    90.43% coverage; template markdown, prerender, and PDF validators reported
+    0 issues. Local-only task; no release, push, PR, archive, promotion, or
+    publication action was taken.'
+- id: ageint-32
+  title: Official US IC source-pack expansion and agency coverage oracle
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-10
+  - ageint-25
+  - ageint-27
+  tags:
+  - research
+  - metadata
+  - validation
+  - figures
+  notes: 'Closed by the 2026-06-14 local US Intelligence Community source-pack
+    hardening pass. Added `data/research_anchors/intelligence-anchors-249-304.jsonl`
+    with 56 directly verified official public CIA, DIA, ODNI, Intelligence.gov,
+    NSA, NGA, FBI, and NRO anchors, raising curated intelligence anchors to 304
+    while leaving source-quality support anchors at 10. Added `source_agency`
+    and `source_pack` metadata fields, `data/agency_source_packs.yaml`,
+    deterministic profile source-pack expansion, `src/agency_source_coverage.py`,
+    `scripts/audit_agency_source_coverage.py`, the `agency_source_coverage_ok`
+    artifact-evidence/publication-readiness gate, negative controls for missing
+    pack metadata, and the registry-backed `ageint-agency-source-coverage`
+    Python dashboard. CIA Studies/CSI professional literature is encoded as
+    official public professional context, not automatically as current agency
+    policy or AGEINT benchmark evidence. Final evidence: 56 new anchors; 0
+    missing metadata rows; 0 unrouted rows; 0 duplicate key or URL rows; all
+    artifact-evidence and publication-readiness agency-source gates true.
+    Local-only task; no release, push, PR,
+    archive, promotion, or publication action was taken.'
+- id: ageint-33
+  title: Reference-quality, section-title, and citation-context hardening
+  status: done
+  start: '2026-06-14'
+  end: '2026-06-14'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-11
+  - ageint-27
+  - ageint-32
+  tags:
+  - manuscript
+  - links
+  - validation
+  notes: 'Completed the 2026-06-14 reader-facing reference-quality pass. Added
+    `src/reference_quality.py`, `scripts/audit_reference_quality.py`,
+    `reference_quality_ok` in artifact evidence/publication readiness,
+    chapter-specific generated H3/H4 detail headings, clearer source-section
+    citation coverage naming, label-backed lesson learning-path links, and
+    citation-table context checks. Final evidence: `reference_quality.{json,md}`
+    reports 332 scanned manuscript/PDF-bound files, 0 issue rows, 0
+    Markdown-file links, 0 raw literal citation-key cells, 0 generic heading
+    issues, 0 lesson cross-link issues, and 0 citation-context issues;
+    artifact evidence and publication readiness are ok; parent markdown,
+    prerender, and PDF validators reported 0 issues; rebuilt PDF is fresh at
+    1,658 pages with 4,704 URI links, 0 file actions, and 0 bad link targets;
+    final full project tests passed with 359 tests and 91.36% coverage.
+    Local-only task; no release, push, PR, archive, promotion, or publication
+    action was taken.'
 - id: ageint-m1
   title: AGEINT v1 curriculum release
   status: todo
@@ -812,6 +937,14 @@ tasks:
   - ageint-28
   - ageint-29
   - ageint-30
+  - ageint-31
   - ageint-27
+  - ageint-32
+  - ageint-33
   tags: []
-  notes: ''
+  notes: 'Local publication-readiness preflight is green as of 2026-06-14:
+    `ageint-27` is done, confidentiality/source-license/release-surface checks
+    pass, artifact manifest issues are empty, and the fresh PDF/rendered
+    validators pass. This milestone remains todo because no public release,
+    push, PR, archive, promotion, publication upload, DOI, or release record was
+    explicitly approved or performed.'

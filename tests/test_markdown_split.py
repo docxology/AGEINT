@@ -48,9 +48,9 @@ def test_split_by_line_budget_preserves_multiple_table_headers() -> None:
     text = "\n\n".join(
         [
             "## Add Or Extend A Citation",
-            "### Current source-section coverage",
+            "### Current citation coverage by source section",
             measure_table,
-            "### Source-section citation rows",
+            "### Citation rows by source section",
             f"{inventory_header}\n{inventory_rows}",
         ]
     )

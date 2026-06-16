@@ -1,14 +1,14 @@
-# Style Guide — AGEINT
+# Style Guide - AGEINT prose posture, source ownership, and crossrefs
 
 Prose and naming conventions for generated curriculum content.
 
-## Voice and posture
+## Voice and posture: defensive, educational, authorized, and non-operational prose
 
 - Defensive, educational, authorized, synthetic, non-operational.
 - No live targets, evasion recipes, exploit instructions, or manipulation playbooks.
 - Prefer governance, tabletop exercises, source-integrity review, and historical context for dual-use topics.
 
-## Generated vs authored
+## Generated versus authored surfaces: where each kind of edit belongs
 
 | Surface | Rule |
 | --- | --- |
@@ -17,15 +17,15 @@ Prose and naming conventions for generated curriculum content.
 | `src/intelligence_content/` | Verified anchors, profiles, safety transforms |
 | `output/manuscript/` | **Never hand-edit** |
 
-## Cross-references
+## Cross-references: label-backed section, figure, table, and citation links
 
 Use Pandoc/crossref labels: `[@sec:…]`, `[@fig:…]`, `[@ageintNNN]`. Do not hard-code literal figure, section, or equation numbers in prose.
 
-## Figures
+## Figures: registry-backed assets, square layout, and readable evidence
 
 Registry-backed figures should stay roughly square; see `src/figures/` and `test_figures.py`.
 
-## See also
+## Related documentation: safety, syntax, and project agent rules
 
 - [`safety.md`](safety.md)
 - [`syntax_guide.md`](syntax_guide.md)

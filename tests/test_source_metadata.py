@@ -22,8 +22,8 @@ def test_source_metadata_current_rows_are_explicit() -> None:
     summary = report.payload["summary"]
 
     assert report.ok is True
-    assert summary["metadata_records"] == 258
-    assert summary["intelligence_anchor_count"] == 248
+    assert summary["metadata_records"] == 472
+    assert summary["intelligence_anchor_count"] == 462
     assert summary["source_quality_anchor_count"] == 10
     assert summary["blank_source_lane_count"] == 0
     assert summary["blank_source_tier_count"] == 0
@@ -125,5 +125,6 @@ def test_audit_source_metadata_script_writes_json_contract() -> None:
     assert payload["ok"] is True
     assert payload["summary"]["fallback_dependent_row_count"] == 0
     assert payload["summary"]["source_quality_anchor_count"] == 10
+    assert payload["summary"]["intelligence_anchor_count"] == 462
     assert (PROJECT_ROOT / "output" / "reports" / "source_metadata.json").is_file()
     assert (PROJECT_ROOT / "output" / "reports" / "source_metadata.md").is_file()

@@ -1,4 +1,4 @@
-# Source Refresh Ledger
+# Source Refresh Ledger: locked identities, curated metadata, and refresh triggers
 
 AGEINT v2 uses a source-lane ledger for curated anchors and an identity lock for
 the original source-guide references.
@@ -6,7 +6,7 @@ the original source-guide references.
 For the step-by-step authoring, counting, rebuild, and validation workflow, use
 [`citation_workflow.md`](citation_workflow.md).
 
-## Locked Range
+## Locked range: preserved source-guide identities and append-only additions
 
 - `ageint001` through `ageint231` are locked in `data/source_identity/`.
 - Existing locked keys, titles, and URLs must remain stable unless the source
@@ -14,7 +14,7 @@ For the step-by-step authoring, counting, rebuild, and validation workflow, use
 - New source-guide references are append-only and currently span `ageint232`
   through `ageint312`.
 
-## Curated Anchor Metadata
+## Curated anchor metadata: checked dates, cadences, triggers, and caveats
 
 Every curated anchor in `src/intelligence_content/` should carry:
 
@@ -52,6 +52,17 @@ Dioptra assurance, secure AI deployment, OT procurement, OT asset inventory,
 and definitive OT architecture evidence. These rows use
 `checked_as_of: "2026-05-24"` and the same direct-verification standard as the
 May 21 and May 22 shards.
+
+The 2026-06-14 publication-readiness pass adds a refresh due-date oracle without
+changing any `checked_as_of` dates. Run
+`uv run python scripts/audit_source_refresh_due.py --write --format markdown` to
+write `output/reports/source_refresh_due.{json,md}`. The current report covers
+472 metadata rows, classifies 472 as current, and records 0 due-soon, due,
+stale, unknown-cadence, or missing-date rows. Cadence buckets are 322 annual,
+94 semiannual, 51 quarterly, and 5 biennial rows. The same pass adds the
+registry-backed `ageint-source-refresh-due-dashboard` figure and exposes the
+gate as `source_refresh_due_ok` in `current_artifact_evidence` and in the local
+publication-readiness report.
 
 A separate 2026-05-22 verified batch is encoded in
 `data/research_anchors/intelligence-anchors-173-186.jsonl`. It adds NATO CCDCOE
@@ -176,6 +187,34 @@ scholarship-quality report so every claim-bearing generated manuscript family
 must have a canonical analysis-validation lane, evidence signal, and failure
 signal before local readiness can pass.
 
+A 2026-06-14 official US IC source-pack pass is encoded in
+`data/research_anchors/intelligence-anchors-249-304.jsonl`. It adds 56
+directly verified public CIA, DIA, ODNI, Intelligence.gov, NSA, NGA, FBI, and
+NRO anchors and requires `source_agency`, `source_pack`, explicit lane/tier,
+checked-date, claim-scope, assurance-use, rights, and deterministic profile
+routing metadata. The companion `agency_source_coverage` report and dashboard
+make the source-pack layer fail-closed in artifact evidence and publication
+readiness.
+
+A 2026-06-15 literature-integration pass is encoded in
+`data/research_anchors/intelligence-anchors-305-340.jsonl`. It adds 36 directly
+verified scholarly, official, and public-domain sources from the synthetic
+intelligence, analytic tradecraft, OPSEC, cognitive-security, adversarial-ML, AI
+incident, OSINT leakage, deepfake, disinformation, social-engineering cognition,
+and active-inference discovery inventories. The pasted literature reviews remain
+discovery-only inputs; each new row carries explicit lane, tier, checked-date,
+verification method, claim scope, refresh cadence, refresh trigger, stakeholder,
+assurance, and rights metadata.
+
+A 2026-06-15 SAT literature-integration pass is encoded in
+`data/research_anchors/intelligence-anchors-341-367.jsonl`. It adds 27 directly
+verified structured-analytic-technique, ACH, decision-science,
+forecasting-calibration, postmortem, and pedagogy sources after dedupe against
+the existing tradecraft spine. The attached SAT literature report remains
+discovery-only; each new row carries explicit lane, tier, checked-date,
+verification method, claim scope, refresh cadence, refresh trigger, stakeholder,
+assurance, and rights metadata.
+
 A 2026-06-11 analytic-tradecraft integration pass is encoded in
 `data/research_anchors/intelligence-anchors-233-248.jsonl`. It adds CIA/Kent
 tradecraft history, warning-intelligence, IRTPA, 9/11 and WMD postmortem,
@@ -184,7 +223,7 @@ failure-theory sources. These anchors support Chapters 41-42 and the four new
 tradecraft diagrams while keeping SAT claims evidence-bounded and separating
 likelihood, confidence, assumptions, dissent, and source quality.
 
-## Refresh Triggers
+## Refresh triggers: source changes that reopen claims before reuse
 
 Refresh a source row when legal text, standards versions, official guidance,
 source URLs, source ownership, implementation timelines, or instructor debriefs

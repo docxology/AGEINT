@@ -1,9 +1,9 @@
-# Safety Audit
+# Safety Audit: blocked operations, allowed contexts, and safe substitutes
 
 AGEINT v2 centralizes safe substitution and safe treatment of risky
 source-guide motifs.
 
-## Blocked Operational Treatments
+## Blocked operational treatments: live targets, evasion, exploitation, and manipulation
 
 Generated curriculum treatment should not normalize:
 
@@ -20,13 +20,13 @@ Generated curriculum treatment should not normalize:
 - covert persuasion or microtargeting
 - unsafe cyber-physical action
 
-## Allowed Contexts
+## Allowed contexts: classroom, tabletop, public, synthetic, and owned-lab work
 
 Risky phrases may appear only when they are clearly framed as a prohibition,
 blocked context, source-audit description, bibliography/source title, or safe
 substitution explanation.
 
-## Safe Substitutes
+## Safe substitutes: defensive artifacts for risky motifs
 
 Use tabletop, audit, governance, provenance, synthetic-data, instructor-rubric,
 accessibility review, HRIA/DPIA worksheet, procurement review, incident drill,

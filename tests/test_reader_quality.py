@@ -233,6 +233,33 @@ def test_orientation_gives_reader_use_paths(built_output: Path) -> None:
     assert "Safe-lab packet" in text
 
 
+def test_orientation_front_loads_deep_link_signposts(built_output: Path) -> None:
+    orientation_dir = manuscript_dir(built_output) / "orientation"
+    text = "\n\n".join(
+        path.read_text(encoding="utf-8") for path in sorted(orientation_dir.glob("*.md"))
+    )
+    normalized = re.sub(r"\s+", " ", text)
+
+    assert "Start here" in text
+    assert "Then check" in text
+    assert "Before you trust" in text
+    assert "domain part -> module overview -> practice studio -> evidence contract" in normalized
+    assert "governance boundary -> assessment route -> bibliography/source lane" in normalized
+    for ref in (
+        "[@sec:curriculum-map]",
+        "[@sec:synthetic-analytic-tradecraft-thesis]",
+        "[@sec:reader-paths]",
+        "[@sec:analysis-validation-protocol]",
+        "[@sec:source-lane-map]",
+        "[@sec:bibliography_atlas]",
+        "[@sec:safe-substitution-matrix]",
+        "[@sec:orientation-figures-and-course-links]",
+        "[@sec:method-assurance-reference]",
+    ):
+        assert ref in text
+    assert ".md" not in re.sub(r"`[^`]+`", "", text)
+
+
 # Max times any single source-support CLOSING sentence or artifact-verification
 # sentence may render verbatim across all topic-lesson files. The closing
 # sentence is title-woven (near-unique; repeats only when the SAME title recurs,

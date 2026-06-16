@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from typing import Final
 
-from .risk_routes import topic_risk_category
+from .risk_routes import topic_risk_category  # noqa: F401 - compatibility re-export
 from ._07_safe_titles import (
-    GENERIC_DISPLAY_TITLE_MARKERS,
-    _topic_anchor_words,
-    is_generic_display_title,
-    safe_curriculum_treatment,
+    GENERIC_DISPLAY_TITLE_MARKERS,  # noqa: F401 - compatibility re-export
+    _topic_anchor_words,  # noqa: F401 - compatibility re-export
+    is_generic_display_title,  # noqa: F401 - compatibility re-export
+    safe_curriculum_treatment,  # noqa: F401 - compatibility re-export
 )
 
 REQUIRED_SOURCE_LANES: Final[tuple[str, ...]] = (

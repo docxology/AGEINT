@@ -1,10 +1,10 @@
-# Release and Change Control
+# Release and Change Control: reuse approval, rollback, and change evidence
 
 AGEINT artifacts are not deployed systems, but reuse still needs a release gate:
 an instructor should know what changed, what was tested, what can roll back, and
 what monitoring signal would reopen review.
 
-## Gates
+## Gates: source freshness, safety review, validation, and rollback proof
 
 | Gate | Evidence |
 |---|---|

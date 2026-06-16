@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from _jsonl import read_jsonl as _read_jsonl
+
 try:  # Support package imports and direct script imports.
     from .curriculum import load_curriculum, parse_curriculum_guide
 except ImportError:  # pragma: no cover - exercised by tests/scripts using src on sys.path
@@ -53,9 +55,6 @@ def build_source_identity_lock(
         "locked_reference_count": len(locked),
         "references": locked,
     }
-
-
-from _jsonl import read_jsonl as _read_jsonl
 
 
 def write_source_identity_lock_shards(lock: dict[str, Any], directory: Path) -> Path:

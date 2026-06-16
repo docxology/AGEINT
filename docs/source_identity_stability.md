@@ -1,9 +1,9 @@
-# Source Identity Stability
+# Source Identity Stability: locked source keys and append-only references
 
 AGEINT preserves the source identity of the original guide references while
 allowing v2 expansion.
 
-## Contract
+## Contract: preserve `ageint001` through `ageint231` identities
 
 - Preserve `ageint001` through `ageint231` exactly as locked in
   `data/source_identity/`.
@@ -14,7 +14,7 @@ allowing v2 expansion.
   from parser output and source-anchor metadata.
 - Do not hand-edit generated bibliography files as the primary source of truth.
 
-## Verification
+## Verification: source locks, citation counts, and generated BibTeX checks
 
 Run:
 

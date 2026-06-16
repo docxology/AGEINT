@@ -188,8 +188,42 @@ def _contributor_recipe_markdown(project_root: Path | None = None) -> str:
     root = _PROJECT_ROOT if project_root is None else Path(project_root)
     doc_path = root / "docs" / "citation_workflow.md"
     text = doc_path.read_text(encoding="utf-8")
-    recipe = text.split("## Choose The Source Type", 1)[1].split("## Count And Verify Citations", 1)[0].strip()
+    recipe = _markdown_between_h2_prefixes(
+        text,
+        start_prefix="Choose the source type",
+        end_prefix="Count and verify citations",
+    )
     return f"{recipe}\n\nnever hand-edit `output/manuscript/` as the source of truth."
+
+
+def _markdown_between_h2_prefixes(text: str, *, start_prefix: str, end_prefix: str) -> str:
+    """Return content between two H2 headings matched by case-insensitive prefixes."""
+
+    lines = text.splitlines()
+    start_index: int | None = None
+    end_index: int | None = None
+    start = start_prefix.lower()
+    end = end_prefix.lower()
+    in_fence = False
+    for index, line in enumerate(lines):
+        if line.strip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence or not line.startswith("## "):
+            continue
+        heading = line.removeprefix("## ").strip().lower()
+        if start_index is None and heading.startswith(start):
+            start_index = index + 1
+            continue
+        if start_index is not None and heading.startswith(end):
+            end_index = index
+            break
+    if start_index is None or end_index is None:
+        raise ValueError(
+            f"Could not extract citation workflow section between {start_prefix!r} "
+            f"and {end_prefix!r}"
+        )
+    return "\n".join(lines[start_index:end_index]).strip()
 
 
 def render_citation_workflow_markdown(curriculum: Curriculum) -> str:
@@ -206,7 +240,7 @@ def render_citation_workflow_markdown(curriculum: Curriculum) -> str:
             "AGEINT citations are generated from source data, not patched into generated Markdown.",
             "### Contributor recipe",
             _contributor_recipe_markdown(),
-            "### Current source-section coverage",
+            "### Current citation coverage by source section",
             "\n".join(
                 [
                     "| Measure | Count |",
@@ -218,7 +252,7 @@ def render_citation_workflow_markdown(curriculum: Curriculum) -> str:
                     f"| Distribution | {_table_cell(distribution)} |",
                 ]
             ),
-            "### Source-section citation rows",
+            "### Citation rows by source section",
             render_source_section_citation_rows(curriculum),
         ]
     )

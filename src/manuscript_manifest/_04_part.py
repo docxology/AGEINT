@@ -5,6 +5,7 @@ from typing import Any
 
 from curriculum import Curriculum
 from figures import figure_markdown, figures_for_section
+from intelligence_content import practice_lens_for_titles, profile_for_titles
 from markdown_refs import section_ref_list
 from manuscript_templates import template_text
 from manuscript_variables import appendix_rows
@@ -31,7 +32,7 @@ from ._canonical_reference import (
     canonical_safety_boundary,
 )
 
-# Rotated framing for the per-chapter Cross-links block. The structural links
+# Rotated framing for the per-chapter learning-path links block. The structural links
 # themselves (orientation, parent unit, previous/next module) are emitted as
 # ``[@sec:...]`` crossrefs by SECTION_CROSSREFS; this prose only frames them.
 # Rotating by part domain and embedding the chapter's own topic cluster keeps
@@ -223,7 +224,7 @@ def build_manuscript_manifest(
     sections.append(
         ManuscriptSection(
             "front",
-            "Abstract",
+            "Abstract: Synthetic Analytic Tradecraft contract",
             "abstract.md",
             "abstract.md",
             {},
@@ -235,7 +236,7 @@ def build_manuscript_manifest(
     sections.append(
         ManuscriptSection(
             "front",
-            "Curriculum Orientation",
+            "Curriculum Orientation: reader paths, evidence maps, and safety gates",
             "orientation.md",
             "orientation.md",
             {},
@@ -247,7 +248,7 @@ def build_manuscript_manifest(
     sections.append(
         ManuscriptSection(
             "front",
-            "Method & Assurance Reference",
+            "Method & Assurance Reference: claim evidence, safety gates, and refresh duties",
             "method-assurance-reference.md",
             "method_assurance_reference.md",
             {
@@ -294,6 +295,8 @@ def build_manuscript_manifest(
             chapter_slug = registry.unique(part_slug, chapter["title"])
             relative_path = f"{part_dir}/{chapter_slug}.md"
             chapter_label = _label("chapter", chapter_slug)
+            profile = profile_for_titles(str(part["title"]), str(chapter["title"]), chapter=chapter)
+            lens = practice_lens_for_titles(str(part["title"]), str(chapter["title"]), chapter=chapter)
             chapter_files[chapter["number"]] = relative_path
             chapter_names.append(f"{chapter_slug}.md")
             sections.append(
@@ -308,6 +311,8 @@ def build_manuscript_manifest(
                         "SECTION_BODY": _chapter_body(chapter, part),
                         "SECTION_NAV_PROSE": _chapter_nav_prose(chapter, part),
                         "SECTION_CROSSREFS": "",
+                        "CHAPTER_PROFILE_TITLE": profile.title,
+                        "CHAPTER_PRACTICE_LENS_TITLE": lens.title,
                     },
                     order,
                     section_label=chapter_label,
@@ -370,7 +375,7 @@ def build_manuscript_manifest(
     sections.append(
         ManuscriptSection(
             "bibliography",
-            "Bibliography Atlas",
+            "Bibliography Atlas: source keys, refresh evidence, and citation workflow",
             "bibliography-atlas.md",
             "bibliography_atlas.md",
             {},

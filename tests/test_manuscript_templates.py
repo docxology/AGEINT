@@ -11,6 +11,7 @@ from intelligence_content import (
     anchor_references,
     chapter_knowledge_check,
     chapter_learning_outcomes,
+    expanded_profile_anchor_keys,
     practice_lens_for_titles,
     practice_lens_rows,
     profile_for_titles,
@@ -140,8 +141,8 @@ def test_research_profiles_route_sections_to_domain_content() -> None:
 
 def test_research_profile_anchor_keys_resolve_for_chapter_briefs() -> None:
     for profile in INTELLIGENCE_PROFILES:
-        anchors = anchor_references(profile.anchor_keys)
-        assert [anchor.key for anchor in anchors] == list(profile.anchor_keys)
+        anchors = anchor_references(expanded_profile_anchor_keys(profile))
+        assert [anchor.key for anchor in anchors] == list(expanded_profile_anchor_keys(profile))
 
 
 def test_practice_lenses_route_subsections_to_fractal_contracts() -> None:

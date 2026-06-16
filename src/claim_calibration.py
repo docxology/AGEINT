@@ -135,6 +135,13 @@ BOUNDARY_PHRASES = (
     "promote it into a benchmark",
     "fails unsupported proof-language",
 )
+NEGATED_HIGH_RISK_BOUNDARY_RE = re.compile(
+    r"\bnot\b[^.|\n]{0,96}\b("
+    r"benchmark(?:s|ed|ing)?|measured performance|operational performance|"
+    r"capability score|learning-outcome estimate"
+    r")\b",
+    re.IGNORECASE,
+)
 
 
 @dataclass(frozen=True)
@@ -390,7 +397,9 @@ def _direct_support_hint(prefix: str) -> str:
 
 
 def _boundary_language(lowered: str) -> bool:
-    return any(phrase in lowered for phrase in BOUNDARY_PHRASES)
+    return any(phrase in lowered for phrase in BOUNDARY_PHRASES) or bool(
+        NEGATED_HIGH_RISK_BOUNDARY_RE.search(lowered)
+    )
 
 
 def _citation_keys(text: str) -> list[str]:

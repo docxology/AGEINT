@@ -7,12 +7,14 @@ import re
 from pathlib import Path
 
 from manuscript_quality.inventory_helpers import (
-    REQUIRED_MODULE_SECTIONS,
+    chapter_title_from_text,
     chapter_text,
     generated_chapter_files,
     manuscript_dir,
+    required_module_sections_for,
     section_text,
 )
+from manuscript_manifest._heading_titles import chapter_detail_titles
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
@@ -29,9 +31,6 @@ MIN_SECTION_CHARS = {
     "Core vocabulary": 40,
     "Topic lessons": 200,
     "Worked safe example": 80,
-    "Module architecture and transfer contract": 60,
-    "Evidence canon and source spine": 40,
-    "Assessment artifacts and capstone pathway": 40,
 }
 
 
@@ -109,14 +108,15 @@ def test_required_module_sections_present_with_minimum_length(built_output: Path
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
+        title = chapter_title_from_text(text)
         slug = _chapter_slug(path)
-        for section in REQUIRED_MODULE_SECTIONS:
+        for section in required_module_sections_for(title):
             if section not in text:
                 failures.append(f"{slug}: missing section {section!r}")
                 continue
             body = section_text(text, section)
-            minimum = MIN_SECTION_CHARS.get(section, 20)
-            if len(body.strip()) < minimum and section in MIN_SECTION_CHARS:
+            minimum = _minimum_chars(section, title)
+            if len(body.strip()) < minimum:
                 failures.append(f"{slug}: short section {section!r} ({len(body.strip())} chars)")
     assert failures == []
 
@@ -126,13 +126,23 @@ def test_topic_lessons_include_educational_cross_links(built_output: Path) -> No
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = section_text(chapter_text(path), "Topic lessons")
-        if "**Cross-links.**" not in section:
+        if "**Learning-path links.**" not in section:
             failures.append(f"{_chapter_slug(path)}: missing lesson cross-links")
         if "[@fig:part-" not in section:
             failures.append(f"{_chapter_slug(path)}: missing unit module map figure ref")
         if "[@sec:curriculum_orientation]" not in section:
             failures.append(f"{_chapter_slug(path)}: missing curriculum atlas section ref")
     assert failures == []
+
+
+def _minimum_chars(section: str, chapter_title: str) -> int:
+    details = chapter_detail_titles(chapter_title)
+    dynamic_minimums = {
+        details["architecture"]: 60,
+        details["evidence"]: 40,
+        details["assessment"]: 40,
+    }
+    return dynamic_minimums.get(section, MIN_SECTION_CHARS.get(section, 20))
 
 
 def test_topic_lessons_include_source_support_lines(built_output: Path) -> None:

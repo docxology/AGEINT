@@ -16,6 +16,8 @@ Public exports are declared in `src/__init__.py`. Package layout:
 | Module / package | Role |
 | --- | --- |
 | `build_pipeline.py` | Canonical `run_build()` orchestration |
+| `orchestration_contracts.py`, `orchestration_audit.py` | Registry-backed build-stage and extension contract reports |
+| `audit_contracts.py` | Fail-closed audit metadata, report paths, readiness gates, and negative controls |
 | `curriculum.py` | Load and query sharded curriculum |
 | `intelligence_content/` | Research anchors, domain profiles, practice lenses, topic-frame routing (see `intelligence_content/AGENTS.md`) |
 | `manuscript_manifest/` | Semantic paths, section context, chapter fragments |

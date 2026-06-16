@@ -33,15 +33,15 @@ def test_visual_quality_audit_matches_rendered_registry() -> None:
 
     assert audit["project"] == "AGEINT"
     assert audit["schema_version"] == "1.0"
-    assert audit["registry_schema"] == registry["schema_version"] == "1.4"
+    assert audit["registry_schema"] == registry["schema_version"] == "1.5"
     assert audit["figure_count"] == registry["figure_count"] >= 170
     assert audit["pass"] is True
     assert registry["quality_summary"] == audit["summary"]
     assert audit["summary"]["kind_counts"] == {
         FigureKind.AI_GENERATED.value: 6,
         FigureKind.HISTORICAL.value: 4,
-        FigureKind.MERMAID.value: 114,
-        FigureKind.PYTHON.value: 46,
+        FigureKind.MERMAID.value: 115,
+        FigureKind.PYTHON.value: 48,
     }
     for check, count in audit["summary"]["check_counts"].items():
         assert count == audit["figure_count"], check
@@ -147,6 +147,40 @@ def test_source_metadata_integrity_is_registry_backed() -> None:
     assert figure["kind"] == FigureKind.PYTHON.value
     assert figure["provenance"]["renderer_id"] == "source_metadata_integrity"
     assert "source metadata integrity figure" in figure["caption"]
+    assert "denominator context" in figure["caption"]
+    assert "not a quality score" in figure["caption"]
+    assert (PROJECT_ROOT / figure["output_path"]).is_file()
+
+
+def test_source_refresh_due_dashboard_is_registry_backed() -> None:
+    registry = load_figure_registry(PROJECT_ROOT / "output/figures/figure_registry.json")
+    figure = next(
+        entry
+        for entry in registry["figures"]
+        if entry["label"] == "fig:ageint-source-refresh-due-dashboard"
+    )
+    assert figure["kind"] == FigureKind.PYTHON.value
+    assert figure["provenance"]["renderer_id"] == "source_refresh_due_dashboard"
+    assert "source refresh due-date dashboard" in figure["caption"]
+    assert "publication-preflight failure path" in figure["caption"]
+    assert "not a score or empirical performance claim" in figure["caption"]
+    assert figure["quantitative"] is True
+    assert (PROJECT_ROOT / figure["output_path"]).is_file()
+
+
+def test_agency_source_coverage_dashboard_is_registry_backed() -> None:
+    registry = load_figure_registry(PROJECT_ROOT / "output/figures/figure_registry.json")
+    figure = next(
+        entry
+        for entry in registry["figures"]
+        if entry["label"] == "fig:ageint-agency-source-coverage"
+    )
+    assert figure["kind"] == FigureKind.PYTHON.value
+    assert figure["provenance"]["renderer_id"] == "agency_source_coverage_dashboard"
+    assert "agency-source coverage" in figure["caption"]
+    assert "56-anchor denominator" in figure["caption"]
+    assert "artifact-evidence failure path" in figure["caption"]
+    assert figure["quantitative"] is True
     assert (PROJECT_ROOT / figure["output_path"]).is_file()
 
 
@@ -160,6 +194,8 @@ def test_claim_calibration_visual_is_registry_backed() -> None:
     assert figure["kind"] == FigureKind.PYTHON.value
     assert figure["provenance"]["renderer_id"] == "claim_calibration_and_visual_semantics"
     assert "claim-calibration verifier" in figure["caption"]
+    assert "reviewer inputs" in figure["caption"]
+    assert "score, benchmark, or empirical performance claim" in figure["caption"]
     assert figure["semantic_role"] == "verifier_control_map"
     assert figure["evidence_role"] == "claim, source-strength, formalism, and visualization audit contract"
     assert figure["quantitative"] is False

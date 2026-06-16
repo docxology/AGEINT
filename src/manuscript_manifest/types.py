@@ -7,6 +7,8 @@ import json
 import re
 from typing import Any
 
+import yaml
+
 
 @dataclass(frozen=True)
 class ManuscriptSection:
@@ -69,13 +71,19 @@ def ordering_config_yaml(
     front_matter_files: list[str],
     units: list[dict[str, Any]],
     appendix_files: list[str],
+    *,
+    front_matter_options: dict[str, Any] | None = None,
 ) -> str:
     """Return YAML ordering understood by infrastructure manuscript discovery."""
-    lines = [
-        "front_matter:",
-        "  include_front_matter: true",
-        f"  files: {_flow_file_entries(front_matter_files)}",
-    ]
+    lines = ["front_matter:"]
+    if front_matter_options:
+        lines.extend(_yaml_mapping_lines(front_matter_options, indent=2))
+    lines.extend(
+        [
+            "  include_front_matter: true",
+            f"  files: {_flow_file_entries(front_matter_files)}",
+        ]
+    )
     lines.append("units:")
     for unit in units:
         lines.extend(
@@ -101,6 +109,13 @@ def ordering_config_yaml(
 def _flow_file_entries(file_names: list[str]) -> str:
     """Return compact YAML file-entry list for long generated ordering surfaces."""
     return "[" + ", ".join(f'{{file: {json.dumps(file_name)}}}' for file_name in file_names) + "]"
+
+
+def _yaml_mapping_lines(mapping: dict[str, Any], *, indent: int) -> list[str]:
+    """Return stable indented YAML lines for optional generated config fields."""
+    rendered = yaml.safe_dump(mapping, sort_keys=False, allow_unicode=True).strip()
+    prefix = " " * indent
+    return [prefix + line for line in rendered.splitlines() if line.strip()]
 
 
 class SlugRegistry:

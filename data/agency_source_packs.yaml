@@ -1,0 +1,71 @@
+packs:
+  cia_analytic_uncertainty:
+    - official_cia_words_estimative_probability
+    - official_cia_ic_struggle_express_uncertainty
+    - official_cia_developing_taxonomy_analysis_variables
+    - official_cia_applying_epistemology_analysis_2025
+    - official_cia_managing_reliability_cycle
+    - official_cia_why_bad_things_good_analysts
+    - official_cia_call_for_humility_analysis
+    - official_cia_war_chance_uncertainty_review
+    - official_cia_uncertainty_analysis_review
+    - official_cia_limits_of_prediction
+  cia_intelligence_profession:
+    - official_cia_cooper_2005_analytic_pathologies
+    - official_cia_analytic_culture_us_ic
+    - official_cia_need_for_intelligence_literature
+    - official_cia_studies_writers_guide_2025
+    - official_cia_psychology_intelligence_analysis
+    - official_cia_kent_board_estimates_collected
+    - official_cia_call_for_humility_analysis
+    - official_cia_principles_intelligence_analysis
+    - official_cia_fifty_years_studies_intelligence
+    - official_cia_thinking_writing_cognitive_science
+    - official_cia_national_institute_analytic_methods
+    - official_cia_when_everything_intelligence
+  cia_ai_analysis_and_production:
+    - official_cia_agile_analysis_2023
+    - official_cia_future_of_analysis
+    - official_cia_sable_spear_ai_experiment
+    - official_cia_espionage_ai_future
+    - official_intelligence_gov_innovation
+  dia_osint_governance:
+    - official_dia_defense_osint_strategy_2024
+    - official_dia_style_manual_intelligence_production
+    - official_dia_privacy_civil_liberties_program
+  odni_disclosure_and_tearlines:
+    - official_odni_icd_205_analytic_outreach
+    - official_odni_icd_208_analytic_product_utility
+    - official_odni_icd_209_tearline_production
+    - official_odni_icd_403_foreign_disclosure_release
+    - official_odni_icd_405_intelligence_diplomacy
+    - official_odni_icd_406_non_state_entity_engagement
+    - official_odni_icd_710_classification_control_markings
+    - official_intelligence_gov_transparency
+    - official_intelligence_gov_about_site
+  odni_privacy_oversight:
+    - official_odni_icd_503_information_environment_risk
+    - official_odni_icd_121_information_environment
+    - official_odni_icd_750_counterintelligence_programs
+    - official_intelligence_gov_accountability
+    - official_dia_privacy_civil_liberties_program
+  odni_governance_directives:
+    - official_odni_icd_207_national_intelligence_council
+    - official_odni_icd_900_integrated_mission_management
+    - official_odni_icd_211_cfius_support
+    - official_odni_icd_731_supply_chain_risk_management
+    - official_intelligence_gov_collaboration
+  ic_current_threat_baseline:
+    - official_odni_annual_threat_assessment_2026
+    - official_intelligence_gov_mission
+    - official_fbi_counterintelligence_espionage
+  declassified_history:
+    - official_cia_vietnam_policymaker_boundary
+    - official_nro_history_csnr
+    - official_nga_geoint_basic_doctrine
+  ic_cyber_geoint_history:
+    - official_nsa_cybersecurity_advisories_guidance
+    - official_nsa_about_mission
+    - official_nsa_agentic_ai_services_guidance_2026
+    - official_nga_geoint_basic_doctrine
+    - official_nga_data_strategy

@@ -7,6 +7,7 @@ from pathlib import Path
 
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import SOURCE_QUALITY_ANCHORS
+from manuscript_manifest._heading_titles import chapter_detail_titles, chapter_teaching_titles
 from safety_contract import BLOCKED_OPERATIONAL_PHRASES, DIRECT_TASK_MOTIF_RE
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -26,24 +27,53 @@ def _resolve_manuscript(output_manuscript: Path | None) -> Path:
 
 DATA = PROJECT_ROOT / "data" / "curriculum"
 TOKEN_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}")
-REQUIRED_MODULE_SECTIONS = {
-    "Textbook primer",
-    "Learning outcomes",
-    "Core vocabulary",
-    "Topic lessons",
-    "Worked safe example",
-    "Practice sequence",
-    "Knowledge check",
-    "Module architecture and transfer contract",
-    "Evidence canon and source spine",
-    "Source-backed analytic synthesis",
-    "Agentic translation: assist, approve, block",
-    "Governance, rights, and assurance",
-    "Assessment artifacts and capstone pathway",
-    "Refresh, safety, and source maps",
-    "Reviewer challenge checklist",
-    "Learning-path cross-links",
+GENERIC_TEACHING_SECTION_KEYS = {
+    "Textbook primer": "primer",
+    "Learning outcomes": "outcomes",
+    "Core vocabulary": "vocabulary",
+    "Topic lessons": "lessons",
+    "Worked safe example": "example",
+    "Practice sequence": "sequence",
+    "Knowledge check": "check",
 }
+GENERIC_DETAIL_SECTION_KEYS = {
+    "Module architecture and transfer contract": "architecture",
+    "Evidence canon and source spine": "evidence",
+    "Source-backed analytic synthesis": "synthesis",
+    "Agentic translation: assist, approve, block": "agentic",
+    "Governance, rights, and assurance": "governance",
+    "Assessment artifacts and capstone pathway": "assessment",
+    "Refresh, safety, and source maps": "refresh",
+    "Reviewer challenge checklist": "review",
+    "Learning-path cross-links": "links",
+    "Guide source spine": "source_spine",
+    "Verified source canon": "verified_canon",
+    "Intelligence practice lens": "practice_lens",
+    "Runtime-to-reader map": "runtime_map",
+    "Reusable subsection contract": "subsection_contract",
+    "Annotated source ledger": "source_ledger",
+    "Evidence standard and citation floor": "evidence_standard",
+    "Permitted defensive utility": "permitted_utility",
+    "Excluded operational boundary": "excluded_boundary",
+    "Governance card": "governance_card",
+    "Evidence package handoff": "evidence_handoff",
+    "Current-source assurance": "current_source",
+    "Capstone pathway": "capstone_pathway",
+    "Instructor facilitation notes": "facilitation",
+    "Assessment rubric": "rubric",
+    "Refresh triggers": "refresh_triggers",
+    "Claim and evidence ledger": "claim_ledger",
+}
+RETIRED_GENERIC_HEADING_LABELS = {
+    "Discipline spine",
+    "Source-use contract",
+    "Practice artifact",
+    "Safety boundary",
+    "Instructor notes",
+    "Extension",
+    "Answer quality rubric",
+}
+REQUIRED_MODULE_SECTIONS = set(GENERIC_TEACHING_SECTION_KEYS)
 RAW_PSEUDO_HEADING_PREFIXES = {
     "V2 source-lane extension:",
     "Deep expansion:",
@@ -263,23 +293,53 @@ def chapter_text(path: Path) -> str:
     )
 
 
+def chapter_title_from_text(text: str) -> str:
+    """Return the generated H1 title from a chapter fragment set."""
+    first_line = next(line for line in text.splitlines() if line.startswith("# "))
+    return first_line.removeprefix("# ").split(" {#", 1)[0]
+
+
+def required_module_sections_for(chapter_title: str) -> set[str]:
+    """Return static plus chapter-specific module section headings."""
+    return set(chapter_teaching_titles(chapter_title).values()) | set(
+        chapter_detail_titles(chapter_title).values()
+    )
+
+
 def chapter_relative(path: Path, output_manuscript: Path | None = None) -> str:
     root = _resolve_manuscript(output_manuscript)
     return path.parent.relative_to(root / "parts").as_posix()
 
 
 def section_text(text: str, heading: str) -> str:
-    pattern = re.compile(
-        rf"^(?P<marks>#+)\s+{re.escape(heading)}(?:\s+\{{#[^}}]+\}})?\s*$",
-        flags=re.MULTILINE,
-    )
-    match = pattern.search(text)
+    match = None
+    for candidate in _heading_candidates(text, heading):
+        pattern = re.compile(
+            rf"^(?P<marks>#+)\s+{re.escape(candidate)}(?:\s+\{{#[^}}]+\}})?\s*$",
+            flags=re.MULTILINE,
+        )
+        match = pattern.search(text)
+        if match is not None:
+            break
     assert match is not None, heading
     level = len(match.group("marks"))
     next_heading = re.compile(rf"^#{{1,{level}}}\s+", flags=re.MULTILINE)
     next_match = next_heading.search(text, match.end())
     end = next_match.start() if next_match else len(text)
     return text[match.end() : end]
+
+
+def _heading_candidates(text: str, heading: str) -> list[str]:
+    candidates = [heading]
+    try:
+        chapter_title = chapter_title_from_text(text)
+    except StopIteration:
+        return candidates
+    if heading in GENERIC_TEACHING_SECTION_KEYS:
+        candidates.append(chapter_teaching_titles(chapter_title)[GENERIC_TEACHING_SECTION_KEYS[heading]])
+    if heading in GENERIC_DETAIL_SECTION_KEYS:
+        candidates.append(chapter_detail_titles(chapter_title)[GENERIC_DETAIL_SECTION_KEYS[heading]])
+    return list(dict.fromkeys(candidates))
 
 
 def markdown_table_rows(section: str) -> list[list[str]]:

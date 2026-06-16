@@ -16,6 +16,8 @@ QUANTITATIVE_RENDERERS = frozenset(
         "analysis_validation_matrix",
         "analysis_validation_family_coverage",
         "source_metadata_integrity",
+        "source_refresh_due_dashboard",
+        "agency_source_coverage_dashboard",
     }
 )
 

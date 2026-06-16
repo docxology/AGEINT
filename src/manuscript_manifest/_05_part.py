@@ -6,6 +6,8 @@ import shutil
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 from curriculum import Curriculum
 from manuscript_injection import substitute_manuscript_text
 from rendered_heading_support import add_heading_support, ensure_heading_support_in_tree
@@ -25,7 +27,7 @@ from .types import (
     slugify as _slug,
 )
 from ._04_part import build_manuscript_manifest, _read_template, _visual_synthesis
-from ._heading_titles import chapter_landmark_titles
+from ._heading_titles import chapter_landmark_titles, chapter_scaffold_titles
 
 
 MAX_TEXT_FILE_LINES = DEFAULT_MAX_TEXT_FILE_LINES
@@ -33,6 +35,26 @@ MAX_TEXT_FILE_LINES = DEFAULT_MAX_TEXT_FILE_LINES
 
 def _demote_chapter_continuation_headings(text: str) -> str:
     return re.sub(r"^## (.+ \(continued \d+\))$", r"### \1", text, flags=re.MULTILINE)
+
+
+def _split_before_h3(text: str, heading: str) -> tuple[str, str]:
+    match = re.search(rf"^###\s+{re.escape(heading)}\s*$", text, flags=re.MULTILINE)
+    if match is None:
+        return text.rstrip(), ""
+    return text[: match.start()].rstrip(), text[match.start() :].rstrip()
+
+
+def _split_assurance_fragments(section: ManuscriptSection, assurance_block: str) -> tuple[str, str, str]:
+    scaffolds = chapter_scaffold_titles(section.title)
+    evidence_block, governance_and_assessment = _split_before_h3(
+        assurance_block,
+        scaffolds["governance"],
+    )
+    governance_block, assessment_block = _split_before_h3(
+        governance_and_assessment,
+        scaffolds["assessment"],
+    )
+    return evidence_block, governance_block, assessment_block
 
 
 def _first_fragment_path(section: ManuscriptSection) -> str:
@@ -49,7 +71,16 @@ def _first_fragment_path(section: ManuscriptSection) -> str:
 def _chapter_fragments(section: ManuscriptSection, rendered: str) -> list[tuple[str, str]]:
     lead, blocks = _split_h2_blocks(rendered)
     block_map = {heading: block for heading, block in blocks}
-    headings = chapter_landmark_titles(section.title)
+    headings = chapter_landmark_titles(
+        section.title,
+        profile_title=section.context.get("CHAPTER_PROFILE_TITLE", ""),
+        practice_lens_title=section.context.get("CHAPTER_PRACTICE_LENS_TITLE", ""),
+    )
+    assurance_block = block_map.get(headings["assurance"], "")
+    evidence_block, governance_block, assessment_block = _split_assurance_fragments(
+        section,
+        assurance_block,
+    )
     path = Path(section.relative_path)
     base_dir = path.parent / path.stem
     grouped = [
@@ -57,13 +88,13 @@ def _chapter_fragments(section: ManuscriptSection, rendered: str) -> list[tuple[
             "00-overview.md",
             [
                 lead,
-                block_map.get(headings["orientation"], ""),
+                block_map.get(headings["frame"], ""),
             ],
         ),
-        ("01-practice-studio.md", [block_map.get(headings["practice"], "")]),
-        ("02-evidence-contract.md", [block_map.get(headings["evidence"], "")]),
-        ("03-governance-boundary.md", [block_map.get(headings["governance"], "")]),
-        ("04-assessment-route.md", [block_map.get(headings["assessment"], "")]),
+        ("01-practice-studio.md", [block_map.get(headings["path"], "")]),
+        ("02-evidence-contract.md", [evidence_block]),
+        ("03-governance-boundary.md", [governance_block]),
+        ("04-assessment-route.md", [assessment_block]),
     ]
     fragments: list[tuple[str, str]] = []
     for file_name, parts in grouped:
@@ -112,14 +143,52 @@ def _write_generated_config(
 ) -> None:
     source_config = project_root / "manuscript" / "config.yaml"
     base = source_config.read_text(encoding="utf-8").rstrip() if source_config.is_file() else ""
+    front_matter_options = _source_front_matter_options(base)
+    if front_matter_options:
+        base = _strip_top_level_yaml_block(base, "front_matter")
     config = (
         f"{base}\n\n"
         "figures:\n"
         "  registry: ../figures/figure_registry.json\n\n"
         "# Generated manuscript ordering\n"
-        f"{_ordering_config_yaml(front_matter_files, units, appendix_files)}"
+        f"{_ordering_config_yaml(front_matter_files, units, appendix_files, front_matter_options=front_matter_options)}"
     )
     out_dir.joinpath("config.yaml").write_text(config, encoding="utf-8")
+
+
+def _source_front_matter_options(config_text: str) -> dict[str, Any]:
+    """Return non-ordering front-matter options declared by the source config."""
+    if not config_text.strip():
+        return {}
+    payload = yaml.safe_load(config_text) or {}
+    if not isinstance(payload, dict):
+        return {}
+    front_matter = payload.get("front_matter", {})
+    if not isinstance(front_matter, dict):
+        return {}
+    generated_keys = {"include_front_matter", "files"}
+    return {key: value for key, value in front_matter.items() if key not in generated_keys}
+
+
+def _strip_top_level_yaml_block(config_text: str, key: str) -> str:
+    """Remove one top-level source block before appending generated ordering."""
+    lines = config_text.splitlines()
+    stripped: list[str] = []
+    index = 0
+    block_header = f"{key}:"
+    while index < len(lines):
+        line = lines[index]
+        if line.startswith(block_header):
+            index += 1
+            while index < len(lines):
+                candidate = lines[index]
+                if candidate and not candidate[0].isspace() and not candidate.lstrip().startswith("#"):
+                    break
+                index += 1
+            continue
+        stripped.append(line)
+        index += 1
+    return "\n".join(stripped).rstrip()
 
 
 def render_manuscript(

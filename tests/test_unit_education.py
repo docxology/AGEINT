@@ -34,8 +34,34 @@ def test_unit_profiles_render_in_unit_introductions(built_output: Path) -> None:
         profile = unit_profile_for_part(part)
         intro = root / "parts" / slug_for_path(part["title"]) / "unit_intro.md"
         text = intro.read_text(encoding="utf-8")
-        assert "### Discipline spine" in text
-        assert "### Source-use contract" in text
+        assert (
+            f"## {part['title']} learning spine and source route: unit purpose, "
+            "module order, and evidence handoff"
+            in text
+        )
+        assert (
+            f"### {part['title']} visual navigation and module map: evidence flow, "
+            "order, and safety cues"
+            in text
+        )
+        assert (
+            f"### {part['title']} module roster and source-lane inventory: citations, "
+            "lanes, and learner route"
+            in text
+        )
+        assert f"### {profile.concept} discipline spine: domain question and learning focus" in text
+        assert (
+            f"### {profile.concept} source-use contract: citation roles and evidence limits"
+            in text
+        )
+        assert (
+            f"### {profile.concept} practice artifact: recurring packet and retained evidence"
+            in text
+        )
+        assert (
+            f"### {profile.concept} safety boundary: authorized, synthetic, and non-operational limits"
+            in text
+        )
         assert profile.concept in text
         assert profile.practice_artifact in text
         assert profile.safety_boundary in text

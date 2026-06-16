@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 from infrastructure.rendering.manuscript_discovery import discover_manuscript_files
 from curriculum import load_curriculum
@@ -11,20 +12,29 @@ from manuscript_quality.inventory_helpers import (
     DATA,
     MANUSCRIPT,
     REMOVED_REPEATED_MODULE_SECTIONS,
-    REQUIRED_MODULE_SECTIONS,
     RAW_PSEUDO_HEADING_PREFIXES,
     SOURCE_QUALITY_KEYS,
     TEMPLATES,
+    chapter_title_from_text,
     chapter_text,
     generated_chapter_files,
     manuscript_dir,
+    required_module_sections_for,
 )
-from manuscript_manifest._heading_titles import chapter_landmark_titles
+from manuscript_manifest._heading_titles import chapter_scaffold_titles
+
+
+RETIRED_TOC_SUFFIXES = (
+    "reader task, conceptual primer, outcomes, and vocabulary",
+    "topic lessons, safe worked example, and knowledge check",
+    "source spine, verified anchors, transfer architecture, and claim limits",
+    "synthesis, agent-assistance rules, rights, and assurance gates",
+    "capstone artifacts, refresh duties, reviewer challenges, and handoff",
+)
 
 
 def _chapter_title(text: str) -> str:
-    first_line = next(line for line in text.splitlines() if line.startswith("# "))
-    return first_line.removeprefix("# ").split(" {#", 1)[0]
+    return chapter_title_from_text(text)
 
 
 def test_source_uses_neutral_template_library_without_numbered_modules() -> None:
@@ -82,9 +92,12 @@ def test_generated_config_orders_semantic_files(built_output: Path) -> None:
     ]
     assert ordered[:2] == [
         "abstract.md",
-        "orientation/00-how-to-use-this-atlas-sec-how-to-use-this-atlas.md",
+        "orientation/00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md",
     ]
-    assert ordered[2] == "orientation/01-synthetic-analytic-tradecraft-thesis-sec-synthetic-analytic-tradecraft-thesis.md"
+    assert (
+        ordered[2]
+        == "orientation/01-synthetic-analytic-tradecraft-thesis-synthetic-fixtures-source-discipline-and-reviewable-claims-sec-synthetic-analytic-tradecraft-thesis.md"
+    )
     assert "parts/ageint-agentic-intelligence/unit_intro.md" in ordered
     assert "parts/ageint-agentic-intelligence/foundations-of-ageint/00-overview.md" in ordered
     assert ordered[-1] == "references.md"
@@ -119,11 +132,36 @@ def test_generated_chapter_modules_have_consistent_expansion_sections(built_outp
             for line in text.splitlines()
             if line.startswith("## ") and not line.startswith("### ")
         }
-        expected_h2 = set(chapter_landmark_titles(_chapter_title(text)).values())
-        assert h2_headings == expected_h2, f"{path.name}: {sorted(h2_headings)}"
+        title = _chapter_title(text)
+        assert len(h2_headings) == 3, f"{path.name}: {sorted(h2_headings)}"
+        assert any(
+            heading.endswith(
+                f" frame for {title}: source context, topic focus, and reader task"
+            )
+            for heading in h2_headings
+        ), f"{path.name}: {sorted(h2_headings)}"
+        assert any(
+            heading.endswith(f" path for {title}: lesson cluster, safe artifact, and review")
+            for heading in h2_headings
+        ), f"{path.name}: {sorted(h2_headings)}"
+        assert (
+            f"{title} assurance handoff: evidence, governance, refresh, and capstone"
+            in h2_headings
+        ), f"{path.name}: {sorted(h2_headings)}"
+        for heading in h2_headings:
+            assert not any(heading.endswith(suffix) for suffix in RETIRED_TOC_SUFFIXES), (
+                path.name,
+                heading,
+            )
+        for scaffold in chapter_scaffold_titles(title).values():
+            assert re.search(rf"^### {re.escape(scaffold)}$", text, flags=re.MULTILINE), (
+                path.name,
+                scaffold,
+            )
+        required_sections = required_module_sections_for(title)
         missing = {
             section
-            for section in REQUIRED_MODULE_SECTIONS
+            for section in required_sections
             if not any(
                 line.startswith(("### ", "#### ")) and line.lstrip("#").strip() == section
                 for line in text.splitlines()
@@ -132,7 +170,7 @@ def test_generated_chapter_modules_have_consistent_expansion_sections(built_outp
         assert missing == set(), f"{path.name}: {sorted(missing)}"
         repeated = REMOVED_REPEATED_MODULE_SECTIONS & h2_headings
         assert repeated == set(), f"{path.name}: {sorted(repeated)}"
-        generic_h2 = REQUIRED_MODULE_SECTIONS & h2_headings
+        generic_h2 = required_sections & h2_headings
         assert generic_h2 == set(), f"{path.name}: generic H2s in PDF TOC: {sorted(generic_h2)}"
         for heading in h2_headings:
             assert not any(prefix in heading for prefix in RAW_PSEUDO_HEADING_PREFIXES), heading

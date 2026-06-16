@@ -4,7 +4,7 @@ task: Verifier hardening, TODO execution, and current-ledger cleanup
 effort: E5
 phase: complete
 started: 2026-06-03
-updated: 2026-06-13
+updated: 2026-06-14
 ---
 
 # AGEINT ISA Closeout And Current Ledger
@@ -34,8 +34,8 @@ Historical checkpoints from the closed ISA remain useful context only:
   unified epistemic stack, cognitive attack layers, and HRO crosswalk.
 - Later expansion, visual-accessibility hardening, and metadata-verifier
   hardening increased the current project surface to 16 parts, 51 chapters,
-  9 appendices, 312 source-guide references, 248 curated research anchors,
-  10 source-quality support anchors, 258 source-metadata rows, and 170
+  9 appendices, 312 source-guide references, 304 curated research anchors,
+  10 source-quality support anchors, 314 source-metadata rows, and 172
   registered figures.
 - Previous URL follow-ups for OASIS CSAF and the International AI Safety Report
   are closed in the 2026-06-12 pass by switching to directly verified official
@@ -221,6 +221,60 @@ fix is verifier coverage first, then calibrated manuscript wording.
   figure counts, PDF page counts, URI-link counts, and validator outcomes are
   artifact telemetry, not empirical learning, safety, statistical, or
   operational-performance results.
+
+## 2026-06-14 Single-Paragraph Abstract And Public-Readiness Scope
+
+This local pass improves the first-reader contract and records the publication
+boundary without changing the source corpus, curriculum order, source
+identities, citation keys, or release status:
+
+- Converts the Abstract into one continuous Markdown paragraph after
+  `# Abstract {#sec:abstract}`, with source-quality and research-anchor counts
+  integrated into the prose instead of emitted as standalone spine paragraphs.
+- Makes the abstract more concrete about what a learner, instructor, or
+  reviewer sees: part maps, source keys, evidence packets, negative controls,
+  figure semantics, claim calibration, human review, rollback, and refresh
+  triggers.
+- Preserves the claim boundary: AGEINT can claim a traceable Synthetic Analytic
+  Tradecraft architecture, but citation counts, figure counts, page counts,
+  validator passes, and link audits remain artifact telemetry, not empirical
+  proof of model capability, learning outcomes, operational effectiveness,
+  statistical significance, or safety performance.
+- Records the public-readiness assessment: local artifact evidence is strong,
+  but AGEINT is not ready to publish publicly until `ageint-27` release
+  preflight, confidentiality checks, source/license review, artifact-manifest
+  cleanup or waiver, fresh PDF validation, and `ageint-m1` release gates pass.
+
+## 2026-06-14 US IC Source-Pack And Agency Coverage Scope
+
+This local pass expands the research substrate while keeping AGEINT defensive,
+educational, authorized, synthetic, non-operational, and local-only. The
+first-principles constraint is that new citations must be routable evidence
+surfaces, not a bulk bibliography dump.
+
+- Added `data/research_anchors/intelligence-anchors-249-304.jsonl` with 56
+  directly verified official public US Intelligence Community anchors: 25 CIA,
+  3 DIA, 15 ODNI, 6 Intelligence.gov, 3 NSA, 2 NGA, 1 FBI, and 1 NRO row.
+- Raised curated intelligence anchors from 248 to 304 while preserving the 10
+  source-quality support anchors and all locked source-guide identities.
+- Added `source_agency` and `source_pack` metadata to `ResearchAnchor` reference
+  dictionaries and required those fields for the new official US IC tranche.
+- Added `data/agency_source_packs.yaml` plus deterministic source-pack expansion
+  for profile routing, so CIA analytic uncertainty, CIA professional literature,
+  DIA OSINT governance, ODNI disclosure/tearlines, ODNI privacy/oversight,
+  current threat context, cyber/GEOINT history, and declassified-history packs
+  can be reused modularly.
+- Added `src/agency_source_coverage.py` and
+  `scripts/audit_agency_source_coverage.py` with negative-control coverage for
+  missing pack metadata, duplicate/collision checks, profile routing, and
+  minimum CIA/DIA/ODNI-or-Intelligence.gov counts.
+- Wired `agency_source_coverage_ok` into artifact evidence and publication
+  readiness, and added the registry-backed
+  `fig:ageint-agency-source-coverage` Python dashboard.
+- Preserved claim calibration: official citations can support governance,
+  source-context, uncertainty, warning, disclosure, OSINT/GEOINT, cyber, and
+  professional-literature claims, but CIA Studies/CSI sources are not treated as
+  current agency policy or AGEINT benchmark evidence.
 
 ## Verification Gates
 
@@ -475,7 +529,7 @@ visual-semantics artifacts on 2026-06-14:
   `scholarship_quality_ok`, `figure_quality_ok`, `pdf_quality_ok`, rendered
   references, stale-output scans, and citation source-section coverage all true;
   170 registered figures; 15,382 generated Markdown citation occurrences; and
-  a current 1,619-page PDF audit with 0 bad link targets.
+  that pass's 1,620-page PDF audit with 0 bad link targets.
 - `uv run python scripts/check_rendered_references.py` → rendered reference
   audit passed.
 - Targeted scans for stale proof wording, banned fallback phrases, and
@@ -503,8 +557,11 @@ visual-semantics artifacts on 2026-06-14:
 | AGEINT-METADATA-VERIFIER-2026-06-13 | done | Close 119 blank lane/tier metadata rows and add source-metadata oracle coverage. | `source_metadata_ok` covers 258 metadata rows, 248 curated intelligence anchors, 10 source-quality support anchors, 0 blank lane/tier rows, 0 fallback-dependent rows, and the 109+10 closure baseline; final gates passed with 312 tests, 91.52% coverage, 0 template markdown/prerender/PDF issues, and a fresh 1,704-page 29.69 MB PDF; `ageint-10` is marked done in `tasks.yaml`. |
 | AGEINT-COVER-ABSTRACT-TOC-2026-06-13 | done | Add deterministic cover art, replace the graphical-abstract wrapper with one plaintext Abstract, and harden PDF TOC depth/spacing. | That pass reported 380 manuscript files, 169 registered figures plus one non-numbered cover, 14,771 generated citation occurrences, a 1,680-page 29.67 MB PDF, 4,181 URI links, 0 bad PDF link targets, 0 file actions, 0 template markdown/prerender/PDF issues, and clean scans for abstract boilerplate, Markdown-file links, stale headings, and tight TOC joins; current counts are superseded by `AGEINT-GRAPHICAL-ABSTRACT-TOC-TITLES-2026-06-13`; `ageint-28` is marked done in `tasks.yaml`. |
 | AGEINT-GRAPHICAL-ABSTRACT-TOC-TITLES-2026-06-13 | done | Replace `fig:ageint-graphical-abstract` with the Python Synthetic Tradecraft System Atlas and make chapter/part/appendix TOC landmarks reader-specific. | That pass reported 383 manuscript-bound files, 369 generated Markdown files, 330 configured manuscript files, 169 registered figures plus one non-numbered cover, 15,382 generated citation occurrences, a 1,619-page 30.26 MB PDF, 4,181 URI links, 0 bad PDF link targets, 0 file actions, 0 template markdown/prerender/PDF issues, clean rendered-reference and TOC scans, and passing post-render PDF/artifact/manuscript-variable/tail test chunks; current counts are superseded by `AGEINT-CLAIM-CALIBRATION-2026-06-14`; `ageint-29` is marked done in `tasks.yaml`. |
-| AGEINT-CLAIM-CALIBRATION-2026-06-14 | done | Add claim-calibration, source-strength, statistics/formalism, and visual-semantics verifier coverage. | `claim_calibration_ok` is true with 8,748 candidate rows, 0 hard fails, 471 boundary-allowed rows, and 5,181 review-warning rows; figure registry schema `1.4` reports 170 figures with visual-semantics metadata; source metadata remains explicit; scholarship quality is OK with six non-blocking single-source-family review warnings; current artifact evidence is OK with 15,382 generated citation occurrences and a 1,619-page PDF audit with 0 bad link targets; `ageint-30` is marked done in `tasks.yaml`. |
-| AGEINT-SOURCE-REFRESH-DASHBOARD | todo | Add a source-refresh due-date dashboard. | Report stale/soon-due source rows by cadence, checked date, lane, tier, and owner without changing source identity. |
-| AGEINT-TEMPLATE-MANIFEST-CONTRACT | todo | Clean up the template artifact-manifest contract advisory. | The parent-template evidence no longer reports repeated `missing declared output: projects/AGEINT/output` issues for AGEINT. |
-| AGEINT-V1-PREFLIGHT | todo | Prepare a v1 release preflight bundle only after an explicit release request. | Current local evidence is refreshed, confidentiality checks pass, and release/publish actions are explicitly requested. |
-| AGEINT-M1 | todo | Release/publish milestone. | Daniel explicitly requests release or publication workflow, confidentiality checks pass, and `ageint-m1` gates are updated from current evidence. |
+| AGEINT-CLAIM-CALIBRATION-2026-06-14 | done | Add claim-calibration, source-strength, statistics/formalism, and visual-semantics verifier coverage. | `claim_calibration_ok` was true for that pass with 8,748 candidate rows, 0 hard fails, 471 boundary-allowed rows, and 5,181 review-warning rows; figure registry schema `1.4` reported 170 figures with visual-semantics metadata; source metadata remained explicit; scholarship quality was OK with six non-blocking single-source-family review warnings; that pass's artifact evidence was OK with 15,382 generated citation occurrences and a 1,619-page PDF audit with 0 bad link targets; current counts are superseded by `AGEINT-V1-PREFLIGHT-2026-06-14` and `AGEINT-US-IC-SOURCE-PACK-2026-06-14`; `ageint-30` is marked done in `tasks.yaml`. |
+| AGEINT-ABSTRACT-PUBLIC-READINESS-2026-06-14 | done | Convert the Abstract into one continuous show-not-tell paragraph and record public-readiness blockers. | The rendered Abstract is one 1,258-word paragraph with no graphical-abstract subsection, no standalone spine variables, no abstract boilerplate, and preserved SAT/analysis-validation refs; focused tests passed 38/38; template core pipeline passed 324 project tests with 5 expected skips and 90.3% coverage; artifact evidence was OK with 330 generated Markdown files, 15,382 generated citation occurrences, 723 source sections, 0 zero-citation source sections, 170 figures, and a non-stale 1,620-page PDF; current counts are superseded by the local publication-readiness preflight; `ageint-31` is marked done in `tasks.yaml`. |
+| AGEINT-SOURCE-REFRESH-DASHBOARD-2026-06-14 | done | Add a source-refresh due-date dashboard without mutating `checked_as_of` dates. | `source_refresh_due.{json,md}` now reports 314 metadata rows, 314 current rows, 0 due-soon rows, 0 due/stale rows, 0 unknown-cadence rows, and 0 missing-date rows; cadence buckets are 210 annual, 50 semiannual, 51 quarterly, and 3 biennial; the registry-backed `ageint-source-refresh-due-dashboard` figure is rendered; `source_refresh_due_ok` is wired into artifact evidence; `ageint-25` is marked done. |
+| AGEINT-TEMPLATE-MANIFEST-CONTRACT-2026-06-14 | done | Clean up the template artifact-manifest contract advisory. | Parent-template lifecycle-slug resolution now declares `projects/working/AGEINT/...` and `output/working/AGEINT/...` for symlinked/private projects; parent regression tests cover slash-qualified project IDs; current AGEINT `artifact_manifest.json` reports `issues: []`; `ageint-26` is marked done. |
+| AGEINT-V1-PREFLIGHT-2026-06-14 | done | Prepare the local v1 release preflight bundle without publishing. | `publication_readiness.{json,md}` reports `ok: true`; artifact evidence, source refresh, agency source coverage, artifact manifest, parent tracked-project confidentiality guard, release-surface scan, source/license posture, and task prerequisites all pass; current evidence records 330 generated Markdown files, 15,606 generated citation occurrences, 172 registered figures plus non-numbered cover art, a fresh 1,658-page 30.89 MB PDF, 4,704 URI links, 0 file actions, and 0 bad PDF link targets; no release/push/PR/archive/promotion/publication action was taken; `ageint-27` is marked done. |
+| AGEINT-US-IC-SOURCE-PACK-2026-06-14 | done | Add 56 official public US IC anchors and fail-closed agency/source-pack coverage. | `data/research_anchors/intelligence-anchors-249-304.jsonl` raises curated intelligence anchors to 304; `source_agency` and `source_pack` metadata are required for the new tranche; `data/agency_source_packs.yaml` routes packs into profiles; `agency_source_coverage.{json,md}` reports 56 new official US IC anchors, 0 missing metadata rows, 0 unrouted rows, 0 duplicate/collision rows, and CIA/DIA/ODNI-or-Intelligence.gov minimums satisfied; `agency_source_coverage_ok` is wired into artifact evidence and publication readiness; final validation passed 347 project tests with 7 expected skips and 90.43% coverage, template markdown/prerender/PDF validators reported 0 issues, and the AGEINT PDF audit reported 0 bad link targets; `ageint-32` is marked done. |
+| AGEINT-REFERENCE-QUALITY-2026-06-14 | done | Add fail-closed reference-quality, section-title, and citation-context hardening. | `reference_quality.{json,md}` reports `ok: true` across 332 scanned manuscript/PDF-bound files with 0 unresolved/rendered-reference issues, 0 Markdown-file links, 0 raw literal citation-key cells, 0 generic heading issues, 0 lesson cross-link issues, and 0 citation-context issues; `reference_quality_ok` is true in artifact evidence and publication readiness; the rebuilt artifact has 330 generated Markdown files, 15,606 generated citation occurrences, 172 figures, a fresh 1,658-page 30.91 MB PDF, 4,704 URI links, 0 file actions, 0 bad PDF link targets, 0 parent markdown/prerender/PDF validator issues, and final full project tests passed with 359 tests and 91.36% coverage. |
+| AGEINT-M1 | todo | Release/publish milestone. | Explicit public release approval is still required. Local publication-readiness preflight is green, but `ageint-m1` remains open until Daniel requests a release/publish workflow and the final candidate is rerun through confidentiality, source/license, artifact-evidence, template validation, PDF, and publication-readiness gates. |

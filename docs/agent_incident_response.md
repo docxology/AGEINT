@@ -1,10 +1,10 @@
-# Agent Incident Response
+# Agent Incident Response: synthetic drills, revocation, and debrief evidence
 
 AGEINT includes an **Agent incident response drill** in every generated chapter.
 The drill is educational and synthetic: it rehearses preparation, detection,
 containment, recovery, debrief, and refresh without touching live services.
 
-## Drill Contract
+## Drill contract: pause, preserve, revoke, recover, and debrief
 
 - Prepare: define scope, tool permissions, logs, escalation roles, and stop
   conditions.
@@ -16,14 +16,14 @@ containment, recovery, debrief, and refresh without touching live services.
 - Debrief: record root cause, learner impact, rights impact, vendor implication,
   and source refresh trigger.
 
-## Source Rules
+## Source rules: incident-response anchors and refresh conditions
 
 Incident-response claims cite directly verified official sources, including
 NIST SP 800-61 Rev. 3. Perplexity may suggest sources, but final citations must
 be official, standards-body, public-domain, or scholarly and encoded in the
 source layer.
 
-## Safety Boundary
+## Safety boundary: bounded logs, no live services, and privacy protection
 
 The drill uses synthetic tickets, toy logs, owned-lab examples, and tabletop
 roles. It blocks live target tasking, autonomous response, production

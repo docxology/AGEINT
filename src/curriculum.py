@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 from typing import Any
 
+from _curriculum_shards import load_curriculum_shards_payload as _load_curriculum_shards
 from _slug import curriculum_chapter_dir_name, curriculum_part_dir_name, slug_for_path
 
 PATTERN_REGISTRY_CHAPTER_NUMBER = 32
@@ -292,7 +293,6 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
     }
 
 
-from _curriculum_shards import load_curriculum_shards_payload as _load_curriculum_shards
 def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
     """Write curriculum payload shards under ``directory``."""
     directory.mkdir(parents=True, exist_ok=True)

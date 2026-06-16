@@ -1,4 +1,4 @@
-# Architecture
+# Architecture: shard-first curriculum build and generated manuscript flow
 
 AGEINT follows the template code-project shape: `src/`, `scripts/`, `tests/`, `manuscript/`, `docs/`, `data/`, and `output/`.
 
@@ -28,7 +28,23 @@ manifest context builders. To change scholarship, update source anchors and
 profiles. To change counts, paths, or citations, update curriculum shards or parser logic and
 rebuild.
 
-## Topic lesson frames
+## Contract registries: modular extension points with verifier ownership
+
+AGEINT treats build stages, audit gates, source packs, and Mermaid diagram
+types as typed registries rather than scattered hard-coded lists. The contracts
+live in `src/orchestration_contracts.py`, `src/audit_contracts.py`,
+`src/intelligence_content/source_packs.py`, and
+`src/figures/mermaid_contracts.py`. They preserve the current source-owned
+pipeline while making new extension points explicit: every new stage, audit,
+pack route, or diagram type must declare inputs, outputs, failure modes, and a
+negative-control or reader-detail obligation.
+
+Run `uv run python scripts/audit_orchestration_contract.py --format json` to
+inspect the combined contract map. Use
+[`orchestration_contract.md`](orchestration_contract.md) for the operator-facing
+extension workflow.
+
+## Topic lesson frames: declarative routing, safe titles, and source-backed fields
 
 Topic lessons inside each chapter resolve through `topic_lessons.resolve_topic_lesson_fields()`:
 
@@ -47,7 +63,7 @@ and `data/safety_artifact_tables.yaml` via `_data_loaders.py` (`_06_part.py`, `_
 `intelligence_content` shards use explicit imports (no `merge_part_modules`); package
 `__init__.py` re-exports the public API only.
 
-### Import model (P4 deferred)
+### Import model: deferred P4 package-boundary cleanup
 
 | Package | Import style |
 | --- | --- |

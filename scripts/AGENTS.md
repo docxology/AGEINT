@@ -10,6 +10,7 @@ Do not add scraping, exploitation, live collection, target tracking, or operatio
 | --- | --- |
 | `build_curriculum.py` | CLI wrapper → `src/build_pipeline.run_build()` |
 | `generate_figures.py` | Figure-only pass; loads curriculum data and calls `src/figures/` (placeholder default matches `run_build()` via `AGEINT_REQUIRE_RENDERED_FIGURES`) |
+| `audit_orchestration_contract.py` | CLI wrapper → `src/orchestration_audit` for stage, audit, source-pack, and Mermaid contract reports |
 | `setup_hook.py` | Post-clean output doc scaffolding (README/AGENTS under `output/`) |
 | `z_generate_manuscript_variables.py` | Template compatibility; delegates to full `run_build()` |
 

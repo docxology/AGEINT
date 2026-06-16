@@ -13,13 +13,16 @@ CLAIM_CALIBRATION_VISUALS: tuple[dict[str, object], ...] = (
             "formalism lanes; each lane must show direct support or explicit boundary "
             "language; weak source-guide context cannot carry measured-performance or "
             "statistical claims alone; and figure metadata must state semantic role, "
-            "evidence role, quantitative status, denominator, counting rule, and "
-            "interpretation limit before the artifact-evidence manifest can pass."
+            "evidence role, quantitative status, denominator, counting rule, reviewer "
+            "action, and interpretation limit before the artifact-evidence manifest can "
+            "pass. Compare the local manuscript, registry, source-support, and report "
+            "surfaces as reviewer inputs; do not read the visual as a score, benchmark, "
+            "or empirical performance claim."
         ),
         "alt_text": (
-            "Control matrix linking claim calibration, source-support strength, "
-            "formalism limits, visualization semantics, negative controls, and the "
-            "artifact-evidence manifest gate."
+            "Dashboard linking claim calibration, source-support strength, formalism "
+            "limits, visualization semantics, negative controls, denominator context, "
+            "reviewer action cues, and the artifact-evidence manifest gate."
         ),
         "renderer": "claim_calibration_and_visual_semantics",
         "source_section": "orientation.md",

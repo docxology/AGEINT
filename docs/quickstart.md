@@ -1,10 +1,11 @@
-# Quickstart
+# Quickstart: AGEINT build, validation, and editing entry points
 
 Run the parser/build step and tests from the AGEINT root. Run markdown/prerender validation from the sibling template root against the working checkout path.
 
 ```bash
 uv run python scripts/build_curriculum.py
 uv run python scripts/generate_figures.py
+uv run python scripts/audit_orchestration_contract.py --format json
 uv run pytest tests/ --cov=src --cov-fail-under=90
 uv run pytest tests/test_source_identity.py
 
@@ -16,7 +17,7 @@ uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/
 uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 ```
 
-## Editing workflow
+## Editing workflow: update source surfaces, rebuild, and run gates
 
 When the historical SIST guide is absent, edit curriculum content in
 `data/curriculum/parts/*/chapters/*/chapter.json` and related shards first.

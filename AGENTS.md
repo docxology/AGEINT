@@ -45,8 +45,9 @@ flowchart LR
 - Generated manuscript: `output/manuscript/`.
 - Generated figures and registry: `output/figures/figure_registry.json`.
 - Bibliography surfaces: `manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
-- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 170 registered figures, 248 research anchors, 10 source-quality support anchors, 312 parsed guide references.
+- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 173 registered figures, 462 research anchors, 10 source-quality support anchors, 312 parsed guide references.
 - Source metadata is explicit in `data/research_anchors/`: the 2026-06-13 hardening pass closed 119 blank lane/tier rows (109 legacy intelligence anchors plus 10 source-quality support anchors). `scripts/audit_source_metadata.py` and `source_metadata_ok` in the artifact evidence manifest must fail on any new blank `source_lane` or `source_tier`.
+- Official US IC source-pack metadata is explicit for `data/research_anchors/intelligence-anchors-249-304.jsonl`: `source_agency` and `source_pack` are required, `data/agency_source_packs.yaml` controls deterministic profile routing, and `scripts/audit_agency_source_coverage.py` plus `agency_source_coverage_ok` must fail missing or unrouted new agency anchors.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
 
 ## Editing rules

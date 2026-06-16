@@ -31,9 +31,9 @@ legal and human oversight constraints.
 - Methods appendices: 9
 - AGEINT patterns: 20
 - Parsed references: 312
-- Curated official/scholarly research anchors: 248
+- Curated official/scholarly/professional research anchors: 462
 - Source-quality support anchors: 10
-- Registered figures: 170 (114 Mermaid, 46 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
+- Registered figures: 173 (115 Mermaid, 48 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
 - Non-numbered cover art: 1 deterministic Python-rendered title-page image at `output/figures/cover/ageint-cover-synthesis.png`
 
 ## Commands
@@ -46,7 +46,9 @@ uv run pytest tests/ --cov=src --cov-fail-under=90
 uv run python scripts/audit_artifact_evidence.py --write --format markdown
 uv run python scripts/audit_scholarship_quality.py --write --format markdown
 uv run python scripts/audit_source_metadata.py --write --format markdown
+uv run python scripts/audit_agency_source_coverage.py --write --format markdown
 uv run python scripts/audit_claim_calibration.py --write --format markdown
+uv run python scripts/audit_reference_quality.py --write --format markdown
 
 # Coverage floor: 90% for `src/`; use the test command above for the current measured result.
 # Stage 02 pipeline analysis runs build_curriculum.py only (see manuscript/config.yaml analysis.scripts).
@@ -65,8 +67,9 @@ The source manuscript stays small and neutral. `src/curriculum.py` composes the
 sharded curriculum, `src/build_pipeline.py` orchestrates the build,
 `src/manuscript_manifest/` creates semantic output paths and generated section
 contexts, `src/manuscript_variables/` writes runtime variables and BibTeX,
-`src/intelligence_content/` owns verified research profiles and three-tier topic
-lesson frames (keyword → category → synthesis), `src/source_metadata.py` audits
+`src/intelligence_content/` owns verified research profiles, deterministic
+agency source packs, and three-tier topic lesson frames (keyword → category →
+synthesis), `src/source_metadata.py` audits
 explicit lane/tier metadata for curated and support anchors, and `src/figures/`
 renders all registry-backed figures. Smoke builds may fall back to deterministic text plates
 when Mermaid/Chrome is unavailable, but the checked-in registry should remain
@@ -77,12 +80,18 @@ repeated governance, rights, assurance, practice, assessment, capstone,
 refresh, and source-map material is composed into reader-facing sections at
 build time. `src/scholarship_quality.py` audits generated claim-bearing
 sections for uncited or thin support and flags single-source-family sections as
-review warnings; `src/source_metadata.py` audits the 248 curated anchors plus
+review warnings; `src/source_metadata.py` audits the 462 curated anchors plus
 10 source-quality support anchors so blank lane/tier fields cannot silently
-fall back while rendered artifacts remain green; and `src/claim_calibration.py`
+fall back while rendered artifacts remain green; `src/agency_source_coverage.py`
+audits the 56-anchor official US IC expansion for agency, pack, lane, tier,
+checked-date, claim-scope, assurance, rights, and profile-routing metadata; and
+`src/claim_calibration.py`
 audits high-risk empirical, statistical, governance, safety, visual,
 artifact-readiness, and formalism language against source-support strength and
-boundary wording. The current rendered output has six single-source-family
+boundary wording. `src/reference_quality.py` audits generated section/module
+links, Markdown-file links, generic body headings, lesson cross-links, and
+citation-table context so reader-facing references are both resolvable and
+informative. The current rendered output has six single-source-family
 claim-bearing review warnings under the stricter source-strength classifier;
 they are visible review rows, not readiness blockers.
 
@@ -92,6 +101,9 @@ templates, manifest/content modules, or source-anchor data, then rebuild.
 Cross-references are label-backed (`[@sec:...]`, `[@fig:...]`, `[@ageintNNN]`)
 so prose points to generated identifiers instead of literal target names. Do
 not improve section titles or body prose by hand-editing `output/manuscript`.
+Generated chapter H3/H4 scaffolds are chapter-specific reader landmarks, while
+lesson-level navigation uses **Learning-path links** with unit-map, module, and
+curriculum-atlas references.
 Use [`docs/citation_workflow.md`](docs/citation_workflow.md) as the canonical
 recipe for adding, extending, counting, and validating citations.
 
@@ -185,6 +197,50 @@ first-principles claim decomposition, red-team negative controls, evidence
 ladders, probability/confidence separation, SAT evidence boundaries, and
 warning/failure feedback.
 
+A 2026-06-14 official US Intelligence Community source-pack pass raises the
+curated set to 304 anchors by adding 56 directly verified CIA, DIA, ODNI,
+Intelligence.gov, NSA, NGA, FBI, and NRO public sources. The new shard is
+functional, not just numerical: `data/agency_source_packs.yaml` routes named
+packs into intelligence profiles, `source_agency` and `source_pack` metadata
+travel through reference dictionaries, `agency_source_coverage_ok` joins the
+artifact-evidence and publication-readiness gates, and the registry grows to 172
+figures with an agency-source coverage dashboard. CIA Studies/CSI professional
+literature is treated as official public professional context, not automatically
+as current agency policy or measured AGEINT benchmark evidence.
+
+A 2026-06-15 SI/OPSEC/cognitive-security literature-integration pass adds 36
+directly verified scholarly, official, and public-domain sources
+from the synthetic-intelligence, analytic-tradecraft, OPSEC, cognitive-security,
+adversarial-ML, AI incident, OSINT leakage, deepfake, disinformation, social
+engineering, and active-inference discovery inventories. The pasted literature
+reviews remain discovery inputs only; final manuscript citations point to the
+verified source URLs in `data/research_anchors/intelligence-anchors-305-340.jsonl`.
+The registry grows to 173 figures with a source-backed SI/tradecraft/OPSEC/
+cognitive-security convergence map.
+
+A 2026-06-15 SAT literature-integration pass raises the curated set to 367
+anchors by adding 27 directly verified scholarly, official, public, and
+publisher-backed structured-analytic-technique sources after dedupe against
+Heuer, Heuer/Pherson, CIA tradecraft, ICD 203, RAND, Dhami, Mandel/Tetlock,
+Barnes/Mandel, Ard, and other existing anchors. The new shard is
+`data/research_anchors/intelligence-anchors-341-367.jsonl`; it routes through
+analytic tradecraft, SAT evidence, analytic cognition, failure postmortem,
+warning, forecasting-calibration, and analyst-assistance profiles while keeping
+SAT claims bounded as review artifacts rather than universal bias remedies or
+autonomous judgment replacements.
+
+A 2026-06-16 citation-expansion pass reviews 106 proposed citation headings,
+imports 95 directly verified and deduplicated anchors, and records 11 deferred
+candidates in `docs/citation_expansion_2026_06_16.md`. The new
+`data/research_anchors/intelligence-anchors-368-417.jsonl` and
+`data/research_anchors/intelligence-anchors-418-462.jsonl` shards are routed
+through non-agency research packs in `data/research_source_packs.yaml` so
+collection, cyber/ICS, influence/CI, history/legal/SAT, and agentic-AI
+chapters inherit richer evidence without overloading the agency-source pack
+contract. Accepted rows use bounded claim scopes and explicitly exclude
+collection tasking, exploit steps, covert-action guidance, manipulation
+playbooks, unsafe cyber-physical actions, and live-target procedures.
+
 A 2026-06-12 local verifier-first, scholarship-quality, and Synthetic Analytic
 Tradecraft orientation pass keeps the same source corpus but raises the figure
 registry to 168 with the
@@ -198,13 +254,13 @@ scholarship source-family audit, figure quality audit, rendered-reference audit,
 PDF quality/link audit, and stale-output scans into
 `output/reports/current_artifact_evidence.{json,md}` and
 `output/reports/scholarship_quality.{json,md}`. The current local manifest
-reports 369 generated Markdown files, 15,382 generated citation occurrences,
-170 registered figures plus one non-numbered cover-art PNG, a 1,619-page
-30.26 MB PDF, 4,181 PDF URI links, 0 Markdown-file, `file:`, or launch-action
-PDF targets, 0 uncited or thin claim-bearing generated files, and six
-single-source-family claim-bearing review warnings, with passing SAT method and
-analysis-validation contracts plus source-metadata explicitness and
-claim-calibration checks. A follow-on RedTeam pass makes the analysis-validation claim classes
+reports 330 configured generated Markdown files, 16,057 generated Markdown
+citation occurrences, 173 registered figures plus one non-numbered cover-art
+PNG, a non-stale 1,854-page 32.55 MB PDF, 6,289 PDF URI links, 0 Markdown-file,
+`file:`, or launch-action PDF targets, 0 uncited or thin claim-bearing generated
+files, and six single-source-family claim-bearing review warnings, with passing
+SAT method and analysis-validation contracts plus source-metadata explicitness
+and claim-calibration checks. A follow-on RedTeam pass makes the analysis-validation claim classes
 canonical in `src/analysis_validation.py`, so the prose protocol, matrix
 renderer, scholarship audit, and artifact-evidence manifest now fail if a lane
 such as artifact readiness or reviewer disposition drops out while the heading
@@ -242,7 +298,7 @@ controls so multi-digit section numbers do not collide with headings.
 A 2026-06-14 claim-calibration and visual-semantics hardening pass keeps the
 same source corpus and adds the registry-backed
 `ageint-claim-calibration-and-visual-semantics` control figure. The figure
-registry schema is now `1.4`: every row declares semantic role, evidence role,
+registry schema is now `1.5`: every row declares semantic role, evidence role,
 quantitative status, unit, denominator, counting rule, and interpretation limit,
 and generated PNG metadata embeds the same fields. The new
 `scripts/audit_claim_calibration.py` report writes
@@ -251,12 +307,41 @@ and generated PNG metadata embeds the same fields. The new
 proof-language, p-value language, measured-performance claims, unsupported
 formalisms, or weak-source-only high-risk claims fail local readiness.
 
+A 2026-06-14 abstract/readiness hardening pass makes the Abstract one continuous
+reader-facing Synthetic Analytic Tradecraft paragraph instead of a multi-block
+front-matter summary. That paragraph integrates source-quality and research
+anchor counts inline, shows the learner/reviewer path through evidence packets,
+negative controls, human review, rollback, refresh triggers, figure semantics,
+and validator gates, and explicitly states that artifact telemetry is not a
+benchmark for model capability, learning outcomes, operational effectiveness,
+statistical significance, or safety performance. This is still a local-readiness
+claim, not a publication decision.
+
+After this pass, claim calibration reports 9,219 candidate rows, 0 hard fails,
+483 boundary-allowed rows, and 5,189 review rows; scholarship quality reports 0
+hard fails and keeps six single-source-family rows as non-blocking review
+warnings.
+
 These counts are rebuild-time measurements, not hand-authored release claims:
 `output/data/curriculum_outline.json` carries the curriculum stats, and
 `output/figures/figure_registry.json` carries the figure count, hashes, and
 rendering provenance. Source-anchor rows include `checked_as_of` metadata and
 must be refreshed when source URLs, standards versions, legal text, or supported
 claim scope changes.
+
+## Public readiness
+
+AGEINT is locally publication-ready as a preflight packet, not as a public
+release. The 2026-06-14 `publication_readiness` report is `ok: true`: artifact
+evidence is green, the source-refresh dashboard reports 472 current metadata
+rows and 0 due-soon/due/stale rows, the artifact manifest has `issues: []`, the
+parent tracked-project confidentiality guard passes, the release-surface scan
+finds 0 private/local path or Markdown-file-link issues, the source/license
+posture is recorded, and the fresh PDF audit reports 1,854 pages, 6,289 URI
+links, 0 file actions, and 0 bad link targets. `ageint-27` is therefore closed.
+`ageint-m1` remains todo because no public release, push, PR, archive,
+promotion, publication upload, DOI, or release record has been approved or
+performed.
 
 ## Safety posture
 

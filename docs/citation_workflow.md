@@ -1,10 +1,10 @@
-# Citation Workflow
+# Citation Workflow: source keys, curated anchors, and generated bibliography checks
 
 This is the canonical workflow for adding, reviewing, and counting AGEINT
 citations. Generated citation surfaces are built from source data; never hand-edit
 `output/manuscript/`.
 
-## Choose The Source Type
+## Choose the source type: guide reference, curated anchor, or support source
 
 | Source type | Primary edit surface | Key format | When to use |
 |---|---|---|---|
@@ -12,7 +12,7 @@ citations. Generated citation surfaces are built from source data; never hand-ed
 | Curated research anchor | `data/research_anchors/` plus `src/intelligence_content/` routing | stable descriptive key | A directly verified official, standards, public-domain, or scholarly source supports generated synthesis. |
 | Source-quality anchor | `src/manuscript_variables/` source-quality list | stable descriptive key | A baseline governance or source-quality standard applies across modules. |
 
-## Add Or Extend A Citation
+## Add or extend a citation: preserve identity and record metadata
 
 1. Preserve `ageint001` through `ageint231`; do not renumber locked source identities.
 2. Append new source-guide references after the locked range. Current generated guide keys extend through `ageint312`.
@@ -25,7 +25,7 @@ citations. Generated citation surfaces are built from source data; never hand-ed
 uv run python scripts/build_curriculum.py
 ```
 
-## Count And Verify Citations
+## Count and verify citations: source-section inventory and test gates
 
 Run the source-section and generated-output counter:
 
@@ -46,7 +46,7 @@ Before claiming completion for citation edits, also run the project gate:
 uv run pytest tests/ --cov=src --cov-fail-under=90
 ```
 
-## Do Not Edit Generated Output
+## Do not edit generated output: rebuild from source-owned citation surfaces
 
 `output/manuscript/` is a rendered audit surface. If a generated section is thin,
 uncited, or stale, update `data/curriculum/`, `data/research_anchors/`,

@@ -4,12 +4,11 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import sys
 
 os.environ.setdefault("MPLBACKEND", "Agg")
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-
-import sys
 
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 sys.path.insert(0, str(PROJECT_ROOT / "tests"))
@@ -24,7 +23,7 @@ TEMPLATE_REPO = ensure_template_repo_on_path(PROJECT_ROOT)
 
 import pytest  # noqa: E402
 
-from build_pipeline import generated_output_is_stale, run_build, run_build_figures  # noqa: E402
+from build_pipeline import generated_output_is_stale, run_build  # noqa: E402
 
 
 @pytest.fixture(scope="session")

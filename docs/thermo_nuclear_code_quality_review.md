@@ -1,14 +1,14 @@
-# Thermo-Nuclear Code Quality Review — AGEINT
+# Thermo-Nuclear Code Quality Review - AGEINT remediation ledger and watch items
 
 **Date:** 2026-06-02  
 **Target:** `working/AGEINT` (docxology/AGEINT)  
 **Rubric:** thermo-nuclear-code-quality-review skill (cursor-team-kit)
 
-## Executive verdict
+## Executive verdict: current quality posture and residual risk
 
 **Pass** against the thermo-nuclear approval bar after P5.1–P6 follow-ups.
 
-## Completed remediation (P5.1–P6)
+## Completed remediation: P5.1 through P6 closure evidence
 
 | PR | Change |
 |----|--------|
@@ -19,12 +19,12 @@
 | P5.5 | Retired `_package_loader`; explicit imports in manifest/figures/variables |
 | P6 | `Curriculum.from_payload()` indexed accessors; trimmed `src/__init__.py` barrel |
 
-## Residual watch items
+## Residual watch items: follow-up risks and monitoring cues
 
 - Modules near the 500-line gate (`manuscript_variables/_01_part.py`, `source_grounding.py`, figure shards).
 - `topic_frame_api.py` remains a thin re-export layer (optional future collapse).
 - Session-scoped `built_output` fixture still triggers full rebuild when `output/` is cold.
 
-## Strengths preserved
+## Strengths preserved: contracts, validators, and generated-output discipline
 
 Shard-first curriculum, thin `build_pipeline`, YAML-driven routing evaluators, 500-line gate, real-data tests, explicit sharded package imports.

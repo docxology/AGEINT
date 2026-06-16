@@ -1,11 +1,11 @@
-# Evidence Package Map
+# Evidence Package Map: retained artifacts, claim classes, and reviewer handoff
 
 AGEINT now treats every generated chapter as an evidence package, not only as
 curriculum prose. The package adds model and dataset cards, transparency
 notices, records-retention evidence, release gates, risk exceptions, learner
 support, instructor questions, and remediation backlogs.
 
-## Evidence Package Rows
+## Evidence package rows: required records for each claim family
 
 | Artifact | Minimum evidence | Reject condition |
 |---|---|---|
@@ -35,24 +35,26 @@ caveats. It also replaces the decorative agentic-boundary plate with a
 deterministic boundary-control matrix while keeping the same cross-reference
 label.
 
-The 2026-06-11 through 2026-06-13 hardening passes keep this package tied to the
-expanded source and figure surface: 248 curated research anchors, 10 source-quality
-support anchors, 170 registered figures (114 Mermaid, 46 Python, 4 historical,
-and 6 AI-generated) plus one non-numbered cover-art PNG, refreshed CSAF / International AI Safety Report URL metadata, and
+The 2026-06-11 through 2026-06-14 hardening passes keep this package tied to the
+expanded source and figure surface: 462 curated research anchors, 10 source-quality
+support anchors, 173 registered figures (115 Mermaid, 48 Python, 4 historical,
+and 6 AI-generated) plus one non-numbered cover-art PNG, refreshed CSAF / International AI Safety Report URL metadata, US IC agency-source pack metadata, and
 label-backed navigation across the orientation, curriculum map, source-lane
 map, research-anchor atlas, bibliography atlas, figure/course-link, and
 bibliography-atlas source-section coverage surfaces. The current local artifact
-evidence is 369 generated Markdown files, 383 manuscript-bound files, 15,382 generated Markdown citation
-occurrences, 0 zero-citation source sections, and a 1,619-page combined PDF
-with 4,181 URI links and 0 template PDF-validator issues. Figure captions, alt text, and long
-descriptions are registry-enforced reader aids: all 170 rows now meet the
+evidence is 330 configured generated Markdown files, 16,057 generated Markdown citation
+occurrences, 0 zero-citation source sections, and a 1,854-page combined PDF
+with 6,289 URI links and 0 template PDF-validator issues. Figure captions, alt text, and long
+descriptions are registry-enforced reader aids: all 173 rows now meet the
 expanded 40-word caption, 24-word alt-text, and 70-word long-description gates.
 The PNG files also embed compact accessibility, provenance, and visual-semantics metadata,
 `visual_quality_audit.json` records the machine-readable visual-quality
 pass/fail surface, `current_artifact_evidence.{json,md}` binds those checks to
-the current PDF/citation/link/source-metadata/claim-calibration audit,
-`source_metadata.{json,md}` reports 258 metadata rows, 0 blank lane/tier fields,
-0 fallback-dependent rows, and the 119-row fallback closure baseline, and
+the current PDF/citation/link/source-metadata/agency-source/claim-calibration audit,
+`source_metadata.{json,md}` reports 472 metadata rows, 0 blank lane/tier fields,
+0 fallback-dependent rows, and the 119-row fallback closure baseline,
+`agency_source_coverage.{json,md}` verifies the 56-anchor official US IC tranche
+for agency, pack, metadata, duplicate/collision, and profile-routing completeness, and
 `scholarship_quality.{json,md}` reports
 source-family mix with 0 uncited or thin claim-bearing failures and six
 single-source-family claim-bearing review warnings plus passing SAT method-contract, analysis-validation,

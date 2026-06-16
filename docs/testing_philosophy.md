@@ -1,14 +1,14 @@
-# Testing Philosophy — AGEINT
+# Testing Philosophy - AGEINT no-mocks gates and verifier-first evidence
 
-## No mocks
+## No mocks: real parser, source locks, figures, and generated outputs
 
 Tests use real curriculum shards, real builds, temp directories, and subprocess script smoke tests. Do not use `unittest.mock`, `MagicMock`, or `mocker.patch`. Environment isolation via pytest `monkeypatch.delenv` is limited to template-resolver branch tests.
 
-## Session build fixture
+## Session build fixture: shared rebuilt output for manuscript tests
 
 `tests/conftest.py` defines `built_output` (session scope). It runs `run_build()` once when `output/manuscript/` or `output/figures/figure_registry.json` is missing. Integration tests depend on this generated tree.
 
-## Test categories
+## Test categories: source identity, safety, figures, prose, and readiness
 
 | Area | Example modules |
 | --- | --- |
@@ -22,11 +22,11 @@ Tests use real curriculum shards, real builds, temp directories, and subprocess 
 | Scholarship quality | `test_scholarship_quality.py` |
 | Scripts | `test_scripts.py`, `test_build_curriculum_script.py` |
 
-## Coverage gate
+## Coverage gate: per-project 90 percent source coverage
 
 90% minimum on `src/` (`pyproject.toml` `fail_under = 90`). Combined multi-project pytest union is skipped via `[tool.template] skip_combined_pytest = true` because the full build is expensive.
 
-## Verifier-first evidence
+## Verifier-first evidence: audit artifacts and negative controls before polish
 
 `scripts/audit_artifact_evidence.py --write` writes the current render evidence
 manifest after a build/PDF render. It is deliberately stricter than a prose
@@ -48,7 +48,7 @@ the required claim classes from `src/analysis_validation.py` and fails if a
 manuscript keeps the section and figure reference but drops a lane such as
 artifact readiness, governance/rights support, or reviewer disposition.
 
-## See also
+## Related documentation: agent rules, quickstart, and output inventory
 
 - [`../tests/PATTERNS.md`](../tests/PATTERNS.md)
 - [`agent_instructions.md`](agent_instructions.md)

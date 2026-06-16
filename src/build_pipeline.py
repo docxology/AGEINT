@@ -7,30 +7,19 @@ from pathlib import Path
 from typing import NamedTuple
 
 from curriculum import Curriculum, build_curriculum, write_compact_curriculum_payload, write_curriculum_shards
-from figures import load_figure_registry, render_figures
+from figures import load_figure_registry, render_evidence_transit_map, render_figures
 from manuscript_manifest import render_manuscript
 from manuscript_templates import write_template_library
 from manuscript_variables import generate_variables, reference_bibtex_files, save_variables, write_bibtex_files
+from orchestration_contracts import (
+    output_build_sentinels,
+    source_freshness_roots,
+    validate_pipeline_stage_contracts,
+)
 from output_docs import write_output_directory_docs
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_FRESHNESS_DIRS = (
-    Path("data"),
-    Path("manuscript/templates"),
-    Path("src"),
-)
-SOURCE_FRESHNESS_FILES = (
-    Path("pyproject.toml"),
-    Path("scripts/build_curriculum.py"),
-    Path("scripts/generate_figures.py"),
-    Path("scripts/z_generate_manuscript_variables.py"),
-)
-OUTPUT_BUILD_SENTINELS = (
-    Path("data/curriculum_outline.json"),
-    Path("data/manuscript_variables.json"),
-    Path("figures/figure_registry.json"),
-    Path("manuscript/README.md"),
-)
+MANUSCRIPT_SUPPORT_MARKDOWN = {"AGENTS.md", "README.md", "preamble.md"}
 
 
 @dataclass(frozen=True)
@@ -91,10 +80,10 @@ def _latest_mtime(paths: list[Path]) -> float:
 def generated_output_is_stale(project_root: Path, output: Path) -> bool:
     """Return true when source inputs are newer than build sentinel artifacts."""
 
-    source_paths = [project_root / path for path in SOURCE_FRESHNESS_DIRS]
-    source_paths.extend(project_root / path for path in SOURCE_FRESHNESS_FILES)
+    validate_pipeline_stage_contracts()
+    source_paths = [project_root / path for path in source_freshness_roots()]
     latest_source = _latest_mtime(source_paths)
-    sentinels = [output / path for path in OUTPUT_BUILD_SENTINELS]
+    sentinels = [output / path for path in output_build_sentinels()]
     if latest_source == 0.0 or any(not path.is_file() for path in sentinels):
         return True
     oldest_sentinel = min(path.stat().st_mtime for path in sentinels)
@@ -104,6 +93,14 @@ def generated_output_is_stale(project_root: Path, output: Path) -> bool:
 def _mirror_curriculum_data(curriculum: Curriculum, destination: Path) -> None:
     write_curriculum_shards(curriculum.payload, destination / "curriculum")
     write_compact_curriculum_payload(curriculum.payload, destination / "curriculum_outline.json")
+
+
+def _generated_markdown_file_count(output_manuscript: Path) -> int:
+    return sum(
+        1
+        for path in output_manuscript.rglob("*.md")
+        if path.name not in MANUSCRIPT_SUPPORT_MARKDOWN
+    )
 
 
 def run_build(
@@ -118,6 +115,7 @@ def run_build(
     from template_resolver import ensure_template_repo_on_path
 
     build_config = config or BuildConfig.from_env()
+    validate_pipeline_stage_contracts()
     ensure_template_repo_on_path(root)
     from _data_loaders import validate_declarative_tables
 
@@ -149,6 +147,12 @@ def run_build(
     )
     figure_registry = load_figure_registry(figure_registry_path)["figures"]
     output_manuscript = render_manuscript(root, curriculum, variables, figure_registry)
+    render_evidence_transit_map(
+        root,
+        curriculum,
+        figure_count=len(figure_registry),
+        generated_markdown_files=_generated_markdown_file_count(output_manuscript),
+    )
     write_bibtex_files(output_manuscript, bibtex_files)
     return BuildResult(
         curriculum,

@@ -6,17 +6,23 @@ from pathlib import Path
 
 from manuscript_quality.inventory_helpers import (
     DIRECT_STUDENT_TASK_MOTIFS,
+    GENERIC_DETAIL_SECTION_KEYS,
+    GENERIC_TEACHING_SECTION_KEYS,
     REMOVED_FILLER_PHRASES,
     REMOVED_GENERATED_SCAFFOLD_PHRASES,
     REMOVED_META_PHRASES,
+    RETIRED_GENERIC_HEADING_LABELS,
     PROJECT_ROOT,
+    chapter_title_from_text,
     chapter_text,
     generated_chapter_files,
     generated_output_files,
     manuscript_dir,
     markdown_table_rows,
+    required_module_sections_for,
     section_text,
 )
+from manuscript_manifest._heading_titles import chapter_detail_titles, chapter_teaching_titles
 
 
 def test_generated_manuscript_has_no_scaffold_or_author_instruction_prose(built_output: Path) -> None:
@@ -38,55 +44,64 @@ def test_generated_chapters_are_coursebook_not_meta_scaffold(built_output: Path)
     output_manuscript = manuscript_dir(built_output)
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
+        details = chapter_detail_titles(chapter_title_from_text(text))
         for phrase in REMOVED_META_PHRASES:
             assert phrase not in text, f"{path.name}: {phrase}"
-        teaching_body = text.split("### Evidence canon and source spine", 1)[0]
+        teaching_body = text.split(f"### {details['evidence']}", 1)[0]
         for phrase in REMOVED_FILLER_PHRASES:
             assert phrase not in teaching_body, f"{path.name}: {phrase}"
-        assert "### Topic lessons" in text
-        assert "### Worked safe example" in text
-        assert "### Knowledge check" in text
-        before_runtime_map = text.split("#### Runtime-to-reader map", 1)[0]
-        assert "### Topic lessons" in before_runtime_map
-        assert "### Practice sequence" in before_runtime_map
+        teaching = chapter_teaching_titles(chapter_title_from_text(text))
+        assert f"### {teaching['lessons']}" in text
+        assert f"### {teaching['example']}" in text
+        assert f"### {teaching['check']}" in text
+        before_runtime_map = text.split(f"#### {details['runtime_map']}", 1)[0]
+        assert f"### {teaching['lessons']}" in before_runtime_map
+        assert f"### {teaching['sequence']}" in before_runtime_map
         assert "#### Lesson 1:" in before_runtime_map
         assert "**Misconception check.**" in before_runtime_map
         assert "**Filled artifact.**" in before_runtime_map
-        assert "#### Answer quality rubric" in before_runtime_map
+        assert (
+            f"#### {chapter_title_from_text(text)} answer quality rubric: source evidence, uncertainty, and safe transfer"
+            in before_runtime_map
+        )
         assert before_runtime_map.count("|") < 220, path
 
 
 def test_coursebook_sections_precede_runtime_maps_in_fixed_order(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    expected_order = [
-        "### Textbook primer",
-        "### Learning outcomes",
-        "### Core vocabulary",
-        "### Topic lessons",
-        "### Worked safe example",
-        "### Practice sequence",
-        "### Knowledge check",
-        "### Module architecture and transfer contract",
-        "### Evidence canon and source spine",
-        "#### Runtime-to-reader map",
-        "#### Reusable subsection contract",
-    ]
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
-        positions = [text.index(heading) for heading in expected_order]
+        title = chapter_title_from_text(text)
+        teaching = chapter_teaching_titles(title)
+        details = chapter_detail_titles(title)
+        resolved_order = [
+            f"### {teaching['primer']}",
+            f"### {teaching['outcomes']}",
+            f"### {teaching['vocabulary']}",
+            f"### {teaching['lessons']}",
+            f"### {teaching['example']}",
+            f"### {teaching['sequence']}",
+            f"### {teaching['check']}",
+            f"### {details['architecture']}",
+            f"### {details['evidence']}",
+            f"#### {details['runtime_map']}",
+            f"#### {details['subsection_contract']}",
+        ]
+        positions = [text.index(heading) for heading in resolved_order]
         assert positions == sorted(positions), path
 
 
 def test_major_module_sections_have_reader_facing_introductions(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    intro_sections = {
-        "Evidence canon and source spine",
-        "Governance, rights, and assurance",
-        "Refresh, safety, and source maps",
-        "Learning-path cross-links",
-    }
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
+        details = chapter_detail_titles(chapter_title_from_text(text))
+        intro_sections = {
+            details["evidence"],
+            details["governance"],
+            details["refresh"],
+            details["links"],
+        }
         for heading in intro_sections:
             section = section_text(text, heading)
             first_nonblank = next(
@@ -96,6 +111,32 @@ def test_major_module_sections_have_reader_facing_introductions(built_output: Pa
             assert not first_nonblank.startswith("### "), f"{path}: {heading}"
             intro = section.split("\n### ", 1)[0]
             assert len(intro.split()) >= 16, f"{path}: {heading}"
+
+
+def test_generated_detail_headings_are_chapter_specific_not_generic(built_output: Path) -> None:
+    output_manuscript = manuscript_dir(built_output)
+    generic_headings = {
+        "Module architecture and transfer contract",
+        "Evidence canon and source spine",
+        "Source-backed analytic synthesis",
+        "Agentic translation: assist, approve, block",
+        "Governance, rights, and assurance",
+        "Assessment artifacts and capstone pathway",
+        "Refresh, safety, and source maps",
+        "Reviewer challenge checklist",
+        "Learning-path cross-links",
+        "Cross-links",
+    } | set(GENERIC_TEACHING_SECTION_KEYS) | set(GENERIC_DETAIL_SECTION_KEYS) | RETIRED_GENERIC_HEADING_LABELS
+    for path in generated_chapter_files(output_manuscript):
+        text = chapter_text(path)
+        title = chapter_title_from_text(text)
+        assert required_module_sections_for(title)
+        for heading in generic_headings:
+            assert not any(
+                line.lstrip("#").strip() == heading
+                for line in text.splitlines()
+                if line.startswith("###")
+            ), f"{path}: {heading}"
 
 
 def test_core_vocabulary_definitions_are_curated_not_source_heading_fillers(built_output: Path) -> None:
@@ -151,5 +192,6 @@ def test_coursebook_topic_lessons_cover_representative_int_domains(built_output:
     for relative, phrase in expected.items():
         path = output_manuscript / "parts" / relative / "00-overview.md"
         text = chapter_text(path)
-        textbook_body = text.split("### Runtime-to-reader map", 1)[0]
+        details = chapter_detail_titles(chapter_title_from_text(text))
+        textbook_body = text.split(f"#### {details['runtime_map']}", 1)[0]
         assert phrase in textbook_body, f"{relative}: {phrase}"

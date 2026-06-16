@@ -5,7 +5,7 @@ from typing import Final
 
 from _jsonl import read_jsonl
 
-from ._01_part import *  # noqa: F403
+from ._01_part import ResearchAnchor
 
 
 def _project_root() -> Path:

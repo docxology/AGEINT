@@ -1,10 +1,10 @@
-# Learner Support and Assessment
+# Learner Support and Assessment: accommodations, evidence rows, and escalation
 
 The learner-support layer connects accessibility, Universal Design for Learning,
 allowed AI use, and assessment integrity. It prevents curriculum depth from
 becoming hidden access friction.
 
-## Support Rows
+## Support rows: learner barriers, accommodations, and review owners
 
 | Need | Support | Evidence |
 |---|---|---|

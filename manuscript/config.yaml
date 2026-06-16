@@ -15,6 +15,12 @@ book:
   cover:
     image: "../figures/cover/ageint-cover-synthesis.png"
 
+front_matter:
+  page_two_visual:
+    image: "../figures/frontmatter/ageint-evidence-transit-map.png"
+    title: "Evidence Transit Map"
+    caption: "Source telemetry from AGEINT curriculum counts, source metadata, source freshness, agency-source routing, figure registry, and generated manuscript files. This front-matter map is artifact telemetry only: it is not a benchmark, public-release certificate, publication claim, or learning-outcome result."
+
 authors:
   - name: "Daniel Ari Friedman"
     orcid: "0000-0001-6232-9096"

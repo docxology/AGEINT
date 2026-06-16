@@ -1,4 +1,4 @@
-# docs/ Agent Notes
+# docs/ Agent Notes: documentation contracts and generated-output alignment
 
 Keep docs synchronized with the generated data counts in
 `data/curriculum/`, the source-anchor taxonomy in
@@ -13,16 +13,16 @@ then update docs against the rebuilt output and run the AGEINT tests.
 Project docs preserve the same safety boundary as the manuscript:
 defensive, educational, authorized, synthetic, and non-operational.
 
-## Current Count Contract
+## Current count contract: live scope values that docs must preserve
 
 The live documentation count contract is 16 parts, 51 chapters, 9 appendices,
-312 source-guide references, 248 curated research anchors, 10 source-quality
-support anchors, 258 source-metadata rows, and 170 registered figures. If a
+312 source-guide references, 462 curated research anchors, 10 source-quality
+support anchors, 472 source-metadata rows, and 173 registered figures. If a
 source-anchor shard, curriculum shard, metadata audit, or figure registry changes,
 refresh these counts in `README.md`, `docs/README.md`, `docs/output_inventory.md`,
 and related docs before claiming the documentation is current.
 
-## Documentation hub (template parity)
+## Documentation hub: template parity and domain-specific extensions
 
 AGEINT uses an **extended domain doc set** plus thin hub stubs (not a duplicate of code-exemplar prose):
 

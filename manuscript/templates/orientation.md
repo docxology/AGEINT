@@ -1,11 +1,11 @@
-# Curriculum Orientation {#sec:curriculum_orientation}
+# Curriculum Orientation: reader paths, evidence maps, and safety gates {#sec:curriculum_orientation}
 
 This manuscript is a runtime-hydrated curriculum atlas. The source templates
 keep guide-derived values as neutral tokens, while the resolved manuscript in
 `output/manuscript/` injects titles, labels, counts, source spines, semantic
 paths, and bibliography rows from `data/curriculum/`.
 
-## How to use this atlas {#sec:how-to-use-this-atlas}
+## How to use this atlas: navigation path, evidence checks, and verifier handoff {#sec:how-to-use-this-atlas}
 
 Read AGEINT as a navigable curriculum-and-assurance atlas rather than a linear
 textbook or empirical evaluation report. Start with [@sec:curriculum-map] and
@@ -16,6 +16,17 @@ decision. Keep [@sec:bibliography_atlas] open when checking a claim, because it
 preserves source identity, provenance type, source tier, and refresh context in
 one place.
 
+Use the first pages as signposts, not as a preface to skip. The handoff path is
+intentionally explicit: domain part -> module overview -> practice studio ->
+evidence contract -> governance boundary -> assessment route ->
+bibliography/source lane -> verifier reports.
+
+| Move | Deep links | What the links foreshadow |
+|---|---|---|
+| Start here | [@sec:curriculum-map], [@sec:synthetic-analytic-tradecraft-thesis], and [@sec:reader-paths] | Choose a domain part, name the Synthetic Analytic Tradecraft contract, and decide which reader path governs the next move. |
+| Then check | [@sec:analysis-validation-protocol], [@sec:source-lane-map], and [@sec:bibliography_atlas] | Match the claim class to evidence, lane, citation identity, and refresh duty before treating prose or figures as support. |
+| Before you trust | [@sec:safe-substitution-matrix], [@sec:orientation-figures-and-course-links], and [@sec:method-assurance-reference] | Confirm risky motifs were converted to bounded artifacts, figures carry their limits, and verifier reports agree with the rendered manuscript. |
+
 Claim classes are separated at source-selection time. Governance claims,
 technical and theoretical claims, empirical capability claims, and
 source-construction claims each need a matching evidence type; the shared method
@@ -23,7 +34,7 @@ reference records the PRISMA-S-inspired source-reporting fields used when a
 search or discovery process supports manuscript content
 [@scholarly_rethlefsen_2021_prisma_s].
 
-## Synthetic Analytic Tradecraft thesis {#sec:synthetic-analytic-tradecraft-thesis}
+## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}
 
 AGEINT is strongest when read as **Synthetic Analytic Tradecraft**: a governed
 practice for using synthetic inputs, generated artifacts, and bounded agentic
@@ -64,20 +75,20 @@ fields to remain separate.
 | Evidence packet before claim | Claims need source keys, caveats, source-family triangulation, claim-calibration review, and refresh duties before reuse. | [@fig:ageint-synthetic-tradecraft-method-contract], [@fig:ageint-scholarship-triangulation-map], and [@fig:ageint-claim-calibration-and-visual-semantics] |
 | Negative control before trust | Validators, rubrics, rendered PDFs, and figure registries are treated as attackable artifacts. | [@fig:ageint-redteam-tradecraft-negative-control-loop] and [@sec:verifier-first-artifact-evidence] |
 
-## Reader paths {#sec:reader-paths}
+## Reader paths: instructor, learner, reviewer, and maintainer handoffs {#sec:reader-paths}
 
 | Reader | Fast path | Evidence to keep |
 |---|---|---|
-| Instructor | Pair the linked part introduction from [@sec:curriculum-map] with the module review checklist before assigning a studio exercise. | rubric row, excluded-action note, and source refresh trigger |
-| Learner | Read the primer, topic lessons, worked safe example, and knowledge check before drafting a capstone packet. | claim ledger entry, uncertainty note, and blocked-use statement |
-| Assurance reviewer | Follow [@sec:source-lane-map], governance card, [@sec:orientation-figures-and-course-links], and [@sec:bibliography_atlas] for each material claim. | source key, review owner, caveat, and reproducible artifact path |
-| Builder or maintainer | Treat generated output as an audit surface; update data, templates, manifest code, or figure specs, then rebuild. | changed source file, regeneration command, and validation result |
+| Instructor | Pair the linked part introduction from [@sec:curriculum-map] with the module overview, practice studio, evidence contract, governance boundary, and assessment route before assigning a studio exercise. | rubric row, excluded-action note, and source refresh trigger |
+| Learner | Follow the module sequence from primer to practice studio, evidence contract, governance boundary, and assessment route before drafting a capstone packet. | claim ledger entry, uncertainty note, and blocked-use statement |
+| Assurance reviewer | Trace each material claim through [@sec:source-lane-map], [@sec:bibliography_atlas], governance boundary, figure/course links, and verifier reports. | source key, review owner, caveat, and reproducible artifact path |
+| Builder or maintainer | Treat generated output as an audit surface; update data, templates, manifest code, or figure specs, then rebuild and compare verifier reports. | changed source file, regeneration command, and validation result |
 
-## Curriculum map {#sec:curriculum-map}
+## Curriculum map: parts, modules, and source-backed route choices {#sec:curriculum-map}
 
 {{CURRICULUM_PART_ROWS}}
 
-## Runtime inventory {#sec:runtime-inventory}
+## Runtime inventory: generated counts, anchors, and method appendices {#sec:runtime-inventory}
 
 | Derived artifact | Runtime value |
 |---|---:|
@@ -90,7 +101,7 @@ fields to remain separate.
 | Intelligence research anchors | {{INTELLIGENCE_RESEARCH_ANCHOR_COUNT}} |
 | Intelligence practice lenses | {{INTELLIGENCE_PRACTICE_LENS_COUNT}} |
 
-## Related work and contribution boundary {#sec:related-work-and-contribution-boundary}
+## Related work and contribution boundary: adjacent literatures and AGEINT limits {#sec:related-work-and-contribution-boundary}
 
 AGEINT sits between several bodies of work rather than inside only one of them:
 AI risk-management guidance, generative-AI profiles, public-sector agentic-AI
@@ -110,7 +121,22 @@ that links source identity, claim classes, safe exercises, figures, capstone
 artifacts, and rebuildable review gates for bounded agentic-intelligence
 education.
 
-## Analysis validation protocol {#sec:analysis-validation-protocol}
+The four-domain convergence map
+[@fig:ageint-si-tradecraft-opsec-cogsec-convergence] makes that boundary visible.
+Synthetic-intelligence support is treated as useful only when analytic
+tradecraft standards, OPSEC and zero-trust constraints, and cognitive-security
+safeguards remain separate review gates [@scholarly_dylan_stivang_2025_emerging_tech_intelligence];
+[@scholarly_caballero_jenkins_2024_llm_national_security];
+[@official_belfer_mcmahon_2024_ai_tradecraft_standards];
+[@official_reagan_nsdd_298_opsec];
+[@official_nist_zero_trust_sp_800_207];
+[@public_council_europe_information_disorder];
+[@scholarly_terp_breuer_2022_disarm]. The map therefore routes AI, OPSEC, and
+cognitive-security claims into source-backed classroom artifacts while blocking
+autonomous strategic-judgment claims, manipulation guidance, live-targeting
+workflows, and unsupported efficacy claims.
+
+## Analysis validation protocol: claim classes, evidence packets, and failure modes {#sec:analysis-validation-protocol}
 
 The manuscript now treats analysis validation as a reader-facing method, not a
 private build habit. Each major claim class must name the evidence packet that
@@ -144,7 +170,7 @@ cannot establish.
 | Artifact readiness claim | Are manuscript, citations, figures, references, and PDF links from the same rebuild? | artifact-evidence manifest, rendered-reference audit, PDF audit | stale output or Markdown-file links certify as ready |
 | Reviewer disposition | What would make this row pass, warn, fail, or reopen? | negative control, closure evidence, task owner | a green check hides the decision rule |
 
-## Consolidated glossary and index {#sec:consolidated-glossary-and-index}
+## Consolidated glossary and index: terms, audit surfaces, and reader routing {#sec:consolidated-glossary-and-index}
 
 Use this compact index to route common terms to the right audit surface before
 reading a chapter in detail.
@@ -160,31 +186,31 @@ reading a chapter in detail.
 | Reviewer gate | A named human approval or challenge point before reuse, presentation, or tool execution. | Assessment review and assurance rows |
 | Figure registry | The reproducible map from figure label to generated asset, caption, and source section. | [@sec:orientation-figures-and-course-links] |
 
-## Intelligence research profiles {#sec:intelligence-research-profiles}
+## Intelligence research profiles: domain lanes, source roles, and profile routing {#sec:intelligence-research-profiles}
 
 {{INTELLIGENCE_PROFILE_ROWS}}
 
-## Intelligence practice lenses {#sec:intelligence-practice-lenses}
+## Intelligence practice lenses: artifact expectations, safety checks, and review questions {#sec:intelligence-practice-lenses}
 
 {{INTELLIGENCE_PRACTICE_LENS_ROWS}}
 
-## Research anchor atlas {#sec:research-anchor-atlas}
+## Research anchor atlas: curated sources, lanes, tiers, and claim scope {#sec:research-anchor-atlas}
 
 {{INTELLIGENCE_RESEARCH_ROWS}}
 
-## Source lane map {#sec:source-lane-map}
+## Source lane map: provenance lanes, support strength, and refresh context {#sec:source-lane-map}
 
 {{INTELLIGENCE_SOURCE_LANE_ROWS}}
 
-## Safe substitution matrix {#sec:safe-substitution-matrix}
+## Safe substitution matrix: defensive artifacts for risky inherited motifs {#sec:safe-substitution-matrix}
 
 {{SAFE_SUBSTITUTION_ROWS}}
 
-## Capstone workflow {#sec:capstone-workflow}
+## Capstone workflow: phase sequence, artifacts, and reviewer gates {#sec:capstone-workflow}
 
 {{CAPSTONE_SCAFFOLD_ROWS}}
 
-## Capstone model-answer exemplars {#sec:capstone-model-answer-exemplars}
+## Capstone model-answer exemplars: strong evidence packets and revision triggers {#sec:capstone-model-answer-exemplars}
 
 These exemplars show the expected shape of a strong answer without prescribing
 a single conclusion. Use them as answer-key patterns for selected capstone
@@ -196,71 +222,71 @@ reviews.
 | Safe-lab packet | States the learning question, allowed inputs, excluded actions, tool allowlist, stop condition, and reviewer gate. | Uses private data, live targets, credentialed access, or an unreviewed tool path. |
 | Assurance packet | Connects rubric score, rights impact, accessibility check, remediation owner, and debrief handoff. | Treats the score as proof, omits affected users, or leaves no owner for retest. |
 
-## Accessibility and UDL review {#sec:accessibility-and-udl-review}
+## Accessibility and UDL review: learner access, modality checks, and accommodation evidence {#sec:accessibility-and-udl-review}
 
 {{ACCESSIBILITY_REVIEW_ROWS}}
 
-## Procurement and vendor oversight {#sec:procurement-and-vendor-oversight}
+## Procurement and vendor oversight: tool governance, revocation, and vendor evidence {#sec:procurement-and-vendor-oversight}
 
 {{PROCUREMENT_OVERSIGHT_ROWS}}
 
-## HRIA and DPIA worksheet {#sec:hria-and-dpia-worksheet}
+## HRIA and DPIA worksheet: rights impact, privacy review, and residual risk {#sec:hria-and-dpia-worksheet}
 
 {{HRIA_DPIA_WORKSHEET_ROWS}}
 
-## Data lineage registry {#sec:data-lineage-registry}
+## Data lineage registry: source identity, transformations, retention, and review {#sec:data-lineage-registry}
 
 {{DATA_LINEAGE_REGISTRY_ROWS}}
 
-## Assessment integrity protocol {#sec:assessment-integrity-protocol}
+## Assessment integrity protocol: declared agent use, grading evidence, and human judgment {#sec:assessment-integrity-protocol}
 
 {{ASSESSMENT_INTEGRITY_ROWS}}
 
-## Agent incident response drill {#sec:agent-incident-response-drill}
+## Agent incident response drill: pause, revoke, preserve, recover, and debrief {#sec:agent-incident-response-drill}
 
 {{AGENT_INCIDENT_RESPONSE_ROWS}}
 
-## Role-based competency map {#sec:role-based-competency-map}
+## Role-based competency map: responsibilities, evidence owners, and assurance roles {#sec:role-based-competency-map}
 
 {{ROLE_COMPETENCY_ROWS}}
 
-## Adversarial assurance cycle {#sec:adversarial-assurance-cycle}
+## Adversarial assurance cycle: challenge rows, remediation owners, and retest evidence {#sec:adversarial-assurance-cycle}
 
 {{ADVERSARIAL_ASSURANCE_ROWS}}
 
-## Model and dataset documentation card {#sec:model-and-dataset-documentation-card}
+## Model and dataset documentation card: intended use, provenance, caveats, and lifecycle {#sec:model-and-dataset-documentation-card}
 
 {{MODEL_DATASET_CARD_ROWS}}
 
-## Transparency and communication notice {#sec:transparency-and-communication-notice}
+## Transparency and communication notice: purpose, safeguards, human review, and limits {#sec:transparency-and-communication-notice}
 
 {{TRANSPARENCY_NOTICE_ROWS}}
 
-## Records retention and audit trail {#sec:records-retention-and-audit-trail}
+## Records retention and audit trail: owners, retention rules, and deletion conditions {#sec:records-retention-and-audit-trail}
 
 {{RETENTION_AUDIT_ROWS}}
 
-## Release and change-control gate {#sec:release-and-change-control-gate}
+## Release and change-control gate: reuse approval, rollback, and change evidence {#sec:release-and-change-control-gate}
 
 {{RELEASE_CHANGE_CONTROL_ROWS}}
 
-## Risk exception and acceptance memo {#sec:risk-exception-and-acceptance-memo}
+## Risk exception and acceptance memo: residual risk, owner approval, and review clock {#sec:risk-exception-and-acceptance-memo}
 
 {{RISK_EXCEPTION_ROWS}}
 
-## Learner support and accommodation plan {#sec:learner-support-and-accommodation-plan}
+## Learner support and accommodation plan: support rows, access barriers, and escalation {#sec:learner-support-and-accommodation-plan}
 
 {{LEARNER_SUPPORT_ROWS}}
 
-## Instructor question bank {#sec:instructor-question-bank}
+## Instructor question bank: prompts, evidence checks, and misconception probes {#sec:instructor-question-bank}
 
 {{QUESTION_BANK_ROWS}}
 
-## Remediation backlog {#sec:remediation-backlog}
+## Remediation backlog: issue owners, retest evidence, and closure boundaries {#sec:remediation-backlog}
 
 {{REMEDIATION_BACKLOG_ROWS}}
 
-## Scholarship and governance stance {#sec:scholarship-and-governance-stance}
+## Scholarship and governance stance: source posture, claim limits, and public-readiness boundary {#sec:scholarship-and-governance-stance}
 
 AGEINT treats agentic intelligence as a governed socio-technical practice, not
 as a bag of prompts or autonomous tricks. The curriculum therefore keeps AI
@@ -312,7 +338,7 @@ from the same rebuild, and whether a reviewer can reproduce the pass/warn/fail
 decision. This is why the artifact-evidence manifest records both positive
 counts and false-certification controls.
 
-## Verifier-first artifact evidence {#sec:verifier-first-artifact-evidence}
+## Verifier-first artifact evidence: build freshness, audits, and negative controls {#sec:verifier-first-artifact-evidence}
 
 AGEINT uses the RedTeam rule that a green validator is evidence only after the
 validator has been challenged. The artifact-evidence control loop in
@@ -330,15 +356,15 @@ safety or permission to run live operations
 [@official_nist_aria_pilot_evaluation_report];
 [@official_nist_ai_600_1_generative_ai_profile].
 
-## Figures and course links {#sec:orientation-figures-and-course-links}
+## Orientation figures and course links: visual evidence, source flow, and navigation {#sec:orientation-figures-and-course-links}
 
 {{VISUAL_SYNTHESIS}}
 
-## AGEINT pattern library {#sec:ageint-pattern-library}
+## AGEINT pattern library: design-pattern rows, safe substitutions, and source identity {#sec:ageint-pattern-library}
 
 {{AGEINT_PATTERN_ROWS}}
 
-## Safety rail {#sec:safety-rail}
+## Safety rail: authorized, synthetic, defensive, and non-operational boundaries {#sec:safety-rail}
 
 All exercises remain educational, lawful, defensive, historical, synthetic,
 and non-operational. Modules may discuss intelligence, cyber, influence,

@@ -59,20 +59,20 @@ def render_unit_profile_markdown(part: dict[str, Any]) -> str:
         artifact_list = ", ".join(_arts[:-1]) + ", and " + _arts[-1]
     return "\n\n".join(
         [
-            "### Discipline spine",
+            f"### {profile.concept} discipline spine: domain question and learning focus",
             (
                 f"This unit teaches **{profile.concept}**. "
                 f"{profile.discipline_spine}"
             ),
-            "### Source-use contract",
+            f"### {profile.concept} source-use contract: citation roles and evidence limits",
             profile.source_use_contract,
-            "### Practice artifact",
+            f"### {profile.concept} practice artifact: recurring packet and retained evidence",
             (
                 f"The recurring practice artifact is a **{profile.practice_artifact}** "
                 f"that draws on {artifact_list}. The unit keeps its learning spine "
                 f"explicit. {profile.learning_spine}"
             ),
-            "### Safety boundary",
+            f"### {profile.concept} safety boundary: authorized, synthetic, and non-operational limits",
             profile.safety_boundary,
         ]
     )
