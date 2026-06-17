@@ -3,7 +3,7 @@ paper:
   title: "AGEINT: Agentic Intelligence"
   subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
   version: "0.1"
-  date: ""
+  date: "2026-06-17"
 
 book:
   title: "AGEINT: Agentic Intelligence"
@@ -31,13 +31,15 @@ authors:
     corresponding: true
 
 publication:
-  doi: ""
-  repository_url: ""
-  repository_label: ""
-  journal: ""
+  doi: "10.5281/zenodo.20732274"
+  repository_url: "https://github.com/docxology/AGEINT"
+  repository_label: "docxology/AGEINT"
+  journal: "Zenodo"
   volume: ""
   pages: ""
   year: "2026"
+  version_doi: "10.5281/zenodo.20732275"
+  version_record: "https://zenodo.org/records/20732275"
 
 keywords:
   - agentic intelligence

@@ -14,6 +14,21 @@ security, counterintelligence, cyber defense, and ICS/OT readiness, but all
 examples stay educational, synthetic, accountable, defensive, and bounded by
 legal and human oversight constraints.
 
+## Citation and DOI
+
+- **Repository:** <https://github.com/docxology/AGEINT>
+- **Concept DOI (cite this — resolves to the latest version):** [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274)
+- **Version DOI (Edition 0.1):** [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275)
+- **License:** text CC BY 4.0; code Apache-2.0
+
+> Friedman, Daniel Ari. *AGEINT: Agentic Intelligence — A Modular Atlas, Library,
+> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (Edition 0.1,
+> 2026). Active Inference Institute. <https://github.com/docxology/AGEINT>.
+> <https://doi.org/10.5281/zenodo.20732274>.
+
+The DOI and repository are baked into the rendered title page and citation block
+of `output/pdf/AGEINT_combined.pdf`.
+
 ## Source
 
 - Runtime curriculum source: `data/curriculum/`
