@@ -31,5 +31,5 @@ substitution explanation.
 Use tabletop, audit, governance, provenance, synthetic-data, instructor-rubric,
 accessibility review, HRIA/DPIA worksheet, procurement review, incident drill,
 red-team assurance, and debrief treatments. Labs must remain public,
-synthetic, owned-lab, authorized, defensive, logged, reversible, and
-non-operational.
+synthetic, owned-lab, accountable, defensive, logged, reversible, and
+evidence-bounded.

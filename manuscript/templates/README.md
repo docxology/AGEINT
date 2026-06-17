@@ -6,7 +6,7 @@ This folder is the source-authoring surface for AGEINT manuscript sections.
 - Status: manual neutral templates; may be regenerated explicitly.
 - Source of truth: `src/manuscript_templates.py`.
 - Regenerate: `uv run python scripts/build_curriculum.py --regenerate-source-template-library` from the AGEINT root.
-- Safety: templates must stay generic, tokenized, defensive, educational, and non-operational.
+- Safety: templates must stay generic, tokenized, defensive, educational, and evidence-bounded.
 
 The template library currently covers abstract, orientation, part intro,
 chapter, appendix, bibliography atlas, and references pages. Templates should

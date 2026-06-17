@@ -168,7 +168,7 @@ SAFE_PATTERN_PROFILES: Final[dict[int, SafePatternProfile]] = {
         key="tool_forager",
         safe_name="Tool-Allowlist Research Assistant",
         methods="schema-bound tool calls, public-source retrieval, allowlisted connectors, and grounded summaries",
-        application="authorized bibliography, source inventory, or standards-mapping exercise",
+        application="accountable bibliography, source inventory, or standards-mapping exercise",
         safety_boundary="excludes broad scraping, credentialed collection, and exposure-search tooling",
     ),
     4: SafePatternProfile(
@@ -218,13 +218,13 @@ SAFE_PATTERN_PROFILES: Final[dict[int, SafePatternProfile]] = {
         safe_name="Permissioned Control Plane Agent",
         methods="single-interface routing, policy checks, budget limits, and audit logs",
         application="tool-governance demo that routes among benign summarization and validation utilities",
-        safety_boundary="keeps every tool revocable, observable, and constrained to non-operational actions",
+        safety_boundary="keeps every tool revocable, observable, and constrained to evidence-bounded actions",
     ),
     11: SafePatternProfile(
         key="surveillance_agent",
         safe_name="Monitoring-Governance Tabletop Agent",
         methods="synthetic event polling, threshold rationale, alert review, and escalation logging",
-        application="authorized monitoring governance exercise over toy asset-health records",
+        application="accountable monitoring governance exercise over toy asset-health records",
         safety_boundary="prohibits tracking real people, real targets, private forums, or infrastructure",
     ),
     12: SafePatternProfile(

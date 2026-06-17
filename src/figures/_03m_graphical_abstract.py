@@ -50,7 +50,7 @@ def _draw_header(draw: Any, font_mod: Any, title: str) -> None:
     draw.text((245, 170), title.upper(), fill=INK, font=_font(font_mod, 48))
     draw.text(
         (248, 226),
-        "Source-backed curriculum architecture for Synthetic Analytic Tradecraft, not operational performance evidence",
+        "Evidence-bounded curriculum architecture for Synthetic Analytic Tradecraft; not a capability benchmark",
         fill=MUTED,
         font=_font(font_mod, 27),
     )
@@ -113,9 +113,9 @@ def _draw_tradecraft_core(draw: Any, font_mod: Any) -> None:
         draw,
         (805, 985),
         (
-            "Classroom-safe records and public evidence become claim packets: "
+            "Evidence-bounded records and public sources become claim packets: "
             "observation, inference, assumption, likelihood, confidence, dissent, "
-            "authority, caveat, owner, and refresh trigger."
+            "accountability, caveat, owner, and refresh trigger."
         ),
         _font(font_mod, 29),
         fill=MUTED,
@@ -130,7 +130,7 @@ def _draw_tradecraft_core(draw: Any, font_mod: Any) -> None:
         "likelihood",
         "confidence",
         "dissent",
-        "authority",
+        "accountability",
         "refresh",
     ]
     for index, field in enumerate(fields):
@@ -147,7 +147,7 @@ def _draw_tradecraft_core(draw: Any, font_mod: Any) -> None:
         )
         draw.text((x0 + 18, y0 + 12), field, fill=INK, font=_font(font_mod, 21))
     draw.rounded_rectangle((815, 1330, 1585, 1386), radius=22, fill="#f8fafc", outline="#64748b", width=3)
-    draw.text((865, 1345), "claim boundary: cite, caveat, review, or halt", fill="#334155", font=_font(font_mod, 24))
+    draw.text((865, 1345), "evidence boundary: cite, caveat, review, or halt", fill="#334155", font=_font(font_mod, 24))
 
 
 def _draw_human_gate(draw: Any, font_mod: Any) -> None:
@@ -160,7 +160,7 @@ def _draw_human_gate(draw: Any, font_mod: Any) -> None:
         fill="#78350f",
         font=_font(font_mod, 24),
     )
-    _draw_decision_card(draw, font_mod, (275, 1510, 645, 1655), "HALT", "unsafe wording, weak source, broken link, or rights gap", "#be123c")
+    _draw_decision_card(draw, font_mod, (250, 1490, 670, 1665), "HALT", "unsafe wording, weak source, broken link, rights gap, or missing owner", "#be123c")
     _draw_decision_card(draw, font_mod, (1755, 1510, 2125, 1655), "PRODUCT", "source-backed memo, matrix, rubric, or evidence packet", "#0f766e")
 
 
@@ -256,7 +256,7 @@ def _draw_decision_card(
         _font(font_mod, 21),
         fill=MUTED,
         width=27,
-        max_lines=2,
+        max_lines=3,
         line_height=25,
     )
 

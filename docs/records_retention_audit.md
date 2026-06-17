@@ -17,5 +17,5 @@ NARA AI use-case inventory material, the NARA 2025 AI compliance plan, OMB
 M-25-21, OECD AI incident-reporting guidance, CISA OT asset-inventory guidance,
 and CISA definitive OT architecture guidance anchor the public-sector records
 and auditability angle. Generated curriculum artifacts should remain synthetic,
-public, owned-lab, or instructor-provided unless a separate authorized
+public, owned-lab, or instructor-provided unless a separate approved
 data-governance review exists.

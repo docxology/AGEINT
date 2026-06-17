@@ -1,13 +1,13 @@
-# Safety Boundary: authorized, synthetic, defensive, and non-operational work
+# Safety Boundary: accountable, synthetic, defensive, and evidence-bounded work
 
 AGEINT includes cyber, HUMINT, influence, FININT, export-control, sanctions,
 historical, AI-governance, and intelligence-cycle topics. This project frames
 them as lawful education, defensive analysis, historical study, governance, and
-synthetic exercises. The curriculum is explicitly non-operational: avoid
+synthetic exercises. The curriculum is explicitly evidence-bounded: avoid
 instructions for unauthorized collection, evasion, exploitation, manipulation,
 or targeting.
 
-Risky motifs such as cover generation, target tracking, Shodan-style exposure review, cyber response, and ICS response are allowed only as authorized, synthetic, defensive, tabletop, or owned-lab exercises. Generated prose should preserve that boundary in every relevant module.
+Risky motifs such as cover generation, target tracking, Shodan-style exposure review, cyber response, and ICS response are allowed only as accountable, synthetic, defensive, tabletop, or owned-lab exercises. Generated prose should preserve that boundary in every relevant module.
 
 Economic-security motifs such as sanctions, illicit-finance typologies,
 beneficial-ownership uncertainty, export controls, supplier risk, and red flags

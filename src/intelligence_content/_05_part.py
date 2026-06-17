@@ -58,7 +58,7 @@ PRACTICE_LENSES: Final[tuple[PracticeLens, ...]] = (
             "imagery",
         ),
         planning_question=(
-            "What authorized requirement justifies the evidence, and which "
+            "What accountable requirement justifies the evidence, and which "
             "source discipline is the least intrusive fit?"
         ),
         evidence_artifact="requirements matrix with source descriptors, caveats, and collection limits",
@@ -225,7 +225,7 @@ PRACTICE_LENSES: Final[tuple[PracticeLens, ...]] = (
         ),
         evidence_artifact=(
             "historical case card with provenance, redaction caveats, timeline, "
-            "lesson, and non-operational boundary"
+            "lesson, and evidence-bounded boundary"
         ),
         validation_rule=(
             "distinguish what the record shows, what remains redacted or unknown, "

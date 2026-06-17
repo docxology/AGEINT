@@ -26,7 +26,12 @@ from .types import (
     ordering_config_yaml as _ordering_config_yaml,
     slugify as _slug,
 )
-from ._04_part import build_manuscript_manifest, _read_template, _visual_synthesis
+from ._04_part import (
+    build_manuscript_manifest,
+    _read_template,
+    _visual_synthesis,
+)
+from ._orientation_visuals import orientation_early_visual_context
 from ._heading_titles import chapter_landmark_titles, chapter_scaffold_titles
 
 
@@ -96,14 +101,32 @@ def _chapter_fragments(section: ManuscriptSection, rendered: str) -> list[tuple[
         ("03-governance-boundary.md", [governance_block]),
         ("04-assessment-route.md", [assessment_block]),
     ]
+    # Mid-chapter fragments (evidence-contract, governance-boundary) read
+    # standalone but, unlike 00-overview/01-practice-studio/04-assessment-route,
+    # carried no route back to the orientation atlas. Give each a one-line
+    # wayfinding footer keyed to THIS module's own overview anchor, so it is
+    # chapter-unique (not a repeated boilerplate paragraph) and routes the reader
+    # home. Bare labels, not named sections in prose (signposting rule).
+    overview_ref = f"[@{section.section_label}]" if section.section_label else ""
+    lead = f"This module's overview is {overview_ref}; return to" if overview_ref else "Return to"
+    wayfinding_footer = (
+        f"**Where this sits.** {lead} the curriculum atlas [@sec:curriculum_orientation] "
+        "for the reader paths, evidence map, and safety gates that govern this module."
+    )
+    wayfinding_fragments = {"02-evidence-contract.md", "03-governance-boundary.md"}
     fragments: list[tuple[str, str]] = []
     for file_name, parts in grouped:
         text = "\n\n".join(part for part in parts if part).rstrip()
         if text:
-            fragments.extend(
-                (path, _demote_chapter_continuation_headings(fragment))
-                for path, fragment in _split_by_line_budget((base_dir / file_name).as_posix(), text)
-            )
+            for frag_path, fragment in _split_by_line_budget(
+                (base_dir / file_name).as_posix(), text
+            ):
+                fragment = _demote_chapter_continuation_headings(fragment)
+                # Every split of the mid-chapter fragments gets the back-link, not
+                # just the last one (these blocks can exceed the line budget).
+                if file_name in wayfinding_fragments:
+                    fragment = f"{fragment}\n\n{wayfinding_footer}"
+                fragments.append((frag_path, fragment))
     return fragments
 
 
@@ -227,7 +250,19 @@ def render_manuscript(
             figures,
             render_relative_path=_first_fragment_path(section),
         )
-        context = {**variables, **section.context, "VISUAL_SYNTHESIS": visual_synthesis}
+        early_visual_context = orientation_early_visual_context(
+            root,
+            out_dir,
+            section,
+            figures,
+            render_relative_path=_first_fragment_path(section),
+        )
+        context = {
+            **variables,
+            **section.context,
+            **early_visual_context,
+            "VISUAL_SYNTHESIS": visual_synthesis,
+        }
         rendered, unresolved = substitute_manuscript_text(template, context, project_root=root)
         if unresolved:
             unresolved_keys = ", ".join(sorted(set(unresolved)))

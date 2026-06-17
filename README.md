@@ -7,11 +7,11 @@ variables while rendering from the local lifecycle checkout. This copy currently
 lives under `projects/working/AGEINT`; parent-template runs may link it as
 `projects/active/AGEINT` or `projects/AGEINT` when it is promoted or hot-seated.
 
-The project is deliberately non-operational. It can teach intelligence
+The project is deliberately evidence-bounded. It can teach intelligence
 tradecraft, IC-cycle governance, OSINT/GEOINT integrity, FININT/economic
 security, declassified intelligence history, agentic-AI governance, cognitive
 security, counterintelligence, cyber defense, and ICS/OT readiness, but all
-examples stay educational, synthetic, authorized, defensive, and bounded by
+examples stay educational, synthetic, accountable, defensive, and bounded by
 legal and human oversight constraints.
 
 ## Source
@@ -33,7 +33,7 @@ legal and human oversight constraints.
 - Parsed references: 312
 - Curated official/scholarly/professional research anchors: 462
 - Source-quality support anchors: 10
-- Registered figures: 173 (115 Mermaid, 48 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
+- Registered figures: 177 (115 Mermaid, 52 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
 - Non-numbered cover art: 1 deterministic Python-rendered title-page image at `output/figures/cover/ageint-cover-synthesis.png`
 
 ## Commands
@@ -215,7 +215,7 @@ adversarial-ML, AI incident, OSINT leakage, deepfake, disinformation, social
 engineering, and active-inference discovery inventories. The pasted literature
 reviews remain discovery inputs only; final manuscript citations point to the
 verified source URLs in `data/research_anchors/intelligence-anchors-305-340.jsonl`.
-The registry grows to 173 figures with a source-backed SI/tradecraft/OPSEC/
+The registry grows to 177 figures with a source-backed SI/tradecraft/OPSEC/
 cognitive-security convergence map.
 
 A 2026-06-15 SAT literature-integration pass raises the curated set to 367
@@ -254,9 +254,9 @@ scholarship source-family audit, figure quality audit, rendered-reference audit,
 PDF quality/link audit, and stale-output scans into
 `output/reports/current_artifact_evidence.{json,md}` and
 `output/reports/scholarship_quality.{json,md}`. The current local manifest
-reports 330 configured generated Markdown files, 16,057 generated Markdown
-citation occurrences, 173 registered figures plus one non-numbered cover-art
-PNG, a non-stale 1,854-page 32.55 MB PDF, 6,289 PDF URI links, 0 Markdown-file,
+reports 330 configured generated Markdown files, 16,604 generated Markdown
+citation occurrences, 177 registered figures plus one non-numbered cover-art
+PNG, a non-stale 1,858-page ~34 MB PDF, 6,289 PDF URI links, 0 Markdown-file,
 `file:`, or launch-action PDF targets, 0 uncited or thin claim-bearing generated
 files, and six single-source-family claim-bearing review warnings, with passing
 SAT method and analysis-validation contracts plus source-metadata explicitness
@@ -290,8 +290,9 @@ Synthetic Analytic Tradecraft contract rather than a graphical-abstract wrapper.
 The graphical abstract itself is now the registry-backed Python
 `ageint-graphical-abstract` Synthetic Tradecraft System Atlas in orientation,
 not a Mermaid stack or title-page cover. The PDF table of contents is
-intentionally limited to H1/H2 entries; each module exposes five chapter-specific
-H2 landmarks, while H3/H4 scaffolds remain in the body for local navigation and
+intentionally limited to H1/H2 entries; each module exposes three chapter-specific
+H2 landmarks (source/profile frame, practice-lens path, assurance handoff), while
+H3/H4 scaffolds remain in the body for local navigation and
 cross-reference targets. The compact LaTeX preamble also carries TOC spacing
 controls so multi-digit section numbers do not collide with headings.
 
@@ -317,8 +318,8 @@ benchmark for model capability, learning outcomes, operational effectiveness,
 statistical significance, or safety performance. This is still a local-readiness
 claim, not a publication decision.
 
-After this pass, claim calibration reports 9,219 candidate rows, 0 hard fails,
-483 boundary-allowed rows, and 5,189 review rows; scholarship quality reports 0
+After this pass, claim calibration reports 9,107 candidate rows, 0 hard fails,
+482 boundary-allowed rows, and 5,129 review rows; scholarship quality reports 0
 hard fails and keeps six single-source-family rows as non-blocking review
 warnings.
 
@@ -332,12 +333,12 @@ claim scope changes.
 ## Public readiness
 
 AGEINT is locally publication-ready as a preflight packet, not as a public
-release. The 2026-06-14 `publication_readiness` report is `ok: true`: artifact
+release. The 2026-06-16 `publication_readiness` report is `ok: true`: artifact
 evidence is green, the source-refresh dashboard reports 472 current metadata
 rows and 0 due-soon/due/stale rows, the artifact manifest has `issues: []`, the
 parent tracked-project confidentiality guard passes, the release-surface scan
 finds 0 private/local path or Markdown-file-link issues, the source/license
-posture is recorded, and the fresh PDF audit reports 1,854 pages, 6,289 URI
+posture is recorded, and the fresh PDF audit reports 1,858 pages, 6,289 URI
 links, 0 file actions, and 0 bad link targets. `ageint-27` is therefore closed.
 `ageint-m1` remains todo because no public release, push, PR, archive,
 promotion, publication upload, DOI, or release record has been approved or

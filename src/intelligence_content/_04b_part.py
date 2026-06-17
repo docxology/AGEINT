@@ -269,7 +269,7 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
         safety_boundary=(
             "historical modules use declassified or public records for analysis "
             "and governance lessons only; they do not reconstruct live tactics, "
-            "sources, methods, or current operational workflows"
+            "sources, methods, or current field procedures"
         ),
         source_pack_ids=(
             "declassified_history",
@@ -383,7 +383,7 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "poor remote-access control, and missing after-action learning"
         ),
         safety_boundary=(
-            "all ICS work remains tabletop, lab, or authorized defensive review; "
+            "all ICS work remains tabletop, lab, or accountable defensive review; "
             "no exploitation, unsafe process manipulation, or live control actions"
         ),
     ),

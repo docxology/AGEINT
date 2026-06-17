@@ -125,8 +125,8 @@ def _safe_pattern_profile(number: int | None) -> SafePatternProfile:
             key="source_subsection",
             safe_name="Source-Guide Safety Treatment",
             methods="source description, safety translation, and instructor review",
-            application="authorized curriculum-only exercise with public or synthetic material",
-            safety_boundary="keeps source material educational, defensive, and non-operational",
+            application="accountable curriculum-only exercise with public or synthetic material",
+            safety_boundary="keeps source material educational, defensive, and evidence-bounded",
         )
     return SAFE_PATTERN_PROFILES[number]
 

@@ -18,6 +18,7 @@ from ._01d_scholarship_quality_spec import SCHOLARSHIP_QUALITY_VISUALS
 from ._01e_sat_method_spec import SAT_METHOD_VISUALS
 from ._01f_source_metadata_spec import SOURCE_METADATA_VISUALS
 from ._01h_claim_calibration_spec import CLAIM_CALIBRATION_VISUALS
+from ._01i_early_orientation_spec import EARLY_ORIENTATION_VISUALS
 
 
 class FigureKind(str, Enum):
@@ -194,13 +195,14 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
         "slug": "ageint-safety-boundary-loop",
         "title": "AGEINT Safety Boundary Loop",
         "caption": (
-            "Conceptual governance schematic showing how authorization, synthetic "
-            "fixtures, human oversight, logging, and non-operational practice stay connected."
+            "Conceptual governance schematic showing how accountable review, synthetic "
+            "fixtures, human oversight, logging, and evidence-bounded practice stay connected."
         ),
         "alt_text": "Loop diagram showing defensive safety gates around AGEINT practice.",
         "renderer": "safety_boundary_loop",
         "source_section": "orientation.md",
     },
+    *EARLY_ORIENTATION_VISUALS,
     {
         "slug": "ageint-section-composability-matrix",
         "title": "AGEINT Section Composability Matrix",
@@ -268,7 +270,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-capstone-workflow",
         "title": "AGEINT Capstone Workflow",
-        "caption": "The capstone workflow moves from an authorized question to debrief and refresh ownership.",
+        "caption": "The capstone workflow moves from an accountable question to debrief and refresh ownership.",
         "alt_text": "Loop diagram of AGEINT capstone phases.",
         "renderer": "capstone_workflow",
         "source_section": "appendix:i",

@@ -1,13 +1,102 @@
 ---
 project: AGEINT
-task: Verifier hardening, TODO execution, and current-ledger cleanup
-effort: E5
+task: Publication-prep cleanup + commit-to-main (release/publish is the next-day milestone)
+effort: E4
 phase: complete
 started: 2026-06-03
-updated: 2026-06-14
+updated: 2026-06-16
 ---
 
 # AGEINT ISA Closeout And Current Ledger
+
+## 2026-06-16 Publication-Prep + Commit-To-Main (DONE)
+
+Final pre-publication cleanup after the three review rounds. Scope was: confirm
+docs/everything clean, do low-value tidy, and commit the full working tree to
+`main`. NOT a release — Daniel will do the release tomorrow (Zenodo version DOI,
+public `docxology/AGEINT` repo, PDF re-render with GitHub+DOI baked in, then
+publish to Zenodo + GitHub). `AGEINT-M1` stays open until that approved workflow.
+
+- Low-value fix done: `pyproject.toml py-modules` completed from 24 → all 36 flat
+  `src/*.py` modules (additive; the previous list silently dropped 12 from any
+  `pip install .`; the py-modules / `packages.find` split is correct — find handles
+  subpackages, py-modules the flat modules). Not the unsafe "delete py-modules"
+  the round-3 reviewer proposed.
+- Hygiene confirmed clean: 0 TODO/FIXME/XXX/HACK/DEBUG and 0 pdb/breakpoint in
+  tracked source/docs; 0 tracked junk (`.pyc`/caches/`.DS_Store`/`coverage*.json`/
+  egg-info); deterministic build (exit 0, "rewrote 0 neutral templates").
+- Committing the FULL working tree (rounds 1-3 edits + the pre-existing uncommitted
+  462-anchor data expansion + doc updates that predate this session). `output/`,
+  coverage, and caches are gitignored and excluded. Commit gated on the final full
+  suite (tests_final) being green.
+
+## 2026-06-16 Round-3 Scope: Project-Wide Claims, Documentation, Consistency (DONE)
+
+**Goal:** Verify every numeric/factual CLAIM project-wide (README, AGENTS, docs/, manuscript) against ground-truth runtime/registry/report values; fix documentation drift introduced over 3 rounds; ensure cross-file consistency (esp. the R1 "non-operational"→"evidence-bounded" safety-term rewording — uniform or half-applied?); confirm rounds-1-2 prose added no unsupported claim. Source/doc edits only; rebuild + full gate if any source/template changes; Forge cross-vendor (if backend available — was rate-limited round 2, resets Jun 20).
+
+**Baseline this session (R8):** figure registry 177 (115 mermaid/52 python/4 historical/6 ai) — matches README exactly; headline counts 16/51/9/20/312 match build output. Claim-audit generators re-run — ALL authoritative audits report ok=True: `claim_calibration`, `reference_quality`, `scholarship_quality`, `publication_readiness`, `source_metadata`, `source_refresh_due`, `agency_source_coverage`, `current_artifact_evidence`, `orchestration_contract`, plus `test_results`/`validation_report` all_passed. So the manuscript's gate-enforced CLAIMS are sound after rounds 1-2; net-new round-3 value is concentrated in DOCUMENTATION drift + cross-file consistency (not gate-enforced). Round-3 review workflow (5 surfaces) dispatched.
+
+**Criteria (round-3):** the workflow returned 12 findings; the project's gate-enforced claims were already sound, so the do-now set is doc-accuracy/hygiene. Two were genuinely WRONG documented facts (highest priority):
+
+- [x] ISC-3A: WRONG claim-calibration counts corrected — `9,223/483/5,190` → `9,107/0/482/5,129` in `README.md:320` and `docs/rendering_pipeline.md:167` (the latter present-tense "remains green with…", so strictly wrong). Verified against `output/reports/claim_calibration.json` (candidate_rows=9107, hard_fail=0, boundary_allowed=482, warning_rows=5129).
+- [x] ISC-3B: WRONG structural claim corrected — "five chapter-specific H2 landmarks" → "three (source/profile frame, practice-lens path, assurance handoff)" in `README.md:293` and `docs/v2_expansion_map.md:49`, aligning with `docs/rendering_pipeline.md:126` and `chapter_landmark_titles()` (verified: returns exactly 3 keys; the 5 names are H3 scaffolds).
+- [x] ISC-3C: Doc-drift label fix — `AGENTS.md:71` "Cross-links row" → "Learning-path links row". Verified `markdown_refs.lesson_educational_crossrefs()` emits literal "**Learning-path links.**"; the `## Cross-links` heading the tests assert is a separate manuscript construct, unaffected.
+- [x] ISC-3D: Drift-resistance — PDF size `34.15 MB` → `~34 MB` (un-sourced exact value re-drifts each build) in `README.md:259` + `docs/rendering_pipeline.md:156`; `src/AGENTS.md:38` routing-table line made non-exhaustive (`data/*.yaml … see that module`); `data/README.md` given a pointer to the complete `data/AGENTS.md` inventory.
+- [x] ISC-3E: Repo hygiene — added `coverage*.json` (+ htmlcov/.benchmarks/.mypy_cache/.ruff_cache/tmp/.DS_Store) to `.gitignore` and `git rm --cached coverage_project.json` (828KB disposable artifact was tracked; mirrors template convention; reversible, staged for the user's commit decision).
+- [x] ISC-3F: Manuscript claim-soundness CONFIRMED clean — round-1/2 added prose introduced no unsupported empirical/performance/capability claim; stays synthetic/defensive/non-operational; all restated counts match ground truth; `claim_calibration`=0 hard-fails. No edit (changing sound hedged prose would risk the gate-clean posture).
+- [x] ISC-3G: No rebuild/manuscript-gate impact — all edits are hand-maintained docs + `.gitignore` (no template/src-logic/manuscript-content change). `test_docs_contract` + `test_file_size_inventory` green; no test pins any changed string; full suite stays 387/0 (tests_r2b) since no tested artifact changed.
+- [DEFERRED-VERIFY] ISC-3H: `pyproject.toml py-modules` stale (24 declared vs ~36 src top-level modules) + contradictory dual-declaration with `packages.find`. DEFERRED (follow-up AGEINT-PYPROJECT-PKG): MARGINAL/latent — only bites `pip/uv install .`, not the `pythonpath=[".","src"]` test/build workflow this project uses; and the reviewer's "delete py-modules, rely on packages.find" is unsafe as stated (flat top-level modules are NOT found by `packages.find`, which discovers packages) — needs a verified fresh-install test, out of scope for a doc round.
+- DEFERRED (confirmed still-deferred, not new): README anchor-history ordering (= the round-2 "orientation source ordering" item; cosmetic, churn-risk); the `fig:ageint-claim-evidence-fit-map` caption verb-frame folds into the already-deferred B2/B3 caption-tail refactor.
+
+
+
+A second review workflow (5 surfaces: code modularization, manuscript modularization, body/appendix writing+signposting, whole-manuscript visualizations, fresh sweep + deferred backlog) returned 26 findings with explicit worth_it verdicts. Most modularization items were honestly NO (orientation already build-time modularized; _NN chunking coherent; scripts thin; token system well-factored). Implementing the 6 genuine net-new wins (one per axis), deferring MARGINAL items.
+
+**Round-2 criteria:**
+- [x] ISC-2A: Modularization — created `src/markdown_cell.py` with two named policies (`escape_table_cell`, `plain_table_cell`); 5 of 6 sites delegate (citation_workflow/pdf_quality/rendered_heading_support → plain; reference_quality/markdown_table → escape). 6th site `manuscript_manifest/_03_part.py` kept a local byte-identical copy: it sits at the 500-line modularization gate (499) and the delegate's import line breached it (→501, caught by `test_file_size_inventory`); reverted to stay ≤500. Forge confirmed both policy bodies byte-equivalent to the originals (no behavior change). Covered via delegates + `test_round2_refinements`.
+- [x] ISC-2B: Signposting (D5) — chapter-unique wayfinding footer appended to every `02-evidence-contract` + `03-governance-boundary` fragment (incl. line-budget splits), keyed to each module's own `[@section.section_label]`. Verified 51/51 + 51/51 now contain `sec:curriculum_orientation`; footer is 51 distinct paragraphs, max 2 files each (clears the >6-file repeated-paragraph gate, which also gates uniqueness). `test_round2_refinements` + crossrefs green.
+- [x] ISC-2C: Visualization — `_draw_bar_chart` label gate replaced with `label_stride = max(1, (len+21)//22)` so x-axis anchors always render (citation-density chart was ~45 unlabeled bars). Chart regenerated; Forge confirmed stride math + sole caller.
+- [x] ISC-2D: Visualization/accessibility — `_visual_type` now resolves an explicit alt-text flow signal before the map→matrix branch; 0 of 16 module-maps still announced as "matrix-style figure". Forge verified all 16 reclassified are genuine flowcharts (no real matrix mislabeled). Regression test added.
+- [x] ISC-2E: Writing — appendix `_blocked_appendix_source_label` returns "no blocked motif; source title used verbatim" when no transform occurred (was duplicating cols 1&2). Sentinel rendering in appendices; regression test added.
+- [DEFERRED-VERIFY] ISC-2F: Container-heading "Evidence anchor." inheritance — DEFERRED to a focused follow-up (AGEINT-HEADING-INHERIT). Reading `rendered_heading_support.py` confirmed the fix inherently changes the anti-overclaim verifier's definition of "supported" (both `add_heading_support` injector AND the `unsupported_headings` inventory/gate must change in lockstep + a negative control). The injected line is already terse (the ~30-word filler was previously reduced to "**Evidence anchor.** [ref]" carrying a real cross-ref), so value is modest while risk (weakening the credibility-bearing gate) is the batch's highest. Not bundled — violates ISC-2H. Follow-up must include a negative control proving the gate still fails a genuinely unsupported heading.
+- [x] ISC-2G: Build clean + full suite ≥90% + Forge. Build exit 0. Full suite (tests_r2): 386 passed / 1 failed (the file-size gate caught _03_part at 501) → fixed by reverting that one delegate (behavior-neutral); final re-run (tests_r2b): **387 passed, 0 failed, exit 0, coverage 91.72%**. Forge: NO correctness defects across all 6 items (byte-equivalent consolidation, correct `_visual_type` reorder, resolving cross-refs, sound stride math, preserved safety stance). HONEST DISCLOSURE: the GPT-5.4/codex cross-vendor backend hit its usage limit (resets Jun 20), so Forge's pass was its own evidence-backed analysis (real commands against the corpus), NOT an independent-vendor opinion — the cross-vendor blind-spot check is owed for this round.
+- [x] ISC-2H: Anti held. No `{{TOKEN}}` deleted (build "rewrote 0 neutral templates"); no operational content; abstract untouched (still one paragraph); no verifier gate weakened — the safety-term rewording was co-enforced by updated tests (Forge-verified), and ISC-2F (the one gate-semantics change) was DEFERRED precisely to avoid weakening the heading-support gate. GOTCHA logged: a modularization dedup (function-local import) nearly breached the 500-line modularization gate on a ceiling file — consolidation-by-delegation can grow a file; check `test_file_size_inventory` when delegating in near-limit modules.
+
+**Deferred MARGINAL (logged, not done):** orientation source ordering (cosmetic, build-risky), B2/B3 generic caption-detail tails (177-fig churn), B5 figure re-homing (NO — gallery can't re-home without rewriting embed logic), B6 reading-order figure (NO — compass already exists), B8 long-desc (NO), E3 underscore anchors (NO — cross-file rename risk), E4 nav-heading terminology (NO — two distinct constructs), lesson Concept-frame repetition + source-binding (MARGINAL).
+
+## 2026-06-16 Comprehensive Review And Early-Section Refinement Scope (DONE)
+
+**Goal:** Verify every manuscript section and formalism is complete, accurate, and
+signposted, then refine the early/orientation sections — reader-facing opening
+prose, deep-link signposting, and figure captions/placement — without weakening
+any verifier gate, deleting any `{{TOKEN}}`, or adding operational content. Source
+edits land in `manuscript/templates/*` and `src/figures/*`; output is rebuilt and
+re-audited.
+
+**Criteria (this scope):**
+
+- [x] ISC-R1: Orientation opening now reader-facing. Verified: rendered `orientation/00-*.md` line 3 opens "AGEINT (Agentic Intelligence) is a curriculum-and-assurance atlas for teaching how AI agents can *assist*…"; build mechanics demoted to a `> **For maintainers.**` blockquote.
+- [x] ISC-R2: Early-orientation captions self-contained. Verified: compass caption renders with a single clean limit ("navigation support, not a learning-outcome or performance claim.") and `grep -c "should be read as a map of instructor"` = 0 (duplicating auto-suffix eliminated); `test_figure_quality_audit` green (min-word gate still satisfied).
+- [x] ISC-R3: Signposting gaps closed. Verified: "Govern and assure" row + reader-paths/glossary deep links render; `test_manuscript_crossrefs` (21 tests) green = all `[@sec:]`/`[@fig:]` resolve.
+- [x] ISC-R4: Formalisms verified. C1 fixed 3 mis-flagged quantitative renderers (now `quantitative=False`, registry confirmed); C2 narrowed the abstract's equation/table-link overclaim; C3 reconciled SAT 4-vs-6; `test_figure_quality_audit` + `test_scholarship_quality` green.
+- [x] ISC-R5: Build clean. Verified: `build_curriculum.py` exit 0 (build2 + build3), deterministic.
+- [x] ISC-R6: Full test suite ≥90%. Verified: `pytest tests/ --cov=src --cov-fail-under=90` = **383 passed, 0 failed, exit 0, 91.20% coverage** (tests3, 20:51). Baseline was 382/1 (staleness, resolved by rebuild); the 2 transient post-edit failures (tests pinning changed strings) fixed without weakening assertions.
+- [x] ISC-R7: Anti held. Verified: 0 `{{TOKEN}}` deleted (build "rewrote 0 neutral templates"); abstract still single-paragraph (contract intact); captions ≥40 words; no operational/deployable content added; no gate weakened (the 2 test fixes restored exact strings, did not relax assertions).
+- [x] ISC-R8: Forge cross-vendor review found no defects; explicitly confirmed the D1 caption-sanitiser fix correct and the abstract single-paragraph + figure-link claim accurate.
+
+**Test-reconciliation decision (2026-06-16):** the post-edit full run surfaced exactly 2 failures, both tests pinning strings I intentionally changed. Resolved WITHOUT weakening either test: (1) `test_figures::…creative_visuals…` asserts a signature phrase per early caption — restored the exact phrases "field-capability proof" and "authoritative status" (meaning unchanged). (2) `test_reader_quality::…front_loads_deep_link_signposts` requires the arrow-chain pipeline string — treated as an encoded signpost feature; restored the `domain part -> … -> verifier reports` pipeline on its own line while keeping the clearer "work the table in order" framing. A6's full arrow-chain removal was thus partially reverted; the readability concern is met by the framing + standalone line.
+
+**Decisions (this scope):**
+
+- 2026-06-16: ISA was `complete` (closeout ledger). User requested a fresh comprehensive review + early-section refinement. Reopened as a new dated scope rather than a separate task ISA — the work iterates the persistent project. `effort_source: classifier (E4) escalated to E5` given "deeply comprehensively" + explicit `/workflows` + ultrathink.
+- 2026-06-16: Baseline ran `build_curriculum.py` (exit 0, deterministic — rewrote 0 neutral templates) and the full pytest suite at OBSERVE before any edit (R8 GENERATOR-PREEXEC).
+- 2026-06-16: A 5-surface review workflow (early-writing, early-visuals, governance, formalisms, body+abstract) returned 30 findings + a prioritized plan. Implemented the high-value, low-risk batch; deferred/rejected several:
+  - REJECTED E2 (break the abstract into paragraphs): conflicts with the gated single-continuous-paragraph abstract contract (AGEINT-ABSTRACT-PUBLIC-READINESS). Applied only C2 (narrow the overclaimed "equation/table links" — manuscript has zero `{#eq:}`/`{#tbl:}` labels).
+  - D1 is a REAL BUG, not stale output (reviewer's "just rebuild" falsified — string persists after a clean rebuild): the manuscript chapter-title sanitiser (`rendered_reference_audit.py:314` → "the module") strips the chapter names the part-module-map caption embeds, yielding "from the module through the module" across all 16 parts. Registry caption is correct (no sanitiser there). Fix at the caption source: stop embedding raw chapter titles (which the sanitiser is designed to prevent anyway).
+  - B1 used the prose-only fallback (forward-point the 5 named tradecraft figures to the gallery) rather than figure-re-slotting, to avoid disturbing figure-count/coverage audits.
+  - Deferred (noted follow-ups, beyond early-section scope or higher risk): B2/B3 global caption-tail refactor (177 figures, min-word gated), B5 figure re-homing, B6 new reading-order figure, B8 long-description enrichment, D5 chapter-fragment wayfinding footer, E3 underscore→hyphen anchor rename (cross-file), E4 nav-heading terminology.
+
+
 
 ## Historical Closeout
 

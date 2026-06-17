@@ -41,7 +41,7 @@ def test_visual_quality_audit_matches_rendered_registry() -> None:
         FigureKind.AI_GENERATED.value: 6,
         FigureKind.HISTORICAL.value: 4,
         FigureKind.MERMAID.value: 115,
-        FigureKind.PYTHON.value: 48,
+        FigureKind.PYTHON.value: 52,
     }
     for check, count in audit["summary"]["check_counts"].items():
         assert count == audit["figure_count"], check

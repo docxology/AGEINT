@@ -1,9 +1,26 @@
 # Curriculum Orientation: reader paths, evidence maps, and safety gates {#sec:curriculum_orientation}
 
-This manuscript is a runtime-hydrated curriculum atlas. The source templates
-keep guide-derived values as neutral tokens, while the resolved manuscript in
-`output/manuscript/` injects titles, labels, counts, source spines, semantic
-paths, and bibliography rows from `data/curriculum/`.
+AGEINT (Agentic Intelligence) is a curriculum-and-assurance atlas for teaching
+how AI agents can *assist* intelligence analysis without ever being trusted to
+run it unsupervised. It is written for three readers: an **instructor**
+assembling a defensible course, a **learner** building analytic habits on safe
+practice material, and an **assurance reviewer** checking that every claim can be
+traced back to a real source. Nothing here is operational — every exercise uses
+synthetic or public material, and every claim is built to be challenged rather
+than believed.
+
+Read it as a map, not a textbook to read front to back: [@sec:curriculum-map]
+lets you choose a domain part, [@sec:reader-paths] gives each reader a fast path,
+and [@sec:safety-rail] states what the atlas refuses to teach.
+
+> **For maintainers.** This page is generated. The source templates under
+> `manuscript/templates/` keep guide-derived values — titles, labels, counts,
+> source spines, semantic paths, and bibliography rows — as neutral tokens; the
+> build resolves them from `data/curriculum/` into the rendered manuscript in
+> `output/manuscript/`. Edit the template, not the rendered output.
+
+The rest of this orientation is a toolkit for navigating that map; the next
+section shows the exact path.
 
 ## How to use this atlas: navigation path, evidence checks, and verifier handoff {#sec:how-to-use-this-atlas}
 
@@ -16,16 +33,22 @@ decision. Keep [@sec:bibliography_atlas] open when checking a claim, because it
 preserves source identity, provenance type, source tier, and refresh context in
 one place.
 
-Use the first pages as signposts, not as a preface to skip. The handoff path is
-intentionally explicit: domain part -> module overview -> practice studio ->
-evidence contract -> governance boundary -> assessment route ->
-bibliography/source lane -> verifier reports.
+Use the first pages as signposts, not as a preface to skip. The handoff is
+intentionally explicit and always moves in the same direction:
 
-| Move | Deep links | What the links foreshadow |
+domain part -> module overview -> practice studio -> evidence contract ->
+governance boundary -> assessment route -> bibliography/source lane ->
+verifier reports.
+
+Work the table below in order: orient, then match each claim to its evidence,
+then verify before trusting anything.
+
+| Step | Where to go | Why this step matters |
 |---|---|---|
 | Start here | [@sec:curriculum-map], [@sec:synthetic-analytic-tradecraft-thesis], and [@sec:reader-paths] | Choose a domain part, name the Synthetic Analytic Tradecraft contract, and decide which reader path governs the next move. |
 | Then check | [@sec:analysis-validation-protocol], [@sec:source-lane-map], and [@sec:bibliography_atlas] | Match the claim class to evidence, lane, citation identity, and refresh duty before treating prose or figures as support. |
 | Before you trust | [@sec:safe-substitution-matrix], [@sec:orientation-figures-and-course-links], and [@sec:method-assurance-reference] | Confirm risky motifs were converted to bounded artifacts, figures carry their limits, and verifier reports agree with the rendered manuscript. |
+| Govern and assure | [@sec:hria-and-dpia-worksheet], [@sec:adversarial-assurance-cycle], [@sec:model-and-dataset-documentation-card], and [@sec:records-retention-and-audit-trail] | Bind rights impact, red-team challenge, documentation provenance, and retention duty to each reusable artifact before it leaves the course. |
 
 Claim classes are separated at source-selection time. Governance claims,
 technical and theoretical claims, empirical capability claims, and
@@ -33,6 +56,8 @@ source-construction claims each need a matching evidence type; the shared method
 reference records the PRISMA-S-inspired source-reporting fields used when a
 search or discovery process supports manuscript content
 [@scholarly_rethlefsen_2021_prisma_s].
+
+{{ORIENTATION_OPENING_VISUALS}}
 
 ## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}
 
@@ -47,26 +72,46 @@ separation, dissent, and reviewer challenge
 [@official_odni_icd_203]; [@official_cia_tradecraft_primer];
 [@scholarly_heuer_psychology_intelligence_analysis].
 
-This framing lets the reader regard the manuscript highly for the right reason.
-It is not an operational manual and not a benchmark proving autonomous analytic
+This framing tells you exactly what to expect — and what not to. AGEINT is not
+an operational manual and not a benchmark proving autonomous analytic
 performance. It is a source-governed workbench for producing reviewable analytic
 artifacts under synthetic conditions. The relevant question is whether a module
 can leave behind a traceable evidence packet that another analyst, instructor,
 or assurance reviewer can challenge: source keys, caveats, assumptions,
 alternatives, confidence basis, negative controls, rights constraints, and
-refresh triggers. The tradecraft figures make this claim visible: the governed
+refresh triggers.
+
+One short example makes the standard concrete. Studying a synthetic
+leaked-document fixture, a learner does not write *the document is authentic*.
+They write a packet: *source* = the synthetic tabletop fixture they were given;
+*claim type* = provenance assessment; *confidence* = moderate, because the
+metadata is internally consistent but cannot be independently checked;
+*alternative* = the document was fabricated to mislead; *refresh trigger* =
+re-open the judgment if a primary source is released. That record — not the
+verdict — is the deliverable AGEINT teaches.
+
+The tradecraft figures make this claim visible, and all are assembled together
+in [@sec:orientation-figures-and-course-links]: the governed
 system map [@fig:ageint-graphical-abstract] shows the whole governed stack; the
 analytic evidence ladder [@fig:ageint-analytic-tradecraft-evidence-ladder]
 separates doctrine, reform, postmortem, empirical, and forecasting evidence;
 the SAT evidence boundary [@fig:ageint-sat-evidence-boundary] prevents
 universal debiasing claims; the SAT method contract
 [@fig:ageint-synthetic-tradecraft-method-contract] binds source-family
-triangulation, synthetic fixtures, analytic field separation,
+triangulation (the same point supported by more than one independent *kind* of
+source — an official standard *and* a peer-reviewed study, say, not two blog
+posts), synthetic fixtures, analytic field separation,
 negative-control testing, reviewer challenge, and artifact-evidence reporting;
 and the first-principles decomposition
 [@fig:ageint-first-principles-tradecraft-decomposition] forces observation,
 inference, assumption, likelihood, confidence, dissent, and decision boundary
 fields to remain separate.
+
+These four commitments are the reader-facing grouping of the six contract fields
+drawn in [@fig:ageint-synthetic-tradecraft-method-contract]: source-family
+triangulation and synthetic fixtures sit under the first two rows below,
+analytic-field separation and negative-control testing under the next two, and
+reviewer challenge and artifact-evidence reporting under the last two.
 
 | SAT commitment | How AGEINT implements it | Early audit surface |
 |---|---|---|
@@ -75,13 +120,15 @@ fields to remain separate.
 | Evidence packet before claim | Claims need source keys, caveats, source-family triangulation, claim-calibration review, and refresh duties before reuse. | [@fig:ageint-synthetic-tradecraft-method-contract], [@fig:ageint-scholarship-triangulation-map], and [@fig:ageint-claim-calibration-and-visual-semantics] |
 | Negative control before trust | Validators, rubrics, rendered PDFs, and figure registries are treated as attackable artifacts. | [@fig:ageint-redteam-tradecraft-negative-control-loop] and [@sec:verifier-first-artifact-evidence] |
 
+{{ORIENTATION_TRADECRAFT_VISUALS}}
+
 ## Reader paths: instructor, learner, reviewer, and maintainer handoffs {#sec:reader-paths}
 
 | Reader | Fast path | Evidence to keep |
 |---|---|---|
-| Instructor | Pair the linked part introduction from [@sec:curriculum-map] with the module overview, practice studio, evidence contract, governance boundary, and assessment route before assigning a studio exercise. | rubric row, excluded-action note, and source refresh trigger |
-| Learner | Follow the module sequence from primer to practice studio, evidence contract, governance boundary, and assessment route before drafting a capstone packet. | claim ledger entry, uncertainty note, and blocked-use statement |
-| Assurance reviewer | Trace each material claim through [@sec:source-lane-map], [@sec:bibliography_atlas], governance boundary, figure/course links, and verifier reports. | source key, review owner, caveat, and reproducible artifact path |
+| Instructor | Pair the linked part introduction from [@sec:curriculum-map] with each module's overview, practice studio, evidence contract, and governance boundary, confirm role ownership in [@sec:role-based-competency-map], then set the assessment route from [@sec:assessment-integrity-protocol] before assigning a studio exercise built toward [@sec:capstone-workflow]. | rubric row, excluded-action note, and source refresh trigger |
+| Learner | Follow the module sequence from primer to practice studio, evidence contract, and governance boundary, then meet the assessment route in [@sec:assessment-integrity-protocol] before drafting a capstone packet against [@sec:capstone-workflow]. | claim ledger entry, uncertainty note, and blocked-use statement |
+| Assurance reviewer | Trace each material claim through [@sec:source-lane-map], [@sec:bibliography_atlas], [@sec:hria-and-dpia-worksheet], [@sec:orientation-figures-and-course-links], and [@sec:verifier-first-artifact-evidence]. | source key, review owner, caveat, and reproducible artifact path |
 | Builder or maintainer | Treat generated output as an audit surface; update data, templates, manifest code, or figure specs, then rebuild and compare verifier reports. | changed source file, regeneration command, and validation result |
 
 ## Curriculum map: parts, modules, and source-backed route choices {#sec:curriculum-map}
@@ -89,6 +136,11 @@ fields to remain separate.
 {{CURRICULUM_PART_ROWS}}
 
 ## Runtime inventory: generated counts, anchors, and method appendices {#sec:runtime-inventory}
+
+These counts describe the size of the build, not its quality. They let a
+maintainer confirm a rebuild produced the expected inventory and let a reader
+gauge scope; they are not a performance, coverage, or learning-outcome claim
+(see [@sec:scholarship-and-governance-stance]).
 
 | Derived artifact | Runtime value |
 |---|---:|
@@ -100,6 +152,8 @@ fields to remain separate.
 | Official source-quality anchors | {{SOURCE_QUALITY_ANCHOR_COUNT}} |
 | Intelligence research anchors | {{INTELLIGENCE_RESEARCH_ANCHOR_COUNT}} |
 | Intelligence practice lenses | {{INTELLIGENCE_PRACTICE_LENS_COUNT}} |
+
+{{ORIENTATION_SOURCE_CONSTELLATION_VISUALS}}
 
 ## Related work and contribution boundary: adjacent literatures and AGEINT limits {#sec:related-work-and-contribution-boundary}
 
@@ -170,6 +224,8 @@ cannot establish.
 | Artifact readiness claim | Are manuscript, citations, figures, references, and PDF links from the same rebuild? | artifact-evidence manifest, rendered-reference audit, PDF audit | stale output or Markdown-file links certify as ready |
 | Reviewer disposition | What would make this row pass, warn, fail, or reopen? | negative control, closure evidence, task owner | a green check hides the decision rule |
 
+{{ORIENTATION_ASSURANCE_VISUALS}}
+
 ## Consolidated glossary and index: terms, audit surfaces, and reader routing {#sec:consolidated-glossary-and-index}
 
 Use this compact index to route common terms to the right audit surface before
@@ -181,9 +237,9 @@ reading a chapter in detail.
 | Source tier | The evidence role assigned to a source: official, standards, scholarly, practitioner, vendor, historical, or source-guide context. | [@sec:research-anchor-atlas] and source annotations |
 | Synthetic Analytic Tradecraft | The controlled use of synthetic fixtures and bounded agent support to make analytic reasoning, evidence, uncertainty, dissent, and review gates inspectable. | [@sec:synthetic-analytic-tradecraft-thesis] and [@fig:ageint-synthetic-tradecraft-method-contract] |
 | Analysis validation | The review protocol that maps claim class, validation question, evidence packet, failure mode, and disposition before a claim can be treated as ready. | [@sec:analysis-validation-protocol] and [@fig:ageint-analysis-validation-matrix] |
-| Claim ledger | A reviewable record of claim, evidence, caveat, confidence, and owner. | Research governance and [@sec:capstone-workflow] |
+| Claim ledger | A reviewable record of claim, evidence, caveat, confidence, and owner. | [@sec:scholarship-and-governance-stance] and [@sec:capstone-workflow] |
 | Safe substitution | A replacement of unsafe operational action with synthetic, public, tabletop, or governance work. | [@sec:safe-substitution-matrix] |
-| Reviewer gate | A named human approval or challenge point before reuse, presentation, or tool execution. | Assessment review and assurance rows |
+| Reviewer gate | A named human approval or challenge point before reuse, presentation, or tool execution. | [@sec:assessment-integrity-protocol] and [@sec:adversarial-assurance-cycle] |
 | Figure registry | The reproducible map from figure label to generated asset, caption, and source section. | [@sec:orientation-figures-and-course-links] |
 
 ## Intelligence research profiles: domain lanes, source roles, and profile routing {#sec:intelligence-research-profiles}
@@ -329,14 +385,11 @@ or formalism claims. The current report is written to
 `output/reports/claim_calibration.json` and `.md`, and the unified artifact
 evidence manifest exposes the result as `claim_calibration_ok`.
 
-Analysis validation adds the reader-facing disposition layer. The compact matrix
-in [@fig:ageint-analysis-validation-matrix] turns claim classes into questions:
-whether design guidance is bounded, whether empirical language is directly
-evaluated, whether governance advice has a legal or standards anchor, whether a
-figure is accessible and provenance-backed, whether the PDF and manuscript came
-from the same rebuild, and whether a reviewer can reproduce the pass/warn/fail
-decision. This is why the artifact-evidence manifest records both positive
-counts and false-certification controls.
+Analysis validation adds the reader-facing disposition layer, summarized as a
+claim-class-to-question matrix in [@sec:analysis-validation-protocol] and
+[@fig:ageint-analysis-validation-matrix]; that matrix is the boundary on what the
+manuscript can honestly say. This is why the artifact-evidence manifest records
+both positive counts and false-certification controls.
 
 ## Verifier-first artifact evidence: build freshness, audits, and negative controls {#sec:verifier-first-artifact-evidence}
 
@@ -364,10 +417,10 @@ safety or permission to run live operations
 
 {{AGEINT_PATTERN_ROWS}}
 
-## Safety rail: authorized, synthetic, defensive, and non-operational boundaries {#sec:safety-rail}
+## Safety rail: accountable, synthetic, defensive, and evidence-bounded boundaries {#sec:safety-rail}
 
 All exercises remain educational, lawful, defensive, historical, synthetic,
-and non-operational. Modules may discuss intelligence, cyber, influence,
+and evidence-bounded. Modules may discuss intelligence, cyber, influence,
 counterintelligence, and industrial systems as objects of study, but they do
 not provide instructions for unauthorized collection, evasion, exploitation,
 manipulation, covert targeting, or real-world harm.

@@ -37,15 +37,15 @@ label.
 
 The 2026-06-11 through 2026-06-14 hardening passes keep this package tied to the
 expanded source and figure surface: 462 curated research anchors, 10 source-quality
-support anchors, 173 registered figures (115 Mermaid, 48 Python, 4 historical,
+support anchors, 177 registered figures (115 Mermaid, 52 Python, 4 historical,
 and 6 AI-generated) plus one non-numbered cover-art PNG, refreshed CSAF / International AI Safety Report URL metadata, US IC agency-source pack metadata, and
 label-backed navigation across the orientation, curriculum map, source-lane
 map, research-anchor atlas, bibliography atlas, figure/course-link, and
 bibliography-atlas source-section coverage surfaces. The current local artifact
-evidence is 330 configured generated Markdown files, 16,057 generated Markdown citation
-occurrences, 0 zero-citation source sections, and a 1,854-page combined PDF
+evidence is 330 configured generated Markdown files, 16,604 generated Markdown citation
+occurrences, 0 zero-citation source sections, and a 1,858-page combined PDF
 with 6,289 URI links and 0 template PDF-validator issues. Figure captions, alt text, and long
-descriptions are registry-enforced reader aids: all 173 rows now meet the
+descriptions are registry-enforced reader aids: all 177 rows now meet the
 expanded 40-word caption, 24-word alt-text, and 70-word long-description gates.
 The PNG files also embed compact accessibility, provenance, and visual-semantics metadata,
 `visual_quality_audit.json` records the machine-readable visual-quality

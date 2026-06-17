@@ -30,7 +30,7 @@ def canonical_claim_ledger_rows() -> str:
             (
                 "| Agentic workflow claim | Tool boundary, authority contract, human "
                 "review point, and rollback condition | Confirm the workflow remains "
-                "educational, logged, reversible, and non-operational. |"
+                "educational, logged, reversible, and evidence-bounded. |"
             ),
             (
                 "| Technical or theoretical claim | Direct domain source for the "
@@ -74,7 +74,7 @@ def canonical_competency_rubric_rows() -> str:
             "| Analytic rigor | Assumptions, uncertainty, alternatives, and confidence are explicit. |",
             "| Agentic design | Human oversight, tool boundaries, logging, and rollback are specified. |",
             "| Governance and rights | Authority, procurement, privacy, accessibility, retention, and redress evidence are visible. |",
-            "| Safety posture | Exercises remain authorized, synthetic, defensive, lawful, and non-operational. |",
+            "| Safety posture | Exercises remain accountable, synthetic, defensive, lawful, and evidence-bounded. |",
         ]
     )
 
@@ -111,8 +111,8 @@ def canonical_mastery_rows() -> str:
 def canonical_safety_boundary() -> str:
     """The single canonical default safety-boundary paragraph (non-pattern chapters)."""
     return (
-        "Keep all practice authorized, synthetic, defensive, logged, reversible, and "
-        "non-operational. Do not convert any module into live targeting, evasion, "
+        "Keep all practice accountable, synthetic, defensive, logged, reversible, and "
+        "evidence-bounded. Do not convert any module into live targeting, evasion, "
         "exploitation, covert collection, manipulation, or unsafe cyber-physical "
         "action. Where a module inherits a risky source motif, treat it as a "
         "tabletop, audit, provenance, or governance exercise."

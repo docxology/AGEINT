@@ -108,8 +108,9 @@ theater, live-target instructions, metric-looking diagrams without units or
 denominators, statistical decorations without empirical design, citation
 clusters that do not bear the sentence they decorate, and agent outputs whose
 provenance cannot be reconstructed. The technical build is part of that scholarship. Curriculum shards generate
-semantic manuscript files; cross-references use label-backed section, figure,
-table, and equation links; citations route through Pandoc keys; figures are
+semantic manuscript files; cross-references use label-backed section and figure
+links, and display equations are typeset from source for reproducible math;
+citations route through Pandoc keys; figures are
 registry-backed PNG assets with captions, alt text, long descriptions,
 provenance, hashes, and visual-semantics metadata; source anchors carry explicit
 lane and tier fields; claim calibration audits high-risk empirical,

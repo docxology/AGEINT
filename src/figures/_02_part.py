@@ -121,6 +121,8 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
         }
         if "canvas_size" in visual:
             provenance["canvas_size"] = visual["canvas_size"]
+        if "orientation_slot" in visual:
+            provenance["orientation_slot"] = visual["orientation_slot"]
         specs.append(
             FigureSpec(
                 label=f"fig:{visual['slug']}",
@@ -193,7 +195,7 @@ def build_figure_specs(curriculum: Curriculum, manifest: Any) -> list[FigureSpec
                     "model": "local deterministic conceptual renderer",
                     "prompt": plate["prompt"],
                     "visual_text": plate.get("visual_text", ""),
-                    "safety": "synthetic, non-operational, no real people, no real targets",
+                    "safety": "synthetic, evidence-bounded, no real people, no real targets",
                 },
             )
         )

@@ -136,8 +136,8 @@ def write_manuscript_output_docs(manuscript_dir: Path) -> list[Path]:
         "# AGENTS.md - Generated Manuscript Output\n\n"
         "Generated files here are resolved from neutral source templates and "
         "curriculum data. Figure and section references are label-backed, "
-        "registry-aware, and auto-numbered by Pandoc-crossref. Keep outputs defensive, authorized, "
-        "synthetic, and non-operational; do not add live targeting or "
+        "registry-aware, and auto-numbered by Pandoc-crossref. Keep outputs defensive, accountable, "
+        "synthetic, and evidence-bounded; do not add live targeting or "
         "exploitation material.\n\n"
         "Do not patch generated Markdown as a primary authoring surface. If a "
         "section is thin or stale, update `src/manuscript_manifest/`, "
@@ -166,7 +166,7 @@ def write_manuscript_output_docs(manuscript_dir: Path) -> list[Path]:
                 "# AGENTS.md - Generated Manuscript Parts\n\n"
                 "Part folders are generated manuscript output. Keep paths semantic, "
                 "references Pandoc-backed, and content defensive, educational, "
-                "authorized, synthetic, and non-operational.\n",
+                "accountable, synthetic, and evidence-bounded.\n",
             ),
         ):
             path = parts_dir / name
@@ -191,7 +191,7 @@ def write_manuscript_output_docs(manuscript_dir: Path) -> list[Path]:
             part_agents.write_text(
                 f"# AGENTS.md - {part_title}\n\n"
                 "Generated chapter files in this part must remain defensive, "
-                "authorized, synthetic, and non-operational. Preserve "
+                "accountable, synthetic, and evidence-bounded. Preserve "
                 "label-backed Pandoc-crossref citations and figure references, avoid raw "
                 "LaTeX refs or hard-coded numbering, and update source modules "
                 "before rebuilding when scholarship, safety boundaries, or "
@@ -216,7 +216,7 @@ def write_manuscript_output_docs(manuscript_dir: Path) -> list[Path]:
                 "AGENTS.md",
                 "# AGENTS.md - Generated Manuscript Appendices\n\n"
                 "Appendix files are generated. Keep method descriptions educational, "
-                "synthetic, defensive, and non-operational; do not add live tool "
+                "synthetic, defensive, and evidence-bounded; do not add live tool "
                 "procedures or unauthorized collection workflows.\n",
             ),
         ):
@@ -312,7 +312,7 @@ def write_figures_output_docs(figures_dir: Path) -> list[Path]:
             "This generated directory stores deterministic synthetic concept "
             "plates for AGEINT patterns. The plates are intentionally abstract "
             "and avoid real targets, people, interfaces, or logos.",
-            "Keep synthetic assets educational and non-operational. Update "
+            "Keep synthetic assets educational and evidence-bounded. Update "
             "`src/figures/` prompts and render logic, then rebuild so the "
             "registry, hashes, and manuscript references stay aligned.",
         ),

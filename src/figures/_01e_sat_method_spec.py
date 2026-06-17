@@ -14,7 +14,8 @@ SAT_METHOD_VISUALS: tuple[dict[str, str], ...] = (
             "claim-making contract; bounded agentic assistance as a limited "
             "support layer; and verification, safety, and human-review gates as "
             "the outer assurance ring. The figure is a curriculum architecture "
-            "map, not a claim that AGEINT has measured operational performance."
+            "map, not a claim that AGEINT has measured field capability or "
+            "learning outcomes."
         ),
         "alt_text": (
             "Square system atlas for AGEINT. A dark source spine anchors locked "

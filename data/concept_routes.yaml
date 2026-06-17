@@ -33,7 +33,7 @@ concept_keyword_routes:
 - keywords:
   - nature of intelligence
   - definition of intelligence
-  frame: Define intelligence as information gathered to reduce decision uncertainty for an authorized customer, separating
+  frame: Define intelligence as information gathered to reduce decision uncertainty for an accountable decision owner, separating
     collection, analysis, and covert action.
 - keywords:
   - intelligence cycle
@@ -251,7 +251,7 @@ concept_keyword_routes:
 - keywords:
   - special operations
   - unconventional warfare
-  frame: Read special-operations intelligence as support to authorized planning with explicit authority and oversight fields.
+  frame: Read special-operations intelligence as support to accountable planning with explicit authority and oversight fields.
 - keywords:
   - cia
   - nsa

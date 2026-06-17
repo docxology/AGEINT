@@ -282,7 +282,9 @@ def _relative(path: Path, root: Path) -> str:
 
 
 def _table_cell(value: str) -> str:
-    return str(value).replace("|", "\\|").replace("\n", " ").strip()
+    from markdown_cell import escape_table_cell
+
+    return escape_table_cell(value)
 
 
 __all__ = [

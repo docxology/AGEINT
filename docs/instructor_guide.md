@@ -6,7 +6,7 @@ playbook.
 
 ## Facilitation flow: prepare, run, pause, and debrief the studio
 
-1. Start with an authorized learning question and excluded-action list.
+1. Start with an accountable learning question and excluded-action list.
 2. Build a source-lane map from guide citations and verified anchors.
 3. Maintain a claim ledger with evidence, uncertainty, confidence, reviewer,
    and refresh fields.

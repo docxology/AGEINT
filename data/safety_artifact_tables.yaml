@@ -43,7 +43,7 @@ SAFE_SUBSTITUTION_PATTERNS:
   blocked_context: real plant operations, live devices, or unsafe control changes
 CAPSTONE_SCAFFOLDS:
 - phase: Question
-  artifact: authorized learning question and excluded-action list
+  artifact: accountable learning question and excluded-action list
   review_gate: instructor confirms scope, allowed data, and rights impact
 - phase: Source canon
   artifact: source-lane map with guide citations, verified anchors, and refresh dates
@@ -146,7 +146,7 @@ DATA_LINEAGE_REGISTRY:
     and refresh owner
   quality_gate: another reviewer can reproduce and challenge the artifact
 ASSESSMENT_INTEGRITY_PROTOCOL:
-- control: Authorized AI use
+- control: Accountable AI use
   student_evidence: tool-use declaration and prompt/output appendix
   instructor_check: AI assistance is allowed, visible, bounded, and aligned with the
     assignment
@@ -222,7 +222,7 @@ ADVERSARIAL_ASSURANCE_CYCLE:
   artifact: owner, due date, retest result, and refresh trigger
 MODEL_DATASET_CARD:
 - field: Intended use
-  model_card: authorized task, excluded uses, affected users, human reviewer, and
+  model_card: accountable task, excluded uses, affected users, human reviewer, and
     accountable owner
   dataset_card: Data Cards purpose statement, recommended use, prohibited reuse,
     stewardship owner, and affected stakeholder groups
@@ -292,7 +292,7 @@ RETENTION_AUDIT_TRAIL:
     cycle?
 RELEASE_CHANGE_CONTROL_GATE:
 - gate: Scope freeze
-  release_evidence: authorized use case, excluded actions, tool profile, and data
+  release_evidence: accountable use case, excluded actions, tool profile, and data
     boundary
   block_condition: scope expands to external action, live data, or an unreviewed capability
 - gate: Security and rights review

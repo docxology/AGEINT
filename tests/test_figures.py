@@ -83,9 +83,9 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
         FigureKind.HISTORICAL,
         FigureKind.AI_GENERATED,
     }
-    assert len(specs) == 173
+    assert len(specs) == 177
     assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == 115
-    assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 48
+    assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 52
     assert sum(spec.kind == FigureKind.HISTORICAL for spec in specs) == 4
     assert sum(spec.kind == FigureKind.AI_GENERATED for spec in specs) == 6
     assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == curriculum.stats["parts"] + 1 + len(mermaid_rendering.SYNTHESIS_MERMAID)
@@ -98,6 +98,8 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     fig:ageint-source-verification-flow fig:ageint-claim-ledger-flow fig:ageint-ai-compliance-map
     fig:ageint-agent-evaluation-loop fig:ageint-cross-border-data-flow fig:ageint-capstone-workflow
     fig:ageint-safe-substitution-matrix fig:ageint-instructor-assessment-lifecycle fig:ageint-accessibility-workflow
+    fig:ageint-reader-route-compass fig:ageint-synthetic-tradecraft-workbench fig:ageint-source-constellation-map
+    fig:ageint-assurance-cockpit
     fig:ageint-visual-accessibility-contract fig:ageint-visual-quality-audit-dashboard fig:ageint-artifact-evidence-control-loop
     fig:ageint-scholarship-triangulation-map fig:ageint-graphical-abstract fig:ageint-synthetic-tradecraft-method-contract
     fig:ageint-analysis-validation-matrix fig:ageint-analysis-validation-family-coverage fig:ageint-source-metadata-integrity
@@ -184,7 +186,46 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     assert atlas.output_path == "output/figures/python/ageint-graphical-abstract.png"
     assert atlas.provenance["renderer_id"] == "graphical_abstract_atlas"
     assert atlas.provenance["canvas_size"] == "2400"
-    assert "not a claim that AGEINT has measured operational performance" in atlas.caption
+    assert "not a claim that AGEINT has measured field capability" in atlas.caption
+
+
+def test_early_orientation_creative_visuals_are_registered_and_slotted() -> None:
+    curriculum = load_curriculum(DATA)
+    manifest = build_manuscript_manifest(curriculum)
+    specs = build_figure_specs(curriculum, manifest)
+    by_label = {spec.label: spec for spec in specs}
+    expected = {
+        "fig:ageint-reader-route-compass": ("reader_route_compass", "opening_route_compass"),
+        "fig:ageint-synthetic-tradecraft-workbench": (
+            "synthetic_tradecraft_workbench",
+            "tradecraft_workbench",
+        ),
+        "fig:ageint-source-constellation-map": ("source_constellation_map", "source_constellation"),
+        "fig:ageint-assurance-cockpit": ("assurance_cockpit", "assurance_cockpit"),
+    }
+
+    for label, (renderer_id, orientation_slot) in expected.items():
+        spec = by_label[label]
+        assert spec.kind is FigureKind.PYTHON
+        assert spec.source_section == "orientation.md"
+        assert spec.section_label == "sec:curriculum_orientation"
+        assert spec.output_path.startswith("output/figures/python/")
+        assert spec.provenance["renderer_id"] == renderer_id
+        assert spec.provenance["canvas_size"] == "2400"
+        assert spec.provenance["orientation_slot"] == orientation_slot
+        assert not spec.quantitative
+        assert spec.semantic_role != "conceptual_or_audit_visual"
+        assert "not a measured" in spec.interpretation_limit.lower()
+        assert any(
+            phrase in spec.caption
+            for phrase in (
+                "evidence trace",
+                "field-capability proof",
+                "evidence families",
+                "authoritative status",
+            )
+        )
+        _assert_informative_reader_text(spec)
 
 
 def test_maestro_mermaid_source_uses_top_to_bottom_layout() -> None:
@@ -254,7 +295,7 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
     assert registry["project"] == "AGEINT"
     assert registry["schema_version"] == "1.5"
     assert registry["figure_count"] == len(registry["figures"])
-    assert registry["figure_count"] == 173
+    assert registry["figure_count"] == 177
     guidance_urls = {row["url"] for row in registry["accessibility_guidance"]}
     assert {
         "https://www.w3.org/WAI/tutorials/images/complex/",

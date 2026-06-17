@@ -207,7 +207,7 @@ def test_artifact_evidence_markdown_renders_preflight_sections_without_pdf() -> 
                 "issue_rows": [],
                 "negative_control": "Fixture reference-quality negative control.",
             },
-            "figures": {"figure_count": 173, "quality_pass": True},
+            "figures": {"figure_count": 177, "quality_pass": True},
             "pdf": {"page_count": 10, "link_audit": {"uri_links": 4, "bad_target_count": 0}},
             "false_certification_control": {
                 "scenario": "Fixture scenario.",

@@ -365,7 +365,7 @@ def source_record(number: int) -> SourceRecord | None:
 
 
 def safe_source_title(title: str) -> str:
-    """Return a glyph-free, non-operational title, or "" if it must be dropped."""
+    """Return a glyph-free, evidence-bounded title, or "" if it must be dropped."""
     cleaned = _strip_unsupported_glyphs(clean_source_title(title)).strip()
     if not cleaned or text_is_operational(cleaned):
         return ""
@@ -459,7 +459,7 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
     URL where available), a description of what the work contributes, and a
     verification status flag so readers can distinguish real fetched descriptions
     from the original truncated notes. Operational titles and notes are neutralised
-    so the table stays non-operational; table rows skip section-title sanitisation.
+    so the table stays evidence-bounded; table rows skip section-title sanitisation.
     """
     rows = [
         "| Source | Cited work | What it contributes | Status |",

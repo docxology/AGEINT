@@ -35,7 +35,7 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 
 Public exports are declared in `src/__init__.py` (pipeline and manifest surface only; import `intelligence_content` row helpers from that package). Sharded subpackages use explicit per-shard imports in package `__init__.py` files.
 
-Declarative routing and architecture tables live under `data/concept_routes.yaml`, `data/concept_routes_supplement.yaml`, `data/topic_risk_routes.yaml`, and `data/manuscript_architecture.yaml` (loaded by `_data_loaders.py`).
+Declarative routing and architecture tables live under `data/*.yaml` (loaded by `_data_loaders.py`; see that module for the authoritative list — it includes the concept-route, topic-risk/prompt/rotation, manuscript-architecture, coursebook-profile, unit-education, source-support-expansion, and safety-artifact tables).
 
 Use `intelligence_content/` for official/scholarly source anchors, domain
 profiles, source lanes, safe substitutions, capstone workflows, practice
@@ -60,7 +60,7 @@ Append new guide references after that range; current append-only references
 extend through `ageint312`. Keep source-lane metadata auditable in generated
 BibTeX and bibliography atlas rows.
 
-Dual-use curriculum material must be bounded to authorized, synthetic, defensive, tabletop, or owned-lab contexts.
+Dual-use curriculum material must be bounded to accountable, synthetic, defensive, tabletop, or owned-lab contexts.
 
 `run_build()` reads build flags through `BuildConfig.from_env()` (`AGEINT_REQUIRE_RENDERED_FIGURES=1` disables placeholder figures). `scripts/generate_figures.py` and `run_build_figures()` use the same config. See `figures/AGENTS.md`.
 

@@ -82,7 +82,7 @@ a domain source is cited for that narrower taxonomy.
 
 {{CANONICAL_REFRESH_TRIGGER_ROWS}}
 
-## Safety boundary: authorized, synthetic, defensive, and non-operational practice
+## Safety boundary: accountable, synthetic, defensive, and evidence-bounded practice
 
 {{CANONICAL_SAFETY_BOUNDARY}}
 

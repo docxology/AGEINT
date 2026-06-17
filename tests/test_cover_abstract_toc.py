@@ -10,6 +10,7 @@ from PIL import Image
 import yaml
 
 from figures._03l_cover_art import (
+    COVER_BOUNDARY_TERMS,
     COVER_DOMAIN_LABELS,
     COVER_FOREGROUND_REGIONS,
     COVER_MIN_FONT_SIZE,
@@ -50,6 +51,13 @@ def test_cover_layout_contract_expands_int_domains_without_foreground_overlap() 
         "COGSEC",
         "ALL-SOURCE FUSION",
     )
+    assert COVER_BOUNDARY_TERMS == (
+        "DEFENSIVE",
+        "EDUCATIONAL",
+        "ACCOUNTABLE",
+        "SYNTHETIC",
+        "EVIDENCE-BOUNDED",
+    )
 
     region_names = [name for name, _ in COVER_FOREGROUND_REGIONS]
     assert len(region_names) == len(set(region_names))
@@ -89,8 +97,12 @@ def test_cover_art_is_generated_non_numbered_and_configured(built_output: Path) 
     assert "placeholder" not in json.dumps(metadata).lower()
     assert metadata["output_path"] == "output/figures/cover/ageint-cover-synthesis.png"
     assert metadata["domain_labels"] == list(COVER_DOMAIN_LABELS)
+    assert metadata["boundary_terms"] == list(COVER_BOUNDARY_TERMS)
     assert metadata["minimum_font_size"] == COVER_MIN_FONT_SIZE
     assert png_text["AGEINT.DomainLabels"] == "|".join(COVER_DOMAIN_LABELS)
+    assert png_text["AGEINT.BoundaryTerms"] == "|".join(COVER_BOUNDARY_TERMS)
+    assert "AUTHORIZED" not in png_text["AGEINT.BoundaryTerms"]
+    assert "NON-OPERATIONAL" not in png_text["AGEINT.BoundaryTerms"]
     assert "conceptual domain map" in metadata["description"]
     assert "performance or completeness claim" in metadata["description"]
 
@@ -192,6 +204,33 @@ def test_orientation_order_prioritizes_reader_navigation(built_output: Path) -> 
         "03-curriculum-map-parts-modules-and-source-backed-route-choices-sec-curriculum-map.md",
         "04-runtime-inventory-generated-counts-anchors-and-method-appendices-sec-runtime-inventory.md",
     ]
+
+
+def test_early_orientation_creative_visuals_are_slotted_before_late_inventory(
+    built_output: Path,
+) -> None:
+    orientation_dir = manuscript_dir(built_output) / "orientation"
+    placements = {
+        "00-how-to-use-this-atlas": "fig:ageint-reader-route-compass",
+        "01-synthetic-analytic-tradecraft-thesis": "fig:ageint-synthetic-tradecraft-workbench",
+        "04-runtime-inventory": "fig:ageint-source-constellation-map",
+        "06-analysis-validation-protocol": "fig:ageint-assurance-cockpit",
+    }
+    orientation_files = sorted(orientation_dir.glob("*.md"))
+    joined = "\n\n".join(path.read_text(encoding="utf-8") for path in orientation_files)
+    late_inventory = next(orientation_dir.glob("*orientation-figures-and-course-links*.md"))
+    late_text = late_inventory.read_text(encoding="utf-8")
+
+    for prefix, label in placements.items():
+        fragment = next(path for path in orientation_files if path.name.startswith(prefix))
+        text = fragment.read_text(encoding="utf-8")
+        figure_definition = f"{{#{label}}}"
+        assert figure_definition in text
+        assert figure_definition not in late_text
+        assert joined.count(figure_definition) == 1
+        assert joined.index(figure_definition) < joined.index(
+            "## Orientation figures and course links"
+        )
 
 
 def test_repeated_generated_heading_names_are_reader_specific(built_output: Path) -> None:

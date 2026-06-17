@@ -14,4 +14,4 @@ registry-backed figure insertion, readable square figure assets, generated
 folder docs, source identity stability, source-lane metadata, generated v2
 chapter/appendix structures, deep expansion sections, accessibility/rights
 review, procurement/vendor governance, agent incident response, adversarial
-assurance, and the defensive/non-operational boundary.
+assurance, and the defensive/evidence-bounded boundary.

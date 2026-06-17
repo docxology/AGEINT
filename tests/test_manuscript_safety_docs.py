@@ -123,7 +123,7 @@ def test_generated_v2_appendices_render_source_and_capstone_workflows(built_outp
     assert "## Assessment lifecycle evidence" in i_text
     assert "## Adversarial review evidence" in i_text
     assert "AGEINT patterns" in i_text
-    assert "authorized learning question" in i_text
+    assert "accountable learning question" in i_text
 
 
 def test_runtime_variables_are_auditable_and_source_backed() -> None:
@@ -233,7 +233,7 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
         "CURRENT_SOURCE_UPDATE_ROWS"
     ]
     assert "AGEINT patterns" in variables["SAFE_SUBSTITUTION_ROWS"]
-    assert "authorized learning question" in variables["CAPSTONE_SCAFFOLD_ROWS"]
+    assert "accountable learning question" in variables["CAPSTONE_SCAFFOLD_ROWS"]
     assert "WCAG/UDL needs note" in variables["ACCESSIBILITY_REVIEW_ROWS"]
     assert "procurement rationale" in variables["PROCUREMENT_OVERSIGHT_ROWS"]
     assert "DPIA trigger checklist" in variables["HRIA_DPIA_WORKSHEET_ROWS"]
@@ -405,7 +405,7 @@ def test_v2_docs_cover_source_lanes_identity_safety_and_capstone() -> None:
         "remediation backlogs",
         "HRIA/DPIA",
         "safe substitution",
-        "authorized learning question",
+        "accountable learning question",
         "source verification and claim ledgers",
         "instructor capstone/rubric/red-team review",
         "secondary or illustrative evidence",
@@ -478,7 +478,7 @@ def test_risky_patterns_are_safety_transformed(built_output: Path) -> None:
     assert "soc tabletop triage agent" in runtime_map
     assert "geoint data-quality audit agent" in runtime_map
     assert "source identity preserved in pattern registry" in pattern_chapter
-    assert "non-operational curriculum treatments" in pattern_chapter
+    assert "evidence-bounded curriculum treatments" in pattern_chapter
 
 
 def test_coursebook_practice_sections_safety_transform_unsafe_motifs(built_output: Path) -> None:

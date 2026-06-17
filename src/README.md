@@ -9,7 +9,7 @@ manuscript renderer.
 - Status: manual code.
 - Source of truth: code in this folder plus `data/curriculum/`.
 - Test: `uv run pytest tests/ --cov=src --cov-fail-under=90` from the AGEINT root.
-- Safety: encode defensive, authorized, synthetic, non-operational defaults in generated prose.
+- Safety: encode defensive, accountable, synthetic, evidence-bounded defaults in generated prose.
 
 Public exports are declared in `src/__init__.py`. Package layout:
 
@@ -39,7 +39,7 @@ declassified historical records, FININT/economic security, agentic AI,
 OSINT/GEOINT, collection management, counterintelligence, cognitive security,
 cyber threat intelligence, ICS/OT defense, and legal oversight into reusable
 profiles. Keep new additions in that profile/lens shape so every generated
-chapter can inherit the same source-backed, non-operational contract.
+chapter can inherit the same source-backed, evidence-bounded contract.
 
 `figures/` owns every generated visual asset and the registry contract,
 renders Mermaid, Python, historical, and synthetic figure classes, then

@@ -11,9 +11,9 @@ Operational constraints for agents editing this project. Full system map: [`../A
 - Use label-backed cross-refs (`[@sec:…]`, `[@fig:…]`, `[@ageintNNN]`), not hard-coded figure or section numbers.
 - Keep figure captions, alt text, and long descriptions source-owned, substantial, and reader-informative; generated PDFs must link to sections, figures, citations, or external sources, not local `.md` files.
 
-## Safety posture: defensive, educational, synthetic, and authorized work
+## Safety posture: defensive, educational, accountable, and evidence-bounded work
 
-Dual-use material stays defensive, educational, authorized, synthetic, and non-operational. See [`safety.md`](safety.md) and [`safety_audit.md`](safety_audit.md).
+Dual-use material stays defensive, educational, accountable, synthetic, and evidence-bounded. See [`safety.md`](safety.md) and [`safety_audit.md`](safety_audit.md).
 
 ## Verification before claiming done: rebuild, audits, tests, and validators
 

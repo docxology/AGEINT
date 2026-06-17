@@ -189,7 +189,7 @@ the lens question: **{lens.planning_question}**
 
 **Practice rail:** use public, benign, owned-lab, or synthetic material; preserve provenance and uncertainty notes.
 
-### {title} safe practice lab: authorized inputs and retained safety gates
+### {title} safe practice lab: accountable inputs and retained safety gates
 
 {_safe_practice_lab(chapter)}
 
@@ -256,7 +256,7 @@ five-row rubric in the shared method-and-assurance reference
 rigor, agentic design, governance and rights, and safety posture. Score the
 artifact for {topic_context} against that rubric together with the
 topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and non-operational posture stay
+handling, oversight design, rights evidence, and evidence-bounded posture stay
 visible.
 """
 
@@ -325,18 +325,18 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     safe_patterns = chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
     synthesis_block = _security_synthesis_block() if chapter["number"] == 34 else ""
     safety_boundary = (
-        "Keep all practice authorized, synthetic, defensive, logged, "
-        f"reversible, and non-operational while working from {source_context_inline} and {topic_context}. Do not convert it into "
+        "Keep all practice accountable, synthetic, defensive, logged, "
+        f"reversible, and evidence-bounded while working from {source_context_inline} and {topic_context}. Do not convert it into "
         "live targeting, evasion, exploitation, covert collection, "
         "manipulation, or unsafe cyber-physical action."
     )
     if safe_patterns:
         safety_boundary = (
-            "Raw design-pattern motifs are transformed into authorized tabletop, "
+            "Raw design-pattern motifs are transformed into accountable tabletop, "
             "audit, provenance, control-coverage, and governance exercises. The "
             "module preserves source identity in the pattern registry while "
             f"rewriting methods, applications, and architecture artifacts for {topic_context} into "
-            "non-operational curriculum treatments."
+            "evidence-bounded curriculum treatments."
         )
     profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
@@ -458,7 +458,7 @@ manipulation, or cyber-physical action; examples stay tied to {topic_context}.
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
 Work products fit the current unit's education, policy review, lab
-exercises, and authorized defensive analysis for {topic_context}.
+exercises, and accountable defensive analysis for {topic_context}.
 
 #### {details["excluded_boundary"]}
 
@@ -467,7 +467,7 @@ exercises, and authorized defensive analysis for {topic_context}.
 ### {details["governance"]}
 
 Governance is practiced as a gate on the **{profile.title}**
-lane. Learners use the **{lens.title}** to decide who authorized the exercise,
+lane. Learners use the **{lens.title}** to decide who is accountable for the exercise,
 which evidence is sufficient, what rights and access issues remain, and when an
 agent-assisted artifact must stop for human review while using {topic_context}.
 

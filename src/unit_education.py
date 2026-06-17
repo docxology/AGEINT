@@ -72,7 +72,7 @@ def render_unit_profile_markdown(part: dict[str, Any]) -> str:
                 f"that draws on {artifact_list}. The unit keeps its learning spine "
                 f"explicit. {profile.learning_spine}"
             ),
-            f"### {profile.concept} safety boundary: authorized, synthetic, and non-operational limits",
+            f"### {profile.concept} safety boundary: accountable, synthetic, and evidence-bounded limits",
             profile.safety_boundary,
         ]
     )

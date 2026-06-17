@@ -21,9 +21,9 @@ References remain append-only through `ageint312`. The `ageint001` through
 Final citations must be directly verified official, standards-body,
 public-domain, or scholarly sources.
 
-## Safety boundary: non-operational support and rights review limits
+## Safety boundary: evidence-bounded support and rights review limits
 
 Accessibility and rights review may use public sources, standards text,
 synthetic examples, owned-lab records, or instructor-provided excerpts. It must
 not process private learner data, infer protected traits, contact real people,
-or turn a rights worksheet into an operational profile.
+or turn a rights worksheet into a field-capability profile.

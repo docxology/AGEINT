@@ -2394,12 +2394,12 @@
     "misconception": "that naming an agent pattern certifies it is safe to deploy without governance gates"
   },
   {
-    "display_title": "Safe defensive application: authorized bibliography, source inventory, or standards-mapping exercise",
+    "display_title": "Safe defensive application: accountable bibliography, source inventory, or standards-mapping exercise",
     "raw_title": "Application: Multi-source data harvesting, real-time collection",
     "risk_category": "ageint_pattern_registry",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Design Patterns and Archetypes",
-    "why_it_matters": "Without explicit treatment of **Safe defensive application: authorized bibliography, source inventory, or standards-mapping exercise**, treating pattern names as deployment playbooks undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
+    "why_it_matters": "**Safe defensive application: accountable bibliography, source inventory, or standards-mapping exercise** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; treating pattern names as deployment playbooks is a common failure.",
     "misconception": "that naming an agent pattern certifies it is safe to deploy without governance gates"
   },
   {
@@ -2628,12 +2628,12 @@
     "misconception": "that naming an agent pattern certifies it is safe to deploy without governance gates"
   },
   {
-    "display_title": "Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to non-operational actions",
+    "display_title": "Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to evidence-bounded actions",
     "raw_title": "Pattern 10: The Control Plane Agent — Modular tool routing through single interface",
     "risk_category": "ageint_pattern_registry",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Design Patterns and Archetypes",
-    "why_it_matters": "**Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to non-operational actions** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; treating pattern names as deployment playbooks is a common failure.",
+    "why_it_matters": "Analysts use **Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to evidence-bounded actions** to separate agent assistance from autonomous external action. A defensible treatment names the judgment it enables for least-privilege agent design and run review, the proof limit that treating pattern names as deployment playbooks would otherwise hide, and the reviewer accountable for challenge.",
     "misconception": "that naming an agent pattern certifies it is safe to deploy without governance gates"
   },
   {
@@ -2682,12 +2682,12 @@
     "misconception": "that naming an agent pattern certifies it is safe to deploy without governance gates"
   },
   {
-    "display_title": "Safe defensive application: authorized monitoring governance exercise over toy asset-health records",
+    "display_title": "Safe defensive application: accountable monitoring governance exercise over toy asset-health records",
     "raw_title": "Application: Persistent target monitoring, dark web alerting, infrastructure tracking",
     "risk_category": "ageint_pattern_registry",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Design Patterns and Archetypes",
-    "why_it_matters": "Without explicit treatment of **Safe defensive application: authorized monitoring governance exercise over toy asset-health records**, treating pattern names as deployment playbooks undermines least-privilege agent design and run review; the lesson builds the habit to separate agent assistance from autonomous external action.",
+    "why_it_matters": "**Safe defensive application: accountable monitoring governance exercise over toy asset-health records** matters in the **Agentic AI Governance and Tool Security** lane because least-privilege agent design and run evidence must stay separate from judgment; treating pattern names as deployment playbooks is a common failure.",
     "misconception": "that naming an agent pattern certifies it is safe to deploy without governance gates"
   },
   {

@@ -302,7 +302,9 @@ def appendix_rows(appendix: dict[str, Any]) -> str:
 def _blocked_appendix_source_label(raw_title: str, safe_title: str) -> str:
     """Keep appendix provenance without reprinting unsafe learner-facing wording."""
     if raw_title == safe_title:
-        return raw_title
+        # No risky motif needed transforming, so the "blocked source motif" column
+        # carries no signal — say so rather than duplicating the safe-treatment cell.
+        return "no blocked motif; source title used verbatim"
     prefix = re.match(r"^\s*([A-Z]\.\d+)", raw_title)
     source_id = prefix.group(1) if prefix else "source item"
     return f"{source_id} retained for audit; operational wording transformed"

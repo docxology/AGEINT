@@ -54,7 +54,7 @@ def appendix_body(appendix: dict[str, Any]) -> str:
         [
             (
                 "The current appendix is an evidence workbook for reusable classroom methods. "
-                "It is educational and non-operational: examples remain synthetic, defensive, "
+                "It is educational and evidence-bounded: examples remain synthetic, defensive, "
                 "lawful, and bounded to owned labs, public sources, or tabletop exercises. "
                 f"Source-item focus: {topic_context}."
             ),
@@ -256,7 +256,7 @@ def _io_contract(title: str) -> str:
             "| Source identity | retain `ageintNNN`, title, URL, and checked status | cite with Pandoc keys and avoid pasted raw URLs in prose |",
             "| Accessibility | include plain-language labels, table headers, and figure alternatives | reject inaccessible figures, unlabeled tables, or single-modality evidence |",
             "| Rights | identify affected groups, safeguards, and residual risk | preserve privacy, equality, access, contestability, and redress notes |",
-            "| Tooling | use allowlisted tools, visible prompts, logs, and stop conditions | keep outputs non-operational, reversible, and human-reviewed |",
+            "| Tooling | use allowlisted tools, visible prompts, logs, and stop conditions | keep outputs evidence-bounded, reversible, and human-reviewed |",
             "| Refresh | record source, policy, standard, incident, or assessment trigger | assign an owner and date for revalidation |",
         ]
     )

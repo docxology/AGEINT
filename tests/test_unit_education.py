@@ -59,7 +59,7 @@ def test_unit_profiles_render_in_unit_introductions(built_output: Path) -> None:
             in text
         )
         assert (
-            f"### {profile.concept} safety boundary: authorized, synthetic, and non-operational limits"
+            f"### {profile.concept} safety boundary: accountable, synthetic, and evidence-bounded limits"
             in text
         )
         assert profile.concept in text

@@ -58,7 +58,7 @@ def test_docs_figure_counts_match_rendered_registry() -> None:
         ]
     )
 
-    assert registry["figure_count"] == 173
+    assert registry["figure_count"] == 177
     assert mermaid_count == 115
     assert f"{mermaid_count} Mermaid" in docs
     assert f"{jsonl_declared_count} JSONL-declared" in docs

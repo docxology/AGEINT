@@ -323,7 +323,11 @@ def _draw_bar_chart(output: Path, title: str, labels: Sequence[str], values: Seq
         draw.rounded_rectangle((x0, y0, x1, chart[3]), radius=5, fill=PALETTE[index % len(PALETTE)])
         if len(values) <= 26 or index % 4 == 0 or value == max_value:
             draw.text((x0, max(chart[1] + 5, y0 - 28)), str(value), fill=INK, font=_font(font_mod, 22))
-        if len(values) <= 20:
+        # Always show x-axis anchors: for <=20 bars show every label; above that,
+        # thin to ~22 evenly-spaced labels (plus the last) so a reader can still
+        # locate positions instead of facing an unlabeled wall of bars.
+        label_stride = max(1, (len(values) + 21) // 22)
+        if index % label_stride == 0 or index == len(values) - 1:
             words = labels[index].split()
             if len(labels[index]) > 18 and len(words) > 1:
                 mid = (len(words) + 1) // 2

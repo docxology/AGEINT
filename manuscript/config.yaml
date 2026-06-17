@@ -90,4 +90,4 @@ project_config:
     derived_outline_mirror: "output/data/curriculum_outline.json"
     runtime_variables: "output/data/manuscript_variables.json"
     counts_are_generated: true
-    safety_posture: "defensive, educational, non-operational, legally compliant"
+    safety_posture: "defensive, educational, accountable, evidence-bounded, legally compliant"

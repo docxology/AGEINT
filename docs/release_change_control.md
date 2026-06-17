@@ -8,7 +8,7 @@ what monitoring signal would reopen review.
 
 | Gate | Evidence |
 |---|---|
-| Scope freeze | authorized use case, excluded actions, tool profile, and data boundary |
+| Scope freeze | accountable use case, excluded actions, tool profile, and data boundary |
 | Security and rights review | privacy, accessibility, security, bias, and human-review checks |
 | Version and rollback | model, prompt, dataset, or rubric version; changelog; test fixture; rollback path |
 | Post-release monitoring | monitoring signal, incident threshold, refresh trigger, and owner |

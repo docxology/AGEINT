@@ -2,9 +2,9 @@
 
 Prose and naming conventions for generated curriculum content.
 
-## Voice and posture: defensive, educational, authorized, and non-operational prose
+## Voice and posture: defensive, educational, accountable, and evidence-bounded prose
 
-- Defensive, educational, authorized, synthetic, non-operational.
+- Defensive, educational, accountable, synthetic, evidence-bounded.
 - No live targets, evasion recipes, exploit instructions, or manipulation playbooks.
 - Prefer governance, tabletop exercises, source-integrity review, and historical context for dual-use topics.
 

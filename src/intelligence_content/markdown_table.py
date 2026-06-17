@@ -7,7 +7,9 @@ from collections.abc import Iterable, Mapping, Sequence
 
 def table_cell(value: object) -> str:
     """Escape pipes and collapse whitespace for a Markdown table cell."""
-    return str(value).replace("|", "\\|").replace("\n", " ").strip()
+    from markdown_cell import escape_table_cell
+
+    return escape_table_cell(value)
 
 
 def render_dict_table(

@@ -31,6 +31,7 @@ from ._canonical_reference import (
     canonical_refresh_trigger_rows,
     canonical_safety_boundary,
 )
+from ._orientation_visuals import is_early_orientation_figure
 
 # Rotated framing for the per-chapter learning-path links block. The structural links
 # themselves (orientation, parent unit, previous/next module) are emitted as
@@ -135,6 +136,10 @@ def _visual_synthesis(
         )
 
     own_figures = figures_for_section(figures, section.relative_path)
+    if section.relative_path == "orientation.md":
+        own_figures = [
+            entry for entry in own_figures if not is_early_orientation_figure(entry)
+        ]
     reference_labels = [entry["label"] for entry in own_figures]
     for label in _fallback_figure_labels(section):
         if label not in reference_labels:

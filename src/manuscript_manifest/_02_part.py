@@ -90,7 +90,7 @@ def _safe_substitution_patterns(chapter: dict[str, Any]) -> str:
         [
             f"Use the v2 safe-substitution table whenever a "
             "risky motif is inherited from the source guide. The source identity remains "
-            f"visible through {source_context}, but the classroom treatment becomes bounded and non-operational.",
+            f"visible through {source_context}, but the classroom treatment becomes review-bounded and evidence-bounded.",
             "",
             safe_substitution_rows(),
         ]

@@ -6,7 +6,7 @@ profiles:
     source_use_contract: Use source-guide citations for inherited curriculum topics and official/standards anchors for claims about authority, quality, records, and review.
     practice_artifact: requirements-to-product traceability ledger
     safety_boundary: Activities stay inside public, synthetic, or instructor-provided materials and never become live collection or tasking.
-    learning_spine: Learners translate a decision need into an authorized question, identify evidence channels, write confidence language, and preserve audit context.
+    learning_spine: Learners translate a decision need into an accountable question, identify evidence channels, write confidence language, and preserve audit context.
     evidence_artifacts:
       - requirement card
       - source descriptor

@@ -20,7 +20,7 @@ The major v2 pass expands AGEINT without changing its architecture:
 - Source-guide references increased from 231 to 312 by append-only expansion.
 - Curated anchors increased to 462 with source-lane metadata,
   stakeholder role, assurance use, and rights dimension where relevant.
-- Registered figures increased to 173, spanning curriculum and part maps,
+- Registered figures increased to 177, spanning curriculum and part maps,
   per-chapter concept diagrams, source verification, claim ledger, compliance,
   agent evaluation, data flow, capstone, safe-substitution, instructor
   lifecycle, accessibility, HRIA/DPIA, procurement oversight, agent incident,
@@ -46,8 +46,10 @@ The major v2 pass expands AGEINT without changing its architecture:
   Mermaid stack; it preserves the stable figure label while adding a richer
   source-spine, tradecraft-core, agentic-boundary, verification, and human-review
   layout.
-- Every generated chapter now uses five reader-facing H2 landmarks: orientation,
-  practice studio, evidence contract, governance boundary, and assessment route.
+- Every generated chapter now uses three reader-facing H2 landmarks (source/profile
+  frame, practice-lens path, assurance handoff); the orientation, practice studio,
+  evidence contract, governance boundary, and assessment-route scaffolds are retained
+  as H3/H4 body headings so they do not flood the PDF table of contents.
   Repeated scaffold headings such as topic lessons, evidence canon, agentic
   translation, reviewer challenge checklist, and learning-path cross-links are
   retained as H3/H4 body headings so they do not flood the PDF TOC.
@@ -64,8 +66,8 @@ The major v2 pass expands AGEINT without changing its architecture:
   table-layout, typography, verifier-first artifact-evidence, scholarship,
   Synthetic Analytic Tradecraft orientation, SAT method-contract, analysis-validation,
   family-coverage, source-metadata, cover/abstract/TOC, and graphical-abstract/TOC-title hardening passes:
-  330 configured generated Markdown files, 16,057 generated Markdown citation
-  occurrences, 0 zero-citation source sections, and a 1,854-page combined PDF
+  330 configured generated Markdown files, 16,604 generated Markdown citation
+  occurrences, 0 zero-citation source sections, and a 1,858-page combined PDF
   with 6,289 URI links.
   Source metadata is also verifier-enforced: 472 metadata rows cover 462
   curated anchors plus 10 source-quality support anchors, with 0 blank lane/tier
@@ -73,7 +75,7 @@ The major v2 pass expands AGEINT without changing its architecture:
   The agency-source coverage report separately verifies the 56-anchor official
   US IC expansion for agency, pack, lane, tier, checked-date, claim-scope,
   assurance, rights, duplicate/collision, and profile-routing completeness.
-  Figure-reader text is also registry-enforced: all 173 captions meet the
+  Figure-reader text is also registry-enforced: all 177 captions meet the
   40-word minimum, all alt-text
   rows meet the 24-word minimum, all long descriptions meet the 70-word
   minimum, generated PNGs embed compact accessibility/provenance and visual-semantics metadata,

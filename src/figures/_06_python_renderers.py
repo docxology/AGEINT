@@ -55,6 +55,12 @@ from ._03m_graphical_abstract import _render_graphical_abstract_atlas
 from ._03n_claim_calibration import _render_claim_calibration_and_visual_semantics
 from ._03o_source_refresh_due import _render_source_refresh_due_dashboard
 from ._03p_agency_source_coverage import _render_agency_source_coverage_dashboard
+from ._03r_early_orientation import (
+    _render_assurance_cockpit,
+    _render_reader_route_compass,
+    _render_source_constellation_map,
+    _render_synthetic_tradecraft_workbench,
+)
 from ._03b_asset_renderers import _render_citation_density
 from ._04_part import _font, _pil_modules
 from ._05_visual_style import (
@@ -113,6 +119,10 @@ def render_python_figure(
         "source_refresh_due_dashboard": _render_source_refresh_due_dashboard,
         "agency_source_coverage_dashboard": _render_agency_source_coverage_dashboard,
         "claim_calibration_and_visual_semantics": _render_claim_calibration_and_visual_semantics,
+        "reader_route_compass": _render_reader_route_compass,
+        "synthetic_tradecraft_workbench": _render_synthetic_tradecraft_workbench,
+        "source_constellation_map": _render_source_constellation_map,
+        "assurance_cockpit": _render_assurance_cockpit,
         "hria_dpia_map": _render_hria_dpia_map,
         "procurement_oversight_loop": _render_procurement_oversight_loop,
         "agent_incident_lifecycle": _render_agent_incident_lifecycle,

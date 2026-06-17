@@ -11,7 +11,7 @@ profiles:
     outputs: analytic note, hypothesis table, assumption list, and confidence statement
     failures: single-hypothesis reasoning, source laundering, confidence inflation, and suppressed dissent
   collection_management:
-    inputs: authorized requirements, source-discipline choices, minimization rules, source-risk notes, and evaluation criteria
+    inputs: accountable requirements, source-discipline choices, minimization rules, source-risk notes, and evaluation criteria
     transforms: priority mapping, source-discipline fit, least-intrusive evidence selection, and feedback review
     outputs: requirements matrix, collection-limit note, source-quality card, and gap list
     failures: recruitment or interception drift, over-collection, weak minimization, and source exposure

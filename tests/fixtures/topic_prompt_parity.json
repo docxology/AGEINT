@@ -1824,7 +1824,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified training-manual archive",
@@ -1833,7 +1833,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified training-manual archive**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified training-manual archive**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified source-protection and agent-handling ethics",
@@ -1842,7 +1842,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and agent-handling ethics**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and agent-handling ethics**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Working with Information in Intelligence (1970s)",
@@ -1851,7 +1851,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "The evidence packet for **Working with Information in Intelligence (1970s)** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for Working, Information.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Working with Information in Intelligence**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Working with Information in Intelligence**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Declassified psychological-pressure ethics",
@@ -1860,7 +1860,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified psychological-pressure ethics**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified psychological-pressure ethics**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Some Aspects of Training Agents Psychologically (1985)",
@@ -1869,7 +1869,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "The evidence packet for **Some Aspects of Training Agents Psychologically (1985)** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for Some, Aspects.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Some Aspects of Training Agents**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Some Aspects of Training Agents**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Exposure of Disinformation in Intelligence Materials (1968)",
@@ -1878,7 +1878,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "The evidence packet for **Exposure of Disinformation in Intelligence Materials (1968)** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for Exposure, Disinformation.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Exposure of Disinformation in Intelligence**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Exposure of Disinformation in Intelligence**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Organizational Structure and Management of Intelligence Residency",
@@ -1887,7 +1887,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "The evidence packet for **Organizational Structure and Management of Intelligence Residency** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for Organizational, Structure.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Organizational Structure and Management of**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Organizational Structure and Management of**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Declassified confidential-contact oversight",
@@ -1896,7 +1896,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified confidential-contact oversight**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified confidential-contact oversight**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified residency-management oversight",
@@ -1905,7 +1905,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified residency-management oversight**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified residency-management oversight**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified special-unit oversight case",
@@ -1914,7 +1914,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified special-unit oversight case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified special-unit oversight case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Mitrokhin Archive: Declassified source-protection and institutional-control case study",
@@ -1923,7 +1923,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Mitrokhin Archive**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Mitrokhin Archive**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "GRU: Soviet Military Intelligence Structure",
@@ -1932,7 +1932,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "The evidence packet for **GRU: Soviet Military Intelligence Structure** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for GRU, Soviet.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **GRU**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **GRU**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Interpreter Magazine: Declassified source-protection and institutional-control case study",
@@ -1941,7 +1941,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Soviet and Russian Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Interpreter Magazine**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Interpreter Magazine**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified source-protection and institutional-control case study",
@@ -1950,7 +1950,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study",
@@ -1959,7 +1959,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **OSS Secret Intelligence Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **OSS Secret Intelligence Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "OSS Provisional Basic Field Manual: Declassified source-protection and institutional-control case study",
@@ -1968,7 +1968,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **OSS Provisional Basic Field Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **OSS Provisional Basic Field Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Hybrid-threat indicator review using sample scenarios and policy thresholds",
@@ -1977,7 +1977,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: ambiguous-threshold indicators, attribution caveats, and policy review fields in a sample scenario.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the indicator descriptor, the bounded claim about **Hybrid-threat indicator review using sample**, the attribution caveat, the threshold uncertainty, the non-attribution boundary, and the reviewer who approves the policy read."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the indicator descriptor, the bounded claim about **Hybrid-threat indicator review using sample**, the attribution caveat, the threshold uncertainty, the non-attribution boundary, and the reviewer who approves the policy read."
   },
   {
     "display_title": "OSS Special Weapons and Devices: Declassified source-protection and institutional-control case study",
@@ -1986,7 +1986,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **OSS Special Weapons and Devices**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **OSS Special Weapons and Devices**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Simple Sabotage Field Manual: Declassified source-protection and institutional-control case study",
@@ -1995,7 +1995,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Simple Sabotage Field Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Simple Sabotage Field Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Morale Operations Field Manual: Declassified source-protection and institutional-control case study",
@@ -2004,7 +2004,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Morale Operations Field Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Morale Operations Field Manual**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "CIA Cold War Operations: Declassified source-protection and institutional-control case study",
@@ -2013,7 +2013,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **CIA Cold War Operations**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **CIA Cold War Operations**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "CIA Manual of Trickery and: Declassified source-protection and institutional-control case study",
@@ -2022,7 +2022,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **CIA Manual of Trickery**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **CIA Manual of Trickery**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Principles of Tradecraft: Declassified source-protection and institutional-control case study",
@@ -2031,7 +2031,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Principles of Tradecraft**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Principles of Tradecraft**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Cognitive influence-analysis case review using sample materials",
@@ -2040,7 +2040,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: narrative provenance, audience-harm notes, attribution evidence, and transparent education options.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must record the narrative provenance, the bounded claim about **Cognitive influence-analysis case review using**, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must record the narrative provenance, the bounded claim about **Cognitive influence-analysis case review using**, the audience-harm caveat, the uncertainty note, the transparent-use boundary, and the reviewer accountable for correction."
   },
   {
     "display_title": "Studies in Intelligence: Declassified source-protection and institutional-control case study",
@@ -2049,7 +2049,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Studies in Intelligence**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Studies in Intelligence**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified source-protection and institutional-control case study (28.3.1)",
@@ -2058,7 +2058,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified source-protection and institutional-control case study (28.3.2)",
@@ -2067,7 +2067,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "History of SIGINT at the: Declassified source-protection and institutional-control case study",
@@ -2076,7 +2076,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **History of SIGINT**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **History of SIGINT**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "NSA WWII Declassified: Declassified source-protection and institutional-control case study",
@@ -2085,7 +2085,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "American Intelligence History",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **NSA WWII Declassified**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **NSA WWII Declassified**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified source-protection and institutional-control case study",
@@ -2094,7 +2094,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "British and Allied Intelligence",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Hybrid-threat indicator review using sample scenarios and policy thresholds",
@@ -2103,7 +2103,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "British and Allied Intelligence",
     "evidence_prompt": "Evidence packet: ambiguous-threshold indicators, attribution caveats, and policy review fields in a sample scenario.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the indicator descriptor, the bounded claim about **Hybrid-threat indicator review using sample**, the attribution caveat, the threshold uncertainty, the non-attribution boundary, and the reviewer who approves the policy read."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the indicator descriptor, the bounded claim about **Hybrid-threat indicator review using sample**, the attribution caveat, the threshold uncertainty, the non-attribution boundary, and the reviewer who approves the policy read."
   },
   {
     "display_title": "GCHQ and the BRUSA/UKUSA Agreements",
@@ -2112,7 +2112,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "British and Allied Intelligence",
     "evidence_prompt": "The evidence packet for **GCHQ and the BRUSA/UKUSA Agreements** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for GCHQ, BRUSA.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **GCHQ and the BRUSA/UKUSA Agreements**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **GCHQ and the BRUSA/UKUSA Agreements**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Five Eyes Archive: Key Declassified Documents",
@@ -2121,7 +2121,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "British and Allied Intelligence",
     "evidence_prompt": "The evidence packet for **Five Eyes Archive: Key Declassified Documents** uses source descriptors, declassified-source interpretation and case-to-principle translation records, provenance gaps, and a documented judgment-change condition for Five, Eyes.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Five Eyes Archive**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must name the source descriptor, the bounded claim about **Five Eyes Archive**, the caveat that limits it, the uncertainty note, the out-of-scope-use boundary, and the reviewer accountable for challenge."
   },
   {
     "display_title": "Declassified source-protection and institutional-control case study",
@@ -2130,7 +2130,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified source-protection and institutional-control case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified cover-identity and source-protection case",
@@ -2139,7 +2139,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified cover-identity and source-protection case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified cover-identity and source-protection case**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Declassified covert-action oversight and source-protection case",
@@ -2148,7 +2148,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified covert-action oversight and source-protection**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Declassified covert-action oversight and source-protection**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Unit: Declassified source-protection and institutional-control case study",
@@ -2157,7 +2157,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Unit**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Unit**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "SDECE/DGSE: Declassified source-protection and institutional-control case study",
@@ -2166,7 +2166,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **SDECE/DGSE**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **SDECE/DGSE**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "BND: Declassified source-protection and institutional-control case study",
@@ -2175,7 +2175,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **BND**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **BND**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Stasi: Declassified source-protection and institutional-control case study",
@@ -2184,7 +2184,7 @@
     "part_title": "HISTORICAL INTELLIGENCE SERVICES",
     "chapter_title": "Israeli and Continental Services",
     "evidence_prompt": "Evidence packet: release metadata, redaction caveats, institutional setting, and the governance lesson that can be defended from the record.",
-    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and non-operational boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Stasi**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
+    "artifact_prompt": "Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** for this declassified-source interpretation and case-to-principle translation topic. The artifact must cite the declassified source descriptor, the bounded lesson about **Stasi**, the redaction caveat, the attribution uncertainty, the protected-detail boundary, and the reviewer who clears release."
   },
   {
     "display_title": "Defining AGEINT: From AI Agents to Autonomous Intelligence Systems",
@@ -2394,12 +2394,12 @@
     "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about **Safe methods**, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
   },
   {
-    "display_title": "Safe defensive application: authorized bibliography, source inventory, or standards-mapping exercise",
+    "display_title": "Safe defensive application: accountable bibliography, source inventory, or standards-mapping exercise",
     "raw_title": "Application: Multi-source data harvesting, real-time collection",
     "risk_category": "ageint_pattern_registry",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Design Patterns and Archetypes",
-    "evidence_prompt": "The evidence packet for **Safe defensive application: authorized bibliography, source inventory, or standards-mapping exercise** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for defensive, application.",
+    "evidence_prompt": "The evidence packet for **Safe defensive application: accountable bibliography, source inventory, or standards-mapping exercise** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for defensive, application.",
     "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about **Safe defensive application**, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
   },
   {
@@ -2628,12 +2628,12 @@
     "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about **Safe architecture artifact**, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
   },
   {
-    "display_title": "Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to non-operational actions",
+    "display_title": "Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to evidence-bounded actions",
     "raw_title": "Pattern 10: The Control Plane Agent — Modular tool routing through single interface",
     "risk_category": "ageint_pattern_registry",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Design Patterns and Archetypes",
-    "evidence_prompt": "The evidence packet for **Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to non-operational actions** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Pattern, Permissioned.",
+    "evidence_prompt": "The evidence packet for **Pattern 10: Permissioned Control Plane Agent (source identity preserved in pattern registry) - keeps every tool revocable, observable, and constrained to evidence-bounded actions** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for Pattern, Permissioned.",
     "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about **Pattern 10**, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
   },
   {
@@ -2682,12 +2682,12 @@
     "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about **Safe methods**, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
   },
   {
-    "display_title": "Safe defensive application: authorized monitoring governance exercise over toy asset-health records",
+    "display_title": "Safe defensive application: accountable monitoring governance exercise over toy asset-health records",
     "raw_title": "Application: Persistent target monitoring, dark web alerting, infrastructure tracking",
     "risk_category": "ageint_pattern_registry",
     "part_title": "AGEINT — AGENTIC INTELLIGENCE",
     "chapter_title": "AGEINT Design Patterns and Archetypes",
-    "evidence_prompt": "The evidence packet for **Safe defensive application: authorized monitoring governance exercise over toy asset-health records** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for defensive, application.",
+    "evidence_prompt": "The evidence packet for **Safe defensive application: accountable monitoring governance exercise over toy asset-health records** uses source descriptors, least-privilege agent design and run records, provenance gaps, and a documented judgment-change condition for defensive, application.",
     "artifact_prompt": "Build a **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** for this least-privilege agent design and run review topic. The artifact must name the pattern descriptor, the bounded claim about **Safe defensive application**, the safe-substitution caveat, the uncertainty note, the no-deployment boundary, and the reviewer accountable for challenge."
   },
   {

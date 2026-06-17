@@ -26,9 +26,17 @@ COVER_DOMAIN_LABELS = (
     "ALL-SOURCE FUSION",
 )
 
+COVER_BOUNDARY_TERMS = (
+    "DEFENSIVE",
+    "EDUCATIONAL",
+    "ACCOUNTABLE",
+    "SYNTHETIC",
+    "EVIDENCE-BOUNDED",
+)
+
 COVER_FOREGROUND_REGIONS: tuple[tuple[str, tuple[int, int, int, int]], ...] = (
     ("header", (140, 95, 2260, 260)),
-    ("safety_ribbon", (270, 300, 2130, 380)),
+    ("boundary_key", (270, 300, 2130, 390)),
     ("agentic_layer", (410, 430, 1990, 660)),
     ("domain_humint", (235, 780, 585, 858)),
     ("domain_sigint", (235, 910, 585, 988)),
@@ -79,8 +87,9 @@ def render_cover_art(project_root: Path, curriculum: Curriculum) -> Path:
 
     _draw_background_grid(draw, COVER_CANVAS_SIZE)
     _draw_system_rings(draw)
+    _draw_domain_paths(draw)
     _draw_header(draw, font_mod)
-    _draw_safety_ribbon(draw, font_mod)
+    _draw_boundary_key(draw, font_mod)
     _draw_agentic_layer(draw, font_mod)
     _draw_domain_nodes(draw, font_mod)
     _draw_tradecraft_core(draw, font_mod, curriculum)
@@ -98,6 +107,7 @@ def render_cover_art(project_root: Path, curriculum: Curriculum) -> Path:
         "AGEINT.NonNumbered": str(metadata["non_numbered"]).lower(),
         "AGEINT.Description": metadata["description"],
         "AGEINT.DomainLabels": "|".join(COVER_DOMAIN_LABELS),
+        "AGEINT.BoundaryTerms": "|".join(COVER_BOUNDARY_TERMS),
         "AGEINT.LayoutRegions": layout_regions,
         "AGEINT.MinimumFontSize": str(COVER_MIN_FONT_SIZE),
         "AGEINT.Provenance": json.dumps(metadata["provenance"], sort_keys=True),
@@ -120,11 +130,12 @@ def _cover_metadata(curriculum: Curriculum) -> dict[str, Any]:
         "output_path": COVER_OUTPUT_PATH.as_posix(),
         "description": (
             "Deterministic non-numbered cover image for the AGEINT PDF title page. "
-            "The visual is a conceptual domain map for source spine, Synthetic "
+            "The visual is a conceptual domain map and evidence-lens atlas for source spine, Synthetic "
             "Analytic Tradecraft, bounded agentic assistance, verification, and "
             "safety constraints; it is not a performance or completeness claim."
         ),
         "domain_labels": list(COVER_DOMAIN_LABELS),
+        "boundary_terms": list(COVER_BOUNDARY_TERMS),
         "minimum_font_size": COVER_MIN_FONT_SIZE,
         "layout_regions": [
             {"name": name, "box": list(box)} for name, box in COVER_FOREGROUND_REGIONS
@@ -153,11 +164,11 @@ def _box(name: str) -> tuple[int, int, int, int]:
 
 def _draw_background_grid(draw: Any, size: int) -> None:
     for offset in range(0, size + 1, 120):
-        color = "#e8eef6" if offset % 240 else "#dbe5f0"
-        draw.line((offset, 0, offset, size), fill=color, width=2)
-        draw.line((0, offset, size, offset), fill=color, width=2)
-    draw.rectangle((52, 52, size - 52, size - 52), outline="#94a3b8", width=4)
-    draw.rectangle((78, 78, size - 78, size - 78), outline="#cbd5e1", width=2)
+        color = "#edf4fb" if offset % 240 else "#dbe8f4"
+        draw.line((offset, 0, offset, size), fill=color, width=1)
+        draw.line((0, offset, size, offset), fill=color, width=1)
+    draw.rectangle((52, 52, size - 52, size - 52), outline="#a8b7ca", width=4)
+    draw.rectangle((78, 78, size - 78, size - 78), outline="#d3deea", width=2)
 
 
 def _draw_header(draw: Any, font_mod: Any) -> None:
@@ -172,19 +183,36 @@ def _draw_header(draw: Any, font_mod: Any) -> None:
     )
     draw.text(
         (x0 + 63, y0 + 104),
-        "source-governed curriculum, bounded agent support, and reviewable evidence packets",
+        "source-governed curriculum, accountable agent support, and evidence-bounded claim packets",
         fill="#cbd5e1",
         font=_cover_font(font_mod, 28),
     )
 
 
-def _draw_safety_ribbon(draw: Any, font_mod: Any) -> None:
-    x0, y0, x1, y1 = _box("safety_ribbon")
-    draw.rounded_rectangle((x0, y0, x1, y1), radius=30, fill="#fff1f2", outline="#be123c", width=4)
-    text = "DEFENSIVE | EDUCATIONAL | AUTHORIZED | SYNTHETIC | NON-OPERATIONAL"
-    font = _cover_font(font_mod, 34)
-    bbox = draw.textbbox((0, 0), text, font=font)
-    draw.text((1200 - (bbox[2] - bbox[0]) / 2, y0 + 21), text, fill="#9f1239", font=font)
+def _draw_boundary_key(draw: Any, font_mod: Any) -> None:
+    x0, y0, x1, y1 = _box("boundary_key")
+    draw.rounded_rectangle((x0, y0, x1, y1), radius=30, fill="#ffffff", outline="#0f766e", width=4)
+    draw.text((x0 + 36, y0 + 26), "BOUNDARY KEY", fill="#0f766e", font=_cover_font(font_mod, 27))
+    chip_styles = {
+        "DEFENSIVE": ("#dbeafe", "#2563eb"),
+        "EDUCATIONAL": ("#ccfbf1", "#0f766e"),
+        "ACCOUNTABLE": ("#fef3c7", "#b45309"),
+        "SYNTHETIC": ("#ede9fe", "#7c3aed"),
+        "EVIDENCE-BOUNDED": ("#ffe4e6", "#be123c"),
+    }
+    chip_x = x0 + 270
+    for label in COVER_BOUNDARY_TERMS:
+        fill, outline = chip_styles[label]
+        width = 240 if len(label) < 13 else 330
+        draw.rounded_rectangle((chip_x, y0 + 20, chip_x + width, y1 - 20), radius=22, fill=fill, outline=outline, width=3)
+        bbox = draw.textbbox((0, 0), label, font=_cover_font(font_mod, 24))
+        draw.text(
+            (chip_x + (width - (bbox[2] - bbox[0])) / 2, y0 + 34),
+            label,
+            fill=outline,
+            font=_cover_font(font_mod, 24),
+        )
+        chip_x += width + 28
 
 
 def _draw_agentic_layer(draw: Any, font_mod: Any) -> None:
@@ -215,14 +243,23 @@ def _draw_agentic_layer(draw: Any, font_mod: Any) -> None:
 def _draw_system_rings(draw: Any) -> None:
     center = (1200, 1080)
     rings = (
-        (705, "#eaf4ff", "#2563eb"),
-        (545, "#e9fbef", "#0f766e"),
-        (385, "#fff5ce", "#b45309"),
-        (245, "#f2edff", "#7c3aed"),
+        (705, "#2563eb"),
+        (545, "#0f766e"),
+        (385, "#b45309"),
+        (245, "#7c3aed"),
     )
-    for radius, fill, outline in rings:
+    for radius, outline in rings:
         box = (center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius)
-        draw.ellipse(box, fill=fill, outline=outline, width=5)
+        draw.ellipse(box, outline=outline, width=5)
+
+
+def _draw_domain_paths(draw: Any) -> None:
+    center = (1200, 1080)
+    for _, region_name, color in _DOMAIN_NODE_SPECS:
+        x0, y0, x1, y1 = _box(region_name)
+        node_center = ((x0 + x1) // 2, (y0 + y1) // 2)
+        draw.line((*node_center, *center), fill=color, width=3)
+        draw.line((*node_center, *center), fill="#ffffff", width=1)
 
 
 def _draw_domain_nodes(draw: Any, font_mod: Any) -> None:
@@ -252,21 +289,23 @@ def _draw_domain_node(
 
 def _draw_tradecraft_core(draw: Any, font_mod: Any, curriculum: Curriculum) -> None:
     x0, y0, x1, y1 = _box("tradecraft_core")
-    draw.rounded_rectangle((x0, y0, x1, y1), radius=48, fill="#ffffff", outline="#0f172a", width=7)
-    draw.text((x0 + 176, y0 + 58), "SYNTHETIC ANALYTIC", fill=INK, font=_cover_font(font_mod, 54))
-    draw.text((x0 + 300, y0 + 128), "TRADECRAFT", fill=INK, font=_cover_font(font_mod, 70))
-    draw.line((x0 + 110, y0 + 220, x1 - 110, y0 + 220), fill="#cbd5e1", width=5)
+    draw.rounded_rectangle((x0, y0, x1, y1), radius=52, fill="#ffffff", outline="#0f172a", width=7)
+    draw.ellipse((x0 + 88, y0 + 42, x1 - 88, y0 + 282), fill="#f8fafc", outline="#94a3b8", width=4)
+    draw.text((x0 + 305, y0 + 72), "EVIDENCE LENS", fill="#334155", font=_cover_font(font_mod, 34))
+    draw.text((x0 + 178, y0 + 123), "SYNTHETIC ANALYTIC", fill=INK, font=_cover_font(font_mod, 51))
+    draw.text((x0 + 305, y0 + 188), "TRADECRAFT", fill=INK, font=_cover_font(font_mod, 64))
+    draw.line((x0 + 110, y0 + 286, x1 - 110, y0 + 286), fill="#cbd5e1", width=5)
     draw_wrapped_text(
         draw,
-        (x0 + 118, y0 + 255),
+        (x0 + 118, y0 + 298),
         (
-            "Synthetic records and classroom tabletops become reviewable "
-            "evidence packets before trust."
+            "Synthetic records become reviewable claim packets after "
+            "source trace, caveat, and reviewer handoff."
         ),
         _cover_font(font_mod, 31),
         fill=MUTED,
         width=52,
-        max_lines=3,
+        max_lines=2,
         line_height=39,
     )
     fields = (
@@ -278,14 +317,14 @@ def _draw_tradecraft_core(draw: Any, font_mod: Any, curriculum: Curriculum) -> N
         "dissent",
     )
     for index, field in enumerate(fields):
-        row = index // 2
-        col = index % 2
-        fx0 = x0 + 110 + col * 440
-        fy0 = y0 + 340 + row * 54
+        row = index // 3
+        col = index % 3
+        fx0 = x0 + 110 + col * 300
+        fy0 = y0 + 424 + row * 58
         color = SOFT_PALETTE[index % len(SOFT_PALETTE)]
-        draw.rounded_rectangle((fx0, fy0, fx0 + 365, fy0 + 42), radius=18, fill=color, outline="#94a3b8", width=2)
-        draw.text((fx0 + 20, fy0 + 7), field, fill=INK, font=_cover_font(font_mod, 25))
-    draw.rounded_rectangle((x0 + 110, y1 - 64, x1 - 110, y1 - 16), radius=20, fill="#f8fafc", outline="#94a3b8", width=2)
+        draw.rounded_rectangle((fx0, fy0, fx0 + 250, fy0 + 42), radius=18, fill=color, outline="#94a3b8", width=2)
+        draw.text((fx0 + 18, fy0 + 7), field, fill=INK, font=_cover_font(font_mod, 24))
+    draw.rounded_rectangle((x0 + 110, y1 - 64, x1 - 110, y1 - 16), radius=20, fill="#ecfeff", outline="#0f766e", width=2)
     draw.text(
         (x0 + 145, y1 - 52),
         "decision boundary: claim, caveat, reviewer, refresh",
@@ -380,6 +419,7 @@ def _draw_cover_footer(draw: Any, font_mod: Any, curriculum: Curriculum) -> None
 
 
 __all__ = [
+    "COVER_BOUNDARY_TERMS",
     "COVER_DOMAIN_LABELS",
     "COVER_FOREGROUND_REGIONS",
     "COVER_MIN_FONT_SIZE",

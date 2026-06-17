@@ -54,6 +54,8 @@ def test_safety_audit_blocks_operational_phrases_outside_source_audit_contexts(
 
 def test_safety_boundary_is_documented() -> None:
     safety = (PROJECT_ROOT / "docs" / "safety.md").read_text(encoding="utf-8").lower()
-    assert "non-operational" in safety
+    assert "evidence-bounded" in safety
+    assert "accountable" in safety
     assert "synthetic" in safety
     assert "unauthorized" in safety
+    assert "non-operational" not in safety

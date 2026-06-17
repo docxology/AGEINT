@@ -1,8 +1,15 @@
 # AGEINT generated/local outputs
 output/
 .coverage
+coverage*.json
+htmlcov/
 .pytest_cache/
+.benchmarks/
+.mypy_cache/
+.ruff_cache/
 __pycache__/
 *.pyc
 *.egg-info/
 .venv/
+tmp/
+.DS_Store

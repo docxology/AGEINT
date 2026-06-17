@@ -159,7 +159,7 @@ def _draw_header(draw: Any, font_mod: Any) -> None:
     draw.text((215, 180), "AGEINT EVIDENCE TRANSIT MAP", fill="#f8fafc", font=_font(font_mod, 58))
     draw.text(
         (218, 255),
-        "source reservoirs -> claim packet switchyard -> verifier gates -> output artifacts",
+        "source reservoirs -> claim packet station -> verifier gates -> generated artifacts",
         fill="#cbd5e1",
         font=_font(font_mod, 29),
     )
@@ -179,10 +179,10 @@ def _draw_column_labels(draw: Any, font_mod: Any) -> None:
 
 def _draw_rails(draw: Any) -> None:
     rail_specs = [
-        ("#2563eb", 545, 1040),
-        ("#0f766e", 710, 1180),
-        ("#b45309", 875, 1320),
-        ("#7c3aed", 1040, 1460),
+        ("#2563eb", 544, 1026),
+        ("#0f766e", 709, 1176),
+        ("#b45309", 874, 1326),
+        ("#7c3aed", 1039, 1476),
     ]
     for color, source_y, gate_y in rail_specs:
         _draw_polyline(
@@ -190,15 +190,14 @@ def _draw_rails(draw: Any) -> None:
             (
                 (560, source_y),
                 (700, source_y),
-                (820, 1100),
-                (1110, 1100),
-                (1240, gate_y),
-                (1620, gate_y),
+                (735, source_y),
+                (735, gate_y),
+                (1225, gate_y),
+                (1588, gate_y),
+                (1650, gate_y),
             ),
             color,
         )
-    for color, y in (("#2563eb", 1655), ("#0f766e", 1755), ("#b45309", 1855), ("#7c3aed", 1955)):
-        _draw_polyline(draw, ((1545, y - 355), (1650, y), (1980, y)), color)
 
 
 def _draw_source_reservoirs(draw: Any, font_mod: Any, telemetry: dict[str, Any]) -> None:
@@ -332,28 +331,28 @@ def _draw_output_artifacts(draw: Any, font_mod: Any, telemetry: dict[str, Any]) 
             f"{outputs['generated_markdown_files']} generated Markdown files",
             "labels, citations, and reader routes",
             PALETTE[0],
-            1610,
+            1026,
         ),
         (
             "Figure system",
             f"{outputs['registered_figures']} numbered registry figures",
             "front-matter furniture is non-numbered",
             PALETTE[1],
-            1710,
+            1176,
         ),
         (
             "Evidence reports",
             "metadata, refresh, agency routing, quality",
             "fail-closed audits before trust claims",
             PALETTE[3],
-            1810,
+            1326,
         ),
         (
             "PDF front matter",
-            "cover unchanged | page-two visual added",
+            "cover refreshed | page-two telemetry visual",
             "publishing info carries telemetry caveat",
             PALETTE[2],
-            1910,
+            1476,
         ),
     ]
     for title, value, body, color, y in artifacts:
@@ -362,11 +361,16 @@ def _draw_output_artifacts(draw: Any, font_mod: Any, telemetry: dict[str, Any]) 
 
 def _draw_boundary_footer(draw: Any, font_mod: Any) -> None:
     draw.rounded_rectangle((155, 2055, 2045, 2130), radius=28, fill="#fff1f2", outline="#be123c", width=4)
-    draw.text(
-        (195, 2078),
-        "BOUNDARY: artifact telemetry only; no model performance, learning-outcome, public-release, or publication certification claim.",
-        fill="#9f1239",
+    draw.text((195, 2078), "INTERPRETATION LIMIT", fill="#9f1239", font=_font(font_mod, 23))
+    draw_wrapped_text(
+        draw,
+        (515, 2071),
+        "artifact telemetry only; no model performance, learning-outcome, public-release, or publication certification claim.",
         font=_font(font_mod, 25),
+        fill="#9f1239",
+        width=83,
+        max_lines=2,
+        line_height=29,
     )
 
 

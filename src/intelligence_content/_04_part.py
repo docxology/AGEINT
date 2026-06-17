@@ -354,7 +354,7 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
             "over-collection, and mistaking availability for reliability"
         ),
         safety_boundary=(
-            "OSINT work uses lawful public or authorized sources and avoids "
+            "OSINT work uses lawful public, owned-lab, or explicitly approved sources and avoids "
             "doxxing, harassment, live tracking, or operational targeting"
         ),
         source_pack_ids=(

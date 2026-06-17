@@ -54,7 +54,7 @@ When adding intelligence content:
 - Attach anchors to a reusable profile instead of writing chapter-specific prose.
 - Cite sources with Pandoc keys generated into `output/manuscript/references-*.bib`.
 - Keep Perplexity notes out of the bibliography unless the cited source is a directly verified external publication.
-- Preserve the non-operational boundary: no live targeting, exploitation, evasion, manipulation, unsafe cyber-physical action, or unauthorized collection.
+- Preserve the evidence-bounded boundary: no live targeting, exploitation, evasion, manipulation, unsafe cyber-physical action, or unauthorized collection.
 
 The May 2026 research pass adds IC-cycle governance, CAPCO dissemination
 marking, IC AI ethics, ICD 505 AI governance, ICD 504 data management, PCLOB
@@ -271,12 +271,12 @@ curriculum-map rows link each part intro and module-map figure, and research-anc
 bibliography / source-refresh key tables use Pandoc citations rather than
 literal `@key` text. The
 verifier-first artifact-evidence manifest now reports 330 generated Markdown files,
-16,057 generated Markdown citation occurrences, 723 source sections, and 0
-zero-citation source sections. The same local artifact manifest confirms 173
+16,604 generated Markdown citation occurrences, 723 source sections, and 0
+zero-citation source sections. The same local artifact manifest confirms 177
 registered figures plus one non-numbered cover-art PNG, with substantial
 captions, alt text, long descriptions,
 official accessibility guidance metadata, embedded PNG accessibility/provenance
-and visual-semantics metadata, machine-readable visual-quality audit metadata, a 1,854-page combined
+and visual-semantics metadata, machine-readable visual-quality audit metadata, a 1,858-page combined
 PDF, 6,289 URI links, 0 Markdown-file link targets in PDF annotations, and passing
 `source_metadata_ok` over 472 metadata rows plus `agency_source_coverage_ok` for
 the official US IC source-pack tranche. The bibliography-atlas

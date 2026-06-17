@@ -182,7 +182,7 @@ profiles:
     definition: accuracy, completeness, temporal fitness, and usability of location
       data
   - term: Minimization
-    definition: limiting retained information to what the authorized question requires
+    definition: limiting retained information to what the accountable question requires
   worked_scenario: a synthetic public-resilience team checks whether open data supports
     a non-sensitive evacuation-route map
   worked_input: public road data, public weather notices, synthetic change examples,
@@ -218,7 +218,7 @@ profiles:
     definition: a relationship suggesting indirect sponsorship without confirmed operational
       control
   worked_scenario: a synthetic policy cell compares public indicators of hybrid pressure
-    against an authorized collection plan for a benign border-disruption exercise
+    against an approved collection plan for a benign border-disruption exercise
   worked_input: public notices, synthetic interview summaries, public logistics records,
     and an instructor scope card
   worked_process: rank requirements, choose the least intrusive source discipline,
@@ -306,7 +306,7 @@ profiles:
     definition: a transparent education, correction, or process improvement that avoids
       manipulation
   - term: MISO boundary
-    definition: the line between authorized public messaging analysis and covert influence
+    definition: the line between accountable public messaging analysis and covert influence
       design
   - term: Inoculation
     definition: building recognition of manipulation tactics without deploying persuasion
@@ -352,7 +352,7 @@ profiles:
   worked_process: record provenance, mark redactions, build timeline, distinguish
     known from unknown, and extract a governance lesson
   worked_output: a historical case card with release context, caveats, lesson, and
-    non-operational boundary
+    evidence-bounded boundary
   practice_focus: declassified-source interpretation and case-to-principle translation
   review_question: Which institutional lesson is defensible from the record, and which
     claim reconstructs live tradecraft?

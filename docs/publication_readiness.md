@@ -23,7 +23,7 @@ tasks, or a failing parent-template confidentiality guard.
 
 ## Current evidence: local status, validators, and remaining release limits
 
-The 2026-06-14 local preflight is green:
+The 2026-06-16 local preflight is green:
 
 - `publication_readiness.ok: true`
 - `artifact_manifest.issues: []`
@@ -32,10 +32,10 @@ The 2026-06-14 local preflight is green:
 - `source_refresh_due.summary.row_count: 472`
 - `source_refresh_due.summary.due_or_stale_count: 0`
 - `artifact_evidence.summary.generated_markdown_files: 330`
-- `artifact_evidence.summary.generated_markdown_citation_occurrences: 16057`
-- `artifact_evidence.summary.figures: 173`
+- `artifact_evidence.summary.generated_markdown_citation_occurrences: 16604`
+- `artifact_evidence.summary.figures: 177`
 - `artifact_evidence.checks.agency_source_coverage_ok: true`
-- `artifact_evidence.summary.pdf_pages: 1854`
+- `artifact_evidence.summary.pdf_pages: 1858`
 - `artifact_evidence.summary.pdf_stale: false`
 - AGEINT PDF audit: 6,289 URI links, 0 file actions, 0 bad link targets
 

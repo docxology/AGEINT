@@ -38,7 +38,7 @@ def _expand_caption(spec: FigureSpec, curriculum: Curriculum) -> str:
     variants = (
         (
             "It is anchored to {context}; use it to inspect {detail} while preserving "
-            "the distinction between curriculum structure, evidence boundary, and authorized practice."
+            "the distinction between curriculum structure, evidence boundary, and accountable practice."
         ),
         (
             "In {context}, it lets readers compare {detail} so the visual functions as "
@@ -104,8 +104,8 @@ def _figure_detail(spec: FigureSpec, curriculum: Curriculum, *, limit: int) -> s
                 chapters = [str(chapter["title"]) for chapter in part["chapters"]]
                 if chapters:
                     return (
-                        f"{len(chapters)} module nodes from {chapters[0]} through {chapters[-1]}, "
-                        "plus the unit's ordered source-backed route"
+                        f"{len(chapters)} module nodes in the unit's ordered, "
+                        "source-backed reading sequence from its first module to its last"
                     )
     if spec.kind is FigureKind.MERMAID:
         reader_detail = str(spec.provenance.get("reader_detail", "")).strip()
@@ -197,6 +197,15 @@ def _source_context(source_section: str) -> str:
 def _visual_type(spec: FigureSpec) -> str:
     renderer_id = spec.provenance.get("renderer_id", "")
     text = f"{spec.title} {spec.caption} {spec.alt_text} {renderer_id}".lower()
+    # Flow/process figures (e.g. part "Module Map" diagrams) often carry "map" in
+    # the title, so an explicit flow signal in the alt text must win before the
+    # map -> matrix branch; otherwise a flowchart is announced as a matrix to
+    # screen readers.
+    if any(
+        token in spec.alt_text.lower()
+        for token in ("flow chart", "flowchart", "reading order", "reading sequence", "pipeline")
+    ):
+        return "process-flow figure"
     if any(token in text for token in ("matrix", "registry", "table", "map")):
         return "matrix-style figure"
     if any(token in text for token in ("loop", "flow", "lifecycle", "workflow", "cycle")):
@@ -234,6 +243,30 @@ def _python_visual_detail(renderer_id: str) -> str:
             "separation, formalism limits, visual-semantic metadata, fail-closed "
             "artifact gates, reviewer revision actions, and the limit that the map is "
             "not a capability score or measured performance claim"
+        ),
+        "reader_route_compass": (
+            "instructor, learner, assurance reviewer, and maintainer routes; "
+            "source-lane, safety-gate, claim-packet, and rebuild-proof handoffs; "
+            "the evidence each reader must retain; and the limit that the compass "
+            "is navigation support rather than a learning-outcome or performance claim"
+        ),
+        "synthetic_tradecraft_workbench": (
+            "synthetic fixture intake, source description, analytic field separation, "
+            "bounded claim-packet assembly, reviewer-gate disposition, packet drawer "
+            "fields, and the limit that the workbench is a classroom artifact route "
+            "rather than field-capability proof or an autonomous action route"
+        ),
+        "source_constellation_map": (
+            "official, standards, scholarly, public, and professional source families; "
+            "governance, technical, historical, evaluation, and assurance lanes; "
+            "central source-spine obligations; and the limit that route density is not "
+            "a source-quality ranking or evidence-strength score"
+        ),
+        "assurance_cockpit": (
+            "build freshness, reference quality, source metadata, figure quality, "
+            "artifact evidence, source refresh, template validator, and publication "
+            "boundary indicators, with the limit that dashboard telemetry is schematic "
+            "orientation and authoritative status lives in generated audits"
         ),
     }
     if renderer_id in dashboard_details:

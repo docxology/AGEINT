@@ -23,9 +23,12 @@ From template repo root after a direct build and PDF render:
 
 ```bash
 uv run python scripts/03_render_pdf.py --project working/AGEINT
-uv run python scripts/05_copy_outputs.py --project working/AGEINT
-uv run python -m infrastructure.validation.cli pdf output/working/AGEINT/pdf/AGEINT_combined.pdf
+uv run python -m infrastructure.validation.cli pdf projects/working/AGEINT/output/pdf/AGEINT_combined.pdf
 ```
+
+Run `uv run python scripts/05_copy_outputs.py --project working/AGEINT` only
+when the template-side copied output package is explicitly needed; the
+authoritative local PDF path is `projects/working/AGEINT/output/pdf/AGEINT_combined.pdf`.
 
 From the AGEINT root after the rendered PDF exists, bind the current local
 artifact evidence into one machine-readable report:
@@ -145,13 +148,13 @@ scholarship-quality, profile-anchor triangulation, Synthetic Analytic
 Tradecraft orientation, SAT method-contract, analysis-validation,
 analysis-validation family-coverage, source-metadata, cover/abstract/TOC,
 graphical-abstract/TOC-title, claim-calibration, visual-semantics, US IC
-agency-source coverage, and
+agency-source coverage, early orientation visualization, and
 single-paragraph abstract hardening passes now render 330 configured manuscript
-Markdown files with 173 registered figures plus one non-numbered cover-art PNG.
+Markdown files with 177 registered figures plus one non-numbered cover-art PNG.
 Figure PNGs carry embedded accessibility/provenance and visual-semantics
 metadata in addition to the JSON registry and `visual_quality_audit.json`. The
-combined AGEINT PDF rendered to `output/pdf/AGEINT_combined.pdf` at 32.55 MB,
-1,854 pages, letter page size, and PDF version 1.7. The template PDF validator
+combined AGEINT PDF rendered to `output/pdf/AGEINT_combined.pdf` at ~34 MB,
+1,858 pages, letter page size, and PDF version 1.7. The template PDF validator
 reported 0 issues, the AGEINT PDF quality audit reported `stale PDF: false` and
 `OK: true`, and the integrated PDF annotation audit found 6,289 URI links with
 0 `.md`, `.markdown`, `file:`, or launch targets in both the source and copied
@@ -161,13 +164,12 @@ rows plus passing SAT method-contract, analysis-validation, analysis-validation
 lane, claim-bearing family-coverage, `source_metadata_ok`, and
 `claim_calibration_ok` contracts after profile-specific external triangulation
 was added to topic lessons, worked examples, source-canon sections, and
-review-checklist sections. Claim calibration remains green with 9,219 candidate
-rows, 0 hard fails, 483 boundary-allowed rows, and 5,189 review rows. The
+review-checklist sections. Claim calibration remains green with 9,107 candidate
+rows, 0 hard fails, 482 boundary-allowed rows, and 5,129 review rows. The
 source-refresh due report is green with 472 current rows and 0 due-soon,
-due/stale, unknown-cadence, or missing-date rows. Local and copied web outputs
-now contain 334 web files, including the combined manuscript and standalone
-section views, with stale pre-label orientation filenames removed by the
-renderer cleanup hook.
+due/stale, unknown-cadence, or missing-date rows. Local web output now contains
+331 HTML files: one combined manuscript and 330 standalone section views, with
+stale pre-label orientation filenames removed by the renderer cleanup hook.
 
 ## Related documentation: output inventory and manuscript syntax
 

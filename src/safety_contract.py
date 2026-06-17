@@ -1,4 +1,4 @@
-"""Canonical safety invariants for non-operational curriculum prose.
+"""Canonical safety invariants for evidence-bounded curriculum prose.
 
 Production filtering (``source_grounding``) and manuscript-safety tests import
 from this module so blocked phrases and task motifs cannot drift apart.

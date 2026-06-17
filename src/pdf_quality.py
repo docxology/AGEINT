@@ -345,7 +345,9 @@ def _newest_pdf_source_mtime(pdf_path: Path, manuscript_dir: Path | None) -> flo
 
 
 def _table_cell(value: object) -> str:
-    return re.sub(r"\s+", " ", str(value)).replace("|", "/").strip()
+    from markdown_cell import plain_table_cell
+
+    return plain_table_cell(value)
 
 
 __all__ = [

@@ -16,7 +16,7 @@ after a rebuild and docs refresh:
 | Curated research anchors | 462 | `data/research_anchors/` |
 | Source-quality support anchors | 10 | `data/research_anchors/source-quality-anchors.jsonl` |
 | Source metadata rows | 472 | `output/reports/source_metadata.json` |
-| Registered figures | 173 | `output/figures/figure_registry.json` |
+| Registered figures | 177 | `output/figures/figure_registry.json` |
 | Non-numbered cover art | 1 | `output/figures/cover/ageint-cover-synthesis.png` |
 
 The numbered graphical abstract is the Python-rendered
@@ -60,7 +60,7 @@ public-domain, or scholarly sources encoded in the source layer.
 
 ## Domain docs: safety, governance, source lanes, and assurance workflows
 
-- `safety.md`, `safety_audit.md` — non-operational dual-use boundary
+- `safety.md`, `safety_audit.md` — evidence-bounded dual-use boundary
 - `citation_workflow.md`, `source_identity_stability.md`, `source_lane_map.md`, `source_refresh_ledger.md`, `publication_readiness.md` — citation, refresh, and release-preflight spine
 - `research.md` — verified research anchor posture
 - `instructor_guide.md`, `learner_support_assessment.md` — pedagogy

@@ -103,7 +103,7 @@ def _cognitive_attack_framework() -> str:
         "Holding the three layers apart matters because each demands a different defense -- resilience "
         "of attention, inoculation against manipulation, and protection of shared sense-making -- and a "
         "defender who conflates them will mismatch the countermeasure to the attack. Every exercise in "
-        "this unit stays defensive, synthetic, and non-operational: the taxonomy is taught to build "
+        "this unit stays defensive, synthetic, and evidence-bounded: the taxonomy is taught to build "
         "inoculation and detection, never to script influence "
         "[@official_darpa_intrinsic_cognitive_security]."
     )
@@ -158,7 +158,7 @@ def _part_summary(part: dict[str, Any]) -> str:
         "source-support spine, and capstone thread before the individual modules "
         f"begin. {source_context}\n\n"
         "Learners carry one unit capstone thread through the part: define an "
-        "authorized intelligence question, bind it to source-quality constraints, "
+        "accountable intelligence question, bind it to source-quality constraints, "
         "produce a reviewable artifact, test the artifact against failure modes, "
         "and hand it off with enough context for another analyst or instructor "
         "to audit. The capstone remains public, synthetic, or owned-lab "
@@ -170,7 +170,7 @@ def _part_summary(part: dict[str, Any]) -> str:
         f"the learner-facing spine for {source_context}\n\n"
         "This unit's safety gates are scope authorization, rights review, data "
         "provenance, tool allowlisting, human oversight, rollback, and "
-        "non-operational output. A missing gate turns the activity into a "
+        "evidence-bounded output. A missing gate turns the activity into a "
         "tabletop, audit, or written governance exercise until the gate is "
         f"restored against {source_context}\n\n"
         "Capstone thread:\n\n"
@@ -251,7 +251,7 @@ def _safe_practice_lab(chapter: dict[str, Any]) -> str:
             "| Lab step | Required artifact | Safety gate |",
             "|---|---|---|",
             (
-                "| Scope | One-sentence authorized learning objective plus excluded "
+                "| Scope | One-sentence accountable learning objective plus excluded "
                 "actions | Instructor signs off before any tool or dataset is named. |"
             ),
             (
@@ -363,7 +363,7 @@ def _authority_accountability_model(chapter: dict[str, Any], part: dict[str, Any
             "|---|---|---|",
             (
                 f"| Sponsor | Why this unit needs the module now | "
-                f"authorized learning objective, excluded actions, and source context {source_context} |"
+                f"accountable learning objective, excluded actions, and source context {source_context} |"
             ),
             "| Instructor | Which data, tools, and roles are allowed | signed scope card and stop condition |",
             (
