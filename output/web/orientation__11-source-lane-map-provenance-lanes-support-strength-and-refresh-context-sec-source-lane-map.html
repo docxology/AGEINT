@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>11-source-lane-map-provenance-lanes-support-strength-and-refresh-context-sec-source-lane-map.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2 id="sec:source-lane-map">Source lane map: provenance lanes, support
+strength, and refresh context</h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source lane</th>
+<th style="text-align: right;">Anchor count</th>
+<th>Refresh cadence</th>
+<th>Claim scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accessibility_digital_inclusion</td>
+<td style="text-align: right;">4</td>
+<td>annual, quarterly, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>active_measures_attribution</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of active_measures_attribution
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>active_measures_disinformation</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of active_measures_disinformation
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>active_measures_information_operations</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+active_measures_information_operations and related source evidence. It
+does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>adversarial_ai_security</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of adversarial_ai_security and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agent_foundations</td>
+<td style="text-align: right;">2</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agent_foundations and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agent_incident_response</td>
+<td style="text-align: right;">7</td>
+<td>annual, quarterly, semiannual</td>
+<td>7 scoped claim families</td>
+</tr>
+<tr>
+<td>agent_interoperability_standards</td>
+<td style="text-align: right;">12</td>
+<td>annual, quarterly, semiannual</td>
+<td>12 scoped claim families</td>
+</tr>
+<tr>
+<td>agentic_ai_governance</td>
+<td style="text-align: right;">21</td>
+<td>annual</td>
+<td>8 scoped claim families</td>
+</tr>
+<tr>
+<td>agentic_ai_security</td>
+<td style="text-align: right;">2</td>
+<td>annual, semiannual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>agentic_ai_security_governance</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>agentic AI adoption and security-governance context, not an AGEINT
+benchmark</td>
+</tr>
+<tr>
+<td>agentic_analytic_assistance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded claims that AI-enabled reasoning systems can assist
+evidence discovery and reasoning review while retaining analyst
+responsibility.</td>
+</tr>
+<tr>
+<td>agentic_design_principles</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_design_principles and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agentic_framework_docs</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_framework_docs and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agentic_memory</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_memory and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agentic_reasoning</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_reasoning and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>ai_conformity_compliance</td>
+<td style="text-align: right;">7</td>
+<td>annual, quarterly, semiannual</td>
+<td>7 scoped claim families</td>
+</tr>
+<tr>
+<td>ai_enabled_analysis_boundary</td>
+<td style="text-align: right;">9</td>
+<td>annual, semiannual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>ai_ethics_data_governance</td>
+<td style="text-align: right;">10</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>ai_red_team_assurance</td>
+<td style="text-align: right;">14</td>
+<td>annual, quarterly, semiannual</td>
+<td>14 scoped claim families</td>
+</tr>
+<tr>
+<td>algorithmic_transparency_reporting</td>
+<td style="text-align: right;">2</td>
+<td>quarterly</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_cognition_and_bias</td>
+<td style="text-align: right;">6</td>
+<td>annual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_epistemology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>epistemic-framing support for calibrated claims and reviewer
+challengeability</td>
+</tr>
+<tr>
+<td>analytic_method_design</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_method_pedagogy</td>
+<td style="text-align: right;">9</td>
+<td>annual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_outreach_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>analytic-outreach governance support for expert engagement and risk
+controls</td>
+</tr>
+<tr>
+<td>analytic_product_dissemination</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>analytic-product utility, discoverability, and
+dissemination-governance support</td>
+</tr>
+<tr>
+<td>analytic_production_workflow</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>workflow and analytic-production support for iterative, reviewable
+tradecraft artifacts</td>
+</tr>
+<tr>
+<td>analytic_tradecraft</td>
+<td style="text-align: right;">7</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_tradecraft_evidence</td>
+<td style="text-align: right;">5</td>
+<td>annual</td>
+<td>5 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_tradecraft_forecasting</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+analytic_tradecraft_forecasting and related source evidence. It does not
+authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>analytic_uncertainty_language</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>apt_threat_intelligence</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of apt_threat_intelligence and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>assurance_evaluation_evidence</td>
+<td style="text-align: right;">8</td>
+<td>annual, quarterly, semiannual</td>
+<td>8 scoped claim families</td>
+</tr>
+<tr>
+<td>classification_marking_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>classification-marking context for caveat and dissemination-boundary
+lessons</td>
+</tr>
+<tr>
+<td>cognitive_active_inference</td>
+<td style="text-align: right;">9</td>
+<td>annual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>cognitive_bias_foundations</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of cognitive_bias_foundations and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cognitive_influence_security</td>
+<td style="text-align: right;">13</td>
+<td>annual</td>
+<td>10 scoped claim families</td>
+</tr>
+<tr>
+<td>cognitive_performance</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of cognitive_performance and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cognitive_resilience_evidence</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Peer-reviewed Science Advances study testing psychological
+inoculation videos for improving misinformation resilience at scale,
+with bounded transfer from measured outcomes to curriculum claims</td>
+</tr>
+<tr>
+<td>cognitive_security_inoculation</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of cognitive_security_inoculation
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cognitive_security_misinformation</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+cognitive_security_misinformation and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>collection_management</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>collection_management_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of collection_management_doctrine
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>counterintelligence_program_governance</td>
+<td style="text-align: right;">2</td>
+<td>annual, quarterly</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>counterintelligence_source_integrity</td>
+<td style="text-align: right;">7</td>
+<td>annual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>counterintelligence_strategy</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of counterintelligence_strategy
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cross_border_data_spaces</td>
+<td style="text-align: right;">4</td>
+<td>semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>cryptographic_standards</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of cryptographic_standards and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cryptography_standards</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of cryptography_standards and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>current_threat_baseline</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>public threat-context grounding and warning-topic baseline, not
+operational targeting or AGEINT benchmark evidence</td>
+</tr>
+<tr>
+<td>cyber_defense_guidance_index</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>defensive cyber guidance index support for source routing and
+refresh duties</td>
+</tr>
+<tr>
+<td>cyber_threat_intelligence</td>
+<td style="text-align: right;">17</td>
+<td>annual, semiannual</td>
+<td>8 scoped claim families</td>
+</tr>
+<tr>
+<td>dataset_documentation</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>declassified_analytic_history</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>declassified_reconnaissance_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>declassified reconnaissance history support for historical and
+GEOINT source-provenance lessons</td>
+</tr>
+<tr>
+<td>defense_osint_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>public OSINT governance and professionalization support, not
+collection procedure or live targeting guidance</td>
+</tr>
+<tr>
+<td>disinformation_cognitive_psychology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+disinformation_cognitive_psychology and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>disinformation_misinformation_science</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+disinformation_misinformation_science and related source evidence. It
+does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>economic_security_review</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>economic-security and due-diligence governance support for
+threat-analysis framing</td>
+</tr>
+<tr>
+<td>education_assessment</td>
+<td style="text-align: right;">6</td>
+<td>annual, semiannual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>ethics_of_intelligence</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of ethics_of_intelligence and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>financial_economic_security</td>
+<td style="text-align: right;">8</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>finint_aml_cft_international</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of finint_aml_cft_international
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>finint_international_cooperation</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+finint_international_cooperation and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>finint_sar_reporting</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of finint_sar_reporting and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>forecasting_calibration_evidence</td>
+<td style="text-align: right;">6</td>
+<td>annual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>foreign_disclosure_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>foreign-disclosure governance support for release-boundary and
+control-marking lessons</td>
+</tr>
+<tr>
+<td>geoint_data_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>GEOINT data-governance and digital-transformation context for
+modular source substrate claims</td>
+</tr>
+<tr>
+<td>geoint_doctrine</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of geoint_doctrine and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>geoint_professional_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>GEOINT doctrine and geospatial-intelligence framing support</td>
+</tr>
+<tr>
+<td>geoint_tradecraft</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of geoint_tradecraft and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>governed_intelligence_cycle</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>gray_zone_competition_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of gray_zone_competition_doctrine
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>historical_declassified_sources</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>historical_ics_incidents</td>
+<td style="text-align: right;">4</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of historical_ics_incidents and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>human_rights_governance</td>
+<td style="text-align: right;">6</td>
+<td>annual, semiannual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>humint_doctrine</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of humint_doctrine and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>humint_oversight_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of humint_oversight_history and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>hybrid_warfare_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of hybrid_warfare_doctrine and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>hybrid_warfare_stratcom</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of hybrid_warfare_stratcom and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>ic_information_environment_risk</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>ic_public_transparency</td>
+<td style="text-align: right;">7</td>
+<td>quarterly</td>
+<td>7 scoped claim families</td>
+</tr>
+<tr>
+<td>ics_ot_defense</td>
+<td style="text-align: right;">10</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>ics_ot_security_standards</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of ics_ot_security_standards and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>imint_joint_intelligence_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+imint_joint_intelligence_doctrine and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>information_operations_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+information_operations_doctrine and related source evidence. It does not
+authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>integrated_mission_management</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>mission-management governance support for requirements-to-evidence
+substrate design</td>
+</tr>
+<tr>
+<td>intelligence_diplomacy_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>governance context for intelligence diplomacy and partner-engagement
+boundaries</td>
+</tr>
+<tr>
+<td>intelligence_failure_postmortem</td>
+<td style="text-align: right;">9</td>
+<td>annual, biennial</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>intelligence_history_american</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of intelligence_history_american
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>intelligence_history_british_allied</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+intelligence_history_british_allied and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>intelligence_history_soviet</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of intelligence_history_soviet
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>intelligence_profession_literature</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>intelligence_writing_and_review</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>irregular_warfare_strategy</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of irregular_warfare_strategy and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>learner_support_accommodations</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>learner support plans, accessibility exception documentation,
+alternative means, and artifact remediation</td>
+</tr>
+<tr>
+<td>legal_authorities_intelligence_collection</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+legal_authorities_intelligence_collection and related source evidence.
+It does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>legal_authorities_surveillance</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of legal_authorities_surveillance
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>legal_oversight</td>
+<td style="text-align: right;">9</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>legal_oversight_intelligence</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of legal_oversight_intelligence
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>llm_architecture</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of llm_architecture and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>llm_evaluation</td>
+<td style="text-align: right;">2</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of llm_evaluation and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>model_card_reporting</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>model documentation cards, intended-use statements, evaluation
+caveats, and release notes</td>
+</tr>
+<tr>
+<td>model_data_provenance</td>
+<td style="text-align: right;">14</td>
+<td>annual, quarterly, semiannual</td>
+<td>14 scoped claim families</td>
+</tr>
+<tr>
+<td>multi_agent_frameworks</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of multi_agent_frameworks and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>national_intelligence_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>IC governance and national-intelligence production context</td>
+</tr>
+<tr>
+<td>non_state_engagement_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>non-state engagement governance support for source, outreach, and
+no-tasking boundaries</td>
+</tr>
+<tr>
+<td>opsec_doctrine_governance</td>
+<td style="text-align: right;">1</td>
+<td>biennial</td>
+<td>Provides official historical OPSEC policy context for
+critical-information protection and public doctrine framing; not an
+operational OPSEC playbook.</td>
+</tr>
+<tr>
+<td>osint_doctrine</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of osint_doctrine and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>osint_geoint</td>
+<td style="text-align: right;">6</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>osint_methodology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of osint_methodology and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>privacy_ip_governance</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>procurement_performance_monitoring</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>AI procurement monitoring, vendor demonstrations, acquisition
+criteria, QASP evidence, and performance review</td>
+</tr>
+<tr>
+<td>procurement_vendor_governance</td>
+<td style="text-align: right;">4</td>
+<td>annual, quarterly, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>psyop_miso_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of psyop_miso_doctrine and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>public_sector_agentic_ai</td>
+<td style="text-align: right;">5</td>
+<td>quarterly, semiannual</td>
+<td>5 scoped claim families</td>
+</tr>
+<tr>
+<td>public_sector_transparency</td>
+<td style="text-align: right;">3</td>
+<td>annual, quarterly, semiannual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>records_retention_auditability</td>
+<td style="text-align: right;">5</td>
+<td>annual, quarterly, semiannual</td>
+<td>5 scoped claim families</td>
+</tr>
+<tr>
+<td>rights_impact_privacy</td>
+<td style="text-align: right;">4</td>
+<td>annual, quarterly, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>risk_exception_governance</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>risk exception governance, AI maturity plans, data traceability,
+public trust, and oversight capacity</td>
+</tr>
+<tr>
+<td>sat_evaluation_evidence</td>
+<td style="text-align: right;">13</td>
+<td>annual</td>
+<td>13 scoped claim families</td>
+</tr>
+<tr>
+<td>secure_release_change_control</td>
+<td style="text-align: right;">9</td>
+<td>annual, quarterly, semiannual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>sigint_emanations_intelligence</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of sigint_emanations_intelligence
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>sigint_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of sigint_history and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>sigint_oversight_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of sigint_oversight_history and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>social_engineering_influence_psychology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+social_engineering_influence_psychology and related source evidence. It
+does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>source_construction_reporting</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>PRISMA-S reporting guideline for documenting literature searches,
+search strategies, information sources, limits, records, and
+reproducibility details</td>
+</tr>
+<tr>
+<td>special_operations_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of special_operations_doctrine
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>supply_chain_intelligence_attacks</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of
+supply_chain_intelligence_attacks and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>supply_chain_risk_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>supply-chain risk governance support for defensive procurement and
+assurance lessons</td>
+</tr>
+<tr>
+<td>synthetic_media_provenance</td>
+<td style="text-align: right;">4</td>
+<td>annual, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>tearlines_and_release_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>tearline and release-governance support for public-facing evidence
+boundaries</td>
+</tr>
+<tr>
+<td>threat_intel_sharing_standards</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of threat_intel_sharing_standards
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>tool_use_agents</td>
+<td style="text-align: right;">2</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of tool_use_agents and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>warning_intelligence</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>workforce_governance</td>
+<td style="text-align: right;">5</td>
+<td>annual, quarterly, semiannual</td>
+<td>5 scoped claim families</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

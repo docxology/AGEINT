@@ -1,0 +1,25 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  MSG["Protected Message"]
+  CONF([Confidentiality: Encryption])
+  INT([Integrity: Hashing])
+  AUTHN([Authentication: Signatures])
+  PROV([Provenance: Keys and Certificates])
+  VER["Verification Checks"]
+  DEC{"Assurance Decision"}
+  TRUST([Accept Trusted Message])
+  FLAG([Flag for Review])
+  POL["Policy and Key Lifecycle"]
+  MSG --> CONF
+  MSG --> INT
+  MSG --> AUTHN
+  MSG --> PROV
+  CONF --> VER
+  INT --> VER
+  AUTHN --> VER
+  PROV --> VER
+  VER --> DEC
+  DEC -->|pass| TRUST
+  DEC -->|fail| FLAG
+  POL --> CONF
+  POL --> PROV

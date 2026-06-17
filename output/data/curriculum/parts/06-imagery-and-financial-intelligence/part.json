@@ -1,0 +1,10 @@
+{
+  "number": 6,
+  "roman": "VI",
+  "title": "IMAGERY AND FINANCIAL INTELLIGENCE",
+  "source_line": 239,
+  "chapter_files": [
+    "16-imagery-intelligence-imint/chapter.json",
+    "17-financial-intelligence-finint/chapter.json"
+  ]
+}

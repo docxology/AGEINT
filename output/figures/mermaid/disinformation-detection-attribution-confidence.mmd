@@ -1,0 +1,19 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  S(["Suspected coordinated narrative"])
+  S --> T["Technical indicators"]
+  S --> B["Behavioral indicators"]
+  S --> C["Content and provenance"]
+  T --> G{"Evidence quality gate"}
+  B --> G
+  C --> G
+  G --> J["Confidence grading"]
+  J --> L["Low confidence"]
+  J --> M["Moderate confidence"]
+  J --> H["High confidence"]
+  L --> R1["Monitor and collect more"]
+  M --> R2["Caveated advisory"]
+  H --> R3["Attributed public notice"]
+  R1 --> D(["Document and peer review"])
+  R2 --> D
+  R3 --> D

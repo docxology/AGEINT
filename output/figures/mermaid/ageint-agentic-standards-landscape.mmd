@@ -1,0 +1,36 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart LR
+  subgraph SOURCES["Source families"]
+    direction TB
+    NIST["NIST<br/>agent standards / AI RMF"]
+    OECD["OECD<br/>agentic AI concepts"]
+    MCP["MCP<br/>spec + security"]
+    OWASP["OWASP<br/>agentic risks"]
+    MITRE["MITRE ATLAS<br/>adversarial AI"]
+    CISA["CISA/NSA<br/>AI data security"]
+  end
+  subgraph AGEINT["AGEINT boundary"]
+    direction TB
+    DEF["Definition<br/>interoperability and identity"]
+    TOOL["Tool boundary<br/>authorization and consent"]
+    THREAT["Threat map<br/>risks and mitigations"]
+    DATA["Data provenance<br/>lifecycle integrity"]
+    EVAL["Evaluation evidence<br/>benchmarks and red-team scope"]
+  end
+  NIST --> DEF
+  OECD --> DEF
+  MCP --> TOOL
+  OWASP --> THREAT
+  MITRE --> THREAT
+  CISA --> DATA
+  NIST --> EVAL
+  MITRE --> EVAL
+  EVAL --> GATE["Reviewable claim<br/>source class named"]
+  DATA --> GATE
+  TOOL --> GATE
+  classDef source fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef claim fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef gate fill:#fef3c7,stroke:#b45309,color:#0f172a
+  class NIST,OECD,MCP,OWASP,MITRE,CISA source
+  class DEF,TOOL,THREAT,DATA,EVAL claim
+  class GATE gate

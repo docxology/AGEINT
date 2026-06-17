@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>00-overview.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1
+id="sec:chapter-ageint-security-and-adversarial-considerations">AGEINT
+Security and Adversarial Considerations</h1>
+<h3
+id="ageint-security-and-adversarial-considerations-figures-and-course-links-visual-evidence-source-flow-and-navigation">AGEINT
+Security and Adversarial Considerations figures and course links: visual
+evidence, source flow, and navigation</h3>
+<p>The module uses [fig:ageint-maestro-seven-layer],
+[fig:ageint-sre-circuit-breaker],
+[fig:ageint-governance-loop-oversight],
+[fig:ageint-agentic-standards-landscape],
+[fig:ageint-agent-evaluation-evidence-ladder],
+[fig:ageint-agent-evaluation-loop],
+[fig:ageint-agent-incident-lifecycle],
+[fig:ageint-bounded-autonomy-recoverability],
+[fig:ageint-ai-incident-reporting-loop],
+[fig:ageint-adversarial-assurance-cycle],
+[fig:ageint-memory-governance-plate],
+[fig:ageint-ai-data-security-lifecycle-plate], and
+[fig:part-ageint-agentic-intelligence-module-map] to map its evidence
+flow, safety boundaries, review artifacts, and refresh cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:part-ageint-agentic-intelligence],
+[sec:chapter-ageint-frameworks-and-infrastructure],
+[sec:chapter-active-inference-and-ageint].</p>
+<figure id="fig:ageint-maestro-seven-layer">
+<img src="../../../../figures/mermaid/ageint-maestro-seven-layer.png"
+alt="The CSA MAESTRO model stacks seven layers of the agentic AI lifecycle, with the L6 Security/Compliance layer cross-cutting every other layer because security agents are themselves attack surfaces. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect L6: Security and Compliance cross-cutting layer security agents are themselves attack surfaces monitor the monitors, MAESTRO lifecycle stack, L7: Agent Ecosystem impersonation, marketplace manipulation, goal manipulation, and L5: Evaluation and Observability metric manipulation, detection evasion while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The CSA MAESTRO model stacks seven layers
+of the agentic AI lifecycle, with the L6 Security/Compliance layer
+cross-cutting every other layer because security agents are themselves
+attack surfaces. It is anchored to the ageint agentic intelligence /
+ageint security and adversarial considerations section; use it to
+inspect L6: Security and Compliance cross-cutting layer security agents
+are themselves attack surfaces monitor the monitors, MAESTRO lifecycle
+stack, L7: Agent Ecosystem impersonation, marketplace manipulation, goal
+manipulation, and L5: Evaluation and Observability metric manipulation,
+detection evasion while preserving the distinction between curriculum
+structure, evidence boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-sre-circuit-breaker">
+<img src="../../../../figures/mermaid/ageint-sre-circuit-breaker.png"
+alt="The author-defined SRE circuit-breaker teaching pattern state diagram shows when a supervised agent remains CLOSED, when safety-budget exhaustion forces OPEN human takeover, and how HALF_OPEN restoration is constrained by validation evidence. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect CLOSED normal supervised operation, OPEN human takeover after policy, provider, timeout, trust, or reasoning-loop triggers, HALF_OPEN limited restoration after recovery validation, and clean-record return path while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The author-defined SRE circuit-breaker
+teaching pattern state diagram shows when a supervised agent remains
+CLOSED, when safety-budget exhaustion forces OPEN human takeover, and
+how HALF_OPEN restoration is constrained by validation evidence. It is
+anchored to the ageint agentic intelligence / ageint security and
+adversarial considerations section; use it to inspect CLOSED normal
+supervised operation, OPEN human takeover after policy, provider,
+timeout, trust, or reasoning-loop triggers, HALF_OPEN limited
+restoration after recovery validation, and clean-record return path
+while preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-governance-loop-oversight">
+<img
+src="../../../../figures/mermaid/ageint-governance-loop-oversight.png"
+alt="This diagram shows how an agentic intelligence system is bounded by least-privilege tooling, human review gates, observability, and kill-switch stop conditions before any action takes effect. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect A top-to-bottom governance . Perception feeds belief update, which feeds intent formation. Intent passes through a policy, tool-allowlist gate. A risk classifier branches to either a human-in-the- review gate for high-risk actions or a bounded action executor for low-risk actions. The human gate also reaches the executor. The executor sends results to an observability log, and which feeds both a kill-switch detector while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">This diagram shows how an agentic
+intelligence system is bounded by least-privilege tooling, human review
+gates, observability, and kill-switch stop conditions before any action
+takes effect. It is anchored to the ageint agentic intelligence / ageint
+security and adversarial considerations section; use it to inspect A
+top-to-bottom governance . Perception feeds belief update, which feeds
+intent formation. Intent passes through a policy, tool-allowlist gate. A
+risk classifier branches to either a human-in-the- review gate for
+high-risk actions or a bounded action executor for low-risk actions. The
+human gate also reaches the executor. The executor sends results to an
+observability log, and which feeds both a kill-switch detector while
+preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-agentic-standards-landscape">
+<img
+src="../../../../figures/mermaid/ageint-agentic-standards-landscape.png"
+alt="Source-backed conceptual schematic crosswalking current official and standards sources for agent identity, protocol boundaries, security threats, data provenance, and adversarial assurance. In the ageint agentic intelligence / ageint security and adversarial considerations section, it lets readers compare Source families, NIST agent standards / AI RMF, OECD agentic AI concepts, and MCP spec + security so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">Source-backed conceptual schematic
+crosswalking current official and standards sources for agent identity,
+protocol boundaries, security threats, data provenance, and adversarial
+assurance. In the ageint agentic intelligence / ageint security and
+adversarial considerations section, it lets readers compare Source
+families, NIST agent standards / AI RMF, OECD agentic AI concepts, and
+MCP spec + security so the visual functions as a traceable course aid
+rather than an unscoped assertion.</figcaption>
+</figure>
+<figure id="fig:ageint-agent-evaluation-evidence-ladder">
+<img
+src="../../../../figures/mermaid/ageint-agent-evaluation-evidence-ladder.png"
+alt="The agent-evaluation sequence shows how benchmark purpose, context, automated runs, TEVV or red-team challenge, report caveats, and reviewer decisions must stay separate before AGEINT allows a bounded claim. Its reader value is to make evaluation purpose owner, benchmark context, automated benchmark evidence, TEVV or red-team challenge, report caveats, reviewer decision, bounded claim release, revise-and-retest loop for insufficient evidence visible at a glance, with the ageint agentic intelligence / ageint security and adversarial considerations section as the source section and defensive review as the boundary." />
+<figcaption aria-hidden="true">The agent-evaluation sequence shows how
+benchmark purpose, context, automated runs, TEVV or red-team challenge,
+report caveats, and reviewer decisions must stay separate before AGEINT
+allows a bounded claim. Its reader value is to make evaluation purpose
+owner, benchmark context, automated benchmark evidence, TEVV or red-team
+challenge, report caveats, reviewer decision, bounded claim release,
+revise-and-retest loop for insufficient evidence visible at a glance,
+with the ageint agentic intelligence / ageint security and adversarial
+considerations section as the source section and defensive review as the
+boundary.</figcaption>
+</figure>
+<figure id="fig:ageint-agent-evaluation-loop">
+<img src="../../../../figures/python/ageint-agent-evaluation-loop.png"
+alt="The agent evaluation loop places assurance, human review, and rollback before reuse. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect agent evaluation loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The agent evaluation loop places
+assurance, human review, and rollback before reuse. It is anchored to
+the ageint agentic intelligence / ageint security and adversarial
+considerations section; use it to inspect agent evaluation loop steps,
+decision gates, owner handoffs, refresh triggers, and closure evidence
+while preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-agent-incident-lifecycle">
+<img
+src="../../../../figures/python/ageint-agent-incident-lifecycle.png"
+alt="The agent incident lifecycle organizes preparation, detection, containment, recovery, and debrief learning. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect agent incident lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The agent incident lifecycle organizes
+preparation, detection, containment, recovery, and debrief learning. It
+is anchored to the ageint agentic intelligence / ageint security and
+adversarial considerations section; use it to inspect agent incident
+lifecycle steps, decision gates, owner handoffs, refresh triggers, and
+closure evidence while preserving the distinction between curriculum
+structure, evidence boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-bounded-autonomy-recoverability">
+<img
+src="../../../../figures/python/ageint-bounded-autonomy-recoverability.png"
+alt="The bounded-autonomy view pairs delegated action with approval thresholds, stop conditions, and recovery evidence. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect bounded autonomy recoverability labels, source records, review gates, refresh cues, and reader-use boundaries while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The bounded-autonomy view pairs delegated
+action with approval thresholds, stop conditions, and recovery evidence.
+It is anchored to the ageint agentic intelligence / ageint security and
+adversarial considerations section; use it to inspect bounded autonomy
+recoverability labels, source records, review gates, refresh cues, and
+reader-use boundaries while preserving the distinction between
+curriculum structure, evidence boundary, and accountable
+practice.</figcaption>
+</figure>
+<figure id="fig:ageint-ai-incident-reporting-loop">
+<img
+src="../../../../figures/python/ageint-ai-incident-reporting-loop.png"
+alt="The AI incident reporting loop turns detection, classification, reporting, remediation, and learning into evidence. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect ai incident reporting loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The AI incident reporting loop turns
+detection, classification, reporting, remediation, and learning into
+evidence. It is anchored to the ageint agentic intelligence / ageint
+security and adversarial considerations section; use it to inspect ai
+incident reporting loop steps, decision gates, owner handoffs, refresh
+triggers, and closure evidence while preserving the distinction between
+curriculum structure, evidence boundary, and accountable
+practice.</figcaption>
+</figure>
+<figure id="fig:ageint-adversarial-assurance-cycle">
+<img
+src="../../../../figures/python/ageint-adversarial-assurance-cycle.png"
+alt="The adversarial assurance cycle turns misuse cases, control challenges, evidence attacks, incident rehearsal, and remediation into review evidence. Its reader value is to make adversarial assurance cycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the ageint agentic intelligence / ageint security and adversarial considerations section as the source section and defensive review as the boundary." />
+<figcaption aria-hidden="true">The adversarial assurance cycle turns
+misuse cases, control challenges, evidence attacks, incident rehearsal,
+and remediation into review evidence. Its reader value is to make
+adversarial assurance cycle steps, decision gates, owner handoffs,
+refresh triggers, and closure evidence visible at a glance, with the
+ageint agentic intelligence / ageint security and adversarial
+considerations section as the source section and defensive review as the
+boundary.</figcaption>
+</figure>
+<figure id="fig:ageint-memory-governance-plate">
+<img src="../../../../figures/ai/ageint-memory-governance-plate.png"
+alt="Deterministic teaching plate showing governed memory intake, retention, review, and rollback boundaries for AGEINT agentic assistance. Its reader value is to make Intake boundary, Retention policy, Review gate, and Rollback path visible at a glance, with the ageint agentic intelligence / ageint security and adversarial considerations section as the source section and defensive review as the boundary." />
+<figcaption aria-hidden="true">Deterministic teaching plate showing
+governed memory intake, retention, review, and rollback boundaries for
+AGEINT agentic assistance. Its reader value is to make Intake boundary,
+Retention policy, Review gate, and Rollback path visible at a glance,
+with the ageint agentic intelligence / ageint security and adversarial
+considerations section as the source section and defensive review as the
+boundary.</figcaption>
+</figure>
+<figure id="fig:ageint-ai-data-security-lifecycle-plate">
+<img
+src="../../../../figures/ai/ageint-ai-data-security-lifecycle-plate.png"
+alt="Deterministic teaching plate showing CISA/NSA-style AI data security as source reliability, provenance, integrity, access control, and lifecycle review. The captioned view belongs to the ageint agentic intelligence / ageint security and adversarial considerations section and should be read as a map of Reliable source, Provenance trail, Integrity check, and Access boundary, not as a capability score or live-task instruction." />
+<figcaption aria-hidden="true">Deterministic teaching plate showing
+CISA/NSA-style AI data security as source reliability, provenance,
+integrity, access control, and lifecycle review. The captioned view
+belongs to the ageint agentic intelligence / ageint security and
+adversarial considerations section and should be read as a map of
+Reliable source, Provenance trail, Integrity check, and Access boundary,
+not as a capability score or live-task instruction.</figcaption>
+</figure>
+<p>This module teaches the <strong>Agentic AI Governance and Tool
+Security</strong> lane through a bounded, source-backed coursebook
+chapter. [ageint234]; [ageint235].</p>
+<h2
+id="agentic-ai-governance-and-tool-security-frame-for-ageint-security-and-adversarial-considerations-source-context-topic-focus-and-reader-task">Agentic
+AI Governance and Tool Security frame for AGEINT Security and
+Adversarial Considerations: source context, topic focus, and reader
+task</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<h3
+id="ageint-security-and-adversarial-considerations-orientation-reader-task-conceptual-primer-outcomes-and-vocabulary">AGEINT
+Security and Adversarial Considerations orientation: reader task,
+conceptual primer, outcomes, and vocabulary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<h3
+id="ageint-security-and-adversarial-considerations-conceptual-primer-source-context-core-model-and-reader-task">AGEINT
+Security and Adversarial Considerations conceptual primer: source
+context, core model, and reader task</h3>
+<p>This chapter teaches agentic AI as delegated action under control:
+identity, authority, tool permissions, memory, logs, stop conditions,
+and recoverability define what an agent may do. The chapter uses
+<strong>Defensive Cyber-Intelligence Lens</strong> to connect
+definitions, evidence tests, practice artifacts, and review gates for
+<strong>Agent Framework Security Vulnerabilities; Python REPL sandbox
+and approval-gate</strong>.</p>
+<p>The central distinction is to separate agent assistance from
+autonomous external action. Core topics include <strong>Agent Framework
+Security Vulnerabilities; Python REPL sandbox and approval-gate; Cyber
+credential-and-movement taxonomy review using fabricated
+alerts</strong>. Each topic covers meaning, evidentiary support, common
+misconceptions, and safety boundaries.</p>
+<p>Governance requirements use verified official, standards,
+public-domain, or scholarly anchors such as [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf]. Technical,
+theoretical, or empirical statements require direct domain sources and
+are limited to what those sources establish. [ageint234];
+[ageint235].</p>
+<p>Learners move from vocabulary and the <strong>Defensive
+Cyber-Intelligence Lens</strong> distinction through topic lessons on
+<strong>Agent Framework Security Vulnerabilities</strong> with evidence
+and misconception checks, then assemble a <strong>defensive CTI packet
+with indicator context, taxonomy mapping, confidence, handling rule, and
+control implication</strong> with safety and rights gates.</p>
+<h3
+id="ageint-security-and-adversarial-considerations-learning-outcomes-analytic-moves-evidence-duties-and-transfer">AGEINT
+Security and Adversarial Considerations learning outcomes: analytic
+moves, evidence duties, and transfer</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<ul>
+<li>Connect <strong>Agent Framework Security Vulnerabilities and Python
+REPL sandbox and approval-gate</strong> to <strong>Agentic AI Governance
+and Tool Security</strong> by naming shared vocabulary, evidence burden,
+and audience-facing caveats.</li>
+<li>Build a <strong>defensive CTI packet with indicator context,
+taxonomy mapping, confidence, handling rule, and control
+implication</strong> that keeps observation, inference, uncertainty,
+source quality, reviewer decision, and refresh trigger separate.</li>
+<li>Apply the key distinction: separate agent assistance from autonomous
+external action; show where an apparently useful shortcut would cross
+that line.</li>
+<li>Diagnose failure modes such as excessive agency, shadow tools,
+indirect prompt injection, memory poisoning, confused authority, and
+unbounded action chains, then write one recovery move for each failure
+mode that preserves the learning objective.</li>
+<li>Teach the defensive boundary back to a peer: agentic workflows stay
+synthetic, owned-lab, supervised, logged, rate-limited, and reversible
+unless a lawful production authority exists.</li>
+</ul>
+<h3
+id="ageint-security-and-adversarial-considerations-core-vocabulary-source-terms-method-roles-and-safety-limits">AGEINT
+Security and Adversarial Considerations core vocabulary: source terms,
+method roles, and safety limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Term</th>
+<th>Working definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent identity</td>
+<td>the named software actor, role, and authorization context for a
+run</td>
+</tr>
+<tr>
+<td>Tool allowlist</td>
+<td>the bounded set of actions the agent may request</td>
+</tr>
+<tr>
+<td>Delegation</td>
+<td>the handoff of a task under explicit human authority and review</td>
+</tr>
+<tr>
+<td>Bounded autonomy</td>
+<td>the documented ceiling on what an agent may decide or request
+without review</td>
+</tr>
+<tr>
+<td>Recoverability</td>
+<td>the path back to a known-safe state after a bad output or action
+request</td>
+</tr>
+<tr>
+<td>AI incident</td>
+<td>a logged event where an AI system creates or plausibly creates harm
+or loss of control</td>
+</tr>
+<tr>
+<td>Prompt injection</td>
+<td>untrusted content that attempts to override instructions or
+authority boundaries</td>
+</tr>
+<tr>
+<td>Pattern registry</td>
+<td>the catalog of approved agent behaviors, prompts, and evaluation
+hooks</td>
+</tr>
+<tr>
+<td>Adversarial eval</td>
+<td>structured tests that probe agent misuse, injection, and
+over-delegation before release</td>
+</tr>
+<tr>
+<td>Agent Framework Security Vulnerabilities</td>
+<td>Key terms: Agent, Framework, Security.</td>
+</tr>
+<tr>
+<td>Python REPL sandbox and approval-gate</td>
+<td>Key terms: Python, REPL, sandbox.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

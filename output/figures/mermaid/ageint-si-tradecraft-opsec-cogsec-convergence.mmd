@@ -1,0 +1,44 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart LR
+  subgraph LANE["Four domain lanes"]
+    direction TB
+    SI["Synthetic intelligence<br/>LLM support<br/>synthetic media<br/>AI-DSS caveats"]
+    AT["Analytic tradecraft<br/>sources<br/>assumptions<br/>alternatives<br/>confidence"]
+    OP["OPSEC / zero trust<br/>critical information<br/>least privilege<br/>logs"]
+    CS["Cognitive security<br/>provenance<br/>prebunking<br/>resilience limits"]
+  end
+  subgraph EVIDENCE["Required review evidence"]
+    direction TB
+    SRC["Direct source support"]
+    META["Lane + tier metadata"]
+    SAFE["Safety boundary"]
+    REFRESH["Refresh trigger"]
+  end
+  GATE{"Central review gate<br/>claim class + source strength + safety"}
+  subgraph OUT["Review disposition"]
+    direction TB
+    OK["Allowed classroom artifact<br/>source-backed<br/>synthetic<br/>audited"]
+    CHECK["Reader check<br/>compare claim<br/>source<br/>denominator<br/>boundary"]
+    REVISE["Stop / revise<br/>unsupported efficacy<br/>autonomous judgment<br/>manipulation<br/>live target"]
+  end
+  SI --> GATE
+  AT --> GATE
+  OP --> GATE
+  CS --> GATE
+  SRC --> GATE
+  META --> GATE
+  SAFE --> GATE
+  REFRESH --> GATE
+  GATE --> OK
+  OK --> CHECK
+  GATE -.-> REVISE
+  classDef domain fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef evidence fill:#ede9fe,stroke:#7c3aed,color:#0f172a
+  classDef gate fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef ok fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class SI,AT,OP,CS domain
+  class SRC,META,SAFE,REFRESH,CHECK evidence
+  class GATE gate
+  class OK ok
+  class REVISE stop

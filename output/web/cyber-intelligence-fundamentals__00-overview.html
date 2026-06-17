@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>00-overview.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1 id="sec:chapter-cyber-intelligence-fundamentals">Cyber Intelligence
+Fundamentals</h1>
+<h3
+id="cyber-intelligence-fundamentals-figures-and-course-links-visual-evidence-source-flow-and-navigation">Cyber
+Intelligence Fundamentals figures and course links: visual evidence,
+source flow, and navigation</h3>
+<p>The module uses [fig:defensive-cti-normalization-pipeline] and
+[fig:part-technical-intelligence-and-cyber-operations-module-map] to map
+its evidence flow, safety boundaries, review artifacts, and refresh
+cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:part-technical-intelligence-and-cyber-operations],
+[sec:chapter-advanced-persistent-threats-apts].</p>
+<figure id="fig:defensive-cti-normalization-pipeline">
+<img
+src="../../../../figures/mermaid/defensive-cti-normalization-pipeline.png"
+alt="How fabricated alerts and published taxonomies are normalized into a defensive intelligence packet with confidence and control implications, never an action sequence. In the technical intelligence and cyber operations / cyber intelligence fundamentals section, it lets readers compare Fabricated alert and indicator context, Defensive taxonomy mapping, Kill-chain sequencing of observations, and ATT&amp;CK label for organizing observations so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">How fabricated alerts and published
+taxonomies are normalized into a defensive intelligence packet with
+confidence and control implications, never an action sequence. In the
+technical intelligence and cyber operations / cyber intelligence
+fundamentals section, it lets readers compare Fabricated alert and
+indicator context, Defensive taxonomy mapping, Kill-chain sequencing of
+observations, and ATT&amp;CK label for organizing observations so the
+visual functions as a traceable course aid rather than an unscoped
+assertion.</figcaption>
+</figure>
+<p>This module teaches the <strong>Cyber Threat Intelligence, Incident
+Response, and Supply-Chain Defense</strong> lane through a bounded,
+source-backed coursebook chapter. [ageint258]; [ageint261].</p>
+<h2
+id="cyber-threat-intelligence-incident-response-and-supply-chain-defense-frame-for-cyber-intelligence-fundamentals-source-context-topic-focus-and-reader-task">Cyber
+Threat Intelligence, Incident Response, and Supply-Chain Defense frame
+for Cyber Intelligence Fundamentals: source context, topic focus, and
+reader task</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-cyber-intelligence-fundamentals]; [ageint258].</p>
+<h3
+id="cyber-intelligence-fundamentals-orientation-reader-task-conceptual-primer-outcomes-and-vocabulary">Cyber
+Intelligence Fundamentals orientation: reader task, conceptual primer,
+outcomes, and vocabulary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-cyber-intelligence-fundamentals]; [ageint258].</p>
+<h3
+id="cyber-intelligence-fundamentals-conceptual-primer-source-context-core-model-and-reader-task">Cyber
+Intelligence Fundamentals conceptual primer: source context, core model,
+and reader task</h3>
+<p>This chapter teaches cyber threat intelligence as defensive
+normalization: incidents, indicators, TTPs, vendor risks, and sharing
+rules become useful only when scoped and validated. The chapter uses
+<strong>Defensive Cyber-Intelligence Lens</strong> to connect
+definitions, evidence tests, practice artifacts, and review gates for
+<strong>Cyber defensive taxonomy mapping using published labels and
+fabricated alerts; MITRE ATT&amp;CK Framework: Cyber defensive taxonomy
+mapping using published labels and fabricated alerts</strong>.</p>
+<p>The central distinction is to separate defensive mapping and incident
+learning from exploit, persistence, or evasion instruction. Core topics
+include <strong>Cyber defensive taxonomy mapping using published labels
+and fabricated alerts; MITRE ATT&amp;CK Framework: Cyber defensive
+taxonomy mapping using published labels and fabricated alerts;
+Reconnaissance through Resource Development: Cyber defensive taxonomy
+mapping using published labels and fabricated alerts</strong>. Each
+topic covers meaning, evidentiary support, common misconceptions, and
+safety boundaries.</p>
+<p>Governance requirements use verified official, standards,
+public-domain, or scholarly anchors such as [official_nist_sp_800_150];
+[official_oasis_stix_21]; [official_oasis_taxii_21]. Technical,
+theoretical, or empirical statements require direct domain sources and
+are limited to what those sources establish. [ageint258];
+[ageint261].</p>
+<p>Learners move from vocabulary and the <strong>Defensive
+Cyber-Intelligence Lens</strong> distinction through topic lessons on
+<strong>Cyber defensive taxonomy mapping using published labels and
+fabricated alerts</strong> with evidence and misconception checks, then
+assemble a <strong>defensive CTI packet with indicator context, taxonomy
+mapping, confidence, handling rule, and control implication</strong>
+with safety and rights gates.</p>
+<h3
+id="cyber-intelligence-fundamentals-learning-outcomes-analytic-moves-evidence-duties-and-transfer">Cyber
+Intelligence Fundamentals learning outcomes: analytic moves, evidence
+duties, and transfer</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-cyber-intelligence-fundamentals]; [ageint258].</p>
+<ul>
+<li>Connect <strong>Cyber defensive taxonomy mapping using published
+labels and fabricated alerts and MITRE ATT&amp;CK Framework: Cyber
+defensive taxonomy mapping using published labels and fabricated
+alerts</strong> to <strong>Cyber Threat Intelligence, Incident Response,
+and Supply-Chain Defense</strong> by naming shared vocabulary, evidence
+burden, and audience-facing caveats.</li>
+<li>Build a <strong>defensive CTI packet with indicator context,
+taxonomy mapping, confidence, handling rule, and control
+implication</strong> that keeps observation, inference, uncertainty,
+source quality, reviewer decision, and refresh trigger separate.</li>
+<li>Apply the key distinction: separate defensive mapping and incident
+learning from exploit, persistence, or evasion instruction; show where
+an apparently useful shortcut would cross that line.</li>
+<li>Diagnose failure modes such as indicator fixation, unvetted sharing,
+vendor-assurance drift, weak incident scoping, and treating CTI as a
+feed instead of a workflow, then write one recovery move for each
+failure mode that preserves the learning objective.</li>
+<li>Teach the defensive boundary back to a peer: cyber material stays
+defensive and tabletop-based; it does not provide exploit, persistence,
+evasion, or live-response instructions.</li>
+</ul>
+<h3
+id="cyber-intelligence-fundamentals-core-vocabulary-source-terms-method-roles-and-safety-limits">Cyber
+Intelligence Fundamentals core vocabulary: source terms, method roles,
+and safety limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-cyber-intelligence-fundamentals]; [ageint258].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Term</th>
+<th>Working definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Indicator</td>
+<td>an observable signal that may support defensive detection or
+investigation</td>
+</tr>
+<tr>
+<td>TTP</td>
+<td>a tactic, technique, or procedure used for structured defensive
+mapping</td>
+</tr>
+<tr>
+<td>Sighting</td>
+<td>a bounded observation of a possible indicator in a given
+context</td>
+</tr>
+<tr>
+<td>Handling rule</td>
+<td>a sharing, marking, or retention limit for threat information</td>
+</tr>
+<tr>
+<td>Lessons learned</td>
+<td>the post-incident evidence that changes controls or playbooks</td>
+</tr>
+<tr>
+<td>Cyber defensive taxonomy mapping using…</td>
+<td>Key terms: Cyber, defensive, taxonomy.</td>
+</tr>
+<tr>
+<td>MITRE ATT&amp;CK Framework: Cyber defensive…</td>
+<td>Key terms: MITRE, ATT, CK.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

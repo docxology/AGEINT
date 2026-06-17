@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="threat-intelligence-sharing-for-critical-infrastructure-assurance-handoff-evidence-governance-refresh-and-capstone">Threat
+Intelligence Sharing for Critical Infrastructure assurance handoff:
+evidence, governance, refresh, and capstone</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<h3
+id="threat-intelligence-sharing-for-critical-infrastructure-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">Threat
+Intelligence Sharing for Critical Infrastructure evidence contract:
+source spine, verified anchors, transfer architecture, and claim
+limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<h3
+id="threat-intelligence-sharing-for-critical-infrastructure-transfer-architecture-module-inputs-outputs-and-review-boundary">Threat
+Intelligence Sharing for Critical Infrastructure transfer architecture:
+module inputs, outputs, and review boundary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-lineage-and-source-tradition-profile-concepts-and-first-anchors">Threat
+Intelligence Sharing for Critical Infrastructure lineage and source
+tradition: profile, concepts, and first anchors</h4>
+<p>This sits in the <strong>ICS/OT Cyber-Physical Defense and Tabletop
+Readiness</strong> lineage: defensive intelligence for safety-critical
+environments where availability, engineering state, and physical
+consequence matter. [ageint253]; [ageint258].</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-working-model-inputs-constraints-transforms-outputs-and-oversight">Threat
+Intelligence Sharing for Critical Infrastructure working model: inputs,
+constraints, transforms, outputs, and oversight</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>Evidence-Driven Analysis of Threat
+Information Sharing for ICS; ISACs: E-ISAC, WaterISAC, FS-ISAC</strong>,
+with provenance and reviewability throughout.</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">Threat
+Intelligence Sharing for Critical Infrastructure knowledge architecture:
+inputs, transforms, outputs, and failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> synthetic process logs, asset/consequence
+maps, operator decisions, safety stops, and recovery evidence.
+[ageint253]; [ageint258].</li>
+<li><strong>Transforms:</strong> asset-consequence mapping,
+ATT&amp;CK-for-ICS coverage review, operator-decision rehearsal, and
+after-action learning.</li>
+<li><strong>Outputs:</strong> cyber-physical tabletop packet, debrief
+rubric, recovery note, and control-coverage map.</li>
+<li><strong>Failure modes:</strong> IT-first assumptions, unsafe
+actuation, live-control drift, and missing safety review.</li>
+</ul>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-transfer-contracts-authority-evidence-tools-and-auditable-output">Threat
+Intelligence Sharing for Critical Infrastructure transfer contracts:
+authority, evidence, tools, and auditable output</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>Evidence-Driven Analysis of Threat Information Sharing for ICS;
+ISACs: E-ISAC, WaterISAC, FS-ISAC</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> source
+descriptors, transformations, claims, uncertainty, and confidence
+separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+cyber-physical tabletop packet, debrief rubric, recovery note, and
+control-coverage map that another reviewer can audit.</li>
+</ul>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">Threat
+Intelligence Sharing for Critical Infrastructure profile emphasis and
+local focus: method stack and topic cluster</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<p>The matched profile emphasizes defensive intelligence for
+safety-critical environments where availability, engineering state, and
+physical consequence matter. The method stack is asset/consequence
+mapping, ATT&amp;CK-for-ICS coverage review, defense-in-depth audit,
+remote-access check, and tabletop injects; the local topic cluster is
+<strong>Evidence-Driven Analysis of Threat Information Sharing for ICS;
+ISACs: E-ISAC, WaterISAC, FS-ISAC</strong>.</p>
+<h3
+id="threat-intelligence-sharing-for-critical-infrastructure-evidence-spine-source-roles-citation-support-and-claim-limits">Threat
+Intelligence Sharing for Critical Infrastructure evidence spine: source
+roles, citation support, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>ICS/OT Cyber-Physical Defense
+and Tabletop Readiness</strong> profile tells reviewers what evidence is
+strong enough for the module artifact built around
+<strong>Evidence-Driven Analysis of Threat Information Sharing for ICS;
+ISACs: E-ISAC, WaterISAC, FS-ISAC</strong>.</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-guide-source-spine-inherited-keys-and-local-citation-roles">Threat
+Intelligence Sharing for Critical Infrastructure guide source spine:
+inherited keys and local citation roles</h4>
+<p>Primary guide citations: [ageint253]; [ageint258]; [ageint261];
+[ageint275]; [ageint276]; [ageint283]; [ageint286]; [ageint293];
+[ageint295]; [ageint077]; [ageint218]; [ageint307]; [ageint305];
+[ageint304].</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-verified-source-canon-direct-anchors-and-claim-boundaries">Threat
+Intelligence Sharing for Critical Infrastructure verified source canon:
+direct anchors and claim boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint253]; [ageint258].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint253]; [ageint258]; [ageint261]; [ageint275]; [ageint276];
+[ageint283]; [ageint286]; [ageint293]; [ageint295]; [ageint077];
+[ageint218]; [ageint307]; [ageint305]; [ageint304].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 48’s source-canon
+section, directly verified anchors for the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane include
+[official_nist_csf_2]; [official_nist_sp_800_160r1];
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for
+<strong>Evidence-Driven Analysis of Threat Information Sharing for ICS;
+ISACs: E-ISAC, WaterISAC, FS-ISAC</strong> and [ageint253]; [ageint258],
+but only directly verified source URLs are encoded as citations.</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-intelligence-practice-lens-evidence-artifact-and-safety-check">Threat
+Intelligence Sharing for Critical Infrastructure intelligence practice
+lens: evidence artifact and safety check</h4>
+<p>Practice lens: <strong>Cyber-Physical Readiness Lens</strong> for
+<strong>Evidence-Driven Analysis of Threat Information Sharing for ICS;
+ISACs: E-ISAC, WaterISAC, FS-ISAC</strong>. [ageint253];
+[ageint258].</p>
+<p><strong>Planning question:</strong> Which asset, architecture record,
+consequence, operator decision, and recovery path is being exercised
+defensively?</p>
+<p><strong>Evidence artifact:</strong> tabletop packet with OT asset
+inventory, architecture record, consequences, injects, and debrief
+rubric.</p>
+<p><strong>Validation rule:</strong> validate against safety,
+availability, engineering state, incident scope, and after-action
+learning. Applied to <strong>Evidence-Driven Analysis of Threat
+Information Sharing for ICS; ISACs: E-ISAC, WaterISAC,
+FS-ISAC</strong>.</p>
+<p><strong>Handoff contract:</strong> separate cyber indicators, process
+observations, safety impact, operator choices, and recovery
+evidence.</p>
+<p><strong>Safety check:</strong> keep exercises lab-only or tabletop;
+exclude exploitation, process manipulation, unsafe actuation, and
+live-control actions.</p>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-runtime-to-reader-map-generated-sections-and-verifier-surfaces">Threat
+Intelligence Sharing for Critical Infrastructure runtime-to-reader map:
+generated sections and verifier surfaces</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>48.99</td>
+<td>48.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind Threat Intelligence Sharing for
+Critical Infrastructure to source-lane evidence, claim-ledger review,
+safe substitution, compliance/rights mapping, instructor deliverables,
+and explicit refresh triggers</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>48.101</td>
+<td>48.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Threat
+Intelligence Sharing for Critical Infrastructure</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>48.102</td>
+<td>48.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Threat
+Intelligence Sharing for Critical Infrastructure</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Evidence-Driven Analysis of Threat Information Sharing for ICS
+(arXiv 2025)</td>
+<td>48.1</td>
+<td>48.1 Evidence-Driven Analysis of Threat Information Sharing for ICS
+(arXiv 2025)</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ISACs: E-ISAC, WaterISAC, FS-ISAC</td>
+<td>48.2</td>
+<td>48.2 ISACs: E-ISAC, WaterISAC, FS-ISAC</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>CISA Frameworks for Critical Infrastructure</td>
+<td>48.3</td>
+<td>48.3 CISA Frameworks for Critical Infrastructure</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>NERC CIP Standards</td>
+<td>48.4</td>
+<td>48.4 NERC CIP Standards</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>IDS/IPS for OT Networks: Dragos, Claroty, Nozomi, Armis</td>
+<td>48.5</td>
+<td>48.5 IDS/IPS for OT Networks: Dragos, Claroty, Nozomi, Armis</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Honeywell ICS Security: Defense in Depth</td>
+<td>48.6</td>
+<td>48.6 Honeywell ICS Security: Defense in Depth</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">Threat
+Intelligence Sharing for Critical Infrastructure reusable subsection
+contract: topic rows, artifacts, and safety duties</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+[ageint253].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evidence-Driven Analysis of Threat Information Sharing for ICS
+(arXiv 2025)</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ISACs: E-ISAC, WaterISAC, FS-ISAC</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>CISA Frameworks for Critical Infrastructure</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>NERC CIP Standards</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>IDS/IPS for OT Networks: Dragos, Claroty, Nozomi, Armis</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Honeywell ICS Security: Defense in Depth</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="threat-intelligence-sharing-for-critical-infrastructure-annotated-source-ledger-real-titles-and-local-contribution">Threat
+Intelligence Sharing for Critical Infrastructure annotated source
+ledger: real titles and local contribution</h4>
+<p>Each source cited by this <strong>ICS/OT Cyber-Physical Defense and
+Tabletop Readiness</strong> module is paired below with its real title
+and a one-line note on what it contributes to <strong>Evidence-Driven
+Analysis of Threat Information Sharing for ICS; ISACs: E-ISAC,
+WaterISAC, FS-ISAC</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint253]</td>
+<td><a
+href="https://digital-strategy.ec.europa.eu/en/policies/data-spaces">Common
+European Data Spaces</a></td>
+<td>This is an official European Commission webpage describing the
+Common European Data Spaces initiative, part of the EU strategy to
+create interconnected, trustworthy data-sharing environments across
+strategic sectors. It explains that data spaces let organizations and
+individuals share data while retaining control, guided by principles of
+open participation, privacy protection, and fair access rules.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint258]</td>
+<td><a href="https://spec.openapis.org/oas/">OpenAPI
+Specification</a></td>
+<td>The official OpenAPI Initiative publications page, serving as a
+central index for the OpenAPI Specification and related standards
+including the Arazzo and Overlay specifications. It provides access to
+multiple specification versions (2.0, 3.0, 3.1, and 3.2) and their
+corresponding downloadable schemas identified by release date, along
+with a registry of extensions, formats, media types, and other
+resources.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint261]</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">RFC 9110: HTTP
+Semantics</a></td>
+<td>RFC 9110, the official IETF standards document defining the core
+semantics and architecture of HTTP, published in June 2022 and
+consolidating nine earlier RFCs. It establishes terminology and protocol
+aspects shared across HTTP versions, including methods, status codes,
+header fields, content negotiation, conditional and range requests,
+authentication, and the http and https URI schemes.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint275]</td>
+<td><a href="https://www.ada.gov/resources/2024-03-08-web-rule/">Fact
+Sheet: New Rule on the Accessibility of Web Content and Mobile Apps
+Provided by State and Local Governments</a></td>
+<td>A US Department of Justice fact sheet explaining the 2024 ADA Title
+II rule requiring state and local governments to make their web content
+and mobile apps accessible. It establishes WCAG 2.1 Level AA as the
+technical standard, applies to entities such as schools, courts,
+libraries, and transit agencies, and sets compliance deadlines of April
+2027 for larger jurisdictions and April 2028 for smaller ones.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint276]</td>
+<td><a
+href="https://www.edpb.europa.eu/sme-data-protection-guide/faq-frequently-asked-questions/answer/what-data-protection-impact_en">What
+is a Data Protection Impact Assessment and When Is This
+Mandatory?</a></td>
+<td>A European Data Protection Board FAQ page, part of its data
+protection guide for small businesses, explaining Data Protection Impact
+Assessments (DPIAs) and when they are mandatory. It describes a DPIA as
+a written assessment of the impact of a planned processing operation,
+required when processing poses high risks to individuals’ rights.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint283]</td>
+<td><a
+href="https://legalinstruments.oecd.org/api/print?ids=359&amp;lang=en">Recommendation
+of the Council on Open Government</a></td>
+<td>An OECD legal instrument document reproducing the Recommendation of
+the Council on Open Government (OECD/LEGAL/0438), adopted on 14 December
+2017. It defines open government as a culture of governance promoting
+transparency, integrity, accountability, and stakeholder participation
+in support of democracy and inclusive growth.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint286]</td>
+<td><a href="https://arxiv.org/abs/1810.03993">Model Cards for Model
+Reporting</a></td>
+<td>The arXiv abstract for “Model Cards for Model Reporting” (2018) by
+Mitchell, Wu, Zaldivar, and colleagues, which introduces a framework for
+transparent documentation of machine learning models. Model cards are
+short accompanying documents that report a model’s benchmarked
+performance across varied conditions, including different cultural,
+demographic, and phenotypic groups, along with intended use, evaluation
+methodology, and deployment considerations.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint293]</td>
+<td><a href="https://www.archives.gov/ai">Inventory of NARA Artificial
+Intelligence (AI) Use Cases</a></td>
+<td>The National Archives and Records Administration (NARA) official
+inventory of its artificial intelligence use cases, documenting 14
+projects across deployed, pilot, and planned stages. Deployed efforts
+include workplace productivity tools, automated tagging for museum
+experiences, and historical record retrieval, while pilots cover PII
+detection and redaction, semantic search, and metadata generation, and
+planned work targets FOIA processing and public search.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint295]</td>
+<td><a
+href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf">M-25-22:
+Driving Efficient Acquisition of Artificial Intelligence in
+Government</a></td>
+<td>OMB Memorandum M-25-22 (April 3, 2025), Driving Efficient
+Acquisition of Artificial Intelligence in Government, issued under
+Executive Order 13960 and related directives. It provides guidance to
+federal agencies for acquiring effective and trustworthy AI in a timely,
+cost-effective manner, and rescinds and replaces earlier memorandum
+M-24-18.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint077]</td>
+<td><a href="https://arxiv.org/html/2512.18714v3">An Evidence-Driven
+Analysis of Threat Information Sharing</a></td>
+<td>An arXiv research paper presenting an evidence-driven analysis of
+why threat information sharing for industrial control systems remains
+ineffective. Drawing on three major ICS attacks and a review of 196
+procedure examples across 22 malware families, it identifies limitations
+including incomplete support in the STIX sharing standard, reliance on
+proprietary undocumented protocols, and insufficient technical detail in
+threat and vulnerability reports.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint218]</td>
+<td><a
+href="https://www.honeywell.com/content/dam/honeywellbt/en/documents/downloads/hon-corp-the-cyber-physical-six.pdf">THE
+CYBER-PHYSICAL SIX / Honeywell</a></td>
+<td>An executive research report from Honeywell’s Global Analysis,
+Research, and Defense group titled “The Cyber-Physical Six,” tracing how
+targeted industrial attacks have evolved and predicting future trends.
+It reviews six landmark cyber-physical attacks affecting industrial
+control and operational technology systems, then analyzes observed
+trends such as modularity, expanding capabilities, and the increasing
+frequency of new attack tools.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint307]</td>
+<td><a href="https://www.cisa.gov/ics/Recommended-Practices">ICS
+Recommended Practices</a></td>
+<td>Official CISA Industrial Control Systems recommended practices page
+for defensive ICS/OT safety, resilience, and incident-preparation
+guidance.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint305]</td>
+<td><a href="https://www.nccoe.nist.gov/devsecops">DevSecOps</a></td>
+<td>Official NIST NCCoE DevSecOps project page for software factory,
+secure pipeline, and continuous authorization source support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint304]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/final">Secure
+Software Development Framework (SSDF) Version 1.1: Recommendations for
+Mitigating the Risk of Software Vulnerabilities</a></td>
+<td>NIST SP 800-218, the Secure Software Development Framework Version
+1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences.</td>
+<td>verified source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure];
+return to the curriculum atlas [sec:curriculum_orientation] for the
+reader paths, evidence map, and safety gates that govern this
+module.</p>
+</body>
+</html>

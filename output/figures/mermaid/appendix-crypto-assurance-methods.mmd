@@ -1,0 +1,17 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  MSG["Protected message"]
+  CONF["Confidentiality: AES (FIPS 197)"]
+  INT["Integrity: SHS hashing (FIPS 180-4)"]
+  AUTHN["Authentication: DSS signatures (FIPS 186-5)"]
+  KEY["Key lifecycle: SP 800-57"]
+  MSG --> CONF
+  MSG --> INT
+  MSG --> AUTHN
+  KEY --> CONF
+  KEY --> AUTHN
+  CONF --> DEC{"Assurance decision"}
+  INT --> DEC
+  AUTHN --> DEC
+  DEC -->|"pass"| OK["Verified message"]
+  DEC -->|"fail"| FLAG["Flag for review"]

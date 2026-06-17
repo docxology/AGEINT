@@ -1,0 +1,24 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph STACK["Epistemic coherence stack (Ch41 to 42)"]
+    direction TB
+    L1["Technical substrate: verification, sandboxing, provenance"]
+    L2["Operational security: threat modeling, zero trust, circuit breakers"]
+    L3["Structured tradecraft: ACH, pre-mortem, key-assumptions check"]
+    L4["Epistemic integrity: verifier agents, intent monitoring"]
+    L5["Institutional governance: analytic standards, red-team programs"]
+    L1 --> L2 --> L3 --> L4 --> L5
+  end
+  subgraph CYCLE["Structured analytic judgment cycle"]
+    direction TB
+    Q["Frame the accountable question"]
+    H["List competing hypotheses"]
+    E["Test evidence and assumptions"]
+    C["Calibrate confidence and dissent"]
+    R["Reviewer challenge before judgment"]
+    Q --> H --> E --> C --> R
+    R -.->|new evidence| H
+  end
+  L3 -->|executable at scale| H
+  L5 -->|standards bind| R
+  R --> OUT["Reviewable competing-hypotheses evidence table"]

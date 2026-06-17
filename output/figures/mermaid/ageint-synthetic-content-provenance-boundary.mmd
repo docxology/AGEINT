@@ -1,0 +1,16 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart LR
+  IN["Generated or altered content"] --> PROV["Provenance metadata"]
+  PROV --> LABEL["Label / watermark<br/>when applicable"]
+  LABEL --> DETECT["Detection or review<br/>not proof of truth"]
+  DETECT --> AUDIT["Audit + maintenance<br/>NIST AI 100-4"]
+  AUDIT --> REDRESS["Disclosure and redress<br/>where people are affected"]
+  PROV -.-> LIMIT["Unknown source<br/>or missing chain"]
+  DETECT -.-> LIMIT
+  LIMIT --> STOP["Do not use as<br/>standalone evidence"]
+  classDef process fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef caveat fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class IN,PROV,LABEL,DETECT,AUDIT,REDRESS process
+  class LIMIT caveat
+  class STOP stop

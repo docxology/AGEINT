@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  P["Perception, multimodal ingestion"] --> B["Brain, LLM cognitive controller"]
+  M["Memory, episodic and semantic"] --> B
+  B --> PL["Planning and task decomposition"]
+  PL --> RG{"Human review gate"}
+  RG -->|"approved"| A["Bounded action, tools and APIs"]
+  RG -->|"held"| ESC["Escalate to analyst"]
+  A --> COL["Collaboration, shared context"]
+  COL --> AUD["Audit log of decisions"]
+  AUD --> REV["Review and oversight loop"]
+  REV --> RG
+  ESC --> REV
+  A --> M

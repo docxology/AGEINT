@@ -1,0 +1,32 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  Cats["Non-State Actor Categories, taxonomy"]
+  Ins["Insurgent and Militant Groups"]
+  PMC["Private Military Corporations"]
+  Crim["Transnational Criminal Networks"]
+  Inf["Ideological and Influence Networks"]
+  Review["Open-Source Indicator Review"]
+  Fund["Funding-Pattern Indicators"]
+  Org["Organizational-Structure Indicators"]
+  Attr["Attribution-Caution Check"]
+  Conf["Confidence and Uncertainty Note"]
+  Esc["Reviewer-Owned Escalation"]
+  Gov["Governance and Minimization Boundary"]
+  Stop["No-Accusation Stop Condition"]
+  Cats --> Ins
+  Cats --> PMC
+  Cats --> Crim
+  Cats --> Inf
+  Ins --> Review
+  PMC --> Review
+  Crim --> Review
+  Inf --> Review
+  Review --> Fund
+  Review --> Org
+  Review --> Attr
+  Fund --> Conf
+  Org --> Conf
+  Attr --> Conf
+  Conf --> Esc
+  Esc --> Gov
+  Gov --> Stop

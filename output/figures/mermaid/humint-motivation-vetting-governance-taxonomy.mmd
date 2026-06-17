@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Motivation taxonomy for risk recognition only"] --> B["Money-narrative risk category"]
+  A --> C["Ideology-narrative risk category"]
+  A --> D["Coercion-narrative risk category"]
+  A --> E["Ego-narrative risk category"]
+  B --> F["Consent and ethics gate"]
+  C --> F
+  D --> F
+  E --> F
+  F --> G["Validation and source-risk review"]
+  G --> H["No-contact boundary"]
+  H --> I["Reviewer-owned requirements matrix"]
+  I --> J["Escalation duty and stop condition"]

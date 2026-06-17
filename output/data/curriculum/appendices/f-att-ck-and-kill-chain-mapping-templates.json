@@ -1,0 +1,43 @@
+{
+  "letter": "F",
+  "title": "ATT&CK and Kill Chain Mapping Templates",
+  "items": [
+    {
+      "level": 1,
+      "title": "F.1 MITRE ATT&CK Navigator Layer: Enterprise",
+      "raw": "F.1 MITRE ATT&CK Navigator Layer: Enterprise[^63]",
+      "citations": [
+        63
+      ]
+    },
+    {
+      "level": 1,
+      "title": "F.2 MITRE ATT&CK for ICS Navigator Layer",
+      "raw": "F.2 MITRE ATT&CK for ICS Navigator Layer[^213]",
+      "citations": [
+        213
+      ]
+    },
+    {
+      "level": 1,
+      "title": "F.3 Cyber Kill Chain Campaign Mapping Worksheet",
+      "raw": "F.3 Cyber Kill Chain Campaign Mapping Worksheet[^61]",
+      "citations": [
+        61
+      ]
+    },
+    {
+      "level": 1,
+      "title": "F.4 Adversary Emulation Plan Template",
+      "raw": "F.4 Adversary Emulation Plan Template",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "F.5 Threat Intelligence Report Template (STIX v2.1 JSON)",
+      "raw": "F.5 Threat Intelligence Report Template (STIX v2.1 JSON)",
+      "citations": []
+    }
+  ],
+  "source_line": 986
+}

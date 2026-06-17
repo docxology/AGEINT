@@ -1,0 +1,23 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart LR
+    subgraph HRO["HRO Principles"]
+        direction TB
+        p1["Preoccupation with failure<br/>attention to near-misses<br/>and weak signals"]
+        p2["Reluctance to simplify<br/>demand deep root cause;<br/>resist reductive explanations"]
+        p3["Sensitivity to operations<br/>awareness of current<br/>operational state"]
+        p4["Commitment to resilience<br/>invest in corrective<br/>and adaptive capacity"]
+        p5["Deference to expertise<br/>authority follows<br/>demonstrated competence"]
+    end
+    subgraph GOV["AI Agent Governance"]
+        direction TB
+        g1["Safety SLI monitoring<br/>PolicyCompliance at or above 99 percent;<br/>CDR health probes; drift detection"]
+        g2["MAESTRO seven-layer modeling;<br/>multi-hypothesis behavioral analysis"]
+        g3["Real-time tool invocation auditing;<br/>context-window analysis; observability"]
+        g4["Circuit breakers; chaos engineering;<br/>progressive rollout with SLO gates"]
+        g5["Human-in-the-loop for high stakes;<br/>minimum necessary privilege"]
+    end
+    p1 --> g1
+    p2 --> g2
+    p3 --> g3
+    p4 --> g4
+    p5 --> g5

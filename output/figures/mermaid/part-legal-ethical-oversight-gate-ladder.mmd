@@ -1,0 +1,26 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  CAP["Proposed intelligence capability"]
+  subgraph GATES["Oversight gate ladder (Ch50 to 51)"]
+    direction TB
+    G1["Authority: legal basis, EO 12333, FISA"]
+    G2["Proportionality and necessity"]
+    G3["Rights and privacy impact assessment"]
+    G4["Accountable human oversight owner"]
+    G5["Audit trail and records duty"]
+    G6["Transparency and public register"]
+    G7["Redress and escalation path"]
+    G1 --> G2 --> G3 --> G4 --> G5 --> G6 --> G7
+  end
+  subgraph CH["Chapter spine"]
+    direction TB
+    L["Ch50: Legal authorities and constraints"]
+    E["Ch51: Ethics of intelligence and cognitive security"]
+  end
+  CAP --> G1
+  L -.->|maps authority| G1
+  L -.->|binds limits| G2
+  E -.->|defines duties| G3
+  E -.->|public accountability| G6
+  G7 --> REG["Authority and impact review register"]
+  REG --> ALLOW["Workflow allowed only when every gate is satisfied"]

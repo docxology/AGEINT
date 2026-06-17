@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio-01.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="agentic-tool-governance-lens-path-for-ageint-frameworks-and-infrastructure-lesson-cluster-safe-artifact-and-review">Agentic
+Tool-Governance Lens path for AGEINT Frameworks and Infrastructure:
+lesson cluster, safe artifact, and review</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-frameworks-and-infrastructure]; [ageint255].</p>
+<h3
+id="ageint-frameworks-and-infrastructure-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">AGEINT
+Frameworks and Infrastructure practice studio: topic lessons, safe
+worked example, and knowledge check</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-frameworks-and-infrastructure]; [ageint255].</p>
+<h3
+id="ageint-frameworks-and-infrastructure-topic-lessons-source-backed-concepts-and-transfer-tasks">AGEINT
+Frameworks and Infrastructure topic lessons: source-backed concepts and
+transfer tasks</h3>
+<p>This module builds agentic AI as delegated action under control:
+identity, authority, tool permissions, memory, logs, stop conditions,
+and recoverability define what an agent may do. The sequence opens with
+<strong>LangChain/LangGraph: State Machine Orchestration</strong>,
+<strong>LCEL: LangChain Expression Language</strong>, <strong>LangGraph:
+Stateful, Cyclical Agentic Workflows</strong> and applies the
+<strong>Agentic Tool-Governance Lens</strong> practice frame through
+concept, evidence, artifact, misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map
+[fig:part-ageint-agentic-intelligence-module-map]; module overview
+[sec:chapter-ageint-frameworks-and-infrastructure]; curriculum atlas
+[sec:curriculum_orientation].</p>
+<p><strong>Triangulation anchors.</strong> In module 33’s topic-lessons
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<h4 id="lesson-1-langchainlanggraph-state-machine-orchestration">Lesson
+1: LangChain/LangGraph: State Machine Orchestration</h4>
+<p><strong>Concept.</strong> <strong>LangChain/LangGraph: State Machine
+Orchestration</strong> documents workflow stages with inputs,
+transforms, reviewers, and blocked actions at each handoff.</p>
+<p><strong>Why it matters.</strong> <strong>LangChain/LangGraph</strong>
+connects classroom vocabulary to Agentic AI Governance and Tool Security
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>LangChain/LangGraph: State
+Machine Orchestration</strong> rests on [ageint147] and [ageint153]. The
+lead source’s own note reads: Security analysis of major AI agent
+frameworks including LangChain, CrewAI, AutoGen, Semantic. Use them for
+pinning down the scope of <strong>LangChain/LangGraph: State Machine
+Orchestration</strong>, the edge of that scope, and when these citations
+need re-verifying before transfer. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For
+<strong>LangChain/LangGraph</strong>, reason from the sources cited in
+this row. [ageint147] Security analysis of major AI agent frameworks
+including LangChain, CrewAI, AutoGen, Semantic. [ageint153] The second
+half of the framework highlights common agentic frameworks. From each
+source, pull the bounded claim it can carry for this topic, its
+provenance, the stated uncertainty, and the one condition that would
+overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For
+<strong>LangChain/LangGraph</strong>, build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>LangChain/LangGraph</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape
+<strong>LangChain/LangGraph</strong> work as an <strong>agent run and
+assurance card</strong> that records its evidence, the residual
+uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>LangChain/LangGraph</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer
+<strong>LangChain/LangGraph</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4 id="lesson-2-lcel-langchain-expression-language">Lesson 2: LCEL:
+LangChain Expression Language</h4>
+<p><strong>Concept.</strong> <strong>LCEL: LangChain Expression
+Language</strong> evaluates agent frameworks by logging, tool
+allowlists, human approval, and blocked external actions—not production
+deployment recipes.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>LCEL: LangChain Expression Language</strong>, treating pattern
+names as deployment playbooks undermines least-privilege agent design
+and run review; the lesson builds the habit to separate agent assistance
+from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>LCEL: LangChain Expression
+Language</strong> rests on [ageint299], [ageint306], and [ageint312].
+The lead source’s own note reads: The official Model Context Protocol
+(MCP) specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. Use them for fixing what <strong>LCEL: LangChain
+Expression Language</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>LCEL: LangChain
+Expression Language</strong> in the evidence the row cites. [ageint299]
+The official Model Context Protocol (MCP) specification, defining an
+open protocol that standardizes how LLM applications connect to external
+data sources and tools using JSON-RPC 2.0 messages. It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation). [ageint306] Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. [ageint312] Official
+Government of Canada guide for responsible use of agentic AI, used for
+public-sector agent governance and accountability source support. Work
+source by source: name the bounded claim, its origin, the residual
+uncertainty, and the trigger that would change how this topic is
+judged.</p>
+<p><strong>Student artifact.</strong> For <strong>LCEL</strong>, build a
+<strong>agent run card with tool allowlist, identity, logs, autonomy
+limit, approval gates, and recovery path</strong> for this
+least-privilege agent design and run review topic. The artifact must
+name the pattern descriptor, the bounded claim about
+<strong>LCEL</strong>, the safe-substitution caveat, the uncertainty
+note, the no-deployment boundary, and the reviewer accountable for
+challenge. Shape <strong>LCEL: LangChain Expression Language</strong>
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>LCEL: LangChain Expression Language</strong>: that naming an
+agent pattern certifies it is safe to deploy without governance
+gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>LCEL: LangChain
+Expression Language</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4 id="lesson-3-langgraph-stateful-cyclical-agentic-workflows">Lesson
+3: LangGraph: Stateful, Cyclical Agentic Workflows</h4>
+<p><strong>Concept.</strong> <strong>LangGraph: Stateful, Cyclical
+Agentic Workflows</strong> evaluates agent frameworks by logging, tool
+allowlists, human approval, and blocked external actions—not production
+deployment recipes.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>LangGraph:
+Stateful, Cyclical Agentic Workflows</strong> to separate agent
+assistance from autonomous external action. A defensible treatment names
+the judgment it enables for least-privilege agent design and run review,
+the proof limit that treating pattern names as deployment playbooks
+would otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>LangGraph: Stateful,
+Cyclical Agentic Workflows</strong> rests on [ageint299], [ageint306],
+and [ageint312]. Its anchor reference records: The official Model
+Context Protocol (MCP) specification, defining an open protocol that
+standardizes how LLM applications connect to external data sources and
+tools using JSON-RPC 2.0 messages. Use them for fixing what
+<strong>LangGraph: Stateful, Cyclical Agentic Workflows</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>LangGraph:
+Stateful, Cyclical Agentic Workflows</strong>, work from the cited
+evidence behind this row. [ageint299] The official Model Context
+Protocol (MCP) specification, defining an open protocol that
+standardizes how LLM applications connect to external data sources and
+tools using JSON-RPC 2.0 messages. It describes the host, client, and
+server roles and capability negotiation, and the features servers expose
+(resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). [ageint306] Official CISA Artificial Intelligence page for
+AI security, safety, resilience, and critical-infrastructure governance
+source support. [ageint312] Official Government of Canada guide for
+responsible use of agentic AI, used for public-sector agent governance
+and accountability source support. Work source by source: name the
+bounded claim, its origin, the residual uncertainty, and the trigger
+that would change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>LangGraph</strong>,
+build a <strong>agent run card with tool allowlist, identity, logs,
+autonomy limit, approval gates, and recovery path</strong> for this
+least-privilege agent design and run review topic. The artifact must
+name the pattern descriptor, the bounded claim about
+<strong>LangGraph</strong>, the safe-substitution caveat, the
+uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>LangGraph: Stateful, Cyclical
+Agentic Workflows</strong> work as an <strong>agent run and assurance
+card</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>LangGraph: Stateful, Cyclical Agentic Workflows</strong>: that
+naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>LangGraph: Stateful,
+Cyclical Agentic Workflows</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4 id="lesson-4-langsmith-observability-and-tracing">Lesson 4:
+LangSmith: Observability and Tracing</h4>
+<p><strong>Concept.</strong> <strong>LangSmith: Observability and
+Tracing</strong> evaluates agent frameworks by logging, tool allowlists,
+human approval, and blocked external actions—not production deployment
+recipes.</p>
+<p><strong>Why it matters.</strong> <strong>LangSmith: Observability and
+Tracing</strong> matters in the <strong>Agentic AI Governance and Tool
+Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> <strong>LangSmith: Observability and
+Tracing</strong> rests on [ageint299], [ageint306], and [ageint312]. The
+lead source’s own note reads: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. Use them for pinning down the scope of <strong>LangSmith:
+Observability and Tracing</strong>, the edge of that scope, and when
+these citations need re-verifying before transfer. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>LangSmith:
+Observability and Tracing</strong>, reason from the sources cited in
+this row. [ageint299] The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. Read each cited work for what it can
+support about this topic, where that claim originated, how confident it
+is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>LangSmith</strong>,
+build a <strong>agent run card with tool allowlist, identity, logs,
+autonomy limit, approval gates, and recovery path</strong> for this
+least-privilege agent design and run review topic. The artifact must
+name the pattern descriptor, the bounded claim about
+<strong>LangSmith</strong>, the safe-substitution caveat, the
+uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>LangSmith: Observability and
+Tracing</strong> work as an <strong>agent run and assurance
+card</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>LangSmith: Observability and Tracing</strong>: that naming an
+agent pattern certifies it is safe to deploy without governance
+gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>LangSmith:
+Observability and Tracing</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4 id="lesson-5-crewai-role-based-multi-agent-collaboration">Lesson 5:
+CrewAI: Role-Based Multi-Agent Collaboration</h4>
+<p><strong>Concept.</strong> <strong>CrewAI: Role-Based Multi-Agent
+Collaboration</strong> treats agents as software actors with explicit
+permissions, logs, stop conditions, and human approval—not autonomous
+decision makers.</p>
+<p><strong>Why it matters.</strong> <strong>CrewAI: Role-Based
+Multi-Agent Collaboration</strong> connects classroom vocabulary to
+Agentic AI Governance and Tool Security practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> <strong>CrewAI: Role-Based
+Multi-Agent Collaboration</strong> rests on [ageint154] and [ageint153].
+The lead source’s own note reads: The homepage of CrewAI, a commercial
+platform for building, deploying, and managing AI agents at scale for
+enterprises. Use them for fixing what <strong>CrewAI: Role-Based
+Multi-Agent Collaboration</strong> covers, marking the boundary it must
+not cross, and timing the next source refresh. External triangulation
+uses [official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>CrewAI: Role-Based
+Multi-Agent Collaboration</strong> against the works cited for this row.
+[ageint154] The homepage of CrewAI, a commercial platform for building,
+deploying, and managing AI agents at scale for enterprises. It presents
+the product as covering the full lifecycle from identifying automation
+opportunities to launching and optimizing multi-agent workflows while
+maintaining enterprise-level control. [ageint153] The second half of the
+framework highlights common agentic frameworks. Each source above earns
+its place in this topic only when you can state its bounded claim, its
+provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>CrewAI</strong>, build
+a <strong>agent run card with tool allowlist, identity, logs, autonomy
+limit, approval gates, and recovery path</strong> for this
+least-privilege agent design and run review topic. The artifact must
+name the pattern descriptor, the bounded claim about
+<strong>CrewAI</strong>, the safe-substitution caveat, the uncertainty
+note, the no-deployment boundary, and the reviewer accountable for
+challenge. Shape <strong>CrewAI: Role-Based Multi-Agent
+Collaboration</strong> work as an <strong>agent run and assurance
+card</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>CrewAI: Role-Based Multi-Agent Collaboration</strong>: that
+naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>CrewAI: Role-Based
+Multi-Agent Collaboration</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4 id="lesson-6-crew-agent-task-and-process-objects">Lesson 6: Crew,
+Agent, Task, and Process Objects</h4>
+<p><strong>Concept.</strong> <strong>Crew, Agent, Task, and Process
+Objects</strong> treats agents as software actors with explicit
+permissions, logs, stop conditions, and human approval—not autonomous
+decision makers.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Crew, Agent, Task, and Process Objects</strong>, treating
+pattern names as deployment playbooks undermines least-privilege agent
+design and run review; the lesson builds the habit to separate agent
+assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Crew, Agent, Task, and
+Process Objects</strong> rests on [ageint299], [ageint306], and
+[ageint312]. Its anchor reference records: The official Model Context
+Protocol (MCP) specification, defining an open protocol that
+standardizes how LLM applications connect to external data sources and
+tools using JSON-RPC 2.0 messages. Use them for the working definition
+that <strong>Crew, Agent, Task, and Process Objects</strong> can defend,
+where that scope ends, and the refresh check owed before this evidence
+transfers. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Crew, Agent,
+Task, and Process Objects</strong> in the evidence the row cites.
+[ageint299] The official Model Context Protocol (MCP) specification,
+defining an open protocol that standardizes how LLM applications connect
+to external data sources and tools using JSON-RPC 2.0 messages. It
+describes the host, client, and server roles and capability negotiation,
+and the features servers expose (resources, prompts, tools) and clients
+offer (sampling, roots, elicitation). [ageint306] Official CISA
+Artificial Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. [ageint312] Official
+Government of Canada guide for responsible use of agentic AI, used for
+public-sector agent governance and accountability source support. Read
+each cited work for what it can support about this topic, where that
+claim originated, how confident it is, and what evidence would change
+it.</p>
+<p><strong>Student artifact.</strong> For <strong>Crew, Agent, Task, and
+Process Objects</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Crew Agent Task and Process</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Crew, Agent, Task, and Process Objects</strong>: that naming an
+agent pattern certifies it is safe to deploy without governance
+gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Crew, Agent, Task,
+and Process Objects</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-7-sequential-parallel-and-hierarchical-process-modes">Lesson
+7: Sequential, Parallel, and Hierarchical Process Modes</h4>
+<p><strong>Concept.</strong> <strong>Sequential, Parallel, and
+Hierarchical Process Modes</strong> uses the pattern name as safe
+architectural vocabulary: allowlisted tools, logging, human approval,
+and blocked external action.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Sequential,
+Parallel, and Hierarchical Process Modes</strong> to separate agent
+assistance from autonomous external action. A defensible treatment names
+the judgment it enables for least-privilege agent design and run review,
+the proof limit that treating pattern names as deployment playbooks
+would otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Sequential, Parallel, and
+Hierarchical Process Modes</strong> rests on [ageint299], [ageint306],
+and [ageint312]. The lead source’s own note reads: The official Model
+Context Protocol (MCP) specification, defining an open protocol that
+standardizes how LLM applications connect to external data sources and
+tools using JSON-RPC 2.0 messages. Use them for the working definition
+that <strong>Sequential, Parallel, and Hierarchical Process
+Modes</strong> can defend, where that scope ends, and the refresh check
+owed before this evidence transfers. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Sequential,
+Parallel, and Hierarchical Process Modes</strong> against the works
+cited for this row. [ageint299] The official Model Context Protocol
+(MCP) specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Sequential, Parallel,
+and Hierarchical Process Modes</strong>, build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Sequential Parallel and Hierarchical
+Process</strong>, the safe-substitution caveat, the uncertainty note,
+the no-deployment boundary, and the reviewer accountable for challenge.
+Shape this subject work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Sequential, Parallel, and Hierarchical Process Modes</strong>:
+that naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Sequential,
+Parallel, and Hierarchical Process Modes</strong> to a second module by
+preserving least-privilege agent design and run review, changing the
+source evidence, and naming a new reviewer.</p>
+<h4 id="lesson-8-built-in-tool-ecosystem">Lesson 8: Built-in Tool
+Ecosystem</h4>
+<p><strong>Concept.</strong> <strong>Built-in Tool Ecosystem</strong>
+uses the pattern name as safe architectural vocabulary: allowlisted
+tools, logging, human approval, and blocked external action.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Built-in Tool Ecosystem</strong>, treating pattern names as
+deployment playbooks undermines least-privilege agent design and run
+review; the lesson builds the habit to separate agent assistance from
+autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Built-in Tool
+Ecosystem</strong> rests on [ageint299], [ageint306], and [ageint312].
+The lead source’s own note reads: The official Model Context Protocol
+(MCP) specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. Use them for the working definition that <strong>Built-in
+Tool Ecosystem</strong> can defend, where that scope ends, and the
+refresh check owed before this evidence transfers. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Built-in Tool
+Ecosystem</strong> against the works cited for this row. [ageint299] The
+official Model Context Protocol (MCP) specification, defining an open
+protocol that standardizes how LLM applications connect to external data
+sources and tools using JSON-RPC 2.0 messages. It describes the host,
+client, and server roles and capability negotiation, and the features
+servers expose (resources, prompts, tools) and clients offer (sampling,
+roots, elicitation). [ageint306] Official CISA Artificial Intelligence
+page for AI security, safety, resilience, and critical-infrastructure
+governance source support. [ageint312] Official Government of Canada
+guide for responsible use of agentic AI, used for public-sector agent
+governance and accountability source support. Each source above earns
+its place in this topic only when you can state its bounded claim, its
+provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Built-in Tool Ecosystem</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Built-in Tool Ecosystem</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Built-in Tool
+Ecosystem</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-9-autogen-microsoft-multi-agent-conversation-patterns">Lesson
+9: AutoGen (Microsoft): Multi-Agent Conversation Patterns</h4>
+<p><strong>Concept.</strong> <strong>AutoGen (Microsoft): Multi-Agent
+Conversation Patterns</strong> treats agents as software actors with
+explicit permissions, logs, stop conditions, and human approval—not
+autonomous decision makers.</p>
+<p><strong>Why it matters.</strong> <strong>AutoGen (Microsoft)</strong>
+connects classroom vocabulary to Agentic AI Governance and Tool Security
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>AutoGen (Microsoft):
+Multi-Agent Conversation Patterns</strong> rests on [ageint147] and
+[ageint153]. The most specific cited work observes: Security analysis of
+major AI agent frameworks including LangChain, CrewAI, AutoGen,
+Semantic. Use them for the working definition that <strong>AutoGen
+(Microsoft): Multi-Agent Conversation Patterns</strong> can defend,
+where that scope ends, and the refresh check owed before this evidence
+transfers. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>AutoGen
+(Microsoft)</strong> against the works cited for this row. [ageint147]
+Security analysis of major AI agent frameworks including LangChain,
+CrewAI, AutoGen, Semantic. [ageint153] The second half of the framework
+highlights common agentic frameworks. Read each cited work for what it
+can support about this topic, where that claim originated, how confident
+it is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>AutoGen
+(Microsoft)</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>AutoGen</strong>, the safe-substitution caveat, the
+uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>AutoGen (Microsoft)</strong>
+work as an <strong>agent run and assurance card</strong> that records
+its evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>AutoGen (Microsoft)</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AutoGen
+(Microsoft)</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4 id="lesson-10-assistantagent-and-userproxyagent-pattern">Lesson 10:
+AssistantAgent and UserProxyAgent Pattern</h4>
+<p><strong>Concept.</strong> <strong>AssistantAgent and UserProxyAgent
+Pattern</strong> uses the pattern name as safe architectural vocabulary:
+allowlisted tools, logging, human approval, and blocked external
+action.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>AssistantAgent
+and UserProxyAgent Pattern</strong> to separate agent assistance from
+autonomous external action. A defensible treatment names the judgment it
+enables for least-privilege agent design and run review, the proof limit
+that treating pattern names as deployment playbooks would otherwise
+hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>AssistantAgent and
+UserProxyAgent Pattern</strong> rests on [ageint299], [ageint306], and
+[ageint312]. Its anchor reference records: It describes the host,
+client, and server roles and capability negotiation, and the features
+servers expose (resources, prompts, tools) and clients offer (sampling,
+roots, elicitation). Use them for fixing what <strong>AssistantAgent and
+UserProxyAgent Pattern</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>AssistantAgent and
+UserProxyAgent Pattern</strong>, work from the cited evidence behind
+this row. [ageint299] The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. Each source above earns its place in this
+topic only when you can state its bounded claim, its provenance, its
+uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>AssistantAgent and UserProxyAgent Pattern</strong>,
+the safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>AssistantAgent and UserProxyAgent Pattern</strong>: that naming
+an agent pattern certifies it is safe to deploy without governance
+gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AssistantAgent and
+UserProxyAgent Pattern</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-11-groupchat-with-roundrobin-and-autoselect-managers">Lesson
+11: GroupChat with RoundRobin and AutoSelect Managers</h4>
+<p><strong>Concept.</strong> <strong>GroupChat with RoundRobin and
+AutoSelect Managers</strong> uses the pattern name as safe architectural
+vocabulary: allowlisted tools, logging, human approval, and blocked
+external action.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>GroupChat with RoundRobin and AutoSelect Managers</strong>,
+treating pattern names as deployment playbooks undermines
+least-privilege agent design and run review; the lesson builds the habit
+to separate agent assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>GroupChat with RoundRobin
+and AutoSelect Managers</strong> rests on [ageint299], [ageint306], and
+[ageint312]. The closest source to this row notes: It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation). Use them for fixing what
+<strong>GroupChat with RoundRobin and AutoSelect Managers</strong>
+covers, marking the boundary it must not cross, and timing the next
+source refresh. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>GroupChat with
+RoundRobin and AutoSelect Managers</strong>, reason from the sources
+cited in this row. [ageint299] The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>GroupChat with
+RoundRobin and AutoSelect Managers</strong>, build a <strong>agent run
+card with tool allowlist, identity, logs, autonomy limit, approval
+gates, and recovery path</strong> for this least-privilege agent design
+and run review topic. The artifact must name the pattern descriptor, the
+bounded claim about <strong>GroupChat with RoundRobin and
+AutoSelect</strong>, the safe-substitution caveat, the uncertainty note,
+the no-deployment boundary, and the reviewer accountable for challenge.
+Shape this subject work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>GroupChat with RoundRobin and AutoSelect Managers</strong>: that
+naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>GroupChat with
+RoundRobin and AutoSelect Managers</strong> to a second module by
+preserving least-privilege agent design and run review, changing the
+source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-12-agentic-cyber-misuse-control-review-using-sample-prompt-records-fabricated-logs-and-deny-by-default-tool-policies">Lesson
+12: Agentic cyber-misuse control review using sample prompt records,
+fabricated logs, and deny-by-default tool policies</h4>
+<p><strong>Concept.</strong> <strong>Agentic cyber-misuse control review
+using sample prompt records, fabricated logs, and deny-by-default tool
+policies</strong> treats the topic as a misuse-case control problem:
+identify the agent permission, prompt path, tool boundary, and blocked
+outcome.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Agentic
+cyber-misuse control review</strong> to separate agent assistance from
+autonomous external action. A defensible treatment names the judgment it
+enables for least-privilege agent design and run review, the proof limit
+that treating misuse taxonomy as tool permission would otherwise hide,
+and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Agentic cyber-misuse control
+review using sample prompt records, fabricated logs, and deny-by-default
+tool policies</strong> rests on [ageint147]. The lead source’s own note
+reads: Security analysis of major AI agent frameworks including
+LangChain, CrewAI, AutoGen, Semantic. Use it for pinning down the scope
+of <strong>Agentic cyber-misuse control review using sample prompt
+records, fabricated logs, and deny-by-default tool policies</strong>,
+the edge of that scope, and when these citations need re-verifying
+before transfer. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Agentic
+cyber-misuse control review</strong> against the works cited for this
+row. [ageint147] Security analysis of major AI agent frameworks
+including LangChain, CrewAI, AutoGen, Semantic. From each source, pull
+the bounded claim it can carry for this topic, its provenance, the
+stated uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>Agentic cyber-misuse
+control review</strong>, build a blocked-request control card with tool
+permission, unsafe outcome, deny rule, log evidence, and reviewer
+disposition. Shape <strong>Agentic cyber-misuse control review</strong>
+work as an <strong>agent run and assurance card</strong> that records
+its evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Agentic cyber-misuse control review</strong>: that a misuse
+taxonomy describing what an autonomous agent could do is permission or a
+recipe to make it do so.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Agentic
+cyber-misuse control review</strong> audit pattern from this module on a
+different sample record set with a new reviewer and blocked-use
+note.</p>
+<h4 id="lesson-13-semantic-kernel-enterprise-ai-orchestration">Lesson
+13: Semantic Kernel: Enterprise AI Orchestration</h4>
+<p><strong>Concept.</strong> <strong>Semantic Kernel: Enterprise AI
+Orchestration</strong> documents workflow stages with inputs,
+transforms, reviewers, and blocked actions at each handoff.</p>
+<p><strong>Why it matters.</strong> <strong>Semantic Kernel</strong>
+matters in the <strong>Agentic AI Governance and Tool Security</strong>
+lane because least-privilege agent design and run evidence must stay
+separate from judgment; treating pattern names as deployment playbooks
+is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Semantic Kernel: Enterprise
+AI Orchestration</strong> rests on [ageint147]. The lead source’s own
+note reads: Security analysis of major AI agent frameworks including
+LangChain, CrewAI, AutoGen, Semantic. Use it for pinning down the scope
+of <strong>Semantic Kernel: Enterprise AI Orchestration</strong>, the
+edge of that scope, and when these citations need re-verifying before
+transfer. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Semantic
+Kernel</strong> in the evidence the row cites. [ageint147] Security
+analysis of major AI agent frameworks including LangChain, CrewAI,
+AutoGen, Semantic. Read each cited work for what it can support about
+this topic, where that claim originated, how confident it is, and what
+evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>Semantic
+Kernel</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Semantic Kernel</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>Semantic Kernel</strong> work
+as an <strong>agent run and assurance card</strong> that names evidence,
+uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Semantic Kernel</strong>: that naming an agent pattern certifies
+it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Semantic
+Kernel</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-14-aws-agentic-patterns-production-architecture-guide">Lesson
+14: AWS Agentic Patterns: Production Architecture Guide</h4>
+<p><strong>Concept.</strong> <strong>AWS Agentic Patterns: Production
+Architecture Guide</strong> uses the pattern name as safe architectural
+vocabulary: allowlisted tools, logging, human approval, and blocked
+external action.</p>
+<p><strong>Why it matters.</strong> <strong>AWS Agentic Patterns:
+Production Architecture Guide</strong> connects classroom vocabulary to
+Agentic AI Governance and Tool Security practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> <strong>AWS Agentic Patterns:
+Production Architecture Guide</strong> rests on [ageint144]. The lead
+source’s own note reads: An AWS Prescriptive Guidance document (July
+2025) introducing agentic AI patterns and workflows. Use it for the
+working definition that <strong>AWS Agentic Patterns: Production
+Architecture Guide</strong> can defend, where that scope ends, and the
+refresh check owed before this evidence transfers. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>AWS Agentic
+Patterns: Production Architecture Guide</strong> in the evidence the row
+cites. [ageint144] An AWS Prescriptive Guidance document (July 2025)
+introducing agentic AI patterns and workflows. It presents reusable
+design templates for building AI agent systems that operate with
+autonomy while remaining controllable and aligned with goals, aimed at
+architects, developers, and product leaders. Each source above earns its
+place in this topic only when you can state its bounded claim, its
+provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>AWS Agentic
+Patterns</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>AWS Agentic Patterns</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape <strong>AWS Agentic Patterns:
+Production Architecture Guide</strong> work as an <strong>agent run and
+assurance card</strong> that names evidence, uncertainty, reviewer, and
+stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>AWS Agentic Patterns: Production Architecture Guide</strong>:
+that naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AWS Agentic
+Patterns: Production Architecture Guide</strong> to a second module by
+preserving least-privilege agent design and run review, changing the
+source evidence, and naming a new reviewer.</p>
+<h4 id="lesson-15-basic-reasoning-agents">Lesson 15: Basic Reasoning
+Agents</h4>
+<p><strong>Concept.</strong> <strong>Basic Reasoning Agents</strong>
+connects cognitive science claims to analytic bias literacy: what the
+brain prioritizes, what it misses, and how review compensates.</p>
+<p><strong>Why it matters.</strong> <strong>Basic Reasoning
+Agents</strong> matters in the <strong>Agentic AI Governance and Tool
+Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Basic Reasoning
+Agents</strong> rests on [ageint299], [ageint306], and [ageint312]. The
+closest source to this row notes: It describes the host, client, and
+server roles and capability negotiation, and the features servers expose
+(resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). Use them for the working definition that <strong>Basic
+Reasoning Agents</strong> can defend, where that scope ends, and the
+refresh check owed before this evidence transfers. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Basic Reasoning
+Agents</strong> in the evidence the row cites. [ageint299] The official
+Model Context Protocol (MCP) specification, defining an open protocol
+that standardizes how LLM applications connect to external data sources
+and tools using JSON-RPC 2.0 messages. It describes the host, client,
+and server roles and capability negotiation, and the features servers
+expose (resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). [ageint306] Official CISA Artificial Intelligence page for
+AI security, safety, resilience, and critical-infrastructure governance
+source support. [ageint312] Official Government of Canada guide for
+responsible use of agentic AI, used for public-sector agent governance
+and accountability source support. From each source, pull the bounded
+claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Basic Reasoning Agents</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Basic Reasoning Agents</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Basic Reasoning
+Agents</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-16-tool-based-agents-function-calling-and-mcp-servers">Lesson
+16: Tool-Based Agents (Function Calling and MCP Servers)</h4>
+<p><strong>Concept.</strong> <strong>Tool-Based Agents (Function Calling
+and MCP Servers)</strong> evaluates tool protocols by allowlists,
+logging, provenance of retrieved content, and deny-by-default
+policies.</p>
+<p><strong>Why it matters.</strong> <strong>Tool-Based Agents (Function
+Calling and MCP Servers)</strong> connects classroom vocabulary to
+Agentic AI Governance and Tool Security practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> <strong>Tool-Based Agents (Function
+Calling and MCP Servers)</strong> rests on [ageint299], [ageint306], and
+[ageint312]. The lead source’s own note reads: It describes the host,
+client, and server roles and capability negotiation, and the features
+servers expose (resources, prompts, tools) and clients offer (sampling,
+roots, elicitation). Use them for the working definition that
+<strong>Tool-Based Agents (Function Calling and MCP Servers)</strong>
+can defend, where that scope ends, and the refresh check owed before
+this evidence transfers. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Tool-Based Agents
+(Function Calling and MCP Servers)</strong>, reason from the sources
+cited in this row. [ageint299] The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. From each source, pull the bounded claim
+it can carry for this topic, its provenance, the stated uncertainty, and
+the one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>Tool-Based Agents
+(Function Calling and MCP Servers)</strong>, build a <strong>agent run
+card with tool allowlist, identity, logs, autonomy limit, approval
+gates, and recovery path</strong> for this least-privilege agent design
+and run review topic. The artifact must name the pattern descriptor, the
+bounded claim about <strong>Tool-Based Agents</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Tool-Based Agents (Function Calling and MCP Servers)</strong>:
+that naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Tool-Based Agents
+(Function Calling and MCP Servers)</strong> to a second module by
+preserving least-privilege agent design and run review, changing the
+source evidence, and naming a new reviewer.</p>
+<h4 id="lesson-17-computer-use-agents">Lesson 17: Computer-Use
+Agents</h4>
+<p><strong>Concept.</strong> <strong>Computer-Use Agents</strong> uses
+the pattern name as safe architectural vocabulary: allowlisted tools,
+logging, human approval, and blocked external action.</p>
+<p><strong>Why it matters.</strong> <strong>Computer-Use Agents</strong>
+matters in the <strong>Agentic AI Governance and Tool Security</strong>
+lane because least-privilege agent design and run evidence must stay
+separate from judgment; treating pattern names as deployment playbooks
+is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Computer-Use Agents</strong>
+rests on [ageint299], [ageint306], and [ageint312]. The lead source’s
+own note reads: The official Model Context Protocol (MCP) specification,
+defining an open protocol that standardizes how LLM applications connect
+to external data sources and tools using JSON-RPC 2.0 messages. Use them
+for fixing what <strong>Computer-Use Agents</strong> covers, marking the
+boundary it must not cross, and timing the next source refresh. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Computer-Use
+Agents</strong>, reason from the sources cited in this row. [ageint299]
+The official Model Context Protocol (MCP) specification, defining an
+open protocol that standardizes how LLM applications connect to external
+data sources and tools using JSON-RPC 2.0 messages. It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation). [ageint306] Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. [ageint312] Official
+Government of Canada guide for responsible use of agentic AI, used for
+public-sector agent governance and accountability source support. Work
+source by source: name the bounded claim, its origin, the residual
+uncertainty, and the trigger that would change how this topic is
+judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Computer-Use Agents</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape this subject work as an
+<strong>agent run and assurance card</strong> that records its evidence,
+the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Computer-Use Agents</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Computer-Use
+Agents</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4 id="lesson-18-coding-agents">Lesson 18: Coding Agents</h4>
+<p><strong>Concept.</strong> <strong>Coding Agents</strong> uses the
+pattern name as safe architectural vocabulary: allowlisted tools,
+logging, human approval, and blocked external action.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Coding
+Agents</strong> to separate agent assistance from autonomous external
+action. A defensible treatment names the judgment it enables for
+least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Coding Agents</strong> rests
+on [ageint299], [ageint306], and [ageint312]. The lead source’s own note
+reads: It describes the host, client, and server roles and capability
+negotiation, and the features servers expose (resources, prompts, tools)
+and clients offer (sampling, roots, elicitation). Use them for the
+working definition that <strong>Coding Agents</strong> can defend, where
+that scope ends, and the refresh check owed before this evidence
+transfers. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Coding
+Agents</strong> in the evidence the row cites. [ageint299] The official
+Model Context Protocol (MCP) specification, defining an open protocol
+that standardizes how LLM applications connect to external data sources
+and tools using JSON-RPC 2.0 messages. It describes the host, client,
+and server roles and capability negotiation, and the features servers
+expose (resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). [ageint306] Official CISA Artificial Intelligence page for
+AI security, safety, resilience, and critical-infrastructure governance
+source support. [ageint312] Official Government of Canada guide for
+responsible use of agentic AI, used for public-sector agent governance
+and accountability source support. From each source, pull the bounded
+claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Coding Agents</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape this subject work as an
+<strong>agent run and assurance card</strong> that logs the evidence,
+the uncertainty, the responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Coding Agents</strong>: that naming an agent pattern certifies
+it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Coding
+Agents</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4 id="lesson-19-speech-to-speech-agents">Lesson 19: Speech-to-Speech
+Agents</h4>
+<p><strong>Concept.</strong> <strong>Speech-to-Speech Agents</strong>
+uses the pattern name as safe architectural vocabulary: allowlisted
+tools, logging, human approval, and blocked external action.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Speech-to-Speech Agents</strong>, treating pattern names as
+deployment playbooks undermines least-privilege agent design and run
+review; the lesson builds the habit to separate agent assistance from
+autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Speech-to-Speech
+Agents</strong> rests on [ageint299], [ageint306], and [ageint312]. The
+closest source to this row notes: It describes the host, client, and
+server roles and capability negotiation, and the features servers expose
+(resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). Use them for pinning down the scope of
+<strong>Speech-to-Speech Agents</strong>, the edge of that scope, and
+when these citations need re-verifying before transfer. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Speech-to-Speech
+Agents</strong>, reason from the sources cited in this row. [ageint299]
+The official Model Context Protocol (MCP) specification, defining an
+open protocol that standardizes how LLM applications connect to external
+data sources and tools using JSON-RPC 2.0 messages. It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation). [ageint306] Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. [ageint312] Official
+Government of Canada guide for responsible use of agentic AI, used for
+public-sector agent governance and accountability source support. Read
+each cited work for what it can support about this topic, where that
+claim originated, how confident it is, and what evidence would change
+it.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Speech-to-Speech Agents</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Speech-to-Speech Agents</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Speech-to-Speech
+Agents</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-20-orchestration-patterns-supervisor-parallel-subgraph">Lesson
+20: Orchestration Patterns: Supervisor, Parallel, Subgraph</h4>
+<p><strong>Concept.</strong> <strong>Orchestration Patterns: Supervisor,
+Parallel, Subgraph</strong> documents workflow stages with inputs,
+transforms, reviewers, and blocked actions at each handoff.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Orchestration Patterns</strong>, treating pattern names as
+deployment playbooks undermines least-privilege agent design and run
+review; the lesson builds the habit to separate agent assistance from
+autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Orchestration Patterns:
+Supervisor, Parallel, Subgraph</strong> rests on [ageint299],
+[ageint306], and [ageint312]. The lead source’s own note reads: The
+official Model Context Protocol (MCP) specification, defining an open
+protocol that standardizes how LLM applications connect to external data
+sources and tools using JSON-RPC 2.0 messages. Use them for fixing what
+<strong>Orchestration Patterns: Supervisor, Parallel, Subgraph</strong>
+covers, marking the boundary it must not cross, and timing the next
+source refresh. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Orchestration
+Patterns</strong>, work from the cited evidence behind this row.
+[ageint299] The official Model Context Protocol (MCP) specification,
+defining an open protocol that standardizes how LLM applications connect
+to external data sources and tools using JSON-RPC 2.0 messages. It
+describes the host, client, and server roles and capability negotiation,
+and the features servers expose (resources, prompts, tools) and clients
+offer (sampling, roots, elicitation). [ageint306] Official CISA
+Artificial Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. [ageint312] Official
+Government of Canada guide for responsible use of agentic AI, used for
+public-sector agent governance and accountability source support. Each
+source above earns its place in this topic only when you can state its
+bounded claim, its provenance, its uncertainty, and the fact that would
+retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>Orchestration
+Patterns</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Orchestration Patterns</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape <strong>Orchestration
+Patterns</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Orchestration Patterns</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Orchestration
+Patterns</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-21-model-context-protocol-mcp-the-usb-standard-for-agentic-ai">Lesson
+21: Model Context Protocol (MCP): The USB Standard for Agentic AI</h4>
+<p><strong>Concept.</strong> <strong>Model Context Protocol (MCP): The
+USB Standard for Agentic AI</strong> evaluates tool protocols by
+allowlists, logging, provenance of retrieved content, and
+deny-by-default policies.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Model Context
+Protocol (MCP)</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Model Context Protocol
+(MCP): The USB Standard for Agentic AI</strong> rests on [ageint155],
+[ageint156], and [ageint157]. The closest source to this row notes: The
+article explains how MCP acts as middleware between models and
+downstream services and surveys associated security risks, including
+overly broad permissions, unvetted servers, exposed endpoints, and
+limited monitoring. Use them for the working definition that
+<strong>Model Context Protocol (MCP): The USB Standard for Agentic
+AI</strong> can defend, where that scope ends, and the refresh check
+owed before this evidence transfers. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Model Context
+Protocol (MCP)</strong> in the evidence the row cites. [ageint155]
+Radosevich and Halloran (2025) audit security vulnerabilities in
+Anthropic’s Model Context Protocol (MCP), which allows LLMs to integrate
+with external tools and data sources. The authors demonstrate that
+language models using MCP can be manipulated through prompt injection to
+execute malicious code, enable remote access, and steal credentials.
+[ageint156] A Protect AI blog post (April 2025) introducing the Model
+Context Protocol (MCP), the open-source layer Anthropic introduced in
+November 2024 to standardize how large language model applications
+connect to data sources and tools. The article explains how MCP acts as
+middleware between models and downstream services and surveys associated
+security risks, including overly broad permissions, unvetted servers,
+exposed endpoints, and limited monitoring. [ageint157] This is a
+Bandwidth blog post explaining how the Model Context Protocol (MCP)
+supports agentic AI systems that can assess context and take actions
+rather than only respond to prompts. Using a contact-center voice agent
+example, it describes MCP as a standard for letting AI models interact
+securely with external tools, APIs, and data sources, and covers
+instructions versus multi-step workflows. Work source by source: name
+the bounded claim, its origin, the residual uncertainty, and the trigger
+that would change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Model Context Protocol
+(MCP)</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Model Context Protocol</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape <strong>Model Context Protocol
+(MCP)</strong> work as an <strong>agent run and assurance card</strong>
+that states the evidence used, what stays uncertain, who reviews it, and
+when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Model Context Protocol (MCP)</strong>: that naming an agent
+pattern certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Model Context
+Protocol (MCP)</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4 id="lesson-22-mcp-architecture-client-server-host">Lesson 22: MCP
+Architecture: Client, Server, Host</h4>
+<p><strong>Concept.</strong> <strong>MCP Architecture: Client, Server,
+Host</strong> evaluates tool protocols by allowlists, logging,
+provenance of retrieved content, and deny-by-default policies.</p>
+<p><strong>Why it matters.</strong> <strong>MCP Architecture: Client,
+Server, Host</strong> matters in the <strong>Agentic AI Governance and
+Tool Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> <strong>MCP Architecture: Client,
+Server, Host</strong> rests on [ageint299], [ageint306], and
+[ageint312]. Its anchor reference records: The official Model Context
+Protocol (MCP) specification, defining an open protocol that
+standardizes how LLM applications connect to external data sources and
+tools using JSON-RPC 2.0 messages. Use them for the claim that
+<strong>MCP Architecture: Client, Server, Host</strong> lets you defend
+here, the limit it has to respect, and the re-check owed before reuse.
+External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>MCP Architecture:
+Client, Server, Host</strong>, work from the cited evidence behind this
+row. [ageint299] The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>MCP
+Architecture</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>MCP Architecture</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>MCP Architecture: Client,
+Server, Host</strong> work as an <strong>agent run and assurance
+card</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>MCP Architecture: Client, Server, Host</strong>: that naming an
+agent pattern certifies it is safe to deploy without governance
+gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>MCP Architecture:
+Client, Server, Host</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4 id="lesson-23-nsa-security-design-considerations-for-mcp">Lesson 23:
+NSA Security Design Considerations for MCP</h4>
+<p><strong>Concept.</strong> <strong>NSA Security Design Considerations
+for MCP</strong> studies the declassified record for institutional
+lessons about oversight, source protection, and limits on translating
+history into practice.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>NSA Security
+Design Considerations</strong> to separate agent assistance from
+autonomous external action. A defensible treatment names the judgment it
+enables for least-privilege agent design and run review, the proof limit
+that treating pattern names as deployment playbooks would otherwise
+hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>NSA Security Design
+Considerations for MCP</strong> rests on [ageint155]. The closest source
+to this row notes: Radosevich and Halloran (2025) audit security
+vulnerabilities in Anthropic’s Model Context Protocol (MCP), which
+allows LLMs to integrate with external tools and data sources. Use it
+for pinning down the scope of <strong>NSA Security Design Considerations
+for MCP</strong>, the edge of that scope, and when these citations need
+re-verifying before transfer. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>NSA Security Design
+Considerations</strong>, work from the cited evidence behind this row.
+[ageint155] Radosevich and Halloran (2025) audit security
+vulnerabilities in Anthropic’s Model Context Protocol (MCP), which
+allows LLMs to integrate with external tools and data sources. The
+authors demonstrate that language models using MCP can be manipulated
+through prompt injection to execute malicious code, enable remote
+access, and steal credentials. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>NSA Security Design
+Considerations</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>NSA Security Design Considerations for</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape <strong>NSA
+Security Design Considerations</strong> work as an <strong>agent run and
+assurance card</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>NSA Security Design Considerations</strong>: that naming an
+agent pattern certifies it is safe to deploy without governance
+gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>NSA Security Design
+Considerations</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-24-mcp-security-risks-tool-poisoning-prompt-injection-via-server">Lesson
+24: MCP Security Risks: Tool Poisoning, Prompt Injection via Server</h4>
+<p><strong>Concept.</strong> <strong>MCP Security Risks: Tool Poisoning,
+Prompt Injection via Server</strong> evaluates tool protocols by
+allowlists, logging, provenance of retrieved content, and
+deny-by-default policies.</p>
+<p><strong>Why it matters.</strong> <strong>MCP Security Risks</strong>
+matters in the <strong>Agentic AI Governance and Tool Security</strong>
+lane because least-privilege agent design and run evidence must stay
+separate from judgment; treating pattern names as deployment playbooks
+is a common failure.</p>
+<p><strong>Source support.</strong> <strong>MCP Security Risks: Tool
+Poisoning, Prompt Injection via Server</strong> rests on [ageint159].
+Its anchor reference records: It identifies concerns including weak
+default authentication, supply-chain exposure from compromised tools,
+over-permissioned access tokens, injection and context-poisoning
+attacks, and gaps in audit logging for agentic workflows. Use it for
+fixing what <strong>MCP Security Risks: Tool Poisoning, Prompt Injection
+via Server</strong> covers, marking the boundary it must not cross, and
+timing the next source refresh. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>MCP Security
+Risks</strong>, reason from the sources cited in this row. [ageint159] A
+September 2025 Bitdefender Business Insights article by Martin Zugec
+examining security risks in the Model Context Protocol, the standard
+introduced by Anthropic for connecting AI agents to external tools and
+data. It identifies concerns including weak default authentication,
+supply-chain exposure from compromised tools, over-permissioned access
+tokens, injection and context-poisoning attacks, and gaps in audit
+logging for agentic workflows. Each source above earns its place in this
+topic only when you can state its bounded claim, its provenance, its
+uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>MCP Security
+Risks</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>MCP Security Risks</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>MCP Security Risks</strong>
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>MCP Security Risks</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>MCP Security
+Risks</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-25-mcp-in-intelligence-workflows-structured-tool-registration">Lesson
+25: MCP in Intelligence Workflows: Structured Tool Registration</h4>
+<p><strong>Concept.</strong> <strong>MCP in Intelligence Workflows:
+Structured Tool Registration</strong> evaluates tool protocols by
+allowlists, logging, provenance of retrieved content, and
+deny-by-default policies.</p>
+<p><strong>Why it matters.</strong> <strong>MCP in Intelligence
+Workflows</strong> connects classroom vocabulary to Agentic AI
+Governance and Tool Security practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>MCP in Intelligence
+Workflows: Structured Tool Registration</strong> rests on [ageint299],
+[ageint306], and [ageint312]. The most specific cited work observes: The
+official Model Context Protocol (MCP) specification, defining an open
+protocol that standardizes how LLM applications connect to external data
+sources and tools using JSON-RPC 2.0 messages. Use them for the claim
+that <strong>MCP in Intelligence Workflows: Structured Tool
+Registration</strong> lets you defend here, the limit it has to respect,
+and the re-check owed before reuse. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>MCP in
+Intelligence Workflows</strong> against the works cited for this row.
+[ageint299] The official Model Context Protocol (MCP) specification,
+defining an open protocol that standardizes how LLM applications connect
+to external data sources and tools using JSON-RPC 2.0 messages. It
+describes the host, client, and server roles and capability negotiation,
+and the features servers expose (resources, prompts, tools) and clients
+offer (sampling, roots, elicitation). [ageint306] Official CISA
+Artificial Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. [ageint312] Official
+Government of Canada guide for responsible use of agentic AI, used for
+public-sector agent governance and accountability source support. Read
+each cited work for what it can support about this topic, where that
+claim originated, how confident it is, and what evidence would change
+it.</p>
+<p><strong>Student artifact.</strong> For <strong>MCP in Intelligence
+Workflows</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>MCP in Intelligence Workflows</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape <strong>MCP
+in Intelligence Workflows</strong> work as an <strong>agent run and
+assurance card</strong> that names evidence, uncertainty, reviewer, and
+stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>MCP in Intelligence Workflows</strong>: that naming an agent
+pattern certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>MCP in Intelligence
+Workflows</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-26-agent-to-agent-a2a-protocols-interoperability-between-frameworks">Lesson
+26: Agent-to-Agent (A2A) Protocols: Interoperability Between
+Frameworks</h4>
+<p><strong>Concept.</strong> <strong>Agent-to-Agent (A2A) Protocols:
+Interoperability Between Frameworks</strong> treats agents as software
+actors with explicit permissions, logs, stop conditions, and human
+approval—not autonomous decision makers.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Agent-to-Agent (A2A) Protocols: Interoperability Between
+Frameworks</strong>, treating pattern names as deployment playbooks
+undermines least-privilege agent design and run review; the lesson
+builds the habit to separate agent assistance from autonomous external
+action.</p>
+<p><strong>Source support.</strong> <strong>Agent-to-Agent (A2A)
+Protocols: Interoperability Between Frameworks</strong> rests on
+[ageint137]. The closest source to this row notes: An arXiv paper
+surveying the shift from passive language models to Agentic AI, where
+large language models act as cognitive controllers that combine memory,
+tool use, and environmental feedback to pursue extended goals. Use it
+for the working definition that <strong>Agent-to-Agent (A2A) Protocols:
+Interoperability Between Frameworks</strong> can defend, where that
+scope ends, and the refresh check owed before this evidence transfers.
+External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Agent-to-Agent
+(A2A) Protocols: Interoperability Between Frameworks</strong> in the
+evidence the row cites. [ageint137] An arXiv paper surveying the shift
+from passive language models to Agentic AI, where large language models
+act as cognitive controllers that combine memory, tool use, and
+environmental feedback to pursue extended goals. It proposes a unified
+taxonomy organizing agent systems into six components: perception,
+brain, planning, action, tool use, and collaboration. Each source above
+earns its place in this topic only when you can state its bounded claim,
+its provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>Agent-to-Agent (A2A)
+Protocols</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Agent-to-Agent Protocols</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape <strong>Agent-to-Agent (A2A)
+Protocols: Interoperability Between Frameworks</strong> work as an
+<strong>agent run and assurance card</strong> that logs the evidence,
+the uncertainty, the responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Agent-to-Agent (A2A) Protocols: Interoperability Between
+Frameworks</strong>: that naming an agent pattern certifies it is safe
+to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Agent-to-Agent (A2A)
+Protocols: Interoperability Between Frameworks</strong> to a second
+module by preserving least-privilege agent design and run review,
+changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-27-n8n-and-make.com-no-codelow-code-agentic-intelligence-pipelines">Lesson
+27: n8n and Make.com: No-Code/Low-Code Agentic Intelligence
+Pipelines</h4>
+<p><strong>Concept.</strong> <strong>n8n and Make.com: No-Code/Low-Code
+Agentic Intelligence Pipelines</strong> uses the pattern name as safe
+architectural vocabulary: allowlisted tools, logging, human approval,
+and blocked external action.</p>
+<p><strong>Why it matters.</strong> <strong>n8n and Make.com:
+No-Code/Low-Code Agentic Intelligence Pipelines</strong> connects
+classroom vocabulary to Agentic AI Governance and Tool Security
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>n8n and Make.com:
+No-Code/Low-Code Agentic Intelligence Pipelines</strong> rests on
+[ageint153]. Its anchor reference records: The second half of the
+framework highlights common agentic frameworks. Use it for the working
+definition that <strong>n8n and Make.com: No-Code/Low-Code Agentic
+Intelligence Pipelines</strong> can defend, where that scope ends, and
+the refresh check owed before this evidence transfers. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>n8n and
+Make.com: No-Code/Low-Code Agentic Intelligence Pipelines</strong> in
+the evidence the row cites. [ageint153] The second half of the framework
+highlights common agentic frameworks. Each source above earns its place
+in this topic only when you can state its bounded claim, its provenance,
+its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>n8n and
+Make.com</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>n8n and Make com</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>n8n and Make.com:
+No-Code/Low-Code Agentic Intelligence Pipelines</strong> work as an
+<strong>agent run and assurance card</strong> that states the evidence
+used, what stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>n8n and Make.com: No-Code/Low-Code Agentic Intelligence
+Pipelines</strong>: that naming an agent pattern certifies it is safe to
+deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>n8n and Make.com:
+No-Code/Low-Code Agentic Intelligence Pipelines</strong> to a second
+module by preserving least-privilege agent design and run review,
+changing the source evidence, and naming a new reviewer.</p>
+<h4 id="lesson-28-top-8-agentic-ai-frameworks-comparison-2026">Lesson
+28: Top 8 Agentic AI Frameworks Comparison (2026)</h4>
+<p><strong>Concept.</strong> <strong>Top 8 Agentic AI Frameworks
+Comparison (2026)</strong> evaluates agentic-AI governance claims
+against OECD principles: transparency, accountability, and human
+oversight.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Top 8 Agentic AI Frameworks Comparison (2026)</strong>, treating
+pattern names as deployment playbooks undermines least-privilege agent
+design and run review; the lesson builds the habit to separate agent
+assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Top 8 Agentic AI Frameworks
+Comparison (2026)</strong> rests on [ageint146]. The closest source to
+this row notes: An Exabeam explainer describing agentic AI frameworks as
+software toolkits that provide pre-built components and architectures
+for building autonomous AI agents. Use it for fixing what <strong>Top 8
+Agentic AI Frameworks Comparison (2026)</strong> covers, marking the
+boundary it must not cross, and timing the next source refresh. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Top 8 Agentic AI
+Frameworks Comparison (2026)</strong>, work from the cited evidence
+behind this row. [ageint146] An Exabeam explainer describing agentic AI
+frameworks as software toolkits that provide pre-built components and
+architectures for building autonomous AI agents. It outlines core
+elements such as agent coordination, tool integration, memory
+management, workflow definition, and deployment monitoring, and reviews
+eight frameworks including LangGraph, AutoGen, CrewAI, LlamaIndex,
+Haystack, DSPy, and Semantic Kernel. Each source above earns its place
+in this topic only when you can state its bounded claim, its provenance,
+its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>Top 8 Agentic AI
+Frameworks Comparison (2026)</strong>, build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Top 8 Agentic AI Frameworks</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Top 8 Agentic AI Frameworks Comparison (2026)</strong>: that
+naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Top 8 Agentic AI
+Frameworks Comparison (2026)</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h3
+id="ageint-frameworks-and-infrastructure-worked-safe-example-synthetic-inputs-evidence-and-review">AGEINT
+Frameworks and Infrastructure worked safe example: synthetic inputs,
+evidence, and review</h3>
+<p>Worked example: a synthetic research assistant agent organizes public
+readings for an instructor. [ageint255]; [ageint256].</p>
+<p><strong>Triangulation anchors.</strong> In module 33’s worked-example
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<p><strong>Unit discipline spine.</strong> Discipline: <strong>governed
+agentic intelligence</strong>. Learners use a <strong>agent run and
+assurance card</strong> and keep this boundary visible: No autonomous
+external action, credentialed operations, live-target workflows, or
+uncontrolled tool use.</p>
+<p><strong>Frame.</strong> The classroom question centers on
+<strong>LangChain/LangGraph: State Machine Orchestration</strong>.
+Excluded actions stay explicit, and the <strong>Agentic Tool-Governance
+Lens</strong> planning question is: Which human authority, agent
+identity, tool permission, autonomy limit, incident threshold, and
+recoverability condition bounds the workflow?</p>
+<p><strong>Inputs.</strong> For the <strong>LangChain/LangGraph: State
+Machine Orchestration</strong> scenario, use public URLs, a fixed
+retrieval tool, a summarization prompt, a time budget, and a stop
+condition. The Agentic Tool-Governance Lens intake note records
+provenance, sensitivity, fit-to-purpose, and why the fixture is enough
+for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>LangChain/LangGraph: State
+Machine Orchestration</strong>, students bind the agent identity, list
+allowed tools, set autonomy limits, capture sources, block unsafe
+requests, and log approvals. Pause whenever an inference about
+LangChain/LangGraph: State Machine Orchestration appears without
+evidence, confidence outruns support, or an agent output is treated as
+judgment.</p>
+<p><strong>Filled artifact.</strong> Purpose =
+<strong>LangChain/LangGraph: State Machine Orchestration</strong>
+classroom scenario; unit artifact = agent run and assurance card;
+evidence = allowed inputs; method = least-privilege agent design and run
+review; output = an agent run card with tool calls, source links,
+blocked actions, reviewer notes, incident threshold, and recovery
+decision; boundary = no external action; reviewer = instructor or named
+peer.</p>
+<p><strong>Flawed answer to revise.</strong> Treating
+<strong>LangChain/LangGraph: State Machine Orchestration</strong> as
+“Agentic Tool-Governance Lens confirms it” is not enough. The revision
+ties the claim to least-privilege agent design and run review, adds the
+missing caveat, states confidence, and records the reviewer who accepted
+the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for
+<strong>LangChain/LangGraph: State Machine Orchestration</strong>
+records the defensible claim, the assumption most likely to fail, the
+evidence that would change confidence, and the review condition for
+stopping reuse.</p>
+</body>
+</html>

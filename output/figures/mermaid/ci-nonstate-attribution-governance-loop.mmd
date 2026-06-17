@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Indicator or Tip"] --> B["Threat Triage Against CI Priorities"]
+  B --> C["Lawful Collection and Records Review"]
+  C --> D["Pattern and Network Analysis"]
+  D --> E["Attribution Hypotheses"]
+  E --> F{"Attribution Confidence Sufficient"}
+  F -->|"No"| G["Document Gaps and Re-Collect"]
+  G --> C
+  F -->|"Yes"| H["Legal and Oversight Review"]
+  H --> I["Coordination with Partners and Agencies"]
+  I --> J["Protective and Mitigation Measures"]
+  J --> K["Audit Trail and Civil-Liberties Check"]
+  K --> L["Lessons Learned Feedback"]
+  L --> B

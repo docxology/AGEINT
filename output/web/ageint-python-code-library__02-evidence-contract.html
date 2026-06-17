@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="ageint-python-code-library-assurance-handoff-evidence-governance-refresh-and-capstone">AGEINT
+Python Code Library assurance handoff: evidence, governance, refresh,
+and capstone</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h3
+id="ageint-python-code-library-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">AGEINT
+Python Code Library evidence contract: source spine, verified anchors,
+transfer architecture, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h3
+id="ageint-python-code-library-transfer-architecture-module-inputs-outputs-and-review-boundary">AGEINT
+Python Code Library transfer architecture: module inputs, outputs, and
+review boundary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h4
+id="ageint-python-code-library-lineage-and-source-tradition-profile-concepts-and-first-anchors">AGEINT
+Python Code Library lineage and source tradition: profile, concepts, and
+first anchors</h4>
+<p>This sits in the <strong>Agentic AI Governance and Tool
+Security</strong> lineage: delegated action under explicit authority,
+identity, permissions, tool boundaries, monitoring, and human
+escalation. [ageint242]; [ageint243].</p>
+<h4
+id="ageint-python-code-library-working-model-inputs-constraints-transforms-outputs-and-oversight">AGEINT
+Python Code Library working model: inputs, constraints, transforms,
+outputs, and oversight</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>Threat Intelligence Aggregation
+Agent: LangChain + STIX/TAXII; Search-exposure provenance review using
+instructor-provided records</strong>, with provenance and reviewability
+throughout.</p>
+<h4
+id="ageint-python-code-library-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">AGEINT
+Python Code Library knowledge architecture: inputs, transforms, outputs,
+and failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> source materials, domain constraints,
+learner questions, verified anchors, and artifact requirements.
+[ageint242]; [ageint243].</li>
+<li><strong>Transforms:</strong> evidence normalization, structured
+reasoning, source evaluation, governance review, and handoff
+preparation.</li>
+<li><strong>Outputs:</strong> annotated map, decision memo, rubric,
+tabletop packet, or audit artifact.</li>
+<li><strong>Failure modes:</strong> over-automation, misplaced
+confidence, policy drift, and confusing simulation with deployment.</li>
+</ul>
+<h4
+id="ageint-python-code-library-transfer-contracts-authority-evidence-tools-and-auditable-output">AGEINT
+Python Code Library transfer contracts: authority, evidence, tools, and
+auditable output</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII;
+Search-exposure provenance review using instructor-provided
+records</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the <strong>Agentic AI
+Governance and Tool Security</strong> source descriptors,
+transformations, claims, uncertainty, and confidence separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+annotated map, decision memo, rubric, tabletop packet, or audit artifact
+that another reviewer can audit.</li>
+</ul>
+<h4
+id="ageint-python-code-library-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">AGEINT
+Python Code Library profile emphasis and local focus: method stack and
+topic cluster</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<p>The matched profile emphasizes delegated action under explicit
+authority, identity, permissions, tool boundaries, monitoring, and human
+escalation. The method stack is AI RMF Govern-Map-Measure-Manage,
+least-privilege tool design, prompt-injection review, progressive
+deployment, and rollback drills; the local topic cluster is
+<strong>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII;
+Search-exposure provenance review using instructor-provided
+records</strong>.</p>
+<h3
+id="ageint-python-code-library-evidence-spine-source-roles-citation-support-and-claim-limits">AGEINT
+Python Code Library evidence spine: source roles, citation support, and
+claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>Agentic AI Governance and Tool
+Security</strong> profile tells reviewers what evidence is strong enough
+for the module artifact built around <strong>Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance
+review using instructor-provided records</strong>.</p>
+<h4
+id="ageint-python-code-library-guide-source-spine-inherited-keys-and-local-citation-roles">AGEINT
+Python Code Library guide source spine: inherited keys and local
+citation roles</h4>
+<p>Primary guide citations: [ageint242]; [ageint243]; [ageint246];
+[ageint280]; [ageint281]; [ageint282]; [ageint292]; [ageint295];
+[ageint296]; [ageint299]; [ageint306]; [ageint312]; [ageint309];
+[ageint310]; [ageint300]; [ageint304]; [ageint303]; [ageint305];
+[ageint307]; [ageint301]; [ageint298]; [ageint308]; [ageint311].</p>
+<h4
+id="ageint-python-code-library-verified-source-canon-direct-anchors-and-claim-boundaries">AGEINT
+Python Code Library verified source canon: direct anchors and claim
+boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint242]; [ageint243].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint242]; [ageint243]; [ageint246]; [ageint280]; [ageint281];
+[ageint282]; [ageint292]; [ageint295]; [ageint296]; [ageint299];
+[ageint306]; [ageint312]; [ageint309]; [ageint310]; [ageint300];
+[ageint304]; [ageint303]; [ageint305]; [ageint307]; [ageint301];
+[ageint298]; [ageint308]; [ageint311].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 36’s source-canon
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for
+<strong>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII;
+Search-exposure provenance review using instructor-provided
+records</strong> and [ageint242]; [ageint243], but only directly
+verified source URLs are encoded as citations.</p>
+<h4
+id="ageint-python-code-library-intelligence-practice-lens-evidence-artifact-and-safety-check">AGEINT
+Python Code Library intelligence practice lens: evidence artifact and
+safety check</h4>
+<p>Practice lens: <strong>Agentic Tool-Governance Lens</strong> for
+<strong>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII;
+Search-exposure provenance review using instructor-provided
+records</strong>. [ageint242]; [ageint243].</p>
+<p><strong>Planning question:</strong> Which human authority, agent
+identity, tool permission, autonomy limit, incident threshold, and
+recoverability condition bounds the workflow?</p>
+<p><strong>Evidence artifact:</strong> agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path.</p>
+<p><strong>Validation rule:</strong> verify least privilege,
+prompt-injection exposure, provenance, observability, stop conditions,
+and incident-reporting triggers. Applied to <strong>Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance
+review using instructor-provided records</strong>.</p>
+<p><strong>Handoff contract:</strong> export agent traces, tool calls,
+retrieved sources, policy decisions, and human approvals separately.</p>
+<p><strong>Safety check:</strong> block excessive agency, shadow tools,
+credential leakage, autonomous deployment, and irreversible actions.</p>
+<h4
+id="ageint-python-code-library-runtime-to-reader-map-generated-sections-and-verifier-surfaces">AGEINT
+Python Code Library runtime-to-reader map: generated sections and
+verifier surfaces</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>36.99</td>
+<td>36.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind AGEINT Python Code Library to
+source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>AGEINT pattern registry, agent identity, and interface-contract
+studio</td>
+<td>36.100</td>
+<td>36.100 source title transformed into safe curriculum treatment;
+original: V2 AGEINT-depth extension: convert code-library material into
+education-safe capstone workflows with instructor rubrics, prompt
+transparency, allowed tools, and human override requirements</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>36.101</td>
+<td>36.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for AGEINT
+Python Code Library</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>36.102</td>
+<td>36.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for AGEINT Python Code
+Library</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII</td>
+<td>36.1</td>
+<td>36.1 Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Search-exposure provenance review using instructor-provided
+records</td>
+<td>36.2</td>
+<td>36.2 source title transformed into safe curriculum treatment;
+original: Multi-Agent OSINT Crew: CrewAI + Shodan + theHarvester +
+Maltego</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&amp;CK
+Navigator</td>
+<td>36.3</td>
+<td>36.3 Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE
+ATT&amp;CK Navigator</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>RAG Pipeline for All-Source Intelligence Fusion: LangGraph + Chroma
++ OpenAI</td>
+<td>36.4</td>
+<td>36.4 RAG Pipeline for All-Source Intelligence Fusion: LangGraph +
+Chroma + OpenAI</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Claim-ledger memory exercise that tracks evidence changes rather
+than people</td>
+<td>36.5</td>
+<td>36.5 source title transformed into safe curriculum treatment;
+original: Pattern-of-Life Analysis Agent: Persistent Memory + GEOINT +
+OSINT</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Psychological inoculation and prebunking literacy</td>
+<td>36.6</td>
+<td>36.6 source title transformed into safe curriculum treatment;
+original: Cognitive Security Inoculation Agent: Van der Linden Taxonomy
++ GPT-4o</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Supply Chain Inspector: SBOM + GitHub Commit Analysis + Anomaly
+Detection</td>
+<td>36.7</td>
+<td>36.7 Supply Chain Inspector: SBOM + GitHub Commit Analysis + Anomaly
+Detection</td>
+<td>Software-Supply-Chain Assurance Lens</td>
+<td>software-supply-chain assurance packet with package provenance,
+maintainer-risk notes, build-integrity evidence, and control gaps</td>
+<td>exclude exploit reproduction, maintainer targeting, backdoor
+mechanics, credential hunting, and live repository interference</td>
+</tr>
+<tr>
+<td>ICS Anomaly Detection Agent: OT Network + MITRE ATT&amp;CK for
+ICS</td>
+<td>36.8</td>
+<td>36.8 ICS Anomaly Detection Agent: OT Network + MITRE ATT&amp;CK for
+ICS</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="ageint-python-code-library-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">AGEINT
+Python Code Library reusable subsection contract: topic rows, artifacts,
+and safety duties</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Search-exposure provenance review using instructor-provided
+records</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&amp;CK
+Navigator</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>RAG Pipeline for All-Source Intelligence Fusion: LangGraph + Chroma
++ OpenAI</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Claim-ledger memory exercise that tracks evidence changes rather
+than people</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Psychological inoculation and prebunking literacy</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Supply Chain Inspector: SBOM + GitHub Commit Analysis + Anomaly
+Detection</td>
+<td>Software-Supply-Chain Assurance Lens</td>
+<td>software-supply-chain assurance packet with package provenance,
+maintainer-risk notes, build-integrity evidence, and control gaps</td>
+<td>exclude exploit reproduction, maintainer targeting, backdoor
+mechanics, credential hunting, and live repository interference</td>
+</tr>
+<tr>
+<td>ICS Anomaly Detection Agent: OT Network + MITRE ATT&amp;CK for
+ICS</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="ageint-python-code-library-annotated-source-ledger-real-titles-and-local-contribution">AGEINT
+Python Code Library annotated source ledger: real titles and local
+contribution</h4>
+<p>Each source cited by this <strong>Agentic AI Governance and Tool
+Security</strong> module is paired below with its real title and a
+one-line note on what it contributes to <strong>Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance
+review using instructor-provided records</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint242]</td>
+<td><a
+href="https://unesdoc.unesco.org/ark:/48223/pf0000386693">Guidance for
+Generative AI in Education and Research</a></td>
+<td>Official UNESCO generative AI education guidance.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint243]</td>
+<td><a
+href="https://www.unesco.org/en/articles/unesco-launches-new-ai-competency-frameworks-students-and-teachers">AI
+Competency Frameworks for Teachers and Students</a></td>
+<td>A UNESCO announcement of two new AI competency frameworks, one for
+students and one for teachers, intended to guide safe and responsible
+engagement with artificial intelligence in education. The student
+framework emphasizes a human-centered perspective, ethical use,
+foundational AI knowledge, and design thinking, while the teacher
+framework covers ethics, technical understanding, and pedagogy.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint246]</td>
+<td><a
+href="https://education.ec.europa.eu/focus-topics/digital-education/action-plan">Digital
+Education Action Plan 2021-2027</a></td>
+<td>The European Commission’s official page on the Digital Education
+Action Plan (2021-2027), a strategic framework for promoting
+high-quality, inclusive digital learning across EU education systems. It
+defines digital education as the use of digital tools, technologies, and
+content to support teaching, learning, and assessment, and cites
+pandemic-driven adoption alongside persistent gaps in teacher readiness,
+student digital skills, and household access.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint280]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/61/r3/final">NIST SP
+800-61 Rev. 3: Incident Response Recommendations and Considerations for
+Cybersecurity Risk Management</a></td>
+<td>NIST SP 800-61 Rev. 3, published April 2025, integrates incident
+response guidance into broader cybersecurity risk management aligned
+with the NIST Cybersecurity Framework 2.0, superseding the 2012 Rev. 2.
+The publication addresses cyber threat information sharing, incident
+handling and management practices, and procedures for detecting,
+responding to, and recovering from security incidents.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint281]</td>
+<td><a
+href="https://www.enisa.europa.eu/publications/artificial-intelligence-cybersecurity-challenges">Artificial
+Intelligence Cybersecurity Challenges</a></td>
+<td>An ENISA (European Union Agency for Cybersecurity) report published
+December 15, 2020 mapping the cybersecurity challenges of artificial
+intelligence. It defines AI scope through a lifecycle approach,
+identifies the assets requiring protection within AI ecosystems, and
+develops a threat taxonomy classified across lifecycle stages and asset
+categories.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint282]</td>
+<td><a
+href="https://www.nist.gov/artificial-intelligence/ai-research-security-and-resilience">AI
+Research: Security and Resilience</a></td>
+<td>A NIST page on AI research focused on security and resilience,
+framing these as core characteristics of trustworthy AI under the NIST
+AI Risk Management Framework.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint292]</td>
+<td><a
+href="https://www.nist.gov/publications/assessing-risks-and-impacts-ai-aria-pilot-evaluation-report">Assessing
+Risks and Impacts of AI (ARIA): Pilot Evaluation Report</a></td>
+<td>The ARIA 0.1 pilot evaluation report documents NIST’s methodology
+for systematically assessing AI applications for risks and societal
+impacts, using a multi-layered evaluation approach across five
+participating organizations and seven submitted AI applications. The
+pilot employed three evaluation scenarios and three testing levels:
+model testing, red teaming, and field testing, supplemented by dialogue
+annotation, tester questionnaires, and structured measurement
+trees.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint295]</td>
+<td><a
+href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf">M-25-22:
+Driving Efficient Acquisition of Artificial Intelligence in
+Government</a></td>
+<td>OMB Memorandum M-25-22 (April 3, 2025), Driving Efficient
+Acquisition of Artificial Intelligence in Government, issued under
+Executive Order 13960 and related directives. It provides guidance to
+federal agencies for acquiring effective and trustworthy AI in a timely,
+cost-effective manner, and rescinds and replaces earlier memorandum
+M-24-18.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint296]</td>
+<td><a
+href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">Artificial
+Intelligence Risk Management Framework: Generative Artificial
+Intelligence Profile</a></td>
+<td>NIST AI 600-1, the Artificial Intelligence Risk Management
+Framework: Generative Artificial Intelligence Profile, a cross-sectoral
+companion resource to the NIST AI RMF 1.0 issued pursuant to Executive
+Order 14110. It identifies risks that are unique to or amplified by
+generative AI and organizes suggested actions for managing those risks,
+mapped to the AI RMF functions.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint299]</td>
+<td><a href="https://modelcontextprotocol.io/specification">Model
+Context Protocol Specification</a></td>
+<td>The official Model Context Protocol (MCP) specification, defining an
+open protocol that standardizes how LLM applications connect to external
+data sources and tools using JSON-RPC 2.0 messages. It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation).</td>
+<td>verified source-guide context; use pinned MCP anchor for normative
+claims</td>
+</tr>
+<tr>
+<td>[ageint306]</td>
+<td><a href="https://www.cisa.gov/ai">Artificial Intelligence</a></td>
+<td>Official CISA Artificial Intelligence page for AI security, safety,
+resilience, and critical-infrastructure governance source support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint312]</td>
+<td><a
+href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-agentic-artificial-antelligence.html">Guide
+on the Use of Agentic Artificial Intelligence</a></td>
+<td>Official Government of Canada guide for responsible use of agentic
+AI, used for public-sector agent governance and accountability source
+support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint309]</td>
+<td><a
+href="https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html">STIX
+Version 2.1</a></td>
+<td>An OASIS standard specification defining STIX (Structured Threat
+Information Expression), a language for exchanging cyber threat
+intelligence in a standardized, machine-readable form. It establishes a
+graph-based model with STIX Domain Objects, Cyber-observable Objects,
+and Relationship Objects, plus meta objects, bundles, and a patterning
+language for detection.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint310]</td>
+<td><a
+href="https://docs.oasis-open.org/cti/taxii/v2.1/taxii-v2.1.html">TAXII
+Version 2.1</a></td>
+<td>The OASIS Standard specification for TAXII (Trusted Automated
+Exchange of Intelligence Information) Version 2.1, published in 2021 by
+the OASIS Cyber Threat Intelligence Technical Committee. It defines a
+RESTful, HTTPS-based API protocol for sharing cyber threat intelligence
+between organizations, supporting two communication models: Collections
+(request-response) and Channels (publish-subscribe).</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint300]</td>
+<td><a href="https://atlas.mitre.org/">MITRE ATLAS</a></td>
+<td>MITRE ATLAS knowledge base for adversarial threats to AI systems,
+used for defensive AI red-team assurance and misuse taxonomy.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint304]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/final">Secure
+Software Development Framework (SSDF) Version 1.1: Recommendations for
+Mitigating the Risk of Software Vulnerabilities</a></td>
+<td>NIST SP 800-218, the Secure Software Development Framework Version
+1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint303]</td>
+<td><a
+href="https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity/software-security-supply-chains-software-1">Software
+Security in Supply Chains</a></td>
+<td>An official NIST page on software supply chain security issued under
+Executive Order 14028, focused on the Software Bill of Materials as a
+formal record of software components and their supply chain. It explains
+the benefits of SBOMs for vulnerability identification and supply-chain
+transparency, recommends machine-readable formats such as SPDX,
+CycloneDX, and SWID, and describes foundational, sustaining, and
+enhancing levels of implementation.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint305]</td>
+<td><a href="https://www.nccoe.nist.gov/devsecops">DevSecOps</a></td>
+<td>Official NIST NCCoE DevSecOps project page for software factory,
+secure pipeline, and continuous authorization source support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint307]</td>
+<td><a href="https://www.cisa.gov/ics/Recommended-Practices">ICS
+Recommended Practices</a></td>
+<td>Official CISA Industrial Control Systems recommended practices page
+for defensive ICS/OT safety, resilience, and incident-preparation
+guidance.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint301]</td>
+<td><a
+href="https://www.dni.gov/files/ODNI/documents/IC_OSINT_Strategy.pdf">The
+IC OSINT Strategy 2024-2026</a></td>
+<td>Official Intelligence Community strategy for open-source
+intelligence governance, integration, source discovery, data, tools,
+tradecraft, and workforce priorities.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint298]</td>
+<td><a
+href="https://www.odni.gov/index.php/what-we-do/ic-related-menus/ic-related-links/intelligence-community-directives">Intelligence
+Community Directives</a></td>
+<td>Official ODNI index for Intelligence Community Directives used to
+locate current directive source material and preserve directive-context
+citations.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint308]</td>
+<td><a
+href="https://www.cisa.gov/resources-tools/resources/cisa-insights-preparing-and-mitigating-foreign-influence-operations-targeting-critical">Preparing
+for and Mitigating Foreign Influence Operations Targeting Critical
+Infrastructure</a></td>
+<td>An archived CISA publication, “CISA Insights: Preparing for and
+Mitigating Foreign Influence Operations Targeting Critical
+Infrastructure,” providing guidance on the threat that foreign influence
+campaigns pose to U.S. critical infrastructure.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint311]</td>
+<td><a
+href="https://www.nato.int/cps/en/natohq/topics_219728.htm">Countering
+Information Threats</a></td>
+<td>An official NATO topic page describing the Alliance’s approach to
+countering information threats, defined as intentional, manipulative,
+and coordinated activities by state and non-state actors including
+disinformation and propaganda. It explains why such threats matter for
+democratic processes and institutional trust, and outlines a four-part
+framework of understanding, preventing, containing, and recovering.</td>
+<td>verified source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-ageint-python-code-library]; return to the curriculum atlas
+[sec:curriculum_orientation] for the reader paths, evidence map, and
+safety gates that govern this module.</p>
+</body>
+</html>

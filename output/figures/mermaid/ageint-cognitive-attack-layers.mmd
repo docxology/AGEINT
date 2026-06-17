@@ -1,0 +1,27 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["NATO/INSS Cognitive Warfare 2026<br/>three layers of engagement"]
+    subgraph BIO["Biological layer"]
+        direction TB
+        bt["Target<br/>cognitive capacity"]
+        bm["Mechanism<br/>neuroscience-informed<br/>targeting of the<br/>nervous system"]
+        ba["AI role<br/>optimized delivery<br/>timing and channel<br/>selection"]
+        bt --> bm --> ba
+    end
+    subgraph PSY["Psychological layer"]
+        direction TB
+        pt["Target<br/>cognitive interpretation"]
+        pm["Mechanism<br/>manipulating individual<br/>cognition, exploiting<br/>biases at scale"]
+        pa["AI role<br/>tailored influence<br/>matched to cognitive<br/>vulnerability profiles"]
+        pt --> pm --> pa
+    end
+    subgraph SOC["Social layer"]
+        direction TB
+        st["Target<br/>cognitive cohesion"]
+        sm["Mechanism<br/>fracturing shared<br/>narratives, weaponizing<br/>identity, epistemic chaos"]
+        sa["AI role<br/>coordinating synthetic<br/>influence campaigns<br/>across platforms"]
+        st --> sm --> sa
+    end
+    root --> BIO
+    root --> PSY
+    root --> SOC

@@ -1,0 +1,23 @@
+{
+  "number": 16,
+  "title": "Imagery Intelligence (IMINT)",
+  "citations": [
+    253,
+    269,
+    270,
+    275,
+    276,
+    283,
+    286,
+    293,
+    295,
+    302,
+    297,
+    309,
+    310,
+    300
+  ],
+  "source_line": 241,
+  "content_profile": "osint_geoint",
+  "practice_lens": "requirements_to_evidence"
+}

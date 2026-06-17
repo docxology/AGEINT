@@ -1,0 +1,20 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  T["Theory source"] --> A["Pedagogical analogy"]
+  A --> H["Design heuristic"]
+  H --> G["Governance control"]
+  G --> E["Evidence or evaluation artifact"]
+  T -.-> LIMIT["Do not imply direct proof"]
+  A -.-> LIMIT
+  H -.-> LIMIT
+  LIMIT --> STOP["Revise unsupported transfer claim"]
+  E --> OK["Bounded claim allowed"]
+  LEG["Legend: dashed edges mark caveat duties"]
+  classDef theory fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef govern fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef caveat fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class T,A,H theory
+  class G,E,OK govern
+  class LIMIT,LEG caveat
+  class STOP stop

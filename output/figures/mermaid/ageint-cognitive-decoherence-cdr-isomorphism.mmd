@@ -1,0 +1,39 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    subgraph P1["Phase 1 — Initiation"]
+        direction LR
+        h1["Human orgs / CCDCOE<br/>adversary targets systemic<br/>invariants: trust, identity,<br/>epistemic standards"]
+        a1["AI agents / CDR<br/>Trigger Injection: adversarial<br/>inputs establish foothold"]
+        h1 -.->|"isomorphic"| a1
+    end
+    subgraph P2["Phase 2 — Early degradation"]
+        direction LR
+        h2["Human orgs / CCDCOE<br/>uncertainty amplification;<br/>inter-layer linkages weaken"]
+        a2["AI agents / CDR<br/>Resource Starvation:<br/>compute and context consumed"]
+        h2 -.->|"isomorphic"| a2
+    end
+    subgraph P3["Phase 3 — Drift"]
+        direction LR
+        h3["Human orgs / CCDCOE<br/>polarization rises;<br/>coordination capacity erodes"]
+        a3["AI agents / CDR<br/>Behavioral Drift: outputs<br/>deviate without alerts"]
+        h3 -.->|"isomorphic"| a3
+    end
+    subgraph P4["Phase 4 — Entrenchment"]
+        direction LR
+        h4["Human orgs / CCDCOE<br/>competing epistemic<br/>frameworks harden"]
+        a4["AI agents / CDR<br/>Memory Entrenchment:<br/>corrupted beliefs solidify"]
+        h4 -.->|"isomorphic"| a4
+    end
+    subgraph P5["Phase 5 — Override"]
+        direction LR
+        h5["Human orgs / CCDCOE<br/>adversary narrative fills<br/>the institutional vacuum"]
+        a5["AI agents / CDR<br/>Functional Override: adversary<br/>goals supersede legitimate tasks"]
+        h5 -.->|"isomorphic"| a5
+    end
+    subgraph P6["Phase 6 — Collapse"]
+        direction LR
+        h6["Human orgs / CCDCOE<br/>system functions formally<br/>but cannot coordinate"]
+        a6["AI agents / CDR<br/>Systemic Collapse: coordinated<br/>behavior serves adversary"]
+        h6 -.->|"isomorphic"| a6
+    end
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6

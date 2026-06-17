@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A(["Anomaly indicator"])
+  A --> TA["Triage and analysis"]
+  TA --> LR{"Legal and policy review"}
+  LR --> AQ["Approved inquiry"]
+  AQ --> FN{"Finding"}
+  FN -->|unsubstantiated| CL["Close with feedback"]
+  FN -->|substantiated| DA["Damage assessment"]
+  DA --> MI["Mitigation and control"]
+  MI --> OR["Oversight reporting"]
+  CL --> UB["Update baselines"]
+  OR --> UB
+  UB --> A

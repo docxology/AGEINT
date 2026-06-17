@@ -1,0 +1,300 @@
+{
+  "directories": {
+    "pdf": {
+      "exists": true,
+      "file_count": 32,
+      "size_mb": "52.53",
+      "total_size_bytes": 55085871,
+      "largest_files": [
+        {
+          "name": "AGEINT_combined.pdf",
+          "size_mb": "32.55",
+          "path": "pdf/AGEINT_combined.pdf"
+        },
+        {
+          "name": "_combined_manuscript.tex",
+          "size_mb": "7.36",
+          "path": "pdf/_combined_manuscript.tex"
+        },
+        {
+          "name": "_combined_manuscript.md",
+          "size_mb": "6.23",
+          "path": "pdf/_combined_manuscript.md"
+        }
+      ],
+      "extensions": {
+        ".bib": 21,
+        ".md": 3,
+        ".log": 2,
+        ".aux": 1,
+        ".blg": 1,
+        ".pdf": 1,
+        ".tex": 1,
+        ".toc": 1,
+        ".bbl": 1
+      }
+    },
+    "web": {
+      "exists": true,
+      "file_count": 334,
+      "size_mb": "23.16",
+      "total_size_bytes": 24289480,
+      "largest_files": [
+        {
+          "name": "index.html",
+          "size_mb": "8.30",
+          "path": "web/index.html"
+        },
+        {
+          "name": "_combined_manuscript.md",
+          "size_mb": "6.21",
+          "path": "web/_combined_manuscript.md"
+        },
+        {
+          "name": "bibliography-atlas__05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.html",
+          "size_mb": "0.29",
+          "path": "web/bibliography-atlas__05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.html"
+        }
+      ],
+      "extensions": {
+        ".html": 331,
+        ".md": 3
+      }
+    },
+    "slides": {
+      "exists": true,
+      "file_count": 2,
+      "size_mb": "0.00",
+      "total_size_bytes": 320,
+      "largest_files": [
+        {
+          "name": "AGENTS.md",
+          "size_mb": "0.00",
+          "path": "slides/AGENTS.md"
+        },
+        {
+          "name": "README.md",
+          "size_mb": "0.00",
+          "path": "slides/README.md"
+        }
+      ],
+      "extensions": {
+        ".md": 2
+      }
+    },
+    "figures": {
+      "exists": true,
+      "file_count": 420,
+      "size_mb": "28.15",
+      "total_size_bytes": 29517636,
+      "largest_files": [
+        {
+          "name": "historical-forbidden-city.png",
+          "size_mb": "0.80",
+          "path": "figures/historical/historical-forbidden-city.png"
+        },
+        {
+          "name": "ageint-graphical-abstract.png",
+          "size_mb": "0.75",
+          "path": "figures/python/ageint-graphical-abstract.png"
+        },
+        {
+          "name": "historical-hexagon-quang-tri.png",
+          "size_mb": "0.67",
+          "path": "figures/historical/historical-hexagon-quang-tri.png"
+        }
+      ],
+      "extensions": {
+        ".json": 5,
+        ".md": 10,
+        ".png": 175,
+        ".mmd": 115,
+        ".rendered": 115
+      }
+    },
+    "data": {
+      "exists": true,
+      "file_count": 139,
+      "size_mb": "3.59",
+      "total_size_bytes": 3763226,
+      "largest_files": [
+        {
+          "name": "manuscript_variables.json",
+          "size_mb": "2.72",
+          "path": "data/manuscript_variables.json"
+        },
+        {
+          "name": "curriculum_outline.json",
+          "size_mb": "0.42",
+          "path": "data/curriculum_outline.json"
+        },
+        {
+          "name": "source-guide-076-150.jsonl",
+          "size_mb": "0.05",
+          "path": "data/curriculum/references/source-guide-076-150.jsonl"
+        }
+      ],
+      "extensions": {
+        ".json": 81,
+        ".md": 2,
+        ".jsonl": 56
+      }
+    },
+    "reports": {
+      "exists": true,
+      "file_count": 44,
+      "size_mb": "12.00",
+      "total_size_bytes": 12583479,
+      "largest_files": [
+        {
+          "name": "claim_calibration.json",
+          "size_mb": "9.70",
+          "path": "reports/claim_calibration.json"
+        },
+        {
+          "name": "artifact_manifest.json",
+          "size_mb": "0.45",
+          "path": "reports/artifact_manifest.json"
+        },
+        {
+          "name": "scholarship_quality.json",
+          "size_mb": "0.32",
+          "path": "reports/scholarship_quality.json"
+        }
+      ],
+      "extensions": {
+        ".json": 24,
+        ".md": 15,
+        ".jsonl": 1,
+        ".txt": 3,
+        ".html": 1
+      }
+    },
+    "simulations": {
+      "exists": true,
+      "file_count": 0,
+      "size_mb": "0.00",
+      "total_size_bytes": 0,
+      "largest_files": [],
+      "extensions": {}
+    },
+    "llm": {
+      "exists": true,
+      "file_count": 0,
+      "size_mb": "0.00",
+      "total_size_bytes": 0,
+      "largest_files": [],
+      "extensions": {}
+    },
+    "logs": {
+      "exists": true,
+      "file_count": 1,
+      "size_mb": "0.00",
+      "total_size_bytes": 144,
+      "largest_files": [
+        {
+          "name": "pipeline.log",
+          "size_mb": "0.00",
+          "path": "logs/pipeline.log"
+        }
+      ],
+      "extensions": {
+        ".log": 1
+      }
+    }
+  },
+  "total_files": 972,
+  "total_size_mb": 119.43832015991211,
+  "largest_files": [
+    {
+      "name": "AGEINT_combined.pdf",
+      "size_mb": "32.55",
+      "category": "pdf",
+      "path": "pdf/AGEINT_combined.pdf"
+    },
+    {
+      "name": "claim_calibration.json",
+      "size_mb": "9.70",
+      "category": "reports",
+      "path": "reports/claim_calibration.json"
+    },
+    {
+      "name": "index.html",
+      "size_mb": "8.30",
+      "category": "web",
+      "path": "web/index.html"
+    },
+    {
+      "name": "_combined_manuscript.tex",
+      "size_mb": "7.36",
+      "category": "pdf",
+      "path": "pdf/_combined_manuscript.tex"
+    },
+    {
+      "name": "_combined_manuscript.md",
+      "size_mb": "6.23",
+      "category": "pdf",
+      "path": "pdf/_combined_manuscript.md"
+    },
+    {
+      "name": "_combined_manuscript.md",
+      "size_mb": "6.21",
+      "category": "web",
+      "path": "web/_combined_manuscript.md"
+    },
+    {
+      "name": "manuscript_variables.json",
+      "size_mb": "2.72",
+      "category": "data",
+      "path": "data/manuscript_variables.json"
+    },
+    {
+      "name": "historical-forbidden-city.png",
+      "size_mb": "0.80",
+      "category": "figures",
+      "path": "figures/historical/historical-forbidden-city.png"
+    },
+    {
+      "name": "ageint-graphical-abstract.png",
+      "size_mb": "0.75",
+      "category": "figures",
+      "path": "figures/python/ageint-graphical-abstract.png"
+    },
+    {
+      "name": "historical-hexagon-quang-tri.png",
+      "size_mb": "0.67",
+      "category": "figures",
+      "path": "figures/historical/historical-hexagon-quang-tri.png"
+    }
+  ],
+  "missing_expected_files": [],
+  "sizes_by_category": {
+    "pdf": 52.53398036956787,
+    "web": 23.16425323486328,
+    "slides": 0.00030517578125,
+    "figures": 28.150211334228516,
+    "data": 3.5888919830322266,
+    "reports": 12.000540733337402,
+    "simulations": 0.0,
+    "llm": 0.0,
+    "logs": 0.0001373291015625
+  },
+  "file_counts_by_type": {
+    ".bib": 21,
+    ".md": 35,
+    ".log": 3,
+    ".aux": 1,
+    ".blg": 1,
+    ".pdf": 1,
+    ".tex": 1,
+    ".toc": 1,
+    ".bbl": 1,
+    ".html": 332,
+    ".json": 110,
+    ".png": 175,
+    ".mmd": 115,
+    ".rendered": 115,
+    ".jsonl": 57,
+    ".txt": 3
+  }
+}

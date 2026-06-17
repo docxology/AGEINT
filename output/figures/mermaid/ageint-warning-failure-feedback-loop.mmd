@@ -1,0 +1,19 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  IND["Indicators<br/>Grabo / warning practice"] --> ASSUMP["Assumptions<br/>made explicit"]
+  ASSUMP --> GAP["Collection gaps<br/>what is unknown"]
+  GAP --> JUDGE["Analytic judgment<br/>likelihood + confidence"]
+  JUDGE --> UPTAKE["Decision uptake<br/>policy and communication boundary"]
+  UPTAKE --> OUTCOME["Outcome and surprise<br/>9/11 / WMD / Pearl Harbor lessons"]
+  OUTCOME --> POST["Postmortem<br/>evidence vs assumption"]
+  POST --> REFORM["Reform and training<br/>standards, review, alternatives"]
+  REFORM --> IND
+  UPTAKE -.-> FRICTION["Policy-analysis friction"]
+  OUTCOME -.-> CAVEAT["No method eliminates surprise"]
+  CAVEAT --> POST
+  classDef loop fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef learn fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef caveat fill:#fef3c7,stroke:#b45309,color:#0f172a
+  class IND,ASSUMP,GAP,JUDGE,UPTAKE,OUTCOME loop
+  class POST,REFORM learn
+  class FRICTION,CAVEAT caveat

@@ -1,0 +1,25 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  REQ["Intelligence Requirements"] --> PLAN["Collection Planning, ch9"]
+  subgraph FOUND["OSINT Foundations, ch9"]
+    direction TB
+    DISC["Discipline and Legal Ethics"]
+    OPSEC["Collector OPSEC and Attribution"]
+    PLAN
+  end
+  subgraph TECH["Techniques and Tools, ch10"]
+    direction TB
+    SOCMINT["Social Media and People Search"]
+    WEB["Web, Domain, and Infrastructure"]
+    GEO["Geolocation and Imagery"]
+  end
+  subgraph VERIF["Verification Taxonomy"]
+    direction TB
+    SRC["Source Reliability Grading"]
+    CORR["Corroboration and Cross-check"]
+    PROV["Provenance and Chain of Custody"]
+  end
+  FOUND --> TECH
+  TECH --> VERIF
+  VERIF -->|"validated findings"| PROD["Assessed OSINT Product"]
+  OPSEC -->|"constrains"| TECH

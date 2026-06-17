@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="agentic-tool-governance-lens-path-for-foundations-of-ageint-lesson-cluster-safe-artifact-and-review">Agentic
+Tool-Governance Lens path for Foundations of AGEINT: lesson cluster,
+safe artifact, and review</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-foundations-of-ageint]; [ageint232].</p>
+<h3
+id="foundations-of-ageint-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Foundations
+of AGEINT practice studio: topic lessons, safe worked example, and
+knowledge check</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-foundations-of-ageint]; [ageint232].</p>
+<h3
+id="foundations-of-ageint-topic-lessons-source-backed-concepts-and-transfer-tasks">Foundations
+of AGEINT topic lessons: source-backed concepts and transfer tasks</h3>
+<p>This module builds agentic AI as delegated action under control:
+identity, authority, tool permissions, memory, logs, stop conditions,
+and recoverability define what an agent may do. The sequence opens with
+<strong>Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems</strong>, <strong>From LLMs to Agents: The Cognitive Controller
+Stack</strong>, <strong>Unified Taxonomy: Perception → Brain → Planning
+→ Action → Collaboration</strong> and applies the <strong>Agentic
+Tool-Governance Lens</strong> practice frame through concept, evidence,
+artifact, misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map
+[fig:part-ageint-agentic-intelligence-module-map]; module overview
+[sec:chapter-foundations-of-ageint]; curriculum atlas
+[sec:curriculum_orientation].</p>
+<p><strong>Triangulation anchors.</strong> In module 31’s topic-lessons
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<h4
+id="lesson-1-defining-ageint-from-ai-agents-to-autonomous-intelligence-systems">Lesson
+1: Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems</h4>
+<p><strong>Concept.</strong> <strong>Defining AGEINT: From AI Agents to
+Autonomous Intelligence Systems</strong> uses the pattern name as safe
+architectural vocabulary: allowlisted tools, logging, human approval,
+and blocked external action.</p>
+<p><strong>Why it matters.</strong> <strong>Defining AGEINT</strong>
+connects classroom vocabulary to Agentic AI Governance and Tool Security
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>Defining AGEINT: From AI
+Agents to Autonomous Intelligence Systems</strong> rests on [ageint299],
+[ageint306], and [ageint312]. Its anchor reference records: The official
+Model Context Protocol (MCP) specification, defining an open protocol
+that standardizes how LLM applications connect to external data sources
+and tools using JSON-RPC 2.0 messages. Use them for fixing what
+<strong>Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems</strong> covers, marking the boundary it must not cross, and
+timing the next source refresh. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Defining
+AGEINT</strong> in the evidence the row cites. [ageint299] The official
+Model Context Protocol (MCP) specification, defining an open protocol
+that standardizes how LLM applications connect to external data sources
+and tools using JSON-RPC 2.0 messages. It describes the host, client,
+and server roles and capability negotiation, and the features servers
+expose (resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). [ageint306] Official CISA Artificial Intelligence page for
+AI security, safety, resilience, and critical-infrastructure governance
+source support. [ageint312] Official Government of Canada guide for
+responsible use of agentic AI, used for public-sector agent governance
+and accountability source support. From each source, pull the bounded
+claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>Defining
+AGEINT</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Defining AGEINT</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>Defining AGEINT</strong> work
+as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Defining AGEINT</strong>: that naming an agent pattern certifies
+it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Defining
+AGEINT</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-2-from-llms-to-agents-the-cognitive-controller-stack">Lesson
+2: From LLMs to Agents: The Cognitive Controller Stack</h4>
+<p><strong>Concept.</strong> <strong>From LLMs to Agents: The Cognitive
+Controller Stack</strong> uses the pattern name as safe architectural
+vocabulary: allowlisted tools, logging, human approval, and blocked
+external action.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>From LLMs to Agents</strong>, treating pattern names as
+deployment playbooks undermines least-privilege agent design and run
+review; the lesson builds the habit to separate agent assistance from
+autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>From LLMs to Agents: The
+Cognitive Controller Stack</strong> rests on [ageint137]. The most
+specific cited work observes: It proposes a unified taxonomy organizing
+agent systems into six components: perception, brain, planning, action,
+tool use, and collaboration. Use it for the claim that <strong>From LLMs
+to Agents: The Cognitive Controller Stack</strong> lets you defend here,
+the limit it has to respect, and the re-check owed before reuse.
+External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>From LLMs to
+Agents</strong>, reason from the sources cited in this row. [ageint137]
+An arXiv paper surveying the shift from passive language models to
+Agentic AI, where large language models act as cognitive controllers
+that combine memory, tool use, and environmental feedback to pursue
+extended goals. It proposes a unified taxonomy organizing agent systems
+into six components: perception, brain, planning, action, tool use, and
+collaboration. From each source, pull the bounded claim it can carry for
+this topic, its provenance, the stated uncertainty, and the one
+condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>From LLMs to
+Agents</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>LLMs to Agents</strong>, the safe-substitution caveat, the
+uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>From LLMs to Agents</strong>
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>From LLMs to Agents</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>From LLMs to
+Agents</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-3-unified-taxonomy-perception-brain-planning-action-collaboration">Lesson
+3: Unified Taxonomy: Perception → Brain → Planning → Action →
+Collaboration</h4>
+<p><strong>Concept.</strong> <strong>Unified Taxonomy: Perception →
+Brain → Planning → Action → Collaboration</strong> connects cognitive
+science claims to analytic bias literacy: what the brain prioritizes,
+what it misses, and how review compensates.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Unified
+Taxonomy</strong> to separate agent assistance from autonomous external
+action. A defensible treatment names the judgment it enables for
+least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Unified Taxonomy: Perception
+→ Brain → Planning → Action → Collaboration</strong> rests on
+[ageint137]. The most specific cited work observes: It proposes a
+unified taxonomy organizing agent systems into six components:
+perception, brain, planning, action, tool use, and collaboration. Use it
+for fixing what <strong>Unified Taxonomy: Perception → Brain → Planning
+→ Action → Collaboration</strong> covers, marking the boundary it must
+not cross, and timing the next source refresh. External triangulation
+uses [official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Unified
+Taxonomy</strong>, work from the cited evidence behind this row.
+[ageint137] An arXiv paper surveying the shift from passive language
+models to Agentic AI, where large language models act as cognitive
+controllers that combine memory, tool use, and environmental feedback to
+pursue extended goals. It proposes a unified taxonomy organizing agent
+systems into six components: perception, brain, planning, action, tool
+use, and collaboration. Work source by source: name the bounded claim,
+its origin, the residual uncertainty, and the trigger that would change
+how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Unified
+Taxonomy</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Unified Taxonomy</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>Unified Taxonomy</strong> work
+as an <strong>agent run and assurance card</strong> that names evidence,
+uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Unified Taxonomy</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Unified
+Taxonomy</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-4-perception-modules-multimodal-ingestion-text-vision-audio-sensor">Lesson
+4: Perception Modules: Multimodal Ingestion (Text, Vision, Audio,
+Sensor)</h4>
+<p><strong>Concept.</strong> <strong>Perception Modules: Multimodal
+Ingestion (Text, Vision, Audio, Sensor)</strong> connects cognitive
+science claims to analytic bias literacy: what the brain prioritizes,
+what it misses, and how review compensates.</p>
+<p><strong>Why it matters.</strong> <strong>Perception Modules</strong>
+matters in the <strong>Agentic AI Governance and Tool Security</strong>
+lane because least-privilege agent design and run evidence must stay
+separate from judgment; treating pattern names as deployment playbooks
+is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Perception Modules:
+Multimodal Ingestion (Text, Vision, Audio, Sensor)</strong> rests on
+[ageint299], [ageint306], and [ageint312]. The closest source to this
+row notes: It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation). Use
+them for the claim that <strong>Perception Modules: Multimodal Ingestion
+(Text, Vision, Audio, Sensor)</strong> lets you defend here, the limit
+it has to respect, and the re-check owed before reuse. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Perception
+Modules</strong> against the works cited for this row. [ageint299] The
+official Model Context Protocol (MCP) specification, defining an open
+protocol that standardizes how LLM applications connect to external data
+sources and tools using JSON-RPC 2.0 messages. It describes the host,
+client, and server roles and capability negotiation, and the features
+servers expose (resources, prompts, tools) and clients offer (sampling,
+roots, elicitation). [ageint306] Official CISA Artificial Intelligence
+page for AI security, safety, resilience, and critical-infrastructure
+governance source support. [ageint312] Official Government of Canada
+guide for responsible use of agentic AI, used for public-sector agent
+governance and accountability source support. Work source by source:
+name the bounded claim, its origin, the residual uncertainty, and the
+trigger that would change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Perception
+Modules</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Perception Modules</strong>, the safe-substitution caveat,
+the uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>Perception Modules</strong>
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Perception Modules</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Perception
+Modules</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4 id="lesson-5-brainreasoning-llm-as-cognitive-controller">Lesson 5:
+Brain/Reasoning: LLM as Cognitive Controller</h4>
+<p><strong>Concept.</strong> <strong>Brain/Reasoning: LLM as Cognitive
+Controller</strong> connects cognitive science claims to analytic bias
+literacy: what the brain prioritizes, what it misses, and how review
+compensates.</p>
+<p><strong>Why it matters.</strong> <strong>Brain/Reasoning</strong>
+connects classroom vocabulary to Agentic AI Governance and Tool Security
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>Brain/Reasoning: LLM as
+Cognitive Controller</strong> rests on [ageint138]. The most specific
+cited work observes: It proposes a unified taxonomy decomposing
+LLM-based agents into six dimensions: core components, cognitive
+architecture, learning paradigms, multi-agent systems, environments and
+domains, and evaluation and safety. Use it for fixing what
+<strong>Brain/Reasoning: LLM as Cognitive Controller</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For
+<strong>Brain/Reasoning</strong>, reason from the sources cited in this
+row. [ageint138] An arXiv survey paper on agentic AI examining the shift
+from generative systems to autonomous agents that perceive, reason,
+plan, and act. It proposes a unified taxonomy decomposing LLM-based
+agents into six dimensions: core components, cognitive architecture,
+learning paradigms, multi-agent systems, environments and domains, and
+evaluation and safety. Read each cited work for what it can support
+about this topic, where that claim originated, how confident it is, and
+what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For
+<strong>Brain/Reasoning</strong>, build a <strong>agent run card with
+tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>Brain/Reasoning</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape
+<strong>Brain/Reasoning</strong> work as an <strong>agent run and
+assurance card</strong> that records its evidence, the residual
+uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Brain/Reasoning</strong>: that naming an agent pattern certifies
+it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer
+<strong>Brain/Reasoning</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-6-memory-in-context-external-vectordb-episodic-semantic-procedural">Lesson
+6: Memory: In-Context, External VectorDB, Episodic, Semantic,
+Procedural</h4>
+<p><strong>Concept.</strong> <strong>Memory: In-Context, External
+VectorDB, Episodic, Semantic, Procedural</strong> treats agent memory
+terms as a pedagogical taxonomy unless a domain memory source is cited;
+MCP and official agentic-AI guidance support external-memory governance,
+tool boundaries, logs, retention, and reviewer control.</p>
+<p><strong>Why it matters.</strong> <strong>Memory: In-Context, External
+VectorDB, Episodic, Semantic, Procedural</strong> matters in the
+<strong>Agentic AI Governance and Tool Security</strong> lane because
+least-privilege agent design and run evidence must stay separate from
+judgment; treating pattern names as deployment playbooks is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>Memory: In-Context, External
+VectorDB, Episodic, Semantic, Procedural</strong> rests on [ageint299],
+[ageint306], and [ageint312]. Its anchor reference records: The official
+Model Context Protocol (MCP) specification, defining an open protocol
+that standardizes how LLM applications connect to external data sources
+and tools using JSON-RPC 2.0 messages. Use them for the claim that
+<strong>Memory: In-Context, External VectorDB, Episodic, Semantic,
+Procedural</strong> lets you defend here, the limit it has to respect,
+and the re-check owed before reuse. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Memory:
+In-Context, External VectorDB, Episodic, Semantic, Procedural</strong>
+in the evidence the row cites. [ageint299] The official Model Context
+Protocol (MCP) specification, defining an open protocol that
+standardizes how LLM applications connect to external data sources and
+tools using JSON-RPC 2.0 messages. It describes the host, client, and
+server roles and capability negotiation, and the features servers expose
+(resources, prompts, tools) and clients offer (sampling, roots,
+elicitation). [ageint306] Official CISA Artificial Intelligence page for
+AI security, safety, resilience, and critical-infrastructure governance
+source support. [ageint312] Official Government of Canada guide for
+responsible use of agentic AI, used for public-sector agent governance
+and accountability source support. Each source above earns its place in
+this topic only when you can state its bounded claim, its provenance,
+its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>Memory</strong>, build
+an agent-memory boundary card that separates source/change ledgers,
+external stores, retention rules, and reviewer controls from unsupported
+cognitive-memory taxonomy claims. Shape <strong>Memory: In-Context,
+External VectorDB, Episodic, Semantic, Procedural</strong> work as an
+<strong>agent run and assurance card</strong> that logs the evidence,
+the uncertainty, the responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Memory: In-Context, External VectorDB, Episodic, Semantic,
+Procedural</strong>: that naming an agent pattern certifies it is safe
+to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Memory: In-Context,
+External VectorDB, Episodic, Semantic, Procedural</strong> to a second
+module by preserving least-privilege agent design and run review,
+changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-7-agentic-cyber-misuse-control-review-using-sample-prompt-records-fabricated-logs-and-deny-by-default-tool-policies">Lesson
+7: Agentic cyber-misuse control review using sample prompt records,
+fabricated logs, and deny-by-default tool policies</h4>
+<p><strong>Concept.</strong> <strong>Agentic cyber-misuse control review
+using sample prompt records, fabricated logs, and deny-by-default tool
+policies</strong> treats the topic as a misuse-case control problem:
+identify the agent permission, prompt path, tool boundary, and blocked
+outcome.</p>
+<p><strong>Why it matters.</strong> <strong>Agentic cyber-misuse control
+review</strong> matters in the <strong>Agentic AI Governance and Tool
+Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating misuse taxonomy as
+tool permission is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Agentic cyber-misuse control
+review using sample prompt records, fabricated logs, and deny-by-default
+tool policies</strong> rests on [ageint299], [ageint306], and
+[ageint312]. The closest source to this row notes: It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation). Use them for the claim that
+<strong>Agentic cyber-misuse control review using sample prompt records,
+fabricated logs, and deny-by-default tool policies</strong> lets you
+defend here, the limit it has to respect, and the re-check owed before
+reuse. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Agentic
+cyber-misuse control review</strong>, reason from the sources cited in
+this row. [ageint299] The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+[ageint306] Official CISA Artificial Intelligence page for AI security,
+safety, resilience, and critical-infrastructure governance source
+support. [ageint312] Official Government of Canada guide for responsible
+use of agentic AI, used for public-sector agent governance and
+accountability source support. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Agentic cyber-misuse
+control review</strong>, build a blocked-request control card with tool
+permission, unsafe outcome, deny rule, log evidence, and reviewer
+disposition. Shape <strong>Agentic cyber-misuse control review</strong>
+work as an <strong>agent run and assurance card</strong> that records
+its evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Agentic cyber-misuse control review</strong>: that a misuse
+taxonomy describing what an autonomous agent could do is permission or a
+recipe to make it do so.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Agentic
+cyber-misuse control review</strong> audit pattern from this module on a
+different sample record set with a new reviewer and blocked-use
+note.</p>
+<h4
+id="lesson-8-collaboration-a2a-messaging-shared-context-role-specialization">Lesson
+8: Collaboration: A2A Messaging, Shared Context, Role
+Specialization</h4>
+<p><strong>Concept.</strong> <strong>Collaboration: A2A Messaging,
+Shared Context, Role Specialization</strong> uses the pattern name as
+safe architectural vocabulary: allowlisted tools, logging, human
+approval, and blocked external action.</p>
+<p><strong>Why it matters.</strong> <strong>Collaboration: A2A
+Messaging, Shared Context, Role Specialization</strong> matters in the
+<strong>Agentic AI Governance and Tool Security</strong> lane because
+least-privilege agent design and run evidence must stay separate from
+judgment; treating pattern names as deployment playbooks is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>Collaboration: A2A
+Messaging, Shared Context, Role Specialization</strong> rests on
+[ageint139]. The most specific cited work observes: A LinkedIn post by
+Aishwarya Srinivasan discussing agentic AI design patterns for building
+production-grade AI agents. Use it for pinning down the scope of
+<strong>Collaboration: A2A Messaging, Shared Context, Role
+Specialization</strong>, the edge of that scope, and when these
+citations need re-verifying before transfer. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Collaboration:
+A2A Messaging, Shared Context, Role Specialization</strong> in the
+evidence the row cites. [ageint139] A LinkedIn post by Aishwarya
+Srinivasan discussing agentic AI design patterns for building
+production-grade AI agents. Read each cited work for what it can support
+about this topic, where that claim originated, how confident it is, and
+what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For
+<strong>Collaboration</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Collaboration</strong>, the safe-substitution caveat, the
+uncertainty note, the no-deployment boundary, and the reviewer
+accountable for challenge. Shape <strong>Collaboration: A2A Messaging,
+Shared Context, Role Specialization</strong> work as an <strong>agent
+run and assurance card</strong> that states the evidence used, what
+stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Collaboration: A2A Messaging, Shared Context, Role
+Specialization</strong>: that naming an agent pattern certifies it is
+safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Collaboration: A2A
+Messaging, Shared Context, Role Specialization</strong> to a second
+module by preserving least-privilege agent design and run review,
+changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-9-the-oecd-agentic-ai-landscape-and-conceptual-foundations-2026">Lesson
+9: The OECD Agentic AI Landscape and Conceptual Foundations (2026)</h4>
+<p><strong>Concept.</strong> <strong>The OECD Agentic AI Landscape and
+Conceptual Foundations (2026)</strong> evaluates agentic-AI governance
+claims against OECD principles: transparency, accountability, and human
+oversight.</p>
+<p><strong>Why it matters.</strong> <strong>The OECD Agentic AI
+Landscape</strong> connects classroom vocabulary to Agentic AI
+Governance and Tool Security practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>The OECD Agentic AI
+Landscape and Conceptual Foundations (2026)</strong> rests on
+[ageint140]. Its anchor reference records: 56, February 2026) titled
+“The Agentic AI Landscape and Its Conceptual Foundations,” prepared by
+OECD staff with an expert group. Use it for the claim that <strong>The
+OECD Agentic AI Landscape and Conceptual Foundations (2026)</strong>
+lets you defend here, the limit it has to respect, and the re-check owed
+before reuse. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>The OECD Agentic
+AI Landscape</strong> in the evidence the row cites. [ageint140] An OECD
+Artificial Intelligence Paper (No. 56, February 2026) titled “The
+Agentic AI Landscape and Its Conceptual Foundations,” prepared by OECD
+staff with an expert group. From each source, pull the bounded claim it
+can carry for this topic, its provenance, the stated uncertainty, and
+the one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>The OECD Agentic AI
+Landscape</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>OECD Agentic AI Landscape and</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape <strong>The
+OECD Agentic AI Landscape</strong> work as an <strong>agent run and
+assurance card</strong> that logs the evidence, the uncertainty, the
+responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>The OECD Agentic AI Landscape</strong>: that naming an agent
+pattern certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>The OECD Agentic AI
+Landscape</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4 id="lesson-10-mit-sloan-explanation-of-agentic-ai">Lesson 10: MIT
+Sloan Explanation of Agentic AI</h4>
+<p><strong>Concept.</strong> <strong>MIT Sloan Explanation of Agentic
+AI</strong> evaluates agentic-AI governance claims against OECD
+principles: transparency, accountability, and human oversight.</p>
+<p><strong>Why it matters.</strong> <strong>MIT Sloan
+Explanation</strong> connects classroom vocabulary to Agentic AI
+Governance and Tool Security practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>MIT Sloan Explanation of
+Agentic AI</strong> rests on [ageint141]. The most specific cited work
+observes: An MIT Sloan explainer article on agentic AI, defining
+autonomous software systems that perceive, reason, and act to complete
+multi-step tasks with minimal human intervention. Use it for pinning
+down the scope of <strong>MIT Sloan Explanation of Agentic AI</strong>,
+the edge of that scope, and when these citations need re-verifying
+before transfer. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>MIT Sloan
+Explanation</strong>, reason from the sources cited in this row.
+[ageint141] An MIT Sloan explainer article on agentic AI, defining
+autonomous software systems that perceive, reason, and act to complete
+multi-step tasks with minimal human intervention. It distinguishes such
+agents from chatbots, cites a 2025 MIT Sloan/BCG survey finding 35% of
+companies had deployed agents with 44% planning to, and reviews business
+applications such as fraud detection and customer service. Work source
+by source: name the bounded claim, its origin, the residual uncertainty,
+and the trigger that would change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>MIT Sloan
+Explanation</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>MIT Sloan Explanation of Agentic</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape <strong>MIT
+Sloan Explanation</strong> work as an <strong>agent run and assurance
+card</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>MIT Sloan Explanation</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>MIT Sloan
+Explanation</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-11-ageint-vs.-traditional-osint-vs.-ai-assisted-analysis-a-capability-matrix">Lesson
+11: AGEINT vs. Traditional OSINT vs. AI-Assisted Analysis: A Capability
+Matrix</h4>
+<p><strong>Concept.</strong> <strong>AGEINT vs. Traditional OSINT
+vs. AI-Assisted Analysis: A Capability Matrix</strong> treats open
+sources as publicly available evidence that still requires provenance,
+corroboration, legality, and minimization before reuse.</p>
+<p><strong>Why it matters.</strong> <strong>AGEINT vs. Traditional OSINT
+vs. AI-Assisted Analysis</strong> matters in the <strong>Agentic AI
+Governance and Tool Security</strong> lane because least-privilege agent
+design and run evidence must stay separate from judgment; treating
+pattern names as deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> <strong>AGEINT vs. Traditional OSINT
+vs. AI-Assisted Analysis: A Capability Matrix</strong> rests on
+[ageint301] and [ageint298]. Its anchor reference records: Official
+Intelligence Community strategy for open-source intelligence governance,
+integration, source discovery, data, tools, tradecraft, and workforce
+priorities. Use them for fixing what <strong>AGEINT vs. Traditional
+OSINT vs. AI-Assisted Analysis: A Capability Matrix</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>AGEINT
+vs. Traditional OSINT vs. AI-Assisted Analysis</strong> against the
+works cited for this row. [ageint301] Official Intelligence Community
+strategy for open-source intelligence governance, integration, source
+discovery, data, tools, tradecraft, and workforce priorities.
+[ageint298] Official ODNI index for Intelligence Community Directives
+used to locate current directive source material and preserve
+directive-context citations. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>AGEINT vs. Traditional
+OSINT vs. AI-Assisted Analysis</strong>, build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the pattern descriptor, the bounded
+claim about <strong>AGEINT vs Traditional OSINT vs</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape
+<strong>AGEINT vs. Traditional OSINT vs. AI-Assisted Analysis</strong>
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>AGEINT vs. Traditional OSINT vs. AI-Assisted Analysis</strong>:
+that naming an agent pattern certifies it is safe to deploy without
+governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AGEINT
+vs. Traditional OSINT vs. AI-Assisted Analysis</strong> to a second
+module by preserving least-privilege agent design and run review,
+changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-12-dual-paradigm-framework-symbolicclassical-vs.-neuralgenerative-agents">Lesson
+12: Dual-Paradigm Framework: Symbolic/Classical vs. Neural/Generative
+Agents</h4>
+<p><strong>Concept.</strong> <strong>Dual-Paradigm Framework:
+Symbolic/Classical vs. Neural/Generative Agents</strong> uses the
+pattern name as safe architectural vocabulary: allowlisted tools,
+logging, human approval, and blocked external action.</p>
+<p><strong>Why it matters.</strong> <strong>Dual-Paradigm
+Framework</strong> connects classroom vocabulary to Agentic AI
+Governance and Tool Security practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>Dual-Paradigm Framework:
+Symbolic/Classical vs. Neural/Generative Agents</strong> rests on
+[ageint142]. The lead source’s own note reads: The arXiv abstract page
+for “Agentic AI: A Comprehensive Survey of Architectures, Applications,”
+a 2025 paper by Mohamad Abou Ali and Fadi Dornaika. Use it for pinning
+down the scope of <strong>Dual-Paradigm Framework: Symbolic/Classical
+vs. Neural/Generative Agents</strong>, the edge of that scope, and when
+these citations need re-verifying before transfer. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Dual-Paradigm
+Framework</strong>, work from the cited evidence behind this row.
+[ageint142] The arXiv abstract page for “Agentic AI: A Comprehensive
+Survey of Architectures, Applications,” a 2025 paper by Mohamad Abou Ali
+and Fadi Dornaika. Based on a PRISMA systematic review of roughly 90
+studies from 2018 to 2025, it proposes a dual-paradigm framework
+distinguishing symbolic/classical systems based on algorithmic planning
+and persistent state from neural/generative systems driven by stochastic
+generation and prompt orchestration. Each source above earns its place
+in this topic only when you can state its bounded claim, its provenance,
+its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>Dual-Paradigm
+Framework</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the pattern descriptor, the bounded claim
+about <strong>Dual-Paradigm Framework</strong>, the safe-substitution
+caveat, the uncertainty note, the no-deployment boundary, and the
+reviewer accountable for challenge. Shape <strong>Dual-Paradigm
+Framework</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Dual-Paradigm Framework</strong>: that naming an agent pattern
+certifies it is safe to deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Dual-Paradigm
+Framework</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-13-the-return-to-humint-as-agentic-ai-degrades-digital-trust">Lesson
+13: The Return to HUMINT as Agentic AI Degrades Digital Trust</h4>
+<p><strong>Concept.</strong> <strong>The Return to HUMINT as Agentic AI
+Degrades Digital Trust</strong> treats human-source work as a governed
+relationship: validation, consent, reporting, source protection, and
+oversight—not contact activity.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>The Return to HUMINT as Agentic AI Degrades Digital
+Trust</strong>, treating pattern names as deployment playbooks
+undermines least-privilege agent design and run review; the lesson
+builds the habit to separate agent assistance from autonomous external
+action.</p>
+<p><strong>Source support.</strong> <strong>The Return to HUMINT as
+Agentic AI Degrades Digital Trust</strong> rests on [ageint004] and
+[ageint005]. The closest source to this row notes: 70, No. Use them for
+the working definition that <strong>The Return to HUMINT as Agentic AI
+Degrades Digital Trust</strong> can defend, where that scope ends, and
+the refresh check owed before this evidence transfers. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>The Return to
+HUMINT as Agentic AI Degrades Digital Trust</strong> against the works
+cited for this row. [ageint004] Tom Mulligan argues that artificial
+intelligence will enhance rather than replace human intelligence
+professionals, contending that the future of intelligence lies in
+human-machine collaboration. He maintains that uniquely human qualities
+such as intuition, experience, and independent judgment become more
+valuable as adversaries gain access to the same AI tools. [ageint005] A
+blog post on SemperVerus summarizing a CIA Studies in Intelligence
+article, “Espionage in Our AI Future: Why Human Intelligence Still
+Matters” (Vol. 70, No. 1, March 2026). It argues that as AI makes
+technical intelligence cheaper and AI-driven fabrication more pervasive,
+human intelligence becomes relatively more valuable, since human
+specialists are needed to verify source reliability over time. Read each
+cited work for what it can support about this topic, where that claim
+originated, how confident it is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>The Return to HUMINT
+as Agentic AI Degrades Digital Trust</strong>, build a <strong>agent run
+card with tool allowlist, identity, logs, autonomy limit, approval
+gates, and recovery path</strong> for this least-privilege agent design
+and run review topic. The artifact must name the pattern descriptor, the
+bounded claim about <strong>Return to HUMINT as Agentic</strong>, the
+safe-substitution caveat, the uncertainty note, the no-deployment
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as an <strong>agent run and assurance card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>The Return to HUMINT as Agentic AI Degrades Digital
+Trust</strong>: that naming an agent pattern certifies it is safe to
+deploy without governance gates.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>The Return to HUMINT
+as Agentic AI Degrades Digital Trust</strong> to a second module by
+preserving least-privilege agent design and run review, changing the
+source evidence, and naming a new reviewer.</p>
+<h3
+id="foundations-of-ageint-worked-safe-example-synthetic-inputs-evidence-and-review">Foundations
+of AGEINT worked safe example: synthetic inputs, evidence, and
+review</h3>
+<p>Worked example: a synthetic research assistant agent organizes public
+readings for an instructor. [ageint232]; [ageint235].</p>
+<p><strong>Triangulation anchors.</strong> In module 31’s worked-example
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<p><strong>Unit discipline spine.</strong> Discipline: <strong>governed
+agentic intelligence</strong>. Learners use a <strong>agent run and
+assurance card</strong> and keep this boundary visible: No autonomous
+external action, credentialed operations, live-target workflows, or
+uncontrolled tool use.</p>
+<p><strong>Frame.</strong> The classroom question centers on
+<strong>Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems</strong>. Excluded actions stay explicit, and the
+<strong>Agentic Tool-Governance Lens</strong> planning question is:
+Which human authority, agent identity, tool permission, autonomy limit,
+incident threshold, and recoverability condition bounds the
+workflow?</p>
+<p><strong>Inputs.</strong> For the <strong>Defining AGEINT: From AI
+Agents to Autonomous Intelligence Systems</strong> scenario, use public
+URLs, a fixed retrieval tool, a summarization prompt, a time budget, and
+a stop condition. The Agentic Tool-Governance Lens intake note records
+provenance, sensitivity, fit-to-purpose, and why the fixture is enough
+for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>Defining AGEINT: From AI
+Agents to Autonomous Intelligence Systems</strong>, students bind the
+agent identity, list allowed tools, set autonomy limits, capture
+sources, block unsafe requests, and log approvals. Pause whenever an
+inference about Defining AGEINT: From AI Agents to Autonomous
+Intelligence Systems appears without evidence, confidence outruns
+support, or an agent output is treated as judgment.</p>
+<p><strong>Filled artifact.</strong> Purpose = <strong>Defining AGEINT:
+From AI Agents to Autonomous Intelligence Systems</strong> classroom
+scenario; unit artifact = agent run and assurance card; evidence =
+allowed inputs; method = least-privilege agent design and run review;
+output = an agent run card with tool calls, source links, blocked
+actions, reviewer notes, incident threshold, and recovery decision;
+boundary = no external action; reviewer = instructor or named peer.</p>
+<p><strong>Flawed answer to revise.</strong> Treating <strong>Defining
+AGEINT: From AI Agents to Autonomous Intelligence Systems</strong> as
+“Agentic Tool-Governance Lens confirms it” is not enough. The revision
+ties the claim to least-privilege agent design and run review, adds the
+missing caveat, states confidence, and records the reviewer who accepted
+the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>Defining AGEINT:
+From AI Agents to Autonomous Intelligence Systems</strong> records the
+defensible claim, the assumption most likely to fail, the evidence that
+would change confidence, and the review condition for stopping
+reuse.</p>
+<h3
+id="foundations-of-ageint-practice-sequence-studio-moves-artifact-steps-and-limits">Foundations
+of AGEINT practice sequence: studio moves, artifact steps, and
+limits</h3>
+<p>The studio sequence uses the <strong>Agentic Tool-Governance
+Lens</strong> practice lens. Moves 1-3 form the compressed path; the
+full seminar path adds challenge, handoff, and a review memo for
+<strong>Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems; From LLMs to Agents: The Cognitive Controller
+Stack</strong>.</p>
+<p><strong>Triangulation anchors.</strong> In module 31’s
+practice-sequence section, directly verified anchors for the
+<strong>Agentic AI Governance and Tool Security</strong> lane include
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide];
+[official_nist_ai_rmf]; [official_nist_ai_600_1]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Move</th>
+<th>Learner action</th>
+<th>Output</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Distinguish</td>
+<td>Compare Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems, From LLMs to Agents: The Cognitive Controller Stack, Unified
+Taxonomy: Perception → Brain → Planning → Action → Collaboration; name
+what each topic can and cannot prove.</td>
+<td>Glossary-and-contrast card.</td>
+<td>Terms match the <strong>Agentic AI Governance and Tool
+Security</strong> lane.</td>
+</tr>
+<tr>
+<td>2. Frame</td>
+<td>Answer the lens question: Which human authority, agent identity,
+tool permission, autonomy limit, incident threshold, and recoverability
+condition bounds the workflow?</td>
+<td>Scope card.</td>
+<td>Authority, excluded actions, data boundary, and reviewer are
+explicit.</td>
+</tr>
+<tr>
+<td>3. Evidence</td>
+<td>Fill the artifact fields for Defining AGEINT: From AI Agents to
+Autonomous Intelligence Systems: agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery path.</td>
+<td>Evidence packet.</td>
+<td>Sources, caveats, confidence, and uncertainty stay separable.</td>
+</tr>
+<tr>
+<td>3a. Unit artifact</td>
+<td>Add the agent run and assurance card fields for Defining AGEINT:
+From AI Agents to Autonomous Intelligence Systems.</td>
+<td>Unit profile note.</td>
+<td>Evidence artifacts include tool-allowlist record, external-memory
+governance boundary.</td>
+</tr>
+<tr>
+<td>4. Challenge</td>
+<td>Test the misconception that naming an agent pattern certifies it is
+safe to deploy without governance gates.</td>
+<td>Failure-mode note.</td>
+<td>The artifact applies the key distinction: separate agent assistance
+from autonomous external action.</td>
+</tr>
+<tr>
+<td>5. Handoff</td>
+<td>Prepare the artifact for another reviewer.</td>
+<td>Handoff memo.</td>
+<td>Inputs, transformations, reviewer, refresh trigger, and residual
+risk are visible.</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="foundations-of-ageint-instructor-notes-source-reasoning-review-points-and-studio-focus">Foundations
+of AGEINT instructor notes: source reasoning, review points, and studio
+focus</h4>
+<p>Ask learners to verbalize the difference between a source, an
+inference, and a decision. Require a revision whenever a claim cannot be
+traced to a source descriptor or a human review point. Keep the focus on
+<strong>Defining AGEINT: From AI Agents to Autonomous Intelligence
+Systems; From LLMs to Agents: The Cognitive Controller Stack</strong>.
+[ageint232]; [ageint235].</p>
+<h4
+id="foundations-of-ageint-extension-exercise-peer-validation-and-refresh-trigger-review">Foundations
+of AGEINT extension exercise: peer validation and refresh trigger
+review</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-foundations-of-ageint]; [ageint232].</p>
+<p>Have learners swap artifacts and apply the <strong>Agentic
+Tool-Governance Lens</strong> validation rule to someone else’s work.
+The receiving learner must identify one strength, one missing caveat,
+and one refresh trigger for <strong>Defining AGEINT: From AI Agents to
+Autonomous Intelligence Systems; From LLMs to Agents: The Cognitive
+Controller Stack</strong>.</p>
+<h3
+id="foundations-of-ageint-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Foundations
+of AGEINT knowledge check: misconceptions, evidence, and reviewer
+prompts</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-foundations-of-ageint]; [ageint232].</p>
+<ol type="1">
+<li>Explain how <strong>Defining AGEINT: From AI Agents to Autonomous
+Intelligence Systems</strong> is defined here; name the source
+descriptor that supports the definition.</li>
+<li>Contrast <strong>Defining AGEINT: From AI Agents to Autonomous
+Intelligence Systems</strong> with <strong>From LLMs to Agents: The
+Cognitive Controller Stack</strong> using the <strong>Agentic
+Tool-Governance Lens</strong> artifact fields.</li>
+<li>Identify one failure mode from the <strong>Agentic AI Governance and
+Tool Security</strong> lane and the evidence that would reveal it.</li>
+<li>Answer the coursebook review question: Which permission can be
+removed while preserving the learning objective?</li>
+<li>Correct this misconception: that naming an agent pattern certifies
+it is safe to deploy without governance gates.</li>
+</ol>
+<h4
+id="foundations-of-ageint-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">Foundations
+of AGEINT answer quality rubric: source evidence, uncertainty, and safe
+transfer</h4>
+<p>Judge answers with the canonical mastery evidence standard in the
+shared method-and-assurance reference
+([sec:method-assurance-reference]): a strong answer uses source
+evidence, distinguishes observation from judgment, names uncertainty,
+and states the safe boundary, while a revise-level answer gives a
+memorized definition of <strong>Defining AGEINT: From AI Agents to
+Autonomous Intelligence Systems</strong> without source evidence,
+uncertainty, or a safe transfer task.</p>
+</body>
+</html>

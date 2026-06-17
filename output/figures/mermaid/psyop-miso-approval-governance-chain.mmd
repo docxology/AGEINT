@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Commander Intent and Objectives"] --> B["Themes and Approval Authorities Defined"]
+  B --> C["Target Audience Analysis Review"]
+  C --> D["Legal Review: Law of Armed Conflict"]
+  D --> E["Policy and Truthfulness Compliance Check"]
+  E --> F{"Approved at Proper Approval Level"}
+  F -->|"No"| G["Revise or Escalate for Approval"]
+  G --> D
+  F -->|"Yes"| H["Product Development Within Scope"]
+  H --> I["Pre-Dissemination Compliance Sign-Off"]
+  I --> J["Approved Dissemination"]
+  J --> K["Measures of Effectiveness Review"]
+  K --> L["Oversight and After-Action Audit"]
+  L --> A

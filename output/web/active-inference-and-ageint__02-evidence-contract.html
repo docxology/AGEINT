@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="active-inference-and-ageint-assurance-handoff-evidence-governance-refresh-and-capstone">Active
+Inference and AGEINT assurance handoff: evidence, governance, refresh,
+and capstone</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<h3
+id="active-inference-and-ageint-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">Active
+Inference and AGEINT evidence contract: source spine, verified anchors,
+transfer architecture, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<h3
+id="active-inference-and-ageint-transfer-architecture-module-inputs-outputs-and-review-boundary">Active
+Inference and AGEINT transfer architecture: module inputs, outputs, and
+review boundary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<h4
+id="active-inference-and-ageint-lineage-and-source-tradition-profile-concepts-and-first-anchors">Active
+Inference and AGEINT lineage and source tradition: profile, concepts,
+and first anchors</h4>
+<p>This sits in the <strong>Active-Inference Theory and Governed Agent
+Analogy</strong> lineage: using free-energy and active-inference theory
+as a bounded computational vocabulary for perception, action,
+uncertainty, and policy selection while keeping AGEINT governance claims
+separate. [ageint247]; [ageint248].</p>
+<h4
+id="active-inference-and-ageint-working-model-inputs-constraints-transforms-outputs-and-oversight">Active
+Inference and AGEINT working model: inputs, constraints, transforms,
+outputs, and oversight</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>The Free Energy Principle and
+Predictive Processing; Active Inference as Computational Model of
+Intelligence Agent Behavior</strong>, with provenance and reviewability
+throughout.</p>
+<h4
+id="active-inference-and-ageint-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">Active
+Inference and AGEINT knowledge architecture: inputs, transforms,
+outputs, and failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> source materials, domain constraints,
+learner questions, verified anchors, and artifact requirements.
+[ageint247]; [ageint248].</li>
+<li><strong>Transforms:</strong> evidence normalization, structured
+reasoning, source evaluation, governance review, and handoff
+preparation.</li>
+<li><strong>Outputs:</strong> annotated map, decision memo, rubric,
+tabletop packet, or audit artifact.</li>
+<li><strong>Failure modes:</strong> over-automation, misplaced
+confidence, policy drift, and confusing simulation with deployment.</li>
+</ul>
+<h4
+id="active-inference-and-ageint-transfer-contracts-authority-evidence-tools-and-auditable-output">Active
+Inference and AGEINT transfer contracts: authority, evidence, tools, and
+auditable output</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>The Free Energy Principle and Predictive Processing; Active
+Inference as Computational Model of Intelligence Agent
+Behavior</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the
+<strong>Active-Inference Theory and Governed Agent Analogy</strong>
+source descriptors, transformations, claims, uncertainty, and confidence
+separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+annotated map, decision memo, rubric, tabletop packet, or audit artifact
+that another reviewer can audit.</li>
+</ul>
+<h4
+id="active-inference-and-ageint-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">Active
+Inference and AGEINT profile emphasis and local focus: method stack and
+topic cluster</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<p>The matched profile emphasizes using free-energy and active-inference
+theory as a bounded computational vocabulary for perception, action,
+uncertainty, and policy selection while keeping AGEINT governance claims
+separate. The method stack is formal-source review, theory-to-analogy
+mapping, assumption listing, implementation-evidence check,
+governance-control mapping, and human-review caveat; the local topic
+cluster is <strong>The Free Energy Principle and Predictive Processing;
+Active Inference as Computational Model of Intelligence Agent
+Behavior</strong>.</p>
+<h3
+id="active-inference-and-ageint-evidence-spine-source-roles-citation-support-and-claim-limits">Active
+Inference and AGEINT evidence spine: source roles, citation support, and
+claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>Active-Inference Theory and
+Governed Agent Analogy</strong> profile tells reviewers what evidence is
+strong enough for the module artifact built around <strong>The Free
+Energy Principle and Predictive Processing; Active Inference as
+Computational Model of Intelligence Agent Behavior</strong>.</p>
+<h4
+id="active-inference-and-ageint-guide-source-spine-inherited-keys-and-local-citation-roles">Active
+Inference and AGEINT guide source spine: inherited keys and local
+citation roles</h4>
+<p>Primary guide citations: [ageint247]; [ageint248]; [ageint265];
+[ageint278]; [ageint279]; [ageint283]; [ageint290]; [ageint291];
+[ageint294]; [ageint106]; [ageint003]; [ageint163]; [ageint164];
+[ageint105]; [ageint299]; [ageint306]; [ageint312]; [ageint309];
+[ageint310]; [ageint300].</p>
+<h4
+id="active-inference-and-ageint-verified-source-canon-direct-anchors-and-claim-boundaries">Active
+Inference and AGEINT verified source canon: direct anchors and claim
+boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint247]; [ageint248].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint247]; [ageint248]; [ageint265]; [ageint278]; [ageint279];
+[ageint283]; [ageint290]; [ageint291]; [ageint294]; [ageint106];
+[ageint003]; [ageint163]; [ageint164]; [ageint105]; [ageint299];
+[ageint306]; [ageint312]; [ageint309]; [ageint310]; [ageint300].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 35’s source-canon
+section, directly verified anchors for the <strong>Active-Inference
+Theory and Governed Agent Analogy</strong> lane include
+[scholarly_friston_2010_fep];
+[scholarly_buckley_2017_fep_mathematical_review];
+[scholarly_friston_2017_active_inference_process];
+[scholarly_dacosta_2020_discrete_active_inference]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for <strong>The
+Free Energy Principle and Predictive Processing; Active Inference as
+Computational Model of Intelligence Agent Behavior</strong> and
+[ageint247]; [ageint248], but only directly verified source URLs are
+encoded as citations.</p>
+<h4
+id="active-inference-and-ageint-intelligence-practice-lens-evidence-artifact-and-safety-check">Active
+Inference and AGEINT intelligence practice lens: evidence artifact and
+safety check</h4>
+<p>Practice lens: <strong>Active-Inference Boundary Lens</strong> for
+<strong>The Free Energy Principle and Predictive Processing; Active
+Inference as Computational Model of Intelligence Agent
+Behavior</strong>. [ageint247]; [ageint248].</p>
+<p><strong>Planning question:</strong> Which layer is formal theory,
+which layer is classroom analogy, which implementation claim needs
+evidence, and which governance control prevents autonomy overreach?</p>
+<p><strong>Evidence artifact:</strong> theory-to-governance card with
+source, analogy limit, assumption, reviewer, and stop condition.</p>
+<p><strong>Validation rule:</strong> separate formal claim, pedagogical
+analogy, implementation assumption, evaluation evidence, and governance
+duty before reuse. Applied to <strong>The Free Energy Principle and
+Predictive Processing; Active Inference as Computational Model of
+Intelligence Agent Behavior</strong>.</p>
+<p><strong>Handoff contract:</strong> handoff preserves formal source,
+analogy scope, source limitation, caveat, reviewer owner, and blocked
+autonomous-action claim.</p>
+<p><strong>Safety check:</strong> reject claims that the free-energy
+principle proves autonomous agency, intent, detection performance, or
+oversight-free action.</p>
+<h4
+id="active-inference-and-ageint-runtime-to-reader-map-generated-sections-and-verifier-surfaces">Active
+Inference and AGEINT runtime-to-reader map: generated sections and
+verifier surfaces</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>35.99</td>
+<td>35.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind Active Inference and AGEINT to
+source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>AGEINT pattern registry, agent identity, and interface-contract
+studio</td>
+<td>35.100</td>
+<td>35.100 source title transformed into safe curriculum treatment;
+original: V2 AGEINT-depth extension: connect active-inference planning
+to public-sector service adoption, workforce impact, skills governance,
+and human-centered oversight rather than autonomous agency</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>35.101</td>
+<td>35.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Active
+Inference and AGEINT</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>35.102</td>
+<td>35.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Active Inference
+and AGEINT</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>The Free Energy Principle and Predictive Processing</td>
+<td>35.1</td>
+<td>35.1 The Free Energy Principle and Predictive Processing</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Active Inference as Computational Model of Intelligence Agent
+Behavior</td>
+<td>35.2</td>
+<td>35.2 Active Inference as Computational Model of Intelligence Agent
+Behavior</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Shared Protentions in Multi-Agent Active Inference</td>
+<td>35.3</td>
+<td>35.3 Shared Protentions in Multi-Agent Active Inference</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Active Inference for Social Organization and Intelligence
+Communities</td>
+<td>35.4</td>
+<td>35.4 Active Inference for Social Organization and Intelligence
+Communities</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>VERSES AI Research: Multi-Scale Active Inference Architectures</td>
+<td>35.5</td>
+<td>35.5 VERSES AI Research: Multi-Scale Active Inference
+Architectures</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Cognitive Security Through the Active Inference Lens</td>
+<td>35.6</td>
+<td>35.6 Cognitive Security Through the Active Inference Lens</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Applications: Deception Detection, Surprise Minimization, Threat
+Modeling</td>
+<td>35.7</td>
+<td>35.7 Applications: Deception Detection, Surprise Minimization,
+Threat Modeling</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Applications of Active Inference and FEP in Intelligence (TU Delft
+Thesis)</td>
+<td>35.8</td>
+<td>35.8 Applications of Active Inference and FEP in Intelligence (TU
+Delft Thesis)</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="active-inference-and-ageint-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">Active
+Inference and AGEINT reusable subsection contract: topic rows,
+artifacts, and safety duties</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-active-inference-and-ageint]; [ageint247].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Free Energy Principle and Predictive Processing</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Active Inference as Computational Model of Intelligence Agent
+Behavior</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Shared Protentions in Multi-Agent Active Inference</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Active Inference for Social Organization and Intelligence
+Communities</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>VERSES AI Research: Multi-Scale Active Inference Architectures</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Cognitive Security Through the Active Inference Lens</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+<tr>
+<td>Applications: Deception Detection, Surprise Minimization, Threat
+Modeling</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Applications of Active Inference and FEP in Intelligence (TU Delft
+Thesis)</td>
+<td>Active-Inference Boundary Lens</td>
+<td>theory-to-governance card with source, analogy limit, assumption,
+reviewer, and stop condition</td>
+<td>reject claims that the free-energy principle proves autonomous
+agency, intent, detection performance, or oversight-free action</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="active-inference-and-ageint-annotated-source-ledger-real-titles-and-local-contribution">Active
+Inference and AGEINT annotated source ledger: real titles and local
+contribution</h4>
+<p>Each source cited by this <strong>Active-Inference Theory and
+Governed Agent Analogy</strong> module is paired below with its real
+title and a one-line note on what it contributes to <strong>The Free
+Energy Principle and Predictive Processing; Active Inference as
+Computational Model of Intelligence Agent Behavior</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint247]</td>
+<td><a href="https://oecd.ai/en/themes/public-sector">AI in the Public
+Sector</a></td>
+<td>Official OECD.AI public-sector AI theme page.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint248]</td>
+<td><a
+href="https://www.worldbank.org/en/programs/govtech/artificial-intelligence">Artificial
+Intelligence Working Group</a></td>
+<td>The World Bank GovTech program page for its Artificial Intelligence
+Working Group, a community of government technology experts focused on
+knowledge-sharing and policy tools for responsible public-sector AI
+adoption. It notes that many developing countries face barriers such as
+limited digital skills, infrastructure, and data, which risk widening
+global inequality.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint265]</td>
+<td><a href="https://oecd.ai/en/work">AI and Work</a></td>
+<td>Official OECD.AI work theme page.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint278]</td>
+<td><a
+href="https://legalinstruments.oecd.org/api/print?ids=320&amp;lang=en">Recommendation
+of the Council on Public Procurement</a></td>
+<td>The OECD Recommendation of the Council on Public Procurement
+(OECD/LEGAL/0411), a legal instrument adopted by the OECD Council in
+2015 on the proposal of the Public Governance Committee. It frames
+public procurement as a pillar of strategic governance and service
+delivery and sets out principles for governments to follow.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint279]</td>
+<td><a href="https://standard.open-contracting.org/latest/en/">Open
+Contracting Data Standard</a></td>
+<td>The documentation homepage for the Open Contracting Data Standard,
+version 1.1.5, maintained by the Open Contracting Partnership to support
+disclosure of government contracting data across the procurement
+lifecycle. It provides a common data model spanning planning, tender,
+award, contract, and implementation stages, along with a primer,
+implementation guidance, technical schemas, and validation tooling.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint283]</td>
+<td><a
+href="https://legalinstruments.oecd.org/api/print?ids=359&amp;lang=en">Recommendation
+of the Council on Open Government</a></td>
+<td>An OECD legal instrument document reproducing the Recommendation of
+the Council on Open Government (OECD/LEGAL/0438), adopted on 14 December
+2017. It defines open government as a culture of governance promoting
+transparency, integrity, accountability, and stakeholder participation
+in support of democracy and inclusive growth.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint290]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/a/final">NIST SP
+800-218A: Secure Software Development Practices for Generative AI and
+Dual-Use Foundation Models</a></td>
+<td>NIST Special Publication 800-218A (July 2024), which augments the
+Secure Software Development Framework with practices specific to AI
+model development across the software lifecycle. Produced in response to
+Executive Order 14110, it addresses AI model producers, developers
+building on those models, and acquirers of AI systems, and is designed
+to be used alongside NIST SP 800-218.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint291]</td>
+<td><a href="https://www.access-board.gov/ict/">Revised 508 Standards
+and 255 Guidelines</a></td>
+<td>Official documentation from the U.S. Access Board on the Revised 508
+Standards and 255 Guidelines for information and communication
+technology accessibility. It establishes mandatory accessibility
+requirements for federal agencies and voluntary guidelines for
+telecommunications manufacturers, covering hardware, software, websites,
+electronic documents, and support services.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint294]</td>
+<td><a
+href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf">M-25-21:
+Accelerating Federal Use of AI through Innovation, Governance, and
+Public Trust</a></td>
+<td>An April 2025 Office of Management and Budget memorandum (M-25-21)
+directing executive branch agencies on federal use of artificial
+intelligence. Issued under Executive Order 14179, it instructs agencies
+to accelerate adoption of AI to improve public services and government
+efficiency while maintaining safeguards for civil rights, civil
+liberties, and privacy.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint106]</td>
+<td><a
+href="https://repository.tudelft.nl/file/File_e789366f-e00d-49c3-b0ef-333dd27356f3?preview=1">Applications
+of The Active Inference and The Free-Energy Principle</a></td>
+<td>A 2024 bachelor’s thesis by Lara Sakarya at Delft University of
+Technology presenting a systematic literature review of the active
+inference framework and the free-energy principle as applied to
+mimicking social human behavior in intelligent agents. It explains
+active inference as a theory describing behavior that minimizes
+surprise, and surveys model variants such as deep active inference,
+multimodal deep belief networks, predictive coding, and probabilistic
+programming.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint003]</td>
+<td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7916013/">Active
+Inference: Applicability to Different Types of Social</a></td>
+<td>A 2021 peer-reviewed article by Stephen Fox in the journal Entropy
+that relates the active inference framework to social organization. It
+maps concepts such as variational free energy, prediction error,
+generative models, and Markov blankets onto industrial engineering and
+quality management practices, treating organizational survival as the
+maintenance of process control limits.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint163]</td>
+<td><a
+href="https://deniseholt.us/verses-ais-groundbreaking-research-lays-the-foundation-for-shared-natural-super-intelligence/">Karl
+Friston’s Groundbreaking Research Lays the Foundation</a></td>
+<td>An article on deniseholt.us covering a 2024 paper by VERSES AI
+researchers, led by Mahault Albarracin and co-authored by Karl Friston,
+titled Shared Protentions in Multi-Agent Active Inference. It explains
+how intelligent agents can develop shared, mutually aligned expectations
+about future states that enable coordinated group behavior without
+explicit communication, drawing on Husserl’s work on temporal
+consciousness.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint164]</td>
+<td><a
+href="https://www.verses.ai/news/verses-to-present-research-at-the-5th-international-workshop-on-active-inference-iwai-2024">VERSES
+to Present Research at Active Inference Workshop</a></td>
+<td>A press release from VERSES AI (August 2024) announcing that the
+company would act as lead sponsor of and present research at the 5th
+International Workshop on Active Inference (IWAI 2024) in Oxford. It
+states that VERSES researchers had 12 accepted papers spanning
+foundational capabilities, multi-agent systems, applications, and
+ethics, and that the company’s chief scientist Karl Friston would
+speak.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint105]</td>
+<td><a href="https://dl.acm.org/doi/10.1145/3384217.3385615">Automated
+influence and the challenge of cognitive security</a></td>
+<td>Sarah Rajtmajer and Daniel Susser, ‘Automated Influence and the
+Challenge of Cognitive Security,’ in Hot Topics in the Science of
+Security (HotSoS ‘20), April 2020, ACM. The paper argues that AI-powered
+computational propaganda poses national security threats that existing
+ethical frameworks do not address, and proposes ’cognitive security’ as
+a productive conceptual lens for evaluating the ethics of automated
+influence operations and potential defensive responses.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint299]</td>
+<td><a href="https://modelcontextprotocol.io/specification">Model
+Context Protocol Specification</a></td>
+<td>The official Model Context Protocol (MCP) specification, defining an
+open protocol that standardizes how LLM applications connect to external
+data sources and tools using JSON-RPC 2.0 messages. It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation).</td>
+<td>verified source-guide context; use pinned MCP anchor for normative
+claims</td>
+</tr>
+<tr>
+<td>[ageint306]</td>
+<td><a href="https://www.cisa.gov/ai">Artificial Intelligence</a></td>
+<td>Official CISA Artificial Intelligence page for AI security, safety,
+resilience, and critical-infrastructure governance source support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint312]</td>
+<td><a
+href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-agentic-artificial-antelligence.html">Guide
+on the Use of Agentic Artificial Intelligence</a></td>
+<td>Official Government of Canada guide for responsible use of agentic
+AI, used for public-sector agent governance and accountability source
+support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint309]</td>
+<td><a
+href="https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html">STIX
+Version 2.1</a></td>
+<td>An OASIS standard specification defining STIX (Structured Threat
+Information Expression), a language for exchanging cyber threat
+intelligence in a standardized, machine-readable form. It establishes a
+graph-based model with STIX Domain Objects, Cyber-observable Objects,
+and Relationship Objects, plus meta objects, bundles, and a patterning
+language for detection.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint310]</td>
+<td><a
+href="https://docs.oasis-open.org/cti/taxii/v2.1/taxii-v2.1.html">TAXII
+Version 2.1</a></td>
+<td>The OASIS Standard specification for TAXII (Trusted Automated
+Exchange of Intelligence Information) Version 2.1, published in 2021 by
+the OASIS Cyber Threat Intelligence Technical Committee. It defines a
+RESTful, HTTPS-based API protocol for sharing cyber threat intelligence
+between organizations, supporting two communication models: Collections
+(request-response) and Channels (publish-subscribe).</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint300]</td>
+<td><a href="https://atlas.mitre.org/">MITRE ATLAS</a></td>
+<td>MITRE ATLAS knowledge base for adversarial threats to AI systems,
+used for defensive AI red-team assurance and misuse taxonomy.</td>
+<td>original source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-active-inference-and-ageint]; return to the curriculum
+atlas [sec:curriculum_orientation] for the reader paths, evidence map,
+and safety gates that govern this module.</p>
+</body>
+</html>

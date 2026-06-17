@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  Q["Analyst query"] --> GOV["Governance layer: rate limits, ToS check, minimization"]
+  GOV --> COL["Collector modules"]
+  subgraph COL["Collector modules"]
+    direction LR
+    W["Web and domain"]
+    SO["Social and people"]
+    GE["Geospatial and imagery"]
+  end
+  COL --> PROV["Provenance and audit logging"]
+  PROV --> NORM["Normalized evidence store"]
+  NORM --> AN["Analysis and corroboration"]
+  GOV -->|"deny if out of policy"| STOP["Blocked-use note"]

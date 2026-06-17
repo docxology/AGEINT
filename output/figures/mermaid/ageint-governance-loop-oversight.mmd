@@ -1,0 +1,16 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A([Perception of environment]) --> B[Belief state update]
+  B --> C[Intent formation]
+  C --> D{Policy and tool-allowlist gate}
+  D -->|Denied tool or scope| C
+  D -->|Permitted| E{Risk classifier}
+  E -->|High risk or irreversible| F[Human-in-the-loop review gate]
+  E -->|Low risk| G[Bounded action executor]
+  F -->|Approved| G
+  F -->|Rejected| C
+  G --> H[Observability tracing and audit log]
+  H --> I{Kill switch and loop detector}
+  I -->|Runaway or budget breach| J([Halt and escalate])
+  I -->|Within limits| A
+  H --> F

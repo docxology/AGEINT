@@ -1,0 +1,26 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph THREAT["The Contested Space (Ch24-26)"]
+    GZ["Gray Zone: ambiguity below war threshold"]
+    HY["Hybrid: blended military and non-military means"]
+    NSA["Non-State Actors: networks, proxies, insurgents"]
+    IW["Irregular Warfare: protracted, population-centric"]
+  end
+  subgraph DETECT["Defensive Recognition"]
+    ATTR["Attribution under deliberate ambiguity"]
+    IND["Indicators and warning thresholds"]
+  end
+  subgraph GOV["Governance and Response Spine"]
+    AUTH["Authorities and escalation thresholds"]
+    INTER["Interagency and allied coordination"]
+    RESIL["Societal resilience and deterrence"]
+  end
+  GZ --> ATTR
+  HY --> ATTR
+  NSA --> IND
+  IW --> IND
+  ATTR --> AUTH
+  IND --> AUTH
+  AUTH --> INTER
+  INTER --> RESIL
+  RESIL -.->|"adapt thresholds"| ATTR

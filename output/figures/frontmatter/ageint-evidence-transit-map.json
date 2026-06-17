@@ -1,0 +1,46 @@
+{
+  "description": "Deterministic non-numbered page-two visual for the AGEINT PDF publishing information page. The map summarizes artifact telemetry and verification boundaries without claiming model performance, public release, publication certification, or learning outcomes.",
+  "kind": "front_matter_visual",
+  "non_numbered": true,
+  "output_path": "output/figures/frontmatter/ageint-evidence-transit-map.png",
+  "provenance": {
+    "renderer": "python_pillow",
+    "source": "data/curriculum/, source metadata, source refresh due, agency source coverage, generated figure registry, and generated manuscript files",
+    "telemetry": {
+      "agency_source_routing": {
+        "missing_metadata": 0,
+        "new_official_us_ic_anchors": 56,
+        "routed": 56,
+        "unrouted": 0
+      },
+      "curriculum": {
+        "appendices": 9,
+        "modules": 51,
+        "parts": 16,
+        "patterns": 20,
+        "references": 312
+      },
+      "outputs": {
+        "generated_markdown_files": 330,
+        "registered_figures": 177
+      },
+      "source_freshness": {
+        "as_of": "2026-06-17",
+        "due_or_stale": 0,
+        "due_soon": 0,
+        "missing_dates": 0,
+        "rows": 472,
+        "unknown_cadence": 0
+      },
+      "source_metadata": {
+        "blank_lanes": 0,
+        "blank_tiers": 0,
+        "fallback_rows": 0,
+        "intelligence_anchors": 462,
+        "records": 472,
+        "support_anchors": 10
+      }
+    }
+  },
+  "title": "AGEINT Evidence Transit Map"
+}

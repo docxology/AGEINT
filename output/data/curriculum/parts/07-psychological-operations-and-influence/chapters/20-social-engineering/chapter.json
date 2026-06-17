@@ -1,0 +1,27 @@
+{
+  "number": 20,
+  "title": "Social Engineering",
+  "citations": [
+    238,
+    240,
+    242,
+    280,
+    281,
+    282,
+    292,
+    295,
+    296,
+    97,
+    98,
+    99,
+    100,
+    300,
+    304,
+    306,
+    308,
+    311
+  ],
+  "source_line": 294,
+  "content_profile": "cognitive_influence_security",
+  "practice_lens": "cognitive_resilience"
+}

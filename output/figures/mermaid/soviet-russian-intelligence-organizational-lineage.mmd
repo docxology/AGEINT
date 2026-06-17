@@ -1,0 +1,25 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  Cheka["Cheka, 1917"]
+  OGPU["OGPU, 1923"]
+  NKVD["NKVD, 1934"]
+  MGB["MGB and MVD, late 1940s"]
+  KGB["KGB, 1954"]
+  GRU["Military Intelligence GRU, 1918"]
+  SVR["SVR, Foreign Intelligence"]
+  FSB["FSB, Federal Security Service"]
+  FSO["FSO, Federal Protective Service"]
+  Modern["Modern Russian Services"]
+  Caveat["Declassified Record and Provenance Caveat"]
+  Cheka --> OGPU
+  OGPU --> NKVD
+  NKVD --> MGB
+  MGB --> KGB
+  KGB --> SVR
+  KGB --> FSB
+  KGB --> FSO
+  SVR --> Modern
+  FSB --> Modern
+  FSO --> Modern
+  GRU --> Modern
+  Caveat --> Modern

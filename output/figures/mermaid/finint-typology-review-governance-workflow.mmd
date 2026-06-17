@@ -1,0 +1,18 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  SIGNAL(["Financial signal on synthetic records"])
+  SCREEN{"Screen against sanctions and official lists"}
+  TYPOLOGY["Match typology context, not intent"]
+  OWNER["Weigh beneficial-ownership uncertainty"]
+  BOUND["No-accusation compliance boundary"]
+  REVIEW{"Reviewer-owned escalation decision"}
+  CASE(["Documented review case"])
+  CLOSE(["No further action, logged"])
+  SIGNAL --> SCREEN
+  SCREEN -->|"list hit"| TYPOLOGY
+  SCREEN -->|"no hit"| OWNER
+  TYPOLOGY --> OWNER
+  OWNER --> BOUND
+  BOUND --> REVIEW
+  REVIEW -->|"escalate"| CASE
+  REVIEW -->|"clear"| CLOSE

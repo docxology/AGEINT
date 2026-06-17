@@ -1,0 +1,10 @@
+{
+  "number": 8,
+  "roman": "VIII",
+  "title": "COUNTERINTELLIGENCE",
+  "source_line": 321,
+  "chapter_files": [
+    "22-counterintelligence-fundamentals/chapter.json",
+    "23-counterintelligence-against-non-state-actors/chapter.json"
+  ]
+}

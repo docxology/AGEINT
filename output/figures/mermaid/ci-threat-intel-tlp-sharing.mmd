@@ -1,0 +1,22 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["Critical-Infrastructure Threat-Intel Sharing<br/>TLP trust and handling flow"]
+    detect["Detected indicator<br/>at one OT operator"]
+    sanit["Sanitize<br/>remove victim-identifying<br/>and sensitive detail"]
+    tlp{"Assign TLP marking"}
+    red["TLP:RED<br/>named recipients only"]
+    amber["TLP:AMBER<br/>org and clients,<br/>need-to-know"]
+    green["TLP:GREEN<br/>community and<br/>sector ISAC"]
+    clear["TLP:CLEAR<br/>public release"]
+    isac["Sector ISAC / CISA<br/>aggregation and<br/>correlation"]
+    enrich["Enrichment<br/>map to ICS technique<br/>and affected systems"]
+    defend(["Defensive action<br/>detections and mitigations<br/>shared back to members"])
+    detect --> sanit --> tlp
+    tlp --> red
+    tlp --> amber
+    tlp --> green
+    tlp --> clear
+    green --> isac
+    clear --> isac
+    isac --> enrich --> defend
+    root --> detect

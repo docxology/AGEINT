@@ -1,0 +1,26 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph CYCLE["The Intelligence Cycle (ch1)"]
+    direction TB
+    P["Planning and Direction"] --> C["Collection"]
+    C --> PR["Processing"]
+    PR --> A["Analysis and Production"]
+    A --> D["Dissemination"]
+    D --> P
+  end
+  subgraph ARCH["IC Architecture (ch2)"]
+    direction TB
+    AG["Collection Agencies"]
+    OV["Oversight and Tasking Authorities"]
+    CON["Consumers and Policymakers"]
+  end
+  subgraph TRADE["Tradecraft Principles (ch3)"]
+    direction TB
+    SAT["Structured Analytic Techniques"]
+    RIG["Sourcing and Rigor"]
+    MARK["Classification and Control Markings"]
+  end
+  ARCH -->|"tasks and resources"| CYCLE
+  CYCLE -->|"finished intelligence"| ARCH
+  TRADE -->|"governs every step"| CYCLE
+  MARK --> D

@@ -1,0 +1,17 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'}}}%%
+sequenceDiagram
+    autonumber
+    participant Owner as Evaluation owner
+    participant Bench as Benchmark context
+    participant Run as Automated benchmark
+    participant Challenge as TEVV or red-team challenge
+    participant Report as Evaluation report
+    participant Review as Reviewer decision
+    participant Claim as Bounded claim ledger
+    Owner->>Bench: Define the claim being tested and excluded claims
+    Bench->>Run: Bind dataset, task, metric, and reproducibility context
+    Run->>Challenge: Submit run evidence plus validity limits
+    Challenge->>Report: Add challenge scope, failures, and uncertainty
+    Report->>Review: Present caveats, provenance, and release request
+    Review->>Claim: Approve only bounded source-backed wording
+    Review-->>Bench: Otherwise revise, retest, or add caveat

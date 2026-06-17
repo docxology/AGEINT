@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="ageint-security-and-adversarial-considerations-assurance-handoff-evidence-governance-refresh-and-capstone">AGEINT
+Security and Adversarial Considerations assurance handoff: evidence,
+governance, refresh, and capstone</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<h3
+id="ageint-security-and-adversarial-considerations-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">AGEINT
+Security and Adversarial Considerations evidence contract: source spine,
+verified anchors, transfer architecture, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<h3
+id="ageint-security-and-adversarial-considerations-transfer-architecture-module-inputs-outputs-and-review-boundary">AGEINT
+Security and Adversarial Considerations transfer architecture: module
+inputs, outputs, and review boundary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<h4
+id="ageint-security-and-adversarial-considerations-lineage-and-source-tradition-profile-concepts-and-first-anchors">AGEINT
+Security and Adversarial Considerations lineage and source tradition:
+profile, concepts, and first anchors</h4>
+<p>This sits in the <strong>Agentic AI Governance and Tool
+Security</strong> lineage: delegated action under explicit authority,
+identity, permissions, tool boundaries, monitoring, and human
+escalation. [ageint234]; [ageint235].</p>
+<h4
+id="ageint-security-and-adversarial-considerations-working-model-inputs-constraints-transforms-outputs-and-oversight">AGEINT
+Security and Adversarial Considerations working model: inputs,
+constraints, transforms, outputs, and oversight</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>Agent Framework Security
+Vulnerabilities; Python REPL sandbox and approval-gate</strong>, with
+provenance and reviewability throughout.</p>
+<h4
+id="ageint-security-and-adversarial-considerations-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">AGEINT
+Security and Adversarial Considerations knowledge architecture: inputs,
+transforms, outputs, and failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> source materials, domain constraints,
+learner questions, verified anchors, and artifact requirements.
+[ageint234]; [ageint235].</li>
+<li><strong>Transforms:</strong> evidence normalization, structured
+reasoning, source evaluation, governance review, and handoff
+preparation.</li>
+<li><strong>Outputs:</strong> annotated map, decision memo, rubric,
+tabletop packet, or audit artifact.</li>
+<li><strong>Failure modes:</strong> over-automation, misplaced
+confidence, policy drift, and confusing simulation with deployment.</li>
+</ul>
+<h4
+id="ageint-security-and-adversarial-considerations-transfer-contracts-authority-evidence-tools-and-auditable-output">AGEINT
+Security and Adversarial Considerations transfer contracts: authority,
+evidence, tools, and auditable output</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>Agent Framework Security Vulnerabilities; Python REPL sandbox
+and approval-gate</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the <strong>Agentic AI
+Governance and Tool Security</strong> source descriptors,
+transformations, claims, uncertainty, and confidence separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+annotated map, decision memo, rubric, tabletop packet, or audit artifact
+that another reviewer can audit.</li>
+</ul>
+<h4
+id="ageint-security-and-adversarial-considerations-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">AGEINT
+Security and Adversarial Considerations profile emphasis and local
+focus: method stack and topic cluster</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<p>The matched profile emphasizes delegated action under explicit
+authority, identity, permissions, tool boundaries, monitoring, and human
+escalation. The method stack is AI RMF Govern-Map-Measure-Manage,
+least-privilege tool design, prompt-injection review, progressive
+deployment, and rollback drills; the local topic cluster is
+<strong>Agent Framework Security Vulnerabilities; Python REPL sandbox
+and approval-gate</strong>.</p>
+<h3
+id="ageint-security-and-adversarial-considerations-evidence-spine-source-roles-citation-support-and-claim-limits">AGEINT
+Security and Adversarial Considerations evidence spine: source roles,
+citation support, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>Agentic AI Governance and Tool
+Security</strong> profile tells reviewers what evidence is strong enough
+for the module artifact built around <strong>Agent Framework Security
+Vulnerabilities; Python REPL sandbox and approval-gate</strong>.</p>
+<h4
+id="ageint-security-and-adversarial-considerations-guide-source-spine-inherited-keys-and-local-citation-roles">AGEINT
+Security and Adversarial Considerations guide source spine: inherited
+keys and local citation roles</h4>
+<p>Primary guide citations: [ageint234]; [ageint235]; [ageint236];
+[ageint276]; [ageint277]; [ageint284]; [ageint288]; [ageint289];
+[ageint293]; [ageint147]; [ageint155]; [ageint159]; [ageint137];
+[ageint160]; [ageint161]; [ageint100]; [ageint162]; [ageint004];
+[ageint148]; [ageint299]; [ageint306]; [ageint312].</p>
+<h4
+id="ageint-security-and-adversarial-considerations-verified-source-canon-direct-anchors-and-claim-boundaries">AGEINT
+Security and Adversarial Considerations verified source canon: direct
+anchors and claim boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint234]; [ageint235].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint234]; [ageint235]; [ageint236]; [ageint276]; [ageint277];
+[ageint284]; [ageint288]; [ageint289]; [ageint293]; [ageint147];
+[ageint155]; [ageint159]; [ageint137]; [ageint160]; [ageint161];
+[ageint100]; [ageint162]; [ageint004]; [ageint148]; [ageint299];
+[ageint306]; [ageint312].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 34’s source-canon
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for <strong>Agent
+Framework Security Vulnerabilities; Python REPL sandbox and
+approval-gate</strong> and [ageint234]; [ageint235], but only directly
+verified source URLs are encoded as citations.</p>
+<h4
+id="ageint-security-and-adversarial-considerations-intelligence-practice-lens-evidence-artifact-and-safety-check">AGEINT
+Security and Adversarial Considerations intelligence practice lens:
+evidence artifact and safety check</h4>
+<p>Practice lens: <strong>Agentic Tool-Governance Lens</strong> for
+<strong>Agent Framework Security Vulnerabilities; Python REPL sandbox
+and approval-gate</strong>. [ageint234]; [ageint235].</p>
+<p><strong>Planning question:</strong> Which human authority, agent
+identity, tool permission, autonomy limit, incident threshold, and
+recoverability condition bounds the workflow?</p>
+<p><strong>Evidence artifact:</strong> agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path.</p>
+<p><strong>Validation rule:</strong> verify least privilege,
+prompt-injection exposure, provenance, observability, stop conditions,
+and incident-reporting triggers. Applied to <strong>Agent Framework
+Security Vulnerabilities; Python REPL sandbox and
+approval-gate</strong>.</p>
+<p><strong>Handoff contract:</strong> export agent traces, tool calls,
+retrieved sources, policy decisions, and human approvals separately.</p>
+<p><strong>Safety check:</strong> block excessive agency, shadow tools,
+credential leakage, autonomous deployment, and irreversible actions.</p>
+<h4
+id="ageint-security-and-adversarial-considerations-runtime-to-reader-map-generated-sections-and-verifier-surfaces">AGEINT
+Security and Adversarial Considerations runtime-to-reader map: generated
+sections and verifier surfaces</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>34.99</td>
+<td>34.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind AGEINT Security and Adversarial
+Considerations to source-lane evidence, claim-ledger review, safe
+substitution, compliance/rights mapping, instructor deliverables, and
+explicit refresh triggers</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>AGEINT pattern registry, agent identity, and interface-contract
+studio</td>
+<td>34.100</td>
+<td>34.100 source title transformed into safe curriculum treatment;
+original: V2 AGEINT-depth extension: require compliance mapping,
+adversarial evaluation, impact assessment, trustworthiness review, and
+accountable remediation for agent security discussions</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>34.101</td>
+<td>34.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for AGEINT
+Security and Adversarial Considerations</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>34.102</td>
+<td>34.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for AGEINT Security
+and Adversarial Considerations</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Agent Framework Security Vulnerabilities</td>
+<td>34.1</td>
+<td>34.1 Agent Framework Security Vulnerabilities</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Python REPL sandbox and approval-gate</td>
+<td>34.1.1</td>
+<td>34.1.1 source title transformed into safe curriculum treatment;
+original: LangChain PythonREPLTool: Arbitrary Code Execution</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Cyber credential-and-movement taxonomy review using fabricated
+alerts</td>
+<td>34.1.2</td>
+<td>34.1.2 source title transformed into safe curriculum treatment;
+original: CrewAI Uncontrolled Lateral Movement Between Agents</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>AutoGen sandbox and code-execution approval</td>
+<td>34.1.3</td>
+<td>34.1.3 source title transformed into safe curriculum treatment;
+original: AutoGen Unsandboxed Code Execution</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>MCP Server Poisoning and Prompt Injection</td>
+<td>34.1.4</td>
+<td>34.1.4 MCP Server Poisoning and Prompt Injection</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Prompt Injection in Intelligence Agentic Systems</td>
+<td>34.2</td>
+<td>34.2 Prompt Injection in Intelligence Agentic Systems</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Hallucination in Action: When Agents Act on Fabricated
+Intelligence</td>
+<td>34.3</td>
+<td>34.3 Hallucination in Action: When Agents Act on Fabricated
+Intelligence</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Infinite Loops and Runaway Agents: Detection and Kill Switches</td>
+<td>34.4</td>
+<td>34.4 Infinite Loops and Runaway Agents: Detection and Kill
+Switches</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Agentic AI Governance Frameworks 2026</td>
+<td>34.5</td>
+<td>34.5 Agentic AI Governance Frameworks 2026</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>OWASP Top 10 for LLM Applications</td>
+<td>34.5.1</td>
+<td>34.5.1 OWASP Top 10 for LLM Applications</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>IAPS Agentic AI Governance Framework</td>
+<td>34.5.2</td>
+<td>34.5.2 IAPS Agentic AI Governance Framework</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>UK AI Safety Institute: Agent Evaluations</td>
+<td>34.5.3</td>
+<td>34.5.3 UK AI Safety Institute: Agent Evaluations</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>LLM-agent cyber-misuse taxonomy review using sample reports</td>
+<td>34.6</td>
+<td>34.6 source title transformed into safe curriculum treatment;
+original: LLM-Based Agents in Autonomous Cyberattacks: Survey and
+Taxonomy</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Threat Intelligence Gathering by LLM Agents</td>
+<td>34.6.1</td>
+<td>34.6.1 Threat Intelligence Gathering by LLM Agents</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Malware-misuse control review using sample agent logs</td>
+<td>34.6.2</td>
+<td>34.6.2 source title transformed into safe curriculum treatment;
+original: Automated Weaponization: Malware Generation</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Phishing-resilience control review using sample messages</td>
+<td>34.6.3</td>
+<td>34.6.3 source title transformed into safe curriculum treatment;
+original: Phishing and Spear-Phishing Automation</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Multi-agent cyber-misuse coordination review using sample
+reports</td>
+<td>34.6.4</td>
+<td>34.6.4 source title transformed into safe curriculum treatment;
+original: Multi-Agent Collaboration in Cyberattacks</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Networked-device cyber-misuse risk review using sample
+scenarios</td>
+<td>34.6.5</td>
+<td>34.6.5 source title transformed into safe curriculum treatment;
+original: Cyberattack Capabilities Across 6G, IoT, Satellite, UAV
+Networks</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Observability as Control: Tracing, Logging, Audit for AGEINT
+Systems</td>
+<td>34.7</td>
+<td>34.7 Observability as Control: Tracing, Logging, Audit for AGEINT
+Systems</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Human-in-the-Loop Architectures: When and How to Mandate
+Oversight</td>
+<td>34.8</td>
+<td>34.8 Human-in-the-Loop Architectures: When and How to Mandate
+Oversight</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Alignment and Trustworthiness in AGEINT: National Security
+Context</td>
+<td>34.9</td>
+<td>34.9 Alignment and Trustworthiness in AGEINT: National Security
+Context</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="ageint-security-and-adversarial-considerations-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">AGEINT
+Security and Adversarial Considerations reusable subsection contract:
+topic rows, artifacts, and safety duties</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-security-and-adversarial-considerations];
+[ageint234].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent Framework Security Vulnerabilities</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Python REPL sandbox and approval-gate</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Cyber credential-and-movement taxonomy review using fabricated
+alerts</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>AutoGen sandbox and code-execution approval</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>MCP Server Poisoning and Prompt Injection</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Prompt Injection in Intelligence Agentic Systems</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Hallucination in Action: When Agents Act on Fabricated
+Intelligence</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Infinite Loops and Runaway Agents: Detection and Kill Switches</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Agentic AI Governance Frameworks 2026</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>OWASP Top 10 for LLM Applications</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>IAPS Agentic AI Governance Framework</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>UK AI Safety Institute: Agent Evaluations</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>LLM-agent cyber-misuse taxonomy review using sample reports</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Threat Intelligence Gathering by LLM Agents</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Malware-misuse control review using sample agent logs</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Phishing-resilience control review using sample messages</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Multi-agent cyber-misuse coordination review using sample
+reports</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Networked-device cyber-misuse risk review using sample
+scenarios</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Observability as Control: Tracing, Logging, Audit for AGEINT
+Systems</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Human-in-the-Loop Architectures: When and How to Mandate
+Oversight</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+<tr>
+<td>Alignment and Trustworthiness in AGEINT: National Security
+Context</td>
+<td>Agentic Tool-Governance Lens</td>
+<td>agent run card with tool allowlist, identity, logs, autonomy limit,
+approval gates, and recovery path</td>
+<td>block excessive agency, shadow tools, credential leakage, autonomous
+deployment, and irreversible actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="ageint-security-and-adversarial-considerations-annotated-source-ledger-real-titles-and-local-contribution">AGEINT
+Security and Adversarial Considerations annotated source ledger: real
+titles and local contribution</h4>
+<p>Each source cited by this <strong>Agentic AI Governance and Tool
+Security</strong> module is paired below with its real title and a
+one-line note on what it contributes to <strong>Agent Framework Security
+Vulnerabilities; Python REPL sandbox and approval-gate</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint234]</td>
+<td><a
+href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai">AI
+Act</a></td>
+<td>The European Commission’s official page on the AI Act, described as
+the first comprehensive legal framework on artificial intelligence
+worldwide. It explains the regulation’s risk-based approach, classifying
+AI systems into unacceptable, high, transparency, and minimal risk
+tiers, with prohibited practices and strict requirements for high-risk
+uses.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint235]</td>
+<td><a href="https://www.iso.org/standard/44545.html">ISO/IEC 42005:2025
+AI System Impact Assessment</a></td>
+<td>ISO standard page for AI system impact assessment.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint236]</td>
+<td><a href="https://www.iso.org/standard/77608.html">ISO/IEC TR
+24028:2020 Artificial Intelligence Trustworthiness Overview</a></td>
+<td>The ISO catalog page for ISO/IEC TR 24028:2020, a technical report
+titled “Information technology — Artificial intelligence — Overview of
+trustworthiness in artificial intelligence.” The document surveys topics
+related to AI trustworthiness, including approaches to establishing
+trust through transparency, explainability, and controllability, and
+approaches to assess and achieve availability, resilience, reliability,
+accuracy, safety, security, and privacy of AI systems.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint276]</td>
+<td><a
+href="https://www.edpb.europa.eu/sme-data-protection-guide/faq-frequently-asked-questions/answer/what-data-protection-impact_en">What
+is a Data Protection Impact Assessment and When Is This
+Mandatory?</a></td>
+<td>A European Data Protection Board FAQ page, part of its data
+protection guide for small businesses, explaining Data Protection Impact
+Assessments (DPIAs) and when they are mandatory. It describes a DPIA as
+a written assessment of the impact of a planned processing operation,
+required when processing poses high risks to individuals’ rights.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint277]</td>
+<td><a
+href="https://www.edpb.europa.eu/our-work-tools/general-guidance/endorsed-wp29-guidelines_en">Endorsed
+WP29 Guidelines</a></td>
+<td>This is a European Data Protection Board webpage listing guidelines
+and documents originating from the Article 29 Working Party that the
+EDPB endorsed at its first plenary meeting. The catalogued materials
+relate to the GDPR and cover topics such as consent and transparency,
+data breach notification, automated decision-making and profiling, data
+protection impact assessments, data protection officers, and binding
+corporate rules.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint284]</td>
+<td><a href="https://www.w3.org/TR/vc-data-integrity/">Verifiable
+Credential Data Integrity 1.0</a></td>
+<td>The W3C Recommendation for Verifiable Credential Data Integrity 1.0,
+published May 2025, defining mechanisms for ensuring the authenticity
+and integrity of verifiable credentials using cryptographic proofs. It
+specifies a process of data transformation, hashing, and proof
+generation, and a corresponding verification procedure, along with a
+proof data model containing properties such as type, verification
+method, purpose, and proof value.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint288]</td>
+<td><a
+href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub">Algorithmic
+Transparency Recording Standard Hub</a></td>
+<td>A GOV.UK collection page serving as the hub for the UK Algorithmic
+Transparency Recording Standard (ATRS), maintained by the Government
+Digital Service. It provides a standardized template for documenting
+public-sector use of algorithmic tools, completion guidance, policy on
+scope and compliance, and a searchable repository of published
+transparency records.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint289]</td>
+<td><a
+href="https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard">Guidance
+for Organisations Using the Algorithmic Transparency Recording
+Standard</a></td>
+<td>This is a GOV.UK guidance page published by the Government Digital
+Service that instructs public sector organizations on completing the
+Algorithmic Transparency Recording Standard (ATRS) template and
+publishing their records to the GOV.UK repository. It applies both to
+central government bodies required to publish under mandatory policy and
+to other public sector bodies doing so voluntarily.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint293]</td>
+<td><a href="https://www.archives.gov/ai">Inventory of NARA Artificial
+Intelligence (AI) Use Cases</a></td>
+<td>The National Archives and Records Administration (NARA) official
+inventory of its artificial intelligence use cases, documenting 14
+projects across deployed, pilot, and planned stages. Deployed efforts
+include workplace productivity tools, automated tagging for museum
+experiences, and historical record retrieval, while pilots cover PII
+detection and redaction, semantic search, and metadata generation, and
+planned work targets FOIA processing and public search.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint147]</td>
+<td><a
+href="https://redteams.ai/topics/agentic-exploitation/agent-frameworks">Agent
+Framework Security</a></td>
+<td>Security analysis of major AI agent frameworks including LangChain,
+CrewAI, AutoGen, Semantic.</td>
+<td>original practitioner context; secondary evidence only</td>
+</tr>
+<tr>
+<td>[ageint155]</td>
+<td><a
+href="https://www.nsa.gov/Portals/75/documents/Cybersecurity/CSI_MCP_SECURITY.pdf?ver=bmgiSbNQLP6Z_GiWtRt6bg%3D%3D">Model
+Context Protocol (MCP): Security Design Considerations</a></td>
+<td>Radosevich and Halloran (2025) audit security vulnerabilities in
+Anthropic’s Model Context Protocol (MCP), which allows LLMs to integrate
+with external tools and data sources. The authors demonstrate that
+language models using MCP can be manipulated through prompt injection to
+execute malicious code, enable remote access, and steal
+credentials.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint159]</td>
+<td><a
+href="https://businessinsights.bitdefender.com/security-risks-agentic-ai-model-context-protocol-mcp-introduction">Security
+Risks of Agentic AI: A Model Context Protocol (MCP</a></td>
+<td>A September 2025 Bitdefender Business Insights article by Martin
+Zugec examining security risks in the Model Context Protocol, the
+standard introduced by Anthropic for connecting AI agents to external
+tools and data. It identifies concerns including weak default
+authentication, supply-chain exposure from compromised tools,
+over-permissioned access tokens, injection and context-poisoning
+attacks, and gaps in audit logging for agentic workflows.</td>
+<td>verified practitioner context; secondary evidence only</td>
+</tr>
+<tr>
+<td>[ageint137]</td>
+<td><a href="https://arxiv.org/abs/2601.12560">[2601.12560] Agentic
+Artificial Intelligence (AI)</a></td>
+<td>An arXiv paper surveying the shift from passive language models to
+Agentic AI, where large language models act as cognitive controllers
+that combine memory, tool use, and environmental feedback to pursue
+extended goals. It proposes a unified taxonomy organizing agent systems
+into six components: perception, brain, planning, action, tool use, and
+collaboration.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint160]</td>
+<td><a
+href="https://www.linkedin.com/posts/oliver-patel_breaking-down-the-top-12-papers-on-agentic-activity-7355531066830376960-ynF3">Breaking
+down the Top 12 Papers on Agentic AI Governance</a></td>
+<td>Oliver Patel compiled a three-part series summarizing twelve
+influential research papers on governing autonomous AI systems,
+organized around themes of security and safety, infrastructure and
+principal-agent theory, and regulatory and capability assessment. The
+papers collectively argue that governance cannot be applied reactively
+after agents act but must instead be embedded at the architectural
+level, preventing unauthorized autonomous behavior before it
+occurs.</td>
+<td>verified practitioner context; secondary evidence only</td>
+</tr>
+<tr>
+<td>[ageint161]</td>
+<td><a
+href="https://www.dwt.com/blogs/artificial-intelligence-law-advisor/2026/01/roadmap-for-managing-risks-unique-to-agentic-ai">New
+Governance Frameworks Offer a Roadmap for Managing Risks</a></td>
+<td>A January 2026 article from the law firm Davis Wright Tremaine on
+governance frameworks for agentic AI. It argues that autonomous,
+adaptive AI systems pose distinct risks, such as unauthorized or
+erroneous actions, biased decisions, data breaches, and opaque audit
+trails, that require governance beyond existing AI frameworks.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint100]</td>
+<td><a href="https://arxiv.org/html/2505.12786v2">A Survey on Large
+Language Model-based Agents in Autonomous</a></td>
+<td>This survey examines how large language model-based agents can be
+weaponized as autonomous cyberattack tools, analyzing their architecture
+across five core components: models, perception, memory, reasoning and
+planning, and tools. The authors document eight attack categories and
+map them across static infrastructure, mobile networks, and
+infrastructure-free systems such as blockchain and the metaverse.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint162]</td>
+<td><a
+href="https://www.dynatrace.com/news/blog/agentic-ai-report-reliable-autonomous-operations/">Agentic
+AI report reveals need for reliable autonomous operations</a></td>
+<td>A Dynatrace blog post summarizing its Pulse of Agentic AI 2026
+report, based on a survey of over 900 organizational leaders on
+enterprise adoption of agentic AI. It finds high adoption in IT
+operations alongside planned budget increases, while identifying
+barriers to scaling including security and compliance concerns,
+difficulty monitoring agents, and unclear autonomy boundaries.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint004]</td>
+<td><a
+href="https://fedgovtoday.com/podcast/ai-wont-replace-spies-it-will-make-them-more-powerful-than-ever">AI
+Won’t Replace Spies—It Will Make Them More Powerful Than Ever</a></td>
+<td>Tom Mulligan argues that artificial intelligence will enhance rather
+than replace human intelligence professionals, contending that the
+future of intelligence lies in human-machine collaboration. He maintains
+that uniquely human qualities such as intuition, experience, and
+independent judgment become more valuable as adversaries gain access to
+the same AI tools.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint148]</td>
+<td><a
+href="https://www.riversideresearch.org/insights/leaning-forward-how-riverside-research-advances-agentic-ai-for-national-security">How
+Riverside Research Advances Agentic AI for National Security</a></td>
+<td>This article by Riverside Research traces AI’s evolution from large
+language models through retrieval-augmented systems, single-task agents,
+collaborative agentic systems, and toward emergent multi-agent autonomy
+capable of managing surveillance and decision support at operational
+speed.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint299]</td>
+<td><a href="https://modelcontextprotocol.io/specification">Model
+Context Protocol Specification</a></td>
+<td>The official Model Context Protocol (MCP) specification, defining an
+open protocol that standardizes how LLM applications connect to external
+data sources and tools using JSON-RPC 2.0 messages. It describes the
+host, client, and server roles and capability negotiation, and the
+features servers expose (resources, prompts, tools) and clients offer
+(sampling, roots, elicitation).</td>
+<td>verified source-guide context; use pinned MCP anchor for normative
+claims</td>
+</tr>
+<tr>
+<td>[ageint306]</td>
+<td><a href="https://www.cisa.gov/ai">Artificial Intelligence</a></td>
+<td>Official CISA Artificial Intelligence page for AI security, safety,
+resilience, and critical-infrastructure governance source support.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint312]</td>
+<td><a
+href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-agentic-artificial-antelligence.html">Guide
+on the Use of Agentic Artificial Intelligence</a></td>
+<td>Official Government of Canada guide for responsible use of agentic
+AI, used for public-sector agent governance and accountability source
+support.</td>
+<td>original source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-ageint-security-and-adversarial-considerations]; return to
+the curriculum atlas [sec:curriculum_orientation] for the reader paths,
+evidence map, and safety gates that govern this module.</p>
+</body>
+</html>

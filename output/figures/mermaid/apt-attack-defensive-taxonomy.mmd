@@ -1,0 +1,25 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  TAX["Defensive ATT&CK-style taxonomy"]
+  RECON["Recon and access categories"]
+  EXEC["Execution categories"]
+  PERSIST["Persistence categories"]
+  LATERAL["Lateral-movement categories"]
+  IMPACT["Impact categories"]
+  DETECT["Detection signals to catalog"]
+  MITIGATE["Mitigation controls to apply"]
+  PACKET["Confidence-tagged CTI packet"]
+  SIGNOFF(["Reviewer sign-off and stop condition"])
+  TAX --> RECON
+  TAX --> EXEC
+  TAX --> PERSIST
+  TAX --> LATERAL
+  TAX --> IMPACT
+  RECON --> DETECT
+  EXEC --> DETECT
+  PERSIST --> MITIGATE
+  LATERAL --> MITIGATE
+  IMPACT --> MITIGATE
+  DETECT --> PACKET
+  MITIGATE --> PACKET
+  PACKET --> SIGNOFF

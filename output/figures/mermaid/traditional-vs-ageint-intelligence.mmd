@@ -1,0 +1,12 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  TC["Collection"] -.->|"augmented by"| AC["Retrieval and tasking assist"]
+  TP["Processing"] -.->|"augmented by"| AP["Triage and enrichment assist"]
+  TA["Analysis"] -.->|"augmented by"| AA["Hypothesis and critique assist"]
+  TD["Dissemination"] -.->|"augmented by"| AD["Drafting and review assist"]
+  AC --> GATE{"Human review, tool allowlist, stop condition"}
+  AP --> GATE
+  AA --> GATE
+  AD --> GATE
+  GATE --> OUT["Accountable intelligence product"]
+  TC --> TP --> TA --> TD

@@ -1,0 +1,23 @@
+{
+  "number": 48,
+  "title": "Threat Intelligence Sharing for Critical Infrastructure",
+  "citations": [
+    253,
+    258,
+    261,
+    275,
+    276,
+    283,
+    286,
+    293,
+    295,
+    77,
+    218,
+    307,
+    305,
+    304
+  ],
+  "source_line": 897,
+  "content_profile": "ics_ot_defense",
+  "practice_lens": "cyber_physical_readiness"
+}

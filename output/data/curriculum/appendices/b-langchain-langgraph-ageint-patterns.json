@@ -1,0 +1,43 @@
+{
+  "letter": "B",
+  "title": "LangChain/LangGraph AGEINT Patterns",
+  "items": [
+    {
+      "level": 1,
+      "title": "B.1 ReAct Agent for Threat Intelligence Enrichment (MITRE ATT&CK + VirusTotal)",
+      "raw": "B.1 ReAct Agent for Threat Intelligence Enrichment (MITRE ATT&CK + VirusTotal)",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "B.2 LangGraph State Machine: Multi-Phase Intelligence Collection DAG",
+      "raw": "B.2 LangGraph State Machine: Multi-Phase Intelligence Collection DAG",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "B.3 RAG Pipeline: All-Source Fusion over STIX + PDF Intelligence Products",
+      "raw": "B.3 RAG Pipeline: All-Source Fusion over STIX + PDF Intelligence Products",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "B.4 Human-in-the-Loop Agent with Confidence-Gated Escalation",
+      "raw": "B.4 Human-in-the-Loop Agent with Confidence-Gated Escalation",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "B.5 Memory-Enabled Agent: Longitudinal Target Tracking (mem0 + Chroma)",
+      "raw": "B.5 Memory-Enabled Agent: Longitudinal Target Tracking (mem0 + Chroma)",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "B.6 LangSmith Tracing: Observability for Production Intelligence Agents",
+      "raw": "B.6 LangSmith Tracing: Observability for Production Intelligence Agents",
+      "citations": []
+    }
+  ],
+  "source_line": 959
+}

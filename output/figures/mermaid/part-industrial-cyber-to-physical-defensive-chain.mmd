@@ -1,0 +1,28 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph FOUND["Foundations"]
+    A1["Ch45: ICS and OT assets, architecture, safety state"]
+  end
+  subgraph MODEL["Threat modeling"]
+    A2["Ch46: MITRE ATT&CK for ICS, defensive coverage"]
+  end
+  subgraph LEARN["Learning from history"]
+    A3["Ch47: Historical ICS incident analysis"]
+  end
+  subgraph SHARE["Collective defense"]
+    A4["Ch48: Threat-intel sharing for critical infrastructure"]
+  end
+  subgraph APPLY["Agentic application"]
+    A5["Ch49: AGEINT applied to ICS, defensive only"]
+  end
+  CY["Cyber observation"] --> ENG["Engineering state"]
+  ENG --> CON["Physical consequence"]
+  CON --> OP["Operator decision log"]
+  OP --> REC["Recovery evidence"]
+  A1 --> ENG
+  A2 --> CON
+  A3 --> OP
+  A4 --> REC
+  A5 --> CY
+  REC --> PKT["Cyber-physical tabletop evidence packet"]
+  STOP["Safety boundary: no live control, exploit, or response"] -.-> PKT

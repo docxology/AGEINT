@@ -1,0 +1,910 @@
+{
+  "expected_new_us_ic_anchors": 56,
+  "generated_at": "2026-06-17T04:15:43+00:00",
+  "global_issue_count": 0,
+  "global_issues": [],
+  "issue_row_count": 0,
+  "issue_rows": [],
+  "minimums": {
+    "cia_new_minimum": 25,
+    "dia_new_minimum": 3,
+    "odni_or_intelligence_gov_new_minimum": 20
+  },
+  "ok": true,
+  "project": "AGEINT",
+  "required_new_metadata": [
+    "source_agency",
+    "source_pack",
+    "source_lane",
+    "source_tier",
+    "checked_as_of",
+    "claim_scope",
+    "assurance_use",
+    "rights_dimension"
+  ],
+  "rows": [
+    {
+      "flags": [],
+      "key": "official_cia_words_estimative_probability",
+      "line": 1,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_uncertainty_language",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_ic_struggle_express_uncertainty",
+      "line": 2,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_uncertainty_language",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_developing_taxonomy_analysis_variables",
+      "line": 3,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_method_design",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_analytic_culture_us_ic",
+      "line": 4,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_profession_literature",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_need_for_intelligence_literature",
+      "line": 5,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_profession_literature",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_studies_writers_guide_2025",
+      "line": 6,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_writing_and_review",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_applying_epistemology_analysis_2025",
+      "line": 7,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_epistemology",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_agile_analysis_2023",
+      "line": 8,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_production_workflow",
+      "source_pack": "cia_ai_analysis_and_production",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_managing_reliability_cycle",
+      "line": 9,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_failure_postmortem",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_why_bad_things_good_analysts",
+      "line": 10,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_failure_postmortem",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_future_of_analysis",
+      "line": 11,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "ai_enabled_analysis_boundary",
+      "source_pack": "cia_ai_analysis_and_production",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_psychology_intelligence_analysis",
+      "line": 12,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_cognition_and_bias",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_kent_board_estimates_collected",
+      "line": 13,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "declassified_analytic_history",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_sable_spear_ai_experiment",
+      "line": 14,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "ai_enabled_analysis_boundary",
+      "source_pack": "cia_ai_analysis_and_production",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_call_for_humility_analysis",
+      "line": 15,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_cognition_and_bias",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_principles_intelligence_analysis",
+      "line": 16,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_method_design",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_war_chance_uncertainty_review",
+      "line": 17,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_uncertainty_language",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_fifty_years_studies_intelligence",
+      "line": 18,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_profession_literature",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_thinking_writing_cognitive_science",
+      "line": 19,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_writing_and_review",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_national_institute_analytic_methods",
+      "line": 20,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_method_design",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_when_everything_intelligence",
+      "line": 21,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft",
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "intelligence_profession_literature",
+      "source_pack": "cia_intelligence_profession",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_vietnam_policymaker_boundary",
+      "line": 22,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "historical_declassified_sources"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "declassified_analytic_history",
+      "source_pack": "declassified_history",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_uncertainty_analysis_review",
+      "line": 23,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "analytic_uncertainty_language",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_limits_of_prediction",
+      "line": 24,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "analytic_tradecraft"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "forecasting_calibration_evidence",
+      "source_pack": "cia_analytic_uncertainty",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_cia_espionage_ai_future",
+      "line": 25,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance"
+      ],
+      "source_agency": "CIA",
+      "source_lane": "ai_enabled_analysis_boundary",
+      "source_pack": "cia_ai_analysis_and_production",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_annual_threat_assessment_2026",
+      "line": 26,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "counterintelligence_source_integrity"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "current_threat_baseline",
+      "source_pack": "ic_current_threat_baseline",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_205_analytic_outreach",
+      "line": 27,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "analytic_outreach_governance",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_207_national_intelligence_council",
+      "line": 28,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "collection_management",
+        "financial_economic_security",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "national_intelligence_governance",
+      "source_pack": "odni_governance_directives",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_208_analytic_product_utility",
+      "line": 29,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "analytic_product_dissemination",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_209_tearline_production",
+      "line": 30,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "tearlines_and_release_governance",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_403_foreign_disclosure_release",
+      "line": 31,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "foreign_disclosure_governance",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_405_intelligence_diplomacy",
+      "line": 32,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "intelligence_diplomacy_governance",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_406_non_state_entity_engagement",
+      "line": 33,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "non_state_engagement_governance",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_503_information_environment_risk",
+      "line": 34,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "ai_ethics_data_governance",
+        "agentic_ai_governance",
+        "counterintelligence_source_integrity",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "ic_information_environment_risk",
+      "source_pack": "odni_privacy_oversight",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_900_integrated_mission_management",
+      "line": 35,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "collection_management",
+        "financial_economic_security",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "integrated_mission_management",
+      "source_pack": "odni_governance_directives",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_121_information_environment",
+      "line": 36,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "ai_ethics_data_governance",
+        "agentic_ai_governance",
+        "counterintelligence_source_integrity",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "ic_information_environment_risk",
+      "source_pack": "odni_privacy_oversight",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_211_cfius_support",
+      "line": 37,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "collection_management",
+        "financial_economic_security",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "economic_security_review",
+      "source_pack": "odni_governance_directives",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_731_supply_chain_risk_management",
+      "line": 38,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "collection_management",
+        "financial_economic_security",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "supply_chain_risk_governance",
+      "source_pack": "odni_governance_directives",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_710_classification_control_markings",
+      "line": 39,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "classification_marking_governance",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_odni_icd_750_counterintelligence_programs",
+      "line": 40,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "ai_ethics_data_governance",
+        "agentic_ai_governance",
+        "counterintelligence_source_integrity",
+        "legal_oversight"
+      ],
+      "source_agency": "ODNI",
+      "source_lane": "counterintelligence_program_governance",
+      "source_pack": "odni_privacy_oversight",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_intelligence_gov_mission",
+      "line": 41,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "counterintelligence_source_integrity"
+      ],
+      "source_agency": "Intelligence.gov",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "ic_current_threat_baseline",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_intelligence_gov_accountability",
+      "line": 42,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "ai_ethics_data_governance",
+        "agentic_ai_governance",
+        "counterintelligence_source_integrity",
+        "legal_oversight"
+      ],
+      "source_agency": "Intelligence.gov",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "odni_privacy_oversight",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_intelligence_gov_transparency",
+      "line": 43,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "Intelligence.gov",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_intelligence_gov_about_site",
+      "line": 44,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "ai_ethics_data_governance",
+        "collection_management",
+        "legal_oversight"
+      ],
+      "source_agency": "Intelligence.gov",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "odni_disclosure_and_tearlines",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_intelligence_gov_collaboration",
+      "line": 45,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "collection_management",
+        "financial_economic_security",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "Intelligence.gov",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "odni_governance_directives",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_intelligence_gov_innovation",
+      "line": 46,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance"
+      ],
+      "source_agency": "Intelligence.gov",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "cia_ai_analysis_and_production",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_dia_defense_osint_strategy_2024",
+      "line": 47,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "osint_geoint"
+      ],
+      "source_agency": "DIA",
+      "source_lane": "defense_osint_governance",
+      "source_pack": "dia_osint_governance",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_dia_style_manual_intelligence_production",
+      "line": 48,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "osint_geoint"
+      ],
+      "source_agency": "DIA",
+      "source_lane": "intelligence_writing_and_review",
+      "source_pack": "dia_osint_governance",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_dia_privacy_civil_liberties_program",
+      "line": 49,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "ai_ethics_data_governance",
+        "agentic_ai_governance",
+        "osint_geoint",
+        "counterintelligence_source_integrity",
+        "legal_oversight"
+      ],
+      "source_agency": "DIA",
+      "source_lane": "rights_impact_privacy",
+      "source_pack": "dia_osint_governance",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_nsa_cybersecurity_advisories_guidance",
+      "line": 50,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance",
+        "osint_geoint",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "NSA",
+      "source_lane": "cyber_defense_guidance_index",
+      "source_pack": "ic_cyber_geoint_history",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_nsa_about_mission",
+      "line": 51,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance",
+        "osint_geoint",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "NSA",
+      "source_lane": "ic_public_transparency",
+      "source_pack": "ic_cyber_geoint_history",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_nsa_agentic_ai_services_guidance_2026",
+      "line": 52,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance",
+        "osint_geoint",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "NSA",
+      "source_lane": "agentic_ai_security_governance",
+      "source_pack": "ic_cyber_geoint_history",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_nga_geoint_basic_doctrine",
+      "line": 53,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance",
+        "osint_geoint",
+        "historical_declassified_sources",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "NGA",
+      "source_lane": "geoint_professional_doctrine",
+      "source_pack": "ic_cyber_geoint_history",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_nga_data_strategy",
+      "line": 54,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "agentic_ai_governance",
+        "osint_geoint",
+        "cyber_threat_intelligence"
+      ],
+      "source_agency": "NGA",
+      "source_lane": "geoint_data_governance",
+      "source_pack": "ic_cyber_geoint_history",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_fbi_counterintelligence_espionage",
+      "line": 55,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "governed_intelligence_cycle",
+        "counterintelligence_source_integrity"
+      ],
+      "source_agency": "FBI",
+      "source_lane": "counterintelligence_program_governance",
+      "source_pack": "ic_current_threat_baseline",
+      "source_tier": "official_primary"
+    },
+    {
+      "flags": [],
+      "key": "official_nro_history_csnr",
+      "line": 56,
+      "path": "data/research_anchors/intelligence-anchors-249-304.jsonl",
+      "routed_profiles": [
+        "historical_declassified_sources"
+      ],
+      "source_agency": "NRO",
+      "source_lane": "declassified_reconnaissance_history",
+      "source_pack": "declassified_history",
+      "source_tier": "official_primary"
+    }
+  ],
+  "schema_version": "1.0",
+  "summary": {
+    "agency_counts": {
+      "CIA": 25,
+      "DIA": 3,
+      "FBI": 1,
+      "Intelligence.gov": 6,
+      "NGA": 2,
+      "NRO": 1,
+      "NSA": 3,
+      "ODNI": 15
+    },
+    "curated_intelligence_anchor_count": 462,
+    "duplicate_key_count": 0,
+    "duplicate_url_count": 0,
+    "flag_counts": {},
+    "missing_required_metadata_count": 0,
+    "new_official_us_ic_anchor_count": 56,
+    "odni_or_intelgov_count": 21,
+    "profile_routed_new_anchor_count": 56,
+    "source_lane_counts": {
+      "agentic_ai_security_governance": 1,
+      "ai_enabled_analysis_boundary": 3,
+      "analytic_cognition_and_bias": 2,
+      "analytic_epistemology": 1,
+      "analytic_method_design": 3,
+      "analytic_outreach_governance": 1,
+      "analytic_product_dissemination": 1,
+      "analytic_production_workflow": 1,
+      "analytic_uncertainty_language": 4,
+      "classification_marking_governance": 1,
+      "counterintelligence_program_governance": 2,
+      "current_threat_baseline": 1,
+      "cyber_defense_guidance_index": 1,
+      "declassified_analytic_history": 2,
+      "declassified_reconnaissance_history": 1,
+      "defense_osint_governance": 1,
+      "economic_security_review": 1,
+      "forecasting_calibration_evidence": 1,
+      "foreign_disclosure_governance": 1,
+      "geoint_data_governance": 1,
+      "geoint_professional_doctrine": 1,
+      "ic_information_environment_risk": 2,
+      "ic_public_transparency": 7,
+      "integrated_mission_management": 1,
+      "intelligence_diplomacy_governance": 1,
+      "intelligence_failure_postmortem": 2,
+      "intelligence_profession_literature": 4,
+      "intelligence_writing_and_review": 3,
+      "national_intelligence_governance": 1,
+      "non_state_engagement_governance": 1,
+      "rights_impact_privacy": 1,
+      "supply_chain_risk_governance": 1,
+      "tearlines_and_release_governance": 1
+    },
+    "source_pack_counts": {
+      "cia_ai_analysis_and_production": 5,
+      "cia_analytic_uncertainty": 10,
+      "cia_intelligence_profession": 10,
+      "declassified_history": 2,
+      "dia_osint_governance": 3,
+      "ic_current_threat_baseline": 3,
+      "ic_cyber_geoint_history": 5,
+      "odni_disclosure_and_tearlines": 9,
+      "odni_governance_directives": 5,
+      "odni_privacy_oversight": 4
+    },
+    "source_tier_counts": {
+      "official_primary": 56
+    },
+    "unrouted_new_anchor_count": 0
+  }
+}

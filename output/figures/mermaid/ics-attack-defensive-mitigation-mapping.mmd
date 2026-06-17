@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["ICS tactic category catalog"] --> B["Initial access and execution concerns"]
+  A --> C["Controller change and process impairment concerns"]
+  A --> D["Impact and recovery concerns"]
+  B --> E["Mitigation: segmentation and remote access control"]
+  C --> F["Mitigation: allowlisting and logic integrity monitoring"]
+  D --> G["Mitigation: safety systems and tested recovery"]
+  E --> H["Detection and logging coverage layer"]
+  F --> H
+  G --> H
+  H --> I{"Coverage gap review"}
+  I -->|"Gap found"| A
+  I -->|"Adequate"| J["Tabletop debrief: residual risk and refresh date"]

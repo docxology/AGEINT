@@ -1,0 +1,12 @@
+{
+  "number": 12,
+  "roman": "XII",
+  "title": "COGNITIVE SECURITY",
+  "source_line": 677,
+  "chapter_files": [
+    "37-cognitive-security-foundations-and-definitions/chapter.json",
+    "38-neurocognitive-mechanisms-of-cognitive-security/chapter.json",
+    "39-psychological-inoculation-and-prebunking/chapter.json",
+    "40-cognitive-security-operations/chapter.json"
+  ]
+}

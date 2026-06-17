@@ -1,0 +1,12 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Governed source-relationship frame"] --> B["Validation and consent review"]
+  B --> C["Source-protection and minimization"]
+  C --> D["Evidence and caveat documentation"]
+  D --> E["Reviewer challenge and sign-off"]
+  E --> F["Duty-of-care welfare check"]
+  F --> G["Protected-tradecraft boundary"]
+  G --> H["Stop condition and escalation"]
+  H --> A
+  E --> I["Audit trail and records retention"]
+  I --> A

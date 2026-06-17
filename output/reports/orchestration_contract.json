@@ -1,0 +1,649 @@
+{
+  "audits": {
+    "contract_count": 12,
+    "contracts": [
+      {
+        "check_id": "generated_output_fresh",
+        "contract_id": "generated_output_freshness",
+        "negative_control": "Touch a source-owned route, template, or figure file after build; the evidence manifest must fail freshness.",
+        "publication_readiness_gate": true,
+        "purpose": "Prove source inputs are not newer than core generated output sentinels.",
+        "report_paths": [
+          "output/reports/current_artifact_evidence.json"
+        ],
+        "title": "Generated output freshness"
+      },
+      {
+        "check_id": "rendered_references_resolve",
+        "contract_id": "rendered_reference_resolution",
+        "negative_control": "Insert a generated link to a local .md or .markdown target; rendered-reference evidence must fail.",
+        "publication_readiness_gate": true,
+        "purpose": "Reject unresolved rendered references and local Markdown targets in generated artifacts.",
+        "report_paths": [
+          "output/reports/current_artifact_evidence.json"
+        ],
+        "title": "Rendered reference resolution"
+      },
+      {
+        "check_id": "reference_quality_ok",
+        "contract_id": "reference_quality",
+        "negative_control": "Restore a generic generated scaffold heading, incomplete lesson cross-link, or citation-only table row.",
+        "publication_readiness_gate": true,
+        "purpose": "Reject generic headings, raw citation-key cells, weak cross-links, and citation-only table rows.",
+        "report_paths": [
+          "output/reports/reference_quality.json",
+          "output/reports/reference_quality.md"
+        ],
+        "title": "Reference quality"
+      },
+      {
+        "check_id": "stale_output_scans_clean",
+        "contract_id": "stale_output_scan",
+        "negative_control": "Restore the old source-section coverage table header or stale scholarly source phrase.",
+        "publication_readiness_gate": true,
+        "purpose": "Catch known stale strings that previously certified outdated rendered output.",
+        "report_paths": [
+          "output/reports/current_artifact_evidence.json"
+        ],
+        "title": "Stale output scan"
+      },
+      {
+        "check_id": "pdf_quality_ok",
+        "contract_id": "pdf_quality",
+        "negative_control": "Make the PDF older than the combined manuscript or add a file: PDF target.",
+        "publication_readiness_gate": true,
+        "purpose": "Reject stale PDFs, bad PDF links, and unsafe annotation targets.",
+        "report_paths": [
+          "output/reports/current_artifact_evidence.json",
+          "output/reports/pdf_quality.json"
+        ],
+        "title": "PDF quality"
+      },
+      {
+        "check_id": "figure_quality_ok",
+        "contract_id": "figure_quality",
+        "negative_control": "Remove figure alt text, provenance, or readable PNG metadata from a registered figure.",
+        "publication_readiness_gate": true,
+        "purpose": "Require readable, square-normalized visual assets with caption, alt text, long description, and provenance.",
+        "report_paths": [
+          "output/figures/visual_quality_audit.json"
+        ],
+        "title": "Figure quality"
+      },
+      {
+        "check_id": "citation_source_sections_covered",
+        "contract_id": "citation_source_section_coverage",
+        "negative_control": "Collapse a source section to zero citations while retaining claim-bearing text.",
+        "publication_readiness_gate": false,
+        "purpose": "Require source sections to retain at least one supporting citation.",
+        "report_paths": [
+          "output/reports/current_artifact_evidence.json"
+        ],
+        "title": "Citation source-section coverage"
+      },
+      {
+        "check_id": "scholarship_quality_ok",
+        "contract_id": "scholarship_quality",
+        "negative_control": "Remove the SAT figure reference, analysis-validation matrix reference, or one required claim class from orientation prose.",
+        "publication_readiness_gate": true,
+        "purpose": "Keep claim-bearing manuscript sections triangulated and method-boundary terms present.",
+        "report_paths": [
+          "output/reports/scholarship_quality.json",
+          "output/reports/scholarship_quality.md"
+        ],
+        "title": "Scholarship quality"
+      },
+      {
+        "check_id": "source_metadata_ok",
+        "contract_id": "source_metadata",
+        "negative_control": "Add one curated source-anchor row with an empty source_lane or source_tier.",
+        "publication_readiness_gate": true,
+        "purpose": "Require every source-anchor row to carry explicit lane, tier, checked-date, and refresh metadata.",
+        "report_paths": [
+          "output/reports/source_metadata.json",
+          "output/reports/source_metadata.md"
+        ],
+        "title": "Source metadata explicitness"
+      },
+      {
+        "check_id": "source_refresh_due_ok",
+        "contract_id": "source_refresh_due",
+        "negative_control": "Set checked_as_of blank or past the allowed cadence for one source row.",
+        "publication_readiness_gate": true,
+        "purpose": "Reject stale or undated source anchors before local readiness is certified.",
+        "report_paths": [
+          "output/reports/source_refresh_due.json",
+          "output/reports/source_refresh_due.md"
+        ],
+        "title": "Source refresh due"
+      },
+      {
+        "check_id": "agency_source_coverage_ok",
+        "contract_id": "agency_source_coverage",
+        "negative_control": "Add a new official US IC anchor without source_agency, source_pack, or pack routing.",
+        "publication_readiness_gate": true,
+        "purpose": "Require new official US IC anchors to carry agency, pack, lane, tier, and deterministic profile routing.",
+        "report_paths": [
+          "output/reports/agency_source_coverage.json",
+          "output/reports/agency_source_coverage.md"
+        ],
+        "title": "Agency source coverage"
+      },
+      {
+        "check_id": "claim_calibration_ok",
+        "contract_id": "claim_calibration",
+        "negative_control": "Add an unsupported measured-performance, p-value, or proof-language claim backed only by weak context.",
+        "publication_readiness_gate": true,
+        "purpose": "Reject unsupported proof, p-value, measured-performance, and weak-source-only high-risk claims.",
+        "report_paths": [
+          "output/reports/claim_calibration.json",
+          "output/reports/claim_calibration.md"
+        ],
+        "title": "Claim calibration"
+      }
+    ],
+    "schema_version": "1.0"
+  },
+  "generated_at": "2026-06-16T12:09:54+00:00",
+  "mermaid": {
+    "diagram_type_count": 6,
+    "diagram_types": [
+      {
+        "diagram_type": "flowchart",
+        "purpose": "Structural maps, routing diagrams, and governance boundary flows.",
+        "requires_reader_detail": false,
+        "source_prefix": "flowchart"
+      },
+      {
+        "diagram_type": "stateDiagram-v2",
+        "purpose": "State, recovery, and circuit-breaker transitions.",
+        "requires_reader_detail": true,
+        "source_prefix": "stateDiagram-v2"
+      },
+      {
+        "diagram_type": "sequenceDiagram",
+        "purpose": "Actor interactions, evidence handoffs, and verification exchanges.",
+        "requires_reader_detail": true,
+        "source_prefix": "sequenceDiagram"
+      },
+      {
+        "diagram_type": "journey",
+        "purpose": "Reviewer and learner experience paths across staged work.",
+        "requires_reader_detail": true,
+        "source_prefix": "journey"
+      },
+      {
+        "diagram_type": "timeline",
+        "purpose": "Temporal degradation, incident, and refresh sequences.",
+        "requires_reader_detail": true,
+        "source_prefix": "timeline"
+      },
+      {
+        "diagram_type": "quadrantChart",
+        "purpose": "Two-axis evidence-fit and claim-risk classification maps.",
+        "requires_reader_detail": true,
+        "source_prefix": "quadrantChart"
+      }
+    ],
+    "schema_version": "1.0"
+  },
+  "ok": true,
+  "pipeline": {
+    "missing_output_sentinels": [],
+    "output_build_sentinels": [
+      "data/curriculum/metadata.json",
+      "data/curriculum_outline.json",
+      "data/manuscript_variables.json",
+      "manuscript/references-source-guide-001-050.bib",
+      "figures/figure_registry.json",
+      "figures/visual_quality_audit.json",
+      "figures/cover/ageint-cover-synthesis.png",
+      "manuscript/README.md",
+      "figures/frontmatter/ageint-evidence-transit-map.png"
+    ],
+    "project": "AGEINT",
+    "schema_version": "1.0",
+    "source_freshness_roots": [
+      "pyproject.toml",
+      "scripts/build_curriculum.py",
+      "scripts/generate_figures.py",
+      "scripts/z_generate_manuscript_variables.py",
+      "data",
+      "manuscript/templates",
+      "src",
+      "data/curriculum",
+      "src/manuscript_templates.py",
+      "data/research_anchors",
+      "data/curriculum/references",
+      "src/manuscript_variables",
+      "data/figures",
+      "src/figures",
+      "src/manuscript_manifest"
+    ],
+    "stage_count": 8,
+    "stages": [
+      {
+        "depends_on": [],
+        "failure_mode": "A malformed route table or source surface reaches manuscript rendering.",
+        "inputs": [
+          "data",
+          "manuscript/templates",
+          "src"
+        ],
+        "outputs": [
+          "output/README.md",
+          "output/AGENTS.md"
+        ],
+        "purpose": "Validate declarative curriculum, route, source, and template inputs before rendering.",
+        "stage_id": "source_validation",
+        "strict_gate": "validate_declarative_tables",
+        "title": "Source validation"
+      },
+      {
+        "depends_on": [
+          "source_validation"
+        ],
+        "failure_mode": "Generated paths, labels, or counts no longer match the source spine.",
+        "inputs": [
+          "data/curriculum",
+          "SIST-Guide-TOC-and-Bibliography-v2.md"
+        ],
+        "outputs": [
+          "output/data/curriculum/metadata.json",
+          "output/data/curriculum_outline.json"
+        ],
+        "purpose": "Load the sharded curriculum spine and optional guide source into the runtime curriculum model.",
+        "stage_id": "curriculum_build",
+        "strict_gate": "curriculum_stats_and_identity_tests",
+        "title": "Curriculum build"
+      },
+      {
+        "depends_on": [
+          "source_validation"
+        ],
+        "failure_mode": "Reusable templates drift into chapter-specific source text.",
+        "inputs": [
+          "src/manuscript_templates.py"
+        ],
+        "outputs": [
+          "manuscript/templates/chapter.md"
+        ],
+        "purpose": "Optionally regenerate neutral source templates without hard-coding generated chapter data.",
+        "stage_id": "template_library",
+        "strict_gate": "explicit_regeneration_flag",
+        "title": "Neutral template library"
+      },
+      {
+        "depends_on": [
+          "curriculum_build"
+        ],
+        "failure_mode": "Counts, citation keys, or bibliography shards certify stale source metadata.",
+        "inputs": [
+          "data/research_anchors",
+          "data/curriculum/references",
+          "src/manuscript_variables"
+        ],
+        "outputs": [
+          "output/data/manuscript_variables.json",
+          "manuscript/references-source-guide-001-050.bib",
+          "output/manuscript/references-source-guide-001-050.bib"
+        ],
+        "purpose": "Refresh manuscript variables plus source and output BibTeX files from current references.",
+        "stage_id": "variables_and_bibliography",
+        "strict_gate": "manuscript_variable_and_reference_tests",
+        "title": "Variables and bibliography"
+      },
+      {
+        "depends_on": [
+          "curriculum_build"
+        ],
+        "failure_mode": "A figure is decorative, inaccessible, stale, or rendered with unsupported chart semantics.",
+        "inputs": [
+          "data/figures",
+          "src/figures",
+          "data/curriculum"
+        ],
+        "outputs": [
+          "output/figures/figure_registry.json",
+          "output/figures/visual_quality_audit.json",
+          "output/figures/cover/ageint-cover-synthesis.png"
+        ],
+        "purpose": "Render Mermaid, Python, historical, and synthetic figures with registry metadata.",
+        "stage_id": "figures",
+        "strict_gate": "figure_registry_and_quality_tests",
+        "title": "Figure registry and assets"
+      },
+      {
+        "depends_on": [
+          "variables_and_bibliography",
+          "figures"
+        ],
+        "failure_mode": "Generated prose, headings, citations, or cross-references drift from the manifest contract.",
+        "inputs": [
+          "src/manuscript_manifest",
+          "manuscript/templates",
+          "output/figures/figure_registry.json"
+        ],
+        "outputs": [
+          "output/manuscript/README.md"
+        ],
+        "purpose": "Render source-owned manifest sections into generated Markdown under output/manuscript.",
+        "stage_id": "manuscript_render",
+        "strict_gate": "manifest_inventory_reader_quality_tests",
+        "title": "Semantic manuscript render"
+      },
+      {
+        "depends_on": [
+          "manuscript_render"
+        ],
+        "failure_mode": "Frontmatter evidence counts diverge from the generated manuscript and figure registry.",
+        "inputs": [
+          "output/figures/figure_registry.json",
+          "output/manuscript"
+        ],
+        "outputs": [
+          "output/figures/frontmatter/ageint-evidence-transit-map.png"
+        ],
+        "purpose": "Render the frontmatter evidence-transit figure from current curriculum and artifact counts.",
+        "stage_id": "evidence_transit",
+        "strict_gate": "frontmatter_transit_figure_tests",
+        "title": "Evidence transit map"
+      },
+      {
+        "depends_on": [
+          "manuscript_render",
+          "evidence_transit"
+        ],
+        "failure_mode": "A stale or partial artifact is certified as locally ready.",
+        "inputs": [
+          "output/manuscript",
+          "output/figures",
+          "output/pdf",
+          "data/research_anchors"
+        ],
+        "outputs": [
+          "output/reports/current_artifact_evidence.json",
+          "output/reports/source_metadata.json",
+          "output/reports/reference_quality.json",
+          "output/reports/claim_calibration.json"
+        ],
+        "purpose": "Bind current outputs to fail-closed audit, source, figure, PDF, and readiness evidence.",
+        "stage_id": "artifact_reports",
+        "strict_gate": "artifact_evidence_and_publication_readiness_tests",
+        "title": "Artifact and readiness reports"
+      }
+    ]
+  },
+  "project": "AGEINT",
+  "schema_version": "1.0",
+  "source_packs": {
+    "issue_count": 0,
+    "issues": [],
+    "registries": [
+      {
+        "pack_count": 10,
+        "packs": {
+          "cia_ai_analysis_and_production": [
+            "official_cia_agile_analysis_2023",
+            "official_cia_future_of_analysis",
+            "official_cia_sable_spear_ai_experiment",
+            "official_cia_espionage_ai_future",
+            "official_intelligence_gov_innovation"
+          ],
+          "cia_analytic_uncertainty": [
+            "official_cia_words_estimative_probability",
+            "official_cia_ic_struggle_express_uncertainty",
+            "official_cia_developing_taxonomy_analysis_variables",
+            "official_cia_applying_epistemology_analysis_2025",
+            "official_cia_managing_reliability_cycle",
+            "official_cia_why_bad_things_good_analysts",
+            "official_cia_call_for_humility_analysis",
+            "official_cia_war_chance_uncertainty_review",
+            "official_cia_uncertainty_analysis_review",
+            "official_cia_limits_of_prediction"
+          ],
+          "cia_intelligence_profession": [
+            "official_cia_cooper_2005_analytic_pathologies",
+            "official_cia_analytic_culture_us_ic",
+            "official_cia_need_for_intelligence_literature",
+            "official_cia_studies_writers_guide_2025",
+            "official_cia_psychology_intelligence_analysis",
+            "official_cia_kent_board_estimates_collected",
+            "official_cia_call_for_humility_analysis",
+            "official_cia_principles_intelligence_analysis",
+            "official_cia_fifty_years_studies_intelligence",
+            "official_cia_thinking_writing_cognitive_science",
+            "official_cia_national_institute_analytic_methods",
+            "official_cia_when_everything_intelligence"
+          ],
+          "declassified_history": [
+            "official_cia_vietnam_policymaker_boundary",
+            "official_nro_history_csnr",
+            "official_nga_geoint_basic_doctrine"
+          ],
+          "dia_osint_governance": [
+            "official_dia_defense_osint_strategy_2024",
+            "official_dia_style_manual_intelligence_production",
+            "official_dia_privacy_civil_liberties_program"
+          ],
+          "ic_current_threat_baseline": [
+            "official_odni_annual_threat_assessment_2026",
+            "official_intelligence_gov_mission",
+            "official_fbi_counterintelligence_espionage"
+          ],
+          "ic_cyber_geoint_history": [
+            "official_nsa_cybersecurity_advisories_guidance",
+            "official_nsa_about_mission",
+            "official_nsa_agentic_ai_services_guidance_2026",
+            "official_nga_geoint_basic_doctrine",
+            "official_nga_data_strategy"
+          ],
+          "odni_disclosure_and_tearlines": [
+            "official_odni_icd_205_analytic_outreach",
+            "official_odni_icd_208_analytic_product_utility",
+            "official_odni_icd_209_tearline_production",
+            "official_odni_icd_403_foreign_disclosure_release",
+            "official_odni_icd_405_intelligence_diplomacy",
+            "official_odni_icd_406_non_state_entity_engagement",
+            "official_odni_icd_710_classification_control_markings",
+            "official_intelligence_gov_transparency",
+            "official_intelligence_gov_about_site"
+          ],
+          "odni_governance_directives": [
+            "official_odni_icd_207_national_intelligence_council",
+            "official_odni_icd_900_integrated_mission_management",
+            "official_odni_icd_211_cfius_support",
+            "official_odni_icd_731_supply_chain_risk_management",
+            "official_intelligence_gov_collaboration"
+          ],
+          "odni_privacy_oversight": [
+            "official_odni_icd_503_information_environment_risk",
+            "official_odni_icd_121_information_environment",
+            "official_odni_icd_750_counterintelligence_programs",
+            "official_intelligence_gov_accountability",
+            "official_dia_privacy_civil_liberties_program"
+          ]
+        },
+        "path": "data/agency_source_packs.yaml",
+        "profile_route_count": 0,
+        "profile_routes": {},
+        "purpose": "Official US IC source packs routed through profile source_pack_ids.",
+        "source_class": "agency",
+        "supports_profile_routes": false
+      },
+      {
+        "pack_count": 5,
+        "packs": {
+          "research_agentic_ai_appendices": [
+            "official_nist_fips_203_ml_kem",
+            "official_nist_fips_204_ml_dsa",
+            "official_nist_fips_205_slh_dsa",
+            "scholarly_russell_norvig_2020_aima",
+            "scholarly_rao_georgeff_1995_bdi",
+            "scholarly_vaswani_2017_attention",
+            "scholarly_yao_2023_tree_of_thoughts",
+            "scholarly_lewis_2020_rag",
+            "scholarly_patil_2023_gorilla",
+            "scholarly_qin_2023_toolllm",
+            "scholarly_wu_2023_autogen",
+            "professional_langchain_documentation",
+            "professional_langgraph_documentation",
+            "professional_crewai_documentation",
+            "scholarly_liang_2022_helm",
+            "scholarly_srivastava_2022_bigbench",
+            "scholarly_perez_2022_prompt_injection",
+            "scholarly_ericsson_1993_deliberate_practice",
+            "scholarly_cepeda_2006_spaced_repetition",
+            "scholarly_walker_stickgold_2006_sleep_memory",
+            "scholarly_kaplan_kaplan_1989_attention_restoration",
+            "official_nist_pqc_migration_ir8547",
+            "professional_weng_2023_agent_survey"
+          ],
+          "research_collection_disciplines": [
+            "official_army_fm_2_22_3_humint",
+            "official_odni_icd_304_humint",
+            "official_odni_icd_310_clandestine_humint_outside_us",
+            "official_odni_icd_302_domex",
+            "official_jp_2_01_intelligence_support_2012",
+            "official_nsa_tempest_signal_problem",
+            "official_odni_cai_report_2022",
+            "official_jp_2_03_geoint_joint_ops_2017",
+            "scholarly_clark_2020_geospatial_intelligence",
+            "scholarly_van_puyvelde_2025_rise_osint",
+            "official_odni_icd_206_sourcing_osint_pai",
+            "official_nga_geoint_pub1_doctrine_2018",
+            "official_odni_cai_fact_sheet_2024",
+            "official_dod_jp3_05_special_operations",
+            "official_dod_jp2_0_joint_intelligence"
+          ],
+          "research_cyber_ics": [
+            "professional_hutchins_2011_kill_chain",
+            "professional_caltagirone_2013_diamond_model",
+            "official_cisa_aa24_038a_volt_typhoon",
+            "official_cisa_aa23_144a_volt_typhoon_lotl",
+            "official_cisa_aa22_103a_apt_ics_scada",
+            "official_cisa_aa20_352a_solarwinds",
+            "official_eisac_sans_ukraine_2016",
+            "official_enisa_threat_landscape_2024",
+            "official_nist_sp_800_161r1_scrm",
+            "official_whitehouse_eo_14028",
+            "official_first_tlp_v2",
+            "official_nerc_cip_standards",
+            "professional_eset_win32_industroyer_2017",
+            "official_cisa_isc_cert_stuxnet_advisory",
+            "official_cisa_nsa_ics_know_opponent_2022",
+            "official_nerc_eisac_ukraine_duc6_2017",
+            "official_enisa_protecting_ics_2011"
+          ],
+          "research_history_cogsec_sat_legal": [
+            "public_church_committee_book_i_1976",
+            "public_church_committee_book_iii_nsasurveillance_1976",
+            "official_nsa_center_cryptologic_history_publications",
+            "scholarly_andrew_gordievsky_1990_kgb_inside_story",
+            "scholarly_andrew_mitrokhin_1999_sword_shield",
+            "scholarly_andrew_2009_defend_realm",
+            "scholarly_weiner_2007_legacy_ashes",
+            "public_church_committee_1976_final_report",
+            "scholarly_tversky_kahneman_1974_judgment_uncertainty",
+            "scholarly_kahneman_2011_thinking_fast_slow",
+            "scholarly_tetlock_2005_expert_political_judgment",
+            "scholarly_tetlock_gardner_2015_superforecasting",
+            "official_fisa_1978_statute",
+            "official_usa_patriot_act_2001",
+            "official_usa_freedom_act_2015",
+            "official_eo_12333_odni_text",
+            "scholarly_quinlan_2007_just_intelligence",
+            "scholarly_omand_2010_securing_the_state",
+            "scholarly_omand_phythian_2018_principled_spying"
+          ],
+          "research_influence_ci_gray_zone": [
+            "official_dod_jp3_13_information_operations",
+            "official_dod_jp3_13_2_miso",
+            "professional_rand_paul_matthews_firehose_falsehood",
+            "scholarly_lazer_2018_science_fake_news",
+            "official_fincen_sar_narrative_guidance",
+            "official_egmont_group_fiu_principles",
+            "official_unodc_money_laundering_overview",
+            "official_worldbank_aml_reference_guide",
+            "official_ncsc_national_ci_strategy_2024",
+            "official_ncsc_national_ci_strategy_2020",
+            "scholarly_pennycook_rand_2021_psychology_fake_news",
+            "scholarly_starbird_arif_wilson_2019_disinfo_collaborative",
+            "scholarly_hoffman_2007_hybrid_wars",
+            "scholarly_mazarr_2015_gray_zone",
+            "official_dod_iw_annex_2020",
+            "scholarly_cialdini_1984_influence_psychology",
+            "official_nato_stratcom_hybrid_threats_toolkit",
+            "official_nato_stratcom_attributing_iio",
+            "scholarly_lewandowsky_vanderlinden_2021_inoculation_review",
+            "scholarly_lewandowsky_cook_2020_debunking_handbook",
+            "scholarly_pennycook_2021_accuracy_nudge_nature"
+          ]
+        },
+        "path": "data/research_source_packs.yaml",
+        "profile_route_count": 14,
+        "profile_routes": {
+          "agentic_ai_governance": [
+            "research_agentic_ai_appendices",
+            "research_cyber_ics"
+          ],
+          "agentic_ai_security": [
+            "research_agentic_ai_appendices",
+            "research_cyber_ics"
+          ],
+          "ai_ethics_data_governance": [
+            "research_agentic_ai_appendices",
+            "research_history_cogsec_sat_legal"
+          ],
+          "analytic_tradecraft": [
+            "research_history_cogsec_sat_legal",
+            "research_collection_disciplines"
+          ],
+          "cognitive_influence_security": [
+            "research_influence_ci_gray_zone",
+            "research_history_cogsec_sat_legal"
+          ],
+          "collection_management": [
+            "research_collection_disciplines",
+            "research_cyber_ics"
+          ],
+          "counterintelligence_source_integrity": [
+            "research_influence_ci_gray_zone",
+            "research_collection_disciplines"
+          ],
+          "cyber_threat_intelligence": [
+            "research_cyber_ics",
+            "research_agentic_ai_appendices"
+          ],
+          "education_assessment": [
+            "research_agentic_ai_appendices",
+            "research_history_cogsec_sat_legal"
+          ],
+          "financial_economic_security": [
+            "research_influence_ci_gray_zone"
+          ],
+          "governed_intelligence_cycle": [
+            "research_collection_disciplines",
+            "research_history_cogsec_sat_legal"
+          ],
+          "ics_ot_defense": [
+            "research_cyber_ics"
+          ],
+          "legal_oversight": [
+            "research_history_cogsec_sat_legal",
+            "research_collection_disciplines"
+          ],
+          "osint_geoint": [
+            "research_collection_disciplines",
+            "research_history_cogsec_sat_legal"
+          ]
+        },
+        "purpose": "Non-agency scholarly, public, standards, and professional packs routed by profile id.",
+        "source_class": "research",
+        "supports_profile_routes": true
+      }
+    ],
+    "registry_count": 2,
+    "schema_version": "1.0"
+  }
+}

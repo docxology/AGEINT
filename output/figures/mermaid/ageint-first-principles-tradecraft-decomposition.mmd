@@ -1,0 +1,21 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  OBS["Observation<br/>what the source says"] --> QUAL["Evidence quality<br/>access, reliability, gap"]
+  QUAL --> INF["Inference<br/>what analyst adds"]
+  INF --> ASSUMP["Assumption register<br/>what must be true"]
+  ASSUMP --> PROB["Likelihood term<br/>what may happen"]
+  QUAL --> CONF["Confidence basis<br/>why support is strong/weak"]
+  PROB --> DISSENT["Alternatives + dissent"]
+  CONF --> DISSENT
+  DISSENT --> DECIDE{"Decision boundary"}
+  DECIDE -->|"fields separated"| CLAIM["Bounded claim"]
+  DECIDE -->|"fields collapsed"| STOP["Revise before release"]
+  LEG["Legend: blue = evidence, green = judgment field, amber = gate, red = stop"]
+  classDef evidence fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef field fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef gate fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class OBS,QUAL evidence
+  class INF,ASSUMP,PROB,CONF,DISSENT,CLAIM field
+  class DECIDE,LEG gate
+  class STOP stop

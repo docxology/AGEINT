@@ -1,0 +1,24 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph LENS["Comparative Lens (how to read each service)"]
+    DOC["Doctrine and mission"]
+    STR["Organizational structure"]
+    OVR["Oversight and legal basis"]
+    LEG["Legacy and lessons"]
+  end
+  subgraph SVC["Services Studied (Ch27-30)"]
+    SOV["Soviet / Russian tradition"]
+    USA["American community"]
+    UKA["British and Allied"]
+    ISC["Israeli / Continental"]
+  end
+  LENS --> SOV
+  LENS --> USA
+  LENS --> UKA
+  LENS --> ISC
+  SOV --> SYN["Cross-Service Synthesis"]
+  USA --> SYN
+  UKA --> SYN
+  ISC --> SYN
+  SYN --> PAT["Recurring patterns: oversight, failure, reform"]
+  PAT --> NOW["Implications for modern governance"]

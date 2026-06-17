@@ -1,0 +1,24 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  Pol["National Policy and Doctrine"]
+  Law["Statutory Legal Authority"]
+  Task["Authorization and Tasking"]
+  Over["Oversight and Compliance Review"]
+  Inter["Interagency Coordination"]
+  ROE["Rules of Engagement and Law of Armed Conflict"]
+  Civ["Civilian Oversight Bodies"]
+  Gate{"Approval Gate"}
+  Plan["Approved Planning Support"]
+  Halt["Halt and Document Objection"]
+  Audit["Records and Audit Trail"]
+  Pol --> Law
+  Law --> Task
+  Task --> Over
+  Inter --> Over
+  ROE --> Over
+  Civ --> Over
+  Over --> Gate
+  Gate --> Plan
+  Gate --> Halt
+  Plan --> Audit
+  Audit --> Civ

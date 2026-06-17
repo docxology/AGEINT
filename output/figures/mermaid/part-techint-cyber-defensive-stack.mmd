@@ -1,0 +1,29 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph Collection ["Collection Disciplines (Ch12-15)"]
+    direction LR
+    C12["Ch12 Cyber Intelligence"]
+    C13["Ch13 APTs: Threat Actors"]
+    C14["Ch14 Supply-Chain Assurance"]
+    C15["Ch15 Emanations and TEMPEST"]
+  end
+  subgraph Analysis ["Defensive Analysis Layer"]
+    direction LR
+    IND["Indicator Context"]
+    TAX["Taxonomy Mapping"]
+    ATT["Attribution Uncertainty"]
+  end
+  subgraph Governance ["Governance and Handling"]
+    direction LR
+    HAND["Handling Rules"]
+    SHARE["Sharing Limits"]
+    CTRL["Assurance Controls"]
+  end
+  C12 --> IND
+  C13 --> ATT
+  C14 --> TAX
+  C15 --> IND
+  IND --> HAND
+  TAX --> CTRL
+  ATT --> SHARE
+  Governance --> OUT["Detection and Assurance Product"]

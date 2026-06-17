@@ -1,0 +1,23 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'}}}%%
+sequenceDiagram
+    autonumber
+    participant Q as Discovery question
+    participant Tool as Tool-class screen
+    participant Prov as Provenance and legality check
+    participant Exposure as Identity-exposure check
+    participant Repro as Reproducibility check
+    participant Mini as Corroboration and minimization review
+    participant Privacy as Privacy-drift check
+    participant Review as Reviewer approval
+    participant Matrix as Provenance matrix
+    Q->>Tool: Describe public-source task and allowed data boundary
+    Tool->>Prov: Record source origin and legal basis
+    Tool->>Exposure: Check rate limits, account exposure, and identity risk
+    Tool->>Repro: Preserve reproducible query and retrieval notes
+    Prov->>Mini: Forward only reviewable source material
+    Exposure->>Mini: Block if identity exposure exceeds the classroom boundary
+    Repro->>Mini: Block if result cannot be reproduced or explained
+    Mini->>Privacy: Submit minimized corroborated packet
+    Privacy->>Review: Add privacy-drift finding and caveat
+    Review->>Matrix: Approve documented provenance and minimization matrix
+    Review-->>Q: Otherwise issue blocked-use note and stop

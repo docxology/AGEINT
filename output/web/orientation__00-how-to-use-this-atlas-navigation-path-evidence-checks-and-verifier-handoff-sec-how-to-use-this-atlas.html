@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1 id="sec:curriculum_orientation">Curriculum Orientation: reader
+paths, evidence maps, and safety gates</h1>
+<p>AGEINT (Agentic Intelligence) is a curriculum-and-assurance atlas for
+teaching how AI agents can <em>assist</em> intelligence analysis without
+ever being trusted to run it unsupervised. It is written for three
+readers: an <strong>instructor</strong> assembling a defensible course,
+a <strong>learner</strong> building analytic habits on safe practice
+material, and an <strong>assurance reviewer</strong> checking that every
+claim can be traced back to a real source. Nothing here is operational —
+every exercise uses synthetic or public material, and every claim is
+built to be challenged rather than believed.</p>
+<p>Read it as a map, not a textbook to read front to back:
+[sec:curriculum-map] lets you choose a domain part, [sec:reader-paths]
+gives each reader a fast path, and [sec:safety-rail] states what the
+atlas refuses to teach.</p>
+<blockquote>
+<p><strong>For maintainers.</strong> This page is generated. The source
+templates under <code>manuscript/templates/</code> keep guide-derived
+values — titles, labels, counts, source spines, semantic paths, and
+bibliography rows — as neutral tokens; the build resolves them from
+<code>data/curriculum/</code> into the rendered manuscript in
+<code>output/manuscript/</code>. Edit the template, not the rendered
+output.</p>
+</blockquote>
+<p>The rest of this orientation is a toolkit for navigating that map;
+the next section shows the exact path.</p>
+<h2 id="sec:how-to-use-this-atlas">How to use this atlas: navigation
+path, evidence checks, and verifier handoff</h2>
+<p>Read AGEINT as a navigable curriculum-and-assurance atlas rather than
+a linear textbook or empirical evaluation report. Start with
+[sec:curriculum-map] and [fig:ageint-curriculum-map] to choose the part,
+open the linked part introduction to see the module sequence, then use
+each chapter overview for the figures, source lane, and assessment
+artifact that matter for the current decision. Keep
+[sec:bibliography_atlas] open when checking a claim, because it
+preserves source identity, provenance type, source tier, and refresh
+context in one place.</p>
+<p>Use the first pages as signposts, not as a preface to skip. The
+handoff is intentionally explicit and always moves in the same
+direction:</p>
+<p>domain part -&gt; module overview -&gt; practice studio -&gt;
+evidence contract -&gt; governance boundary -&gt; assessment route -&gt;
+bibliography/source lane -&gt; verifier reports.</p>
+<p>Work the table below in order: orient, then match each claim to its
+evidence, then verify before trusting anything.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Where to go</th>
+<th>Why this step matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start here</td>
+<td>[sec:curriculum-map], [sec:synthetic-analytic-tradecraft-thesis],
+and [sec:reader-paths]</td>
+<td>Choose a domain part, name the Synthetic Analytic Tradecraft
+contract, and decide which reader path governs the next move.</td>
+</tr>
+<tr>
+<td>Then check</td>
+<td>[sec:analysis-validation-protocol], [sec:source-lane-map], and
+[sec:bibliography_atlas]</td>
+<td>Match the claim class to evidence, lane, citation identity, and
+refresh duty before treating prose or figures as support.</td>
+</tr>
+<tr>
+<td>Before you trust</td>
+<td>[sec:safe-substitution-matrix],
+[sec:orientation-figures-and-course-links], and
+[sec:method-assurance-reference]</td>
+<td>Confirm risky motifs were converted to bounded artifacts, figures
+carry their limits, and verifier reports agree with the rendered
+manuscript.</td>
+</tr>
+<tr>
+<td>Govern and assure</td>
+<td>[sec:hria-and-dpia-worksheet], [sec:adversarial-assurance-cycle],
+[sec:model-and-dataset-documentation-card], and
+[sec:records-retention-and-audit-trail]</td>
+<td>Bind rights impact, red-team challenge, documentation provenance,
+and retention duty to each reusable artifact before it leaves the
+course.</td>
+</tr>
+</tbody>
+</table>
+<p>Claim classes are separated at source-selection time. Governance
+claims, technical and theoretical claims, empirical capability claims,
+and source-construction claims each need a matching evidence type; the
+shared method reference records the PRISMA-S-inspired source-reporting
+fields used when a search or discovery process supports manuscript
+content [scholarly_rethlefsen_2021_prisma_s].</p>
+<p>The opening route visual turns the atlas handoff into a concrete
+reader choice: select the role, keep the evidence trace, and move to the
+next section with the right verifier question already named. See
+[fig:ageint-reader-route-compass].</p>
+<figure id="fig:ageint-reader-route-compass">
+<img src="../../figures/python/ageint-reader-route-compass.png"
+alt="Opening navigation compass for the AGEINT orientation. It separates the instructor, learner, assurance reviewer, and maintainer routes and pairs each with the evidence trace that should survive the next reading move, so a reader can choose a path and know what to carry into the following section. It is navigation support, not a learning-outcome or performance claim." />
+<figcaption aria-hidden="true">Opening navigation compass for the AGEINT
+orientation. It separates the instructor, learner, assurance reviewer,
+and maintainer routes and pairs each with the evidence trace that should
+survive the next reading move, so a reader can choose a path and know
+what to carry into the following section. It is navigation support, not
+a learning-outcome or performance claim.</figcaption>
+</figure>
+</body>
+</html>

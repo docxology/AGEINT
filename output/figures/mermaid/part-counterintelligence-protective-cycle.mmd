@@ -1,0 +1,22 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph Threats ["Threat Context"]
+    direction LR
+    T22["Ch22 CI Fundamentals: State Actors"]
+    T23["Ch23 CI vs Non-State Actors"]
+  end
+  subgraph Cycle ["Protective CI Cycle"]
+    direction LR
+    DET["Detect Threat"]
+    ASS["Assess and Attribute"]
+    DEN["Deny and Mitigate"]
+    REV["Oversight Review"]
+  end
+  T22 --> DET
+  T23 --> DET
+  DET --> ASS
+  ASS --> DEN
+  DEN --> REV
+  REV --> DET
+  GOV["Lawful Authority and Governance Guardrail"] --> Cycle
+  REV --> LESS["Transferable Governance Lesson"]

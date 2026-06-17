@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="agentic-tool-governance-lens-path-for-ageint-python-code-library-lesson-cluster-safe-artifact-and-review">Agentic
+Tool-Governance Lens path for AGEINT Python Code Library: lesson
+cluster, safe artifact, and review</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h3
+id="ageint-python-code-library-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">AGEINT
+Python Code Library practice studio: topic lessons, safe worked example,
+and knowledge check</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h3
+id="ageint-python-code-library-topic-lessons-source-backed-concepts-and-transfer-tasks">AGEINT
+Python Code Library topic lessons: source-backed concepts and transfer
+tasks</h3>
+<p>This module builds agentic AI as delegated action under control:
+identity, authority, tool permissions, memory, logs, stop conditions,
+and recoverability define what an agent may do. The sequence opens with
+<strong>Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII</strong>, <strong>Search-exposure provenance review using
+instructor-provided records</strong>, <strong>Autonomous Vulnerability
+Scanner: AutoGen + Nmap + MITRE ATT&amp;CK Navigator</strong> and
+applies the <strong>Agentic Tool-Governance Lens</strong> practice frame
+through concept, evidence, artifact, misconception, and transfer
+tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map
+[fig:part-ageint-agentic-intelligence-module-map]; module overview
+[sec:chapter-ageint-python-code-library]; curriculum atlas
+[sec:curriculum_orientation].</p>
+<p><strong>Triangulation anchors.</strong> In module 36’s topic-lessons
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<h4
+id="lesson-1-threat-intelligence-aggregation-agent-langchain-stixtaxii">Lesson
+1: Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII</h4>
+<p><strong>Concept.</strong> <strong>Threat Intelligence Aggregation
+Agent: LangChain + STIX/TAXII</strong> uses sharing standards to
+document indicator context, handling, confidence, and consumer
+responsibilities—not raw indicator hoarding.</p>
+<p><strong>Why it matters.</strong> <strong>Threat Intelligence
+Aggregation Agent</strong> matters in the <strong>Agentic AI Governance
+and Tool Security</strong> lane because least-privilege agent design and
+run evidence must stay separate from judgment; excessive agency is a
+common failure.</p>
+<p><strong>Source support.</strong> <strong>Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII</strong> rests on [ageint309],
+[ageint310], and [ageint300]. The lead source’s own note reads: It
+defines a RESTful, HTTPS-based API protocol for sharing cyber threat
+intelligence between organizations, supporting two communication models:
+Collections (request-response) and Channels (publish-subscribe). Use
+them for fixing what <strong>Threat Intelligence Aggregation Agent:
+LangChain + STIX/TAXII</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Threat
+Intelligence Aggregation Agent</strong> against the works cited for this
+row. [ageint309] An OASIS standard specification defining STIX
+(Structured Threat Information Expression), a language for exchanging
+cyber threat intelligence in a standardized, machine-readable form. It
+establishes a graph-based model with STIX Domain Objects,
+Cyber-observable Objects, and Relationship Objects, plus meta objects,
+bundles, and a patterning language for detection. [ageint310] The OASIS
+Standard specification for TAXII (Trusted Automated Exchange of
+Intelligence Information) Version 2.1, published in 2021 by the OASIS
+Cyber Threat Intelligence Technical Committee. It defines a RESTful,
+HTTPS-based API protocol for sharing cyber threat intelligence between
+organizations, supporting two communication models: Collections
+(request-response) and Channels (publish-subscribe). [ageint300] MITRE
+ATLAS knowledge base for adversarial threats to AI systems, used for
+defensive AI red-team assurance and misuse taxonomy. Read each cited
+work for what it can support about this topic, where that claim
+originated, how confident it is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>Threat Intelligence
+Aggregation Agent</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the source descriptor, the bounded claim
+about <strong>Threat Intelligence Aggregation Agent</strong>, the caveat
+that limits it, the uncertainty note, the out-of-scope-use boundary, and
+the reviewer accountable for challenge. Shape <strong>Threat
+Intelligence Aggregation Agent</strong> work as an <strong>agent run and
+assurance card</strong> that names evidence, uncertainty, reviewer, and
+stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII replaces
+human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Threat Intelligence
+Aggregation Agent</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-2-search-exposure-provenance-review-using-instructor-provided-records">Lesson
+2: Search-exposure provenance review using instructor-provided
+records</h4>
+<p><strong>Concept.</strong> <strong>Search-exposure provenance review
+using instructor-provided records</strong> treats open sources as
+publicly available evidence that still requires provenance,
+corroboration, legality, and minimization before reuse.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Search-exposure
+provenance review</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+excessive agency would otherwise hide, and the reviewer accountable for
+challenge.</p>
+<p><strong>Source support.</strong> <strong>Search-exposure provenance
+review using instructor-provided records</strong> rests on [ageint301]
+and [ageint298]. The most specific cited work observes: Official
+Intelligence Community strategy for open-source intelligence governance,
+integration, source discovery, data, tools, tradecraft, and workforce
+priorities. Use them for pinning down the scope of
+<strong>Search-exposure provenance review using instructor-provided
+records</strong>, the edge of that scope, and when these citations need
+re-verifying before transfer. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Search-exposure
+provenance review</strong> against the works cited for this row.
+[ageint301] Official Intelligence Community strategy for open-source
+intelligence governance, integration, source discovery, data, tools,
+tradecraft, and workforce priorities. [ageint298] Official ODNI index
+for Intelligence Community Directives used to locate current directive
+source material and preserve directive-context citations. Each source
+above earns its place in this topic only when you can state its bounded
+claim, its provenance, its uncertainty, and the fact that would retire
+it.</p>
+<p><strong>Student artifact.</strong> For <strong>Search-exposure
+provenance review</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must record the tool-and-terms descriptor, the
+bounded claim about <strong>Search-exposure provenance review using
+instructor-provided</strong>, the minimization caveat, the
+reproducibility uncertainty, the identity-exposure boundary, and the
+reviewer who approves the use. Shape <strong>Search-exposure provenance
+review</strong> work as an <strong>agent run and assurance card</strong>
+that names evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Search-exposure provenance review</strong>: that a source being
+publicly accessible means collecting it is unrestricted, ungoverned, and
+free of legal, ethical, and scoping limits.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Search-exposure
+provenance review</strong> from this module to a second motif by
+preserving least-privilege agent design and run review, replacing action
+with audit, and naming the blocked use.</p>
+<h4
+id="lesson-3-autonomous-vulnerability-scanner-autogen-nmap-mitre-attck-navigator">Lesson
+3: Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&amp;CK
+Navigator</h4>
+<p><strong>Concept.</strong> <strong>Autonomous Vulnerability Scanner:
+AutoGen + Nmap + MITRE ATT&amp;CK Navigator</strong> treats the
+vulnerability record as an assurance case: severity, affected component,
+provenance, mitigation status, and uncertainty stay separate.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Autonomous Vulnerability Scanner</strong>, excessive agency
+undermines least-privilege agent design and run review; the lesson
+builds the habit to separate agent assistance from autonomous external
+action.</p>
+<p><strong>Source support.</strong> <strong>Autonomous Vulnerability
+Scanner: AutoGen + Nmap + MITRE ATT&amp;CK Navigator</strong> rests on
+[ageint300], [ageint304], and [ageint306]. The most specific cited work
+observes: NIST SP 800-218, the Secure Software Development Framework
+Version 1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences. Use them for fixing what <strong>Autonomous Vulnerability
+Scanner: AutoGen + Nmap + MITRE ATT&amp;CK Navigator</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Autonomous
+Vulnerability Scanner</strong>, work from the cited evidence behind this
+row. [ageint300] MITRE ATLAS knowledge base for adversarial threats to
+AI systems, used for defensive AI red-team assurance and misuse
+taxonomy. [ageint304] NIST SP 800-218, the Secure Software Development
+Framework Version 1.1 published in February 2022, establishes a set of
+high-level practices for integrating security into software development
+lifecycles in order to reduce vulnerabilities in released software,
+mitigate the impact of exploited vulnerabilities, and address root
+causes to prevent recurrences. [ageint306] Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Each source above
+earns its place in this topic only when you can state its bounded claim,
+its provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>Autonomous
+Vulnerability Scanner</strong>, build a <strong>agent run card with tool
+allowlist, identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the source descriptor, the bounded claim
+about <strong>Autonomous Vulnerability Scanner</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>Autonomous
+Vulnerability Scanner</strong> work as an <strong>agent run and
+assurance card</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&amp;CK
+Navigator is optional whenever separate agent assistance from autonomous
+external action feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Autonomous
+Vulnerability Scanner</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-4-rag-pipeline-for-all-source-intelligence-fusion-langgraph-chroma-openai">Lesson
+4: RAG Pipeline for All-Source Intelligence Fusion: LangGraph + Chroma +
+OpenAI</h4>
+<p><strong>Concept.</strong> <strong>RAG Pipeline for All-Source
+Intelligence Fusion: LangGraph + Chroma + OpenAI</strong> evaluates
+retrieval pipelines by source provenance, injection risk, citation
+fidelity, and reviewer verification of answers.</p>
+<p><strong>Why it matters.</strong> <strong>RAG Pipeline for All-Source
+Intelligence Fusion</strong> connects classroom vocabulary to Agentic AI
+Governance and Tool Security practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>RAG Pipeline for All-Source
+Intelligence Fusion: LangGraph + Chroma + OpenAI</strong> rests on
+[ageint305], [ageint304], and [ageint303]. The closest source to this
+row notes: An official NIST page on software supply chain security
+issued under Executive Order 14028, focused on the Software Bill of
+Materials as a formal record of software components and their supply
+chain. Use them for pinning down the scope of <strong>RAG Pipeline for
+All-Source Intelligence Fusion: LangGraph + Chroma + OpenAI</strong>,
+the edge of that scope, and when these citations need re-verifying
+before transfer. External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>RAG Pipeline for
+All-Source Intelligence Fusion</strong> against the works cited for this
+row. [ageint305] Official NIST NCCoE DevSecOps project page for software
+factory, secure pipeline, and continuous authorization source support.
+[ageint304] NIST SP 800-218, the Secure Software Development Framework
+Version 1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences. [ageint303] An official NIST page on software supply chain
+security issued under Executive Order 14028, focused on the Software
+Bill of Materials as a formal record of software components and their
+supply chain. It explains the benefits of SBOMs for vulnerability
+identification and supply-chain transparency, recommends
+machine-readable formats such as SPDX, CycloneDX, and SWID, and
+describes foundational, sustaining, and enhancing levels of
+implementation. From each source, pull the bounded claim it can carry
+for this topic, its provenance, the stated uncertainty, and the one
+condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>RAG Pipeline for
+All-Source Intelligence Fusion</strong>, build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must name the source descriptor, the bounded
+claim about <strong>RAG Pipeline for All-Source Intelligence</strong>,
+the caveat that limits it, the uncertainty note, the out-of-scope-use
+boundary, and the reviewer accountable for challenge. Shape <strong>RAG
+Pipeline for All-Source Intelligence Fusion</strong> work as an
+<strong>agent run and assurance card</strong> that states the evidence
+used, what stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+RAG Pipeline for All-Source Intelligence Fusion: LangGraph + Chroma +
+OpenAI establishes intent without reviewing alternative
+explanations.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>RAG Pipeline for
+All-Source Intelligence Fusion</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-5-claim-ledger-memory-exercise-that-tracks-evidence-changes-rather-than-people">Lesson
+5: Claim-ledger memory exercise that tracks evidence changes rather than
+people</h4>
+<p><strong>Concept.</strong> <strong>Claim-ledger memory exercise that
+tracks evidence changes rather than people</strong> treats agent memory
+terms as a pedagogical taxonomy unless a domain memory source is cited;
+MCP and official agentic-AI guidance support external-memory governance,
+tool boundaries, logs, retention, and reviewer control.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Claim-ledger memory exercise that tracks evidence changes rather
+than people</strong>, excessive agency undermines least-privilege agent
+design and run review; the lesson builds the habit to separate agent
+assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Claim-ledger memory exercise
+that tracks evidence changes rather than people</strong> rests on
+[ageint301] and [ageint298]. The lead source’s own note reads: Official
+Intelligence Community strategy for open-source intelligence governance,
+integration, source discovery, data, tools, tradecraft, and workforce
+priorities. Use them for the working definition that
+<strong>Claim-ledger memory exercise that tracks evidence changes rather
+than people</strong> can defend, where that scope ends, and the refresh
+check owed before this evidence transfers. External triangulation uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Claim-ledger memory
+exercise that tracks evidence changes rather than people</strong>,
+reason from the sources cited in this row. [ageint301] Official
+Intelligence Community strategy for open-source intelligence governance,
+integration, source discovery, data, tools, tradecraft, and workforce
+priorities. [ageint298] Official ODNI index for Intelligence Community
+Directives used to locate current directive source material and preserve
+directive-context citations. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Claim-ledger memory
+exercise that tracks evidence changes rather than people</strong>, build
+a claim-ledger memory card with source descriptor, source-change event,
+retention rule, contamination check, and reviewer disposition; do not
+track real people, assets, or behavioral patterns. Shape this subject
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Claim-ledger memory exercise that tracks evidence changes rather
+than people</strong>: that a visible feature is enough for a confident
+geospatial claim.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Claim-ledger memory
+exercise that tracks evidence changes rather than people</strong> audit
+pattern from this module on a different sample record set with a new
+reviewer and blocked-use note.</p>
+<h4
+id="lesson-6-psychological-inoculation-and-prebunking-literacy">Lesson
+6: Psychological inoculation and prebunking literacy</h4>
+<p><strong>Concept.</strong> <strong>Psychological inoculation and
+prebunking literacy</strong> uses inoculation methods as
+evidence-informed, bounded, and context-dependent resilience education
+with transparent labels, source checks, non-manipulative corrections,
+and explicit measurement limits.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Psychological inoculation</strong>, treating resilience labels
+as permission to skip provenance review undermines least-privilege agent
+design and run review; the lesson builds the habit to separate agent
+assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Psychological inoculation
+and prebunking literacy</strong> rests on [ageint308] and [ageint311].
+Its anchor reference records: It explains why such threats matter for
+democratic processes and institutional trust, and outlines a four-part
+framework of understanding, preventing, containing, and recovering. Use
+them for the working definition that <strong>Psychological inoculation
+and prebunking literacy</strong> can defend, where that scope ends, and
+the refresh check owed before this evidence transfers. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Psychological
+inoculation</strong>, work from the cited evidence behind this row.
+[ageint308] An archived CISA publication, “CISA Insights: Preparing for
+and Mitigating Foreign Influence Operations Targeting Critical
+Infrastructure,” providing guidance on the threat that foreign influence
+campaigns pose to U.S. critical infrastructure. [ageint311] An official
+NATO topic page describing the Alliance’s approach to countering
+information threats, defined as intentional, manipulative, and
+coordinated activities by state and non-state actors including
+disinformation and propaganda. It explains why such threats matter for
+democratic processes and institutional trust, and outlines a four-part
+framework of understanding, preventing, containing, and recovering. Work
+source by source: name the bounded claim, its origin, the residual
+uncertainty, and the trigger that would change how this topic is
+judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>agent run card
+with tool allowlist, identity, logs, autonomy limit, approval gates, and
+recovery path</strong> for this least-privilege agent design and run
+review topic. The artifact must record the narrative provenance, the
+bounded claim about <strong>Psychological inoculation</strong>, the
+audience-harm caveat, the uncertainty note, the transparent-use
+boundary, and the reviewer accountable for correction. Shape this
+subject work as an <strong>agent run and assurance card</strong> that
+names evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Psychological inoculation</strong>: that a resilience label on a
+technique means it has been stress-tested, rather than a habit that
+still needs evidence, caveats, and reviewer challenge.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Psychological
+inoculation</strong> audit pattern from this module on a different
+sample record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-7-supply-chain-inspector-sbom-github-commit-analysis-anomaly-detection">Lesson
+7: Supply Chain Inspector: SBOM + GitHub Commit Analysis + Anomaly
+Detection</h4>
+<p><strong>Concept.</strong> <strong>Supply Chain Inspector: SBOM +
+GitHub Commit Analysis + Anomaly Detection</strong> shows how package
+provenance, social trust, build integrity, and assurance controls turn a
+software incident into reviewable evidence.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Supply Chain Inspector</strong>, excessive agency undermines
+least-privilege agent design and run review; the lesson builds the habit
+to separate agent assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> <strong>Supply Chain Inspector: SBOM
++ GitHub Commit Analysis + Anomaly Detection</strong> rests on
+[ageint303], [ageint304], and [ageint305]. The most specific cited work
+observes: An official NIST page on software supply chain security issued
+under Executive Order 14028, focused on the Software Bill of Materials
+as a formal record of software components and their supply chain. Use
+them for the claim that <strong>Supply Chain Inspector: SBOM + GitHub
+Commit Analysis + Anomaly Detection</strong> lets you defend here, the
+limit it has to respect, and the re-check owed before reuse. External
+triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Supply Chain
+Inspector</strong> against the works cited for this row. [ageint303] An
+official NIST page on software supply chain security issued under
+Executive Order 14028, focused on the Software Bill of Materials as a
+formal record of software components and their supply chain. It explains
+the benefits of SBOMs for vulnerability identification and supply-chain
+transparency, recommends machine-readable formats such as SPDX,
+CycloneDX, and SWID, and describes foundational, sustaining, and
+enhancing levels of implementation. [ageint304] NIST SP 800-218, the
+Secure Software Development Framework Version 1.1 published in February
+2022, establishes a set of high-level practices for integrating security
+into software development lifecycles in order to reduce vulnerabilities
+in released software, mitigate the impact of exploited vulnerabilities,
+and address root causes to prevent recurrences. [ageint305] Official
+NIST NCCoE DevSecOps project page for software factory, secure pipeline,
+and continuous authorization source support. Work source by source: name
+the bounded claim, its origin, the residual uncertainty, and the trigger
+that would change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Supply Chain
+Inspector</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the source descriptor, the bounded claim
+about <strong>Supply Chain Inspector</strong>, the caveat that limits
+it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>Supply Chain
+Inspector</strong> work as an <strong>agent run and assurance
+card</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Supply Chain Inspector: SBOM + GitHub Commit Analysis + Anomaly
+Detection is optional whenever separate agent assistance from autonomous
+external action feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Supply Chain
+Inspector</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-8-ics-anomaly-detection-agent-ot-network-mitre-attck-for-ics">Lesson
+8: ICS Anomaly Detection Agent: OT Network + MITRE ATT&amp;CK for
+ICS</h4>
+<p><strong>Concept.</strong> <strong>ICS Anomaly Detection Agent: OT
+Network + MITRE ATT&amp;CK for ICS</strong> treats agents as software
+actors with explicit permissions, logs, stop conditions, and human
+approval—not autonomous decision makers.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>ICS Anomaly
+Detection Agent</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+excessive agency would otherwise hide, and the reviewer accountable for
+challenge.</p>
+<p><strong>Source support.</strong> <strong>ICS Anomaly Detection Agent:
+OT Network + MITRE ATT&amp;CK for ICS</strong> rests on [ageint307],
+[ageint305], and [ageint304]. The lead source’s own note reads: NIST SP
+800-218, the Secure Software Development Framework Version 1.1 published
+in February 2022, establishes a set of high-level practices for
+integrating security into software development lifecycles in order to
+reduce vulnerabilities in released software, mitigate the impact of
+exploited vulnerabilities, and address root causes to prevent
+recurrences. Use them for the claim that <strong>ICS Anomaly Detection
+Agent: OT Network + MITRE ATT&amp;CK for ICS</strong> lets you defend
+here, the limit it has to respect, and the re-check owed before reuse.
+External triangulation uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>ICS Anomaly
+Detection Agent</strong> in the evidence the row cites. [ageint307]
+Official CISA Industrial Control Systems recommended practices page for
+defensive ICS/OT safety, resilience, and incident-preparation guidance.
+[ageint305] Official NIST NCCoE DevSecOps project page for software
+factory, secure pipeline, and continuous authorization source support.
+[ageint304] NIST SP 800-218, the Secure Software Development Framework
+Version 1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences. Read each cited work for what it can support about this
+topic, where that claim originated, how confident it is, and what
+evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>ICS Anomaly Detection
+Agent</strong>, build a <strong>agent run card with tool allowlist,
+identity, logs, autonomy limit, approval gates, and recovery
+path</strong> for this least-privilege agent design and run review
+topic. The artifact must name the source descriptor, the bounded claim
+about <strong>ICS Anomaly Detection Agent</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>ICS Anomaly Detection
+Agent</strong> work as an <strong>agent run and assurance card</strong>
+that records its evidence, the residual uncertainty, the named reviewer,
+and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+ICS Anomaly Detection Agent: OT Network + the module establishes intent
+without reviewing alternative explanations.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>ICS Anomaly
+Detection Agent</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h3
+id="ageint-python-code-library-worked-safe-example-synthetic-inputs-evidence-and-review">AGEINT
+Python Code Library worked safe example: synthetic inputs, evidence, and
+review</h3>
+<p>Worked example: a synthetic research assistant agent organizes public
+readings for an instructor. [ageint242]; [ageint243].</p>
+<p><strong>Triangulation anchors.</strong> In module 36’s worked-example
+section, directly verified anchors for the <strong>Agentic AI Governance
+and Tool Security</strong> lane include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Use them to test source-guide claims, method
+boundaries, governance constraints, and safety gates without replacing
+the module’s <code>ageintNNN</code> provenance.</p>
+<p><strong>Unit discipline spine.</strong> Discipline: <strong>governed
+agentic intelligence</strong>. Learners use a <strong>agent run and
+assurance card</strong> and keep this boundary visible: No autonomous
+external action, credentialed operations, live-target workflows, or
+uncontrolled tool use.</p>
+<p><strong>Frame.</strong> The classroom question centers on
+<strong>Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII</strong>. Excluded actions stay explicit, and the
+<strong>Agentic Tool-Governance Lens</strong> planning question is:
+Which human authority, agent identity, tool permission, autonomy limit,
+incident threshold, and recoverability condition bounds the
+workflow?</p>
+<p><strong>Inputs.</strong> For the <strong>Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII</strong> scenario, use public
+URLs, a fixed retrieval tool, a summarization prompt, a time budget, and
+a stop condition. The Agentic Tool-Governance Lens intake note records
+provenance, sensitivity, fit-to-purpose, and why the fixture is enough
+for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII</strong>, students bind the
+agent identity, list allowed tools, set autonomy limits, capture
+sources, block unsafe requests, and log approvals. Pause whenever an
+inference about Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII appears without evidence, confidence outruns support, or an
+agent output is treated as judgment.</p>
+<p><strong>Filled artifact.</strong> Purpose = <strong>Threat
+Intelligence Aggregation Agent: LangChain + STIX/TAXII</strong>
+classroom scenario; unit artifact = agent run and assurance card;
+evidence = allowed inputs; method = least-privilege agent design and run
+review; output = an agent run card with tool calls, source links,
+blocked actions, reviewer notes, incident threshold, and recovery
+decision; boundary = no external action; reviewer = instructor or named
+peer.</p>
+<p><strong>Flawed answer to revise.</strong> Treating <strong>Threat
+Intelligence Aggregation Agent: LangChain + STIX/TAXII</strong> as
+“Agentic Tool-Governance Lens confirms it” is not enough. The revision
+ties the claim to least-privilege agent design and run review, adds the
+missing caveat, states confidence, and records the reviewer who accepted
+the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>Threat
+Intelligence Aggregation Agent: LangChain + STIX/TAXII</strong> records
+the defensible claim, the assumption most likely to fail, the evidence
+that would change confidence, and the review condition for stopping
+reuse.</p>
+<h3
+id="ageint-python-code-library-practice-sequence-studio-moves-artifact-steps-and-limits">AGEINT
+Python Code Library practice sequence: studio moves, artifact steps, and
+limits</h3>
+<p>The studio sequence uses the <strong>Agentic Tool-Governance
+Lens</strong> practice lens. Moves 1-3 form the compressed path; the
+full seminar path adds challenge, handoff, and a review memo for
+<strong>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII;
+Search-exposure provenance review using instructor-provided
+records</strong>.</p>
+<p><strong>Triangulation anchors.</strong> In module 36’s
+practice-sequence section, directly verified anchors for the
+<strong>Agentic AI Governance and Tool Security</strong> lane include
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide];
+[official_nist_ai_rmf]; [official_nist_ai_600_1]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Move</th>
+<th>Learner action</th>
+<th>Output</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Distinguish</td>
+<td>Compare Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII, Search-exposure provenance review using instructor-provided
+records, Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE
+ATT&amp;CK Navigator; name what each topic can and cannot prove.</td>
+<td>Glossary-and-contrast card.</td>
+<td>Terms match the <strong>Agentic AI Governance and Tool
+Security</strong> lane.</td>
+</tr>
+<tr>
+<td>2. Frame</td>
+<td>Answer the lens question: Which human authority, agent identity,
+tool permission, autonomy limit, incident threshold, and recoverability
+condition bounds the workflow?</td>
+<td>Scope card.</td>
+<td>Authority, excluded actions, data boundary, and reviewer are
+explicit.</td>
+</tr>
+<tr>
+<td>3. Evidence</td>
+<td>Fill the artifact fields for Threat Intelligence Aggregation Agent:
+LangChain + STIX/TAXII: agent run card with tool allowlist, identity,
+logs, autonomy limit, approval gates, and recovery path.</td>
+<td>Evidence packet.</td>
+<td>Sources, caveats, confidence, and uncertainty stay separable.</td>
+</tr>
+<tr>
+<td>3a. Unit artifact</td>
+<td>Add the agent run and assurance card fields for Threat Intelligence
+Aggregation Agent: LangChain + STIX/TAXII.</td>
+<td>Unit profile note.</td>
+<td>Evidence artifacts include tool-allowlist record, external-memory
+governance boundary.</td>
+</tr>
+<tr>
+<td>4. Challenge</td>
+<td>Test the misconception that Threat Intelligence Aggregation Agent:
+LangChain + STIX/TAXII replaces human review whenever evidence looks
+plausible.</td>
+<td>Failure-mode note.</td>
+<td>The artifact applies the key distinction: separate agent assistance
+from autonomous external action.</td>
+</tr>
+<tr>
+<td>5. Handoff</td>
+<td>Prepare the artifact for another reviewer.</td>
+<td>Handoff memo.</td>
+<td>Inputs, transformations, reviewer, refresh trigger, and residual
+risk are visible.</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="ageint-python-code-library-instructor-notes-source-reasoning-review-points-and-studio-focus">AGEINT
+Python Code Library instructor notes: source reasoning, review points,
+and studio focus</h4>
+<p>Ask learners to verbalize the difference between a source, an
+inference, and a decision. Require a revision whenever a claim cannot be
+traced to a source descriptor or a human review point. Keep the focus on
+<strong>Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII;
+Search-exposure provenance review using instructor-provided
+records</strong>. [ageint242]; [ageint243].</p>
+<h4
+id="ageint-python-code-library-extension-exercise-peer-validation-and-refresh-trigger-review">AGEINT
+Python Code Library extension exercise: peer validation and refresh
+trigger review</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<p>Have learners swap artifacts and apply the <strong>Agentic
+Tool-Governance Lens</strong> validation rule to someone else’s work.
+The receiving learner must identify one strength, one missing caveat,
+and one refresh trigger for <strong>Threat Intelligence Aggregation
+Agent: LangChain + STIX/TAXII; Search-exposure provenance review using
+instructor-provided records</strong>.</p>
+<h3
+id="ageint-python-code-library-knowledge-check-misconceptions-evidence-and-reviewer-prompts">AGEINT
+Python Code Library knowledge check: misconceptions, evidence, and
+reviewer prompts</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<ol type="1">
+<li>Explain how <strong>Threat Intelligence Aggregation Agent: LangChain
++ STIX/TAXII</strong> is defined here; name the source descriptor that
+supports the definition.</li>
+<li>Contrast <strong>Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII</strong> with <strong>Search-exposure provenance review using
+instructor-provided records</strong> using the <strong>Agentic
+Tool-Governance Lens</strong> artifact fields.</li>
+<li>Identify one failure mode from the <strong>Agentic AI Governance and
+Tool Security</strong> lane and the evidence that would reveal it.</li>
+<li>Answer the coursebook review question: Which permission can be
+removed while preserving the learning objective?</li>
+<li>Correct this misconception: that Threat Intelligence Aggregation
+Agent: LangChain + STIX/TAXII replaces human review whenever evidence
+looks plausible.</li>
+</ol>
+<h4
+id="ageint-python-code-library-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">AGEINT
+Python Code Library answer quality rubric: source evidence, uncertainty,
+and safe transfer</h4>
+<p>Judge answers with the canonical mastery evidence standard in the
+shared method-and-assurance reference
+([sec:method-assurance-reference]): a strong answer uses source
+evidence, distinguishes observation from judgment, names uncertainty,
+and states the safe boundary, while a revise-level answer gives a
+memorized definition of <strong>Threat Intelligence Aggregation Agent:
+LangChain + STIX/TAXII</strong> without source evidence, uncertainty, or
+a safe transfer task.</p>
+</body>
+</html>

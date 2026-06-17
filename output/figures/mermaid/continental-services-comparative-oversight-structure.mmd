@@ -1,0 +1,28 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  Top["Allied Continental and Israeli Services"]
+  IL["Israel Mossad and Shin Bet"]
+  FR["France DGSE and DGSI"]
+  DE["Germany BND and BfV"]
+  IT["Italy AISE and AISI"]
+  Foreign["Foreign Intelligence Collection"]
+  Domestic["Domestic Security and Counterintelligence"]
+  Mandate["Legal Mandate and Charter"]
+  Oversight["Parliamentary or Ministerial Oversight"]
+  Rules["Source-Protection and Declassification Rules"]
+  Top --> IL
+  Top --> FR
+  Top --> DE
+  Top --> IT
+  IL --> Foreign
+  IL --> Domestic
+  FR --> Foreign
+  FR --> Domestic
+  DE --> Foreign
+  DE --> Domestic
+  IT --> Foreign
+  IT --> Domestic
+  Foreign --> Mandate
+  Domestic --> Mandate
+  Mandate --> Oversight
+  Oversight --> Rules

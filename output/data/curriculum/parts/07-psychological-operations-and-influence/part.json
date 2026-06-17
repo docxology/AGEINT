@@ -1,0 +1,12 @@
+{
+  "number": 7,
+  "roman": "VII",
+  "title": "PSYCHOLOGICAL OPERATIONS AND INFLUENCE",
+  "source_line": 266,
+  "chapter_files": [
+    "18-psyop-and-miso-doctrine/chapter.json",
+    "19-active-measures-and-disinformation/chapter.json",
+    "20-social-engineering/chapter.json",
+    "21-information-warfare-and-cognitive-security/chapter.json"
+  ]
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>00-overview.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1 id="sec:chapter-ageint-python-code-library">AGEINT Python Code
+Library</h1>
+<h3
+id="ageint-python-code-library-figures-and-course-links-visual-evidence-source-flow-and-navigation">AGEINT
+Python Code Library figures and course links: visual evidence, source
+flow, and navigation</h3>
+<p>The module uses [fig:ageint-defensive-module-map] and
+[fig:part-ageint-agentic-intelligence-module-map] to map its evidence
+flow, safety boundaries, review artifacts, and refresh cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:part-ageint-agentic-intelligence],
+[sec:chapter-active-inference-and-ageint],
+[sec:part-cognitive-security].</p>
+<figure id="fig:ageint-defensive-module-map">
+<img src="../../../../figures/mermaid/ageint-defensive-module-map.png"
+alt="A module map of the library’s defensive building blocks, where retrieval, comparison, and audit components always route through a human-override gate. It is anchored to the ageint agentic intelligence / ageint python code library section; use it to inspect Source retrieval module, Normalization and parsing, Comparison and corroboration, and Confidence and uncertainty tags while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">A module map of the library’s defensive
+building blocks, where retrieval, comparison, and audit components
+always route through a human-override gate. It is anchored to the ageint
+agentic intelligence / ageint python code library section; use it to
+inspect Source retrieval module, Normalization and parsing, Comparison
+and corroboration, and Confidence and uncertainty tags while preserving
+the distinction between curriculum structure, evidence boundary, and
+accountable practice.</figcaption>
+</figure>
+<p>This module teaches the <strong>Agentic AI Governance and Tool
+Security</strong> lane through a bounded, source-backed coursebook
+chapter. [ageint242]; [ageint243].</p>
+<h2
+id="agentic-ai-governance-and-tool-security-frame-for-ageint-python-code-library-source-context-topic-focus-and-reader-task">Agentic
+AI Governance and Tool Security frame for AGEINT Python Code Library:
+source context, topic focus, and reader task</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h3
+id="ageint-python-code-library-orientation-reader-task-conceptual-primer-outcomes-and-vocabulary">AGEINT
+Python Code Library orientation: reader task, conceptual primer,
+outcomes, and vocabulary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<h3
+id="ageint-python-code-library-conceptual-primer-source-context-core-model-and-reader-task">AGEINT
+Python Code Library conceptual primer: source context, core model, and
+reader task</h3>
+<p>This chapter teaches agentic AI as delegated action under control:
+identity, authority, tool permissions, memory, logs, stop conditions,
+and recoverability define what an agent may do. The chapter uses
+<strong>Agentic Tool-Governance Lens</strong> to connect definitions,
+evidence tests, practice artifacts, and review gates for <strong>Threat
+Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure
+provenance review using instructor-provided records</strong>.</p>
+<p>The central distinction is to separate agent assistance from
+autonomous external action. Core topics include <strong>Threat
+Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure
+provenance review using instructor-provided records; Autonomous
+Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&amp;CK
+Navigator</strong>. Each topic covers meaning, evidentiary support,
+common misconceptions, and safety boundaries.</p>
+<p>Governance requirements use verified official, standards,
+public-domain, or scholarly anchors such as [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf]. Technical,
+theoretical, or empirical statements require direct domain sources and
+are limited to what those sources establish. [ageint242];
+[ageint243].</p>
+<p>Learners move from vocabulary and the <strong>Agentic Tool-Governance
+Lens</strong> distinction through topic lessons on <strong>Threat
+Intelligence Aggregation Agent: LangChain + STIX/TAXII</strong> with
+evidence and misconception checks, then assemble an <strong>agent run
+card with tool allowlist, identity, logs, autonomy limit, approval
+gates, and recovery path</strong> with safety and rights gates.</p>
+<h3
+id="ageint-python-code-library-learning-outcomes-analytic-moves-evidence-duties-and-transfer">AGEINT
+Python Code Library learning outcomes: analytic moves, evidence duties,
+and transfer</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<ul>
+<li>Connect <strong>Threat Intelligence Aggregation Agent: LangChain +
+STIX/TAXII and Search-exposure provenance review using
+instructor-provided records</strong> to <strong>Agentic AI Governance
+and Tool Security</strong> by naming shared vocabulary, evidence burden,
+and audience-facing caveats.</li>
+<li>Build an <strong>agent run card with tool allowlist, identity, logs,
+autonomy limit, approval gates, and recovery path</strong> that keeps
+observation, inference, uncertainty, source quality, reviewer decision,
+and refresh trigger separate.</li>
+<li>Apply the key distinction: separate agent assistance from autonomous
+external action; show where an apparently useful shortcut would cross
+that line.</li>
+<li>Diagnose failure modes such as excessive agency, shadow tools,
+indirect prompt injection, memory poisoning, confused authority, and
+unbounded action chains, then write one recovery move for each failure
+mode that preserves the learning objective.</li>
+<li>Teach the defensive boundary back to a peer: agentic workflows stay
+synthetic, owned-lab, supervised, logged, rate-limited, and reversible
+unless a lawful production authority exists.</li>
+</ul>
+<h3
+id="ageint-python-code-library-core-vocabulary-source-terms-method-roles-and-safety-limits">AGEINT
+Python Code Library core vocabulary: source terms, method roles, and
+safety limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-ageint-python-code-library]; [ageint242].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Term</th>
+<th>Working definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent identity</td>
+<td>the named software actor, role, and authorization context for a
+run</td>
+</tr>
+<tr>
+<td>Tool allowlist</td>
+<td>the bounded set of actions the agent may request</td>
+</tr>
+<tr>
+<td>Delegation</td>
+<td>the handoff of a task under explicit human authority and review</td>
+</tr>
+<tr>
+<td>Bounded autonomy</td>
+<td>the documented ceiling on what an agent may decide or request
+without review</td>
+</tr>
+<tr>
+<td>Recoverability</td>
+<td>the path back to a known-safe state after a bad output or action
+request</td>
+</tr>
+<tr>
+<td>AI incident</td>
+<td>a logged event where an AI system creates or plausibly creates harm
+or loss of control</td>
+</tr>
+<tr>
+<td>Prompt injection</td>
+<td>untrusted content that attempts to override instructions or
+authority boundaries</td>
+</tr>
+<tr>
+<td>Pattern registry</td>
+<td>the catalog of approved agent behaviors, prompts, and evaluation
+hooks</td>
+</tr>
+<tr>
+<td>Adversarial eval</td>
+<td>structured tests that probe agent misuse, injection, and
+over-delegation before release</td>
+</tr>
+<tr>
+<td>Threat Intelligence Aggregation Agent:…</td>
+<td>Key terms: Threat, Aggregation, Agent.</td>
+</tr>
+<tr>
+<td>Search-exposure provenance review using…</td>
+<td>Key terms: Search, exposure, provenance.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

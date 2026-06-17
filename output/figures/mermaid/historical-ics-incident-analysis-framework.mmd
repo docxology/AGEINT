@@ -1,0 +1,13 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Select documented public incident"] --> B["Gather verified open sources with provenance"]
+  B --> C["Reconstruct incident timeline"]
+  B --> D["Map engineering state and consequence"]
+  C --> E["Identify safety and detection failure points"]
+  D --> E
+  E --> F["Derive bounded lesson learned"]
+  F --> G{"Overclaiming and attribution check"}
+  G -->|"Weak or speculative"| B
+  G -->|"Supported"| H["Map lesson to durable defensive control"]
+  H --> I["Build tabletop inject from lesson"]
+  I --> J(["Record refresh trigger"])

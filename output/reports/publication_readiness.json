@@ -1,0 +1,112 @@
+{
+  "artifact_evidence": {
+    "report_paths": [
+      "output/reports/current_artifact_evidence.json",
+      "output/reports/current_artifact_evidence.md"
+    ],
+    "summary": {
+      "agency_source_coverage_ok": true,
+      "agency_source_missing_metadata": 0,
+      "agency_source_unrouted_rows": 0,
+      "bad_pdf_link_targets": 0,
+      "citation_context_issues": 0,
+      "claim_hard_fail_rows": 0,
+      "figures": 177,
+      "generated_markdown_citation_occurrences": 16604,
+      "generated_markdown_files": 330,
+      "generic_detail_heading_issues": 0,
+      "new_official_us_ic_anchors": 56,
+      "pdf_pages": 1858,
+      "pdf_stale": false,
+      "reference_quality_issues": 0,
+      "scholarship_hard_fail_rows": 0
+    }
+  },
+  "artifact_manifest": {
+    "issue_count": 0,
+    "issues": [],
+    "ok": true,
+    "path": "output/reports/artifact_manifest.json"
+  },
+  "checks": {
+    "agency_source_coverage_ok": true,
+    "artifact_evidence_ok": true,
+    "artifact_manifest_ok": true,
+    "claim_calibration_ok": true,
+    "figure_quality_ok": true,
+    "parent_confidentiality_guard_ok": true,
+    "pdf_quality_ok": true,
+    "reference_quality_ok": true,
+    "release_milestone_still_todo": true,
+    "release_surface_scan_ok": true,
+    "rendered_references_resolve": true,
+    "scholarship_quality_ok": true,
+    "source_license_posture_ok": true,
+    "source_metadata_ok": true,
+    "source_refresh_due_ok": true,
+    "task_prerequisites_done": true
+  },
+  "generated_at": "2026-06-17T04:38:21+00:00",
+  "ok": true,
+  "parent_confidentiality_guard": {
+    "checked": true,
+    "ok": true,
+    "returncode": 0,
+    "stderr": "warning: `VIRTUAL_ENV=<local-path>` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead",
+    "stdout": "Confidentiality guard: only public canonical template projects are tracked."
+  },
+  "project": "AGEINT",
+  "release_decision": "Ready for an explicit local release decision only when this report is ok. This report does not publish, push, archive, promote, or create a public record.",
+  "release_surface_scan": {
+    "issue_count": 0,
+    "issues": []
+  },
+  "schema_version": "1.0",
+  "source_license_posture": {
+    "figure_count": 177,
+    "issue_count": 0,
+    "issues": [],
+    "license": {
+      "book": "CC BY 4.0",
+      "code": "Apache-2.0",
+      "metadata": "CC-BY-4.0"
+    },
+    "ok": true
+  },
+  "source_refresh_due": {
+    "issue_row_count": 0,
+    "report_paths": [
+      "output/reports/source_refresh_due.json",
+      "output/reports/source_refresh_due.md"
+    ],
+    "summary": {
+      "bucket_counts": {
+        "current": 472
+      },
+      "cadence_counts": {
+        "annual": 322,
+        "biennial": 5,
+        "quarterly": 51,
+        "semiannual": 94
+      },
+      "due_or_stale_count": 0,
+      "due_soon_count": 0,
+      "flag_counts": {},
+      "missing_checked_as_of_count": 0,
+      "row_count": 472,
+      "source_lane_due_counts": {},
+      "unknown_cadence_count": 0
+    }
+  },
+  "task_status": {
+    "ageint_27_status": "done",
+    "ageint_m1_status": "todo",
+    "prerequisites_done": true,
+    "release_milestone_still_todo": true,
+    "required_done_tasks": {
+      "ageint-25": "done",
+      "ageint-26": "done",
+      "ageint-31": "done"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  ING["Source retrieval module"] --> NORM["Normalization and parsing"]
+  NORM --> COMP["Comparison and corroboration"]
+  COMP --> CONF["Confidence and uncertainty tags"]
+  CONF --> AUD["Audit and provenance logging"]
+  PROV["Provenance registry"] --> AUD
+  AUD --> OVR{"Human override gate"}
+  OVR -->|"approved"| REP["Reviewed analytic report"]
+  OVR -->|"flagged"| ANA["Analyst review queue"]
+  TEST["Tests and rubrics"] --> COMP
+  TRANS["Prompt transparency record"] --> AUD
+  ANA --> REP

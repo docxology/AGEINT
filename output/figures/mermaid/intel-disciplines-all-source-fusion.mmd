@@ -1,0 +1,22 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph DISC["Collection Disciplines"]
+    direction LR
+    H["HUMINT: human sources"]
+    S["SIGINT: signals"]
+    O["OSINT: open sources"]
+    G["GEOINT: imagery and geospatial"]
+    M["MASINT: measurement and signature"]
+    F["FININT: financial"]
+  end
+  FUSE["All-Source Fusion and Weighting"]
+  H --> FUSE
+  S --> FUSE
+  O --> FUSE
+  G --> FUSE
+  M --> FUSE
+  F --> FUSE
+  FUSE --> REL["Reliability and Confidence Grading"]
+  REL --> PROD["Assessed All-Source Product"]
+  PROD --> OV["Oversight and Tradecraft Review"]
+  OV -->|"feedback and new requirements"| DISC

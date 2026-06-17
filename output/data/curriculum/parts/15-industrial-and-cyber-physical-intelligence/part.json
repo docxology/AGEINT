@@ -1,0 +1,13 @@
+{
+  "number": 15,
+  "roman": "XV",
+  "title": "INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE",
+  "source_line": 844,
+  "chapter_files": [
+    "45-industrial-control-systems-ics-and-operational-technology/chapter.json",
+    "46-mitre-att-ck-for-ics/chapter.json",
+    "47-historical-ics-cyber-incidents-intelligence-analysis/chapter.json",
+    "48-threat-intelligence-sharing-for-critical-infrastructure/chapter.json",
+    "49-ageint-applied-to-ics-and-cyber-physical-intelligence/chapter.json"
+  ]
+}

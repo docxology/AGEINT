@@ -1,0 +1,18 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  LESSON["Prebunking lesson<br/>defensive education only"] --> SOURCE["Scholarly evidence<br/>Science Advances + reviews"]
+  SOURCE --> MECH["Mechanism claim<br/>recognize manipulation technique"]
+  MECH --> MEASURE["Measured outcomes<br/>recognition / resilience<br/>not universal immunity"]
+  MEASURE --> SAFE["Rights safeguard<br/>transparent, voluntary, non-censorial"]
+  SAFE --> REVIEW["Refresh review<br/>replication, durability, transfer"]
+  SOURCE -.-> CAVEAT["Scope caveat<br/>context and population matter"]
+  MEASURE -.-> CAVEAT
+  LESSON -.-> BOUND["No manipulation<br/>or censorship framing"]
+  BOUND --> STOP["Revise unsafe framing"]
+  CAVEAT --> REVIEW
+  classDef evidence fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef caveat fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class SOURCE,MECH,MEASURE,SAFE,REVIEW evidence
+  class CAVEAT,BOUND caveat
+  class STOP stop

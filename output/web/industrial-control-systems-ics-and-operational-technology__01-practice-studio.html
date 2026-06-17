@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="cyber-physical-readiness-lens-path-for-industrial-control-systems-ics-and-operational-technology-lesson-cluster-safe-artifact-and-review">Cyber-Physical
+Readiness Lens path for Industrial Control Systems (ICS) and Operational
+Technology: lesson cluster, safe artifact, and review</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-industrial-control-systems-ics-and-operational-technology];
+[ageint255].</p>
+<h3
+id="industrial-control-systems-ics-and-operational-technology-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Industrial
+Control Systems (ICS) and Operational Technology practice studio: topic
+lessons, safe worked example, and knowledge check</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-industrial-control-systems-ics-and-operational-technology];
+[ageint255].</p>
+<h3
+id="industrial-control-systems-ics-and-operational-technology-topic-lessons-source-backed-concepts-and-transfer-tasks">Industrial
+Control Systems (ICS) and Operational Technology topic lessons:
+source-backed concepts and transfer tasks</h3>
+<p>This module builds ICS/OT intelligence as safety-aware defensive
+reasoning: asset state, engineering consequence, operator decision, and
+recovery evidence matter as much as cyber indicators. The sequence opens
+with <strong>ICS Architecture: SCADA, DCS, PLC, HMI — Definitions and
+Roles</strong>, <strong>SCADA: Supervisory Control and Data Acquisition
+— Large Geographic Systems</strong>, <strong>DCS: Distributed Control
+Systems — Chemical, Refining, Power</strong> and applies the
+<strong>Cyber-Physical Readiness Lens</strong> practice frame through
+concept, evidence, artifact, misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map
+[fig:part-industrial-and-cyber-physical-intelligence-module-map]; module
+overview
+[sec:chapter-industrial-control-systems-ics-and-operational-technology];
+curriculum atlas [sec:curriculum_orientation].</p>
+<p><strong>Triangulation anchors.</strong> In module 45’s topic-lessons
+section, directly verified anchors for the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane include
+[official_nist_csf_2]; [official_nist_sp_800_160r1];
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<h4
+id="lesson-1-ics-architecture-scada-dcs-plc-hmi-definitions-and-roles">Lesson
+1: ICS Architecture: SCADA, DCS, PLC, HMI — Definitions and Roles</h4>
+<p><strong>Concept.</strong> <strong>ICS Architecture: SCADA, DCS, PLC,
+HMI — Definitions and Roles</strong> maps industrial assets, safety
+interlocks, operator roles, and consequence before any cyber-physical
+inference.</p>
+<p><strong>Why it matters.</strong> <strong>ICS Architecture: SCADA,
+DCS, PLC, HMI — Definitions and Roles</strong> connects classroom
+vocabulary to ICS/OT Cyber-Physical Defense and Tabletop Readiness
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>ICS Architecture: SCADA,
+DCS, PLC, HMI — Definitions and Roles</strong> rests on [ageint208] and
+[ageint209]. Its anchor reference records: This article provides a
+comprehensive overview of cybersecurity for Industrial Control Systems,
+covering SCADA, distributed control systems, and programmable logic
+controllers as they have evolved from isolated architectures to
+networked, cloud-connected deployments. Use them for the working
+definition that <strong>ICS Architecture: SCADA, DCS, PLC, HMI —
+Definitions and Roles</strong> can defend, where that scope ends, and
+the refresh check owed before this evidence transfers. External
+triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>ICS Architecture:
+SCADA, DCS, PLC, HMI — Definitions and Roles</strong>, work from the
+cited evidence behind this row. [ageint208] This article provides a
+comprehensive overview of cybersecurity for Industrial Control Systems,
+covering SCADA, distributed control systems, and programmable logic
+controllers as they have evolved from isolated architectures to
+networked, cloud-connected deployments. [ageint209] A glossary entry
+from the cybersecurity company Bitsight explaining Industrial Control
+Systems (ICS), defined as integrated hardware and software used to
+control, monitor, and automate industrial processes across
+manufacturing, energy, and critical infrastructure. Work source by
+source: name the bounded claim, its origin, the residual uncertainty,
+and the trigger that would change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>ICS
+Architecture</strong>, build a <strong>tabletop packet with OT asset
+inventory, architecture record, consequences, injects, and debrief
+rubric</strong> for this safety-aware tabletop readiness and defensive
+coverage review topic. The artifact must name the source descriptor, the
+bounded claim about <strong>ICS Architecture</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>ICS Architecture:
+SCADA, DCS, PLC, HMI — Definitions and Roles</strong> work as a
+<strong>cyber-physical tabletop evidence packet</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+ICS Architecture: SCADA, DCS, PLC, HMI — Definitions and Roles
+establishes intent without reviewing alternative explanations.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>ICS Architecture:
+SCADA, DCS, PLC, HMI — Definitions and Roles</strong> to a second module
+by preserving safety-aware tabletop readiness and defensive coverage
+review, changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-2-scada-supervisory-control-and-data-acquisition-large-geographic-systems">Lesson
+2: SCADA: Supervisory Control and Data Acquisition — Large Geographic
+Systems</h4>
+<p><strong>Concept.</strong> <strong>SCADA: Supervisory Control and Data
+Acquisition — Large Geographic Systems</strong> maps industrial assets,
+safety interlocks, operator roles, and consequence before any
+cyber-physical inference.</p>
+<p><strong>Why it matters.</strong> <strong>SCADA: Supervisory Control
+and Data Acquisition — Large Geographic Systems</strong> matters in the
+<strong>ICS/OT Cyber-Physical Defense and Tabletop Readiness</strong>
+lane because safety-aware tabletop readiness and defensive coverage
+evidence must stay separate from judgment; IT-first assumptions is a
+common failure.</p>
+<p><strong>Source support.</strong> <strong>SCADA: Supervisory Control
+and Data Acquisition — Large Geographic Systems</strong> rests on
+[ageint209]. The most specific cited work observes: A glossary entry
+from the cybersecurity company Bitsight explaining Industrial Control
+Systems (ICS), defined as integrated hardware and software used to
+control, monitor, and automate industrial processes across
+manufacturing, energy, and critical infrastructure. Use it for fixing
+what <strong>SCADA: Supervisory Control and Data Acquisition — Large
+Geographic Systems</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>SCADA: Supervisory
+Control and Data Acquisition — Large Geographic Systems</strong> against
+the works cited for this row. [ageint209] A glossary entry from the
+cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. From each source, pull the bounded claim it
+can carry for this topic, its provenance, the stated uncertainty, and
+the one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>SCADA</strong>, build
+a <strong>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</strong> for this safety-aware
+tabletop readiness and defensive coverage review topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>SCADA</strong>, the caveat that limits it, the uncertainty note,
+the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape <strong>SCADA: Supervisory Control and Data Acquisition
+— Large Geographic Systems</strong> work as a <strong>cyber-physical
+tabletop evidence packet</strong> that states the evidence used, what
+stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+SCADA: Supervisory Control and Data Acquisition — Large Geographic
+Systems replaces human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>SCADA: Supervisory
+Control and Data Acquisition — Large Geographic Systems</strong> to a
+second module by preserving safety-aware tabletop readiness and
+defensive coverage review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-3-dcs-distributed-control-systems-chemical-refining-power">Lesson
+3: DCS: Distributed Control Systems — Chemical, Refining, Power</h4>
+<p><strong>Concept.</strong> <strong>DCS: Distributed Control Systems —
+Chemical, Refining, Power</strong> maps industrial assets, safety
+interlocks, operator roles, and consequence before any cyber-physical
+inference.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>DCS:
+Distributed Control Systems — Chemical, Refining, Power</strong> to
+separate cyber analysis from unsafe process control or live operational
+action. A defensible treatment names the judgment it enables for
+safety-aware tabletop readiness and defensive coverage review, the proof
+limit that IT-first assumptions would otherwise hide, and the reviewer
+accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>DCS: Distributed Control
+Systems — Chemical, Refining, Power</strong> rests on [ageint209]. The
+closest source to this row notes: A glossary entry from the
+cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. Use it for fixing what <strong>DCS:
+Distributed Control Systems — Chemical, Refining, Power</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>DCS: Distributed
+Control Systems — Chemical, Refining, Power</strong>, reason from the
+sources cited in this row. [ageint209] A glossary entry from the
+cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. Each source above earns its place in this
+topic only when you can state its bounded claim, its provenance, its
+uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>DCS</strong>, build a
+<strong>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</strong> for this safety-aware
+tabletop readiness and defensive coverage review topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>DCS</strong>, the caveat that limits it, the uncertainty note,
+the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape <strong>DCS: Distributed Control Systems — Chemical,
+Refining, Power</strong> work as a <strong>cyber-physical tabletop
+evidence packet</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+DCS: Distributed Control Systems — Chemical, Refining, Power can be used
+while ignoring the rule to separate cyber analysis from unsafe process
+control or live operational action.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>DCS: Distributed
+Control Systems — Chemical, Refining, Power</strong> to a second module
+by preserving safety-aware tabletop readiness and defensive coverage
+review, changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-4-plc-programmable-logic-controllers-field-level-execution">Lesson
+4: PLC: Programmable Logic Controllers — Field-Level Execution</h4>
+<p><strong>Concept.</strong> <strong>PLC: Programmable Logic Controllers
+— Field-Level Execution</strong> maps industrial assets, safety
+interlocks, operator roles, and consequence before any cyber-physical
+inference.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>PLC: Programmable Logic Controllers — Field-Level
+Execution</strong>, IT-first assumptions undermines safety-aware
+tabletop readiness and defensive coverage review; the lesson builds the
+habit to separate cyber analysis from unsafe process control or live
+operational action.</p>
+<p><strong>Source support.</strong> <strong>PLC: Programmable Logic
+Controllers — Field-Level Execution</strong> rests on [ageint209]. The
+closest source to this row notes: A glossary entry from the
+cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. Use it for fixing what <strong>PLC:
+Programmable Logic Controllers — Field-Level Execution</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>PLC: Programmable
+Logic Controllers — Field-Level Execution</strong>, reason from the
+sources cited in this row. [ageint209] A glossary entry from the
+cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. Each source above earns its place in this
+topic only when you can state its bounded claim, its provenance, its
+uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>PLC</strong>, build a
+<strong>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</strong> for this safety-aware
+tabletop readiness and defensive coverage review topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>PLC</strong>, the caveat that limits it, the uncertainty note,
+the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape <strong>PLC: Programmable Logic Controllers —
+Field-Level Execution</strong> work as a <strong>cyber-physical tabletop
+evidence packet</strong> that records its evidence, the residual
+uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+PLC: Programmable Logic Controllers — Field-Level Execution is optional
+whenever separate cyber analysis from unsafe process control or live
+operational action feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>PLC: Programmable
+Logic Controllers — Field-Level Execution</strong> to a second module by
+preserving safety-aware tabletop readiness and defensive coverage
+review, changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-5-ot-vs.-it-fundamental-security-philosophy-differences">Lesson
+5: OT vs. IT: Fundamental Security Philosophy Differences</h4>
+<p><strong>Concept.</strong> <strong>OT vs. IT: Fundamental Security
+Philosophy Differences</strong> applies OT, IT, Fundamental within
+ICS/OT Cyber-Physical Defense and Tabletop Readiness: learners use
+separate cyber analysis from unsafe process control or live operational
+action and safety-aware tabletop readiness and defensive coverage review
+evidence before any judgment moves forward.</p>
+<p><strong>Why it matters.</strong> <strong>OT vs. IT: Fundamental
+Security Philosophy Differences</strong> connects classroom vocabulary
+to ICS/OT Cyber-Physical Defense and Tabletop Readiness practice:
+learners document evidence, caveats, and reviewer ownership rather than
+repeating labels.</p>
+<p><strong>Source support.</strong> <strong>OT vs. IT: Fundamental
+Security Philosophy Differences</strong> rests on [ageint209] and
+[ageint210]. The closest source to this row notes: A glossary entry from
+the cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. Use them for the claim that <strong>OT
+vs. IT: Fundamental Security Philosophy Differences</strong> lets you
+defend here, the limit it has to respect, and the re-check owed before
+reuse. External triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>OT vs. IT:
+Fundamental Security Philosophy Differences</strong>, reason from the
+sources cited in this row. [ageint209] A glossary entry from the
+cybersecurity company Bitsight explaining Industrial Control Systems
+(ICS), defined as integrated hardware and software used to control,
+monitor, and automate industrial processes across manufacturing, energy,
+and critical infrastructure. [ageint210] A Palo Alto Networks Cyberpedia
+article explaining the relationship among operational technology (OT),
+industrial control system (ICS), and SCADA security. Read each cited
+work for what it can support about this topic, where that claim
+originated, how confident it is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>OT vs. IT</strong>,
+build a <strong>tabletop packet with OT asset inventory, architecture
+record, consequences, injects, and debrief rubric</strong> for this
+safety-aware tabletop readiness and defensive coverage review topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>OT vs IT</strong>, the caveat that limits it, the uncertainty
+note, the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape <strong>OT vs. IT: Fundamental Security Philosophy
+Differences</strong> work as a <strong>cyber-physical tabletop evidence
+packet</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+OT vs. IT: Fundamental Security Philosophy Differences establishes
+intent without reviewing alternative explanations.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>OT vs. IT:
+Fundamental Security Philosophy Differences</strong> to a second module
+by preserving safety-aware tabletop readiness and defensive coverage
+review, changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-6-air-gap-erosion-the-digital-transformation-vulnerability">Lesson
+6: Air-Gap Erosion: The Digital Transformation Vulnerability</h4>
+<p><strong>Concept.</strong> <strong>Air-Gap Erosion: The Digital
+Transformation Vulnerability</strong> treats the vulnerability record as
+an assurance case: severity, affected component, provenance, mitigation
+status, and uncertainty stay separate.</p>
+<p><strong>Why it matters.</strong> <strong>Air-Gap Erosion: The Digital
+Transformation Vulnerability</strong> matters in the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> lane because
+safety-aware tabletop readiness and defensive coverage evidence must
+stay separate from judgment; IT-first assumptions is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>Air-Gap Erosion: The Digital
+Transformation Vulnerability</strong> rests on [ageint209]. The closest
+source to this row notes: A glossary entry from the cybersecurity
+company Bitsight explaining Industrial Control Systems (ICS), defined as
+integrated hardware and software used to control, monitor, and automate
+industrial processes across manufacturing, energy, and critical
+infrastructure. Use it for fixing what <strong>Air-Gap Erosion: The
+Digital Transformation Vulnerability</strong> covers, marking the
+boundary it must not cross, and timing the next source refresh. External
+triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Air-Gap Erosion:
+The Digital Transformation Vulnerability</strong> in the evidence the
+row cites. [ageint209] A glossary entry from the cybersecurity company
+Bitsight explaining Industrial Control Systems (ICS), defined as
+integrated hardware and software used to control, monitor, and automate
+industrial processes across manufacturing, energy, and critical
+infrastructure. Read each cited work for what it can support about this
+topic, where that claim originated, how confident it is, and what
+evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>Air-Gap
+Erosion</strong>, build a <strong>tabletop packet with OT asset
+inventory, architecture record, consequences, injects, and debrief
+rubric</strong> for this safety-aware tabletop readiness and defensive
+coverage review topic. The artifact must name the source descriptor, the
+bounded claim about <strong>Air-Gap Erosion</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>Air-Gap Erosion: The
+Digital Transformation Vulnerability</strong> work as a
+<strong>cyber-physical tabletop evidence packet</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Air-Gap Erosion: The Digital Transformation Vulnerability replaces human
+review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Air-Gap Erosion: The
+Digital Transformation Vulnerability</strong> to a second module by
+preserving safety-aware tabletop readiness and defensive coverage
+review, changing the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-7-securing-ics-components-protocols-performance-vulnerability">Lesson
+7: Securing ICS: Components, Protocols, Performance, Vulnerability</h4>
+<p><strong>Concept.</strong> <strong>Securing ICS: Components,
+Protocols, Performance, Vulnerability</strong> treats the vulnerability
+record as an assurance case: severity, affected component, provenance,
+mitigation status, and uncertainty stay separate.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Securing ICS:
+Components, Protocols, Performance, Vulnerability</strong> to separate
+cyber analysis from unsafe process control or live operational action. A
+defensible treatment names the judgment it enables for safety-aware
+tabletop readiness and defensive coverage review, the proof limit that
+IT-first assumptions would otherwise hide, and the reviewer accountable
+for challenge.</p>
+<p><strong>Source support.</strong> <strong>Securing ICS: Components,
+Protocols, Performance, Vulnerability</strong> rests on [ageint208]. The
+lead source’s own note reads: This article provides a comprehensive
+overview of cybersecurity for Industrial Control Systems, covering
+SCADA, distributed control systems, and programmable logic controllers
+as they have evolved from isolated architectures to networked,
+cloud-connected deployments. Use it for fixing what <strong>Securing
+ICS: Components, Protocols, Performance, Vulnerability</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Securing ICS:
+Components, Protocols, Performance, Vulnerability</strong>, work from
+the cited evidence behind this row. [ageint208] This article provides a
+comprehensive overview of cybersecurity for Industrial Control Systems,
+covering SCADA, distributed control systems, and programmable logic
+controllers as they have evolved from isolated architectures to
+networked, cloud-connected deployments. From each source, pull the
+bounded claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>Securing ICS</strong>,
+build a <strong>tabletop packet with OT asset inventory, architecture
+record, consequences, injects, and debrief rubric</strong> for this
+safety-aware tabletop readiness and defensive coverage review topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>Securing ICS</strong>, the caveat that limits it, the
+uncertainty note, the out-of-scope-use boundary, and the reviewer
+accountable for challenge. Shape <strong>Securing ICS: Components,
+Protocols, Performance, Vulnerability</strong> work as a
+<strong>cyber-physical tabletop evidence packet</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Securing ICS: Components, Protocols, Performance, Vulnerability can be
+used while ignoring the rule to separate cyber analysis from unsafe
+process control or live operational action.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Securing ICS:
+Components, Protocols, Performance, Vulnerability</strong> to a second
+module by preserving safety-aware tabletop readiness and defensive
+coverage review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4 id="lesson-8-2026-cybersecurity-guide-to-ics-claroty">Lesson 8: 2026
+Cybersecurity Guide to ICS (Claroty)</h4>
+<p><strong>Concept.</strong> <strong>2026 Cybersecurity Guide to ICS
+(Claroty)</strong> applies Cybersecurity, Guide, ICS within ICS/OT
+Cyber-Physical Defense and Tabletop Readiness: learners use separate
+cyber analysis from unsafe process control or live operational action
+and safety-aware tabletop readiness and defensive coverage review
+evidence before any judgment moves forward.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>2026 Cybersecurity Guide</strong>, IT-first assumptions
+undermines safety-aware tabletop readiness and defensive coverage
+review; the lesson builds the habit to separate cyber analysis from
+unsafe process control or live operational action.</p>
+<p><strong>Source support.</strong> <strong>2026 Cybersecurity Guide to
+ICS (Claroty)</strong> rests on [ageint211]. Its anchor reference
+records: It identifies challenges including an expanded attack surface,
+legacy systems lacking modern protections, third-party access gaps,
+patching delays due to uptime requirements, and advanced adversaries
+targeting ICS. Use it for fixing what <strong>2026 Cybersecurity Guide
+to ICS (Claroty)</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>2026 Cybersecurity
+Guide</strong>, work from the cited evidence behind this row.
+[ageint211] A Claroty guide to securing industrial control systems (ICS)
+amid IT and operational technology convergence. It identifies challenges
+including an expanded attack surface, legacy systems lacking modern
+protections, third-party access gaps, patching delays due to uptime
+requirements, and advanced adversaries targeting ICS. Read each cited
+work for what it can support about this topic, where that claim
+originated, how confident it is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> For <strong>2026 Cybersecurity
+Guide</strong>, build a <strong>tabletop packet with OT asset inventory,
+architecture record, consequences, injects, and debrief rubric</strong>
+for this safety-aware tabletop readiness and defensive coverage review
+topic. The artifact must name the source descriptor, the bounded claim
+about <strong>Cybersecurity Guide to ICS</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>2026 Cybersecurity
+Guide</strong> work as a <strong>cyber-physical tabletop evidence
+packet</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+2026 Cybersecurity Guide to ICS (Claroty) is optional whenever separate
+cyber analysis from unsafe process control or live operational action
+feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>2026 Cybersecurity
+Guide</strong> to a second module by preserving safety-aware tabletop
+readiness and defensive coverage review, changing the source evidence,
+and naming a new reviewer.</p>
+<h4
+id="lesson-9-ot-vs.-ics-vs.-scada-security-palo-alto-networks">Lesson 9:
+OT vs. ICS vs. SCADA Security (Palo Alto Networks)</h4>
+<p><strong>Concept.</strong> <strong>OT vs. ICS vs. SCADA Security (Palo
+Alto Networks)</strong> maps industrial assets, safety interlocks,
+operator roles, and consequence before any cyber-physical inference.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>OT vs. ICS
+vs. SCADA Security (Palo Alto Networks)</strong> to separate cyber
+analysis from unsafe process control or live operational action. A
+defensible treatment names the judgment it enables for safety-aware
+tabletop readiness and defensive coverage review, the proof limit that
+IT-first assumptions would otherwise hide, and the reviewer accountable
+for challenge.</p>
+<p><strong>Source support.</strong> <strong>OT vs. ICS vs. SCADA
+Security (Palo Alto Networks)</strong> rests on [ageint210]. The most
+specific cited work observes: A Palo Alto Networks Cyberpedia article
+explaining the relationship among operational technology (OT),
+industrial control system (ICS), and SCADA security. Use it for pinning
+down the scope of <strong>OT vs. ICS vs. SCADA Security (Palo Alto
+Networks)</strong>, the edge of that scope, and when these citations
+need re-verifying before transfer. External triangulation uses
+[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>OT vs. ICS
+vs. SCADA Security (Palo Alto Networks)</strong> in the evidence the row
+cites. [ageint210] A Palo Alto Networks Cyberpedia article explaining
+the relationship among operational technology (OT), industrial control
+system (ICS), and SCADA security. Each source above earns its place in
+this topic only when you can state its bounded claim, its provenance,
+its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>OT vs. ICS vs. SCADA
+Security (Palo Alto Networks)</strong>, build a <strong>tabletop packet
+with OT asset inventory, architecture record, consequences, injects, and
+debrief rubric</strong> for this safety-aware tabletop readiness and
+defensive coverage review topic. The artifact must name the source
+descriptor, the bounded claim about <strong>OT vs ICS vs SCADA</strong>,
+the caveat that limits it, the uncertainty note, the out-of-scope-use
+boundary, and the reviewer accountable for challenge. Shape this subject
+work as a <strong>cyber-physical tabletop evidence packet</strong> that
+names evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+OT vs. ICS vs. SCADA Security (Palo Alto Networks) establishes intent
+without reviewing alternative explanations.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>OT vs. ICS vs. SCADA
+Security (Palo Alto Networks)</strong> to a second module by preserving
+safety-aware tabletop readiness and defensive coverage review, changing
+the source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-10-operational-technology-cybersecurity-idaho-national-laboratory">Lesson
+10: Operational Technology Cybersecurity (Idaho National
+Laboratory)</h4>
+<p><strong>Concept.</strong> <strong>Operational Technology
+Cybersecurity (Idaho National Laboratory)</strong> maps industrial
+assets, safety interlocks, operator roles, and consequence before any
+cyber-physical inference.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Operational
+Technology Cybersecurity (Idaho National Laboratory)</strong> to
+separate cyber analysis from unsafe process control or live operational
+action. A defensible treatment names the judgment it enables for
+safety-aware tabletop readiness and defensive coverage review, the proof
+limit that IT-first assumptions would otherwise hide, and the reviewer
+accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Operational Technology
+Cybersecurity (Idaho National Laboratory)</strong> rests on [ageint212].
+Use it for the working definition that <strong>Operational Technology
+Cybersecurity (Idaho National Laboratory)</strong> can defend, where
+that scope ends, and the refresh check owed before this evidence
+transfers. External triangulation uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Operational
+Technology Cybersecurity (Idaho National Laboratory)</strong>, work from
+the cited evidence behind this row. From each source, pull the bounded
+claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>Operational Technology
+Cybersecurity (Idaho National Laboratory)</strong>, build a
+<strong>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</strong> for this safety-aware
+tabletop readiness and defensive coverage review topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>Operational Technology Cybersecurity</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape this subject work as a
+<strong>cyber-physical tabletop evidence packet</strong> that records
+its evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Operational Technology Cybersecurity (Idaho National Laboratory)
+replaces human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Operational
+Technology Cybersecurity (Idaho National Laboratory)</strong> to a
+second module by preserving safety-aware tabletop readiness and
+defensive coverage review, changing the source evidence, and naming a
+new reviewer.</p>
+<h3
+id="industrial-control-systems-ics-and-operational-technology-worked-safe-example-synthetic-inputs-evidence-and-review">Industrial
+Control Systems (ICS) and Operational Technology worked safe example:
+synthetic inputs, evidence, and review</h3>
+<p>Worked example: a sample water-utility tabletop reviews synthetic
+process logs after a simulated anomaly. [ageint255]; [ageint256].</p>
+<p><strong>Triangulation anchors.</strong> In module 45’s worked-example
+section, directly verified anchors for the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane include
+[official_nist_csf_2]; [official_nist_sp_800_160r1];
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p><strong>Unit discipline spine.</strong> Discipline:
+<strong>safety-aware ICS and OT intelligence</strong>. Learners use a
+<strong>cyber-physical tabletop evidence packet</strong> and keep this
+boundary visible: No live device control, unsafe process change, exploit
+sequence, evasion, or operational response.</p>
+<p><strong>Frame.</strong> The classroom question centers on <strong>ICS
+Architecture: SCADA, DCS, PLC, HMI — Definitions and Roles</strong>.
+Excluded actions stay explicit, and the <strong>Cyber-Physical Readiness
+Lens</strong> planning question is: Which asset, architecture record,
+consequence, operator decision, and recovery path is being exercised
+defensively?</p>
+<p><strong>Inputs.</strong> For the <strong>ICS Architecture: SCADA,
+DCS, PLC, HMI</strong> scenario, use toy HMI screenshots, fabricated
+network alerts, public ICS control guidance, and a safety stop card. The
+Cyber-Physical Readiness Lens intake note records provenance,
+sensitivity, fit-to-purpose, and why the fixture is enough for this
+bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>ICS Architecture: SCADA, DCS,
+PLC, HMI</strong>, students map assets to consequences, classify
+tabletop injects, identify human decisions, and preserve recovery
+evidence. Pause whenever an inference about ICS Architecture: SCADA,
+DCS, PLC, HMI appears without evidence, confidence outruns support, or
+an agent output is treated as judgment.</p>
+<p><strong>Filled artifact.</strong> Purpose = <strong>ICS Architecture:
+SCADA, DCS, PLC, HMI</strong> classroom scenario; unit artifact =
+cyber-physical tabletop evidence packet; evidence = allowed inputs;
+method = safety-aware tabletop readiness and defensive coverage review;
+output = a cyber-physical tabletop packet with assets, consequences,
+ATT&amp;CK mapping, decisions, and debrief; boundary = no external
+action; reviewer = instructor or named peer.</p>
+<p><strong>Flawed answer to revise.</strong> Treating <strong>ICS
+Architecture: SCADA, DCS, PLC, HMI</strong> as “Cyber-Physical Readiness
+Lens confirms it” is not enough. The revision ties the claim to
+safety-aware tabletop readiness and defensive coverage review, adds the
+missing caveat, states confidence, and records the reviewer who accepted
+the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>ICS
+Architecture: SCADA, DCS, PLC, HMI</strong> records the defensible
+claim, the assumption most likely to fail, the evidence that would
+change confidence, and the review condition for stopping reuse.</p>
+<h3
+id="industrial-control-systems-ics-and-operational-technology-practice-sequence-studio-moves-artifact-steps-and-limits">Industrial
+Control Systems (ICS) and Operational Technology practice sequence:
+studio moves, artifact steps, and limits</h3>
+<p>The studio sequence uses the <strong>Cyber-Physical Readiness
+Lens</strong> practice lens. Moves 1-3 form the compressed path; the
+full seminar path adds challenge, handoff, and a review memo for
+<strong>ICS Architecture: SCADA, DCS, PLC, HMI; SCADA: Supervisory
+Control and Data Acquisition</strong>.</p>
+<p><strong>Triangulation anchors.</strong> In module 45’s
+practice-sequence section, directly verified anchors for the
+<strong>ICS/OT Cyber-Physical Defense and Tabletop Readiness</strong>
+lane include [official_nist_csf_2]; [official_nist_sp_800_160r1];
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Move</th>
+<th>Learner action</th>
+<th>Output</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Distinguish</td>
+<td>Compare ICS Architecture: SCADA, DCS, PLC, HMI, SCADA: Supervisory
+Control and Data Acquisition, DCS: Distributed Control Systems; name
+what each topic can and cannot prove.</td>
+<td>Glossary-and-contrast card.</td>
+<td>Terms match the <strong>ICS/OT Cyber-Physical Defense and Tabletop
+Readiness</strong> lane.</td>
+</tr>
+<tr>
+<td>2. Frame</td>
+<td>Answer the lens question: Which asset, architecture record,
+consequence, operator decision, and recovery path is being exercised
+defensively?</td>
+<td>Scope card.</td>
+<td>Authority, excluded actions, data boundary, and reviewer are
+explicit.</td>
+</tr>
+<tr>
+<td>3. Evidence</td>
+<td>Fill the artifact fields for ICS Architecture: SCADA, DCS, PLC, HMI:
+tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric.</td>
+<td>Evidence packet.</td>
+<td>Sources, caveats, confidence, and uncertainty stay separable.</td>
+</tr>
+<tr>
+<td>3a. Unit artifact</td>
+<td>Add the cyber-physical tabletop evidence packet fields for ICS
+Architecture: SCADA, DCS, PLC, HMI.</td>
+<td>Unit profile note.</td>
+<td>Evidence artifacts include asset-consequence map, operator decision
+log.</td>
+</tr>
+<tr>
+<td>4. Challenge</td>
+<td>Test the misconception that ICS Architecture: SCADA, DCS, PLC, HMI —
+Definitions and Roles establishes intent without reviewing alternative
+explanations.</td>
+<td>Failure-mode note.</td>
+<td>The artifact applies the key distinction: separate cyber analysis
+from unsafe process control or live operational action.</td>
+</tr>
+<tr>
+<td>5. Handoff</td>
+<td>Prepare the artifact for another reviewer.</td>
+<td>Handoff memo.</td>
+<td>Inputs, transformations, reviewer, refresh trigger, and residual
+risk are visible.</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="industrial-control-systems-ics-and-operational-technology-instructor-notes-source-reasoning-review-points-and-studio-focus">Industrial
+Control Systems (ICS) and Operational Technology instructor notes:
+source reasoning, review points, and studio focus</h4>
+<p>Ask learners to verbalize the difference between a source, an
+inference, and a decision. Require a revision whenever a claim cannot be
+traced to a source descriptor or a human review point. Keep the focus on
+<strong>ICS Architecture: SCADA, DCS, PLC, HMI; SCADA: Supervisory
+Control and Data Acquisition</strong>. [ageint255]; [ageint256].</p>
+<h4
+id="industrial-control-systems-ics-and-operational-technology-extension-exercise-peer-validation-and-refresh-trigger-review">Industrial
+Control Systems (ICS) and Operational Technology extension exercise:
+peer validation and refresh trigger review</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-industrial-control-systems-ics-and-operational-technology];
+[ageint255].</p>
+<p>Have learners swap artifacts and apply the <strong>Cyber-Physical
+Readiness Lens</strong> validation rule to someone else’s work. The
+receiving learner must identify one strength, one missing caveat, and
+one refresh trigger for <strong>ICS Architecture: SCADA, DCS, PLC, HMI;
+SCADA: Supervisory Control and Data Acquisition</strong>.</p>
+<h3
+id="industrial-control-systems-ics-and-operational-technology-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Industrial
+Control Systems (ICS) and Operational Technology knowledge check:
+misconceptions, evidence, and reviewer prompts</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-industrial-control-systems-ics-and-operational-technology];
+[ageint255].</p>
+<ol type="1">
+<li>Explain how <strong>ICS Architecture: SCADA, DCS, PLC, HMI —
+Definitions and Roles</strong> is defined here; name the source
+descriptor that supports the definition.</li>
+<li>Contrast <strong>ICS Architecture: SCADA, DCS, PLC, HMI</strong>
+with <strong>SCADA: Supervisory Control and Data Acquisition</strong>
+using the <strong>Cyber-Physical Readiness Lens</strong> artifact
+fields.</li>
+<li>Identify one failure mode from the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane and the evidence that would
+reveal it.</li>
+<li>Answer the coursebook review question: Which cyber observation
+changes meaning once physical consequence is considered?</li>
+<li>Correct this misconception: that ICS Architecture: SCADA, DCS, PLC,
+HMI — Definitions and Roles establishes intent without reviewing
+alternative explanations.</li>
+</ol>
+<h4
+id="industrial-control-systems-ics-and-operational-technology-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">Industrial
+Control Systems (ICS) and Operational Technology answer quality rubric:
+source evidence, uncertainty, and safe transfer</h4>
+<p>Judge answers with the canonical mastery evidence standard in the
+shared method-and-assurance reference
+([sec:method-assurance-reference]): a strong answer uses source
+evidence, distinguishes observation from judgment, names uncertainty,
+and states the safe boundary, while a revise-level answer gives a
+memorized definition of <strong>ICS Architecture: SCADA, DCS, PLC,
+HMI</strong> without source evidence, uncertainty, or a safe transfer
+task.</p>
+</body>
+</html>

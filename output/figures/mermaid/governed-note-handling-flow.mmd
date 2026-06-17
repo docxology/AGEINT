@@ -1,0 +1,17 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["Information Architecture<br/>governed handling of an<br/>intelligence note from intake to share"]
+    intake["Intake<br/>source captured with<br/>provenance and date"]
+    triage["Triage<br/>classify sensitivity<br/>and reliability"]
+    atom["Atomic note<br/>one claim, linked to<br/>source and evidence"]
+    ledger["Claim ledger<br/>track confidence and<br/>supporting sources"]
+    mark["Marking<br/>apply TLP and<br/>handling caveats"]
+    minim["Minimization<br/>strip irrelevant<br/>personal data"]
+    review2["Dissemination review<br/>need-to-know check<br/>before release"]
+    share(["Controlled share<br/>release to approved<br/>recipients only"])
+    archive(["Retention<br/>audit trail and<br/>review-by date"])
+    root --> intake --> triage --> atom --> ledger
+    ledger --> mark --> minim --> review2
+    review2 --> share
+    review2 --> archive
+    minim -.->|fails check| triage

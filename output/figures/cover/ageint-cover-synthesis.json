@@ -1,0 +1,218 @@
+{
+  "boundary_terms": [
+    "DEFENSIVE",
+    "EDUCATIONAL",
+    "ACCOUNTABLE",
+    "SYNTHETIC",
+    "EVIDENCE-BOUNDED"
+  ],
+  "description": "Deterministic non-numbered cover image for the AGEINT PDF title page. The visual is a conceptual domain map and evidence-lens atlas for source spine, Synthetic Analytic Tradecraft, bounded agentic assistance, verification, and safety constraints; it is not a performance or completeness claim.",
+  "domain_labels": [
+    "HUMINT",
+    "SIGINT",
+    "OSINT",
+    "GEOINT/IMINT",
+    "FININT",
+    "CYBINT/CTI",
+    "TECHINT/MASINT",
+    "CI",
+    "COGSEC",
+    "ALL-SOURCE FUSION"
+  ],
+  "kind": "cover_art",
+  "layout_regions": [
+    {
+      "box": [
+        140,
+        95,
+        2260,
+        260
+      ],
+      "name": "header"
+    },
+    {
+      "box": [
+        270,
+        300,
+        2130,
+        390
+      ],
+      "name": "boundary_key"
+    },
+    {
+      "box": [
+        410,
+        430,
+        1990,
+        660
+      ],
+      "name": "agentic_layer"
+    },
+    {
+      "box": [
+        235,
+        780,
+        585,
+        858
+      ],
+      "name": "domain_humint"
+    },
+    {
+      "box": [
+        235,
+        910,
+        585,
+        988
+      ],
+      "name": "domain_sigint"
+    },
+    {
+      "box": [
+        235,
+        1040,
+        585,
+        1118
+      ],
+      "name": "domain_geoint_imint"
+    },
+    {
+      "box": [
+        235,
+        1170,
+        585,
+        1248
+      ],
+      "name": "domain_techint_masint"
+    },
+    {
+      "box": [
+        235,
+        1300,
+        585,
+        1378
+      ],
+      "name": "domain_cogsec"
+    },
+    {
+      "box": [
+        670,
+        820,
+        1730,
+        1420
+      ],
+      "name": "tradecraft_core"
+    },
+    {
+      "box": [
+        1815,
+        780,
+        2165,
+        858
+      ],
+      "name": "domain_osint"
+    },
+    {
+      "box": [
+        1815,
+        910,
+        2165,
+        988
+      ],
+      "name": "domain_finint"
+    },
+    {
+      "box": [
+        1815,
+        1040,
+        2165,
+        1118
+      ],
+      "name": "domain_cybint_cti"
+    },
+    {
+      "box": [
+        1815,
+        1170,
+        2165,
+        1248
+      ],
+      "name": "domain_ci"
+    },
+    {
+      "box": [
+        1815,
+        1300,
+        2165,
+        1378
+      ],
+      "name": "domain_all_source"
+    },
+    {
+      "box": [
+        260,
+        1485,
+        610,
+        1620
+      ],
+      "name": "verification_citations"
+    },
+    {
+      "box": [
+        715,
+        1485,
+        1065,
+        1620
+      ],
+      "name": "verification_figures_pdf"
+    },
+    {
+      "box": [
+        1170,
+        1485,
+        1520,
+        1620
+      ],
+      "name": "verification_metadata"
+    },
+    {
+      "box": [
+        1625,
+        1485,
+        1975,
+        1620
+      ],
+      "name": "verification_quality"
+    },
+    {
+      "box": [
+        190,
+        1715,
+        2210,
+        2075
+      ],
+      "name": "source_floor"
+    },
+    {
+      "box": [
+        220,
+        2165,
+        2180,
+        2305
+      ],
+      "name": "footer"
+    }
+  ],
+  "minimum_font_size": 24,
+  "non_numbered": true,
+  "output_path": "output/figures/cover/ageint-cover-synthesis.png",
+  "provenance": {
+    "appendices": "9",
+    "domain_labels": "HUMINT|SIGINT|OSINT|GEOINT/IMINT|FININT|CYBINT/CTI|TECHINT/MASINT|CI|COGSEC|ALL-SOURCE FUSION",
+    "modules": "51",
+    "parts": "16",
+    "references": "312",
+    "renderer": "python_pillow",
+    "source": "data/curriculum/"
+  },
+  "title": "AGEINT Cover Synthesis"
+}

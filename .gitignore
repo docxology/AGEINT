@@ -1,5 +1,15 @@
-# AGEINT generated/local outputs
-output/
+# AGEINT generated outputs — published with the release so the rendered
+# manuscript, figures, PDF, web, and audit reports are browsable on GitHub.
+# Negation overrides the parent core.excludesFile, which ignores output/.
+!output/
+!output/**
+# ...but keep transient build state out of the repo:
+output/logs/
+output/.checkpoints/
+output/.pipeline/
+output/llm/
+output/simulations/
+output/tex/
 .coverage
 coverage*.json
 htmlcov/

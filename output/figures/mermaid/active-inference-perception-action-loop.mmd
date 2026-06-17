@@ -1,0 +1,12 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  M[Generative model of the world] --> P[Predicted observations]
+  S([Sensory observations]) --> E{Prediction error / free energy}
+  P --> E
+  E -->|Perceptual inference| B[Update beliefs and hidden-state estimates]
+  B --> M
+  E -->|Active inference| Q[Select policy minimizing expected free energy]
+  B --> Q
+  Q --> ACT[Action on environment]
+  ACT --> W([World state changes])
+  W --> S

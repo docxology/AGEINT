@@ -1,0 +1,23 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  SR["Source Reporting"]
+  VR["Vetting and Credibility Review"]
+  RA([Reliability Assessment])
+  CC([Corroboration Check])
+  CI([Counterintelligence Review])
+  GATE{"Compromise Indicators?"}
+  PROT([Compartmentation and Protective Measures])
+  VAL([Validated Reporting])
+  AUD["Audit and Records Trail"]
+  SR --> VR
+  VR --> RA
+  VR --> CC
+  VR --> CI
+  RA --> GATE
+  CC --> GATE
+  CI --> GATE
+  GATE -->|yes| PROT
+  GATE -->|no| VAL
+  PROT --> AUD
+  VAL --> AUD
+  AUD --> VR

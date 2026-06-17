@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-06-17T04:40:30+00:00",
+  "issue_rows": [],
+  "negative_control": "A generated Markdown link to a .md file, an old generic scaffold heading, a lesson cross-link line without sec/fig refs, or a table row that contains only citation keys must fail reference_quality_ok.",
+  "ok": true,
+  "project": "AGEINT",
+  "schema_version": "1.0",
+  "summary": {
+    "citation_context_issues": 0,
+    "cross_link_issues": 0,
+    "generic_heading_issues": 0,
+    "issue_count": 0,
+    "markdown_file_link_issues": 0,
+    "raw_literal_citation_issues": 0,
+    "rendered_reference_issues": 0,
+    "scanned_files": 332
+  }
+}

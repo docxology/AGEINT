@@ -1,0 +1,21 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart LR
+  EVID["Evidence base"] --> PROB["Likelihood term<br/>what may happen"]
+  EVID --> QUAL["Source quality<br/>access, reliability, gaps"]
+  QUAL --> CONF["Analytic confidence<br/>basis for judgment"]
+  ASSUME["Assumptions"] --> CONF
+  ALT["Alternatives"] --> CONF
+  DISSENT["Dissent or caveat"] --> REVIEW{"Reviewer gate"}
+  PROB --> REVIEW
+  CONF --> REVIEW
+  REVIEW -->|"separate and supported"| RELEASE["Publish bounded judgment"]
+  REVIEW -->|"collapsed language"| FIX["Revise probability/confidence"]
+  LEG["ICD 203 boundary: likelihood is not confidence"]
+  classDef evidence fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef field fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef gate fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class EVID,QUAL evidence
+  class PROB,CONF,ASSUME,ALT,DISSENT,RELEASE field
+  class REVIEW,LEG gate
+  class FIX stop

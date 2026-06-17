@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  EXE["Executive systems, control"] --> EXP["Information threat exposure"]
+  AFF["Affective systems, emotion"] --> EXP
+  INT["Integrative network systems"] --> EXP
+  EXP --> MARK["Susceptibility and resilience markers"]
+  MARK --> LOAD["Cognitive load metrics"]
+  LOAD --> TLX["NASA TLX and biometrics"]
+  MARK --> CTRL["Resilience controls"]
+  CTRL --> INOC["Inoculation and prebunking"]
+  CTRL --> WORK["Workload management"]
+  CTRL --> CHK["Analytic checklists"]
+  TLX --> WORK
+  CHK --> EXE

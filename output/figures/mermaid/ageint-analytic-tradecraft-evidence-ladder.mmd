@@ -1,0 +1,20 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  KENT["Professional standards<br/>Kent + CIA CSI"] --> ICD["Analytic standards<br/>ICD 203"]
+  ICD --> REFORM["Reform and failure evidence<br/>IRTPA, 9/11, WMD, Senate Iraq"]
+  REFORM --> SAT["SAT catalogues and pedagogy<br/>CIA, NATO, Heuer, FOI, JIPS, SAGE"]
+  SAT --> EMP["Empirical SAT evidence<br/>RAND, Coulthart, Ard, ACH studies"]
+  EMP --> FORE["Decision science<br/>calibration, aggregation, coherence"]
+  FORE --> AI["Reasoning support<br/>IARPA ACE / REASON<br/>analyst accountable"]
+  AI --> GATE{"Bounded claim gate"}
+  GATE -->|"source class named<br/>mechanism caveated"| OK["Reviewable tradecraft claim"]
+  GATE -->|"score, proof, or<br/>autonomous judgment"| STOP["Revise or caveat"]
+  LEG["Compare evidence type, not a performance ranking"]
+  classDef source fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef gate fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef ok fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class KENT,ICD,REFORM,SAT,EMP,FORE,AI source
+  class GATE,LEG gate
+  class OK ok
+  class STOP stop

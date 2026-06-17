@@ -1,0 +1,23 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph DEF["Foundations (Ch37)"]
+    DEFN["Definitions: defending cognition, not censoring"]
+  end
+  subgraph MECH["Mechanism Layer (Ch38)"]
+    NEURO["Neurocognitive mechanisms and vulnerabilities"]
+  end
+  subgraph DEFENSE["Defensive Interventions (Ch39)"]
+    INOC["Inoculation and prebunking"]
+  end
+  subgraph OPS["Operations Layer (Ch40)"]
+    PLAN["Program planning and ethics"]
+    MEAS["Measurement and effect tracking"]
+    GOV["Oversight and rights safeguards"]
+  end
+  DEFN --> NEURO
+  NEURO --> INOC
+  INOC --> PLAN
+  PLAN --> MEAS
+  MEAS --> GOV
+  GOV -.->|"refine education"| INOC
+  NEURO -.->|"informs design"| INOC

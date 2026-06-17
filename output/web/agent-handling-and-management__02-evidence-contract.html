@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="agent-handling-and-management-assurance-handoff-evidence-governance-refresh-and-capstone">Agent
+Handling and Management assurance handoff: evidence, governance,
+refresh, and capstone</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<h3
+id="agent-handling-and-management-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">Agent
+Handling and Management evidence contract: source spine, verified
+anchors, transfer architecture, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<h3
+id="agent-handling-and-management-transfer-architecture-module-inputs-outputs-and-review-boundary">Agent
+Handling and Management transfer architecture: module inputs, outputs,
+and review boundary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<h4
+id="agent-handling-and-management-lineage-and-source-tradition-profile-concepts-and-first-anchors">Agent
+Handling and Management lineage and source tradition: profile, concepts,
+and first anchors</h4>
+<p>This sits in the <strong>Collection Management and Multi-INT
+Requirements Discipline</strong> lineage: requirements-driven,
+authority-bounded collection where priorities, legal basis,
+minimization, source protection, and evaluation are explicit.
+[ageint239]; [ageint240].</p>
+<h4
+id="agent-handling-and-management-working-model-inputs-constraints-transforms-outputs-and-oversight">Agent
+Handling and Management working model: inputs, constraints, transforms,
+outputs, and oversight</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust; Historical meeting-structure
+ethics</strong>, with provenance and reviewability throughout.</p>
+<h4
+id="agent-handling-and-management-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">Agent
+Handling and Management knowledge architecture: inputs, transforms,
+outputs, and failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> accountable requirements, source-discipline
+choices, minimization rules, source-risk notes, and evaluation criteria.
+[ageint239]; [ageint240].</li>
+<li><strong>Transforms:</strong> priority mapping, source-discipline
+fit, least-intrusive evidence selection, and feedback review.</li>
+<li><strong>Outputs:</strong> requirements matrix, collection-limit
+note, source-quality card, and gap list.</li>
+<li><strong>Failure modes:</strong> recruitment or interception drift,
+over-collection, weak minimization, and source exposure.</li>
+</ul>
+<h4
+id="agent-handling-and-management-transfer-contracts-authority-evidence-tools-and-auditable-output">Agent
+Handling and Management transfer contracts: authority, evidence, tools,
+and auditable output</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust; Historical meeting-structure ethics</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the <strong>Collection
+Management and Multi-INT Requirements Discipline</strong> source
+descriptors, transformations, claims, uncertainty, and confidence
+separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+requirements matrix, collection-limit note, source-quality card, and gap
+list that another reviewer can audit.</li>
+</ul>
+<h4
+id="agent-handling-and-management-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">Agent
+Handling and Management profile emphasis and local focus: method stack
+and topic cluster</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<p>The matched profile emphasizes requirements-driven, authority-bounded
+collection where priorities, legal basis, minimization, source
+protection, and evaluation are explicit. The method stack is priority
+mapping, requirement decomposition, source-discipline fit, coverage-gap
+review, legal-authority check, and collection-feedback loop; the local
+topic cluster is <strong>The Case Officer–Agent Relationship: Building,
+Maintaining, Testing Trust; Historical meeting-structure
+ethics</strong>.</p>
+<h3
+id="agent-handling-and-management-evidence-spine-source-roles-citation-support-and-claim-limits">Agent
+Handling and Management evidence spine: source roles, citation support,
+and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>Collection Management and
+Multi-INT Requirements Discipline</strong> profile tells reviewers what
+evidence is strong enough for the module artifact built around
+<strong>The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust; Historical meeting-structure ethics</strong>.</p>
+<h4
+id="agent-handling-and-management-guide-source-spine-inherited-keys-and-local-citation-roles">Agent
+Handling and Management guide source spine: inherited keys and local
+citation roles</h4>
+<p>Primary guide citations: [ageint239]; [ageint240]; [ageint241];
+[ageint273]; [ageint276]; [ageint285]; [ageint286]; [ageint290];
+[ageint294]; [ageint025]; [ageint029]; [ageint004]; [ageint026];
+[ageint016]; [ageint027]; [ageint028]; [ageint030]; [ageint031];
+[ageint032].</p>
+<h4
+id="agent-handling-and-management-verified-source-canon-direct-anchors-and-claim-boundaries">Agent
+Handling and Management verified source canon: direct anchors and claim
+boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint239]; [ageint240].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint239]; [ageint240]; [ageint241]; [ageint273]; [ageint276];
+[ageint285]; [ageint286]; [ageint290]; [ageint294]; [ageint025];
+[ageint029]; [ageint004]; [ageint026]; [ageint016]; [ageint027];
+[ageint028]; [ageint030]; [ageint031]; [ageint032].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 5’s source-canon
+section, directly verified anchors for the <strong>Collection Management
+and Multi-INT Requirements Discipline</strong> lane include
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for <strong>The
+Case Officer–Agent Relationship: Building, Maintaining, Testing Trust;
+Historical meeting-structure ethics</strong> and [ageint239];
+[ageint240], but only directly verified source URLs are encoded as
+citations.</p>
+<h4
+id="agent-handling-and-management-intelligence-practice-lens-evidence-artifact-and-safety-check">Agent
+Handling and Management intelligence practice lens: evidence artifact
+and safety check</h4>
+<p>Practice lens: <strong>Requirements-to-Evidence Lens</strong> for
+<strong>The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust; Historical meeting-structure ethics</strong>.
+[ageint239]; [ageint240].</p>
+<p><strong>Planning question:</strong> What accountable requirement
+justifies the evidence, and which source discipline is the least
+intrusive fit?</p>
+<p><strong>Evidence artifact:</strong> requirements matrix with source
+descriptors, caveats, and collection limits.</p>
+<p><strong>Validation rule:</strong> show priority, authority,
+minimization, corroboration, and source quality before any claim is
+reused. Applied to <strong>The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust; Historical meeting-structure
+ethics</strong>.</p>
+<p><strong>Handoff contract:</strong> deliver metadata-rich evidence
+packets, not unscoped data piles or implicit targeting requests.</p>
+<p><strong>Safety check:</strong> exclude live collection, recruitment,
+surveillance, interception, tracking, and identity exposure.</p>
+<h4
+id="agent-handling-and-management-runtime-to-reader-map-generated-sections-and-verifier-surfaces">Agent
+Handling and Management runtime-to-reader map: generated sections and
+verifier surfaces</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>5.99</td>
+<td>5.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind Agent Handling and Management
+to source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>5.101</td>
+<td>5.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Agent
+Handling and Management</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>5.102</td>
+<td>5.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Agent Handling and
+Management</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>The Case Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</td>
+<td>5.1</td>
+<td>5.1 The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical meeting-structure ethics</td>
+<td>5.2</td>
+<td>5.2 source title transformed into safe curriculum treatment;
+original: Meeting Structures: Overt, Covert, and Clandestine</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical surveillance-risk and source-protection</td>
+<td>5.3</td>
+<td>5.3 source title transformed into safe curriculum treatment;
+original: The Surveillance Detection Route (SDR)</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical clandestine-communications ethics</td>
+<td>5.4</td>
+<td>5.4 source title transformed into safe curriculum treatment;
+original: Dead Drops: Physical and Digital Methods</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical cutout-and-intermediary provenance</td>
+<td>5.5</td>
+<td>5.5 source title transformed into safe curriculum treatment;
+original: Cutouts, Intermediaries, and Deniability Chains</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical front-entity provenance</td>
+<td>5.6</td>
+<td>5.6 source title transformed into safe curriculum treatment;
+original: Fronts and Shell Entities as Agent Infrastructure</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical surveillance-risk and source-protection</td>
+<td>5.7</td>
+<td>5.7 source title transformed into safe curriculum treatment;
+original: Counter-Surveillance and Detecting Hostile Surveillance</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical agent-tasking oversight</td>
+<td>5.8</td>
+<td>5.8 source title transformed into safe curriculum treatment;
+original: Running Agents-in-Place: Frequency, Tasking, Validation</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical extraction-and-termination ethics</td>
+<td>5.9</td>
+<td>5.9 source title transformed into safe curriculum treatment;
+original: Burning, Exfiltrating, and Terminating Agents</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Declassified source-protection and agent-handling ethics</td>
+<td>5.10</td>
+<td>5.10 source title transformed into safe curriculum treatment;
+original: KGB Working-with-Agents Doctrine (Declassified Manuals)</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>AI-Enhanced Micro-Expression Analysis for Source Validation</td>
+<td>5.11</td>
+<td>5.11 AI-Enhanced Micro-Expression Analysis for Source
+Validation</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Digital-age recruitment-risk and consent-boundary</td>
+<td>5.12</td>
+<td>5.12 source title transformed into safe curriculum treatment;
+original: AI-Personalized Communication: Tailoring Persuasion to Source
+Personality</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="agent-handling-and-management-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">Agent
+Handling and Management reusable subsection contract: topic rows,
+artifacts, and safety duties</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Case Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical meeting-structure ethics</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical surveillance-risk and source-protection</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical clandestine-communications ethics</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical cutout-and-intermediary provenance</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical front-entity provenance</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Counter-Surveillance and Detecting Hostile Surveillance: Historical
+surveillance-risk and source-protection</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical agent-tasking oversight</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Historical extraction-and-termination ethics</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Declassified source-protection and agent-handling ethics</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>AI-Enhanced Micro-Expression Analysis for Source Validation</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Digital-age recruitment-risk and consent-boundary</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="agent-handling-and-management-annotated-source-ledger-real-titles-and-local-contribution">Agent
+Handling and Management annotated source ledger: real titles and local
+contribution</h4>
+<p>Each source cited by this <strong>Collection Management and Multi-INT
+Requirements Discipline</strong> module is paired below with its real
+title and a one-line note on what it contributes to <strong>The Case
+Officer–Agent Relationship: Building, Maintaining, Testing Trust;
+Historical meeting-structure ethics</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint239]</td>
+<td><a
+href="https://www.ohchr.org/en/digital-space-and-human-rights">Digital
+Space and Human Rights</a></td>
+<td>Official OHCHR digital rights portal.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint240]</td>
+<td><a href="https://www.ohchr.org/en/privacy-in-the-digital-age">The
+Right to Privacy in the Digital Age</a></td>
+<td>The Office of the High Commissioner for Human Rights (OHCHR) hub
+page on the right to privacy in the digital age. It addresses how
+data-intensive technologies, particularly artificial intelligence,
+create risks for privacy, autonomy, and human dignity, and curates
+international standards, reports, and expert consultations.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint241]</td>
+<td><a
+href="https://www.coe.int/en/web/data-protection/convention108/modernised">Modernised
+Convention 108</a></td>
+<td>Official Council of Europe Convention 108+ source.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint273]</td>
+<td><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG 2
+Overview</a></td>
+<td>The W3C Web Accessibility Initiative overview of the Web Content
+Accessibility Guidelines (WCAG), an international standard for making
+web content accessible to people with disabilities. It explains that
+WCAG is organized around four principles (perceivable, operable,
+understandable, robust) with testable success criteria at three
+conformance levels (A, AA, AAA), and covers versions 2.0, 2.1, and
+2.2.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint276]</td>
+<td><a
+href="https://www.edpb.europa.eu/sme-data-protection-guide/faq-frequently-asked-questions/answer/what-data-protection-impact_en">What
+is a Data Protection Impact Assessment and When Is This
+Mandatory?</a></td>
+<td>A European Data Protection Board FAQ page, part of its data
+protection guide for small businesses, explaining Data Protection Impact
+Assessments (DPIAs) and when they are mandatory. It describes a DPIA as
+a written assessment of the impact of a planned processing operation,
+required when processing poses high risks to individuals’ rights.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint285]</td>
+<td><a href="https://airc.nist.gov/">NIST AI Resource Center</a></td>
+<td>The NIST AI Resource Center (AIRC), a government platform supporting
+implementation of the NIST AI Risk Management Framework, a voluntary
+framework for managing AI risk. It provides the core framework along
+with a playbook of practical actions, profiles tailored to specific
+sectors and technologies, use cases, and crosswalks linking the
+framework to other governance structures.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint286]</td>
+<td><a href="https://arxiv.org/abs/1810.03993">Model Cards for Model
+Reporting</a></td>
+<td>The arXiv abstract for “Model Cards for Model Reporting” (2018) by
+Mitchell, Wu, Zaldivar, and colleagues, which introduces a framework for
+transparent documentation of machine learning models. Model cards are
+short accompanying documents that report a model’s benchmarked
+performance across varied conditions, including different cultural,
+demographic, and phenotypic groups, along with intended use, evaluation
+methodology, and deployment considerations.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint290]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/a/final">NIST SP
+800-218A: Secure Software Development Practices for Generative AI and
+Dual-Use Foundation Models</a></td>
+<td>NIST Special Publication 800-218A (July 2024), which augments the
+Secure Software Development Framework with practices specific to AI
+model development across the software lifecycle. Produced in response to
+Executive Order 14110, it addresses AI model producers, developers
+building on those models, and acquirers of AI systems, and is designed
+to be used alongside NIST SP 800-218.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint294]</td>
+<td><a
+href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf">M-25-21:
+Accelerating Federal Use of AI through Innovation, Governance, and
+Public Trust</a></td>
+<td>An April 2025 Office of Management and Budget memorandum (M-25-21)
+directing executive branch agencies on federal use of artificial
+intelligence. Issued under Executive Order 14179, it instructs agencies
+to accelerate adoption of AI to improve public services and government
+efficiency while maintaining safeguards for civil rights, civil
+liberties, and privacy.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint025]</td>
+<td><a
+href="https://shows.acast.com/the-unmistakable-creative-podcast/episodes/andrew-bustamante-v2">Andrew
+Bustamante: Inside the Mind of a Spy — Tradecraft, Trust</a></td>
+<td>This is an episode of The Unmistakable Creative Podcast featuring
+former CIA field operative Andrew Bustamante discussing intelligence
+work. The conversation covers his background at the Air Force Academy
+and CIA training, and frames espionage as resting on reading people,
+trust, influence, and empathy rather than glamour or action. It also
+addresses how operatives are selected, the isolation of covert work, and
+its psychological effects on personal relationships.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint029]</td>
+<td><a
+href="https://www.scribd.com/document/513316188/Intelligence-Agenthandling">Agent
+Handling in Counterintelligence / PDF</a></td>
+<td>A roughly 28-page Scribd document titled “Agent Handling in
+Counterintelligence” providing an educational overview of intelligence
+operations. It surveys the roles of case officers in managing sources,
+recruitment and training of agents, protective measures such as fronts
+and cutouts, agent classifications including unwitting sources, and
+counterintelligence methods for identifying foreign operatives and
+reducing security breaches.</td>
+<td>verified source-guide context; do not use as primary analytic
+support</td>
+</tr>
+<tr>
+<td>[ageint004]</td>
+<td><a
+href="https://fedgovtoday.com/podcast/ai-wont-replace-spies-it-will-make-them-more-powerful-than-ever">AI
+Won’t Replace Spies—It Will Make Them More Powerful Than Ever</a></td>
+<td>Tom Mulligan argues that artificial intelligence will enhance rather
+than replace human intelligence professionals, contending that the
+future of intelligence lies in human-machine collaboration. He maintains
+that uniquely human qualities such as intuition, experience, and
+independent judgment become more valuable as adversaries gain access to
+the same AI tools.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint026]</td>
+<td><a href="https://www.youtube.com/watch?v=duymZEwvxL8">The tension
+and drama behind surveillance detection operations</a></td>
+<td>A YouTube video titled “Inside the CIA: The tension and drama behind
+surveillance detection operations,” released May 3, 2024, featuring a
+former CIA officer. The speaker describes the operational complexity and
+interpersonal tension involved in moving safely from a starting point to
+a meeting while accounting for the presence of hostile observation. It
+conveys the difficulty and stress of clandestine field meetings as
+recounted from personal experience.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint016]</td>
+<td><a
+href="https://2009-2017.state.gov/documents/organization/209870.pdf">Surveillance
+Detection - State.gov</a></td>
+<td>Place where victim can be controlled with limited avenues of
+escape.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint027]</td>
+<td><a href="https://www.youtube.com/watch?v=CRhGs3b27SA">The Dead Drop:
+Design a Communications Method Like a Spy</a></td>
+<td>Learn a technique for communicating with your family in an emergency
+using a method used by spies.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint028]</td>
+<td>Cited source (see bibliography)</td>
+<td>See bibliography for scope.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint030]</td>
+<td><a
+href="https://telluric.us/the-secrets-of-countersurveillance/">The
+Secrets of Countersurveillance</a></td>
+<td>See bibliography for scope.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint031]</td>
+<td><a
+href="https://www.reddit.com/r/TheAmericans/comments/1cmnia2/kgb_counter_surveillance_how_to_know_if_youre/">KGB
+counter surveillance: How to know if you’re being followed</a></td>
+<td>There are cameras everywhere! Everything is trackable!</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint032]</td>
+<td>Cited source (see bibliography)</td>
+<td>A Google Books catalog entry for a 2025 English-translation edition
+of a Cold War-era Soviet intelligence training manual, published by
+Century Print Media Group with a translator’s note by a retired NATO
+intelligence officer. The 144-page volume is presented as a historical
+document on Soviet human-intelligence doctrine and counterintelligence
+practice.</td>
+<td>verified source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-agent-handling-and-management]; return to the curriculum
+atlas [sec:curriculum_orientation] for the reader paths, evidence map,
+and safety gates that govern this module.</p>
+</body>
+</html>

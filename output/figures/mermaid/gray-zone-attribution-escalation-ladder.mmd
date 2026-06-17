@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  X(["Ambiguous incident"])
+  X --> AT["Attribution assessment"]
+  AT --> R1["Deniable"]
+  AT --> R2["Indicative"]
+  AT --> R3["Attributable"]
+  R1 --> B1["Diplomatic signaling"]
+  R2 --> B2["Coordinated resilience"]
+  R3 --> B3["Proportionate countermeasures"]
+  B1 --> G{"Authority and thresholds"}
+  B2 --> G
+  B3 --> G
+  G --> MO["Continuous monitoring"]
+  MO --> AT

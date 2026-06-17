@@ -1,0 +1,12 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph R1 [ ]
+    direction LR
+    L5["<b>Layer 5 · Institutional Governance</b><br/>National Cognitive Security Centers<br/>AI red team programs<br/>ICD 203-equivalent analytic standards<br/>error budget governance"] --> L4["<b>Layer 4 · Epistemic Integrity</b><br/>verifier agents<br/>knowledge sanctuaries<br/>intent alignment monitoring"] --> L3["<b>Layer 3 · Structured Reasoning & Tradecraft</b><br/>ACH multi-hypothesis analysis<br/>pre-mortem red teaming<br/>key-assumptions auditing<br/>AI-augmented SATs"]
+  end
+  subgraph R2 [ ]
+    direction RL
+    L2["<b>Layer 2 · Operational Security</b><br/>MAESTRO modeling<br/>CDR monitoring<br/>zero-trust identity<br/>circuit breakers"] --> L1["<b>Layer 1 · Technical Substrate</b><br/>formal verification<br/>prompt-infection defense<br/>sandboxing / worktree isolation<br/>SynthID / C2PA provenance"]
+    L1 -.- NOTE["<b>Mutually reinforcing</b><br/>every layer is necessary<br/>but insufficient on its own"]
+  end
+  R1 --> R2

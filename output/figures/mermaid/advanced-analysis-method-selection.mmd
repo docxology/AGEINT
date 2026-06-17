@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Frame question, separate reporting from inference"] --> B{"What does the question need?"}
+  B -->|"Explanation"| C["Competing hypotheses testing"]
+  B -->|"Relationships"| D["Network and link analysis"]
+  B -->|"Chronology"| E["Timeline and event sequencing"]
+  B -->|"Stress assumptions"| F["Red cell adversarial wargaming"]
+  C --> G["Build evidence table with confidence"]
+  D --> G
+  E --> G
+  F --> G
+  G --> H["Record dissent and alternative hypotheses"]
+  H --> I{"Reviewer calibration check"}
+  I -->|"Weak or laundered source"| A
+  I -->|"Calibrated"| J["Analytic note with confidence and refresh trigger"]

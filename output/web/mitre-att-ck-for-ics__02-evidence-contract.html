@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="mitre-attck-for-ics-assurance-handoff-evidence-governance-refresh-and-capstone">MITRE
+ATT&amp;CK for ICS assurance handoff: evidence, governance, refresh, and
+capstone</h2>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<h3
+id="mitre-attck-for-ics-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">MITRE
+ATT&amp;CK for ICS evidence contract: source spine, verified anchors,
+transfer architecture, and claim limits</h3>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<h3
+id="mitre-attck-for-ics-transfer-architecture-module-inputs-outputs-and-review-boundary">MITRE
+ATT&amp;CK for ICS transfer architecture: module inputs, outputs, and
+review boundary</h3>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<h4
+id="mitre-attck-for-ics-lineage-and-source-tradition-profile-concepts-and-first-anchors">MITRE
+ATT&amp;CK for ICS lineage and source tradition: profile, concepts, and
+first anchors</h4>
+<p>This sits in the <strong>ICS/OT Cyber-Physical Defense and Tabletop
+Readiness</strong> lineage: defensive intelligence for safety-critical
+environments where availability, engineering state, and physical
+consequence matter. [ageint255]; [ageint257].</p>
+<h4
+id="mitre-attck-for-ics-working-model-inputs-constraints-transforms-outputs-and-oversight">MITRE
+ATT&amp;CK for ICS working model: inputs, constraints, transforms,
+outputs, and oversight</h4>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>ICS Matrix: 12 Tactics, Full
+Technique Library; Cyber access-and-execution taxonomy review using
+fabricated alerts</strong>, with provenance and reviewability
+throughout.</p>
+<h4
+id="mitre-attck-for-ics-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">MITRE
+ATT&amp;CK for ICS knowledge architecture: inputs, transforms, outputs,
+and failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> synthetic process logs, asset/consequence
+maps, operator decisions, safety stops, and recovery evidence.
+[ageint255]; [ageint257].</li>
+<li><strong>Transforms:</strong> asset-consequence mapping,
+ATT&amp;CK-for-ICS coverage review, operator-decision rehearsal, and
+after-action learning.</li>
+<li><strong>Outputs:</strong> cyber-physical tabletop packet, debrief
+rubric, recovery note, and control-coverage map.</li>
+<li><strong>Failure modes:</strong> IT-first assumptions, unsafe
+actuation, live-control drift, and missing safety review.</li>
+</ul>
+<h4
+id="mitre-attck-for-ics-transfer-contracts-authority-evidence-tools-and-auditable-output">MITRE
+ATT&amp;CK for ICS transfer contracts: authority, evidence, tools, and
+auditable output</h4>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>ICS Matrix: 12 Tactics, Full Technique Library; Cyber
+access-and-execution taxonomy review using fabricated
+alerts</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> source
+descriptors, transformations, claims, uncertainty, and confidence
+separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+cyber-physical tabletop packet, debrief rubric, recovery note, and
+control-coverage map that another reviewer can audit.</li>
+</ul>
+<h4
+id="mitre-attck-for-ics-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">MITRE
+ATT&amp;CK for ICS profile emphasis and local focus: method stack and
+topic cluster</h4>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<p>The matched profile emphasizes defensive intelligence for
+safety-critical environments where availability, engineering state, and
+physical consequence matter. The method stack is asset/consequence
+mapping, ATT&amp;CK-for-ICS coverage review, defense-in-depth audit,
+remote-access check, and tabletop injects; the local topic cluster is
+<strong>ICS Matrix: 12 Tactics, Full Technique Library; Cyber
+access-and-execution taxonomy review using fabricated
+alerts</strong>.</p>
+<h3
+id="mitre-attck-for-ics-evidence-spine-source-roles-citation-support-and-claim-limits">MITRE
+ATT&amp;CK for ICS evidence spine: source roles, citation support, and
+claim limits</h3>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>ICS/OT Cyber-Physical Defense
+and Tabletop Readiness</strong> profile tells reviewers what evidence is
+strong enough for the module artifact built around <strong>ICS Matrix:
+12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy
+review using fabricated alerts</strong>.</p>
+<h4
+id="mitre-attck-for-ics-guide-source-spine-inherited-keys-and-local-citation-roles">MITRE
+ATT&amp;CK for ICS guide source spine: inherited keys and local citation
+roles</h4>
+<p>Primary guide citations: [ageint255]; [ageint257]; [ageint261];
+[ageint274]; [ageint278]; [ageint280]; [ageint287]; [ageint288];
+[ageint295]; [ageint213]; [ageint214]; [ageint215]; [ageint216].</p>
+<h4
+id="mitre-attck-for-ics-verified-source-canon-direct-anchors-and-claim-boundaries">MITRE
+ATT&amp;CK for ICS verified source canon: direct anchors and claim
+boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint255]; [ageint257].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint255]; [ageint257]; [ageint261]; [ageint274]; [ageint278];
+[ageint280]; [ageint287]; [ageint288]; [ageint295]; [ageint213];
+[ageint214]; [ageint215]; [ageint216].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 46’s source-canon
+section, directly verified anchors for the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane include
+[official_nist_csf_2]; [official_nist_sp_800_160r1];
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for <strong>ICS
+Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution
+taxonomy review using fabricated alerts</strong> and [ageint255];
+[ageint257], but only directly verified source URLs are encoded as
+citations.</p>
+<h4
+id="mitre-attck-for-ics-intelligence-practice-lens-evidence-artifact-and-safety-check">MITRE
+ATT&amp;CK for ICS intelligence practice lens: evidence artifact and
+safety check</h4>
+<p>Practice lens: <strong>Cyber-Physical Readiness Lens</strong> for
+<strong>ICS Matrix: 12 Tactics, Full Technique Library; Cyber
+access-and-execution taxonomy review using fabricated alerts</strong>.
+[ageint255]; [ageint257].</p>
+<p><strong>Planning question:</strong> Which asset, architecture record,
+consequence, operator decision, and recovery path is being exercised
+defensively?</p>
+<p><strong>Evidence artifact:</strong> tabletop packet with OT asset
+inventory, architecture record, consequences, injects, and debrief
+rubric.</p>
+<p><strong>Validation rule:</strong> validate against safety,
+availability, engineering state, incident scope, and after-action
+learning. Applied to <strong>ICS Matrix: 12 Tactics, Full Technique
+Library; Cyber access-and-execution taxonomy review using fabricated
+alerts</strong>.</p>
+<p><strong>Handoff contract:</strong> separate cyber indicators, process
+observations, safety impact, operator choices, and recovery
+evidence.</p>
+<p><strong>Safety check:</strong> keep exercises lab-only or tabletop;
+exclude exploitation, process manipulation, unsafe actuation, and
+live-control actions.</p>
+<h4
+id="mitre-attck-for-ics-runtime-to-reader-map-generated-sections-and-verifier-surfaces">MITRE
+ATT&amp;CK for ICS runtime-to-reader map: generated sections and
+verifier surfaces</h4>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>46.99</td>
+<td>46.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind MITRE ATT&amp;CK for ICS to
+source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>46.101</td>
+<td>46.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for MITRE
+ATT&amp;CK for ICS</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>46.102</td>
+<td>46.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for MITRE ATT&amp;CK
+for ICS</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS Matrix: 12 Tactics, Full Technique Library</td>
+<td>46.1</td>
+<td>46.1 ICS Matrix: 12 Tactics, Full Technique Library</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Cyber access-and-execution taxonomy review using fabricated
+alerts</td>
+<td>46.1.1</td>
+<td>46.1.1 source title transformed into safe curriculum treatment;
+original: Initial Access (12 techniques): Drive-by, Remote Services,
+Wireless Compromise</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS controller-change coverage review using synthetic process
+records</td>
+<td>46.1.2</td>
+<td>46.1.2 source title transformed into safe curriculum treatment;
+original: Execution: Modify Controller Tasking, Command-Line
+Interface</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS firmware and project-integrity coverage</td>
+<td>46.1.3</td>
+<td>46.1.3 source title transformed into safe curriculum treatment;
+original: Persistence: Modify Firmware (System and Module), Project File
+Infection</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS evasion coverage-control review using defensive detection
+questions</td>
+<td>46.1.4</td>
+<td>46.1.4 source title transformed into safe curriculum treatment;
+original: Evasion: Rootkit, Masquerading, Indicator Removal</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS defensive coverage and safety tabletop using synthetic process
+records</td>
+<td>46.1.5</td>
+<td>46.1.5 source title transformed into safe curriculum treatment;
+original: Discovery: Remote System Discovery, Network Sniffing</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Cyber credential-and-movement taxonomy review using fabricated
+alerts</td>
+<td>46.1.6</td>
+<td>46.1.6 source title transformed into safe curriculum treatment;
+original: Lateral Movement: Lateral Tool Transfer, Valid Accounts</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS collection-risk detection review using synthetic tag
+records</td>
+<td>46.1.7</td>
+<td>46.1.7 source title transformed into safe curriculum treatment;
+original: Collection: I/O Image, Monitor Process State, Point &amp; Tag
+Identification</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS alarm and communications-resilience tabletop</td>
+<td>46.1.8</td>
+<td>46.1.8 source title transformed into safe curriculum treatment;
+original: Inhibit Response Function: Alarm Suppression, Block
+Communications</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS process-safety consequence review using synthetic records</td>
+<td>46.1.9</td>
+<td>46.1.9 source title transformed into safe curriculum treatment;
+original: Impair Process Control: Brute Force I/O, Modify Parameter</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS defensive coverage and safety tabletop using synthetic process
+records</td>
+<td>46.1.10</td>
+<td>46.1.10 source title transformed into safe curriculum treatment;
+original: Impact: Damage to Property, Loss of Safety, Manipulation of
+Control</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</td>
+<td>46.2</td>
+<td>46.2 Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Dragos: MITRE ATT&amp;CK for ICS Threat Actor Mapping</td>
+<td>46.3</td>
+<td>46.3 Dragos: MITRE ATT&amp;CK for ICS Threat Actor Mapping</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Nozomi Networks: How Security Teams Use the ICS Framework</td>
+<td>46.4</td>
+<td>46.4 Nozomi Networks: How Security Teams Use the ICS Framework</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="mitre-attck-for-ics-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">MITRE
+ATT&amp;CK for ICS reusable subsection contract: topic rows, artifacts,
+and safety duties</h4>
+<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
+[ageint255].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICS Matrix: 12 Tactics, Full Technique Library</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Cyber access-and-execution taxonomy review using fabricated
+alerts</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS controller-change coverage review using synthetic process
+records</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS firmware and project-integrity coverage</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS evasion coverage-control review using defensive detection
+questions</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS defensive coverage and safety tabletop using synthetic process
+records</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Cyber credential-and-movement taxonomy review using fabricated
+alerts</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS collection-risk detection review using synthetic tag
+records</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS alarm and communications-resilience tabletop</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>ICS process-safety consequence review using synthetic records</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Impact: ICS defensive coverage and safety tabletop using synthetic
+process records</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Dragos: MITRE ATT&amp;CK for ICS Threat Actor Mapping</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+<tr>
+<td>Nozomi Networks: How Security Teams Use the ICS Framework</td>
+<td>Cyber-Physical Readiness Lens</td>
+<td>tabletop packet with OT asset inventory, architecture record,
+consequences, injects, and debrief rubric</td>
+<td>keep exercises lab-only or tabletop; exclude exploitation, process
+manipulation, unsafe actuation, and live-control actions</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="mitre-attck-for-ics-annotated-source-ledger-real-titles-and-local-contribution">MITRE
+ATT&amp;CK for ICS annotated source ledger: real titles and local
+contribution</h4>
+<p>Each source cited by this <strong>ICS/OT Cyber-Physical Defense and
+Tabletop Readiness</strong> module is paired below with its real title
+and a one-line note on what it contributes to <strong>ICS Matrix: 12
+Tactics, Full Technique Library; Cyber access-and-execution taxonomy
+review using fabricated alerts</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint255]</td>
+<td><a href="https://www.w3.org/TR/wot-architecture11/">Web of Things
+(WoT) Architecture 1.1</a></td>
+<td>The W3C Recommendation for Web of Things Architecture 1.1, published
+in December 2023, defining an abstract architecture for interoperability
+across diverse Internet of Things platforms. It introduces core concepts
+including Things described by machine-readable Thing Descriptions,
+reusable Thing Models, and Consumers that interpret descriptions to
+interact via Properties, Actions, and Events.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint257]</td>
+<td><a href="https://www.w3.org/TR/wot-discovery/">Web of Things (WoT)
+Discovery</a></td>
+<td>A W3C Recommendation for Web of Things (WoT) Discovery, published
+December 5, 2023 by the W3C Web of Things Working Group. It specifies
+how IoT devices and services can be discovered and how their Thing
+Description metadata can be accessed securely, using a two-phase model
+of Introduction and Exploration.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint261]</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9110.html">RFC 9110: HTTP
+Semantics</a></td>
+<td>RFC 9110, the official IETF standards document defining the core
+semantics and architecture of HTTP, published in June 2022 and
+consolidating nine earlier RFCs. It establishes terminology and protocol
+aspects shared across HTTP versions, including methods, status codes,
+header fields, content negotiation, conditional and range requests,
+authentication, and the http and https URI schemes.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint274]</td>
+<td><a href="https://udlguidelines.cast.org/">CAST Universal Design for
+Learning Guidelines version 3.0</a></td>
+<td>The official CAST website for the Universal Design for Learning
+(UDL) Guidelines version 3.0, released in 2024. The framework offers
+research-based guidance for designing inclusive learning environments
+and is organized around three principles: Engagement (motivation and
+emotional support), Representation (accessible presentation of
+information), and Action and Expression (diverse means of participation
+and communication).</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint278]</td>
+<td><a
+href="https://legalinstruments.oecd.org/api/print?ids=320&amp;lang=en">Recommendation
+of the Council on Public Procurement</a></td>
+<td>The OECD Recommendation of the Council on Public Procurement
+(OECD/LEGAL/0411), a legal instrument adopted by the OECD Council in
+2015 on the proposal of the Public Governance Committee. It frames
+public procurement as a pillar of strategic governance and service
+delivery and sets out principles for governments to follow.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint280]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/61/r3/final">NIST SP
+800-61 Rev. 3: Incident Response Recommendations and Considerations for
+Cybersecurity Risk Management</a></td>
+<td>NIST SP 800-61 Rev. 3, published April 2025, integrates incident
+response guidance into broader cybersecurity risk management aligned
+with the NIST Cybersecurity Framework 2.0, superseding the 2012 Rev. 2.
+The publication addresses cyber threat information sharing, incident
+handling and management practices, and procedures for detecting,
+responding to, and recovering from security incidents.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint287]</td>
+<td><a href="https://arxiv.org/abs/1803.09010">Datasheets for
+Datasets</a></td>
+<td>A 2018 arXiv paper proposing ‘datasheets for datasets,’ a
+standardized documentation framework for machine learning datasets
+modeled on electronic component datasheets. The authors argue the field
+lacks consistent dataset documentation, which creates risk in
+high-stakes applications, and propose that datasets be accompanied by
+documentation covering motivation, composition, collection process,
+recommended uses, and test results.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint288]</td>
+<td><a
+href="https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub">Algorithmic
+Transparency Recording Standard Hub</a></td>
+<td>A GOV.UK collection page serving as the hub for the UK Algorithmic
+Transparency Recording Standard (ATRS), maintained by the Government
+Digital Service. It provides a standardized template for documenting
+public-sector use of algorithmic tools, completion guidance, policy on
+scope and compliance, and a searchable repository of published
+transparency records.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint295]</td>
+<td><a
+href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf">M-25-22:
+Driving Efficient Acquisition of Artificial Intelligence in
+Government</a></td>
+<td>OMB Memorandum M-25-22 (April 3, 2025), Driving Efficient
+Acquisition of Artificial Intelligence in Government, issued under
+Executive Order 13960 and related directives. It provides guidance to
+federal agencies for acquiring effective and trustworthy AI in a timely,
+cost-effective manner, and rescinds and replaces earlier memorandum
+M-24-18.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint213]</td>
+<td><a href="https://attack.mitre.org/matrices/ics/">ICS Matrix - MITRE
+ATT&amp;CK®</a></td>
+<td>The Industrial Control Systems (ICS) domain of the MITRE ATT&amp;CK
+framework, a knowledge base documenting adversary behaviors based on
+real-world observations of attacks on critical infrastructure. The
+matrix organizes methods into twelve tactical categories spanning
+initial access through impact, including ICS-specific concerns such as
+firmware modification and disruption of operational technology.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint214]</td>
+<td><a
+href="https://www.isa.org/intech-home/2021/june-2021/departments/cybersecurity-using-ics-att-ck-strategies">Cybersecurity
+Using ICS ATT&amp;CK Strategies</a></td>
+<td>A June 2021 InTech Magazine article by Jacob Chapman, published by
+the International Society of Automation, on using the ICS ATT&amp;CK
+framework to strengthen cybersecurity for manufacturing and industrial
+IoT systems. It describes a three-phase risk-management approach:
+gathering information on assets and network architecture, mapping
+potential attack paths to identify vulnerabilities, and prioritizing
+mitigations by impact.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint215]</td>
+<td><a href="https://www.dragos.com/mitre-attack-for-ics">MITRE
+ATT&amp;CK for ICS Framework - Dragos</a></td>
+<td>A Dragos solutions page describing the MITRE ATT&amp;CK for ICS
+framework, a knowledge base of adversary behaviors observed in attacks
+against industrial control system networks. It explains how the Dragos
+Platform maps detections to ATT&amp;CK tactics and techniques through
+regular knowledge updates, profiles named threat groups, and organizes
+behaviors across tactic areas spanning initial access through impact
+scenarios such as loss of control, safety, or availability.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint216]</td>
+<td><a
+href="https://www.nozominetworks.com/resources/how-security-teams-use-the-mitre-attack-framework-for-ics">How
+to Use the MITRE ATT&amp;CK Framework for ICS - Nozomi Networks</a></td>
+<td>A Nozomi Networks resource (a 2020 webinar) on how security teams
+apply the MITRE ATT&amp;CK framework for Industrial Control Systems. It
+explains that the ICS version is a community-sourced knowledge base
+mapping adversary tactics and behaviors specific to industrial
+environments, distinct from the IT-focused framework.</td>
+<td>verified source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-mitre-att-ck-for-ics]; return to the curriculum atlas
+[sec:curriculum_orientation] for the reader paths, evidence map, and
+safety gates that govern this module.</p>
+</body>
+</html>

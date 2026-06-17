@@ -1,0 +1,13 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A[Frame the analytic question] --> B[Enumerate full set of competing hypotheses]
+  A --> C[Collect evidence and list assumptions]
+  B --> D[Build hypothesis-by-evidence matrix]
+  C --> D
+  D --> E[Rate each cell: consistent or inconsistent]
+  E --> F[Identify most diagnostic evidence]
+  F --> G[Select least-disconfirmed hypothesis]
+  G --> H{Sensitivity check robust?}
+  H -->|No, hinges on weak item| B
+  H -->|Yes| I[Report conclusion with confidence levels]
+  I --> J([Specify indicators to watch])

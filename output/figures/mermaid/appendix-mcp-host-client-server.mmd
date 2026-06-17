@@ -1,0 +1,20 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph HOST["Agent host"]
+    direction TB
+    C1["Client A"]
+    C2["Client B"]
+  end
+  NEG["Capability negotiation"]
+  SCOPE{"Least-privilege scope"}
+  subgraph SRV["MCP servers expose"]
+    direction LR
+    RESN["Resources"]
+    PR["Prompts"]
+    TL["Tools"]
+  end
+  C1 --> NEG
+  C2 --> NEG
+  NEG --> SCOPE
+  SCOPE -->|"approved"| SRV
+  SCOPE -->|"denied"| DENY["Blocked capability"]

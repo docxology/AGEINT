@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Information Environment Inputs"] --> B["Layer 1: Source Provenance and Verification"]
+  B --> C["Layer 2: Manipulation and Deepfake Detection"]
+  C --> D["Layer 3: Narrative and Anomaly Monitoring"]
+  D --> E{"Threat Indicators Detected"}
+  E -->|"No"| F["Routine Situational Awareness"]
+  E -->|"Yes"| G["Layer 4: Analyst Triage and Attribution Review"]
+  G --> H["Layer 5: Prebunking and Inoculation"]
+  H --> I["Layer 6: Coordinated Response and Disclosure"]
+  I --> J["Resilience and Trust Metrics"]
+  F --> J
+  J --> K["Governance and Oversight Loop"]
+  K --> A

@@ -1,0 +1,189 @@
+{
+  "timestamp": "2026-06-14T21:21:19.935924",
+  "checks": {
+    "PDF validation": true,
+    "Transmission bookends": true,
+    "Markdown validation": true,
+    "Output structure": true,
+    "Figure registry": true,
+    "Evidence registry": true,
+    "Project design overlays": true,
+    "Artifact manifest": true
+  },
+  "figure_issues": [],
+  "output_statistics": {
+    "detailed_validation": {
+      "structure": {
+        "valid": true,
+        "issues": [],
+        "missing_files": [],
+        "suspicious_sizes": [],
+        "warnings": [],
+        "directory_structure": {
+          "combined_pdf": {
+            "exists": true,
+            "size_mb": 30.91,
+            "readable": true
+          },
+          "pdf": {
+            "exists": true,
+            "files": 26,
+            "size_mb": 47.75,
+            "readable": true,
+            "optional": false
+          },
+          "web": {
+            "exists": true,
+            "files": 334,
+            "size_mb": 20.99,
+            "readable": true,
+            "optional": false
+          },
+          "slides": {
+            "exists": true,
+            "files": 2,
+            "size_mb": 0.0,
+            "readable": true,
+            "optional": false
+          },
+          "figures": {
+            "exists": true,
+            "files": 415,
+            "size_mb": 27.15,
+            "readable": true,
+            "optional": false
+          },
+          "data": {
+            "exists": true,
+            "files": 139,
+            "size_mb": 2.77,
+            "readable": true,
+            "optional": false
+          },
+          "reports": {
+            "exists": true,
+            "files": 23,
+            "size_mb": 10.75,
+            "readable": true,
+            "optional": false
+          },
+          "simulations": {
+            "exists": true,
+            "files": 0,
+            "size_mb": 0.0,
+            "readable": true,
+            "optional": true
+          },
+          "llm": {
+            "exists": true,
+            "files": 0,
+            "size_mb": 0.0,
+            "readable": true,
+            "optional": true
+          },
+          "logs": {
+            "exists": true,
+            "files": 1,
+            "size_mb": 0.0,
+            "readable": true,
+            "optional": true
+          }
+        }
+      },
+      "directories": {
+        "pdf": {
+          "exists": true,
+          "file_count": 26,
+          "size_mb": "47.75",
+          "largest_file": "AGEINT_combined.pdf"
+        },
+        "web": {
+          "exists": true,
+          "file_count": 334,
+          "size_mb": "20.99",
+          "largest_file": "index.html"
+        },
+        "slides": {
+          "exists": true,
+          "file_count": 2,
+          "size_mb": "0.00",
+          "largest_file": "AGENTS.md"
+        },
+        "figures": {
+          "exists": true,
+          "file_count": 415,
+          "size_mb": "27.15",
+          "largest_file": "historical-forbidden-city.png"
+        },
+        "data": {
+          "exists": true,
+          "file_count": 139,
+          "size_mb": "2.77",
+          "largest_file": "manuscript_variables.json"
+        },
+        "reports": {
+          "exists": true,
+          "file_count": 23,
+          "size_mb": "10.75",
+          "largest_file": "claim_calibration.json"
+        },
+        "simulations": {
+          "exists": true,
+          "file_count": 0,
+          "size_mb": "0.00",
+          "largest_file": null
+        },
+        "llm": {
+          "exists": true,
+          "file_count": 0,
+          "size_mb": "0.00",
+          "largest_file": null
+        },
+        "logs": {
+          "exists": true,
+          "file_count": 1,
+          "size_mb": "0.00",
+          "largest_file": "pipeline.log"
+        }
+      },
+      "file_counts": {
+        "pdf": 26,
+        "web": 334,
+        "slides": 2,
+        "figures": 415,
+        "data": 139,
+        "reports": 23,
+        "simulations": 0,
+        "llm": 0,
+        "logs": 1
+      },
+      "total_size_mb": 109.41974925994873,
+      "issues_by_severity": {
+        "critical": [],
+        "warning": [],
+        "info": []
+      },
+      "recommendations": []
+    },
+    "pdf": {
+      "files": 26,
+      "size_mb": 47.75497627258301
+    },
+    "figures": {
+      "files": 4,
+      "size_mb": 0.9665460586547852
+    },
+    "data": {
+      "files": 4,
+      "size_mb": 2.3270721435546875
+    }
+  },
+  "summary": {
+    "total_checks": 8,
+    "passed": 8,
+    "failed": 0,
+    "figure_issues_count": 0,
+    "all_passed": true
+  },
+  "recommendations": []
+}

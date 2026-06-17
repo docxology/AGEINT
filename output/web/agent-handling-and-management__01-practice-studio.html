@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="requirements-to-evidence-lens-path-for-agent-handling-and-management-lesson-cluster-safe-artifact-and-review">Requirements-to-Evidence
+Lens path for Agent Handling and Management: lesson cluster, safe
+artifact, and review</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<h3
+id="agent-handling-and-management-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Agent
+Handling and Management practice studio: topic lessons, safe worked
+example, and knowledge check</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<h3
+id="agent-handling-and-management-topic-lessons-source-backed-concepts-and-transfer-tasks">Agent
+Handling and Management topic lessons: source-backed concepts and
+transfer tasks</h3>
+<p>This module builds collection management as requirements discipline:
+a source method is considered only after the priority, authority,
+minimization rule, source risk, and evaluation plan are explicit. The
+sequence opens with <strong>The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust</strong>, <strong>Historical
+meeting-structure ethics</strong>, <strong>Historical surveillance-risk
+and source-protection</strong> and applies the
+<strong>Requirements-to-Evidence Lens</strong> practice frame through
+concept, evidence, artifact, misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map
+[fig:part-human-intelligence-humint-module-map]; module overview
+[sec:chapter-agent-handling-and-management]; curriculum atlas
+[sec:curriculum_orientation].</p>
+<p><strong>Triangulation anchors.</strong> In module 5’s topic-lessons
+section, directly verified anchors for the <strong>Collection Management
+and Multi-INT Requirements Discipline</strong> lane include
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<h4
+id="lesson-1-the-case-officeragent-relationship-building-maintaining-testing-trust">Lesson
+1: The Case Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</h4>
+<p><strong>Concept.</strong> <strong>The Case Officer–Agent
+Relationship: Building, Maintaining, Testing Trust</strong> treats
+human-source work as a governed relationship: validation, consent,
+reporting, source protection, and oversight—not contact activity.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>The Case Officer–Agent Relationship</strong>, opportunistic
+collection undermines requirements decomposition and source-discipline
+fit review; the lesson builds the habit to separate collection
+discipline concepts from operational recruitment, interception, or
+tasking procedures.</p>
+<p><strong>Source support.</strong> <strong>The Case Officer–Agent
+Relationship: Building, Maintaining, Testing Trust</strong> rests on
+[ageint025]. The closest source to this row notes: It also addresses how
+operatives are selected, the isolation of covert work, and its
+psychological effects on personal relationships. Use it for pinning down
+the scope of <strong>The Case Officer–Agent Relationship: Building,
+Maintaining, Testing Trust</strong>, the edge of that scope, and when
+these citations need re-verifying before transfer. External
+triangulation uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>The Case
+Officer–Agent Relationship</strong> in the evidence the row cites.
+[ageint025] This is an episode of The Unmistakable Creative Podcast
+featuring former CIA field operative Andrew Bustamante discussing
+intelligence work. The conversation covers his background at the Air
+Force Academy and CIA training, and frames espionage as resting on
+reading people, trust, influence, and empathy rather than glamour or
+action. It also addresses how operatives are selected, the isolation of
+covert work, and its psychological effects on personal relationships.
+From each source, pull the bounded claim it can carry for this topic,
+its provenance, the stated uncertainty, and the one condition that would
+overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>The Case Officer–Agent
+Relationship</strong>, build a <strong>requirements matrix with source
+descriptors, caveats, and collection limits</strong> for this
+requirements decomposition and source-discipline fit topic. The artifact
+must name the source descriptor, the bounded claim about <strong>Case
+Officer Agent Relationship</strong>, the caveat that limits it, the
+uncertainty note, the out-of-scope-use boundary, and the reviewer
+accountable for challenge. Shape <strong>The Case Officer–Agent
+Relationship</strong> work as a <strong>source-risk and validation
+ethics worksheet</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+The Case Officer–Agent Relationship: Building, Maintaining, Testing
+Trust is optional whenever separate collection discipline concepts from
+operational recruitment, interception, or tasking procedures feels
+inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>The Case
+Officer–Agent Relationship</strong> to a second module by preserving
+requirements decomposition and source-discipline fit, changing the
+source evidence, and naming a new reviewer.</p>
+<h4 id="lesson-2-historical-meeting-structure-ethics">Lesson 2:
+Historical meeting-structure ethics</h4>
+<p><strong>Concept.</strong> <strong>Historical meeting-structure
+ethics</strong> uses the historical motif to discuss source-protection
+ethics, documentation, and oversight without recreating handling
+procedures.</p>
+<p><strong>Why it matters.</strong> <strong>Historical meeting-structure
+ethics</strong> matters in the <strong>Collection Management and
+Multi-INT Requirements Discipline</strong> lane because requirements
+decomposition and source-discipline fit evidence must stay separate from
+judgment; opportunistic collection is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Historical meeting-structure
+ethics</strong> rests on [ageint029] and [ageint004]. The closest source
+to this row notes: It surveys the roles of case officers in managing
+sources, recruitment and training of agents, protective measures such as
+fronts and cutouts, agent classifications including unwitting sources,
+and counterintelligence methods for identifying foreign operatives and
+reducing security breaches. Use them for fixing what <strong>Historical
+meeting-structure ethics</strong> covers, marking the boundary it must
+not cross, and timing the next source refresh. External triangulation
+uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Historical
+meeting-structure ethics</strong> in the evidence the row cites.
+[ageint029] A roughly 28-page Scribd document titled “Agent Handling in
+Counterintelligence” providing an educational overview of intelligence
+operations. It surveys the roles of case officers in managing sources,
+recruitment and training of agents, protective measures such as fronts
+and cutouts, agent classifications including unwitting sources, and
+counterintelligence methods for identifying foreign operatives and
+reducing security breaches. [ageint004] Tom Mulligan argues that
+artificial intelligence will enhance rather than replace human
+intelligence professionals, contending that the future of intelligence
+lies in human-machine collaboration. He maintains that uniquely human
+qualities such as intuition, experience, and independent judgment become
+more valuable as adversaries gain access to the same AI tools. Work
+source by source: name the bounded claim, its origin, the residual
+uncertainty, and the trigger that would change how this topic is
+judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical meeting-structure ethics</strong>, the handling
+caveat, the uncertainty note, the protected-tradecraft boundary, and the
+reviewer who clears the account. Shape this subject work as a
+<strong>source-risk and validation ethics worksheet</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical meeting-structure ethics</strong>: that a documented
+handling precedent licenses repeating the approach, rather than a
+case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Historical
+meeting-structure ethics</strong> audit pattern from this module on a
+different sample record set with a new reviewer and blocked-use
+note.</p>
+<h4
+id="lesson-3-historical-surveillance-risk-and-source-protection">Lesson
+3: Historical surveillance-risk and source-protection</h4>
+<p><strong>Concept.</strong> <strong>Historical surveillance-risk and
+source-protection</strong> uses the historical motif to discuss
+source-protection ethics, documentation, and oversight without
+recreating handling procedures.</p>
+<p><strong>Why it matters.</strong> <strong>Historical
+surveillance-risk</strong> matters in the <strong>Collection Management
+and Multi-INT Requirements Discipline</strong> lane because requirements
+decomposition and source-discipline fit evidence must stay separate from
+judgment; opportunistic collection is a common failure.</p>
+<p><strong>Source support.</strong> <strong>Historical surveillance-risk
+and source-protection</strong> rests on [ageint026] and [ageint016]. The
+most specific cited work observes: It conveys the difficulty and stress
+of clandestine field meetings as recounted from personal experience. Use
+them for fixing what <strong>Historical surveillance-risk and
+source-protection</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Historical
+surveillance-risk</strong> in the evidence the row cites. [ageint026] A
+YouTube video titled “Inside the CIA: The tension and drama behind
+surveillance detection operations,” released May 3, 2024, featuring a
+former CIA officer. The speaker describes the operational complexity and
+interpersonal tension involved in moving safely from a starting point to
+a meeting while accounting for the presence of hostile observation. It
+conveys the difficulty and stress of clandestine field meetings as
+recounted from personal experience. [ageint016] Place where victim can
+be controlled with limited avenues of escape. From each source, pull the
+bounded claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical surveillance-risk</strong>, the handling caveat, the
+uncertainty note, the protected-tradecraft boundary, and the reviewer
+who clears the account. Shape this subject work as a <strong>source-risk
+and validation ethics worksheet</strong> that states the evidence used,
+what stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical surveillance-risk</strong>: that a documented
+handling precedent licenses repeating the approach, rather than a
+case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Historical
+surveillance-risk</strong> from this module to a second motif by
+preserving requirements decomposition and source-discipline fit,
+replacing action with audit, and naming the blocked use.</p>
+<h4 id="lesson-4-historical-clandestine-communications-ethics">Lesson 4:
+Historical clandestine-communications ethics</h4>
+<p><strong>Concept.</strong> <strong>Historical
+clandestine-communications ethics</strong> uses the historical motif to
+discuss source-protection ethics, documentation, and oversight without
+recreating handling procedures.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Historical clandestine-communications ethics</strong>,
+opportunistic collection undermines requirements decomposition and
+source-discipline fit review; the lesson builds the habit to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures.</p>
+<p><strong>Source support.</strong> <strong>Historical
+clandestine-communications ethics</strong> rests on [ageint027] and
+[ageint028]. The most specific cited work observes: Learn a technique
+for communicating with your family in an emergency using a method used
+by spies. Use them for the claim that <strong>Historical
+clandestine-communications ethics</strong> lets you defend here, the
+limit it has to respect, and the re-check owed before reuse. External
+triangulation uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Historical
+clandestine-communications ethics</strong>, reason from the sources
+cited in this row. [ageint027] Learn a technique for communicating with
+your family in an emergency using a method used by spies. Read each
+cited work for what it can support about this topic, where that claim
+originated, how confident it is, and what evidence would change it.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical clandestine-communications ethics</strong>, the
+handling caveat, the uncertainty note, the protected-tradecraft
+boundary, and the reviewer who clears the account. Shape this subject
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that logs the evidence, the uncertainty, the responsible reviewer, and
+the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical clandestine-communications ethics</strong>: that a
+documented handling precedent licenses repeating the approach, rather
+than a case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Historical clandestine-communications ethics</strong> to another
+artifact while keeping requirements decomposition and source-discipline
+fit and reviewer ownership explicit.</p>
+<h4 id="lesson-5-historical-cutout-and-intermediary-provenance">Lesson
+5: Historical cutout-and-intermediary provenance</h4>
+<p><strong>Concept.</strong> <strong>Historical cutout-and-intermediary
+provenance</strong> uses the historical motif to discuss
+source-protection ethics, documentation, and oversight without
+recreating handling procedures.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Historical
+cutout-and-intermediary provenance</strong> to separate collection
+discipline concepts from operational recruitment, interception, or
+tasking procedures. A defensible treatment names the judgment it enables
+for requirements decomposition and source-discipline fit review, the
+proof limit that opportunistic collection would otherwise hide, and the
+reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Historical
+cutout-and-intermediary provenance</strong> rests on [ageint029]. The
+most specific cited work observes: It surveys the roles of case officers
+in managing sources, recruitment and training of agents, protective
+measures such as fronts and cutouts, agent classifications including
+unwitting sources, and counterintelligence methods for identifying
+foreign operatives and reducing security breaches. Use it for the claim
+that <strong>Historical cutout-and-intermediary provenance</strong> lets
+you defend here, the limit it has to respect, and the re-check owed
+before reuse. External triangulation uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Historical
+cutout-and-intermediary provenance</strong> in the evidence the row
+cites. [ageint029] A roughly 28-page Scribd document titled “Agent
+Handling in Counterintelligence” providing an educational overview of
+intelligence operations. It surveys the roles of case officers in
+managing sources, recruitment and training of agents, protective
+measures such as fronts and cutouts, agent classifications including
+unwitting sources, and counterintelligence methods for identifying
+foreign operatives and reducing security breaches. Each source above
+earns its place in this topic only when you can state its bounded claim,
+its provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical cutout-and-intermediary provenance</strong>, the
+handling caveat, the uncertainty note, the protected-tradecraft
+boundary, and the reviewer who clears the account. Shape this subject
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that records its evidence, the residual uncertainty, the named reviewer,
+and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical cutout-and-intermediary provenance</strong>: that a
+documented handling precedent licenses repeating the approach, rather
+than a case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Historical
+cutout-and-intermediary provenance</strong> from this module to a second
+motif by preserving requirements decomposition and source-discipline
+fit, replacing action with audit, and naming the blocked use.</p>
+<h4 id="lesson-6-historical-front-entity-provenance">Lesson 6:
+Historical front-entity provenance</h4>
+<p><strong>Concept.</strong> <strong>Historical front-entity
+provenance</strong> treats agents as software actors with explicit
+permissions, logs, stop conditions, and human approval—not autonomous
+decision makers.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Historical front-entity provenance</strong>, opportunistic
+collection undermines requirements decomposition and source-discipline
+fit review; the lesson builds the habit to separate collection
+discipline concepts from operational recruitment, interception, or
+tasking procedures.</p>
+<p><strong>Source support.</strong> <strong>Historical front-entity
+provenance</strong> rests on [ageint029]. The closest source to this row
+notes: A roughly 28-page Scribd document titled “Agent Handling in
+Counterintelligence” providing an educational overview of intelligence
+operations. Use it for pinning down the scope of <strong>Historical
+front-entity provenance</strong>, the edge of that scope, and when these
+citations need re-verifying before transfer. External triangulation uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Historical
+front-entity provenance</strong> against the works cited for this row.
+[ageint029] A roughly 28-page Scribd document titled “Agent Handling in
+Counterintelligence” providing an educational overview of intelligence
+operations. It surveys the roles of case officers in managing sources,
+recruitment and training of agents, protective measures such as fronts
+and cutouts, agent classifications including unwitting sources, and
+counterintelligence methods for identifying foreign operatives and
+reducing security breaches. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical front-entity provenance</strong>, the handling
+caveat, the uncertainty note, the protected-tradecraft boundary, and the
+reviewer who clears the account. Shape this subject work as a
+<strong>source-risk and validation ethics worksheet</strong> that logs
+the evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical front-entity provenance</strong>: that a documented
+handling precedent licenses repeating the approach, rather than a
+case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Historical front-entity provenance</strong> to another artifact
+while keeping requirements decomposition and source-discipline fit and
+reviewer ownership explicit.</p>
+<h4
+id="lesson-7-counter-surveillance-and-detecting-hostile-surveillance-historical-surveillance-risk-and-source-protection">Lesson
+7: Counter-Surveillance and Detecting Hostile Surveillance: Historical
+surveillance-risk and source-protection</h4>
+<p><strong>Concept.</strong> <strong>Counter-Surveillance and Detecting
+Hostile Surveillance: Historical surveillance-risk and
+source-protection</strong> uses the historical motif to discuss
+source-protection ethics, documentation, and oversight without
+recreating handling procedures.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Counter-Surveillance and Detecting Hostile
+Surveillance</strong>, opportunistic collection undermines requirements
+decomposition and source-discipline fit review; the lesson builds the
+habit to separate collection discipline concepts from operational
+recruitment, interception, or tasking procedures.</p>
+<p><strong>Source support.</strong> <strong>Counter-Surveillance and
+Detecting Hostile Surveillance: Historical surveillance-risk and
+source-protection</strong> rests on [ageint030] and [ageint031]. The
+closest source to this row notes: There are cameras everywhere! Use them
+for the working definition that <strong>Counter-Surveillance and
+Detecting Hostile Surveillance: Historical surveillance-risk and
+source-protection</strong> can defend, where that scope ends, and the
+refresh check owed before this evidence transfers. External
+triangulation uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For
+<strong>Counter-Surveillance and Detecting Hostile
+Surveillance</strong>, reason from the sources cited in this row.
+[ageint031] There are cameras everywhere! Everything is trackable! Read
+each cited work for what it can support about this topic, where that
+claim originated, how confident it is, and what evidence would change
+it.</p>
+<p><strong>Student artifact.</strong> For <strong>Counter-Surveillance
+and Detecting Hostile Surveillance</strong>, build a
+<strong>requirements matrix with source descriptors, caveats, and
+collection limits</strong> for this requirements decomposition and
+source-discipline fit topic. The artifact must cite the historical
+descriptor, the bounded lesson about <strong>Counter-Surveillance and
+Detecting Hostile Surveillance</strong>, the handling caveat, the
+uncertainty note, the protected-tradecraft boundary, and the reviewer
+who clears the account. Shape <strong>Counter-Surveillance and Detecting
+Hostile Surveillance</strong> work as a <strong>source-risk and
+validation ethics worksheet</strong> that records its evidence, the
+residual uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Counter-Surveillance and Detecting Hostile
+Surveillance</strong>: that a documented handling precedent licenses
+repeating the approach, rather than a case-bound record whose risks must
+be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Reuse the
+<strong>Counter-Surveillance and Detecting Hostile Surveillance</strong>
+audit pattern from this module on a different sample record set with a
+new reviewer and blocked-use note.</p>
+<h4 id="lesson-8-historical-agent-tasking-oversight">Lesson 8:
+Historical agent-tasking oversight</h4>
+<p><strong>Concept.</strong> <strong>Historical agent-tasking
+oversight</strong> treats agents as software actors with explicit
+permissions, logs, stop conditions, and human approval—not autonomous
+decision makers.</p>
+<p><strong>Why it matters.</strong> <strong>Historical agent-tasking
+oversight</strong> connects classroom vocabulary to Collection
+Management and Multi-INT Requirements Discipline practice: learners
+document evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> <strong>Historical agent-tasking
+oversight</strong> rests on [ageint029] and [ageint004]. Its anchor
+reference records: A roughly 28-page Scribd document titled “Agent
+Handling in Counterintelligence” providing an educational overview of
+intelligence operations. Use them for the claim that <strong>Historical
+agent-tasking oversight</strong> lets you defend here, the limit it has
+to respect, and the re-check owed before reuse. External triangulation
+uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Historical
+agent-tasking oversight</strong>, work from the cited evidence behind
+this row. [ageint029] A roughly 28-page Scribd document titled “Agent
+Handling in Counterintelligence” providing an educational overview of
+intelligence operations. It surveys the roles of case officers in
+managing sources, recruitment and training of agents, protective
+measures such as fronts and cutouts, agent classifications including
+unwitting sources, and counterintelligence methods for identifying
+foreign operatives and reducing security breaches. [ageint004] Tom
+Mulligan argues that artificial intelligence will enhance rather than
+replace human intelligence professionals, contending that the future of
+intelligence lies in human-machine collaboration. He maintains that
+uniquely human qualities such as intuition, experience, and independent
+judgment become more valuable as adversaries gain access to the same AI
+tools. From each source, pull the bounded claim it can carry for this
+topic, its provenance, the stated uncertainty, and the one condition
+that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical agent-tasking oversight</strong>, the handling
+caveat, the uncertainty note, the protected-tradecraft boundary, and the
+reviewer who clears the account. Shape this subject work as a
+<strong>source-risk and validation ethics worksheet</strong> that states
+the evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical agent-tasking oversight</strong>: that a documented
+handling precedent licenses repeating the approach, rather than a
+case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Historical
+agent-tasking oversight</strong> from this module to a second motif by
+preserving requirements decomposition and source-discipline fit,
+replacing action with audit, and naming the blocked use.</p>
+<h4 id="lesson-9-historical-extraction-and-termination-ethics">Lesson 9:
+Historical extraction-and-termination ethics</h4>
+<p><strong>Concept.</strong> <strong>Historical
+extraction-and-termination ethics</strong> uses the historical motif to
+discuss source-protection ethics, documentation, and oversight without
+recreating handling procedures.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Historical extraction-and-termination ethics</strong>,
+opportunistic collection undermines requirements decomposition and
+source-discipline fit review; the lesson builds the habit to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures.</p>
+<p><strong>Source support.</strong> <strong>Historical
+extraction-and-termination ethics</strong> rests on [ageint029] and
+[ageint004]. The most specific cited work observes: It surveys the roles
+of case officers in managing sources, recruitment and training of
+agents, protective measures such as fronts and cutouts, agent
+classifications including unwitting sources, and counterintelligence
+methods for identifying foreign operatives and reducing security
+breaches. Use them for the claim that <strong>Historical
+extraction-and-termination ethics</strong> lets you defend here, the
+limit it has to respect, and the re-check owed before reuse. External
+triangulation uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Historical
+extraction-and-termination ethics</strong>, work from the cited evidence
+behind this row. [ageint029] A roughly 28-page Scribd document titled
+“Agent Handling in Counterintelligence” providing an educational
+overview of intelligence operations. It surveys the roles of case
+officers in managing sources, recruitment and training of agents,
+protective measures such as fronts and cutouts, agent classifications
+including unwitting sources, and counterintelligence methods for
+identifying foreign operatives and reducing security breaches.
+[ageint004] Tom Mulligan argues that artificial intelligence will
+enhance rather than replace human intelligence professionals, contending
+that the future of intelligence lies in human-machine collaboration. He
+maintains that uniquely human qualities such as intuition, experience,
+and independent judgment become more valuable as adversaries gain access
+to the same AI tools. From each source, pull the bounded claim it can
+carry for this topic, its provenance, the stated uncertainty, and the
+one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the historical descriptor, the bounded lesson about
+<strong>Historical extraction-and-termination ethics</strong>, the
+handling caveat, the uncertainty note, the protected-tradecraft
+boundary, and the reviewer who clears the account. Shape this subject
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that logs the evidence, the uncertainty, the responsible reviewer, and
+the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Historical extraction-and-termination ethics</strong>: that a
+documented handling precedent licenses repeating the approach, rather
+than a case-bound record whose risks must be re-assessed each time.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Historical extraction-and-termination ethics</strong> to another
+artifact while keeping requirements decomposition and source-discipline
+fit and reviewer ownership explicit.</p>
+<h4
+id="lesson-10-declassified-source-protection-and-agent-handling-ethics">Lesson
+10: Declassified source-protection and agent-handling ethics</h4>
+<p><strong>Concept.</strong> <strong>Declassified source-protection and
+agent-handling ethics</strong> studies the declassified record for
+institutional lessons about oversight, source protection, and limits on
+translating history into practice.</p>
+<p><strong>Why it matters.</strong> <strong>Declassified
+source-protection</strong> connects classroom vocabulary to Collection
+Management and Multi-INT Requirements Discipline practice: learners
+document evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> <strong>Declassified
+source-protection and agent-handling ethics</strong> rests on
+[ageint032]. The most specific cited work observes: The 144-page volume
+is presented as a historical document on Soviet human-intelligence
+doctrine and counterintelligence practice. Use it for fixing what
+<strong>Declassified source-protection and agent-handling
+ethics</strong> covers, marking the boundary it must not cross, and
+timing the next source refresh. External triangulation uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Declassified
+source-protection</strong> against the works cited for this row.
+[ageint032] A Google Books catalog entry for a 2025 English-translation
+edition of a Cold War-era Soviet intelligence training manual, published
+by Century Print Media Group with a translator’s note by a retired NATO
+intelligence officer. The 144-page volume is presented as a historical
+document on Soviet human-intelligence doctrine and counterintelligence
+practice. Work source by source: name the bounded claim, its origin, the
+residual uncertainty, and the trigger that would change how this topic
+is judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must cite the declassified source descriptor, the bounded
+lesson about <strong>Declassified source-protection</strong>, the
+redaction caveat, the attribution uncertainty, the protected-detail
+boundary, and the reviewer who clears release. Shape this subject work
+as a <strong>source-risk and validation ethics worksheet</strong> that
+logs the evidence, the uncertainty, the responsible reviewer, and the
+halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Declassified source-protection</strong>: that a source identity
+is safe to discuss once the operation is historical, when protection
+obligations and re-identification risk outlast the case itself.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Declassified
+source-protection</strong> audit pattern from this module on a different
+sample record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-11-ai-enhanced-micro-expression-analysis-for-source-validation">Lesson
+11: AI-Enhanced Micro-Expression Analysis for Source Validation</h4>
+<p><strong>Concept.</strong> <strong>AI-Enhanced Micro-Expression
+Analysis for Source Validation</strong> connects source-protection
+duties to reporting quality, compartmentation, and counterintelligence
+review without recreating handling tradecraft.</p>
+<p><strong>Why it matters.</strong> <strong>AI-Enhanced Micro-Expression
+Analysis</strong> connects classroom vocabulary to Collection Management
+and Multi-INT Requirements Discipline practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> <strong>AI-Enhanced Micro-Expression
+Analysis for Source Validation</strong> rests on [ageint004]. Its anchor
+reference records: Tom Mulligan argues that artificial intelligence will
+enhance rather than replace human intelligence professionals, contending
+that the future of intelligence lies in human-machine collaboration. Use
+it for fixing what <strong>AI-Enhanced Micro-Expression Analysis for
+Source Validation</strong> covers, marking the boundary it must not
+cross, and timing the next source refresh. External triangulation uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>AI-Enhanced
+Micro-Expression Analysis</strong> against the works cited for this row.
+[ageint004] Tom Mulligan argues that artificial intelligence will
+enhance rather than replace human intelligence professionals, contending
+that the future of intelligence lies in human-machine collaboration. He
+maintains that uniquely human qualities such as intuition, experience,
+and independent judgment become more valuable as adversaries gain access
+to the same AI tools. Each source above earns its place in this topic
+only when you can state its bounded claim, its provenance, its
+uncertainty, and the fact that would retire it.</p>
+<p><strong>Student artifact.</strong> For <strong>AI-Enhanced
+Micro-Expression Analysis</strong>, build a <strong>requirements matrix
+with source descriptors, caveats, and collection limits</strong> for
+this requirements decomposition and source-discipline fit topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>AI-Enhanced Micro-Expression Analysis for Source</strong>, the
+caveat that limits it, the uncertainty note, the out-of-scope-use
+boundary, and the reviewer accountable for challenge. Shape
+<strong>AI-Enhanced Micro-Expression Analysis</strong> work as a
+<strong>source-risk and validation ethics worksheet</strong> that states
+the evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+AI-Enhanced Micro-Expression Analysis for Source Validation replaces
+human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AI-Enhanced
+Micro-Expression Analysis</strong> to a second module by preserving
+requirements decomposition and source-discipline fit, changing the
+source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-12-digital-age-recruitment-risk-and-consent-boundary">Lesson
+12: Digital-age recruitment-risk and consent-boundary</h4>
+<p><strong>Concept.</strong> <strong>Digital-age recruitment-risk and
+consent-boundary</strong> reads recruitment doctrine as risk literacy:
+pressure, consent, validation, and the line that blocks operational
+contact.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Digital-age recruitment-risk</strong>, confusing motivation
+literacy with contact authorization undermines requirements
+decomposition and source-discipline fit review; the lesson builds the
+habit to separate collection discipline concepts from operational
+recruitment, interception, or tasking procedures.</p>
+<p><strong>Source support.</strong> <strong>Digital-age recruitment-risk
+and consent-boundary</strong> rests on [ageint004]. The lead source’s
+own note reads: He maintains that uniquely human qualities such as
+intuition, experience, and independent judgment become more valuable as
+adversaries gain access to the same AI tools. Use it for pinning down
+the scope of <strong>Digital-age recruitment-risk and
+consent-boundary</strong>, the edge of that scope, and when these
+citations need re-verifying before transfer. External triangulation uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Digital-age
+recruitment-risk</strong> against the works cited for this row.
+[ageint004] Tom Mulligan argues that artificial intelligence will
+enhance rather than replace human intelligence professionals, contending
+that the future of intelligence lies in human-machine collaboration. He
+maintains that uniquely human qualities such as intuition, experience,
+and independent judgment become more valuable as adversaries gain access
+to the same AI tools. Read each cited work for what it can support about
+this topic, where that claim originated, how confident it is, and what
+evidence would change it.</p>
+<p><strong>Student artifact.</strong> Build a <strong>requirements
+matrix with source descriptors, caveats, and collection limits</strong>
+for this requirements decomposition and source-discipline fit topic. The
+artifact must note the motivation descriptor, the bounded claim about
+<strong>Digital-age recruitment-risk</strong>, the consent caveat, the
+uncertainty note, the no-contact boundary, and the reviewer who owns
+escalation duties. Shape this subject work as a <strong>source-risk and
+validation ethics worksheet</strong> that states the evidence used, what
+stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Digital-age recruitment-risk</strong>: that motivation literacy
+is contact authorization.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Digital-age
+recruitment-risk</strong> from this module to a second motif by
+preserving requirements decomposition and source-discipline fit,
+replacing action with audit, and naming the blocked use.</p>
+<h3
+id="agent-handling-and-management-worked-safe-example-synthetic-inputs-evidence-and-review">Agent
+Handling and Management worked safe example: synthetic inputs, evidence,
+and review</h3>
+<p>Worked example: a synthetic policy cell compares public indicators of
+hybrid pressure against an approved collection plan for a benign
+border-disruption exercise. [ageint239]; [ageint240].</p>
+<p><strong>Triangulation anchors.</strong> In module 5’s worked-example
+section, directly verified anchors for the <strong>Collection Management
+and Multi-INT Requirements Discipline</strong> lane include
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p><strong>Unit discipline spine.</strong> Discipline:
+<strong>human-source literacy and source protection</strong>. Learners
+use a <strong>source-risk and validation ethics worksheet</strong> and
+keep this boundary visible: No elicitation, impersonation, covert
+contact, or operational source-management procedures; all cases use
+classroom fixtures.</p>
+<p><strong>Frame.</strong> The classroom question centers on <strong>The
+Case Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</strong>. Excluded actions stay explicit, and the
+<strong>Requirements-to-Evidence Lens</strong> planning question is:
+What accountable requirement justifies the evidence, and which source
+discipline is the least intrusive fit?</p>
+<p><strong>Inputs.</strong> For the <strong>The Case Officer–Agent
+Relationship: Building, Maintaining, Testing Trust</strong> scenario,
+use public notices, synthetic interview summaries, public logistics
+records, and an instructor scope card. The Requirements-to-Evidence Lens
+intake note records provenance, sensitivity, fit-to-purpose, and why the
+fixture is enough for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>The Case Officer–Agent
+Relationship: Building, Maintaining, Testing Trust</strong>, students
+rank requirements, choose the least intrusive source discipline, list
+excluded actions, and evaluate evidence quality. Pause whenever an
+inference about The Case Officer–Agent Relationship: Building,
+Maintaining, Testing Trust appears without evidence, confidence outruns
+support, or an agent output is treated as judgment.</p>
+<p><strong>Filled artifact.</strong> Purpose = <strong>The Case
+Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</strong> classroom scenario; unit artifact = source-risk and
+validation ethics worksheet; evidence = allowed inputs; method =
+requirements decomposition and source-discipline fit; output = a
+requirements-to-evidence matrix with discipline fit, source caveats,
+minimization notes, and gaps; boundary = no external action; reviewer =
+instructor or named peer.</p>
+<p><strong>Flawed answer to revise.</strong> Treating <strong>The Case
+Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</strong> as “Requirements-to-Evidence Lens confirms it” is not
+enough. The revision ties the claim to requirements decomposition and
+source-discipline fit, adds the missing caveat, states confidence, and
+records the reviewer who accepted the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>The Case
+Officer–Agent Relationship: Building, Maintaining, Testing
+Trust</strong> records the defensible claim, the assumption most likely
+to fail, the evidence that would change confidence, and the review
+condition for stopping reuse.</p>
+<h3
+id="agent-handling-and-management-practice-sequence-studio-moves-artifact-steps-and-limits">Agent
+Handling and Management practice sequence: studio moves, artifact steps,
+and limits</h3>
+<p>The studio sequence uses the <strong>Requirements-to-Evidence
+Lens</strong> practice lens. Moves 1-3 form the compressed path; the
+full seminar path adds challenge, handoff, and a review memo for
+<strong>The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust; Historical meeting-structure ethics</strong>.</p>
+<p><strong>Triangulation anchors.</strong> In module 5’s
+practice-sequence section, directly verified anchors for the
+<strong>Collection Management and Multi-INT Requirements
+Discipline</strong> lane include
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Move</th>
+<th>Learner action</th>
+<th>Output</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Distinguish</td>
+<td>Compare The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust, Historical meeting-structure ethics, Historical
+surveillance-risk and source-protection; name what each topic can and
+cannot prove.</td>
+<td>Glossary-and-contrast card.</td>
+<td>Terms match the <strong>Collection Management and Multi-INT
+Requirements Discipline</strong> lane.</td>
+</tr>
+<tr>
+<td>2. Frame</td>
+<td>Answer the lens question: What accountable requirement justifies the
+evidence, and which source discipline is the least intrusive fit?</td>
+<td>Scope card.</td>
+<td>Authority, excluded actions, data boundary, and reviewer are
+explicit.</td>
+</tr>
+<tr>
+<td>3. Evidence</td>
+<td>Fill the artifact fields for The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust: requirements matrix with source
+descriptors, caveats, and collection limits.</td>
+<td>Evidence packet.</td>
+<td>Sources, caveats, confidence, and uncertainty stay separable.</td>
+</tr>
+<tr>
+<td>3a. Unit artifact</td>
+<td>Add the source-risk and validation ethics worksheet fields for The
+Case Officer–Agent Relationship: Building, Maintaining, Testing
+Trust.</td>
+<td>Unit profile note.</td>
+<td>Evidence artifacts include validation note, pressure-risk
+checklist.</td>
+</tr>
+<tr>
+<td>4. Challenge</td>
+<td>Test the misconception that The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust is optional whenever separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures feels inconvenient.</td>
+<td>Failure-mode note.</td>
+<td>The artifact applies the key distinction: separate collection
+discipline concepts from operational recruitment, interception, or
+tasking procedures.</td>
+</tr>
+<tr>
+<td>5. Handoff</td>
+<td>Prepare the artifact for another reviewer.</td>
+<td>Handoff memo.</td>
+<td>Inputs, transformations, reviewer, refresh trigger, and residual
+risk are visible.</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="agent-handling-and-management-instructor-notes-source-reasoning-review-points-and-studio-focus">Agent
+Handling and Management instructor notes: source reasoning, review
+points, and studio focus</h4>
+<p>Ask learners to verbalize the difference between a source, an
+inference, and a decision. Require a revision whenever a claim cannot be
+traced to a source descriptor or a human review point. Keep the focus on
+<strong>The Case Officer–Agent Relationship: Building, Maintaining,
+Testing Trust; Historical meeting-structure ethics</strong>.
+[ageint239]; [ageint240].</p>
+<h4
+id="agent-handling-and-management-extension-exercise-peer-validation-and-refresh-trigger-review">Agent
+Handling and Management extension exercise: peer validation and refresh
+trigger review</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<p>Have learners swap artifacts and apply the
+<strong>Requirements-to-Evidence Lens</strong> validation rule to
+someone else’s work. The receiving learner must identify one strength,
+one missing caveat, and one refresh trigger for <strong>The Case
+Officer–Agent Relationship: Building, Maintaining, Testing Trust;
+Historical meeting-structure ethics</strong>.</p>
+<h3
+id="agent-handling-and-management-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Agent
+Handling and Management knowledge check: misconceptions, evidence, and
+reviewer prompts</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-agent-handling-and-management]; [ageint239].</p>
+<ol type="1">
+<li>Explain how <strong>The Case Officer–Agent Relationship: Building,
+Maintaining, Testing Trust</strong> is defined here; name the source
+descriptor that supports the definition.</li>
+<li>Contrast <strong>The Case Officer–Agent Relationship: Building,
+Maintaining, Testing Trust</strong> with <strong>Historical
+meeting-structure ethics</strong> using the
+<strong>Requirements-to-Evidence Lens</strong> artifact fields.</li>
+<li>Identify one failure mode from the <strong>Collection Management and
+Multi-INT Requirements Discipline</strong> lane and the evidence that
+would reveal it.</li>
+<li>Answer the coursebook review question: Which gray-zone indicator
+changes the least-intrusive source choice without crossing into
+operational tasking?</li>
+<li>Correct this misconception: that The Case Officer–Agent
+Relationship: Building, Maintaining, Testing Trust is optional whenever
+separate collection discipline concepts from operational recruitment,
+interception, or tasking procedures feels inconvenient.</li>
+</ol>
+<h4
+id="agent-handling-and-management-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">Agent
+Handling and Management answer quality rubric: source evidence,
+uncertainty, and safe transfer</h4>
+<p>Judge answers with the canonical mastery evidence standard in the
+shared method-and-assurance reference
+([sec:method-assurance-reference]): a strong answer uses source
+evidence, distinguishes observation from judgment, names uncertainty,
+and states the safe boundary, while a revise-level answer gives a
+memorized definition of <strong>The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust</strong> without source evidence,
+uncertainty, or a safe transfer task.</p>
+</body>
+</html>

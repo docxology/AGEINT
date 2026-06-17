@@ -1,0 +1,19 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'}}}%%
+stateDiagram-v2
+    [*] --> CLOSED
+    CLOSED: Normal supervised operation
+autonomy earned by clean safety record
+    OPEN: Agent suspended
+human takeover and retained evidence
+    HALF_OPEN: Limited restoration
+capability constrained by validation
+    CLOSED --> OPEN: safety budget exhausted
+PolicyCompliance below 99 percent
+    CLOSED --> OPEN: policy bypass, provider error,
+tool timeout, trust degradation,
+or reasoning deadlock
+    OPEN --> HALF_OPEN: recovery period
+plus validation packet
+    HALF_OPEN --> CLOSED: clean record maintained
+    HALF_OPEN --> OPEN: new violation or missing evidence
+    OPEN --> [*]: reviewer retires unsafe run

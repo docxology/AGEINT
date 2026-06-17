@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  N1["National Security Act 1947"]
+  N1 --> N2["Church and Pike inquiries"]
+  N2 --> N3["Intelligence oversight committees"]
+  N3 --> N4["Foreign Intelligence Surveillance Act"]
+  N4 --> N5["Executive Order oversight"]
+  N5 --> N6["Post-2001 surveillance reform"]
+  N6 --> N7(["Standing oversight architecture"])
+  N2 --> P1["Accountability after abuses"]
+  N3 --> P2["Legislative checks"]
+  N4 --> P3["Judicial review of surveillance"]
+  P1 --> N7
+  P2 --> N7
+  P3 --> N7

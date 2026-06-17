@@ -1,0 +1,18 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  D["Direction: requirements and priorities"]
+  C([Collection])
+  P([Processing and Exploitation])
+  A([Analysis and Evaluation])
+  PR([Production])
+  DIS([Dissemination])
+  DM["Decision-Makers"]
+  FB["Feedback and Lessons Learned"]
+  TR["Tasking Review"]
+  QS["Tradecraft and Quality Standards"]
+  EL["Ethics, Legal, and Oversight"]
+  D --> C --> P --> A --> PR --> DIS --> DM
+  DM --> FB --> D
+  TR --> C
+  QS --> A
+  EL --> DIS

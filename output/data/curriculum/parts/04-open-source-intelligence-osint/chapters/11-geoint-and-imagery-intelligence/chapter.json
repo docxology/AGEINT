@@ -1,0 +1,26 @@
+{
+  "number": 11,
+  "title": "GEOINT and Imagery Intelligence",
+  "citations": [
+    253,
+    255,
+    270,
+    278,
+    279,
+    283,
+    290,
+    291,
+    294,
+    57,
+    58,
+    59,
+    60,
+    301,
+    298,
+    302,
+    297
+  ],
+  "source_line": 165,
+  "content_profile": "osint_geoint",
+  "practice_lens": "requirements_to_evidence"
+}

@@ -1,0 +1,378 @@
+{
+  "timestamp": "2026-06-14T21:21:21.755280",
+  "total_duration": 806.8764426708221,
+  "stages": [
+    {
+      "name": "Clean Output Directories",
+      "exit_code": 0,
+      "duration": 0.07173800468444824,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "Environment Setup",
+      "exit_code": 0,
+      "duration": 1.2316229343414307,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "Infrastructure Tests",
+      "exit_code": 0,
+      "duration": 6.494799852371216,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "Project Tests",
+      "exit_code": 0,
+      "duration": 592.3675768375397,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "Project Analysis",
+      "exit_code": 0,
+      "duration": 19.723697900772095,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "PDF Rendering",
+      "exit_code": 0,
+      "duration": 184.89010095596313,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "Output Validation",
+      "exit_code": 0,
+      "duration": 0.7646689414978027,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    },
+    {
+      "name": "Copy Outputs",
+      "exit_code": 0,
+      "duration": 1.3322372436523438,
+      "timestamp": "",
+      "completed": true,
+      "status": "passed"
+    }
+  ],
+  "test_results": null,
+  "validation_results": null,
+  "performance_metrics": null,
+  "error_summary": null,
+  "output_statistics": {
+    "directories": {
+      "pdf": {
+        "exists": true,
+        "file_count": 26,
+        "size_mb": "47.75",
+        "total_size_bytes": 50074722,
+        "largest_files": [
+          {
+            "name": "AGEINT_combined.pdf",
+            "size_mb": "30.91",
+            "path": "pdf/AGEINT_combined.pdf"
+          },
+          {
+            "name": "_combined_manuscript.tex",
+            "size_mb": "6.67",
+            "path": "pdf/_combined_manuscript.tex"
+          },
+          {
+            "name": "_combined_manuscript.md",
+            "size_mb": "5.70",
+            "path": "pdf/_combined_manuscript.md"
+          }
+        ],
+        "extensions": {
+          ".md": 3,
+          ".bib": 15,
+          ".log": 2,
+          ".aux": 1,
+          ".blg": 1,
+          ".pdf": 1,
+          ".tex": 1,
+          ".toc": 1,
+          ".bbl": 1
+        }
+      },
+      "web": {
+        "exists": true,
+        "file_count": 334,
+        "size_mb": "20.99",
+        "total_size_bytes": 22005917,
+        "largest_files": [
+          {
+            "name": "index.html",
+            "size_mb": "7.38",
+            "path": "web/index.html"
+          },
+          {
+            "name": "_combined_manuscript.md",
+            "size_mb": "5.68",
+            "path": "web/_combined_manuscript.md"
+          },
+          {
+            "name": "bibliography-atlas__05-bibliography-atlas-rows-guide-anchor-and-support-source-keys-sec-bibliography-rows-01.html",
+            "size_mb": "0.29",
+            "path": "web/bibliography-atlas__05-bibliography-atlas-rows-guide-anchor-and-support-source-keys-sec-bibliography-rows-01.html"
+          }
+        ],
+        "extensions": {
+          ".html": 331,
+          ".md": 3
+        }
+      },
+      "slides": {
+        "exists": true,
+        "file_count": 2,
+        "size_mb": "0.00",
+        "total_size_bytes": 320,
+        "largest_files": [
+          {
+            "name": "AGENTS.md",
+            "size_mb": "0.00",
+            "path": "slides/AGENTS.md"
+          },
+          {
+            "name": "README.md",
+            "size_mb": "0.00",
+            "path": "slides/README.md"
+          }
+        ],
+        "extensions": {
+          ".md": 2
+        }
+      },
+      "figures": {
+        "exists": true,
+        "file_count": 415,
+        "size_mb": "27.15",
+        "total_size_bytes": 28471769,
+        "largest_files": [
+          {
+            "name": "historical-forbidden-city.png",
+            "size_mb": "0.80",
+            "path": "figures/historical/historical-forbidden-city.png"
+          },
+          {
+            "name": "ageint-graphical-abstract.png",
+            "size_mb": "0.75",
+            "path": "figures/python/ageint-graphical-abstract.png"
+          },
+          {
+            "name": "historical-hexagon-quang-tri.png",
+            "size_mb": "0.67",
+            "path": "figures/historical/historical-hexagon-quang-tri.png"
+          }
+        ],
+        "extensions": {
+          ".json": 4,
+          ".md": 10,
+          ".png": 173,
+          ".mmd": 114,
+          ".rendered": 114
+        }
+      },
+      "data": {
+        "exists": true,
+        "file_count": 139,
+        "size_mb": "2.77",
+        "total_size_bytes": 2904827,
+        "largest_files": [
+          {
+            "name": "manuscript_variables.json",
+            "size_mb": "1.91",
+            "path": "data/manuscript_variables.json"
+          },
+          {
+            "name": "curriculum_outline.json",
+            "size_mb": "0.42",
+            "path": "data/curriculum_outline.json"
+          },
+          {
+            "name": "source-guide-076-150.jsonl",
+            "size_mb": "0.05",
+            "path": "data/curriculum/references/source-guide-076-150.jsonl"
+          }
+        ],
+        "extensions": {
+          ".json": 81,
+          ".md": 2,
+          ".jsonl": 56
+        }
+      },
+      "reports": {
+        "exists": true,
+        "file_count": 36,
+        "size_mb": "11.26",
+        "total_size_bytes": 11805772,
+        "largest_files": [
+          {
+            "name": "claim_calibration.json",
+            "size_mb": "9.19",
+            "path": "reports/claim_calibration.json"
+          },
+          {
+            "name": "artifact_manifest.json",
+            "size_mb": "0.45",
+            "path": "reports/artifact_manifest.json"
+          },
+          {
+            "name": "scholarship_quality.json",
+            "size_mb": "0.28",
+            "path": "reports/scholarship_quality.json"
+          }
+        ],
+        "extensions": {
+          ".json": 21,
+          ".md": 12,
+          ".jsonl": 1,
+          ".txt": 2
+        }
+      },
+      "simulations": {
+        "exists": true,
+        "file_count": 0,
+        "size_mb": "0.00",
+        "total_size_bytes": 0,
+        "largest_files": [],
+        "extensions": {}
+      },
+      "llm": {
+        "exists": true,
+        "file_count": 0,
+        "size_mb": "0.00",
+        "total_size_bytes": 0,
+        "largest_files": [],
+        "extensions": {}
+      },
+      "logs": {
+        "exists": true,
+        "file_count": 1,
+        "size_mb": "0.00",
+        "total_size_bytes": 144,
+        "largest_files": [
+          {
+            "name": "pipeline.log",
+            "size_mb": "0.00",
+            "path": "logs/pipeline.log"
+          }
+        ],
+        "extensions": {
+          ".log": 1
+        }
+      }
+    },
+    "total_files": 953,
+    "total_size_mb": 109.92381191253662,
+    "largest_files": [
+      {
+        "name": "AGEINT_combined.pdf",
+        "size_mb": "30.91",
+        "category": "pdf",
+        "path": "pdf/AGEINT_combined.pdf"
+      },
+      {
+        "name": "claim_calibration.json",
+        "size_mb": "9.19",
+        "category": "reports",
+        "path": "reports/claim_calibration.json"
+      },
+      {
+        "name": "index.html",
+        "size_mb": "7.38",
+        "category": "web",
+        "path": "web/index.html"
+      },
+      {
+        "name": "_combined_manuscript.tex",
+        "size_mb": "6.67",
+        "category": "pdf",
+        "path": "pdf/_combined_manuscript.tex"
+      },
+      {
+        "name": "_combined_manuscript.md",
+        "size_mb": "5.70",
+        "category": "pdf",
+        "path": "pdf/_combined_manuscript.md"
+      },
+      {
+        "name": "_combined_manuscript.md",
+        "size_mb": "5.68",
+        "category": "web",
+        "path": "web/_combined_manuscript.md"
+      },
+      {
+        "name": "manuscript_variables.json",
+        "size_mb": "1.91",
+        "category": "data",
+        "path": "data/manuscript_variables.json"
+      },
+      {
+        "name": "historical-forbidden-city.png",
+        "size_mb": "0.80",
+        "category": "figures",
+        "path": "figures/historical/historical-forbidden-city.png"
+      },
+      {
+        "name": "ageint-graphical-abstract.png",
+        "size_mb": "0.75",
+        "category": "figures",
+        "path": "figures/python/ageint-graphical-abstract.png"
+      },
+      {
+        "name": "historical-hexagon-quang-tri.png",
+        "size_mb": "0.67",
+        "category": "figures",
+        "path": "figures/historical/historical-hexagon-quang-tri.png"
+      }
+    ],
+    "missing_expected_files": [],
+    "sizes_by_category": {
+      "pdf": 47.75497627258301,
+      "web": 20.986477851867676,
+      "slides": 0.00030517578125,
+      "figures": 27.15279483795166,
+      "data": 2.770258903503418,
+      "reports": 11.258861541748047,
+      "simulations": 0.0,
+      "llm": 0.0,
+      "logs": 0.0001373291015625
+    },
+    "file_counts_by_type": {
+      ".md": 32,
+      ".bib": 15,
+      ".log": 3,
+      ".aux": 1,
+      ".blg": 1,
+      ".pdf": 1,
+      ".tex": 1,
+      ".toc": 1,
+      ".bbl": 1,
+      ".html": 331,
+      ".json": 106,
+      ".png": 173,
+      ".mmd": 114,
+      ".rendered": 114,
+      ".jsonl": 57,
+      ".txt": 2
+    },
+    "log_file": {
+      "exists": true,
+      "size": 144,
+      "path": "output/logs/pipeline.log"
+    }
+  }
+}

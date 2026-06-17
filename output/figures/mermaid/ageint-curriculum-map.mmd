@@ -1,0 +1,47 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["AGEINT curriculum<br/>16 parts"]
+    subgraph row0 [" "]
+        direction LR
+        p1["I. FOUNDATIONS OF INTELLIGENCE TRADECRAFT<br/>3 modules"]
+        p2["II. HUMAN INTELLIGENCE (HUMINT)<br/>3 modules"]
+        p3["III. SIGNALS INTELLIGENCE (SIGINT)<br/>2 modules"]
+        p4["IV. OPEN SOURCE INTELLIGENCE (OSINT)<br/>3 modules"]
+        p1 ~~~ p2
+        p2 ~~~ p3
+        p3 ~~~ p4
+    end
+    subgraph row1 [" "]
+        direction LR
+        p5["V. TECHNICAL INTELLIGENCE AND CYBER OPERATIONS<br/>4 modules"]
+        p6["VI. IMAGERY AND FINANCIAL INTELLIGENCE<br/>2 modules"]
+        p7["VII. PSYCHOLOGICAL OPERATIONS AND INFLUENCE<br/>4 modules"]
+        p8["VIII. COUNTERINTELLIGENCE<br/>2 modules"]
+        p5 ~~~ p6
+        p6 ~~~ p7
+        p7 ~~~ p8
+    end
+    subgraph row2 [" "]
+        direction LR
+        p9["IX. GRAY ZONE, HYBRID WARFARE, AND NON-STATE ACTORS<br/>3 modules"]
+        p10["X. HISTORICAL INTELLIGENCE SERVICES<br/>4 modules"]
+        p11["XI. AGEINT — AGENTIC INTELLIGENCE<br/>6 modules"]
+        p12["XII. COGNITIVE SECURITY<br/>4 modules"]
+        p9 ~~~ p10
+        p10 ~~~ p11
+        p11 ~~~ p12
+    end
+    subgraph row3 [" "]
+        direction LR
+        p13["XIII. EPISTEMIC RIGOR AND ANALYTIC TRADECRAFT<br/>2 modules"]
+        p14["XIV. PRODUCTIVITY INTELLIGENCE AND COGNITIVE PERFORMANCE<br/>2 modules"]
+        p15["XV. INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE<br/>5 modules"]
+        p16["XVI. LEGAL, ETHICAL, AND OVERSIGHT FRAMEWORKS<br/>2 modules"]
+        p13 ~~~ p14
+        p14 ~~~ p15
+        p15 ~~~ p16
+    end
+    root --> row0
+    row0 --> row1
+    row1 --> row2
+    row2 --> row3

@@ -1,0 +1,21 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  REQ["Collection Request"]
+  AUTH{"Lawful Authority?"}
+  DENY([Deny and Log])
+  SCOPE([Targeting Scope Limits])
+  MIN["Minimization Filter"]
+  REL{"Pertinent and Permitted?"}
+  RET([Retention and Analysis])
+  PURGE([Purge Non-Pertinent Data])
+  AUDIT["Compliance Audit"]
+  REQ --> AUTH
+  AUTH -->|no| DENY
+  AUTH -->|yes| SCOPE
+  SCOPE --> MIN
+  MIN --> REL
+  REL -->|yes| RET
+  REL -->|no| PURGE
+  RET --> AUDIT
+  PURGE --> AUDIT
+  AUDIT --> AUTH

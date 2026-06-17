@@ -1,0 +1,20 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["Legal-Authority Approval Gate<br/>authorization to audit for an<br/>intelligence collection activity"]
+    propose["Proposed activity<br/>state purpose and<br/>collection method"]
+    auth{"Authorization<br/>lawful authority<br/>and predicate?"}
+    deny(["Denied<br/>no lawful basis,<br/>activity stops"])
+    propor{"Proportionality<br/>and necessity<br/>justified?"}
+    minim["Minimization<br/>scope limits and<br/>data-handling rules"]
+    approve["Approval<br/>documented authority<br/>and conditions"]
+    conduct["Conduct under<br/>defined constraints"]
+    oversight["Oversight<br/>IG, court, and<br/>legislative review"]
+    audit(["Audit trail<br/>retained record for<br/>accountability"])
+    propose --> auth
+    auth -->|no| deny
+    auth -->|yes| propor
+    propor -->|no| deny
+    propor -->|yes| minim --> approve --> conduct
+    conduct --> oversight --> audit
+    oversight -.->|finds issue| minim
+    root --> propose

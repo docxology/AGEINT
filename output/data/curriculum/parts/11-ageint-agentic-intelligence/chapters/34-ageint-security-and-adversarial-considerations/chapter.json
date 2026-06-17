@@ -1,0 +1,31 @@
+{
+  "number": 34,
+  "title": "AGEINT Security and Adversarial Considerations",
+  "citations": [
+    234,
+    235,
+    236,
+    276,
+    277,
+    284,
+    288,
+    289,
+    293,
+    147,
+    155,
+    159,
+    137,
+    160,
+    161,
+    100,
+    162,
+    4,
+    148,
+    299,
+    306,
+    312
+  ],
+  "source_line": 617,
+  "content_profile": "agentic_ai_governance",
+  "practice_lens": "defensive_cyber_intelligence"
+}

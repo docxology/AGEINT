@@ -1,0 +1,24 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph LIFE["HUMINT Source Lifecycle (Defensive View)"]
+    direction TB
+    SPOT["Spotting and Assessment"] --> REC["Recruitment, ch4"]
+    REC --> HAND["Handling and Tasking, ch5"]
+    HAND --> TERM["Termination and Resettlement"]
+  end
+  subgraph PROT["Source Protection Spine, ch6"]
+    direction TB
+    COVER["Cover and Compartmentation"]
+    COMMS["Secure Communications and Tradecraft"]
+    VET["Vetting and Validation"]
+  end
+  subgraph CI["Counterintelligence Integration, ch6"]
+    direction TB
+    DANGLE["Dangle and Provocation Defense"]
+    MOLE["Penetration and Mole Hunt"]
+    DECEP["Deception Detection"]
+  end
+  PROT -->|"shields each stage"| LIFE
+  CI -->|"audits source bona fides"| LIFE
+  VET --> REC
+  DANGLE --> HAND

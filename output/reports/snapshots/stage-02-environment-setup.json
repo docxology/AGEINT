@@ -1,0 +1,34 @@
+{
+  "artifact_manifest_hash": "2e9ca0bfe542e4ae919f37beb9fad7d70706631702acb9bfdcfc115cb32a7270",
+  "artifacts": {
+    "output/AGENTS.md": "1f5c77d0a5ce84ab83a2563d14f35b5c3af9bb8946c5a1f4cc8e7adbe7471871",
+    "output/README.md": "f04633fa3b2e06237cd0533153ebba2bc315571fb5a7b4a148145747636c46aa",
+    "output/data/AGENTS.md": "dd5490646c7649b4c82d9ffd3ca71c72c2e6c58759d5ce6018df4bf952d647c5",
+    "output/data/README.md": "788faa41c12f1d27d21aeba77e3492751911a40f51074e55c898ac42445ad9ce",
+    "output/figures/AGENTS.md": "4dcf33decd4884bd8617e5fa82a19a415c10aa56e19437833d1542a48f78d856",
+    "output/figures/README.md": "54f8de21edd566964345ea05162dbb7e82ba4659e482e41d6b2bb2a2c25de6be",
+    "output/manuscript/AGENTS.md": "cb94c23542e7350626a94f77dca16e4f3df1b8b8c8cb43cad03169d1488fed0b",
+    "output/manuscript/README.md": "94152274dc5a13bf6492f45ec7969385230bcb800d6b3b778b366ca0640b9f07",
+    "output/manuscript/appendices/AGENTS.md": "b9a92b65a382dc7f545679cd172718bbfbd38d2d51762d01306136f3f020e450",
+    "output/manuscript/appendices/README.md": "53f8e86b03dc42d7eef044e59c5d172b7870541d05ca2bf1963338c61a319c41",
+    "output/manuscript/parts/AGENTS.md": "4222e5076fc4bb1bb59ff2a1dc65f0bd35576f7ca8f8444d7fa57604768b1b81",
+    "output/manuscript/parts/README.md": "adb18f3e26be1c90cb15cbb0bbcbef5090f995de6d251e1d3b4e89bb6413c001",
+    "output/pdf/AGENTS.md": "6a53ba7ba36c48cc26146e1f114c72d171c7faca1c7e93d6b38851d523c06c79",
+    "output/pdf/README.md": "d809bc275e5107832c80c74aee9845f2e22d0f2c8bfffadb4ddf0c9b65a7d8c6",
+    "output/reports/AGENTS.md": "f6d21cebf9ac2aa13b562c95c70eb9a06343901620f3e7bf528af04602e8539f",
+    "output/reports/README.md": "c678161f4332a755fcde77ccca1cb8b86c3622e889d95b034f098f7e911c73f5",
+    "output/slides/AGENTS.md": "007d2314c46c46e847db3112b7146975f37e3acb4065e8f41b6c4a5a2e3e369d",
+    "output/slides/README.md": "3463018eb271976af65fd94646d89a7785bad331a07e1afd1553b5215a899bd0",
+    "output/web/AGENTS.md": "90dca62c02be5f476feaedd5bedbc1c17195010b8223b5c29e8856c072e4598d",
+    "output/web/README.md": "f7a9898bea43525dfa539dd639155a0c6b73e87f42b75dba189537f4794051b6"
+  },
+  "evidence_fact_count": 0,
+  "path": "output/reports/snapshots/stage-02-environment-setup.json",
+  "stage_name": "Environment Setup",
+  "stage_num": 2,
+  "timestamp": "2026-06-15T04:07:55+00:00",
+  "validation_summary": {
+    "checks": {},
+    "summary": {}
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "number": 16,
+  "roman": "XVI",
+  "title": "LEGAL, ETHICAL, AND OVERSIGHT FRAMEWORKS",
+  "source_line": 923,
+  "chapter_files": [
+    "50-legal-authorities-and-constraints/chapter.json",
+    "51-ethics-of-intelligence-and-cognitive-security/chapter.json"
+  ]
+}

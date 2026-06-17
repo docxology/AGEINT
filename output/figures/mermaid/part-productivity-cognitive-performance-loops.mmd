@@ -1,0 +1,23 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph ATHLETE["Ch43: The cognitive athlete"]
+    direction TB
+    WL["Measure workload and overload signals"]
+    FB["Protect focus blocks and flow"]
+    DH["Decision hygiene under tempo"]
+    RST["Rest, accessibility, review rhythm"]
+    WL --> FB --> DH --> RST
+  end
+  subgraph ARCH["Ch44: Information architecture"]
+    direction TB
+    EM["External memory and capture"]
+    RQ["Requirements queues"]
+    EP["Evidence packets"]
+    HO["Handoff and re-entry context"]
+    EM --> RQ --> EP --> HO
+  end
+  RST -->|sustained capacity feeds| EM
+  HO -->|structured context restores| WL
+  DH --> CARD["Workload and decision-hygiene card"]
+  EP --> CARD
+  CARD --> GATE["Quality control: no optimization overrides safety or review"]

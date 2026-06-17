@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>34-ageint-pattern-library-design-pattern-rows-safe-substitutions-and-source-identity-sec-ageint-pattern-library.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2 id="sec:ageint-pattern-library">AGEINT pattern library:
+design-pattern rows, safe substitutions, and source identity</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source identity</th>
+<th>Safe curriculum treatment</th>
+<th>Methods</th>
+<th>Defensive application</th>
+<th>Safety boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pattern 1: The Solo Reasoner (source identity only)</td>
+<td>Focused Analytic Reasoner</td>
+<td>bounded source reading, explicit assumptions, self-critique, and
+confidence notes</td>
+<td>single public-source report critique with provenance and uncertainty
+fields</td>
+<td>keeps reasoning reviewable without exposing hidden reasoning or
+delegating action</td>
+</tr>
+<tr>
+<td>Pattern 2: The Reflection Agent (source identity only)</td>
+<td>Reflection and Bias-Check Agent</td>
+<td>rubric-based critique, source-quality scoring, and trajectory
+validation</td>
+<td>analytic-bias review over a synthetic or public-source evidence
+packet</td>
+<td>supports quality review and never replaces accountable human
+judgment</td>
+</tr>
+<tr>
+<td>Pattern 3: The Tool-Forager (source identity only)</td>
+<td>Tool-Allowlist Research Assistant</td>
+<td>schema-bound tool calls, public-source retrieval, allowlisted
+connectors, and grounded summaries</td>
+<td>accountable bibliography, source inventory, or standards-mapping
+exercise</td>
+<td>excludes broad scraping, credentialed collection, and
+exposure-search tooling</td>
+</tr>
+<tr>
+<td>Pattern 4: The Planner-Executor (source identity only)</td>
+<td>Governed Planner-Executor</td>
+<td>milestone decomposition, approval gates, dependency checks, and
+rollback notes</td>
+<td>classroom project plan for evidence review, policy analysis, or
+tabletop preparation</td>
+<td>plans curriculum artifacts only and does not create live operational
+tasking</td>
+</tr>
+<tr>
+<td>Pattern 5: The Parallel Collector (source identity only)</td>
+<td>Parallel Source-Corroboration Agent</td>
+<td>bounded concurrent retrieval, deduplication, contradiction capture,
+and source descriptors</td>
+<td>side-by-side comparison of public official, standards, and scholarly
+sources</td>
+<td>uses public or provided materials and avoids intelligence collection
+expansion</td>
+</tr>
+<tr>
+<td>Pattern 6: The Multi-Agent Crew (source identity only)</td>
+<td>Role-Separated Review Crew</td>
+<td>planner, retriever, validator, safety reviewer, and reporter
+roles</td>
+<td>tabletop red-team critique of an analytic memo, not an operational
+exercise</td>
+<td>keeps roles educational, logged, and constrained to benign
+artifacts</td>
+</tr>
+<tr>
+<td>Pattern 7: The Debate Agent (source identity only)</td>
+<td>Competing-Hypotheses Debate Agent</td>
+<td>alternative generation, evidence challenge, dissent capture, and
+judge rubric</td>
+<td>ACH-style review of a classroom claim with clearly separated
+evidence and judgment</td>
+<td>does not generate adversarial persuasion or policy advocacy
+content</td>
+</tr>
+<tr>
+<td>Pattern 8: The RAG-Operator (source identity only)</td>
+<td>Provenance-Bound Retrieval Operator</td>
+<td>curated corpus retrieval, hybrid ranking, source snippets, and
+citation audits</td>
+<td>course-pack retrieval over provided readings, standards, and
+official guidance</td>
+<td>does not connect to live sensitive stores or unapproved data
+collections</td>
+</tr>
+<tr>
+<td>Pattern 9: The Memory-State Machine (source identity only)</td>
+<td>Evidence-Memory State Machine</td>
+<td>episodic note cards, retention limits, consolidation, and source
+change logs</td>
+<td>longitudinal claim ledger for curriculum evidence and revision
+history</td>
+<td>tracks claims and sources, not people, assets, or behavioral
+patterns</td>
+</tr>
+<tr>
+<td>Pattern 10: The Control Plane Agent (source identity only)</td>
+<td>Permissioned Control Plane Agent</td>
+<td>single-interface routing, policy checks, budget limits, and audit
+logs</td>
+<td>tool-governance demo that routes among benign summarization and
+validation utilities</td>
+<td>keeps every tool revocable, observable, and constrained to
+evidence-bounded actions</td>
+</tr>
+<tr>
+<td>Pattern 11: The Surveillance Agent (source identity only)</td>
+<td>Monitoring-Governance Tabletop Agent</td>
+<td>synthetic event polling, threshold rationale, alert review, and
+escalation logging</td>
+<td>accountable monitoring governance exercise over toy asset-health
+records</td>
+<td>prohibits tracking real people, real targets, private forums, or
+infrastructure</td>
+</tr>
+<tr>
+<td>Pattern 12: The Red Team Agent (source identity only)</td>
+<td>Control-Coverage Critique Agent</td>
+<td>policy-safe scenario cards, control mapping, misuse-case review, and
+mitigation scoring</td>
+<td>defensive tabletop review of controls against published high-level
+tactics</td>
+<td>does not automate exploitation, weakness discovery, or attack-chain
+execution</td>
+</tr>
+<tr>
+<td>Pattern 13: The Cover Story Generator (source identity only)</td>
+<td>Identity-and-Provenance Fiction Audit</td>
+<td>synthetic persona-risk critique, provenance labeling, and
+consistency-error detection</td>
+<td>ethics exercise that detects fabricated identity artifacts in
+clearly synthetic materials</td>
+<td>prohibits impersonation, false identity creation, and
+operational-security support</td>
+</tr>
+<tr>
+<td>Pattern 14: The Deception Detector (source identity only)</td>
+<td>Source-Reliability Verification Agent</td>
+<td>corroboration, metadata review, provenance checks, and
+content-authenticity labels</td>
+<td>public-source validation packet with uncertainty and review
+escalations</td>
+<td>supports verification and does not accuse, deanonymize, or profile
+real people</td>
+</tr>
+<tr>
+<td>Pattern 15: The Analyst in the Loop (source identity only)</td>
+<td>Analyst-in-the-Loop Review Agent</td>
+<td>interrupt gates, confidence thresholds, human approvals, and audit
+handoffs</td>
+<td>supervised classroom analysis workflow for compliance-constrained
+exercises</td>
+<td>requires accountable human review before any external communication
+or decision</td>
+</tr>
+<tr>
+<td>Pattern 16: The Cyber Sentinel (source identity only)</td>
+<td>SOC Tabletop Triage Agent</td>
+<td>synthetic alert enrichment, ATT&amp;CK mapping, severity rationale,
+and debrief notes</td>
+<td>tier-1 incident tabletop over fabricated logs and published
+technique descriptions</td>
+<td>does not run response actions, touch production systems, or publish
+indicators as fact</td>
+</tr>
+<tr>
+<td>Pattern 17: The Supply Chain Inspector (source identity only)</td>
+<td>Software Provenance Review Agent</td>
+<td>SBOM reading, dependency graph review, advisory matching, and
+integrity questions</td>
+<td>defensive package-governance exercise over sample manifests and
+public advisories</td>
+<td>does not hunt real maintainers or produce exploitability claims
+without evidence</td>
+</tr>
+<tr>
+<td>Pattern 18: The GEOINT Analyst (source identity only)</td>
+<td>GEOINT Data-Quality Audit Agent</td>
+<td>provided-image annotation, quality flags, geospatial metadata
+review, and caveat writing</td>
+<td>synthetic imagery-change exercise focused on uncertainty and data
+quality</td>
+<td>limits work to non-sensitive metadata quality, uncertainty notes,
+and synthetic location examples</td>
+</tr>
+<tr>
+<td>Pattern 19: The Cognitive Inoculant (source identity only)</td>
+<td>Cognitive-Resilience Education Agent</td>
+<td>manipulation-technique labeling, transparent prebunking, and
+audience-harm review</td>
+<td>opt-in media-literacy micro-lesson for a sample classroom
+scenario</td>
+<td>does not design persuasion campaigns, microtargeting, or covert
+influence content</td>
+</tr>
+<tr>
+<td>Pattern 20: The Hierarchical Command (source identity only)</td>
+<td>Hierarchical Curriculum Orchestrator</td>
+<td>role delegation, output aggregation, exception routing, and failure
+recovery drills</td>
+<td>multi-domain capstone coordination across benign module
+artifacts</td>
+<td>orchestrates learning artifacts only and preserves human
+authorization gates</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

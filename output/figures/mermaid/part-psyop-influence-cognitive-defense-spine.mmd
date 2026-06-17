@@ -1,0 +1,22 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  SPINE["Influence and Cognitive Security Doctrine"]
+  subgraph Topics ["Chapters (Defensive Lens)"]
+    direction LR
+    P18["Ch18 PSYOP/MISO Doctrine"]
+    A19["Ch19 Active Measures"]
+    S20["Ch20 Social Engineering"]
+    W21["Ch21 Info Warfare and CogSec"]
+  end
+  SPINE --> P18
+  SPINE --> A19
+  SPINE --> S20
+  SPINE --> W21
+  P18 --> OVS["Authority and Oversight"]
+  A19 --> PROV["Provenance and Attribution"]
+  S20 --> VER["Verification and Consent"]
+  W21 --> RES["Cognitive Resilience"]
+  OVS --> DEF["Cognitive-Defense Posture"]
+  PROV --> DEF
+  VER --> DEF
+  RES --> DEF

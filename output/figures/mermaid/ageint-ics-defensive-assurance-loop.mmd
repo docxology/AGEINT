@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Synthetic OT telemetry in owned lab"] --> B["AI-driven anomaly detection"]
+  A --> C["LLM agent log analysis and correlation"]
+  B --> D["Advisory findings with confidence"]
+  C --> D
+  D --> E{"Allowlist and tool governance gate"}
+  E -->|"Deny by default"| A
+  E -->|"Permitted"| F["Analyst-in-the-loop review"]
+  F -->|"Unsafe automation"| A
+  F -->|"Approved"| G["Logged defensive recommendation"]
+  G --> H["Tabletop debrief with rollback evidence"]
+  H --> I(["Record coverage and refresh trigger"])
+  I --> A

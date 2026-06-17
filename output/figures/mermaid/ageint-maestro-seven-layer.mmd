@@ -1,0 +1,19 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    l6["L6: Security and Compliance<br/>cross-cutting layer<br/>security agents are<br/>themselves attack surfaces<br/>monitor the monitors"]
+    subgraph STACK["MAESTRO lifecycle stack"]
+        direction TB
+        l7["L7: Agent Ecosystem<br/>impersonation, marketplace<br/>manipulation, goal manipulation"]
+        l5["L5: Evaluation and Observability<br/>metric manipulation,<br/>detection evasion"]
+        l4["L4: Deployment and Infrastructure<br/>container escape,<br/>lateral movement"]
+        l3["L3: Agent Frameworks<br/>supply chain, compromised<br/>components, input validation"]
+        l2["L2: Data Operations<br/>data poisoning,<br/>RAG pipeline compromise"]
+        l1["L1: Foundation Models<br/>adversarial examples,<br/>model stealing, backdoors"]
+        l7 --> l5 --> l4 --> l3 --> l2 --> l1
+    end
+    l6 -. "spans" .-> l7
+    l6 -. "spans" .-> l5
+    l6 -. "spans" .-> l4
+    l6 -. "spans" .-> l3
+    l6 -. "spans" .-> l2
+    l6 -. "spans" .-> l1

@@ -1,0 +1,28 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph LAW["Legal and Authorization Gate"]
+    direction TB
+    AUTH["Collection Authorities and Warrants"]
+    MIN["Minimization and Privacy Rules"]
+  end
+  subgraph COL["SIGINT Disciplines, ch7"]
+    direction TB
+    COMINT["COMINT, Communications"]
+    ELINT["ELINT, Electronic Emissions"]
+    FISINT["FISINT, Telemetry"]
+  end
+  subgraph PROC["Processing Stack, ch7 to ch8"]
+    direction TB
+    INTERCEPT["Interception and Direction Finding"]
+    TA["Traffic Analysis and Metadata"]
+    CRYPT["Cryptanalysis and Decryption, ch8"]
+  end
+  subgraph MOD["Modern Frontier, ch8"]
+    direction TB
+    ENCRYPT["Strong Encryption and PQC"]
+    EXPLOIT["Endpoint and Network Exploitation"]
+  end
+  LAW -->|"authorizes"| COL
+  COL --> PROC
+  PROC -->|"reporting"| OUT["Finished SIGINT Product"]
+  MOD -->|"reshapes feasibility"| PROC

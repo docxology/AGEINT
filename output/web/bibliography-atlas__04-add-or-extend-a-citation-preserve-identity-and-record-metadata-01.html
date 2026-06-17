@@ -1,0 +1,3834 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>04-add-or-extend-a-citation-preserve-identity-and-record-metadata-01.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h2
+id="add-or-extend-a-citation-preserve-identity-and-record-metadata">Add
+or extend a citation: preserve identity and record metadata</h2>
+<p><strong>Section anchor.</strong> [sec:bibliography_atlas].</p>
+<ol type="1">
+<li>Preserve <code>ageint001</code> through <code>ageint231</code>; do
+not renumber locked source identities.</li>
+<li>Append new source-guide references after the locked range. Current
+generated guide keys extend through <code>ageint312</code>.</li>
+<li>For curated anchors, record <code>source_lane</code>,
+<code>source_tier</code>, <code>checked_as_of</code>,
+<code>verification_method</code>, <code>claim_scope</code>,
+<code>refresh_cadence</code>, <code>refresh_trigger</code>,
+<code>stakeholder_role</code>, <code>assurance_use</code>, and
+<code>rights_dimension</code>.</li>
+<li>Use Pandoc citation syntax such as <code>[ageint137]</code> or
+<code>[official_nist_ai_rmf]</code>.</li>
+<li>Use label-backed cross-references to the curriculum orientation
+section and curriculum-map figure rather than hard-coded section or
+figure numbers.</li>
+<li>Rebuild from the AGEINT root:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run python scripts/build_curriculum.py</span></code></pre></div>
+<p>never hand-edit <code>output/manuscript/</code> as the source of
+truth.</p>
+<h3 id="current-citation-coverage-by-source-section">Current citation
+coverage by source section</h3>
+<p><strong>Coverage anchor.</strong> Parent appendix:
+[sec:bibliography_atlas]. Citation coverage by source section is
+validated from the generated citation inventory.</p>
+<table>
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source sections</td>
+<td style="text-align: right;">723</td>
+</tr>
+<tr>
+<td>Citation occurrences</td>
+<td style="text-align: right;">1468</td>
+</tr>
+<tr>
+<td>Unique source-guide keys</td>
+<td style="text-align: right;">301</td>
+</tr>
+<tr>
+<td>Zero-citation source sections</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Distribution</td>
+<td style="text-align: right;">1 citation(s): 275 section(s), 2
+citation(s): 154 section(s), 3 citation(s): 291 section(s), 4
+citation(s): 3 section(s)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="citation-rows-by-source-section">Citation rows by source
+section</h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Section</th>
+<th>Module and source section</th>
+<th style="text-align: right;">Citations</th>
+<th>Citation links</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1.99</td>
+<td>The Nature of Intelligence - V2 source-lane extension: bind The
+Nature of Intelligence to source-lane evidence, claim-ledger review,
+safe substitution, compliance/rights mapping, instructor deliverables,
+and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint237]; [ageint270]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.101</td>
+<td>The Nature of Intelligence - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for The
+Nature of Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint274]; [ageint275]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.102</td>
+<td>The Nature of Intelligence - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for The Nature of Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint287]; [ageint292]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.1</td>
+<td>The Nature of Intelligence - Defining Intelligence: Collection,
+Analysis, Production, Dissemination</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.2</td>
+<td>The Nature of Intelligence - The Intelligence Cycle (Classic,
+Revised, and Critique)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.3</td>
+<td>The Nature of Intelligence - Types: Strategic, Operational,
+Tactical, Technical Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.4</td>
+<td>The Nature of Intelligence - Intelligence as Social and
+Epistemological Practice</td>
+<td style="text-align: right;">1</td>
+<td>[ageint001]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.5</td>
+<td>The Nature of Intelligence - National, Corporate, and Private
+Intelligence: Structural Differences</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.6</td>
+<td>The Nature of Intelligence - The Ethics of Intelligence: EO 12333,
+FISA, ICD 203, Allied Law</td>
+<td style="text-align: right;">1</td>
+<td>[ageint002]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.7</td>
+<td>The Nature of Intelligence - Active Inference as a Unifying
+Cognitive Framework for Intelligence</td>
+<td style="text-align: right;">1</td>
+<td>[ageint003]</td>
+</tr>
+<tr>
+<td style="text-align: right;">1.8</td>
+<td>The Nature of Intelligence - The AI Inflection Point: How Artificial
+Intelligence Reshapes Every Phase of the Intelligence Cycle</td>
+<td style="text-align: right;">2</td>
+<td>[ageint004]; [ageint005]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.99</td>
+<td>Intelligence Community Architectures - V2 source-lane extension:
+bind Intelligence Community Architectures to source-lane evidence,
+claim-ledger review, safe substitution, compliance/rights mapping,
+instructor deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint234]; [ageint247]; [ageint249]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.101</td>
+<td>Intelligence Community Architectures - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Intelligence Community Architectures</td>
+<td style="text-align: right;">3</td>
+<td>[ageint276]; [ageint277]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.102</td>
+<td>Intelligence Community Architectures - Evidence-package expansion:
+add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Intelligence Community Architectures</td>
+<td style="text-align: right;">3</td>
+<td>[ageint288]; [ageint289]; [ageint293]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.1</td>
+<td>Intelligence Community Architectures - U.S. Intelligence Community:
+18 Agencies, Authorities, and Relationships</td>
+<td style="text-align: right;">1</td>
+<td>[ageint006]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.2</td>
+<td>Intelligence Community Architectures - Soviet/Russian Architecture:
+Cheka → GPU → NKVD → MGB → KGB → SVR/FSB/GRU</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.3</td>
+<td>Intelligence Community Architectures - British Architecture: MI5,
+MI6/SIS, GCHQ, DI, JIC</td>
+<td style="text-align: right;">1</td>
+<td>[ageint007]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.4</td>
+<td>Intelligence Community Architectures - Israeli Architecture: Mossad,
+Shin Bet, Unit 8200, LAKAM</td>
+<td style="text-align: right;">1</td>
+<td>[ageint008]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.5</td>
+<td>Intelligence Community Architectures - Chinese Architecture: MSS,
+PLA-SSF, United Front Work Department, APT Groups</td>
+<td style="text-align: right;">1</td>
+<td>[ageint009]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.6</td>
+<td>Intelligence Community Architectures - Five Eyes and Allied
+Intelligence Sharing: BRUSA to UKUSA</td>
+<td style="text-align: right;">2</td>
+<td>[ageint010]; [ageint011]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.7</td>
+<td>Intelligence Community Architectures - Non-State Intelligence
+Actors: Terrorist, Criminal, PMC</td>
+<td style="text-align: right;">1</td>
+<td>[ageint012]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.8</td>
+<td>Intelligence Community Architectures - Fusion Centers, JITFs, and
+Inter-Agency Coordination</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">2.9</td>
+<td>Intelligence Community Architectures - Intelligence Oversight:
+Congressional, Judicial, Executive Mechanisms</td>
+<td style="text-align: right;">2</td>
+<td>[ageint298]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.99</td>
+<td>Tradecraft: Core Principles - V2 source-lane extension: bind
+Tradecraft: Core Principles to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint237]; [ageint266]; [ageint269]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.101</td>
+<td>Tradecraft: Core Principles - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for
+Tradecraft: Core Principles</td>
+<td style="text-align: right;">3</td>
+<td>[ageint278]; [ageint279]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.102</td>
+<td>Tradecraft: Core Principles - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Tradecraft: Core Principles</td>
+<td style="text-align: right;">3</td>
+<td>[ageint290]; [ageint291]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.1</td>
+<td>Tradecraft: Core Principles - What Is Tradecraft? Historical
+Definitions and Evolution</td>
+<td style="text-align: right;">2</td>
+<td>[ageint013]; [ageint014]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.2</td>
+<td>Tradecraft: Core Principles - Operational Security (OPSEC): Process
+and the Five-Step Method</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.3</td>
+<td>Tradecraft: Core Principles - Compartmentation: Need-to-Know
+vs. Need-to-Share</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.4</td>
+<td>Tradecraft: Core Principles - Cover: Official, Non-Official Cover
+(NOC), Deep Cover, Legends</td>
+<td style="text-align: right;">1</td>
+<td>[ageint015]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.5</td>
+<td>Tradecraft: Core Principles - The Principle of Plausible
+Deniability</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.6</td>
+<td>Tradecraft: Core Principles - Pattern-of-Life Analysis and How to
+Disrupt It</td>
+<td style="text-align: right;">1</td>
+<td>[ageint016]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.7</td>
+<td>Tradecraft: Core Principles - Situational Awareness: Urban and Rural
+Tradecraft</td>
+<td style="text-align: right;">1</td>
+<td>[ageint014]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.8</td>
+<td>Tradecraft: Core Principles - Code Words, Glossaries, and the
+Language of Espionage</td>
+<td style="text-align: right;">1</td>
+<td>[ageint017]</td>
+</tr>
+<tr>
+<td style="text-align: right;">3.9</td>
+<td>Tradecraft: Core Principles - Return of Classical Tradecraft in the
+AI Era: Dead Drops, Brush Passes, In-Person Exchanges</td>
+<td style="text-align: right;">3</td>
+<td>[ageint018]; [ageint005]; [ageint019]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.99</td>
+<td>Agent Recruitment - V2 source-lane extension: bind Agent Recruitment
+to source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint239]; [ageint240]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.101</td>
+<td>Agent Recruitment - Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Agent
+Recruitment</td>
+<td style="text-align: right;">3</td>
+<td>[ageint280]; [ageint281]; [ageint282]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.102</td>
+<td>Agent Recruitment - Evidence-package expansion: add model/dataset
+documentation cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Agent
+Recruitment</td>
+<td style="text-align: right;">3</td>
+<td>[ageint292]; [ageint295]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.1</td>
+<td>Agent Recruitment - The MICE Framework: Money, Ideology,
+Coercion/Compromise, Ego</td>
+<td style="text-align: right;">2</td>
+<td>[ageint020]; [ageint021]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.2</td>
+<td>Agent Recruitment - MICE Expanded: RASCLS — Reciprocity, Authority,
+Scarcity, Commitment, Liking, Social Proof</td>
+<td style="text-align: right;">2</td>
+<td>[ageint298]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.3</td>
+<td>Agent Recruitment - Targeting, Spotting, and Initial Assessment</td>
+<td style="text-align: right;">2</td>
+<td>[ageint020]; [ageint021]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.4</td>
+<td>Agent Recruitment - Assessment and Development Operations</td>
+<td style="text-align: right;">2</td>
+<td>[ageint020]; [ageint021]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.5</td>
+<td>Agent Recruitment - The Recruitment Pitch: Methods and
+Psychology</td>
+<td style="text-align: right;">1</td>
+<td>[ageint020]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.6</td>
+<td>Agent Recruitment - KGB Recruitment Doctrine: Psychological Methods
+and Manipulation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint021]; [ageint022]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.7</td>
+<td>Agent Recruitment - Digital-Age Recruitment: LinkedIn, Telegram,
+Cryptocurrencies, Dark Web</td>
+<td style="text-align: right;">1</td>
+<td>[ageint023]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.8</td>
+<td>Agent Recruitment - Shared Experience as a Recruitment Tool:
+Experimental Research</td>
+<td style="text-align: right;">1</td>
+<td>[ageint024]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.9</td>
+<td>Agent Recruitment - How AI Lowers the Cost of Recruitment and Social
+Engineering</td>
+<td style="text-align: right;">1</td>
+<td>[ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">4.10</td>
+<td>Agent Recruitment - Recruitment Ethics and Legal Constraints</td>
+<td style="text-align: right;">2</td>
+<td>[ageint298]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.99</td>
+<td>Agent Handling and Management - V2 source-lane extension: bind Agent
+Handling and Management to source-lane evidence, claim-ledger review,
+safe substitution, compliance/rights mapping, instructor deliverables,
+and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint239]; [ageint240]; [ageint241]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.101</td>
+<td>Agent Handling and Management - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Agent Handling and Management</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint276]; [ageint285]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.102</td>
+<td>Agent Handling and Management - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Agent Handling and Management</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint290]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.1</td>
+<td>Agent Handling and Management - The Case Officer–Agent Relationship:
+Building, Maintaining, Testing Trust</td>
+<td style="text-align: right;">1</td>
+<td>[ageint025]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.2</td>
+<td>Agent Handling and Management - Meeting Structures: Overt, Covert,
+and Clandestine</td>
+<td style="text-align: right;">2</td>
+<td>[ageint029]; [ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.3</td>
+<td>Agent Handling and Management - The Surveillance Detection Route
+(SDR)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint026]; [ageint016]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.4</td>
+<td>Agent Handling and Management - Dead Drops: Physical and Digital
+Methods</td>
+<td style="text-align: right;">2</td>
+<td>[ageint027]; [ageint028]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.5</td>
+<td>Agent Handling and Management - Cutouts, Intermediaries, and
+Deniability Chains</td>
+<td style="text-align: right;">1</td>
+<td>[ageint029]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.6</td>
+<td>Agent Handling and Management - Fronts and Shell Entities as Agent
+Infrastructure</td>
+<td style="text-align: right;">1</td>
+<td>[ageint029]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.7</td>
+<td>Agent Handling and Management - Counter-Surveillance and Detecting
+Hostile Surveillance</td>
+<td style="text-align: right;">2</td>
+<td>[ageint030]; [ageint031]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.8</td>
+<td>Agent Handling and Management - Running Agents-in-Place: Frequency,
+Tasking, Validation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint029]; [ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.9</td>
+<td>Agent Handling and Management - Burning, Exfiltrating, and
+Terminating Agents</td>
+<td style="text-align: right;">2</td>
+<td>[ageint029]; [ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.10</td>
+<td>Agent Handling and Management - KGB Working-with-Agents Doctrine
+(Declassified Manuals)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint032]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.11</td>
+<td>Agent Handling and Management - AI-Enhanced Micro-Expression
+Analysis for Source Validation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">5.12</td>
+<td>Agent Handling and Management - AI-Personalized Communication:
+Tailoring Persuasion to Source Personality</td>
+<td style="text-align: right;">1</td>
+<td>[ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.99</td>
+<td>Source Protection and CI Integration - V2 source-lane extension:
+bind Source Protection and CI Integration to source-lane evidence,
+claim-ledger review, safe substitution, compliance/rights mapping,
+instructor deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint241]; [ageint266]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.101</td>
+<td>Source Protection and CI Integration - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Source Protection and CI Integration</td>
+<td style="text-align: right;">3</td>
+<td>[ageint274]; [ageint278]; [ageint280]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.102</td>
+<td>Source Protection and CI Integration - Evidence-package expansion:
+add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Source Protection and CI Integration</td>
+<td style="text-align: right;">3</td>
+<td>[ageint287]; [ageint288]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.1</td>
+<td>Source Protection and CI Integration - Identifying Penetration:
+Signs of Compromise</td>
+<td style="text-align: right;">3</td>
+<td>[ageint307]; [ageint305]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.2</td>
+<td>Source Protection and CI Integration - Compartmentation in Agent
+Networks</td>
+<td style="text-align: right;">1</td>
+<td>[ageint029]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.3</td>
+<td>Source Protection and CI Integration - Lie Detection, Vetting,
+Polygraph, and Its Alternatives</td>
+<td style="text-align: right;">3</td>
+<td>[ageint307]; [ageint305]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.4</td>
+<td>Source Protection and CI Integration - The Double-Agent
+Operation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint029]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.5</td>
+<td>Source Protection and CI Integration - Hostile Intelligence from
+Non-State Actors</td>
+<td style="text-align: right;">1</td>
+<td>[ageint033]</td>
+</tr>
+<tr>
+<td style="text-align: right;">6.6</td>
+<td>Source Protection and CI Integration - Espionage in the AI Era: Why
+HUMINT Will Grow in Importance</td>
+<td style="text-align: right;">2</td>
+<td>[ageint019]; [ageint034]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.99</td>
+<td>SIGINT Fundamentals - V2 source-lane extension: bind SIGINT
+Fundamentals to source-lane evidence, claim-ledger review, safe
+substitution, compliance/rights mapping, instructor deliverables, and
+explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint255]; [ageint258]; [ageint261]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.101</td>
+<td>SIGINT Fundamentals - Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for SIGINT
+Fundamentals</td>
+<td style="text-align: right;">3</td>
+<td>[ageint279]; [ageint282]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.102</td>
+<td>SIGINT Fundamentals - Evidence-package expansion: add model/dataset
+documentation cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for SIGINT
+Fundamentals</td>
+<td style="text-align: right;">3</td>
+<td>[ageint289]; [ageint291]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.1</td>
+<td>SIGINT Fundamentals - COMINT and ELINT: Definitions and
+Distinctions</td>
+<td style="text-align: right;">1</td>
+<td>[ageint035]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.2</td>
+<td>SIGINT Fundamentals - Historical Foundations: WWII Axis SIGINT (NSA
+Declassified 9 Volumes)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint036]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.3</td>
+<td>SIGINT Fundamentals - Spartans in Darkness: SIGINT in the Indochina
+War, 1945–1975</td>
+<td style="text-align: right;">1</td>
+<td>[ageint037]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.4</td>
+<td>SIGINT Fundamentals - CIA–NSA SIGINT Relationship, 1947–1970</td>
+<td style="text-align: right;">2</td>
+<td>[ageint038]; [ageint039]</td>
+</tr>
+<tr>
+<td style="text-align: right;">7.5</td>
+<td>SIGINT Fundamentals - NSA Basic Cryptography (Friedman
+Documents)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint040]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.99</td>
+<td>Modern SIGINT and Cryptography - V2 source-lane extension: bind
+Modern SIGINT and Cryptography to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint258]; [ageint260]; [ageint261]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.101</td>
+<td>Modern SIGINT and Cryptography - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Modern SIGINT and Cryptography</td>
+<td style="text-align: right;">3</td>
+<td>[ageint275]; [ageint276]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.102</td>
+<td>Modern SIGINT and Cryptography - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Modern SIGINT and Cryptography</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint293]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.1</td>
+<td>Modern SIGINT and Cryptography - UKUSA and Five Eyes SIGINT
+Sharing</td>
+<td style="text-align: right;">2</td>
+<td>[ageint041]; [ageint042]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.2</td>
+<td>Modern SIGINT and Cryptography - Bulk Collection, Metadata Analysis,
+and Legal Frameworks</td>
+<td style="text-align: right;">2</td>
+<td>[ageint298]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.3</td>
+<td>Modern SIGINT and Cryptography - The Cryptographic Arms Race: E2E
+Encryption and Lawful Access</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.4</td>
+<td>Modern SIGINT and Cryptography - Covert Communications Tradecraft:
+OTPs, Burst Transmission, Digital Dead Drops</td>
+<td style="text-align: right;">2</td>
+<td>[ageint027]; [ageint028]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.5</td>
+<td>Modern SIGINT and Cryptography - Radio Frequency Intelligence
+(RFINT) and Technical Surveillance</td>
+<td style="text-align: right;">2</td>
+<td>[ageint043]; [ageint044]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.6</td>
+<td>Modern SIGINT and Cryptography - Technical Surveillance
+Countermeasures (TSCM): Threat Levels and Detection</td>
+<td style="text-align: right;">2</td>
+<td>[ageint045]; [ageint046]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.7</td>
+<td>Modern SIGINT and Cryptography - Non-Linear Junction Detectors, RF
+Spectrum Analysis, Infrared Imaging</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.8</td>
+<td>Modern SIGINT and Cryptography - Steganography: LSB, DCT, and
+Network-Layer Methods</td>
+<td style="text-align: right;">1</td>
+<td>[ageint028]</td>
+</tr>
+<tr>
+<td style="text-align: right;">8.9</td>
+<td>Modern SIGINT and Cryptography - Signal Authentication in the
+Deepfake Era</td>
+<td style="text-align: right;">1</td>
+<td>[ageint018]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.99</td>
+<td>OSINT Foundations - V2 source-lane extension: bind OSINT Foundations
+to source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint251]; [ageint253]; [ageint269]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.101</td>
+<td>OSINT Foundations - Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for OSINT
+Foundations</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint274]; [ageint275]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.102</td>
+<td>OSINT Foundations - Evidence-package expansion: add model/dataset
+documentation cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for OSINT
+Foundations</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint287]; [ageint292]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.1</td>
+<td>OSINT Foundations - History and Rise of OSINT in the Intelligence
+Community</td>
+<td style="text-align: right;">1</td>
+<td>[ageint047]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.2</td>
+<td>OSINT Foundations - IC OSINT Strategy 2024–2026</td>
+<td style="text-align: right;">1</td>
+<td>[ageint048]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.3</td>
+<td>OSINT Foundations - OSINT vs. HUMINT vs. SIGINT: Comparative Value
+and Fusion</td>
+<td style="text-align: right;">2</td>
+<td>[ageint301]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.4</td>
+<td>OSINT Foundations - Legal and Ethical Constraints in OSINT
+Collection</td>
+<td style="text-align: right;">2</td>
+<td>[ageint298]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.5</td>
+<td>OSINT Foundations - OPSEC for OSINT Operators: The Sock Puppet
+Problem</td>
+<td style="text-align: right;">2</td>
+<td>[ageint301]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">9.6</td>
+<td>OSINT Foundations - Open Source Intelligence: Trends and Issues</td>
+<td style="text-align: right;">1</td>
+<td>[ageint049]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.99</td>
+<td>OSINT Techniques and Tools - V2 source-lane extension: bind OSINT
+Techniques and Tools to source-lane evidence, claim-ledger review, safe
+substitution, compliance/rights mapping, instructor deliverables, and
+explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint251]; [ageint252]; [ageint269]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.101</td>
+<td>OSINT Techniques and Tools - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for OSINT
+Techniques and Tools</td>
+<td style="text-align: right;">3</td>
+<td>[ageint276]; [ageint277]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.102</td>
+<td>OSINT Techniques and Tools - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for OSINT Techniques and Tools</td>
+<td style="text-align: right;">3</td>
+<td>[ageint288]; [ageint289]; [ageint293]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.1</td>
+<td>OSINT Techniques and Tools - Search Engine Tradecraft: Google
+Dorking, Yandex, Bing, Shodan</td>
+<td style="text-align: right;">2</td>
+<td>[ageint050]; [ageint051]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.2</td>
+<td>OSINT Techniques and Tools - Social Media OSINT: Scraping, Graph
+Analysis, Identity Verification</td>
+<td style="text-align: right;">2</td>
+<td>[ageint051]; [ageint052]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.3</td>
+<td>OSINT Techniques and Tools - Maltego: Graph-Based OSINT
+Investigation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint051]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.4</td>
+<td>OSINT Techniques and Tools - Recon-ng: Python-Based Reconnaissance
+Framework</td>
+<td style="text-align: right;">2</td>
+<td>[ageint052]; [ageint053]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.5</td>
+<td>OSINT Techniques and Tools - SpiderFoot: Automated OSINT
+Collection</td>
+<td style="text-align: right;">1</td>
+<td>[ageint052]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.6</td>
+<td>OSINT Techniques and Tools - FOCA, TheHarvester, Sherlock: Targeted
+Investigation Tools</td>
+<td style="text-align: right;">1</td>
+<td>[ageint054]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.7</td>
+<td>OSINT Techniques and Tools - OSINT Framework (osintframework.com):
+Module Taxonomy</td>
+<td style="text-align: right;">2</td>
+<td>[ageint051]; [ageint052]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.8</td>
+<td>OSINT Techniques and Tools - Offline OSINT Environments: VM
+Architecture and Isolation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint051]; [ageint052]</td>
+</tr>
+<tr>
+<td style="text-align: right;">10.9</td>
+<td>OSINT Techniques and Tools - IntelTechniques OSINT 11th Edition
+Methods and Workflows</td>
+<td style="text-align: right;">2</td>
+<td>[ageint055]; [ageint056]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.99</td>
+<td>GEOINT and Imagery Intelligence - V2 source-lane extension: bind
+GEOINT and Imagery Intelligence to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint253]; [ageint255]; [ageint270]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.101</td>
+<td>GEOINT and Imagery Intelligence - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for GEOINT and Imagery Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint278]; [ageint279]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.102</td>
+<td>GEOINT and Imagery Intelligence - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for GEOINT and Imagery Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint290]; [ageint291]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.1</td>
+<td>GEOINT and Imagery Intelligence - Geospatial Intelligence
+Fundamentals: IMINT, GEOINT, Mapping</td>
+<td style="text-align: right;">1</td>
+<td>[ageint057]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.2</td>
+<td>GEOINT and Imagery Intelligence - GEOINT Essential Body of Knowledge
+(USGIF)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint058]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.3</td>
+<td>GEOINT and Imagery Intelligence - Commercial Satellite Platforms:
+Maxar, Planet, Sentinel-1/2</td>
+<td style="text-align: right;">1</td>
+<td>[ageint059]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.4</td>
+<td>GEOINT and Imagery Intelligence - Change Detection and
+Pattern-of-Life Imagery Analysis</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.5</td>
+<td>GEOINT and Imagery Intelligence - GEOINT in Counterinsurgency and
+Strike Operations</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.6</td>
+<td>GEOINT and Imagery Intelligence - DoD GEOINT Accreditation and
+Training Standards</td>
+<td style="text-align: right;">1</td>
+<td>[ageint060]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.7</td>
+<td>GEOINT and Imagery Intelligence - MCRP 2-10B.4: USMC GEOINT
+Manual</td>
+<td style="text-align: right;">1</td>
+<td>[ageint057]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.8</td>
+<td>GEOINT and Imagery Intelligence - AI-Assisted Satellite Image
+Analysis: Object Detection and Chronolocation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">11.9</td>
+<td>GEOINT and Imagery Intelligence - Open-Source Geospatial
+Intelligence Library</td>
+<td style="text-align: right;">1</td>
+<td>[ageint059]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.99</td>
+<td>Cyber Intelligence Fundamentals - V2 source-lane extension: bind
+Cyber Intelligence Fundamentals to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint258]; [ageint261]; [ageint266]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.101</td>
+<td>Cyber Intelligence Fundamentals - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Cyber Intelligence Fundamentals</td>
+<td style="text-align: right;">3</td>
+<td>[ageint280]; [ageint281]; [ageint282]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.102</td>
+<td>Cyber Intelligence Fundamentals - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Cyber Intelligence Fundamentals</td>
+<td style="text-align: right;">3</td>
+<td>[ageint292]; [ageint295]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.1</td>
+<td>Cyber Intelligence Fundamentals - The Cyber Kill Chain (Lockheed
+Martin)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint061]; [ageint062]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.2</td>
+<td>Cyber Intelligence Fundamentals - MITRE ATT&amp;CK Framework:
+Enterprise Matrix v19</td>
+<td style="text-align: right;">2</td>
+<td>[ageint063]; [ageint064]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.2.1</td>
+<td>Cyber Intelligence Fundamentals - Reconnaissance through Resource
+Development</td>
+<td style="text-align: right;">1</td>
+<td>[ageint063]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.2.2</td>
+<td>Cyber Intelligence Fundamentals - Initial Access, Execution,
+Persistence, Privilege Escalation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint065]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.2.3</td>
+<td>Cyber Intelligence Fundamentals - Defense Evasion, Credential
+Access, Discovery, Lateral Movement</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint303]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.2.4</td>
+<td>Cyber Intelligence Fundamentals - Collection, Command &amp; Control,
+Exfiltration, Impact</td>
+<td style="text-align: right;">2</td>
+<td>[ageint062]; [ageint063]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.3</td>
+<td>Cyber Intelligence Fundamentals - Unified Kill Chain: Extending
+Lockheed + MITRE</td>
+<td style="text-align: right;">1</td>
+<td>[ageint062]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.4</td>
+<td>Cyber Intelligence Fundamentals - Threat Intelligence Sharing:
+STIX/TAXII Standards</td>
+<td style="text-align: right;">3</td>
+<td>[ageint066]; [ageint067]; [ageint068]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.5</td>
+<td>Cyber Intelligence Fundamentals - Nation-State Cyber Espionage:
+Motivations and Methods</td>
+<td style="text-align: right;">1</td>
+<td>[ageint069]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.6</td>
+<td>Cyber Intelligence Fundamentals - Chinese State-Affiliated Hacking:
+APT10, APT41, Volt Typhoon</td>
+<td style="text-align: right;">2</td>
+<td>[ageint009]; [ageint070]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.7</td>
+<td>Cyber Intelligence Fundamentals - Russian Cyber Operations:
+Sandworm, Cozy Bear, Fancy Bear</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint303]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">12.8</td>
+<td>Cyber Intelligence Fundamentals - Living-Off-The-Land (LOTL)
+Techniques in APT Operations</td>
+<td style="text-align: right;">1</td>
+<td>[ageint071]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.99</td>
+<td>Advanced Persistent Threats (APTs) - V2 source-lane extension: bind
+Advanced Persistent Threats (APTs) to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint237]; [ageint258]; [ageint261]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.101</td>
+<td>Advanced Persistent Threats (APTs) - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Advanced Persistent Threats (APTs)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint276]; [ageint285]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.102</td>
+<td>Advanced Persistent Threats (APTs) - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Advanced Persistent Threats (APTs)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint290]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.1</td>
+<td>Advanced Persistent Threats (APTs) - APT Definitions, Lifecycle, and
+Attribution</td>
+<td style="text-align: right;">1</td>
+<td>[ageint072]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.2</td>
+<td>Advanced Persistent Threats (APTs) - APT Risk Propagation Models:
+ATT&amp;CK-Based Analysis</td>
+<td style="text-align: right;">1</td>
+<td>[ageint072]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.3</td>
+<td>Advanced Persistent Threats (APTs) - Nation-State vs. Ideological
+Actor Attack Patterns</td>
+<td style="text-align: right;">1</td>
+<td>[ageint069]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.4</td>
+<td>Advanced Persistent Threats (APTs) - APT Infrastructure: C2
+Frameworks, Domain Fronting, Bulletproof Hosting</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint303]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.5</td>
+<td>Advanced Persistent Threats (APTs) - Incident Response on
+Nation-State Intrusions: Mandiant Methodology</td>
+<td style="text-align: right;">1</td>
+<td>[ageint071]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.6</td>
+<td>Advanced Persistent Threats (APTs) - Threat Hunting Against APT
+Actors</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint303]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">13.7</td>
+<td>Advanced Persistent Threats (APTs) - APT Attribution: Technical
+Indicators vs. Geopolitical Context</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.99</td>
+<td>Supply Chain Intelligence Attacks - V2 source-lane extension: bind
+Supply Chain Intelligence Attacks to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint258]; [ageint266]; [ageint268]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.101</td>
+<td>Supply Chain Intelligence Attacks - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Supply Chain Intelligence Attacks</td>
+<td style="text-align: right;">3</td>
+<td>[ageint274]; [ageint278]; [ageint280]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.102</td>
+<td>Supply Chain Intelligence Attacks - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Supply Chain Intelligence Attacks</td>
+<td style="text-align: right;">3</td>
+<td>[ageint287]; [ageint288]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.1</td>
+<td>Supply Chain Intelligence Attacks - Supply Chain Operations as
+Strategic Intelligence Tradecraft</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.2</td>
+<td>Supply Chain Intelligence Attacks - SolarWinds/SUNBURST: The
+Six-Month Patient Operation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint073]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.3</td>
+<td>Supply Chain Intelligence Attacks - XZ Utils/Jia Tan: Two-Year
+Social Engineering and Trust Infiltration</td>
+<td style="text-align: right;">3</td>
+<td>[ageint074]; [ageint075]; [ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.3.1</td>
+<td>Supply Chain Intelligence Attacks - Sock Puppetry as HUMINT Cover
+Tradecraft</td>
+<td style="text-align: right;">1</td>
+<td>[ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.3.2</td>
+<td>Supply Chain Intelligence Attacks - CVE-2024-3094: CVSS 10.0
+Backdoor Mechanism</td>
+<td style="text-align: right;">1</td>
+<td>[ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.3.3</td>
+<td>Supply Chain Intelligence Attacks - Attribution Indicators:
+APT29/SVR Pattern Similarities</td>
+<td style="text-align: right;">1</td>
+<td>[ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.3.4</td>
+<td>Supply Chain Intelligence Attacks - “Friendly Yet Aggressive and
+Persistent” Social Engineering Signature</td>
+<td style="text-align: right;">1</td>
+<td>[ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.4</td>
+<td>Supply Chain Intelligence Attacks - Open-Source Maintainer Targeting
+as an Acquisition Operation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.5</td>
+<td>Supply Chain Intelligence Attacks - Countermeasures: SBOM, SLSA
+Framework, Sigstore</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint304]; [ageint306]</td>
+</tr>
+<tr>
+<td style="text-align: right;">14.6</td>
+<td>Supply Chain Intelligence Attacks - Threat Intelligence Sharing for
+ICS Supply Chain (arXiv Survey)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint077]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.99</td>
+<td>Electronic and Emanations Intelligence - V2 source-lane extension:
+bind Electronic and Emanations Intelligence to source-lane evidence,
+claim-ledger review, safe substitution, compliance/rights mapping,
+instructor deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint255]; [ageint256]; [ageint261]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.101</td>
+<td>Electronic and Emanations Intelligence - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Electronic and Emanations Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint279]; [ageint282]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.102</td>
+<td>Electronic and Emanations Intelligence - Evidence-package expansion:
+add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Electronic and Emanations Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint289]; [ageint291]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.1</td>
+<td>Electronic and Emanations Intelligence - ELINT: Radar Signatures and
+Weapons Systems Emissions</td>
+<td style="text-align: right;">1</td>
+<td>[ageint035]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.2</td>
+<td>Electronic and Emanations Intelligence - EMINT: C4I System
+Emanations</td>
+<td style="text-align: right;">1</td>
+<td>[ageint078]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.3</td>
+<td>Electronic and Emanations Intelligence - Tempest and Van Eck
+Radiation: Standards and Countermeasures</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint303]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.4</td>
+<td>Electronic and Emanations Intelligence - Software-Defined Radio
+(SDR) for Intelligence Applications</td>
+<td style="text-align: right;">3</td>
+<td>[ageint303]; [ageint304]; [ageint305]</td>
+</tr>
+<tr>
+<td style="text-align: right;">15.5</td>
+<td>Electronic and Emanations Intelligence - RF Mapping and Spectrum
+Intelligence</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.99</td>
+<td>Imagery Intelligence (IMINT) - V2 source-lane extension: bind
+Imagery Intelligence (IMINT) to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint253]; [ageint269]; [ageint270]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.101</td>
+<td>Imagery Intelligence (IMINT) - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Imagery
+Intelligence (IMINT)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint275]; [ageint276]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.102</td>
+<td>Imagery Intelligence (IMINT) - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Imagery Intelligence (IMINT)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint293]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.1</td>
+<td>Imagery Intelligence (IMINT) - Types: Optical, SAR, Infrared,
+Hyperspectral, Multispectral</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.2</td>
+<td>Imagery Intelligence (IMINT) - Collection Platforms: Satellites,
+UAVs, Aircraft, Ground-Based</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.3</td>
+<td>Imagery Intelligence (IMINT) - Photo Interpretation and All-Source
+Imagery Analysis</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.4</td>
+<td>Imagery Intelligence (IMINT) - Commercial IMINT and the
+Democratization of Space-Based Reconnaissance</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">16.5</td>
+<td>Imagery Intelligence (IMINT) - Open-Source Geolocation Methods:
+Bellingcat Methodology</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.99</td>
+<td>Financial Intelligence (FININT) - V2 source-lane extension: bind
+Financial Intelligence (FININT) to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint251]; [ageint252]; [ageint254]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.101</td>
+<td>Financial Intelligence (FININT) - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Financial Intelligence (FININT)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint274]; [ageint275]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.102</td>
+<td>Financial Intelligence (FININT) - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Financial Intelligence (FININT)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint287]; [ageint292]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.1</td>
+<td>Financial Intelligence (FININT) - FININT Foundations: Collection,
+Analysis, Reporting</td>
+<td style="text-align: right;">2</td>
+<td>[ageint079]; [ageint080]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.2</td>
+<td>Financial Intelligence (FININT) - Suspicious Activity Reports (SARs)
+and Financial Intelligence Units</td>
+<td style="text-align: right;">1</td>
+<td>[ageint079]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.3</td>
+<td>Financial Intelligence (FININT) - Terrorist Financing:
+Identification, Typologies, Interdiction</td>
+<td style="text-align: right;">1</td>
+<td>[ageint079]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.4</td>
+<td>Financial Intelligence (FININT) - The SWIFT System and Intelligence
+Collection</td>
+<td style="text-align: right;">1</td>
+<td>[ageint079]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.5</td>
+<td>Financial Intelligence (FININT) - Cryptocurrency as Covert Finance:
+Monero, Mixers, Bridges</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.6</td>
+<td>Financial Intelligence (FININT) - Economic Warfare and FININT as a
+Strategic Tool</td>
+<td style="text-align: right;">1</td>
+<td>[ageint081]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.7</td>
+<td>Financial Intelligence (FININT) - Money Laundering Detection: Data
+Mining and Matching Techniques</td>
+<td style="text-align: right;">1</td>
+<td>[ageint080]</td>
+</tr>
+<tr>
+<td style="text-align: right;">17.8</td>
+<td>Financial Intelligence (FININT) - FININT Supporting National
+Security: Pillars and Methods</td>
+<td style="text-align: right;">1</td>
+<td>[ageint082]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.99</td>
+<td>PSYOP and MISO Doctrine - V2 source-lane extension: bind PSYOP and
+MISO Doctrine to source-lane evidence, claim-ledger review, safe
+substitution, compliance/rights mapping, instructor deliverables, and
+explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint239]; [ageint242]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.101</td>
+<td>PSYOP and MISO Doctrine - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for PSYOP and
+MISO Doctrine</td>
+<td style="text-align: right;">3</td>
+<td>[ageint276]; [ageint277]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.102</td>
+<td>PSYOP and MISO Doctrine - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for PSYOP and MISO Doctrine</td>
+<td style="text-align: right;">3</td>
+<td>[ageint288]; [ageint289]; [ageint293]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.1</td>
+<td>PSYOP and MISO Doctrine - Joint PSYOP Doctrine: JP 3-53 (1996 and
+2003)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint083]; [ageint084]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.2</td>
+<td>PSYOP and MISO Doctrine - Military Information Support Operations
+(MISO): JP 3-13.2</td>
+<td style="text-align: right;">1</td>
+<td>[ageint085]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.3</td>
+<td>PSYOP and MISO Doctrine - Tactical PSYOP TTP: FM 3-05.302</td>
+<td style="text-align: right;">1</td>
+<td>[ageint086]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.4</td>
+<td>PSYOP and MISO Doctrine - FM 3-05.301: PSYOP Process Tactics and
+Techniques</td>
+<td style="text-align: right;">1</td>
+<td>[ageint087]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.5</td>
+<td>PSYOP and MISO Doctrine - Target Audience Analysis (TAA) and
+Susceptibility Mapping</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.6</td>
+<td>PSYOP and MISO Doctrine - PSYOP in Full-Spectrum Operations: Themes
+and Objectives</td>
+<td style="text-align: right;">1</td>
+<td>[ageint086]</td>
+</tr>
+<tr>
+<td style="text-align: right;">18.7</td>
+<td>PSYOP and MISO Doctrine - Leaflets, Loudspeakers, and Digital Media:
+Product Development and Dissemination</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.99</td>
+<td>Active Measures and Disinformation - V2 source-lane extension: bind
+Active Measures and Disinformation to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint239]; [ageint240]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.101</td>
+<td>Active Measures and Disinformation - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Active Measures and Disinformation</td>
+<td style="text-align: right;">3</td>
+<td>[ageint278]; [ageint279]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.102</td>
+<td>Active Measures and Disinformation - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Active Measures and Disinformation</td>
+<td style="text-align: right;">3</td>
+<td>[ageint290]; [ageint291]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.1</td>
+<td>Active Measures and Disinformation - Soviet Active Measures:
+Definitions and Doctrine</td>
+<td style="text-align: right;">2</td>
+<td>[ageint088]; [ageint089]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.2</td>
+<td>Active Measures and Disinformation - Dezinformatsiya: Forgery, Front
+Organizations, Media Manipulation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint090]; [ageint091]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.3</td>
+<td>Active Measures and Disinformation - KGB Aktivnyye Meropriyatiya:
+Historical Organization</td>
+<td style="text-align: right;">1</td>
+<td>[ageint089]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.4</td>
+<td>Active Measures and Disinformation - Historical Active Measures
+Campaigns: INFEKTION, RYAN, DENVER</td>
+<td style="text-align: right;">1</td>
+<td>[ageint091]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.5</td>
+<td>Active Measures and Disinformation - Russian Active Measures in the
+Contemporary Era</td>
+<td style="text-align: right;">1</td>
+<td>[ageint092]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.6</td>
+<td>Active Measures and Disinformation - Chinese Information Operations:
+United Front Work Department</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.7</td>
+<td>Active Measures and Disinformation - Deception, Disinformation, and
+Strategic Communications (NDU/Brown)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint093]; [ageint094]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.8</td>
+<td>Active Measures and Disinformation - AI-Driven Active Measures:
+Synthetic Influence at Scale</td>
+<td style="text-align: right;">2</td>
+<td>[ageint095]; [ageint096]</td>
+</tr>
+<tr>
+<td style="text-align: right;">19.9</td>
+<td>Active Measures and Disinformation - Countermeasures: Disinformation
+Detection and Response</td>
+<td style="text-align: right;">1</td>
+<td>[ageint092]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.99</td>
+<td>Social Engineering - V2 source-lane extension: bind Social
+Engineering to source-lane evidence, claim-ledger review, safe
+substitution, compliance/rights mapping, instructor deliverables, and
+explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint240]; [ageint242]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.101</td>
+<td>Social Engineering - Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Social
+Engineering</td>
+<td style="text-align: right;">3</td>
+<td>[ageint280]; [ageint281]; [ageint282]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.102</td>
+<td>Social Engineering - Evidence-package expansion: add model/dataset
+documentation cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Social
+Engineering</td>
+<td style="text-align: right;">3</td>
+<td>[ageint292]; [ageint295]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.1</td>
+<td>Social Engineering - The Psychology of Influence: Cialdini’s Seven
+Principles</td>
+<td style="text-align: right;">1</td>
+<td>[ageint097]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.2</td>
+<td>Social Engineering - History of Social Engineering</td>
+<td style="text-align: right;">1</td>
+<td>[ageint097]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.3</td>
+<td>Social Engineering - Social Engineering: The Science of Human
+Hacking (Hadnagy, 2018)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint098]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.4</td>
+<td>Social Engineering - The Art of Human Hacking (Hadnagy, 2010)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint099]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.5</td>
+<td>Social Engineering - Phishing, Vishing, Smishing, Deepfake Voice
+Attacks</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint304]; [ageint306]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.6</td>
+<td>Social Engineering - Physical Social Engineering: Access,
+Elicitation, Impersonation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.7</td>
+<td>Social Engineering - AI Automation of Social Engineering at
+Scale</td>
+<td style="text-align: right;">1</td>
+<td>[ageint100]</td>
+</tr>
+<tr>
+<td style="text-align: right;">20.8</td>
+<td>Social Engineering - Defense: Training, Simulation, Technical
+Controls</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.99</td>
+<td>Information Warfare and Cognitive Security - V2 source-lane
+extension: bind Information Warfare and Cognitive Security to
+source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint239]; [ageint244]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.101</td>
+<td>Information Warfare and Cognitive Security - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Information Warfare and Cognitive Security</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint276]; [ageint285]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.102</td>
+<td>Information Warfare and Cognitive Security - Evidence-package
+expansion: add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Information Warfare and Cognitive Security</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint290]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.1</td>
+<td>Information Warfare and Cognitive Security - Information Warfare
+Doctrine: Definitions, Theory, Air Force Policy</td>
+<td style="text-align: right;">2</td>
+<td>[ageint101]; [ageint102]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.2</td>
+<td>Information Warfare and Cognitive Security - Military Deception: Six
+Principles and Historical Effectiveness</td>
+<td style="text-align: right;">2</td>
+<td>[ageint103]; [ageint104]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.3</td>
+<td>Information Warfare and Cognitive Security - Automated Influence and
+the Cognitive Security Challenge</td>
+<td style="text-align: right;">1</td>
+<td>[ageint105]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.4</td>
+<td>Information Warfare and Cognitive Security - Cognitive Security in
+the Age of AI: NATO/EU Paradigm Shift</td>
+<td style="text-align: right;">1</td>
+<td>[ageint095]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.5</td>
+<td>Information Warfare and Cognitive Security - Epistemic Chaos as an
+Adversarial Goal</td>
+<td style="text-align: right;">2</td>
+<td>[ageint095]; [ageint096]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.6</td>
+<td>Information Warfare and Cognitive Security - Active Inference and
+Predictive Processing as Models for Cognitive Attack/Defense</td>
+<td style="text-align: right;">2</td>
+<td>[ageint106]; [ageint003]</td>
+</tr>
+<tr>
+<td style="text-align: right;">21.7</td>
+<td>Information Warfare and Cognitive Security - Behavioral Outcomes of
+Human Cognitive Security (arXiv 2026)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint107]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.99</td>
+<td>Counterintelligence Fundamentals - V2 source-lane extension: bind
+Counterintelligence Fundamentals to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint240]; [ageint241]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.101</td>
+<td>Counterintelligence Fundamentals - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Counterintelligence Fundamentals</td>
+<td style="text-align: right;">3</td>
+<td>[ageint274]; [ageint278]; [ageint280]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.102</td>
+<td>Counterintelligence Fundamentals - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Counterintelligence Fundamentals</td>
+<td style="text-align: right;">3</td>
+<td>[ageint287]; [ageint288]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.1</td>
+<td>Counterintelligence Fundamentals - CI Definition, Scope,
+Relationship to Intelligence</td>
+<td style="text-align: right;">1</td>
+<td>[ageint012]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.2</td>
+<td>Counterintelligence Fundamentals - Offensive vs. Defensive
+Counterintelligence</td>
+<td style="text-align: right;">1</td>
+<td>[ageint012]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.3</td>
+<td>Counterintelligence Fundamentals - Insider Threat Analysis: Critical
+Thinking Techniques (CDSE)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint108]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.4</td>
+<td>Counterintelligence Fundamentals - The Double-Agent and Triple-Cross
+Operations</td>
+<td style="text-align: right;">2</td>
+<td>[ageint012]; [ageint029]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.5</td>
+<td>Counterintelligence Fundamentals - Penetration of Hostile
+Services</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.6</td>
+<td>Counterintelligence Fundamentals - Polygraph: Use and Limitations in
+CI</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.7</td>
+<td>Counterintelligence Fundamentals - Damage Assessment and
+Control</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">22.8</td>
+<td>Counterintelligence Fundamentals - Case Studies: Hanssen, Ames, Lee,
+Pollard</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.99</td>
+<td>Counterintelligence Against Non-State Actors - V2 source-lane
+extension: bind Counterintelligence Against Non-State Actors to
+source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint239]; [ageint240]; [ageint241]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.101</td>
+<td>Counterintelligence Against Non-State Actors - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Counterintelligence Against Non-State Actors</td>
+<td style="text-align: right;">3</td>
+<td>[ageint279]; [ageint282]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.102</td>
+<td>Counterintelligence Against Non-State Actors - Evidence-package
+expansion: add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Counterintelligence Against Non-State
+Actors</td>
+<td style="text-align: right;">3</td>
+<td>[ageint289]; [ageint291]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.1</td>
+<td>Counterintelligence Against Non-State Actors - CI Against Terrorist
+and Criminal Intelligence Networks</td>
+<td style="text-align: right;">1</td>
+<td>[ageint012]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.2</td>
+<td>Counterintelligence Against Non-State Actors - The
+Counterintelligence Threat from Non-State Actors</td>
+<td style="text-align: right;">1</td>
+<td>[ageint033]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.3</td>
+<td>Counterintelligence Against Non-State Actors - CI in Hybrid Threat
+Environments</td>
+<td style="text-align: right;">1</td>
+<td>[ageint109]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.4</td>
+<td>Counterintelligence Against Non-State Actors - Attribution Problems
+in Non-State CI Operations</td>
+<td style="text-align: right;">1</td>
+<td>[ageint033]</td>
+</tr>
+<tr>
+<td style="text-align: right;">23.5</td>
+<td>Counterintelligence Against Non-State Actors - Corporate
+Counterintelligence and Trade Secret Protection</td>
+<td style="text-align: right;">3</td>
+<td>[ageint307]; [ageint305]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.99</td>
+<td>Gray Zone Warfare - V2 source-lane extension: bind Gray Zone Warfare
+to source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint239]; [ageint247]; [ageint249]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.101</td>
+<td>Gray Zone Warfare - Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Gray Zone
+Warfare</td>
+<td style="text-align: right;">3</td>
+<td>[ageint275]; [ageint276]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.102</td>
+<td>Gray Zone Warfare - Evidence-package expansion: add model/dataset
+documentation cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Gray Zone
+Warfare</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint293]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.1</td>
+<td>Gray Zone Warfare - Defining the Gray Zone: Between Peace and
+War</td>
+<td style="text-align: right;">2</td>
+<td>[ageint109]; [ageint110]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.2</td>
+<td>Gray Zone Warfare - Gray Zone Tactics: Competition, Crisis, and
+Conflict</td>
+<td style="text-align: right;">1</td>
+<td>[ageint111]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.3</td>
+<td>Gray Zone Warfare - Chinese Gray Zone: South China Sea and Taiwan
+Straits</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.4</td>
+<td>Gray Zone Warfare - Russian Hybrid Warfare: Ukraine, Baltic States,
+Information Domain</td>
+<td style="text-align: right;">1</td>
+<td>[ageint111]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.5</td>
+<td>Gray Zone Warfare - Anonymous No More: Countering Gray Zone Threats
+(MIPB 2025)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint111]</td>
+</tr>
+<tr>
+<td style="text-align: right;">24.6</td>
+<td>Gray Zone Warfare - Full Spectrum Conflict Design (IWI 2025)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint110]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.99</td>
+<td>Non-State Actor Intelligence - V2 source-lane extension: bind
+Non-State Actor Intelligence to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint238]; [ageint247]; [ageint249]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.101</td>
+<td>Non-State Actor Intelligence - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for Non-State
+Actor Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint274]; [ageint275]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.102</td>
+<td>Non-State Actor Intelligence - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Non-State Actor Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint287]; [ageint292]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.1</td>
+<td>Non-State Actor Intelligence - Typology: Terrorist, Criminal,
+Commercial, Hacktivist, Proxy</td>
+<td style="text-align: right;">1</td>
+<td>[ageint012]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.2</td>
+<td>Non-State Actor Intelligence - Hezbollah, ISIS, MS-13: Intelligence
+Structures and Capabilities</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.3</td>
+<td>Non-State Actor Intelligence - Private Military Corporations as
+Intelligence Actors</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.4</td>
+<td>Non-State Actor Intelligence - Counterintelligence Threat from
+Non-State Actors</td>
+<td style="text-align: right;">1</td>
+<td>[ageint033]</td>
+</tr>
+<tr>
+<td style="text-align: right;">25.5</td>
+<td>Non-State Actor Intelligence - Non-State Actor Use of Commercial AI
+for Intelligence Collection</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.99</td>
+<td>Irregular Warfare and Special Operations - V2 source-lane extension:
+bind Irregular Warfare and Special Operations to source-lane evidence,
+claim-ledger review, safe substitution, compliance/rights mapping,
+instructor deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint239]; [ageint249]; [ageint266]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.101</td>
+<td>Irregular Warfare and Special Operations - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Irregular Warfare and Special Operations</td>
+<td style="text-align: right;">3</td>
+<td>[ageint276]; [ageint277]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.102</td>
+<td>Irregular Warfare and Special Operations - Evidence-package
+expansion: add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Irregular Warfare and Special Operations</td>
+<td style="text-align: right;">3</td>
+<td>[ageint288]; [ageint289]; [ageint293]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.1</td>
+<td>Irregular Warfare and Special Operations - SF Unconventional Warfare
+Doctrine: TC 18-01</td>
+<td style="text-align: right;">1</td>
+<td>[ageint112]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.2</td>
+<td>Irregular Warfare and Special Operations - FM 3-05.130: ARSOF
+Unconventional Warfare</td>
+<td style="text-align: right;">2</td>
+<td>[ageint113]; [ageint114]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.3</td>
+<td>Irregular Warfare and Special Operations - FM 3-05.102: ARSOF
+Intelligence</td>
+<td style="text-align: right;">2</td>
+<td>[ageint115]; [ageint116]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.4</td>
+<td>Irregular Warfare and Special Operations - OSS Origins and Training
+Manuals (1944)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint117]; [ageint118]; [ageint119]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.5</td>
+<td>Irregular Warfare and Special Operations - Principles of Tradecraft
+for Resistance Organizations</td>
+<td style="text-align: right;">1</td>
+<td>[ageint120]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.6</td>
+<td>Irregular Warfare and Special Operations - Underground Intelligence
+Networks: Structure, Security, Continuity</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.7</td>
+<td>Irregular Warfare and Special Operations - OSS Simple Sabotage Field
+Manual (1944)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint117]</td>
+</tr>
+<tr>
+<td style="text-align: right;">26.8</td>
+<td>Irregular Warfare and Special Operations - Morale Operations: OSS
+Psychological Warfare</td>
+<td style="text-align: right;">1</td>
+<td>[ageint117]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.99</td>
+<td>Soviet and Russian Intelligence - V2 source-lane extension: bind
+Soviet and Russian Intelligence to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint266]; [ageint267]; [ageint269]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.101</td>
+<td>Soviet and Russian Intelligence - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Soviet and Russian Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint278]; [ageint279]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.102</td>
+<td>Soviet and Russian Intelligence - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Soviet and Russian Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint290]; [ageint291]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.1</td>
+<td>Soviet and Russian Intelligence - KGB Structure, Culture, and
+Doctrine: First Chief Directorate</td>
+<td style="text-align: right;">1</td>
+<td>[ageint121]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2</td>
+<td>Soviet and Russian Intelligence - The Lubyanka Files: 29 KGB
+Training Manuals, 1965–1989</td>
+<td style="text-align: right;">1</td>
+<td>[ageint122]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.1</td>
+<td>Soviet and Russian Intelligence - Working with Agents (Declassified
+Manual)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint032]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.2</td>
+<td>Soviet and Russian Intelligence - Working with Information in
+Intelligence (1970s)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint121]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.3</td>
+<td>Soviet and Russian Intelligence - Psychological Methods and
+Manipulation of Agents (1988)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint021]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.4</td>
+<td>Soviet and Russian Intelligence - Some Aspects of Training Agents
+Psychologically (1985)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint021]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.5</td>
+<td>Soviet and Russian Intelligence - Exposure of Disinformation in
+Intelligence Materials (1968)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint021]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.6</td>
+<td>Soviet and Russian Intelligence - Organizational Structure and
+Management of Intelligence Residency</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.7</td>
+<td>Soviet and Russian Intelligence - On Organizing Work with
+Confidential Contacts</td>
+<td style="text-align: right;">1</td>
+<td>[ageint122]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.2.8</td>
+<td>Soviet and Russian Intelligence - Tasks of a KGB Resident
+Abroad</td>
+<td style="text-align: right;">1</td>
+<td>[ageint122]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.3</td>
+<td>Soviet and Russian Intelligence - KGB Alpha Team Training
+Manual</td>
+<td style="text-align: right;">1</td>
+<td>[ageint123]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.4</td>
+<td>Soviet and Russian Intelligence - The Mitrokhin Archive: KGB Global
+Operations</td>
+<td style="text-align: right;">4</td>
+<td>[ageint124]; [ageint125]; [ageint126]; [ageint127]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.5</td>
+<td>Soviet and Russian Intelligence - GRU: Soviet Military Intelligence
+Structure</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">27.6</td>
+<td>Soviet and Russian Intelligence - The Interpreter Magazine: KGB
+Manual Summaries</td>
+<td style="text-align: right;">1</td>
+<td>[ageint022]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.99</td>
+<td>American Intelligence History - V2 source-lane extension: bind
+American Intelligence History to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint266]; [ageint269]; [ageint271]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.101</td>
+<td>American Intelligence History - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for American Intelligence History</td>
+<td style="text-align: right;">3</td>
+<td>[ageint280]; [ageint281]; [ageint282]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.102</td>
+<td>American Intelligence History - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for American Intelligence History</td>
+<td style="text-align: right;">3</td>
+<td>[ageint292]; [ageint295]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1</td>
+<td>American Intelligence History - OSS in World War II</td>
+<td style="text-align: right;">2</td>
+<td>[ageint128]; [ageint129]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1.1</td>
+<td>American Intelligence History - OSS Secret Intelligence Manual</td>
+<td style="text-align: right;">1</td>
+<td>[ageint117]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1.2</td>
+<td>American Intelligence History - OSS Provisional Basic Field
+Manual</td>
+<td style="text-align: right;">1</td>
+<td>[ageint119]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1.3</td>
+<td>American Intelligence History - Special Operations Field Manual</td>
+<td style="text-align: right;">1</td>
+<td>[ageint118]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1.4</td>
+<td>American Intelligence History - OSS Special Weapons and Devices</td>
+<td style="text-align: right;">1</td>
+<td>[ageint117]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1.5</td>
+<td>American Intelligence History - Simple Sabotage Field Manual
+(1944)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint117]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.1.6</td>
+<td>American Intelligence History - Morale Operations Field Manual</td>
+<td style="text-align: right;">1</td>
+<td>[ageint117]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.2</td>
+<td>American Intelligence History - CIA Cold War Operations</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.2.1</td>
+<td>American Intelligence History - CIA Manual of Trickery and Deception
+(Mulholland)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint130]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.2.2</td>
+<td>American Intelligence History - Principles of Tradecraft (Resistance
+Operations)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint120]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.2.3</td>
+<td>American Intelligence History - Soviet Active Measures Documents
+(CREST Collection)</td>
+<td style="text-align: right;">4</td>
+<td>[ageint088]; [ageint089]; [ageint090]; [ageint091]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.3</td>
+<td>American Intelligence History - Studies in Intelligence: The CIA’s
+Professional Journal</td>
+<td style="text-align: right;">3</td>
+<td>[ageint131]; [ageint132]; [ageint133]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.3.1</td>
+<td>American Intelligence History - Vol. 70, No. 1 (March 2026):
+“Espionage in Our AI Future” (Mulligan/RAND)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint019]; [ageint034]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.3.2</td>
+<td>American Intelligence History - Vol. 68, No. 2 (June 2024): OSINT in
+the IC</td>
+<td style="text-align: right;">1</td>
+<td>[ageint047]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.4</td>
+<td>American Intelligence History - History of SIGINT at the CIA,
+1947–1970</td>
+<td style="text-align: right;">2</td>
+<td>[ageint038]; [ageint039]</td>
+</tr>
+<tr>
+<td style="text-align: right;">28.5</td>
+<td>American Intelligence History - NSA WWII Declassified: European Axis
+SIGINT (9 Volumes)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint036]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.99</td>
+<td>British and Allied Intelligence - V2 source-lane extension: bind
+British and Allied Intelligence to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint266]; [ageint269]; [ageint270]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.101</td>
+<td>British and Allied Intelligence - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for British and Allied Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint276]; [ageint285]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.102</td>
+<td>British and Allied Intelligence - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for British and Allied Intelligence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint290]; [ageint294]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.1</td>
+<td>British and Allied Intelligence - MI6/SIS: Structure and Cold War
+Tradecraft</td>
+<td style="text-align: right;">1</td>
+<td>[ageint007]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.2</td>
+<td>British and Allied Intelligence - SOE: Special Operations Executive
+Training (WWII)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint134]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.3</td>
+<td>British and Allied Intelligence - GCHQ and the BRUSA/UKUSA
+Agreements</td>
+<td style="text-align: right;">2</td>
+<td>[ageint011]; [ageint135]</td>
+</tr>
+<tr>
+<td style="text-align: right;">29.4</td>
+<td>British and Allied Intelligence - Five Eyes Archive: Key
+Declassified Documents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint010]; [ageint041]; [ageint042]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.99</td>
+<td>Israeli and Continental Services - V2 source-lane extension: bind
+Israeli and Continental Services to source-lane evidence, claim-ledger
+review, safe substitution, compliance/rights mapping, instructor
+deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint266]; [ageint267]; [ageint271]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.101</td>
+<td>Israeli and Continental Services - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for Israeli and Continental Services</td>
+<td style="text-align: right;">3</td>
+<td>[ageint274]; [ageint278]; [ageint280]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.102</td>
+<td>Israeli and Continental Services - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Israeli and Continental Services</td>
+<td style="text-align: right;">3</td>
+<td>[ageint287]; [ageint288]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.1</td>
+<td>Israeli and Continental Services - Mossad: Structure, Culture,
+Notable Operations</td>
+<td style="text-align: right;">1</td>
+<td>[ageint008]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.2</td>
+<td>Israeli and Continental Services - Eli Cohen: Deep Cover Agent in
+Syria</td>
+<td style="text-align: right;">1</td>
+<td>[ageint136]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.3</td>
+<td>Israeli and Continental Services - Operation Wrath of God: PSYOP and
+Targeted Killing</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.4</td>
+<td>Israeli and Continental Services - Unit 8200: SIGINT, AI, and Cyber
+Excellence</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.5</td>
+<td>Israeli and Continental Services - SDECE/DGSE: French Intelligence
+Tradition</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.6</td>
+<td>Israeli and Continental Services - BND: German Federal Intelligence
+Service</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">30.7</td>
+<td>Israeli and Continental Services - Stasi: East German Pervasive
+Domestic Intelligence</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.99</td>
+<td>Foundations of AGEINT - V2 source-lane extension: bind Foundations
+of AGEINT to source-lane evidence, claim-ledger review, safe
+substitution, compliance/rights mapping, instructor deliverables, and
+explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint232]; [ageint235]; [ageint247]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.100</td>
+<td>Foundations of AGEINT - V2 AGEINT-depth extension: add agent
+evaluation and public-sector adoption gates that bind agency authority,
+AI Office-style accountability, impact assessment, and human review
+before any classroom agent workflow is rehearsed</td>
+<td style="text-align: right;">3</td>
+<td>[ageint232]; [ageint235]; [ageint247]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.101</td>
+<td>Foundations of AGEINT - Deep expansion: add accessibility/UDL
+review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for
+Foundations of AGEINT</td>
+<td style="text-align: right;">3</td>
+<td>[ageint279]; [ageint282]; [ageint284]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.102</td>
+<td>Foundations of AGEINT - Evidence-package expansion: add
+model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for Foundations of AGEINT</td>
+<td style="text-align: right;">3</td>
+<td>[ageint289]; [ageint291]; [ageint296]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.1</td>
+<td>Foundations of AGEINT - Defining AGEINT: From AI Agents to
+Autonomous Intelligence Systems</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.2</td>
+<td>Foundations of AGEINT - From LLMs to Agents: The Cognitive
+Controller Stack</td>
+<td style="text-align: right;">1</td>
+<td>[ageint137]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.3</td>
+<td>Foundations of AGEINT - Unified Taxonomy: Perception → Brain →
+Planning → Action → Collaboration</td>
+<td style="text-align: right;">1</td>
+<td>[ageint137]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.3.1</td>
+<td>Foundations of AGEINT - Perception Modules: Multimodal Ingestion
+(Text, Vision, Audio, Sensor)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.3.2</td>
+<td>Foundations of AGEINT - Brain/Reasoning: LLM as Cognitive
+Controller</td>
+<td style="text-align: right;">1</td>
+<td>[ageint138]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.3.3</td>
+<td>Foundations of AGEINT - Memory: In-Context, External VectorDB,
+Episodic, Semantic, Procedural</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.3.4</td>
+<td>Foundations of AGEINT - Action: Tool Use, API Calls, Code Execution,
+Computer Use</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.3.5</td>
+<td>Foundations of AGEINT - Collaboration: A2A Messaging, Shared
+Context, Role Specialization</td>
+<td style="text-align: right;">1</td>
+<td>[ageint139]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.4</td>
+<td>Foundations of AGEINT - The OECD Agentic AI Landscape and Conceptual
+Foundations (2026)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint140]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.5</td>
+<td>Foundations of AGEINT - MIT Sloan Explanation of Agentic AI</td>
+<td style="text-align: right;">1</td>
+<td>[ageint141]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.6</td>
+<td>Foundations of AGEINT - AGEINT vs. Traditional OSINT vs. AI-Assisted
+Analysis: A Capability Matrix</td>
+<td style="text-align: right;">2</td>
+<td>[ageint301]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.7</td>
+<td>Foundations of AGEINT - Dual-Paradigm Framework: Symbolic/Classical
+vs. Neural/Generative Agents</td>
+<td style="text-align: right;">1</td>
+<td>[ageint142]</td>
+</tr>
+<tr>
+<td style="text-align: right;">31.8</td>
+<td>Foundations of AGEINT - The Return to HUMINT as Agentic AI Degrades
+Digital Trust</td>
+<td style="text-align: right;">2</td>
+<td>[ageint004]; [ageint005]</td>
+</tr>
+<tr>
+<td style="text-align: right;">32.99</td>
+<td>AGEINT Design Patterns and Archetypes - V2 source-lane extension:
+bind AGEINT Design Patterns and Archetypes to source-lane evidence,
+claim-ledger review, safe substitution, compliance/rights mapping,
+instructor deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint233]; [ageint258]; [ageint272]</td>
+</tr>
+<tr>
+<td style="text-align: right;">32.100</td>
+<td>AGEINT Design Patterns and Archetypes - V2 AGEINT-depth extension:
+transform every raw design motif into a safe registry entry, tabletop
+audit, provenance record, and interface contract rather than operational
+deployment</td>
+<td style="text-align: right;">3</td>
+<td>[ageint233]; [ageint258]; [ageint272]</td>
+</tr>
+<tr>
+<td style="text-align: right;">32.101</td>
+<td>AGEINT Design Patterns and Archetypes - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for AGEINT Design Patterns and Archetypes</td>
+<td style="text-align: right;">3</td>
+<td>[ageint275]; [ageint276]; [ageint283]</td>
+</tr>
+<tr>
+<td style="text-align: right;">32.102</td>
+<td>AGEINT Design Patterns and Archetypes - Evidence-package expansion:
+add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for AGEINT Design Patterns and Archetypes</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint293]; [ageint295]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 1: The Solo Reasoner
+— Single-agent ReAct loop for focused intelligence tasks</td>
+<td style="text-align: right;">1</td>
+<td>[ageint143]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Chain-of-Thought,
+Self-Critique, Reflection Scoring</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Single-source
+report analysis, indicator enrichment</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangChain
+LCEL ReAct agent with tool calling</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 2: The Reflection
+Agent — Self-evaluation after each action step</td>
+<td style="text-align: right;">1</td>
+<td>[ageint139]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Internal scoring,
+critic models, trajectory validation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: OSINT
+verification loop, analytic bias detection</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangGraph
+state machine with reflexion node</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 3: The Tool-Forager
+— Agent with comprehensive external tool access</td>
+<td style="text-align: right;">1</td>
+<td>[ageint144]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Function calling,
+JSON schema execution, grounded output</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Multi-source
+data harvesting, real-time collection</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: OpenAI
+function calling with Recon-ng, Shodan, STIX tools</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 4: The
+Planner-Executor — Long-horizon task decomposition</td>
+<td style="text-align: right;">2</td>
+<td>[ageint139]; [ageint145]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Chain-of-thought
+with memory rehydration, execution DAGs</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Multi-phase
+operation planning, collection management</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangGraph
+DAG flow with priority queues</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 5: The Parallel
+Collector — Concurrent multi-source collection</td>
+<td style="text-align: right;">1</td>
+<td>[ageint144]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Concurrent tool
+invocation, aggregation, deduplication</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Simultaneous
+OSINT/SIGINT metadata collection</td>
+<td style="text-align: right;">2</td>
+<td>[ageint301]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: CrewAI
+parallel task execution with consensus scoring</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 6: The Multi-Agent
+Crew — Specialized agents in collaborative formation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint139]; [ageint146]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Planner + Retriever
++ Executor + Validator + Reporter roles</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: All-source
+intelligence fusion; Red/Blue Cell simulation</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: CrewAI
+role-based crew with hierarchical process manager</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 7: The Debate Agent
+— Adversarial multi-agent reasoning</td>
+<td style="text-align: right;">1</td>
+<td>[ageint147]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Devil’s Advocacy
+automation, competing hypotheses generation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Automated
+Analysis of Competing Hypotheses (ACH)</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: AutoGen
+two-agent debate pattern with judge agent</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 8: The RAG-Operator
+— Retrieval-Augmented Generation over intelligence corpora</td>
+<td style="text-align: right;">1</td>
+<td>[ageint148]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Dense vector
+retrieval, hybrid BM25+dense, re-ranking</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: All-source
+fusion from live document collections</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangChain
+RAG with Chroma/Pinecone over STIX feeds</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 9: The Memory-State
+Machine — Persistent episodic memory agent</td>
+<td style="text-align: right;">1</td>
+<td>[ageint138]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Episodic memory
+write/read, consolidation, attention-weighted retrieval</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Long-term asset
+tracking, longitudinal pattern-of-life analysis</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangGraph
+with PostgreSQL episodic memory and mem0/MemGPT</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 10: The Control
+Plane Agent — Modular tool routing through single interface</td>
+<td style="text-align: right;">1</td>
+<td>[ageint145]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: “Control Plane as a
+Tool” abstraction, modular routing logic</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Scalable
+multi-source collection with single interface</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: FastAPI
+meta-tool endpoint wrapping N sub-tools</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 11: The Surveillance
+Agent — Continuous monitoring and alerting</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Scheduled polling,
+anomaly detection, threshold alerting</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Persistent
+target monitoring, dark web alerting, infrastructure tracking</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: n8n or
+LangGraph cron-triggered agent with Shodan/SpiderFoot APIs</td>
+<td style="text-align: right;">3</td>
+<td>[ageint307]; [ageint305]; [ageint304]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 12: The Red Team
+Agent — Adversarial attack simulation</td>
+<td style="text-align: right;">1</td>
+<td>[ageint147]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Adversarial prompt
+generation, attack-tree traversal, kill chain simulation</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint304]; [ageint306]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Penetration
+testing automation, vulnerability discovery</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint304]; [ageint306]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: AutoGen code
+execution agent with MITRE ATT&amp;CK tool plugin</td>
+<td style="text-align: right;">3</td>
+<td>[ageint300]; [ageint304]; [ageint306]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 13: The Cover Story
+Generator — Legend and cover document creation</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Persona generation,
+document synthesis, consistency checking</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: NOC legend
+maintenance, sock puppet operational security</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: GPT-4o with
+structured output schemas for persona consistency</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 14: The Deception
+Detector — Verification and source reliability agent</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Cross-source
+triangulation, metadata analysis, deepfake detection API calls</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Source vetting,
+product validation, disinformation identification</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangChain
+agent with Hive Moderation, Sightengine, C2PA APIs</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 15: The Analyst in
+the Loop — Human-in-the-loop (HITL) intelligence agent</td>
+<td style="text-align: right;">1</td>
+<td>[ageint004]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods:
+Interrupt-and-query, confidence-gated human escalation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint297]; [ageint298]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Supervised
+analysis; compliance-constrained environments</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangGraph
+with human_approval node and async interrupt handlers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 16: The Cyber
+Sentinel — Autonomous threat intelligence and response</td>
+<td style="text-align: right;">2</td>
+<td>[ageint149]; [ageint150]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: SIEM integration,
+SOAR automation, ATT&amp;CK technique mapping</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Autonomous SOC
+tier-1 triage, IOC enrichment</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: CrewAI crew
+with Splunk/Elastic SIEM tools and STIX/TAXII writer</td>
+<td style="text-align: right;">3</td>
+<td>[ageint309]; [ageint310]; [ageint300]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 17: The Supply Chain
+Inspector — Software provenance and integrity agent</td>
+<td style="text-align: right;">3</td>
+<td>[ageint303]; [ageint304]; [ageint305]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: SBOM parsing,
+dependency graph analysis, commit diff analysis</td>
+<td style="text-align: right;">3</td>
+<td>[ageint303]; [ageint304]; [ageint305]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Open-source
+supply chain threat hunting (post-XZ Utils)</td>
+<td style="text-align: right;">1</td>
+<td>[ageint076]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: Python agent
+with Syft/Grype SBOM tools and GitHub commit analysis</td>
+<td style="text-align: right;">3</td>
+<td>[ageint303]; [ageint304]; [ageint305]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 18: The GEOINT
+Analyst — Automated satellite imagery analysis</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Vision model object
+detection, change detection, chronolocation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint302]; [ageint297]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Facility
+monitoring, order-of-battle assessment</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: GPT-4o
+Vision + Google Earth Engine API + LangChain agent loop</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 19: The Cognitive
+Inoculant — Prebunking and cognitive resilience agent</td>
+<td style="text-align: right;">1</td>
+<td>[ageint151]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Manipulation
+technique detection, inoculation content generation, user
+adaptation</td>
+<td style="text-align: right;">2</td>
+<td>[ageint308]; [ageint311]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application:
+Population-scale cognitive security intervention delivery</td>
+<td style="text-align: right;">1</td>
+<td>[ageint152]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangChain
+agent with CAMBREX taxonomy + API delivery pipeline</td>
+<td style="text-align: right;">3</td>
+<td>[ageint305]; [ageint304]; [ageint303]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Pattern 20: The Hierarchical
+Command — Orchestrator-subagent architecture</td>
+<td style="text-align: right;">2</td>
+<td>[ageint139]; [ageint137]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Methods: Goal decomposition,
+subagent delegation, output aggregation, failure recovery</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Application: Complex
+multi-domain operations with role separation</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">module section</td>
+<td>AGEINT Design Patterns and Archetypes - Code Archetype: LangGraph
+supervisor pattern with specialized subagent nodes</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.99</td>
+<td>AGEINT Frameworks and Infrastructure - V2 source-lane extension:
+bind AGEINT Frameworks and Infrastructure to source-lane evidence,
+claim-ledger review, safe substitution, compliance/rights mapping,
+instructor deliverables, and explicit refresh triggers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint255]; [ageint256]; [ageint258]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.100</td>
+<td>AGEINT Frameworks and Infrastructure - V2 AGEINT-depth extension:
+map frameworks to interoperable tool descriptions, Web of Things
+affordances, OpenAPI contracts, credential semantics, revocation, and
+error-handling evidence</td>
+<td style="text-align: right;">3</td>
+<td>[ageint255]; [ageint256]; [ageint258]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.101</td>
+<td>AGEINT Frameworks and Infrastructure - Deep expansion: add
+accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA
+worksheet, data-lineage registry, assessment-integrity protocol, agent
+incident drill, role-based competency map, and adversarial assurance
+cycle for AGEINT Frameworks and Infrastructure</td>
+<td style="text-align: right;">3</td>
+<td>[ageint273]; [ageint274]; [ageint275]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.102</td>
+<td>AGEINT Frameworks and Infrastructure - Evidence-package expansion:
+add model/dataset documentation cards, transparency notice,
+records-retention audit trail, release/change-control gate,
+risk-exception memo, learner support plan, instructor question bank, and
+remediation backlog for AGEINT Frameworks and Infrastructure</td>
+<td style="text-align: right;">3</td>
+<td>[ageint286]; [ageint287]; [ageint292]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.1</td>
+<td>AGEINT Frameworks and Infrastructure - LangChain/LangGraph: State
+Machine Orchestration</td>
+<td style="text-align: right;">2</td>
+<td>[ageint147]; [ageint153]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.1.1</td>
+<td>AGEINT Frameworks and Infrastructure - LCEL: LangChain Expression
+Language</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.1.2</td>
+<td>AGEINT Frameworks and Infrastructure - LangGraph: Stateful, Cyclical
+Agentic Workflows</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.1.3</td>
+<td>AGEINT Frameworks and Infrastructure - LangSmith: Observability and
+Tracing</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.2</td>
+<td>AGEINT Frameworks and Infrastructure - CrewAI: Role-Based
+Multi-Agent Collaboration</td>
+<td style="text-align: right;">2</td>
+<td>[ageint154]; [ageint153]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.2.1</td>
+<td>AGEINT Frameworks and Infrastructure - Crew, Agent, Task, and
+Process Objects</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.2.2</td>
+<td>AGEINT Frameworks and Infrastructure - Sequential, Parallel, and
+Hierarchical Process Modes</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.2.3</td>
+<td>AGEINT Frameworks and Infrastructure - Built-in Tool Ecosystem</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3</td>
+<td>AGEINT Frameworks and Infrastructure - AutoGen (Microsoft):
+Multi-Agent Conversation Patterns</td>
+<td style="text-align: right;">2</td>
+<td>[ageint147]; [ageint153]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3.1</td>
+<td>AGEINT Frameworks and Infrastructure - AssistantAgent and
+UserProxyAgent Pattern</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3.2</td>
+<td>AGEINT Frameworks and Infrastructure - GroupChat with RoundRobin and
+AutoSelect Managers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3.3</td>
+<td>AGEINT Frameworks and Infrastructure - Code Execution Risk and
+Sandboxing Requirements</td>
+<td style="text-align: right;">1</td>
+<td>[ageint147]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.4</td>
+<td>AGEINT Frameworks and Infrastructure - Semantic Kernel: Enterprise
+AI Orchestration</td>
+<td style="text-align: right;">1</td>
+<td>[ageint147]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5</td>
+<td>AGEINT Frameworks and Infrastructure - AWS Agentic Patterns:
+Production Architecture Guide</td>
+<td style="text-align: right;">1</td>
+<td>[ageint144]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.1</td>
+<td>AGEINT Frameworks and Infrastructure - Basic Reasoning Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.2</td>
+<td>AGEINT Frameworks and Infrastructure - Tool-Based Agents (Function
+Calling and MCP Servers)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.3</td>
+<td>AGEINT Frameworks and Infrastructure - Computer-Use Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.4</td>
+<td>AGEINT Frameworks and Infrastructure - Coding Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.5</td>
+<td>AGEINT Frameworks and Infrastructure - Speech-to-Speech Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.6</td>
+<td>AGEINT Frameworks and Infrastructure - Orchestration Patterns:
+Supervisor, Parallel, Subgraph</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6</td>
+<td>AGEINT Frameworks and Infrastructure - Model Context Protocol (MCP):
+The USB Standard for Agentic AI</td>
+<td style="text-align: right;">4</td>
+<td>[ageint155]; [ageint156]; [ageint157]; [ageint158]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.1</td>
+<td>AGEINT Frameworks and Infrastructure - MCP Architecture: Client,
+Server, Host</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.2</td>
+<td>AGEINT Frameworks and Infrastructure - NSA Security Design
+Considerations for MCP</td>
+<td style="text-align: right;">1</td>
+<td>[ageint155]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.3</td>
+<td>AGEINT Frameworks and Infrastructure - MCP Security Risks: Tool
+Poisoning, Prompt Injection via Server</td>
+<td style="text-align: right;">1</td>
+<td>[ageint159]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.4</td>
+<td>AGEINT Frameworks and Infrastructure - MCP in Intelligence
+Workflows: Structured Tool Registration</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.7</td>
+<td>AGEINT Frameworks and Infrastructure - Agent-to-Agent (A2A)
+Protocols: Interoperability Between Frameworks</td>
+<td style="text-align: right;">1</td>
+<td>[ageint137]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.8</td>
+<td>AGEINT Frameworks and Infrastructure - n8n and Make.com:
+No-Code/Low-Code Agentic Intelligence Pipelines</td>
+<td style="text-align: right;">1</td>
+<td>[ageint153]</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,16 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Monitor information environment"] --> B["Detect suspicious narrative pattern"]
+  B --> C["Check provenance and attribution"]
+  B --> D["Assess audience harm and rights"]
+  C --> E["Record uncertainty and confidence"]
+  D --> E
+  E --> F{"Reviewer decision gate"}
+  F -->|"Educate"| G["Transparent inoculation and prebunking"]
+  F -->|"Correct"| H["Documented non-manipulative correction"]
+  F -->|"Hold"| I["Escalate for more evidence"]
+  G --> J["After-action review and lessons"]
+  H --> J
+  I --> J
+  J --> K(["Set refresh trigger"])
+  K --> A

@@ -1,0 +1,57 @@
+{
+  "letter": "I",
+  "title": "Instructor Capstone, Rubric, and Red-Team Review Pack",
+  "items": [
+    {
+      "level": 1,
+      "title": "I.1 Capstone authorization card: learning question, allowed inputs, excluded actions, human oversight, and stop conditions",
+      "raw": "I.1 Capstone authorization card: learning question, allowed inputs, excluded actions, human oversight, and stop conditions[^242][^243][^246]",
+      "citations": [
+        242,
+        243,
+        246
+      ]
+    },
+    {
+      "level": 1,
+      "title": "I.2 Instructor rubric for source quality, analytic rigor, agent control, rights mapping, reproducibility, and safe substitution",
+      "raw": "I.2 Instructor rubric for source quality, analytic rigor, agent control, rights mapping, reproducibility, and safe substitution[^237][^242][^238]",
+      "citations": [
+        237,
+        242,
+        238
+      ]
+    },
+    {
+      "level": 1,
+      "title": "I.3 Red-team review checklist for source laundering, automation bias, boundary drift, overconfident synthesis, and unreproducible handoff",
+      "raw": "I.3 Red-team review checklist for source laundering, automation bias, boundary drift, overconfident synthesis, and unreproducible handoff[^235][^236][^272]",
+      "citations": [
+        235,
+        236,
+        272
+      ]
+    },
+    {
+      "level": 1,
+      "title": "I.4 Safe artifact packet: source-lane map, claim ledger, synthetic lab packet, interface contract, assessment lifecycle, and debrief memo",
+      "raw": "I.4 Safe artifact packet: source-lane map, claim ledger, synthetic lab packet, interface contract, assessment lifecycle, and debrief memo[^258][^266][^271]",
+      "citations": [
+        258,
+        266,
+        271
+      ]
+    },
+    {
+      "level": 1,
+      "title": "I.5 Capstone debrief protocol that names residual uncertainty, rights impact, refresh owner, revision plan, and approvals required before reuse",
+      "raw": "I.5 Capstone debrief protocol that names residual uncertainty, rights impact, refresh owner, revision plan, and approvals required before reuse[^239][^240][^264]",
+      "citations": [
+        239,
+        240,
+        264
+      ]
+    }
+  ],
+  "source_line": 1009
+}

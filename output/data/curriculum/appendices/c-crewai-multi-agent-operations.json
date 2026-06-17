@@ -1,0 +1,31 @@
+{
+  "letter": "C",
+  "title": "CrewAI Multi-Agent Operations",
+  "items": [
+    {
+      "level": 1,
+      "title": "C.1 OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter)",
+      "raw": "C.1 OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter)",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "C.2 Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents",
+      "raw": "C.2 Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "C.3 ICS Anomaly Investigation Crew: OT + MITRE ATT&CK for ICS Tools",
+      "raw": "C.3 ICS Anomaly Investigation Crew: OT + MITRE ATT&CK for ICS Tools",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "C.4 Cognitive Inoculation Delivery Crew: Prebunking at Scale",
+      "raw": "C.4 Cognitive Inoculation Delivery Crew: Prebunking at Scale",
+      "citations": []
+    }
+  ],
+  "source_line": 967
+}

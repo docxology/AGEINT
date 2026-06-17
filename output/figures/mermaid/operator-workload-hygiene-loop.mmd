@@ -1,0 +1,18 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["Cognitive Athlete<br/>workload hygiene loop<br/>for the intelligence operator"]
+    cap(["Capture<br/>offload tasks and cues<br/>to a trusted system"])
+    eng(["Engage<br/>focused analytic work<br/>in protected windows"])
+    load["Load monitor<br/>NASA-TLX self-check<br/>and fatigue signals"]
+    flow["Flow conditions<br/>clear goals, feedback,<br/>skill-challenge balance"]
+    rec["Recovery<br/>rest, circadian timing,<br/>stress decompression"]
+    review["Reflect and review<br/>weekly cadence on<br/>open loops and capacity"]
+    green["Within capacity<br/>sustain deep work"]
+    amber["Overload signal<br/>reduce scope, switch tasks,<br/>schedule recovery"]
+    root --> cap --> eng
+    eng --> load
+    load --> green
+    load --> amber
+    green --> flow --> eng
+    amber --> rec --> review
+    review --> cap

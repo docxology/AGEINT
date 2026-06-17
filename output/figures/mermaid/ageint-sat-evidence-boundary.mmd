@@ -1,0 +1,22 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  PURPOSE["Technique purpose<br/>externalize reasoning"] --> DOC["Doctrine and pedagogy<br/>CIA, NATO, Heuer, FOI, JIPS, SAGE"]
+  DOC --> ART["Allowed classroom artifact<br/>matrix, assumptions, alternatives, dissent"]
+  ART --> ADOPT["Use and adoption evidence<br/>Coulthart, fusion-centre survey"]
+  ART --> EMP["Technique evidence<br/>RAND, Coulthart, Ard, Denzler"]
+  EMP --> ACH["ACH boundary<br/>Whitesmith, Karvetski/Mandel,<br/>Wilcox/Mandel"]
+  ACH --> DEC["Decision-science complement<br/>calibration, aggregation, coherence"]
+  DEC --> REVIEW{"Reviewer action"}
+  ADOPT -.-> CAVEAT["Adoption is not efficacy"]
+  EMP -.-> CAVEAT
+  CAVEAT --> REVIEW
+  REVIEW -->|"transparency or diagnostic aid"| OK["Allowed bounded claim"]
+  REVIEW -->|"bias cure, score, or<br/>autonomous judgment"| STOP["Revise before use"]
+  classDef source fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+  classDef artifact fill:#dcfce7,stroke:#15803d,color:#0f172a
+  classDef gate fill:#fef3c7,stroke:#b45309,color:#0f172a
+  classDef stop fill:#fee2e2,stroke:#be123c,color:#0f172a
+  class PURPOSE,DOC,ADOPT,EMP,ACH,DEC source
+  class ART,OK artifact
+  class REVIEW,CAVEAT gate
+  class STOP stop

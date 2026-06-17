@@ -1,0 +1,12 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  OBS["Observed behavior (defensive)"]
+  KC["Kill-chain phase labeling"]
+  AT["ATT&CK technique mapping"]
+  OBS --> KC
+  OBS --> AT
+  KC --> COV["Detection coverage matrix"]
+  AT --> COV
+  COV --> MIT["Mitigation and control mapping"]
+  MIT --> BOUND["No-action boundary: analysis only"]
+  BOUND --> REP["Defensive coverage report"]

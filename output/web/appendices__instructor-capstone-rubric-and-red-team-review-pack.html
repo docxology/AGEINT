@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>instructor-capstone-rubric-and-red-team-review-pack.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1
+id="sec:appendix-instructor-capstone-rubric-and-red-team-review-pack">Instructor
+Capstone, Rubric, and Red-Team Review Pack</h1>
+<p>The current appendix is an evidence workbook for reusable classroom
+methods. It is educational and evidence-bounded: examples remain
+synthetic, defensive, lawful, and bounded to owned labs, public sources,
+or tabletop exercises. Source-item focus: Capstone authorization card:
+learning question, allowed inputs, excluded actions, human oversight,
+and stop conditions; Instructor rubric for source quality, analytic
+rigor, agent control, rights mapping, reproducibility, and safe
+substitution.</p>
+<h2
+id="instructor-capstone-rubric-and-red-team-review-pack-workbook-scope-purpose-safety-envelope-and-reuse-decision">Instructor
+Capstone, Rubric, and Red-Team Review Pack workbook scope: purpose,
+safety envelope, and reuse decision</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-operating-purpose">Instructor
+Capstone, Rubric, and Red-Team Review Pack operating purpose</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>The current appendix supports a reusable methods workbook. Each
+source item is treated as a reviewable classroom artifact rather than an
+operational instruction; examples begin with Capstone authorization
+card: learning question, allowed inputs, excluded actions, human
+oversight, and stop conditions; Instructor rubric for source quality,
+analytic rigor, agent control, rights mapping, reproducibility, and safe
+substitution.</p>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-allowed-input-boundary">Instructor
+Capstone, Rubric, and Red-Team Review Pack allowed-input boundary</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>Allowed inputs for the current appendix are public official or
+scholarly sources, standards text, instructor-provided excerpts,
+synthetic datasets, owned-lab logs, toy examples, and generated rubrics
+that expose their provenance for Capstone authorization card: learning
+question, allowed inputs, excluded actions, human oversight, and stop
+conditions; Instructor rubric for source quality, analytic rigor, agent
+control, rights mapping, reproducibility, and safe substitution.</p>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-excluded-action-boundary">Instructor
+Capstone, Rubric, and Red-Team Review Pack excluded-action boundary</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>Excluded actions for the current appendix are unauthorized
+collection, private-data processing, credential use, contact with real
+targets, live system interaction, exploit execution, deception, unsafe
+cyber-physical action, or external deployment while handling Capstone
+authorization card: learning question, allowed inputs, excluded actions,
+human oversight, and stop conditions; Instructor rubric for source
+quality, analytic rigor, agent control, rights mapping, reproducibility,
+and safe substitution.</p>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-expected-artifact-package">Instructor
+Capstone, Rubric, and Red-Team Review Pack expected artifact
+package</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>Expected appendix artifacts are a purpose statement, allowed-inputs
+card, excluded-actions card, source-lane map, provenance record, claim
+ledger, safe-substitution note, output schema, review rubric, and
+capstone handoff memo for Capstone authorization card: learning
+question, allowed inputs, excluded actions, human oversight, and stop
+conditions; Instructor rubric for source quality, analytic rigor, agent
+control, rights mapping, reproducibility, and safe substitution.</p>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-safe-artifact-schema">Instructor
+Capstone, Rubric, and Red-Team Review Pack safe artifact schema</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required evidence</th>
+<th>Reject condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>lawful educational, governance, research, or defensive purpose</td>
+<td>vague operational objective or missing authority</td>
+</tr>
+<tr>
+<td>Inputs</td>
+<td>public, official, scholarly, synthetic, owned-lab, or
+instructor-provided material</td>
+<td>private data, live target data, credentialed access, or unclear
+provenance</td>
+</tr>
+<tr>
+<td>Transform</td>
+<td>summary, comparison, rubric scoring, tabletop simulation, or audit
+review</td>
+<td>collection expansion, external action, or unsafe system
+interaction</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>memo, matrix, checklist, ledger, rubric, or debrief packet</td>
+<td>deployable procedure, target package, or automated action plan</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td>human reviewer, approval gate, revision note, and refresh owner</td>
+<td>anonymous ownership or no escalation path</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-inputoutput-contract">Instructor
+Capstone, Rubric, and Red-Team Review Pack input/output contract</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Contract term</th>
+<th>Input rule</th>
+<th>Output rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source identity</td>
+<td>retain <code>ageintNNN</code>, title, URL, and checked status</td>
+<td>cite with Pandoc keys and avoid pasted raw URLs in prose</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>include plain-language labels, table headers, and figure
+alternatives</td>
+<td>reject inaccessible figures, unlabeled tables, or single-modality
+evidence</td>
+</tr>
+<tr>
+<td>Rights</td>
+<td>identify affected groups, safeguards, and residual risk</td>
+<td>preserve privacy, equality, access, contestability, and redress
+notes</td>
+</tr>
+<tr>
+<td>Tooling</td>
+<td>use allowlisted tools, visible prompts, logs, and stop
+conditions</td>
+<td>keep outputs evidence-bounded, reversible, and human-reviewed</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>record source, policy, standard, incident, or assessment
+trigger</td>
+<td>assign an owner and date for revalidation</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-failure-cases-and-required-responses">Instructor
+Capstone, Rubric, and Red-Team Review Pack failure cases and required
+responses</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Failure case</th>
+<th>Signal</th>
+<th>Required response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source laundering</td>
+<td>claim cites an agent summary instead of a verified source</td>
+<td>rebuild the claim ledger from direct sources</td>
+</tr>
+<tr>
+<td>Boundary drift</td>
+<td>exercise starts asking for live targets, private data, or external
+action</td>
+<td>stop, substitute synthetic inputs, and document the block</td>
+</tr>
+<tr>
+<td>Accessibility gap</td>
+<td>learner cannot inspect, navigate, or complete the artifact</td>
+<td>remediate and retest before reuse</td>
+</tr>
+<tr>
+<td>Rights gap</td>
+<td>affected group, safeguard, or redress path is missing</td>
+<td>run HRIA/DPIA worksheet and escalate unresolved risk</td>
+</tr>
+<tr>
+<td>Vendor opacity</td>
+<td>tool owner, data use, logs, or exit path is unknown</td>
+<td>replace tool or pause until procurement evidence exists</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-evidence-package-schemas">Instructor
+Capstone, Rubric, and Red-Team Review Pack evidence package schemas</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>Model and dataset card:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Model card evidence</th>
+<th>Dataset card evidence</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intended use</td>
+<td>accountable task, excluded uses, affected users, human reviewer, and
+accountable owner</td>
+<td>Data Cards purpose statement, recommended use, prohibited reuse,
+stewardship owner, and affected stakeholder groups</td>
+<td>claim is rejected if intended use, excluded use, affected users, or
+owner is missing</td>
+</tr>
+<tr>
+<td>Provenance and collection</td>
+<td>model family, version, supplier or lab, training cutoff, deployment
+context, and configuration hash</td>
+<td>upstream source, collection process, annotation method, consent or
+authority basis, sensitivity class, and license</td>
+<td>artifact is held if provenance, license, authority, or collection
+process is opaque</td>
+</tr>
+<tr>
+<td>Composition and limits</td>
+<td>capability boundary, known failure modes, tool permissions, context
+window limits, and unsupported conditions</td>
+<td>population, sampling frame, coverage gaps, subgroup visibility,
+missingness, transformations, and known caveats</td>
+<td>artifact is revised if population, coverage, or source limits are
+invisible</td>
+</tr>
+<tr>
+<td>Evaluation and caveats</td>
+<td>benchmark suite, task-specific tests, subgroup or context results,
+red-team findings, uncertainty notes, and failure examples</td>
+<td>quality tests, label agreement, bias review, measurement limits,
+transformation log, and Data Cards answer-evaluation notes</td>
+<td>empirical or performance claims are rejected unless test context,
+subgroup caveats, and uncertainty are visible</td>
+</tr>
+<tr>
+<td>Lifecycle controls</td>
+<td>release gate, rollback path, monitoring signal, incident threshold,
+refresh trigger, and model-card update owner</td>
+<td>retention rule, access boundary, update cadence, deletion path,
+stewardship handoff, and dataset-card revision trigger</td>
+<td>reuse is blocked without owner, retention, monitoring, rollback, and
+refresh evidence</td>
+</tr>
+</tbody>
+</table>
+<p>Transparency notice:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Artifact</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public purpose</td>
+<td>plain-language purpose, authority, affected service, and decision
+role</td>
+<td>reader can tell why the system exists and where human judgment
+remains</td>
+</tr>
+<tr>
+<td>Tool and data summary</td>
+<td>model, data, supplier, provenance, validation, and accessibility
+summary</td>
+<td>sensitive details are de-sensitized without hiding accountability
+fields</td>
+</tr>
+<tr>
+<td>Impact and review</td>
+<td>benefits, risks, safeguards, human review, appeal, and contact
+point</td>
+<td>affected groups can identify recourse and oversight owners</td>
+</tr>
+<tr>
+<td>Publication decision</td>
+<td>publish, partially publish, delay, or hold decision with exemption
+rationale</td>
+<td>non-public fields have a documented legal, security, privacy, or IP
+basis</td>
+</tr>
+</tbody>
+</table>
+<p>Records retention and audit trail:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Record</th>
+<th>Retained fields</th>
+<th>Audit question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source and prompt register</td>
+<td>source identity, prompt version, tool allowlist, reviewer,
+timestamp, and caveat</td>
+<td>Can a later reviewer reconstruct the evidentiary path without
+private or live data?</td>
+</tr>
+<tr>
+<td>Decision and exception log</td>
+<td>risk owner, accepted exception, compensating control, expiry date,
+and approval</td>
+<td>Is every deviation time-bound, justified, and reviewable?</td>
+</tr>
+<tr>
+<td>Artifact retention note</td>
+<td>output type, sensitivity, access boundary, deletion rule, and
+refresh trigger</td>
+<td>Does the retention choice match the educational purpose and rights
+impact?</td>
+</tr>
+<tr>
+<td>Incident and remediation record</td>
+<td>incident signal, containment action, root cause, owner, retest
+result, and closure date</td>
+<td>Can the same failure be detected and prevented in the next reuse
+cycle?</td>
+</tr>
+</tbody>
+</table>
+<p>Release and change-control gate:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Release evidence</th>
+<th>Block condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope freeze</td>
+<td>accountable use case, excluded actions, tool profile, and data
+boundary</td>
+<td>scope expands to external action, live data, or an unreviewed
+capability</td>
+</tr>
+<tr>
+<td>Security and rights review</td>
+<td>privacy, accessibility, security, bias, and human-review checks</td>
+<td>rights impact, vulnerability, or accessibility issue has no
+owner</td>
+</tr>
+<tr>
+<td>Version and rollback</td>
+<td>model or prompt version, changelog, test fixture, and rollback
+path</td>
+<td>change cannot be reproduced, compared, or reverted</td>
+</tr>
+<tr>
+<td>Post-release monitoring</td>
+<td>monitoring signal, incident threshold, refresh trigger, and
+owner</td>
+<td>deployment or reuse occurs without logging and retest
+commitments</td>
+</tr>
+</tbody>
+</table>
+<p>Risk exception memo:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Minimum content</th>
+<th>Approval rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exception requested</td>
+<td>what requirement cannot be met, why, affected groups, and
+duration</td>
+<td>exception must be specific, time-bound, and tied to a compensating
+control</td>
+</tr>
+<tr>
+<td>Risk basis</td>
+<td>likelihood, impact, evidence, uncertainty, alternatives, and
+rejected options</td>
+<td>unsupported confidence or missing alternatives returns the memo for
+revision</td>
+</tr>
+<tr>
+<td>Compensating control</td>
+<td>human review, monitoring, access limit, disclosure, remediation, and
+owner</td>
+<td>control must reduce risk without creating an operational
+workaround</td>
+</tr>
+<tr>
+<td>Expiry and retest</td>
+<td>expiry date, retest condition, review cadence, and closure
+criteria</td>
+<td>open-ended exceptions are rejected</td>
+</tr>
+</tbody>
+</table>
+<p>Learner support and accommodation plan:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Need</th>
+<th>Support</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access and modality</td>
+<td>captions, alt text, keyboard path, plain-language summary, and
+structured tables</td>
+<td>accessibility checklist, defect log, and retest result</td>
+</tr>
+<tr>
+<td>Cognitive load</td>
+<td>worked examples, staged release, glossary, checklist, and optional
+practice fixture</td>
+<td>UDL design note and learner feedback record</td>
+</tr>
+<tr>
+<td>Assessment fairness</td>
+<td>allowed-tool statement, AI-use declaration, alternative submission
+mode, and transparent rubric</td>
+<td>assessment-integrity note and accommodation record</td>
+</tr>
+<tr>
+<td>Feedback and remediation</td>
+<td>revision path, office-hour prompt, example correction, and due-date
+flexibility policy</td>
+<td>feedback log and instructor disposition</td>
+</tr>
+</tbody>
+</table>
+<p>Instructor question bank:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Question type</th>
+<th>Prompt</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source challenge</td>
+<td>Which claim would fail if the strongest source were removed or
+downgraded?</td>
+<td>claim ledger revision and source-lane note</td>
+</tr>
+<tr>
+<td>Boundary challenge</td>
+<td>Where could this exercise drift from analysis into action, and what
+safe substitute prevents it?</td>
+<td>safe-substitution decision and excluded-action card</td>
+</tr>
+<tr>
+<td>Rights challenge</td>
+<td>Which affected group, accessibility need, privacy interest, or
+redress path is under-specified?</td>
+<td>HRIA/DPIA update and accommodation note</td>
+</tr>
+<tr>
+<td>Assurance challenge</td>
+<td>What failure would the current evaluation miss, and what retest
+would reveal it?</td>
+<td>adversarial assurance retest and remediation owner</td>
+</tr>
+</tbody>
+</table>
+<p>Remediation backlog:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Backlog item</th>
+<th>Trigger</th>
+<th>Closure evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unverified claim</td>
+<td>claim lacks a guide citation or directly verified anchor</td>
+<td>verified source, removed claim, or explicit source-guide context
+note</td>
+</tr>
+<tr>
+<td>Unsafe phrasing</td>
+<td>wording implies live targeting, external action, exploitation,
+manipulation, or unsafe control</td>
+<td>safe substitute, blocked context, and reviewer sign-off</td>
+</tr>
+<tr>
+<td>Accessibility defect</td>
+<td>artifact cannot be inspected through an expected assistive or
+alternative workflow</td>
+<td>defect fix, alternative means, and retest result</td>
+</tr>
+<tr>
+<td>Assurance gap</td>
+<td>evaluation, release, exception, incident, or vendor evidence is
+incomplete</td>
+<td>owner, due date, retest, and accepted disposition</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-rubric-scoring-bands">Instructor
+Capstone, Rubric, and Red-Team Review Pack rubric scoring bands</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Band</th>
+<th>Evidence standard</th>
+<th>Disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 - ready</td>
+<td>source identity, accessibility, rights, safety, and reviewer
+evidence are complete</td>
+<td>may be reused after normal refresh review</td>
+</tr>
+<tr>
+<td>3 - revise</td>
+<td>one evidence field is incomplete but risk is bounded and
+remediable</td>
+<td>revise before reuse</td>
+</tr>
+<tr>
+<td>2 - hold</td>
+<td>multiple evidence fields are incomplete or ownership is unclear</td>
+<td>hold for instructor and assurance review</td>
+</tr>
+<tr>
+<td>1 - reject</td>
+<td>unsafe action, private data, inaccessible artifact, or unverified
+claim appears</td>
+<td>reject and rebuild from safe inputs</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-refresh-evidence">Instructor
+Capstone, Rubric, and Red-Team Review Pack refresh evidence</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Evidence item</th>
+<th>Refresh trigger</th>
+<th>Retained support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source lane</td>
+<td>official source, standard, or legal text changes</td>
+<td>checked-as-of date and source note</td>
+</tr>
+<tr>
+<td>Safety treatment</td>
+<td>operational wording or unsafe motif appears</td>
+<td>safe-substitution decision and blocked context</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>WCAG, UDL, or institutional accessibility duty changes</td>
+<td>defect log, retest result, and owner</td>
+</tr>
+<tr>
+<td>Rights</td>
+<td>privacy, human-rights, public transparency, or education guidance
+changes</td>
+<td>HRIA/DPIA revision note</td>
+</tr>
+<tr>
+<td>Vendor/tool</td>
+<td>contract, data-use, incident, or model capability changes</td>
+<td>procurement packet and incident review</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-validation-rubric">Instructor
+Capstone, Rubric, and Red-Team Review Pack validation rubric</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Passing evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source identity</td>
+<td>existing <code>ageintNNN</code> keys remain stable or new references
+are append-only</td>
+</tr>
+<tr>
+<td>Verification</td>
+<td>official, standards, public-domain, or scholarly URL is checked
+directly</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>method is converted into tabletop, audit, governance, or
+synthetic-data treatment</td>
+</tr>
+<tr>
+<td>Reproducibility</td>
+<td>another reviewer can rebuild the artifact from retained inputs</td>
+</tr>
+<tr>
+<td>Rights review</td>
+<td>privacy, IP, human-rights, workforce, and education impacts are
+considered where relevant</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-debrief-protocol-and-reuse-decision">Instructor
+Capstone, Rubric, and Red-Team Review Pack debrief protocol and reuse
+decision</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>Debrief by naming what the artifact can support, what it does not
+establish, what source changed, what risk was avoided by safe
+substitution, what human approval is still required, and when the
+appendix should be refreshed for Capstone authorization card: learning
+question, allowed inputs, excluded actions, human oversight, and stop
+conditions; Instructor rubric for source quality, analytic rigor, agent
+control, rights mapping, reproducibility, and safe substitution.</p>
+<h2 id="instructor-capstone-workflow">Instructor capstone workflow</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<p>The instructor capstone, rubric, and red-team review pack binds each
+student artifact to source verification, safe substitution, rights
+review, assurance, and debrief evidence.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Artifact</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>accountable learning question and excluded-action list</td>
+<td>instructor confirms scope, allowed data, and rights impact</td>
+</tr>
+<tr>
+<td>Source canon</td>
+<td>source-lane map with guide citations, verified anchors, and refresh
+dates</td>
+<td>citation keys resolve and source identity lock remains stable</td>
+</tr>
+<tr>
+<td>Evidence ledger</td>
+<td>claim, evidence, uncertainty, confidence, and reviewer register</td>
+<td>every material claim has a source, caveat, and owner</td>
+</tr>
+<tr>
+<td>Safe lab</td>
+<td>synthetic or public dataset packet, tool allowlist, and stop
+conditions</td>
+<td>no live target, private data, external action, or unsafe
+cyber-physical step</td>
+</tr>
+<tr>
+<td>Assurance</td>
+<td>evaluation rubric, failure-mode drill, rights map, and remediation
+note</td>
+<td>human reviewer signs off before presentation or reuse</td>
+</tr>
+<tr>
+<td>Debrief</td>
+<td>capstone memo with lessons, residual risk, refresh triggers, and
+handoff owner</td>
+<td>all unresolved questions and future approvals are explicit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="safe-artifact-rows">Safe artifact rows</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source motif</th>
+<th>Unsafe source motif</th>
+<th>Safe curriculum substitute</th>
+<th>Blocked context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGEINT patterns</td>
+<td>raw source motifs can imply autonomous tasking, monitoring,
+response, or deception</td>
+<td>identity-preserving pattern registry plus tabletop, audit,
+provenance, and governance exercises</td>
+<td>deployment, live target tasking, or external action</td>
+</tr>
+<tr>
+<td>OSINT tools</td>
+<td>broad scraping, exposed-service lookup, credentialed search, or
+identity exposure</td>
+<td>tool-governance audit over instructor-provided records, toy inputs,
+and source-quality cards</td>
+<td>live collection expansion or private-data discovery</td>
+</tr>
+<tr>
+<td>GEOINT</td>
+<td>facility assessment, force assessment, geolocation targeting, or
+pattern-of-life inference</td>
+<td>provided imagery metadata quality audit with synthetic change
+examples and uncertainty notes</td>
+<td>live facility assessment or tracking</td>
+</tr>
+<tr>
+<td>SOC and CTI</td>
+<td>autonomous response, exploitability claims, indicator publishing, or
+production-system action</td>
+<td>fabricated-alert tabletop triage with ATT&amp;CK mapping, severity
+rationale, and debrief evidence</td>
+<td>production containment, exploitation, scanning, or blocking</td>
+</tr>
+<tr>
+<td>HUMINT and CI</td>
+<td>persona construction, contact handling, elicitation, deception, or
+source exposure</td>
+<td>synthetic identity-and-provenance ethics audit with role-play
+records and review rubrics</td>
+<td>impersonation, covert contact, or operational-security support</td>
+</tr>
+<tr>
+<td>Cognitive influence</td>
+<td>covert persuasion, microtargeting, audience manipulation, or
+intervention delivery</td>
+<td>opt-in media-literacy lesson plan using synthetic materials and
+transparent prebunking labels</td>
+<td>campaign design or audience-targeted persuasion</td>
+</tr>
+<tr>
+<td>ICS and OT</td>
+<td>facility monitoring, control action, safety-system interference, or
+cyber-physical response</td>
+<td>owned-lab or synthetic process-safety tabletop with logs, rollback,
+and human approval gates</td>
+<td>real plant operations, live devices, or unsafe control changes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assessment-lifecycle-evidence">Assessment lifecycle
+evidence</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Control</th>
+<th>Student evidence</th>
+<th>Instructor check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accountable AI use</td>
+<td>tool-use declaration and prompt/output appendix</td>
+<td>AI assistance is allowed, visible, bounded, and aligned with the
+assignment</td>
+</tr>
+<tr>
+<td>Independent reasoning</td>
+<td>assumptions, alternatives, uncertainty, and confidence
+statement</td>
+<td>student judgment is separable from agent-generated drafting</td>
+</tr>
+<tr>
+<td>Citation integrity</td>
+<td>source spine, verified anchors, and claim ledger</td>
+<td>claims are not source-laundered through agent prose</td>
+</tr>
+<tr>
+<td>Synthetic lab boundary</td>
+<td>allowed-inputs card, excluded actions, and stop conditions</td>
+<td>activity remains public, benign, owned-lab, synthetic, defensive,
+and reversible</td>
+</tr>
+<tr>
+<td>Feedback and revision</td>
+<td>rubric self-score, reviewer notes, and remediation log</td>
+<td>revision evidence addresses the actual deficiency before reuse</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adversarial-review-evidence">Adversarial review evidence</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Challenge question</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Misuse case</td>
+<td>How could the module be misread as operational, unfair,
+inaccessible, or overconfident?</td>
+<td>misuse-case card and safe-substitution decision</td>
+</tr>
+<tr>
+<td>Control challenge</td>
+<td>Which authority, data, tool, rights, or review control would fail
+first?</td>
+<td>control challenge matrix</td>
+</tr>
+<tr>
+<td>Evidence attack</td>
+<td>Can a claim survive source verification, provenance review, and
+counter-evidence?</td>
+<td>challenged claim ledger</td>
+</tr>
+<tr>
+<td>Incident rehearsal</td>
+<td>What happens if an agent drifts, leaks context, fabricates support,
+or requests unsafe action?</td>
+<td>synthetic incident drill and recovery note</td>
+</tr>
+<tr>
+<td>Remediation</td>
+<td>Which wording, workflow, source, figure, or assessment gate must
+change before reuse?</td>
+<td>owner, due date, retest result, and refresh trigger</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-visual-navigation-and-evidence-figures-purpose-source-flow-and-limits">Instructor
+Capstone, Rubric, and Red-Team Review Pack visual navigation and
+evidence figures: purpose, source flow, and limits</h3>
+<p>The appendix uses [fig:appendix-capstone-redteam-review],
+[fig:ageint-capstone-workflow], [fig:ageint-safe-substitution-matrix],
+[fig:ageint-instructor-assessment-lifecycle],
+[fig:ageint-assessment-integrity-matrix],
+[fig:ageint-release-change-control], [fig:ageint-learner-support-plan],
+[fig:ageint-instructor-question-bank], [fig:ageint-remediation-backlog],
+and [fig:ageint-safety-boundary-loop] to map its evidence flow, safety
+boundaries, review artifacts, and refresh cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:appendix-source-verification-and-claim-ledger-workbook],
+[sec:bibliography_atlas].</p>
+<figure id="fig:appendix-capstone-redteam-review">
+<img src="../../figures/mermaid/appendix-capstone-redteam-review.png"
+alt="The capstone journey shows the reviewer experience from packet submission through rubric scoring, safety/source/rights challenge, remediation, and final instructor handoff. In the instructor capstone rubric and red team review pack appendix, it lets readers compare learner submits packet, instructor scores mastery rubric, red team checks safety, sourcing, and rights, and weak evidence enters remediation backlog so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">The capstone journey shows the reviewer
+experience from packet submission through rubric scoring,
+safety/source/rights challenge, remediation, and final instructor
+handoff. In the instructor capstone rubric and red team review pack
+appendix, it lets readers compare learner submits packet, instructor
+scores mastery rubric, red team checks safety, sourcing, and rights, and
+weak evidence enters remediation backlog so the visual functions as a
+traceable course aid rather than an unscoped assertion.</figcaption>
+</figure>
+<figure id="fig:ageint-capstone-workflow">
+<img src="../../figures/python/ageint-capstone-workflow.png"
+alt="The capstone workflow moves from an accountable question to debrief and refresh ownership. Its reader value is to make capstone workflow steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the instructor capstone rubric and red team review pack appendix as the source section and defensive review as the boundary." />
+<figcaption aria-hidden="true">The capstone workflow moves from an
+accountable question to debrief and refresh ownership. Its reader value
+is to make capstone workflow steps, decision gates, owner handoffs,
+refresh triggers, and closure evidence visible at a glance, with the
+instructor capstone rubric and red team review pack appendix as the
+source section and defensive review as the boundary.</figcaption>
+</figure>
+<figure id="fig:ageint-safe-substitution-matrix">
+<img src="../../figures/python/ageint-safe-substitution-matrix.png"
+alt="The safe substitution matrix converts risky motifs into bounded classroom alternatives. It is anchored to the instructor capstone rubric and red team review pack appendix; use it to inspect safe substitution matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The safe substitution matrix converts
+risky motifs into bounded classroom alternatives. It is anchored to the
+instructor capstone rubric and red team review pack appendix; use it to
+inspect safe substitution matrix fields, row and column obligations,
+source records, reviewer decisions, and closure evidence while
+preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-instructor-assessment-lifecycle">
+<img
+src="../../figures/python/ageint-instructor-assessment-lifecycle.png"
+alt="The instructor lifecycle connects scope, facilitation, scoring, revision, and debrief evidence. Its reader value is to make instructor assessment lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the instructor capstone rubric and red team review pack appendix as the source section and defensive review as the boundary." />
+<figcaption aria-hidden="true">The instructor lifecycle connects scope,
+facilitation, scoring, revision, and debrief evidence. Its reader value
+is to make instructor assessment lifecycle steps, decision gates, owner
+handoffs, refresh triggers, and closure evidence visible at a glance,
+with the instructor capstone rubric and red team review pack appendix as
+the source section and defensive review as the boundary.</figcaption>
+</figure>
+<figure id="fig:ageint-assessment-integrity-matrix">
+<img src="../../figures/python/ageint-assessment-integrity-matrix.png"
+alt="The assessment integrity matrix separates AI-use declarations, reasoning, citations, lab boundaries, and revision evidence. In the instructor capstone rubric and red team review pack appendix, it lets readers compare assessment integrity matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">The assessment integrity matrix separates
+AI-use declarations, reasoning, citations, lab boundaries, and revision
+evidence. In the instructor capstone rubric and red team review pack
+appendix, it lets readers compare assessment integrity matrix fields,
+row and column obligations, source records, reviewer decisions, and
+closure evidence so the visual functions as a traceable course aid
+rather than an unscoped assertion.</figcaption>
+</figure>
+<figure id="fig:ageint-release-change-control">
+<img src="../../figures/python/ageint-release-change-control.png"
+alt="The release change-control gate checks scope, rights, security, versioning, rollback, monitoring, and retest. The captioned view belongs to the instructor capstone rubric and red team review pack appendix and should be read as a map of release change control labels, source records, review gates, refresh cues, and reader-use boundaries, not as a capability score or live-task instruction." />
+<figcaption aria-hidden="true">The release change-control gate checks
+scope, rights, security, versioning, rollback, monitoring, and retest.
+The captioned view belongs to the instructor capstone rubric and red
+team review pack appendix and should be read as a map of release change
+control labels, source records, review gates, refresh cues, and
+reader-use boundaries, not as a capability score or live-task
+instruction.</figcaption>
+</figure>
+<figure id="fig:ageint-learner-support-plan">
+<img src="../../figures/python/ageint-learner-support-plan.png"
+alt="The learner-support plan connects access, cognitive load, assessment fairness, and remediation. It is anchored to the instructor capstone rubric and red team review pack appendix; use it to inspect learner support plan labels, source records, review gates, refresh cues, and reader-use boundaries while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The learner-support plan connects access,
+cognitive load, assessment fairness, and remediation. It is anchored to
+the instructor capstone rubric and red team review pack appendix; use it
+to inspect learner support plan labels, source records, review gates,
+refresh cues, and reader-use boundaries while preserving the distinction
+between curriculum structure, evidence boundary, and accountable
+practice.</figcaption>
+</figure>
+<figure id="fig:ageint-instructor-question-bank">
+<img src="../../figures/python/ageint-instructor-question-bank.png"
+alt="The instructor question bank prompts source, boundary, rights, and assurance challenges. It is anchored to the instructor capstone rubric and red team review pack appendix; use it to inspect instructor question bank fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The instructor question bank prompts
+source, boundary, rights, and assurance challenges. It is anchored to
+the instructor capstone rubric and red team review pack appendix; use it
+to inspect instructor question bank fields, row and column obligations,
+source records, reviewer decisions, and closure evidence while
+preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-remediation-backlog">
+<img src="../../figures/python/ageint-remediation-backlog.png"
+alt="The remediation backlog tracks unverified claims, unsafe phrasing, accessibility defects, and assurance gaps. Its reader value is to make remediation backlog fields, row and column obligations, source records, reviewer decisions, and closure evidence visible at a glance, with the instructor capstone rubric and red team review pack appendix as the source section and defensive review as the boundary." />
+<figcaption aria-hidden="true">The remediation backlog tracks unverified
+claims, unsafe phrasing, accessibility defects, and assurance gaps. Its
+reader value is to make remediation backlog fields, row and column
+obligations, source records, reviewer decisions, and closure evidence
+visible at a glance, with the instructor capstone rubric and red team
+review pack appendix as the source section and defensive review as the
+boundary.</figcaption>
+</figure>
+<h3
+id="instructor-capstone-rubric-and-red-team-review-pack-runtime-item-map-and-source-roster-generated-rows-and-citation-support">Instructor
+Capstone, Rubric, and Red-Team Review Pack runtime item map and source
+roster: generated rows and citation support</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Safe curriculum treatment</th>
+<th>Blocked source motif, audit-only</th>
+<th>Allowed fixture</th>
+<th>Rejected action</th>
+<th>Required artifact</th>
+<th>Citation spine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I.1 Capstone authorization card: learning question, allowed inputs,
+excluded actions, human oversight, and stop conditions</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint242]; [ageint243]; [ageint246]</td>
+</tr>
+<tr>
+<td>I.2 Instructor rubric for source quality, analytic rigor, agent
+control, rights mapping, reproducibility, and safe substitution</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint237]; [ageint242]; [ageint238]</td>
+</tr>
+<tr>
+<td>I.3 Red-team review checklist for source laundering, automation
+bias, boundary drift, overconfident synthesis, and unreproducible
+handoff</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint235]; [ageint236]; [ageint272]</td>
+</tr>
+<tr>
+<td>I.4 Safe artifact packet: source-lane map, claim ledger, synthetic
+lab packet, interface contract, assessment lifecycle, and debrief
+memo</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint258]; [ageint266]; [ageint271]</td>
+</tr>
+<tr>
+<td>I.5 Capstone debrief protocol that names residual uncertainty,
+rights impact, refresh owner, revision plan, and approvals required
+before reuse</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint239]; [ageint240]; [ageint264]</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

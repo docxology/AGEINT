@@ -1,0 +1,21 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  INTAKE(["Dependency intake"])
+  PROV["Package provenance evidence"]
+  TRUST["Maintainer-trust signal"]
+  BUILD["Build-integrity attestation"]
+  SBOM["SBOM record: components listed"]
+  REVIEW["Vulnerability and control-gap review"]
+  GATE{"Reviewer escalation gate"}
+  ACCEPT(["Accept with documented caveats"])
+  ESCALATE(["Escalate: stop condition reached"])
+  INTAKE --> PROV
+  INTAKE --> TRUST
+  INTAKE --> BUILD
+  PROV --> SBOM
+  TRUST --> SBOM
+  BUILD --> SBOM
+  SBOM --> REVIEW
+  REVIEW --> GATE
+  GATE -->|"gaps acceptable"| ACCEPT
+  GATE -->|"gaps material"| ESCALATE

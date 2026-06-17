@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Critical-information governance scope"] --> B["OPSEC five-step tabletop review"]
+  A --> C["Compartmentation and need-to-know mapping"]
+  A --> D["Cover and source-protection literacy"]
+  A --> E["Plausible-deniability literacy"]
+  B --> F["Evidence and caveat documentation"]
+  C --> F
+  D --> F
+  E --> F
+  F --> G["Reviewer ownership and oversight sign-off"]
+  G --> H["Non-authorization boundary, classroom only"]
+  H --> I["Documented analytic note with confidence and dissent"]
+  G --> J["Stop condition and re-verification trigger"]
+  J --> I

@@ -1,0 +1,23 @@
+{
+  "number": 45,
+  "title": "Industrial Control Systems (ICS) and Operational Technology",
+  "citations": [
+    255,
+    256,
+    270,
+    273,
+    276,
+    285,
+    286,
+    290,
+    294,
+    208,
+    209,
+    210,
+    211,
+    212
+  ],
+  "source_line": 846,
+  "content_profile": "ics_ot_defense",
+  "practice_lens": "cyber_physical_readiness"
+}

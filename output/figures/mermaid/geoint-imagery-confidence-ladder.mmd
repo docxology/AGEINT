@@ -1,0 +1,23 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  OBS(["Imagery observation and metadata"])
+  RES{"Resolution fit for the claim"}
+  TEMP{"Temporal fit: acquisition timing"}
+  CORR{"Corroboration with other sources"}
+  BOUND["Sensitive-site minimization boundary"]
+  LOW(["Low confidence: caveat heavily"])
+  MOD(["Moderate confidence"])
+  HIGH(["High confidence"])
+  REVIEW{"Reviewer checks interpretation"}
+  INTERP(["Bounded interpretation, not targeting"])
+  OBS --> RES
+  RES -->|"poor"| LOW
+  RES -->|"adequate"| TEMP
+  TEMP -->|"stale"| MOD
+  TEMP -->|"current"| CORR
+  CORR --> BOUND
+  BOUND --> HIGH
+  LOW --> REVIEW
+  MOD --> REVIEW
+  HIGH --> REVIEW
+  REVIEW --> INTERP

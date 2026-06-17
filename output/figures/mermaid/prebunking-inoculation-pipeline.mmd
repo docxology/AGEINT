@@ -1,0 +1,13 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A[Threat monitoring: identify manipulation technique] --> B[Forewarning: raise awareness of technique]
+  B --> C[Weakened-dose exposure: safe demonstration]
+  C --> D[Refutation: counter-arguments and spotting skills]
+  D --> E[Transparent delivery to learner group]
+  E --> F[Bounded resilience outcome measured]
+  F --> G[Measure durability and transfer]
+  G --> H{Evidence weakened?}
+  H -->|Yes| I[Booster refresh]
+  I --> B
+  H -->|No| J([Continue monitoring])
+  J --> A

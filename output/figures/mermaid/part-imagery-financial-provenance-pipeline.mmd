@@ -1,0 +1,29 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph Sources ["Source Disciplines"]
+    direction LR
+    G11["Ch11 GEOINT"]
+    I16["Ch16 IMINT"]
+    F17["Ch17 FININT"]
+  end
+  subgraph Verify ["Provenance and Validation"]
+    direction LR
+    PROV["Source Provenance"]
+    OWN["Beneficial-Ownership Checks"]
+    RED["Redaction Caveats"]
+  end
+  subgraph Judge ["Governed Analytic Judgment"]
+    direction LR
+    CONF["Confidence Level"]
+    LIM["Limitations and Bias Test"]
+    REV["Recommended Defensive Review"]
+  end
+  G11 --> PROV
+  I16 --> PROV
+  F17 --> OWN
+  PROV --> CONF
+  OWN --> LIM
+  RED --> CONF
+  Verify --> REV
+  CONF --> PROD["Defensible Intelligence Product"]
+  REV --> PROD

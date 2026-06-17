@@ -1,0 +1,414 @@
+# AGEINT manuscript configuration
+paper:
+  title: "AGEINT: Agentic Intelligence"
+  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
+  version: "0.1"
+  date: "2026-06-17"
+
+book:
+  title: "AGEINT: Agentic Intelligence"
+  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
+  edition: "0.1"
+  year: "2026"
+  license: "CC BY 4.0"
+  code_license: "Apache-2.0"
+  cover:
+    image: "../figures/cover/ageint-cover-synthesis.png"
+
+authors:
+  - name: "Daniel Ari Friedman"
+    orcid: "0000-0001-6232-9096"
+    email: "daniel@activeinference.institute"
+    affiliations:
+      - "Active Inference Institute"
+      - "FractAI"
+    corresponding: true
+
+publication:
+  doi: "10.5281/zenodo.20732274"
+  repository_url: "https://github.com/docxology/AGEINT"
+  repository_label: "docxology/AGEINT"
+  journal: "Zenodo"
+  volume: ""
+  pages: ""
+  year: "2026"
+  version_doi: "10.5281/zenodo.20732275"
+  version_record: "https://zenodo.org/records/20732275"
+
+keywords:
+  - agentic intelligence
+  - AGEINT
+  - AI agents
+  - intelligence tradecraft
+  - cognitive security
+  - structured analytic techniques
+  - active inference
+  - model context protocol
+  - multi-agent systems
+  - operational governance
+
+metadata:
+  license: "CC-BY-4.0"
+  language: "en"
+
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false
+
+# Stage 02 allowlist — single canonical build (see scripts/CONVENTIONS.md)
+analysis:
+  scripts:
+    - build_curriculum.py
+
+llm:
+  reviews:
+    enabled: false
+    types:
+      - executive_summary
+  translations:
+    enabled: false
+    languages:
+      - zh
+
+testing:
+  max_test_failures: 0
+  max_infra_test_failures: 0
+  max_project_test_failures: 0
+
+project_config:
+  curriculum:
+    source_guide_optional_archive_name: "SIST-Guide-TOC-and-Bibliography-v2.md"
+    derived_outline: "data/curriculum/"
+    derived_outline_mirror: "output/data/curriculum_outline.json"
+    runtime_variables: "output/data/manuscript_variables.json"
+    counts_are_generated: true
+    safety_posture: "defensive, educational, accountable, evidence-bounded, legally compliant"
+
+figures:
+  registry: ../figures/figure_registry.json
+
+# Generated manuscript ordering
+front_matter:
+  page_two_visual:
+    image: ../figures/frontmatter/ageint-evidence-transit-map.png
+    title: Evidence Transit Map
+    caption: 'Source telemetry from AGEINT curriculum counts, source metadata, source
+      freshness, agency-source routing, figure registry, and generated manuscript files.
+      This front-matter map is artifact telemetry only: it is not a benchmark, public-release
+      certificate, publication claim, or learning-outcome result.'
+  include_front_matter: true
+  files: [{file: "abstract.md"}, {file: "orientation/00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md"}, {file: "orientation/01-synthetic-analytic-tradecraft-thesis-synthetic-fixtures-source-discipline-and-reviewable-claims-sec-synthetic-analytic-tradecraft-thesis.md"}, {file: "orientation/02-reader-paths-instructor-learner-reviewer-and-maintainer-handoffs-sec-reader-paths.md"}, {file: "orientation/03-curriculum-map-parts-modules-and-source-backed-route-choices-sec-curriculum-map.md"}, {file: "orientation/04-runtime-inventory-generated-counts-anchors-and-method-appendices-sec-runtime-inventory.md"}, {file: "orientation/05-related-work-and-contribution-boundary-adjacent-literatures-and-ageint-limits-sec-related-work-and-contribution-boundary.md"}, {file: "orientation/06-analysis-validation-protocol-claim-classes-evidence-packets-and-failure-modes-sec-analysis-validation-protocol.md"}, {file: "orientation/07-consolidated-glossary-and-index-terms-audit-surfaces-and-reader-routing-sec-consolidated-glossary-and-index.md"}, {file: "orientation/08-intelligence-research-profiles-domain-lanes-source-roles-and-profile-routing-sec-intelligence-research-profiles.md"}, {file: "orientation/09-intelligence-practice-lenses-artifact-expectations-safety-checks-and-review-questions-sec-intelligence-practice-lenses.md"}, {file: "orientation/10-research-anchor-atlas-curated-sources-lanes-tiers-and-claim-scope-sec-research-anchor-atlas.md"}, {file: "orientation/11-source-lane-map-provenance-lanes-support-strength-and-refresh-context-sec-source-lane-map.md"}, {file: "orientation/12-safe-substitution-matrix-defensive-artifacts-for-risky-inherited-motifs-sec-safe-substitution-matrix.md"}, {file: "orientation/13-capstone-workflow-phase-sequence-artifacts-and-reviewer-gates-sec-capstone-workflow.md"}, {file: "orientation/14-capstone-model-answer-exemplars-strong-evidence-packets-and-revision-triggers-sec-capstone-model-answer-exemplars.md"}, {file: "orientation/15-accessibility-and-udl-review-learner-access-modality-checks-and-accommodation-evidence-sec-accessibility-and-udl-review.md"}, {file: "orientation/16-procurement-and-vendor-oversight-tool-governance-revocation-and-vendor-evidence-sec-procurement-and-vendor-oversight.md"}, {file: "orientation/17-hria-and-dpia-worksheet-rights-impact-privacy-review-and-residual-risk-sec-hria-and-dpia-worksheet.md"}, {file: "orientation/18-data-lineage-registry-source-identity-transformations-retention-and-review-sec-data-lineage-registry.md"}, {file: "orientation/19-assessment-integrity-protocol-declared-agent-use-grading-evidence-and-human-judgment-sec-assessment-integrity-protocol.md"}, {file: "orientation/20-agent-incident-response-drill-pause-revoke-preserve-recover-and-debrief-sec-agent-incident-response-drill.md"}, {file: "orientation/21-role-based-competency-map-responsibilities-evidence-owners-and-assurance-roles-sec-role-based-competency-map.md"}, {file: "orientation/22-adversarial-assurance-cycle-challenge-rows-remediation-owners-and-retest-evidence-sec-adversarial-assurance-cycle.md"}, {file: "orientation/23-model-and-dataset-documentation-card-intended-use-provenance-caveats-and-lifecycle-sec-model-and-dataset-documentation-card.md"}, {file: "orientation/24-transparency-and-communication-notice-purpose-safeguards-human-review-and-limits-sec-transparency-and-communication-notice.md"}, {file: "orientation/25-records-retention-and-audit-trail-owners-retention-rules-and-deletion-conditions-sec-records-retention-and-audit-trail.md"}, {file: "orientation/26-release-and-change-control-gate-reuse-approval-rollback-and-change-evidence-sec-release-and-change-control-gate.md"}, {file: "orientation/27-risk-exception-and-acceptance-memo-residual-risk-owner-approval-and-review-clock-sec-risk-exception-and-acceptance-memo.md"}, {file: "orientation/28-learner-support-and-accommodation-plan-support-rows-access-barriers-and-escalation-sec-learner-support-and-accommodation-plan.md"}, {file: "orientation/29-instructor-question-bank-prompts-evidence-checks-and-misconception-probes-sec-instructor-question-bank.md"}, {file: "orientation/30-remediation-backlog-issue-owners-retest-evidence-and-closure-boundaries-sec-remediation-backlog.md"}, {file: "orientation/31-scholarship-and-governance-stance-source-posture-claim-limits-and-public-readiness-boundary-sec-scholarship-and-governance-stance.md"}, {file: "orientation/32-verifier-first-artifact-evidence-build-freshness-audits-and-negative-controls-sec-verifier-first-artifact-evidence.md"}, {file: "orientation/33-orientation-figures-and-course-links-visual-evidence-source-flow-and-navigation-sec-orientation-figures-and-course-links.md"}, {file: "orientation/34-ageint-pattern-library-design-pattern-rows-safe-substitutions-and-source-identity-sec-ageint-pattern-library.md"}, {file: "orientation/35-safety-rail-accountable-synthetic-defensive-and-evidence-bounded-boundaries-sec-safety-rail.md"}, {file: "method-assurance-reference.md"}]
+units:
+  - id: foundations-of-intelligence-tradecraft
+    directory: parts/foundations-of-intelligence-tradecraft
+    chapters:
+      - file: the-nature-of-intelligence/00-overview.md
+      - file: the-nature-of-intelligence/01-practice-studio.md
+      - file: the-nature-of-intelligence/02-evidence-contract.md
+      - file: the-nature-of-intelligence/03-governance-boundary.md
+      - file: the-nature-of-intelligence/04-assessment-route.md
+      - file: intelligence-community-architectures/00-overview.md
+      - file: intelligence-community-architectures/01-practice-studio.md
+      - file: intelligence-community-architectures/02-evidence-contract.md
+      - file: intelligence-community-architectures/03-governance-boundary.md
+      - file: intelligence-community-architectures/04-assessment-route.md
+      - file: tradecraft-core-principles/00-overview.md
+      - file: tradecraft-core-principles/01-practice-studio.md
+      - file: tradecraft-core-principles/02-evidence-contract.md
+      - file: tradecraft-core-principles/03-governance-boundary.md
+      - file: tradecraft-core-principles/04-assessment-route.md
+  - id: human-intelligence-humint
+    directory: parts/human-intelligence-humint
+    chapters:
+      - file: agent-recruitment/00-overview.md
+      - file: agent-recruitment/01-practice-studio.md
+      - file: agent-recruitment/02-evidence-contract.md
+      - file: agent-recruitment/03-governance-boundary.md
+      - file: agent-recruitment/04-assessment-route.md
+      - file: agent-handling-and-management/00-overview.md
+      - file: agent-handling-and-management/01-practice-studio.md
+      - file: agent-handling-and-management/02-evidence-contract.md
+      - file: agent-handling-and-management/03-governance-boundary.md
+      - file: agent-handling-and-management/04-assessment-route.md
+      - file: source-protection-and-ci-integration/00-overview.md
+      - file: source-protection-and-ci-integration/01-practice-studio.md
+      - file: source-protection-and-ci-integration/02-evidence-contract.md
+      - file: source-protection-and-ci-integration/03-governance-boundary.md
+      - file: source-protection-and-ci-integration/04-assessment-route.md
+  - id: signals-intelligence-sigint
+    directory: parts/signals-intelligence-sigint
+    chapters:
+      - file: sigint-fundamentals/00-overview.md
+      - file: sigint-fundamentals/01-practice-studio.md
+      - file: sigint-fundamentals/02-evidence-contract.md
+      - file: sigint-fundamentals/03-governance-boundary.md
+      - file: sigint-fundamentals/04-assessment-route.md
+      - file: modern-sigint-and-cryptography/00-overview.md
+      - file: modern-sigint-and-cryptography/01-practice-studio.md
+      - file: modern-sigint-and-cryptography/02-evidence-contract.md
+      - file: modern-sigint-and-cryptography/03-governance-boundary.md
+      - file: modern-sigint-and-cryptography/04-assessment-route.md
+  - id: open-source-intelligence-osint
+    directory: parts/open-source-intelligence-osint
+    chapters:
+      - file: osint-foundations/00-overview.md
+      - file: osint-foundations/01-practice-studio.md
+      - file: osint-foundations/02-evidence-contract.md
+      - file: osint-foundations/03-governance-boundary.md
+      - file: osint-foundations/04-assessment-route.md
+      - file: osint-techniques-and-tools/00-overview.md
+      - file: osint-techniques-and-tools/01-practice-studio.md
+      - file: osint-techniques-and-tools/02-evidence-contract.md
+      - file: osint-techniques-and-tools/03-governance-boundary.md
+      - file: osint-techniques-and-tools/04-assessment-route.md
+      - file: geoint-and-imagery-intelligence/00-overview.md
+      - file: geoint-and-imagery-intelligence/01-practice-studio.md
+      - file: geoint-and-imagery-intelligence/02-evidence-contract.md
+      - file: geoint-and-imagery-intelligence/03-governance-boundary.md
+      - file: geoint-and-imagery-intelligence/04-assessment-route.md
+  - id: technical-intelligence-and-cyber-operations
+    directory: parts/technical-intelligence-and-cyber-operations
+    chapters:
+      - file: cyber-intelligence-fundamentals/00-overview.md
+      - file: cyber-intelligence-fundamentals/01-practice-studio.md
+      - file: cyber-intelligence-fundamentals/02-evidence-contract.md
+      - file: cyber-intelligence-fundamentals/03-governance-boundary.md
+      - file: cyber-intelligence-fundamentals/04-assessment-route.md
+      - file: advanced-persistent-threats-apts/00-overview.md
+      - file: advanced-persistent-threats-apts/01-practice-studio.md
+      - file: advanced-persistent-threats-apts/02-evidence-contract.md
+      - file: advanced-persistent-threats-apts/03-governance-boundary.md
+      - file: advanced-persistent-threats-apts/04-assessment-route.md
+      - file: supply-chain-intelligence-attacks/00-overview.md
+      - file: supply-chain-intelligence-attacks/01-practice-studio.md
+      - file: supply-chain-intelligence-attacks/02-evidence-contract.md
+      - file: supply-chain-intelligence-attacks/03-governance-boundary.md
+      - file: supply-chain-intelligence-attacks/04-assessment-route.md
+      - file: electronic-and-emanations-intelligence/00-overview.md
+      - file: electronic-and-emanations-intelligence/01-practice-studio.md
+      - file: electronic-and-emanations-intelligence/02-evidence-contract.md
+      - file: electronic-and-emanations-intelligence/03-governance-boundary.md
+      - file: electronic-and-emanations-intelligence/04-assessment-route.md
+  - id: imagery-and-financial-intelligence
+    directory: parts/imagery-and-financial-intelligence
+    chapters:
+      - file: imagery-intelligence-imint/00-overview.md
+      - file: imagery-intelligence-imint/01-practice-studio.md
+      - file: imagery-intelligence-imint/02-evidence-contract.md
+      - file: imagery-intelligence-imint/03-governance-boundary.md
+      - file: imagery-intelligence-imint/04-assessment-route.md
+      - file: financial-intelligence-finint/00-overview.md
+      - file: financial-intelligence-finint/01-practice-studio.md
+      - file: financial-intelligence-finint/02-evidence-contract.md
+      - file: financial-intelligence-finint/03-governance-boundary.md
+      - file: financial-intelligence-finint/04-assessment-route.md
+  - id: psychological-operations-and-influence
+    directory: parts/psychological-operations-and-influence
+    chapters:
+      - file: psyop-and-miso-doctrine/00-overview.md
+      - file: psyop-and-miso-doctrine/01-practice-studio.md
+      - file: psyop-and-miso-doctrine/02-evidence-contract.md
+      - file: psyop-and-miso-doctrine/03-governance-boundary.md
+      - file: psyop-and-miso-doctrine/04-assessment-route.md
+      - file: active-measures-and-disinformation/00-overview.md
+      - file: active-measures-and-disinformation/01-practice-studio.md
+      - file: active-measures-and-disinformation/02-evidence-contract.md
+      - file: active-measures-and-disinformation/03-governance-boundary.md
+      - file: active-measures-and-disinformation/04-assessment-route.md
+      - file: social-engineering/00-overview.md
+      - file: social-engineering/01-practice-studio.md
+      - file: social-engineering/02-evidence-contract.md
+      - file: social-engineering/03-governance-boundary.md
+      - file: social-engineering/04-assessment-route.md
+      - file: information-warfare-and-cognitive-security/00-overview.md
+      - file: information-warfare-and-cognitive-security/01-practice-studio.md
+      - file: information-warfare-and-cognitive-security/02-evidence-contract.md
+      - file: information-warfare-and-cognitive-security/03-governance-boundary.md
+      - file: information-warfare-and-cognitive-security/04-assessment-route.md
+  - id: counterintelligence
+    directory: parts/counterintelligence
+    chapters:
+      - file: counterintelligence-fundamentals/00-overview.md
+      - file: counterintelligence-fundamentals/01-practice-studio.md
+      - file: counterintelligence-fundamentals/02-evidence-contract.md
+      - file: counterintelligence-fundamentals/03-governance-boundary.md
+      - file: counterintelligence-fundamentals/04-assessment-route.md
+      - file: counterintelligence-against-non-state-actors/00-overview.md
+      - file: counterintelligence-against-non-state-actors/01-practice-studio.md
+      - file: counterintelligence-against-non-state-actors/02-evidence-contract.md
+      - file: counterintelligence-against-non-state-actors/03-governance-boundary.md
+      - file: counterintelligence-against-non-state-actors/04-assessment-route.md
+  - id: gray-zone-hybrid-warfare-and-non-state-actors
+    directory: parts/gray-zone-hybrid-warfare-and-non-state-actors
+    chapters:
+      - file: gray-zone-warfare/00-overview.md
+      - file: gray-zone-warfare/01-practice-studio.md
+      - file: gray-zone-warfare/02-evidence-contract.md
+      - file: gray-zone-warfare/03-governance-boundary.md
+      - file: gray-zone-warfare/04-assessment-route.md
+      - file: non-state-actor-intelligence/00-overview.md
+      - file: non-state-actor-intelligence/01-practice-studio.md
+      - file: non-state-actor-intelligence/02-evidence-contract.md
+      - file: non-state-actor-intelligence/03-governance-boundary.md
+      - file: non-state-actor-intelligence/04-assessment-route.md
+      - file: irregular-warfare-and-special-operations/00-overview.md
+      - file: irregular-warfare-and-special-operations/01-practice-studio.md
+      - file: irregular-warfare-and-special-operations/02-evidence-contract.md
+      - file: irregular-warfare-and-special-operations/03-governance-boundary.md
+      - file: irregular-warfare-and-special-operations/04-assessment-route.md
+  - id: historical-intelligence-services
+    directory: parts/historical-intelligence-services
+    chapters:
+      - file: soviet-and-russian-intelligence/00-overview.md
+      - file: soviet-and-russian-intelligence/01-practice-studio.md
+      - file: soviet-and-russian-intelligence/02-evidence-contract.md
+      - file: soviet-and-russian-intelligence/03-governance-boundary.md
+      - file: soviet-and-russian-intelligence/04-assessment-route.md
+      - file: american-intelligence-history/00-overview.md
+      - file: american-intelligence-history/01-practice-studio.md
+      - file: american-intelligence-history/02-evidence-contract.md
+      - file: american-intelligence-history/03-governance-boundary.md
+      - file: american-intelligence-history/04-assessment-route.md
+      - file: british-and-allied-intelligence/00-overview.md
+      - file: british-and-allied-intelligence/01-practice-studio.md
+      - file: british-and-allied-intelligence/02-evidence-contract.md
+      - file: british-and-allied-intelligence/03-governance-boundary.md
+      - file: british-and-allied-intelligence/04-assessment-route.md
+      - file: israeli-and-continental-services/00-overview.md
+      - file: israeli-and-continental-services/01-practice-studio.md
+      - file: israeli-and-continental-services/02-evidence-contract.md
+      - file: israeli-and-continental-services/03-governance-boundary.md
+      - file: israeli-and-continental-services/04-assessment-route.md
+  - id: ageint-agentic-intelligence
+    directory: parts/ageint-agentic-intelligence
+    chapters:
+      - file: foundations-of-ageint/00-overview.md
+      - file: foundations-of-ageint/01-practice-studio.md
+      - file: foundations-of-ageint/02-evidence-contract.md
+      - file: foundations-of-ageint/03-governance-boundary.md
+      - file: foundations-of-ageint/04-assessment-route.md
+      - file: ageint-design-patterns-and-archetypes/00-overview.md
+      - file: ageint-design-patterns-and-archetypes/01-practice-studio-01.md
+      - file: ageint-design-patterns-and-archetypes/01-practice-studio-02.md
+      - file: ageint-design-patterns-and-archetypes/01-practice-studio-03.md
+      - file: ageint-design-patterns-and-archetypes/02-evidence-contract.md
+      - file: ageint-design-patterns-and-archetypes/03-governance-boundary.md
+      - file: ageint-design-patterns-and-archetypes/04-assessment-route.md
+      - file: ageint-frameworks-and-infrastructure/00-overview.md
+      - file: ageint-frameworks-and-infrastructure/01-practice-studio-01.md
+      - file: ageint-frameworks-and-infrastructure/01-practice-studio-02.md
+      - file: ageint-frameworks-and-infrastructure/02-evidence-contract.md
+      - file: ageint-frameworks-and-infrastructure/03-governance-boundary.md
+      - file: ageint-frameworks-and-infrastructure/04-assessment-route.md
+      - file: ageint-security-and-adversarial-considerations/00-overview.md
+      - file: ageint-security-and-adversarial-considerations/01-practice-studio.md
+      - file: ageint-security-and-adversarial-considerations/02-evidence-contract.md
+      - file: ageint-security-and-adversarial-considerations/03-governance-boundary.md
+      - file: ageint-security-and-adversarial-considerations/04-assessment-route.md
+      - file: active-inference-and-ageint/00-overview.md
+      - file: active-inference-and-ageint/01-practice-studio.md
+      - file: active-inference-and-ageint/02-evidence-contract.md
+      - file: active-inference-and-ageint/03-governance-boundary.md
+      - file: active-inference-and-ageint/04-assessment-route.md
+      - file: ageint-python-code-library/00-overview.md
+      - file: ageint-python-code-library/01-practice-studio.md
+      - file: ageint-python-code-library/02-evidence-contract.md
+      - file: ageint-python-code-library/03-governance-boundary.md
+      - file: ageint-python-code-library/04-assessment-route.md
+  - id: cognitive-security
+    directory: parts/cognitive-security
+    chapters:
+      - file: cognitive-security-foundations-and-definitions/00-overview.md
+      - file: cognitive-security-foundations-and-definitions/01-practice-studio.md
+      - file: cognitive-security-foundations-and-definitions/02-evidence-contract.md
+      - file: cognitive-security-foundations-and-definitions/03-governance-boundary.md
+      - file: cognitive-security-foundations-and-definitions/04-assessment-route.md
+      - file: neurocognitive-mechanisms-of-cognitive-security/00-overview.md
+      - file: neurocognitive-mechanisms-of-cognitive-security/01-practice-studio.md
+      - file: neurocognitive-mechanisms-of-cognitive-security/02-evidence-contract.md
+      - file: neurocognitive-mechanisms-of-cognitive-security/03-governance-boundary.md
+      - file: neurocognitive-mechanisms-of-cognitive-security/04-assessment-route.md
+      - file: psychological-inoculation-and-prebunking/00-overview.md
+      - file: psychological-inoculation-and-prebunking/01-practice-studio.md
+      - file: psychological-inoculation-and-prebunking/02-evidence-contract.md
+      - file: psychological-inoculation-and-prebunking/03-governance-boundary.md
+      - file: psychological-inoculation-and-prebunking/04-assessment-route.md
+      - file: cognitive-security-operations/00-overview.md
+      - file: cognitive-security-operations/01-practice-studio.md
+      - file: cognitive-security-operations/02-evidence-contract.md
+      - file: cognitive-security-operations/03-governance-boundary.md
+      - file: cognitive-security-operations/04-assessment-route.md
+  - id: epistemic-rigor-and-analytic-tradecraft
+    directory: parts/epistemic-rigor-and-analytic-tradecraft
+    chapters:
+      - file: structured-analytic-techniques-sats/00-overview.md
+      - file: structured-analytic-techniques-sats/01-practice-studio.md
+      - file: structured-analytic-techniques-sats/02-evidence-contract.md
+      - file: structured-analytic-techniques-sats/03-governance-boundary.md
+      - file: structured-analytic-techniques-sats/04-assessment-route.md
+      - file: advanced-analysis-methods/00-overview.md
+      - file: advanced-analysis-methods/01-practice-studio.md
+      - file: advanced-analysis-methods/02-evidence-contract.md
+      - file: advanced-analysis-methods/03-governance-boundary.md
+      - file: advanced-analysis-methods/04-assessment-route.md
+  - id: productivity-intelligence-and-cognitive-performance
+    directory: parts/productivity-intelligence-and-cognitive-performance
+    chapters:
+      - file: the-intelligent-operator-as-cognitive-athlete/00-overview.md
+      - file: the-intelligent-operator-as-cognitive-athlete/01-practice-studio.md
+      - file: the-intelligent-operator-as-cognitive-athlete/02-evidence-contract.md
+      - file: the-intelligent-operator-as-cognitive-athlete/03-governance-boundary.md
+      - file: the-intelligent-operator-as-cognitive-athlete/04-assessment-route.md
+      - file: information-architecture-for-intelligence-work/00-overview.md
+      - file: information-architecture-for-intelligence-work/01-practice-studio.md
+      - file: information-architecture-for-intelligence-work/02-evidence-contract.md
+      - file: information-architecture-for-intelligence-work/03-governance-boundary.md
+      - file: information-architecture-for-intelligence-work/04-assessment-route.md
+  - id: industrial-and-cyber-physical-intelligence
+    directory: parts/industrial-and-cyber-physical-intelligence
+    chapters:
+      - file: industrial-control-systems-ics-and-operational-technology/00-overview.md
+      - file: industrial-control-systems-ics-and-operational-technology/01-practice-studio.md
+      - file: industrial-control-systems-ics-and-operational-technology/02-evidence-contract.md
+      - file: industrial-control-systems-ics-and-operational-technology/03-governance-boundary.md
+      - file: industrial-control-systems-ics-and-operational-technology/04-assessment-route.md
+      - file: mitre-att-ck-for-ics/00-overview.md
+      - file: mitre-att-ck-for-ics/01-practice-studio.md
+      - file: mitre-att-ck-for-ics/02-evidence-contract.md
+      - file: mitre-att-ck-for-ics/03-governance-boundary.md
+      - file: mitre-att-ck-for-ics/04-assessment-route.md
+      - file: historical-ics-cyber-incidents-intelligence-analysis/00-overview.md
+      - file: historical-ics-cyber-incidents-intelligence-analysis/01-practice-studio.md
+      - file: historical-ics-cyber-incidents-intelligence-analysis/02-evidence-contract.md
+      - file: historical-ics-cyber-incidents-intelligence-analysis/03-governance-boundary.md
+      - file: historical-ics-cyber-incidents-intelligence-analysis/04-assessment-route.md
+      - file: threat-intelligence-sharing-for-critical-infrastructure/00-overview.md
+      - file: threat-intelligence-sharing-for-critical-infrastructure/01-practice-studio.md
+      - file: threat-intelligence-sharing-for-critical-infrastructure/02-evidence-contract.md
+      - file: threat-intelligence-sharing-for-critical-infrastructure/03-governance-boundary.md
+      - file: threat-intelligence-sharing-for-critical-infrastructure/04-assessment-route.md
+      - file: ageint-applied-to-ics-and-cyber-physical-intelligence/00-overview.md
+      - file: ageint-applied-to-ics-and-cyber-physical-intelligence/01-practice-studio.md
+      - file: ageint-applied-to-ics-and-cyber-physical-intelligence/02-evidence-contract.md
+      - file: ageint-applied-to-ics-and-cyber-physical-intelligence/03-governance-boundary.md
+      - file: ageint-applied-to-ics-and-cyber-physical-intelligence/04-assessment-route.md
+  - id: legal-ethical-and-oversight-frameworks
+    directory: parts/legal-ethical-and-oversight-frameworks
+    chapters:
+      - file: legal-authorities-and-constraints/00-overview.md
+      - file: legal-authorities-and-constraints/01-practice-studio.md
+      - file: legal-authorities-and-constraints/02-evidence-contract.md
+      - file: legal-authorities-and-constraints/03-governance-boundary.md
+      - file: legal-authorities-and-constraints/04-assessment-route.md
+      - file: ethics-of-intelligence-and-cognitive-security/00-overview.md
+      - file: ethics-of-intelligence-and-cognitive-security/01-practice-studio.md
+      - file: ethics-of-intelligence-and-cognitive-security/02-evidence-contract.md
+      - file: ethics-of-intelligence-and-cognitive-security/03-governance-boundary.md
+      - file: ethics-of-intelligence-and-cognitive-security/04-assessment-route.md
+appendices:
+  include_reference: true
+  reference: [{file: "python-osint-library.md"}, {file: "langchain-langgraph-ageint-patterns.md"}, {file: "crewai-multi-agent-operations.md"}, {file: "autogen-and-mcp-patterns.md"}, {file: "cryptographic-methods.md"}, {file: "att-ck-and-kill-chain-mapping-templates.md"}, {file: "cognitive-security-and-inoculation-methods.md"}, {file: "source-verification-and-claim-ledger-workbook.md"}, {file: "instructor-capstone-rubric-and-red-team-review-pack.md"}, {file: "bibliography-atlas/00-bibliography-atlas-navigation-figures-and-source-links-visual-route-through-citation-evidence.md"}, {file: "bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md"}, {file: "bibliography-atlas/02-source-refresh-ledger-cadence-checked-dates-and-due-status-evidence-sec-source-refresh-ledger.md"}, {file: "bibliography-atlas/03-citation-workflow-and-source-section-coverage.md"}, {file: "bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata-01.md"}, {file: "bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata-02.md"}, {file: "bibliography-atlas/05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md"}, {file: "bibliography-atlas/05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md"}, {file: "references.md"}]

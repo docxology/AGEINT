@@ -1,0 +1,14 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  ORC["Orchestration layer, state graphs"] --> ROL["Role and task assignment"]
+  ROL --> TOOL["Tool and protocol layer"]
+  TOOL --> MCP["Model Context Protocol registry"]
+  TOOL --> A2A["Agent to agent messaging"]
+  MEM["Memory and context store"] --> ORC
+  OBS["Observability and tracing"] --> ORC
+  GUARD["Security and guardrail layer"] --> TOOL
+  GUARD --> SAND["Sandboxing for code execution"]
+  MCP --> POIS["Tool poisoning checks"]
+  POIS --> GOV["Governance and review"]
+  SAND --> GOV
+  OBS --> GOV

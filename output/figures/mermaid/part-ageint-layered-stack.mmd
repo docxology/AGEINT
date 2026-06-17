@@ -1,0 +1,28 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  subgraph FND["Foundation (Ch31)"]
+    F["What agentic intelligence is and is not"]
+  end
+  subgraph BUILD["Build Layer (Ch32-33)"]
+    DP["Design Patterns and Archetypes"]
+    FW["Frameworks and Infrastructure"]
+  end
+  subgraph THEORY["Theory Layer (Ch35)"]
+    AI["Active Inference foundations"]
+  end
+  subgraph IMPL["Implementation (Ch36)"]
+    LIB["Python Library and reference code"]
+  end
+  subgraph GUARD["Governance Spine (Ch34)"]
+    SEC["Security and Adversarial Considerations"]
+  end
+  F --> DP
+  F --> FW
+  AI --> DP
+  DP --> LIB
+  FW --> LIB
+  SEC -.->|"constrains"| DP
+  SEC -.->|"constrains"| FW
+  SEC -.->|"constrains"| LIB
+  LIB --> DEPLOY["Accountable deployment"]
+  SEC --> DEPLOY

@@ -1,0 +1,10 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  START(["Task"]) --> PLAN["Plan node"]
+  PLAN --> TOOL["Tool-call node (allowlist-guarded)"]
+  TOOL --> REF["Reflexion and critique node"]
+  REF -->|"insufficient"| PLAN
+  REF -->|"candidate result"| REV{"Human-review gate"}
+  REV -->|"approve"| DONE(["Finish"])
+  REV -->|"halt"| STOP(["Stop condition"])
+  TOOL -->|"deny"| STOP

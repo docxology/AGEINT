@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-evidence-contract.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2
+id="tradecraft-core-principles-assurance-handoff-evidence-governance-refresh-and-capstone">Tradecraft:
+Core Principles assurance handoff: evidence, governance, refresh, and
+capstone</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<h3
+id="tradecraft-core-principles-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">Tradecraft:
+Core Principles evidence contract: source spine, verified anchors,
+transfer architecture, and claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<h3
+id="tradecraft-core-principles-transfer-architecture-module-inputs-outputs-and-review-boundary">Tradecraft:
+Core Principles transfer architecture: module inputs, outputs, and
+review boundary</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<h4
+id="tradecraft-core-principles-lineage-and-source-tradition-profile-concepts-and-first-anchors">Tradecraft:
+Core Principles lineage and source tradition: profile, concepts, and
+first anchors</h4>
+<p>This sits in the <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> lineage: treating the intelligence
+cycle as a governed information system whose collection, processing,
+analysis, dissemination, evaluation, marking, and records obligations
+stay explicit. [ageint237]; [ageint266].</p>
+<h4
+id="tradecraft-core-principles-working-model-inputs-constraints-transforms-outputs-and-oversight">Tradecraft:
+Core Principles working model: inputs, constraints, transforms, outputs,
+and oversight</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p>The work is modeled as inputs, constraints, transforms, outputs,
+feedback, and oversight for <strong>What Is Tradecraft? Historical
+Definitions and Evolution; Operations security governance</strong>, with
+provenance and reviewability throughout.</p>
+<h4
+id="tradecraft-core-principles-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">Tradecraft:
+Core Principles knowledge architecture: inputs, transforms, outputs, and
+failure checks</h4>
+<ul>
+<li><strong>Inputs:</strong> requirements, audience needs, public-source
+evidence, caveats, and feedback signals. [ageint237]; [ageint266].</li>
+<li><strong>Transforms:</strong> requirement framing, collection
+scoping, source evaluation, analytic judgment, dissemination, and
+feedback review.</li>
+<li><strong>Outputs:</strong> release-neutral brief, audience map,
+caveat register, and feedback note.</li>
+<li><strong>Failure modes:</strong> unscoped audiences, missing caveats,
+weak records, and product reuse without feedback.</li>
+</ul>
+<h4
+id="tradecraft-core-principles-transfer-contracts-authority-evidence-tools-and-auditable-output">Tradecraft:
+Core Principles transfer contracts: authority, evidence, tools, and
+auditable output</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<ul>
+<li><strong>Authority contract:</strong> define why the work is being
+practiced, who reviews it, and which actions are excluded for
+<strong>What Is Tradecraft? Historical Definitions and Evolution;
+Operations security governance</strong>.</li>
+<li><strong>Evidence contract:</strong> keep the <strong>Governed
+Intelligence Cycle and Dissemination Architecture</strong> source
+descriptors, transformations, claims, uncertainty, and confidence
+separable.</li>
+<li><strong>Tool contract:</strong> bind any agent assistance to
+explicit tools, permissions, budgets, logging, and rollback
+conditions.</li>
+<li><strong>Output contract:</strong> render the chapter artifact as
+release-neutral brief, audience map, caveat register, and feedback note
+that another reviewer can audit.</li>
+</ul>
+<h4
+id="tradecraft-core-principles-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">Tradecraft:
+Core Principles profile emphasis and local focus: method stack and topic
+cluster</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p>The matched profile emphasizes treating the intelligence cycle as a
+governed information system whose collection, processing, analysis,
+dissemination, evaluation, marking, and records obligations stay
+explicit. The method stack is cycle mapping, priority-to-product
+traceability, data-lifecycle mapping, classification vocabulary review,
+dissemination-caveat audit, customer feedback, and oversight
+checkpointing; the local topic cluster is <strong>What Is Tradecraft?
+Historical Definitions and Evolution; Operations security
+governance</strong>.</p>
+<h3
+id="tradecraft-core-principles-evidence-spine-source-roles-citation-support-and-claim-limits">Tradecraft:
+Core Principles evidence spine: source roles, citation support, and
+claim limits</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p>Guide citations preserve the inherited bibliography, verified anchors
+supply lane constraints, and the <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> profile tells reviewers what
+evidence is strong enough for the module artifact built around
+<strong>What Is Tradecraft? Historical Definitions and Evolution;
+Operations security governance</strong>.</p>
+<h4
+id="tradecraft-core-principles-guide-source-spine-inherited-keys-and-local-citation-roles">Tradecraft:
+Core Principles guide source spine: inherited keys and local citation
+roles</h4>
+<p>Primary guide citations: [ageint237]; [ageint266]; [ageint269];
+[ageint278]; [ageint279]; [ageint283]; [ageint290]; [ageint291];
+[ageint294]; [ageint013]; [ageint014]; [ageint015]; [ageint016];
+[ageint017]; [ageint018]; [ageint005]; [ageint019]; [ageint297];
+[ageint298].</p>
+<h4
+id="tradecraft-core-principles-verified-source-canon-direct-anchors-and-claim-boundaries">Tradecraft:
+Core Principles verified source canon: direct anchors and claim
+boundaries</h4>
+<p>The source canon has three tiers; the local spine begins with
+[ageint237]; [ageint266].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tier</th>
+<th>What counts</th>
+<th>How it is used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide</td>
+<td>[ageint237]; [ageint266]; [ageint269]; [ageint278]; [ageint279];
+[ageint283]; [ageint290]; [ageint291]; [ageint294]; [ageint013];
+[ageint014]; [ageint015]; [ageint016]; [ageint017]; [ageint018];
+[ageint005]; [ageint019]; [ageint297]; [ageint298].</td>
+<td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
+keys.</td>
+</tr>
+<tr>
+<td>Verified anchors</td>
+<td>Official, standards, public-domain, or scholarly sources in
+<code>references-*.bib</code></td>
+<td>Supplies governance, quality, legal, safety, and technical
+constraints.</td>
+</tr>
+<tr>
+<td>Runtime profile</td>
+<td>The profile matched to the current unit and current module</td>
+<td>Selects the practice lens, method stack, failure modes, and
+defensive boundary for generated prose.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Triangulation anchors.</strong> In module 3’s source-canon
+section, directly verified anchors for the <strong>Governed Intelligence
+Cycle and Dissemination Architecture</strong> lane include
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_203];
+[official_odni_icd_204]; [official_odni_icd_504]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for <strong>What
+Is Tradecraft? Historical Definitions and Evolution; Operations security
+governance</strong> and [ageint237]; [ageint266], but only directly
+verified source URLs are encoded as citations.</p>
+<h4
+id="tradecraft-core-principles-intelligence-practice-lens-evidence-artifact-and-safety-check">Tradecraft:
+Core Principles intelligence practice lens: evidence artifact and safety
+check</h4>
+<p>Practice lens: <strong>Structured-Judgment Lens</strong> for
+<strong>What Is Tradecraft? Historical Definitions and Evolution;
+Operations security governance</strong>. [ageint237]; [ageint266].</p>
+<p><strong>Planning question:</strong> Which assumptions, alternatives,
+confidence statements, and source limits must stay visible for
+review?</p>
+<p><strong>Evidence artifact:</strong> analytic note with hypotheses,
+evidence table, confidence, and dissent fields.</p>
+<p><strong>Validation rule:</strong> separate raw reporting, inference,
+judgment, and recommendation before synthesis. Applied to <strong>What
+Is Tradecraft? Historical Definitions and Evolution; Operations security
+governance</strong>.</p>
+<p><strong>Handoff contract:</strong> handoff preserves alternatives,
+uncertainty, caveats, and revision history for downstream modules.</p>
+<p><strong>Safety check:</strong> avoid policy advocacy, certainty
+inflation, source laundering, and claims without traceable evidence.</p>
+<h4
+id="tradecraft-core-principles-runtime-to-reader-map-generated-sections-and-verifier-surfaces">Tradecraft:
+Core Principles runtime-to-reader map: generated sections and verifier
+surfaces</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rendered title</th>
+<th>Source loci</th>
+<th>Source provenance</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-lane evidence, public registers, and claim-ledger studio</td>
+<td>3.99</td>
+<td>3.99 source title transformed into safe curriculum treatment;
+original: V2 source-lane extension: bind Tradecraft: Core Principles to
+source-lane evidence, claim-ledger review, safe substitution,
+compliance/rights mapping, instructor deliverables, and explicit refresh
+triggers</td>
+<td>Requirements-to-Evidence Lens</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits</td>
+<td>exclude live collection, recruitment, surveillance, interception,
+tracking, and identity exposure</td>
+</tr>
+<tr>
+<td>Bounded autonomy, procurement, incident-response, and assurance
+studio</td>
+<td>3.101</td>
+<td>3.101 source title transformed into safe curriculum treatment;
+original: Deep expansion: add accessibility/UDL review,
+procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage
+registry, assessment-integrity protocol, agent incident drill,
+role-based competency map, and adversarial assurance cycle for
+Tradecraft: Core Principles</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Model-card, recoverability, retention, and learner-support evidence
+package</td>
+<td>3.102</td>
+<td>3.102 source title transformed into safe curriculum treatment;
+original: Evidence-package expansion: add model/dataset documentation
+cards, transparency notice, records-retention audit trail,
+release/change-control gate, risk-exception memo, learner support plan,
+instructor question bank, and remediation backlog for Tradecraft: Core
+Principles</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>What Is Tradecraft? Historical Definitions and Evolution</td>
+<td>3.1</td>
+<td>3.1 What Is Tradecraft? Historical Definitions and Evolution</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Operations security (OPSEC) governance</td>
+<td>3.2</td>
+<td>3.2 source title transformed into safe curriculum treatment;
+original: Operational Security (OPSEC): Process and the Five-Step
+Method</td>
+<td>AI/Data Accountability Lens</td>
+<td>AI/data impact card with authority, provenance, model version,
+impact score, register status, human owner, and review cadence</td>
+<td>reject automated adverse action, hidden surveillance expansion,
+unowned outputs, unreviewed model drift, and opaque downstream
+reuse</td>
+</tr>
+<tr>
+<td>Compartmentation and need-to-know governance</td>
+<td>3.3</td>
+<td>3.3 source title transformed into safe curriculum treatment;
+original: Compartmentation: Need-to-Know vs. Need-to-Share</td>
+<td>AI/Data Accountability Lens</td>
+<td>AI/data impact card with authority, provenance, model version,
+impact score, register status, human owner, and review cadence</td>
+<td>reject automated adverse action, hidden surveillance expansion,
+unowned outputs, unreviewed model drift, and opaque downstream
+reuse</td>
+</tr>
+<tr>
+<td>Cover and legend governance literacy</td>
+<td>3.4</td>
+<td>3.4 source title transformed into safe curriculum treatment;
+original: Cover: Official, Non-Official Cover (NOC), Deep Cover,
+Legends</td>
+<td>AI/Data Accountability Lens</td>
+<td>AI/data impact card with authority, provenance, model version,
+impact score, register status, human owner, and review cadence</td>
+<td>reject automated adverse action, hidden surveillance expansion,
+unowned outputs, unreviewed model drift, and opaque downstream
+reuse</td>
+</tr>
+<tr>
+<td>The Principle of Plausible Deniability</td>
+<td>3.5</td>
+<td>3.5 The Principle of Plausible Deniability</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Claim-ledger memory exercise that tracks evidence changes rather
+than people</td>
+<td>3.6</td>
+<td>3.6 source title transformed into safe curriculum treatment;
+original: Pattern-of-Life Analysis and How to Disrupt It</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Situational Awareness: Urban and Rural Tradecraft</td>
+<td>3.7</td>
+<td>3.7 Situational Awareness: Urban and Rural Tradecraft</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Code Words, Glossaries, and the Language of Espionage</td>
+<td>3.8</td>
+<td>3.8 Code Words, Glossaries, and the Language of Espionage</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Historical clandestine-communications ethics</td>
+<td>3.9</td>
+<td>3.9 source title transformed into safe curriculum treatment;
+original: Return of Classical Tradecraft in the AI Era: Dead Drops,
+Brush Passes, In-Person Exchanges</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="tradecraft-core-principles-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">Tradecraft:
+Core Principles reusable subsection contract: topic rows, artifacts, and
+safety duties</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Lesson topic</th>
+<th>Practice lens</th>
+<th>Evidence artifact</th>
+<th>Safety check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What Is Tradecraft? Historical Definitions and Evolution</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Operations security (OPSEC) governance</td>
+<td>AI/Data Accountability Lens</td>
+<td>AI/data impact card with authority, provenance, model version,
+impact score, register status, human owner, and review cadence</td>
+<td>reject automated adverse action, hidden surveillance expansion,
+unowned outputs, unreviewed model drift, and opaque downstream
+reuse</td>
+</tr>
+<tr>
+<td>Compartmentation and need-to-know governance</td>
+<td>AI/Data Accountability Lens</td>
+<td>AI/data impact card with authority, provenance, model version,
+impact score, register status, human owner, and review cadence</td>
+<td>reject automated adverse action, hidden surveillance expansion,
+unowned outputs, unreviewed model drift, and opaque downstream
+reuse</td>
+</tr>
+<tr>
+<td>Cover and legend governance literacy</td>
+<td>AI/Data Accountability Lens</td>
+<td>AI/data impact card with authority, provenance, model version,
+impact score, register status, human owner, and review cadence</td>
+<td>reject automated adverse action, hidden surveillance expansion,
+unowned outputs, unreviewed model drift, and opaque downstream
+reuse</td>
+</tr>
+<tr>
+<td>The Principle of Plausible Deniability</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Claim-ledger memory exercise that tracks evidence changes rather
+than people</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Situational Awareness: Urban and Rural Tradecraft</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Code Words, Glossaries, and the Language of Espionage</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Historical clandestine-communications ethics</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="tradecraft-core-principles-annotated-source-ledger-real-titles-and-local-contribution">Tradecraft:
+Core Principles annotated source ledger: real titles and local
+contribution</h4>
+<p>Each source cited by this <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> module is paired below with its real
+title and a one-line note on what it contributes to <strong>What Is
+Tradecraft? Historical Definitions and Evolution; Operations security
+governance</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source</th>
+<th>Cited work</th>
+<th>What it contributes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ageint237]</td>
+<td><a href="https://www.gao.gov/products/gao-21-519sp">Artificial
+Intelligence: An Accountability Framework for Federal Agencies and Other
+Entities</a></td>
+<td>Official GAO AI accountability framework.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint266]</td>
+<td><a href="https://www.w3.org/TR/prov-overview/">PROV
+Overview</a></td>
+<td>A W3C Working Group Note from 2013 that provides an overview and
+roadmap for the PROV family of specifications for representing and
+exchanging provenance information on the web. It defines provenance as
+information about the entities, activities, and people involved in
+producing data, used to assess quality, reliability, and
+trustworthiness.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint269]</td>
+<td><a href="https://www.w3.org/TR/dwbp/">Data on the Web Best
+Practices</a></td>
+<td>A W3C Recommendation, “Data on the Web Best Practices,” published
+January 31, 2017 by the Data on the Web Best Practices Working Group. It
+offers 35 best practices for publishing and consuming data on the Web,
+covering metadata, licensing and provenance, data quality, dataset
+versioning, persistent URIs, machine-readable formats, vocabulary reuse,
+access methods, preservation, and feedback.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint278]</td>
+<td><a
+href="https://legalinstruments.oecd.org/api/print?ids=320&amp;lang=en">Recommendation
+of the Council on Public Procurement</a></td>
+<td>The OECD Recommendation of the Council on Public Procurement
+(OECD/LEGAL/0411), a legal instrument adopted by the OECD Council in
+2015 on the proposal of the Public Governance Committee. It frames
+public procurement as a pillar of strategic governance and service
+delivery and sets out principles for governments to follow.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint279]</td>
+<td><a href="https://standard.open-contracting.org/latest/en/">Open
+Contracting Data Standard</a></td>
+<td>The documentation homepage for the Open Contracting Data Standard,
+version 1.1.5, maintained by the Open Contracting Partnership to support
+disclosure of government contracting data across the procurement
+lifecycle. It provides a common data model spanning planning, tender,
+award, contract, and implementation stages, along with a primer,
+implementation guidance, technical schemas, and validation tooling.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint283]</td>
+<td><a
+href="https://legalinstruments.oecd.org/api/print?ids=359&amp;lang=en">Recommendation
+of the Council on Open Government</a></td>
+<td>An OECD legal instrument document reproducing the Recommendation of
+the Council on Open Government (OECD/LEGAL/0438), adopted on 14 December
+2017. It defines open government as a culture of governance promoting
+transparency, integrity, accountability, and stakeholder participation
+in support of democracy and inclusive growth.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint290]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/a/final">NIST SP
+800-218A: Secure Software Development Practices for Generative AI and
+Dual-Use Foundation Models</a></td>
+<td>NIST Special Publication 800-218A (July 2024), which augments the
+Secure Software Development Framework with practices specific to AI
+model development across the software lifecycle. Produced in response to
+Executive Order 14110, it addresses AI model producers, developers
+building on those models, and acquirers of AI systems, and is designed
+to be used alongside NIST SP 800-218.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint291]</td>
+<td><a href="https://www.access-board.gov/ict/">Revised 508 Standards
+and 255 Guidelines</a></td>
+<td>Official documentation from the U.S. Access Board on the Revised 508
+Standards and 255 Guidelines for information and communication
+technology accessibility. It establishes mandatory accessibility
+requirements for federal agencies and voluntary guidelines for
+telecommunications manufacturers, covering hardware, software, websites,
+electronic documents, and support services.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint294]</td>
+<td><a
+href="https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf">M-25-21:
+Accelerating Federal Use of AI through Innovation, Governance, and
+Public Trust</a></td>
+<td>An April 2025 Office of Management and Budget memorandum (M-25-21)
+directing executive branch agencies on federal use of artificial
+intelligence. Issued under Executive Order 14179, it instructs agencies
+to accelerate adoption of AI to improve public services and government
+efficiency while maintaining safeguards for civil rights, civil
+liberties, and privacy.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint013]</td>
+<td><a
+href="https://www.scribd.com/presentation/580627740/Lesson-8-Introduction-to-Intelligence-Tradecraft">Intelligence
+Tradecraft Overview / PDF / Surveillance</a></td>
+<td>This is an instructional training document hosted on Scribd that
+introduces the fundamentals of intelligence tradecraft, defined as the
+methods and skills used in intelligence operations. It covers core
+concepts and types of tradecraft, cover and operational security, casing
+and surveillance, clandestine communication, and information
+gathering.</td>
+<td>verified source-guide context; do not use as primary analytic
+support</td>
+</tr>
+<tr>
+<td>[ageint014]</td>
+<td><a
+href="https://trdcrft.com/tradecraft-covert-operative-tactics-and-techniques/">Tradecraft:
+Covert Operative Tactics and Techniques</a></td>
+<td>An educational article from TRDCRFT defining tradecraft as the
+techniques, strategies, and tools used by intelligence operatives to
+pursue objectives while maintaining secrecy and operational security. It
+surveys core disciplines such as surveillance and counter-surveillance,
+cover and disguise, technical and human intelligence work, and the
+field’s evolution toward digital and cyber methods.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint015]</td>
+<td><a
+href="https://en.wikipedia.org/wiki/Cover_(intelligence_gathering)">Cover
+(intelligence gathering)</a></td>
+<td>A Wikipedia article explaining the concept of cover in human
+intelligence and counterintelligence work, defined as the ostensible
+identity assumed by a covert agent. It distinguishes official cover
+(diplomatic channels, immunity) from non-official cover (no government
+acknowledgment, less protection). The article surveys historical
+examples of front organizations and assumed identities.</td>
+<td>verified source-guide context; do not use as primary analytic
+support</td>
+</tr>
+<tr>
+<td>[ageint016]</td>
+<td><a
+href="https://2009-2017.state.gov/documents/organization/209870.pdf">Surveillance
+Detection - State.gov</a></td>
+<td>Place where victim can be controlled with limited avenues of
+escape.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint017]</td>
+<td><a
+href="https://www.spymuseum.org/education-programs/spy-resources/language-of-espionage/">Language
+of Espionage / International Spy Museum</a></td>
+<td>An educational glossary from the International Spy Museum, a
+nonprofit institution in Washington, DC, presenting an alphabetized
+dictionary of espionage terminology. It defines operational roles
+(agent, handler, case officer), intelligence disciplines such as HUMINT,
+SIGINT, and IMINT, major organizations (CIA, FBI, KGB, MI5, MI6, NSA),
+and historical equipment like the Enigma machine and U-2 aircraft.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint018]</td>
+<td><a
+href="https://www.nextgov.com/artificial-intelligence/2026/04/old-school-spycraft-could-make-comeback-ai-undermines-trust/412532/">Old-school
+spycraft could make a comeback as AI undermines trust</a></td>
+<td>A Nextgov article reporting on an essay in the CIA’s Studies in
+Intelligence journal by RAND researcher Thomas Mulligan. It argues that
+as AI makes deepfakes and synthetic communications easier, trust in
+digital channels erodes, paradoxically increasing the value of
+traditional human intelligence methods.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint005]</td>
+<td><a
+href="https://www.semperverus.com/cia-studies-in-ai-and-human-intelligence/">CIA:
+Studies in AI and Human Intelligence - SemperVerus</a></td>
+<td>A blog post on SemperVerus summarizing a CIA Studies in Intelligence
+article, “Espionage in Our AI Future: Why Human Intelligence Still
+Matters” (Vol. 70, No. 1, March 2026). It argues that as AI makes
+technical intelligence cheaper and AI-driven fabrication more pervasive,
+human intelligence becomes relatively more valuable, since human
+specialists are needed to verify source reliability over time.</td>
+<td>verified source-guide</td>
+</tr>
+<tr>
+<td>[ageint019]</td>
+<td><a
+href="https://www.cia.gov/resources/csi/studies-in-intelligence/studies-in-intelligence-vol-70-no-1-extracts-march-2026/espionage-in-our-ai-future-why-human-intelligence-still-matters/">Espionage
+in Our AI Future: Why Human Intelligence Still Matters - CSI</a></td>
+<td>By Thomas Mulligan, a researcher at the RAND Corporation who served
+in CIA during 2008–14.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint297]</td>
+<td><a
+href="https://www.odni.gov/files/documents/ICD/ICD-203.pdf">Intelligence
+Community Directive 203: Analytic Standards</a></td>
+<td>Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic
+products.</td>
+<td>original source-guide</td>
+</tr>
+<tr>
+<td>[ageint298]</td>
+<td><a
+href="https://www.odni.gov/index.php/what-we-do/ic-related-menus/ic-related-links/intelligence-community-directives">Intelligence
+Community Directives</a></td>
+<td>Official ODNI index for Intelligence Community Directives used to
+locate current directive source material and preserve directive-context
+citations.</td>
+<td>original source-guide</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-tradecraft-core-principles]; return to the curriculum atlas
+[sec:curriculum_orientation] for the reader paths, evidence map, and
+safety gates that govern this module.</p>
+</body>
+</html>

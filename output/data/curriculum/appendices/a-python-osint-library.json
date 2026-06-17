@@ -1,0 +1,49 @@
+{
+  "letter": "A",
+  "title": "Python OSINT Library",
+  "items": [
+    {
+      "level": 1,
+      "title": "A.1 Recon-ng Module Development: Custom Data Source Integration",
+      "raw": "A.1 Recon-ng Module Development: Custom Data Source Integration",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "A.2 SpiderFoot Custom Module: Target Intelligence Aggregation",
+      "raw": "A.2 SpiderFoot Custom Module: Target Intelligence Aggregation",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "A.3 Shodan API Queries: Infrastructure Mapping and Exposure Analysis",
+      "raw": "A.3 Shodan API Queries: Infrastructure Mapping and Exposure Analysis",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "A.4 theHarvester: Domain Enumeration and Email Harvesting",
+      "raw": "A.4 theHarvester: Domain Enumeration and Email Harvesting",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "A.5 Social Media Graph Scraping: Twitter/X, LinkedIn, Telegram",
+      "raw": "A.5 Social Media Graph Scraping: Twitter/X, LinkedIn, Telegram",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "A.6 Geolocation and IP Attribution: MaxMind + ipinfo.io",
+      "raw": "A.6 Geolocation and IP Attribution: MaxMind + ipinfo.io",
+      "citations": []
+    },
+    {
+      "level": 1,
+      "title": "A.7 Automated Sandbox/VM Deployment for Isolated OSINT",
+      "raw": "A.7 Automated Sandbox/VM Deployment for Isolated OSINT",
+      "citations": []
+    }
+  ],
+  "source_line": 950
+}

@@ -1,0 +1,53 @@
+{
+  "letter": "H",
+  "title": "Source Verification and Claim Ledger Workbook",
+  "items": [
+    {
+      "level": 1,
+      "title": "H.1 Source identity lock procedure for `ageint001` through `ageint231`, including title, URL, and citation-key stability checks",
+      "raw": "H.1 Source identity lock procedure for `ageint001` through `ageint231`, including title, URL, and citation-key stability checks[^235][^237]",
+      "citations": [
+        235,
+        237
+      ]
+    },
+    {
+      "level": 1,
+      "title": "H.2 Append-only v2 reference workflow: discover with Perplexity if useful, verify direct official or standards URLs, then append new references after the locked range",
+      "raw": "H.2 Append-only v2 reference workflow: discover with Perplexity if useful, verify direct official or standards URLs, then append new references after the locked range[^232][^234]",
+      "citations": [
+        232,
+        234
+      ]
+    },
+    {
+      "level": 1,
+      "title": "H.3 Source-lane metadata worksheet: lane, tier, checked-as-of date, verification method, claim scope, refresh cadence, and refresh trigger",
+      "raw": "H.3 Source-lane metadata worksheet: lane, tier, checked-as-of date, verification method, claim scope, refresh cadence, and refresh trigger[^238][^266]",
+      "citations": [
+        238,
+        266
+      ]
+    },
+    {
+      "level": 1,
+      "title": "H.4 Claim/evidence ledger template for separating observation, inference, confidence, uncertainty, rights impact, and reviewer decision",
+      "raw": "H.4 Claim/evidence ledger template for separating observation, inference, confidence, uncertainty, rights impact, and reviewer decision[^237][^269]",
+      "citations": [
+        237,
+        269
+      ]
+    },
+    {
+      "level": 1,
+      "title": "H.5 Safe refresh protocol for broken URLs, superseded standards, legal updates, source drift, and instructor debrief findings",
+      "raw": "H.5 Safe refresh protocol for broken URLs, superseded standards, legal updates, source drift, and instructor debrief findings[^251][^252][^270]",
+      "citations": [
+        251,
+        252,
+        270
+      ]
+    }
+  ],
+  "source_line": 1002
+}

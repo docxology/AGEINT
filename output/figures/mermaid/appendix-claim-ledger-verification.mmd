@@ -1,0 +1,10 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  CLAIM["Drafted claim"] --> SRC["Source attribution"]
+  SRC --> CORR{"Independent corroboration?"}
+  CORR -->|"no"| FLAG["Flag as single-source"]
+  CORR -->|"yes"| UNC["Uncertainty and confidence grading"]
+  FLAG --> UNC
+  UNC --> REV["Reviewer sign-off"]
+  REV --> LEDGER[("Claim ledger entry")]
+  LEDGER --> REFRESH["Refresh trigger recorded"]

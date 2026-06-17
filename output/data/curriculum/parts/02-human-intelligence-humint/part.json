@@ -1,0 +1,11 @@
+{
+  "number": 2,
+  "roman": "II",
+  "title": "HUMAN INTELLIGENCE (HUMINT)",
+  "source_line": 63,
+  "chapter_files": [
+    "04-agent-recruitment/chapter.json",
+    "05-agent-handling-and-management/chapter.json",
+    "06-source-protection-and-ci-integration/chapter.json"
+  ]
+}

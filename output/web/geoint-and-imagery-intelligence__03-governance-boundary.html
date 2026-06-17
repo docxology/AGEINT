@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>03-governance-boundary.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h3
+id="geoint-and-imagery-intelligence-governance-boundary-synthesis-agent-assistance-rules-rights-and-assurance-gates">GEOINT
+and Imagery Intelligence governance boundary: synthesis,
+agent-assistance rules, rights, and assurance gates</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-geoint-and-imagery-intelligence]; [ageint253].</p>
+<h3
+id="geoint-and-imagery-intelligence-analytic-synthesis-source-backed-claims-and-forbidden-leaps">GEOINT
+and Imagery Intelligence analytic synthesis: source-backed claims and
+forbidden leaps</h3>
+<p><strong>Triangulation anchors.</strong> In module 11’s
+governance-boundary section, directly verified anchors for the
+<strong>Open-Source and Geospatial Intelligence Integrity</strong> lane
+include [official_ic_osint_strategy]; [official_state_osint_strategy];
+[official_nga_strategy]; [official_nga_geoint_ai]. Use them to test
+source-guide claims, method boundaries, governance constraints, and
+safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<p>Research lane: <strong>Open-Source and Geospatial Intelligence
+Integrity</strong> for <strong>Imagery quality literacy: resolution,
+temporal fit, and uncertainty; GEOINT data-quality audit using provided
+imagery metadata and non-sensitive synthetic change examples</strong>.
+[ageint253]; [ageint255].</p>
+<p><strong>Curriculum topic spine:</strong> <strong>Imagery quality
+literacy: resolution, temporal fit, and uncertainty</strong>,
+<strong>GEOINT data-quality audit using provided imagery metadata and
+non-sensitive synthetic change examples</strong>, <strong>Imagery
+collection-platform literacy: resolution and revisit tradeoffs</strong>.
+<strong>Verified anchor cluster:</strong> [official_ic_osint_strategy];
+[official_state_osint_strategy]; [official_nga_strategy];
+[official_nga_geoint_ai]; [official_iso_19157_data_quality];
+[official_odni_icd_206]; [official_odni_icd_203].</p>
+<p><strong>Conceptual depth:</strong> public-source discovery converted
+into accountable intelligence through provenance, corroboration,
+minimization, and relevance tests.</p>
+<p><strong>Method stack:</strong> source triage, provenance capture,
+corroboration matrix, recency audit, geospatial context review, and
+confidence calibration.</p>
+<p><strong>Composability contract:</strong> collection notes, source
+metadata, transformations, caveats, and analytic judgments remain
+separately exportable.</p>
+<p><strong>Known failure modes:</strong> privacy drift, stale data,
+context collapse, platform bias, over-collection, and mistaking
+availability for reliability.</p>
+<p><strong>Defensive boundary:</strong> OSINT work uses lawful public,
+owned-lab, or explicitly approved sources and avoids doxxing,
+harassment, live tracking, or operational targeting. Applied to
+<strong>Imagery quality literacy: resolution, temporal fit, and
+uncertainty; GEOINT data-quality audit using provided imagery metadata
+and non-sensitive synthetic change examples</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Anchor</th>
+<th>Why it matters here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[official_ic_osint_strategy]</td>
+<td>Official IC OSINT strategy for professionalizing OSINT, integrated
+collection management, open-source sharing, innovation, and tradecraft.
+Checked as of 2026-05-21; role: curriculum_anchor.</td>
+</tr>
+<tr>
+<td>[official_state_osint_strategy]</td>
+<td>Official strategy source for lawful OSINT governance, discovery,
+validation, and dissemination. Checked as of 2026-05-21; role:
+curriculum_anchor.</td>
+</tr>
+<tr>
+<td>[official_nga_strategy]</td>
+<td>Official NGA strategy anchor for GEOINT readiness, warning,
+partnership resilience, resource stewardship, and AI integration.
+Checked as of 2026-05-21; role: curriculum_anchor.</td>
+</tr>
+<tr>
+<td>[official_nga_geoint_ai]</td>
+<td>Official NGA source on GEOINT AI, data quality, model performance,
+interoperability, analyst interaction, and standards leadership. Checked
+as of 2026-05-21; role: curriculum_anchor.</td>
+</tr>
+<tr>
+<td>[official_iso_19157_data_quality]</td>
+<td>International geospatial data-quality standard for completeness,
+logical consistency, positional accuracy, temporal quality, and
+usability framing. Checked as of 2026-05-21; role:
+curriculum_anchor.</td>
+</tr>
+<tr>
+<td>[official_odni_icd_206]</td>
+<td>Official sourcing directive for traceability, citations, source
+descriptors, and source summaries. Checked as of 2026-05-21; role:
+curriculum_anchor.</td>
+</tr>
+<tr>
+<td>[official_odni_icd_203]</td>
+<td>Official ODNI analytic tradecraft standards directive. Checked as of
+2026-05-21; role: source_quality_anchor.</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="geoint-and-imagery-intelligence-evidence-standard-and-citation-floor-source-families-and-discovery-limits">GEOINT
+and Imagery Intelligence evidence standard and citation floor: source
+families and discovery limits</h4>
+<p>Official guidance supplies governance, safety, and legal constraints
+for the <strong>Open-Source and Geospatial Intelligence
+Integrity</strong> lane; scholarly or policy-scholarship sources supply
+explanatory frames; source-guide citations preserve the inherited AGEINT
+bibliography. Perplexity-assisted discovery is allowed during
+maintenance, but the manuscript citation itself must resolve to a direct
+source URL in <code>references-*.bib</code>. Local checks start with
+[ageint253]; [ageint255].</p>
+<h3
+id="geoint-and-imagery-intelligence-agentic-boundary-assist-approve-block-and-record">GEOINT
+and Imagery Intelligence agentic boundary: assist, approve, block, and
+record</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-geoint-and-imagery-intelligence]; [ageint253].</p>
+<p>AGEINT translation is bounded by the <strong>Open-Source and
+Geospatial Intelligence Integrity</strong> lane. Agents may organize
+sources, retrieve context, compare alternatives, draft checklists,
+summarize evidence, simulate benign scenarios, and audit reasoning. They
+do not initiate unauthorized collection, exploitation, covert targeting,
+manipulation, or cyber-physical action; examples stay tied to
+<strong>Imagery quality literacy: resolution, temporal fit, and
+uncertainty; GEOINT data-quality audit using provided imagery metadata
+and non-sensitive synthetic change examples</strong>.</p>
+<h4
+id="geoint-and-imagery-intelligence-permitted-defensive-utility-curriculum-uses-and-safe-outputs">GEOINT
+and Imagery Intelligence permitted defensive utility: curriculum uses
+and safe outputs</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-geoint-and-imagery-intelligence]; [ageint253].</p>
+<p>The defensive utility is curriculum design, tabletop preparation,
+risk assessment, governance review, source evaluation, and resilience
+planning. Work products fit the current unit’s education, policy review,
+lab exercises, and accountable defensive analysis for <strong>Imagery
+quality literacy: resolution, temporal fit, and uncertainty; GEOINT
+data-quality audit using provided imagery metadata and non-sensitive
+synthetic change examples</strong>.</p>
+<h4
+id="geoint-and-imagery-intelligence-excluded-operational-boundary-blocked-actions-and-stop-rules">GEOINT
+and Imagery Intelligence excluded operational boundary: blocked actions
+and stop rules</h4>
+<p>Keep all practice accountable, synthetic, defensive, logged,
+reversible, and evidence-bounded while working from [ageint253];
+[ageint255] and <strong>Imagery quality literacy: resolution, temporal
+fit, and uncertainty; GEOINT data-quality audit using provided imagery
+metadata and non-sensitive synthetic change examples</strong>. Do not
+convert it into live targeting, evasion, exploitation, covert
+collection, manipulation, or unsafe cyber-physical action.</p>
+<h3
+id="geoint-and-imagery-intelligence-governance-assurance-authority-rights-evidence-and-human-review">GEOINT
+and Imagery Intelligence governance assurance: authority, rights,
+evidence, and human review</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-geoint-and-imagery-intelligence]; [ageint253].</p>
+<p>Governance is practiced as a gate on the <strong>Open-Source and
+Geospatial Intelligence Integrity</strong> lane. Learners use the
+<strong>Requirements-to-Evidence Lens</strong> to decide who is
+accountable for the exercise, which evidence is sufficient, what rights
+and access issues remain, and when an agent-assisted artifact must stop
+for human review while using <strong>Imagery quality literacy:
+resolution, temporal fit, and uncertainty; GEOINT data-quality audit
+using provided imagery metadata and non-sensitive synthetic change
+examples</strong>.</p>
+<h4
+id="geoint-and-imagery-intelligence-governance-card-gates-retained-evidence-and-review-owner">GEOINT
+and Imagery Intelligence governance card: gates, retained evidence, and
+review owner</h4>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Coursebook check</th>
+<th>Evidence retained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authority</td>
+<td>The exercise has a lawful, educational, or defensive purpose and
+named reviewer.</td>
+<td>scope card, excluded-action list, and reviewer initials</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Claims in this module remain tied to guide citations or verified
+anchors starting with [ageint253]; [ageint255].</td>
+<td>claim ledger, source descriptors, caveats, and confidence
+language</td>
+</tr>
+<tr>
+<td>Rights and access</td>
+<td>Privacy, accessibility, learner support, and affected-group impacts
+are considered before reuse.</td>
+<td>rights note, accommodation path, and unresolved-risk owner</td>
+</tr>
+<tr>
+<td>Agent control</td>
+<td>Any agent assistance stays bounded to retrieval, comparison,
+drafting, simulation, critique, or audit.</td>
+<td>tool allowlist, prompt/output record, stop condition, and rollback
+note</td>
+</tr>
+<tr>
+<td>Assurance</td>
+<td>The artifact is challenged against <strong>Open-Source and
+Geospatial Intelligence Integrity</strong> failure modes and the
+<strong>Requirements-to-Evidence Lens</strong> safety check.</td>
+<td>failure-mode note, remediation item, retest result, and refresh
+trigger</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="geoint-and-imagery-intelligence-evidence-package-handoff-appendices-records-and-reuse">GEOINT
+and Imagery Intelligence evidence package handoff: appendices, records,
+and reuse</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-geoint-and-imagery-intelligence]; [ageint253].</p>
+<p>Detailed model/data cards, transparency notices, retention rows,
+release gates, risk exceptions, incident drills, procurement checks, and
+learner-support workflows live in the generated appendices and
+source-support docs. The local <strong>Requirements-to-Evidence
+Lens</strong> evidence gate stays compact enough to apply during
+reading, practice, and revision for <strong>Imagery quality literacy:
+resolution, temporal fit, and uncertainty; GEOINT data-quality audit
+using provided imagery metadata and non-sensitive synthetic change
+examples</strong>.</p>
+<h4
+id="geoint-and-imagery-intelligence-current-source-assurance-verified-anchors-and-local-artifact-fit">GEOINT
+and Imagery Intelligence current-source assurance: verified anchors and
+local artifact fit</h4>
+<p>The source assurance check ties the current verified anchor set to
+the local chapter artifact instead of relying on discovery summaries,
+here covering <strong>Imagery quality literacy: resolution, temporal
+fit, and uncertainty; GEOINT data-quality audit using provided imagery
+metadata and non-sensitive synthetic change examples</strong>.
+[ageint253]; [ageint255].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Assurance question</th>
+<th>Direct source evidence</th>
+<th>Chapter artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What does the module inherit from
+<code>official_ic_osint_strategy</code> for <strong>Imagery quality
+literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality
+audit using provided imagery metadata and non-sensitive synthetic change
+examples</strong>?</td>
+<td>The INT of First Resort: The IC OSINT Strategy 2024-2026; lane
+<code>osint_geoint</code>; checked 2026-05-21.</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits; Official IC OSINT strategy for professionalizing OSINT,
+integrated collection management, open-source sharing, innovation, and
+tradecraft.</td>
+</tr>
+<tr>
+<td>What does the module inherit from
+<code>official_state_osint_strategy</code> for <strong>Imagery quality
+literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality
+audit using provided imagery metadata and non-sensitive synthetic change
+examples</strong>?</td>
+<td>Open Source Intelligence Strategy; lane <code>osint_geoint</code>;
+checked 2026-05-21.</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits; Official strategy source for lawful OSINT governance, discovery,
+validation, and dissemination.</td>
+</tr>
+<tr>
+<td>What does the module inherit from <code>official_nga_strategy</code>
+for <strong>Imagery quality literacy: resolution, temporal fit, and
+uncertainty; GEOINT data-quality audit using provided imagery metadata
+and non-sensitive synthetic change examples</strong>?</td>
+<td>NGA Strategy; lane <code>osint_geoint</code>; checked
+2026-05-21.</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits; Official NGA strategy anchor for GEOINT readiness, warning,
+partnership resilience, resource stewardship, and AI integration.</td>
+</tr>
+<tr>
+<td>What does the module inherit from
+<code>official_nga_geoint_ai</code> for <strong>Imagery quality
+literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality
+audit using provided imagery metadata and non-sensitive synthetic change
+examples</strong>?</td>
+<td>GEOINT Artificial Intelligence; lane <code>osint_geoint</code>;
+checked 2026-05-21.</td>
+<td>requirements matrix with source descriptors, caveats, and collection
+limits; Official NGA source on GEOINT AI, data quality, model
+performance, interoperability, analyst interaction, and standards
+leadership.</td>
+</tr>
+<tr>
+<td>How is Perplexity handled here?</td>
+<td>Discovery and second-opinion notes are not citable authority unless
+converted into direct official, standards-body, public-domain, or
+scholarly anchors.</td>
+<td>Claim ledger records the direct URL, checked date, source lane,
+refresh trigger, and reviewer.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where this sits.</strong> This module’s overview is
+[sec:chapter-geoint-and-imagery-intelligence]; return to the curriculum
+atlas [sec:curriculum_orientation] for the reader paths, evidence map,
+and safety gates that govern this module.</p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "args": [
+    "--no-sandbox",
+    "--disable-setuid-sandbox"
+  ],
+  "defaultViewport": {
+    "deviceScaleFactor": 1,
+    "height": 1400,
+    "width": 1400
+  },
+  "executablePath": "/Users/4d/.cache/puppeteer/chrome-headless-shell/mac_arm-131.0.6778.204/chrome-headless-shell-mac-arm64/chrome-headless-shell"
+}

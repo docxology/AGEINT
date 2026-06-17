@@ -1,0 +1,13 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A["Fabricated alert and indicator context"] --> B["Defensive taxonomy mapping"]
+  B --> C["Kill-chain sequencing of observations"]
+  B --> D["ATT&CK label for organizing observations"]
+  C --> E["Confidence scoring"]
+  D --> E
+  E --> F["Handling rule and sharing constraint"]
+  F --> G["No-action boundary"]
+  G --> H["Reviewer validates labeling"]
+  H --> I["Defensive CTI evidence packet"]
+  I --> J["Control implication and prioritization"]
+  J --> K["Stop condition and re-verification"]

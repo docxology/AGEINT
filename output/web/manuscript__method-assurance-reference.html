@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>method-assurance-reference.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1 id="sec:method-assurance-reference">Method &amp; Assurance
+Reference: claim evidence, safety gates, and refresh duties</h1>
+<p>This reference holds the shared method, governance, and assurance
+tables that every module applies. Each module links here instead of
+restamping the same tables, so a reader maintains one canonical copy of
+the capstone thread, claim ledger, competency rubric, refresh triggers,
+safety boundary, and mastery evidence. Module sections name their local
+source spine and topic, then point to the canonical table in this
+section.</p>
+<h2
+id="source-construction-and-reporting-protocol-discovery-records-and-citation-boundaries">Source-construction
+and reporting protocol: discovery records and citation boundaries</h2>
+<p>AGEINT is a curriculum-and-assurance atlas, not a PRISMA systematic
+review. Where a module makes a source-construction or literature-search
+claim, however, the source record follows PRISMA-S as a reporting
+discipline: record the discovery surface, search string or prompt,
+retrieval date, inclusion and exclusion rule, deduplication decision,
+source tier, conflict-handling note, direct URL, and refresh trigger
+[scholarly_rethlefsen_2021_prisma_s]. Discovery systems and summaries
+may suggest candidate sources, but final manuscript citations must
+resolve to directly checked official, standards, public-domain, or
+scholarly records in the AGEINT source atlas.</p>
+<p>The review gate separates claim types before citation assignment.
+Governance claims require official or standards anchors; technical and
+theoretical claims require direct domain sources; empirical capability
+claims require evaluation or study evidence with context and subgroup
+caveats. If a source only supports an analogy, lesson design, or
+governance rationale, the generated prose must not promote it into a
+benchmark, deployment claim, or proof of autonomous performance.</p>
+<h2
+id="claim-calibration-and-statistical-limits-artifact-telemetry-versus-empirical-evidence">Claim
+calibration and statistical limits: artifact telemetry versus empirical
+evidence</h2>
+<p>AGEINT treats citation counts, generated file counts, figure counts,
+PDF page counts, URI-link counts, and validator outcomes as
+<strong>artifact telemetry</strong>. They show what the local build
+produced and what the verifier checked; they are not learning-effect
+estimates, operational-performance measures, safety guarantees, or
+statistical evidence that the curriculum improves real-world analytic
+decisions. Stronger empirical or evaluated-capability language requires
+a direct benchmark, study, field evaluation, incident dataset, or
+scholarly empirical source with the method, denominator,
+subgroup/context caveat, and refresh trigger visible.</p>
+<p>The claim-calibration audit enforces that separation after manuscript
+generation. It scans high-risk empirical, statistical, governance,
+safety, visualization, artifact-readiness, and formalism language;
+records the citation keys and source-support strength visible in the
+same row; allows explicit boundary language such as “not a benchmark” or
+“correct the misconception”; and fails unsupported proof-language,
+p-values, measured-performance claims, or formalisms without citations
+and limitations. The companion visual
+[fig:ageint-claim-calibration-and-visual-semantics] makes the control
+surface readable, while
+<code>output/reports/claim_calibration.json</code> and <code>.md</code>
+make the same disposition auditable by script.</p>
+<p>Protocol claims are version-sensitive. MCP references use the
+2025-06-18 specification for interoperability language and the current
+MCP security best-practice page for confused-deputy, token-handling,
+consent, and least-privilege examples; those claims must refresh when
+the protocol version, authorization profile, transport guidance, or
+security model changes [official_model_context_protocol_specification];
+[official_model_context_protocol_security_best_practices].
+Memory-language claims follow the same separation rule: MCP and official
+agentic-AI guidance support external-memory governance, tool boundaries,
+logging, and retention, not cognitive-taxonomy claims about episodic,
+semantic, or procedural memory unless a domain source is cited for that
+narrower taxonomy.</p>
+<h2
+id="method-figures-and-course-links-assurance-visuals-and-navigation">Method
+figures and course links: assurance visuals and navigation</h2>
+<p>The orientation uses [fig:ageint-safety-boundary-loop] to map its
+evidence flow, safety boundaries, review artifacts, and refresh
+cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:part-foundations-of-intelligence-tradecraft].</p>
+<h2
+id="capstone-phase-artifact-and-review-gate-ladder-required-handoff-sequence">Capstone
+phase, artifact, and review-gate ladder: required handoff sequence</h2>
+<p><strong>Evidence anchor.</strong> [sec:method-assurance-reference];
+[scholarly_rethlefsen_2021_prisma_s].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Artifact</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>accountable learning question and excluded-action list</td>
+<td>instructor confirms scope, allowed data, and rights impact</td>
+</tr>
+<tr>
+<td>Source canon</td>
+<td>source-lane map with guide citations, verified anchors, and refresh
+dates</td>
+<td>citation keys resolve and source identity lock remains stable</td>
+</tr>
+<tr>
+<td>Evidence ledger</td>
+<td>claim, evidence, uncertainty, confidence, and reviewer register</td>
+<td>every material claim has a source, caveat, and owner</td>
+</tr>
+<tr>
+<td>Safe lab</td>
+<td>synthetic or public dataset packet, tool allowlist, and stop
+conditions</td>
+<td>no live target, private data, external action, or unsafe
+cyber-physical step</td>
+</tr>
+<tr>
+<td>Assurance</td>
+<td>evaluation rubric, failure-mode drill, rights map, and remediation
+note</td>
+<td>human reviewer signs off before presentation or reuse</td>
+</tr>
+<tr>
+<td>Debrief</td>
+<td>capstone memo with lessons, residual risk, refresh triggers, and
+handoff owner</td>
+<td>all unresolved questions and future approvals are explicit</td>
+</tr>
+</tbody>
+</table>
+<h2
+id="claim-and-evidence-ledger-claim-classes-evidence-floors-and-review-duties">Claim
+and evidence ledger: claim classes, evidence floors, and review
+duties</h2>
+<p><strong>Evidence anchor.</strong> [sec:method-assurance-reference];
+[scholarly_rethlefsen_2021_prisma_s].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Claim class</th>
+<th>Evidence required</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source-spine claim</td>
+<td>Parsed module title, module section map, and curriculum citation
+spine</td>
+<td>Confirm the generated text does not invent counts, paths, or
+labels.</td>
+</tr>
+<tr>
+<td>Research-backed governance claim</td>
+<td>Direct official, standards, public-domain, or scholarly anchor in
+<code>references-*.bib</code></td>
+<td>Confirm the anchor has verification metadata and a stable URL.</td>
+</tr>
+<tr>
+<td>Agentic workflow claim</td>
+<td>Tool boundary, authority contract, human review point, and rollback
+condition</td>
+<td>Confirm the workflow remains educational, logged, reversible, and
+evidence-bounded.</td>
+</tr>
+<tr>
+<td>Technical or theoretical claim</td>
+<td>Direct domain source for the formal expression, protocol,
+architecture, or theory, with analogy limits spelled out</td>
+<td>Confirm the prose does not cite governance guidance as proof of
+technical performance or autonomous agency.</td>
+</tr>
+<tr>
+<td>Empirical or evaluated capability claim</td>
+<td>Direct benchmark, field evaluation, user study, incident evidence,
+or scholarly empirical source with context and subgroup caveats</td>
+<td>Confirm the claim is not merely inferred from the AGEINT curriculum
+architecture.</td>
+</tr>
+<tr>
+<td>Source-construction claim</td>
+<td>Search surface, query or prompt, retrieval date, inclusion and
+exclusion rule, deduplication note, source tier, and direct URL</td>
+<td>Confirm discovery sources are not treated as final citations unless
+directly verified.</td>
+</tr>
+<tr>
+<td>Safety claim</td>
+<td>Explicit prohibition plus safe alternative</td>
+<td>Confirm the module blocks live targeting, exploitation, covert
+collection, manipulation, and unsafe cyber-physical action.</td>
+</tr>
+<tr>
+<td>Cross-module claim</td>
+<td>Link to the current unit and adjacent curriculum modules</td>
+<td>Confirm the handoff names inputs, outputs, uncertainty, and
+next-review owner.</td>
+</tr>
+</tbody>
+</table>
+<h2
+id="competency-and-mastery-rubric-scoring-dimensions-and-visible-proof">Competency
+and mastery rubric: scoring dimensions and visible proof</h2>
+<p><strong>Evidence anchor.</strong> [sec:method-assurance-reference];
+[scholarly_rethlefsen_2021_prisma_s].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Competency</th>
+<th>Evidence of mastery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conceptual command</td>
+<td>Terms are defined precisely and linked to the source spine.</td>
+</tr>
+<tr>
+<td>Analytic rigor</td>
+<td>Assumptions, uncertainty, alternatives, and confidence are
+explicit.</td>
+</tr>
+<tr>
+<td>Agentic design</td>
+<td>Human oversight, tool boundaries, logging, and rollback are
+specified.</td>
+</tr>
+<tr>
+<td>Governance and rights</td>
+<td>Authority, procurement, privacy, accessibility, retention, and
+redress evidence are visible.</td>
+</tr>
+<tr>
+<td>Safety posture</td>
+<td>Exercises remain accountable, synthetic, defensive, lawful, and
+evidence-bounded.</td>
+</tr>
+</tbody>
+</table>
+<h2
+id="refresh-triggers-and-required-actions-source-safety-and-tool-change-duties">Refresh
+triggers and required actions: source, safety, and tool-change
+duties</h2>
+<p><strong>Evidence anchor.</strong> [sec:method-assurance-reference];
+[scholarly_rethlefsen_2021_prisma_s].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Required action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source guide reference changes</td>
+<td>preserve existing <code>ageintNNN</code> identities and append new
+references only after the locked range</td>
+</tr>
+<tr>
+<td>Official or standards source updates</td>
+<td>update source-lane metadata, checked date, and bibliography
+note</td>
+</tr>
+<tr>
+<td>AI law, public-sector policy, education guidance, or rights guidance
+changes</td>
+<td>rerun the compliance and rights map</td>
+</tr>
+<tr>
+<td>API, protocol, data-space, or provenance specification changes</td>
+<td>rerun interface and data-provenance checks</td>
+</tr>
+<tr>
+<td>Safety audit finds operational wording</td>
+<td>replace the treatment with tabletop, audit, governance, or
+synthetic-data framing</td>
+</tr>
+<tr>
+<td>Instructor debrief finds unreproducible evidence</td>
+<td>rebuild the source canon and claim ledger before reuse</td>
+</tr>
+</tbody>
+</table>
+<h2
+id="safety-boundary-accountable-synthetic-defensive-and-evidence-bounded-practice">Safety
+boundary: accountable, synthetic, defensive, and evidence-bounded
+practice</h2>
+<p><strong>Evidence anchor.</strong> [sec:method-assurance-reference];
+[scholarly_rethlefsen_2021_prisma_s].</p>
+<p>Keep all practice accountable, synthetic, defensive, logged,
+reversible, and evidence-bounded. Do not convert any module into live
+targeting, evasion, exploitation, covert collection, manipulation, or
+unsafe cyber-physical action. Where a module inherits a risky source
+motif, treat it as a tabletop, audit, provenance, or governance
+exercise.</p>
+<h2
+id="mastery-evidence-standard-retained-artifacts-reviewer-challenge-and-transfer">Mastery
+evidence standard: retained artifacts, reviewer challenge, and
+transfer</h2>
+<p><strong>Evidence anchor.</strong> [sec:method-assurance-reference];
+[scholarly_rethlefsen_2021_prisma_s].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Evidence in the answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strong</td>
+<td>Uses source evidence, distinguishes observation from judgment, names
+uncertainty, and states the safe boundary.</td>
+</tr>
+<tr>
+<td>Adequate</td>
+<td>Defines the concept and names a relevant artifact, but leaves one
+caveat or review owner vague.</td>
+</tr>
+<tr>
+<td>Revise</td>
+<td>Gives a memorized definition without source evidence, uncertainty,
+or a safe transfer task.</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

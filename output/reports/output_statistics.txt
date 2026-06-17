@@ -1,0 +1,36 @@
+
+OUTPUT STATISTICS REPORT
+============================================================
+
+Output Directory: output
+
+Total Files: 972
+Total Size: 119.44 MB
+
+Files by Category:
+  • pdf: 32 files (52.53 MB)
+  • web: 334 files (23.16 MB)
+  • slides: 2 files (0.00 MB)
+  • figures: 420 files (28.15 MB)
+  • data: 139 files (3.59 MB)
+  • reports: 44 files (12.00 MB)
+  • logs: 1 files (0.00 MB)
+
+Largest Files:
+  • AGEINT_combined.pdf: 32.55 MB (pdf)
+  • claim_calibration.json: 9.70 MB (reports)
+  • index.html: 8.30 MB (web)
+  • _combined_manuscript.tex: 7.36 MB (pdf)
+  • _combined_manuscript.md: 6.23 MB (pdf)
+
+File Types:
+  • .html: 332 file(s)
+  • .png: 175 file(s)
+  • .mmd: 115 file(s)
+  • .rendered: 115 file(s)
+  • .json: 110 file(s)
+  • .jsonl: 57 file(s)
+  • .md: 35 file(s)
+  • .bib: 21 file(s)
+  • .log: 3 file(s)
+  • .txt: 3 file(s)

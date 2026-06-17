@@ -1,0 +1,19 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'}}}%%
+sequenceDiagram
+    autonumber
+    participant Req as Requirement owner
+    participant Disc as Discovery analyst
+    participant Prov as Provenance reviewer
+    participant Legal as Legality and minimization gate
+    participant Corr as Corroboration reviewer
+    participant Rev as Final reviewer
+    participant Log as Evidence ledger
+    Req->>Disc: State the bounded judgment needed
+    Disc->>Prov: Submit public-source candidate and origin record
+    Prov-->>Disc: Return if origin or authenticity is not reviewable
+    Prov->>Legal: Forward verified provenance packet
+    Legal-->>Disc: Stop if authority, minimization, or privacy boundary fails
+    Legal->>Corr: Forward in-bounds evidence
+    Corr->>Rev: Add independent-source check and uncertainty caveats
+    Rev-->>Disc: Remediate if support is too thin
+    Rev->>Log: Approve logged bounded judgment with retained caveats

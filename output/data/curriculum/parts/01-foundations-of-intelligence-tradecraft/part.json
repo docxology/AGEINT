@@ -1,0 +1,11 @@
+{
+  "number": 1,
+  "roman": "I",
+  "title": "FOUNDATIONS OF INTELLIGENCE TRADECRAFT",
+  "source_line": 18,
+  "chapter_files": [
+    "01-the-nature-of-intelligence/chapter.json",
+    "02-intelligence-community-architectures/chapter.json",
+    "03-tradecraft-core-principles/chapter.json"
+  ]
+}

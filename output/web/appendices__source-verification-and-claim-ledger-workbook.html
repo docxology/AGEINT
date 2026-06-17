@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>source-verification-and-claim-ledger-workbook.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1
+id="sec:appendix-source-verification-and-claim-ledger-workbook">Source
+Verification and Claim Ledger Workbook</h1>
+<p>The current appendix is an evidence workbook for reusable classroom
+methods. It is educational and evidence-bounded: examples remain
+synthetic, defensive, lawful, and bounded to owned labs, public sources,
+or tabletop exercises. Source-item focus: Source identity lock procedure
+for <code>ageint001</code> through <code>ageint231</code>, including
+title, URL, and citation-key stability checks; Append-only v2 reference
+workflow: discover with Perplexity if useful, verify direct official or
+standards URLs, then append new references after the locked range.</p>
+<h2
+id="source-verification-and-claim-ledger-workbook-workbook-scope-purpose-safety-envelope-and-reuse-decision">Source
+Verification and Claim Ledger Workbook workbook scope: purpose, safety
+envelope, and reuse decision</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<h3
+id="source-verification-and-claim-ledger-workbook-operating-purpose">Source
+Verification and Claim Ledger Workbook operating purpose</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>The current appendix supports a reusable methods workbook. Each
+source item is treated as a reviewable classroom artifact rather than an
+operational instruction; examples begin with Source identity lock
+procedure for <code>ageint001</code> through <code>ageint231</code>,
+including title, URL, and citation-key stability checks; Append-only v2
+reference workflow: discover with Perplexity if useful, verify direct
+official or standards URLs, then append new references after the locked
+range.</p>
+<h3
+id="source-verification-and-claim-ledger-workbook-allowed-input-boundary">Source
+Verification and Claim Ledger Workbook allowed-input boundary</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>Allowed inputs for the current appendix are public official or
+scholarly sources, standards text, instructor-provided excerpts,
+synthetic datasets, owned-lab logs, toy examples, and generated rubrics
+that expose their provenance for Source identity lock procedure for
+<code>ageint001</code> through <code>ageint231</code>, including title,
+URL, and citation-key stability checks; Append-only v2 reference
+workflow: discover with Perplexity if useful, verify direct official or
+standards URLs, then append new references after the locked range.</p>
+<h3
+id="source-verification-and-claim-ledger-workbook-excluded-action-boundary">Source
+Verification and Claim Ledger Workbook excluded-action boundary</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>Excluded actions for the current appendix are unauthorized
+collection, private-data processing, credential use, contact with real
+targets, live system interaction, exploit execution, deception, unsafe
+cyber-physical action, or external deployment while handling Source
+identity lock procedure for <code>ageint001</code> through
+<code>ageint231</code>, including title, URL, and citation-key stability
+checks; Append-only v2 reference workflow: discover with Perplexity if
+useful, verify direct official or standards URLs, then append new
+references after the locked range.</p>
+<h3
+id="source-verification-and-claim-ledger-workbook-expected-artifact-package">Source
+Verification and Claim Ledger Workbook expected artifact package</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>Expected appendix artifacts are a purpose statement, allowed-inputs
+card, excluded-actions card, source-lane map, provenance record, claim
+ledger, safe-substitution note, output schema, review rubric, and
+capstone handoff memo for Source identity lock procedure for
+<code>ageint001</code> through <code>ageint231</code>, including title,
+URL, and citation-key stability checks; Append-only v2 reference
+workflow: discover with Perplexity if useful, verify direct official or
+standards URLs, then append new references after the locked range.</p>
+<h3
+id="source-verification-and-claim-ledger-workbook-safe-artifact-schema">Source
+Verification and Claim Ledger Workbook safe artifact schema</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required evidence</th>
+<th>Reject condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>lawful educational, governance, research, or defensive purpose</td>
+<td>vague operational objective or missing authority</td>
+</tr>
+<tr>
+<td>Inputs</td>
+<td>public, official, scholarly, synthetic, owned-lab, or
+instructor-provided material</td>
+<td>private data, live target data, credentialed access, or unclear
+provenance</td>
+</tr>
+<tr>
+<td>Transform</td>
+<td>summary, comparison, rubric scoring, tabletop simulation, or audit
+review</td>
+<td>collection expansion, external action, or unsafe system
+interaction</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>memo, matrix, checklist, ledger, rubric, or debrief packet</td>
+<td>deployable procedure, target package, or automated action plan</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td>human reviewer, approval gate, revision note, and refresh owner</td>
+<td>anonymous ownership or no escalation path</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-inputoutput-contract">Source
+Verification and Claim Ledger Workbook input/output contract</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Contract term</th>
+<th>Input rule</th>
+<th>Output rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source identity</td>
+<td>retain <code>ageintNNN</code>, title, URL, and checked status</td>
+<td>cite with Pandoc keys and avoid pasted raw URLs in prose</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>include plain-language labels, table headers, and figure
+alternatives</td>
+<td>reject inaccessible figures, unlabeled tables, or single-modality
+evidence</td>
+</tr>
+<tr>
+<td>Rights</td>
+<td>identify affected groups, safeguards, and residual risk</td>
+<td>preserve privacy, equality, access, contestability, and redress
+notes</td>
+</tr>
+<tr>
+<td>Tooling</td>
+<td>use allowlisted tools, visible prompts, logs, and stop
+conditions</td>
+<td>keep outputs evidence-bounded, reversible, and human-reviewed</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>record source, policy, standard, incident, or assessment
+trigger</td>
+<td>assign an owner and date for revalidation</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-failure-cases-and-required-responses">Source
+Verification and Claim Ledger Workbook failure cases and required
+responses</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Failure case</th>
+<th>Signal</th>
+<th>Required response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source laundering</td>
+<td>claim cites an agent summary instead of a verified source</td>
+<td>rebuild the claim ledger from direct sources</td>
+</tr>
+<tr>
+<td>Boundary drift</td>
+<td>exercise starts asking for live targets, private data, or external
+action</td>
+<td>stop, substitute synthetic inputs, and document the block</td>
+</tr>
+<tr>
+<td>Accessibility gap</td>
+<td>learner cannot inspect, navigate, or complete the artifact</td>
+<td>remediate and retest before reuse</td>
+</tr>
+<tr>
+<td>Rights gap</td>
+<td>affected group, safeguard, or redress path is missing</td>
+<td>run HRIA/DPIA worksheet and escalate unresolved risk</td>
+</tr>
+<tr>
+<td>Vendor opacity</td>
+<td>tool owner, data use, logs, or exit path is unknown</td>
+<td>replace tool or pause until procurement evidence exists</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-evidence-package-schemas">Source
+Verification and Claim Ledger Workbook evidence package schemas</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>Model and dataset card:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Model card evidence</th>
+<th>Dataset card evidence</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intended use</td>
+<td>accountable task, excluded uses, affected users, human reviewer, and
+accountable owner</td>
+<td>Data Cards purpose statement, recommended use, prohibited reuse,
+stewardship owner, and affected stakeholder groups</td>
+<td>claim is rejected if intended use, excluded use, affected users, or
+owner is missing</td>
+</tr>
+<tr>
+<td>Provenance and collection</td>
+<td>model family, version, supplier or lab, training cutoff, deployment
+context, and configuration hash</td>
+<td>upstream source, collection process, annotation method, consent or
+authority basis, sensitivity class, and license</td>
+<td>artifact is held if provenance, license, authority, or collection
+process is opaque</td>
+</tr>
+<tr>
+<td>Composition and limits</td>
+<td>capability boundary, known failure modes, tool permissions, context
+window limits, and unsupported conditions</td>
+<td>population, sampling frame, coverage gaps, subgroup visibility,
+missingness, transformations, and known caveats</td>
+<td>artifact is revised if population, coverage, or source limits are
+invisible</td>
+</tr>
+<tr>
+<td>Evaluation and caveats</td>
+<td>benchmark suite, task-specific tests, subgroup or context results,
+red-team findings, uncertainty notes, and failure examples</td>
+<td>quality tests, label agreement, bias review, measurement limits,
+transformation log, and Data Cards answer-evaluation notes</td>
+<td>empirical or performance claims are rejected unless test context,
+subgroup caveats, and uncertainty are visible</td>
+</tr>
+<tr>
+<td>Lifecycle controls</td>
+<td>release gate, rollback path, monitoring signal, incident threshold,
+refresh trigger, and model-card update owner</td>
+<td>retention rule, access boundary, update cadence, deletion path,
+stewardship handoff, and dataset-card revision trigger</td>
+<td>reuse is blocked without owner, retention, monitoring, rollback, and
+refresh evidence</td>
+</tr>
+</tbody>
+</table>
+<p>Transparency notice:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Artifact</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public purpose</td>
+<td>plain-language purpose, authority, affected service, and decision
+role</td>
+<td>reader can tell why the system exists and where human judgment
+remains</td>
+</tr>
+<tr>
+<td>Tool and data summary</td>
+<td>model, data, supplier, provenance, validation, and accessibility
+summary</td>
+<td>sensitive details are de-sensitized without hiding accountability
+fields</td>
+</tr>
+<tr>
+<td>Impact and review</td>
+<td>benefits, risks, safeguards, human review, appeal, and contact
+point</td>
+<td>affected groups can identify recourse and oversight owners</td>
+</tr>
+<tr>
+<td>Publication decision</td>
+<td>publish, partially publish, delay, or hold decision with exemption
+rationale</td>
+<td>non-public fields have a documented legal, security, privacy, or IP
+basis</td>
+</tr>
+</tbody>
+</table>
+<p>Records retention and audit trail:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Record</th>
+<th>Retained fields</th>
+<th>Audit question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source and prompt register</td>
+<td>source identity, prompt version, tool allowlist, reviewer,
+timestamp, and caveat</td>
+<td>Can a later reviewer reconstruct the evidentiary path without
+private or live data?</td>
+</tr>
+<tr>
+<td>Decision and exception log</td>
+<td>risk owner, accepted exception, compensating control, expiry date,
+and approval</td>
+<td>Is every deviation time-bound, justified, and reviewable?</td>
+</tr>
+<tr>
+<td>Artifact retention note</td>
+<td>output type, sensitivity, access boundary, deletion rule, and
+refresh trigger</td>
+<td>Does the retention choice match the educational purpose and rights
+impact?</td>
+</tr>
+<tr>
+<td>Incident and remediation record</td>
+<td>incident signal, containment action, root cause, owner, retest
+result, and closure date</td>
+<td>Can the same failure be detected and prevented in the next reuse
+cycle?</td>
+</tr>
+</tbody>
+</table>
+<p>Release and change-control gate:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Release evidence</th>
+<th>Block condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope freeze</td>
+<td>accountable use case, excluded actions, tool profile, and data
+boundary</td>
+<td>scope expands to external action, live data, or an unreviewed
+capability</td>
+</tr>
+<tr>
+<td>Security and rights review</td>
+<td>privacy, accessibility, security, bias, and human-review checks</td>
+<td>rights impact, vulnerability, or accessibility issue has no
+owner</td>
+</tr>
+<tr>
+<td>Version and rollback</td>
+<td>model or prompt version, changelog, test fixture, and rollback
+path</td>
+<td>change cannot be reproduced, compared, or reverted</td>
+</tr>
+<tr>
+<td>Post-release monitoring</td>
+<td>monitoring signal, incident threshold, refresh trigger, and
+owner</td>
+<td>deployment or reuse occurs without logging and retest
+commitments</td>
+</tr>
+</tbody>
+</table>
+<p>Risk exception memo:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Minimum content</th>
+<th>Approval rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exception requested</td>
+<td>what requirement cannot be met, why, affected groups, and
+duration</td>
+<td>exception must be specific, time-bound, and tied to a compensating
+control</td>
+</tr>
+<tr>
+<td>Risk basis</td>
+<td>likelihood, impact, evidence, uncertainty, alternatives, and
+rejected options</td>
+<td>unsupported confidence or missing alternatives returns the memo for
+revision</td>
+</tr>
+<tr>
+<td>Compensating control</td>
+<td>human review, monitoring, access limit, disclosure, remediation, and
+owner</td>
+<td>control must reduce risk without creating an operational
+workaround</td>
+</tr>
+<tr>
+<td>Expiry and retest</td>
+<td>expiry date, retest condition, review cadence, and closure
+criteria</td>
+<td>open-ended exceptions are rejected</td>
+</tr>
+</tbody>
+</table>
+<p>Learner support and accommodation plan:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Need</th>
+<th>Support</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access and modality</td>
+<td>captions, alt text, keyboard path, plain-language summary, and
+structured tables</td>
+<td>accessibility checklist, defect log, and retest result</td>
+</tr>
+<tr>
+<td>Cognitive load</td>
+<td>worked examples, staged release, glossary, checklist, and optional
+practice fixture</td>
+<td>UDL design note and learner feedback record</td>
+</tr>
+<tr>
+<td>Assessment fairness</td>
+<td>allowed-tool statement, AI-use declaration, alternative submission
+mode, and transparent rubric</td>
+<td>assessment-integrity note and accommodation record</td>
+</tr>
+<tr>
+<td>Feedback and remediation</td>
+<td>revision path, office-hour prompt, example correction, and due-date
+flexibility policy</td>
+<td>feedback log and instructor disposition</td>
+</tr>
+</tbody>
+</table>
+<p>Instructor question bank:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Question type</th>
+<th>Prompt</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source challenge</td>
+<td>Which claim would fail if the strongest source were removed or
+downgraded?</td>
+<td>claim ledger revision and source-lane note</td>
+</tr>
+<tr>
+<td>Boundary challenge</td>
+<td>Where could this exercise drift from analysis into action, and what
+safe substitute prevents it?</td>
+<td>safe-substitution decision and excluded-action card</td>
+</tr>
+<tr>
+<td>Rights challenge</td>
+<td>Which affected group, accessibility need, privacy interest, or
+redress path is under-specified?</td>
+<td>HRIA/DPIA update and accommodation note</td>
+</tr>
+<tr>
+<td>Assurance challenge</td>
+<td>What failure would the current evaluation miss, and what retest
+would reveal it?</td>
+<td>adversarial assurance retest and remediation owner</td>
+</tr>
+</tbody>
+</table>
+<p>Remediation backlog:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Backlog item</th>
+<th>Trigger</th>
+<th>Closure evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unverified claim</td>
+<td>claim lacks a guide citation or directly verified anchor</td>
+<td>verified source, removed claim, or explicit source-guide context
+note</td>
+</tr>
+<tr>
+<td>Unsafe phrasing</td>
+<td>wording implies live targeting, external action, exploitation,
+manipulation, or unsafe control</td>
+<td>safe substitute, blocked context, and reviewer sign-off</td>
+</tr>
+<tr>
+<td>Accessibility defect</td>
+<td>artifact cannot be inspected through an expected assistive or
+alternative workflow</td>
+<td>defect fix, alternative means, and retest result</td>
+</tr>
+<tr>
+<td>Assurance gap</td>
+<td>evaluation, release, exception, incident, or vendor evidence is
+incomplete</td>
+<td>owner, due date, retest, and accepted disposition</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-rubric-scoring-bands">Source
+Verification and Claim Ledger Workbook rubric scoring bands</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Band</th>
+<th>Evidence standard</th>
+<th>Disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 - ready</td>
+<td>source identity, accessibility, rights, safety, and reviewer
+evidence are complete</td>
+<td>may be reused after normal refresh review</td>
+</tr>
+<tr>
+<td>3 - revise</td>
+<td>one evidence field is incomplete but risk is bounded and
+remediable</td>
+<td>revise before reuse</td>
+</tr>
+<tr>
+<td>2 - hold</td>
+<td>multiple evidence fields are incomplete or ownership is unclear</td>
+<td>hold for instructor and assurance review</td>
+</tr>
+<tr>
+<td>1 - reject</td>
+<td>unsafe action, private data, inaccessible artifact, or unverified
+claim appears</td>
+<td>reject and rebuild from safe inputs</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-refresh-evidence">Source
+Verification and Claim Ledger Workbook refresh evidence</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Evidence item</th>
+<th>Refresh trigger</th>
+<th>Retained support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source lane</td>
+<td>official source, standard, or legal text changes</td>
+<td>checked-as-of date and source note</td>
+</tr>
+<tr>
+<td>Safety treatment</td>
+<td>operational wording or unsafe motif appears</td>
+<td>safe-substitution decision and blocked context</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>WCAG, UDL, or institutional accessibility duty changes</td>
+<td>defect log, retest result, and owner</td>
+</tr>
+<tr>
+<td>Rights</td>
+<td>privacy, human-rights, public transparency, or education guidance
+changes</td>
+<td>HRIA/DPIA revision note</td>
+</tr>
+<tr>
+<td>Vendor/tool</td>
+<td>contract, data-use, incident, or model capability changes</td>
+<td>procurement packet and incident review</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-validation-rubric">Source
+Verification and Claim Ledger Workbook validation rubric</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Passing evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source identity</td>
+<td>existing <code>ageintNNN</code> keys remain stable or new references
+are append-only</td>
+</tr>
+<tr>
+<td>Verification</td>
+<td>official, standards, public-domain, or scholarly URL is checked
+directly</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>method is converted into tabletop, audit, governance, or
+synthetic-data treatment</td>
+</tr>
+<tr>
+<td>Reproducibility</td>
+<td>another reviewer can rebuild the artifact from retained inputs</td>
+</tr>
+<tr>
+<td>Rights review</td>
+<td>privacy, IP, human-rights, workforce, and education impacts are
+considered where relevant</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-debrief-protocol-and-reuse-decision">Source
+Verification and Claim Ledger Workbook debrief protocol and reuse
+decision</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>Debrief by naming what the artifact can support, what it does not
+establish, what source changed, what risk was avoided by safe
+substitution, what human approval is still required, and when the
+appendix should be refreshed for Source identity lock procedure for
+<code>ageint001</code> through <code>ageint231</code>, including title,
+URL, and citation-key stability checks; Append-only v2 reference
+workflow: discover with Perplexity if useful, verify direct official or
+standards URLs, then append new references after the locked range.</p>
+<h2 id="source-verification-workflow">Source verification workflow</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>The source-verification and claim-ledger workbook preserves
+<code>ageint001</code> through <code>ageint231</code>, appends new
+references after the locked range, and records lane, tier, checked date,
+verification method, claim scope, refresh cadence, and refresh trigger
+for every curated anchor.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source lane</th>
+<th style="text-align: right;">Anchor count</th>
+<th>Refresh cadence</th>
+<th>Claim scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accessibility_digital_inclusion</td>
+<td style="text-align: right;">4</td>
+<td>annual, quarterly, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>active_measures_attribution</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of active_measures_attribution
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>active_measures_disinformation</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of active_measures_disinformation
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>active_measures_information_operations</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+active_measures_information_operations and related source evidence. It
+does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>adversarial_ai_security</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of adversarial_ai_security and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agent_foundations</td>
+<td style="text-align: right;">2</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agent_foundations and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agent_incident_response</td>
+<td style="text-align: right;">7</td>
+<td>annual, quarterly, semiannual</td>
+<td>7 scoped claim families</td>
+</tr>
+<tr>
+<td>agent_interoperability_standards</td>
+<td style="text-align: right;">12</td>
+<td>annual, quarterly, semiannual</td>
+<td>12 scoped claim families</td>
+</tr>
+<tr>
+<td>agentic_ai_governance</td>
+<td style="text-align: right;">21</td>
+<td>annual</td>
+<td>8 scoped claim families</td>
+</tr>
+<tr>
+<td>agentic_ai_security</td>
+<td style="text-align: right;">2</td>
+<td>annual, semiannual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>agentic_ai_security_governance</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>agentic AI adoption and security-governance context, not an AGEINT
+benchmark</td>
+</tr>
+<tr>
+<td>agentic_analytic_assistance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded claims that AI-enabled reasoning systems can assist
+evidence discovery and reasoning review while retaining analyst
+responsibility.</td>
+</tr>
+<tr>
+<td>agentic_design_principles</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_design_principles and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agentic_framework_docs</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_framework_docs and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agentic_memory</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_memory and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>agentic_reasoning</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of agentic_reasoning and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>ai_conformity_compliance</td>
+<td style="text-align: right;">7</td>
+<td>annual, quarterly, semiannual</td>
+<td>7 scoped claim families</td>
+</tr>
+<tr>
+<td>ai_enabled_analysis_boundary</td>
+<td style="text-align: right;">9</td>
+<td>annual, semiannual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>ai_ethics_data_governance</td>
+<td style="text-align: right;">10</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>ai_red_team_assurance</td>
+<td style="text-align: right;">14</td>
+<td>annual, quarterly, semiannual</td>
+<td>14 scoped claim families</td>
+</tr>
+<tr>
+<td>algorithmic_transparency_reporting</td>
+<td style="text-align: right;">2</td>
+<td>quarterly</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_cognition_and_bias</td>
+<td style="text-align: right;">6</td>
+<td>annual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_epistemology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>epistemic-framing support for calibrated claims and reviewer
+challengeability</td>
+</tr>
+<tr>
+<td>analytic_method_design</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_method_pedagogy</td>
+<td style="text-align: right;">9</td>
+<td>annual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_outreach_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>analytic-outreach governance support for expert engagement and risk
+controls</td>
+</tr>
+<tr>
+<td>analytic_product_dissemination</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>analytic-product utility, discoverability, and
+dissemination-governance support</td>
+</tr>
+<tr>
+<td>analytic_production_workflow</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>workflow and analytic-production support for iterative, reviewable
+tradecraft artifacts</td>
+</tr>
+<tr>
+<td>analytic_tradecraft</td>
+<td style="text-align: right;">7</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_tradecraft_evidence</td>
+<td style="text-align: right;">5</td>
+<td>annual</td>
+<td>5 scoped claim families</td>
+</tr>
+<tr>
+<td>analytic_tradecraft_forecasting</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+analytic_tradecraft_forecasting and related source evidence. It does not
+authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>analytic_uncertainty_language</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>apt_threat_intelligence</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of apt_threat_intelligence and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>assurance_evaluation_evidence</td>
+<td style="text-align: right;">8</td>
+<td>annual, quarterly, semiannual</td>
+<td>8 scoped claim families</td>
+</tr>
+<tr>
+<td>classification_marking_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>classification-marking context for caveat and dissemination-boundary
+lessons</td>
+</tr>
+<tr>
+<td>cognitive_active_inference</td>
+<td style="text-align: right;">9</td>
+<td>annual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>cognitive_bias_foundations</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of cognitive_bias_foundations and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cognitive_influence_security</td>
+<td style="text-align: right;">13</td>
+<td>annual</td>
+<td>10 scoped claim families</td>
+</tr>
+<tr>
+<td>cognitive_performance</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of cognitive_performance and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cognitive_resilience_evidence</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Peer-reviewed Science Advances study testing psychological
+inoculation videos for improving misinformation resilience at scale,
+with bounded transfer from measured outcomes to curriculum claims</td>
+</tr>
+<tr>
+<td>cognitive_security_inoculation</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of cognitive_security_inoculation
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cognitive_security_misinformation</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+cognitive_security_misinformation and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>collection_management</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>collection_management_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of collection_management_doctrine
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>counterintelligence_program_governance</td>
+<td style="text-align: right;">2</td>
+<td>annual, quarterly</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>counterintelligence_source_integrity</td>
+<td style="text-align: right;">7</td>
+<td>annual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>counterintelligence_strategy</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of counterintelligence_strategy
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cross_border_data_spaces</td>
+<td style="text-align: right;">4</td>
+<td>semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>cryptographic_standards</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of cryptographic_standards and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>cryptography_standards</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of cryptography_standards and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>current_threat_baseline</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>public threat-context grounding and warning-topic baseline, not
+operational targeting or AGEINT benchmark evidence</td>
+</tr>
+<tr>
+<td>cyber_defense_guidance_index</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>defensive cyber guidance index support for source routing and
+refresh duties</td>
+</tr>
+<tr>
+<td>cyber_threat_intelligence</td>
+<td style="text-align: right;">17</td>
+<td>annual, semiannual</td>
+<td>8 scoped claim families</td>
+</tr>
+<tr>
+<td>dataset_documentation</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>declassified_analytic_history</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>declassified_reconnaissance_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>declassified reconnaissance history support for historical and
+GEOINT source-provenance lessons</td>
+</tr>
+<tr>
+<td>defense_osint_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>public OSINT governance and professionalization support, not
+collection procedure or live targeting guidance</td>
+</tr>
+<tr>
+<td>disinformation_cognitive_psychology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+disinformation_cognitive_psychology and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>disinformation_misinformation_science</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+disinformation_misinformation_science and related source evidence. It
+does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>economic_security_review</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>economic-security and due-diligence governance support for
+threat-analysis framing</td>
+</tr>
+<tr>
+<td>education_assessment</td>
+<td style="text-align: right;">6</td>
+<td>annual, semiannual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>ethics_of_intelligence</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of ethics_of_intelligence and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>financial_economic_security</td>
+<td style="text-align: right;">8</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>finint_aml_cft_international</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of finint_aml_cft_international
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>finint_international_cooperation</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+finint_international_cooperation and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>finint_sar_reporting</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of finint_sar_reporting and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>forecasting_calibration_evidence</td>
+<td style="text-align: right;">6</td>
+<td>annual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>foreign_disclosure_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>foreign-disclosure governance support for release-boundary and
+control-marking lessons</td>
+</tr>
+<tr>
+<td>geoint_data_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>GEOINT data-governance and digital-transformation context for
+modular source substrate claims</td>
+</tr>
+<tr>
+<td>geoint_doctrine</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of geoint_doctrine and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>geoint_professional_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>GEOINT doctrine and geospatial-intelligence framing support</td>
+</tr>
+<tr>
+<td>geoint_tradecraft</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of geoint_tradecraft and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>governed_intelligence_cycle</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>gray_zone_competition_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of gray_zone_competition_doctrine
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>historical_declassified_sources</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>historical_ics_incidents</td>
+<td style="text-align: right;">4</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of historical_ics_incidents and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>human_rights_governance</td>
+<td style="text-align: right;">6</td>
+<td>annual, semiannual</td>
+<td>6 scoped claim families</td>
+</tr>
+<tr>
+<td>humint_doctrine</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of humint_doctrine and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>humint_oversight_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of humint_oversight_history and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>hybrid_warfare_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of hybrid_warfare_doctrine and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>hybrid_warfare_stratcom</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of hybrid_warfare_stratcom and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>ic_information_environment_risk</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>ic_public_transparency</td>
+<td style="text-align: right;">7</td>
+<td>quarterly</td>
+<td>7 scoped claim families</td>
+</tr>
+<tr>
+<td>ics_ot_defense</td>
+<td style="text-align: right;">10</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>ics_ot_security_standards</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of ics_ot_security_standards and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>imint_joint_intelligence_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+imint_joint_intelligence_doctrine and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>information_operations_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+information_operations_doctrine and related source evidence. It does not
+authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>integrated_mission_management</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>mission-management governance support for requirements-to-evidence
+substrate design</td>
+</tr>
+<tr>
+<td>intelligence_diplomacy_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>governance context for intelligence diplomacy and partner-engagement
+boundaries</td>
+</tr>
+<tr>
+<td>intelligence_failure_postmortem</td>
+<td style="text-align: right;">9</td>
+<td>annual, biennial</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>intelligence_history_american</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of intelligence_history_american
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>intelligence_history_british_allied</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+intelligence_history_british_allied and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>intelligence_history_soviet</td>
+<td style="text-align: right;">2</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of intelligence_history_soviet
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>intelligence_profession_literature</td>
+<td style="text-align: right;">4</td>
+<td>annual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>intelligence_writing_and_review</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>irregular_warfare_strategy</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of irregular_warfare_strategy and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>learner_support_accommodations</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>learner support plans, accessibility exception documentation,
+alternative means, and artifact remediation</td>
+</tr>
+<tr>
+<td>legal_authorities_intelligence_collection</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+legal_authorities_intelligence_collection and related source evidence.
+It does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>legal_authorities_surveillance</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of legal_authorities_surveillance
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>legal_oversight</td>
+<td style="text-align: right;">9</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>legal_oversight_intelligence</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of legal_oversight_intelligence
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>llm_architecture</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of llm_architecture and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>llm_evaluation</td>
+<td style="text-align: right;">2</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of llm_evaluation and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>model_card_reporting</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>model documentation cards, intended-use statements, evaluation
+caveats, and release notes</td>
+</tr>
+<tr>
+<td>model_data_provenance</td>
+<td style="text-align: right;">14</td>
+<td>annual, quarterly, semiannual</td>
+<td>14 scoped claim families</td>
+</tr>
+<tr>
+<td>multi_agent_frameworks</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of multi_agent_frameworks and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>national_intelligence_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>IC governance and national-intelligence production context</td>
+</tr>
+<tr>
+<td>non_state_engagement_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>non-state engagement governance support for source, outreach, and
+no-tasking boundaries</td>
+</tr>
+<tr>
+<td>opsec_doctrine_governance</td>
+<td style="text-align: right;">1</td>
+<td>biennial</td>
+<td>Provides official historical OPSEC policy context for
+critical-information protection and public doctrine framing; not an
+operational OPSEC playbook.</td>
+</tr>
+<tr>
+<td>osint_doctrine</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of osint_doctrine and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>osint_geoint</td>
+<td style="text-align: right;">6</td>
+<td>annual</td>
+<td>2 scoped claim families</td>
+</tr>
+<tr>
+<td>osint_methodology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of osint_methodology and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>privacy_ip_governance</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>curriculum grounding and source-backed synthesis</td>
+</tr>
+<tr>
+<td>procurement_performance_monitoring</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>AI procurement monitoring, vendor demonstrations, acquisition
+criteria, QASP evidence, and performance review</td>
+</tr>
+<tr>
+<td>procurement_vendor_governance</td>
+<td style="text-align: right;">4</td>
+<td>annual, quarterly, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>psyop_miso_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of psyop_miso_doctrine and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>public_sector_agentic_ai</td>
+<td style="text-align: right;">5</td>
+<td>quarterly, semiannual</td>
+<td>5 scoped claim families</td>
+</tr>
+<tr>
+<td>public_sector_transparency</td>
+<td style="text-align: right;">3</td>
+<td>annual, quarterly, semiannual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>records_retention_auditability</td>
+<td style="text-align: right;">5</td>
+<td>annual, quarterly, semiannual</td>
+<td>5 scoped claim families</td>
+</tr>
+<tr>
+<td>rights_impact_privacy</td>
+<td style="text-align: right;">4</td>
+<td>annual, quarterly, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>risk_exception_governance</td>
+<td style="text-align: right;">1</td>
+<td>quarterly</td>
+<td>risk exception governance, AI maturity plans, data traceability,
+public trust, and oversight capacity</td>
+</tr>
+<tr>
+<td>sat_evaluation_evidence</td>
+<td style="text-align: right;">13</td>
+<td>annual</td>
+<td>13 scoped claim families</td>
+</tr>
+<tr>
+<td>secure_release_change_control</td>
+<td style="text-align: right;">9</td>
+<td>annual, quarterly, semiannual</td>
+<td>9 scoped claim families</td>
+</tr>
+<tr>
+<td>sigint_emanations_intelligence</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of sigint_emanations_intelligence
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>sigint_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of sigint_history and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>sigint_oversight_history</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of sigint_oversight_history and
+related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>social_engineering_influence_psychology</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of
+social_engineering_influence_psychology and related source evidence. It
+does not authorize collection tasking, exploit steps, covert-action
+guidance, manipulation playbooks, unsafe cyber-physical actions, or
+live-target procedures.</td>
+</tr>
+<tr>
+<td>source_construction_reporting</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>PRISMA-S reporting guideline for documenting literature searches,
+search strategies, information sources, limits, records, and
+reproducibility details</td>
+</tr>
+<tr>
+<td>special_operations_doctrine</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>Supports bounded AGEINT discussion of special_operations_doctrine
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>supply_chain_intelligence_attacks</td>
+<td style="text-align: right;">3</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of
+supply_chain_intelligence_attacks and related source evidence. It does
+not authorize collection tasking, exploit steps, covert-action guidance,
+manipulation playbooks, unsafe cyber-physical actions, or live-target
+procedures.</td>
+</tr>
+<tr>
+<td>supply_chain_risk_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>supply-chain risk governance support for defensive procurement and
+assurance lessons</td>
+</tr>
+<tr>
+<td>synthetic_media_provenance</td>
+<td style="text-align: right;">4</td>
+<td>annual, semiannual</td>
+<td>4 scoped claim families</td>
+</tr>
+<tr>
+<td>tearlines_and_release_governance</td>
+<td style="text-align: right;">1</td>
+<td>annual</td>
+<td>tearline and release-governance support for public-facing evidence
+boundaries</td>
+</tr>
+<tr>
+<td>threat_intel_sharing_standards</td>
+<td style="text-align: right;">1</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of threat_intel_sharing_standards
+and related source evidence. It does not authorize collection tasking,
+exploit steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>tool_use_agents</td>
+<td style="text-align: right;">2</td>
+<td>semiannual</td>
+<td>Supports bounded AGEINT discussion of tool_use_agents and related
+source evidence. It does not authorize collection tasking, exploit
+steps, covert-action guidance, manipulation playbooks, unsafe
+cyber-physical actions, or live-target procedures.</td>
+</tr>
+<tr>
+<td>warning_intelligence</td>
+<td style="text-align: right;">3</td>
+<td>annual</td>
+<td>3 scoped claim families</td>
+</tr>
+<tr>
+<td>workforce_governance</td>
+<td style="text-align: right;">5</td>
+<td>annual, quarterly, semiannual</td>
+<td>5 scoped claim families</td>
+</tr>
+</tbody>
+</table>
+<h2 id="source-refresh-evidence">Source refresh evidence</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Object</th>
+<th>Lineage field</th>
+<th>Quality gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source citation</td>
+<td><code>ageintNNN</code>, title, URL, checked date, and source
+identity status</td>
+<td>citation key resolves and reference identity is locked or
+append-only</td>
+</tr>
+<tr>
+<td>Verified anchor</td>
+<td>lane, tier, verification method, claim scope, stakeholder role, and
+assurance use</td>
+<td>direct official, standards, public-domain, or scholarly URL was
+reviewed</td>
+</tr>
+<tr>
+<td>Dataset or scenario</td>
+<td>origin, license, sensitivity class, transformations, and retention
+rule</td>
+<td>public, synthetic, owned-lab, or instructor-provided data only</td>
+</tr>
+<tr>
+<td>Agent transcript</td>
+<td>prompt, model context, tool allowlist, budget, reviewer, and blocked
+actions</td>
+<td>no external action, live target, private data, or unsafe
+cyber-physical step</td>
+</tr>
+<tr>
+<td>Final artifact</td>
+<td>claim ledger, uncertainty note, accessibility status, rights review,
+and refresh owner</td>
+<td>another reviewer can reproduce and challenge the artifact</td>
+</tr>
+</tbody>
+</table>
+<h2 id="hriadpia-evidence-bridge">HRIA/DPIA evidence bridge</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Prompt</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose and authority</td>
+<td>What public, educational, or defensive purpose justifies the
+processing or analysis?</td>
+<td>scope card, excluded-action list, and decision owner</td>
+</tr>
+<tr>
+<td>Data subjects and affected groups</td>
+<td>Who could be affected directly, indirectly, or through downstream
+reuse?</td>
+<td>stakeholder map, vulnerability note, and accessibility
+considerations</td>
+</tr>
+<tr>
+<td>High-risk processing trigger</td>
+<td>Does the activity involve sensitive data, profiling, automated
+evaluation, large-scale processing, or systematic monitoring?</td>
+<td>DPIA trigger checklist and mitigation owner</td>
+</tr>
+<tr>
+<td>Rights and safeguards</td>
+<td>How are privacy, equality, expression, access, contestability, and
+redress protected?</td>
+<td>rights-impact note, safeguard register, and escalation path</td>
+</tr>
+<tr>
+<td>Residual risk and refresh</td>
+<td>What remains uncertain, who accepts it, and what source or incident
+would reopen review?</td>
+<td>residual-risk decision, review date, and source-refresh trigger</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="source-verification-and-claim-ledger-workbook-visual-navigation-and-evidence-figures-purpose-source-flow-and-limits">Source
+Verification and Claim Ledger Workbook visual navigation and evidence
+figures: purpose, source flow, and limits</h3>
+<p>The appendix uses [fig:appendix-claim-ledger-verification],
+[fig:ageint-source-verification-flow], [fig:ageint-claim-ledger-flow],
+[fig:ageint-hria-dpia-map], [fig:ageint-data-lineage-registry],
+[fig:ageint-records-retention-audit], [fig:ageint-risk-exception-memo],
+and [fig:ageint-safety-boundary-loop] to map its evidence flow, safety
+boundaries, review artifacts, and refresh cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:appendix-cognitive-security-and-inoculation-methods],
+[sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
+<figure id="fig:appendix-claim-ledger-verification">
+<img src="../../figures/mermaid/appendix-claim-ledger-verification.png"
+alt="The claim-ledger workbook routes each claim through source attribution, corroboration, and uncertainty grading, recording a reviewer and a refresh trigger before the claim is accepted. It is anchored to the source verification and claim ledger workbook appendix; use it to inspect Drafted claim, Source attribution, Flag as single-source, and Uncertainty and confidence grading while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The claim-ledger workbook routes each
+claim through source attribution, corroboration, and uncertainty
+grading, recording a reviewer and a refresh trigger before the claim is
+accepted. It is anchored to the source verification and claim ledger
+workbook appendix; use it to inspect Drafted claim, Source attribution,
+Flag as single-source, and Uncertainty and confidence grading while
+preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-source-verification-flow">
+<img src="../../figures/python/ageint-source-verification-flow.png"
+alt="The source-verification workflow connects locked references, v2 source lanes, checked dates, and refresh triggers. The captioned view belongs to the source verification and claim ledger workbook appendix and should be read as a map of source verification flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, not as a capability score or live-task instruction." />
+<figcaption aria-hidden="true">The source-verification workflow connects
+locked references, v2 source lanes, checked dates, and refresh triggers.
+The captioned view belongs to the source verification and claim ledger
+workbook appendix and should be read as a map of source verification
+flow steps, decision gates, owner handoffs, refresh triggers, and
+closure evidence, not as a capability score or live-task
+instruction.</figcaption>
+</figure>
+<figure id="fig:ageint-claim-ledger-flow">
+<img src="../../figures/python/ageint-claim-ledger-flow.png"
+alt="The claim-ledger flow keeps evidence, uncertainty, review ownership, and refresh triggers visible. It is anchored to the source verification and claim ledger workbook appendix; use it to inspect claim ledger flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The claim-ledger flow keeps evidence,
+uncertainty, review ownership, and refresh triggers visible. It is
+anchored to the source verification and claim ledger workbook appendix;
+use it to inspect claim ledger flow steps, decision gates, owner
+handoffs, refresh triggers, and closure evidence while preserving the
+distinction between curriculum structure, evidence boundary, and
+accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-hria-dpia-map">
+<img src="../../figures/python/ageint-hria-dpia-map.png"
+alt="The HRIA/DPIA map separates purpose, affected groups, high-risk triggers, safeguards, and residual risk. The captioned view belongs to the source verification and claim ledger workbook appendix and should be read as a map of hria dpia map fields, row and column obligations, source records, reviewer decisions, and closure evidence, not as a capability score or live-task instruction." />
+<figcaption aria-hidden="true">The HRIA/DPIA map separates purpose,
+affected groups, high-risk triggers, safeguards, and residual risk. The
+captioned view belongs to the source verification and claim ledger
+workbook appendix and should be read as a map of hria dpia map fields,
+row and column obligations, source records, reviewer decisions, and
+closure evidence, not as a capability score or live-task
+instruction.</figcaption>
+</figure>
+<figure id="fig:ageint-data-lineage-registry">
+<img src="../../figures/python/ageint-data-lineage-registry.png"
+alt="The data lineage registry traces source citations, verified anchors, datasets, transcripts, and final artifacts. The captioned view belongs to the source verification and claim ledger workbook appendix and should be read as a map of data lineage registry fields, row and column obligations, source records, reviewer decisions, and closure evidence, not as a capability score or live-task instruction." />
+<figcaption aria-hidden="true">The data lineage registry traces source
+citations, verified anchors, datasets, transcripts, and final artifacts.
+The captioned view belongs to the source verification and claim ledger
+workbook appendix and should be read as a map of data lineage registry
+fields, row and column obligations, source records, reviewer decisions,
+and closure evidence, not as a capability score or live-task
+instruction.</figcaption>
+</figure>
+<figure id="fig:ageint-records-retention-audit">
+<img src="../../figures/python/ageint-records-retention-audit.png"
+alt="The records retention audit ties retained records to audit questions, exceptions, and remediation evidence. It is anchored to the source verification and claim ledger workbook appendix; use it to inspect records retention audit fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
+<figcaption aria-hidden="true">The records retention audit ties retained
+records to audit questions, exceptions, and remediation evidence. It is
+anchored to the source verification and claim ledger workbook appendix;
+use it to inspect records retention audit fields, row and column
+obligations, source records, reviewer decisions, and closure evidence
+while preserving the distinction between curriculum structure, evidence
+boundary, and accountable practice.</figcaption>
+</figure>
+<figure id="fig:ageint-risk-exception-memo">
+<img src="../../figures/python/ageint-risk-exception-memo.png"
+alt="The risk exception memo keeps exception basis, compensating controls, expiry, and retest evidence together. In the source verification and claim ledger workbook appendix, it lets readers compare risk exception memo fields, row and column obligations, source records, reviewer decisions, and closure evidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">The risk exception memo keeps exception
+basis, compensating controls, expiry, and retest evidence together. In
+the source verification and claim ledger workbook appendix, it lets
+readers compare risk exception memo fields, row and column obligations,
+source records, reviewer decisions, and closure evidence so the visual
+functions as a traceable course aid rather than an unscoped
+assertion.</figcaption>
+</figure>
+<h3
+id="source-verification-and-claim-ledger-workbook-runtime-item-map-and-source-roster-generated-rows-and-citation-support">Source
+Verification and Claim Ledger Workbook runtime item map and source
+roster: generated rows and citation support</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Safe curriculum treatment</th>
+<th>Blocked source motif, audit-only</th>
+<th>Allowed fixture</th>
+<th>Rejected action</th>
+<th>Required artifact</th>
+<th>Citation spine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H.1 Source identity lock procedure for <code>ageint001</code>
+through <code>ageint231</code>, including title, URL, and citation-key
+stability checks</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>sample role records, ethics cards, and reviewer notes</td>
+<td>impersonation, contact activity, elicitation, handling, or source
+exposure</td>
+<td>source-protection ethics memo and escalation path</td>
+<td>[ageint235]; [ageint237]</td>
+</tr>
+<tr>
+<td>H.2 Append-only v2 reference workflow: discover with Perplexity if
+useful, verify direct official or standards URLs, then append new
+references after the locked range</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint232]; [ageint234]</td>
+</tr>
+<tr>
+<td>H.3 Source-lane metadata worksheet: lane, tier, checked-as-of date,
+verification method, claim scope, refresh cadence, and refresh
+trigger</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint238]; [ageint266]</td>
+</tr>
+<tr>
+<td>H.4 Claim/evidence ledger template for separating observation,
+inference, confidence, uncertainty, rights impact, and reviewer
+decision</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint237]; [ageint269]</td>
+</tr>
+<tr>
+<td>H.5 Safe refresh protocol for broken URLs, superseded standards,
+legal updates, source drift, and instructor debrief findings</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint251]; [ageint252]; [ageint270]</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

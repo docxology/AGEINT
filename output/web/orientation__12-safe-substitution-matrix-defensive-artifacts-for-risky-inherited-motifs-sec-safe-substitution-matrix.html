@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>12-safe-substitution-matrix-defensive-artifacts-for-risky-inherited-motifs-sec-safe-substitution-matrix.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h2 id="sec:safe-substitution-matrix">Safe substitution matrix:
+defensive artifacts for risky inherited motifs</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Source motif</th>
+<th>Unsafe source motif</th>
+<th>Safe curriculum substitute</th>
+<th>Blocked context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGEINT patterns</td>
+<td>raw source motifs can imply autonomous tasking, monitoring,
+response, or deception</td>
+<td>identity-preserving pattern registry plus tabletop, audit,
+provenance, and governance exercises</td>
+<td>deployment, live target tasking, or external action</td>
+</tr>
+<tr>
+<td>OSINT tools</td>
+<td>broad scraping, exposed-service lookup, credentialed search, or
+identity exposure</td>
+<td>tool-governance audit over instructor-provided records, toy inputs,
+and source-quality cards</td>
+<td>live collection expansion or private-data discovery</td>
+</tr>
+<tr>
+<td>GEOINT</td>
+<td>facility assessment, force assessment, geolocation targeting, or
+pattern-of-life inference</td>
+<td>provided imagery metadata quality audit with synthetic change
+examples and uncertainty notes</td>
+<td>live facility assessment or tracking</td>
+</tr>
+<tr>
+<td>SOC and CTI</td>
+<td>autonomous response, exploitability claims, indicator publishing, or
+production-system action</td>
+<td>fabricated-alert tabletop triage with ATT&amp;CK mapping, severity
+rationale, and debrief evidence</td>
+<td>production containment, exploitation, scanning, or blocking</td>
+</tr>
+<tr>
+<td>HUMINT and CI</td>
+<td>persona construction, contact handling, elicitation, deception, or
+source exposure</td>
+<td>synthetic identity-and-provenance ethics audit with role-play
+records and review rubrics</td>
+<td>impersonation, covert contact, or operational-security support</td>
+</tr>
+<tr>
+<td>Cognitive influence</td>
+<td>covert persuasion, microtargeting, audience manipulation, or
+intervention delivery</td>
+<td>opt-in media-literacy lesson plan using synthetic materials and
+transparent prebunking labels</td>
+<td>campaign design or audience-targeted persuasion</td>
+</tr>
+<tr>
+<td>ICS and OT</td>
+<td>facility monitoring, control action, safety-system interference, or
+cyber-physical response</td>
+<td>owned-lab or synthetic process-safety tabletop with logs, rollback,
+and human approval gates</td>
+<td>real plant operations, live devices, or unsafe control changes</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

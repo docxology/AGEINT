@@ -1,0 +1,27 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  BRUSA["BRUSA Agreement, 1943"]
+  UKUSA["UKUSA Agreement, 1946 to 1956"]
+  US["United States NSA"]
+  UK["United Kingdom GCHQ"]
+  CA["Canada CSE"]
+  AU["Australia ASD"]
+  NZ["New Zealand GCSB"]
+  Rules["Shared Handling and Marking Rules"]
+  Legal["Legal Authority per Nation"]
+  Caveat["Source-Protection Caveats"]
+  Oversight["National Oversight Bodies"]
+  Prov["Declassified 2010 Release Provenance"]
+  BRUSA --> UKUSA
+  UKUSA --> US
+  UKUSA --> UK
+  UKUSA --> CA
+  UKUSA --> AU
+  UKUSA --> NZ
+  UKUSA --> Rules
+  UKUSA --> Legal
+  UKUSA --> Caveat
+  Rules --> Oversight
+  Legal --> Oversight
+  Caveat --> Oversight
+  Prov --> UKUSA

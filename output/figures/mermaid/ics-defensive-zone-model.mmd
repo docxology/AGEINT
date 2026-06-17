@@ -1,0 +1,27 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+    root["ICS Defensive Zone Model<br/>Purdue-aligned segmentation<br/>and the safety boundary"]
+    subgraph ENT["Enterprise zone"]
+        direction TB
+        l5["Level 5-4<br/>business and<br/>enterprise IT"]
+    end
+    subgraph DMZ["Industrial DMZ"]
+        direction TB
+        idmz["Brokered data exchange<br/>no direct IT-to-OT path"]
+    end
+    subgraph OPS["Operations zone"]
+        direction TB
+        l3["Level 3<br/>site operations<br/>and historians"]
+        l2["Level 2<br/>supervisory HMI<br/>and SCADA"]
+    end
+    subgraph CTRL["Control zone"]
+        direction TB
+        l1["Level 1<br/>controllers and PLCs"]
+        l0["Level 0<br/>sensors and actuators"]
+    end
+    safety["Safety Instrumented System<br/>independent protective layer<br/>last line of defense"]
+    l5 --> idmz --> l3
+    l3 --> l2 --> l1 --> l0
+    safety -. monitors .-> l1
+    safety -. monitors .-> l0
+    root --> ENT

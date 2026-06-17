@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>autogen-and-mcp-patterns.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<h1 id="sec:appendix-autogen-and-mcp-patterns">AutoGen and MCP
+Patterns</h1>
+<p>The current appendix is an evidence workbook for reusable classroom
+methods. It is educational and evidence-bounded: examples remain
+synthetic, defensive, lawful, and bounded to owned labs, public sources,
+or tabletop exercises. Source-item focus: AutoGen Code-Execution Exploit
+Chain (with Sandboxing Countermeasure); MCP Server: Building a
+STIX/TAXII Intelligence Tool Server.</p>
+<h2
+id="autogen-and-mcp-patterns-workbook-scope-purpose-safety-envelope-and-reuse-decision">AutoGen
+and MCP Patterns workbook scope: purpose, safety envelope, and reuse
+decision</h2>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<h3 id="autogen-and-mcp-patterns-operating-purpose">AutoGen and MCP
+Patterns operating purpose</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<p>The current appendix supports a reusable methods workbook. Each
+source item is treated as a reviewable classroom artifact rather than an
+operational instruction; examples begin with AutoGen Code-Execution
+Exploit Chain (with Sandboxing Countermeasure); MCP Server: Building a
+STIX/TAXII Intelligence Tool Server.</p>
+<h3 id="autogen-and-mcp-patterns-allowed-input-boundary">AutoGen and MCP
+Patterns allowed-input boundary</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<p>Allowed inputs for the current appendix are public official or
+scholarly sources, standards text, instructor-provided excerpts,
+synthetic datasets, owned-lab logs, toy examples, and generated rubrics
+that expose their provenance for AutoGen Code-Execution Exploit Chain
+(with Sandboxing Countermeasure); MCP Server: Building a STIX/TAXII
+Intelligence Tool Server.</p>
+<h3 id="autogen-and-mcp-patterns-excluded-action-boundary">AutoGen and
+MCP Patterns excluded-action boundary</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<p>Excluded actions for the current appendix are unauthorized
+collection, private-data processing, credential use, contact with real
+targets, live system interaction, exploit execution, deception, unsafe
+cyber-physical action, or external deployment while handling AutoGen
+Code-Execution Exploit Chain (with Sandboxing Countermeasure); MCP
+Server: Building a STIX/TAXII Intelligence Tool Server.</p>
+<h3 id="autogen-and-mcp-patterns-expected-artifact-package">AutoGen and
+MCP Patterns expected artifact package</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<p>Expected appendix artifacts are a purpose statement, allowed-inputs
+card, excluded-actions card, source-lane map, provenance record, claim
+ledger, safe-substitution note, output schema, review rubric, and
+capstone handoff memo for AutoGen Code-Execution Exploit Chain (with
+Sandboxing Countermeasure); MCP Server: Building a STIX/TAXII
+Intelligence Tool Server.</p>
+<h3 id="autogen-and-mcp-patterns-safe-artifact-schema">AutoGen and MCP
+Patterns safe artifact schema</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required evidence</th>
+<th>Reject condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Purpose</td>
+<td>lawful educational, governance, research, or defensive purpose</td>
+<td>vague operational objective or missing authority</td>
+</tr>
+<tr>
+<td>Inputs</td>
+<td>public, official, scholarly, synthetic, owned-lab, or
+instructor-provided material</td>
+<td>private data, live target data, credentialed access, or unclear
+provenance</td>
+</tr>
+<tr>
+<td>Transform</td>
+<td>summary, comparison, rubric scoring, tabletop simulation, or audit
+review</td>
+<td>collection expansion, external action, or unsafe system
+interaction</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>memo, matrix, checklist, ledger, rubric, or debrief packet</td>
+<td>deployable procedure, target package, or automated action plan</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td>human reviewer, approval gate, revision note, and refresh owner</td>
+<td>anonymous ownership or no escalation path</td>
+</tr>
+</tbody>
+</table>
+<h3 id="autogen-and-mcp-patterns-inputoutput-contract">AutoGen and MCP
+Patterns input/output contract</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Contract term</th>
+<th>Input rule</th>
+<th>Output rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source identity</td>
+<td>retain <code>ageintNNN</code>, title, URL, and checked status</td>
+<td>cite with Pandoc keys and avoid pasted raw URLs in prose</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>include plain-language labels, table headers, and figure
+alternatives</td>
+<td>reject inaccessible figures, unlabeled tables, or single-modality
+evidence</td>
+</tr>
+<tr>
+<td>Rights</td>
+<td>identify affected groups, safeguards, and residual risk</td>
+<td>preserve privacy, equality, access, contestability, and redress
+notes</td>
+</tr>
+<tr>
+<td>Tooling</td>
+<td>use allowlisted tools, visible prompts, logs, and stop
+conditions</td>
+<td>keep outputs evidence-bounded, reversible, and human-reviewed</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>record source, policy, standard, incident, or assessment
+trigger</td>
+<td>assign an owner and date for revalidation</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="autogen-and-mcp-patterns-failure-cases-and-required-responses">AutoGen
+and MCP Patterns failure cases and required responses</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Failure case</th>
+<th>Signal</th>
+<th>Required response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source laundering</td>
+<td>claim cites an agent summary instead of a verified source</td>
+<td>rebuild the claim ledger from direct sources</td>
+</tr>
+<tr>
+<td>Boundary drift</td>
+<td>exercise starts asking for live targets, private data, or external
+action</td>
+<td>stop, substitute synthetic inputs, and document the block</td>
+</tr>
+<tr>
+<td>Accessibility gap</td>
+<td>learner cannot inspect, navigate, or complete the artifact</td>
+<td>remediate and retest before reuse</td>
+</tr>
+<tr>
+<td>Rights gap</td>
+<td>affected group, safeguard, or redress path is missing</td>
+<td>run HRIA/DPIA worksheet and escalate unresolved risk</td>
+</tr>
+<tr>
+<td>Vendor opacity</td>
+<td>tool owner, data use, logs, or exit path is unknown</td>
+<td>replace tool or pause until procurement evidence exists</td>
+</tr>
+</tbody>
+</table>
+<h3 id="autogen-and-mcp-patterns-evidence-package-schemas">AutoGen and
+MCP Patterns evidence package schemas</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<p>Model and dataset card:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Model card evidence</th>
+<th>Dataset card evidence</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intended use</td>
+<td>accountable task, excluded uses, affected users, human reviewer, and
+accountable owner</td>
+<td>Data Cards purpose statement, recommended use, prohibited reuse,
+stewardship owner, and affected stakeholder groups</td>
+<td>claim is rejected if intended use, excluded use, affected users, or
+owner is missing</td>
+</tr>
+<tr>
+<td>Provenance and collection</td>
+<td>model family, version, supplier or lab, training cutoff, deployment
+context, and configuration hash</td>
+<td>upstream source, collection process, annotation method, consent or
+authority basis, sensitivity class, and license</td>
+<td>artifact is held if provenance, license, authority, or collection
+process is opaque</td>
+</tr>
+<tr>
+<td>Composition and limits</td>
+<td>capability boundary, known failure modes, tool permissions, context
+window limits, and unsupported conditions</td>
+<td>population, sampling frame, coverage gaps, subgroup visibility,
+missingness, transformations, and known caveats</td>
+<td>artifact is revised if population, coverage, or source limits are
+invisible</td>
+</tr>
+<tr>
+<td>Evaluation and caveats</td>
+<td>benchmark suite, task-specific tests, subgroup or context results,
+red-team findings, uncertainty notes, and failure examples</td>
+<td>quality tests, label agreement, bias review, measurement limits,
+transformation log, and Data Cards answer-evaluation notes</td>
+<td>empirical or performance claims are rejected unless test context,
+subgroup caveats, and uncertainty are visible</td>
+</tr>
+<tr>
+<td>Lifecycle controls</td>
+<td>release gate, rollback path, monitoring signal, incident threshold,
+refresh trigger, and model-card update owner</td>
+<td>retention rule, access boundary, update cadence, deletion path,
+stewardship handoff, and dataset-card revision trigger</td>
+<td>reuse is blocked without owner, retention, monitoring, rollback, and
+refresh evidence</td>
+</tr>
+</tbody>
+</table>
+<p>Transparency notice:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Artifact</th>
+<th>Review gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public purpose</td>
+<td>plain-language purpose, authority, affected service, and decision
+role</td>
+<td>reader can tell why the system exists and where human judgment
+remains</td>
+</tr>
+<tr>
+<td>Tool and data summary</td>
+<td>model, data, supplier, provenance, validation, and accessibility
+summary</td>
+<td>sensitive details are de-sensitized without hiding accountability
+fields</td>
+</tr>
+<tr>
+<td>Impact and review</td>
+<td>benefits, risks, safeguards, human review, appeal, and contact
+point</td>
+<td>affected groups can identify recourse and oversight owners</td>
+</tr>
+<tr>
+<td>Publication decision</td>
+<td>publish, partially publish, delay, or hold decision with exemption
+rationale</td>
+<td>non-public fields have a documented legal, security, privacy, or IP
+basis</td>
+</tr>
+</tbody>
+</table>
+<p>Records retention and audit trail:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Record</th>
+<th>Retained fields</th>
+<th>Audit question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source and prompt register</td>
+<td>source identity, prompt version, tool allowlist, reviewer,
+timestamp, and caveat</td>
+<td>Can a later reviewer reconstruct the evidentiary path without
+private or live data?</td>
+</tr>
+<tr>
+<td>Decision and exception log</td>
+<td>risk owner, accepted exception, compensating control, expiry date,
+and approval</td>
+<td>Is every deviation time-bound, justified, and reviewable?</td>
+</tr>
+<tr>
+<td>Artifact retention note</td>
+<td>output type, sensitivity, access boundary, deletion rule, and
+refresh trigger</td>
+<td>Does the retention choice match the educational purpose and rights
+impact?</td>
+</tr>
+<tr>
+<td>Incident and remediation record</td>
+<td>incident signal, containment action, root cause, owner, retest
+result, and closure date</td>
+<td>Can the same failure be detected and prevented in the next reuse
+cycle?</td>
+</tr>
+</tbody>
+</table>
+<p>Release and change-control gate:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Release evidence</th>
+<th>Block condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope freeze</td>
+<td>accountable use case, excluded actions, tool profile, and data
+boundary</td>
+<td>scope expands to external action, live data, or an unreviewed
+capability</td>
+</tr>
+<tr>
+<td>Security and rights review</td>
+<td>privacy, accessibility, security, bias, and human-review checks</td>
+<td>rights impact, vulnerability, or accessibility issue has no
+owner</td>
+</tr>
+<tr>
+<td>Version and rollback</td>
+<td>model or prompt version, changelog, test fixture, and rollback
+path</td>
+<td>change cannot be reproduced, compared, or reverted</td>
+</tr>
+<tr>
+<td>Post-release monitoring</td>
+<td>monitoring signal, incident threshold, refresh trigger, and
+owner</td>
+<td>deployment or reuse occurs without logging and retest
+commitments</td>
+</tr>
+</tbody>
+</table>
+<p>Risk exception memo:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Minimum content</th>
+<th>Approval rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exception requested</td>
+<td>what requirement cannot be met, why, affected groups, and
+duration</td>
+<td>exception must be specific, time-bound, and tied to a compensating
+control</td>
+</tr>
+<tr>
+<td>Risk basis</td>
+<td>likelihood, impact, evidence, uncertainty, alternatives, and
+rejected options</td>
+<td>unsupported confidence or missing alternatives returns the memo for
+revision</td>
+</tr>
+<tr>
+<td>Compensating control</td>
+<td>human review, monitoring, access limit, disclosure, remediation, and
+owner</td>
+<td>control must reduce risk without creating an operational
+workaround</td>
+</tr>
+<tr>
+<td>Expiry and retest</td>
+<td>expiry date, retest condition, review cadence, and closure
+criteria</td>
+<td>open-ended exceptions are rejected</td>
+</tr>
+</tbody>
+</table>
+<p>Learner support and accommodation plan:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Need</th>
+<th>Support</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access and modality</td>
+<td>captions, alt text, keyboard path, plain-language summary, and
+structured tables</td>
+<td>accessibility checklist, defect log, and retest result</td>
+</tr>
+<tr>
+<td>Cognitive load</td>
+<td>worked examples, staged release, glossary, checklist, and optional
+practice fixture</td>
+<td>UDL design note and learner feedback record</td>
+</tr>
+<tr>
+<td>Assessment fairness</td>
+<td>allowed-tool statement, AI-use declaration, alternative submission
+mode, and transparent rubric</td>
+<td>assessment-integrity note and accommodation record</td>
+</tr>
+<tr>
+<td>Feedback and remediation</td>
+<td>revision path, office-hour prompt, example correction, and due-date
+flexibility policy</td>
+<td>feedback log and instructor disposition</td>
+</tr>
+</tbody>
+</table>
+<p>Instructor question bank:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Question type</th>
+<th>Prompt</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source challenge</td>
+<td>Which claim would fail if the strongest source were removed or
+downgraded?</td>
+<td>claim ledger revision and source-lane note</td>
+</tr>
+<tr>
+<td>Boundary challenge</td>
+<td>Where could this exercise drift from analysis into action, and what
+safe substitute prevents it?</td>
+<td>safe-substitution decision and excluded-action card</td>
+</tr>
+<tr>
+<td>Rights challenge</td>
+<td>Which affected group, accessibility need, privacy interest, or
+redress path is under-specified?</td>
+<td>HRIA/DPIA update and accommodation note</td>
+</tr>
+<tr>
+<td>Assurance challenge</td>
+<td>What failure would the current evaluation miss, and what retest
+would reveal it?</td>
+<td>adversarial assurance retest and remediation owner</td>
+</tr>
+</tbody>
+</table>
+<p>Remediation backlog:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Backlog item</th>
+<th>Trigger</th>
+<th>Closure evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unverified claim</td>
+<td>claim lacks a guide citation or directly verified anchor</td>
+<td>verified source, removed claim, or explicit source-guide context
+note</td>
+</tr>
+<tr>
+<td>Unsafe phrasing</td>
+<td>wording implies live targeting, external action, exploitation,
+manipulation, or unsafe control</td>
+<td>safe substitute, blocked context, and reviewer sign-off</td>
+</tr>
+<tr>
+<td>Accessibility defect</td>
+<td>artifact cannot be inspected through an expected assistive or
+alternative workflow</td>
+<td>defect fix, alternative means, and retest result</td>
+</tr>
+<tr>
+<td>Assurance gap</td>
+<td>evaluation, release, exception, incident, or vendor evidence is
+incomplete</td>
+<td>owner, due date, retest, and accepted disposition</td>
+</tr>
+</tbody>
+</table>
+<h3 id="autogen-and-mcp-patterns-rubric-scoring-bands">AutoGen and MCP
+Patterns rubric scoring bands</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Band</th>
+<th>Evidence standard</th>
+<th>Disposition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 - ready</td>
+<td>source identity, accessibility, rights, safety, and reviewer
+evidence are complete</td>
+<td>may be reused after normal refresh review</td>
+</tr>
+<tr>
+<td>3 - revise</td>
+<td>one evidence field is incomplete but risk is bounded and
+remediable</td>
+<td>revise before reuse</td>
+</tr>
+<tr>
+<td>2 - hold</td>
+<td>multiple evidence fields are incomplete or ownership is unclear</td>
+<td>hold for instructor and assurance review</td>
+</tr>
+<tr>
+<td>1 - reject</td>
+<td>unsafe action, private data, inaccessible artifact, or unverified
+claim appears</td>
+<td>reject and rebuild from safe inputs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="autogen-and-mcp-patterns-refresh-evidence">AutoGen and MCP
+Patterns refresh evidence</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Evidence item</th>
+<th>Refresh trigger</th>
+<th>Retained support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source lane</td>
+<td>official source, standard, or legal text changes</td>
+<td>checked-as-of date and source note</td>
+</tr>
+<tr>
+<td>Safety treatment</td>
+<td>operational wording or unsafe motif appears</td>
+<td>safe-substitution decision and blocked context</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>WCAG, UDL, or institutional accessibility duty changes</td>
+<td>defect log, retest result, and owner</td>
+</tr>
+<tr>
+<td>Rights</td>
+<td>privacy, human-rights, public transparency, or education guidance
+changes</td>
+<td>HRIA/DPIA revision note</td>
+</tr>
+<tr>
+<td>Vendor/tool</td>
+<td>contract, data-use, incident, or model capability changes</td>
+<td>procurement packet and incident review</td>
+</tr>
+</tbody>
+</table>
+<h3 id="autogen-and-mcp-patterns-validation-rubric">AutoGen and MCP
+Patterns validation rubric</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Passing evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source identity</td>
+<td>existing <code>ageintNNN</code> keys remain stable or new references
+are append-only</td>
+</tr>
+<tr>
+<td>Verification</td>
+<td>official, standards, public-domain, or scholarly URL is checked
+directly</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>method is converted into tabletop, audit, governance, or
+synthetic-data treatment</td>
+</tr>
+<tr>
+<td>Reproducibility</td>
+<td>another reviewer can rebuild the artifact from retained inputs</td>
+</tr>
+<tr>
+<td>Rights review</td>
+<td>privacy, IP, human-rights, workforce, and education impacts are
+considered where relevant</td>
+</tr>
+</tbody>
+</table>
+<h3
+id="autogen-and-mcp-patterns-debrief-protocol-and-reuse-decision">AutoGen
+and MCP Patterns debrief protocol and reuse decision</h3>
+<p><strong>Section anchor.</strong>
+[sec:appendix-autogen-and-mcp-patterns].</p>
+<p>Debrief by naming what the artifact can support, what it does not
+establish, what source changed, what risk was avoided by safe
+substitution, what human approval is still required, and when the
+appendix should be refreshed for AutoGen Code-Execution Exploit Chain
+(with Sandboxing Countermeasure); MCP Server: Building a STIX/TAXII
+Intelligence Tool Server.</p>
+<h2 id="mcp-and-autogen-source-boundary">MCP and AutoGen source
+boundary</h2>
+<p>This appendix separates protocol claims, framework-pattern claims,
+and security claims before learners build any classroom artifact. MCP
+interoperability language is grounded in the version-pinned official
+specification; tool-consent, confused-deputy, token-handling, and
+least-privilege language is grounded in the official MCP security
+guidance and NSA security-design guidance. STIX/TAXII examples are
+treated as standards-governed data-exchange examples, not as permission
+to connect to external systems
+[official_model_context_protocol_specification];
+[official_model_context_protocol_security_best_practices];
+[official_nsa_mcp_security_design_considerations];
+[official_oasis_stix_21]; [official_oasis_taxii_21].</p>
+<p>AutoGen and multi-agent framework rows remain a safe-substitution
+exercise: the learner may compare orchestration patterns, sandbox
+policies, denied-action logs, and reviewer evidence, but may not run
+external code, contact live services, or treat framework names as
+assurance evidence. When the source guide supplies only framework or
+security context, this appendix records the limitation and routes
+normative claims back to the official protocol, standards, and security
+anchors rather than laundering them through an agent-generated summary
+[ageint147]; [ageint153]; [ageint155]; [ageint299]; [ageint309];
+[ageint310].</p>
+<h3
+id="autogen-and-mcp-patterns-visual-navigation-and-evidence-figures-purpose-source-flow-and-limits">AutoGen
+and MCP Patterns visual navigation and evidence figures: purpose, source
+flow, and limits</h3>
+<p>The appendix uses [fig:appendix-mcp-host-client-server],
+[fig:ageint-mcp-version-boundary], and [fig:ageint-safety-boundary-loop]
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: [sec:curriculum_orientation],
+[sec:appendix-crewai-multi-agent-operations],
+[sec:appendix-cryptographic-methods].</p>
+<figure id="fig:appendix-mcp-host-client-server">
+<img src="../../figures/mermaid/appendix-mcp-host-client-server.png"
+alt="MCP standardizes how an agent host connects through clients to servers that expose resources, prompts, and tools under capability negotiation and least-privilege scoping. In the autogen and mcp patterns appendix, it lets readers compare Agent host, Client A, Client B, and Capability negotiation so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">MCP standardizes how an agent host
+connects through clients to servers that expose resources, prompts, and
+tools under capability negotiation and least-privilege scoping. In the
+autogen and mcp patterns appendix, it lets readers compare Agent host,
+Client A, Client B, and Capability negotiation so the visual functions
+as a traceable course aid rather than an unscoped
+assertion.</figcaption>
+</figure>
+<figure id="fig:ageint-mcp-version-boundary">
+<img src="../../figures/mermaid/ageint-mcp-version-boundary.png"
+alt="Conceptual schematic showing that MCP tool access depends on host, client, server, version, identity, authorization, and audit evidence rather than protocol names alone. In the autogen and mcp patterns appendix, it lets readers compare Host policy, MCP client, Identity and authorization, and Block or isolate so the visual functions as a traceable course aid rather than an unscoped assertion." />
+<figcaption aria-hidden="true">Conceptual schematic showing that MCP
+tool access depends on host, client, server, version, identity,
+authorization, and audit evidence rather than protocol names alone. In
+the autogen and mcp patterns appendix, it lets readers compare Host
+policy, MCP client, Identity and authorization, and Block or isolate so
+the visual functions as a traceable course aid rather than an unscoped
+assertion.</figcaption>
+</figure>
+<h3
+id="autogen-and-mcp-patterns-runtime-item-map-and-source-roster-generated-rows-and-citation-support">AutoGen
+and MCP Patterns runtime item map and source roster: generated rows and
+citation support</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Safe curriculum treatment</th>
+<th>Blocked source motif, audit-only</th>
+<th>Allowed fixture</th>
+<th>Rejected action</th>
+<th>Required artifact</th>
+<th>Citation spine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AutoGen sandbox and code-execution approval review</td>
+<td>D.1 retained for audit; operational wording transformed</td>
+<td>toy OSINT fixtures, sandbox policy cards, and blocked-action
+logs</td>
+<td>external execution, credentialed access, network calls, or unmanaged
+tool use</td>
+<td>tool-isolation run card and denied-action evidence</td>
+<td>-</td>
+</tr>
+<tr>
+<td>D.2 MCP Server: Building a STIX/TAXII Intelligence Tool Server</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>-</td>
+</tr>
+<tr>
+<td>D.3 MCP Security: NSA Guidance Implementation in Python</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>[ageint155]</td>
+</tr>
+<tr>
+<td>D.4 AutoGen GroupChat for Competing Hypothesis Analysis</td>
+<td>no blocked motif; source title used verbatim</td>
+<td>public sources, synthetic records, owned-lab notes, and instructor
+handouts</td>
+<td>external action, private-data processing, unsafe system interaction,
+or deployment</td>
+<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

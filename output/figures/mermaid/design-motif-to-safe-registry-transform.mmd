@@ -1,0 +1,15 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  A([Raw design motif]) --> B[Governance intake]
+  B --> C[Safe registry entry]
+  B --> D[Provenance and evidence record]
+  B --> E[Interface contract]
+  B --> F[Compliance and rights mapping]
+  C --> G[Tabletop audit and review]
+  D --> G
+  E --> G
+  F --> G
+  G --> H{Audit passed?}
+  H -->|No| B
+  H -->|Yes| I[Governed catalog entry]
+  I --> J([Refresh triggers and re-review])

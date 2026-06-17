@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h2
+id="structured-judgment-lens-path-for-structured-analytic-techniques-sats-lesson-cluster-safe-artifact-and-review">Structured-Judgment
+Lens path for Structured Analytic Techniques (SATs): lesson cluster,
+safe artifact, and review</h2>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-structured-analytic-techniques-sats]; [ageint237].</p>
+<h3
+id="structured-analytic-techniques-sats-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Structured
+Analytic Techniques (SATs) practice studio: topic lessons, safe worked
+example, and knowledge check</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-structured-analytic-techniques-sats]; [ageint237].</p>
+<h3
+id="structured-analytic-techniques-sats-topic-lessons-source-backed-concepts-and-transfer-tasks">Structured
+Analytic Techniques (SATs) topic lessons: source-backed concepts and
+transfer tasks</h3>
+<p>This module builds analytic tradecraft as disciplined judgment under
+uncertainty: claims become useful only when evidence, assumptions,
+alternatives, confidence, and dissent remain visible. The sequence opens
+with <strong>CIA Tradecraft Primer: SATs for Intelligence
+Analysis</strong>, <strong>ICD 203 Analytic Standards: The Nine
+Tradecraft Standards</strong>, <strong>Psychology of Intelligence
+Analysis (Heuer, CIA 1999)</strong> and applies the
+<strong>Structured-Judgment Lens</strong> practice frame through
+concept, evidence, artifact, misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map
+[fig:part-epistemic-rigor-and-analytic-tradecraft-module-map]; module
+overview [sec:chapter-structured-analytic-techniques-sats]; curriculum
+atlas [sec:curriculum_orientation].</p>
+<p><strong>Triangulation anchors.</strong> In module 41’s topic-lessons
+section, directly verified anchors for the <strong>Analytic Tradecraft
+and Source Integrity</strong> lane include [official_odni_icd_203];
+[official_odni_icd_206]; [official_odni_objectivity];
+[official_cia_tradecraft_primer]. Use them to test source-guide claims,
+method boundaries, governance constraints, and safety gates without
+replacing the module’s <code>ageintNNN</code> provenance.</p>
+<h4
+id="lesson-1-cia-tradecraft-primer-sats-for-intelligence-analysis">Lesson
+1: CIA Tradecraft Primer: SATs for Intelligence Analysis</h4>
+<p><strong>Concept.</strong> <strong>CIA Tradecraft Primer: SATs for
+Intelligence Analysis</strong> studies the declassified record for
+institutional lessons about oversight, source protection, and limits on
+translating history into practice.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>CIA Tradecraft Primer</strong>, collapsing reporting, inference,
+and judgment into one line undermines structured reasoning and
+source-integrity review; the lesson builds the habit to separate
+reporting from inference, and inference from judgment.</p>
+<p><strong>Source support.</strong> <strong>CIA Tradecraft Primer: SATs
+for Intelligence Analysis</strong> rests on [ageint189]. Its anchor
+reference records: This primer will assist analysts in dealing with the
+perennial problems of intelligence. Use it for the working definition
+that <strong>CIA Tradecraft Primer: SATs for Intelligence
+Analysis</strong> can defend, where that scope ends, and the refresh
+check owed before this evidence transfers. External triangulation uses
+[official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>CIA Tradecraft
+Primer</strong>, reason from the sources cited in this row. [ageint189]
+This primer will assist analysts in dealing with the perennial problems
+of intelligence. Work source by source: name the bounded claim, its
+origin, the residual uncertainty, and the trigger that would change how
+this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>CIA Tradecraft
+Primer</strong>, build a <strong>analytic note with hypotheses, evidence
+table, confidence, and dissent fields</strong> for this structured
+reasoning and source-integrity review topic. The artifact must separate
+the source descriptor, the bounded judgment about <strong>CIA Tradecraft
+Primer</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+<strong>CIA Tradecraft Primer</strong> work as a
+<strong>competing-hypotheses evidence table</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>CIA Tradecraft Primer</strong>: that a confident narrative is
+the same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>CIA Tradecraft
+Primer</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-2-icd-203-analytic-standards-the-nine-tradecraft-standards">Lesson
+2: ICD 203 Analytic Standards: The Nine Tradecraft Standards</h4>
+<p><strong>Concept.</strong> <strong>ICD 203 Analytic Standards: The
+Nine Tradecraft Standards</strong> — Calibrate confidence to evidence
+strength, source quality, and alternative explanations—not to rhetorical
+certainty.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>ICD 203
+Analytic Standards</strong> to separate reporting from inference, and
+inference from judgment. A defensible treatment names the judgment it
+enables for structured reasoning and source-integrity review, the proof
+limit that collapsing reporting, inference, and judgment into one line
+would otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>ICD 203 Analytic Standards:
+The Nine Tradecraft Standards</strong> rests on [ageint002] and
+[ageint190]. The closest source to this row notes: Intelligence
+Community’s public site, presenting objectivity as a core IC value. Use
+them for pinning down the scope of <strong>ICD 203 Analytic Standards:
+The Nine Tradecraft Standards</strong>, the edge of that scope, and when
+these citations need re-verifying before transfer. External
+triangulation uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>ICD 203 Analytic
+Standards</strong> in the evidence the row cites. [ageint002] ICD 203
+directs the heads of IC elements to designate a similar individual or
+office to respond. [ageint190] A page on Intelligence.gov, the U.S.
+Intelligence Community’s public site, presenting objectivity as a core
+IC value. It explains that intelligence analysis must be performed and
+conveyed without distortion from personal or political bias, and
+references the standards codified in Intelligence Community Directive
+(ICD) 203 on analytic standards. From each source, pull the bounded
+claim it can carry for this topic, its provenance, the stated
+uncertainty, and the one condition that would overturn that
+judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>ICD 203 Analytic
+Standards</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+structured reasoning and source-integrity review topic. The artifact
+must separate the source descriptor, the bounded judgment about
+<strong>ICD 203 Analytic Standards</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape <strong>ICD 203 Analytic Standards</strong> work as
+a <strong>competing-hypotheses evidence table</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>ICD 203 Analytic Standards</strong>: that a confident narrative
+is the same as a tested, source-backed judgment with its alternatives
+and confidence stated.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>ICD 203 Analytic
+Standards</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-3-psychology-of-intelligence-analysis-heuer-cia-1999">Lesson
+3: Psychology of Intelligence Analysis (Heuer, CIA 1999)</h4>
+<p><strong>Concept.</strong> <strong>Psychology of Intelligence Analysis
+(Heuer, CIA 1999)</strong> studies the declassified record for
+institutional lessons about oversight, source protection, and limits on
+translating history into practice.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Psychology of Intelligence Analysis (Heuer, CIA 1999)</strong>,
+collapsing reporting, inference, and judgment into one line undermines
+structured reasoning and source-integrity review; the lesson builds the
+habit to separate reporting from inference, and inference from
+judgment.</p>
+<p><strong>Source support.</strong> <strong>Psychology of Intelligence
+Analysis (Heuer, CIA 1999)</strong> uses curated analytic-tradecraft
+anchors [official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint180]; [ageint191]; [ageint192] remain context
+only; primary support must keep likelihood, confidence, assumptions,
+alternatives, dissent, source quality, ACH limits, and refresh duty
+separate. External triangulation uses [official_odni_icd_203];
+[official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Psychology of
+Intelligence Analysis (Heuer, CIA 1999)</strong>, use the curated
+analytic-tradecraft anchors [official_odni_icd_203];
+[official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>Psychology of
+Intelligence Analysis (Heuer, CIA 1999)</strong>, build a
+<strong>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</strong> for this structured reasoning and
+source-integrity review topic. The artifact must separate the source
+descriptor, the bounded judgment about <strong>Psychology of
+Intelligence Analysis</strong>, the analytic caveat, the confidence
+note, the excluded-inference boundary, and the reviewer who logs
+dissent. Shape the same topic work as a <strong>competing-hypotheses
+evidence table</strong> that records its evidence, the residual
+uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Psychology of Intelligence Analysis (Heuer, CIA 1999)</strong>:
+that a confident narrative is the same as a tested, source-backed
+judgment with its alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Psychology of Intelligence Analysis (Heuer, CIA 1999)</strong>
+to another artifact while keeping structured reasoning and
+source-integrity review and reviewer ownership explicit.</p>
+<h4
+id="lesson-4-structured-analytic-techniques-heuer-pherson-2011">Lesson
+4: Structured Analytic Techniques (Heuer &amp; Pherson, 2011)</h4>
+<p><strong>Concept.</strong> <strong>Structured Analytic Techniques
+(Heuer &amp; Pherson, 2011)</strong> uses the method to keep
+alternatives, disconfirming evidence, and confidence visible.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Structured
+Analytic Techniques (Heuer &amp; Pherson, 2011)</strong> to separate
+reporting from inference, and inference from judgment. A defensible
+treatment names the judgment it enables for structured reasoning and
+source-integrity review, the proof limit that collapsing reporting,
+inference, and judgment into one line would otherwise hide, and the
+reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Structured Analytic
+Techniques (Heuer &amp; Pherson, 2011)</strong> uses curated
+analytic-tradecraft anchors [official_odni_icd_203];
+[official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint193]; [ageint194] remain context only; primary
+support must keep likelihood, confidence, assumptions, alternatives,
+dissent, source quality, ACH limits, and refresh duty separate. External
+triangulation uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Structured Analytic
+Techniques (Heuer &amp; Pherson, 2011)</strong>, use the curated
+analytic-tradecraft anchors [official_odni_icd_203];
+[official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>Structured Analytic
+Techniques (Heuer &amp; Pherson, 2011)</strong>, build a
+<strong>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</strong> for this structured reasoning and
+source-integrity review topic. The artifact must separate the source
+descriptor, the bounded judgment about <strong>Structured Analytic
+Techniques</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+the same topic work as a <strong>competing-hypotheses evidence
+table</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Structured Analytic Techniques (Heuer &amp; Pherson,
+2011)</strong>: that a confident narrative is the same as a tested,
+source-backed judgment with its alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Structured Analytic
+Techniques (Heuer &amp; Pherson, 2011)</strong> from this module to a
+second motif by preserving structured reasoning and source-integrity
+review, replacing action with audit, and naming the blocked use.</p>
+<h4 id="lesson-5-analysis-of-competing-hypotheses-ach">Lesson 5:
+Analysis of Competing Hypotheses (ACH)</h4>
+<p><strong>Concept.</strong> <strong>Analysis of Competing Hypotheses
+(ACH)</strong> uses the method to keep alternatives, disconfirming
+evidence, and confidence visible.</p>
+<p><strong>Why it matters.</strong> <strong>Analysis of Competing
+Hypotheses (ACH)</strong> matters in the <strong>Analytic Tradecraft and
+Source Integrity</strong> lane because structured reasoning and
+source-integrity evidence must stay separate from judgment; collapsing
+reporting, inference, and judgment into one line is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>Analysis of Competing
+Hypotheses (ACH)</strong> rests on [ageint297] and [ageint298]. The lead
+source’s own note reads: Official ODNI Intelligence Community Directive
+203 analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Use them for pinning down the scope of <strong>Analysis of Competing
+Hypotheses (ACH)</strong>, the edge of that scope, and when these
+citations need re-verifying before transfer. External triangulation uses
+[official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Analysis of
+Competing Hypotheses (ACH)</strong>, work from the cited evidence behind
+this row. [ageint297] Official ODNI Intelligence Community Directive 203
+analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+[ageint298] Official ODNI index for Intelligence Community Directives
+used to locate current directive source material and preserve
+directive-context citations. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> For <strong>Analysis of Competing
+Hypotheses (ACH)</strong>, build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this structured reasoning and source-integrity review topic. The
+artifact must separate the source descriptor, the bounded judgment about
+<strong>Analysis of Competing Hypotheses</strong>, the analytic caveat,
+the confidence note, the excluded-inference boundary, and the reviewer
+who logs dissent. Shape this subject work as a
+<strong>competing-hypotheses evidence table</strong> that records its
+evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Analysis of Competing Hypotheses (ACH)</strong>: that listing
+one favored hypothesis is enough without testing alternatives.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Analysis of
+Competing Hypotheses (ACH)</strong> from this module to a second motif
+by preserving structured reasoning and source-integrity review,
+replacing action with audit, and naming the blocked use.</p>
+<p><strong>Diagnosticity ratio.</strong> The diagnosticity an ACH table
+scores is a likelihood ratio. For two hypotheses <span
+class="math inline">\(H_i, H_j\)</span> and an item of evidence <span
+class="math inline">\(E\)</span>, the posterior odds update as <span
+class="math display">\[\frac{P(H_i \mid E)}{P(H_j \mid E)} = \frac{P(E
+\mid H_i)}{P(E \mid H_j)} \times \frac{P(H_i)}{P(H_j)}.\]</span>
+Evidence is diagnostic only when the likelihood ratio <span
+class="math inline">\(P(E \mid H_i)/P(E \mid H_j)\)</span> departs from
+<span class="math inline">\(1\)</span>; evidence consistent with every
+hypothesis (ratio <span class="math inline">\(\approx 1\)</span>)
+carries no diagnostic weight, which is exactly Heuer’s rule to weigh
+disconfirming evidence over confirming evidence [ageint192];
+[ageint297].</p>
+<h4 id="lesson-6-devils-advocacy-and-red-teaming">Lesson 6: Devil’s
+Advocacy and Red Teaming</h4>
+<p><strong>Concept.</strong> <strong>Devil’s Advocacy and Red
+Teaming</strong> structures evaluation as misuse-case testing with
+blocked outcomes, logged evidence, and reviewer disposition.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Devil’s
+Advocacy</strong> to separate reporting from inference, and inference
+from judgment. A defensible treatment names the judgment it enables for
+structured reasoning and source-integrity review, the proof limit that
+collapsing reporting, inference, and judgment into one line would
+otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Devil’s Advocacy and Red
+Teaming</strong> rests on [ageint300], [ageint304], and [ageint306]. The
+lead source’s own note reads: NIST SP 800-218, the Secure Software
+Development Framework Version 1.1 published in February 2022,
+establishes a set of high-level practices for integrating security into
+software development lifecycles in order to reduce vulnerabilities in
+released software, mitigate the impact of exploited vulnerabilities, and
+address root causes to prevent recurrences. Use them for pinning down
+the scope of <strong>Devil’s Advocacy and Red Teaming</strong>, the edge
+of that scope, and when these citations need re-verifying before
+transfer. External triangulation uses [official_odni_icd_203];
+[official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Devil’s
+Advocacy</strong>, work from the cited evidence behind this row.
+[ageint300] MITRE ATLAS knowledge base for adversarial threats to AI
+systems, used for defensive AI red-team assurance and misuse taxonomy.
+[ageint304] NIST SP 800-218, the Secure Software Development Framework
+Version 1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences. [ageint306] Official CISA Artificial Intelligence page for
+AI security, safety, resilience, and critical-infrastructure governance
+source support. From each source, pull the bounded claim it can carry
+for this topic, its provenance, the stated uncertainty, and the one
+condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this structured reasoning and source-integrity review topic. The
+artifact must separate the source descriptor, the bounded judgment about
+<strong>Devil’s Advocacy</strong>, the analytic caveat, the confidence
+note, the excluded-inference boundary, and the reviewer who logs
+dissent. Shape this subject work as a <strong>competing-hypotheses
+evidence table</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Devil’s Advocacy</strong>: that a confident narrative is the
+same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Devil’s Advocacy</strong> to another artifact while keeping
+structured reasoning and source-integrity review and reviewer ownership
+explicit.</p>
+<h4 id="lesson-7-alternative-futures-analysis">Lesson 7: Alternative
+Futures Analysis</h4>
+<p><strong>Concept.</strong> <strong>Alternative Futures
+Analysis</strong> uses structured ideation to widen alternatives before
+converging on evidence-tested judgments.</p>
+<p><strong>Why it matters.</strong> <strong>Alternative Futures
+Analysis</strong> matters in the <strong>Analytic Tradecraft and Source
+Integrity</strong> lane because structured reasoning and
+source-integrity evidence must stay separate from judgment; collapsing
+reporting, inference, and judgment into one line is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>Alternative Futures
+Analysis</strong> rests on [ageint297] and [ageint298]. Its anchor
+reference records: Official ODNI Intelligence Community Directive 203
+analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Use them for the claim that <strong>Alternative Futures
+Analysis</strong> lets you defend here, the limit it has to respect, and
+the re-check owed before reuse. External triangulation uses
+[official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>Alternative
+Futures Analysis</strong> against the works cited for this row.
+[ageint297] Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+[ageint298] Official ODNI index for Intelligence Community Directives
+used to locate current directive source material and preserve
+directive-context citations. Work source by source: name the bounded
+claim, its origin, the residual uncertainty, and the trigger that would
+change how this topic is judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this structured reasoning and source-integrity review topic. The
+artifact must separate the source descriptor, the bounded judgment about
+<strong>Alternative Futures Analysis</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape this subject work as a <strong>competing-hypotheses
+evidence table</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Alternative Futures Analysis</strong>: that a confident
+narrative is the same as a tested, source-backed judgment with its
+alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Alternative Futures
+Analysis</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4 id="lesson-8-brainstorming-and-divergent-thinking-techniques">Lesson
+8: Brainstorming and Divergent Thinking Techniques</h4>
+<p><strong>Concept.</strong> <strong>Brainstorming and Divergent
+Thinking Techniques</strong> uses structured ideation to widen
+alternatives before converging on evidence-tested judgments.</p>
+<p><strong>Why it matters.</strong> <strong>Brainstorming and Divergent
+Thinking Techniques</strong> connects classroom vocabulary to Analytic
+Tradecraft and Source Integrity practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>Brainstorming and Divergent
+Thinking Techniques</strong> rests on [ageint297] and [ageint298]. Its
+anchor reference records: Official ODNI Intelligence Community Directive
+203 analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Use them for the claim that <strong>Brainstorming and Divergent Thinking
+Techniques</strong> lets you defend here, the limit it has to respect,
+and the re-check owed before reuse. External triangulation uses
+[official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Brainstorming
+and Divergent Thinking Techniques</strong> in the evidence the row
+cites. [ageint297] Official ODNI Intelligence Community Directive 203
+analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+[ageint298] Official ODNI index for Intelligence Community Directives
+used to locate current directive source material and preserve
+directive-context citations. From each source, pull the bounded claim it
+can carry for this topic, its provenance, the stated uncertainty, and
+the one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this structured reasoning and source-integrity review topic. The
+artifact must separate the source descriptor, the bounded judgment about
+<strong>Brainstorming and Divergent Thinking Techniques</strong>, the
+analytic caveat, the confidence note, the excluded-inference boundary,
+and the reviewer who logs dissent. Shape this subject work as a
+<strong>competing-hypotheses evidence table</strong> that records its
+evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Brainstorming and Divergent Thinking Techniques</strong>: that a
+confident narrative is the same as a tested, source-backed judgment with
+its alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Brainstorming and
+Divergent Thinking Techniques</strong> from this module to a second
+motif by preserving structured reasoning and source-integrity review,
+replacing action with audit, and naming the blocked use.</p>
+<h4 id="lesson-9-deception-detection-sats">Lesson 9: Deception Detection
+SATs</h4>
+<p><strong>Concept.</strong> <strong>Deception Detection SATs</strong>
+compares deception indicators with alternative explanations and
+uncertainty before any operational inference.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Deception Detection SATs</strong>, collapsing reporting,
+inference, and judgment into one line undermines structured reasoning
+and source-integrity review; the lesson builds the habit to separate
+reporting from inference, and inference from judgment.</p>
+<p><strong>Source support.</strong> <strong>Deception Detection
+SATs</strong> uses curated analytic-tradecraft anchors
+[official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint193] remain context only; primary support must
+keep likelihood, confidence, assumptions, alternatives, dissent, source
+quality, ACH limits, and refresh duty separate. External triangulation
+uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Deception Detection
+SATs</strong>, use the curated analytic-tradecraft anchors
+[official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>Deception Detection
+SATs</strong>, build a threat-model review card with assumptions,
+disconfirming evidence, and confidence language. Shape the same topic
+work as a <strong>competing-hypotheses evidence table</strong> that
+names evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Deception Detection SATs</strong>: that a confident narrative is
+the same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Deception Detection
+SATs</strong> from this module to a second motif by preserving
+structured reasoning and source-integrity review, replacing action with
+audit, and naming the blocked use.</p>
+<h4 id="lesson-10-key-assumptions-check">Lesson 10: Key Assumptions
+Check</h4>
+<p><strong>Concept.</strong> <strong>Key Assumptions Check</strong> —
+List assumptions explicitly and test which ones would change the
+judgment if falsified.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Key Assumptions Check</strong>, collapsing reporting, inference,
+and judgment into one line undermines structured reasoning and
+source-integrity review; the lesson builds the habit to separate
+reporting from inference, and inference from judgment.</p>
+<p><strong>Source support.</strong> <strong>Key Assumptions
+Check</strong> rests on [ageint297] and [ageint298]. The closest source
+to this row notes: Official ODNI Intelligence Community Directive 203
+analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Use them for fixing what <strong>Key Assumptions Check</strong> covers,
+marking the boundary it must not cross, and timing the next source
+refresh. External triangulation uses [official_odni_icd_203];
+[official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> Ground <strong>Key Assumptions
+Check</strong> in the evidence the row cites. [ageint297] Official ODNI
+Intelligence Community Directive 203 analytic standards source for
+objectivity, independence, timeliness, alternatives, confidence,
+sourcing, and accuracy in analytic products. [ageint298] Official ODNI
+index for Intelligence Community Directives used to locate current
+directive source material and preserve directive-context citations. Work
+source by source: name the bounded claim, its origin, the residual
+uncertainty, and the trigger that would change how this topic is
+judged.</p>
+<p><strong>Student artifact.</strong> Build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this structured reasoning and source-integrity review topic. The
+artifact must separate the source descriptor, the bounded judgment about
+<strong>Key Assumptions Check</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape this subject work as a <strong>competing-hypotheses
+evidence table</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Key Assumptions Check</strong>: that a confident narrative is
+the same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Key Assumptions Check</strong> to another artifact while keeping
+structured reasoning and source-integrity review and reviewer ownership
+explicit.</p>
+<h4 id="lesson-11-indicators-validator">Lesson 11: Indicators
+Validator</h4>
+<p><strong>Concept.</strong> <strong>Indicators Validator</strong>
+applies structured analytic methods with explicit alternatives, evidence
+tables, and calibrated confidence—not rhetorical certainty.</p>
+<p><strong>Why it matters.</strong> <strong>Indicators
+Validator</strong> connects classroom vocabulary to Analytic Tradecraft
+and Source Integrity practice: learners document evidence, caveats, and
+reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>Indicators
+Validator</strong> rests on [ageint309], [ageint310], and [ageint300].
+The lead source’s own note reads: It defines a RESTful, HTTPS-based API
+protocol for sharing cyber threat intelligence between organizations,
+supporting two communication models: Collections (request-response) and
+Channels (publish-subscribe). Use them for the working definition that
+<strong>Indicators Validator</strong> can defend, where that scope ends,
+and the refresh check owed before this evidence transfers. External
+triangulation uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Indicators
+Validator</strong>, work from the cited evidence behind this row.
+[ageint309] An OASIS standard specification defining STIX (Structured
+Threat Information Expression), a language for exchanging cyber threat
+intelligence in a standardized, machine-readable form. It establishes a
+graph-based model with STIX Domain Objects, Cyber-observable Objects,
+and Relationship Objects, plus meta objects, bundles, and a patterning
+language for detection. [ageint310] The OASIS Standard specification for
+TAXII (Trusted Automated Exchange of Intelligence Information) Version
+2.1, published in 2021 by the OASIS Cyber Threat Intelligence Technical
+Committee. It defines a RESTful, HTTPS-based API protocol for sharing
+cyber threat intelligence between organizations, supporting two
+communication models: Collections (request-response) and Channels
+(publish-subscribe). [ageint300] MITRE ATLAS knowledge base for
+adversarial threats to AI systems, used for defensive AI red-team
+assurance and misuse taxonomy. From each source, pull the bounded claim
+it can carry for this topic, its provenance, the stated uncertainty, and
+the one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> Build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this structured reasoning and source-integrity review topic. The
+artifact must separate the source descriptor, the bounded judgment about
+<strong>Indicators Validator</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape this subject work as a <strong>competing-hypotheses
+evidence table</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Indicators Validator</strong>: that a confident narrative is the
+same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Indicators Validator</strong> to another artifact while keeping
+structured reasoning and source-integrity review and reviewer ownership
+explicit.</p>
+<h4 id="lesson-12-what-if-pre-mortem-analysis">Lesson 12: What If? /
+Pre-Mortem Analysis</h4>
+<p><strong>Concept.</strong> <strong>What If? / Pre-Mortem
+Analysis</strong> applies structured analytic methods with explicit
+alternatives, evidence tables, and calibrated confidence—not rhetorical
+certainty.</p>
+<p><strong>Why it matters.</strong> <strong>What If? / Pre-Mortem
+Analysis</strong> matters in the <strong>Analytic Tradecraft and Source
+Integrity</strong> lane because structured reasoning and
+source-integrity evidence must stay separate from judgment; collapsing
+reporting, inference, and judgment into one line is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>What If? / Pre-Mortem
+Analysis</strong> rests on [ageint297] and [ageint298]. Its anchor
+reference records: Official ODNI Intelligence Community Directive 203
+analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Use them for pinning down the scope of <strong>What If? / Pre-Mortem
+Analysis</strong>, the edge of that scope, and when these citations need
+re-verifying before transfer. External triangulation uses
+[official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> Read <strong>What If? /
+Pre-Mortem Analysis</strong> against the works cited for this row.
+[ageint297] Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+[ageint298] Official ODNI index for Intelligence Community Directives
+used to locate current directive source material and preserve
+directive-context citations. From each source, pull the bounded claim it
+can carry for this topic, its provenance, the stated uncertainty, and
+the one condition that would overturn that judgment.</p>
+<p><strong>Student artifact.</strong> For <strong>What If? / Pre-Mortem
+Analysis</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+structured reasoning and source-integrity review topic. The artifact
+must separate the source descriptor, the bounded judgment about
+<strong>What If Pre-Mortem Analysis</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape this subject work as a <strong>competing-hypotheses
+evidence table</strong> that logs the evidence, the uncertainty, the
+responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>What If? / Pre-Mortem Analysis</strong>: that a confident
+narrative is the same as a tested, source-backed judgment with its
+alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>What If? /
+Pre-Mortem Analysis</strong> audit pattern from this module on a
+different sample record set with a new reviewer and blocked-use
+note.</p>
+<h4
+id="lesson-13-analytic-tradecraft-and-the-intelligence-community-tandfonline-2014">Lesson
+13: Analytic Tradecraft and the Intelligence Community (Tandfonline,
+2014)</h4>
+<p><strong>Concept.</strong> <strong>Analytic Tradecraft and the
+Intelligence Community (Tandfonline, 2014)</strong> maps the theory to
+institutions: priorities, feedback, incentives, review loops, and
+records shape what an intelligence community notices and ignores.</p>
+<p><strong>Why it matters.</strong> <strong>Analytic Tradecraft</strong>
+connects classroom vocabulary to Analytic Tradecraft and Source
+Integrity practice: learners document evidence, caveats, and reviewer
+ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> <strong>Analytic Tradecraft and the
+Intelligence Community (Tandfonline, 2014)</strong> uses curated
+analytic-tradecraft anchors [official_odni_icd_203];
+[official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint195] remain context only; primary support must
+keep likelihood, confidence, assumptions, alternatives, dissent, source
+quality, ACH limits, and refresh duty separate. External triangulation
+uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Analytic
+Tradecraft</strong>, use the curated analytic-tradecraft anchors
+[official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>Analytic
+Tradecraft</strong>, build an institutional feedback-loop map with
+incentives, review points, and oversight hooks. Shape <strong>Analytic
+Tradecraft</strong> work as a <strong>competing-hypotheses evidence
+table</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Analytic Tradecraft</strong>: that a confident narrative is the
+same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Analytic
+Tradecraft</strong> from this module to a second motif by preserving
+structured reasoning and source-integrity review, replacing action with
+audit, and naming the blocked use.</p>
+<h4
+id="lesson-14-analytic-tradecraft-standards-in-army-intelligence">Lesson
+14: Analytic Tradecraft Standards in Army Intelligence</h4>
+<p><strong>Concept.</strong> <strong>Analytic Tradecraft Standards in
+Army Intelligence</strong> applies ICD 203 tradecraft standards:
+sourcing, uncertainty, distinctions, alternatives, relevance,
+argumentation, consistency, accuracy, and visuals.</p>
+<p><strong>Why it matters.</strong> <strong>Analytic Tradecraft
+Standards</strong> matters in the <strong>Analytic Tradecraft and Source
+Integrity</strong> lane because structured reasoning and
+source-integrity evidence must stay separate from judgment; collapsing
+reporting, inference, and judgment into one line is a common
+failure.</p>
+<p><strong>Source support.</strong> <strong>Analytic Tradecraft
+Standards in Army Intelligence</strong> uses curated analytic-tradecraft
+anchors [official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint196] remain context only; primary support must
+keep likelihood, confidence, assumptions, alternatives, dissent, source
+quality, ACH limits, and refresh duty separate. External triangulation
+uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Analytic Tradecraft
+Standards</strong>, use the curated analytic-tradecraft anchors
+[official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>Analytic Tradecraft
+Standards</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+structured reasoning and source-integrity review topic. The artifact
+must separate the source descriptor, the bounded judgment about
+<strong>Analytic Tradecraft Standards in Army</strong>, the analytic
+caveat, the confidence note, the excluded-inference boundary, and the
+reviewer who logs dissent. Shape <strong>Analytic Tradecraft
+Standards</strong> work as a <strong>competing-hypotheses evidence
+table</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Analytic Tradecraft Standards</strong>: that a confident
+narrative is the same as a tested, source-backed judgment with its
+alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Analytic Tradecraft
+Standards</strong> from this module to a second motif by preserving
+structured reasoning and source-integrity review, replacing action with
+audit, and naming the blocked use.</p>
+<h4
+id="lesson-15-cognitive-biases-confirmation-bias-anchoring-groupthink-in-intelligence">Lesson
+15: Cognitive Biases: Confirmation Bias, Anchoring, Groupthink in
+Intelligence</h4>
+<p><strong>Concept.</strong> <strong>Cognitive Biases: Confirmation
+Bias, Anchoring, Groupthink in Intelligence</strong> connects cognitive
+bias literacy to review checkpoints, dissent channels, and explicit
+uncertainty language.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Cognitive
+Biases</strong> to separate reporting from inference, and inference from
+judgment. A defensible treatment names the judgment it enables for
+structured reasoning and source-integrity review, the proof limit that
+collapsing reporting, inference, and judgment into one line would
+otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> <strong>Cognitive Biases:
+Confirmation Bias, Anchoring, Groupthink in Intelligence</strong> uses
+curated analytic-tradecraft anchors [official_odni_icd_203];
+[official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint180] remain context only; primary support must
+keep likelihood, confidence, assumptions, alternatives, dissent, source
+quality, ACH limits, and refresh duty separate. External triangulation
+uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Cognitive
+Biases</strong>, use the curated analytic-tradecraft anchors
+[official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>Cognitive
+Biases</strong>, build a <strong>analytic note with hypotheses, evidence
+table, confidence, and dissent fields</strong> for this structured
+reasoning and source-integrity review topic. The artifact must separate
+the source descriptor, the bounded judgment about <strong>Cognitive
+Biases</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+<strong>Cognitive Biases</strong> work as a <strong>competing-hypotheses
+evidence table</strong> that logs the evidence, the uncertainty, the
+responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Cognitive Biases</strong>: that a confident narrative is the
+same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Cognitive
+Biases</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-16-from-spycraft-to-self-mastery-sats-for-everyday-decision-making">Lesson
+16: From Spycraft to Self-Mastery: SATs for Everyday
+Decision-Making</h4>
+<p><strong>Concept.</strong> <strong>From Spycraft to Self-Mastery: SATs
+for Everyday Decision-Making</strong> applies structured analytic
+methods with explicit alternatives, evidence tables, and calibrated
+confidence—not rhetorical certainty.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>From Spycraft to Self-Mastery</strong>, collapsing reporting,
+inference, and judgment into one line undermines structured reasoning
+and source-integrity review; the lesson builds the habit to separate
+reporting from inference, and inference from judgment.</p>
+<p><strong>Source support.</strong> <strong>From Spycraft to
+Self-Mastery: SATs for Everyday Decision-Making</strong> uses curated
+analytic-tradecraft anchors [official_odni_icd_203];
+[official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
+guide citation(s) [ageint188] remain context only; primary support must
+keep likelihood, confidence, assumptions, alternatives, dissent, source
+quality, ACH limits, and refresh duty separate. External triangulation
+uses [official_odni_icd_203]; [official_odni_icd_206].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>From Spycraft to
+Self-Mastery</strong>, use the curated analytic-tradecraft anchors
+[official_odni_icd_203]; [official_cia_tradecraft_primer];
+[official_cia_sherman_kent_profession];
+[official_cia_cooper_2005_analytic_pathologies];
+[official_cia_analytic_culture_us_ic]; [official_911_commission_report];
+[official_robb_silberman_wmd_report];
+[official_senate_2004_prewar_iraq_assessment];
+[scholarly_rand_2016_sat_evaluation];
+[scholarly_coulthart_2017_core_sat_evaluation];
+[scholarly_chang_2018_restructuring_sats];
+[scholarly_dhami_2019_ach_intelligence_analysis];
+[scholarly_whitesmith_2019_ach_bias];
+[scholarly_karvetski_mandel_2020_ach_coherence];
+[scholarly_wilcox_mandel_2024_ach_critical_review];
+[scholarly_barnes_mandel_2014_forecast_accuracy];
+[scholarly_dhami_mandel_mellers_tetlock_2015_decision_science];
+[official_iarpa_ace_program]; [official_iarpa_reason_program];
+[official_belfer_mcmahon_2024_ai_tradecraft_standards]. Pull
+observation, inference, assumption, likelihood, confidence, dissent,
+decision-uptake boundary, postmortem learning, and the empirical limit
+that would force a weaker claim. Treat SATs as reviewable reasoning
+artifacts, not validated universal debiasing or autonomous judgment
+replacements.</p>
+<p><strong>Student artifact.</strong> For <strong>From Spycraft to
+Self-Mastery</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+structured reasoning and source-integrity review topic. The artifact
+must separate the source descriptor, the bounded judgment about
+<strong>Spycraft to Self-Mastery</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape <strong>From Spycraft to Self-Mastery</strong> work
+as a <strong>competing-hypotheses evidence table</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>From Spycraft to Self-Mastery</strong>: that a confident
+narrative is the same as a tested, source-backed judgment with its
+alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>From Spycraft to
+Self-Mastery</strong> audit pattern from this module on a different
+sample record set with a new reviewer and blocked-use note.</p>
+<h3
+id="structured-analytic-techniques-sats-worked-safe-example-synthetic-inputs-evidence-and-review">Structured
+Analytic Techniques (SATs) worked safe example: synthetic inputs,
+evidence, and review</h3>
+<p>Worked example: a synthetic analyst cell evaluates whether a benign
+supplier delay signals normal friction or elevated risk. [ageint237];
+[ageint266].</p>
+<p><strong>Triangulation anchors.</strong> In module 41’s worked-example
+section, directly verified anchors for the <strong>Analytic Tradecraft
+and Source Integrity</strong> lane include [official_odni_icd_203];
+[official_odni_icd_206]; [official_odni_objectivity];
+[official_cia_tradecraft_primer]. Use them to test source-guide claims,
+method boundaries, governance constraints, and safety gates without
+replacing the module’s <code>ageintNNN</code> provenance.</p>
+<p><strong>Unit discipline spine.</strong> Discipline:
+<strong>structured analytic judgment</strong>. Learners use a
+<strong>competing-hypotheses evidence table</strong> and keep this
+boundary visible: No overclaiming, unsupported attribution, or bypass of
+reviewer challenge.</p>
+<p><strong>Frame.</strong> The classroom question centers on <strong>CIA
+Tradecraft Primer: SATs for Intelligence Analysis</strong>. Excluded
+actions stay explicit, and the <strong>Structured-Judgment Lens</strong>
+planning question is: Which assumptions, alternatives, confidence
+statements, and source limits must stay visible for review?</p>
+<p><strong>Inputs.</strong> For the <strong>CIA Tradecraft Primer: SATs
+for Intelligence Analysis</strong> scenario, use synthetic shipment
+notes, public policy excerpts, and a short instructor-provided event
+timeline. The Structured-Judgment Lens intake note records provenance,
+sensitivity, fit-to-purpose, and why the fixture is enough for this
+bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>CIA Tradecraft Primer: SATs
+for Intelligence Analysis</strong>, students write hypotheses, list
+evidence for and against each, mark assumptions, and assign confidence
+only after alternatives are tested. Pause whenever an inference about
+CIA Tradecraft Primer: SATs for Intelligence Analysis appears without
+evidence, confidence outruns support, or an agent output is treated as
+judgment.</p>
+<p><strong>Filled artifact.</strong> Purpose = <strong>CIA Tradecraft
+Primer: SATs for Intelligence Analysis</strong> classroom scenario; unit
+artifact = competing-hypotheses evidence table; evidence = allowed
+inputs; method = structured reasoning and source-integrity review;
+output = an analytic note with a hypothesis table, confidence statement,
+dissent field, and collection gap list; boundary = no external action;
+reviewer = instructor or named peer.</p>
+<p><strong>Flawed answer to revise.</strong> Treating <strong>CIA
+Tradecraft Primer: SATs for Intelligence Analysis</strong> as
+“Structured-Judgment Lens confirms it” is not enough. The revision ties
+the claim to structured reasoning and source-integrity review, adds the
+missing caveat, states confidence, and records the reviewer who accepted
+the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>CIA Tradecraft
+Primer: SATs for Intelligence Analysis</strong> records the defensible
+claim, the assumption most likely to fail, the evidence that would
+change confidence, and the review condition for stopping reuse.</p>
+<h3
+id="structured-analytic-techniques-sats-practice-sequence-studio-moves-artifact-steps-and-limits">Structured
+Analytic Techniques (SATs) practice sequence: studio moves, artifact
+steps, and limits</h3>
+<p>The studio sequence uses the <strong>Structured-Judgment
+Lens</strong> practice lens. Moves 1-3 form the compressed path; the
+full seminar path adds challenge, handoff, and a review memo for
+<strong>CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203
+Analytic Standards: The Nine Tradecraft Standards</strong>.</p>
+<p><strong>Triangulation anchors.</strong> In module 41’s
+practice-sequence section, directly verified anchors for the
+<strong>Analytic Tradecraft and Source Integrity</strong> lane include
+[official_odni_icd_203]; [official_odni_icd_206];
+[official_odni_objectivity]; [official_cia_tradecraft_primer]. Use them
+to test source-guide claims, method boundaries, governance constraints,
+and safety gates without replacing the module’s <code>ageintNNN</code>
+provenance.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Move</th>
+<th>Learner action</th>
+<th>Output</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Distinguish</td>
+<td>Compare CIA Tradecraft Primer: SATs for Intelligence Analysis, ICD
+203 Analytic Standards: The Nine Tradecraft Standards, Psychology of
+Intelligence Analysis; name what each topic can and cannot prove.</td>
+<td>Glossary-and-contrast card.</td>
+<td>Terms match the <strong>Analytic Tradecraft and Source
+Integrity</strong> lane.</td>
+</tr>
+<tr>
+<td>2. Frame</td>
+<td>Answer the lens question: Which assumptions, alternatives,
+confidence statements, and source limits must stay visible for
+review?</td>
+<td>Scope card.</td>
+<td>Authority, excluded actions, data boundary, and reviewer are
+explicit.</td>
+</tr>
+<tr>
+<td>3. Evidence</td>
+<td>Fill the artifact fields for CIA Tradecraft Primer: SATs for
+Intelligence Analysis: analytic note with hypotheses, evidence table,
+confidence, and dissent fields.</td>
+<td>Evidence packet.</td>
+<td>Sources, caveats, confidence, and uncertainty stay separable.</td>
+</tr>
+<tr>
+<td>3a. Unit artifact</td>
+<td>Add the competing-hypotheses evidence table fields for CIA
+Tradecraft Primer: SATs for Intelligence Analysis.</td>
+<td>Unit profile note.</td>
+<td>Evidence artifacts include hypothesis table, assumption
+register.</td>
+</tr>
+<tr>
+<td>4. Challenge</td>
+<td>Test the misconception that a confident narrative is the same as a
+tested, source-backed judgment with its alternatives and confidence
+stated.</td>
+<td>Failure-mode note.</td>
+<td>The artifact applies the key distinction: separate reporting from
+inference, and inference from judgment.</td>
+</tr>
+<tr>
+<td>5. Handoff</td>
+<td>Prepare the artifact for another reviewer.</td>
+<td>Handoff memo.</td>
+<td>Inputs, transformations, reviewer, refresh trigger, and residual
+risk are visible.</td>
+</tr>
+</tbody>
+</table>
+<h4
+id="structured-analytic-techniques-sats-instructor-notes-source-reasoning-review-points-and-studio-focus">Structured
+Analytic Techniques (SATs) instructor notes: source reasoning, review
+points, and studio focus</h4>
+<p>Ask learners to verbalize the difference between a source, an
+inference, and a decision. Require a revision whenever a claim cannot be
+traced to a source descriptor or a human review point. Keep the focus on
+<strong>CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203
+Analytic Standards: The Nine Tradecraft Standards</strong>. [ageint237];
+[ageint266].</p>
+<h4
+id="structured-analytic-techniques-sats-extension-exercise-peer-validation-and-refresh-trigger-review">Structured
+Analytic Techniques (SATs) extension exercise: peer validation and
+refresh trigger review</h4>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-structured-analytic-techniques-sats]; [ageint237].</p>
+<p>Have learners swap artifacts and apply the
+<strong>Structured-Judgment Lens</strong> validation rule to someone
+else’s work. The receiving learner must identify one strength, one
+missing caveat, and one refresh trigger for <strong>CIA Tradecraft
+Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The
+Nine Tradecraft Standards</strong>.</p>
+<h3
+id="structured-analytic-techniques-sats-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Structured
+Analytic Techniques (SATs) knowledge check: misconceptions, evidence,
+and reviewer prompts</h3>
+<p><strong>Evidence anchor.</strong>
+[sec:chapter-structured-analytic-techniques-sats]; [ageint237].</p>
+<ol type="1">
+<li>Explain how <strong>CIA Tradecraft Primer: SATs for Intelligence
+Analysis</strong> is defined here; name the source descriptor that
+supports the definition.</li>
+<li>Contrast <strong>CIA Tradecraft Primer: SATs for Intelligence
+Analysis</strong> with <strong>ICD 203 Analytic Standards: The Nine
+Tradecraft Standards</strong> using the <strong>Structured-Judgment
+Lens</strong> artifact fields.</li>
+<li>Identify one failure mode from the <strong>Analytic Tradecraft and
+Source Integrity</strong> lane and the evidence that would reveal
+it.</li>
+<li>Answer the coursebook review question: Which assumption would change
+the judgment if it were false?</li>
+<li>Correct this misconception: that a confident narrative is the same
+as a tested, source-backed judgment with its alternatives and confidence
+stated.</li>
+</ol>
+<h4
+id="structured-analytic-techniques-sats-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">Structured
+Analytic Techniques (SATs) answer quality rubric: source evidence,
+uncertainty, and safe transfer</h4>
+<p>Judge answers with the canonical mastery evidence standard in the
+shared method-and-assurance reference
+([sec:method-assurance-reference]): a strong answer uses source
+evidence, distinguishes observation from judgment, names uncertainty,
+and states the safe boundary, while a revise-level answer gives a
+memorized definition of <strong>CIA Tradecraft Primer: SATs for
+Intelligence Analysis</strong> without source evidence, uncertainty, or
+a safe transfer task.</p>
+</body>
+</html>

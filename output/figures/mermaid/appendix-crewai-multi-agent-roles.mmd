@@ -1,0 +1,19 @@
+%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+flowchart TB
+  ORCH["Orchestrator agent"]
+  subgraph CREW["Specialized roles"]
+    direction LR
+    RES["Researcher: retrieval"]
+    ANA["Analyst: synthesis"]
+    VER["Verifier: corroboration"]
+  end
+  MEM[("Shared memory and audit trail")]
+  ORCH --> RES
+  ORCH --> ANA
+  ORCH --> VER
+  RES --> MEM
+  ANA --> MEM
+  VER --> MEM
+  MEM --> REV{"Reviewer gate"}
+  REV -->|"approve"| OUT["Released product"]
+  REV -->|"reject"| ORCH
