@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 import json
 import re
@@ -86,7 +86,7 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "ok": all(checks.values()),
         "checks": checks,
         "audit_contracts": audit_contract_report()["contracts"],

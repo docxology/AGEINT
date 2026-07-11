@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, date, datetime
+from datetime import date, datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
@@ -76,14 +76,14 @@ def collect_source_refresh_due(project_root: Path, *, as_of: date | None = None)
     """Collect refresh-due buckets for all curated and support source anchors."""
 
     root = Path(project_root)
-    as_of_date = as_of or datetime.now(UTC).date()
+    as_of_date = as_of or datetime.now(timezone.utc).date()
     metadata = collect_source_metadata(root).payload
     rows = [_row_from_metadata(row, as_of_date) for row in metadata["rows"]]
     issue_rows = [row for row in rows if _is_blocking(row)]
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "as_of": as_of_date.isoformat(),
         "ok": not issue_rows and bool(rows),
         "summary": _summary(rows),

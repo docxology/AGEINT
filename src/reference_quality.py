@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
@@ -127,7 +127,7 @@ def collect_reference_quality(project_root: Path) -> ReferenceQualityReport:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "ok": not issues,
         "summary": summary,
         "issue_rows": [issue.as_dict() for issue in issues],

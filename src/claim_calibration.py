@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
@@ -200,7 +200,7 @@ def collect_claim_calibration(
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "ok": not hard_fail_rows,
         "summary": _summary(rows, hard_fail_rows, warning_rows),
         "thresholds": {

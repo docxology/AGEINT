@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
@@ -94,7 +94,7 @@ def collect_agency_source_coverage(project_root: Path) -> AgencySourceCoverageRe
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "ok": bool(new_rows) and not row_issues and not global_issues,
         "expected_new_us_ic_anchors": EXPECTED_NEW_US_IC_ANCHORS,
         "required_new_metadata": list(REQUIRED_NEW_METADATA),

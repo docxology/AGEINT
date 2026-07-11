@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: astral-sh/setup-uv@v8.3.2
         with:
@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload freshness snapshot
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: source-refresh-due-latest
           path: /tmp/source_refresh_due_latest.json

@@ -5,23 +5,35 @@ from __future__ import annotations
 from pathlib import Path
 import re
 
-from infrastructure.rendering.manuscript_discovery import discover_manuscript_files
-from curriculum import load_curriculum
+import pytest
 
-from manuscript_quality.inventory_helpers import (
-    DATA,
-    MANUSCRIPT,
-    REMOVED_REPEATED_MODULE_SECTIONS,
-    RAW_PSEUDO_HEADING_PREFIXES,
-    SOURCE_QUALITY_KEYS,
-    TEMPLATES,
-    chapter_title_from_text,
-    chapter_text,
-    generated_chapter_files,
-    manuscript_dir,
-    required_module_sections_for,
-)
+from curriculum import load_curriculum
 from manuscript_manifest._heading_titles import chapter_scaffold_titles
+
+# Both packages live only in the sibling docxology/template checkout (see
+# src/template_resolver.py, which conftest.py uses to add it to sys.path when
+# found nearby). A bare top-level import here would turn "template repo not
+# available" into a hard pytest COLLECTION error that aborts the entire run
+# for every test file, not just this one's tests — pytest.importorskip
+# converts that into a graceful per-module skip instead, matching the
+# optional-dependency pattern the rest of this suite already uses for e.g.
+# Mermaid/Chrome (`requires_mermaid`). Confirmed live: this repo's own
+# standalone GitHub Actions CI has no template checkout on the runner.
+infrastructure_rendering = pytest.importorskip("infrastructure.rendering.manuscript_discovery")
+manuscript_quality_inventory = pytest.importorskip("manuscript_quality.inventory_helpers")
+discover_manuscript_files = infrastructure_rendering.discover_manuscript_files
+
+DATA = manuscript_quality_inventory.DATA
+MANUSCRIPT = manuscript_quality_inventory.MANUSCRIPT
+REMOVED_REPEATED_MODULE_SECTIONS = manuscript_quality_inventory.REMOVED_REPEATED_MODULE_SECTIONS
+RAW_PSEUDO_HEADING_PREFIXES = manuscript_quality_inventory.RAW_PSEUDO_HEADING_PREFIXES
+SOURCE_QUALITY_KEYS = manuscript_quality_inventory.SOURCE_QUALITY_KEYS
+TEMPLATES = manuscript_quality_inventory.TEMPLATES
+chapter_title_from_text = manuscript_quality_inventory.chapter_title_from_text
+chapter_text = manuscript_quality_inventory.chapter_text
+generated_chapter_files = manuscript_quality_inventory.generated_chapter_files
+manuscript_dir = manuscript_quality_inventory.manuscript_dir
+required_module_sections_for = manuscript_quality_inventory.required_module_sections_for
 
 
 RETIRED_TOC_SUFFIXES = (

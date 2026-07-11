@@ -1,15 +1,30 @@
 name: Manuscript Build & Validate
 
-# Scope note: this repo is the standalone published mirror. The strict
-# rebuild here covers everything `scripts/build_curriculum.py` owns —
-# curriculum data, the semantic manuscript, the figure registry, and real
-# (non-placeholder) Mermaid PNGs. It does NOT render `AGEINT.pdf` /
-# `output/pdf/AGEINT_combined.pdf` — that pandoc/xelatex driver lives in the
-# private parent template's `infrastructure` package, which this standalone
-# repo does not carry (confirmed: no `pandoc`/`xelatex` invocation anywhere
-# under `scripts/` or `src/` here). PDF refresh stays a manual, out-of-band
-# release step; `audit_pdf_quality.py` stays informational in `ci.yml` for
-# that reason.
+# Scope note: this repo is the standalone published mirror. It does NOT
+# render `AGEINT.pdf` / `output/pdf/AGEINT_combined.pdf` — that pandoc/xelatex
+# driver lives in the sibling `docxology/template` repo (public, not
+# private — corrected 2026-07-11; a prior version of this comment called it
+# private, which was wrong), which this standalone repo does not carry
+# (confirmed: no `pandoc`/`xelatex` invocation anywhere under `scripts/` or
+# `src/` here). PDF refresh stays a manual, out-of-band release step;
+# `audit_pdf_quality.py` stays informational in `ci.yml` for that reason.
+#
+# Deeper than that (confirmed live on a real CI run, not assumed): even the
+# markdown/data/figures rebuild is not fully standalone.
+# `src/manuscript_injection.py` calls
+# `infrastructure.rendering.manuscript_injection.substitute_manuscript_text`
+# for `{{TOKEN}}` hydration, and `infrastructure/rendering/__init__.py`
+# eagerly imports the FULL rendering package (docx/epub/pdf renderers, which
+# pull in Pillow-chain dependencies the template's own `--group rendering`
+# extra provides but this repo's bare `uv sync` does not) — `import
+# infrastructure.rendering.manuscript_injection` only succeeds when a
+# template checkout is genuinely reachable (locally, via
+# `template_resolver.py`'s ancestor-directory search) AND has its own
+# dependencies synced. Properly wiring a cross-repo checkout + scoped sync
+# for this one job is a real but separate undertaking (see ISA.md follow-up)
+# — until then, the rebuild step below is informational, same as the
+# PDF-quality checks, rather than silently broken or an unverified
+# cross-repo dependency hack rushed into this pass.
 
 on:
   workflow_dispatch:
@@ -48,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: astral-sh/setup-uv@v8.3.2
         with:
@@ -66,7 +81,7 @@ jobs:
 
       - name: Cache puppeteer chrome-headless-shell
         id: puppeteer-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/puppeteer
           key: puppeteer-chrome-headless-shell-131.0.6778.204-${{ runner.os }}
@@ -79,15 +94,40 @@ jobs:
         if: steps.puppeteer-cache.outputs.cache-hit != 'true'
         run: npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
 
+      # Informational: see the workflow-level scope note above. Fails today
+      # on a bare checkout (ModuleNotFoundError: infrastructure, confirmed
+      # live) because template-injection needs the sibling template repo's
+      # own synced dependencies, not just its source on sys.path. When it
+      # fails, the steps below validate the committed output/ tree instead
+      # of a truly fresh one — same posture as ci.yml's content-gates job.
       - name: Strict manuscript rebuild (real Mermaid PNGs, no placeholders)
+        id: rebuild
+        continue-on-error: true
         env:
           AGEINT_REQUIRE_RENDERED_FIGURES: "1"
         run: uv run python scripts/build_curriculum.py
 
+      # A failed rebuild can crash mid-write (e.g. partway through
+      # per-file manuscript substitution), leaving output/ in a partially
+      # rewritten state that isn't the fresh build OR the committed tree —
+      # restore the committed tree so every step below validates one
+      # coherent state, never a half-written hybrid.
+      - name: Note rebuild outcome and restore committed tree on failure
+        if: always()
+        run: |
+          if [ "${{ steps.rebuild.outcome }}" = "success" ]; then
+            echo "Strict rebuild succeeded — steps below validate FRESH output."
+          else
+            echo "::warning::Strict rebuild did not complete (see step above) — restoring the committed output/ tree so steps below validate that coherent state, not a partial rebuild."
+            git checkout -- output/ manuscript/references-*.bib
+          fi
+
       # Now that Chrome is actually present, the `requires_mermaid`-marked
       # strict figure tests run for real instead of skipping (see
-      # src/figures/AGENTS.md "Run strict figure tests").
-      - name: Full test suite (incl. strict Mermaid figure tests)
+      # src/figures/AGENTS.md "Run strict figure tests") — when the rebuild
+      # above succeeded. When it didn't, these still validate the committed
+      # tree's own consistency, which is still real signal.
+      - name: Full test suite (incl. strict Mermaid figure tests when rebuild succeeded)
         run: uv run pytest tests/ --cov=src --cov-fail-under=90
 
       # Refresh every audit report against the FRESH build. Confirmed live
@@ -169,7 +209,7 @@ jobs:
 
       - name: Upload rebuilt manuscript + figure registry
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: manuscript-rebuild
           path: |

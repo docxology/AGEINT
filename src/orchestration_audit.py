@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
@@ -22,7 +22,7 @@ def collect_orchestration_contract(project_root: Path) -> dict[str, Any]:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "pipeline": pipeline,
         "audits": audit_contract_report(),
         "source_packs": source_packs,
