@@ -33,7 +33,12 @@ jobs:
   test:
     name: "Test (py${{ matrix.python-version }})"
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Confirmed live: 20min was too tight — both matrix legs got canceled for
+    # exceeding it on a real (dedicated, uncontended) GitHub-hosted runner.
+    # Local runs on this session's dev machine ranged 13m40s (uncontended) to
+    # 30m25s (contended); 45min leaves real margin above the observed range
+    # rather than guessing again.
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
