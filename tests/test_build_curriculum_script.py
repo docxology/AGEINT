@@ -7,6 +7,8 @@ import shutil
 import subprocess
 import sys
 
+import pytest
+
 import template_resolver
 from build_pipeline import generated_output_is_stale, run_build
 from figures import _02b_mermaid as mermaid_rendering
@@ -15,6 +17,28 @@ from orchestration_contracts import output_build_sentinels, source_freshness_roo
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = PROJECT_ROOT / "scripts" / "build_curriculum.py"
 DATA = PROJECT_ROOT / "data" / "curriculum"
+
+# Every test decorated with @requires_template_repo below calls run_build()
+# (directly, via a tmp_path project, or via a subprocess against this repo's
+# actual PROJECT_ROOT) — render_manuscript() unconditionally calls
+# substitute_manuscript_text(), which needs the sibling docxology/template
+# repo's `infrastructure` package (src/manuscript_injection.py) regardless of
+# project size or whether the copy is tmp_path-isolated. One test
+# (test_build_curriculum_script_smoke) is worse than "just fails": it runs
+# scripts/build_curriculum.py with cwd=PROJECT_ROOT — the REAL project root,
+# not a tmp_path copy — so an unguarded crash partway through rendering
+# leaves output/manuscript/ emptied for the rest of the pytest session,
+# cascading into ~45 unrelated failures in every other test that reads
+# generated manuscript content. Confirmed live, twice, in a genuinely
+# isolated checkout with no template sibling (matching GitHub Actions
+# exactly): first pass only guarded the two PROJECT_ROOT-touching tests and
+# still surfaced 3 more tmp_path-based failures from this same file: all
+# call run_build() too, just non-destructively. Skip the whole class rather
+# than whack-a-mole discovering each one via another isolated run.
+requires_template_repo = pytest.mark.skipif(
+    template_resolver.resolve_template_repo(PROJECT_ROOT) is None,
+    reason="sibling docxology/template repo not resolvable in this checkout",
+)
 REQUIRED_OUTPUT_DOC_DIRS = {
     Path("output"),
     Path("output/data"),
@@ -47,6 +71,7 @@ def _force_mermaid_placeholders(monkeypatch) -> None:
     monkeypatch.setattr(mermaid_rendering.shutil, "which", lambda _name: None)
 
 
+@requires_template_repo
 def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkeypatch) -> None:
     _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
@@ -111,6 +136,7 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     assert "Generated section context" not in foundations
 
 
+@requires_template_repo
 def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None:
     repo = template_resolver.ensure_template_repo_on_path(PROJECT_ROOT)
 
@@ -119,6 +145,7 @@ def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None
     assert str(repo) in sys.path
 
 
+@requires_template_repo
 def test_build_freshness_uses_registered_stage_contracts(tmp_path: Path, monkeypatch) -> None:
     _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
@@ -131,6 +158,7 @@ def test_build_freshness_uses_registered_stage_contracts(tmp_path: Path, monkeyp
     assert generated_output_is_stale(project, project / "output") is False
 
 
+@requires_template_repo
 def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, monkeypatch) -> None:
     _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
@@ -149,6 +177,7 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, mo
     assert "{{CHAPTER_031_TITLE}}" not in rewritten
 
 
+@requires_template_repo
 def test_build_curriculum_script_smoke() -> None:
     result = subprocess.run(
         [sys.executable, str(SCRIPT)],

@@ -31,6 +31,17 @@ DEFAULT_BANNED_PHRASES: tuple[str, ...] = (
 )
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md"}
 
+# A fresh git checkout (as opposed to a real edit-then-rebuild cycle) writes
+# every tracked file at roughly the same instant, in whatever order git's
+# tree-walk visits them — not the logical source-before-output order a real
+# build produces. Confirmed live: a genuinely fresh `git clone` of this repo
+# showed the manuscript's newest mtime just 21ms after the PDF's mtime,
+# tripping a strict `<` comparison as "stale" even though nothing was
+# actually rebuilt. A real edit-then-rebuild gap is seconds to minutes;
+# checkout-ordering noise is milliseconds. This tolerance absorbs the noise
+# without masking genuine staleness.
+STALE_PDF_TOLERANCE_SECONDS = 30.0
+
 
 @dataclass(frozen=True)
 class PdfPhraseHit:
@@ -201,7 +212,10 @@ def audit_pdf_quality(
         creation_date=metadata.get("CreationDate", ""),
         pdf_mtime=pdf_mtime,
         newest_manuscript_mtime=newest_manuscript_mtime,
-        stale_pdf=bool(newest_manuscript_mtime and pdf_mtime < newest_manuscript_mtime),
+        stale_pdf=bool(
+            newest_manuscript_mtime
+            and pdf_mtime < newest_manuscript_mtime - STALE_PDF_TOLERANCE_SECONDS
+        ),
         banned_phrase_hits=tuple(hits),
         flagged_pages=flagged_pages,
         link_audit=link_audit,

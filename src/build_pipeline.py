@@ -21,6 +21,15 @@ from output_docs import write_output_directory_docs
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MANUSCRIPT_SUPPORT_MARKDOWN = {"AGENTS.md", "README.md", "preamble.md"}
 
+# See the matching constant/comment in src/pdf_quality.py: a fresh git
+# checkout writes every tracked file at roughly the same instant in
+# tree-walk order, not logical source-before-output order, so a strict `>`
+# mtime comparison can spuriously read as "stale" from checkout-ordering
+# noise alone. Confirmed live via a real `git clone` of this repo. A
+# genuine edit-then-rebuild gap is seconds to minutes; this tolerance only
+# absorbs checkout noise.
+STALE_OUTPUT_TOLERANCE_SECONDS = 30.0
+
 
 @dataclass(frozen=True)
 class BuildConfig:
@@ -87,7 +96,7 @@ def generated_output_is_stale(project_root: Path, output: Path) -> bool:
     if latest_source == 0.0 or any(not path.is_file() for path in sentinels):
         return True
     oldest_sentinel = min(path.stat().st_mtime for path in sentinels)
-    return latest_source > oldest_sentinel
+    return latest_source > oldest_sentinel + STALE_OUTPUT_TOLERANCE_SECONDS
 
 
 def _mirror_curriculum_data(curriculum: Curriculum, destination: Path) -> None:

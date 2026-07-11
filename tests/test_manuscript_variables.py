@@ -5,6 +5,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
+import template_resolver
 from build_pipeline import run_build
 from curriculum import load_curriculum
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
@@ -16,6 +19,14 @@ from manuscript_variables import (
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# See the matching guard in test_build_curriculum_script.py: run_build()
+# unconditionally needs the sibling docxology/template repo for
+# {{TOKEN}} substitution, regardless of tmp_path isolation.
+requires_template_repo = pytest.mark.skipif(
+    template_resolver.resolve_template_repo(PROJECT_ROOT) is None,
+    reason="sibling docxology/template repo not resolvable in this checkout",
+)
 
 
 def test_save_variables_writes_sorted_json(tmp_path: Path) -> None:
@@ -58,6 +69,7 @@ def test_reference_bibtex_files_include_research_anchor_shards() -> None:
     assert "references-source-quality.bib" in files
 
 
+@requires_template_repo
 def test_run_build_writes_variables_json(tmp_path: Path) -> None:
     import shutil
 
