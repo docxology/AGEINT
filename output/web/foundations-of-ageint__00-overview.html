@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-foundations-of-ageint">Foundations of AGEINT</h1>
 <h3
 id="foundations-of-ageint-figures-and-course-links-visual-evidence-source-flow-and-navigation">Foundations
@@ -185,8 +192,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:ageint-cognitive-controller-stack">
 <img
 src="../../../../figures/mermaid/ageint-cognitive-controller-stack.png"
-alt="A conceptual view of how an agentic intelligence system layers perception, reasoning, memory, planning, and bounded action under continuous human oversight. In the ageint agentic intelligence / foundations of ageint section, it lets readers compare Perception, multimodal ingestion, Brain, LLM cognitive controller, Memory, episodic and semantic, and Planning and task decomposition so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">A conceptual view of how an agentic
+alt="A conceptual view of how an agentic intelligence system layers perception, reasoning, memory, planning, and bounded action under continuous human oversight." />
+<figcaption>A conceptual view of how an agentic
 intelligence system layers perception, reasoning, memory, planning, and
 bounded action under continuous human oversight. In the ageint agentic
 intelligence / foundations of ageint section, it lets readers compare
@@ -338,5 +345,6 @@ over-delegation before release</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

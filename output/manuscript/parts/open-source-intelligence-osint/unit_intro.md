@@ -45,7 +45,7 @@ Capstone thread:
 | Assurance | evaluation rubric, failure-mode drill, rights map, and remediation note | human reviewer signs off before presentation or reuse |
 | Debrief | capstone memo with lessons, residual risk, refresh triggers, and handoff owner | all unresolved questions and future approvals are explicit |
 
-**Research lane:** Open-Source and Geospatial Intelligence Integrity. Core anchors: [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]. Conceptual focus: public-source discovery converted into accountable intelligence through provenance, corroboration, minimization, and relevance tests. Composability contract: collection notes, source metadata, transformations, caveats, and analytic judgments remain separately exportable. **Practice lens:** Requirements-to-Evidence Lens; What accountable requirement justifies the evidence, and which source discipline is the least intrusive fit? [@ageint251]; [@ageint253].
+**Research lane:** Open-Source and Geospatial Intelligence Integrity. Core anchors: [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]. Conceptual focus: public-source discovery converted into accountable intelligence through provenance, corroboration, minimization, and relevance tests. Composability contract: collection notes, source metadata, transformations, caveats, and analytic judgments remain separately exportable. **Practice lens:** Requirements-to-Evidence Lens; What accountable requirement justifies the evidence, and which source discipline is the least intrusive fit? [@ageint251]; [@ageint253].
 
 ### OPEN SOURCE INTELLIGENCE (OSINT) visual navigation and module map: evidence flow, order, and safety cues
 

@@ -12,7 +12,7 @@ This module builds OSINT and GEOINT as public-source reasoning disciplines: avai
 
 **Learning-path links.** Unit module map [@fig:part-open-source-intelligence-osint-module-map]; module overview [@sec:chapter-geoint-and-imagery-intelligence]; curriculum atlas [@sec:curriculum_orientation].
 
-**Triangulation anchors.** In module 11's topic-lessons section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 11's topic-lessons section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 #### Lesson 1: Imagery quality literacy: resolution, temporal fit, and uncertainty
 
@@ -162,7 +162,7 @@ This module builds OSINT and GEOINT as public-source reasoning disciplines: avai
 
 Worked example: a synthetic public-resilience team checks whether open data supports a non-sensitive evacuation-route map. [@ageint253]; [@ageint255].
 
-**Triangulation anchors.** In module 11's worked-example section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 11's worked-example section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 **Unit discipline spine.** Discipline: **open-source intelligence governance**. Learners use a **OSINT provenance and minimization matrix** and keep this boundary visible: No exposed-service lookup, credentialed access, identity exposure, doxxing, or live collection expansion.
 
@@ -182,7 +182,7 @@ Worked example: a synthetic public-resilience team checks whether open data supp
 
 The studio sequence uses the **Requirements-to-Evidence Lens** practice lens. Moves 1-3 form the compressed path; the full seminar path adds challenge, handoff, and a review memo for **Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**.
 
-**Triangulation anchors.** In module 11's practice-sequence section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 11's practice-sequence section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 | Move | Learner action | Output | Check |
 |---|---|---|---|

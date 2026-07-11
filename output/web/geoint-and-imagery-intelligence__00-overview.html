@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-geoint-and-imagery-intelligence">GEOINT and Imagery
 Intelligence</h1>
 <h3
@@ -189,8 +196,8 @@ cues.</p>
 <figure id="fig:geoint-imagery-confidence-ladder">
 <img
 src="../../../../figures/mermaid/geoint-imagery-confidence-ladder.png"
-alt="This diagram presents a confidence ladder that ties an imagery interpretation’s defensibility to resolution fit, temporal fit, corroboration, and an explicit sensitive-site boundary that separates map reading from targeting or attribution. In the open source intelligence osint / geoint and imagery intelligence section, it lets readers compare Imagery observation and metadata, Sensitive-site minimization boundary, Low confidence: caveat heavily, and Moderate confidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">This diagram presents a confidence ladder
+alt="This diagram presents a confidence ladder that ties an imagery interpretation’s defensibility to resolution fit, temporal fit, corroboration, and an explicit sensitive-site boundary that separates map reading from targeting or attribution." />
+<figcaption>This diagram presents a confidence ladder
 that ties an imagery interpretation’s defensibility to resolution fit,
 temporal fit, corroboration, and an explicit sensitive-site boundary
 that separates map reading from targeting or attribution. In the open
@@ -202,8 +209,8 @@ an unscoped assertion.</figcaption>
 </figure>
 <figure id="fig:historical-forbidden-city">
 <img src="../../../../figures/historical/historical-forbidden-city.png"
-alt="Public-domain USGS EROS declassified imagery of the Forbidden City as a local historical image for GEOINT source-provenance discussion. Its reader value is to make U.S. Geological Survey provenance, 1966 approx. collection context, public-domain status, and analytic reuse boundary visible at a glance, with the open source intelligence osint / geoint and imagery intelligence section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Public-domain USGS EROS declassified
+alt="Public-domain USGS EROS declassified imagery of the Forbidden City as a local historical image for GEOINT source-provenance discussion." />
+<figcaption>Public-domain USGS EROS declassified
 imagery of the Forbidden City as a local historical image for GEOINT
 source-provenance discussion. Its reader value is to make U.S.
 Geological Survey provenance, 1966 approx. collection context,
@@ -215,8 +222,8 @@ boundary.</figcaption>
 <figure id="fig:historical-missouri-river-kh9">
 <img
 src="../../../../figures/historical/historical-missouri-river-kh9.png"
-alt="Public-domain USGS EROS KH-9 image used as a historical example of declassified remote-sensing material with explicit provenance. It is anchored to the open source intelligence osint / geoint and imagery intelligence section; use it to inspect U.S. Geological Survey provenance, 1982-07-22 collection context, public-domain status, and analytic reuse boundary while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">Public-domain USGS EROS KH-9 image used
+alt="Public-domain USGS EROS KH-9 image used as a historical example of declassified remote-sensing material with explicit provenance." />
+<figcaption>Public-domain USGS EROS KH-9 image used
 as a historical example of declassified remote-sensing material with
 explicit provenance. It is anchored to the open source intelligence
 osint / geoint and imagery intelligence section; use it to inspect U.S.
@@ -263,9 +270,9 @@ boundaries.</p>
 <p>Governance requirements use verified official, standards,
 public-domain, or scholarly anchors such as
 [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]. Technical, theoretical, or empirical statements
-require direct domain sources and are limited to what those sources
-establish. [ageint253]; [ageint255].</p>
+[official_iso_19157_data_quality]. Technical, theoretical, or empirical
+statements require direct domain sources and are limited to what those
+sources establish. [ageint253]; [ageint255].</p>
 <p>Learners move from vocabulary and the
 <strong>Requirements-to-Evidence Lens</strong> distinction through topic
 lessons on <strong>Imagery quality literacy: resolution, temporal fit,
@@ -351,5 +358,6 @@ requires</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

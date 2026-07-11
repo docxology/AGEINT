@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>03-governance-boundary.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h3
 id="financial-intelligence-finint-governance-boundary-synthesis-agent-assistance-rules-rights-and-assurance-gates">Financial
 Intelligence (FININT) governance boundary: synthesis, agent-assistance
@@ -185,8 +192,8 @@ forbidden leaps</h3>
 governance-boundary section, directly verified anchors for the
 <strong>Financial Intelligence and Economic-Security Due
 Diligence</strong> lane include [official_fincen_advisories];
-[official_fincen_boi]; [official_ofac_sanctions_programs];
-[official_ofac_compliance_commitments]. Use them to test source-guide
+[official_fincen_boi]; [official_fatf_recommendations];
+[official_ofac_sanctions_programs]. Use them to test source-guide
 claims, method boundaries, governance constraints, and safety gates
 without replacing the module’s <code>ageintNNN</code> provenance.</p>
 <p>Research lane: <strong>Financial Intelligence and Economic-Security
@@ -200,8 +207,9 @@ due-diligence typology exercise using synthetic records and compliance
 boundaries</strong>, <strong>Non-state actor indicator review with
 attribution caution and governance boundaries</strong>. <strong>Verified
 anchor cluster:</strong> [official_fincen_advisories];
-[official_fincen_boi]; [official_ofac_sanctions_programs];
-[official_ofac_compliance_commitments]; [official_fatf_recommendations];
+[official_fincen_boi]; [official_fatf_recommendations];
+[official_ofac_sanctions_programs];
+[official_ofac_compliance_commitments];
 [official_fatf_virtual_assets_guidance];
 [official_bis_fintech_digital_transformation].</p>
 <p><strong>Conceptual depth:</strong> defensive economic intelligence
@@ -250,6 +258,12 @@ transparency, exemptions, and compliance-oriented analysis. Checked as
 of 2026-05-21; role: curriculum_anchor.</td>
 </tr>
 <tr>
+<td>[official_fatf_recommendations]</td>
+<td>Official international AML/CFT/CPF standard for risk-based controls,
+beneficial ownership, information sharing, supervision, and mutual
+evaluation. Checked as of 2026-05-21; role: curriculum_anchor.</td>
+</tr>
+<tr>
 <td>[official_ofac_sanctions_programs]</td>
 <td>Official OFAC sanctions-program library for understanding legal
 program structure, list maintenance, and compliance-oriented economic
@@ -260,12 +274,6 @@ statecraft. Checked as of 2026-05-21; role: curriculum_anchor.</td>
 <td>Official OFAC compliance framework for management commitment, risk
 assessment, internal controls, testing, auditing, and training. Checked
 as of 2026-05-21; role: curriculum_anchor.</td>
-</tr>
-<tr>
-<td>[official_fatf_recommendations]</td>
-<td>Official international AML/CFT/CPF standard for risk-based controls,
-beneficial ownership, information sharing, supervision, and mutual
-evaluation. Checked as of 2026-05-21; role: curriculum_anchor.</td>
 </tr>
 <tr>
 <td>[official_fatf_virtual_assets_guidance]</td>
@@ -466,6 +474,20 @@ transparency, exemptions, and compliance-oriented analysis.</td>
 </tr>
 <tr>
 <td>What does the module inherit from
+<code>official_fatf_recommendations</code> for <strong>FININT
+Foundations: Collection, Analysis, Reporting; Financial due-diligence
+typology exercise using synthetic records and compliance
+boundaries</strong>?</td>
+<td>The FATF Recommendations; lane
+<code>financial_economic_security</code>; checked 2026-05-21.</td>
+<td>economic-security packet with entity evidence, sanctions program,
+red flags, supplier context, uncertainty, and compliance boundary;
+Official international AML/CFT/CPF standard for risk-based controls,
+beneficial ownership, information sharing, supervision, and mutual
+evaluation.</td>
+</tr>
+<tr>
+<td>What does the module inherit from
 <code>official_ofac_sanctions_programs</code> for <strong>FININT
 Foundations: Collection, Analysis, Reporting; Financial due-diligence
 typology exercise using synthetic records and compliance
@@ -477,19 +499,6 @@ red flags, supplier context, uncertainty, and compliance boundary;
 Official OFAC sanctions-program library for understanding legal program
 structure, list maintenance, and compliance-oriented economic
 statecraft.</td>
-</tr>
-<tr>
-<td>What does the module inherit from
-<code>official_ofac_compliance_commitments</code> for <strong>FININT
-Foundations: Collection, Analysis, Reporting; Financial due-diligence
-typology exercise using synthetic records and compliance
-boundaries</strong>?</td>
-<td>A Framework for OFAC Compliance Commitments; lane
-<code>financial_economic_security</code>; checked 2026-05-21.</td>
-<td>economic-security packet with entity evidence, sanctions program,
-red flags, supplier context, uncertainty, and compliance boundary;
-Official OFAC compliance framework for management commitment, risk
-assessment, internal controls, testing, auditing, and training.</td>
 </tr>
 <tr>
 <td>How is Perplexity handled here?</td>
@@ -505,5 +514,6 @@ refresh trigger, and reviewer.</td>
 [sec:chapter-financial-intelligence-finint]; return to the curriculum
 atlas [sec:curriculum_orientation] for the reader paths, evidence map,
 and safety gates that govern this module.</p>
+</main>
 </body>
 </html>

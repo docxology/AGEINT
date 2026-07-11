@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-open-source-intelligence-osint">OPEN SOURCE
 INTELLIGENCE (OSINT)</h1>
 <h2
@@ -289,15 +296,15 @@ handoff owner</td>
 </table>
 <p><strong>Research lane:</strong> Open-Source and Geospatial
 Intelligence Integrity. Core anchors: [official_ic_osint_strategy];
-[official_state_osint_strategy]; [official_nga_strategy]. Conceptual
-focus: public-source discovery converted into accountable intelligence
-through provenance, corroboration, minimization, and relevance tests.
-Composability contract: collection notes, source metadata,
-transformations, caveats, and analytic judgments remain separately
-exportable. <strong>Practice lens:</strong> Requirements-to-Evidence
-Lens; What accountable requirement justifies the evidence, and which
-source discipline is the least intrusive fit? [ageint251];
-[ageint253].</p>
+[official_state_osint_strategy]; [official_iso_19157_data_quality].
+Conceptual focus: public-source discovery converted into accountable
+intelligence through provenance, corroboration, minimization, and
+relevance tests. Composability contract: collection notes, source
+metadata, transformations, caveats, and analytic judgments remain
+separately exportable. <strong>Practice lens:</strong>
+Requirements-to-Evidence Lens; What accountable requirement justifies
+the evidence, and which source discipline is the least intrusive fit?
+[ageint251]; [ageint253].</p>
 <h3
 id="open-source-intelligence-osint-visual-navigation-and-module-map-evidence-flow-order-and-safety-cues">OPEN
 SOURCE INTELLIGENCE (OSINT) visual navigation and module map: evidence
@@ -311,8 +318,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:part-open-source-intelligence-osint-module-map">
 <img
 src="../../../figures/mermaid/part-open-source-intelligence-osint-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. It is anchored to the open source intelligence osint section; use it to inspect 3 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. It is anchored to the open source
 intelligence osint section; use it to inspect 3 module nodes in the
 unit’s ordered, source-backed reading sequence from its first module to
@@ -322,8 +329,8 @@ evidence boundary, and accountable practice.</figcaption>
 <figure id="fig:part-osint-requirements-to-evidence">
 <img
 src="../../../figures/mermaid/part-osint-requirements-to-evidence.png"
-alt="Part IV traces OSINT as a left-to-right pipeline from requirements through disciplined collection (ch9) and tooling (ch10) into a verification taxonomy that turns raw findings into an assessed product. Its reader value is to make Intelligence Requirements, Collection Planning, ch9, the module, ch9, and Discipline and Legal Ethics visible at a glance, with the open source intelligence osint section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Part IV traces OSINT as a left-to-right
+alt="Part IV traces OSINT as a left-to-right pipeline from requirements through disciplined collection (ch9) and tooling (ch10) into a verification taxonomy that turns raw findings into an assessed product." />
+<figcaption>Part IV traces OSINT as a left-to-right
 pipeline from requirements through disciplined collection (ch9) and
 tooling (ch10) into a verification taxonomy that turns raw findings into
 an assessed product. Its reader value is to make Intelligence
@@ -375,5 +382,6 @@ citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

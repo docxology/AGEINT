@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-counterintelligence">COUNTERINTELLIGENCE</h1>
 <h2
 id="counterintelligence-learning-spine-and-source-route-unit-purpose-module-order-and-evidence-handoff">COUNTERINTELLIGENCE
@@ -307,8 +314,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:part-counterintelligence-module-map">
 <img
 src="../../../figures/mermaid/part-counterintelligence-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. In the counterintelligence section, it lets readers compare 2 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. In the counterintelligence
 section, it lets readers compare 2 module nodes in the unit’s ordered,
 source-backed reading sequence from its first module to its last so the
@@ -318,8 +325,8 @@ assertion.</figcaption>
 <figure id="fig:part-counterintelligence-protective-cycle">
 <img
 src="../../../figures/mermaid/part-counterintelligence-protective-cycle.png"
-alt="This Part presents counterintelligence as a continuous protective cycle whose detect-assess-deny-review loop is applied across both state and non-state adversaries. Its reader value is to make Threat Context, Ch22 CI Fundamentals: State Actors, Ch23 CI vs Non-State Actors, and Protective CI Cycle visible at a glance, with the counterintelligence section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">This Part presents counterintelligence as
+alt="This Part presents counterintelligence as a continuous protective cycle whose detect-assess-deny-review loop is applied across both state and non-state adversaries." />
+<figcaption>This Part presents counterintelligence as
 a continuous protective cycle whose detect-assess-deny-review loop is
 applied across both state and non-state adversaries. Its reader value is
 to make Threat Context, Ch22 CI Fundamentals: State Actors, Ch23 CI vs
@@ -361,5 +368,6 @@ route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

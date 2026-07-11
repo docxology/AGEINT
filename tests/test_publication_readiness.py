@@ -381,6 +381,14 @@ def test_audit_publication_readiness_script_writes_json_contract() -> None:
             "--format",
             "json",
             "--write",
+            # This standalone repo is not nested under the private parent
+            # template, so the parent confidentiality guard cannot pass here
+            # (see test_parent_confidentiality_guard_reports_missing_template,
+            # which exercises that failure path directly). Before AGEINT.pdf
+            # was rendered in this checkout, the skip guard above always
+            # short-circuited this test before it could reach that assertion;
+            # rendering the PDF for real surfaced this latent gap.
+            "--skip-parent-guard",
         ],
         cwd=PROJECT_ROOT,
         check=False,

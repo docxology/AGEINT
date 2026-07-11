@@ -329,9 +329,16 @@ _INTELLIGENCE_PROFILES_CORE: Final[tuple[IntelligenceProfile, ...]] = (
         anchor_keys=(
             "official_ic_osint_strategy",
             "official_state_osint_strategy",
+            # ISO 19157 (international_standard tier, data-quality) promoted
+            # ahead of the remaining official_primary anchors: it is the
+            # actual standard behind this lane's corroboration/provenance
+            # method, and the overview/assessment-route prose (citation_cluster
+            # limit=3) draws only from the first three keys here — an
+            # all-official_primary front-3 was flagging this module as
+            # single-source-family in scholarship_quality's review warnings.
+            "official_iso_19157_data_quality",
             "official_nga_strategy",
             "official_nga_geoint_ai",
-            "official_iso_19157_data_quality",
             "official_odni_icd_206",
             "official_odni_icd_203",
             "official_cia_tradecraft_primer",

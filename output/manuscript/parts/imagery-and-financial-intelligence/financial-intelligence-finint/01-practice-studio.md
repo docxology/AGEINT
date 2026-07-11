@@ -12,7 +12,7 @@ This module builds FININT and economic-security analysis as lawful due diligence
 
 **Learning-path links.** Unit module map [@fig:part-imagery-and-financial-intelligence-module-map]; module overview [@sec:chapter-financial-intelligence-finint]; curriculum atlas [@sec:curriculum_orientation].
 
-**Triangulation anchors.** In module 17's topic-lessons section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 17's topic-lessons section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 #### Lesson 1: FININT Foundations: Collection, Analysis, Reporting
 
@@ -146,7 +146,7 @@ This module builds FININT and economic-security analysis as lawful due diligence
 
 Worked example: a sample nonprofit screens a synthetic supplier record for classroom due-diligence practice. [@ageint251]; [@ageint252].
 
-**Triangulation anchors.** In module 17's worked-example section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 17's worked-example section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 **Unit discipline spine.** Discipline: **geospatial and financial intelligence uncertainty**. Learners use a **location-and-entity evidence ledger** and keep this boundary visible: No facility targeting, pattern-of-life inference, evasion advice, or attribution certainty beyond evidence.
 
@@ -166,7 +166,7 @@ Worked example: a sample nonprofit screens a synthetic supplier record for class
 
 The studio sequence uses the **Economic-Security Due-Diligence Lens** practice lens. Moves 1-3 form the compressed path; the full seminar path adds challenge, handoff, and a review memo for **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries**.
 
-**Triangulation anchors.** In module 17's practice-sequence section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 17's practice-sequence section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 | Move | Learner action | Output | Check |
 |---|---|---|---|

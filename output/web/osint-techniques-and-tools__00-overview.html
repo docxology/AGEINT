@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-osint-techniques-and-tools">OSINT Techniques and
 Tools</h1>
 <h3
@@ -187,8 +194,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:osint-provenance-verification-workflow">
 <img
 src="../../../../figures/mermaid/osint-provenance-verification-workflow.png"
-alt="The OSINT provenance sequence makes the governance screen explicit: tool class, provenance, legality, identity exposure, reproducibility, minimization, privacy drift, and reviewer approval are checked before reuse. The captioned view belongs to the open source intelligence osint / osint techniques and tools section and should be read as a map of public-source question, tool-class governance screen, provenance and legality check, identity-exposure check, reproducibility check, corroboration and minimization review, privacy-drift check, reviewer approval, documented matrix or blocked-use note, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The OSINT provenance sequence makes the
+alt="The OSINT provenance sequence makes the governance screen explicit: tool class, provenance, legality, identity exposure, reproducibility, minimization, privacy drift, and reviewer approval are checked before reuse." />
+<figcaption>The OSINT provenance sequence makes the
 governance screen explicit: tool class, provenance, legality, identity
 exposure, reproducibility, minimization, privacy drift, and reviewer
 approval are checked before reuse. The captioned view belongs to the
@@ -236,9 +243,9 @@ evidentiary support, common misconceptions, and safety boundaries.</p>
 <p>Governance requirements use verified official, standards,
 public-domain, or scholarly anchors such as
 [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]. Technical, theoretical, or empirical statements
-require direct domain sources and are limited to what those sources
-establish. [ageint251]; [ageint252].</p>
+[official_iso_19157_data_quality]. Technical, theoretical, or empirical
+statements require direct domain sources and are limited to what those
+sources establish. [ageint251]; [ageint252].</p>
 <p>Learners move from vocabulary and the
 <strong>Requirements-to-Evidence Lens</strong> distinction through topic
 lessons on <strong>Search-exposure provenance review using
@@ -324,5 +331,6 @@ requires</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

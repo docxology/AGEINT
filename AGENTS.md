@@ -49,6 +49,15 @@ flowchart LR
 - Source metadata is explicit in `data/research_anchors/`: the 2026-06-13 hardening pass closed 119 blank lane/tier rows (109 legacy intelligence anchors plus 10 source-quality support anchors). `scripts/audit_source_metadata.py` and `source_metadata_ok` in the artifact evidence manifest must fail on any new blank `source_lane` or `source_tier`.
 - Official US IC source-pack metadata is explicit for `data/research_anchors/intelligence-anchors-249-304.jsonl`: `source_agency` and `source_pack` are required, `data/agency_source_packs.yaml` controls deterministic profile routing, and `scripts/audit_agency_source_coverage.py` plus `agency_source_coverage_ok` must fail missing or unrouted new agency anchors.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
+- PDF render surface: `AGEINT.pdf` / `output/pdf/AGEINT_combined.pdf` is
+  rendered by the sibling template repo's pandoc/xelatex pipeline (its
+  `scripts/maintenance/rerender_working_pdfs.py`, run with AGEINT linked
+  under its `projects/working/`), not by any script in this repo — do not
+  add a pandoc/xelatex invocation here on the assumption one is missing.
+  `scripts/build_curriculum.py` / `scripts/generate_figures.py` produce
+  everything that render step consumes. `audit_pdf_quality.py` and the two
+  audits that aggregate it are informational in this repo's CI for that
+  reason (see `.github/workflows/ci.yml`, `.github/workflows/manuscript.yml`).
 
 ## Editing rules
 

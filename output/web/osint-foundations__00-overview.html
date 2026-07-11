@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-osint-foundations">OSINT Foundations</h1>
 <h3
 id="osint-foundations-figures-and-course-links-visual-evidence-source-flow-and-navigation">OSINT
@@ -185,8 +192,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:osint-collection-to-verification-pipeline">
 <img
 src="../../../../figures/mermaid/osint-collection-to-verification-pipeline.png"
-alt="The OSINT sequence separates public-source discovery from claim reuse: each handoff records provenance, legality, minimization, corroboration, caveats, and reviewer disposition before a bounded judgment can be logged. In the open source intelligence osint / osint foundations section, it lets readers compare requirement owner, discovery analyst, provenance reviewer, legal and minimization gate, corroboration reviewer, final reviewer, logged bounded judgment, stop-and-retire path for unverifiable or out-of-bounds evidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The OSINT sequence separates
+alt="The OSINT sequence separates public-source discovery from claim reuse: each handoff records provenance, legality, minimization, corroboration, caveats, and reviewer disposition before a bounded judgment can be logged." />
+<figcaption>The OSINT sequence separates
 public-source discovery from claim reuse: each handoff records
 provenance, legality, minimization, corroboration, caveats, and reviewer
 disposition before a bounded judgment can be logged. In the open source
@@ -232,9 +239,9 @@ support, common misconceptions, and safety boundaries.</p>
 <p>Governance requirements use verified official, standards,
 public-domain, or scholarly anchors such as
 [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]. Technical, theoretical, or empirical statements
-require direct domain sources and are limited to what those sources
-establish. [ageint251]; [ageint253].</p>
+[official_iso_19157_data_quality]. Technical, theoretical, or empirical
+statements require direct domain sources and are limited to what those
+sources establish. [ageint251]; [ageint253].</p>
 <p>Learners move from vocabulary and the
 <strong>Requirements-to-Evidence Lens</strong> distinction through topic
 lessons on <strong>History and Rise of OSINT in the Intelligence
@@ -319,5 +326,6 @@ requires</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

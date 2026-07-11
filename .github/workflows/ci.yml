@@ -1,0 +1,144 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Ruff check
+        run: uvx ruff check src tests scripts
+
+  test:
+    name: "Test (py${{ matrix.python-version }})"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v8.3.2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Sync dependencies (dev extra)
+        run: uv sync --extra dev
+
+      - name: Test with coverage gate
+        run: uv run pytest tests/ --cov=src --cov-fail-under=90
+
+  content-gates:
+    name: Content & Scholarship Gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v8.3.2
+        with:
+          python-version: "3.12"
+
+      - name: Sync dependencies (dev extra)
+        run: uv sync --extra dev
+
+      # Each audit script asserts one AGENTS.md ground-truth invariant against
+      # the checked-in output/ artifacts (see AGEINT/AGENTS.md "Ground truth").
+      # They read committed output, not a fresh build, so this job stays fast
+      # and does not need Mermaid/Chrome/pandoc/xelatex — see manuscript.yml
+      # for the strict-rebuild job that validates a FRESH build instead.
+
+      # Informational only: currently reports `ok: false` — its two failing
+      # sub-checks are `generated output fresh` and `pdf quality`, both
+      # downstream of the same root cause as the PDF-quality gap below (see
+      # that step's comment). `manuscript.yml`'s strict-rebuild job runs this
+      # same script against output IT just produced and enforces it as
+      # blocking there, since a fresh rebuild has no excuse to fail it.
+      - name: Artifact evidence manifest (informational — see manuscript.yml for the blocking, fresh-build version)
+        continue-on-error: true
+        run: uv run python scripts/audit_artifact_evidence.py --format markdown
+
+      - name: Scholarship quality (uncited / thin-support sections)
+        run: uv run python scripts/audit_scholarship_quality.py --format markdown
+
+      - name: Source-anchor metadata coverage (lane/tier)
+        run: uv run python scripts/audit_source_metadata.py --format markdown
+
+      - name: US IC agency-source coverage
+        run: uv run python scripts/audit_agency_source_coverage.py --format markdown
+
+      - name: Claim calibration (empirical/statistical/safety language)
+        run: uv run python scripts/audit_claim_calibration.py --format markdown
+
+      - name: Reference quality (links, headings, citation context)
+        run: uv run python scripts/audit_reference_quality.py --format markdown
+
+      - name: Heading reference support
+        run: uv run python scripts/audit_heading_support.py --format markdown
+
+      - name: Orchestration / audit / source-pack / Mermaid contracts
+        run: uv run python scripts/audit_orchestration_contract.py --format markdown
+
+      # --skip-parent-guard: this repo is the standalone published mirror, not
+      # a checkout nested under the private parent template — the parent
+      # confidentiality guard does not apply here. Informational only: this
+      # is a pre-release preflight report (see its own "Release Decision"
+      # text), not a per-PR merge gate, and it currently aggregates the two
+      # known pre-existing gaps above — its own "ok" only turns true once
+      # both are cleared and a release is actually being prepared.
+      - name: Publication-readiness preflight (informational — release-prep report)
+        continue-on-error: true
+        run: uv run python scripts/audit_publication_readiness.py --format markdown --skip-parent-guard
+
+      - name: Declarative YAML validation (topic/risk/rotation routes)
+        run: uv run python scripts/validate_declarative_yaml.py
+
+      - name: Rendered hard-coded section-reference check
+        run: uv run python scripts/check_rendered_references.py
+
+      # AGENTS.md "Verification": these fallback phrases must stay absent from
+      # the generated manuscript after any rebuild. Plain `grep -R`, not `rg`
+      # — ripgrep is not part of the documented GitHub-hosted runner image
+      # toolset (actions/runner-images), while grep always is.
+      - name: Banned generic fallback phrases absent
+        run: |
+          set +e
+          grep -R -E "defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine" output/manuscript/
+          found=$?
+          set -e
+          if [ "$found" -eq 0 ]; then
+            echo "::error::Banned generic fallback phrase found in output/manuscript/"
+            exit 1
+          fi
+          echo "No banned fallback phrases found."
+
+      # Informational only, and permanently so (not a "promote later" item
+      # like the two checks above): the pandoc/xelatex driver that produces
+      # `output/pdf/AGEINT_combined.pdf` / `AGEINT.pdf` lives in the private
+      # parent template's `infrastructure` package, not in this standalone
+      # repo — confirmed by grepping this repo for any `pandoc`/`xelatex`
+      # invocation (none exists outside `audit_pdf_quality.py`'s own text-scan
+      # logic). This CI cannot regenerate the PDF, so a stale-PDF finding here
+      # is expected between releases and is not this job's signal to give;
+      # refreshing it is a manual, out-of-band release step.
+      - name: PDF quality (informational — PDF rebuild is out of scope for this standalone repo)
+        continue-on-error: true
+        run: uv run python scripts/audit_pdf_quality.py --format markdown

@@ -16,7 +16,7 @@
       "generated_markdown_files": 330,
       "generic_detail_heading_issues": 0,
       "new_official_us_ic_anchors": 56,
-      "pdf_pages": 1858,
+      "pdf_pages": 1863,
       "pdf_stale": false,
       "reference_quality_issues": 0,
       "scholarship_hard_fail_rows": 0
@@ -46,14 +46,14 @@
     "source_refresh_due_ok": true,
     "task_prerequisites_done": true
   },
-  "generated_at": "2026-06-17T04:38:21+00:00",
+  "generated_at": "2026-07-11T02:24:17+00:00",
   "ok": true,
   "parent_confidentiality_guard": {
-    "checked": true,
+    "checked": false,
     "ok": true,
     "returncode": 0,
-    "stderr": "warning: `VIRTUAL_ENV=<local-path>` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead",
-    "stdout": "Confidentiality guard: only public canonical template projects are tracked."
+    "stderr": "",
+    "stdout": "not run in this invocation"
   },
   "project": "AGEINT",
   "release_decision": "Ready for an explicit local release decision only when this report is ok. This report does not publish, push, archive, promote, or create a public record.",

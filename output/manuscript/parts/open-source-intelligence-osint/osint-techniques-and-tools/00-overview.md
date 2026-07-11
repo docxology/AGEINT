@@ -24,7 +24,7 @@ This chapter teaches OSINT and GEOINT as public-source reasoning disciplines: av
 
 The central distinction is to separate discovery from collection expansion, and map or media interpretation from targeting. Core topics include **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records; Graph-analysis provenance review using instructor-provided records**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
-Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint251]; [@ageint252].
+Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint251]; [@ageint252].
 
 Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinction through topic lessons on **Search-exposure provenance review using instructor-provided records** with evidence and misconception checks, then assemble a **requirements matrix with source descriptors, caveats, and collection limits** with safety and rights gates.
 

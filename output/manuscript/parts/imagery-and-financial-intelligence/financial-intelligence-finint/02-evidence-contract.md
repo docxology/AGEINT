@@ -64,7 +64,7 @@ The source canon has three tiers; the local spine begins with [@ageint251]; [@ag
 | Verified anchors | Official, standards, public-domain, or scholarly sources in `references-*.bib` | Supplies governance, quality, legal, safety, and technical constraints. |
 | Runtime profile | The profile matched to the current unit and current module | Selects the practice lens, method stack, failure modes, and defensive boundary for generated prose. |
 
-**Triangulation anchors.** In module 17's source-canon section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 17's source-canon section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 Maintenance rule: Perplexity may suggest candidates for **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries** and [@ageint251]; [@ageint252], but only directly verified source URLs are encoded as citations.
 

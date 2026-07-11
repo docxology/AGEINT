@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:curriculum_orientation">Curriculum Orientation: reader
 paths, evidence maps, and safety gates</h1>
 <p>AGEINT (Agentic Intelligence) is a curriculum-and-assurance atlas for
@@ -276,13 +283,14 @@ next section with the right verifier question already named. See
 [fig:ageint-reader-route-compass].</p>
 <figure id="fig:ageint-reader-route-compass">
 <img src="../../figures/python/ageint-reader-route-compass.png"
-alt="Opening navigation compass for the AGEINT orientation. It separates the instructor, learner, assurance reviewer, and maintainer routes and pairs each with the evidence trace that should survive the next reading move, so a reader can choose a path and know what to carry into the following section. It is navigation support, not a learning-outcome or performance claim." />
-<figcaption aria-hidden="true">Opening navigation compass for the AGEINT
+alt="Opening navigation compass for the AGEINT orientation." />
+<figcaption>Opening navigation compass for the AGEINT
 orientation. It separates the instructor, learner, assurance reviewer,
 and maintainer routes and pairs each with the evidence trace that should
 survive the next reading move, so a reader can choose a path and know
 what to carry into the following section. It is navigation support, not
 a learning-outcome or performance claim.</figcaption>
 </figure>
+</main>
 </body>
 </html>

@@ -1,0 +1,180 @@
+name: Manuscript Build & Validate
+
+# Scope note: this repo is the standalone published mirror. The strict
+# rebuild here covers everything `scripts/build_curriculum.py` owns —
+# curriculum data, the semantic manuscript, the figure registry, and real
+# (non-placeholder) Mermaid PNGs. It does NOT render `AGEINT.pdf` /
+# `output/pdf/AGEINT_combined.pdf` — that pandoc/xelatex driver lives in the
+# private parent template's `infrastructure` package, which this standalone
+# repo does not carry (confirmed: no `pandoc`/`xelatex` invocation anywhere
+# under `scripts/` or `src/` here). PDF refresh stays a manual, out-of-band
+# release step; `audit_pdf_quality.py` stays informational in `ci.yml` for
+# that reason.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      # Whole data/ subtree, not an enumerated allowlist: it holds 11+
+      # source-owned YAML files (agency_source_packs, concept_routes,
+      # coursebook_profiles, manuscript_architecture, topic_risk_routes, ...)
+      # plus curriculum/research_anchors/source_identity/figures directories.
+      # A hand-picked list would drift the moment a new one is added.
+      - "data/**"
+      - "manuscript/templates/**"
+      - "manuscript/config.yaml"
+      - "src/manuscript_manifest/**"
+      - "src/intelligence_content/**"
+      - "src/figures/**"
+      - "domain_profile.yaml"
+      - "scripts/build_curriculum.py"
+      - "scripts/generate_figures.py"
+  schedule:
+    # Weekly Monday 15:00 UTC — one hour after source-freshness.yml's 14:00
+    # run, so a source-refresh drift issue (if any) lands before this rebuild.
+    - cron: "0 15 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manuscript-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-validate:
+    name: Strict rebuild (real Mermaid PNGs) + full audit suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v8.3.2
+        with:
+          python-version: "3.12"
+
+      - name: Sync dependencies (dev extra)
+        run: uv sync --extra dev
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Install mermaid-cli
+        run: npm install -g @mermaid-js/mermaid-cli
+
+      - name: Cache puppeteer chrome-headless-shell
+        id: puppeteer-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/puppeteer
+          key: puppeteer-chrome-headless-shell-131.0.6778.204-${{ runner.os }}
+
+      # Pinned version matches src/figures/AGENTS.md exactly: mmdc's
+      # `_discover_chrome_executable()` prefers this exact build over any
+      # other cached shell, so installing a different version would silently
+      # fall back instead of exercising the documented, tested path.
+      - name: Install pinned chrome-headless-shell for mermaid-cli
+        if: steps.puppeteer-cache.outputs.cache-hit != 'true'
+        run: npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
+
+      - name: Strict manuscript rebuild (real Mermaid PNGs, no placeholders)
+        env:
+          AGEINT_REQUIRE_RENDERED_FIGURES: "1"
+        run: uv run python scripts/build_curriculum.py
+
+      # Now that Chrome is actually present, the `requires_mermaid`-marked
+      # strict figure tests run for real instead of skipping (see
+      # src/figures/AGENTS.md "Run strict figure tests").
+      - name: Full test suite (incl. strict Mermaid figure tests)
+        run: uv run pytest tests/ --cov=src --cov-fail-under=90
+
+      # Refresh every audit report against the FRESH build. Confirmed live
+      # (2026-07-10, run standalone against a real strict rebuild): rebuilding
+      # flips `audit_artifact_evidence.py`'s "generated output fresh" check
+      # false → true, so its OTHER findings are worth enforcing here — but its
+      # `OK` verdict AND `audit_publication_readiness.py`'s aggregate both
+      # bundle in `pdf_quality_ok`, which stays permanently false in this repo
+      # (no pandoc/xelatex driver exists here — see the workflow-level scope
+      # note at the top of this file). Neither script exposes a flag to
+      # exclude just that sub-check, so both stay informational here for the
+      # same structural reason as `audit_pdf_quality.py` itself, not because
+      # this job's own rebuild is suspect.
+      # Not every audit_*.py shares the same flags: audit_heading_support.py
+      # and audit_pdf_quality.py take only `--format`/`--pdf`/`--manuscript-dir`
+      # (no `--write`) — confirmed via each script's own `--help` before
+      # wiring this loop (Gate E: verify the CLI contract, don't assume
+      # uniformity across scripts just because most of them agree).
+      - name: Refresh and enforce all audit reports against the fresh build
+        run: |
+          set -euo pipefail
+          for f in scripts/audit_*.py; do
+            case "$f" in
+              scripts/audit_publication_readiness.py)
+                uv run python "$f" --format markdown --write --skip-parent-guard || true
+                ;;
+              scripts/audit_artifact_evidence.py)
+                uv run python "$f" --format markdown --write || true
+                ;;
+              scripts/audit_pdf_quality.py)
+                uv run python "$f" --format markdown || true
+                ;;
+              scripts/audit_heading_support.py)
+                uv run python "$f" --format markdown
+                ;;
+              *)
+                uv run python "$f" --format markdown --write
+                ;;
+            esac
+          done
+
+      - name: Declarative YAML validation (topic/risk/rotation routes)
+        run: uv run python scripts/validate_declarative_yaml.py
+
+      - name: Rendered hard-coded section-reference check
+        run: uv run python scripts/check_rendered_references.py
+
+      # AGENTS.md "Verification": these fallback phrases must stay absent
+      # from the generated manuscript after any rebuild.
+      - name: Banned generic fallback phrases absent
+        run: |
+          set +e
+          grep -R -E "defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine" output/manuscript/
+          found=$?
+          set -e
+          if [ "$found" -eq 0 ]; then
+            echo "::error::Banned generic fallback phrase found in output/manuscript/"
+            exit 1
+          fi
+          echo "No banned fallback phrases found."
+
+      # Visibility only — never auto-commits. A fresh, audit-clean rebuild
+      # can still differ byte-for-byte from the committed tree (e.g. the
+      # frontmatter evidence-transit-map figure embeds a live "as of"
+      # timestamp/telemetry snapshot by design). Surfacing the diff lets a
+      # maintainer decide whether to commit the refresh, matching this
+      # project's existing deliberate rebuild-then-commit convention (see
+      # ISA.md's dated scopes) rather than a bot silently rewriting checked-in
+      # generated content.
+      - name: Report drift against the committed output/ tree (informational)
+        if: always()
+        run: |
+          if git diff --quiet -- output/ manuscript/references-*.bib; then
+            echo "No drift: fresh build matches the committed output/ tree."
+          else
+            echo "::notice::Fresh strict rebuild differs from the committed output/ tree — review before refreshing."
+            git diff --stat -- output/ manuscript/references-*.bib
+          fi
+
+      - name: Upload rebuilt manuscript + figure registry
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: manuscript-rebuild
+          path: |
+            output/manuscript/
+            output/figures/figure_registry.json
+            output/reports/
+          if-no-files-found: warn
+          retention-days: 14

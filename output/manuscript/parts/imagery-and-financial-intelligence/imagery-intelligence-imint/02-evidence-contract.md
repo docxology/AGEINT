@@ -64,7 +64,7 @@ The source canon has three tiers; the local spine begins with [@ageint253]; [@ag
 | Verified anchors | Official, standards, public-domain, or scholarly sources in `references-*.bib` | Supplies governance, quality, legal, safety, and technical constraints. |
 | Runtime profile | The profile matched to the current unit and current module | Selects the practice lens, method stack, failure modes, and defensive boundary for generated prose. |
 
-**Triangulation anchors.** In module 16's source-canon section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 16's source-canon section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 Maintenance rule: Perplexity may suggest candidates for **Imagery modality literacy: resolution, scale, and sensor-fit; Imagery collection-platform literacy: resolution and revisit tradeoffs** and [@ageint253]; [@ageint269], but only directly verified source URLs are encoded as citations.
 

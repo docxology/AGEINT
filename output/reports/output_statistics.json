@@ -3,22 +3,22 @@
     "pdf": {
       "exists": true,
       "file_count": 32,
-      "size_mb": "52.53",
-      "total_size_bytes": 55085871,
+      "size_mb": "54.14",
+      "total_size_bytes": 56774942,
       "largest_files": [
         {
           "name": "AGEINT_combined.pdf",
-          "size_mb": "32.55",
+          "size_mb": "34.09",
           "path": "pdf/AGEINT_combined.pdf"
         },
         {
           "name": "_combined_manuscript.tex",
-          "size_mb": "7.36",
+          "size_mb": "7.39",
           "path": "pdf/_combined_manuscript.tex"
         },
         {
           "name": "_combined_manuscript.md",
-          "size_mb": "6.23",
+          "size_mb": "6.26",
           "path": "pdf/_combined_manuscript.md"
         }
       ],
@@ -36,18 +36,18 @@
     },
     "web": {
       "exists": true,
-      "file_count": 334,
-      "size_mb": "23.16",
-      "total_size_bytes": 24289480,
+      "file_count": 335,
+      "size_mb": "24.27",
+      "total_size_bytes": 25447569,
       "largest_files": [
         {
           "name": "index.html",
-          "size_mb": "8.30",
+          "size_mb": "9.32",
           "path": "web/index.html"
         },
         {
           "name": "_combined_manuscript.md",
-          "size_mb": "6.21",
+          "size_mb": "6.25",
           "path": "web/_combined_manuscript.md"
         },
         {
@@ -58,7 +58,8 @@
       ],
       "extensions": {
         ".html": 331,
-        ".md": 3
+        ".md": 3,
+        ".ico": 1
       }
     },
     "slides": {
@@ -84,9 +85,9 @@
     },
     "figures": {
       "exists": true,
-      "file_count": 420,
-      "size_mb": "28.15",
-      "total_size_bytes": 29517636,
+      "file_count": 424,
+      "size_mb": "29.79",
+      "total_size_bytes": 31233403,
       "largest_files": [
         {
           "name": "historical-forbidden-city.png",
@@ -107,7 +108,7 @@
       "extensions": {
         ".json": 5,
         ".md": 10,
-        ".png": 175,
+        ".png": 179,
         ".mmd": 115,
         ".rendered": 115
       }
@@ -116,7 +117,7 @@
       "exists": true,
       "file_count": 139,
       "size_mb": "3.59",
-      "total_size_bytes": 3763226,
+      "total_size_bytes": 3763552,
       "largest_files": [
         {
           "name": "manuscript_variables.json",
@@ -142,13 +143,13 @@
     },
     "reports": {
       "exists": true,
-      "file_count": 44,
-      "size_mb": "12.00",
-      "total_size_bytes": 12583479,
+      "file_count": 46,
+      "size_mb": "11.92",
+      "total_size_bytes": 12498785,
       "largest_files": [
         {
           "name": "claim_calibration.json",
-          "size_mb": "9.70",
+          "size_mb": "9.58",
           "path": "reports/claim_calibration.json"
         },
         {
@@ -163,82 +164,68 @@
         }
       ],
       "extensions": {
-        ".json": 24,
-        ".md": 15,
+        ".json": 25,
+        ".md": 16,
         ".jsonl": 1,
         ".txt": 3,
         ".html": 1
       }
     },
     "simulations": {
-      "exists": true,
+      "exists": false,
       "file_count": 0,
       "size_mb": "0.00",
-      "total_size_bytes": 0,
-      "largest_files": [],
-      "extensions": {}
+      "total_size_bytes": 0
     },
     "llm": {
-      "exists": true,
+      "exists": false,
       "file_count": 0,
       "size_mb": "0.00",
-      "total_size_bytes": 0,
-      "largest_files": [],
-      "extensions": {}
+      "total_size_bytes": 0
     },
     "logs": {
-      "exists": true,
-      "file_count": 1,
+      "exists": false,
+      "file_count": 0,
       "size_mb": "0.00",
-      "total_size_bytes": 144,
-      "largest_files": [
-        {
-          "name": "pipeline.log",
-          "size_mb": "0.00",
-          "path": "logs/pipeline.log"
-        }
-      ],
-      "extensions": {
-        ".log": 1
-      }
+      "total_size_bytes": 0
     }
   },
-  "total_files": 972,
-  "total_size_mb": 119.43832015991211,
+  "total_files": 978,
+  "total_size_mb": 123.7092695236206,
   "largest_files": [
     {
       "name": "AGEINT_combined.pdf",
-      "size_mb": "32.55",
+      "size_mb": "34.09",
       "category": "pdf",
       "path": "pdf/AGEINT_combined.pdf"
     },
     {
       "name": "claim_calibration.json",
-      "size_mb": "9.70",
+      "size_mb": "9.58",
       "category": "reports",
       "path": "reports/claim_calibration.json"
     },
     {
       "name": "index.html",
-      "size_mb": "8.30",
+      "size_mb": "9.32",
       "category": "web",
       "path": "web/index.html"
     },
     {
       "name": "_combined_manuscript.tex",
-      "size_mb": "7.36",
+      "size_mb": "7.39",
       "category": "pdf",
       "path": "pdf/_combined_manuscript.tex"
     },
     {
       "name": "_combined_manuscript.md",
-      "size_mb": "6.23",
+      "size_mb": "6.26",
       "category": "pdf",
       "path": "pdf/_combined_manuscript.md"
     },
     {
       "name": "_combined_manuscript.md",
-      "size_mb": "6.21",
+      "size_mb": "6.25",
       "category": "web",
       "path": "web/_combined_manuscript.md"
     },
@@ -267,22 +254,23 @@
       "path": "figures/historical/historical-hexagon-quang-tri.png"
     }
   ],
-  "missing_expected_files": [],
+  "missing_expected_files": [
+    "simulations/ directory",
+    "llm/ directory",
+    "logs/ directory"
+  ],
   "sizes_by_category": {
-    "pdf": 52.53398036956787,
-    "web": 23.16425323486328,
+    "pdf": 54.14480400085449,
+    "web": 24.26869297027588,
     "slides": 0.00030517578125,
-    "figures": 28.150211334228516,
-    "data": 3.5888919830322266,
-    "reports": 12.000540733337402,
-    "simulations": 0.0,
-    "llm": 0.0,
-    "logs": 0.0001373291015625
+    "figures": 29.786494255065918,
+    "data": 3.589202880859375,
+    "reports": 11.919770240783691
   },
   "file_counts_by_type": {
     ".bib": 21,
-    ".md": 35,
-    ".log": 3,
+    ".md": 36,
+    ".log": 2,
     ".aux": 1,
     ".blg": 1,
     ".pdf": 1,
@@ -290,8 +278,9 @@
     ".toc": 1,
     ".bbl": 1,
     ".html": 332,
-    ".json": 110,
-    ".png": 175,
+    ".ico": 1,
+    ".json": 111,
+    ".png": 179,
     ".mmd": 115,
     ".rendered": 115,
     ".jsonl": 57,

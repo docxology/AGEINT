@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-ageint-applied-to-ics-and-cyber-physical-intelligence">AGEINT
 Applied to ICS and Cyber-Physical Intelligence</h1>
@@ -190,8 +197,8 @@ cues.</p>
 <figure id="fig:ageint-ics-defensive-assurance-loop">
 <img
 src="../../../../figures/mermaid/ageint-ics-defensive-assurance-loop.png"
-alt="A bounded assurance loop for AI-assisted ICS defense where anomaly findings stay advisory and every action runs in an owned lab with logging and rollback. The captioned view belongs to the industrial and cyber physical intelligence / ageint applied to ics and cyber physical intelligence section and should be read as a map of Synthetic OT telemetry in owned lab, AI-driven anomaly detection, LLM agent log analysis and correlation, and Advisory findings with confidence, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">A bounded assurance loop for AI-assisted
+alt="A bounded assurance loop for AI-assisted ICS defense where anomaly findings stay advisory and every action runs in an owned lab with logging and rollback." />
+<figcaption>A bounded assurance loop for AI-assisted
 ICS defense where anomaly findings stay advisory and every action runs
 in an owned lab with logging and rollback. The captioned view belongs to
 the industrial and cyber physical intelligence / ageint applied to ics
@@ -203,8 +210,8 @@ instruction.</figcaption>
 </figure>
 <figure id="fig:ageint-ics-tabletop-plate">
 <img src="../../../../figures/ai/ageint-ics-tabletop-plate.png"
-alt="Deterministic teaching plate for ICS tabletop learning with owned-lab fixtures, logging, rollback, and defensive review. The captioned view belongs to the industrial and cyber physical intelligence / ageint applied to ics and cyber physical intelligence section and should be read as a map of Owned lab, Safety gate, Run log, and Rollback path, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">Deterministic teaching plate for ICS
+alt="Deterministic teaching plate for ICS tabletop learning with owned-lab fixtures, logging, rollback, and defensive review." />
+<figcaption>Deterministic teaching plate for ICS
 tabletop learning with owned-lab fixtures, logging, rollback, and
 defensive review. The captioned view belongs to the industrial and cyber
 physical intelligence / ageint applied to ics and cyber physical
@@ -341,5 +348,6 @@ restored</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

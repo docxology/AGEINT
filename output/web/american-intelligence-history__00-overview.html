@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-american-intelligence-history">American Intelligence
 History</h1>
 <h3
@@ -188,8 +195,8 @@ cues.</p>
 <figure id="fig:us-intelligence-oversight-authority-timeline">
 <img
 src="../../../../figures/mermaid/us-intelligence-oversight-authority-timeline.png"
-alt="A milestone view of how American intelligence accountability was progressively built through founding statutes, investigations, oversight committees, and surveillance-law reform. Its reader value is to make National Security Act 1947, Church and Pike inquiries, Intelligence oversight committees, and Foreign Intelligence Surveillance Act visible at a glance, with the historical intelligence services / american intelligence history section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">A milestone view of how American
+alt="A milestone view of how American intelligence accountability was progressively built through founding statutes, investigations, oversight committees, and surveillance-law reform." />
+<figcaption>A milestone view of how American
 intelligence accountability was progressively built through founding
 statutes, investigations, oversight committees, and surveillance-law
 reform. Its reader value is to make National Security Act 1947, Church
@@ -337,5 +344,6 @@ reconstructing live tradecraft</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

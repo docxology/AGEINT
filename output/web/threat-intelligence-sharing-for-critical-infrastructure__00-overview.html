@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-threat-intelligence-sharing-for-critical-infrastructure">Threat
 Intelligence Sharing for Critical Infrastructure</h1>
@@ -188,8 +195,8 @@ cues.</p>
 [sec:chapter-ageint-applied-to-ics-and-cyber-physical-intelligence].</p>
 <figure id="fig:ci-threat-intel-tlp-sharing">
 <img src="../../../../figures/mermaid/ci-threat-intel-tlp-sharing.png"
-alt="This diagram teaches how a detected indicator is sanitized, marked with a Traffic Light Protocol level, and routed through a sector ISAC so defensive mitigations flow back to the community. It is anchored to the industrial and cyber physical intelligence / threat intelligence sharing for critical infrastructure section; use it to inspect Critical-Infrastructure Threat-Intel Sharing TLP trust and handling flow, Detected indicator at one OT operator, Sanitize remove victim-identifying and sensitive detail, and TLP:RED named recipients only while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">This diagram teaches how a detected
+alt="This diagram teaches how a detected indicator is sanitized, marked with a Traffic Light Protocol level, and routed through a sector ISAC so defensive mitigations flow back to the community." />
+<figcaption>This diagram teaches how a detected
 indicator is sanitized, marked with a Traffic Light Protocol level, and
 routed through a sector ISAC so defensive mitigations flow back to the
 community. It is anchored to the industrial and cyber physical
@@ -330,5 +337,6 @@ restored</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

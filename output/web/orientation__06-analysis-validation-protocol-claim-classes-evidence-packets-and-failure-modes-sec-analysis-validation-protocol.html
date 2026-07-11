@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>06-analysis-validation-protocol-claim-classes-evidence-packets-and-failure-modes-sec-analysis-validation-protocol.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h2 id="sec:analysis-validation-protocol">Analysis validation protocol:
 claim classes, evidence packets, and failure modes</h2>
 <p>The manuscript now treats analysis validation as a reader-facing
@@ -261,8 +268,8 @@ the generated audits that carry the authoritative pass, warn, or block
 state. See [fig:ageint-assurance-cockpit].</p>
 <figure id="fig:ageint-assurance-cockpit">
 <img src="../../figures/python/ageint-assurance-cockpit.png"
-alt="Audit-tile orientation cockpit for local readiness. It groups build freshness, reference quality, source metadata, refresh posture, figure quality, and the publication-readiness boundary into reader-facing tiles that route review effort to the right verifier. The tiles are schematic orientation only; authoritative status — the pass, warn, or block state — lives in the generated audits, not in this figure." />
-<figcaption aria-hidden="true">Audit-tile orientation cockpit for local
+alt="Audit-tile orientation cockpit for local readiness." />
+<figcaption>Audit-tile orientation cockpit for local
 readiness. It groups build freshness, reference quality, source
 metadata, refresh posture, figure quality, and the publication-readiness
 boundary into reader-facing tiles that route review effort to the right
@@ -270,5 +277,6 @@ verifier. The tiles are schematic orientation only; authoritative status
 — the pass, warn, or block state — lives in the generated audits, not in
 this figure.</figcaption>
 </figure>
+</main>
 </body>
 </html>

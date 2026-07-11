@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-counterintelligence-against-non-state-actors">Counterintelligence
 Against Non-State Actors</h1>
@@ -188,8 +195,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:ci-nonstate-attribution-governance-loop">
 <img
 src="../../../../figures/mermaid/ci-nonstate-attribution-governance-loop.png"
-alt="A governed counterintelligence loop showing how indicators against non-state actors move through lawful collection, attribution confidence checks, oversight review, and civil-liberties audit. The captioned view belongs to the counterintelligence / counterintelligence against non state actors section and should be read as a map of Indicator or Tip, Threat Triage Against CI Priorities, Lawful Collection and Records Review, and Pattern and Network Analysis, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">A governed counterintelligence loop
+alt="A governed counterintelligence loop showing how indicators against non-state actors move through lawful collection, attribution confidence checks, oversight review, and civil-liberties audit." />
+<figcaption>A governed counterintelligence loop
 showing how indicators against non-state actors move through lawful
 collection, attribution confidence checks, oversight review, and
 civil-liberties audit. The captioned view belongs to the
@@ -331,5 +338,6 @@ details</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

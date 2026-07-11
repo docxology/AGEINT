@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-cognitive-security">COGNITIVE SECURITY</h1>
 <h2
 id="cognitive-security-learning-spine-and-source-route-unit-purpose-module-order-and-evidence-handoff">COGNITIVE
@@ -331,8 +338,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:part-cognitive-security-module-map">
 <img
 src="../../../figures/mermaid/part-cognitive-security-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. The captioned view belongs to the cognitive security section and should be read as a map of 4 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. The captioned view belongs to the
 cognitive security section and should be read as a map of 4 module nodes
 in the unit’s ordered, source-backed reading sequence from its first
@@ -341,8 +348,8 @@ instruction.</figcaption>
 </figure>
 <figure id="fig:ageint-cognitive-attack-layers">
 <img src="../../../figures/mermaid/ageint-cognitive-attack-layers.png"
-alt="The NATO/INSS cognitive warfare taxonomy distinguishes biological, psychological, and social attack layers by their target, mechanism, and the role AI plays in each. The captioned view belongs to the cognitive security section and should be read as a map of NATO/INSS Cognitive Warfare 2026 three layers of engagement, Biological layer, Target cognitive capacity, and Mechanism neuroscience-informed targeting of the nervous system, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The NATO/INSS cognitive warfare taxonomy
+alt="The NATO/INSS cognitive warfare taxonomy distinguishes biological, psychological, and social attack layers by their target, mechanism, and the role AI plays in each." />
+<figcaption>The NATO/INSS cognitive warfare taxonomy
 distinguishes biological, psychological, and social attack layers by
 their target, mechanism, and the role AI plays in each. The captioned
 view belongs to the cognitive security section and should be read as a
@@ -353,8 +360,8 @@ capability score or live-task instruction.</figcaption>
 </figure>
 <figure id="fig:part-cogsec-defensive-chain">
 <img src="../../../figures/mermaid/part-cogsec-defensive-chain.png"
-alt="Conceptual part map moving from cognitive-defense definitions through neurocognitive mechanisms and bounded prebunking education into governed operations where measurement and rights safeguards feed back to refine education design. Its reader value is to make Foundations (Ch37), Definitions: defending cognition, not censoring, Mechanism Layer (Ch38), and Neurocognitive mechanisms and vulnerabilities visible at a glance, with the cognitive security section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Conceptual part map moving from
+alt="Conceptual part map moving from cognitive-defense definitions through neurocognitive mechanisms and bounded prebunking education into governed operations where measurement and rights safeguards feed back to refine education design." />
+<figcaption>Conceptual part map moving from
 cognitive-defense definitions through neurocognitive mechanisms and
 bounded prebunking education into governed operations where measurement
 and rights safeguards feed back to refine education design. Its reader
@@ -365,8 +372,8 @@ as the source section and defensive review as the boundary.</figcaption>
 </figure>
 <figure id="fig:ageint-cognitive-security-plate">
 <img src="../../../figures/ai/ageint-cognitive-security-plate.png"
-alt="Deterministic teaching plate for cognitive security as defensive inoculation, provenance tracking, and uncertainty management. In the cognitive security section, it lets readers compare Claim check, Prebunking lesson, Source trace, and Uncertainty review so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Deterministic teaching plate for
+alt="Deterministic teaching plate for cognitive security as defensive inoculation, provenance tracking, and uncertainty management." />
+<figcaption>Deterministic teaching plate for
 cognitive security as defensive inoculation, provenance tracking, and
 uncertainty management. In the cognitive security section, it lets
 readers compare Claim check, Prebunking lesson, Source trace, and
@@ -427,5 +434,6 @@ learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

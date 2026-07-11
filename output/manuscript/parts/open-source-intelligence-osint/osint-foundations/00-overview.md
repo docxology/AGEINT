@@ -24,7 +24,7 @@ This chapter teaches OSINT and GEOINT as public-source reasoning disciplines: av
 
 The central distinction is to separate discovery from collection expansion, and map or media interpretation from targeting. Core topics include **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026; OSINT vs. HUMINT vs. SIGINT: Comparative Value and Fusion**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
-Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint251]; [@ageint253].
+Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint251]; [@ageint253].
 
 Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinction through topic lessons on **History and Rise of OSINT in the Intelligence Community** with evidence and misconception checks, then assemble a **requirements matrix with source descriptors, caveats, and collection limits** with safety and rights gates.
 

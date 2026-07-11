@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-source-protection-and-ci-integration">Source
 Protection and CI Integration</h1>
 <h3
@@ -187,8 +194,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:humint-source-vetting-governance">
 <img
 src="../../../../figures/mermaid/humint-source-vetting-governance.png"
-alt="This diagram teaches the defensive governance flow that evaluates source reliability and protects sources through compartmentation and counterintelligence review. Its reader value is to make Source Reporting, Vetting and Credibility Review, and Audit and Records Trail visible at a glance, with the human intelligence humint / source protection and ci integration section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">This diagram teaches the defensive
+alt="This diagram teaches the defensive governance flow that evaluates source reliability and protects sources through compartmentation and counterintelligence review." />
+<figcaption>This diagram teaches the defensive
 governance flow that evaluates source reliability and protects sources
 through compartmentation and counterintelligence review. Its reader
 value is to make Source Reporting, Vetting and Credibility Review, and
@@ -331,5 +338,6 @@ operational control</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

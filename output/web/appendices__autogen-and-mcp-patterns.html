@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>autogen-and-mcp-patterns.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:appendix-autogen-and-mcp-patterns">AutoGen and MCP
 Patterns</h1>
 <p>The current appendix is an evidence workbook for reusable classroom
@@ -915,8 +922,8 @@ refresh cues.</p>
 [sec:appendix-cryptographic-methods].</p>
 <figure id="fig:appendix-mcp-host-client-server">
 <img src="../../figures/mermaid/appendix-mcp-host-client-server.png"
-alt="MCP standardizes how an agent host connects through clients to servers that expose resources, prompts, and tools under capability negotiation and least-privilege scoping. In the autogen and mcp patterns appendix, it lets readers compare Agent host, Client A, Client B, and Capability negotiation so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">MCP standardizes how an agent host
+alt="MCP standardizes how an agent host connects through clients to servers that expose resources, prompts, and tools under capability negotiation and least-privilege scoping." />
+<figcaption>MCP standardizes how an agent host
 connects through clients to servers that expose resources, prompts, and
 tools under capability negotiation and least-privilege scoping. In the
 autogen and mcp patterns appendix, it lets readers compare Agent host,
@@ -926,8 +933,8 @@ assertion.</figcaption>
 </figure>
 <figure id="fig:ageint-mcp-version-boundary">
 <img src="../../figures/mermaid/ageint-mcp-version-boundary.png"
-alt="Conceptual schematic showing that MCP tool access depends on host, client, server, version, identity, authorization, and audit evidence rather than protocol names alone. In the autogen and mcp patterns appendix, it lets readers compare Host policy, MCP client, Identity and authorization, and Block or isolate so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Conceptual schematic showing that MCP
+alt="Conceptual schematic showing that MCP tool access depends on host, client, server, version, identity, authorization, and audit evidence rather than protocol names alone." />
+<figcaption>Conceptual schematic showing that MCP
 tool access depends on host, client, server, version, identity,
 authorization, and audit evidence rather than protocol names alone. In
 the autogen and mcp patterns appendix, it lets readers compare Host
@@ -1001,5 +1008,6 @@ or deployment</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

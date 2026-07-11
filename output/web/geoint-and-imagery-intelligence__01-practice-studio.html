@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h2
 id="requirements-to-evidence-lens-path-for-geoint-and-imagery-intelligence-lesson-cluster-safe-artifact-and-review">Requirements-to-Evidence
 Lens path for GEOINT and Imagery Intelligence: lesson cluster, safe
@@ -205,8 +212,8 @@ tasks.</p>
 section, directly verified anchors for the <strong>Open-Source and
 Geospatial Intelligence Integrity</strong> lane include
 [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]; [official_nga_geoint_ai]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
+[official_iso_19157_data_quality]; [official_nga_strategy]. Use them to
+test source-guide claims, method boundaries, governance constraints, and
 safety gates without replacing the module’s <code>ageintNNN</code>
 provenance.</p>
 <h4
@@ -711,8 +718,8 @@ open data supports a non-sensitive evacuation-route map. [ageint253];
 section, directly verified anchors for the <strong>Open-Source and
 Geospatial Intelligence Integrity</strong> lane include
 [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]; [official_nga_geoint_ai]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
+[official_iso_19157_data_quality]; [official_nga_strategy]. Use them to
+test source-guide claims, method boundaries, governance constraints, and
 safety gates without replacing the module’s <code>ageintNNN</code>
 provenance.</p>
 <p><strong>Unit discipline spine.</strong> Discipline:
@@ -772,8 +779,8 @@ and non-sensitive synthetic change examples</strong>.</p>
 practice-sequence section, directly verified anchors for the
 <strong>Open-Source and Geospatial Intelligence Integrity</strong> lane
 include [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]; [official_nga_geoint_ai]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
+[official_iso_19157_data_quality]; [official_nga_strategy]. Use them to
+test source-guide claims, method boundaries, governance constraints, and
 safety gates without replacing the module’s <code>ageintNNN</code>
 provenance.</p>
 <table>
@@ -903,5 +910,6 @@ and states the safe boundary, while a revise-level answer gives a
 memorized definition of <strong>Imagery quality literacy: resolution,
 temporal fit, and uncertainty</strong> without source evidence,
 uncertainty, or a safe transfer task.</p>
+</main>
 </body>
 </html>

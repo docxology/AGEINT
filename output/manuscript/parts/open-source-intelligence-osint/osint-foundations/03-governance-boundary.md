@@ -4,12 +4,12 @@
 
 ### OSINT Foundations analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 9's governance-boundary section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 9's governance-boundary section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 Research lane: **Open-Source and Geospatial Intelligence Integrity** for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**. [@ageint251]; [@ageint253].
 
 **Curriculum topic spine:** **History and Rise of OSINT in the Intelligence Community**, **IC OSINT Strategy 2024–2026**, **OSINT vs. HUMINT vs. SIGINT: Comparative Value and Fusion**.
-**Verified anchor cluster:** [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]; [@official_iso_19157_data_quality]; [@official_odni_icd_206]; [@official_odni_icd_203].
+**Verified anchor cluster:** [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]; [@official_nga_geoint_ai]; [@official_odni_icd_206]; [@official_odni_icd_203].
 
 **Conceptual depth:** public-source discovery converted into accountable intelligence through provenance, corroboration, minimization, and relevance tests.
 
@@ -25,9 +25,9 @@ Research lane: **Open-Source and Geospatial Intelligence Integrity** for **Histo
 |---|---|
 | [@official_ic_osint_strategy] | Official IC OSINT strategy for professionalizing OSINT, integrated collection management, open-source sharing, innovation, and tradecraft. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_state_osint_strategy] | Official strategy source for lawful OSINT governance, discovery, validation, and dissemination. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@official_iso_19157_data_quality] | International geospatial data-quality standard for completeness, logical consistency, positional accuracy, temporal quality, and usability framing. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_nga_strategy] | Official NGA strategy anchor for GEOINT readiness, warning, partnership resilience, resource stewardship, and AI integration. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_nga_geoint_ai] | Official NGA source on GEOINT AI, data quality, model performance, interoperability, analyst interaction, and standards leadership. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@official_iso_19157_data_quality] | International geospatial data-quality standard for completeness, logical consistency, positional accuracy, temporal quality, and usability framing. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_odni_icd_206] | Official sourcing directive for traceability, citations, source descriptors, and source summaries. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_odni_icd_203] | Official ODNI analytic tradecraft standards directive. Checked as of 2026-05-21; role: source_quality_anchor. |
 
@@ -101,8 +101,8 @@ The source assurance check ties the current verified anchor set to the local cha
 |---|---|---|
 | What does the module inherit from `official_ic_osint_strategy` for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**? | The INT of First Resort: The IC OSINT Strategy 2024-2026; lane `osint_geoint`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official IC OSINT strategy for professionalizing OSINT, integrated collection management, open-source sharing, innovation, and tradecraft. |
 | What does the module inherit from `official_state_osint_strategy` for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**? | Open Source Intelligence Strategy; lane `osint_geoint`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official strategy source for lawful OSINT governance, discovery, validation, and dissemination. |
+| What does the module inherit from `official_iso_19157_data_quality` for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**? | ISO 19157:2013 Geographic Information - Data Quality; lane `osint_geoint`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; International geospatial data-quality standard for completeness, logical consistency, positional accuracy, temporal quality, and usability framing. |
 | What does the module inherit from `official_nga_strategy` for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**? | NGA Strategy; lane `osint_geoint`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official NGA strategy anchor for GEOINT readiness, warning, partnership resilience, resource stewardship, and AI integration. |
-| What does the module inherit from `official_nga_geoint_ai` for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**? | GEOINT Artificial Intelligence; lane `osint_geoint`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official NGA source on GEOINT AI, data quality, model performance, interoperability, analyst interaction, and standards leadership. |
 | How is Perplexity handled here? | Discovery and second-opinion notes are not citable authority unless converted into direct official, standards-body, public-domain, or scholarly anchors. | Claim ledger records the direct URL, checked date, source lane, refresh trigger, and reviewer. |
 
 **Where this sits.** This module's overview is [@sec:chapter-osint-foundations]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

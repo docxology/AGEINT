@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:part-productivity-intelligence-and-cognitive-performance">PRODUCTIVITY
 INTELLIGENCE AND COGNITIVE PERFORMANCE</h1>
@@ -319,8 +326,8 @@ cues.</p>
 id="fig:part-productivity-intelligence-and-cognitive-performance-module-map">
 <img
 src="../../../figures/mermaid/part-productivity-intelligence-and-cognitive-performance-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. It is anchored to the productivity intelligence and cognitive performance section; use it to inspect 2 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. It is anchored to the
 productivity intelligence and cognitive performance section; use it to
 inspect 2 module nodes in the unit’s ordered, source-backed reading
@@ -331,8 +338,8 @@ accountable practice.</figcaption>
 <figure id="fig:part-productivity-cognitive-performance-loops">
 <img
 src="../../../figures/mermaid/part-productivity-cognitive-performance-loops.png"
-alt="This part frames sustained intelligence work as two coupled loops — the cognitive athlete who manages workload, focus, and decision hygiene, and the information architecture that externalizes memory and preserves handoffs — both feeding a workload-and-decision-hygiene card gated so no optimization overrides safety or review." />
-<figcaption aria-hidden="true">This part frames sustained intelligence
+alt="This part frames sustained intelligence work as two coupled loops — the cognitive athlete who manages workload, focus, and decision hygiene, and the information architecture that externalizes memory and preserves handoffs — both feeding a…" />
+<figcaption>This part frames sustained intelligence
 work as two coupled loops — the cognitive athlete who manages workload,
 focus, and decision hygiene, and the information architecture that
 externalizes memory and preserves handoffs — both feeding a
@@ -378,5 +385,6 @@ inventory: citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

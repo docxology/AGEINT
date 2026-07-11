@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-cognitive-security-foundations-and-definitions">Cognitive
 Security: Foundations and Definitions</h1>
@@ -187,8 +194,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:cognitive-security-definitional-taxonomy">
 <img
 src="../../../../figures/mermaid/cognitive-security-definitional-taxonomy.png"
-alt="A taxonomy distinguishing cognitive security from related security fields and locating its three pillars and neighboring concept of epistemic security. It is anchored to the cognitive security / cognitive security foundations and definitions section; use it to inspect Cognitive security, Comparison to related fields, Cybersecurity, systems and networks, and Information security, data integrity while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">A taxonomy distinguishing cognitive
+alt="A taxonomy distinguishing cognitive security from related security fields and locating its three pillars and neighboring concept of epistemic security." />
+<figcaption>A taxonomy distinguishing cognitive
 security from related security fields and locating its three pillars and
 neighboring concept of epistemic security. It is anchored to the
 cognitive security / cognitive security foundations and definitions
@@ -334,5 +341,6 @@ persuasion against a population</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

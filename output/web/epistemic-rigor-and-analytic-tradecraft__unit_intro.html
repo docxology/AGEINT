@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-epistemic-rigor-and-analytic-tradecraft">EPISTEMIC
 RIGOR AND ANALYTIC TRADECRAFT</h1>
 <h2
@@ -356,8 +363,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 id="fig:part-epistemic-rigor-and-analytic-tradecraft-module-map">
 <img
 src="../../../figures/mermaid/part-epistemic-rigor-and-analytic-tradecraft-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. It is anchored to the epistemic rigor and analytic tradecraft section; use it to inspect 2 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. It is anchored to the epistemic
 rigor and analytic tradecraft section; use it to inspect 2 module nodes
 in the unit’s ordered, source-backed reading sequence from its first
@@ -366,8 +373,8 @@ structure, evidence boundary, and accountable practice.</figcaption>
 </figure>
 <figure id="fig:ageint-unified-epistemic-stack">
 <img src="../../../figures/mermaid/ageint-unified-epistemic-stack.png"
-alt="The unified AGEINT epistemic-security stack as a boustrophedon ladder: defenses descend from Layer 5 (Institutional Governance) across the top row to Layer 3 (Structured Reasoning and Tradecraft), then snake down to Layer 2 (Operational Security) and Layer 1 (Technical Substrate) on the bottom row. The layers are mutually reinforcing, each necessary but insufficient on its own." />
-<figcaption aria-hidden="true">The unified AGEINT epistemic-security
+alt="The unified AGEINT epistemic-security stack as a boustrophedon ladder: defenses descend from Layer 5 (Institutional Governance) across the top row to Layer 3 (Structured Reasoning and Tradecraft), then snake down to Layer 2 (Operational…" />
+<figcaption>The unified AGEINT epistemic-security
 stack as a boustrophedon ladder: defenses descend from Layer 5
 (Institutional Governance) across the top row to Layer 3 (Structured
 Reasoning and Tradecraft), then snake down to Layer 2 (Operational
@@ -377,8 +384,8 @@ own.</figcaption>
 </figure>
 <figure id="fig:ageint-hro-governance-crosswalk">
 <img src="../../../figures/mermaid/ageint-hro-governance-crosswalk.png"
-alt="Weick and Sutcliffe’s five High-Reliability Organization principles map directly onto concrete AI agent governance mechanisms, turning organizational theory into observable controls. In the epistemic rigor and analytic tradecraft section, it lets readers compare HRO Principles, Preoccupation with failure attention to near-misses and weak signals, Reluctance to simplify demand deep root cause; resist reductive explanations, and Sensitivity to operations awareness of current operational state so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Weick and Sutcliffe’s five
+alt="Weick and Sutcliffe’s five High-Reliability Organization principles map directly onto concrete AI agent governance mechanisms, turning organizational theory into observable controls." />
+<figcaption>Weick and Sutcliffe’s five
 High-Reliability Organization principles map directly onto concrete AI
 agent governance mechanisms, turning organizational theory into
 observable controls. In the epistemic rigor and analytic tradecraft
@@ -392,8 +399,8 @@ assertion.</figcaption>
 <figure id="fig:part-epistemic-rigor-coherence-stack-cycle">
 <img
 src="../../../figures/mermaid/part-epistemic-rigor-coherence-stack-cycle.png"
-alt="This part stacks five mutually reinforcing defensive layers — from technical substrate up to institutional governance — and shows how structured tradecraft and analytic standards drive the competing-hypotheses judgment cycle that produces a reviewable evidence table. It is anchored to the epistemic rigor and analytic tradecraft section; use it to inspect Epistemic coherence stack (Ch41 to 42), Technical substrate: verification, sandboxing, provenance, Operational security: threat modeling, zero trust, circuit breakers, and Structured tradecraft: ACH, pre-mortem, key-assumptions check while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">This part stacks five mutually
+alt="This part stacks five mutually reinforcing defensive layers — from technical substrate up to institutional governance — and shows how structured tradecraft and analytic standards drive the competing-hypotheses judgment cycle that produces…" />
+<figcaption>This part stacks five mutually
 reinforcing defensive layers — from technical substrate up to
 institutional governance — and shows how structured tradecraft and
 analytic standards drive the competing-hypotheses judgment cycle that
@@ -444,5 +451,6 @@ citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

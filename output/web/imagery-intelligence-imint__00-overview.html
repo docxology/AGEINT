@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-imagery-intelligence-imint">Imagery Intelligence
 (IMINT)</h1>
 <h3
@@ -188,8 +195,8 @@ cues.</p>
 <figure id="fig:imint-exploitation-confidence-ladder">
 <img
 src="../../../../figures/mermaid/imint-exploitation-confidence-ladder.png"
-alt="A requirements-to-evidence pipeline showing how imagery moves from tasking through interpretation to a graded confidence assessment before caveated dissemination. Its reader value is to make Collection Requirement, Tasking and Platform Selection, Imagery Acquisition, and Processing and Calibration visible at a glance, with the imagery and financial intelligence / imagery intelligence imint section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">A requirements-to-evidence pipeline
+alt="A requirements-to-evidence pipeline showing how imagery moves from tasking through interpretation to a graded confidence assessment before caveated dissemination." />
+<figcaption>A requirements-to-evidence pipeline
 showing how imagery moves from tasking through interpretation to a
 graded confidence assessment before caveated dissemination. Its reader
 value is to make Collection Requirement, Tasking and Platform Selection,
@@ -201,8 +208,8 @@ boundary.</figcaption>
 <figure id="fig:historical-hexagon-quang-tri">
 <img
 src="../../../../figures/historical/historical-hexagon-quang-tri.png"
-alt="Public-domain USGS EROS declassified HEXAGON image used as a historical example of imagery becoming a governed analytic source. Its reader value is to make U.S. Geological Survey provenance, 1973-03-20 collection context, public-domain status, and analytic reuse boundary visible at a glance, with the imagery and financial intelligence / imagery intelligence imint section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Public-domain USGS EROS declassified
+alt="Public-domain USGS EROS declassified HEXAGON image used as a historical example of imagery becoming a governed analytic source." />
+<figcaption>Public-domain USGS EROS declassified
 HEXAGON image used as a historical example of imagery becoming a
 governed analytic source. Its reader value is to make U.S. Geological
 Survey provenance, 1973-03-20 collection context, public-domain status,
@@ -212,8 +219,8 @@ source section and defensive review as the boundary.</figcaption>
 </figure>
 <figure id="fig:historical-dakar-kh7">
 <img src="../../../../figures/historical/historical-dakar-kh7.png"
-alt="Public-domain USGS EROS KH-7 image used to show how historical collection becomes reproducible open-source imagery analysis. In the imagery and financial intelligence / imagery intelligence imint section, it lets readers compare U.S. Geological Survey provenance, 1966 approx. collection context, public-domain status, and analytic reuse boundary so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Public-domain USGS EROS KH-7 image used
+alt="Public-domain USGS EROS KH-7 image used to show how historical collection becomes reproducible open-source imagery analysis." />
+<figcaption>Public-domain USGS EROS KH-7 image used
 to show how historical collection becomes reproducible open-source
 imagery analysis. In the imagery and financial intelligence / imagery
 intelligence imint section, it lets readers compare U.S. Geological
@@ -258,9 +265,9 @@ misconceptions, and safety boundaries.</p>
 <p>Governance requirements use verified official, standards,
 public-domain, or scholarly anchors such as
 [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]. Technical, theoretical, or empirical statements
-require direct domain sources and are limited to what those sources
-establish. [ageint253]; [ageint269].</p>
+[official_iso_19157_data_quality]. Technical, theoretical, or empirical
+statements require direct domain sources and are limited to what those
+sources establish. [ageint253]; [ageint269].</p>
 <p>Learners move from vocabulary and the
 <strong>Requirements-to-Evidence Lens</strong> distinction through topic
 lessons on <strong>Imagery modality literacy: resolution, scale, and
@@ -345,5 +352,6 @@ requires</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

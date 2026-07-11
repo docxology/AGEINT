@@ -58,7 +58,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint251]; [@ageint252].
 
-**Triangulation anchors.** In module 17's review-checklist section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 17's review-checklist section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries**. [@ageint251]; [@ageint252].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

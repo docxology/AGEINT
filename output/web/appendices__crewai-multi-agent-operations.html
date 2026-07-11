@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>crewai-multi-agent-operations.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:appendix-crewai-multi-agent-operations">CrewAI Multi-Agent
 Operations</h1>
 <p>The current appendix is an evidence workbook for reusable classroom
@@ -890,8 +897,8 @@ boundaries, review artifacts, and refresh cues.</p>
 [sec:appendix-autogen-and-mcp-patterns].</p>
 <figure id="fig:appendix-crewai-multi-agent-roles">
 <img src="../../figures/mermaid/appendix-crewai-multi-agent-roles.png"
-alt="The multi-agent crew separates duties across specialized roles coordinated by an orchestrator, with a reviewer role and shared memory enforcing accountability before any output is released. The captioned view belongs to the crewai multi agent operations appendix and should be read as a map of Orchestrator agent, Specialized roles, Researcher: retrieval, and Analyst: synthesis, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The multi-agent crew separates duties
+alt="The multi-agent crew separates duties across specialized roles coordinated by an orchestrator, with a reviewer role and shared memory enforcing accountability before any output is released." />
+<figcaption>The multi-agent crew separates duties
 across specialized roles coordinated by an orchestrator, with a reviewer
 role and shared memory enforcing accountability before any output is
 released. The captioned view belongs to the crewai multi agent
@@ -971,5 +978,6 @@ or deployment</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-information-architecture-for-intelligence-work">Information
 Architecture for Intelligence Work</h1>
@@ -189,8 +196,8 @@ refresh cues.</p>
 [sec:part-industrial-and-cyber-physical-intelligence].</p>
 <figure id="fig:governed-note-handling-flow">
 <img src="../../../../figures/mermaid/governed-note-handling-flow.png"
-alt="This diagram teaches the disciplined path a single intelligence note travels from intake to controlled sharing, with provenance, a claim ledger, marking, and minimization gating release. It is anchored to the productivity intelligence and cognitive performance / information architecture for intelligence work section; use it to inspect Information Architecture governed handling of an intelligence note from intake to share, Intake source captured with provenance and date, Triage classify sensitivity and reliability, and Atomic note one claim, linked to source and evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">This diagram teaches the disciplined path
+alt="This diagram teaches the disciplined path a single intelligence note travels from intake to controlled sharing, with provenance, a claim ledger, marking, and minimization gating release." />
+<figcaption>This diagram teaches the disciplined path
 a single intelligence note travels from intake to controlled sharing,
 with provenance, a claim ledger, marking, and minimization gating
 release. It is anchored to the productivity intelligence and cognitive
@@ -204,8 +211,8 @@ accountable practice.</figcaption>
 </figure>
 <figure id="fig:ageint-cross-border-data-flow">
 <img src="../../../../figures/python/ageint-cross-border-data-flow.png"
-alt="The cross-border data flow shows how access, metadata, rights, and reuse decisions are governed. Its reader value is to make cross border data flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the productivity intelligence and cognitive performance / information architecture for intelligence work section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The cross-border data flow shows how
+alt="The cross-border data flow shows how access, metadata, rights, and reuse decisions are governed." />
+<figcaption>The cross-border data flow shows how
 access, metadata, rights, and reuse decisions are governed. Its reader
 value is to make cross border data flow steps, decision gates, owner
 handoffs, refresh triggers, and closure evidence visible at a glance,
@@ -358,5 +365,6 @@ visible</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

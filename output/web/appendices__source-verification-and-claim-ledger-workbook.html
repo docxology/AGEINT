@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>source-verification-and-claim-ledger-workbook.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:appendix-source-verification-and-claim-ledger-workbook">Source
 Verification and Claim Ledger Workbook</h1>
@@ -2083,8 +2090,8 @@ boundaries, review artifacts, and refresh cues.</p>
 [sec:appendix-instructor-capstone-rubric-and-red-team-review-pack].</p>
 <figure id="fig:appendix-claim-ledger-verification">
 <img src="../../figures/mermaid/appendix-claim-ledger-verification.png"
-alt="The claim-ledger workbook routes each claim through source attribution, corroboration, and uncertainty grading, recording a reviewer and a refresh trigger before the claim is accepted. It is anchored to the source verification and claim ledger workbook appendix; use it to inspect Drafted claim, Source attribution, Flag as single-source, and Uncertainty and confidence grading while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The claim-ledger workbook routes each
+alt="The claim-ledger workbook routes each claim through source attribution, corroboration, and uncertainty grading, recording a reviewer and a refresh trigger before the claim is accepted." />
+<figcaption>The claim-ledger workbook routes each
 claim through source attribution, corroboration, and uncertainty
 grading, recording a reviewer and a refresh trigger before the claim is
 accepted. It is anchored to the source verification and claim ledger
@@ -2095,8 +2102,8 @@ boundary, and accountable practice.</figcaption>
 </figure>
 <figure id="fig:ageint-source-verification-flow">
 <img src="../../figures/python/ageint-source-verification-flow.png"
-alt="The source-verification workflow connects locked references, v2 source lanes, checked dates, and refresh triggers. The captioned view belongs to the source verification and claim ledger workbook appendix and should be read as a map of source verification flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The source-verification workflow connects
+alt="The source-verification workflow connects locked references, v2 source lanes, checked dates, and refresh triggers." />
+<figcaption>The source-verification workflow connects
 locked references, v2 source lanes, checked dates, and refresh triggers.
 The captioned view belongs to the source verification and claim ledger
 workbook appendix and should be read as a map of source verification
@@ -2106,8 +2113,8 @@ instruction.</figcaption>
 </figure>
 <figure id="fig:ageint-claim-ledger-flow">
 <img src="../../figures/python/ageint-claim-ledger-flow.png"
-alt="The claim-ledger flow keeps evidence, uncertainty, review ownership, and refresh triggers visible. It is anchored to the source verification and claim ledger workbook appendix; use it to inspect claim ledger flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The claim-ledger flow keeps evidence,
+alt="The claim-ledger flow keeps evidence, uncertainty, review ownership, and refresh triggers visible." />
+<figcaption>The claim-ledger flow keeps evidence,
 uncertainty, review ownership, and refresh triggers visible. It is
 anchored to the source verification and claim ledger workbook appendix;
 use it to inspect claim ledger flow steps, decision gates, owner
@@ -2117,8 +2124,8 @@ accountable practice.</figcaption>
 </figure>
 <figure id="fig:ageint-hria-dpia-map">
 <img src="../../figures/python/ageint-hria-dpia-map.png"
-alt="The HRIA/DPIA map separates purpose, affected groups, high-risk triggers, safeguards, and residual risk. The captioned view belongs to the source verification and claim ledger workbook appendix and should be read as a map of hria dpia map fields, row and column obligations, source records, reviewer decisions, and closure evidence, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The HRIA/DPIA map separates purpose,
+alt="The HRIA/DPIA map separates purpose, affected groups, high-risk triggers, safeguards, and residual risk." />
+<figcaption>The HRIA/DPIA map separates purpose,
 affected groups, high-risk triggers, safeguards, and residual risk. The
 captioned view belongs to the source verification and claim ledger
 workbook appendix and should be read as a map of hria dpia map fields,
@@ -2128,8 +2135,8 @@ instruction.</figcaption>
 </figure>
 <figure id="fig:ageint-data-lineage-registry">
 <img src="../../figures/python/ageint-data-lineage-registry.png"
-alt="The data lineage registry traces source citations, verified anchors, datasets, transcripts, and final artifacts. The captioned view belongs to the source verification and claim ledger workbook appendix and should be read as a map of data lineage registry fields, row and column obligations, source records, reviewer decisions, and closure evidence, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The data lineage registry traces source
+alt="The data lineage registry traces source citations, verified anchors, datasets, transcripts, and final artifacts." />
+<figcaption>The data lineage registry traces source
 citations, verified anchors, datasets, transcripts, and final artifacts.
 The captioned view belongs to the source verification and claim ledger
 workbook appendix and should be read as a map of data lineage registry
@@ -2139,8 +2146,8 @@ instruction.</figcaption>
 </figure>
 <figure id="fig:ageint-records-retention-audit">
 <img src="../../figures/python/ageint-records-retention-audit.png"
-alt="The records retention audit ties retained records to audit questions, exceptions, and remediation evidence. It is anchored to the source verification and claim ledger workbook appendix; use it to inspect records retention audit fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The records retention audit ties retained
+alt="The records retention audit ties retained records to audit questions, exceptions, and remediation evidence." />
+<figcaption>The records retention audit ties retained
 records to audit questions, exceptions, and remediation evidence. It is
 anchored to the source verification and claim ledger workbook appendix;
 use it to inspect records retention audit fields, row and column
@@ -2150,8 +2157,8 @@ boundary, and accountable practice.</figcaption>
 </figure>
 <figure id="fig:ageint-risk-exception-memo">
 <img src="../../figures/python/ageint-risk-exception-memo.png"
-alt="The risk exception memo keeps exception basis, compensating controls, expiry, and retest evidence together. In the source verification and claim ledger workbook appendix, it lets readers compare risk exception memo fields, row and column obligations, source records, reviewer decisions, and closure evidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The risk exception memo keeps exception
+alt="The risk exception memo keeps exception basis, compensating controls, expiry, and retest evidence together." />
+<figcaption>The risk exception memo keeps exception
 basis, compensating controls, expiry, and retest evidence together. In
 the source verification and claim ledger workbook appendix, it lets
 readers compare risk exception memo fields, row and column obligations,
@@ -2243,5 +2250,6 @@ or deployment</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

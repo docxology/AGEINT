@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-psychological-inoculation-and-prebunking">Psychological
 Inoculation and Prebunking</h1>
@@ -189,8 +196,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:prebunking-inoculation-pipeline">
 <img
 src="../../../../figures/mermaid/prebunking-inoculation-pipeline.png"
-alt="Conceptual defensive education schematic for transparent prebunking: effects are bounded, context-dependent, measured, and refreshed rather than assumed. Its reader value is to make A top-to-bottom educational pipeline. Monitoring identifies a manipulation technique. This feeds forewarning, a safe weakened-dose demonstration, refutation with technique-spotting skills, and transparent delivery to a learner group visible at a glance, with the cognitive security / psychological inoculation and prebunking section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Conceptual defensive education schematic
+alt="Conceptual defensive education schematic for transparent prebunking: effects are bounded, context-dependent, measured, and refreshed rather than assumed." />
+<figcaption>Conceptual defensive education schematic
 for transparent prebunking: effects are bounded, context-dependent,
 measured, and refreshed rather than assumed. Its reader value is to make
 A top-to-bottom educational pipeline. Monitoring identifies a
@@ -203,8 +210,8 @@ the source section and defensive review as the boundary.</figcaption>
 <figure id="fig:ageint-prebunking-evidence-boundary">
 <img
 src="../../../../figures/mermaid/ageint-prebunking-evidence-boundary.png"
-alt="Source-backed conceptual schematic for bounded inoculation and prebunking claims: scholarly mechanism evidence, measured outcomes, rights safeguards, and refresh duties remain separate. The captioned view belongs to the cognitive security / psychological inoculation and prebunking section and should be read as a map of Prebunking lesson defensive education only, Scholarly evidence Science Advances + reviews, Mechanism claim recognize manipulation technique, and Measured outcomes recognition / resilience not universal immunity, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic for
+alt="Source-backed conceptual schematic for bounded inoculation and prebunking claims: scholarly mechanism evidence, measured outcomes, rights safeguards, and refresh duties remain separate." />
+<figcaption>Source-backed conceptual schematic for
 bounded inoculation and prebunking claims: scholarly mechanism evidence,
 measured outcomes, rights safeguards, and refresh duties remain
 separate. The captioned view belongs to the cognitive security /
@@ -349,5 +356,6 @@ persuasion against a population</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

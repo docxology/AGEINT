@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>langchain-langgraph-ageint-patterns.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:appendix-langchain-langgraph-ageint-patterns">LangChain/LangGraph
 AGEINT Patterns</h1>
@@ -902,8 +909,8 @@ boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:appendix-langgraph-agent-state-machine">
 <img
 src="../../figures/mermaid/appendix-langgraph-agent-state-machine.png"
-alt="The LangGraph pattern models an agent as a state machine where a reflexion node and a human-review gate bound every tool action before the graph can advance or finish. Its reader value is to make Task, Plan node, Tool-call node (allowlist-guarded), and Reflexion and critique node visible at a glance, with the langchain langgraph ageint patterns appendix as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The LangGraph pattern models an agent as
+alt="The LangGraph pattern models an agent as a state machine where a reflexion node and a human-review gate bound every tool action before the graph can advance or finish." />
+<figcaption>The LangGraph pattern models an agent as
 a state machine where a reflexion node and a human-review gate bound
 every tool action before the graph can advance or finish. Its reader
 value is to make Task, Plan node, Tool-call node (allowlist-guarded),
@@ -1004,5 +1011,6 @@ or deployment</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

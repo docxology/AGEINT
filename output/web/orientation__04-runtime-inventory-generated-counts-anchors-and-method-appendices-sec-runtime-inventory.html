@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>04-runtime-inventory-generated-counts-anchors-and-method-appendices-sec-runtime-inventory.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h2 id="sec:runtime-inventory">Runtime inventory: generated counts,
 anchors, and method appendices</h2>
 <p>These counts describe the size of the build, not its quality. They
@@ -226,8 +233,8 @@ language, and refresh duties. See
 [fig:ageint-source-constellation-map].</p>
 <figure id="fig:ageint-source-constellation-map">
 <img src="../../figures/python/ageint-source-constellation-map.png"
-alt="Source-family constellation for early orientation. It places the official, standards, scholarly, public, and professional evidence families around the AGEINT source spine so a reader can route governance, technical, historical, evaluation, and assurance claims to the lane whose evidence actually supports them. Route density shows coverage, not a ranking of source quality or evidence strength." />
-<figcaption aria-hidden="true">Source-family constellation for early
+alt="Source-family constellation for early orientation." />
+<figcaption>Source-family constellation for early
 orientation. It places the official, standards, scholarly, public, and
 professional evidence families around the AGEINT source spine so a
 reader can route governance, technical, historical, evaluation, and
@@ -235,5 +242,6 @@ assurance claims to the lane whose evidence actually supports them.
 Route density shows coverage, not a ranking of source quality or
 evidence strength.</figcaption>
 </figure>
+</main>
 </body>
 </html>

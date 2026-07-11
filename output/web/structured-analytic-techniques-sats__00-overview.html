@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-structured-analytic-techniques-sats">Structured
 Analytic Techniques (SATs)</h1>
 <h3
@@ -191,8 +198,8 @@ cues.</p>
 <figure id="fig:competing-hypotheses-analysis-workflow">
 <img
 src="../../../../figures/mermaid/competing-hypotheses-analysis-workflow.png"
-alt="This diagram walks through the structured analytic sequence that scores evidence against rival hypotheses to find the one with the least disconfirming evidence, under formal tradecraft standards. It is anchored to the epistemic rigor and analytic tradecraft / structured analytic techniques sats section; use it to inspect A workflow. Frame the analytic question feeds enumeration of a full set of competing hypotheses, in parallel, collection of evidence, and assumptions. Both feed a hypothesis-by-evidence . Each cell is rated for consistency or inconsistency. Diagnostic evidence is identified. The least-disconfirmed hypothesis is selected. A sensitivity check tests reliance on key items: if findings are not robust while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">This diagram walks through the structured
+alt="This diagram walks through the structured analytic sequence that scores evidence against rival hypotheses to find the one with the least disconfirming evidence, under formal tradecraft standards." />
+<figcaption>This diagram walks through the structured
 analytic sequence that scores evidence against rival hypotheses to find
 the one with the least disconfirming evidence, under formal tradecraft
 standards. It is anchored to the epistemic rigor and analytic tradecraft
@@ -209,8 +216,8 @@ accountable practice.</figcaption>
 <figure id="fig:ageint-analytic-tradecraft-evidence-ladder">
 <img
 src="../../../../figures/mermaid/ageint-analytic-tradecraft-evidence-ladder.png"
-alt="Source-backed conceptual schematic comparing the source classes behind analytic-tradecraft claims: professional standards, official reform and postmortems, SAT catalogues, empirical SAT studies, forecasting calibration, and AI reasoning-support programs. The denominator is AGEINT’s curated analytic-tradecraft anchor set, and the figure fails closed when doctrine, adoption, or postmortem pressure becomes an empirical accuracy score or universal debiasing overclaim." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic
+alt="Source-backed conceptual schematic comparing the source classes behind analytic-tradecraft claims: professional standards, official reform and postmortems, SAT catalogues, empirical SAT studies, forecasting calibration, and AI…" />
+<figcaption>Source-backed conceptual schematic
 comparing the source classes behind analytic-tradecraft claims:
 professional standards, official reform and postmortems, SAT catalogues,
 empirical SAT studies, forecasting calibration, and AI reasoning-support
@@ -221,8 +228,8 @@ overclaim.</figcaption>
 </figure>
 <figure id="fig:ageint-sat-evidence-boundary">
 <img src="../../../../figures/mermaid/ageint-sat-evidence-boundary.png"
-alt="Source-backed conceptual schematic comparing SAT purpose, doctrine, classroom artifacts, adoption studies, technique-specific experiments, ACH critiques, and decision-science complements. The local artifact set is the chapter 41 SAT lesson and its curated anchors; the figure fails closed on overclaim language that treats SATs as a proven universal bias remedy, an empirical score, or a replacement for analyst accountability." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic
+alt="Source-backed conceptual schematic comparing SAT purpose, doctrine, classroom artifacts, adoption studies, technique-specific experiments, ACH critiques, and decision-science complements." />
+<figcaption>Source-backed conceptual schematic
 comparing SAT purpose, doctrine, classroom artifacts, adoption studies,
 technique-specific experiments, ACH critiques, and decision-science
 complements. The local artifact set is the chapter 41 SAT lesson and its
@@ -233,8 +240,8 @@ replacement for analyst accountability.</figcaption>
 <figure id="fig:ageint-first-principles-tradecraft-decomposition">
 <img
 src="../../../../figures/mermaid/ageint-first-principles-tradecraft-decomposition.png"
-alt="Source-backed conceptual schematic decomposing analytic tradecraft claims while separating observation, inference, assumption, likelihood, confidence, dissent, and decision-boundary fields before any manuscript claim is treated as reviewable. Its reader value is to make Observation what the source says, Evidence quality access, reliability, gap, Inference what analyst adds, and Assumption register what must be true visible at a glance, with the epistemic rigor and analytic tradecraft / structured analytic techniques sats section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic
+alt="Source-backed conceptual schematic decomposing analytic tradecraft claims while separating observation, inference, assumption, likelihood, confidence, dissent, and decision-boundary fields before any manuscript claim is treated as…" />
+<figcaption>Source-backed conceptual schematic
 decomposing analytic tradecraft claims while separating observation,
 inference, assumption, likelihood, confidence, dissent, and
 decision-boundary fields before any manuscript claim is treated as
@@ -248,8 +255,8 @@ the boundary.</figcaption>
 <figure id="fig:ageint-analytic-source-quality-boundary">
 <img
 src="../../../../figures/python/ageint-analytic-source-quality-boundary.png"
-alt="Source-backed evidence-derived chart from local research-anchor metadata showing official, standards, statutory, postmortem, scholarly evaluation, and forecasting evidence lanes for analytic-tradecraft claims. The captioned view belongs to the epistemic rigor and analytic tradecraft / structured analytic techniques sats section and should be read as a map of analytic source quality boundary categories, denominators, evidence lanes, limitations, and reviewer-use cautions, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">Source-backed evidence-derived chart from
+alt="Source-backed evidence-derived chart from local research-anchor metadata showing official, standards, statutory, postmortem, scholarly evaluation, and forecasting evidence lanes for analytic-tradecraft claims." />
+<figcaption>Source-backed evidence-derived chart from
 local research-anchor metadata showing official, standards, statutory,
 postmortem, scholarly evaluation, and forecasting evidence lanes for
 analytic-tradecraft claims. The captioned view belongs to the epistemic
@@ -382,5 +389,6 @@ review</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

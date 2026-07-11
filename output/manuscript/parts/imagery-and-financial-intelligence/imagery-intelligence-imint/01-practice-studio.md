@@ -12,7 +12,7 @@ This module builds OSINT and GEOINT as public-source reasoning disciplines: avai
 
 **Learning-path links.** Unit module map [@fig:part-imagery-and-financial-intelligence-module-map]; module overview [@sec:chapter-imagery-intelligence-imint]; curriculum atlas [@sec:curriculum_orientation].
 
-**Triangulation anchors.** In module 16's topic-lessons section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 16's topic-lessons section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 #### Lesson 1: Imagery modality literacy: resolution, scale, and sensor-fit
 
@@ -98,7 +98,7 @@ This module builds OSINT and GEOINT as public-source reasoning disciplines: avai
 
 Worked example: a synthetic public-resilience team checks whether open data supports a non-sensitive evacuation-route map. [@ageint253]; [@ageint269].
 
-**Triangulation anchors.** In module 16's worked-example section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 16's worked-example section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 **Unit discipline spine.** Discipline: **geospatial and financial intelligence uncertainty**. Learners use a **location-and-entity evidence ledger** and keep this boundary visible: No facility targeting, pattern-of-life inference, evasion advice, or attribution certainty beyond evidence.
 
@@ -118,7 +118,7 @@ Worked example: a synthetic public-resilience team checks whether open data supp
 
 The studio sequence uses the **Requirements-to-Evidence Lens** practice lens. Moves 1-3 form the compressed path; the full seminar path adds challenge, handoff, and a review memo for **Imagery modality literacy: resolution, scale, and sensor-fit; Imagery collection-platform literacy: resolution and revisit tradeoffs**.
 
-**Triangulation anchors.** In module 16's practice-sequence section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 16's practice-sequence section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 | Move | Learner action | Output | Check |
 |---|---|---|---|

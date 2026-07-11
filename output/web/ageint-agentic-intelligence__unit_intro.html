@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-ageint-agentic-intelligence">AGEINT — AGENTIC
 INTELLIGENCE</h1>
 <h2
@@ -315,8 +322,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:part-ageint-agentic-intelligence-module-map">
 <img
 src="../../../figures/mermaid/part-ageint-agentic-intelligence-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. Its reader value is to make 6 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last visible at a glance, with the ageint agentic intelligence section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. Its reader value is to make 6
 module nodes in the unit’s ordered, source-backed reading sequence from
 its first module to its last visible at a glance, with the ageint
@@ -325,8 +332,8 @@ as the boundary.</figcaption>
 </figure>
 <figure id="fig:part-ageint-layered-stack">
 <img src="../../../figures/mermaid/part-ageint-layered-stack.png"
-alt="This part builds from foundations through design patterns, frameworks, and a Python library to accountable deployment, with security and adversarial considerations running as a governance spine that constrains every build layer. Its reader value is to make Foundation (Ch31), What agentic intelligence is and is not, Build Layer (Ch32-33), and Design Patterns and Archetypes visible at a glance, with the ageint agentic intelligence section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">This part builds from foundations through
+alt="This part builds from foundations through design patterns, frameworks, and a Python library to accountable deployment, with security and adversarial considerations running as a governance spine that constrains every build layer." />
+<figcaption>This part builds from foundations through
 design patterns, frameworks, and a Python library to accountable
 deployment, with security and adversarial considerations running as a
 governance spine that constrains every build layer. Its reader value is
@@ -338,8 +345,8 @@ section and defensive review as the boundary.</figcaption>
 <figure id="fig:traditional-vs-ageint-intelligence">
 <img
 src="../../../figures/mermaid/traditional-vs-ageint-intelligence.png"
-alt="Conceptual/pedagogical schematic: AGEINT does not replace the intelligence cycle; it illustrates bounded assistance under human review, tool allowlists, and stop conditions. Its reader value is to make Collection, Retrieval and tasking assist, Processing, and Triage and enrichment assist visible at a glance, with the ageint agentic intelligence section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Conceptual/pedagogical schematic: AGEINT
+alt="Conceptual/pedagogical schematic: AGEINT does not replace the intelligence cycle; it illustrates bounded assistance under human review, tool allowlists, and stop conditions." />
+<figcaption>Conceptual/pedagogical schematic: AGEINT
 does not replace the intelligence cycle; it illustrates bounded
 assistance under human review, tool allowlists, and stop conditions. Its
 reader value is to make Collection, Retrieval and tasking assist,
@@ -423,5 +430,6 @@ citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

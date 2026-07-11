@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>cognitive-security-and-inoculation-methods.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:appendix-cognitive-security-and-inoculation-methods">Cognitive
 Security and Inoculation Methods</h1>
@@ -950,8 +957,8 @@ boundaries, review artifacts, and refresh cues.</p>
 [sec:appendix-source-verification-and-claim-ledger-workbook].</p>
 <figure id="fig:ageint-cdr-degradation-cascade">
 <img src="../../figures/mermaid/ageint-cdr-degradation-cascade.png"
-alt="The CDR timeline places six degradation stages in chronological order and marks the control window where reviewer intervention can still preserve synthetic, evidence-bounded agent behavior. Its reader value is to make six chronological CDR stages, defensive QSAF-BC controls for starvation, overload, entropy drift, memory integrity, and override resistance, early-detection and decisive-intervention windows, and evidence-bounded classroom review boundary visible at a glance, with the cognitive security and inoculation methods appendix as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The CDR timeline places six degradation
+alt="The CDR timeline places six degradation stages in chronological order and marks the control window where reviewer intervention can still preserve synthetic, evidence-bounded agent behavior." />
+<figcaption>The CDR timeline places six degradation
 stages in chronological order and marks the control window where
 reviewer intervention can still preserve synthetic, evidence-bounded
 agent behavior. Its reader value is to make six chronological CDR
@@ -965,8 +972,8 @@ as the boundary.</figcaption>
 <figure id="fig:ageint-cognitive-decoherence-cdr-isomorphism">
 <img
 src="../../figures/mermaid/ageint-cognitive-decoherence-cdr-isomorphism.png"
-alt="The six phases of CCDCOE cognitive decoherence in human organizations map one-to-one onto the CSA CDR cognitive-degradation stages in AI agent networks, exposing a shared adversarial dynamic. It is anchored to the cognitive security and inoculation methods appendix; use it to inspect Phase 1 — Initiation, Human orgs / CCDCOE adversary targets systemic invariants: trust, identity, epistemic standards, AI agents / CDR Trigger Injection: adversarial inputs establish foothold, and Phase 2 — Early degradation while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The six phases of CCDCOE cognitive
+alt="The six phases of CCDCOE cognitive decoherence in human organizations map one-to-one onto the CSA CDR cognitive-degradation stages in AI agent networks, exposing a shared adversarial dynamic." />
+<figcaption>The six phases of CCDCOE cognitive
 decoherence in human organizations map one-to-one onto the CSA CDR
 cognitive-degradation stages in AI agent networks, exposing a shared
 adversarial dynamic. It is anchored to the cognitive security and
@@ -1056,5 +1063,6 @@ design</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

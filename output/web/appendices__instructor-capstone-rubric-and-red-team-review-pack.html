@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>instructor-capstone-rubric-and-red-team-review-pack.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:appendix-instructor-capstone-rubric-and-red-team-review-pack">Instructor
 Capstone, Rubric, and Red-Team Review Pack</h1>
@@ -1149,8 +1156,8 @@ boundaries, review artifacts, and refresh cues.</p>
 [sec:bibliography_atlas].</p>
 <figure id="fig:appendix-capstone-redteam-review">
 <img src="../../figures/mermaid/appendix-capstone-redteam-review.png"
-alt="The capstone journey shows the reviewer experience from packet submission through rubric scoring, safety/source/rights challenge, remediation, and final instructor handoff. In the instructor capstone rubric and red team review pack appendix, it lets readers compare learner submits packet, instructor scores mastery rubric, red team checks safety, sourcing, and rights, and weak evidence enters remediation backlog so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The capstone journey shows the reviewer
+alt="The capstone journey shows the reviewer experience from packet submission through rubric scoring, safety/source/rights challenge, remediation, and final instructor handoff." />
+<figcaption>The capstone journey shows the reviewer
 experience from packet submission through rubric scoring,
 safety/source/rights challenge, remediation, and final instructor
 handoff. In the instructor capstone rubric and red team review pack
@@ -1161,8 +1168,8 @@ traceable course aid rather than an unscoped assertion.</figcaption>
 </figure>
 <figure id="fig:ageint-capstone-workflow">
 <img src="../../figures/python/ageint-capstone-workflow.png"
-alt="The capstone workflow moves from an accountable question to debrief and refresh ownership. Its reader value is to make capstone workflow steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the instructor capstone rubric and red team review pack appendix as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The capstone workflow moves from an
+alt="The capstone workflow moves from an accountable question to debrief and refresh ownership." />
+<figcaption>The capstone workflow moves from an
 accountable question to debrief and refresh ownership. Its reader value
 is to make capstone workflow steps, decision gates, owner handoffs,
 refresh triggers, and closure evidence visible at a glance, with the
@@ -1171,8 +1178,8 @@ source section and defensive review as the boundary.</figcaption>
 </figure>
 <figure id="fig:ageint-safe-substitution-matrix">
 <img src="../../figures/python/ageint-safe-substitution-matrix.png"
-alt="The safe substitution matrix converts risky motifs into bounded classroom alternatives. It is anchored to the instructor capstone rubric and red team review pack appendix; use it to inspect safe substitution matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The safe substitution matrix converts
+alt="The safe substitution matrix converts risky motifs into bounded classroom alternatives." />
+<figcaption>The safe substitution matrix converts
 risky motifs into bounded classroom alternatives. It is anchored to the
 instructor capstone rubric and red team review pack appendix; use it to
 inspect safe substitution matrix fields, row and column obligations,
@@ -1183,8 +1190,8 @@ boundary, and accountable practice.</figcaption>
 <figure id="fig:ageint-instructor-assessment-lifecycle">
 <img
 src="../../figures/python/ageint-instructor-assessment-lifecycle.png"
-alt="The instructor lifecycle connects scope, facilitation, scoring, revision, and debrief evidence. Its reader value is to make instructor assessment lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the instructor capstone rubric and red team review pack appendix as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The instructor lifecycle connects scope,
+alt="The instructor lifecycle connects scope, facilitation, scoring, revision, and debrief evidence." />
+<figcaption>The instructor lifecycle connects scope,
 facilitation, scoring, revision, and debrief evidence. Its reader value
 is to make instructor assessment lifecycle steps, decision gates, owner
 handoffs, refresh triggers, and closure evidence visible at a glance,
@@ -1193,8 +1200,8 @@ the source section and defensive review as the boundary.</figcaption>
 </figure>
 <figure id="fig:ageint-assessment-integrity-matrix">
 <img src="../../figures/python/ageint-assessment-integrity-matrix.png"
-alt="The assessment integrity matrix separates AI-use declarations, reasoning, citations, lab boundaries, and revision evidence. In the instructor capstone rubric and red team review pack appendix, it lets readers compare assessment integrity matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The assessment integrity matrix separates
+alt="The assessment integrity matrix separates AI-use declarations, reasoning, citations, lab boundaries, and revision evidence." />
+<figcaption>The assessment integrity matrix separates
 AI-use declarations, reasoning, citations, lab boundaries, and revision
 evidence. In the instructor capstone rubric and red team review pack
 appendix, it lets readers compare assessment integrity matrix fields,
@@ -1204,8 +1211,8 @@ rather than an unscoped assertion.</figcaption>
 </figure>
 <figure id="fig:ageint-release-change-control">
 <img src="../../figures/python/ageint-release-change-control.png"
-alt="The release change-control gate checks scope, rights, security, versioning, rollback, monitoring, and retest. The captioned view belongs to the instructor capstone rubric and red team review pack appendix and should be read as a map of release change control labels, source records, review gates, refresh cues, and reader-use boundaries, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The release change-control gate checks
+alt="The release change-control gate checks scope, rights, security, versioning, rollback, monitoring, and retest." />
+<figcaption>The release change-control gate checks
 scope, rights, security, versioning, rollback, monitoring, and retest.
 The captioned view belongs to the instructor capstone rubric and red
 team review pack appendix and should be read as a map of release change
@@ -1215,8 +1222,8 @@ instruction.</figcaption>
 </figure>
 <figure id="fig:ageint-learner-support-plan">
 <img src="../../figures/python/ageint-learner-support-plan.png"
-alt="The learner-support plan connects access, cognitive load, assessment fairness, and remediation. It is anchored to the instructor capstone rubric and red team review pack appendix; use it to inspect learner support plan labels, source records, review gates, refresh cues, and reader-use boundaries while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The learner-support plan connects access,
+alt="The learner-support plan connects access, cognitive load, assessment fairness, and remediation." />
+<figcaption>The learner-support plan connects access,
 cognitive load, assessment fairness, and remediation. It is anchored to
 the instructor capstone rubric and red team review pack appendix; use it
 to inspect learner support plan labels, source records, review gates,
@@ -1226,8 +1233,8 @@ practice.</figcaption>
 </figure>
 <figure id="fig:ageint-instructor-question-bank">
 <img src="../../figures/python/ageint-instructor-question-bank.png"
-alt="The instructor question bank prompts source, boundary, rights, and assurance challenges. It is anchored to the instructor capstone rubric and red team review pack appendix; use it to inspect instructor question bank fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The instructor question bank prompts
+alt="The instructor question bank prompts source, boundary, rights, and assurance challenges." />
+<figcaption>The instructor question bank prompts
 source, boundary, rights, and assurance challenges. It is anchored to
 the instructor capstone rubric and red team review pack appendix; use it
 to inspect instructor question bank fields, row and column obligations,
@@ -1237,8 +1244,8 @@ boundary, and accountable practice.</figcaption>
 </figure>
 <figure id="fig:ageint-remediation-backlog">
 <img src="../../figures/python/ageint-remediation-backlog.png"
-alt="The remediation backlog tracks unverified claims, unsafe phrasing, accessibility defects, and assurance gaps. Its reader value is to make remediation backlog fields, row and column obligations, source records, reviewer decisions, and closure evidence visible at a glance, with the instructor capstone rubric and red team review pack appendix as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">The remediation backlog tracks unverified
+alt="The remediation backlog tracks unverified claims, unsafe phrasing, accessibility defects, and assurance gaps." />
+<figcaption>The remediation backlog tracks unverified
 claims, unsafe phrasing, accessibility defects, and assurance gaps. Its
 reader value is to make remediation backlog fields, row and column
 obligations, source records, reviewer decisions, and closure evidence
@@ -1330,5 +1337,6 @@ or deployment</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

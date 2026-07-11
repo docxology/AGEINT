@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-advanced-analysis-methods">Advanced Analysis
 Methods</h1>
 <h3
@@ -191,8 +198,8 @@ cues.</p>
 <figure id="fig:advanced-analysis-method-selection">
 <img
 src="../../../../figures/mermaid/advanced-analysis-method-selection.png"
-alt="A decision tree that helps an analyst choose a structured method by the shape of the question while keeping evidence, confidence, and dissent visible. It is anchored to the epistemic rigor and analytic tradecraft / advanced analysis methods section; use it to inspect Frame question, separate reporting from inference, Competing hypotheses testing, Network and link analysis, and Timeline and event sequencing while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">A decision tree that helps an analyst
+alt="A decision tree that helps an analyst choose a structured method by the shape of the question while keeping evidence, confidence, and dissent visible." />
+<figcaption>A decision tree that helps an analyst
 choose a structured method by the shape of the question while keeping
 evidence, confidence, and dissent visible. It is anchored to the
 epistemic rigor and analytic tradecraft / advanced analysis methods
@@ -205,8 +212,8 @@ practice.</figcaption>
 <figure id="fig:ageint-icd203-probability-confidence-boundary">
 <img
 src="../../../../figures/mermaid/ageint-icd203-probability-confidence-boundary.png"
-alt="Source-backed conceptual schematic for ICD 203-style analytic statements: likelihood terms, confidence, source quality, assumptions, alternatives, and dissent are recorded as separate fields before release. It is anchored to the epistemic rigor and analytic tradecraft / advanced analysis methods section; use it to inspect Evidence base, Likelihood term what may happen, Source quality access, reliability, gaps, and Analytic confidence basis for judgment while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic for
+alt="Source-backed conceptual schematic for ICD 203-style analytic statements: likelihood terms, confidence, source quality, assumptions, alternatives, and dissent are recorded as separate fields before release." />
+<figcaption>Source-backed conceptual schematic for
 ICD 203-style analytic statements: likelihood terms, confidence, source
 quality, assumptions, alternatives, and dissent are recorded as separate
 fields before release. It is anchored to the epistemic rigor and
@@ -219,8 +226,8 @@ boundary, and accountable practice.</figcaption>
 <figure id="fig:ageint-warning-failure-feedback-loop">
 <img
 src="../../../../figures/mermaid/ageint-warning-failure-feedback-loop.png"
-alt="Source-backed conceptual schematic linking warning indicators, assumptions, collection gaps, decision uptake, postmortem findings, and reform learning without implying that any single technique can eliminate surprise. In the epistemic rigor and analytic tradecraft / advanced analysis methods section, it lets readers compare Indicators Grabo / warning practice, Assumptions made explicit, Collection gaps what is unknown, and Analytic judgment likelihood + confidence so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic
+alt="Source-backed conceptual schematic linking warning indicators, assumptions, collection gaps, decision uptake, postmortem findings, and reform learning without implying that any single technique can eliminate surprise." />
+<figcaption>Source-backed conceptual schematic
 linking warning indicators, assumptions, collection gaps, decision
 uptake, postmortem findings, and reform learning without implying that
 any single technique can eliminate surprise. In the epistemic rigor and
@@ -233,8 +240,8 @@ an unscoped assertion.</figcaption>
 <figure id="fig:ageint-redteam-tradecraft-negative-control-loop">
 <img
 src="../../../../figures/mermaid/ageint-redteam-tradecraft-negative-control-loop.png"
-alt="Source-backed conceptual schematic showing how AGEINT treats validators, rubrics, and rendered claims as attackable artifacts: a false-certification scenario creates a negative control before the claim is repaired and rechecked. In the epistemic rigor and analytic tradecraft / advanced analysis methods section, it lets readers compare Oracle test, rubric, validator, Attack the verifier, False-certification scenario, and Negative-control test so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Source-backed conceptual schematic
+alt="Source-backed conceptual schematic showing how AGEINT treats validators, rubrics, and rendered claims as attackable artifacts: a false-certification scenario creates a negative control before the claim is repaired and rechecked." />
+<figcaption>Source-backed conceptual schematic
 showing how AGEINT treats validators, rubrics, and rendered claims as
 attackable artifacts: a false-certification scenario creates a negative
 control before the claim is repaired and rechecked. In the epistemic
@@ -367,5 +374,6 @@ review</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

@@ -26,9 +26,16 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
         anchor_keys=(
             "official_fincen_advisories",
             "official_fincen_boi",
+            # FATF Recommendations (international_standard tier) is promoted
+            # ahead of the remaining official_primary anchors: it is the
+            # actual global AML/CFT standard this lane teaches toward, and
+            # the module's overview/assessment-route prose (citation_cluster
+            # limit=3) draws only from the first three keys here — an
+            # all-official_primary front-3 was flagging this module as
+            # single-source-family in scholarship_quality's review warnings.
+            "official_fatf_recommendations",
             "official_ofac_sanctions_programs",
             "official_ofac_compliance_commitments",
-            "official_fatf_recommendations",
             "official_fatf_virtual_assets_guidance",
             "official_bis_fintech_digital_transformation",
             "official_bis_export_enforcement",

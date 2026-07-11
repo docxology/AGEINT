@@ -58,7 +58,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint251]; [@ageint252].
 
-**Triangulation anchors.** In module 10's review-checklist section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_nga_strategy]; [@official_nga_geoint_ai]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Triangulation anchors.** In module 10's review-checklist section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**. [@ageint251]; [@ageint252].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

@@ -71,6 +71,11 @@ uv run python scripts/audit_reference_quality.py --write --format markdown
 # From the sibling template repo root (when AGEINT is linked as projects/AGEINT):
 uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
 uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/manuscript --repo-root .
+
+# PDF render (from the sibling template repo root, AGEINT linked under
+# projects/working/AGEINT): re-renders the combined PDF and copies it back
+# into this repo — the render/copy stages this repo does not itself carry.
+uv run python scripts/maintenance/rerender_working_pdfs.py --project AGEINT
 ```
 
 Use `--regenerate-source-template-library` only when intentionally resetting the
@@ -109,6 +114,21 @@ citation-table context so reader-facing references are both resolvable and
 informative. The current rendered output has six single-source-family
 claim-bearing review warnings under the stricter source-strength classifier;
 they are visible review rows, not readiness blockers.
+
+**PDF rendering is external to this repository.** The combined PDF
+(`AGEINT.pdf` at the repo root, mirrored at `output/pdf/AGEINT_combined.pdf`)
+is produced by a shared research-project template's pandoc/xelatex render
+stage, not by any script inside this repo. `scripts/build_curriculum.py` and
+`scripts/generate_figures.py` produce everything that render step consumes —
+the semantic manuscript, the figure registry, and the generated BibTeX — but
+the PDF composition itself runs from the template checkout against this
+project linked under its `projects/working/` tree. Refreshing the PDF is
+therefore a manual, out-of-band step rather than something this repo's own
+CI performs; `scripts/audit_pdf_quality.py` (and the two audit scripts whose
+aggregate verdict includes it) stay informational in
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) and
+[`.github/workflows/manuscript.yml`](.github/workflows/manuscript.yml) for
+that reason.
 
 Generated files under `output/` are not primary authoring surfaces. Edit
 `data/curriculum/` shards first when the guide is absent; otherwise update

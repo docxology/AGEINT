@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-legal-ethical-and-oversight-frameworks">LEGAL, ETHICAL,
 AND OVERSIGHT FRAMEWORKS</h1>
 <h2
@@ -310,8 +317,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:part-legal-ethical-and-oversight-frameworks-module-map">
 <img
 src="../../../figures/mermaid/part-legal-ethical-and-oversight-frameworks-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. It is anchored to the legal ethical and oversight frameworks section; use it to inspect 2 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. It is anchored to the legal
 ethical and oversight frameworks section; use it to inspect 2 module
 nodes in the unit’s ordered, source-backed reading sequence from its
@@ -322,8 +329,8 @@ practice.</figcaption>
 <figure id="fig:part-legal-ethical-oversight-gate-ladder">
 <img
 src="../../../figures/mermaid/part-legal-ethical-oversight-gate-ladder.png"
-alt="This part treats authority, proportionality, rights impact, accountable oversight, audit trail, transparency, and redress as a sequential gate ladder that any proposed capability must clear, with the legal and ethics chapters mapping authority and defining the duties that bind each gate." />
-<figcaption aria-hidden="true">This part treats authority,
+alt="This part treats authority, proportionality, rights impact, accountable oversight, audit trail, transparency, and redress as a sequential gate ladder that any proposed capability must clear, with the legal and ethics chapters mapping…" />
+<figcaption>This part treats authority,
 proportionality, rights impact, accountable oversight, audit trail,
 transparency, and redress as a sequential gate ladder that any proposed
 capability must clear, with the legal and ethics chapters mapping
@@ -363,5 +370,6 @@ inventory: citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

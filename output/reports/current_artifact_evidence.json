@@ -270,26 +270,26 @@
     ],
     "summary": {
       "boundary_allowed_rows": 482,
-      "candidate_rows": 9107,
+      "candidate_rows": 9111,
       "claim_class_counts": {
         "artifact_readiness": 286,
-        "empirical_or_evaluation": 981,
+        "empirical_or_evaluation": 986,
         "figure_or_visualization": 459,
         "formalism_or_statistical_expression": 2,
-        "governance_or_rights": 3091,
+        "governance_or_rights": 3090,
         "safety_or_assurance": 4288
       },
       "disposition_counts": {
         "boundary_allowed": 482,
         "pass": 3496,
-        "review": 5129
+        "review": 5133
       },
       "hard_fail_rows": 0,
       "source_support_distribution": {
         "curated_context": 12,
         "law_policy_primary": 19,
         "mirror_or_copy_context": 36,
-        "official_primary": 1504,
+        "official_primary": 1474,
         "practitioner_or_vendor_context": 54,
         "public_domain_primary": 166,
         "scholarly_primary": 371,
@@ -297,9 +297,9 @@
         "source_guide_context": 255,
         "source_guide_primary": 2208,
         "source_quality_anchor": 504,
-        "standard_primary": 922
+        "standard_primary": 952
       },
-      "warning_rows": 5129
+      "warning_rows": 5133
     },
     "thresholds": {
       "boundary_language_is_allowed": true,
@@ -307,7 +307,7 @@
       "headings_are_not_claim_rows": true,
       "strong_claims_require_direct_support": true
     },
-    "warning_row_count": 5129
+    "warning_row_count": 5133
   },
   "curriculum": {
     "appendices": 9,
@@ -504,7 +504,7 @@
     },
     "schema_version": "1.5"
   },
-  "generated_at": "2026-06-17T04:16:58+00:00",
+  "generated_at": "2026-07-11T02:22:19+00:00",
   "generated_output_scan": {
     "hit_count": 0,
     "hits": [],
@@ -513,7 +513,7 @@
   "ok": true,
   "pdf": {
     "banned_phrase_hits": [],
-    "creation_date": "Tue Jun 16 09:51:33 2026 PDT",
+    "creation_date": "Fri Jul 10 19:17:21 2026 PDT",
     "exists": true,
     "flagged_pages": [],
     "link_audit": {
@@ -523,15 +523,15 @@
       "file_actions": 0,
       "ok": true,
       "skipped_reason": "",
-      "uri_links": 6289
+      "uri_links": 6281
     },
-    "newest_manuscript_mtime": 1781628571.7273357,
+    "newest_manuscript_mtime": 1783735912.6288488,
     "ok": true,
-    "page_count": 1858,
-    "pdf_mtime": 1781628694.1092522,
+    "page_count": 1863,
+    "pdf_mtime": 1783736242.9430568,
     "pdf_path": "output/pdf/AGEINT_combined.pdf",
     "stale_pdf": false,
-    "text_character_count": 12916700
+    "text_character_count": 12994141
   },
   "project": "AGEINT",
   "reference_quality": {
@@ -648,7 +648,7 @@
       },
       "claim_bearing_files": 275,
       "generated_markdown_files": 330,
-      "single_source_family_claim_bearing_files": 6,
+      "single_source_family_claim_bearing_files": 0,
       "source_family_file_counts": {
         "curated_anchor": 4,
         "law_policy": 9,
@@ -657,23 +657,23 @@
         "public_domain": 5,
         "scholarly": 98,
         "source_guide": 216,
-        "standard": 188
+        "standard": 197
       },
       "source_family_mentions": {
         "curated_anchor": 32,
         "law_policy": 19,
-        "official": 3094,
+        "official": 3072,
         "practitioner_vendor": 105,
         "public_domain": 21,
         "scholarly": 692,
         "source_guide": 1502,
-        "standard": 860
+        "standard": 882
       },
       "thin_claim_bearing_files": 0,
       "uncited_claim_bearing_files": 0,
       "uncited_files": 36
     },
-    "warning_row_count": 6
+    "warning_row_count": 0
   },
   "source_metadata": {
     "baseline_closed": {

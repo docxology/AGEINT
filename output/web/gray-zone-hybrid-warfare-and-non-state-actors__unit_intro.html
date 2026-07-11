@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-gray-zone-hybrid-warfare-and-non-state-actors">GRAY
 ZONE, HYBRID WARFARE, AND NON-STATE ACTORS</h1>
 <h2
@@ -315,8 +322,8 @@ boundaries, review artifacts, and refresh cues.</p>
 id="fig:part-gray-zone-hybrid-warfare-and-non-state-actors-module-map">
 <img
 src="../../../figures/mermaid/part-gray-zone-hybrid-warfare-and-non-state-actors-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. In the gray zone hybrid warfare and non state actors section, it lets readers compare 3 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. In the gray zone hybrid warfare
 and non state actors section, it lets readers compare 3 module nodes in
 the unit’s ordered, source-backed reading sequence from its first module
@@ -325,8 +332,8 @@ than an unscoped assertion.</figcaption>
 </figure>
 <figure id="fig:part-gray-zone-defense-spine">
 <img src="../../../figures/mermaid/part-gray-zone-defense-spine.png"
-alt="This part traces how the contested space below the threshold of war is recognized, attributed, and met through a defensive governance spine that ties authorities, coordination, and societal resilience back into sharper detection. The captioned view belongs to the gray zone hybrid warfare and non state actors section and should be read as a map of The Contested Space (Ch24-26), Gray Zone: ambiguity below war threshold, Hybrid: blended military and non-military means, and Non-State Actors: networks, proxies, insurgents, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">This part traces how the contested space
+alt="This part traces how the contested space below the threshold of war is recognized, attributed, and met through a defensive governance spine that ties authorities, coordination, and societal resilience back into sharper detection." />
+<figcaption>This part traces how the contested space
 below the threshold of war is recognized, attributed, and met through a
 defensive governance spine that ties authorities, coordination, and
 societal resilience back into sharper detection. The captioned view
@@ -379,5 +386,6 @@ inventory: citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

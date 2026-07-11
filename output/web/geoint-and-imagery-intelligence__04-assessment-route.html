@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>04-assessment-route.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h3
 id="geoint-and-imagery-intelligence-assessment-route-capstone-artifacts-refresh-duties-reviewer-challenges-and-handoff">GEOINT
 and Imagery Intelligence assessment route: capstone artifacts, refresh
@@ -323,8 +330,8 @@ beginning with [ageint253]; [ageint255].</p>
 review-checklist section, directly verified anchors for the
 <strong>Open-Source and Geospatial Intelligence Integrity</strong> lane
 include [official_ic_osint_strategy]; [official_state_osint_strategy];
-[official_nga_strategy]; [official_nga_geoint_ai]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
+[official_iso_19157_data_quality]; [official_nga_strategy]. Use them to
+test source-guide claims, method boundaries, governance constraints, and
 safety gates without replacing the module’s <code>ageintNNN</code>
 provenance.</p>
 <ul>
@@ -359,5 +366,6 @@ modules show what evidence enters and leaves. Lead sources: [ageint253];
 [sec:part-open-source-intelligence-osint],
 [sec:chapter-osint-techniques-and-tools],
 [sec:part-technical-intelligence-and-cyber-operations]</p>
+</main>
 </body>
 </html>

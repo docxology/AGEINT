@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-the-nature-of-intelligence">The Nature of
 Intelligence</h1>
 <h3
@@ -187,8 +194,8 @@ cues.</p>
 <figure id="fig:intelligence-cycle-governed-loop">
 <img
 src="../../../../figures/mermaid/intelligence-cycle-governed-loop.png"
-alt="This diagram teaches the classic intelligence cycle as a governed, feedback-driven loop where each phase passes through review before products reach decision-makers. Its reader value is to make Direction: requirements and priorities, Decision-Makers, Feedback and Lessons Learned, and Tasking Review visible at a glance, with the foundations of intelligence tradecraft / the nature of intelligence section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">This diagram teaches the classic
+alt="This diagram teaches the classic intelligence cycle as a governed, feedback-driven loop where each phase passes through review before products reach decision-makers." />
+<figcaption>This diagram teaches the classic
 intelligence cycle as a governed, feedback-driven loop where each phase
 passes through review before products reach decision-makers. Its reader
 value is to make Direction: requirements and priorities,
@@ -336,5 +343,6 @@ visible</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

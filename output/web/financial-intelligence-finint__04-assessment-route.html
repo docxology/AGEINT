@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>04-assessment-route.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h3
 id="financial-intelligence-finint-assessment-route-capstone-artifacts-refresh-duties-reviewer-challenges-and-handoff">Financial
 Intelligence (FININT) assessment route: capstone artifacts, refresh
@@ -324,8 +331,8 @@ beginning with [ageint251]; [ageint252].</p>
 review-checklist section, directly verified anchors for the
 <strong>Financial Intelligence and Economic-Security Due
 Diligence</strong> lane include [official_fincen_advisories];
-[official_fincen_boi]; [official_ofac_sanctions_programs];
-[official_ofac_compliance_commitments]. Use them to test source-guide
+[official_fincen_boi]; [official_fatf_recommendations];
+[official_ofac_sanctions_programs]. Use them to test source-guide
 claims, method boundaries, governance constraints, and safety gates
 without replacing the module’s <code>ageintNNN</code> provenance.</p>
 <ul>
@@ -359,5 +366,6 @@ here. Anchored at [ageint251]; [ageint252].</p>
 [sec:part-imagery-and-financial-intelligence],
 [sec:chapter-imagery-intelligence-imint],
 [sec:part-psychological-operations-and-influence]</p>
+</main>
 </body>
 </html>

@@ -3,13 +3,13 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-06-17T04:40:32+00:00 |
+| Generated at | 2026-07-11T02:25:03+00:00 |
 | Generated Markdown files | 330 |
 | Cited generated files | 294 |
 | Claim-bearing files | 275 |
 | Uncited claim-bearing files | 0 |
 | Thin claim-bearing files | 0 |
-| Single-family claim-bearing files | 6 |
+| Single-family claim-bearing files | 0 |
 | SAT method contract | true |
 | Analysis validation contract | true |
 | Analysis validation lane contract | true |
@@ -21,12 +21,12 @@
 |---|---:|
 | curated_anchor | 32 |
 | law_policy | 19 |
-| official | 3094 |
+| official | 3072 |
 | practitioner_vendor | 105 |
 | public_domain | 21 |
 | scholarly | 692 |
 | source_guide | 1502 |
-| standard | 860 |
+| standard | 882 |
 
 ## Hard-Fail Rows
 
@@ -40,12 +40,7 @@ Single-family claim-bearing files are review warnings, not automatic failures, b
 
 | Path | Family | Source family | Unique citations |
 |---|---|---|---:|
-| parts/imagery-and-financial-intelligence/financial-intelligence-finint/00-overview.md | overview | official | 5 |
-| parts/imagery-and-financial-intelligence/financial-intelligence-finint/04-assessment-route.md | assessment-route | official | 6 |
-| parts/open-source-intelligence-osint/osint-foundations/00-overview.md | overview | official | 5 |
-| parts/open-source-intelligence-osint/osint-foundations/04-assessment-route.md | assessment-route | official | 6 |
-| parts/open-source-intelligence-osint/osint-techniques-and-tools/00-overview.md | overview | official | 5 |
-| parts/open-source-intelligence-osint/osint-techniques-and-tools/04-assessment-route.md | assessment-route | official | 6 |
+| None | - | - | 0 |
 
 ## Synthetic Analytic Tradecraft Method Contract
 

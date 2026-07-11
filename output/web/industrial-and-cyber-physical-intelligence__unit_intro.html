@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-industrial-and-cyber-physical-intelligence">INDUSTRIAL
 AND CYBER-PHYSICAL INTELLIGENCE</h1>
 <h2
@@ -312,8 +319,8 @@ cues.</p>
 id="fig:part-industrial-and-cyber-physical-intelligence-module-map">
 <img
 src="../../../figures/mermaid/part-industrial-and-cyber-physical-intelligence-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. In the industrial and cyber physical intelligence section, it lets readers compare 5 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. In the industrial and cyber
 physical intelligence section, it lets readers compare 5 module nodes in
 the unit’s ordered, source-backed reading sequence from its first module
@@ -323,8 +330,8 @@ than an unscoped assertion.</figcaption>
 <figure id="fig:part-industrial-cyber-to-physical-defensive-chain">
 <img
 src="../../../figures/mermaid/part-industrial-cyber-to-physical-defensive-chain.png"
-alt="This part builds a defensive chain from cyber observation through engineering state, physical consequence, operator decision, and recovery evidence, with each of the five chapters feeding a stage and a hard safety boundary forbidding live control, exploitation, or operational response." />
-<figcaption aria-hidden="true">This part builds a defensive chain from
+alt="This part builds a defensive chain from cyber observation through engineering state, physical consequence, operator decision, and recovery evidence, with each of the five chapters feeding a stage and a hard safety boundary forbidding live…" />
+<figcaption>This part builds a defensive chain from
 cyber observation through engineering state, physical consequence,
 operator decision, and recovery evidence, with each of the five chapters
 feeding a stage and a hard safety boundary forbidding live control,
@@ -386,5 +393,6 @@ citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-active-inference-and-ageint">Active Inference and
 AGEINT</h1>
 <h3
@@ -188,8 +195,8 @@ flow, safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:active-inference-perception-action-loop">
 <img
 src="../../../../figures/mermaid/active-inference-perception-action-loop.png"
-alt="Conceptual teaching schematic for one active-inference interpretation of perception, belief updating, policy selection, and action; it is not validated AGEINT agent architecture or proof of autonomous performance. It is anchored to the ageint agentic intelligence / active inference and ageint section; use it to inspect A . A generative model produces predictions, which are compared against sensory observations to compute prediction error or free energy. The error branches to perceptual inference that updates beliefs, to policy selection that may choose an action, and with a governance caveat that the schematic is a theory analogy rather than deployment evidence. teaching schematic for one active-inference interpretation of perception while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">Conceptual teaching schematic for one
+alt="Conceptual teaching schematic for one active-inference interpretation of perception, belief updating, policy selection, and action; it is not validated AGEINT agent architecture or proof of autonomous performance." />
+<figcaption>Conceptual teaching schematic for one
 active-inference interpretation of perception, belief updating, policy
 selection, and action; it is not validated AGEINT agent architecture or
 proof of autonomous performance. It is anchored to the ageint agentic
@@ -206,8 +213,8 @@ boundary, and accountable practice.</figcaption>
 <figure id="fig:ageint-active-inference-boundary-stack">
 <img
 src="../../../../figures/mermaid/ageint-active-inference-boundary-stack.png"
-alt="Conceptual schematic separating active-inference theory, pedagogical analogy, agent-design heuristic, governance control, and empirical evidence so the manuscript does not overclaim theory transfer. In the ageint agentic intelligence / active inference and ageint section, it lets readers compare Theory source, Pedagogical analogy, Design heuristic, and Governance control so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">Conceptual schematic separating
+alt="Conceptual schematic separating active-inference theory, pedagogical analogy, agent-design heuristic, governance control, and empirical evidence so the manuscript does not overclaim theory transfer." />
+<figcaption>Conceptual schematic separating
 active-inference theory, pedagogical analogy, agent-design heuristic,
 governance control, and empirical evidence so the manuscript does not
 overclaim theory transfer. In the ageint agentic intelligence / active
@@ -362,5 +369,6 @@ over-delegation before release</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

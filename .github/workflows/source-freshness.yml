@@ -1,0 +1,75 @@
+name: Source-refresh freshness
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Weekly Monday 14:00 UTC — catches sources whose refresh cadence lapsed
+    # without waiting for the next content push.
+    - cron: "0 14 * * 1"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: source-refresh-freshness
+  cancel-in-progress: true
+
+jobs:
+  freshness:
+    name: Check source-refresh due dates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v8.3.2
+        with:
+          python-version: "3.12"
+
+      - name: Sync dependencies (dev extra)
+        run: uv sync --extra dev
+
+      - name: Compute current source-refresh-due facts
+        run: uv run python scripts/audit_source_refresh_due.py --format json > /tmp/source_refresh_due_latest.json
+
+      - name: Compare with checked-in baseline
+        id: diff
+        run: |
+          if jq -S . output/reports/source_refresh_due.json > /tmp/baseline.json \
+            && jq -S . /tmp/source_refresh_due_latest.json > /tmp/latest.json \
+            && cmp -s /tmp/baseline.json /tmp/latest.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload freshness snapshot
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: source-refresh-due-latest
+          path: /tmp/source_refresh_due_latest.json
+          if-no-files-found: warn
+
+      - name: Open drift issue (skip if one is already open)
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: "Source-refresh due dates drifted from committed baseline"
+        run: |
+          existing="$(gh issue list --search "in:title \"$TITLE\"" --state open --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            echo "Open issue #$existing already tracks this drift; skipping."
+            exit 0
+          fi
+          # Idempotent: `gh label create` errors if the label already exists,
+          # so tolerate that one case rather than requiring the label to be
+          # pre-provisioned in a fresh repo.
+          gh label create "evidence" --color 0e8a16 \
+            --description "Source/citation evidence drift or verification" \
+            2>/dev/null || true
+          gh issue create \
+            --title "$TITLE" \
+            --label "evidence" \
+            --body "The scheduled source-refresh-due audit differs from the committed \`output/reports/source_refresh_due.json\` baseline. Review the uploaded \`source-refresh-due-latest\` artifact, then re-run \`uv run python scripts/audit_source_refresh_due.py --write --format json\` and commit the refreshed baseline once any due sources have been reviewed."

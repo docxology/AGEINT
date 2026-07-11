@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:chapter-the-intelligent-operator-as-cognitive-athlete">The
 Intelligent Operator as Cognitive Athlete</h1>
 <h3
@@ -187,8 +194,8 @@ refresh cues.</p>
 <figure id="fig:operator-workload-hygiene-loop">
 <img
 src="../../../../figures/mermaid/operator-workload-hygiene-loop.png"
-alt="This diagram teaches how an intelligence operator sustains performance by capturing open loops, protecting focus, monitoring cognitive load, and routing overload into deliberate recovery. In the productivity intelligence and cognitive performance / the intelligent operator as cognitive athlete section, it lets readers compare Cognitive Athlete workload hygiene loop for the intelligence operator, Capture offload tasks and cues to a trusted system, Engage focused analytic work in protected windows, and Load monitor NASA-TLX self-check and fatigue signals so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">This diagram teaches how an intelligence
+alt="This diagram teaches how an intelligence operator sustains performance by capturing open loops, protecting focus, monitoring cognitive load, and routing overload into deliberate recovery." />
+<figcaption>This diagram teaches how an intelligence
 operator sustains performance by capturing open loops, protecting focus,
 monitoring cognitive load, and routing overload into deliberate
 recovery. In the productivity intelligence and cognitive performance /
@@ -331,5 +338,6 @@ notes</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

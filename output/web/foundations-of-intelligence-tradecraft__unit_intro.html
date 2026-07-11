@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1 id="sec:part-foundations-of-intelligence-tradecraft">FOUNDATIONS OF
 INTELLIGENCE TRADECRAFT</h1>
 <h2
@@ -312,8 +319,8 @@ safety boundaries, review artifacts, and refresh cues.</p>
 <figure id="fig:part-foundations-of-intelligence-tradecraft-module-map">
 <img
 src="../../../figures/mermaid/part-foundations-of-intelligence-tradecraft-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence. The captioned view belongs to the foundations of intelligence tradecraft section and should be read as a map of 3 module nodes in the unit’s ordered, source-backed reading sequence from its first module to its last, not as a capability score or live-task instruction." />
-<figcaption aria-hidden="true">The unit module map traces the part’s
+alt="The unit module map traces the part’s chapters as a linear reading sequence." />
+<figcaption>The unit module map traces the part’s
 chapters as a linear reading sequence. The captioned view belongs to the
 foundations of intelligence tradecraft section and should be read as a
 map of 3 module nodes in the unit’s ordered, source-backed reading
@@ -322,8 +329,8 @@ live-task instruction.</figcaption>
 </figure>
 <figure id="fig:part-foundations-governed-cycle">
 <img src="../../../figures/mermaid/part-foundations-governed-cycle.png"
-alt="Part I frames intelligence as a cyclic process (ch1) driven by community architecture (ch2) and disciplined at every step by tradecraft principles and control markings (ch3). Its reader value is to make The Intelligence Cycle (ch1), Planning and Direction, Collection, and Processing visible at a glance, with the foundations of intelligence tradecraft section as the source section and defensive review as the boundary." />
-<figcaption aria-hidden="true">Part I frames intelligence as a cyclic
+alt="Part I frames intelligence as a cyclic process (ch1) driven by community architecture (ch2) and disciplined at every step by tradecraft principles and control markings (ch3)." />
+<figcaption>Part I frames intelligence as a cyclic
 process (ch1) driven by community architecture (ch2) and disciplined at
 every step by tradecraft principles and control markings (ch3). Its
 reader value is to make The Intelligence Cycle (ch1), Planning and
@@ -334,8 +341,8 @@ defensive review as the boundary.</figcaption>
 <figure id="fig:intel-disciplines-all-source-fusion">
 <img
 src="../../../figures/mermaid/intel-disciplines-all-source-fusion.png"
-alt="The intelligence disciplines each contribute distinct evidence that all-source analysis fuses, weights by reliability, and turns into an assessed product under oversight. In the foundations of intelligence tradecraft section, it lets readers compare Collection Disciplines, HUMINT: human sources, SIGINT: signals, and OSINT: open sources so the visual functions as a traceable course aid rather than an unscoped assertion." />
-<figcaption aria-hidden="true">The intelligence disciplines each
+alt="The intelligence disciplines each contribute distinct evidence that all-source analysis fuses, weights by reliability, and turns into an assessed product under oversight." />
+<figcaption>The intelligence disciplines each
 contribute distinct evidence that all-source analysis fuses, weights by
 reliability, and turns into an assessed product under oversight. In the
 foundations of intelligence tradecraft section, it lets readers compare
@@ -387,5 +394,6 @@ citations, lanes, and learner route</h3>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

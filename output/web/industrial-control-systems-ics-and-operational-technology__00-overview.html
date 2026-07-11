@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
+  <meta name="generator" content="pandoc 3.10" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -156,8 +156,12 @@
       text-decoration: none;
     }
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -169,8 +173,11 @@
       vertical-align: middle;
     }
   </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
 </head>
 <body>
+<main id="main-content">
 <h1
 id="sec:chapter-industrial-control-systems-ics-and-operational-technology">Industrial
 Control Systems (ICS) and Operational Technology</h1>
@@ -188,8 +195,8 @@ cues.</p>
 [sec:chapter-mitre-att-ck-for-ics].</p>
 <figure id="fig:ics-defensive-zone-model">
 <img src="../../../../figures/mermaid/ics-defensive-zone-model.png"
-alt="This diagram teaches the Purdue-aligned segmentation of an industrial control environment, showing how a brokered DMZ separates IT from OT and how an independent safety system forms the last protective layer. It is anchored to the industrial and cyber physical intelligence / industrial control systems ics and operational technology section; use it to inspect ICS Defensive Zone Model Purdue-aligned segmentation and the safety boundary, Enterprise zone, Level 5-4 business and enterprise IT, and Industrial DMZ while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">This diagram teaches the Purdue-aligned
+alt="This diagram teaches the Purdue-aligned segmentation of an industrial control environment, showing how a brokered DMZ separates IT from OT and how an independent safety system forms the last protective layer." />
+<figcaption>This diagram teaches the Purdue-aligned
 segmentation of an industrial control environment, showing how a
 brokered DMZ separates IT from OT and how an independent safety system
 forms the last protective layer. It is anchored to the industrial and
@@ -203,8 +210,8 @@ boundary, and accountable practice.</figcaption>
 <figure id="fig:ageint-ot-definitive-architecture-record">
 <img
 src="../../../../figures/python/ageint-ot-definitive-architecture-record.png"
-alt="The OT architecture record ties assets, communications, owners, change evidence, and review cadence together. It is anchored to the industrial and cyber physical intelligence / industrial control systems ics and operational technology section; use it to inspect ot definitive architecture record labels, source records, review gates, refresh cues, and reader-use boundaries while preserving the distinction between curriculum structure, evidence boundary, and accountable practice." />
-<figcaption aria-hidden="true">The OT architecture record ties assets,
+alt="The OT architecture record ties assets, communications, owners, change evidence, and review cadence together." />
+<figcaption>The OT architecture record ties assets,
 communications, owners, change evidence, and review cadence together. It
 is anchored to the industrial and cyber physical intelligence /
 industrial control systems ics and operational technology section; use
@@ -342,5 +349,6 @@ restored</td>
 </tr>
 </tbody>
 </table>
+</main>
 </body>
 </html>

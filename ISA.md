@@ -4,10 +4,323 @@ task: Publication-prep cleanup + commit-to-main (release/publish is the next-day
 effort: E4
 phase: complete
 started: 2026-06-03
-updated: 2026-06-16
+updated: 2026-07-10
 ---
 
 # AGEINT ISA Closeout And Current Ledger
+
+## 2026-07-10 Science Round: Single-Source-Family Fix, Full Re-Verify, Re-Render (DONE)
+
+**Closing verification (post-fix, before push).** The content fix below
+(anchor-key reorder) also surfaced a real, previously-masked test gap:
+rendering `AGEINT.pdf` for real (first time in this repo's history) meant
+`tests/test_publication_readiness.py::test_audit_publication_readiness_script_writes_json_contract`
+stopped skipping and failed — it called `audit_publication_readiness.py`
+without `--skip-parent-guard`, so the parent-confidentiality check (which
+cannot pass in this standalone checkout) sank its `ok: true` assertion. This
+was a latent gap in the test itself, not a regression from the content fix;
+fixed by adding `--skip-parent-guard` to that one subprocess call (a
+dedicated sibling test, `test_parent_confidentiality_guard_reports_missing_template`,
+already covers the failure path directly, so this wasn't removing coverage).
+Full closing verification, in order: (1) full suite green — **387 passed**,
+**91.22% coverage** (floor 90%), `0:30:25` wall time; (2) final strict
+re-render via the sibling template repo — `AGEINT: PASS`, 564.3s, 978 files
+copied, 34.09 MB combined PDF; (3) repo-root `AGEINT.pdf` re-synced
+(MD5-identical to `output/pdf/AGEINT_combined.pdf`); (4) all **11**
+`scripts/audit_*.py` scripts re-run with each script's real CLI flags and
+every one now exits **0** — including `audit_pdf_quality.py`,
+`audit_artifact_evidence.py`, and `audit_publication_readiness.py`, which are
+informational in `ci.yml`/`manuscript.yml` only because a standalone-repo CI
+run can't itself render the PDF, not because they're expected to fail; with a
+real, fresh PDF in hand this session, all three are genuinely green, not
+just tolerated. Confirmed metrics: `scholarship_quality` "Single-family
+claim-bearing files" = **0** (was 6); `audit_pdf_quality` "Stale PDF" =
+**false**, `OK` = **true**.
+
+**Goal.** Run a bounded Science-method round (goal → observe → hypotheses →
+experiment → measure → analyze) against AGEINT's own audit instrumentation
+to find genuine, evidence-backed content weaknesses across manuscript
+sections and figures — not a blind exhaustive rewrite — fix what's real,
+verify the fix moved the actual numbers, then re-render and publish.
+
+**Observe (baseline).** Every audit was already `OK: true` at session start
+except one persistent, multi-round-old flag: `scholarship_quality`'s "6
+single-family claim-bearing files" (unchanged across the `2026-06-13` through
+`2026-06-16` rounds logged below — evidence this was a real, not transient,
+gap). `visual_quality_audit.json`: `pass: true`, 177/177 figures clean on
+every one of 12 checks (alt text, caption, long description, PNG metadata,
+provenance, square-normalization, ...). `claim_calibration`: `OK: true`,
+5,129 review-warning rows, explicitly documented in its own report as
+"review warnings, not automatic failures" (accepted epistemic-caution
+design, not a backlog).
+
+**Hypotheses (3, pre-registered before touching content).**
+1. **H1 (pursued, confirmed):** the 6 single-family flags are fixable by
+   promoting an already-curated, non-`official_primary`-tier anchor (already
+   present in each module's own `anchor_keys` list, just past the first-3
+   citation-slice cutoff) into the front of that list — no new source
+   research needed, no unverified citation added.
+2. **H2 (considered, not pursued):** claim-calibration's 5,129 review-warning
+   rows contain a cheap, high-leverage subset fixable via a few shared
+   boundary-phrase template edits. Rejected after observation: `OK: true`
+   already, warnings are the system's own by-design epistemic-caution
+   category (its own report says so explicitly), and touching 5,129 rows
+   worth of prose to chase a metric that isn't actually failing would be
+   busywork, not a fix — "measure what matters," not manufacture problems.
+3. **H3 (refuted by direct measurement):** figures/visualizations have real
+   quality gaps worth fixing. Refuted immediately: `visual_quality_audit.json`
+   already reports 177/177 passing every check. No visualization work was
+   invented to pad this round.
+
+**Experiment (H1).** Traced the exact mechanism: `chapter_textbook_primer()`
+(`src/intelligence_content/_10_part.py:44`) and the assessment-route
+generator (`src/manuscript_manifest/_03_part.py:158`) both call
+`citation_cluster(expanded_profile_anchor_keys(profile), limit=3 or 4)`,
+which is a literal `keys[:limit]` slice — `expanded_profile_anchor_keys`
+puts `profile.anchor_keys` first, unmodified order (`source_packs.py:247`).
+Confirmed via `citation_source_family()`
+(`src/scholarship_quality.py:303`) that it classifies by scanning
+`source_tier`/`source_type` text for substrings, checking `"standard"`
+*before* `"official"` — so an anchor with `source_tier:
+international_standard` reliably classifies as `standard` family, not
+`official`, even though its key is prefixed `official_` (a naming
+convention, not a family marker). Verified both flagged profiles already
+curate exactly such an anchor, just outside the first-3/first-4 window:
+`official_fatf_recommendations` (FININT profile, `_04b_part.py`) and
+`official_iso_19157_data_quality` (OSINT/GEOINT profile, `_04_part.py`),
+both confirmed `source_tier: international_standard` by direct grep against
+`data/research_anchors/*.jsonl` before editing (Gate E — verified the claim,
+did not assume it from the key name). Reordered both `anchor_keys` tuples
+(2-file, ~16-line diff) to promote each into slot 3, with an inline comment
+explaining why and citing the exact limit=3/4 mechanism, so a future editor
+doesn't silently undo this by re-alphabetizing or "cleaning up" the tuple.
+
+**Measure.** Full strict rebuild (`AGEINT_REQUIRE_RENDERED_FIGURES=1`), then
+re-ran the exact audits before/after:
+
+| Metric | Before | After |
+|---|---:|---:|
+| `scholarship_quality` single-family claim-bearing files | 6 | **0** |
+| `scholarship_quality` hard-fail rows | 0 | 0 |
+| `standard` family file-key mentions | 860 | 882 |
+| `official` family file-key mentions | 3094 | 3072 |
+| `claim_calibration` hard-fail rows | 0 | 0 |
+| `reference_quality` issue rows | 0 | 0 |
+| Full test suite (387 tests, `--cov-fail-under=90`) | — | pass (see Verification) |
+
+**Analyze.** H1 confirmed cleanly: the target metric moved from 6 to exactly
+0 with zero new hard-fails anywhere and no side effects on adjacent metrics
+beyond the expected `standard`-family mention increase. This closes a gap
+that had survived at least four prior hardening rounds
+(`AGEINT-SCHOLARSHIP-TRIANGULATION-2026-06-12` first introduced the check;
+it was still 6 as of the `2026-06-14` claim-calibration round below) — the
+fix was a 2-file citation-order change, not new research, because the
+better sources were already curated and simply weren't in the cited slice.
+
+## 2026-07-10 PDF Rendered Via The Sibling Template Repo + Documented (DONE)
+
+**Goal:** the prior pass established (with a `find`-grep proof) that this
+standalone repo cannot render `AGEINT.pdf` itself — the pandoc/xelatex driver
+lives only in a sibling research-project template repository. This pass
+actually invoked that template's render pipeline against this checkout and
+verified the result, rather than leaving it as a documented limitation.
+
+- Linked this checkout into the sibling template repo's `projects/working/`
+  tree (a plain symlink, matching how that repo's own maintainers link other
+  standalone projects in for on-demand rendering) and ran its
+  `scripts/maintenance/rerender_working_pdfs.py --project AGEINT` — the
+  template's own "stage 03 render + stage 05 copy" thin orchestrator,
+  confirmed via `--dry-run` discovery first. Completed in 178.7s: `AGEINT:
+  PASS`, 34.09 MB combined PDF, 978 output files copied back into this repo.
+- The template pipeline warned of 4 missing **optional** LaTeX packages
+  (`multirow`, `cleveref`, `doi`, `newunicodechar` — confirmed this is a
+  documented, known-optional gap in the template's own dependency matrix, not
+  a defect); package install needs interactive `sudo` this session doesn't
+  have, so the render proceeded without them (the template's own docs class
+  this as "reduced functionality," not failure) — a genuine, minor follow-up
+  if a maintainer wants the complete package set.
+- The render only refreshed `output/pdf/AGEINT_combined.pdf`; the
+  convenience copy at the repo root, `AGEINT.pdf`, is a separate file with no
+  automated sync (confirmed: different MD5 after render, and no script
+  anywhere maintains it — it was placed once, manually, at the original
+  release). Copied the fresh render over it so both copies match again.
+- **Verified the fix is real, not just claimed**: re-ran all three PDF-
+  dependent audits standalone. `audit_pdf_quality.py`: `Stale PDF: false`,
+  `OK: true` (was `false`). `audit_artifact_evidence.py --write`: `OK: true`
+  across all 12 sub-checks including `pdf quality ok: true` (was the only
+  `false`). `audit_publication_readiness.py --write --skip-parent-guard`:
+  `OK: true` across all 16 sub-checks. This is the first time this repo's
+  full audit surface has been genuinely green end-to-end in this session,
+  not held informational.
+- **Documented the render dependency without naming anything private**: added
+  a "PDF rendering is external to this repository" paragraph to
+  [`README.md`](README.md)'s Architecture section (what renders it, what this
+  repo's own scripts do and don't cover, why `ci.yml`/`manuscript.yml` keep
+  the PDF-dependent checks informational) and a matching ground-truth bullet
+  to [`AGENTS.md`](AGENTS.md) (an explicit "do not add a pandoc/xelatex
+  invocation here" note, aimed at a future agent who might otherwise
+  reintroduce the Gate-E mistake this session avoided). Both refer to it only
+  as "a shared research-project template" / "the sibling template repo" —
+  the same generic phrasing README.md already used elsewhere for this
+  relationship — never by the private lab's internal repo-collection name.
+  Also added the actual render command to README's Commands block.
+- **CI design does not change**: `ci.yml`/`manuscript.yml` keep the three
+  PDF-dependent audits informational (`continue-on-error`) even though they
+  are clean right now — the underlying reason (this repo's CI cannot itself
+  invoke the template's render step) is structural, not a function of
+  today's content state. The next source edit without a matching manual
+  re-render will make `pdf_quality` stale again, and that is the expected,
+  by-design behavior, not a regression.
+
+## 2026-07-10 GitHub Actions CI + Workflows Scope (DONE)
+
+**Goal:** the repo had zero `.github/` automation (confirmed by direct `find`
+against this checkout and the git history — no prior CI, no dependabot, no
+issue automation of any kind). Add a working, honestly-scoped GitHub Actions
+CI surface without inventing checks the project doesn't already define, and
+without silently "fixing" pre-existing content gaps discovered along the way.
+
+- Surveyed the other 30 sibling `docxology` public repos already cloned under
+  a local multi-repo mirror for CI convention. The closest structural
+  analog is `democreate` (identical `data/docs/manuscript/output/scripts/src/tests`
+  layout); `entofile`/`CogSecSkills`/`BeeStack` gave the ruff+pytest-cov pattern;
+  `docxology`'s own `freshness.yml` gave the scheduled-drift-issue pattern later
+  reused for source-refresh checks. The private `template` monorepo's `ci.yml`
+  was read but NOT copied — it targets a `projects/**` multi-exemplar layout
+  and `infrastructure.*` package that doesn't exist in a standalone repo.
+- Added `.github/workflows/ci.yml`: `lint` (ruff, default ruleset — confirmed
+  clean via `ruff check --isolated`, since the ambient hit from this local
+  mirror's own outer `pyproject.toml` ruff config does not exist in the real
+  standalone `docxology/AGEINT` repo); `test` (matrix python 3.10/3.12, `uv
+  sync --extra dev`, `pytest tests/ --cov=src --cov-fail-under=90` — the
+  project's own already-documented AGENTS.md/README verification command,
+  not invented here); `content-gates` (single job wiring 7 of the 11
+  `scripts/audit_*.py` scripts plus `validate_declarative_yaml.py`,
+  `check_rendered_references.py`, and the banned-generic-fallback-phrase `rg`
+  check from AGENTS.md's own "Verification" section — all independently
+  run and confirmed exit 0 against the committed `output/` tree before being
+  wired in as blocking).
+- Found two genuine PRE-EXISTING gaps (not introduced by this change) while
+  probing each audit script directly: `audit_pdf_quality.py` reports the
+  committed `AGEINT.pdf` as stale (`ok: false`); the `audit_publication_readiness.py`
+  aggregate additionally reports `artifact evidence ok: false` (its own
+  breakdown table shows every OTHER sub-check — scholarship, source metadata,
+  agency coverage, claim calibration, reference quality — passing). Rather
+  than silently rebuild the 35 MB PDF or guess a fix for the artifact-evidence
+  finding, both plus the aggregate report were wired as `continue-on-error:
+  true` (informational) so CI is honestly green on day one instead of red
+  from unrelated pre-existing content, with a named follow-up to promote them
+  to blocking once fixed (see ledger row below). `audit_publication_readiness.py`
+  is additionally a pre-release preflight report by its own documented text
+  ("does not publish, push, archive..."), not a per-PR merge gate, so it was
+  kept informational on that basis too, independent of the current findings.
+  The exact root cause of the `artifact evidence ok: false` finding was not
+  fully diagnosed in this pass — the direct probe (`audit_artifact_evidence.py`)
+  was still running under heavy local machine contention (~15 concurrent
+  unrelated processes) when this session closed out; re-run it standalone on
+  an unloaded machine to get the detail before promoting the gate.
+- Traced a look-alike full-suite test failure
+  (`tests/test_artifact_evidence.py::test_audit_artifact_evidence_script_writes_json_contract`)
+  to a `subprocess.TimeoutExpired` at its 180 s bound under the same local
+  contention, NOT a code defect — confirmed by running the same script
+  standalone, where it completes in low single-digit seconds. Do not read the
+  local full-suite run from this session as a "failing suite"; it never
+  finished (387 items, <5% collected after ~30 min of wall-clock competing
+  with ~15 other heavy local jobs) and the one flushed failure has an
+  identified non-code cause.
+- Added `.github/workflows/source-freshness.yml`: weekly scheduled
+  `audit_source_refresh_due.py --format json` compared against the committed
+  `output/reports/source_refresh_due.json` baseline (mirrors the sibling
+  `docxology` repo's own `freshness.yml` pattern exactly, since this project
+  already ships the matching audit script and baseline but never automated
+  it); opens a drift issue, de-duplicated against any already-open issue of
+  the same title, and idempotently provisions the `evidence` label first
+  (a fresh `docxology/AGEINT` repo has no labels beyond GitHub's defaults).
+- Added `.github/dependabot.yml`: weekly `pip` + `github-actions` update
+  checks, matching the `entofile`/`codomyrmex`/`template`/`docxology` sibling
+  convention (verified no `.github/` directory existed on this repo at all
+  before this pass — `bfs`/`find` against `AGEINT/.github` errored "No such
+  file or directory").
+- Verified every pinned Action ref against the live GitHub API rather than
+  copying a sibling's version from memory (per the standing PAI feedback memory
+  on this exact gotcha): `astral-sh/setup-uv` has **no floating `v8` tag**
+  (confirmed live — `git/refs/tags/v8` 404s while `v8.3.0`..`v8.3.2` and the
+  floating `v5` all resolve), matching a documented prior incident with the
+  same action on a different repo; pinned the explicit current release
+  `v8.3.2` instead of guessing a floating major tag or copying the siblings'
+  three-major-versions-stale `@v5`. `actions/checkout@v6`, `actions/setup-python@v6`,
+  `actions/stale@v10`, `actions/upload-artifact@v5`, and
+  `dependabot/fetch-metadata@v2` were each confirmed live to resolve before use.
+
+## 2026-07-10 Manuscript Rebuild Workflow + Closing The CI Follow-Up Ledger (DONE)
+
+**Goal:** the prior pass (above) deferred three CI checks to informational and
+left an open question about the `artifact evidence ok: false` finding. This
+pass ran the actual strict rebuild locally (the toolchain — `pandoc` 3.10,
+`xelatex`, `mmdc` 11.16.0 — turned out to already be installed) to get a real
+answer instead of leaving it as a guess, then added the manuscript-specific
+GitHub Actions workflow that was the natural next piece.
+
+- **Root-caused the `artifact evidence ok: false` finding for real.** Ran
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py`
+  standalone (real Mermaid PNGs, no placeholder fallback) — it succeeded
+  (16 parts, 51 modules, 9 appendices, 20 patterns, 312 references) and only
+  changed ONE file on disk relative to the committed tree: the frontmatter
+  `ageint-evidence-transit-map` figure, which embeds a live telemetry/"as of"
+  snapshot by design. Re-running `audit_artifact_evidence.py` against that
+  fresh build flipped its `generated output fresh` sub-check `false → true`.
+  The ONLY sub-check that stayed `false` was `pdf quality ok` — confirmed this
+  is the sole cause of the aggregate `OK: false`, not a real content defect.
+- **Discovered the PDF rebuild is structurally out of scope for this
+  standalone repo, not just "expensive."** Grepped this entire checkout for
+  any `pandoc`/`xelatex` invocation outside `audit_pdf_quality.py`'s own
+  text-scanning logic — none exists. `output/reports/pipeline_report.md`
+  (a stale artifact from an earlier private-monorepo run) shows the real
+  8-stage pipeline (`Clean Output Directories → Environment Setup →
+  Infrastructure Tests → Project Tests → Project Analysis → PDF Rendering →
+  Output Validation → Copy Outputs`) that produces `AGEINT.pdf` — that
+  pipeline's `PDF Rendering` stage lives in the private parent template's
+  `infrastructure` package, which this standalone repo does not carry.
+  Corrected the CI comments accordingly: `audit_pdf_quality.py`,
+  `audit_artifact_evidence.py`, and `audit_publication_readiness.py` stay
+  informational **permanently** in this repo, not "until someone rebuilds the
+  PDF" — closing ledger item (2) below as "not achievable here" rather than
+  leaving it open.
+- **Added `.github/workflows/manuscript.yml`**: a strict-rebuild-and-validate
+  job, triggered on `workflow_dispatch`, weekly schedule (Monday 15:00 UTC,
+  one hour after `source-freshness.yml`), and on push to any source-owned
+  path (`data/**` — not an enumerated allowlist, since `data/` holds 11+
+  source YAML files that would drift a hand-picked list — plus
+  `manuscript/templates/**`, `src/manuscript_manifest/**`,
+  `src/intelligence_content/**`, `src/figures/**`, the two build scripts, and
+  `domain_profile.yaml`). Installs `mmdc` + the exact pinned
+  `chrome-headless-shell@131.0.6778.204` build that
+  `src/figures/AGENTS.md` documents `_discover_chrome_executable()` prefers,
+  runs the strict rebuild, the full test suite (now actually exercising the
+  `requires_mermaid`-marked strict figure tests instead of skipping them —
+  confirmed directly: `test_render_figures_strict_mode_produces_real_mermaid_diagrams`
+  passes for real, 39s, real Chrome), refreshes and enforces all 11
+  `scripts/audit_*.py` reports as blocking (except the same three permanently-
+  informational PDF-dependent ones), and reports (never auto-commits) drift
+  against the committed `output/` tree.
+- **Caught and fixed a real CLI-contract bug before it shipped**: the
+  workflow's generic `for f in scripts/audit_*.py; do ... --write ...`
+  loop assumed every audit script accepts `--write` uniformly. Running the
+  exact loop locally surfaced `audit_heading_support.py` and
+  `audit_pdf_quality.py` both exiting `2` (argparse usage error) — neither
+  script actually has a `--write` flag (re-checked each `--help` output,
+  confirmed only `--manuscript-dir`/`--pdf`/`--format`). Fixed the loop to
+  special-case both by their real CLI signature rather than assume
+  uniformity from the 9 scripts that do share it.
+- Freed up local machine contention along the way: found and killed a stale
+  full-`pytest` background process left running from the prior pass (over an
+  hour old, 14:46 CPU-minutes accumulated against ~0% real progress under
+  contention) — it was competing with this pass's own verification runs for
+  no remaining purpose.
+- Cleaned up all incidental `output/`/`manuscript/` diffs from this session's
+  local verification (the strict rebuild + the `--write` validation loop) at
+  the end, same discipline as the prior pass: nothing beyond `.github/` and
+  this `ISA.md` entry is left dirty in the working tree.
 
 ## 2026-06-16 Publication-Prep + Commit-To-Main (DONE)
 
@@ -628,6 +941,7 @@ visual-semantics artifacts on 2026-06-14:
 
 | ID | Status | Scope | Exit condition |
 |---|---|---|---|
+| AGEINT-CI-WORKFLOWS-2026-07-10 | done | Add GitHub Actions CI/CD (the repo had zero `.github/` automation) and comprehensively close out the follow-ups: `ci.yml` (lint/test/content-gates), `manuscript.yml` (strict rebuild + full audit enforcement), `source-freshness.yml` (weekly drift check + issue), `dependabot.yml`. | All four workflow files pass `actionlint` clean. Follow-up (1) closed: root-caused `artifact evidence ok: false` for real by running the actual strict rebuild locally (toolchain was already installed) — it's entirely the `pdf_quality` sub-check; `generated output fresh` flips false→true on a real rebuild. Follow-up (2) closed as **not achievable in this repo**: confirmed by grep that the pandoc/xelatex PDF driver lives only in the private parent template, not in this standalone checkout — `audit_pdf_quality.py` (and the two aggregates that bundle it) stay informational permanently, not pending. Follow-up (3) done for the 9 non-PDF-dependent audit scripts (all confirmed exit 0 against a fresh strict rebuild) — the 2 PDF-dependent ones and the aggregate report correctly stay informational by design, not oversight. Follow-up (4) still open: neither workflow has been pushed or run on a real GitHub Actions runner yet — local script/actionlint verification only. New: `manuscript.yml`'s strict rebuild also exercises the real `requires_mermaid` figure tests for the first time (confirmed passing, 39s) instead of skipping them, and a generic-`--write`-loop bug (2 of 11 audit scripts don't take `--write`) was caught and fixed before it could ship. |
 | AGEINT-VERIFY-2026-06-12 | done | Complete this verifier-hardening pass. | All gates above passed; `ageint-4` is marked done in `tasks.yaml`. |
 | AGEINT-AUTOLINK-2026-06-12 | done | Complete section/reference auto-link hardening and PDF rerender. | Orientation labels, curriculum map links, citation-link tables, full tests, rendered-reference audit, template validators, and PDF audit passed; `ageint-11` is marked done in `tasks.yaml`. |
 | AGEINT-FIGLINK-2026-06-12 | done | Complete figure caption, visual layout, and PDF-link hardening. | All 161 figure captions/alt-text rows pass the expanded reader-text gate; source/copy PDFs have 0 Markdown-file link annotations; visual spot checks and validators passed; `ageint-12` is marked done in `tasks.yaml`. |

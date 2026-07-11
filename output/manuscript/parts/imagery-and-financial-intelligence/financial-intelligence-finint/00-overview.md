@@ -24,7 +24,7 @@ This chapter teaches FININT and economic-security analysis as lawful due diligen
 
 The central distinction is to separate compliance-oriented risk analysis from evasion, attribution certainty, or targeting. Core topics include **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries; Non-state actor indicator review with attribution caution and governance boundaries**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
-Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_fincen_advisories]; [@official_fincen_boi]; [@official_ofac_sanctions_programs]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint251]; [@ageint252].
+Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint251]; [@ageint252].
 
 Learners move from vocabulary and the **Economic-Security Due-Diligence Lens** distinction through topic lessons on **FININT Foundations: Collection, Analysis, Reporting** with evidence and misconception checks, then assemble an **economic-security packet with entity evidence, sanctions program, red flags, supplier context, uncertainty, and compliance boundary** with safety and rights gates.
 

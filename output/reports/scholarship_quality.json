@@ -66,7 +66,7 @@
     "missing": [],
     "ok": true
   },
-  "generated_at": "2026-06-17T04:40:32+00:00",
+  "generated_at": "2026-07-11T02:25:03+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -7337,15 +7337,14 @@
         "ageint252",
         "official_fincen_advisories",
         "official_fincen_boi",
-        "official_ofac_sanctions_programs"
+        "official_fatf_recommendations"
       ],
       "family": "overview",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
+      "flags": [],
       "path": "parts/imagery-and-financial-intelligence/financial-intelligence-finint/00-overview.md",
       "source_families": [
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 5
     },
@@ -7355,8 +7354,8 @@
         "ageint251",
         "official_fincen_advisories",
         "official_fincen_boi",
+        "official_fatf_recommendations",
         "official_ofac_sanctions_programs",
-        "official_ofac_compliance_commitments",
         "ageint079",
         "ageint080",
         "ageint302",
@@ -7370,6 +7369,7 @@
       "path": "parts/imagery-and-financial-intelligence/financial-intelligence-finint/01-practice-studio.md",
       "source_families": [
         "official",
+        "standard",
         "source_guide"
       ],
       "unique_citation_count": 12
@@ -7394,8 +7394,8 @@
         "ageint297",
         "official_fincen_advisories",
         "official_fincen_boi",
-        "official_ofac_sanctions_programs",
-        "official_ofac_compliance_commitments"
+        "official_fatf_recommendations",
+        "official_ofac_sanctions_programs"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -7414,10 +7414,10 @@
         "ageint251",
         "official_fincen_advisories",
         "official_fincen_boi",
-        "official_ofac_sanctions_programs",
-        "official_ofac_compliance_commitments",
-        "ageint252",
         "official_fatf_recommendations",
+        "official_ofac_sanctions_programs",
+        "ageint252",
+        "official_ofac_compliance_commitments",
         "official_fatf_virtual_assets_guidance",
         "official_bis_fintech_digital_transformation"
       ],
@@ -7437,16 +7437,15 @@
         "ageint252",
         "official_fincen_advisories",
         "official_fincen_boi",
-        "official_ofac_sanctions_programs",
-        "official_ofac_compliance_commitments"
+        "official_fatf_recommendations",
+        "official_ofac_sanctions_programs"
       ],
       "family": "assessment-route",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
+      "flags": [],
       "path": "parts/imagery-and-financial-intelligence/financial-intelligence-finint/04-assessment-route.md",
       "source_families": [
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 6
     },
@@ -7457,7 +7456,7 @@
         "ageint269",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy"
+        "official_iso_19157_data_quality"
       ],
       "family": "overview",
       "flags": [],
@@ -7474,8 +7473,8 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
+        "official_iso_19157_data_quality",
         "official_nga_strategy",
-        "official_nga_geoint_ai",
         "ageint302",
         "ageint297",
         "ageint309",
@@ -7511,8 +7510,8 @@
         "ageint300",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -7530,10 +7529,10 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai",
-        "ageint269",
         "official_iso_19157_data_quality",
+        "official_nga_strategy",
+        "ageint269",
+        "official_nga_geoint_ai",
         "official_odni_icd_206",
         "official_odni_icd_203"
       ],
@@ -7553,8 +7552,8 @@
         "ageint269",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "assessment-route",
       "flags": [],
@@ -7572,7 +7571,7 @@
         "ageint269",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
+        "official_iso_19157_data_quality",
         "ageint270",
         "ageint275",
         "ageint276",
@@ -8542,7 +8541,7 @@
         "ageint255",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy"
+        "official_iso_19157_data_quality"
       ],
       "family": "overview",
       "flags": [],
@@ -8559,8 +8558,8 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
+        "official_iso_19157_data_quality",
         "official_nga_strategy",
-        "official_nga_geoint_ai",
         "ageint057",
         "ageint058",
         "ageint059",
@@ -8574,8 +8573,8 @@
       "path": "parts/open-source-intelligence-osint/geoint-and-imagery-intelligence/01-practice-studio.md",
       "source_families": [
         "official",
-        "source_guide",
-        "standard"
+        "standard",
+        "source_guide"
       ],
       "unique_citation_count": 12
     },
@@ -8601,8 +8600,8 @@
         "ageint297",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -8620,10 +8619,10 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai",
-        "ageint255",
         "official_iso_19157_data_quality",
+        "official_nga_strategy",
+        "ageint255",
+        "official_nga_geoint_ai",
         "official_odni_icd_206",
         "official_odni_icd_203"
       ],
@@ -8643,8 +8642,8 @@
         "ageint255",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "assessment-route",
       "flags": [],
@@ -8662,15 +8661,14 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy"
+        "official_iso_19157_data_quality"
       ],
       "family": "overview",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
+      "flags": [],
       "path": "parts/open-source-intelligence-osint/osint-foundations/00-overview.md",
       "source_families": [
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 5
     },
@@ -8680,8 +8678,8 @@
         "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
+        "official_iso_19157_data_quality",
         "official_nga_strategy",
-        "official_nga_geoint_ai",
         "ageint047",
         "ageint048",
         "ageint301",
@@ -8695,6 +8693,7 @@
       "path": "parts/open-source-intelligence-osint/osint-foundations/01-practice-studio.md",
       "source_families": [
         "official",
+        "standard",
         "source_guide"
       ],
       "unique_citation_count": 12
@@ -8719,8 +8718,8 @@
         "ageint297",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -8739,10 +8738,10 @@
         "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai",
-        "ageint253",
         "official_iso_19157_data_quality",
+        "official_nga_strategy",
+        "ageint253",
+        "official_nga_geoint_ai",
         "official_odni_icd_206",
         "official_odni_icd_203"
       ],
@@ -8762,16 +8761,15 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "assessment-route",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
+      "flags": [],
       "path": "parts/open-source-intelligence-osint/osint-foundations/04-assessment-route.md",
       "source_families": [
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 6
     },
@@ -8782,15 +8780,14 @@
         "ageint252",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy"
+        "official_iso_19157_data_quality"
       ],
       "family": "overview",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
+      "flags": [],
       "path": "parts/open-source-intelligence-osint/osint-techniques-and-tools/00-overview.md",
       "source_families": [
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 5
     },
@@ -8800,8 +8797,8 @@
         "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
+        "official_iso_19157_data_quality",
         "official_nga_strategy",
-        "official_nga_geoint_ai",
         "ageint050",
         "ageint051",
         "ageint052",
@@ -8816,6 +8813,7 @@
       "path": "parts/open-source-intelligence-osint/osint-techniques-and-tools/01-practice-studio.md",
       "source_families": [
         "official",
+        "standard",
         "source_guide",
         "practitioner_vendor"
       ],
@@ -8842,8 +8840,8 @@
         "ageint056",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -8862,10 +8860,10 @@
         "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai",
-        "ageint252",
         "official_iso_19157_data_quality",
+        "official_nga_strategy",
+        "ageint252",
+        "official_nga_geoint_ai",
         "official_odni_icd_206",
         "official_odni_icd_203"
       ],
@@ -8885,16 +8883,15 @@
         "ageint252",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
+        "official_iso_19157_data_quality",
+        "official_nga_strategy"
       ],
       "family": "assessment-route",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
+      "flags": [],
       "path": "parts/open-source-intelligence-osint/osint-techniques-and-tools/04-assessment-route.md",
       "source_families": [
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 6
     },
@@ -8905,7 +8902,7 @@
         "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
-        "official_nga_strategy",
+        "official_iso_19157_data_quality",
         "ageint269",
         "ageint273",
         "ageint274",
@@ -10818,7 +10815,7 @@
     },
     "claim_bearing_files": 275,
     "generated_markdown_files": 330,
-    "single_source_family_claim_bearing_files": 6,
+    "single_source_family_claim_bearing_files": 0,
     "source_family_file_counts": {
       "curated_anchor": 4,
       "law_policy": 9,
@@ -10827,17 +10824,17 @@
       "public_domain": 5,
       "scholarly": 98,
       "source_guide": 216,
-      "standard": 188
+      "standard": 197
     },
     "source_family_mentions": {
       "curated_anchor": 32,
       "law_policy": 19,
-      "official": 3094,
+      "official": 3072,
       "practitioner_vendor": 105,
       "public_domain": 21,
       "scholarly": 692,
       "source_guide": 1502,
-      "standard": 860
+      "standard": 882
     },
     "thin_claim_bearing_files": 0,
     "uncited_claim_bearing_files": 0,
@@ -10851,124 +10848,6 @@
     ],
     "single_source_family_is_warning": true
   },
-  "warning_row_count": 6,
-  "warning_rows": [
-    {
-      "citation_count": 11,
-      "citation_keys": [
-        "ageint251",
-        "ageint252",
-        "official_fincen_advisories",
-        "official_fincen_boi",
-        "official_ofac_sanctions_programs"
-      ],
-      "family": "overview",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
-      "path": "parts/imagery-and-financial-intelligence/financial-intelligence-finint/00-overview.md",
-      "source_families": [
-        "official"
-      ],
-      "unique_citation_count": 5
-    },
-    {
-      "citation_count": 22,
-      "citation_keys": [
-        "ageint251",
-        "ageint252",
-        "official_fincen_advisories",
-        "official_fincen_boi",
-        "official_ofac_sanctions_programs",
-        "official_ofac_compliance_commitments"
-      ],
-      "family": "assessment-route",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
-      "path": "parts/imagery-and-financial-intelligence/financial-intelligence-finint/04-assessment-route.md",
-      "source_families": [
-        "official"
-      ],
-      "unique_citation_count": 6
-    },
-    {
-      "citation_count": 11,
-      "citation_keys": [
-        "ageint251",
-        "ageint253",
-        "official_ic_osint_strategy",
-        "official_state_osint_strategy",
-        "official_nga_strategy"
-      ],
-      "family": "overview",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
-      "path": "parts/open-source-intelligence-osint/osint-foundations/00-overview.md",
-      "source_families": [
-        "official"
-      ],
-      "unique_citation_count": 5
-    },
-    {
-      "citation_count": 22,
-      "citation_keys": [
-        "ageint251",
-        "ageint253",
-        "official_ic_osint_strategy",
-        "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
-      ],
-      "family": "assessment-route",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
-      "path": "parts/open-source-intelligence-osint/osint-foundations/04-assessment-route.md",
-      "source_families": [
-        "official"
-      ],
-      "unique_citation_count": 6
-    },
-    {
-      "citation_count": 11,
-      "citation_keys": [
-        "ageint251",
-        "ageint252",
-        "official_ic_osint_strategy",
-        "official_state_osint_strategy",
-        "official_nga_strategy"
-      ],
-      "family": "overview",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
-      "path": "parts/open-source-intelligence-osint/osint-techniques-and-tools/00-overview.md",
-      "source_families": [
-        "official"
-      ],
-      "unique_citation_count": 5
-    },
-    {
-      "citation_count": 22,
-      "citation_keys": [
-        "ageint251",
-        "ageint252",
-        "official_ic_osint_strategy",
-        "official_state_osint_strategy",
-        "official_nga_strategy",
-        "official_nga_geoint_ai"
-      ],
-      "family": "assessment-route",
-      "flags": [
-        "single_source_family_claim_bearing"
-      ],
-      "path": "parts/open-source-intelligence-osint/osint-techniques-and-tools/04-assessment-route.md",
-      "source_families": [
-        "official"
-      ],
-      "unique_citation_count": 6
-    }
-  ]
+  "warning_row_count": 0,
+  "warning_rows": []
 }
