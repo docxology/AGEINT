@@ -72,6 +72,13 @@ jobs:
       - name: Sync dependencies (dev extra)
         run: uv sync --extra dev
 
+      # See ci.yml's test job for the full rationale: bare ubuntu-latest has
+      # no poppler-utils, so src/pdf_quality.py's pdfinfo/pdftotext calls
+      # raise FileNotFoundError in both the test suite below and the
+      # audit_pdf_quality.py / audit_artifact_evidence.py steps further down.
+      - name: Install poppler-utils (pdfinfo/pdftotext for PDF quality checks)
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
       - uses: actions/setup-node@v6
         with:
           node-version: "20"

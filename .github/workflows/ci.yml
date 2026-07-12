@@ -53,6 +53,15 @@ jobs:
       - name: Sync dependencies (dev extra)
         run: uv sync --extra dev
 
+      # Confirmed live: bare ubuntu-latest has no poppler-utils, so
+      # src/pdf_quality.py's `pdfinfo`/`pdftotext` subprocess calls raise
+      # FileNotFoundError — this was masked in every earlier CI attempt by
+      # other failures aborting the run before reaching these tests, and
+      # never caught locally since this session's dev machine already has
+      # poppler-utils installed.
+      - name: Install poppler-utils (pdfinfo/pdftotext for PDF quality checks)
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
       # pyproject.toml's [tool.coverage.report] fail_under=90 is the real
       # project quality bar, meaningful when the sibling docxology/template
       # repo is resolvable (local dev). GitHub Actions never checks that
@@ -84,6 +93,11 @@ jobs:
 
       - name: Sync dependencies (dev extra)
         run: uv sync --extra dev
+
+      # See the test job's matching step: audit_artifact_evidence.py and
+      # audit_pdf_quality.py below both shell out to pdfinfo/pdftotext.
+      - name: Install poppler-utils (pdfinfo/pdftotext for PDF quality checks)
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
 
       # Each audit script asserts one AGENTS.md ground-truth invariant against
       # the checked-in output/ artifacts (see AGEINT/AGENTS.md "Ground truth").
