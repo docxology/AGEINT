@@ -504,7 +504,7 @@
     },
     "schema_version": "1.5"
   },
-  "generated_at": "2026-07-11T04:11:30+00:00",
+  "generated_at": "2026-08-03T18:57:45+00:00",
   "generated_output_scan": {
     "hit_count": 0,
     "hits": [],
@@ -905,7 +905,8 @@
     ],
     "summary": {
       "bucket_counts": {
-        "current": 472
+        "current": 445,
+        "due_soon": 27
       },
       "cadence_counts": {
         "annual": 322,
@@ -914,7 +915,7 @@
         "semiannual": 94
       },
       "due_or_stale_count": 0,
-      "due_soon_count": 0,
+      "due_soon_count": 27,
       "flag_counts": {},
       "missing_checked_as_of_count": 0,
       "row_count": 472,
