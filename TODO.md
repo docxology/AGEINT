@@ -95,6 +95,29 @@ the root fix, and it is a project rather than a patch:
 - Move `Generated at` out of the committed artifact, or exclude it from
   comparison explicitly.
 
+**The enabling mechanism now exists: `src/build_clock.py`.** Every report clock
+routes through it, and it honours `SOURCE_DATE_EPOCH` (the cross-ecosystem
+reproducible-builds convention). Pinning it makes a rebuild reproducible in both
+respects — verified 2026-08-13:
+
+```
+$ SOURCE_DATE_EPOCH=1781699696 uv run python -c "...collect_source_refresh_due..."
+generated_at 2026-06-17T12:34:56+00:00   bucket_counts {"current": 472}
+# unpinned, same commit: generated_at = now, bucket_counts {"current": 431, "due_soon": 41}
+```
+
+Both the timestamp *and* the date-derived buckets become a function of the pinned
+instant, so two rebuilds at one epoch agree. What remains is adopting it:
+
+- Set `SOURCE_DATE_EPOCH` in `manuscript.yml`'s strict-rebuild job, then
+  regenerate and commit `output/` once at that epoch so the committed tree and a
+  fresh rebuild are comparable. Until that one-time regeneration, the committed
+  reports still carry real timestamps and the drift check still fires.
+- Decide the epoch policy: a fixed release epoch (fully stable, but "as of" dates
+  freeze until bumped) or the commit timestamp via
+  `git log -1 --format=%ct` (moves per commit, still reproducible for that
+  commit). The second is usually what projects want.
+
 Only once artifacts are reproducible does either freshness check become a signal
 worth gating on. Until then, prefer fix (2) — separate the contract assertion
 from the readiness assertion — and treat drift as informational, which is what

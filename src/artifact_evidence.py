@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 import json
 import re
 from typing import Any
 
+from build_clock import build_timestamp
 from agency_source_coverage import collect_agency_source_coverage, write_agency_source_coverage
 from audit_contracts import audit_contract_report, audit_contracts, false_certification_control
 from build_pipeline import generated_output_is_stale
@@ -86,7 +86,7 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": all(checks.values()),
         "checks": checks,
         "audit_contracts": audit_contract_report()["contracts"],

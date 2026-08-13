@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
 from typing import Any, Iterable
+from build_clock import build_timestamp
 
 try:
     from .rendered_reference_audit import audit_rendered_references
@@ -127,7 +127,7 @@ def collect_reference_quality(project_root: Path) -> ReferenceQualityReport:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": not issues,
         "summary": summary,
         "issue_rows": [issue.as_dict() for issue in issues],

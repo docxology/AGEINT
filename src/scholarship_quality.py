@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 import json
 import re
 from typing import Any
+from build_clock import build_timestamp
 
 try:
     from .analysis_validation import (
@@ -114,7 +114,7 @@ def collect_scholarship_quality(manuscript_dir: Path) -> ScholarshipQualityRepor
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": (
             not hard_fail_rows
             and sat_contract["ok"]

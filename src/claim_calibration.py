@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
 from typing import Any
+from build_clock import build_timestamp
 
 try:
     from .source_support_strength import SourceSupportProfile, support_profiles_for_keys
@@ -200,7 +200,7 @@ def collect_claim_calibration(
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": not hard_fail_rows,
         "summary": _summary(rows, hard_fail_rows, warning_rows),
         "thresholds": {

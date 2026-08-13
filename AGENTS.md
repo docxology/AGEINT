@@ -74,6 +74,13 @@ flowchart LR
 ## Editing rules
 
 - Keep scripts thin. Business logic belongs in `src/`, not in `scripts/`.
+- Never call `datetime.now()` in code that writes a generated artifact. Use
+  `build_clock.build_timestamp()` / `build_clock.build_date()`, which honour
+  `SOURCE_DATE_EPOCH`. Direct wall-clock calls make committed reports drift on
+  their own — date-relative fields age past thresholds with no source change —
+  and make every rebuild differ, which is what stops the freshness gates from
+  meaning anything. Pin a build with `SOURCE_DATE_EPOCH=<unix-seconds>` to get
+  byte-comparable output.
 - Regenerate with `uv run python scripts/build_curriculum.py` from the AGEINT root after source-guide, source-anchor, template, figure, or renderer edits.
 - Keep concrete chapter titles, visible generated section titles, counts,
   citations, paths, figures, and cross-references generated from data and

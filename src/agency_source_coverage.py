@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
+from build_clock import build_timestamp
 
 try:
     from intelligence_content import INTELLIGENCE_PROFILES, expanded_profile_anchor_keys
@@ -94,7 +94,7 @@ def collect_agency_source_coverage(project_root: Path) -> AgencySourceCoverageRe
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": bool(new_rows) and not row_issues and not global_issues,
         "expected_new_us_ic_anchors": EXPECTED_NEW_US_IC_ANCHORS,
         "required_new_metadata": list(REQUIRED_NEW_METADATA),

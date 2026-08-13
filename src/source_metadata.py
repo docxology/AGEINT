@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 import json
 from typing import Any
+from build_clock import build_timestamp
 
 
 SOURCE_METADATA_BASELINE: dict[str, int] = {
@@ -69,7 +69,7 @@ def collect_source_metadata(project_root: Path) -> SourceMetadataReport:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": not issue_rows and bool(rows),
         "baseline_closed": SOURCE_METADATA_BASELINE,
         "summary": summary,

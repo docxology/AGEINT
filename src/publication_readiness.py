@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
@@ -11,6 +10,7 @@ import subprocess
 from typing import Any
 
 import yaml
+from build_clock import build_timestamp
 
 try:
     from .audit_contracts import publication_readiness_audit_check_ids
@@ -107,7 +107,7 @@ def collect_publication_readiness(
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "ok": all(checks.values()),
         "checks": checks,
         "artifact_evidence": {

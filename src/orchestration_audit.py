@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
 import json
 from pathlib import Path
 from typing import Any
 
+from build_clock import build_timestamp
 from audit_contracts import audit_contract_report
 from figures.mermaid_contracts import mermaid_contract_report
 from intelligence_content.source_packs import source_pack_contract_report
@@ -22,7 +22,7 @@ def collect_orchestration_contract(project_root: Path) -> dict[str, Any]:
     payload = {
         "project": "AGEINT",
         "schema_version": "1.0",
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": build_timestamp(),
         "pipeline": pipeline,
         "audits": audit_contract_report(),
         "source_packs": source_packs,
