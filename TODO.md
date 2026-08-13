@@ -48,25 +48,46 @@ true, while the aggregating publication-readiness run reported
 `artifact_evidence_ok: false`; and the publication-readiness test failed in one
 full-suite run and passed in the next with no source change between them.
 
-**Two candidate fixes — this needs a decision, not a patch.**
+**Both halves of the mechanism now exist. One adoption step remains.**
 
-1. *Content-addressed staleness.* Hash the bytes of every
-   `source_freshness_roots()` path, write the digest to a build stamp under
-   `output/data/`, and compare digests instead of mtimes. Deterministic and
-   clone-safe. Two consequences to weigh first: it requires a full rebuild to
-   mint the first stamp, and `pyproject.toml` currently sits in the freshness
-   roots, so an unrelated edit (a `[tool.ruff]` change, say) would mark the
-   manuscript stale even though no generated content depends on it. The roots
-   list probably wants narrowing in the same change.
-2. *Separate the two claims the tests conflate.* Each test's name says
-   `writes_json_contract` — the JSON shape and the written report files — but the
-   body also asserts release readiness via `returncode == 0`. Note
-   `.github/workflows/ci.yml` already runs the same script with
+1. *Content-addressed staleness* — **implemented.** `source_content_digest`
+   hashes each source path plus its bytes in sorted order;
+   `write_build_stamp` records the digest to `output/data/build_stamp.json` as
+   the last step of `run_build`; `generated_output_is_stale` compares digests
+   when a stamp is present and keeps the mtime heuristic only as the fallback for
+   un-stamped trees, so nothing regresses. Verified: the digest is unchanged by
+   `os.utime`, unchanged across two checkout locations, and changes on a
+   one-byte content edit.
+2. *An injectable clock* — **implemented** (`src/build_clock.py`, see above), so
+   a rebuild at a pinned `SOURCE_DATE_EPOCH` is byte-comparable.
+
+**Remaining: one stamped rebuild.** `output/` carries no stamp yet, so freshness
+still falls back to mtimes and the failing tests still fail.
+`tests/test_build_stamp.py::test_committed_stamp_matches_committed_source` skips
+until that lands and then enforces it automatically.
+
+The stamp was deliberately **not** minted without rebuilding — writing a digest
+that claims the committed output came from the current source, when it did not,
+would be worse than the mtime bug it replaces. Doing it properly needs a strict
+rebuild, which needs `chrome-headless-shell` for the real Mermaid PNGs:
+
+```bash
+npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
+SOURCE_DATE_EPOCH=$(git log -1 --format=%ct) \
+  AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
+```
+
+Without that browser the build writes placeholder PNGs over the published
+figures, so never run a non-strict rebuild for this purpose.
+
+3. *Still open — separate the two claims the tests conflate.* Even with a stamp,
+   consider that each test's name says `writes_json_contract` — the JSON shape and
+   the written report files — while the body also asserts release readiness via
+   `returncode == 0`. `.github/workflows/ci.yml` runs the same script with
    `continue-on-error: true` and documents that its `ok` "only turns true once
    both [known pre-existing gaps] are cleared and a release is actually being
-   prepared". So the suite currently asserts an exit code the project's own CI
-   documents as legitimately non-zero pre-release. Splitting the contract
-   assertion from the readiness assertion would keep all coverage.
+   prepared", so the suite asserts an exit code the project's own CI documents as
+   legitimately non-zero pre-release. Splitting the two keeps all coverage.
 
 Deliberately **not** patched by relaxing an assertion: that would turn a real
 signal green without changing what it measures.
@@ -141,6 +162,18 @@ daily by construction: between 2026-08-03 and 2026-08-12,
 `Due soon 27 -> 41` with no source change, purely because anchors aged past
 their refresh thresholds. `Generated at` timestamps guarantee diff noise on
 every regeneration.
+
+The build stamp makes this sharper. `run_build` now writes
+`output/data/build_stamp.json`, and because the suite runs a real build against
+the repository tree, **running the tests mints a stamp** — observed 2026-08-13.
+That stamp records a *placeholder-figure* build (no `chrome-headless-shell`
+locally), so committing it would assert a correspondence to a build nobody wants
+published. Until the tests are hermetic, delete the stamp after a local run
+unless it came from a deliberate strict rebuild:
+
+```bash
+uv run pytest tests/ ; git checkout -- output/ && rm -f output/data/build_stamp.json
+```
 
 - Point the build fixtures at `tmp_path` for test runs, or split the
   build-and-write tests into a marked job that is expected to mutate `output/`.

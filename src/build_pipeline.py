@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from dataclasses import dataclass
 from pathlib import Path
 from typing import NamedTuple
@@ -29,6 +31,11 @@ MANUSCRIPT_SUPPORT_MARKDOWN = {"AGENTS.md", "README.md", "preamble.md"}
 # genuine edit-then-rebuild gap is seconds to minutes; this tolerance only
 # absorbs checkout noise.
 STALE_OUTPUT_TOLERANCE_SECONDS = 30.0
+
+# Output-relative path of the build stamp: the source digest a build was produced
+# from. Committing it lets a fresh clone decide freshness by content instead of
+# by mtimes, which git does not preserve.
+BUILD_STAMP_PATH = Path("data/build_stamp.json")
 
 
 @dataclass(frozen=True)
@@ -86,14 +93,76 @@ def _latest_mtime(paths: list[Path]) -> float:
     return latest
 
 
+def source_content_digest(project_root: Path) -> str:
+    """Return a stable digest of every source input the build reads.
+
+    Hashes each file's repo-relative path and bytes in sorted order, so the
+    result depends only on content — not on mtimes, checkout order, or where the
+    checkout lives.
+    """
+    digest = hashlib.sha256()
+    for root_relative in sorted(source_freshness_roots()):
+        for candidate in sorted(_iter_files(project_root / root_relative)):
+            relative = candidate.relative_to(project_root).as_posix()
+            digest.update(relative.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(hashlib.sha256(candidate.read_bytes()).digest())
+    return digest.hexdigest()
+
+
+def write_build_stamp(project_root: Path, output: Path) -> Path:
+    """Record the source digest this build was produced from."""
+    stamp_path = output / BUILD_STAMP_PATH
+    stamp_path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "schema_version": 1,
+        "source_digest": source_content_digest(project_root),
+    }
+    stamp_path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    return stamp_path
+
+
+def read_build_stamp(output: Path) -> dict[str, object] | None:
+    """Return the recorded build stamp, or None when absent or unreadable."""
+    stamp_path = output / BUILD_STAMP_PATH
+    if not stamp_path.is_file():
+        return None
+    try:
+        loaded = json.loads(stamp_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    return loaded if isinstance(loaded, dict) else None
+
+
 def generated_output_is_stale(project_root: Path, output: Path) -> bool:
-    """Return true when source inputs are newer than build sentinel artifacts."""
+    """Return true when generated output no longer matches its source inputs.
+
+    Prefers a content comparison against the build stamp. Git does not preserve
+    mtimes, so after any clone or checkout every file carries roughly the
+    checkout time in arbitrary order, and an mtime comparison stops meaning
+    "source changed after the build" — which is why freshness could report drift
+    on a tree that was in fact coherent.
+
+    The mtime heuristic remains as a fallback for trees built before stamps
+    existed, so an un-stamped checkout behaves exactly as it did before.
+    """
 
     validate_pipeline_stage_contracts()
+    sentinels = [output / path for path in output_build_sentinels()]
+    if any(not path.is_file() for path in sentinels):
+        return True
+
+    stamp = read_build_stamp(output)
+    if stamp is not None:
+        recorded = stamp.get("source_digest")
+        if isinstance(recorded, str) and recorded:
+            return recorded != source_content_digest(project_root)
+
     source_paths = [project_root / path for path in source_freshness_roots()]
     latest_source = _latest_mtime(source_paths)
-    sentinels = [output / path for path in output_build_sentinels()]
-    if latest_source == 0.0 or any(not path.is_file() for path in sentinels):
+    if latest_source == 0.0:
         return True
     oldest_sentinel = min(path.stat().st_mtime for path in sentinels)
     return latest_source > oldest_sentinel + STALE_OUTPUT_TOLERANCE_SECONDS
@@ -163,6 +232,9 @@ def run_build(
         generated_markdown_files=_generated_markdown_file_count(output_manuscript),
     )
     write_bibtex_files(output_manuscript, bibtex_files)
+    # Written last: the stamp asserts "this output was produced from that source",
+    # so it must only exist once every artifact above has been written.
+    write_build_stamp(root, root / "output")
     return BuildResult(
         curriculum,
         written_templates,
