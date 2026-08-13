@@ -1,10 +1,22 @@
 # AGEINT Project Agent Guide
 
-AGEINT is a local lifecycle curriculum project. In this checkout it lives at
-`projects/working/AGEINT`; if it is promoted or hot-seated it may be linked as
-`projects/active/AGEINT` or `projects/AGEINT` by the parent template workflow.
-Keep it local-only unless Daniel explicitly asks for a publication or promotion
-workflow and the parent repository confidentiality checks have passed.
+AGEINT is a published curriculum project: the repository is public at
+`github.com/docxology/AGEINT` and v0.1 is deposited on Zenodo. Treat its contents
+as public. The earlier "keep this local-only until parent confidentiality checks
+pass" posture described a pre-release state and no longer holds.
+
+Two facts from that lifecycle are still true and still matter:
+
+- **The PDF render lives elsewhere.** `AGEINT.pdf` and
+  `output/pdf/AGEINT_combined.pdf` are produced by the sibling template repo's
+  pandoc/xelatex pipeline, with AGEINT linked under its `projects/working/` — not
+  by any script in this repo. See the PDF note under Ground truth before assuming
+  a render step is missing here.
+- **A few tests need that sibling checkout** and skip without it, which is why CI
+  carries a lower coverage floor than `pyproject.toml` does.
+
+What still needs an explicit ask from Daniel is any *outward* action — pushing,
+cutting a release, or minting a DOI — not reading or editing the content.
 
 ## System map
 

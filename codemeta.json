@@ -1,0 +1,44 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "name": "AGEINT: Agentic Intelligence — A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence",
+  "description": "A modular, evidence-bounded curriculum for Agentic Intelligence. AGEINT converts a verified source guide into a semantic manuscript, a registry-backed figure set, generated BibTeX, and auditable runtime variables across 16 parts, 51 chapters, and 9 appendices. All material is educational, synthetic, accountable, defensive, and bounded by legal and human oversight constraints.",
+  "identifier": "10.5281/zenodo.20732274",
+  "codeRepository": "https://github.com/docxology/AGEINT",
+  "programmingLanguage": "Python",
+  "runtimePlatform": "Python 3.10+",
+  "version": "0.1",
+  "datePublished": "2026-06-17",
+  "license": [
+    "https://spdx.org/licenses/CC-BY-4.0",
+    "https://spdx.org/licenses/Apache-2.0"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Daniel Ari",
+      "familyName": "Friedman",
+      "@id": "https://orcid.org/0000-0001-6232-9096",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Active Inference Institute"
+      }
+    }
+  ],
+  "keywords": [
+    "agentic intelligence",
+    "intelligence tradecraft",
+    "cognitive security",
+    "counterintelligence",
+    "OSINT",
+    "GEOINT",
+    "structured analytic techniques",
+    "curriculum",
+    "active inference"
+  ],
+  "referencePublication": {
+    "@type": "CreativeWork",
+    "identifier": "10.5281/zenodo.20732275",
+    "name": "AGEINT Edition 0.1 (version DOI)"
+  }
+}

@@ -12,7 +12,9 @@ requires-python = ">=3.10"
 dependencies = ["pillow>=10.0", "pyyaml>=6.0", "pypdf>=5.0"]
 
 [project.optional-dependencies]
-dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "reportlab>=4.0"]
+# ruff belongs here (not `uvx ruff`) so uv.lock pins the linter version. See the
+# [tool.ruff.lint] note below for why an unpinned linter is a CI hazard.
+dev = ["pytest>=7.4.0", "pytest-cov>=4.1.0", "reportlab>=4.0", "ruff>=0.6"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -59,6 +61,30 @@ py-modules = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+
+[tool.ruff.lint]
+# Ruff's default rule selection changes between releases. With no explicit
+# selection here, and CI invoking the linter through `uvx ruff` (which always
+# resolves the newest release), a ruff upgrade can turn this repo's lint job red
+# without a single line of the repo changing.
+#
+# That is not hypothetical: measured 2026-08-12 on an unmodified tree, ruff
+# 0.16.2 reported 203 findings (120 I001 import-sorting, plus UP/SIM/RUF/B rules
+# that did not exist in the ruleset this code was written against), while the
+# selection below reports zero. Pinning keeps a lint failure meaningful — it
+# means this repository changed, not that the linter did.
+#
+# Sibling repo CogSecSkills pins the identical set after hitting the same break.
+# Adopting new rule families is a deliberate, separate change: widen `select`,
+# fix the findings, and commit both together.
+select = ["E", "F"]
+ignore = [
+    "E501",  # line length — many generated and data-table lines exceed 88 by design
+]
 
 [tool.pytest.ini_options]
 pythonpath = [".", "src"]

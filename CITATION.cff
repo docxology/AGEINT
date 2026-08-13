@@ -1,0 +1,48 @@
+cff-version: 1.7.0
+message: If you use this work, please cite it using the metadata from this file.
+title: >-
+  AGEINT: Agentic Intelligence — A Modular Atlas, Library, Course, Textbook,
+  Cookbook, and Playbook for Agentic Intelligence
+abstract: >-
+  A modular, evidence-bounded curriculum for Agentic Intelligence. AGEINT
+  converts a verified source guide into a semantic manuscript, a registry-backed
+  figure set, generated BibTeX, and auditable runtime variables across 16 parts,
+  51 chapters, and 9 appendices. It covers intelligence tradecraft, IC-cycle
+  governance, OSINT/GEOINT integrity, FININT and economic security, declassified
+  intelligence history, agentic-AI governance, cognitive security,
+  counterintelligence, and structured analytic techniques. All material is
+  educational, synthetic, accountable, defensive, and bounded by legal and human
+  oversight constraints.
+type: software
+authors:
+  - family-names: Friedman
+    given-names: Daniel Ari
+    affiliation: Active Inference Institute
+    orcid: https://orcid.org/0000-0001-6232-9096
+repository-code: https://github.com/docxology/AGEINT
+# Dual-licensed as stated in README.md: prose/curriculum text under CC BY 4.0,
+# code under Apache-2.0. CFF accepts a list; both are declared here rather than
+# collapsing the arrangement into one identifier.
+license:
+  - CC-BY-4.0
+  - Apache-2.0
+doi: 10.5281/zenodo.20732274
+version: '0.1'
+date-released: '2026-06-17'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20732274
+    description: Concept DOI (resolves to the latest version — cite this)
+  - type: doi
+    value: 10.5281/zenodo.20732275
+    description: Version DOI (Edition 0.1)
+keywords:
+  - agentic intelligence
+  - intelligence tradecraft
+  - cognitive security
+  - counterintelligence
+  - OSINT
+  - GEOINT
+  - structured analytic techniques
+  - curriculum
+  - active inference

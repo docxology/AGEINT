@@ -18,21 +18,78 @@ Part modules merge at import via `figures/__init__.py`. Keep `_02_part.py`
 
 | Module | Role |
 | --- | --- |
+**Read the numeric prefix as a layer, not as an ordering.** `figures/__init__.py`
+imports every module by explicit name, so nothing depends on filename sort order.
+The prefixes group modules by role; the letter suffixes (`_03l`, `_03q`, `_03r`)
+record where a layer was extended after the repo-wide 500-line cap
+(`tests/test_file_size_inventory.py`) forced a split. Renaming is therefore safe
+for imports, but the layer prefix is what keeps this directory legible — keep it
+when adding files.
+
+| Layer | Meaning |
+| --- | --- |
+| `_01*` | **Specs** — registry rows and figure metadata (data; few or no functions) |
+| `_02*` | **Machinery** — spec building, render dispatch, Mermaid, reader text, audits |
+| `_03*` | **Renderers** — one module per visual or closely-related family |
+| `_04*` | Registry helpers and PNG canvas normalization |
+| `_05*` | Shared visual style primitives |
+| `_06*` | Python renderer dispatch table |
+
+### Specs (`_01*`)
+
+| Module | Role |
+| --- | --- |
 | `_01_part.py` | `FigureKind`, `FigureSpec`, `build_figure_specs()`, registry helpers |
-| `_01c_artifact_evidence_spec.py` | Registry rows for verifier-first artifact-evidence visuals |
-| `_01d_scholarship_quality_spec.py` | Registry rows for scholarship-quality audit visuals |
-| `_01h_claim_calibration_spec.py` | Registry rows for claim-calibration and visual-semantics visuals |
-| `_02_part.py` | `render_figures()`, `_render_figure_asset()`, Python/historical/AI render dispatch |
+| `_01b_accessibility.py` | Accessibility-guidance registry rows |
+| `_01c_artifact_evidence_spec.py` | Rows for verifier-first artifact-evidence visuals |
+| `_01d_scholarship_quality_spec.py` | Rows for scholarship-quality audit visuals |
+| `_01e_sat_method_spec.py` | Rows for Synthetic Analytic Tradecraft and validation visuals |
+| `_01f_source_metadata_spec.py` | Rows for source-metadata integrity visuals |
+| `_01g_concept_plates.py` | Data-backed deterministic concept-plate specs |
+| `_01h_claim_calibration_spec.py` | Rows for claim-calibration and visual-semantics visuals |
+| `_01i_early_orientation_spec.py` | Rows for the early-orientation reader visuals |
+
+### Machinery (`_02*`)
+
+| Module | Role |
+| --- | --- |
+| `_02_part.py` | `render_figures()`, `load_figure_registry()`, render dispatch |
 | `_02b_mermaid.py` | `render_mermaid_figure()`, `mermaid_source()`, `placeholder_or_fail()` |
-| `_02e_visual_semantics.py` | Semantic-role, evidence-role, quantitative, counting-rule, and interpretation-limit defaults |
-| `_03_part.py` | Matplotlib/Python chart renderers, `_draw_text_plate()`, canvas normalization |
-| `_03f_artifact_evidence.py` | Verifier-first artifact-evidence control-loop visual |
-| `_03g_scholarship_quality.py` | Scholarship triangulation audit visual |
-| `_03n_claim_calibration.py` | Claim-calibration and visual-semantics control visual |
+| `_02c_reader_text.py` | Caption, alt-text, and long-description expansion |
+| `_02d_quality_audit.py` | `write_visual_quality_audit()` — the figure quality gates |
+| `_02e_visual_semantics.py` | Semantic-role, evidence-role, counting-rule, interpretation-limit defaults |
+
+### Renderers (`_03*`)
+
+| Module | Role |
+| --- | --- |
+| `_03_part.py` | Core matplotlib chart renderers and text plates |
+| `_03b_asset_renderers.py` | Historical, AI-concept, and citation-density assets |
+| `_03c_control_matrix.py` | `draw_control_matrix()`, `draw_evidence_dashboard()`, `draw_matrix()` |
+| `_03d_accessibility.py` | Visual accessibility contract |
+| `_03e_quality_dashboard.py` | Visual quality-audit dashboard |
+| `_03f_artifact_evidence.py` | Verifier-first artifact-evidence control loop |
+| `_03g_scholarship_quality.py` | Scholarship triangulation map |
+| `_03h_sat_method.py` | Synthetic tradecraft method contract |
+| `_03i_analysis_validation.py` | Analysis validation matrix |
+| `_03j_analysis_family_coverage.py` | Analysis-validation family coverage |
+| `_03k_source_metadata.py` | Source-metadata integrity |
+| `_03l_cover_art.py` | `render_cover_art()` — cover composition |
+| `_03m_graphical_abstract.py` | Graphical abstract atlas |
+| `_03n_claim_calibration.py` | Claim calibration and visual semantics |
 | `_03o_source_refresh_due.py` | Source-refresh due-date readiness dashboard |
-| `_04_part.py` | Public re-exports |
-| `_05_visual_style.py` | Shared palette, title/footer, wrapping, and arrow helpers |
-| `_06_python_renderers.py` | Python renderer dispatch and source-metadata charts |
+| `_03p_agency_source_coverage.py` | US IC agency source-coverage dashboard |
+| `_03q_frontmatter_transit.py` | `render_evidence_transit_map()` — frontmatter transit map |
+| `_03r_early_orientation.py` | Reader route compass, tradecraft workbench, source constellation |
+
+### Support
+
+| Module | Role |
+| --- | --- |
+| `_04_part.py` | Registry helpers, `_normalize_png_canvas()`, PNG asset validation |
+| `_05_visual_style.py` | `wrap_lines()`, `draw_title_band()`, `draw_footer()`, palette |
+| `_06_python_renderers.py` | `render_python_figure()` and the `PYTHON_VISUALS` dispatch table |
+| `mermaid_contracts.py` | Mermaid diagram-type contracts |
 
 ## Placeholder figures (CI / headless builds)
 

@@ -3,9 +3,10 @@
 AGEINT is a modular curriculum for Agentic Intelligence: atlas, library, course,
 textbook, cookbook, and playbook. It converts a source guide into a semantic
 manuscript, registry-backed figures, generated BibTeX, and auditable runtime
-variables while rendering from the local lifecycle checkout. This copy currently
-lives under `projects/working/AGEINT`; parent-template runs may link it as
-`projects/active/AGEINT` or `projects/AGEINT` when it is promoted or hot-seated.
+variables. Everything here builds from a standalone checkout of this repository;
+the one exception is the combined PDF (`AGEINT.pdf`), which is rendered by a
+sibling template repository's pandoc/xelatex pipeline rather than by a script in
+this repo.
 
 The project is deliberately evidence-bounded. It can teach intelligence
 tradecraft, IC-cycle governance, OSINT/GEOINT integrity, FININT/economic
