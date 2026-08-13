@@ -71,8 +71,40 @@ full-suite run and passed in the next with no source change between them.
 Deliberately **not** patched by relaxing an assertion: that would turn a real
 signal green without changing what it measures.
 
+**The deeper problem, and why fix (1) alone is not enough.** *Both* freshness
+signals this workflow relies on are noise-dominated, because the generated
+artifacts are not reproducible:
+
+- Reports embed wall-clock. `output/reports/*.md` carry a `Generated at` field,
+  and date-relative fields move on their own: `source_refresh_due` went
+  `Current 445 -> 431`, `Due soon 27 -> 41` between 2026-08-03 and 2026-08-12
+  with no source change, because anchors aged past their thresholds.
+- Figure PNGs embed the renderer version. Measured `bytes 302267 -> 301875` for
+  one figure across runs; matplotlib writes its version into the PNG `Software`
+  text chunk, so a toolchain bump alone changes every figure's bytes.
+
+That is why the job's other signal — the "Fresh strict rebuild differs from the
+committed output/ tree" annotation — also fires on every run and cannot
+distinguish real drift from timestamp churn. Making the artifacts reproducible is
+the root fix, and it is a project rather than a patch:
+
+- Pass `metadata={"Software": None}` (and any date field) to matplotlib
+  `savefig` so figure bytes depend only on figure content.
+- Make the "as of" date an injected parameter rather than `today()`, so a report
+  is a pure function of (source, date) and CI can pin the date.
+- Move `Generated at` out of the committed artifact, or exclude it from
+  comparison explicitly.
+
+Only once artifacts are reproducible does either freshness check become a signal
+worth gating on. Until then, prefer fix (2) — separate the contract assertion
+from the readiness assertion — and treat drift as informational, which is what
+`ci.yml` already does.
+
 - Acceptance: `gh run list --workflow="Manuscript Build & Validate" --limit 1`
   reports success, and the chosen fix is recorded in `ISA.md` under Decisions.
+- Acceptance for reproducibility: two consecutive
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1` rebuilds on one commit produce
+  byte-identical `output/figures/*.png` and byte-identical `output/reports/*`.
 
 ## Tier 1: the test suite is not hermetic
 
@@ -115,15 +147,22 @@ letter suffix. See `src/figures/AGENTS.md`.
 - Acceptance: `git ls-files 'src/**/*.py' | xargs wc -l | sort -rn | head -5`
   shows no file above 480.
 
-## Tier 2: no LICENSE file
+## Tier 2: confirm the LICENSE path mapping
 
-`README.md` declares "text CC BY 4.0; code Apache-2.0" and `CITATION.cff` /
-`codemeta.json` now record both, but the repository has no `LICENSE`. A public,
-DOI-bearing repo should carry the actual instrument. This needs an author
-decision on which paths fall under which licence (the text/code split is not
-inferable from the tree), so it is intentionally left unauthored here.
+`LICENSE` now exists and encodes the split `README.md` already declared ("text
+CC BY 4.0; code Apache-2.0"), mapping CC BY 4.0 onto `data/curriculum/**`,
+`manuscript/**`, `output/manuscript/**`, `docs/**`, `AGEINT.pdf`,
+`output/pdf/**`, `output/figures/**`, `data/research_anchors/**`, and Apache-2.0
+onto `src/**`, `scripts/**`, `tests/**`, `pyproject.toml`, `.github/**`. The
+Apache-2.0 body is the canonical unmodified text (byte-identical to the sibling
+CogSecSkills `LICENSE`).
 
-- Acceptance: `LICENSE` exists and states the split explicitly.
+**That path mapping was inferred from directory purpose, not from an explicit
+statement, so it needs author confirmation.** In particular decide whether
+`data/research_anchors/**` (curated citation metadata) and `output/figures/**`
+(generated assets) belong on the text or the code side.
+
+- Acceptance: the mapping in `LICENSE` is confirmed or corrected by the author.
 
 ## Tier 3: absent lint and type gates the sibling repo has
 
