@@ -107,12 +107,20 @@ jobs:
       # own synced dependencies, not just its source on sys.path. When it
       # fails, the steps below validate the committed output/ tree instead
       # of a truly fresh one — same posture as ci.yml's content-gates job.
+      # SOURCE_DATE_EPOCH pins the build clock (src/build_clock.py) to the commit
+      # being built, so report timestamps and every date-relative field are a
+      # function of the commit rather than of when this runner happened to start.
+      # Without it, each rebuild differed from the last for reasons unrelated to
+      # the source, which is what stopped the drift comparison below from meaning
+      # anything.
       - name: Strict manuscript rebuild (real Mermaid PNGs, no placeholders)
         id: rebuild
         continue-on-error: true
         env:
           AGEINT_REQUIRE_RENDERED_FIGURES: "1"
-        run: uv run python scripts/build_curriculum.py
+        run: |
+          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" \
+            uv run python scripts/build_curriculum.py
 
       # A failed rebuild can crash mid-write (e.g. partway through
       # per-file manuscript substitution), leaving output/ in a partially

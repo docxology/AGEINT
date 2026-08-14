@@ -20,7 +20,7 @@ Measured, not copied. Re-run the commands rather than trusting these numbers.
   462 research anchors, 10 source-quality support anchors, 312 parsed guide
   references. All seven verified against the live tree 2026-08-12.
 
-## Tier 0: `Manuscript Build & Validate` has been red since at least 2026-07-27
+## Tier 0 (RESOLVED 2026-08-13): `Manuscript Build & Validate` red since 2026-07-27
 
 Failing runs: 30282225037 (07-27), 30829743498 (08-03), 31403445967 (08-10),
 31654561415 (08-13). Two tests fail in the strict-rebuild job:
@@ -61,15 +61,9 @@ full-suite run and passed in the next with no source change between them.
 2. *An injectable clock* — **implemented** (`src/build_clock.py`, see above), so
    a rebuild at a pinned `SOURCE_DATE_EPOCH` is byte-comparable.
 
-**Remaining: one stamped rebuild.** `output/` carries no stamp yet, so freshness
-still falls back to mtimes and the failing tests still fail.
-`tests/test_build_stamp.py::test_committed_stamp_matches_committed_source` skips
-until that lands and then enforces it automatically.
-
-The stamp was deliberately **not** minted without rebuilding — writing a digest
-that claims the committed output came from the current source, when it did not,
-would be worse than the mtime bug it replaces. Doing it properly needs a strict
-rebuild, which needs `chrome-headless-shell` for the real Mermaid PNGs:
+3. *The stamped rebuild* — **done 2026-08-13.** A strict rebuild
+   (`chrome-headless-shell@131.0.6778.204` installed, so real Mermaid PNGs, no
+   placeholders) was run with the clock pinned to the commit:
 
 ```bash
 npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
@@ -77,8 +71,20 @@ SOURCE_DATE_EPOCH=$(git log -1 --format=%ct) \
   AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
 ```
 
-Without that browser the build writes placeholder PNGs over the published
-figures, so never run a non-strict rebuild for this purpose.
+   Never run a *non-strict* rebuild for this purpose — without that browser the
+   build writes placeholder PNGs over the published figures.
+
+   The rebuild is itself the strongest evidence the diagnosis was right: a full
+   regeneration of all 179 figures and the entire manuscript changed only
+   **five** files, and every one traces to the single date-dependent dashboard —
+   `python/ageint-source-refresh-due-dashboard.png` plus the registry entry, the
+   quality-audit byte count, and the transit map that embeds those counts.
+   Everything else reproduced byte-for-byte.
+
+   With the stamp committed, both audit-contract tests pass and
+   `test_committed_stamp_matches_committed_source` stops skipping and enforces
+   the correspondence. `manuscript.yml` now exports the same
+   `SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)"` so CI reproduces it.
 
 3. *Still open — separate the two claims the tests conflate.* Even with a stamp,
    consider that each test's name says `writes_json_contract` — the JSON shape and

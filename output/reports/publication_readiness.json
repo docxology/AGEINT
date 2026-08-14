@@ -46,7 +46,7 @@
     "source_refresh_due_ok": true,
     "task_prerequisites_done": true
   },
-  "generated_at": "2026-08-03T19:12:36+00:00",
+  "generated_at": "2026-08-13T21:30:54+00:00",
   "ok": true,
   "parent_confidentiality_guard": {
     "checked": false,
@@ -81,8 +81,8 @@
     ],
     "summary": {
       "bucket_counts": {
-        "current": 445,
-        "due_soon": 27
+        "current": 431,
+        "due_soon": 41
       },
       "cadence_counts": {
         "annual": 322,
@@ -91,7 +91,7 @@
         "semiannual": 94
       },
       "due_or_stale_count": 0,
-      "due_soon_count": 27,
+      "due_soon_count": 41,
       "flag_counts": {},
       "missing_checked_as_of_count": 0,
       "row_count": 472,
