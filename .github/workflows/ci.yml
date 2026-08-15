@@ -25,7 +25,7 @@ jobs:
       # A fresh ubuntu-latest runner has no uv/uvx preinstalled — confirmed
       # live (first real CI run failed here with "uvx: command not found",
       # exit 127). Every other job already had this step; this one didn't.
-      - uses: astral-sh/setup-uv@v8.3.2
+      - uses: astral-sh/setup-uv@v10.0.0
 
       # ruff is a dev dependency resolved through uv.lock rather than `uvx ruff`,
       # which always fetches the newest release. Measured 2026-08-12: `uvx ruff`
@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: astral-sh/setup-uv@v8.3.2
+      - uses: astral-sh/setup-uv@v10.0.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -96,7 +96,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: astral-sh/setup-uv@v8.3.2
+      - uses: astral-sh/setup-uv@v10.0.0
         with:
           python-version: "3.12"
 
