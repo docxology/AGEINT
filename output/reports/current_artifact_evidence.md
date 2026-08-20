@@ -3,9 +3,9 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-13T21:30:54+00:00 |
+| Generated at | 2026-08-14T00:28:02+00:00 |
 | Generated Markdown files | 330 |
-| Generated citation occurrences | 16604 |
+| Generated citation occurrences | 16602 |
 | Thin claim-bearing files | 0 |
 | Single-family claim-bearing files | 0 |
 | SAT method contract | true |
@@ -25,9 +25,9 @@
 | Agency-source unrouted rows | 0 |
 | Agency-source missing metadata | 0 |
 | Claim calibration pass | true |
-| Claim-calibration candidate rows | 9111 |
+| Claim-calibration candidate rows | 9109 |
 | Claim-calibration hard fails | 0 |
-| Claim-calibration review warnings | 5133 |
+| Claim-calibration review warnings | 5132 |
 | Reference quality pass | true |
 | Reference-quality issue rows | 0 |
 | Generic detail-heading issues | 0 |

@@ -3,7 +3,7 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-13T21:30:54+00:00 |
+| Generated at | 2026-08-14T00:28:02+00:00 |
 | Generated Markdown files | 330 |
 | Cited generated files | 294 |
 | Claim-bearing files | 275 |
@@ -21,7 +21,7 @@
 |---|---:|
 | curated_anchor | 32 |
 | law_policy | 19 |
-| official | 3072 |
+| official | 3071 |
 | practitioner_vendor | 105 |
 | public_domain | 21 |
 | scholarly | 692 |

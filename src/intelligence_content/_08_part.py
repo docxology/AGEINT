@@ -1,13 +1,25 @@
-"""Safety and artifact table rows loaded from declarative YAML.
-
-Module globals are bound in a loop from ``SAFETY_ARTIFACT_TABLE_NAMES``.
-"""
+"""Safety and artifact table rows loaded from declarative YAML."""
 
 from __future__ import annotations
 
 from _data_loaders import SAFETY_ARTIFACT_TABLE_NAMES, safety_artifact_table
 
-for _name in SAFETY_ARTIFACT_TABLE_NAMES:
-    globals()[_name] = safety_artifact_table(_name)
+ACCESSIBILITY_REVIEW_STEPS = safety_artifact_table("ACCESSIBILITY_REVIEW_STEPS")
+ADVERSARIAL_ASSURANCE_CYCLE = safety_artifact_table("ADVERSARIAL_ASSURANCE_CYCLE")
+AGENT_INCIDENT_RESPONSE_DRILL = safety_artifact_table("AGENT_INCIDENT_RESPONSE_DRILL")
+ASSESSMENT_INTEGRITY_PROTOCOL = safety_artifact_table("ASSESSMENT_INTEGRITY_PROTOCOL")
+CAPSTONE_SCAFFOLDS = safety_artifact_table("CAPSTONE_SCAFFOLDS")
+DATA_LINEAGE_REGISTRY = safety_artifact_table("DATA_LINEAGE_REGISTRY")
+HRIA_DPIA_WORKSHEET = safety_artifact_table("HRIA_DPIA_WORKSHEET")
+INSTRUCTOR_QUESTION_BANK = safety_artifact_table("INSTRUCTOR_QUESTION_BANK")
+LEARNER_SUPPORT_PLAN = safety_artifact_table("LEARNER_SUPPORT_PLAN")
+MODEL_DATASET_CARD = safety_artifact_table("MODEL_DATASET_CARD")
+PROCUREMENT_OVERSIGHT_STEPS = safety_artifact_table("PROCUREMENT_OVERSIGHT_STEPS")
+RELEASE_CHANGE_CONTROL_GATE = safety_artifact_table("RELEASE_CHANGE_CONTROL_GATE")
+RETENTION_AUDIT_TRAIL = safety_artifact_table("RETENTION_AUDIT_TRAIL")
+RISK_EXCEPTION_MEMO = safety_artifact_table("RISK_EXCEPTION_MEMO")
+ROLE_BASED_COMPETENCY_MAP = safety_artifact_table("ROLE_BASED_COMPETENCY_MAP")
+SAFE_SUBSTITUTION_PATTERNS = safety_artifact_table("SAFE_SUBSTITUTION_PATTERNS")
+TRANSPARENCY_NOTICE_WORKFLOW = safety_artifact_table("TRANSPARENCY_NOTICE_WORKFLOW")
 
 __all__ = list(SAFETY_ARTIFACT_TABLE_NAMES)

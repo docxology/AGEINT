@@ -12,7 +12,7 @@
       "citation_context_issues": 0,
       "claim_hard_fail_rows": 0,
       "figures": 177,
-      "generated_markdown_citation_occurrences": 16604,
+      "generated_markdown_citation_occurrences": 16602,
       "generated_markdown_files": 330,
       "generic_detail_heading_issues": 0,
       "new_official_us_ic_anchors": 56,
@@ -46,7 +46,7 @@
     "source_refresh_due_ok": true,
     "task_prerequisites_done": true
   },
-  "generated_at": "2026-08-13T21:30:54+00:00",
+  "generated_at": "2026-08-14T00:28:02+00:00",
   "ok": true,
   "parent_confidentiality_guard": {
     "checked": false,

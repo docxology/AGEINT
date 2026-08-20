@@ -9,12 +9,8 @@ from pathlib import Path
 from typing import Any
 from build_clock import build_timestamp
 
-try:
-    from intelligence_content import INTELLIGENCE_PROFILES, expanded_profile_anchor_keys
-    from intelligence_content.source_packs import agency_source_pack_payload
-except ImportError:  # pragma: no cover - package import variants
-    from .intelligence_content import INTELLIGENCE_PROFILES, expanded_profile_anchor_keys
-    from .intelligence_content.source_packs import agency_source_pack_payload
+from intelligence_content import INTELLIGENCE_PROFILES, expanded_profile_anchor_keys
+from intelligence_content.source_packs import agency_source_pack_payload
 
 NEW_SHARD_NAME = "intelligence-anchors-249-304.jsonl"
 EXPECTED_NEW_US_IC_ANCHORS = 56

@@ -39,7 +39,8 @@ when adding files.
 
 | Module | Role |
 | --- | --- |
-| `_01_part.py` | `FigureKind`, `FigureSpec`, `build_figure_specs()`, registry helpers |
+| `_01_part.py` | `FigureKind`, `FigureSpec`, `PYTHON_VISUALS`, registry helpers |
+| `_01j_historical_spec.py` | `HISTORICAL_ASSETS` public-domain imagery specs |
 | `_01b_accessibility.py` | Accessibility-guidance registry rows |
 | `_01c_artifact_evidence_spec.py` | Rows for verifier-first artifact-evidence visuals |
 | `_01d_scholarship_quality_spec.py` | Rows for scholarship-quality audit visuals |
@@ -63,7 +64,8 @@ when adding files.
 
 | Module | Role |
 | --- | --- |
-| `_03_part.py` | Core matplotlib chart renderers and text plates |
+| `_03_part.py` | Core matplotlib chart renderers and figure builder dispatch |
+| `_03s_drawers.py` | Chart and plate drawing primitives (`_draw_bar_chart`, `_draw_loop`, `_draw_concept_plate`) |
 | `_03b_asset_renderers.py` | Historical, AI-concept, and citation-density assets |
 | `_03c_control_matrix.py` | `draw_control_matrix()`, `draw_evidence_dashboard()`, `draw_matrix()` |
 | `_03d_accessibility.py` | Visual accessibility contract |

@@ -3,8 +3,8 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-13T21:30:54+00:00 |
-| As of | 2026-08-13 |
+| Generated at | 2026-08-14T00:28:02+00:00 |
+| As of | 2026-08-14 |
 | Rows | 472 |
 | Current | 431 |
 | Due soon | 41 |

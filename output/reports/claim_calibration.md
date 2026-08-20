@@ -3,10 +3,10 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-13T21:30:54+00:00 |
-| Candidate rows | 9111 |
+| Generated at | 2026-08-14T00:28:02+00:00 |
+| Candidate rows | 9109 |
 | Hard-fail rows | 0 |
-| Review-warning rows | 5133 |
+| Review-warning rows | 5132 |
 | Boundary-allowed rows | 482 |
 
 ## Claim Class Distribution
@@ -15,9 +15,9 @@
 |---|---:|
 | artifact_readiness | 286 |
 | empirical_or_evaluation | 986 |
-| figure_or_visualization | 459 |
+| figure_or_visualization | 458 |
 | formalism_or_statistical_expression | 2 |
-| governance_or_rights | 3090 |
+| governance_or_rights | 3089 |
 | safety_or_assurance | 4288 |
 
 ## Source Support Distribution

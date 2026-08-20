@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
 import re
 
 from _data_loaders import merged_concept_keyword_routes
@@ -9,8 +10,9 @@ from _data_loaders import merged_concept_keyword_routes
 CONCEPT_KEYWORD_ROUTES = merged_concept_keyword_routes()
 
 
-def _title_tokens(raw_lower: str) -> set[str]:
-    return set(re.findall(r"[a-z0-9]+", raw_lower))
+@lru_cache(maxsize=2048)
+def _title_tokens(raw_lower: str) -> frozenset[str]:
+    return frozenset(re.findall(r"[a-z0-9]+", raw_lower))
 
 
 def _match_keywords(raw_lower: str, keywords: tuple[str, ...]) -> bool:
@@ -27,6 +29,7 @@ def _match_keywords(raw_lower: str, keywords: tuple[str, ...]) -> bool:
     return False
 
 
+@lru_cache(maxsize=2048)
 def _first_matching_frame(raw_lower: str, routes: tuple[tuple[tuple[str, ...], str], ...]) -> str | None:
     for keywords, frame in routes:
         if _match_keywords(raw_lower, keywords):

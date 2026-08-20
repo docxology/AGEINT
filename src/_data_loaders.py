@@ -33,6 +33,7 @@ def _load_concept_routes_yaml() -> dict[str, Any]:
     return merged
 
 
+@lru_cache(maxsize=4)
 def _yaml_routes(section: str) -> tuple[tuple[tuple[str, ...], str], ...]:
     payload = _load_concept_routes_yaml()
     if section not in payload:
@@ -59,11 +60,13 @@ def domain_concept_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     return _yaml_routes("domain_concept_routes")
 
 
+@lru_cache(maxsize=1)
 def merged_concept_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return all keyword routes in evaluation order."""
     return concept_keyword_routes() + concept_keyword_routes_b() + domain_concept_routes()
 
 
+@lru_cache(maxsize=1)
 def category_concept_frames() -> dict[str, str]:
     """Return category slug to lesson-frame text."""
     rows = _load_concept_routes_yaml()["category_concept_frames"]
@@ -147,21 +150,25 @@ def _prompt_keyword_routes(section: str) -> tuple[tuple[tuple[str, ...], str], .
     )
 
 
+@lru_cache(maxsize=1)
 def evidence_category_prompts() -> dict[str, str]:
     """Return risk-category to evidence-prompt text."""
     return _prompt_category_map("evidence_category_prompts")
 
 
+@lru_cache(maxsize=1)
 def evidence_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered evidence keyword routes."""
     return _prompt_keyword_routes("evidence_keyword_routes")
 
 
+@lru_cache(maxsize=1)
 def artifact_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered artifact keyword routes."""
     return _prompt_keyword_routes("artifact_keyword_routes")
 
 
+@lru_cache(maxsize=1)
 def artifact_risk_category_prompts() -> dict[str, str]:
     """Return risk-category to artifact-prompt text."""
     return _prompt_category_map("artifact_risk_category_prompts")
@@ -184,30 +191,35 @@ def topic_rotation_templates_payload() -> dict[str, Any]:
     return payload
 
 
+@lru_cache(maxsize=1)
 def why_it_matters_templates() -> tuple[str, ...]:
     """Return ordered why-it-matters format templates."""
     rows = topic_rotation_templates_payload()["why_it_matters_templates"]
     return tuple(str(row) for row in rows)
 
 
+@lru_cache(maxsize=1)
 def risk_why_failure_hints() -> dict[str, str]:
     """Return risk-category to failure-hint text."""
     rows = topic_rotation_templates_payload()["risk_why_failure_hints"]
     return {str(row["category"]): str(row["hint"]) for row in rows}
 
 
+@lru_cache(maxsize=1)
 def misconception_fallbacks() -> tuple[str, ...]:
     """Return ordered standard misconception fallback templates."""
     rows = topic_rotation_templates_payload()["misconception_fallbacks"]
     return tuple(str(row) for row in rows)
 
 
+@lru_cache(maxsize=1)
 def misconception_risk_templates() -> tuple[str, ...]:
     """Return ordered risk-category misconception templates."""
     rows = topic_rotation_templates_payload()["misconception_risk_templates"]
     return tuple(str(row) for row in rows)
 
 
+@lru_cache(maxsize=1)
 def misconception_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered misconception keyword routes."""
     rows = topic_rotation_templates_payload()["misconception_keyword_routes"]
@@ -217,6 +229,7 @@ def misconception_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     )
 
 
+@lru_cache(maxsize=1)
 def misconception_category_routes() -> dict[str, str]:
     """Return risk-category-specific misconception clauses (risk_category -> clause).
 
@@ -228,6 +241,7 @@ def misconception_category_routes() -> dict[str, str]:
     return {str(key): str(value) for key, value in rows.items()}
 
 
+@lru_cache(maxsize=1)
 def transfer_task_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered transfer-task keyword routes."""
     rows = topic_rotation_templates_payload()["transfer_task_keyword_routes"]

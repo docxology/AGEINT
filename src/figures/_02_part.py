@@ -9,11 +9,11 @@ from curriculum import Curriculum
 from ._01_part import (
     FigureKind,
     FigureSpec,
-    HISTORICAL_ASSETS,
     PYTHON_VISUALS,
 )
 from ._01b_accessibility import FIGURE_ACCESSIBILITY_GUIDANCE
 from ._01g_concept_plates import AI_CONCEPTUAL_PLATES
+from ._01j_historical_spec import HISTORICAL_ASSETS
 from ._03b_asset_renderers import (
     _render_ai_concept_figure,
     _render_historical_figure,

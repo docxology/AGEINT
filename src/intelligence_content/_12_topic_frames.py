@@ -7,8 +7,7 @@ from typing import TYPE_CHECKING
 from ._12_concept_routes import CONCEPT_KEYWORD_ROUTES, _first_matching_frame, _match_keywords
 
 if TYPE_CHECKING:
-    from ._01_part import CoursebookProfile, PracticeLens, TopicEntry
-    from ._04b_part import IntelligenceProfile
+    from ._01_part import CoursebookProfile, PracticeLens, TopicEntry, IntelligenceProfile
 
 
 from ._07_safe_titles import _topic_anchor_words, is_generic_display_title

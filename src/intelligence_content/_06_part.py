@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from functools import lru_cache
 import re
 from typing import Any
 
@@ -53,24 +54,23 @@ def _lens_by_identifier(identifier: str) -> PracticeLens:
     raise KeyError(identifier)
 
 
+@lru_cache(maxsize=256)
+def _compile_term_regex(term: str) -> re.Pattern[str]:
+    escaped = re.escape(term.lower())
+    return re.compile(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])")
+
+
 def _match_score(terms: tuple[str, ...], haystack: str) -> int:
     score = 0
     for term in terms:
-        escaped = re.escape(term.lower())
-        if re.search(rf"(?<![a-z0-9]){escaped}(?![a-z0-9])", haystack):
+        pattern = _compile_term_regex(term)
+        if pattern.search(haystack):
             score += 4 if " " in term or "-" in term else 2
     return score
 
 
-def profile_for_titles(
-    part_title: str,
-    section_title: str = "",
-    chapter: dict[str, object] | None = None,
-) -> IntelligenceProfile:
-    """Return the best content profile for a part or chapter title."""
-    if chapter and chapter.get("content_profile"):
-        return _profile_by_identifier(str(chapter["content_profile"]))
-
+@lru_cache(maxsize=1024)
+def _cached_profile_for_titles(part_title: str, section_title: str) -> IntelligenceProfile:
     haystack = f"{section_title} {part_title}".lower()
     best = INTELLIGENCE_PROFILES[0]
     best_score = -1
@@ -82,15 +82,19 @@ def profile_for_titles(
     return best
 
 
-def practice_lens_for_titles(
+def profile_for_titles(
     part_title: str,
     section_title: str = "",
     chapter: dict[str, object] | None = None,
-) -> PracticeLens:
-    """Return the best reusable practice lens for a part, chapter, or subsection."""
-    if chapter and chapter.get("practice_lens"):
-        return _lens_by_identifier(str(chapter["practice_lens"]))
+) -> IntelligenceProfile:
+    """Return the best content profile for a part or chapter title."""
+    if chapter and chapter.get("content_profile"):
+        return _profile_by_identifier(str(chapter["content_profile"]))
+    return _cached_profile_for_titles(part_title, section_title)
 
+
+@lru_cache(maxsize=1024)
+def _cached_practice_lens_for_titles(part_title: str, section_title: str) -> PracticeLens:
     part_key = _normalized_lookup_key(part_title)
     section_key = _normalized_lookup_key(section_title)
     if (
@@ -108,6 +112,17 @@ def practice_lens_for_titles(
             best = lens
             best_score = score
     return best
+
+
+def practice_lens_for_titles(
+    part_title: str,
+    section_title: str = "",
+    chapter: dict[str, object] | None = None,
+) -> PracticeLens:
+    """Return the best reusable practice lens for a part, chapter, or subsection."""
+    if chapter and chapter.get("practice_lens"):
+        return _lens_by_identifier(str(chapter["practice_lens"]))
+    return _cached_practice_lens_for_titles(part_title, section_title)
 
 
 def anchor_references(keys: tuple[str, ...]) -> list[ResearchAnchor]:

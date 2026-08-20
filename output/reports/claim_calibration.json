@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T21:30:54+00:00",
+  "generated_at": "2026-08-14T00:28:02+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -24172,7 +24172,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@ageint101] / Information Warfare: An Air Force Policy for the Role of Public Affairs / source_guide_reference / source_guide_reference / source_guide_reference / source guide import / source guide lifecycle / source guide context / bibliography traceability / source guide context / The military's use or misuse of information in psychological or deception operations, under. /"
+      "text": "/ [@ageint101] / Information Warfare: An Air Force Policy for the Role of Public Affairs / source_guide_reference / source_guide_reference / source_guide_reference / source guide import / source guide lifecycle / source guide context / bibliography traceability / source guide context / The military's use or misuse of information in psychological or deception operations. /"
     },
     {
       "citation_keys": [
@@ -24768,7 +24768,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@ageint221] / About / source_guide_reference / source_guide_reference / source_guide_reference / source guide import / source guide lifecycle / source guide context / bibliography traceability / source guide context / Presidential Policy Directive 28 (PPD-28), Signals Intelligence Activities, in the ODNI IC Legal Reference Book, establishing principles and safeguards (data minimization and protections for personal"
+      "text": "/ [@ageint221] / About / Office of the Director of National Intelligence / source_guide_reference / source_guide_reference / source_guide_reference / source guide import / source guide lifecycle / source guide context / bibliography traceability / source guide context / Presidential Policy Directive 28 (PPD-28), Signals Intelligence Activities, in the ODNI IC Legal Reference Book, establishing principles and safeguar"
     },
     {
       "citation_keys": [
@@ -77989,33 +77989,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 68,
-      "matched_terms": [
-        "policy"
-      ],
-      "path": "parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/03-governance-boundary.md",
-      "source_support_profiles": [],
-      "text": "review window of $N_{\\text{total}}$ governed actions with $N_{\\text{violations}}$ policy"
-    },
-    {
-      "citation_keys": [],
-      "claim_class": "figure_or_visualization",
-      "disposition": "pass",
-      "fix_hint": "claim language has citation support or remains bounded",
-      "line": 82,
-      "matched_terms": [
-        "figure"
-      ],
-      "path": "parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/03-governance-boundary.md",
-      "source_support_profiles": [],
-      "text": "quantity the safety-error-budget figure tracks. Have students compute the SLI on a synthetic action"
-    },
-    {
-      "citation_keys": [],
-      "claim_class": "governance_or_rights",
-      "disposition": "review",
-      "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 89,
+      "line": 69,
       "matched_terms": [
         "legal"
       ],
@@ -78028,7 +78002,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 90,
+      "line": 70,
       "matched_terms": [
         "policy"
       ],
@@ -78041,7 +78015,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "review",
       "fix_hint": "review empirical/evaluation vocabulary for direct support before reuse",
-      "line": 110,
+      "line": 90,
       "matched_terms": [
         "evaluation"
       ],
@@ -78054,7 +78028,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 111,
+      "line": 91,
       "matched_terms": [
         "policy"
       ],
@@ -78067,7 +78041,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 124,
+      "line": 104,
       "matched_terms": [
         "rights"
       ],
@@ -78080,7 +78054,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 125,
+      "line": 105,
       "matched_terms": [
         "human review"
       ],
@@ -78093,7 +78067,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 133,
+      "line": 113,
       "matched_terms": [
         "rights"
       ],
@@ -78106,7 +78080,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 134,
+      "line": 114,
       "matched_terms": [
         "stop condition",
         "rollback"
@@ -78120,7 +78094,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 135,
+      "line": 115,
       "matched_terms": [
         "assurance",
         "safety"
@@ -78134,7 +78108,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 142,
+      "line": 122,
       "matched_terms": [
         "risk",
         "incident"
@@ -78151,7 +78125,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 149,
+      "line": 129,
       "matched_terms": [
         "assurance"
       ],
@@ -78187,7 +78161,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 151,
+      "line": 131,
       "matched_terms": [
         "assurance"
       ],
@@ -78200,7 +78174,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 154,
+      "line": 134,
       "matched_terms": [
         "assurance"
       ],
@@ -78213,7 +78187,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 155,
+      "line": 135,
       "matched_terms": [
         "risk"
       ],
@@ -78226,7 +78200,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 156,
+      "line": 136,
       "matched_terms": [
         "risk"
       ],
@@ -78239,7 +78213,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review governance or safety vocabulary before treating it as an authority-backed claim",
-      "line": 159,
+      "line": 139,
       "matched_terms": [
         "safety"
       ],
@@ -80391,7 +80365,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@ageint140] / [The agentic AI landscape and its conceptual foundations](https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/02/the-agentic-ai-landscape-and-its-conceptual-foundations_a9d4b451/396cf758-en.pdf) / An OECD Artificial Intelligence Paper (No. 56, February 2026) titled \"The Agentic AI Landscape and Its Conceptual Foundations,\" prepared by OECD staff with an expert group. / verified source-"
+      "text": "/ [@ageint140] / [The agentic AI landscape and its conceptual foundations / OECD](https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/02/the-agentic-ai-landscape-and-its-conceptual-foundations_a9d4b451/396cf758-en.pdf) / An OECD Artificial Intelligence Paper (No. 56, February 2026) titled \"The Agentic AI Landscape and Its Conceptual Foundations,\" prepared by OECD staff with an expert group. / verified "
     },
     {
       "citation_keys": [
@@ -94727,7 +94701,7 @@
           "weak_context": true
         }
       ],
-      "text": "/ [@ageint108] / [Critical Thinking techniques](https://www.cdse.edu/Portals/124/Documents/jobaids/insider/INT250-critical-thinking-techniques.pdf) / A Tradecraft Primer: Structured Analytic Techniques for Improving. Intelligence Analysis. / original source-guide /"
+      "text": "/ [@ageint108] / [Critical Thinking techniques - CDSE](https://www.cdse.edu/Portals/124/Documents/jobaids/insider/INT250-critical-thinking-techniques.pdf) / A Tradecraft Primer: Structured Analytic Techniques for Improving. Intelligence Analysis. / original source-guide /"
     },
     {
       "citation_keys": [
@@ -100120,7 +100094,7 @@
           "weak_context": true
         }
       ],
-      "text": "/ [@ageint108] / [Critical Thinking techniques](https://www.cdse.edu/Portals/124/Documents/jobaids/insider/INT250-critical-thinking-techniques.pdf) / A Tradecraft Primer: Structured Analytic Techniques for Improving. Intelligence Analysis. / original source-guide /"
+      "text": "/ [@ageint108] / [Critical Thinking techniques - CDSE](https://www.cdse.edu/Portals/124/Documents/jobaids/insider/INT250-critical-thinking-techniques.pdf) / A Tradecraft Primer: Structured Analytic Techniques for Improving. Intelligence Analysis. / original source-guide /"
     },
     {
       "citation_keys": [
@@ -159253,7 +159227,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@ageint221] / [About](https://www.odni.gov/index.php/ic-legal-reference-book/presidential-policy-directive-28/123-about) / Presidential Policy Directive 28 (PPD-28), Signals Intelligence Activities, in the ODNI IC Legal Reference Book, establishing principles and safeguards (data minimization and protections for personal information regardless of nationality) that govern U.S. signals intelligence collection and us"
+      "text": "/ [@ageint221] / [About / Office of the Director of National Intelligence](https://www.odni.gov/index.php/ic-legal-reference-book/presidential-policy-directive-28/123-about) / Presidential Policy Directive 28 (PPD-28), Signals Intelligence Activities, in the ODNI IC Legal Reference Book, establishing principles and safeguards (data minimization and protections for personal information regardless of nationality) that "
     },
     {
       "citation_keys": [
@@ -173574,7 +173548,7 @@
           "weak_context": false
         }
       ],
-      "text": "**Evidence to inspect.** Read **Information Warfare Doctrine** against the works cited for this row. [@ageint101] The military's use or misuse of information in psychological or deception operations, under. [@ageint102] A 2006 paper by William Hutchinson published in the journal Informing Science. It examines the history of information warfare and the increasingly central role of deception within it, tracing the conc"
+      "text": "**Evidence to inspect.** Read **Information Warfare Doctrine** against the works cited for this row. [@ageint101] The military's use or misuse of information in psychological or deception operations. [@ageint102] A 2006 paper by William Hutchinson published in the journal Informing Science. It examines the history of information warfare and the increasingly central role of deception within it, tracing the concept fro"
     },
     {
       "citation_keys": [],
@@ -174937,7 +174911,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@ageint101] / [Information Warfare: An Air Force Policy for the Role of Public Affairs](https://media.defense.gov/2017/Dec/28/2001861671/-1/-1/0/T_0037_CRUMM_INFORMATION_WARFARE.PDF) / The military's use or misuse of information in psychological or deception operations, under. / original source-guide /"
+      "text": "/ [@ageint101] / [Information Warfare: An Air Force Policy for the Role of Public Affairs](https://media.defense.gov/2017/Dec/28/2001861671/-1/-1/0/T_0037_CRUMM_INFORMATION_WARFARE.PDF) / The military's use or misuse of information in psychological or deception operations. / original source-guide /"
     },
     {
       "citation_keys": [
@@ -179450,7 +179424,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@ageint098] / [Social Engineering: T he Science of Human Hacking](https://theswissbay.ch/pdf/Books/Computer%20science/socialengineering_thescienceofhumanhacking_2ndedition.pdf) / The full text of \"Social Engineering: The Science of Human Hacking\" (2nd edition, 2018) by Christopher Hadnagy, published by John Wiley & Sons. The book examines the human element of security, analyzing how manipulation and persuasion tec"
+      "text": "/ [@ageint098] / [Social Engineering: T he Science of Human Hacking - The Swiss Bay](https://theswissbay.ch/pdf/Books/Computer%20science/socialengineering_thescienceofhumanhacking_2ndedition.pdf) / The full text of \"Social Engineering: The Science of Human Hacking\" (2nd edition, 2018) by Christopher Hadnagy, published by John Wiley & Sons. The book examines the human element of security, analyzing how manipulation an"
     },
     {
       "citation_keys": [
@@ -199432,19 +199406,19 @@
   "schema_version": "1.0",
   "summary": {
     "boundary_allowed_rows": 482,
-    "candidate_rows": 9111,
+    "candidate_rows": 9109,
     "claim_class_counts": {
       "artifact_readiness": 286,
       "empirical_or_evaluation": 986,
-      "figure_or_visualization": 459,
+      "figure_or_visualization": 458,
       "formalism_or_statistical_expression": 2,
-      "governance_or_rights": 3090,
+      "governance_or_rights": 3089,
       "safety_or_assurance": 4288
     },
     "disposition_counts": {
       "boundary_allowed": 482,
-      "pass": 3496,
-      "review": 5133
+      "pass": 3495,
+      "review": 5132
     },
     "hard_fail_rows": 0,
     "source_support_distribution": {
@@ -199461,7 +199435,7 @@
       "source_quality_anchor": 504,
       "standard_primary": 952
     },
-    "warning_rows": 5133
+    "warning_rows": 5132
   },
   "thresholds": {
     "boundary_language_is_allowed": true,
@@ -199469,7 +199443,7 @@
     "headings_are_not_claim_rows": true,
     "strong_claims_require_direct_support": true
   },
-  "warning_row_count": 5133,
+  "warning_row_count": 5132,
   "warning_rows": [
     {
       "citation_keys": [],

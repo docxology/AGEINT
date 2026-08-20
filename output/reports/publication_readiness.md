@@ -3,9 +3,9 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-13T21:30:54+00:00 |
+| Generated at | 2026-08-14T00:28:02+00:00 |
 | Generated Markdown files | 330 |
-| Generated citation occurrences | 16604 |
+| Generated citation occurrences | 16602 |
 | Registered figures | 177 |
 | PDF pages | 1863 |
 | Bad PDF link targets | 0 |

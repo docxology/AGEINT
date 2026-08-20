@@ -10,22 +10,13 @@ import re
 from typing import Any
 from build_clock import build_timestamp
 
-try:
-    from .analysis_validation import (
-        analysis_validation_contract_terms,
-        analysis_validation_family_lane_map,
-    )
-    from .citation_workflow import CitationCountRow, generated_markdown_citation_inventory
-    from .intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
-    from .source_support_strength import support_family_for_key
-except ImportError:  # pragma: no cover - exercised by script-level imports
-    from analysis_validation import (  # type: ignore[no-redef]
-        analysis_validation_contract_terms,
-        analysis_validation_family_lane_map,
-    )
-    from citation_workflow import CitationCountRow, generated_markdown_citation_inventory  # type: ignore[no-redef]
-    from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS  # type: ignore[no-redef]
-    from source_support_strength import support_family_for_key  # type: ignore[no-redef]
+from analysis_validation import (
+    analysis_validation_contract_terms,
+    analysis_validation_family_lane_map,
+)
+from citation_workflow import CitationCountRow, generated_markdown_citation_inventory
+from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
+from source_support_strength import support_family_for_key
 
 
 SOURCE_GUIDE_KEY_RE = re.compile(r"^ageint\d{3}$")

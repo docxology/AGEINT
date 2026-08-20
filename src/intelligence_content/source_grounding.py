@@ -22,6 +22,15 @@ from _jsonl import read_jsonl
 from safety_contract import text_is_operational
 
 from . import _source_prose as prose
+from ._source_cleaners import (
+    SITE_SUFFIXES as _SITE_SUFFIXES,
+    balance_delimiters as _balance_delimiters,
+    has_formula_phrase as _has_formula_phrase,
+    rewrite_hard_coded_refs as _rewrite_hard_coded_refs,
+    strip_unsupported_glyphs as _strip_unsupported_glyphs,
+    trim_dangling_modifier as _trim_dangling_modifier,
+    trim_trailing_stopwords as _trim_trailing_stopwords,
+)
 from .source_tiers import source_evidence_status
 
 if TYPE_CHECKING:
@@ -29,90 +38,7 @@ if TYPE_CHECKING:
 
 _REFERENCES_DIR = Path(__file__).resolve().parents[2] / "data" / "curriculum" / "references"
 
-# Trailing " - <site>" / " | <site>" fragments that are publisher or platform
-# names rather than part of the work's actual title. Matched case-insensitively
-# against the final segment only, so real hyphenated titles are preserved.
-_SITE_SUFFIXES = frozenset(
-    {
-        "wikipedia",
-        "cia",
-        "scribd",
-        "unredacted",
-        "pmc",
-        "arxiv",
-        "reddit",
-        "linkedin",
-        "academia.edu",
-        "researchgate",
-        "github",
-        "ebsco",
-        "research starters - ebsco",
-        "national security agency",
-        "office of the director of national intelligence",
-        "mit sloan",
-        "oecd",
-        "journal of information warfare",
-        "the resistance hub",
-        "cdse",
-        "trdcrft",
-        "redteams.ai",
-        "connections-qj.org",
-        "the swiss bay",
-        "mitnick security consulting",
-    }
-)
-
 _SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
-
-# Function words that read as dangling fragments at the end of a truncated note.
-_TRAILING_STOPWORDS = frozenset(
-    {
-        "a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on", "at",
-        "with", "by", "that", "this", "these", "those", "its", "their", "his",
-        "her", "our", "your", "is", "are", "was", "were", "be", "been", "into",
-        "from", "than", "then", "which", "who", "whose", "when", "where", "while",
-        "but", "so", "such", "via", "per", "about", "within", "using", "toward",
-        "towards", "between", "among",
-    }
-)
-
-# Hard-coded reference patterns that the cross-reference audit forbids in prose
-# (e.g. "Section 508", "Chapter 3", "Appendix A").  Notes with these are reworded
-# by the caller; the pattern is used here only to detect them for filtering.
-_HARD_CODED_REF_RE = re.compile(
-    r"\b(?:Figure|Fig\.|Section|Sec\.|Equation|Eq\.|Chapter)\s+"
-    r"(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b|\bAppendix\s+[A-Z]\b"
-)
-
-# Curriculum-scaffold phrases that must not appear in reader-facing notes
-_FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source guide import"})
-
-# Decorative/emoji glyphs that the PDF font set cannot render.
-_UNSUPPORTED_GLYPH_RE = re.compile("[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]")
-
-def _rewrite_hard_coded_refs(text: str) -> str:
-    """Replace hard-coded numbered references so crossref tests pass.
-
-    Patterns like "Section 508", "Chapter 3", "Appendix A" are not cross-refs
-    inside the manuscript but they trigger the crossref-integrity scan.
-    We rewrite the most common proper-noun cases in-place; others get the number
-    dropped in favour of the structural noun.
-    """
-    # "Section 508" is the U.S. Rehabilitation Act number — preserve as "508 Standard"
-    text = re.sub(r'\bSection\s+508\b', 'the 508 accessibility standard', text)
-    text = re.sub(r'\bSection\s+255\b', 'the 255 guidelines', text)
-    # General numeric section/chapter/appendix references
-    text = _HARD_CODED_REF_RE.sub(lambda m: m.group(0).split()[0], text)
-    return text
-
-
-def _has_formula_phrase(text: str) -> bool:
-    lowered = text.lower()
-    return any(phrase in lowered for phrase in _FORMULA_PHRASES)
-
-
-def _strip_unsupported_glyphs(text: str) -> str:
-    return _UNSUPPORTED_GLYPH_RE.sub("", text)
 
 
 @dataclass(frozen=True)
@@ -218,98 +144,6 @@ def clean_source_note(note: str) -> str:
     if text and text[-1] not in ".!?":
         text += "."
     return text
-
-
-# Words that introduce a subordinate, prepositional, or relative clause. When a
-# truncated note ends inside one of these clauses (e.g. "...security as a distinct
-# and critical"), the clause has no head noun and reads as a broken fragment, so
-# we cut the note back to the clause boundary.
-_CLAUSE_INTRODUCERS = frozenset(
-    {
-        "as", "that", "which", "who", "whose", "where", "when", "while", "because",
-        "since", "although", "though", "during", "via",
-    }
-)
-
-# Coordinating/adjective-joining words that, when trailing, signal an unfinished
-# noun phrase ("distinct and critical", "a situation that presents"). Also
-# includes attributive adjectives that almost always require a following head
-# noun, so a truncation that dies on them ("protect critical", "committed human")
-# is a severed noun phrase rather than a finished clause.
-_TRAILING_MODIFIER_TAIL = frozenset(
-    {
-        "and", "or", "but", "presents", "presented", "including", "such", "critical",
-        "committed", "human", "conceptual", "various", "several", "key", "core",
-        "potential", "specific", "certain", "particular", "significant", "major",
-        "common", "emerging", "strategic", "modern",
-    }
-)
-
-
-def _ends_on_dangling_clause(text: str) -> bool:
-    """True when the tail reads as an incomplete subordinate/adjectival clause."""
-    words = [word.strip(",;:-—\"'()").lower() for word in text.split()]
-    if len(words) < 2:
-        return False
-    last = words[-1]
-    # A trailing coordinator, clause introducer, or verb-without-object dangles.
-    if last in _TRAILING_MODIFIER_TAIL or last in _CLAUSE_INTRODUCERS:
-        return True
-    # A trailing coordinated pair ("distinct and critical", "X or Y") almost
-    # always precedes a truncated head noun, so it dangles too.
-    if len(words) >= 2 and words[-2] in {"and", "or"}:
-        return True
-    return False
-
-
-def _trim_dangling_modifier(text: str) -> str:
-    """Cut a truncated note back past a dangling subordinate/adjectival clause.
-
-    The note is trimmed to the last clause boundary (a comma, or a subordinate
-    clause introducer such as "as"/"that"/"which") that yields a clause ending on
-    a content word. If no clean boundary survives, the fragment is dropped so the
-    reader never sees a sentence that dies on an adjective.
-    """
-    if not _ends_on_dangling_clause(text):
-        return text
-    # Prefer cutting at the last comma if it leaves a substantial clause.
-    comma = text.rfind(",")
-    if comma > 0:
-        head = text[:comma].rstrip(" ,;:-—")
-        if len(head.split()) >= 4 and not _ends_on_dangling_clause(head):
-            return head
-    # Otherwise cut just before the last clause introducer.
-    words = text.split()
-    for index in range(len(words) - 1, 0, -1):
-        token = words[index].strip(",;:-—\"'()").lower()
-        if token in _CLAUSE_INTRODUCERS:
-            head = " ".join(words[:index]).rstrip(" ,;:-—")
-            if len(head.split()) >= 4 and not _ends_on_dangling_clause(head):
-                return head
-            break
-    # No clean clause boundary: drop the fragmentary note entirely.
-    return ""
-
-
-def _balance_delimiters(text: str) -> str:
-    """Drop a trailing unmatched ``(`` clause and an odd trailing quote."""
-    if text.count("(") > text.count(")"):
-        cut = text.rfind("(")
-        if cut > 0:
-            text = text[:cut].rstrip(" ,;:-—")
-    if text.count('"') % 2 == 1:
-        cut = text.rfind('"')
-        if cut > 0:
-            text = text[:cut].rstrip(" ,;:-—")
-    return text
-
-
-def _trim_trailing_stopwords(text: str) -> str:
-    """Drop trailing function words so a truncated note ends on content."""
-    words = text.split()
-    while len(words) > 1 and words[-1].strip(",;:-—\"'()").lower() in _TRAILING_STOPWORDS:
-        words.pop()
-    return " ".join(words).rstrip(" ,;:-—")
 
 
 _NOTE_DISPLAY_CAP = 480  # chars — keeps table cells and inline prose readable

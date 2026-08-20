@@ -49,12 +49,14 @@ except ImportError:  # pragma: no cover
     def _sg_clean_title(t: str) -> str: return t  # type: ignore[misc]
     def _sg_safe_note(n: str) -> str: return n   # type: ignore[misc]
 
+from ._bibtex_helpers import (
+    clean_bibtex_text as _clean_bibtex_text,
+    clean_bibtex_value as _clean_bibtex_value,
+    join_note_parts as _join_note_parts,
+    reference_author as _reference_author,
+)
 from ._01_part import (
     SOURCE_QUALITY_ANCHORS,
-    _clean_bibtex_text,
-    _clean_bibtex_value,
-    _join_note_parts,
-    _reference_author,
     _source_quality_references,
     bibliography_rows,
     part_rows,

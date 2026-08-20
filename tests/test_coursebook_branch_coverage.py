@@ -17,7 +17,8 @@ from manuscript_manifest import _04_part as mm4
 from manuscript_manifest.types import ManuscriptManifest, ManuscriptSection, SlugRegistry
 import manuscript_manifest._01_part as mm1
 import manuscript_manifest._02_part as mm2
-import manuscript_manifest._03_part as mm3
+import manuscript_manifest._chapter_governance as mm_gov
+import manuscript_manifest._chapter_practice_pathways as mm_path
 import manuscript_variables._01_part as mv1
 import manuscript_variables._02_part as mv2
 import source_identity
@@ -192,25 +193,25 @@ def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tm
         mm2._capstone_deliverable(chapter, part),
         mm2._instructor_facilitation_notes(chapter),
         mm2._refresh_triggers(chapter),
-        mm2._accessibility_udl_review(chapter),
-        mm2._procurement_vendor_oversight(chapter),
-        mm2._hria_dpia_worksheet(chapter),
-        mm2._data_lineage_registry(chapter),
-        mm2._assessment_integrity_protocol(chapter),
-        mm2._agent_incident_response_drill(chapter),
-        mm2._role_based_competency_map(chapter),
-        mm2._adversarial_assurance_cycle(chapter),
-        mm2._model_dataset_documentation_card(chapter),
-        mm2._transparency_communication_notice(chapter),
-        mm2._records_retention_audit_trail(chapter),
-        mm2._release_change_control_gate(chapter),
-        mm2._risk_exception_acceptance_memo(chapter),
-        mm2._learner_support_accommodation_plan(chapter),
-        mm2._instructor_question_bank(chapter),
-        mm2._remediation_backlog(chapter),
+        mm_gov._accessibility_udl_review(chapter),
+        mm_gov._procurement_vendor_oversight(chapter),
+        mm_gov._hria_dpia_worksheet(chapter),
+        mm_gov._data_lineage_registry(chapter),
+        mm_gov._assessment_integrity_protocol(chapter),
+        mm_gov._agent_incident_response_drill(chapter),
+        mm_gov._role_based_competency_map(chapter),
+        mm_gov._adversarial_assurance_cycle(chapter),
+        mm_gov._model_dataset_documentation_card(chapter),
+        mm_gov._transparency_communication_notice(chapter),
+        mm_gov._records_retention_audit_trail(chapter),
+        mm_gov._release_change_control_gate(chapter),
+        mm_gov._risk_exception_acceptance_memo(chapter),
+        mm_gov._learner_support_accommodation_plan(chapter),
+        mm_gov._instructor_question_bank(chapter),
+        mm_gov._remediation_backlog(chapter),
         mm2._runtime_section_map(chapter, part),
         mm2._module_thesis(chapter, part),
-        mm3._domain_practice_studio(chapter, part),
+        mm_path._domain_practice_studio(chapter, part),
     ]
 
     joined = "\n".join(text_blocks)

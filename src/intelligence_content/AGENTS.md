@@ -83,9 +83,12 @@ Display-title contract (`topic_entries.safe_topic_entries`):
 | `_07_safe_titles.py` | `GENERIC_DISPLAY_TITLE_MARKERS`, preserve-title categories, `_topic_anchor_words()`, contextual titles |
 | `_06_part.py` | Profile/lens matching, `COURSEBOOK_PROFILES` from `data/coursebook_profiles.yaml`, `safe_pattern_treatment()` |
 | `_08_part.py` | Thin re-exports of safety/artifact tables from `data/safety_artifact_tables.yaml` |
-| `_09_part.py` | Chapter briefs and row renderers |
+| `_09_part.py` | Chapter briefs and research-anchor inventory rows |
+| `_safety_table_renderers.py` | Safety and artifact table rows renderers |
 | `_10_part.py` | Primer/outcomes/vocabulary only |
 | `_11_part.py` | `chapter_topic_lessons()` via `topic_lessons.resolve_topic_lesson_fields()` |
+| `_topic_anaphora.py` | `AnchorState`, `anaphorize_field()`, `keeps_title_keywords()` |
+| `_source_cleaners.py` | Title and note text sanitizers and truncation cleaners |
 | `topic_lessons.py` | Unified lesson-field resolver; imports `topic_frame_api` and `topic_lesson_voice` only |
 | `topic_rotation.py` | Stable `template_index()` via `zlib.adler32` |
 

@@ -66,7 +66,7 @@
     "missing": [],
     "ok": true
   },
-  "generated_at": "2026-08-13T21:30:54+00:00",
+  "generated_at": "2026-08-14T00:28:02+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -3892,7 +3892,7 @@
       "unique_citation_count": 26
     },
     {
-      "citation_count": 38,
+      "citation_count": 36,
       "citation_keys": [
         "ageint234",
         "official_oecd_agentic_ai",
@@ -3905,8 +3905,7 @@
         "official_odni_icd_505",
         "official_csa_maestro_threat_modeling",
         "official_owasp_agentic_ai_threats_mitigations",
-        "scholarly_systems_security_agentic_computing",
-        "official_unu_macau_agentic_ai_boundaries"
+        "scholarly_systems_security_agentic_computing"
       ],
       "family": "governance-boundary",
       "flags": [],
@@ -3916,7 +3915,7 @@
         "standard",
         "scholarly"
       ],
-      "unique_citation_count": 13
+      "unique_citation_count": 12
     },
     {
       "citation_count": 22,
@@ -10829,7 +10828,7 @@
     "source_family_mentions": {
       "curated_anchor": 32,
       "law_policy": 19,
-      "official": 3072,
+      "official": 3071,
       "practitioner_vendor": 105,
       "public_domain": 21,
       "scholarly": 692,

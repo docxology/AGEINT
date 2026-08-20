@@ -9,7 +9,7 @@ import shutil
 import subprocess  # nosec B404 - fixed argv, no shell, local renderer.
 from pathlib import Path
 
-from ._03_part import _draw_text_plate
+from ._03s_drawers import _draw_text_plate
 from ._04_part import (
     _mermaid_label,
     _normalize_png_canvas,

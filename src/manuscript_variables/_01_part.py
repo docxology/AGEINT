@@ -4,48 +4,29 @@ from __future__ import annotations
 
 import re
 from typing import Any, Final
-import unicodedata
 
-try:  # Support both ``import src.manuscript_variables`` and script-level imports.
-    from .curriculum import Curriculum
-    from .citation_workflow import (
-        source_citation_cell,
-        source_citation_spine,
-    )
-    from .markdown_refs import (
-        citation_ref,
-        crossref_slug,
-        figure_ref,
-        part_module_map_figure_label,
-        section_ref,
-    )
-    from .intelligence_content import (
-        INTELLIGENCE_RESEARCH_ANCHORS,
-        safe_curriculum_treatment,
-        safe_pattern_rows,
-        safe_pattern_treatment,
-    )
-    from .intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title  # noqa: E501
-except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
-    from curriculum import Curriculum  # type: ignore[no-redef]
-    from citation_workflow import (  # type: ignore[no-redef]
-        source_citation_cell,
-        source_citation_spine,
-    )
-    from markdown_refs import (  # type: ignore[no-redef]
-        citation_ref,
-        crossref_slug,
-        figure_ref,
-        part_module_map_figure_label,
-        section_ref,
-    )
-    from intelligence_content import (  # type: ignore[no-redef]
-        INTELLIGENCE_RESEARCH_ANCHORS,
-        safe_curriculum_treatment,
-        safe_pattern_rows,
-        safe_pattern_treatment,
-    )
-    from intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title  # type: ignore[no-redef]  # noqa: E501
+from curriculum import Curriculum
+from citation_workflow import (
+    source_citation_cell,
+    source_citation_spine,
+)
+from markdown_refs import (
+    citation_ref,
+    crossref_slug,
+    figure_ref,
+    part_module_map_figure_label,
+    section_ref,
+)
+from intelligence_content import (
+    INTELLIGENCE_RESEARCH_ANCHORS,
+    safe_curriculum_treatment,
+    safe_pattern_rows,
+    safe_pattern_treatment,
+)
+from intelligence_content.source_grounding import (
+    safe_source_note as _sg_safe_note,
+    safe_source_title as _sg_safe_title,
+)
 
 
 SOURCE_QUALITY_ANCHORS: Final[list[dict[str, str]]] = [
@@ -441,48 +422,3 @@ def _clean_markdown_table_cell(value: object) -> str:
     return text
 
 
-def _clean_bibtex_value(value: object) -> str:
-    return re.sub(r"\s+", " ", str(value).replace("{", "").replace("}", "")).strip()
-
-
-def _clean_bibtex_text(value: object) -> str:
-    text = _clean_bibtex_value(value)
-    text = text.replace("\\", "/")
-    replacements = {
-        "\u2010": "-",
-        "\u2011": "-",
-        "\u2012": "-",
-        "\u2013": "-",
-        "\u2014": "-",
-        "\u2018": "'",
-        "\u2019": "'",
-        "\u201c": '"',
-        "\u201d": '"',
-
-        "\u00ae": "(R)",
-        "\u2122": "(TM)",
-        "&": r"\&",
-        "%": r"\%",
-        "$": r"\$",
-        "#": r"\#",
-        "_": r"\_",
-    }
-    text = "".join(replacements.get(char, char) for char in text)
-    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
-    return text
-
-
-def _reference_author(ref: dict[str, Any]) -> str:
-    if ref.get("author"):
-        return _clean_bibtex_text(ref["author"])
-    number = ref.get("number")
-    if isinstance(number, int):
-        return f"SIST Guide Reference {number:03d}"
-    key_digits = re.sub(r"\D+", "", str(ref.get("key", "")))
-    if key_digits:
-        return f"SIST Guide Reference {int(key_digits):03d}"
-    return "SIST Guide Reference"
-
-
-def _join_note_parts(parts: list[str]) -> str:
-    return ". ".join(part.strip().rstrip(".") for part in parts if part.strip())

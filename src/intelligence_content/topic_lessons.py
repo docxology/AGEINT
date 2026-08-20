@@ -24,8 +24,7 @@ from .topic_lesson_voice import (
 from .topic_rotation import template_index
 
 if TYPE_CHECKING:
-    from ._01_part import CoursebookProfile, PracticeLens, TopicEntry
-    from ._04b_part import IntelligenceProfile
+    from ._01_part import CoursebookProfile, PracticeLens, TopicEntry, IntelligenceProfile
 
 
 @dataclass(frozen=True)

@@ -19,28 +19,25 @@ from intelligence_content import (
     practice_lens_for_titles,
     profile_triangulation_anchors,
     profile_for_titles,
-    safe_topic_entries,
     subsection_practice_rows,
 )
 from citation_workflow import source_citation_spine
+from ._chapter_practice_pathways import (
+    _assessment_and_capstone_pathway,
+    _security_synthesis_block,
+)
 
 from ._01_part import (
     _chapter_source_context,
     _chapter_source_context_inline,
     _chapter_topic_context,
     _claim_evidence_ledger,
-    _failure_mode_drill,
-    _instructor_artifact,
     _review_checklist,
-    _safe_practice_lab,
     _source_canon,
 )
 from ._02_part import (
-    _capstone_deliverable,
-    _instructor_facilitation_notes,
     _refresh_triggers,
     _runtime_section_map,
-    _safe_substitution_patterns,
 )
 from ._heading_titles import (
     chapter_detail_titles,
@@ -171,149 +168,6 @@ def _current_source_assurance(
         "the direct URL, checked date, source lane, refresh trigger, and reviewer. |"
     )
     return "\n".join(rows)
-
-
-def _domain_practice_studio(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    title = chapter["title"]
-    lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    topic_context = _chapter_topic_context(chapter, part)
-    return f"""The studio converts reading into a reviewable artifact for {topic_context}. Start with
-the lens question: **{lens.planning_question}**
-
-### {title} studio moves: glossary, concept map, analytic note, and agent review
-
-- Build a glossary card for each module source section.
-- Create a concept map that links the module to prior curriculum areas and later AGEINT or cognitive-security material.
-- Write a concise analytic note that states assumptions, evidence, confidence, alternatives, and oversight constraints.
-- Pair each agent-assisted step with a human review decision, a stop condition, and a retained evidence artifact.
-
-**Practice rail:** use public, benign, owned-lab, or synthetic material; preserve provenance and uncertainty notes.
-
-### {title} safe practice lab: accountable inputs and retained safety gates
-
-{_safe_practice_lab(chapter)}
-
-### {title} failure modes: source drift, unsafe transfer, and weak evidence
-
-{_failure_mode_drill(chapter)}
-
-### {title} safe substitution patterns: defensive artifacts for risky motifs
-
-{_safe_substitution_patterns(chapter)}
-
-### {title} instructor artifact: review packet and facilitation evidence
-
-{_instructor_artifact(chapter)}
-"""
-
-
-def _topic_assessment_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    """Topic-specific assessment rows tied to the chapter practice lens artifact."""
-    title = str(chapter["title"])
-    lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    rows: list[str] = []
-    seen_topics: set[str] = set()
-    for entry in safe_topic_entries(chapter, part):
-        topic_key = entry.display_title.strip().lower()
-        if topic_key in seen_topics:
-            continue
-        seen_topics.add(topic_key)
-        rows.append(
-            f"| **{entry.display_title}** | Completed **{lens.evidence_artifact}** "
-            "with source descriptor, caveat, uncertainty, blocked-use note, and "
-            "named reviewer for this topic. |"
-        )
-        if len(rows) >= 3:
-            break
-    return "\n".join(rows)
-
-
-def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    topic_rows = _topic_assessment_rows(chapter, part)
-    title = str(chapter["title"])
-    topic_context = _chapter_topic_context(chapter, part)
-    details = chapter_detail_titles(title)
-    topic_rubric = ""
-    if topic_rows:
-        topic_rubric = f"""
-| Topic | Evidence of mastery |
-|---|---|
-{topic_rows}
-"""
-    return f"""#### {details["capstone_pathway"]}
-
-{_capstone_deliverable(chapter, part)}
-
-#### {details["facilitation"]}
-
-{_instructor_facilitation_notes(chapter, part)}
-
-#### {details["rubric"]}
-{topic_rubric}
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for {topic_context} against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
-"""
-
-
-def _security_synthesis_block() -> str:
-    return """#### Threat-model framework: MAESTRO seven layers
-
-The CSA MAESTRO model gives a concrete map of where an agentic
-system can be attacked, shown in [@fig:ageint-maestro-seven-layer]. It stacks seven layers of
-the agent lifecycle: foundation models (L1: adversarial examples, model stealing, backdoors),
-data operations (L2: poisoning, RAG-pipeline compromise), agent frameworks (L3: supply chain and
-input validation), deployment and infrastructure (L4: container escape, lateral movement),
-evaluation and observability (L5: metric manipulation, detection evasion), and the agent ecosystem
-(L7: impersonation, marketplace and goal manipulation). The layer that carries the sharpest
-lesson is L6, Security and Compliance, which is drawn cross-cutting every other layer rather than
-stacked among them: the security agents you deploy to watch the system are themselves an attack
-surface, so a mature design must monitor the monitors [@official_csa_maestro_threat_modeling];
-[@official_owasp_agentic_ai_threats_mitigations].
-
-#### Governance control: SRE circuit breaker
-
-Knowing where attacks land is not the same as bounding their blast radius. The
-SRE circuit-breaker teaching pattern, depicted in [@fig:ageint-sre-circuit-breaker],
-adapts reliability vocabulary into an author-defined governance exercise for
-agents with three states. In CLOSED the agent operates normally, its autonomy
-earned by a clean safety record; when the safety error budget is exhausted --
-for this curriculum, when the PolicyCompliance service-level indicator falls
-below 99 percent -- the breaker trips to OPEN and a human takes over; after a
-recovery period plus validation it moves to HALF_OPEN with limited capability,
-returning to CLOSED only if the clean record holds and snapping back to OPEN on
-any new violation. Activation triggers include policy-bypass attempts,
-LLM-provider errors, tool-timeout cascades, trust-score degradation, and
-reasoning loops or deadlocks. Teach this as a defensive governance exercise:
-define the PolicyCompliance SLI for a synthetic agent, set its error budget, and
-rehearse the OPEN-state human takeover as a tabletop rather than a live
-intervention [@scholarly_systems_security_agentic_computing];
-[@official_unu_macau_agentic_ai_boundaries].
-
-The PolicyCompliance service-level indicator makes the 99-percent threshold concrete. Over a
-review window of $N_{\\text{total}}$ governed actions with $N_{\\text{violations}}$ policy
-violations, define
-
-$$\\mathrm{PolicyCompliance}_{\\mathrm{SLI}} =
-\\frac{N_{\\text{total}} - N_{\\text{violations}}}{N_{\\text{total}}} \\;\\ge\\; 0.99,$$
-
-so the breaker's CLOSED state is exactly the region where this indicator clears its target. The
-complementary error budget is the count of violations the window can absorb before the indicator
-drops below target,
-
-$$\\text{ErrorBudget} = (1 - 0.99)\\,N_{\\text{total}} = 0.01\\,N_{\\text{total}},
-\\qquad \\text{breaker} \\to \\text{OPEN when } N_{\\text{violations}} > \\text{ErrorBudget}.$$
-
-The budget burns down as violations accrue and is restored when a fresh window opens, which is the
-quantity the safety-error-budget figure tracks. Have students compute the SLI on a synthetic action
-log, set $N_{\\text{total}}$ for one window, and identify the exact violation count that trips the
-breaker [@scholarly_systems_security_agentic_computing].
-"""
 
 
 def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:

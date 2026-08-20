@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import re
-from dataclasses import dataclass
 from typing import Any
 
 try:  # Support package and script-level imports.
@@ -15,6 +13,12 @@ except ImportError:  # pragma: no cover - exercised by package imports
 
 from ._04b_part import INTELLIGENCE_PROFILES
 from ._01_part import TopicEntry
+from ._topic_anaphora import (
+    AnchorState,
+    anaphorize_field as _anaphorize_field,
+    keeps_title_keywords as _keeps_title_keywords,
+    misconception_line as _misconception_line,
+)
 from ._06_part import (
     expanded_profile_anchor_keys,
     practice_lens_for_titles,
@@ -44,7 +48,7 @@ from .tradecraft_source_support import (
 )
 from .topic_entries import safe_topic_entries
 from .topic_formalisms import lesson_formalism_field
-from .topic_lesson_voice import compact_topic, short_title
+from .topic_lesson_voice import compact_topic
 from .topic_lessons import resolve_topic_lesson_fields, resolve_topic_misconception
 
 
@@ -118,131 +122,6 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             ]
         )
     return "\n\n".join(lessons)
-
-
-@dataclass
-class AnchorState:
-    """Tracks how many title references a lesson body has already emitted."""
-
-    slot: int = 0
-
-
-# Articles and possessives that may already precede a title token; when present
-# we emit a bare noun so we never produce "the this topic".
-_LEADING_DETERMINERS = ("the", "a", "an", "this", "that", "its", "their", "each")
-
-# Bare nouns used after a determiner (e.g. "the topic artifact"). These carry no
-# title keyword, so they are only used on the SECOND+ occurrence within a single
-# field, after that field already anchored the title keywords via short form.
-_BARE_NOUNS = ("topic", "lesson topic", "subject")
-
-# Standalone anaphora used after a determiner is absent and the field already
-# carries title keywords from an earlier short-form mention.
-_STANDALONE = ("this topic", "the same topic", "this subject")
-
-def _anaphorize_field(
-    display_title: str,
-    field: str,
-    *,
-    anchor: AnchorState,
-    forbidden: frozenset[str] | set[str] = frozenset(),
-) -> str:
-    """Replace repeated bold full titles in one body field with shorter references.
-
-    The first title occurrence WITHIN a field becomes the bolded short form so
-    the field keeps the lesson's title keywords (required by the reader-quality
-    anchor gate) while shedding the long colon tail. Any further occurrences in
-    the same field — the source of the field-to-field "stutter" — collapse to a
-    grammar-aware anaphor. This runs after frame resolution so it covers every
-    title-injection site uniformly, and it stops the generator restating the
-    full bold title ~9 times per lesson.
-    """
-    token = f"**{display_title}**"
-    if token not in field:
-        return field
-    parts = field.split(token)
-    rebuilt = parts[0]
-    compact = short_title(display_title)
-    # The anchor gate requires each field to keep the lesson's title keywords. If
-    # the short form drops them, or collides with a chapter/part title that the
-    # section-title sanitiser would collapse to "the module", fall back to the
-    # full title for the field's first mention so the field still anchors.
-    if not _keeps_title_keywords(compact, display_title) or compact.casefold() in forbidden:
-        compact = display_title
-    field_has_anchor = False
-    for tail in parts[1:]:
-        if not field_has_anchor:
-            # First mention in this field: keep title keywords via short form.
-            field_has_anchor = True
-            anchor.slot += 1
-            rebuilt += f"**{compact}**" + tail
-            continue
-        rebuilt += _anaphor(rebuilt, anchor) + tail
-    return rebuilt
-
-
-_TITLE_KEYWORD_STOPWORDS = {
-    "about", "after", "against", "agent", "agentic", "analysis", "and",
-    "from", "into", "module", "source", "that", "the", "their", "through",
-    "using", "with",
-}
-
-
-def _title_keywords(title: str) -> set[str]:
-    """Title keywords used by the reader-quality anchor gate (mirrors the test)."""
-    words = {
-        word
-        for word in re.findall(r"[a-z0-9]+", title.lower())
-        if len(word) >= 4 and word not in _TITLE_KEYWORD_STOPWORDS
-    }
-    return words or set(re.findall(r"[a-z0-9]+", title.lower()))
-
-
-def _keeps_title_keywords(candidate: str, title: str) -> bool:
-    """True when ``candidate`` retains enough title keywords to anchor a field."""
-    keywords = _title_keywords(title)
-    haystack = set(re.findall(r"[a-z0-9]+", candidate.lower()))
-    return len(haystack & keywords) >= min(2, len(keywords))
-
-
-def _misconception_line(
-    display_title: str,
-    misconception: str,
-    *,
-    forbidden: frozenset[str] | set[str] = frozenset(),
-) -> str:
-    """Render the misconception sentence, anchoring the topic only once.
-
-    Risk-category templates already name the topic; keyword-routed and fallback
-    templates do not, so a short-form prefix supplies the title keywords the
-    field-anchor gate needs without producing the old double-title stutter.
-    """
-    text = misconception.strip().rstrip(".")
-    inner_anchored = (
-        f"**{display_title}**" in text
-        or display_title in text
-        or _keeps_title_keywords(text, display_title)
-    )
-    if inner_anchored:
-        return f"Correct the misconception {text}."
-    compact = short_title(display_title)
-    if not _keeps_title_keywords(compact, display_title) or compact.casefold() in forbidden:
-        compact = display_title
-    return f"Correct the misconception about **{compact}**: {text}."
-
-
-def _anaphor(before: str, anchor: AnchorState) -> str:
-    """Choose a grammatical anaphor for a repeated title within one field."""
-    anchor.slot += 1
-    trimmed = before.rstrip()
-    last_word = trimmed.rsplit(" ", 1)[-1].lower() if trimmed else ""
-    if last_word in _LEADING_DETERMINERS:
-        return _BARE_NOUNS[anchor.slot % len(_BARE_NOUNS)]
-    reference = _STANDALONE[anchor.slot % len(_STANDALONE)]
-    at_sentence_start = (not trimmed) or trimmed[-1] in ".!?:*"
-    if at_sentence_start:
-        return reference[0].upper() + reference[1:]
-    return reference
 
 
 def chapter_source_annotations(chapter: dict[str, Any], limit: int = 30) -> str:

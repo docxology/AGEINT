@@ -17,7 +17,7 @@ from .topic_rotation import template_index
 
 if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, TopicEntry
-    from ._04b_part import IntelligenceProfile
+    from ._01_part import IntelligenceProfile
 
 
 def why_it_matters_for_entry(

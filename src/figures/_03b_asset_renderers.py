@@ -6,20 +6,23 @@ from pathlib import Path
 from curriculum import Curriculum
 
 from ._01_part import FigureSpec
-from ._03_part import (
+from ._03s_drawers import (
     _draw_bar_chart,
     _draw_concept_plate,
     _draw_text_plate,
-    _font,
-    _pil_modules,
 )
-from ._04_part import _download_bytes
+from ._04_part import _download_bytes, _font, _pil_modules, _png_asset_is_valid
 
 
 def _render_historical_figure(root: Path, spec: FigureSpec, output: Path | None = None) -> None:
     if output is None:
         output = root / spec.output_path
     output.parent.mkdir(parents=True, exist_ok=True)
+    final_target = root / spec.output_path
+    if final_target.is_file() and _png_asset_is_valid(final_target):
+        if output != final_target:
+            output.write_bytes(final_target.read_bytes())
+        return
     data = _download_bytes(spec.provenance["asset_url"])
     if data is None:
         _draw_text_plate(
