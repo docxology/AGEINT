@@ -50,7 +50,7 @@ of `output/pdf/AGEINT_combined.pdf`.
 - Curated official/scholarly/professional research anchors: 462
 - Source-quality support anchors: 10
 - Registered figures: 177 (115 Mermaid, 52 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
-- Non-numbered cover art: 1 deterministic Python-rendered title-page image at `output/figures/cover/ageint-cover-synthesis.png`
+- Non-numbered generated visuals: 1 deterministic Python-rendered title-page cover at `output/figures/cover/ageint-cover-synthesis.png` and 1 front-matter Evidence Transit Map at `output/figures/frontmatter/ageint-evidence-transit-map.png` (both live outside the numbered registry)
 
 ## Commands
 
@@ -69,9 +69,9 @@ uv run python scripts/audit_reference_quality.py --write --format markdown
 # Coverage floor: 90% for `src/`; use the test command above for the current measured result.
 # Stage 02 pipeline analysis runs build_curriculum.py only (see manuscript/config.yaml analysis.scripts).
 
-# From the sibling template repo root (when AGEINT is linked as projects/AGEINT):
-uv run python -m infrastructure.validation.cli markdown projects/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/AGEINT/output/manuscript --repo-root .
+# From the sibling template repo root (AGEINT linked under projects/working/AGEINT):
+uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
+uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
 
 # PDF render (from the sibling template repo root, AGEINT linked under
 # projects/working/AGEINT): re-renders the combined PDF and copies it back
@@ -112,9 +112,9 @@ artifact-readiness, and formalism language against source-support strength and
 boundary wording. `src/reference_quality.py` audits generated section/module
 links, Markdown-file links, generic body headings, lesson cross-links, and
 citation-table context so reader-facing references are both resolvable and
-informative. The current rendered output has six single-source-family
-claim-bearing review warnings under the stricter source-strength classifier;
-they are visible review rows, not readiness blockers.
+informative. The artifact-evidence manifest reports 0 single-source-family
+claim-bearing review warnings under the current source-strength classifier;
+the readiness gates treat any such family as a review row, not a blocker.
 
 **PDF rendering is external to this repository.** The combined PDF
 (`AGEINT.pdf` at the repo root, mirrored at `output/pdf/AGEINT_combined.pdf`)
