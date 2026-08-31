@@ -40,24 +40,13 @@ class SchemaVersionError(ValueError):
     """Raised when a generated artifact's schema_version is missing or unsupported."""
 
 
-def require_schema_version(
-    payload: object,
-    expected: str,
-    *,
-    artifact: str,
-) -> None:
+def require_schema_version(payload: object, expected: str, *, artifact: str) -> None:
     """Raise :class:`SchemaVersionError` unless ``payload`` declares ``expected``."""
     if not isinstance(payload, dict):
-        raise SchemaVersionError(
-            f"{artifact}: expected a JSON object with schema_version {expected!r}"
-        )
+        raise SchemaVersionError(f"{artifact}: expected a JSON object with schema_version {expected!r}")
     found = payload.get("schema_version")
     if found != expected:
-        raise SchemaVersionError(
-            f"{artifact}: schema_version {found!r} unsupported by this reader "
-            f"(expected {expected!r}); bump the consumer in src/schema_gate.py "
-            "alongside the producer"
-        )
+        raise SchemaVersionError(f"{artifact}: schema_version {found!r} unsupported by this reader (expected {expected!r}); bump the consumer in src/schema_gate.py alongside the producer")
 
 
 def expected_schema_version(path: Path, *, output_root: Path) -> str | None:

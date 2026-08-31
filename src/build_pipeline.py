@@ -13,11 +13,7 @@ from figures import load_figure_registry, render_evidence_transit_map, render_fi
 from manuscript_manifest import render_manuscript
 from manuscript_templates import write_template_library
 from manuscript_variables import generate_variables, reference_bibtex_files, save_variables, write_bibtex_files
-from orchestration_contracts import (
-    output_build_sentinels,
-    source_freshness_roots,
-    validate_pipeline_stage_contracts,
-)
+from orchestration_contracts import output_build_sentinels, source_freshness_roots, validate_pipeline_stage_contracts
 from output_docs import write_output_directory_docs
 from published_counts_gate import verify_published_counts
 
@@ -77,13 +73,7 @@ def _iter_files(path: Path) -> list[Path]:
         return [path]
     if not path.is_dir():
         return []
-    return [
-        candidate
-        for candidate in path.rglob("*")
-        if candidate.is_file()
-        and "__pycache__" not in candidate.parts
-        and ".pytest_cache" not in candidate.parts
-    ]
+    return [candidate for candidate in path.rglob("*") if candidate.is_file() and "__pycache__" not in candidate.parts and ".pytest_cache" not in candidate.parts]
 
 
 def _latest_mtime(paths: list[Path]) -> float:
@@ -115,13 +105,8 @@ def write_build_stamp(project_root: Path, output: Path) -> Path:
     """Record the source digest this build was produced from."""
     stamp_path = output / BUILD_STAMP_PATH
     stamp_path.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "schema_version": 1,
-        "source_digest": source_content_digest(project_root),
-    }
-    stamp_path.write_text(
-        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-    )
+    payload = {"schema_version": 1, "source_digest": source_content_digest(project_root)}
+    stamp_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return stamp_path
 
 
@@ -175,20 +160,10 @@ def _mirror_curriculum_data(curriculum: Curriculum, destination: Path) -> None:
 
 
 def _generated_markdown_file_count(output_manuscript: Path) -> int:
-    return sum(
-        1
-        for path in output_manuscript.rglob("*.md")
-        if path.name not in MANUSCRIPT_SUPPORT_MARKDOWN
-    )
+    return sum(1 for path in output_manuscript.rglob("*.md") if path.name not in MANUSCRIPT_SUPPORT_MARKDOWN)
 
 
-def run_build(
-    project_root: Path = PROJECT_ROOT,
-    *,
-    regenerate_source_template_library: bool = False,
-    allow_placeholder_figures: bool | None = None,
-    config: BuildConfig | None = None,
-) -> BuildResult:
+def run_build(project_root: Path = PROJECT_ROOT, *, regenerate_source_template_library: bool = False, allow_placeholder_figures: bool | None = None, config: BuildConfig | None = None) -> BuildResult:
     """Load curriculum data, refresh generated outputs, and render the manuscript."""
     root = Path(project_root)
     from template_resolver import ensure_template_repo_on_path
@@ -215,50 +190,22 @@ def run_build(
     variables = generate_variables(root)
     bibtex_files = reference_bibtex_files(curriculum.references)
     write_bibtex_files(root / "manuscript", bibtex_files)
-    variables_path = save_variables(
-        variables,
-        root / "output" / "data" / "manuscript_variables.json",
-    )
-    figure_registry_path = render_figures(
-        root,
-        curriculum,
-        allow_placeholder_figures=allow_placeholder_figures,
-    )
+    variables_path = save_variables(variables, root / "output" / "data" / "manuscript_variables.json")
+    figure_registry_path = render_figures(root, curriculum, allow_placeholder_figures=allow_placeholder_figures)
     figure_registry = load_figure_registry(figure_registry_path)["figures"]
     output_manuscript = render_manuscript(root, curriculum, variables, figure_registry)
-    render_evidence_transit_map(
-        root,
-        curriculum,
-        figure_count=len(figure_registry),
-        generated_markdown_files=_generated_markdown_file_count(output_manuscript),
-    )
+    render_evidence_transit_map(root, curriculum, figure_count=len(figure_registry), generated_markdown_files=_generated_markdown_file_count(output_manuscript))
     write_bibtex_files(output_manuscript, bibtex_files)
     # Gate: published counts must match a fresh re-count of the source data
     # and the figure registry, or the build fails on drift.
-    verify_published_counts(
-        root,
-        curriculum_stats=curriculum.stats,
-        figure_count=len(figure_registry),
-    )
+    verify_published_counts(root, curriculum_stats=curriculum.stats, figure_count=len(figure_registry))
     # Written last: the stamp asserts "this output was produced from that source",
     # so it must only exist once every artifact above has been written.
     write_build_stamp(root, root / "output")
-    return BuildResult(
-        curriculum,
-        written_templates,
-        variables_path,
-        figure_registry_path,
-        output_manuscript,
-    )
+    return BuildResult(curriculum, written_templates, variables_path, figure_registry_path, output_manuscript)
 
 
-def run_build_figures(
-    project_root: Path = PROJECT_ROOT,
-    curriculum: Curriculum | None = None,
-    *,
-    allow_placeholder_figures: bool | None = None,
-    config: BuildConfig | None = None,
-) -> Path:
+def run_build_figures(project_root: Path = PROJECT_ROOT, curriculum: Curriculum | None = None, *, allow_placeholder_figures: bool | None = None, config: BuildConfig | None = None) -> Path:
     """Refresh only AGEINT figure assets and the registry."""
     root = Path(project_root)
     from template_resolver import ensure_template_repo_on_path
@@ -271,8 +218,4 @@ def run_build_figures(
         source = build_config.resolve_source_path(root)
         data_path = root / "data" / "curriculum"
         curriculum = build_curriculum(source, data_path)
-    return render_figures(
-        root,
-        curriculum,
-        allow_placeholder_figures=allow_placeholder_figures,
-    )
+    return render_figures(root, curriculum, allow_placeholder_figures=allow_placeholder_figures)

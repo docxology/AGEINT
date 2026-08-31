@@ -17,20 +17,9 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from curriculum import Curriculum  # type: ignore[no-redef]
 
 
-TEMPLATE_NAMES: Final[tuple[str, ...]] = (
-    "abstract.md",
-    "orientation.md",
-    "method_assurance_reference.md",
-    "part.md",
-    "chapter.md",
-    "appendix.md",
-    "bibliography_atlas.md",
-    "references.md",
-)
+TEMPLATE_NAMES: Final[tuple[str, ...]] = ("abstract.md", "orientation.md", "method_assurance_reference.md", "part.md", "chapter.md", "appendix.md", "bibliography_atlas.md", "references.md")
 
-SOURCE_OWNED_TEMPLATE_NAMES: Final[frozenset[str]] = frozenset(
-    {"abstract.md", "orientation.md"}
-)
+SOURCE_OWNED_TEMPLATE_NAMES: Final[frozenset[str]] = frozenset({"abstract.md", "orientation.md"})
 
 DEFAULT_TEMPLATES: Final[dict[str, str]] = {
     # Abstract and orientation are authored source templates. Keeping stale
@@ -157,15 +146,11 @@ bibliography entries into source prose.
 def template_text(name: str) -> str:
     """Return the canonical template text for ``name``."""
 
-    canonical = Path(__file__).resolve().parents[1] / "manuscript" / "templates" / name
+    canonical = Path(__file__).resolve().parents[1] / "docs" / "manuscript" / "templates" / name
     if canonical.is_file():
         return canonical.read_text(encoding="utf-8")
     if name in SOURCE_OWNED_TEMPLATE_NAMES:
-        raise FileNotFoundError(
-            f"{name} is a source-owned manuscript template and has no embedded "
-            "fallback; keep manuscript/templates available to avoid stale "
-            "abstract or orientation prose."
-        )
+        raise FileNotFoundError(f"{name} is a source-owned manuscript template and has no embedded fallback; keep manuscript/templates available to avoid stale abstract or orientation prose.")
     return DEFAULT_TEMPLATES[name]
 
 

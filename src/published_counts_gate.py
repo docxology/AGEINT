@@ -33,12 +33,7 @@ def recompute_source_counts(source_dir: Path) -> dict[str, int]:
     for part_path in parts:
         chapters_dir = part_path.parent / "chapters"
         if chapters_dir.is_dir():
-            chapters += sum(
-                1
-                for path in chapters_dir.iterdir()
-                if (path.is_dir() and (path / "chapter.json").is_file())
-                or (path.is_file() and path.suffix == ".json")
-            )
+            chapters += sum(1 for path in chapters_dir.iterdir() if (path.is_dir() and (path / "chapter.json").is_file()) or (path.is_file() and path.suffix == ".json"))
     appendices = len(sorted((source_dir / "appendices").glob("*.json")))
     patterns = len(json.loads((source_dir / "patterns.json").read_text(encoding="utf-8")))
     reference_keys: set[str] = set()
@@ -47,13 +42,7 @@ def recompute_source_counts(source_dir: Path) -> dict[str, int]:
             key = str(row.get("key") or "")
             if key:
                 reference_keys.add(key)
-    return {
-        "parts": len(parts),
-        "chapters": chapters,
-        "appendices": appendices,
-        "patterns": patterns,
-        "references": len(reference_keys),
-    }
+    return {"parts": len(parts), "chapters": chapters, "appendices": appendices, "patterns": patterns, "references": len(reference_keys)}
 
 
 def recompute_figure_count(figure_registry_path: Path) -> int:
@@ -65,19 +54,11 @@ def recompute_figure_count(figure_registry_path: Path) -> int:
         raise ValueError(f"figure_registry.json has no figures list: {figure_registry_path}")
     declared = payload.get("figure_count")
     if isinstance(declared, int) and declared != len(figures):
-        raise ValueError(
-            f"Figure registry self-count drift: figures={len(figures)} figure_count={declared}"
-        )
+        raise ValueError(f"Figure registry self-count drift: figures={len(figures)} figure_count={declared}")
     return len(figures)
 
 
-def compare_counts(
-    recomputed: dict[str, int],
-    published: dict[str, Any],
-    *,
-    figure_count_recomputed: int,
-    figure_count_published: Any,
-) -> list[str]:
+def compare_counts(recomputed: dict[str, int], published: dict[str, Any], *, figure_count_recomputed: int, figure_count_published: Any) -> list[str]:
     """Return human-readable drift descriptions between recomputed and published counts."""
 
     mismatches: list[str] = []
@@ -89,9 +70,7 @@ def compare_counts(
         if recomputed[key] != published_value:
             mismatches.append(f"{key}: recomputed {recomputed[key]} != published {published_value}")
     if figure_count_published is not None and figure_count_recomputed != figure_count_published:
-        mismatches.append(
-            f"figures: recomputed {figure_count_recomputed} != published {figure_count_published}"
-        )
+        mismatches.append(f"figures: recomputed {figure_count_recomputed} != published {figure_count_published}")
     return mismatches
 
 
@@ -121,11 +100,7 @@ def verify_published_counts(
         raise FileNotFoundError(f"Published outline stats not found: {outline}")
 
     recomputed = recompute_source_counts(source)
-    published_stats = (
-        dict(curriculum_stats)
-        if curriculum_stats is not None
-        else json.loads(outline.read_text(encoding="utf-8")).get("stats")
-    )
+    published_stats = dict(curriculum_stats) if curriculum_stats is not None else json.loads(outline.read_text(encoding="utf-8")).get("stats")
     if not isinstance(published_stats, dict):
         raise ValueError(f"Outline stats missing in {outline}")
 
@@ -135,21 +110,7 @@ def verify_published_counts(
     recomputed_figures = recompute_figure_count(registry)
     published_figures = figure_count
 
-    mismatches = compare_counts(
-        recomputed,
-        published_stats,
-        figure_count_recomputed=recomputed_figures,
-        figure_count_published=published_figures,
-    )
+    mismatches = compare_counts(recomputed, published_stats, figure_count_recomputed=recomputed_figures, figure_count_published=published_figures)
     if mismatches:
-        raise ValueError(
-            "Published count verification failed: "
-            + "; ".join(mismatches)
-        )
-    return {
-        "recomputed": recomputed,
-        "published_stats": published_stats,
-        "figures": recomputed_figures,
-        "outline": outline,
-        "registry": registry,
-    }
+        raise ValueError("Published count verification failed: " + "; ".join(mismatches))
+    return {"recomputed": recomputed, "published_stats": published_stats, "figures": recomputed_figures, "outline": outline, "registry": registry}

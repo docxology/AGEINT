@@ -7,13 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from schema_gate import (
-    EXPECTED_SCHEMA_VERSIONS,
-    SchemaVersionError,
-    expected_schema_version,
-    load_json_with_schema,
-    require_schema_version,
-)
+from schema_gate import EXPECTED_SCHEMA_VERSIONS, SchemaVersionError, expected_schema_version, load_json_with_schema, require_schema_version
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_ROOT = PROJECT_ROOT / "output"
@@ -26,9 +20,7 @@ def test_expected_map_covers_registry_and_quality_audit() -> None:
 
 
 def test_committed_registry_loads_through_the_gate() -> None:
-    payload = load_json_with_schema(
-        OUTPUT_ROOT / "figures" / "figure_registry.json", output_root=OUTPUT_ROOT
-    )
+    payload = load_json_with_schema(OUTPUT_ROOT / "figures" / "figure_registry.json", output_root=OUTPUT_ROOT)
     assert payload["schema_version"] == "1.5"
     assert payload["figure_count"] == len(payload["figures"])
 
