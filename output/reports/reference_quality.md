@@ -4,7 +4,7 @@
 |---|---:|
 | OK | true |
 | reference_quality_ok | true |
-| Generated at | 2026-08-31T06:10:39+00:00 |
+| Generated at | 2026-08-31T08:08:41+00:00 |
 | Scanned files | 332 |
 | Issue rows | 0 |
 | Rendered-reference issues | 0 |
