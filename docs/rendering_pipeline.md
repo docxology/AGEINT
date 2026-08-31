@@ -1,10 +1,10 @@
 # Rendering Pipeline - AGEINT manuscript build, PDF render, and validation gates
 
-AGEINT does not use numbered source chapters under `manuscript/`. The PDF pipeline reads **generated** markdown from `output/manuscript/`.
+AGEINT does not use numbered source chapters under `docs/manuscript/`. The PDF pipeline reads **generated** markdown from `output/manuscript/`.
 
 ## Resolution: generated manuscript directory and source config precedence
 
-`infrastructure.rendering.pipeline._resolve_manuscript_dir` prefers `output/manuscript/` when it contains markdown, and refreshes `config.yaml` and `*.bib` from source `manuscript/`.
+`infrastructure.rendering.pipeline._resolve_manuscript_dir` prefers `output/manuscript/` when it contains markdown, and refreshes `config.yaml` and `*.bib` from source `docs/manuscript/`.
 
 ## Build before render: refresh manuscript, figures, reports, and copied outputs
 
@@ -101,7 +101,7 @@ uv run pytest tests/test_figures.py -m requires_mermaid -v
 The PDF title page uses deterministic non-numbered cover art from
 `output/figures/cover/ageint-cover-synthesis.png`, with a JSON sidecar beside
 it. The cover is rendered by `src/figures/` and referenced from
-`manuscript/config.yaml` as `book.cover.image`; it is not registered in
+`docs/manuscript/config.yaml` as `book.cover.image`; it is not registered in
 `output/figures/figure_registry.json` and should not be cited as a manuscript
 figure.
 
@@ -120,7 +120,7 @@ audits as a benchmark for model capability, learning outcomes, operational
 effectiveness, statistical significance, or safety performance.
 
 The PDF table of contents intentionally exposes H1/H2 entries only through
-`\setcounter{tocdepth}{2}` in `manuscript/preamble.md`. H3/H4 scaffolds remain
+`\setcounter{tocdepth}{2}` in `docs/manuscript/preamble.md`. H3/H4 scaffolds remain
 available in body text and generated HTML, but they are hidden from the PDF TOC
 to keep navigation useful at the manuscript scale. Generated modules expose three
 chapter-specific H2 landmarks: source/profile frame, practice-lens path, and

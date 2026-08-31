@@ -39,5 +39,5 @@ flag only when the neutral template library itself should be reset from code.
 
 Outputs under `output/` are generated. If a generated file looks wrong, update
 curriculum shards, `src/manuscript_manifest/`, `src/intelligence_content/`,
-other `src/` helpers, or `manuscript/templates/`, then rebuild instead of
+other `src/` helpers, or `docs/manuscript/templates/`, then rebuild instead of
 editing generated Markdown or PNGs directly.

@@ -16,7 +16,7 @@ Business logic belongs in `src/` (`build_pipeline.py`, `curriculum.py`, `manuscr
 
 ## Pipeline Stage 02 allowlist
 
-`manuscript/config.yaml` declares:
+`docs/manuscript/config.yaml` declares:
 
 ```yaml
 analysis:
@@ -50,4 +50,4 @@ Scripts print final artifact paths to stdout for manifest collection. Generated 
 
 - [`AGENTS.md`](AGENTS.md) — script inventory
 - [`../src/build_pipeline.py`](../src/build_pipeline.py) — canonical build orchestration
-- [`../manuscript/config.yaml`](../manuscript/config.yaml) — analysis allowlist
+- [`../docs/manuscript/config.yaml`](../docs/manuscript/config.yaml) — analysis allowlist

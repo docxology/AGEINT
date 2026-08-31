@@ -1,10 +1,10 @@
 # Architecture: shard-first curriculum build and generated manuscript flow
 
-AGEINT follows the template code-project shape: `src/`, `scripts/`, `tests/`, `manuscript/`, `docs/`, `data/`, and `output/`.
+AGEINT follows the template code-project shape: `src/`, `scripts/`, `tests/`, `docs/manuscript/`, `docs/`, `data/`, and `output/`.
 
 The build loads the committed curriculum spine from `data/curriculum/` (optional
 guide input when present). The renderer builds a manifest of semantic manuscript
-sections and hydrates neutral templates from `manuscript/templates/` into
+sections and hydrates neutral templates from `docs/manuscript/templates/` into
 `output/manuscript/`. Long chapters render as fragment directories such as
 `parts/ageint-agentic-intelligence/foundations-of-ageint/00-overview.md`.
 Concrete titles, labels, citations, counts, and file paths are generated data.

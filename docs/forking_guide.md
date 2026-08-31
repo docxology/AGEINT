@@ -4,9 +4,9 @@
 
 1. Copy project tree (or promote from private `projects/active/`).
 2. Replace `data/curriculum/` shards with your curriculum structure (keep JSON/JSONL schema).
-3. Update `manuscript/config.yaml` title, authors, keywords.
+3. Update `docs/manuscript/config.yaml` title, authors, keywords.
 4. Reset or extend `data/source_identity/` only with a deliberate citation migration plan.
-5. Adjust neutral templates in `manuscript/templates/` if section shapes change.
+5. Adjust neutral templates in `docs/manuscript/templates/` if section shapes change.
 6. Run `uv run python scripts/build_curriculum.py` and fix test failures before render.
 
 ## Do not fork by copying `output/manuscript/`: generated files are disposable
@@ -15,7 +15,7 @@ Generated prose is an artifact. Fork the **source spine** and renderer code.
 
 ## Template parity: preserve validation and output-contract behavior
 
-Keep `src/`, `tests/`, `scripts/`, `manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](../../../../template/docs/guides/new-project-setup.md) for Layer 2 conventions.
+Keep `src/`, `tests/`, `scripts/`, `docs/manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](../../../../template/docs/guides/new-project-setup.md) for Layer 2 conventions.
 
 ## Confidentiality: keep AGEINT local unless promotion is approved
 

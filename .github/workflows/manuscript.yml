@@ -37,8 +37,8 @@ on:
       # plus curriculum/research_anchors/source_identity/figures directories.
       # A hand-picked list would drift the moment a new one is added.
       - "data/**"
-      - "manuscript/templates/**"
-      - "manuscript/config.yaml"
+      - "docs/manuscript/templates/**"
+      - "docs/manuscript/config.yaml"
       - "src/manuscript_manifest/**"
       - "src/intelligence_content/**"
       - "src/figures/**"
@@ -134,7 +134,7 @@ jobs:
             echo "Strict rebuild succeeded — steps below validate FRESH output."
           else
             echo "::warning::Strict rebuild did not complete (see step above) — restoring the committed output/ tree so steps below validate that coherent state, not a partial rebuild."
-            git checkout -- output/ manuscript/references-*.bib
+            git checkout -- output/ docs/manuscript/references-*.bib
           fi
 
       # Now that Chrome is actually present, the `requires_mermaid`-marked
@@ -222,11 +222,11 @@ jobs:
       - name: Report drift against the committed output/ tree (informational)
         if: always()
         run: |
-          if git diff --quiet -- output/ manuscript/references-*.bib; then
+          if git diff --quiet -- output/ docs/manuscript/references-*.bib; then
             echo "No drift: fresh build matches the committed output/ tree."
           else
             echo "::notice::Fresh strict rebuild differs from the committed output/ tree — review before refreshing."
-            git diff --stat -- output/ manuscript/references-*.bib
+            git diff --stat -- output/ docs/manuscript/references-*.bib
           fi
 
       - name: Upload rebuilt manuscript + figure registry

@@ -38,7 +38,7 @@ def _parser() -> argparse.ArgumentParser:
         "--regenerate-source-templates",
         action="store_true",
         dest="regenerate_source_template_library",
-        help="Rewrite manuscript/templates/*.md from the built-in neutral template library.",
+        help="Rewrite docs/manuscript/templates/*.md from the built-in neutral template library.",
     )
     return parser
 
