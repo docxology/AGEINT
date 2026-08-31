@@ -132,7 +132,10 @@ def test_z_generate_manuscript_variables_prints_path() -> None:
         # which re-renders all 64 figures (24 Mermaid/Chrome subprocesses, ~185s).
         # Corpus growth pushed the full build to ~150-190s, past the 120s used by
         # the lighter script tests; 300s gives headroom without masking a real hang.
-        timeout=300,
+        # 900s (matching the artifact-evidence/publication-readiness contract bounds)
+        # accounts for external-drive I/O latency under concurrent load, where the
+        # same run has been observed to exceed 300s without a real hang.
+        timeout=900,
     )
     assert result.returncode == 0
     assert result.stdout.strip().endswith("manuscript_variables.json")
@@ -145,7 +148,11 @@ def test_check_rendered_references_script_passes(built_output: Path) -> None:
         check=False,
         capture_output=True,
         text=True,
-        timeout=120,
+        # 120s was fine on local disks; on the external-drive checkout under load
+        # the full-output reference audit can exceed it (observed 2026-08-30).
+        # 900s matches the other subprocess contract bounds and still fails hard
+        # on a real hang.
+        timeout=900,
     )
     assert result.returncode == 0, result.stderr
     assert "Rendered reference audit passed" in result.stdout

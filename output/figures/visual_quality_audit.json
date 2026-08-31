@@ -7834,7 +7834,7 @@
     {
       "alt_text_words": 33,
       "aspect_ratio": 1.0,
-      "bytes": 310545,
+      "bytes": 310857,
       "caption_words": 72,
       "checks": {
         "alt_text_min_words": true,
@@ -9022,7 +9022,7 @@
     {
       "alt_text_words": 40,
       "aspect_ratio": 1.0,
-      "bytes": 31570,
+      "bytes": 32615,
       "caption_words": 61,
       "checks": {
         "alt_text_min_words": true,
@@ -9076,7 +9076,7 @@
     {
       "alt_text_words": 42,
       "aspect_ratio": 1.0,
-      "bytes": 31589,
+      "bytes": 31568,
       "caption_words": 63,
       "checks": {
         "alt_text_min_words": true,
@@ -9130,7 +9130,7 @@
     {
       "alt_text_words": 42,
       "aspect_ratio": 1.0,
-      "bytes": 31505,
+      "bytes": 31479,
       "caption_words": 58,
       "checks": {
         "alt_text_min_words": true,
@@ -9184,7 +9184,7 @@
     {
       "alt_text_words": 43,
       "aspect_ratio": 1.0,
-      "bytes": 31568,
+      "bytes": 31565,
       "caption_words": 60,
       "checks": {
         "alt_text_min_words": true,

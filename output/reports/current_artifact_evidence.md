@@ -2,8 +2,8 @@
 
 | Measure | Value |
 |---|---:|
-| OK | false |
-| Generated at | 2026-08-27T22:33:39+00:00 |
+| OK | true |
+| Generated at | 2026-08-31T06:10:39+00:00 |
 | Generated Markdown files | 330 |
 | Generated citation occurrences | 16629 |
 | Thin claim-bearing files | 0 |
@@ -17,7 +17,7 @@
 | Source metadata fallback rows | 0 |
 | Blank source lanes | 0 |
 | Blank source tiers | 0 |
-| Source refresh due pass | false |
+| Source refresh due pass | true |
 | Source refresh due/stale rows | 0 |
 | Source refresh missing checked dates | 0 |
 | Agency source coverage pass | true |
@@ -44,7 +44,7 @@
 
 | Check | Pass |
 |---|---:|
-| generated output fresh | false |
+| generated output fresh | true |
 | rendered references resolve | true |
 | reference quality ok | true |
 | stale output scans clean | true |
@@ -53,7 +53,7 @@
 | citation source sections covered | true |
 | scholarship quality ok | true |
 | source metadata ok | true |
-| source refresh due ok | false |
+| source refresh due ok | true |
 | agency source coverage ok | true |
 | claim calibration ok | true |
 

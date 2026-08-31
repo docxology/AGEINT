@@ -2,8 +2,8 @@
 
 | Measure | Value |
 |---|---:|
-| OK | false |
-| Generated at | 2026-08-27T22:33:39+00:00 |
+| OK | true |
+| Generated at | 2026-08-31T06:10:39+00:00 |
 | Generated Markdown files | 330 |
 | Generated citation occurrences | 16629 |
 | Registered figures | 177 |
@@ -25,14 +25,14 @@
 
 | Check | Pass |
 |---|---:|
-| artifact evidence ok | false |
+| artifact evidence ok | true |
 | rendered references resolve | true |
 | reference quality ok | true |
 | pdf quality ok | true |
 | figure quality ok | true |
 | scholarship quality ok | true |
 | source metadata ok | true |
-| source refresh due ok | false |
+| source refresh due ok | true |
 | agency source coverage ok | true |
 | claim calibration ok | true |
 | artifact manifest ok | true |

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T22:33:39+00:00",
+  "generated_at": "2026-08-31T06:10:39+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -1895,7 +1895,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_ec_gpai_code_practice] / [General-Purpose AI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice) / ai_conformity_compliance / GPAI compliance scaffolding, documentation expectations, safety duties, and copyright transparency / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+      "text": "/ [@official_ec_gpai_code_practice] / [General-Purpose AI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice) / ai_conformity_compliance / GPAI compliance implementation, documentation expectations, safety duties, and copyright transparency / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
     },
     {
       "citation_keys": [
