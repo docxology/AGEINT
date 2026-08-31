@@ -142,6 +142,11 @@ New seam modules introduced this pass (each under 300 lines):
 
 ### Minor
 
+- Entry-doc orientation ladder (fixed 2026-08-31): README.md and AGENTS.md now
+  link `TODO.md` as the canonical next-actions pointer; README scope block
+  carries its verification command. Remaining: keep `output/` count prose in
+  docs synced via the generator after each rebuild (see Medium item 2 below).
+
 - Adopt `ruff format --check` and `mypy` (sibling CogSecSkills has both; the
   repo does not). Adopt incrementally per package with the gate on only after a
   package is clean. `mypy` on the full tree surfaces a real backlog; `ruff

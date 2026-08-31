@@ -34,10 +34,10 @@ of `output/pdf/AGEINT_combined.pdf`.
 
 - Runtime curriculum source: `data/curriculum/`
 - Optional historical guide filename: `SIST-Guide-TOC-and-Bibliography-v2.md` is recognized when present but is not required for normal builds
-- Source templates: `manuscript/templates/*.md`
+- Source templates: `docs/manuscript/templates/*.md`
 - Resolved manuscript: `output/manuscript/`
 - Figure registry and assets: `output/figures/figure_registry.json`
-- Bibliography: generated to `manuscript/references-*.bib` and `output/manuscript/references-*.bib`
+- Bibliography: generated to `docs/manuscript/references-*.bib` and `output/manuscript/references-*.bib`
 - Scholarship anchors: `data/research_anchors/`, `src/intelligence_content/`, and `src/manuscript_variables/`
 
 ## Current generated scope
@@ -51,6 +51,19 @@ of `output/pdf/AGEINT_combined.pdf`.
 - Source-quality support anchors: 10
 - Registered figures: 177 (115 Mermaid, 52 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
 - Non-numbered generated visuals: 1 deterministic Python-rendered title-page cover at `output/figures/cover/ageint-cover-synthesis.png` and 1 front-matter Evidence Transit Map at `output/figures/frontmatter/ageint-evidence-transit-map.png` (both live outside the numbered registry)
+
+These counts are rebuild-time measurements: verify with
+`python3 -c "import json;print(json.load(open('output/data/curriculum_outline.json'))['summary'])"`
+or re-run `scripts/build_curriculum.py`; see [`TODO.md`](TODO.md) Verified State
+for the last measured pass.
+
+## Current state and next actions
+
+- Backlog (canonical, forward-only): [`TODO.md`](TODO.md) — its `Open` section
+  holds the next useful work; `tasks.yaml` is the taskboard source of truth.
+- Status: `output/reports/publication_readiness.json` (`ok` field) and
+  `output/reports/current_artifact_evidence.json` are the generated status
+  surfaces; re-run the audits in Commands below to refresh them.
 
 ## Commands
 
@@ -67,7 +80,7 @@ uv run python scripts/audit_claim_calibration.py --write --format markdown
 uv run python scripts/audit_reference_quality.py --write --format markdown
 
 # Coverage floor: 90% for `src/`; use the test command above for the current measured result.
-# Stage 02 pipeline analysis runs build_curriculum.py only (see manuscript/config.yaml analysis.scripts).
+# Stage 02 pipeline analysis runs build_curriculum.py only (see docs/manuscript/config.yaml analysis.scripts).
 
 # From the sibling template repo root (AGEINT linked under projects/working/AGEINT):
 uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
