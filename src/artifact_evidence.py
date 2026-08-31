@@ -14,10 +14,7 @@ from agency_source_coverage import collect_agency_source_coverage, write_agency_
 from audit_contracts import audit_contract_report, audit_contracts, false_certification_control
 from build_pipeline import generated_output_is_stale
 from claim_calibration import collect_claim_calibration, write_claim_calibration
-from citation_workflow import (
-    generated_markdown_citation_inventory,
-    source_citation_coverage_summary,
-)
+from citation_workflow import generated_markdown_citation_inventory, source_citation_coverage_summary
 from curriculum import load_curriculum
 from pdf_quality import audit_pdf_quality
 from reference_quality import collect_reference_quality, write_reference_quality
@@ -100,46 +97,30 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
         },
         "citations": citation_counts,
         "scholarship_quality": {
-            "report_paths": [
-                "output/reports/scholarship_quality.json",
-                "output/reports/scholarship_quality.md",
-            ],
+            "report_paths": ["output/reports/scholarship_quality.json", "output/reports/scholarship_quality.md"],
             "summary": scholarship_report.payload["summary"],
             "sat_method_contract": scholarship_report.payload["sat_method_contract"],
             "analysis_validation_contract": scholarship_report.payload["analysis_validation_contract"],
-            "analysis_validation_lane_contract": scholarship_report.payload[
-                "analysis_validation_lane_contract"
-            ],
-            "analysis_validation_family_coverage": scholarship_report.payload[
-                "analysis_validation_family_coverage"
-            ],
+            "analysis_validation_lane_contract": scholarship_report.payload["analysis_validation_lane_contract"],
+            "analysis_validation_family_coverage": scholarship_report.payload["analysis_validation_family_coverage"],
             "hard_fail_rows": scholarship_report.payload["hard_fail_rows"],
             "warning_row_count": scholarship_report.payload["warning_row_count"],
         },
         "source_metadata": {
-            "report_paths": [
-                "output/reports/source_metadata.json",
-                "output/reports/source_metadata.md",
-            ],
+            "report_paths": ["output/reports/source_metadata.json", "output/reports/source_metadata.md"],
             "baseline_closed": source_metadata_report.payload["baseline_closed"],
             "summary": source_metadata_report.payload["summary"],
             "issue_row_count": source_metadata_report.payload["issue_row_count"],
             "issue_rows": source_metadata_report.payload["issue_rows"],
         },
         "source_refresh_due": {
-            "report_paths": [
-                "output/reports/source_refresh_due.json",
-                "output/reports/source_refresh_due.md",
-            ],
+            "report_paths": ["output/reports/source_refresh_due.json", "output/reports/source_refresh_due.md"],
             "summary": source_refresh_due_report.payload["summary"],
             "issue_row_count": source_refresh_due_report.payload["issue_row_count"],
             "issue_rows": source_refresh_due_report.payload["issue_rows"],
         },
         "agency_source_coverage": {
-            "report_paths": [
-                "output/reports/agency_source_coverage.json",
-                "output/reports/agency_source_coverage.md",
-            ],
+            "report_paths": ["output/reports/agency_source_coverage.json", "output/reports/agency_source_coverage.md"],
             "summary": agency_source_coverage_report.payload["summary"],
             "global_issue_count": agency_source_coverage_report.payload["global_issue_count"],
             "global_issues": agency_source_coverage_report.payload["global_issues"],
@@ -147,35 +128,22 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
             "issue_rows": agency_source_coverage_report.payload["issue_rows"],
         },
         "claim_calibration": {
-            "report_paths": [
-                "output/reports/claim_calibration.json",
-                "output/reports/claim_calibration.md",
-            ],
+            "report_paths": ["output/reports/claim_calibration.json", "output/reports/claim_calibration.md"],
             "summary": claim_calibration_report.payload["summary"],
             "thresholds": claim_calibration_report.payload["thresholds"],
             "hard_fail_rows": claim_calibration_report.payload["hard_fail_rows"],
             "warning_row_count": claim_calibration_report.payload["warning_row_count"],
         },
         "reference_quality": {
-            "report_paths": [
-                "output/reports/reference_quality.json",
-                "output/reports/reference_quality.md",
-            ],
+            "report_paths": ["output/reports/reference_quality.json", "output/reports/reference_quality.md"],
             "summary": reference_quality_report.payload["summary"],
             "issue_rows": reference_quality_report.payload["issue_rows"],
             "negative_control": reference_quality_report.payload["negative_control"],
         },
         "figures": figure_summary,
         "pdf": _pdf_report_payload(pdf_report.as_dict(), root),
-        "rendered_references": {
-            "violation_count": len(rendered_reference_violations),
-            "violations": [violation.format(root) for violation in rendered_reference_violations],
-        },
-        "generated_output_scan": {
-            "pattern_count": len(STALE_OUTPUT_PATTERNS),
-            "hit_count": len(scan_hits),
-            "hits": scan_hits,
-        },
+        "rendered_references": {"violation_count": len(rendered_reference_violations), "violations": [violation.format(root) for violation in rendered_reference_violations]},
+        "generated_output_scan": {"pattern_count": len(STALE_OUTPUT_PATTERNS), "hit_count": len(scan_hits), "hits": scan_hits},
         "false_certification_control": false_certification_control(),
     }
     return ArtifactEvidence(payload)
@@ -280,9 +248,7 @@ def render_artifact_evidence_markdown(evidence: ArtifactEvidence) -> str:
         ]
     )
     for contract in payload.get("audit_contracts", []):
-        lines.append(
-            f"| `{contract['contract_id']}` | `{contract['check_id']}` | {contract['negative_control']} |"
-        )
+        lines.append(f"| `{contract['contract_id']}` | `{contract['check_id']}` | {contract['negative_control']} |")
     return "\n".join(lines) + "\n"
 
 
@@ -339,25 +305,14 @@ def _pdf_report_payload(pdf_payload: dict[str, Any], project_root: Path) -> dict
 
 
 def _scan_generated_text(project_root: Path) -> list[dict[str, Any]]:
-    roots = [
-        project_root / "output" / "manuscript",
-        project_root / "output" / "pdf" / "_combined_manuscript.md",
-        project_root / "output" / "pdf" / "_combined_manuscript.tex",
-    ]
+    roots = [project_root / "output" / "manuscript", project_root / "output" / "pdf" / "_combined_manuscript.md", project_root / "output" / "pdf" / "_combined_manuscript.tex"]
     hits: list[dict[str, Any]] = []
     for path in _iter_text_paths(roots):
         text = path.read_text(encoding="utf-8", errors="ignore")
         for pattern in STALE_OUTPUT_PATTERNS:
             for match in re.finditer(pattern, text):
                 line_number = text.count("\n", 0, match.start()) + 1
-                hits.append(
-                    {
-                        "path": path.relative_to(project_root).as_posix(),
-                        "line": line_number,
-                        "pattern": pattern,
-                        "match": match.group(0)[:180],
-                    }
-                )
+                hits.append({"path": path.relative_to(project_root).as_posix(), "line": line_number, "pattern": pattern, "match": match.group(0)[:180]})
     return hits
 
 
@@ -378,10 +333,4 @@ def _load_json(path: Path, *, output_root: Path) -> dict[str, Any]:
     return load_json_with_schema(path, output_root=output_root)
 
 
-__all__ = [
-    "ArtifactEvidence",
-    "STALE_OUTPUT_PATTERNS",
-    "collect_artifact_evidence",
-    "render_artifact_evidence_markdown",
-    "write_artifact_evidence",
-]
+__all__ = ["ArtifactEvidence", "STALE_OUTPUT_PATTERNS", "collect_artifact_evidence", "render_artifact_evidence_markdown", "write_artifact_evidence"]

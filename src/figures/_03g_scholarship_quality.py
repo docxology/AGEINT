@@ -15,14 +15,7 @@ def _render_scholarship_triangulation_map(output: Path, spec: FigureSpec) -> Non
         ("Triangulation review", ("single-family warning", "anchor metadata", "claim scope", "refresh duty")),
         ("Evidence output", ("JSON report", "Markdown report", "artifact manifest", "release blocker")),
     ]
-    draw_control_matrix(
-        output,
-        spec.title,
-        rows,
-        ("Section", "Citation Signal", "Verifier", "Disposition"),
-        "#c7d2fe",
-        "#fef3c7",
-    )
+    draw_control_matrix(output, spec.title, rows, ("Section", "Citation Signal", "Verifier", "Disposition"), "#c7d2fe", "#fef3c7")
 
 
 __all__ = ["_render_scholarship_triangulation_map"]

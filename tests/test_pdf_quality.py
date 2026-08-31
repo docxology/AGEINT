@@ -13,22 +13,11 @@ from pathlib import Path
 import pytest
 from reportlab.pdfgen import canvas
 
-from pdf_quality import (
-    PdfPhraseHit,
-    PdfQualityReport,
-    audit_pdf_quality,
-    extract_pdf_text,
-    pdf_metadata,
-    render_pdf_quality_markdown,
-    report_json,
-)
+from pdf_quality import PdfPhraseHit, PdfQualityReport, audit_pdf_quality, extract_pdf_text, pdf_metadata, render_pdf_quality_markdown, report_json
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-pytestmark = pytest.mark.skipif(
-    not shutil.which("pdftotext") or not shutil.which("pdfinfo"),
-    reason="pdftotext and pdfinfo required for PDF quality tests",
-)
+pytestmark = pytest.mark.skipif(not shutil.which("pdftotext") or not shutil.which("pdfinfo"), reason="pdftotext and pdfinfo required for PDF quality tests")
 
 
 def _write_pdf(path: Path, pages: list[str]) -> None:
@@ -52,19 +41,7 @@ def test_pdf_quality_script_reports_clean_rendered_pdf() -> None:
     if not pdf.is_file():
         pytest.skip("Rendered combined PDF not present")
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_pdf_quality.py"),
-            "--pdf",
-            str(pdf),
-            "--format",
-            "json",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_pdf_quality.py"), "--pdf", str(pdf), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
 
     assert result.returncode == 0, result.stdout + result.stderr
@@ -105,19 +82,13 @@ def test_rendered_pdf_has_no_raw_cross_reference_tokens() -> None:
         pytest.skip("Rendered combined PDF not present")
 
     text = extract_pdf_text(pdf)
-    raw_tokens = re.findall(
-        r"\[@(?:sec|fig|eq):[A-Za-z0-9_.:-]+\]|@(?:sec|fig|eq):[A-Za-z0-9_.:-]+",
-        text,
-    )
+    raw_tokens = re.findall(r"\[@(?:sec|fig|eq):[A-Za-z0-9_.:-]+\]|@(?:sec|fig|eq):[A-Za-z0-9_.:-]+", text)
 
     assert raw_tokens == []
 
 
 def test_pdf_quality_reports_missing_pdf_as_not_ok(tmp_path: Path) -> None:
-    report = audit_pdf_quality(
-        tmp_path / "missing.pdf",
-        manuscript_dir=PROJECT_ROOT / "output" / "manuscript",
-    )
+    report = audit_pdf_quality(tmp_path / "missing.pdf", manuscript_dir=PROJECT_ROOT / "output" / "manuscript")
 
     assert report.exists is False
     assert report.ok is False
@@ -127,13 +98,7 @@ def test_pdf_quality_reports_missing_pdf_as_not_ok(tmp_path: Path) -> None:
 
 def test_audit_pdf_quality_flags_banned_phrase_on_page(tmp_path: Path) -> None:
     pdf_path = tmp_path / "flagged.pdf"
-    _write_pdf(
-        pdf_path,
-        [
-            "Chapter overview with curriculum-safe prose.",
-            "This page still contains a TODO marker for reviewers.",
-        ],
-    )
+    _write_pdf(pdf_path, ["Chapter overview with curriculum-safe prose.", "This page still contains a TODO marker for reviewers."])
 
     report = audit_pdf_quality(pdf_path, banned_phrases=("TODO",))
 
@@ -232,9 +197,7 @@ def test_render_pdf_quality_markdown_includes_hits(tmp_path: Path) -> None:
         pdf_mtime=1.0,
         newest_manuscript_mtime=0.5,
         stale_pdf=False,
-        banned_phrase_hits=(
-            PdfPhraseHit(phrase="TODO", page=2, count=1),
-        ),
+        banned_phrase_hits=(PdfPhraseHit(phrase="TODO", page=2, count=1),),
         flagged_pages=(2,),
     )
 

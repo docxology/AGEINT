@@ -13,13 +13,7 @@ import os
 import time
 from pathlib import Path
 
-from build_pipeline import (
-    BUILD_STAMP_PATH,
-    generated_output_is_stale,
-    read_build_stamp,
-    source_content_digest,
-    write_build_stamp,
-)
+from build_pipeline import BUILD_STAMP_PATH, generated_output_is_stale, read_build_stamp, source_content_digest, write_build_stamp
 from orchestration_contracts import output_build_sentinels, source_freshness_roots
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -74,9 +68,7 @@ def test_digest_is_independent_of_checkout_location(tmp_path: Path) -> None:
     assert source_content_digest(root_a) == source_content_digest(root_b)
 
 
-def test_stamped_tree_is_fresh_even_when_source_mtimes_are_newer(
-    tmp_path: Path,
-) -> None:
+def test_stamped_tree_is_fresh_even_when_source_mtimes_are_newer(tmp_path: Path) -> None:
     # This is the checkout case the mtime heuristic gets wrong.
     root, output = _fake_tree(tmp_path)
     write_build_stamp(root, output)

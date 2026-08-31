@@ -7,11 +7,7 @@ from pathlib import Path
 import re
 
 from manuscript_quality.inventory_helpers import manuscript_dir, section_text
-from rendered_reference_audit import (
-    TitleRule,
-    audit_rendered_references,
-    sanitize_rendered_section_title_mentions,
-)
+from rendered_reference_audit import TitleRule, audit_rendered_references, sanitize_rendered_section_title_mentions
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DOCS = PROJECT_ROOT / "docs"
@@ -19,12 +15,8 @@ MANUSCRIPT = PROJECT_ROOT / "manuscript"
 TOKEN_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}")
 FIGURE_DEF_RE = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>fig:[a-z0-9-]+)\}")
 FIGURE_REF_RE = re.compile(r"\[@(?P<label>fig:[a-z0-9-]+)\]")
-MARKDOWN_FILE_LINK_RE = re.compile(
-    r"\[[^\]]+\]\([^)]*\.(?:md|markdown)(?:#[^)]*)?\)", re.IGNORECASE
-)
-HTML_MARKDOWN_FILE_LINK_RE = re.compile(
-    r"href=[\"'][^\"']*\.(?:md|markdown)(?:#[^\"']*)?[\"']", re.IGNORECASE
-)
+MARKDOWN_FILE_LINK_RE = re.compile(r"\[[^\]]+\]\([^)]*\.(?:md|markdown)(?:#[^)]*)?\)", re.IGNORECASE)
+HTML_MARKDOWN_FILE_LINK_RE = re.compile(r"href=[\"'][^\"']*\.(?:md|markdown)(?:#[^\"']*)?[\"']", re.IGNORECASE)
 SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)\}")
 SECTION_REF_RE = re.compile(r"\[@(?P<label>sec:[a-zA-Z0-9_-]+)\]")
 EQUATION_LABEL_RE = re.compile(r"\{#(?P<label>eq:[a-zA-Z0-9_-]+)\}")
@@ -38,9 +30,7 @@ HARD_CODED_NUMBER_RE = re.compile(
     r"(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b|\bAppendix\s+[A-Z]\b"
 )
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
-FORMALISM_REF_RE = re.compile(
-    r"\b[Ff]ormalisms?\s+(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b"
-)
+FORMALISM_REF_RE = re.compile(r"\b[Ff]ormalisms?\s+(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b")
 READER_FACING_CROSSREF_PREFIXES = (
     "figPrefix:\n  - Figure\n  - Figures",
     "secPrefix:\n  - Section\n  - Sections",
@@ -51,24 +41,12 @@ READER_FACING_CROSSREF_PREFIXES = (
 
 
 def _markdown_files(output_manuscript: Path) -> list[Path]:
-    return sorted(
-        path
-        for path in output_manuscript.rglob("*.md")
-        if path.name not in {"AGENTS.md", "README.md"}
-    )
+    return sorted(path for path in output_manuscript.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
 
 
 def _reference_scan_files(output_manuscript: Path) -> list[Path]:
-    generated = [
-        path
-        for path in _markdown_files(output_manuscript)
-        if "bibliography-atlas" not in path.parts and path.name != "references.md"
-    ]
-    templates = sorted(
-        path
-        for path in MANUSCRIPT.rglob("*.md")
-        if path.name not in {"AGENTS.md", "README.md"}
-    )
+    generated = [path for path in _markdown_files(output_manuscript) if "bibliography-atlas" not in path.parts and path.name != "references.md"]
+    templates = sorted(path for path in MANUSCRIPT.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
     docs = sorted(path for path in DOCS.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
     return generated + templates + docs + [PROJECT_ROOT / "README.md", PROJECT_ROOT / "AGENTS.md"]
 
@@ -78,24 +56,15 @@ def _all_output_text(output_manuscript: Path) -> str:
 
 
 def _all_bibtex_text(output_manuscript: Path) -> str:
-    return "\n\n".join(
-        path.read_text(encoding="utf-8") for path in sorted(output_manuscript.glob("*.bib"))
-    )
+    return "\n\n".join(path.read_text(encoding="utf-8") for path in sorted(output_manuscript.glob("*.bib")))
 
 
 def _generated_crossref_prose_text(output_manuscript: Path) -> str:
-    return "\n\n".join(
-        path.read_text(encoding="utf-8")
-        for path in _markdown_files(output_manuscript)
-        if "bibliography-atlas" not in path.parts and path.name != "references.md"
-    )
+    return "\n\n".join(path.read_text(encoding="utf-8") for path in _markdown_files(output_manuscript) if "bibliography-atlas" not in path.parts and path.name != "references.md")
 
 
 def _orientation_text(output_manuscript: Path) -> str:
-    return "\n\n".join(
-        path.read_text(encoding="utf-8")
-        for path in sorted((output_manuscript / "orientation").glob("*.md"))
-    )
+    return "\n\n".join(path.read_text(encoding="utf-8") for path in sorted((output_manuscript / "orientation").glob("*.md")))
 
 
 def test_generated_figures_and_references_resolve_through_registry(built_output: Path) -> None:
@@ -176,9 +145,7 @@ def test_orientation_navigation_surfaces_are_label_backed(built_output: Path) ->
 
 
 def test_curriculum_map_links_each_part_and_unit_map(built_output: Path) -> None:
-    [curriculum_map_path] = sorted(
-        (manuscript_dir(built_output) / "orientation").glob("*curriculum-map*.md")
-    )
+    [curriculum_map_path] = sorted((manuscript_dir(built_output) / "orientation").glob("*curriculum-map*.md"))
     curriculum_map = curriculum_map_path.read_text(encoding="utf-8")
     part_refs = set(re.findall(r"\[@(sec:part-[a-z0-9-]+)\]", curriculum_map))
     map_refs = set(re.findall(r"\[@(fig:part-[a-z0-9-]+-module-map)\]", curriculum_map))
@@ -188,11 +155,7 @@ def test_curriculum_map_links_each_part_and_unit_map(built_output: Path) -> None
     assert len(map_refs) == 16
     assert "| Counterintelligence |" in curriculum_map
     assert "| COUNTERINTELLIGENCE |" not in curriculum_map
-    assert not re.search(
-        r"^\| [^|]+ \| [0-9]+ \| parsed source guide \|$",
-        curriculum_map,
-        flags=re.MULTILINE,
-    )
+    assert not re.search(r"^\| [^|]+ \| [0-9]+ \| parsed source guide \|$", curriculum_map, flags=re.MULTILINE)
 
 
 def test_reference_key_tables_use_pandoc_citations_not_literal_keys(built_output: Path) -> None:
@@ -212,9 +175,7 @@ def test_rendered_reference_audit_allows_only_structural_title_mentions(built_ou
     assert [violation.format(PROJECT_ROOT) for violation in violations] == []
 
 
-def test_generated_manuscript_has_no_sanitizer_fragments_or_citation_punctuation(
-    built_output: Path,
-) -> None:
+def test_generated_manuscript_has_no_sanitizer_fragments_or_citation_punctuation(built_output: Path) -> None:
     text = _generated_crossref_prose_text(manuscript_dir(built_output))
 
     assert "History of the module" not in text
@@ -234,10 +195,7 @@ def test_rendered_reference_sanitizer_preserves_structural_titles_only() -> None
             "- Start **The Nature of Intelligence** with the authority card.",
         ]
     )
-    sanitized = sanitize_rendered_section_title_mentions(
-        text,
-        [TitleRule("The Nature of Intelligence", "the module", "chapter")],
-    )
+    sanitized = sanitize_rendered_section_title_mentions(text, [TitleRule("The Nature of Intelligence", "the module", "chapter")])
 
     assert "# The Nature of Intelligence {#sec:chapter-the-nature-of-intelligence}" in sanitized
     assert "| The Nature of Intelligence | [@sec:chapter-the-nature-of-intelligence] |" in sanitized
@@ -259,40 +217,19 @@ def test_sanitize_preserves_authored_titles_but_neutralizes_bare_crossrefs() -> 
     """
     rule = [TitleRule("Social Engineering", "the module", "chapter")]
     # Embedded in a longer bold lesson title -> preserved verbatim.
-    assert (
-        sanitize_rendered_section_title_mentions(
-            "**History of Social Engineering** teaches defensive recognition.", rule
-        )
-        == "**History of Social Engineering** teaches defensive recognition."
-    )
+    assert sanitize_rendered_section_title_mentions("**History of Social Engineering** teaches defensive recognition.", rule) == "**History of Social Engineering** teaches defensive recognition."
     # Bold topic cluster containing the chapter title -> preserved.
-    assert "Social Engineering" in sanitize_rendered_section_title_mentions(
-        "The cluster is **Influence Tactics; History of Social Engineering**.", rule
-    )
+    assert "Social Engineering" in sanitize_rendered_section_title_mentions("The cluster is **Influence Tactics; History of Social Engineering**.", rule)
     # Bare cross-reference opening with a capital -> neutralised (no leak).
-    assert (
-        sanitize_rendered_section_title_mentions(
-            "See Social Engineering for the next exercise.", rule
-        )
-        == "See the module for the next exercise."
-    )
+    assert sanitize_rendered_section_title_mentions("See Social Engineering for the next exercise.", rule) == "See the module for the next exercise."
     # Exact bold title mention (a genuine cross-reference) -> neutralised.
-    assert (
-        sanitize_rendered_section_title_mentions(
-            "Start **Social Engineering** with the authority card.", rule
-        )
-        == "Start the module with the authority card."
-    )
+    assert sanitize_rendered_section_title_mentions("Start **Social Engineering** with the authority card.", rule) == "Start the module with the authority card."
 
 
 def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path: Path) -> None:
     web = tmp_path / "web"
     web.mkdir()
-    (web / "index.html").write_text(
-        "<p>Visual guide for the section Figure&nbsp;1.</p>\n"
-        "<p>Navigation links: Section&nbsp;2, Section&nbsp;3.</p>\n",
-        encoding="utf-8",
-    )
+    (web / "index.html").write_text("<p>Visual guide for the section Figure&nbsp;1.</p>\n<p>Navigation links: Section&nbsp;2, Section&nbsp;3.</p>\n", encoding="utf-8")
 
     assert audit_rendered_references(tmp_path) == []
 
@@ -303,25 +240,16 @@ def test_rendered_reference_audit_preserves_rendered_authored_emphasis(tmp_path:
     (manuscript / "chapter.md").write_text("# Social Engineering\n", encoding="utf-8")
     web = tmp_path / "web"
     web.mkdir()
-    (web / "index.html").write_text(
-        "<p><strong>History of Social Engineering</strong> teaches defensive recognition.</p>\n",
-        encoding="utf-8",
-    )
+    (web / "index.html").write_text("<p><strong>History of Social Engineering</strong> teaches defensive recognition.</p>\n", encoding="utf-8")
     pdf = tmp_path / "pdf"
     pdf.mkdir()
-    (pdf / "_combined_manuscript.tex").write_text(
-        "\\textbf{AI Automation of Social Engineering at\nScale} stays defensive.\n",
-        encoding="utf-8",
-    )
+    (pdf / "_combined_manuscript.tex").write_text("\\textbf{AI Automation of Social Engineering at\nScale} stays defensive.\n", encoding="utf-8")
 
     assert audit_rendered_references(tmp_path) == []
 
 
 def test_rendered_reference_audit_allows_wrapped_tex_section_titles(tmp_path: Path) -> None:
-    title = (
-        "Governed Intelligence Cycle and Dissemination Architecture frame for The Nature of "
-        "Intelligence: source context, topic focus, and reader task"
-    )
+    title = "Governed Intelligence Cycle and Dissemination Architecture frame for The Nature of Intelligence: source context, topic focus, and reader task"
     manuscript = tmp_path / "manuscript"
     manuscript.mkdir()
     (manuscript / "chapter.md").write_text(f"# {title}\n", encoding="utf-8")
@@ -344,14 +272,9 @@ def test_rendered_reference_audit_flags_unresolved_citation_key(tmp_path: Path) 
     manuscript = tmp_path / "manuscript"
     parts = manuscript / "parts" / "unit" / "chapter"
     parts.mkdir(parents=True)
-    (manuscript / "references-source-guide-001-050.bib").write_text(
-        '@misc{ageint001,\n  title = {Real entry},\n}\n', encoding="utf-8"
-    )
+    (manuscript / "references-source-guide-001-050.bib").write_text("@misc{ageint001,\n  title = {Real entry},\n}\n", encoding="utf-8")
     (parts / "01-practice-studio.md").write_text(
-        "Topic rests on [@ageint001] and [@ageint999].\n"
-        "Cross-refs [@sec:foo] and [@fig:bar] are fine.\n"
-        "A URL like medium.com/@anil.jain.baba is not a citation.\n",
-        encoding="utf-8",
+        "Topic rests on [@ageint001] and [@ageint999].\nCross-refs [@sec:foo] and [@fig:bar] are fine.\nA URL like medium.com/@anil.jain.baba is not a citation.\n", encoding="utf-8"
     )
 
     violations = audit_rendered_references(tmp_path)
@@ -387,17 +310,11 @@ def test_generated_cross_links_are_label_backed_not_title_prose(built_output: Pa
     for path in sorted((output_manuscript / "parts").glob("*/*/00-overview.md")):
         if not path.is_file():
             continue
-        text = "\n\n".join(
-            fragment.read_text(encoding="utf-8")
-            for fragment in sorted(path.parent.glob("*.md"))
-        )
+        text = "\n\n".join(fragment.read_text(encoding="utf-8") for fragment in sorted(path.parent.glob("*.md")))
         from manuscript_manifest._heading_titles import chapter_detail_titles
         from manuscript_quality.inventory_helpers import chapter_title_from_text
 
-        cross_links = section_text(
-            text,
-            chapter_detail_titles(chapter_title_from_text(text))["links"],
-        )
+        cross_links = section_text(text, chapter_detail_titles(chapter_title_from_text(text))["links"])
         if "[@sec:" not in cross_links or "adjacent AGEINT architecture" in cross_links:
             rel = path.relative_to(PROJECT_ROOT).as_posix()
             violations.append(f"{rel}: {cross_links.strip()}")

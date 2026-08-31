@@ -35,10 +35,7 @@ DATA = PROJECT_ROOT / "data" / "curriculum"
 # still surfaced 3 more tmp_path-based failures from this same file: all
 # call run_build() too, just non-destructively. Skip the whole class rather
 # than whack-a-mole discovering each one via another isolated run.
-requires_template_repo = pytest.mark.skipif(
-    template_resolver.resolve_template_repo(PROJECT_ROOT) is None,
-    reason="sibling docxology/template repo not resolvable in this checkout",
-)
+requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 REQUIRED_OUTPUT_DOC_DIRS = {
     Path("output"),
     Path("output/data"),
@@ -60,10 +57,7 @@ def _minimal_project(tmp_path: Path) -> Path:
     data_dir = project / "data"
     data_dir.mkdir()
     shutil.copytree(DATA, data_dir / DATA.name)
-    (templates / "chapter.md").write_text(
-        "# {{SECTION_TITLE}}\n\n{{VISUAL_SYNTHESIS}}\n\nTEMPLATE SENTINEL\n\n{{SECTION_BODY}}\n",
-        encoding="utf-8",
-    )
+    (templates / "chapter.md").write_text("# {{SECTION_TITLE}}\n\n{{VISUAL_SYNTHESIS}}\n\nTEMPLATE SENTINEL\n\n{{SECTION_BODY}}\n", encoding="utf-8")
     return project
 
 
@@ -77,11 +71,7 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     project = _minimal_project(tmp_path)
     template_file = project / "manuscript" / "templates" / "chapter.md"
 
-    result = run_build(
-        project,
-        regenerate_source_template_library=False,
-        allow_placeholder_figures=True,
-    )
+    result = run_build(project, regenerate_source_template_library=False, allow_placeholder_figures=True)
 
     assert result.written_source_templates == 0
     assert "TEMPLATE SENTINEL" in template_file.read_text(encoding="utf-8")
@@ -91,48 +81,13 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     assert (project / "output" / "data" / "curriculum_outline.json").is_file()
     assert (project / "output" / "data" / "curriculum" / "metadata.json").is_file()
     assert (project / "output" / "data" / "manuscript_variables.json").is_file()
-    assert (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "00-overview.md"
-    ).is_file()
-    foundations = (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "01-practice-studio.md"
-    ).read_text(encoding="utf-8")
+    assert (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").is_file()
+    foundations = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
     assert "#### Lesson 1:" in foundations
-    worked = (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "01-practice-studio.md"
-    ).read_text(encoding="utf-8")
+    worked = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
     assert "**Filled artifact.**" in worked
-    assert (
-        "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer"
-        in worked
-    )
-    assert "uses [@fig:" in (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "00-overview.md"
-    ).read_text(encoding="utf-8")
+    assert "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer" in worked
+    assert "uses [@fig:" in (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").read_text(encoding="utf-8")
     assert "Generated section context" not in foundations
 
 
@@ -164,11 +119,7 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, mo
     project = _minimal_project(tmp_path)
     template_file = project / "manuscript" / "templates" / "chapter.md"
 
-    result = run_build(
-        project,
-        regenerate_source_template_library=True,
-        allow_placeholder_figures=True,
-    )
+    result = run_build(project, regenerate_source_template_library=True, allow_placeholder_figures=True)
 
     assert result.written_source_templates == 8
     rewritten = template_file.read_text(encoding="utf-8")

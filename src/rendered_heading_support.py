@@ -73,16 +73,7 @@ def heading_support_inventory(manuscript_dir: Path) -> list[HeadingSupportRow]:
         relative = path.relative_to(root).as_posix()
         for block in _heading_blocks(text):
             refs = _support_refs(block.text)
-            rows.append(
-                HeadingSupportRow(
-                    path=relative,
-                    line_number=block.line_number,
-                    level=block.level,
-                    title=_clean_heading_title(block.title),
-                    supported=bool(refs),
-                    support_refs=tuple(refs),
-                )
-            )
+            rows.append(HeadingSupportRow(path=relative, line_number=block.line_number, level=block.level, title=_clean_heading_title(block.title), supported=bool(refs), support_refs=tuple(refs)))
     return rows
 
 
@@ -91,12 +82,7 @@ def heading_support_summary(rows: list[HeadingSupportRow]) -> HeadingSupportSumm
 
     files = {row.path for row in rows}
     supported = sum(1 for row in rows if row.supported)
-    return HeadingSupportSummary(
-        file_count=len(files),
-        heading_count=len(rows),
-        supported_heading_count=supported,
-        unsupported_heading_count=len(rows) - supported,
-    )
+    return HeadingSupportSummary(file_count=len(files), heading_count=len(rows), supported_heading_count=supported, unsupported_heading_count=len(rows) - supported)
 
 
 def unsupported_heading_rows(manuscript_dir: Path) -> list[HeadingSupportRow]:
@@ -136,20 +122,7 @@ def heading_support_json(manuscript_dir: Path) -> str:
     summary = heading_support_summary(rows)
     unsupported = [row for row in rows if not row.supported]
     return json.dumps(
-        {
-            **summary.as_dict(),
-            "unsupported_headings": [
-                {
-                    "path": row.path,
-                    "line_number": row.line_number,
-                    "level": row.level,
-                    "title": row.title,
-                }
-                for row in unsupported
-            ],
-        },
-        indent=2,
-        sort_keys=True,
+        {**summary.as_dict(), "unsupported_headings": [{"path": row.path, "line_number": row.line_number, "level": row.level, "title": row.title} for row in unsupported]}, indent=2, sort_keys=True
     )
 
 
@@ -203,15 +176,7 @@ def _heading_blocks(text: str) -> list[_HeadingBlock]:
     blocks: list[_HeadingBlock] = []
     for position, (index, line_number, level, title) in enumerate(headings):
         end = headings[position + 1][0] if position + 1 < len(headings) else len(lines)
-        blocks.append(
-            _HeadingBlock(
-                line_index=index,
-                line_number=line_number,
-                level=level,
-                title=title,
-                text="\n".join(lines[index:end]),
-            )
-        )
+        blocks.append(_HeadingBlock(line_index=index, line_number=line_number, level=level, title=title, text="\n".join(lines[index:end])))
     return blocks
 
 
@@ -238,15 +203,9 @@ def _support_sentence(relative_path: Path, heading_title: str, file_text: str) -
     refs_text = "; ".join(refs)
     title = _clean_heading_title(heading_title).lower()
     if "current source-section coverage" in title or "current citation coverage by source section" in title:
-        return (
-            f"**Coverage anchor.** Parent appendix: {refs[0]}. "
-            "Citation coverage by source section is validated from the generated citation inventory."
-        )
+        return f"**Coverage anchor.** Parent appendix: {refs[0]}. Citation coverage by source section is validated from the generated citation inventory."
     if "source-section citation rows" in title or "citation rows by source section" in title:
-        return (
-            f"**Coverage inventory.** See the bibliography atlas {refs[0]}; "
-            "each row is generated from the curriculum source-section inventory."
-        )
+        return f"**Coverage inventory.** See the bibliography atlas {refs[0]}; each row is generated from the curriculum source-section inventory."
     if structural:
         return f"**Section anchor.** {refs_text}."
     return f"**Evidence anchor.** {refs_text}."
@@ -265,12 +224,7 @@ def _uses_structural_anchor(relative_path: Path, heading_title: str) -> bool:
     )
 
 
-def _path_support_refs(
-    relative_path: Path,
-    file_text: str,
-    *,
-    include_citation: bool = True,
-) -> list[str]:
+def _path_support_refs(relative_path: Path, file_text: str, *, include_citation: bool = True) -> list[str]:
     refs: list[str] = []
     label = _first_section_label(file_text) or _inferred_section_label(relative_path)
     refs.append(f"[@{label}]" if label else "[@sec:curriculum_orientation]")
@@ -308,11 +262,7 @@ def _inferred_section_label(relative_path: Path) -> str:
     if parts[0] == "appendices":
         if len(parts) > 1 and parts[1] == "bibliography-atlas":
             return "sec:bibliography_atlas"
-        if (
-            len(parts) > 1
-            and parts[1].endswith(".md")
-            and parts[1] not in {"README.md", "AGENTS.md"}
-        ):
+        if len(parts) > 1 and parts[1].endswith(".md") and parts[1] not in {"README.md", "AGENTS.md"}:
             return f"sec:appendix-{parts[1].removesuffix('.md')}"
         return "sec:bibliography_atlas"
     if parts[0] == "parts":

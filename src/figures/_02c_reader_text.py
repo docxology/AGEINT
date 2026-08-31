@@ -21,11 +21,7 @@ def _with_informative_reader_text(spec: FigureSpec, curriculum: Curriculum) -> F
     caption = _expand_caption(spec, curriculum)
     alt_text = _expand_alt_text(spec, curriculum)
     long_description = _expand_long_description(spec, curriculum, caption=caption, alt_text=alt_text)
-    if (
-        caption == spec.caption
-        and alt_text == spec.alt_text
-        and long_description == spec.long_description
-    ):
+    if caption == spec.caption and alt_text == spec.alt_text and long_description == spec.long_description:
         return spec
     return replace(spec, caption=caption, alt_text=alt_text, long_description=long_description)
 
@@ -36,22 +32,10 @@ def _expand_caption(spec: FigureSpec, curriculum: Curriculum) -> str:
     detail = _figure_detail(spec, curriculum, limit=4)
     context = _source_context(spec.source_section)
     variants = (
-        (
-            "It is anchored to {context}; use it to inspect {detail} while preserving "
-            "the distinction between curriculum structure, evidence boundary, and accountable practice."
-        ),
-        (
-            "In {context}, it lets readers compare {detail} so the visual functions as "
-            "a traceable course aid rather than an unscoped assertion."
-        ),
-        (
-            "Its reader value is to make {detail} visible at a glance, with {context} "
-            "as the source section and defensive review as the boundary."
-        ),
-        (
-            "The captioned view belongs to {context} and should be read as a map of "
-            "{detail}, not as a capability score or live-task instruction."
-        ),
+        ("It is anchored to {context}; use it to inspect {detail} while preserving the distinction between curriculum structure, evidence boundary, and accountable practice."),
+        ("In {context}, it lets readers compare {detail} so the visual functions as a traceable course aid rather than an unscoped assertion."),
+        ("Its reader value is to make {detail} visible at a glance, with {context} as the source section and defensive review as the boundary."),
+        ("The captioned view belongs to {context} and should be read as a map of {detail}, not as a capability score or live-task instruction."),
     )
     suffix = variants[_stable_variant(spec.label)].format(context=context, detail=detail)
     return f"{_terminal(spec.caption)} {suffix}"
@@ -62,19 +46,10 @@ def _expand_alt_text(spec: FigureSpec, curriculum: Curriculum) -> str:
         return spec.alt_text
     detail = _figure_detail(spec, curriculum, limit=5)
     context = _source_context(spec.source_section)
-    return (
-        f"{_terminal(spec.alt_text)} Labeled content highlights {detail}, "
-        f"with the visual tied back to {context}."
-    )
+    return f"{_terminal(spec.alt_text)} Labeled content highlights {detail}, with the visual tied back to {context}."
 
 
-def _expand_long_description(
-    spec: FigureSpec,
-    curriculum: Curriculum,
-    *,
-    caption: str,
-    alt_text: str,
-) -> str:
+def _expand_long_description(spec: FigureSpec, curriculum: Curriculum, *, caption: str, alt_text: str) -> str:
     if _word_count(spec.long_description) >= MIN_LONG_DESCRIPTION_WORDS:
         return spec.long_description
     detail = _figure_detail(spec, curriculum, limit=8)
@@ -94,19 +69,13 @@ def _expand_long_description(
 
 def _figure_detail(spec: FigureSpec, curriculum: Curriculum, *, limit: int) -> str:
     if spec.label == "fig:ageint-curriculum-map":
-        return (
-            f"{len(curriculum.parts)} part nodes, source-backed module counts, and the reading "
-            "path from tradecraft foundations through oversight frameworks"
-        )
+        return f"{len(curriculum.parts)} part nodes, source-backed module counts, and the reading path from tradecraft foundations through oversight frameworks"
     if spec.label.startswith("fig:part-") and spec.label.endswith("-module-map"):
         for part in curriculum.parts:
             if spec.title == f"{part['title']} Module Map":
                 chapters = [str(chapter["title"]) for chapter in part["chapters"]]
                 if chapters:
-                    return (
-                        f"{len(chapters)} module nodes in the unit's ordered, "
-                        "source-backed reading sequence from its first module to its last"
-                    )
+                    return f"{len(chapters)} module nodes in the unit's ordered, source-backed reading sequence from its first module to its last"
     if spec.kind is FigureKind.MERMAID:
         reader_detail = str(spec.provenance.get("reader_detail", "")).strip()
         if reader_detail:
@@ -122,10 +91,7 @@ def _figure_detail(spec: FigureSpec, curriculum: Curriculum, *, limit: int) -> s
     if spec.kind is FigureKind.HISTORICAL:
         agency = spec.provenance.get("source_agency", "the source agency")
         date = spec.provenance.get("date", "the documented collection date")
-        return (
-            f"{agency} provenance, {date} collection context, public-domain status, "
-            "and analytic reuse boundary"
-        )
+        return f"{agency} provenance, {date} collection context, public-domain status, and analytic reuse boundary"
     if spec.kind is FigureKind.PYTHON:
         return _python_visual_detail(spec.provenance.get("renderer_id", "figure"))
     return _detail_from_text(f"{spec.alt_text} {spec.caption}", limit=limit)
@@ -143,11 +109,7 @@ def _mermaid_labels(source: str, *, limit: int) -> list[str]:
 
 
 def _reader_detail_items(detail: str, *, limit: int) -> str:
-    items = [
-        item.strip(" .;:")
-        for item in re.split(r";|\\n", detail)
-        if len(item.split()) >= 2
-    ]
+    items = [item.strip(" .;:") for item in re.split(r";|\\n", detail) if len(item.split()) >= 2]
     return _join_items(items[:limit]) if items else detail
 
 
@@ -160,11 +122,7 @@ def _clean_label(raw: str) -> str:
 
 def _detail_from_text(text: str, *, limit: int) -> str:
     cleaned = re.sub(r"\b(?:diagram|showing|matrix|loop|chart|conceptual)\b", "", text, flags=re.I)
-    phrases = [
-        phrase.strip(" .;:")
-        for phrase in re.split(r",|;|\band\b", cleaned)
-        if len(phrase.split()) >= 2
-    ]
+    phrases = [phrase.strip(" .;:") for phrase in re.split(r",|;|\band\b", cleaned) if len(phrase.split()) >= 2]
     deduped: list[str] = []
     for phrase in phrases:
         if phrase and phrase not in deduped:
@@ -201,10 +159,7 @@ def _visual_type(spec: FigureSpec) -> str:
     # the title, so an explicit flow signal in the alt text must win before the
     # map -> matrix branch; otherwise a flowchart is announced as a matrix to
     # screen readers.
-    if any(
-        token in spec.alt_text.lower()
-        for token in ("flow chart", "flowchart", "reading order", "reading sequence", "pipeline")
-    ):
+    if any(token in spec.alt_text.lower() for token in ("flow chart", "flowchart", "reading order", "reading sequence", "pipeline")):
         return "process-flow figure"
     if any(token in text for token in ("matrix", "registry", "table", "map")):
         return "matrix-style figure"
@@ -274,10 +229,7 @@ def _python_visual_detail(renderer_id: str) -> str:
     label = renderer_id.replace("_", " ")
     if any(token in renderer_id for token in ("loop", "flow", "lifecycle", "cycle", "workflow")):
         return f"{label} steps, decision gates, owner handoffs, refresh triggers, and closure evidence"
-    if any(
-        token in renderer_id
-        for token in ("matrix", "map", "card", "registry", "audit", "memo", "bank", "backlog")
-    ):
+    if any(token in renderer_id for token in ("matrix", "map", "card", "registry", "audit", "memo", "bank", "backlog")):
         return f"{label} fields, row and column obligations, source records, reviewer decisions, and closure evidence"
     if any(token in renderer_id for token in ("coverage", "density", "spine", "boundary", "taxonomy")):
         return f"{label} categories, denominators, evidence lanes, limitations, and reviewer-use cautions"
@@ -311,9 +263,4 @@ def _stable_variant(value: str) -> int:
     return sum(ord(char) for char in value) % 4
 
 
-__all__ = [
-    "MIN_ALT_TEXT_WORDS",
-    "MIN_LONG_DESCRIPTION_WORDS",
-    "MIN_READER_CAPTION_WORDS",
-    "_with_informative_reader_text",
-]
+__all__ = ["MIN_ALT_TEXT_WORDS", "MIN_LONG_DESCRIPTION_WORDS", "MIN_READER_CAPTION_WORDS", "_with_informative_reader_text"]

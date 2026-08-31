@@ -7,11 +7,7 @@ from datetime import date
 from pathlib import Path
 import re
 
-from intelligence_content import (
-    INTELLIGENCE_PROFILES,
-    INTELLIGENCE_RESEARCH_ANCHORS,
-    expanded_profile_anchor_keys,
-)
+from intelligence_content import INTELLIGENCE_PROFILES, INTELLIGENCE_RESEARCH_ANCHORS, expanded_profile_anchor_keys
 from manuscript_variables import generate_variables
 
 from manuscript_quality.inventory_helpers import (
@@ -41,13 +37,7 @@ def test_generated_runtime_item_maps_deduplicate_safe_treatments(built_output: P
         seen: set[str] = set()
         duplicates: set[str] = set()
         for line in table.splitlines():
-            if (
-                not line.startswith("| ")
-                or line.startswith("| Source item")
-                or line.startswith("| Curriculum treatment")
-                or line.startswith("| Safe curriculum treatment")
-                or line.startswith("|---")
-            ):
+            if not line.startswith("| ") or line.startswith("| Source item") or line.startswith("| Curriculum treatment") or line.startswith("| Safe curriculum treatment") or line.startswith("|---"):
                 continue
             source_item = line.split("|")[1].strip()
             if source_item in seen:
@@ -107,10 +97,7 @@ def test_generated_v2_appendices_render_source_and_capstone_workflows(built_outp
     assert "## Source verification workflow" in h_text
     assert "### Source Verification and Claim Ledger Workbook safe artifact schema" in h_text
     assert "### Source Verification and Claim Ledger Workbook input/output contract" in h_text
-    assert (
-        "### Source Verification and Claim Ledger Workbook failure cases and required responses"
-        in h_text
-    )
+    assert "### Source Verification and Claim Ledger Workbook failure cases and required responses" in h_text
     assert "### Source Verification and Claim Ledger Workbook rubric scoring bands" in h_text
     assert "### Source Verification and Claim Ledger Workbook refresh evidence" in h_text
     assert "## Source refresh evidence" in h_text
@@ -164,14 +151,10 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "Artificial Intelligence Cybersecurity Challenges" in variables["BIBTEX_REFERENCES"]
     assert "Model Cards for Model Reporting" in variables["BIBTEX_REFERENCES"]
     assert "Datasheets for Datasets" in variables["BIBTEX_REFERENCES"]
-    assert "Data Cards: Purposeful and Transparent Dataset Documentation" in variables[
-        "BIBTEX_REFERENCES"
-    ]
+    assert "Data Cards: Purposeful and Transparent Dataset Documentation" in variables["BIBTEX_REFERENCES"]
     assert "The Free Energy Principle for Action and Perception" in variables["BIBTEX_REFERENCES"]
     assert "PRISMA-S: An Extension to the PRISMA Statement" in variables["BIBTEX_REFERENCES"]
-    assert "Compromising Real-World LLM-Integrated Applications" in variables[
-        "BIBTEX_REFERENCES"
-    ]
+    assert "Compromising Real-World LLM-Integrated Applications" in variables["BIBTEX_REFERENCES"]
     assert "Algorithmic Transparency Recording Standard Hub" in variables["BIBTEX_REFERENCES"]
     assert "Secure Software Development Practices for Generative AI" in variables["BIBTEX_REFERENCES"]
     assert "Revised 508 Standards and 255 Guidelines" in variables["BIBTEX_REFERENCES"]
@@ -208,30 +191,16 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "| Anchor | Source | Lane | Tier | Checked | Cadence | Refresh trigger | Verification note |" in variables["SOURCE_REFRESH_ROWS"]
     assert "URL refreshed 2026-06-06" in variables["SOURCE_REFRESH_ROWS"]
     assert "manual browser re-verification remains required" in variables["SOURCE_REFRESH_ROWS"]
-    assert "| Anchor | Source | Lane | Contribution to the manuscript | Verification caveat |" in variables[
-        "CURRENT_SOURCE_UPDATE_ROWS"
-    ]
+    assert "| Anchor | Source | Lane | Contribution to the manuscript | Verification caveat |" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
     assert "official_nist_ai_100_4_synthetic_content" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
-    assert "official_us_aisi_nist_ai_800_1_misuse_risk" in variables[
-        "CURRENT_SOURCE_UPDATE_ROWS"
-    ]
+    assert "official_us_aisi_nist_ai_800_1_misuse_risk" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
     assert "Draft status retained" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
-    assert "official_model_context_protocol_security_best_practices" in variables[
-        "CURRENT_SOURCE_UPDATE_ROWS"
-    ]
-    assert "scholarly_data_cards_dataset_documentation" in variables[
-        "CURRENT_SOURCE_UPDATE_ROWS"
-    ]
-    assert "scholarly_buckley_2017_fep_mathematical_review" in variables[
-        "BIBLIOGRAPHY_ATLAS_ROWS"
-    ]
+    assert "official_model_context_protocol_security_best_practices" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
+    assert "scholarly_data_cards_dataset_documentation" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
+    assert "scholarly_buckley_2017_fep_mathematical_review" in variables["BIBLIOGRAPHY_ATLAS_ROWS"]
     assert "scholarly_rethlefsen_2021_prisma_s" in variables["BIBLIOGRAPHY_ATLAS_ROWS"]
-    assert "scholarly_greshake_2023_indirect_prompt_injection" in variables[
-        "BIBLIOGRAPHY_ATLAS_ROWS"
-    ]
-    assert "official_agent2agent_protocol_specification" in variables[
-        "CURRENT_SOURCE_UPDATE_ROWS"
-    ]
+    assert "scholarly_greshake_2023_indirect_prompt_injection" in variables["BIBLIOGRAPHY_ATLAS_ROWS"]
+    assert "official_agent2agent_protocol_specification" in variables["CURRENT_SOURCE_UPDATE_ROWS"]
     assert "AGEINT patterns" in variables["SAFE_SUBSTITUTION_ROWS"]
     assert "accountable learning question" in variables["CAPSTONE_SCAFFOLD_ROWS"]
     assert "WCAG/UDL needs note" in variables["ACCESSIBILITY_REVIEW_ROWS"]
@@ -246,9 +215,7 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
     assert "Provenance and collection" in variables["MODEL_DATASET_CARD_ROWS"]
     assert "Evaluation and caveats" in variables["MODEL_DATASET_CARD_ROWS"]
     assert "Data Cards purpose statement" in variables["MODEL_DATASET_CARD_ROWS"]
-    assert "empirical or performance claims are rejected" in variables[
-        "MODEL_DATASET_CARD_ROWS"
-    ]
+    assert "empirical or performance claims are rejected" in variables["MODEL_DATASET_CARD_ROWS"]
     assert "Public purpose" in variables["TRANSPARENCY_NOTICE_ROWS"]
     assert "Source and prompt register" in variables["RETENTION_AUDIT_ROWS"]
     assert "Scope freeze" in variables["RELEASE_CHANGE_CONTROL_ROWS"]
@@ -265,9 +232,7 @@ def test_runtime_variables_are_auditable_and_source_backed() -> None:
 def test_research_anchors_include_verification_metadata() -> None:
     assert len(INTELLIGENCE_RESEARCH_ANCHORS) == 462
     assert REQUIRED_REFRESHED_ANCHOR_KEYS <= {anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
-    assert REQUIRED_SOURCE_LANES <= {
-        anchor.source_lane or anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS
-    }
+    assert REQUIRED_SOURCE_LANES <= {anchor.source_lane or anchor.domain for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
     anchor_keys = SOURCE_QUALITY_KEYS
     for profile in INTELLIGENCE_PROFILES:
         assert set(expanded_profile_anchor_keys(profile)) <= anchor_keys, profile.identifier
@@ -332,6 +297,7 @@ def test_reader_docs_match_live_counts_and_perplexity_method() -> None:
     assert f"expand the curated anchor set to {anchor_count}" in research
     assert "Vendor/blog results from discovery are not encoded" in research.replace("\n", " ")
 
+
 def test_generated_chapters_include_current_source_assurance_crosswalk(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     for path in generated_chapter_files(output_manuscript):
@@ -341,10 +307,7 @@ def test_generated_chapters_include_current_source_assurance_crosswalk(built_out
 
         details = chapter_detail_titles(chapter_title_from_text(text))
         assert f"#### {details['current_source']}" in text, path
-        crosswalk = section_text(
-            text,
-            details["governance"],
-        )
+        crosswalk = section_text(text, details["governance"])
         assert "Discovery and second-opinion" in crosswalk, path
         assert "Claim ledger records the direct URL" in crosswalk, path
         assert re.search(r"checked 2026-(05|06)-", crosswalk), path
@@ -416,13 +379,8 @@ def test_v2_docs_cover_source_lanes_identity_safety_and_capstone() -> None:
 def test_abstract_and_claim_ledger_calibrate_empirical_claims(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     abstract = (output_manuscript / "abstract.md").read_text(encoding="utf-8")
-    orientation = "\n".join(
-        path.read_text(encoding="utf-8")
-        for path in sorted((output_manuscript / "orientation").glob("*.md"))
-    )
-    method_ref = (
-        output_manuscript / "method-assurance-reference.md"
-    ).read_text(encoding="utf-8")
+    orientation = "\n".join(path.read_text(encoding="utf-8") for path in sorted((output_manuscript / "orientation").glob("*.md")))
+    method_ref = (output_manuscript / "method-assurance-reference.md").read_text(encoding="utf-8")
     abstract_normalized = re.sub(r"\s+", " ", abstract)
     orientation_normalized = re.sub(r"\s+", " ", orientation)
 
@@ -433,41 +391,21 @@ def test_abstract_and_claim_ledger_calibrate_empirical_claims(built_output: Path
     assert "[@fig:ageint-synthetic-tradecraft-method-contract]" in abstract
     assert "[@fig:ageint-analysis-validation-matrix]" in abstract
     assert "does not claim to measure AGEINT performance" in abstract_normalized
-    assert (
-        "Practitioner, vendor, and blog sources inherited through the source guide"
-        in abstract_normalized
-    )
+    assert "Practitioner, vendor, and blog sources inherited through the source guide" in abstract_normalized
     assert "Empirical or evaluated capability claim" in method_ref
     assert "not merely inferred from the AGEINT curriculum architecture" in method_ref
     assert "proposed design guidance and an assurance framework" in orientation
-    assert (
-        "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, "
-        "and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}"
-        in orientation
-    )
-    assert (
-        "source-governed workbench for producing reviewable analytic artifacts"
-        in orientation_normalized
-    )
+    assert "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}" in orientation
+    assert "source-governed workbench for producing reviewable analytic artifacts" in orientation_normalized
     assert "[@fig:ageint-sat-evidence-boundary]" in orientation
     assert "[@fig:ageint-synthetic-tradecraft-method-contract]" in orientation
-    assert (
-        "## Analysis validation protocol: claim classes, evidence packets, and failure "
-        "modes {#sec:analysis-validation-protocol}"
-        in orientation
-    )
+    assert "## Analysis validation protocol: claim classes, evidence packets, and failure modes {#sec:analysis-validation-protocol}" in orientation
     assert "[@fig:ageint-analysis-validation-matrix]" in orientation
 
 
 def test_risky_patterns_are_safety_transformed(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    pattern_chapter = (
-        output_manuscript
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "ageint-design-patterns-and-archetypes"
-        / "00-overview.md"
-    )
+    pattern_chapter = output_manuscript / "parts" / "ageint-agentic-intelligence" / "ageint-design-patterns-and-archetypes" / "00-overview.md"
     pattern_chapter = chapter_text(pattern_chapter)
     runtime_map = section_text(pattern_chapter, "Runtime-to-reader map").lower()
     pattern_chapter = pattern_chapter.lower()
@@ -486,9 +424,7 @@ def test_coursebook_practice_sections_safety_transform_unsafe_motifs(built_outpu
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path).lower()
         title = chapter_title_from_text(text)
-        assurance_heading = (
-            f"## {title} assurance handoff: evidence, governance, refresh, and capstone"
-        )
+        assurance_heading = f"## {title} assurance handoff: evidence, governance, refresh, and capstone"
         coursebook = text.split(assurance_heading, 1)[0]
         for phrase in BLOCKED_OPERATIONAL_PATTERN_PHRASES:
             assert phrase not in coursebook, f"{path}: {phrase}"

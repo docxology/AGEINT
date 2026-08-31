@@ -7,11 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from reference_quality import (
-    collect_reference_quality,
-    render_reference_quality_markdown,
-    write_reference_quality,
-)
+from reference_quality import collect_reference_quality, render_reference_quality_markdown, write_reference_quality
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -60,10 +56,7 @@ def test_reference_quality_flags_reader_quality_negative_controls(tmp_path: Path
             ]
         ),
     )
-    _write(
-        tmp_path / "output" / "manuscript" / "references-fixture.bib",
-        "@misc{official_fixture, title={Fixture}}\n",
-    )
+    _write(tmp_path / "output" / "manuscript" / "references-fixture.bib", "@misc{official_fixture, title={Fixture}}\n")
 
     report = collect_reference_quality(tmp_path)
     issue_names = {row["issue"] for row in report.payload["issue_rows"]}
@@ -93,10 +86,7 @@ def test_reference_quality_allows_contextual_citation_tables_and_linked_crossref
             ]
         ),
     )
-    _write(
-        tmp_path / "output" / "manuscript" / "references-fixture.bib",
-        "@misc{official_fixture, title={Fixture}}\n",
-    )
+    _write(tmp_path / "output" / "manuscript" / "references-fixture.bib", "@misc{official_fixture, title={Fixture}}\n")
 
     report = collect_reference_quality(tmp_path)
 
@@ -112,18 +102,7 @@ def test_reference_quality_writer_and_script_emit_json_contract(built_output: Pa
     assert md_path.is_file()
 
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_reference_quality.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_reference_quality.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

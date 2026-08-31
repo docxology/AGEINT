@@ -1,105 +1,10 @@
-# AGEINT manuscript configuration
-paper:
-  title: "AGEINT: Agentic Intelligence"
-  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  version: "0.1"
-  date: "2026-06-17"
 
-book:
-  title: "AGEINT: Agentic Intelligence"
-  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  edition: "0.1"
-  year: "2026"
-  license: "CC BY 4.0"
-  code_license: "Apache-2.0"
-  cover:
-    image: "../figures/cover/ageint-cover-synthesis.png"
-
-authors:
-  - name: "Daniel Ari Friedman"
-    orcid: "0000-0001-6232-9096"
-    email: "daniel@activeinference.institute"
-    affiliations:
-      - "Active Inference Institute"
-      - "FractAI"
-    corresponding: true
-
-publication:
-  doi: "10.5281/zenodo.20732274"
-  repository_url: "https://github.com/docxology/AGEINT"
-  repository_label: "docxology/AGEINT"
-  journal: "Zenodo"
-  volume: ""
-  pages: ""
-  year: "2026"
-  version_doi: "10.5281/zenodo.20732275"
-  version_record: "https://zenodo.org/records/20732275"
-
-keywords:
-  - agentic intelligence
-  - AGEINT
-  - AI agents
-  - intelligence tradecraft
-  - cognitive security
-  - structured analytic techniques
-  - active inference
-  - model context protocol
-  - multi-agent systems
-  - operational governance
-
-metadata:
-  license: "CC-BY-4.0"
-  language: "en"
-
-render:
-  formats:
-    pdf: true
-    html: true
-    slides: false
-    docx: false
-    epub: false
-
-# Stage 02 allowlist — single canonical build (see scripts/CONVENTIONS.md)
-analysis:
-  scripts:
-    - build_curriculum.py
-
-llm:
-  reviews:
-    enabled: false
-    types:
-      - executive_summary
-  translations:
-    enabled: false
-    languages:
-      - zh
-
-testing:
-  max_test_failures: 0
-  max_infra_test_failures: 0
-  max_project_test_failures: 0
-
-project_config:
-  curriculum:
-    source_guide_optional_archive_name: "SIST-Guide-TOC-and-Bibliography-v2.md"
-    derived_outline: "data/curriculum/"
-    derived_outline_mirror: "output/data/curriculum_outline.json"
-    runtime_variables: "output/data/manuscript_variables.json"
-    counts_are_generated: true
-    safety_posture: "defensive, educational, accountable, evidence-bounded, legally compliant"
 
 figures:
   registry: ../figures/figure_registry.json
 
 # Generated manuscript ordering
 front_matter:
-  page_two_visual:
-    image: ../figures/frontmatter/ageint-evidence-transit-map.png
-    title: Evidence Transit Map
-    caption: 'Source telemetry from AGEINT curriculum counts, source metadata, source
-      freshness, agency-source routing, figure registry, and generated manuscript files.
-      This front-matter map is artifact telemetry only: it is not a benchmark, public-release
-      certificate, publication claim, or learning-outcome result.'
   include_front_matter: true
   files: [{file: "abstract.md"}, {file: "orientation/00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md"}, {file: "orientation/01-synthetic-analytic-tradecraft-thesis-synthetic-fixtures-source-discipline-and-reviewable-claims-sec-synthetic-analytic-tradecraft-thesis.md"}, {file: "orientation/02-reader-paths-instructor-learner-reviewer-and-maintainer-handoffs-sec-reader-paths.md"}, {file: "orientation/03-curriculum-map-parts-modules-and-source-backed-route-choices-sec-curriculum-map.md"}, {file: "orientation/04-runtime-inventory-generated-counts-anchors-and-method-appendices-sec-runtime-inventory.md"}, {file: "orientation/05-related-work-and-contribution-boundary-adjacent-literatures-and-ageint-limits-sec-related-work-and-contribution-boundary.md"}, {file: "orientation/06-analysis-validation-protocol-claim-classes-evidence-packets-and-failure-modes-sec-analysis-validation-protocol.md"}, {file: "orientation/07-consolidated-glossary-and-index-terms-audit-surfaces-and-reader-routing-sec-consolidated-glossary-and-index.md"}, {file: "orientation/08-intelligence-research-profiles-domain-lanes-source-roles-and-profile-routing-sec-intelligence-research-profiles.md"}, {file: "orientation/09-intelligence-practice-lenses-artifact-expectations-safety-checks-and-review-questions-sec-intelligence-practice-lenses.md"}, {file: "orientation/10-research-anchor-atlas-curated-sources-lanes-tiers-and-claim-scope-sec-research-anchor-atlas.md"}, {file: "orientation/11-source-lane-map-provenance-lanes-support-strength-and-refresh-context-sec-source-lane-map.md"}, {file: "orientation/12-safe-substitution-matrix-defensive-artifacts-for-risky-inherited-motifs-sec-safe-substitution-matrix.md"}, {file: "orientation/13-capstone-workflow-phase-sequence-artifacts-and-reviewer-gates-sec-capstone-workflow.md"}, {file: "orientation/14-capstone-model-answer-exemplars-strong-evidence-packets-and-revision-triggers-sec-capstone-model-answer-exemplars.md"}, {file: "orientation/15-accessibility-and-udl-review-learner-access-modality-checks-and-accommodation-evidence-sec-accessibility-and-udl-review.md"}, {file: "orientation/16-procurement-and-vendor-oversight-tool-governance-revocation-and-vendor-evidence-sec-procurement-and-vendor-oversight.md"}, {file: "orientation/17-hria-and-dpia-worksheet-rights-impact-privacy-review-and-residual-risk-sec-hria-and-dpia-worksheet.md"}, {file: "orientation/18-data-lineage-registry-source-identity-transformations-retention-and-review-sec-data-lineage-registry.md"}, {file: "orientation/19-assessment-integrity-protocol-declared-agent-use-grading-evidence-and-human-judgment-sec-assessment-integrity-protocol.md"}, {file: "orientation/20-agent-incident-response-drill-pause-revoke-preserve-recover-and-debrief-sec-agent-incident-response-drill.md"}, {file: "orientation/21-role-based-competency-map-responsibilities-evidence-owners-and-assurance-roles-sec-role-based-competency-map.md"}, {file: "orientation/22-adversarial-assurance-cycle-challenge-rows-remediation-owners-and-retest-evidence-sec-adversarial-assurance-cycle.md"}, {file: "orientation/23-model-and-dataset-documentation-card-intended-use-provenance-caveats-and-lifecycle-sec-model-and-dataset-documentation-card.md"}, {file: "orientation/24-transparency-and-communication-notice-purpose-safeguards-human-review-and-limits-sec-transparency-and-communication-notice.md"}, {file: "orientation/25-records-retention-and-audit-trail-owners-retention-rules-and-deletion-conditions-sec-records-retention-and-audit-trail.md"}, {file: "orientation/26-release-and-change-control-gate-reuse-approval-rollback-and-change-evidence-sec-release-and-change-control-gate.md"}, {file: "orientation/27-risk-exception-and-acceptance-memo-residual-risk-owner-approval-and-review-clock-sec-risk-exception-and-acceptance-memo.md"}, {file: "orientation/28-learner-support-and-accommodation-plan-support-rows-access-barriers-and-escalation-sec-learner-support-and-accommodation-plan.md"}, {file: "orientation/29-instructor-question-bank-prompts-evidence-checks-and-misconception-probes-sec-instructor-question-bank.md"}, {file: "orientation/30-remediation-backlog-issue-owners-retest-evidence-and-closure-boundaries-sec-remediation-backlog.md"}, {file: "orientation/31-scholarship-and-governance-stance-source-posture-claim-limits-and-public-readiness-boundary-sec-scholarship-and-governance-stance.md"}, {file: "orientation/32-verifier-first-artifact-evidence-build-freshness-audits-and-negative-controls-sec-verifier-first-artifact-evidence.md"}, {file: "orientation/33-orientation-figures-and-course-links-visual-evidence-source-flow-and-navigation-sec-orientation-figures-and-course-links.md"}, {file: "orientation/34-ageint-pattern-library-design-pattern-rows-safe-substitutions-and-source-identity-sec-ageint-pattern-library.md"}, {file: "orientation/35-safety-rail-accountable-synthetic-defensive-and-evidence-bounded-boundaries-sec-safety-rail.md"}, {file: "method-assurance-reference.md"}]
 units:

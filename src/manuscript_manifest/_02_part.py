@@ -4,22 +4,16 @@ from typing import Any
 
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 from intelligence_content.topic_entries import clean_display_title
-from intelligence_content import (
-    practice_lens_for_titles,
-    profile_for_titles,
-    safe_curriculum_treatment,
-    safe_pattern_treatment,
-    safe_substitution_rows,
-)
+from intelligence_content import practice_lens_for_titles, profile_for_titles, safe_curriculum_treatment, safe_pattern_treatment, safe_substitution_rows
 
 from ._01_part import _chapter_source_context, _chapter_source_context_inline, _chapter_topic_context
+
 
 def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Treat the workflow as provenance-first. Data may enter "
-            f"only through public, benign, owned-lab, or synthetic channels tied to {source_context}",
+            f"Treat the workflow as provenance-first. Data may enter only through public, benign, owned-lab, or synthetic channels tied to {source_context}",
             "",
             "| Data object | Provenance field | Quality test |",
             "|---|---|---|",
@@ -31,12 +25,12 @@ def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str
         ]
     )
 
+
 def _evaluation_assurance_protocol(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Run a short assurance protocol before any "
-            f"student artifact is accepted; source checks begin with {source_context}",
+            f"Run a short assurance protocol before any student artifact is accepted; source checks begin with {source_context}",
             "",
             "| Assurance step | Passing evidence | Failing condition |",
             "|---|---|---|",
@@ -48,12 +42,12 @@ def _evaluation_assurance_protocol(chapter: dict[str, Any]) -> str:
         ]
     )
 
+
 def _compliance_rights_map(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "The compliance and rights map converts source lanes "
-            f"into review questions anchored by {source_context}",
+            f"The compliance and rights map converts source lanes into review questions anchored by {source_context}",
             "",
             "| Source lane | Review question | Minimum artifact |",
             "|---|---|---|",
@@ -68,6 +62,7 @@ def _compliance_rights_map(chapter: dict[str, Any]) -> str:
         ]
     )
 
+
 def _safe_substitution_patterns(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context_inline(chapter)
     return "\n".join(
@@ -79,6 +74,7 @@ def _safe_substitution_patterns(chapter: dict[str, Any]) -> str:
             safe_substitution_rows(),
         ]
     )
+
 
 def _capstone_deliverable(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
@@ -98,6 +94,7 @@ def _capstone_deliverable(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         ]
     )
 
+
 def _instructor_facilitation_notes(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
@@ -113,11 +110,10 @@ def _instructor_facilitation_notes(chapter: dict[str, Any], part: dict[str, Any]
         ]
     )
 
+
 def _refresh_triggers(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
     source_context = _chapter_source_context(chapter)
-    topic_context = (
-        _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
-    )
+    topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
     return (
         "Refresh against the canonical trigger-and-action table in "
         "the shared method-and-assurance reference ([@sec:method-assurance-reference]). "
@@ -128,17 +124,11 @@ def _refresh_triggers(chapter: dict[str, Any], part: dict[str, Any] | None = Non
     )
 
 
-
 def _reader_section_title(source_title: str, part_title: str = "", chapter_title: str = "") -> str:
     """Normalize source-guide pseudo-headings into reader-facing titles."""
     title = source_title.strip()
     lower = title.lower()
-    if (
-        lower.startswith("pattern ")
-        or lower.startswith("safe methods:")
-        or lower.startswith("safe defensive")
-        or lower.startswith("safe architecture")
-    ):
+    if lower.startswith("pattern ") or lower.startswith("safe methods:") or lower.startswith("safe defensive") or lower.startswith("safe architecture"):
         return title
     if lower.startswith("v2 source-lane extension:"):
         return "Source-lane evidence, public registers, and claim-ledger studio"
@@ -153,6 +143,7 @@ def _reader_section_title(source_title: str, part_title: str = "", chapter_title
     # rendered section title (the figures are unsourced and unframed here).
     return clean_display_title(safe_curriculum_treatment(title, part_title, chapter_title))
 
+
 def _reader_provenance_title(source_title: str) -> str:
     """Keep provenance useful without leaking scaffold wording into prose.
 
@@ -163,6 +154,7 @@ def _reader_provenance_title(source_title: str) -> str:
 
     return clean_display_title(reader_source_title(source_title))
 
+
 def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render source-guide sections as polished runtime/provenance rows."""
     sections = chapter.get("sections", [])
@@ -172,17 +164,11 @@ def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             [
                 "| Rendered title | Source loci | Source provenance | Practice lens | Evidence artifact | Safety check |",
                 "|---|---|---|---|---|---|",
-                (
-                    f"| Module source spine | Module source spine | Parsed chapter title and citation spine | "
-                    f"{lens.title} | {lens.evidence_artifact} | {lens.safety_check} |"
-                ),
+                (f"| Module source spine | Module source spine | Parsed chapter title and citation spine | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |"),
             ]
         )
 
-    rows = [
-        "| Rendered title | Source loci | Source provenance | Practice lens | Evidence artifact | Safety check |",
-        "|---|---|---|---|---|---|",
-    ]
+    rows = ["| Rendered title | Source loci | Source provenance | Practice lens | Evidence artifact | Safety check |", "|---|---|---|---|---|---|"]
     safe_patterns = chapter.get("number") == PATTERN_REGISTRY_CHAPTER_NUMBER
     active_pattern_number: int | None = None
     for section in sections:
@@ -193,25 +179,17 @@ def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         provenance = f"{source_number} {source_title_for_provenance}".strip()
 
         if safe_patterns:
-            working_title, active_pattern_number = safe_pattern_treatment(
-                working_title,
-                active_pattern_number,
-            )
+            working_title, active_pattern_number = safe_pattern_treatment(working_title, active_pattern_number)
             provenance = "Source identity preserved in pattern registry with safe classroom treatment"
 
         rendered_title = _reader_section_title(working_title, str(part["title"]), str(chapter["title"]))
         source_locus = str(section.get("number") or "module section")
         if not safe_patterns and rendered_title != source_title:
-            provenance = (
-                f"{source_locus} source title transformed into safe curriculum treatment; "
-                f"original: {source_title_for_provenance}"
-            )
+            provenance = f"{source_locus} source title transformed into safe curriculum treatment; original: {source_title_for_provenance}"
         lens = practice_lens_for_titles(str(part["title"]), rendered_title)
-        rows.append(
-            f"| {rendered_title} | {source_locus} | {provenance} | {lens.title} | "
-            f"{lens.evidence_artifact} | {lens.safety_check} |"
-        )
+        rows.append(f"| {rendered_title} | {source_locus} | {provenance} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
     return "\n".join(rows)
+
 
 def _module_thesis(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     title = chapter["title"]
@@ -221,10 +199,7 @@ def _module_thesis(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     topic_context = _chapter_topic_context(chapter, part)
     return "\n".join(
         [
-            (
-                f"This sits in the **{profile.title}** research lane and "
-                f"uses the **{lens.title}** practice lens for {topic_context}."
-            ),
+            (f"This sits in the **{profile.title}** research lane and uses the **{lens.title}** practice lens for {topic_context}."),
             "",
             (
                 "The teaching claim is concrete: intelligence work becomes "
@@ -232,9 +207,6 @@ def _module_thesis(chapter: dict[str, Any], part: dict[str, Any]) -> str:
                 f"rights, assurance, and refresh duties are visible in the artifact. {source_context}"
             ),
             "",
-            (
-                f"The chapter artifact is a **{lens.evidence_artifact}** plus a "
-                "claim ledger, safe-lab packet, and reproducible handoff."
-            ),
+            (f"The chapter artifact is a **{lens.evidence_artifact}** plus a claim ledger, safe-lab packet, and reproducible handoff."),
         ]
     )

@@ -34,12 +34,7 @@ def _unique_nonempty(values: Iterable[str]) -> list[str]:
     return resolved
 
 
-def _ref_list(
-    values: Iterable[str],
-    renderer: Callable[[str], str],
-    *,
-    separator: str,
-) -> str:
+def _ref_list(values: Iterable[str], renderer: Callable[[str], str], *, separator: str) -> str:
     return separator.join(renderer(value) for value in _unique_nonempty(values))
 
 
@@ -104,10 +99,7 @@ def lesson_educational_crossrefs(part: Mapping[str, Any], chapter: Mapping[str, 
     unit_map = figure_ref(part_module_map_figure_label(part))
     module_overview = chapter_section_ref(chapter)
     atlas = section_ref("sec:curriculum_orientation")
-    return (
-        f"**Learning-path links.** Unit module map {unit_map}; "
-        f"module overview {module_overview}; curriculum atlas {atlas}."
-    )
+    return f"**Learning-path links.** Unit module map {unit_map}; module overview {module_overview}; curriculum atlas {atlas}."
 
 
 __all__ = [

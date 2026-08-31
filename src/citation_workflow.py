@@ -33,13 +33,11 @@ def _clean_display_title(title: str) -> str:
         return title
     return clean_display_title(title)
 
+
 _PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
-DEFAULT_SOURCE_FALLBACK = (
-    "No direct source-guide citation is attached to this item; "
-    "use the surrounding part bibliography and source-guide context."
-)
+DEFAULT_SOURCE_FALLBACK = "No direct source-guide citation is attached to this item; use the surrounding part bibliography and source-guide context."
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md", "references.md"}
 CITATION_REF_RE = re.compile(r"(?<!`)\[@([^\]]+)\]")
 CROSSREF_PREFIXES = ("fig:", "sec:", "eq:", "tbl:")
@@ -80,12 +78,7 @@ def source_key(number: int) -> str:
     return f"ageint{number:03d}"
 
 
-def source_citation_spine(
-    numbers: Iterable[int],
-    *,
-    limit: int | None = None,
-    fallback: str = DEFAULT_SOURCE_FALLBACK,
-) -> str:
+def source_citation_spine(numbers: Iterable[int], *, limit: int | None = None, fallback: str = DEFAULT_SOURCE_FALLBACK) -> str:
     """Return a compact Pandoc citation spine for source-guide numbers."""
 
     inline = source_citation_spine_inline(numbers, limit=limit, fallback=fallback)
@@ -94,12 +87,7 @@ def source_citation_spine(
     return inline + "."
 
 
-def source_citation_spine_inline(
-    numbers: Iterable[int],
-    *,
-    limit: int | None = None,
-    fallback: str = DEFAULT_SOURCE_FALLBACK,
-) -> str:
+def source_citation_spine_inline(numbers: Iterable[int], *, limit: int | None = None, fallback: str = DEFAULT_SOURCE_FALLBACK) -> str:
     """Return a compact Pandoc citation spine without sentence punctuation."""
 
     selected = _unique_numbers(numbers)
@@ -166,21 +154,10 @@ def source_citation_coverage_summary(curriculum: Curriculum) -> CitationCoverage
 def render_source_section_citation_rows(curriculum: Curriculum) -> str:
     """Render a source-section citation inventory as a Markdown table."""
 
-    rows = [
-        "| Section | Module and source section | Citations | Citation links |",
-        "|---:|---|---:|---|",
-    ]
+    rows = ["| Section | Module and source section | Citations | Citation links |", "|---:|---|---:|---|"]
     for row in source_section_citation_inventory(curriculum):
-        source_context = (
-            f"{row.chapter_title} - "
-            f"{_clean_display_title(reader_source_title(row.title))}"
-        )
-        rows.append(
-            f"| {_table_cell(row.section_number)} | "
-            f"{_table_cell(source_context)} | "
-            f"{row.citation_count} | "
-            f"{_table_cell(citation_ref_list(row.citation_keys) if row.citation_keys else '-')} |"
-        )
+        source_context = f"{row.chapter_title} - {_clean_display_title(reader_source_title(row.title))}"
+        rows.append(f"| {_table_cell(row.section_number)} | {_table_cell(source_context)} | {row.citation_count} | {_table_cell(citation_ref_list(row.citation_keys) if row.citation_keys else '-')} |")
     return "\n".join(rows)
 
 
@@ -188,11 +165,7 @@ def _contributor_recipe_markdown(project_root: Path | None = None) -> str:
     root = _PROJECT_ROOT if project_root is None else Path(project_root)
     doc_path = root / "docs" / "citation_workflow.md"
     text = doc_path.read_text(encoding="utf-8")
-    recipe = _markdown_between_h2_prefixes(
-        text,
-        start_prefix="Choose the source type",
-        end_prefix="Count and verify citations",
-    )
+    recipe = _markdown_between_h2_prefixes(text, start_prefix="Choose the source type", end_prefix="Count and verify citations")
     return f"{recipe}\n\nnever hand-edit `output/manuscript/` as the source of truth."
 
 
@@ -219,10 +192,7 @@ def _markdown_between_h2_prefixes(text: str, *, start_prefix: str, end_prefix: s
             end_index = index
             break
     if start_index is None or end_index is None:
-        raise ValueError(
-            f"Could not extract citation workflow section between {start_prefix!r} "
-            f"and {end_prefix!r}"
-        )
+        raise ValueError(f"Could not extract citation workflow section between {start_prefix!r} and {end_prefix!r}")
     return "\n".join(lines[start_index:end_index]).strip()
 
 
@@ -230,10 +200,7 @@ def render_citation_workflow_markdown(curriculum: Curriculum) -> str:
     """Render the canonical generated citation workflow and coverage section."""
 
     summary = source_citation_coverage_summary(curriculum)
-    distribution = ", ".join(
-        f"{count} citation(s): {sections} section(s)"
-        for count, sections in summary.citation_count_distribution
-    )
+    distribution = ", ".join(f"{count} citation(s): {sections} section(s)" for count, sections in summary.citation_count_distribution)
     return "\n\n".join(
         [
             "## Citation workflow and source-section coverage",

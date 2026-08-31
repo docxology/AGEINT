@@ -24,9 +24,8 @@ BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
 _BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
 _BOLD_SPAN_RE = re.compile(r"\*\*(.+?)\*\*|__(.+?)__")
-_TEX_HEADING_COMMAND_RE = re.compile(
-    r"\\(?:part|chapter|section|subsection|subsubsection|paragraph)\*?\{"
-)
+_TEX_HEADING_COMMAND_RE = re.compile(r"\\(?:part|chapter|section|subsection|subsubsection|paragraph)\*?\{")
+
 
 @dataclass(frozen=True)
 class TitleRule:
@@ -125,11 +124,7 @@ def iter_rendered_text_files(output_root: Path) -> list[Path]:
     files: list[Path] = []
     manuscript = output_root / "manuscript"
     if manuscript.is_dir():
-        files.extend(
-            path
-            for path in sorted(manuscript.rglob("*.md"))
-            if not _is_support_or_reference_doc(path)
-        )
+        files.extend(path for path in sorted(manuscript.rglob("*.md")) if not _is_support_or_reference_doc(path))
     web = output_root / "web"
     if web.is_dir():
         files.extend(sorted(web.glob("*.html")))
@@ -225,10 +220,7 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                 if re.match(r"\\end\{(?:longtable|tabular|tabularx)\}", stripped):
                     in_tex_table = False
                     continue
-            in_tex_heading, next_tex_heading_depth = _tex_heading_line_state(
-                stripped,
-                tex_heading_depth,
-            )
+            in_tex_heading, next_tex_heading_depth = _tex_heading_line_state(stripped, tex_heading_depth)
             if _line_allows_titles(
                 path,
                 stripped,
@@ -253,36 +245,18 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                     tex_heading_depth = next_tex_heading_depth
                 continue
             if suffix != ".html" and (match := HARD_CODED_REFERENCE_RE.search(line)):
-                violations.append(
-                    RenderedReferenceViolation(path, line_number, "hard-coded numbered reference", match.group(0), line)
-                )
+                violations.append(RenderedReferenceViolation(path, line_number, "hard-coded numbered reference", match.group(0), line))
             if suffix != ".tex" and (match := RAW_LATEX_REF_RE.search(line)):
-                violations.append(
-                    RenderedReferenceViolation(path, line_number, "raw LaTeX reference", match.group(0), line)
-                )
+                violations.append(RenderedReferenceViolation(path, line_number, "raw LaTeX reference", match.group(0), line))
             if match := UNRESOLVED_TEMPLATE_RE.search(line):
-                violations.append(
-                    RenderedReferenceViolation(path, line_number, "unresolved reference token", match.group(0), line)
-                )
+                violations.append(RenderedReferenceViolation(path, line_number, "unresolved reference token", match.group(0), line))
             if suffix == ".md":
                 for key in _unresolved_citation_keys(line, bib_keys):
-                    violations.append(
-                        RenderedReferenceViolation(
-                            path, line_number, "unresolved citation key", f"@{key}", line
-                        )
-                    )
-            protected, in_html_emphasis, in_tex_emphasis = authored_emphasis_ranges(
-                line,
-                known_titles,
-                suffix,
-                in_html_emphasis,
-                in_tex_emphasis,
-            )
+                    violations.append(RenderedReferenceViolation(path, line_number, "unresolved citation key", f"@{key}", line))
+            protected, in_html_emphasis, in_tex_emphasis = authored_emphasis_ranges(line, known_titles, suffix, in_html_emphasis, in_tex_emphasis)
             for title, pattern in title_patterns:
                 if any(not _within_ranges(m.start(), protected) for m in pattern.finditer(line)):
-                    violations.append(
-                        RenderedReferenceViolation(path, line_number, "generated title in prose", title, line)
-                    )
+                    violations.append(RenderedReferenceViolation(path, line_number, "generated title in prose", title, line))
                     break
             if suffix == ".html":
                 if "</nav>" in stripped:
@@ -376,25 +350,11 @@ def _is_support_or_reference_doc(path: Path) -> bool:
 
 
 def _is_markdown_structural_line(stripped: str) -> bool:
-    return (
-        not stripped
-        or stripped.startswith("#")
-        or stripped.startswith("|")
-        or re.fullmatch(r"\[@[^\]]+\](?:,\s*\[@[^\]]+\]|\s*)*", stripped) is not None
-    )
+    return not stripped or stripped.startswith("#") or stripped.startswith("|") or re.fullmatch(r"\[@[^\]]+\](?:,\s*\[@[^\]]+\]|\s*)*", stripped) is not None
 
 
 def _line_allows_titles(
-    path: Path,
-    stripped: str,
-    *,
-    in_code: bool,
-    in_html_figure: bool,
-    in_html_heading: bool,
-    in_html_nav: bool,
-    in_html_table: bool,
-    in_tex_table: bool,
-    in_tex_heading: bool,
+    path: Path, stripped: str, *, in_code: bool, in_html_figure: bool, in_html_heading: bool, in_html_nav: bool, in_html_table: bool, in_tex_table: bool, in_tex_heading: bool
 ) -> bool:
     if in_code:
         return True
@@ -402,13 +362,7 @@ def _line_allows_titles(
     if suffix == ".md":
         return _is_markdown_structural_line(stripped)
     if suffix == ".html":
-        return (
-            in_html_figure
-            or in_html_heading
-            or in_html_nav
-            or in_html_table
-            or _is_html_structural_line(stripped)
-        )
+        return in_html_figure or in_html_heading or in_html_nav or in_html_table or _is_html_structural_line(stripped)
     if suffix == ".tex":
         return in_tex_table or in_tex_heading or _is_tex_structural_line(stripped)
     return True

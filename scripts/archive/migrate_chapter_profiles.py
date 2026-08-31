@@ -41,10 +41,7 @@ def main() -> None:
             payload = json.loads(chapter_path.read_text(encoding="utf-8"))
             payload["content_profile"] = profile.identifier
             payload["practice_lens"] = lens.identifier
-            chapter_path.write_text(
-                json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
-                encoding="utf-8",
-            )
+            chapter_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             updated += 1
     print(f"Updated {updated} chapter.json files")
 

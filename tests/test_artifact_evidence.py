@@ -9,15 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from artifact_evidence import (
-    ArtifactEvidence,
-    _citation_counts,
-    _figure_summary,
-    _pdf_report_payload,
-    _scan_generated_text,
-    collect_artifact_evidence,
-    render_artifact_evidence_markdown,
-)
+from artifact_evidence import ArtifactEvidence, _citation_counts, _figure_summary, _pdf_report_payload, _scan_generated_text, collect_artifact_evidence, render_artifact_evidence_markdown
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -78,9 +70,7 @@ def test_artifact_evidence_report_contract_for_current_outputs() -> None:
     assert payload["rendered_references"]["violation_count"] == 0
     assert payload["generated_output_scan"]["hit_count"] == 0
     assert all(contract["negative_control"] for contract in payload["audit_contracts"])
-    assert {
-        contract["check_id"] for contract in payload["audit_contracts"]
-    } >= set(payload["checks"])
+    assert {contract["check_id"] for contract in payload["audit_contracts"]} >= set(payload["checks"])
 
     markdown = render_artifact_evidence_markdown(evidence)
     assert "False-Certification Control" in markdown
@@ -99,18 +89,7 @@ def test_audit_artifact_evidence_script_writes_json_contract() -> None:
         pytest.skip("Rendered combined PDF not present")
 
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_artifact_evidence.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=900,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_artifact_evidence.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=900
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
@@ -154,72 +133,27 @@ def test_artifact_evidence_markdown_renders_preflight_sections_without_pdf() -> 
                 "claim_calibration_ok": True,
                 "agency_source_coverage_ok": True,
             },
-            "citations": {
-                "generated_markdown_files": 3,
-                "generated_markdown_citation_occurrences": 8,
-                "source_sections": 2,
-                "source_zero_citation_sections": 0,
-            },
+            "citations": {"generated_markdown_files": 3, "generated_markdown_citation_occurrences": 8, "source_sections": 2, "source_zero_citation_sections": 0},
             "scholarship_quality": {
-                "summary": {
-                    "thin_claim_bearing_files": 0,
-                    "single_source_family_claim_bearing_files": 0,
-                },
+                "summary": {"thin_claim_bearing_files": 0, "single_source_family_claim_bearing_files": 0},
                 "sat_method_contract": {"ok": True},
                 "analysis_validation_contract": {"ok": True},
                 "analysis_validation_lane_contract": {"ok": True},
                 "analysis_validation_family_coverage": {"ok": True},
             },
-            "source_metadata": {
-                "summary": {
-                    "metadata_records": 472,
-                    "fallback_dependent_row_count": 0,
-                    "blank_source_lane_count": 0,
-                    "blank_source_tier_count": 0,
-                }
-            },
-            "source_refresh_due": {
-                "summary": {
-                    "due_or_stale_count": 0,
-                    "missing_checked_as_of_count": 0,
-                }
-            },
-            "claim_calibration": {
-                "summary": {
-                    "candidate_rows": 12,
-                    "hard_fail_rows": 0,
-                    "warning_rows": 3,
-                }
-            },
-            "agency_source_coverage": {
-                "summary": {
-                    "new_official_us_ic_anchor_count": 56,
-                    "missing_required_metadata_count": 0,
-                    "unrouted_new_anchor_count": 0,
-                }
-            },
+            "source_metadata": {"summary": {"metadata_records": 472, "fallback_dependent_row_count": 0, "blank_source_lane_count": 0, "blank_source_tier_count": 0}},
+            "source_refresh_due": {"summary": {"due_or_stale_count": 0, "missing_checked_as_of_count": 0}},
+            "claim_calibration": {"summary": {"candidate_rows": 12, "hard_fail_rows": 0, "warning_rows": 3}},
+            "agency_source_coverage": {"summary": {"new_official_us_ic_anchor_count": 56, "missing_required_metadata_count": 0, "unrouted_new_anchor_count": 0}},
             "reference_quality": {
-                "summary": {
-                    "issue_count": 0,
-                    "generic_heading_issues": 0,
-                    "citation_context_issues": 0,
-                },
+                "summary": {"issue_count": 0, "generic_heading_issues": 0, "citation_context_issues": 0},
                 "issue_rows": [],
                 "negative_control": "Fixture reference-quality negative control.",
             },
             "figures": {"figure_count": 177, "quality_pass": True},
             "pdf": {"page_count": 10, "link_audit": {"uri_links": 4, "bad_target_count": 0}},
-            "false_certification_control": {
-                "scenario": "Fixture scenario.",
-                "negative_control": "Fixture negative control.",
-            },
-            "audit_contracts": [
-                {
-                    "contract_id": "fixture",
-                    "check_id": "source_metadata_ok",
-                    "negative_control": "Fixture negative control.",
-                }
-            ],
+            "false_certification_control": {"scenario": "Fixture scenario.", "negative_control": "Fixture negative control."},
+            "audit_contracts": [{"contract_id": "fixture", "check_id": "source_metadata_ok", "negative_control": "Fixture negative control."}],
         }
     )
 
@@ -248,21 +182,13 @@ def test_artifact_evidence_helpers_cover_pre_render_fixture_paths(tmp_path: Path
     assert counts["source_zero_citation_sections"] == 0
 
     figures = _figure_summary(
-        {
-            "schema_version": "1.5",
-            "figure_count": 2,
-            "quality_audit_path": "output/figures/visual_quality_audit.json",
-            "figures": [{"kind": "python"}, {"kind": "mermaid"}],
-        },
+        {"schema_version": "1.5", "figure_count": 2, "quality_audit_path": "output/figures/visual_quality_audit.json", "figures": [{"kind": "python"}, {"kind": "mermaid"}]},
         {"pass": True, "summary": {"readable_pngs": 2}},
     )
     assert figures["kind_counts"] == {"mermaid": 1, "python": 1}
     assert figures["quality_pass"] is True
 
-    pdf_payload = _pdf_report_payload(
-        {"pdf_path": str(tmp_path / "output" / "pdf" / "AGEINT_combined.pdf")},
-        tmp_path,
-    )
+    pdf_payload = _pdf_report_payload({"pdf_path": str(tmp_path / "output" / "pdf" / "AGEINT_combined.pdf")}, tmp_path)
     assert pdf_payload["pdf_path"] == "output/pdf/AGEINT_combined.pdf"
 
     manuscript = tmp_path / "output" / "manuscript" / "fixture.md"

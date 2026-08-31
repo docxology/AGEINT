@@ -5,11 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from curriculum import Curriculum, load_curriculum
-from citation_workflow import (
-    render_citation_workflow_markdown,
-    render_source_section_citation_rows,
-    source_citation_coverage_summary,
-)
+from citation_workflow import render_citation_workflow_markdown, render_source_section_citation_rows, source_citation_coverage_summary
 from intelligence_content import (
     INTELLIGENCE_RESEARCH_ANCHORS,
     PRACTICE_LENSES,
@@ -41,27 +37,18 @@ from intelligence_content import (
 )
 
 try:
-    from intelligence_content.source_grounding import (
-        clean_source_title as _sg_clean_title,
-        safe_source_note as _sg_safe_note,
-    )
+    from intelligence_content.source_grounding import clean_source_title as _sg_clean_title, safe_source_note as _sg_safe_note
 except ImportError:  # pragma: no cover
-    def _sg_clean_title(t: str) -> str: return t  # type: ignore[misc]
-    def _sg_safe_note(n: str) -> str: return n   # type: ignore[misc]
 
-from ._bibtex_helpers import (
-    clean_bibtex_text as _clean_bibtex_text,
-    clean_bibtex_value as _clean_bibtex_value,
-    join_note_parts as _join_note_parts,
-    reference_author as _reference_author,
-)
-from ._01_part import (
-    SOURCE_QUALITY_ANCHORS,
-    _source_quality_references,
-    bibliography_rows,
-    part_rows,
-    pattern_rows,
-)
+    def _sg_clean_title(t: str) -> str:
+        return t  # type: ignore[misc]
+
+    def _sg_safe_note(n: str) -> str:
+        return n  # type: ignore[misc]
+
+
+from ._bibtex_helpers import clean_bibtex_text as _clean_bibtex_text, clean_bibtex_value as _clean_bibtex_value, join_note_parts as _join_note_parts, reference_author as _reference_author
+from ._01_part import SOURCE_QUALITY_ANCHORS, _source_quality_references, bibliography_rows, part_rows, pattern_rows
 
 
 def _render_bibtex_entries(references: list[dict[str, Any]]) -> str:
@@ -103,29 +90,14 @@ def _render_bibtex_entries(references: list[dict[str, Any]]) -> str:
         if ref.get("verification_note"):
             note_parts.append(str(ref["verification_note"]))
         note = _clean_bibtex_text(_join_note_parts(note_parts))
-        entries.append(
-            "\n".join(
-                [
-                    f"@misc{{{ref['key']},",
-                    f"  title = {{{title}}},",
-                    f"  author = {{{author}}},",
-                    f"  year = {{{year}}},",
-                    f"  url = {{{url}}},",
-                    f"  note = {{{note}}},",
-                    "}",
-                ]
-            )
-        )
+        entries.append("\n".join([f"@misc{{{ref['key']},", f"  title = {{{title}}},", f"  author = {{{author}}},", f"  year = {{{year}}},", f"  url = {{{url}}},", f"  note = {{{note}}},", "}"]))
     return "\n\n".join(entries) + "\n"
 
 
 def reference_bibtex_files(references: list[dict[str, Any]]) -> dict[str, str]:
     """Render split BibTeX files for source guide and verified anchor groups."""
     rendered: dict[str, str] = {}
-    source_refs = sorted(
-        (ref for ref in references if isinstance(ref.get("number"), int)),
-        key=lambda ref: int(ref["number"]),
-    )
+    source_refs = sorted((ref for ref in references if isinstance(ref.get("number"), int)), key=lambda ref: int(ref["number"]))
     for index in range(0, len(source_refs), 50):
         chunk = source_refs[index : index + 50]
         first = int(chunk[0]["number"])
@@ -141,9 +113,7 @@ def reference_bibtex_files(references: list[dict[str, Any]]) -> dict[str, str]:
     research_refs = [anchor.as_reference() for anchor in INTELLIGENCE_RESEARCH_ANCHORS]
     for start in range(0, len(research_refs), 50):
         chunk = research_refs[start : start + 50]
-        rendered[
-            f"references-research-anchors-{start + 1:03d}-{start + len(chunk):03d}.bib"
-        ] = _render_bibtex_entries(chunk)
+        rendered[f"references-research-anchors-{start + 1:03d}-{start + len(chunk):03d}.bib"] = _render_bibtex_entries(chunk)
     return rendered
 
 
@@ -156,10 +126,7 @@ def _source_citation_coverage_summary_text(curriculum: Curriculum) -> str:
     """Return a compact prose summary for generated citation variables."""
 
     summary = source_citation_coverage_summary(curriculum)
-    distribution = ", ".join(
-        f"{count} citation(s): {sections} section(s)"
-        for count, sections in summary.citation_count_distribution
-    )
+    distribution = ", ".join(f"{count} citation(s): {sections} section(s)" for count, sections in summary.citation_count_distribution)
     return (
         f"{summary.section_count} source sections; "
         f"{summary.citation_occurrences} citation occurrences; "
@@ -175,10 +142,7 @@ def generate_variables(project_root: Path) -> dict[str, str]:
     curriculum = load_curriculum(curriculum_path)
     stats = curriculum.stats
     return {
-        "CURRICULUM_TITLE": curriculum.payload.get(
-            "title",
-            "Agentic Intelligence Modular Curriculum",
-        ),
+        "CURRICULUM_TITLE": curriculum.payload.get("title", "Agentic Intelligence Modular Curriculum"),
         "CURRICULUM_SOURCE_GUIDE": "SIST Guide TOC and Bibliography",
         "CURRICULUM_PART_COUNT": str(stats["parts"]),
         "CURRICULUM_CHAPTER_COUNT": str(stats["chapters"]),
@@ -227,11 +191,7 @@ def generate_variables(project_root: Path) -> dict[str, str]:
         "AGEINT_PATTERN_ROWS": pattern_rows(curriculum.patterns),
         "BIBLIOGRAPHY_ATLAS_ROWS": bibliography_rows(curriculum.references),
         "BIBTEX_REFERENCES": reference_bibtex(curriculum.references),
-        "BIBTEX_REFERENCE_FILES": json.dumps(
-            reference_bibtex_files(curriculum.references),
-            ensure_ascii=False,
-            sort_keys=True,
-        ),
+        "BIBTEX_REFERENCE_FILES": json.dumps(reference_bibtex_files(curriculum.references), ensure_ascii=False, sort_keys=True),
     }
 
 

@@ -16,14 +16,7 @@ def _render_visual_quality_audit_dashboard(output: Path, spec: FigureSpec) -> No
         ("Color safety", ("not color alone", "contrast cues", "visible labels", "visual inspection")),
         ("Rendered links", ("PDF and web", "no .md targets", "no file URIs", "annotation scan")),
     ]
-    draw_control_matrix(
-        output,
-        spec.title,
-        rows,
-        ("Gate", "Reader value", "Artifact field", "Verifier"),
-        "#c7d2fe",
-        "#fef3c7",
-    )
+    draw_control_matrix(output, spec.title, rows, ("Gate", "Reader value", "Artifact field", "Verifier"), "#c7d2fe", "#fef3c7")
 
 
 __all__ = ["_render_visual_quality_audit_dashboard"]

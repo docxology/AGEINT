@@ -5,28 +5,10 @@ from pathlib import Path
 import textwrap
 from typing import Any, Sequence
 
-from ._05_visual_style import (
-    CANVAS_BG,
-    GRID,
-    INK,
-    MUTED,
-    PALETTE,
-    SOFT_PALETTE,
-    draw_centered_text,
-    draw_footer,
-    draw_title_band,
-    draw_wrapped_text,
-)
+from ._05_visual_style import CANVAS_BG, GRID, INK, MUTED, PALETTE, SOFT_PALETTE, draw_centered_text, draw_footer, draw_title_band, draw_wrapped_text
 
 
-def draw_control_matrix(
-    output: Path,
-    title: str,
-    rows: Sequence[tuple[str, Sequence[str]]],
-    cols: Sequence[str],
-    primary_fill: str,
-    secondary_fill: str,
-) -> None:
+def draw_control_matrix(output: Path, title: str, rows: Sequence[tuple[str, Sequence[str]]], cols: Sequence[str], primary_fill: str, secondary_fill: str) -> None:
     image_mod, draw_mod, font_mod = _pil_modules()
     output.parent.mkdir(parents=True, exist_ok=True)
     canvas = image_mod.new("RGB", (1400, 1400), CANVAS_BG)
@@ -34,16 +16,7 @@ def draw_control_matrix(
     header_font = _font(font_mod, 22)
     row_font = _font(font_mod, 21)
     cell_font = _font(font_mod, 18)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        title,
-        subtitle="Audit table; cells are review prompts, not measured capability claims.",
-        width=1400,
-        height=132,
-        accent=primary_fill,
-    )
+    draw_title_band(draw, font_mod, _font, title, subtitle="Audit table; cells are review prompts, not measured capability claims.", width=1400, height=132, accent=primary_fill)
     left = 270
     top = 225
     right = 1340
@@ -61,13 +34,7 @@ def draw_control_matrix(
         for col_index, cell in enumerate(cells):
             x = left + col_index * cell_w
             fill = primary_fill if (row_index + col_index) % 2 == 0 else secondary_fill
-            draw.rounded_rectangle(
-                (x + 6, y + 8, x + cell_w - 8, y + row_h - 10),
-                radius=8,
-                fill=fill,
-                outline=MUTED,
-                width=2,
-            )
+            draw.rounded_rectangle((x + 6, y + 8, x + cell_w - 8, y + row_h - 10), radius=8, fill=fill, outline=MUTED, width=2)
             for line_index, line in enumerate(textwrap.wrap(cell, width=17)[:4]):
                 draw.text((x + 20, y + 30 + line_index * 24), line, fill=INK, font=cell_font)
     draw_footer(draw, font_mod, _font, "Source: AGEINT figure renderer | Matrix is a qualitative audit surface.", width=1400, y=1320)
@@ -104,37 +71,14 @@ def draw_evidence_dashboard(
     label_font = _font(font_mod, 21)
     body_font = _font(font_mod, 20)
     small_font = _font(font_mod, 16)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        title,
-        subtitle="Dashboard: compare denominator, evidence rows, failure path, and reviewer action.",
-        width=width,
-        height=132,
-        accent=primary_fill,
-    )
-    draw_wrapped_text(
-        draw,
-        (58, 146),
-        subtitle,
-        _font(font_mod, 20),
-        fill=MUTED,
-        width=108,
-        max_lines=2,
-        line_height=26,
-    )
+    draw_title_band(draw, font_mod, _font, title, subtitle="Dashboard: compare denominator, evidence rows, failure path, and reviewer action.", width=width, height=132, accent=primary_fill)
+    draw_wrapped_text(draw, (58, 146), subtitle, _font(font_mod, 20), fill=MUTED, width=108, max_lines=2, line_height=26)
 
     card_top = 210
     card_height = 166
     card_gap = 18
     card_width = (width - 116 - 3 * card_gap) / 4
-    cards = [
-        ("Denominator", denominator),
-        ("Visible status", _first_cell(rows, "local artifact rows")),
-        ("Fail-closed path", failure_path),
-        ("Reviewer action", reviewer_action),
-    ]
+    cards = [("Denominator", denominator), ("Visible status", _first_cell(rows, "local artifact rows")), ("Fail-closed path", failure_path), ("Reviewer action", reviewer_action)]
     for index, (card_title, card_body) in enumerate(cards):
         x0 = 58 + index * (card_width + card_gap)
         x1 = x0 + card_width
@@ -142,16 +86,7 @@ def draw_evidence_dashboard(
         outline = "#f59e0b" if index == 2 else GRID
         draw.rounded_rectangle((x0, card_top, x1, card_top + card_height), radius=18, fill=fill, outline=outline, width=3)
         draw.text((x0 + 18, card_top + 16), card_title, fill=INK, font=heading_font)
-        draw_wrapped_text(
-            draw,
-            (x0 + 18, card_top + 54),
-            card_body,
-            small_font,
-            fill=MUTED,
-            width=max(16, int((card_width - 36) / 10)),
-            max_lines=5,
-            line_height=21,
-        )
+        draw_wrapped_text(draw, (x0 + 18, card_top + 54), card_body, small_font, fill=MUTED, width=max(16, int((card_width - 36) / 10)), max_lines=5, line_height=21)
 
     lane_top = 438
     lane_bottom = 1138
@@ -168,28 +103,10 @@ def draw_evidence_dashboard(
     col_gap = 10
     col_width = (grid_right - grid_left - col_gap * (col_count - 1)) / col_count
 
-    draw_wrapped_text(
-        draw,
-        (96, lane_top - 44),
-        label_heading,
-        label_font,
-        fill=INK,
-        width=15,
-        max_lines=2,
-        line_height=23,
-    )
+    draw_wrapped_text(draw, (96, lane_top - 44), label_heading, label_font, fill=INK, width=15, max_lines=2, line_height=23)
     for col_index, col in enumerate(display_cols):
         x = grid_left + col_index * (col_width + col_gap)
-        draw_wrapped_text(
-            draw,
-            (x + 8, lane_top - 44),
-            col,
-            label_font,
-            fill=INK,
-            width=22,
-            max_lines=2,
-            line_height=23,
-        )
+        draw_wrapped_text(draw, (x + 8, lane_top - 44), col, label_font, fill=INK, width=22, max_lines=2, line_height=23)
 
     for row_index, (row_label, cells) in enumerate(rows):
         y0 = lane_top + row_index * (lane_height + lane_gap)
@@ -204,23 +121,8 @@ def draw_evidence_dashboard(
             x1 = x0 + col_width
             cell_text = cell_values[col_index] if col_index < len(cell_values) else ""
             cell_fill = secondary_fill if col_index == 0 else "#ffffff"
-            draw.rounded_rectangle(
-                (x0, y0 + 20, x1, y1 - 20),
-                radius=15,
-                fill=cell_fill,
-                outline="#cbd5e1",
-                width=2,
-            )
-            draw_wrapped_text(
-                draw,
-                (x0 + 18, y0 + 38),
-                cell_text,
-                body_font,
-                fill=INK,
-                width=max(13, int((col_width - 36) / 10)),
-                max_lines=4,
-                line_height=25,
-            )
+            draw.rounded_rectangle((x0, y0 + 20, x1, y1 - 20), radius=15, fill=cell_fill, outline="#cbd5e1", width=2)
+            draw_wrapped_text(draw, (x0 + 18, y0 + 38), cell_text, body_font, fill=INK, width=max(13, int((col_width - 36) / 10)), max_lines=4, line_height=25)
 
     strip_top = 1174
     strip_bottom = 1298
@@ -245,16 +147,7 @@ def draw_matrix(output: Path, title: str, rows: Sequence[str], cols: Sequence[st
     output.parent.mkdir(parents=True, exist_ok=True)
     canvas = image_mod.new("RGB", (1600, 1200), CANVAS_BG)
     draw = draw_mod.Draw(canvas)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        title,
-        subtitle="Qualitative matrix; shaded cells mark designed review coverage.",
-        width=1600,
-        height=126,
-        accent=PALETTE[0],
-    )
+    draw_title_band(draw, font_mod, _font, title, subtitle="Qualitative matrix; shaded cells mark designed review coverage.", width=1600, height=126, accent=PALETTE[0])
     x0, y0 = 430, 190
     right = 1510
     cell_w = max(118, (right - x0) // max(1, len(cols)))
@@ -275,18 +168,11 @@ def draw_matrix(output: Path, title: str, rows: Sequence[str], cols: Sequence[st
 
 
 def _pil_modules() -> tuple[Any, Any, Any]:
-    return (
-        import_module("PIL.Image"),
-        import_module("PIL.ImageDraw"),
-        import_module("PIL.ImageFont"),
-    )
+    return (import_module("PIL.Image"), import_module("PIL.ImageDraw"), import_module("PIL.ImageFont"))
 
 
 def _font(font_mod: Any, size: int) -> Any:
-    candidates = [
-        "/System/Library/Fonts/Supplemental/Arial.ttf",
-        "/System/Library/Fonts/Supplemental/Helvetica.ttf",
-    ]
+    candidates = ["/System/Library/Fonts/Supplemental/Arial.ttf", "/System/Library/Fonts/Supplemental/Helvetica.ttf"]
     for candidate in candidates:
         if Path(candidate).is_file():
             return font_mod.truetype(candidate, size)

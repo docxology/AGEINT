@@ -13,18 +13,9 @@ WHY_IT_MATTERS_TEMPLATES: tuple[str, ...] = (
         "judgment it enables for {practice_focus} review, the proof limit that "
         "{failure_hint} would otherwise hide, and the reviewer accountable for challenge."
     ),
-    (
-        "**{topic}** matters in the **{profile}** lane because {practice_focus} "
-        "evidence must stay separate from judgment; {failure_hint} is a common failure."
-    ),
-    (
-        "**{topic}** connects classroom vocabulary to {profile} practice: learners "
-        "document evidence, caveats, and reviewer ownership rather than repeating labels."
-    ),
-    (
-        "Without explicit treatment of **{topic}**, {failure_hint} undermines "
-        "{practice_focus} review; the lesson builds the habit to {distinction}."
-    ),
+    ("**{topic}** matters in the **{profile}** lane because {practice_focus} evidence must stay separate from judgment; {failure_hint} is a common failure."),
+    ("**{topic}** connects classroom vocabulary to {profile} practice: learners document evidence, caveats, and reviewer ownership rather than repeating labels."),
+    ("Without explicit treatment of **{topic}**, {failure_hint} undermines {practice_focus} review; the lesson builds the habit to {distinction}."),
 )
 
 RISK_WHY_FAILURE_HINTS: dict[str, str] = {
@@ -46,40 +37,19 @@ MISCONCEPTION_FALLBACKS: tuple[str, ...] = (
 )
 
 MISCONCEPTION_RISK_TEMPLATES: tuple[str, ...] = (
-    (
-        "that a safe curriculum label for **{display_title}** in "
-        "**{chapter_anchor}** authorizes the original operational source motif"
-    ),
-    (
-        "that **{chapter_anchor}** classroom framing for **{display_title}** "
-        "removes the need for provenance and reviewer sign-off"
-    ),
-    (
-        "that completing the **{display_title}** artifact in "
-        "**{chapter_anchor}** establishes real-world authorization without separate approval evidence"
-    ),
+    ("that a safe curriculum label for **{display_title}** in **{chapter_anchor}** authorizes the original operational source motif"),
+    ("that **{chapter_anchor}** classroom framing for **{display_title}** removes the need for provenance and reviewer sign-off"),
+    ("that completing the **{display_title}** artifact in **{chapter_anchor}** establishes real-world authorization without separate approval evidence"),
 )
 
 MISCONCEPTION_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     (("mice",), "that a motivation taxonomy is a recruitment checklist"),
     (("att&ck",), "that a defensive taxonomy is an instruction sequence"),
     (("kill chain",), "that a defensive taxonomy is an instruction sequence"),
-    (
-        ("fisa", "executive order"),
-        "that a legal source grants authority without scope and oversight",
-    ),
-    (
-        ("beneficial ownership",),
-        "that ownership evidence removes uncertainty about control or intent",
-    ),
-    (
-        ("geoint", "imagery"),
-        "that a visible feature is enough for a confident geospatial claim",
-    ),
-    (
-        ("ach", "competing hypotheses"),
-        "that listing one favored hypothesis is enough without testing alternatives",
-    ),
+    (("fisa", "executive order"), "that a legal source grants authority without scope and oversight"),
+    (("beneficial ownership",), "that ownership evidence removes uncertainty about control or intent"),
+    (("geoint", "imagery"), "that a visible feature is enough for a confident geospatial claim"),
+    (("ach", "competing hypotheses"), "that listing one favored hypothesis is enough without testing alternatives"),
 )
 
 # Keyword-routed transfer tasks. Kept here so the one-shot generator emits a
@@ -89,8 +59,7 @@ MISCONCEPTION_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
 TRANSFER_TASK_KEYWORD_ROUTES: tuple[tuple[tuple[str, ...], str], ...] = (
     (
         ("active inference", "free energy", "predictive"),
-        "Transfer the idea to a non-AI chapter by naming the assumed model, the "
-        "surprising observation, and the review point before any decision follows.",
+        "Transfer the idea to a non-AI chapter by naming the assumed model, the surprising observation, and the review point before any decision follows.",
     ),
 )
 
@@ -99,20 +68,11 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     payload = {
         "why_it_matters_templates": list(WHY_IT_MATTERS_TEMPLATES),
-        "risk_why_failure_hints": [
-            {"category": category, "hint": hint}
-            for category, hint in RISK_WHY_FAILURE_HINTS.items()
-        ],
+        "risk_why_failure_hints": [{"category": category, "hint": hint} for category, hint in RISK_WHY_FAILURE_HINTS.items()],
         "misconception_fallbacks": list(MISCONCEPTION_FALLBACKS),
         "misconception_risk_templates": list(MISCONCEPTION_RISK_TEMPLATES),
-        "misconception_keyword_routes": [
-            {"keywords": list(keywords), "misconception": misconception}
-            for keywords, misconception in MISCONCEPTION_KEYWORD_ROUTES
-        ],
-        "transfer_task_keyword_routes": [
-            {"keywords": list(keywords), "template": template}
-            for keywords, template in TRANSFER_TASK_KEYWORD_ROUTES
-        ],
+        "misconception_keyword_routes": [{"keywords": list(keywords), "misconception": misconception} for keywords, misconception in MISCONCEPTION_KEYWORD_ROUTES],
+        "transfer_task_keyword_routes": [{"keywords": list(keywords), "template": template} for keywords, template in TRANSFER_TASK_KEYWORD_ROUTES],
     }
     out = root / "data" / "topic_rotation_templates.yaml"
     out.write_text(yaml.safe_dump(payload, sort_keys=False, allow_unicode=True), encoding="utf-8")

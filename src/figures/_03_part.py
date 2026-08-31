@@ -6,10 +6,8 @@ from curriculum import Curriculum
 
 from ._01_part import FigureSpec
 from ._03c_control_matrix import draw_control_matrix, draw_matrix
-from ._03s_drawers import (
-    _draw_loop,
-    _draw_tile_grid,
-)
+from ._03s_drawers import _draw_loop, _draw_tile_grid
+
 
 def _render_source_quality_spine(output: Path, spec: FigureSpec) -> None:
     rows = [
@@ -20,14 +18,7 @@ def _render_source_quality_spine(output: Path, spec: FigureSpec) -> None:
         ("CISA / NCSC secure AI", ("official", "security control", "misuse review", "guidance check")),
         ("Scholarly anchors", ("scholarly", "theory/study", "scope caveat", "literature check")),
     ]
-    draw_control_matrix(
-        output,
-        spec.title,
-        rows,
-        ("Tier", "Claim role", "Evidence use", "Refresh"),
-        "#ccfbf1",
-        "#bfdbfe",
-    )
+    draw_control_matrix(output, spec.title, rows, ("Tier", "Claim role", "Evidence use", "Refresh"), "#ccfbf1", "#bfdbfe")
 
 
 def _render_pattern_taxonomy(output: Path, curriculum: Curriculum, spec: FigureSpec) -> None:
@@ -48,51 +39,12 @@ def _render_section_composability_matrix(output: Path, curriculum: Curriculum, s
 
 def _render_reference_coverage(output: Path, curriculum: Curriculum, spec: FigureSpec) -> None:
     rows = [
-        (
-            "Parsed guide references",
-            (
-                str(curriculum.stats["references"]),
-                "source guide",
-                "locked ids",
-                "append-only",
-            ),
-        ),
-        (
-            "Curated research anchors",
-            (
-                str(_research_anchor_count()),
-                "anchor atlas",
-                "direct checks",
-                "dated refresh",
-            ),
-        ),
-        (
-            "Methods appendices",
-            (
-                str(curriculum.stats["appendices"]),
-                "appendices",
-                "student artifacts",
-                "build refresh",
-            ),
-        ),
-        (
-            "AGEINT patterns",
-            (
-                str(curriculum.stats["patterns"]),
-                "pattern registry",
-                "safe translations",
-                "safety audit",
-            ),
-        ),
+        ("Parsed guide references", (str(curriculum.stats["references"]), "source guide", "locked ids", "append-only")),
+        ("Curated research anchors", (str(_research_anchor_count()), "anchor atlas", "direct checks", "dated refresh")),
+        ("Methods appendices", (str(curriculum.stats["appendices"]), "appendices", "student artifacts", "build refresh")),
+        ("AGEINT patterns", (str(curriculum.stats["patterns"]), "pattern registry", "safe translations", "safety audit")),
     ]
-    draw_control_matrix(
-        output,
-        spec.title,
-        rows,
-        ("Count", "Surface", "Use", "Refresh"),
-        "#cffafe",
-        "#d9f99d",
-    )
+    draw_control_matrix(output, spec.title, rows, ("Count", "Surface", "Use", "Refresh"), "#cffafe", "#d9f99d")
 
 
 def _render_source_verification_flow(output: Path, spec: FigureSpec) -> None:

@@ -84,30 +84,10 @@ def test_safe_curriculum_treatment_covers_contextual_title_branches() -> None:
         ("Penetration testing automation", "", "", "Control-coverage"),
         ("NOC legend and cover document", "", "", "Identity-and-provenance"),
         ("Population-scale intervention delivery", "", "", "Opt-in media-literacy"),
-        (
-            "Analysis of Competing Hypotheses (ACH)",
-            "Epistemic Rigor",
-            "Structured Analytic Techniques (SATs)",
-            "Analysis of Competing Hypotheses",
-        ),
-        (
-            "ICD 203 Analytic Standards: The Nine Tradecraft Standards",
-            "Epistemic Rigor",
-            "Structured Analytic Techniques (SATs)",
-            "ICD 203",
-        ),
-        (
-            "The Science Behind Getting Things Done (GTD): Cognitive Foundations",
-            "Productivity Intelligence",
-            "The Intelligent Operator as Cognitive Athlete",
-            "Getting Things Done",
-        ),
-        (
-            "NASA-TLX and Analyst Workload Monitoring",
-            "Productivity Intelligence",
-            "The Intelligent Operator as Cognitive Athlete",
-            "NASA-TLX",
-        ),
+        ("Analysis of Competing Hypotheses (ACH)", "Epistemic Rigor", "Structured Analytic Techniques (SATs)", "Analysis of Competing Hypotheses"),
+        ("ICD 203 Analytic Standards: The Nine Tradecraft Standards", "Epistemic Rigor", "Structured Analytic Techniques (SATs)", "ICD 203"),
+        ("The Science Behind Getting Things Done (GTD): Cognitive Foundations", "Productivity Intelligence", "The Intelligent Operator as Cognitive Athlete", "Getting Things Done"),
+        ("NASA-TLX and Analyst Workload Monitoring", "Productivity Intelligence", "The Intelligent Operator as Cognitive Athlete", "NASA-TLX"),
     ]
 
     for title, part, chapter, expected in cases:
@@ -223,15 +203,7 @@ def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tm
     assert registry.unique("chapter", "Same Title") == "same-title"
     assert registry.unique("chapter", "Same Title") == "same-title-2"
 
-    section = ManuscriptSection(
-        kind="chapter",
-        title="No Figure Chapter",
-        relative_path="parts/example/no-figure.md",
-        template_name="chapter.md",
-        context={},
-        order=1,
-        parent_label="sec:part-example",
-    )
+    section = ManuscriptSection(kind="chapter", title="No Figure Chapter", relative_path="parts/example/no-figure.md", template_name="chapter.md", context={}, order=1, parent_label="sec:part-example")
     manifest = ManuscriptManifest([section], [], [])
     assert "No figure registry" in mm4._visual_synthesis(tmp_path, tmp_path, section, manifest, [])
 
@@ -242,11 +214,7 @@ def test_variable_helpers_cover_empty_inputs_safe_appendices_and_reference_fallb
     assert "Module-level synthesis" in mv1.section_rows([])
 
     pattern_rows = mv1.section_rows(
-        [
-            {"number": "32.1", "title": "Pattern 1: Solo Reasoner - test", "citations": [1]},
-            {"number": "32.1a", "title": "Methods: bounded source reading", "citations": [2]},
-        ],
-        safe_patterns=True,
+        [{"number": "32.1", "title": "Pattern 1: Solo Reasoner - test", "citations": [1]}, {"number": "32.1a", "title": "Methods: bounded source reading", "citations": [2]}], safe_patterns=True
     )
     assert "Focused Analytic Reasoner" in pattern_rows
 
@@ -262,15 +230,7 @@ def test_variable_helpers_cover_empty_inputs_safe_appendices_and_reference_fallb
     assert "operational wording transformed" in rows
     assert "source item retained for audit" in rows
 
-    for title in [
-        "OSINT source audit",
-        "GEOINT imagery review",
-        "HUMINT source-protection review",
-        "SOC control-coverage review",
-        "ICS tabletop",
-        "Cognitive media-literacy",
-        "plain title",
-    ]:
+    for title in ["OSINT source audit", "GEOINT imagery review", "HUMINT source-protection review", "SOC control-coverage review", "ICS tabletop", "Cognitive media-literacy", "plain title"]:
         assert mv1._appendix_allowed_fixture(title)
         assert mv1._appendix_rejected_action(title)
         assert mv1._appendix_required_artifact(title)

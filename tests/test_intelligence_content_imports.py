@@ -61,13 +61,7 @@ print("ok")
 def test_intelligence_content_shards_import_in_isolation() -> None:
     failures: list[str] = []
     for shard in _SHARDS:
-        result = subprocess.run(
-            [sys.executable, "-c", _isolated_import_script(shard)],
-            cwd=PROJECT_ROOT,
-            capture_output=True,
-            text=True,
-            timeout=60,
-        )
+        result = subprocess.run([sys.executable, "-c", _isolated_import_script(shard)], cwd=PROJECT_ROOT, capture_output=True, text=True, timeout=60)
         if result.returncode != 0:
             failures.append(f"{shard}: {result.stderr.strip() or result.stdout.strip()}")
     assert failures == []

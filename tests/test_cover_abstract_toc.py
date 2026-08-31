@@ -9,12 +9,7 @@ from pathlib import Path
 from PIL import Image
 import yaml
 
-from figures._03l_cover_art import (
-    COVER_BOUNDARY_TERMS,
-    COVER_DOMAIN_LABELS,
-    COVER_FOREGROUND_REGIONS,
-    COVER_MIN_FONT_SIZE,
-)
+from figures._03l_cover_art import COVER_BOUNDARY_TERMS, COVER_DOMAIN_LABELS, COVER_FOREGROUND_REGIONS, COVER_MIN_FONT_SIZE
 from manuscript_quality.inventory_helpers import manuscript_dir
 from manuscript_manifest._heading_titles import chapter_detail_titles, chapter_scaffold_titles
 
@@ -25,39 +20,14 @@ def _word_count(text: str) -> int:
     return len(re.findall(r"[A-Za-z0-9][A-Za-z0-9'-]*", text))
 
 
-def _boxes_overlap(
-    first: tuple[int, int, int, int],
-    second: tuple[int, int, int, int],
-) -> bool:
-    return not (
-        first[2] <= second[0]
-        or second[2] <= first[0]
-        or first[3] <= second[1]
-        or second[3] <= first[1]
-    )
+def _boxes_overlap(first: tuple[int, int, int, int], second: tuple[int, int, int, int]) -> bool:
+    return not (first[2] <= second[0] or second[2] <= first[0] or first[3] <= second[1] or second[3] <= first[1])
 
 
 def test_cover_layout_contract_expands_int_domains_without_foreground_overlap() -> None:
     assert COVER_MIN_FONT_SIZE >= 24
-    assert COVER_DOMAIN_LABELS == (
-        "HUMINT",
-        "SIGINT",
-        "OSINT",
-        "GEOINT/IMINT",
-        "FININT",
-        "CYBINT/CTI",
-        "TECHINT/MASINT",
-        "CI",
-        "COGSEC",
-        "ALL-SOURCE FUSION",
-    )
-    assert COVER_BOUNDARY_TERMS == (
-        "DEFENSIVE",
-        "EDUCATIONAL",
-        "ACCOUNTABLE",
-        "SYNTHETIC",
-        "EVIDENCE-BOUNDED",
-    )
+    assert COVER_DOMAIN_LABELS == ("HUMINT", "SIGINT", "OSINT", "GEOINT/IMINT", "FININT", "CYBINT/CTI", "TECHINT/MASINT", "CI", "COGSEC", "ALL-SOURCE FUSION")
+    assert COVER_BOUNDARY_TERMS == ("DEFENSIVE", "EDUCATIONAL", "ACCOUNTABLE", "SYNTHETIC", "EVIDENCE-BOUNDED")
 
     region_names = [name for name, _ in COVER_FOREGROUND_REGIONS]
     assert len(region_names) == len(set(region_names))
@@ -158,9 +128,7 @@ def test_page_two_visual_is_generated_non_numbered_and_configured(built_output: 
 
 def test_abstract_is_single_substantial_plaintext_section(built_output: Path) -> None:
     abstract = (manuscript_dir(built_output) / "abstract.md").read_text(encoding="utf-8")
-    abstract_template = (PROJECT_ROOT / "manuscript" / "templates" / "abstract.md").read_text(
-        encoding="utf-8"
-    )
+    abstract_template = (PROJECT_ROOT / "manuscript" / "templates" / "abstract.md").read_text(encoding="utf-8")
 
     assert "\n## Graphical Abstract" not in abstract
     assert "graphical abstract" not in abstract.lower()
@@ -177,25 +145,12 @@ def test_abstract_is_single_substantial_plaintext_section(built_output: Path) ->
     paragraphs = [block for block in re.split(r"\n\s*\n", body.strip()) if block.strip()]
     assert len(paragraphs) == 1
     assert 1_200 <= _word_count(body) <= 1_600
-    for phrase in (
-        "Synthetic Analytic Tradecraft",
-        "source keys",
-        "claim calibration",
-        "negative controls",
-        "refresh triggers",
-        "human review",
-        "rollback",
-        "evidence packet",
-        "not a benchmark",
-    ):
+    for phrase in ("Synthetic Analytic Tradecraft", "source keys", "claim calibration", "negative controls", "refresh triggers", "human review", "rollback", "evidence packet", "not a benchmark"):
         assert phrase in body
 
 
 def test_orientation_order_prioritizes_reader_navigation(built_output: Path) -> None:
-    orientation_files = [
-        path.name
-        for path in sorted((manuscript_dir(built_output) / "orientation").glob("*.md"))
-    ]
+    orientation_files = [path.name for path in sorted((manuscript_dir(built_output) / "orientation").glob("*.md"))]
 
     assert orientation_files[:5] == [
         "00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md",
@@ -206,9 +161,7 @@ def test_orientation_order_prioritizes_reader_navigation(built_output: Path) -> 
     ]
 
 
-def test_early_orientation_creative_visuals_are_slotted_before_late_inventory(
-    built_output: Path,
-) -> None:
+def test_early_orientation_creative_visuals_are_slotted_before_late_inventory(built_output: Path) -> None:
     orientation_dir = manuscript_dir(built_output) / "orientation"
     placements = {
         "00-how-to-use-this-atlas": "fig:ageint-reader-route-compass",
@@ -228,25 +181,12 @@ def test_early_orientation_creative_visuals_are_slotted_before_late_inventory(
         assert figure_definition in text
         assert figure_definition not in late_text
         assert joined.count(figure_definition) == 1
-        assert joined.index(figure_definition) < joined.index(
-            "## Orientation figures and course links"
-        )
+        assert joined.index(figure_definition) < joined.index("## Orientation figures and course links")
 
 
 def test_repeated_generated_heading_names_are_reader_specific(built_output: Path) -> None:
-    text = "\n\n".join(
-        path.read_text(encoding="utf-8")
-        for path in sorted(manuscript_dir(built_output).rglob("*.md"))
-        if path.name not in {"README.md", "AGENTS.md", "preamble.md"}
-    )
-    retired_headings = (
-        "## Module architecture",
-        "## Evidence and source canon",
-        "## Research-backed synthesis",
-        "## Agentic translation boundary",
-        "## Review checklist",
-        "## Cross-links",
-    )
+    text = "\n\n".join(path.read_text(encoding="utf-8") for path in sorted(manuscript_dir(built_output).rglob("*.md")) if path.name not in {"README.md", "AGENTS.md", "preamble.md"})
+    retired_headings = ("## Module architecture", "## Evidence and source canon", "## Research-backed synthesis", "## Agentic translation boundary", "## Review checklist", "## Cross-links")
     for heading in retired_headings:
         assert not re.search(rf"^{re.escape(heading)}$", text, flags=re.MULTILINE)
 
@@ -264,32 +204,13 @@ def test_repeated_generated_heading_names_are_reader_specific(built_output: Path
         assert not re.search(rf"^## {re.escape(heading)}$", text, flags=re.MULTILINE)
         assert not re.search(rf"^### {re.escape(heading)}$", text, flags=re.MULTILINE)
 
-    chapter_path = (
-        manuscript_dir(built_output)
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "00-overview.md"
-    )
-    chapter = "\n\n".join(
-        fragment.read_text(encoding="utf-8")
-        for fragment in sorted(chapter_path.parent.glob("*.md"))
-    )
+    chapter_path = manuscript_dir(built_output) / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md"
+    chapter = "\n\n".join(fragment.read_text(encoding="utf-8") for fragment in sorted(chapter_path.parent.glob("*.md")))
     title = "Foundations of AGEINT"
-    chapter_h2 = [
-        line.removeprefix("## ").strip()
-        for line in chapter.splitlines()
-        if line.startswith("## ") and not line.startswith("### ")
-    ]
+    chapter_h2 = [line.removeprefix("## ").strip() for line in chapter.splitlines() if line.startswith("## ") and not line.startswith("### ")]
     assert len(chapter_h2) == 3
-    assert any(
-        heading.endswith(f" frame for {title}: source context, topic focus, and reader task")
-        for heading in chapter_h2
-    )
-    assert any(
-        heading.endswith(f" path for {title}: lesson cluster, safe artifact, and review")
-        for heading in chapter_h2
-    )
+    assert any(heading.endswith(f" frame for {title}: source context, topic focus, and reader task") for heading in chapter_h2)
+    assert any(heading.endswith(f" path for {title}: lesson cluster, safe artifact, and review") for heading in chapter_h2)
     assert f"{title} assurance handoff: evidence, governance, refresh, and capstone" in chapter_h2
     for scaffold in chapter_scaffold_titles(title).values():
         assert f"### {scaffold}" in chapter
@@ -298,10 +219,7 @@ def test_repeated_generated_heading_names_are_reader_specific(built_output: Path
 
 
 def test_appendix_toc_headings_are_appendix_specific(built_output: Path) -> None:
-    text = "\n\n".join(
-        path.read_text(encoding="utf-8")
-        for path in sorted((manuscript_dir(built_output) / "appendices").rglob("*.md"))
-    )
+    text = "\n\n".join(path.read_text(encoding="utf-8") for path in sorted((manuscript_dir(built_output) / "appendices").rglob("*.md")))
     for bare_heading in (
         "Purpose",
         "Allowed inputs",
@@ -315,18 +233,6 @@ def test_appendix_toc_headings_are_appendix_specific(built_output: Path) -> None
     ):
         assert not re.search(rf"^## {re.escape(bare_heading)}$", text, flags=re.MULTILINE)
 
-    assert re.search(
-        r"^### .+ operating purpose$",
-        text,
-        flags=re.MULTILINE,
-    )
-    assert re.search(
-        r"^### .+ failure cases and required responses$",
-        text,
-        flags=re.MULTILINE,
-    )
-    assert re.search(
-        r"^## .+ workbook scope: purpose, safety envelope, and reuse decision$",
-        text,
-        flags=re.MULTILINE,
-    )
+    assert re.search(r"^### .+ operating purpose$", text, flags=re.MULTILINE)
+    assert re.search(r"^### .+ failure cases and required responses$", text, flags=re.MULTILINE)
+    assert re.search(r"^## .+ workbook scope: purpose, safety envelope, and reuse decision$", text, flags=re.MULTILINE)

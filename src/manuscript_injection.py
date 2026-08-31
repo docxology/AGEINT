@@ -11,12 +11,7 @@ from template_resolver import ensure_template_repo_on_path
 _TOKEN_RE = re.compile(r"\{\{([A-Z][A-Z0-9_]*)\}\}")
 
 
-def substitute_manuscript_text(
-    template: str,
-    context: dict[str, Any],
-    *,
-    project_root: Path | None = None,
-) -> tuple[str, list[str]]:
+def substitute_manuscript_text(template: str, context: dict[str, Any], *, project_root: Path | None = None) -> tuple[str, list[str]]:
     """Substitute manuscript template tokens via infrastructure rendering or standalone fallback."""
     if project_root is not None:
         ensure_template_repo_on_path(project_root)

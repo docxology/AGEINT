@@ -48,21 +48,8 @@ def _compiled_rules() -> tuple[tuple[_TopicRule, ...], tuple[_ChapterRule, ...]]
         if isinstance(raw_overrides, list):
             for item in raw_overrides:
                 if isinstance(item, dict):
-                    overrides.append(
-                        _ContextOverride(
-                            category=str(item["category"]),
-                            context_any=_tuple_phrases(item.get("context_any", [])),
-                        )
-                    )
-        topic_rules.append(
-            _TopicRule(
-                category=category,
-                title_any=title_any,
-                context_any=context_any,
-                context_all=context_all,
-                overrides=tuple(overrides),
-            )
-        )
+                    overrides.append(_ContextOverride(category=str(item["category"]), context_any=_tuple_phrases(item.get("context_any", []))))
+        topic_rules.append(_TopicRule(category=category, title_any=title_any, context_any=context_any, context_all=context_all, overrides=tuple(overrides)))
 
     chapter_rules: list[_ChapterRule] = []
     for raw in payload["chapter_context_rules"]:
@@ -70,14 +57,7 @@ def _compiled_rules() -> tuple[tuple[_TopicRule, ...], tuple[_ChapterRule, ...]]
         chapter_exact = str(raw["chapter_exact"]).lower() if raw.get("chapter_exact") is not None else None
         any_in = _tuple_phrases(raw["any_in_chapter"]) if raw.get("any_in_chapter") is not None else None
         all_in = _tuple_phrases(raw["all_in_chapter"]) if raw.get("all_in_chapter") is not None else None
-        chapter_rules.append(
-            _ChapterRule(
-                category=category,
-                chapter_exact=chapter_exact,
-                any_in_chapter=any_in,
-                all_in_chapter=all_in,
-            )
-        )
+        chapter_rules.append(_ChapterRule(category=category, chapter_exact=chapter_exact, any_in_chapter=any_in, all_in_chapter=all_in))
     return tuple(topic_rules), tuple(chapter_rules)
 
 
@@ -89,22 +69,14 @@ def _all_phrases(text: str, phrases: tuple[str, ...]) -> bool:
     return all(phrase in text for phrase in phrases)
 
 
-def _resolve_context_overrides(
-    rule: _TopicRule,
-    context: str,
-) -> str:
+def _resolve_context_overrides(rule: _TopicRule, context: str) -> str:
     for override in rule.overrides:
         if override.context_any and _any_phrase(context, override.context_any):
             return override.category
     return rule.category
 
 
-def _topic_rule_matches(
-    rule: _TopicRule,
-    *,
-    lower: str,
-    context: str,
-) -> bool:
+def _topic_rule_matches(rule: _TopicRule, *, lower: str, context: str) -> bool:
     if rule.title_any is not None and not _any_phrase(lower, rule.title_any):
         return False
     if rule.context_any is not None and not _any_phrase(context, rule.context_any):
@@ -121,11 +93,7 @@ def _chapter_rule_matches(rule: _ChapterRule, chapter_lower: str) -> bool:
         return False
     if rule.all_in_chapter is not None and not _all_phrases(chapter_lower, rule.all_in_chapter):
         return False
-    return (
-        rule.chapter_exact is not None
-        or rule.any_in_chapter is not None
-        or rule.all_in_chapter is not None
-    )
+    return rule.chapter_exact is not None or rule.any_in_chapter is not None or rule.all_in_chapter is not None
 
 
 def chapter_context_risk_category(chapter_lower: str) -> str | None:

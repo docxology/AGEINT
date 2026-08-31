@@ -7,12 +7,7 @@ from typing import Any
 
 try:
     from citation_workflow import source_citation_spine, source_citation_spine_inline
-    from intelligence_content import (
-        capstone_scaffold_rows,
-        part_research_brief,
-        profile_triangulation_anchors,
-        safe_topic_entries,
-    )
+    from intelligence_content import capstone_scaffold_rows, part_research_brief, profile_triangulation_anchors, safe_topic_entries
     from manuscript_manifest.types import section_label as _label
     from unit_education import render_unit_profile_markdown
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
@@ -29,6 +24,7 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from ..unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
     from .types import section_label as _label  # type: ignore[no-redef]
 
+
 def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
     """Return a compact, body-safe source-spine phrase."""
 
@@ -37,6 +33,7 @@ def _citation_context(citation_numbers: list[int], *, limit: int = 2) -> str:
         return "the surrounding verified source spine"
     return source_citation_spine(selected)
 
+
 def _citation_context_inline(citation_numbers: list[int], *, limit: int = 2) -> str:
     """Return a compact source-spine phrase for mid-sentence joins."""
 
@@ -44,6 +41,7 @@ def _citation_context_inline(citation_numbers: list[int], *, limit: int = 2) -> 
     if not selected:
         return "the surrounding verified source spine"
     return source_citation_spine_inline(selected)
+
 
 def _part_source_context(part: dict[str, Any]) -> str:
     """Return a part-specific context phrase without repeating the part title."""
@@ -59,15 +57,18 @@ def _part_source_context(part: dict[str, Any]) -> str:
             break
     return _citation_context(citations)
 
+
 def _chapter_source_context(chapter: dict[str, Any]) -> str:
     """Return a chapter-specific source context without using its generated title."""
 
     return _citation_context(list(chapter.get("citations", [])))
 
+
 def _chapter_source_context_inline(chapter: dict[str, Any]) -> str:
     """Return chapter source context without terminal punctuation."""
 
     return _citation_context_inline(list(chapter.get("citations", [])))
+
 
 def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int = 2) -> str:
     """Return a compact topic cluster for body prose.
@@ -87,6 +88,7 @@ def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, lim
     # Engineering" must not have its embedded chapter-title substring
     # ("Social Engineering") neutralised into "History of the module".
     return f"**{compact_topic_cluster(topics)}**"
+
 
 def _cognitive_attack_framework() -> str:
     return (
@@ -179,27 +181,21 @@ def _part_summary(part: dict[str, Any]) -> str:
         f"{framework_suffix}"
     )
 
+
 def _part_chapter_rows(part: dict[str, Any], chapter_files: dict[int, str]) -> str:
     rows = ["| Module | Section reference | Source spine |", "|---|---|---|"]
     for chapter in part["chapters"]:
         chapter_slug = Path(chapter_files[chapter["number"]]).stem
         section_ref = f"[@{_label('chapter', chapter_slug)}]"
-        rows.append(
-            f"| {chapter['title']} | {section_ref} | "
-            f"{source_citation_spine(chapter['citations'])} |"
-        )
+        rows.append(f"| {chapter['title']} | {section_ref} | {source_citation_spine(chapter['citations'])} |")
     return "\n".join(rows)
+
 
 def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: str) -> str:
     source_context = _chapter_source_context(chapter)
     source_context_inline = _chapter_source_context_inline(chapter)
     topic_context = _chapter_topic_context(chapter, part)
-    triangulation = profile_triangulation_anchors(
-        str(part["title"]),
-        str(chapter["title"]),
-        chapter=chapter,
-        surface="source-canon section",
-    )
+    triangulation = profile_triangulation_anchors(str(part["title"]), str(chapter["title"]), chapter=chapter, surface="source-canon section")
     return "\n".join(
         [
             f"The source canon has three tiers; the local spine begins with {source_context}",
@@ -207,24 +203,15 @@ def _source_canon(chapter: dict[str, Any], part: dict[str, Any], source_spine: s
             "| Tier | What counts | How it is used |",
             "|---|---|---|",
             f"| Source guide | {source_spine} | Preserves the inherited AGEINT outline and `ageintNNN` keys. |",
-            (
-                "| Verified anchors | Official, standards, public-domain, or scholarly "
-                "sources in `references-*.bib` | Supplies governance, quality, "
-                "legal, safety, and technical constraints. |"
-            ),
-            (
-                "| Runtime profile | The profile matched to "
-                "the current unit and current module | "
-                "Selects the practice lens, method stack, failure modes, and "
-                "defensive boundary for generated prose. |"
-            ),
+            ("| Verified anchors | Official, standards, public-domain, or scholarly sources in `references-*.bib` | Supplies governance, quality, legal, safety, and technical constraints. |"),
+            ("| Runtime profile | The profile matched to the current unit and current module | Selects the practice lens, method stack, failure modes, and defensive boundary for generated prose. |"),
             "",
             triangulation,
             "",
-            f"Maintenance rule: Perplexity may suggest candidates for {topic_context} and {source_context_inline}, "
-            "but only directly verified source URLs are encoded as citations.",
+            f"Maintenance rule: Perplexity may suggest candidates for {topic_context} and {source_context_inline}, but only directly verified source URLs are encoded as citations.",
         ]
     )
+
 
 def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
@@ -241,73 +228,40 @@ def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str
         f"begins with {source_context}"
     )
 
+
 def _safe_practice_lab(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Build a safe lab packet using public, benign, "
-            f"owned-lab, or synthetic material only; source checks begin with {source_context}",
+            f"Build a safe lab packet using public, benign, owned-lab, or synthetic material only; source checks begin with {source_context}",
             "",
             "| Lab step | Required artifact | Safety gate |",
             "|---|---|---|",
-            (
-                "| Scope | One-sentence accountable learning objective plus excluded "
-                "actions | Instructor signs off before any tool or dataset is named. |"
-            ),
-            (
-                "| Evidence | Source list with provenance, timestamps, and caveats | "
-                "No credentials, private data, live targets, or sensitive records. |"
-            ),
-            (
-                "| Agent support | Prompt, tool allowlist, budget, logging plan, and "
-                "stop condition | Agent may summarize, compare, retrieve, or audit; "
-                "it may not act externally. |"
-            ),
-            (
-                "| Output | Map, memo, matrix, rubric, or tabletop packet | Output "
-                "must preserve uncertainty and separate observation from judgment. |"
-            ),
-            (
-                "| Debrief | What changed, what remains unknown, and what would require "
-                "human review | No deployment or operational follow-through. |"
-            ),
+            ("| Scope | One-sentence accountable learning objective plus excluded actions | Instructor signs off before any tool or dataset is named. |"),
+            ("| Evidence | Source list with provenance, timestamps, and caveats | No credentials, private data, live targets, or sensitive records. |"),
+            ("| Agent support | Prompt, tool allowlist, budget, logging plan, and stop condition | Agent may summarize, compare, retrieve, or audit; it may not act externally. |"),
+            ("| Output | Map, memo, matrix, rubric, or tabletop packet | Output must preserve uncertainty and separate observation from judgment. |"),
+            ("| Debrief | What changed, what remains unknown, and what would require human review | No deployment or operational follow-through. |"),
         ]
     )
+
 
 def _failure_mode_drill(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     return "\n".join(
         [
-            "Use the drill to stress-test the work before treating the "
-            f"artifact as complete; the drill starts from {source_context}",
+            f"Use the drill to stress-test the work before treating the artifact as complete; the drill starts from {source_context}",
             "",
             "| Failure mode | Drill question | Recovery move |",
             "|---|---|---|",
-            (
-                "| Source laundering | Which claim lost its original source, "
-                "timestamp, or caveat? | Reattach the source descriptor or remove "
-                "the claim. |"
-            ),
-            (
-                "| Automation bias | Which agent output looks authoritative without "
-                "independent support? | Add competing explanations and human review. |"
-            ),
-            (
-                "| Boundary drift | Which step could become collection, targeting, "
-                "exploitation, influence, or cyber-physical action? | Replace it "
-                "with a tabletop, audit, or governance exercise. |"
-            ),
-            (
-                "| Overconfident synthesis | Which uncertainty did the prose smooth "
-                "over? | Restore confidence language, alternatives, and unresolved "
-                "questions. |"
-            ),
-            (
-                "| Handoff loss | What would the next reviewer be unable to reproduce? | "
-                "Add inputs, transformation notes, output schema, and review owner. |"
-            ),
+            ("| Source laundering | Which claim lost its original source, timestamp, or caveat? | Reattach the source descriptor or remove the claim. |"),
+            ("| Automation bias | Which agent output looks authoritative without independent support? | Add competing explanations and human review. |"),
+            ("| Boundary drift | Which step could become collection, targeting, exploitation, influence, or cyber-physical action? | Replace it with a tabletop, audit, or governance exercise. |"),
+            ("| Overconfident synthesis | Which uncertainty did the prose smooth over? | Restore confidence language, alternatives, and unresolved questions. |"),
+            ("| Handoff loss | What would the next reviewer be unable to reproduce? | Add inputs, transformation notes, output schema, and review owner. |"),
         ]
     )
+
 
 def _instructor_artifact(chapter: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
@@ -325,17 +279,13 @@ def _instructor_artifact(chapter: dict[str, Any]) -> str:
         ]
     )
 
+
 def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
     triangulation = ""
     if part is not None:
-        triangulation = profile_triangulation_anchors(
-            str(part["title"]),
-            str(chapter["title"]),
-            chapter=chapter,
-            surface="review-checklist section",
-        )
+        triangulation = profile_triangulation_anchors(str(part["title"]), str(chapter["title"]), chapter=chapter, surface="review-checklist section")
     return "\n".join(
         [
             f"Before marking the work complete, verify the local source spine beginning with {source_context}",
@@ -351,6 +301,7 @@ def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = Non
         ]
     )
 
+
 def _authority_accountability_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part)
@@ -359,24 +310,11 @@ def _authority_accountability_model(chapter: dict[str, Any], part: dict[str, Any
             f"Use this accountability model before applying the work in any exercise. Topic: {topic_context}.",
             "",
             "| Accountability layer | Required decision | Evidence retained |",
-
             "|---|---|---|",
-            (
-                f"| Sponsor | Why this unit needs the module now | "
-                f"accountable learning objective, excluded actions, and source context {source_context} |"
-            ),
+            (f"| Sponsor | Why this unit needs the module now | accountable learning objective, excluded actions, and source context {source_context} |"),
             "| Instructor | Which data, tools, and roles are allowed | signed scope card and stop condition |",
-            (
-                "| Human reviewer | Which claims, recommendations, and agent outputs need "
-                "approval | review initials, caveats, and revision notes |"
-            ),
-            (
-                "| Learner | Which assumptions and uncertainties remain | claim ledger, "
-                "confidence statement, and handoff memo |"
-            ),
-            (
-                "| System steward | Which logs, prompts, sources, and outputs are retained | "
-                "retention rule, access boundary, and deletion or refresh date |"
-            ),
+            ("| Human reviewer | Which claims, recommendations, and agent outputs need approval | review initials, caveats, and revision notes |"),
+            ("| Learner | Which assumptions and uncertainties remain | claim ledger, confidence statement, and handoff memo |"),
+            ("| System steward | Which logs, prompts, sources, and outputs are retained | retention rule, access boundary, and deletion or refresh date |"),
         ]
     )

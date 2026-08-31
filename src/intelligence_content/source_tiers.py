@@ -8,42 +8,11 @@ class SourceLike(Protocol):
     verified: bool
 
 
-_PRIMARY_SUPPORT_DOMAINS = (
-    "cia.gov",
-    "dni.gov",
-    "odni.gov",
-    "intelligence.gov",
-    "nist.gov",
-    "cisa.gov",
-    "nsa.gov",
-    "mitre.org",
-    "oecd.org",
-    "science.org",
-    "pmc.ncbi.nlm.nih.gov",
-)
+_PRIMARY_SUPPORT_DOMAINS = ("cia.gov", "dni.gov", "odni.gov", "intelligence.gov", "nist.gov", "cisa.gov", "nsa.gov", "mitre.org", "oecd.org", "science.org", "pmc.ncbi.nlm.nih.gov")
 
-_PRACTITIONER_CONTEXT_DOMAINS = (
-    "linkedin.com",
-    "medium.com",
-    "aws.amazon.com",
-    "protectai.com",
-    "bandwidth.com",
-    "gravitee.io",
-    "bitdefender.com",
-    "redteams.ai",
-    "mitsloan.mit.edu",
-)
+_PRACTITIONER_CONTEXT_DOMAINS = ("linkedin.com", "medium.com", "aws.amazon.com", "protectai.com", "bandwidth.com", "gravitee.io", "bitdefender.com", "redteams.ai", "mitsloan.mit.edu")
 
-_NON_PRIMARY_ANALYTIC_CONTEXT_DOMAINS = (
-    "specialeurasia.com",
-    "spotterup.com",
-    "wikipedia.org",
-    "scribd.com",
-    "armyupress.army.mil",
-    "tandfonline.com",
-    "oas.org",
-    "ialeia.org",
-)
+_NON_PRIMARY_ANALYTIC_CONTEXT_DOMAINS = ("specialeurasia.com", "spotterup.com", "wikipedia.org", "scribd.com", "armyupress.army.mil", "tandfonline.com", "oas.org", "ialeia.org")
 
 
 def source_evidence_status(record: SourceLike) -> str:

@@ -64,22 +64,9 @@ GENERIC_DETAIL_SECTION_KEYS = {
     "Refresh triggers": "refresh_triggers",
     "Claim and evidence ledger": "claim_ledger",
 }
-RETIRED_GENERIC_HEADING_LABELS = {
-    "Discipline spine",
-    "Source-use contract",
-    "Practice artifact",
-    "Safety boundary",
-    "Instructor notes",
-    "Extension",
-    "Answer quality rubric",
-}
+RETIRED_GENERIC_HEADING_LABELS = {"Discipline spine", "Source-use contract", "Practice artifact", "Safety boundary", "Instructor notes", "Extension", "Answer quality rubric"}
 REQUIRED_MODULE_SECTIONS = set(GENERIC_TEACHING_SECTION_KEYS)
-RAW_PSEUDO_HEADING_PREFIXES = {
-    "V2 source-lane extension:",
-    "Deep expansion:",
-    "Evidence-package expansion:",
-    "V2 AGEINT-depth extension:",
-}
+RAW_PSEUDO_HEADING_PREFIXES = {"V2 source-lane extension:", "Deep expansion:", "Evidence-package expansion:", "V2 AGEINT-depth extension:"}
 REMOVED_REPEATED_MODULE_SECTIONS = {
     "Accessibility and UDL review",
     "Procurement and vendor oversight",
@@ -142,15 +129,8 @@ REMOVED_GENERATED_SCAFFOLD_PHRASES = {
     "source-guide subsection",
     "Which wording, scaffold",
 }
-REMOVED_GENERIC_CONCEPT_PHRASES = {
-    "defensible claim whose meaning",
-    "treats each source topic through",
-    "parsed AGEINT source spine",
-    "study sequence has three passes",
-}
-SOURCE_QUALITY_KEYS = {anchor["key"] for anchor in SOURCE_QUALITY_ANCHORS} | {
-    anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS
-}
+REMOVED_GENERIC_CONCEPT_PHRASES = {"defensible claim whose meaning", "treats each source topic through", "parsed AGEINT source spine", "study sequence has three passes"}
+SOURCE_QUALITY_KEYS = {anchor["key"] for anchor in SOURCE_QUALITY_ANCHORS} | {anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
 REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_nsf_ai_agent_ecosystems",
     "official_cdc_agentic_research_public_health",
@@ -271,26 +251,16 @@ REQUIRED_V2_DOCS = {
 
 def generated_output_files(output_manuscript: Path | None = None) -> list[Path]:
     root = _resolve_manuscript(output_manuscript)
-    return sorted(
-        path
-        for path in root.rglob("*.md")
-        if path.name not in {"AGENTS.md", "README.md"}
-    )
+    return sorted(path for path in root.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
 
 
 def generated_chapter_files(output_manuscript: Path | None = None) -> list[Path]:
     root = _resolve_manuscript(output_manuscript)
-    return [
-        path
-        for path in sorted((root / "parts").glob("*/*/00-overview.md"))
-    ]
+    return [path for path in sorted((root / "parts").glob("*/*/00-overview.md"))]
 
 
 def chapter_text(path: Path) -> str:
-    return "\n\n".join(
-        fragment.read_text(encoding="utf-8")
-        for fragment in sorted(path.parent.glob("*.md"))
-    )
+    return "\n\n".join(fragment.read_text(encoding="utf-8") for fragment in sorted(path.parent.glob("*.md")))
 
 
 def chapter_title_from_text(text: str) -> str:
@@ -301,9 +271,7 @@ def chapter_title_from_text(text: str) -> str:
 
 def required_module_sections_for(chapter_title: str) -> set[str]:
     """Return static plus chapter-specific module section headings."""
-    return set(chapter_teaching_titles(chapter_title).values()) | set(
-        chapter_detail_titles(chapter_title).values()
-    )
+    return set(chapter_teaching_titles(chapter_title).values()) | set(chapter_detail_titles(chapter_title).values())
 
 
 def chapter_relative(path: Path, output_manuscript: Path | None = None) -> str:
@@ -314,10 +282,7 @@ def chapter_relative(path: Path, output_manuscript: Path | None = None) -> str:
 def section_text(text: str, heading: str) -> str:
     match = None
     for candidate in _heading_candidates(text, heading):
-        pattern = re.compile(
-            rf"^(?P<marks>#+)\s+{re.escape(candidate)}(?:\s+\{{#[^}}]+\}})?\s*$",
-            flags=re.MULTILINE,
-        )
+        pattern = re.compile(rf"^(?P<marks>#+)\s+{re.escape(candidate)}(?:\s+\{{#[^}}]+\}})?\s*$", flags=re.MULTILINE)
         match = pattern.search(text)
         if match is not None:
             break

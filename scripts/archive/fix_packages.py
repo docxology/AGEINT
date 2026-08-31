@@ -31,7 +31,7 @@ def clean_part_file(path: Path) -> None:
 def replace_anchors_module(package_dir: Path) -> None:
     anchors_path = package_dir / "_02_part.py"
     anchors_path.write_text(
-        '''from __future__ import annotations
+        """from __future__ import annotations
 
 from pathlib import Path
 from typing import Final
@@ -54,7 +54,7 @@ def _load_intelligence_research_anchors() -> tuple[ResearchAnchor, ...]:
 
 
 INTELLIGENCE_RESEARCH_ANCHORS: Final[tuple[ResearchAnchor, ...]] = _load_intelligence_research_anchors()
-''',
+""",
         encoding="utf-8",
     )
 
@@ -76,12 +76,7 @@ def split_large_module(path: Path, max_lines: int = 480) -> None:
     chunks: list[list[str]] = []
     current: list[str] = []
     for line in body_lines:
-        if (
-            current
-            and line.startswith(("INTELLIGENCE_", "PRACTICE_", "SAFE_", "COURSEBOOK_", "CHAPTER_"))
-            and "=" in line
-            and len(current) > 50
-        ):
+        if current and line.startswith(("INTELLIGENCE_", "PRACTICE_", "SAFE_", "COURSEBOOK_", "CHAPTER_")) and "=" in line and len(current) > 50:
             chunks.append(current)
             current = [line]
         else:

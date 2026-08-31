@@ -55,34 +55,13 @@ from ._03m_graphical_abstract import _render_graphical_abstract_atlas
 from ._03n_claim_calibration import _render_claim_calibration_and_visual_semantics
 from ._03o_source_refresh_due import _render_source_refresh_due_dashboard
 from ._03p_agency_source_coverage import _render_agency_source_coverage_dashboard
-from ._03r_early_orientation import (
-    _render_assurance_cockpit,
-    _render_reader_route_compass,
-    _render_source_constellation_map,
-    _render_synthetic_tradecraft_workbench,
-)
+from ._03r_early_orientation import _render_assurance_cockpit, _render_reader_route_compass, _render_source_constellation_map, _render_synthetic_tradecraft_workbench
 from ._03b_asset_renderers import _render_citation_density
 from ._04_part import _font, _pil_modules
-from ._05_visual_style import (
-    CANVAS_BG,
-    GRID,
-    INK,
-    MUTED,
-    PALETTE,
-    SOFT_PALETTE,
-    draw_centered_text,
-    draw_footer,
-    draw_title_band,
-    draw_wrapped_text,
-)
+from ._05_visual_style import CANVAS_BG, GRID, INK, MUTED, PALETTE, SOFT_PALETTE, draw_centered_text, draw_footer, draw_title_band, draw_wrapped_text
 
 
-def render_python_figure(
-    root: Path,
-    curriculum: Curriculum,
-    spec: FigureSpec,
-    output: Path | None = None,
-) -> None:
+def render_python_figure(root: Path, curriculum: Curriculum, spec: FigureSpec, output: Path | None = None) -> None:
     """Dispatch a registry-backed Python visual renderer."""
     renderer_id = spec.provenance["renderer_id"]
     if output is None:
@@ -164,41 +143,16 @@ def _render_source_freshness_coverage(output: Path, spec: FigureSpec) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     canvas = image_mod.new("RGB", (1600, 1000), CANVAS_BG)
     draw = draw_mod.Draw(canvas)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        spec.title,
-        subtitle="Evidence-derived chart from local research-anchor metadata.",
-        accent="#0f766e",
-    )
+    draw_title_band(draw, font_mod, _font, spec.title, subtitle="Evidence-derived chart from local research-anchor metadata.", accent="#0f766e")
     _draw_metric_card(draw, font_mod, (70, 150, 385, 280), "Curated anchors", str(len(anchors)), PALETTE[0])
     _draw_metric_card(draw, font_mod, (430, 150, 745, 280), "Source lanes", str(len(lanes)), PALETTE[1])
     _draw_metric_card(draw, font_mod, (790, 150, 1105, 280), "Evidence tiers", str(len(tiers)), PALETTE[2])
     _draw_metric_card(draw, font_mod, (1150, 150, 1465, 280), "Latest check", latest.isoformat(), PALETTE[3])
 
-    _draw_horizontal_bars(
-        draw,
-        font_mod,
-        (80, 345, 730, 700),
-        "Freshness buckets",
-        [(label, freshness[label]) for label in ("0-7 days", "8-30 days", "31-90 days", ">90 days", "unknown")],
-    )
-    _draw_horizontal_bars(
-        draw,
-        font_mod,
-        (840, 345, 1510, 700),
-        "Evidence tiers",
-        tiers.most_common(6),
-    )
+    _draw_horizontal_bars(draw, font_mod, (80, 345, 730, 700), "Freshness buckets", [(label, freshness[label]) for label in ("0-7 days", "8-30 days", "31-90 days", ">90 days", "unknown")])
+    _draw_horizontal_bars(draw, font_mod, (840, 345, 1510, 700), "Evidence tiers", tiers.most_common(6))
     _draw_lane_tiles(draw, font_mod, lanes.most_common(6))
-    draw_footer(
-        draw,
-        font_mod,
-        _font,
-        f"Source: data/research_anchors/*.jsonl | Baseline date: {latest.isoformat()} | Counts are audit coverage, not source quality scores.",
-        y=930,
-    )
+    draw_footer(draw, font_mod, _font, f"Source: data/research_anchors/*.jsonl | Baseline date: {latest.isoformat()} | Counts are audit coverage, not source quality scores.", y=930)
     canvas.save(output, format="PNG", optimize=True)
 
 
@@ -228,41 +182,16 @@ def _render_analytic_source_quality_boundary(output: Path, spec: FigureSpec) -> 
     output.parent.mkdir(parents=True, exist_ok=True)
     canvas = image_mod.new("RGB", (1600, 1000), CANVAS_BG)
     draw = draw_mod.Draw(canvas)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        spec.title,
-        subtitle="Evidence-derived chart from curated analytic-tradecraft anchors.",
-        accent="#7c3aed",
-    )
+    draw_title_band(draw, font_mod, _font, spec.title, subtitle="Evidence-derived chart from curated analytic-tradecraft anchors.", accent="#7c3aed")
     _draw_metric_card(draw, font_mod, (70, 150, 385, 280), "Analytic anchors", str(len(anchors)), PALETTE[3])
     _draw_metric_card(draw, font_mod, (430, 150, 745, 280), "Evidence lanes", str(len(lanes)), PALETTE[0])
     _draw_metric_card(draw, font_mod, (790, 150, 1105, 280), "Source tiers", str(len(tiers)), PALETTE[1])
     _draw_metric_card(draw, font_mod, (1150, 150, 1465, 280), "Verification modes", str(len(verification)), PALETTE[2])
 
-    _draw_horizontal_bars(
-        draw,
-        font_mod,
-        (80, 350, 740, 685),
-        "Tradecraft evidence lanes",
-        lanes.most_common(6),
-    )
-    _draw_horizontal_bars(
-        draw,
-        font_mod,
-        (850, 350, 1510, 685),
-        "Source tiers",
-        tiers.most_common(6),
-    )
+    _draw_horizontal_bars(draw, font_mod, (80, 350, 740, 685), "Tradecraft evidence lanes", lanes.most_common(6))
+    _draw_horizontal_bars(draw, font_mod, (850, 350, 1510, 685), "Source tiers", tiers.most_common(6))
     _draw_boundary_tiles(draw, font_mod, boundaries)
-    draw_footer(
-        draw,
-        font_mod,
-        _font,
-        "Source: data/research_anchors/*.jsonl | Counts show support coverage and claim-boundary routing, not truth or quality scores.",
-        y=930,
-    )
+    draw_footer(draw, font_mod, _font, "Source: data/research_anchors/*.jsonl | Counts show support coverage and claim-boundary routing, not truth or quality scores.", y=930)
     canvas.save(output, format="PNG", optimize=True)
 
 
@@ -270,11 +199,7 @@ def _count_matching(counter: Counter[str], needles: Sequence[str]) -> int:
     return sum(value for key, value in counter.items() if any(needle in key for needle in needles))
 
 
-def _draw_boundary_tiles(
-    draw: object,
-    font_mod: object,
-    rows: Sequence[tuple[str, int]],
-) -> None:
+def _draw_boundary_tiles(draw: object, font_mod: object, rows: Sequence[tuple[str, int]]) -> None:
     draw.text((80, 735), "Primary claim boundary", fill=INK, font=_font(font_mod, 26))
     tile_w = 280
     for index, (label, value) in enumerate(rows):
@@ -314,27 +239,14 @@ def _freshness_bucket(value: date | None, latest: date) -> str:
     return ">90 days"
 
 
-def _draw_metric_card(
-    draw: object,
-    font_mod: object,
-    box: tuple[int, int, int, int],
-    label: str,
-    value: str,
-    color: str,
-) -> None:
+def _draw_metric_card(draw: object, font_mod: object, box: tuple[int, int, int, int], label: str, value: str, color: str) -> None:
     draw.rounded_rectangle(box, radius=10, fill="#ffffff", outline=color, width=4)
     draw.rectangle((box[0], box[1], box[0] + 16, box[3]), fill=color)
     draw_wrapped_text(draw, (box[0] + 34, box[1] + 24), label, _font(font_mod, 20), fill=MUTED, width=20, max_lines=1)
     draw_wrapped_text(draw, (box[0] + 34, box[1] + 64), value, _font(font_mod, 30), fill=INK, width=18, max_lines=1, line_height=34)
 
 
-def _draw_horizontal_bars(
-    draw: object,
-    font_mod: object,
-    box: tuple[int, int, int, int],
-    title: str,
-    rows: Sequence[tuple[str, int]],
-) -> None:
+def _draw_horizontal_bars(draw: object, font_mod: object, box: tuple[int, int, int, int], title: str, rows: Sequence[tuple[str, int]]) -> None:
     x0, y0, x1, y1 = box
     draw.text((x0, y0 - 42), title, fill=INK, font=_font(font_mod, 26))
     max_value = max((value for _, value in rows), default=1) or 1

@@ -14,17 +14,7 @@ _INTELLIGENCE_PROFILES_EXTENDED_B: Final[tuple[IntelligenceProfile, ...]] = (
     IntelligenceProfile(
         identifier="cyber_threat_intelligence",
         title="Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense",
-        match_terms=(
-            "cyber intelligence",
-            "advanced persistent",
-            "apt",
-            "supply-chain",
-            "supply chain",
-            "threat intelligence",
-            "cyber response",
-            "incident",
-            "sharing",
-        ),
+        match_terms=("cyber intelligence", "advanced persistent", "apt", "supply-chain", "supply chain", "threat intelligence", "cyber response", "incident", "sharing"),
         anchor_keys=(
             "official_nist_sp_800_150",
             "official_oasis_stix_21",
@@ -46,43 +36,17 @@ _INTELLIGENCE_PROFILES_EXTENDED_B: Final[tuple[IntelligenceProfile, ...]] = (
             "scholarly_penmetsa_2025_adversarial_ml_cybersecurity",
             "scholarly_wasil_2024_ai_emergency_preparedness",
         ),
-        conceptual_focus=(
-            "turning indicators, TTPs, incidents, vendor risk, and response "
-            "lessons into shareable defensive intelligence with clear handling rules"
-        ),
-        method_stack=(
-            "threat-information sharing goals, indicator/TTP normalization, "
-            "incident-response review, supply-chain risk assessment, and lessons learned"
-        ),
-        composability_contract=(
-            "indicators, TTP mappings, affected assets, supplier evidence, "
-            "response actions, and sharing constraints remain independently reusable"
-        ),
-        failure_modes=(
-            "indicator fixation, unvetted sharing, vendor-assurance drift, "
-            "weak incident scoping, and treating CTI as a feed instead of a workflow"
-        ),
-        safety_boundary=(
-            "cyber material stays defensive and tabletop-based; it does not "
-            "provide exploit, persistence, evasion, or live-response instructions"
-        ),
-        source_pack_ids=(
-            "ic_cyber_geoint_history",
-            "odni_governance_directives",
-        ),
+        conceptual_focus=("turning indicators, TTPs, incidents, vendor risk, and response lessons into shareable defensive intelligence with clear handling rules"),
+        method_stack=("threat-information sharing goals, indicator/TTP normalization, incident-response review, supply-chain risk assessment, and lessons learned"),
+        composability_contract=("indicators, TTP mappings, affected assets, supplier evidence, response actions, and sharing constraints remain independently reusable"),
+        failure_modes=("indicator fixation, unvetted sharing, vendor-assurance drift, weak incident scoping, and treating CTI as a feed instead of a workflow"),
+        safety_boundary=("cyber material stays defensive and tabletop-based; it does not provide exploit, persistence, evasion, or live-response instructions"),
+        source_pack_ids=("ic_cyber_geoint_history", "odni_governance_directives"),
     ),
     IntelligenceProfile(
         identifier="ics_ot_defense",
         title="ICS/OT Cyber-Physical Defense and Tabletop Readiness",
-        match_terms=(
-            "ics",
-            "industrial",
-            "operational technology",
-            "cyber-physical",
-            "critical infrastructure",
-            "mitre",
-            "att&ck",
-        ),
+        match_terms=("ics", "industrial", "operational technology", "cyber-physical", "critical infrastructure", "mitre", "att&ck"),
         anchor_keys=(
             "official_nist_csf_2",
             "official_nist_sp_800_160r1",
@@ -101,26 +65,11 @@ _INTELLIGENCE_PROFILES_EXTENDED_B: Final[tuple[IntelligenceProfile, ...]] = (
             "official_cisa_ot_asset_inventory_guidance",
             "official_cisa_ot_definitive_architecture",
         ),
-        conceptual_focus=(
-            "defensive intelligence for safety-critical environments where "
-            "availability, engineering state, and physical consequence matter"
-        ),
-        method_stack=(
-            "asset/consequence mapping, ATT&CK-for-ICS coverage review, "
-            "defense-in-depth audit, remote-access check, and tabletop injects"
-        ),
-        composability_contract=(
-            "separate cyber indicators, engineering observations, safety impacts, "
-            "operator decisions, and recovery actions"
-        ),
-        failure_modes=(
-            "IT-first assumptions, unsafe automation, untested shutdown logic, "
-            "poor remote-access control, and missing after-action learning"
-        ),
-        safety_boundary=(
-            "all ICS work remains tabletop, lab, or accountable defensive review; "
-            "no exploitation, unsafe process manipulation, or live control actions"
-        ),
+        conceptual_focus=("defensive intelligence for safety-critical environments where availability, engineering state, and physical consequence matter"),
+        method_stack=("asset/consequence mapping, ATT&CK-for-ICS coverage review, defense-in-depth audit, remote-access check, and tabletop injects"),
+        composability_contract=("separate cyber indicators, engineering observations, safety impacts, operator decisions, and recovery actions"),
+        failure_modes=("IT-first assumptions, unsafe automation, untested shutdown logic, poor remote-access control, and missing after-action learning"),
+        safety_boundary=("all ICS work remains tabletop, lab, or accountable defensive review; no exploitation, unsafe process manipulation, or live control actions"),
     ),
     IntelligenceProfile(
         identifier="legal_oversight",
@@ -154,72 +103,22 @@ _INTELLIGENCE_PROFILES_EXTENDED_B: Final[tuple[IntelligenceProfile, ...]] = (
             "official_odni_icd_206",
             "scholarly_ortega_2025_ai_incident_regime",
         ),
-        conceptual_focus=(
-            "turning authority, accountability, transparency, and review into "
-            "design constraints rather than post-hoc paperwork"
-        ),
-        method_stack=(
-            "authority mapping, role assignment, impact assessment, documentation "
-            "review, escalation triggers, and independent oversight"
-        ),
-        composability_contract=(
-            "policies, approvals, audit logs, evidence, and action permissions "
-            "remain linked but independently inspectable"
-        ),
-        failure_modes=(
-            "authority laundering through tools, missing audit trails, privacy "
-            "overreach, and treating governance as a static checklist"
-        ),
-        safety_boundary=(
-            "governance content supports lawful design, education, and review; it "
-            "does not justify unauthorized collection or deployment"
-        ),
-        source_pack_ids=(
-            "odni_privacy_oversight",
-            "odni_disclosure_and_tearlines",
-        ),
+        conceptual_focus=("turning authority, accountability, transparency, and review into design constraints rather than post-hoc paperwork"),
+        method_stack=("authority mapping, role assignment, impact assessment, documentation review, escalation triggers, and independent oversight"),
+        composability_contract=("policies, approvals, audit logs, evidence, and action permissions remain linked but independently inspectable"),
+        failure_modes=("authority laundering through tools, missing audit trails, privacy overreach, and treating governance as a static checklist"),
+        safety_boundary=("governance content supports lawful design, education, and review; it does not justify unauthorized collection or deployment"),
+        source_pack_ids=("odni_privacy_oversight", "odni_disclosure_and_tearlines"),
     ),
     IntelligenceProfile(
         identifier="operator_productivity",
         title="Operator Productivity and Cognitive Performance",
-        match_terms=(
-            "intelligent operator",
-            "cognitive athlete",
-            "productivity intelligence",
-            "getting things done",
-            "flow state",
-            "nasa-tlx",
-            "cognitive load",
-            "circadian intelligence",
-        ),
-        anchor_keys=(
-            "official_odni_icd_203",
-            "scholarly_heuer_psychology_intelligence_analysis",
-            "official_nist_sp_800_161r1",
-        ),
-        conceptual_focus=(
-            "sustained intelligence work as cognitive performance engineering: "
-            "external memory, workload measurement, flow conditions, and "
-            "decision hygiene under operational tempo"
-        ),
-        method_stack=(
-            "GTD capture-clarify-organize cycles, NASA-TLX workload review, "
-            "flow precondition checklists, task-switching audits, and "
-            "reviewer handoff under fatigue"
-        ),
-        composability_contract=(
-            "requirements queues, workload signals, focus blocks, evidence "
-            "packets, and reviewer checkpoints remain separable artifacts"
-        ),
-        failure_modes=(
-            "heroic overtime, invisible cognitive debt, context-switch thrash, "
-            "uncalibrated confidence under load, and skipping handoff review"
-        ),
-        safety_boundary=(
-            "productivity material stays educational and synthetic; it does not "
-            "prescribe live operational tempo, surveillance of people, or "
-            "performance coercion"
-        ),
+        match_terms=("intelligent operator", "cognitive athlete", "productivity intelligence", "getting things done", "flow state", "nasa-tlx", "cognitive load", "circadian intelligence"),
+        anchor_keys=("official_odni_icd_203", "scholarly_heuer_psychology_intelligence_analysis", "official_nist_sp_800_161r1"),
+        conceptual_focus=("sustained intelligence work as cognitive performance engineering: external memory, workload measurement, flow conditions, and decision hygiene under operational tempo"),
+        method_stack=("GTD capture-clarify-organize cycles, NASA-TLX workload review, flow precondition checklists, task-switching audits, and reviewer handoff under fatigue"),
+        composability_contract=("requirements queues, workload signals, focus blocks, evidence packets, and reviewer checkpoints remain separable artifacts"),
+        failure_modes=("heroic overtime, invisible cognitive debt, context-switch thrash, uncalibrated confidence under load, and skipping handoff review"),
+        safety_boundary=("productivity material stays educational and synthetic; it does not prescribe live operational tempo, surveillance of people, or performance coercion"),
     ),
 )
-

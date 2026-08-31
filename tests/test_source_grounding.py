@@ -26,14 +26,7 @@ from intelligence_content.source_grounding import (  # noqa: E402
 
 
 def _entry(citation_numbers: tuple[int, ...], title: str = "Sample topic") -> TopicEntry:
-    return TopicEntry(
-        raw_title=title,
-        display_title=title,
-        source_locus="1.1",
-        provenance_note="",
-        risk_category="standard",
-        citation_numbers=citation_numbers,
-    )
+    return TopicEntry(raw_title=title, display_title=title, source_locus="1.1", provenance_note="", risk_category="standard", citation_numbers=citation_numbers)
 
 
 def test_clean_source_title_strips_pdf_prefix_and_site_suffix() -> None:
@@ -54,27 +47,17 @@ def test_clean_source_title_preserves_real_hyphenated_titles() -> None:
 def test_clean_source_title_strips_bracket_pdf_prefix() -> None:
     assert clean_source_title("[PDF] BASIC CRYPTOGRAPHY") == "BASIC CRYPTOGRAPHY"
     # Duplicated tags collapse fully.
-    assert clean_source_title("[PDF] [PDF] The Psychology of Intelligence Analysis") == (
-        "The Psychology of Intelligence Analysis"
-    )
+    assert clean_source_title("[PDF] [PDF] The Psychology of Intelligence Analysis") == ("The Psychology of Intelligence Analysis")
 
 
 def test_clean_source_title_trims_trailing_function_word_without_ellipsis() -> None:
     # A hard truncation with no ellipsis marker leaves a dangling function word.
-    assert clean_source_title("The Utility of Military Deception and Information Operations in") == (
-        "The Utility of Military Deception and Information Operations"
-    )
-    assert clean_source_title("Behavioral Outcomes of Human Cognitive Security within an") == (
-        "Behavioral Outcomes of Human Cognitive Security"
-    )
+    assert clean_source_title("The Utility of Military Deception and Information Operations in") == ("The Utility of Military Deception and Information Operations")
+    assert clean_source_title("Behavioral Outcomes of Human Cognitive Security within an") == ("Behavioral Outcomes of Human Cognitive Security")
 
 
 _NOTE_DANGLING_TAIL_WORDS = frozenset(
-    {
-        "a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on",
-        "with", "by", "that", "which", "critical", "committed", "human",
-        "presents", "including", "distinct", "such",
-    }
+    {"a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on", "with", "by", "that", "which", "critical", "committed", "human", "presents", "including", "distinct", "such"}
 )
 
 
@@ -103,12 +86,8 @@ def test_clean_source_note_drops_truncated_partial_word() -> None:
 def test_clean_source_note_drops_severed_attributive_adjective() -> None:
     # Truncation that severs an adjective from its head noun must not be
     # presented as a finished sentence; fall back to title-only ("").
-    assert clean_source_note(
-        "This research examined the possibility of using shared experiences to recruit committed hu..."
-    ) == ""
-    assert clean_source_note(
-        "Explore ICS Cybersecurity and learn how to protect critical infrastruct..."
-    ) == ""
+    assert clean_source_note("This research examined the possibility of using shared experiences to recruit committed hu...") == ""
+    assert clean_source_note("Explore ICS Cybersecurity and learn how to protect critical infrastruct...") == ""
 
 
 def test_clean_source_note_trims_trailing_function_words() -> None:
@@ -117,9 +96,7 @@ def test_clean_source_note_trims_trailing_function_words() -> None:
 
 
 def test_clean_source_note_balances_unmatched_paren_and_quote() -> None:
-    assert clean_source_note('Heuer gives starters in his book (Structured Analytic Techniques for...').endswith(
-        "in his book."
-    )
+    assert clean_source_note("Heuer gives starters in his book (Structured Analytic Techniques for...").endswith("in his book.")
     assert clean_source_note('He shared an article: "Unveiling the multifaceted...').endswith("article.")
 
 
@@ -197,9 +174,7 @@ def test_evidence_from_sources_anchors_and_lists_citations() -> None:
     evidence = evidence_from_sources("My lesson topic", sources)
     # The opening lead-in rotates deterministically across a small bank, but it
     # always opens by weaving the bolded lesson title (no single verbatim stamp).
-    assert evidence.startswith(
-        ("For **My lesson topic**", "Ground **My lesson topic**", "Read **My lesson topic**")
-    )
+    assert evidence.startswith(("For **My lesson topic**", "Ground **My lesson topic**", "Read **My lesson topic**"))
     assert "[@ageint002]" in evidence
     assert "Use it" not in evidence  # single-source phrasing lives in source support
 
@@ -286,14 +261,7 @@ def test_annotated_source_table_links_url_when_available() -> None:
 
 def test_annotated_source_table_escapes_at_signs_in_markdown_urls() -> None:
     """Bare @ handles in source URLs must not be misread as citation keys."""
-    record = SourceRecord(
-        number=999,
-        key="ageint999",
-        title="Agentic AI Architectures",
-        note="Source note.",
-        url="https://medium.com/@anil.jain.baba/example",
-        verified=True,
-    )
+    record = SourceRecord(number=999, key="ageint999", title="Agentic AI Architectures", note="Source note.", url="https://medium.com/@anil.jain.baba/example", verified=True)
 
     table = annotated_source_table((record,))
 

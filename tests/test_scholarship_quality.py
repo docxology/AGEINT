@@ -37,14 +37,9 @@ def test_scholarship_quality_current_generated_output_passes(built_output: Path)
     assert summary["claim_bearing_files"] >= 250
     assert summary["uncited_claim_bearing_files"] == 0
     assert summary["thin_claim_bearing_files"] == 0
-    assert (
-        summary["single_source_family_claim_bearing_files"]
-        == report.payload["warning_row_count"]
-    )
+    assert summary["single_source_family_claim_bearing_files"] == report.payload["warning_row_count"]
     if report.payload["warning_rows"]:
-        assert report.payload["warning_rows"][0]["flags"] == [
-            "single_source_family_claim_bearing"
-        ]
+        assert report.payload["warning_rows"][0]["flags"] == ["single_source_family_claim_bearing"]
     assert summary["source_family_mentions"]["source_guide"] > 0
     assert summary["source_family_mentions"]["official"] > 0
     assert summary["source_family_mentions"]["scholarly"] > 0
@@ -79,11 +74,7 @@ def test_scholarship_quality_flags_thin_claim_bearing_negative_control(tmp_path:
 
 
 def test_scholarship_quality_warns_for_single_family_without_failing(tmp_path: Path) -> None:
-    _write_overview(
-        tmp_path,
-        "# Single-family overview\n\n"
-        "A supported sentence [@official_nist_ai_rmf]; [@official_nist_ai_600_1].\n",
-    )
+    _write_overview(tmp_path, "# Single-family overview\n\nA supported sentence [@official_nist_ai_rmf]; [@official_nist_ai_600_1].\n")
 
     report = collect_scholarship_quality(tmp_path)
 
@@ -96,10 +87,7 @@ def test_scholarship_quality_warns_for_single_family_without_failing(tmp_path: P
 def test_scholarship_quality_flags_broken_sat_method_contract(tmp_path: Path) -> None:
     (tmp_path / "abstract.md").write_text("# Abstract\n\nSynthetic framing without method figure.\n", encoding="utf-8")
     (tmp_path / "orientation.md").write_text(
-        "# Orientation\n\n"
-        "## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, "
-        "and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}\n",
-        encoding="utf-8",
+        "# Orientation\n\n## Synthetic Analytic Tradecraft thesis: synthetic fixtures, source discipline, and reviewable claims {#sec:synthetic-analytic-tradecraft-thesis}\n", encoding="utf-8"
     )
 
     report = collect_scholarship_quality(tmp_path)
@@ -114,9 +102,7 @@ def test_scholarship_quality_flags_broken_sat_method_contract(tmp_path: Path) ->
 
 def test_scholarship_quality_flags_broken_analysis_validation_contract(tmp_path: Path) -> None:
     (tmp_path / "abstract.md").write_text(
-        "# Abstract\n\nSynthetic Analytic Tradecraft is synthetic in its fixtures, not in its standards "
-        "[@fig:ageint-synthetic-tradecraft-method-contract].\n",
-        encoding="utf-8",
+        "# Abstract\n\nSynthetic Analytic Tradecraft is synthetic in its fixtures, not in its standards [@fig:ageint-synthetic-tradecraft-method-contract].\n", encoding="utf-8"
     )
     (tmp_path / "orientation.md").write_text(
         "# Orientation\n\n"
@@ -208,18 +194,7 @@ def test_citation_source_family_classifies_existing_anchor_keys() -> None:
 def test_audit_scholarship_quality_script_writes_json_contract(built_output: Path) -> None:
     assert (built_output / "manuscript").is_dir()
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_scholarship_quality.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_scholarship_quality.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

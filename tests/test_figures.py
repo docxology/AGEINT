@@ -1,4 +1,5 @@
 """Tests for AGEINT figure generation and registry integrity."""
+
 from __future__ import annotations
 
 import shutil
@@ -10,15 +11,7 @@ from PIL import Image
 from figures import _02_part as figure_rendering
 from figures import _02b_mermaid as mermaid_rendering
 from curriculum import load_curriculum
-from figures import (
-    FigureKind,
-    FigureSpec,
-    build_figure_specs,
-    figure_markdown,
-    figures_for_section,
-    load_figure_registry,
-    render_figures,
-)
+from figures import FigureKind, FigureSpec, build_figure_specs, figure_markdown, figures_for_section, load_figure_registry, render_figures
 from figures.mermaid_contracts import mermaid_type_contracts
 from manuscript_manifest import build_manuscript_manifest
 
@@ -61,11 +54,7 @@ def _assert_informative_reader_text(spec: FigureSpec | dict[str, object]) -> Non
     assert _word_count(caption) >= MIN_READER_CAPTION_WORDS, f"{label}: {caption}"
     assert _word_count(alt_text) >= MIN_ALT_TEXT_WORDS, f"{label}: {alt_text}"
     assert _word_count(long_description) >= MIN_LONG_DESCRIPTION_WORDS, f"{label}: {long_description}"
-    for phrase, text in (
-        ("caption forthcoming", caption),
-        ("alt text forthcoming", alt_text),
-        ("description forthcoming", long_description),
-    ):
+    for phrase, text in (("caption forthcoming", caption), ("alt text forthcoming", alt_text), ("description forthcoming", long_description)):
         assert phrase not in text.lower()
     assert ".md" not in long_description.lower()
     assert ".markdown" not in long_description.lower()
@@ -77,12 +66,7 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     specs = build_figure_specs(curriculum, manifest)
 
     kinds = {spec.kind for spec in specs}
-    assert kinds == {
-        FigureKind.MERMAID,
-        FigureKind.PYTHON,
-        FigureKind.HISTORICAL,
-        FigureKind.AI_GENERATED,
-    }
+    assert kinds == {FigureKind.MERMAID, FigureKind.PYTHON, FigureKind.HISTORICAL, FigureKind.AI_GENERATED}
     assert len(specs) == 177
     assert sum(spec.kind == FigureKind.MERMAID for spec in specs) == 115
     assert sum(spec.kind == FigureKind.PYTHON for spec in specs) == 52
@@ -172,9 +156,7 @@ def test_figure_specs_cover_all_asset_classes_with_unique_registry_fields() -> N
     assert "agency-source coverage" in agency_coverage.caption
     assert "56-anchor denominator" in agency_coverage.caption
     assert "artifact-evidence failure path" in agency_coverage.caption
-    calibration = next(
-        spec for spec in specs if spec.label == "fig:ageint-claim-calibration-and-visual-semantics"
-    )
+    calibration = next(spec for spec in specs if spec.label == "fig:ageint-claim-calibration-and-visual-semantics")
     assert calibration.kind == FigureKind.PYTHON
     assert calibration.provenance["renderer_id"] == "claim_calibration_and_visual_semantics"
     assert calibration.semantic_role == "verifier_control_map"
@@ -196,10 +178,7 @@ def test_early_orientation_creative_visuals_are_registered_and_slotted() -> None
     by_label = {spec.label: spec for spec in specs}
     expected = {
         "fig:ageint-reader-route-compass": ("reader_route_compass", "opening_route_compass"),
-        "fig:ageint-synthetic-tradecraft-workbench": (
-            "synthetic_tradecraft_workbench",
-            "tradecraft_workbench",
-        ),
+        "fig:ageint-synthetic-tradecraft-workbench": ("synthetic_tradecraft_workbench", "tradecraft_workbench"),
         "fig:ageint-source-constellation-map": ("source_constellation_map", "source_constellation"),
         "fig:ageint-assurance-cockpit": ("assurance_cockpit", "assurance_cockpit"),
     }
@@ -216,26 +195,14 @@ def test_early_orientation_creative_visuals_are_registered_and_slotted() -> None
         assert not spec.quantitative
         assert spec.semantic_role != "conceptual_or_audit_visual"
         assert "not a measured" in spec.interpretation_limit.lower()
-        assert any(
-            phrase in spec.caption
-            for phrase in (
-                "evidence trace",
-                "field-capability proof",
-                "evidence families",
-                "authoritative status",
-            )
-        )
+        assert any(phrase in spec.caption for phrase in ("evidence trace", "field-capability proof", "evidence families", "authoritative status"))
         _assert_informative_reader_text(spec)
 
 
 def test_maestro_mermaid_source_uses_top_to_bottom_layout() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    spec = next(
-        figure
-        for figure in build_figure_specs(curriculum, manifest)
-        if figure.label == "fig:ageint-maestro-seven-layer"
-    )
+    spec = next(figure for figure in build_figure_specs(curriculum, manifest) if figure.label == "fig:ageint-maestro-seven-layer")
     source = mermaid_rendering.mermaid_source(curriculum, spec)
 
     assert "\nflowchart TB\n" in source
@@ -260,14 +227,7 @@ def test_mermaid_sources_use_reader_task_specific_chart_types() -> None:
         "fig:ageint-claim-evidence-fit-map": "quadrantChart",
     }
 
-    assert {
-        "flowchart",
-        "stateDiagram-v2",
-        "sequenceDiagram",
-        "journey",
-        "timeline",
-        "quadrantChart",
-    } <= types
+    assert {"flowchart", "stateDiagram-v2", "sequenceDiagram", "journey", "timeline", "quadrantChart"} <= types
     assert {contract.diagram_type for contract in mermaid_type_contracts()} <= types
     by_label = {spec.label: spec for spec in mermaid_specs}
     for label, diagram_type in converted.items():
@@ -283,12 +243,7 @@ def test_mermaid_sources_use_reader_task_specific_chart_types() -> None:
 def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(
-        PROJECT_ROOT,
-        curriculum,
-        manifest,
-        allow_placeholder_figures=True,
-    )
+    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest, allow_placeholder_figures=True)
     registry = load_figure_registry(registry_path)
 
     assert registry_path == PROJECT_ROOT / "output" / "figures" / "figure_registry.json"
@@ -348,12 +303,7 @@ def test_render_figures_writes_registry_assets_and_mermaid_sources() -> None:
 def test_rendered_figure_assets_are_readable_and_square_normalized() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(
-        PROJECT_ROOT,
-        curriculum,
-        manifest,
-        allow_placeholder_figures=True,
-    )
+    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest, allow_placeholder_figures=True)
     registry = load_figure_registry(registry_path)
 
     for entry in registry["figures"]:
@@ -421,12 +371,7 @@ def test_historical_and_ai_figures_carry_local_provenance() -> None:
 def test_figures_for_section_filters_by_source_section() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(
-        PROJECT_ROOT,
-        curriculum,
-        manifest,
-        allow_placeholder_figures=True,
-    )
+    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest, allow_placeholder_figures=True)
     registry = load_figure_registry(registry_path)
     figures = registry["figures"]
     orientation = figures_for_section(figures, "orientation.md")
@@ -444,12 +389,7 @@ def test_render_figures_strict_mode_produces_real_mermaid_diagrams() -> None:
 
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(
-        PROJECT_ROOT,
-        curriculum,
-        manifest,
-        allow_placeholder_figures=False,
-    )
+    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest, allow_placeholder_figures=False)
     registry = load_figure_registry(registry_path)
     mermaid_entries = [entry for entry in registry["figures"] if entry["kind"] == FigureKind.MERMAID.value]
     assert len(mermaid_entries) == 115
@@ -475,21 +415,11 @@ def test_built_mermaid_figures_are_not_placeholder_plates(built_output: Path) ->
 def test_figure_markdown_renders_label_path_and_escaped_caption() -> None:
     curriculum = load_curriculum(DATA)
     manifest = build_manuscript_manifest(curriculum)
-    registry_path = render_figures(
-        PROJECT_ROOT,
-        curriculum,
-        manifest,
-        allow_placeholder_figures=True,
-    )
+    registry_path = render_figures(PROJECT_ROOT, curriculum, manifest, allow_placeholder_figures=True)
     registry = load_figure_registry(registry_path)
     entry = next(item for item in registry["figures"] if item["label"] == "fig:ageint-curriculum-map")
     output_manuscript = PROJECT_ROOT / "output" / "manuscript"
-    markdown = figure_markdown(
-        entry,
-        project_root=PROJECT_ROOT,
-        manuscript_output_dir=output_manuscript,
-        section_relative_path="orientation.md",
-    )
+    markdown = figure_markdown(entry, project_root=PROJECT_ROOT, manuscript_output_dir=output_manuscript, section_relative_path="orientation.md")
     assert "{#fig:ageint-curriculum-map}" in markdown
     assert "output/figures/" in markdown or "../figures/" in markdown
     assert "[" in markdown and "](" in markdown

@@ -8,16 +8,8 @@ import json
 import subprocess
 import sys
 
-from agency_source_coverage import (
-    collect_agency_source_coverage,
-    render_agency_source_coverage_markdown,
-)
-from intelligence_content import (
-    INTELLIGENCE_PROFILES,
-    INTELLIGENCE_RESEARCH_ANCHORS,
-    agency_source_pack_keys,
-    expanded_profile_anchor_keys,
-)
+from agency_source_coverage import collect_agency_source_coverage, render_agency_source_coverage_markdown
+from intelligence_content import INTELLIGENCE_PROFILES, INTELLIGENCE_RESEARCH_ANCHORS, agency_source_pack_keys, expanded_profile_anchor_keys
 from manuscript_quality.inventory_helpers import SOURCE_QUALITY_KEYS
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -25,11 +17,7 @@ NEW_SHARD = PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-2
 
 
 def _new_rows() -> list[dict[str, object]]:
-    return [
-        json.loads(line)
-        for line in NEW_SHARD.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+    return [json.loads(line) for line in NEW_SHARD.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def test_us_ic_source_expansion_shard_count_and_minimums() -> None:
@@ -97,11 +85,7 @@ def test_agency_source_packs_are_deterministic_deduped_and_profile_routable() ->
         expanded = expanded_profile_anchor_keys(profile)
         assert expanded == tuple(dict.fromkeys(expanded)), profile.identifier
         assert set(expanded) <= all_anchor_keys, profile.identifier
-    routed = {
-        key
-        for profile in INTELLIGENCE_PROFILES
-        for key in expanded_profile_anchor_keys(profile)
-    }
+    routed = {key for profile in INTELLIGENCE_PROFILES for key in expanded_profile_anchor_keys(profile)}
     assert {str(row["key"]) for row in _new_rows()} & routed
 
 
@@ -147,14 +131,8 @@ def test_agency_source_coverage_fails_missing_source_pack_negative_control(tmp_p
         "source_agency": "CIA",
         "source_pack": "",
     }
-    (data_dir / "intelligence-anchors-249-304.jsonl").write_text(
-        json.dumps(row) + "\n",
-        encoding="utf-8",
-    )
-    (tmp_path / "data" / "agency_source_packs.yaml").write_text(
-        "packs:\n  fixture_pack:\n    - official_fixture_us_ic\n",
-        encoding="utf-8",
-    )
+    (data_dir / "intelligence-anchors-249-304.jsonl").write_text(json.dumps(row) + "\n", encoding="utf-8")
+    (tmp_path / "data" / "agency_source_packs.yaml").write_text("packs:\n  fixture_pack:\n    - official_fixture_us_ic\n", encoding="utf-8")
 
     report = collect_agency_source_coverage(tmp_path)
 
@@ -165,18 +143,7 @@ def test_agency_source_coverage_fails_missing_source_pack_negative_control(tmp_p
 
 def test_audit_agency_source_coverage_script_writes_json_contract() -> None:
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_agency_source_coverage.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_agency_source_coverage.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

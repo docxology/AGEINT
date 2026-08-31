@@ -47,12 +47,7 @@ class ReleaseSurfaceIssue:
     snippet: str
 
     def as_dict(self) -> dict[str, Any]:
-        return {
-            "path": self.path,
-            "line": self.line,
-            "issue": self.issue,
-            "snippet": self.snippet,
-        }
+        return {"path": self.path, "line": self.line, "issue": self.issue, "snippet": self.snippet}
 
 
 @dataclass(frozen=True)
@@ -66,12 +61,7 @@ class PublicationReadinessReport:
         return bool(self.payload["ok"])
 
 
-def collect_publication_readiness(
-    project_root: Path,
-    *,
-    template_root: Path | None = None,
-    run_parent_guard: bool = True,
-) -> PublicationReadinessReport:
+def collect_publication_readiness(project_root: Path, *, template_root: Path | None = None, run_parent_guard: bool = True) -> PublicationReadinessReport:
     """Collect local publication-readiness evidence without publishing anything."""
 
     root = Path(project_root)
@@ -82,18 +72,13 @@ def collect_publication_readiness(
     release_surface = scan_release_surfaces(root)
     source_license = collect_source_license_posture(root)
     task_status = collect_task_status(root)
-    parent_guard = run_parent_confidentiality_guard(root, template_root=template_root) if run_parent_guard else {
-        "checked": False,
-        "ok": True,
-        "stdout": "not run in this invocation",
-        "stderr": "",
-        "returncode": 0,
-    }
+    parent_guard = (
+        run_parent_confidentiality_guard(root, template_root=template_root)
+        if run_parent_guard
+        else {"checked": False, "ok": True, "stdout": "not run in this invocation", "stderr": "", "returncode": 0}
+    )
     parent_guard = _sanitize_parent_guard(parent_guard)
-    artifact_audit_checks = {
-        check_id: bool(artifact_checks.get(check_id))
-        for check_id in publication_readiness_audit_check_ids()
-    }
+    artifact_audit_checks = {check_id: bool(artifact_checks.get(check_id)) for check_id in publication_readiness_audit_check_ids()}
     checks = {
         "artifact_evidence_ok": bool(artifact_evidence.get("ok")),
         **artifact_audit_checks,
@@ -112,73 +97,41 @@ def collect_publication_readiness(
         "ok": all(checks.values()),
         "checks": checks,
         "artifact_evidence": {
-            "report_paths": [
-                "output/reports/current_artifact_evidence.json",
-                "output/reports/current_artifact_evidence.md",
-            ],
+            "report_paths": ["output/reports/current_artifact_evidence.json", "output/reports/current_artifact_evidence.md"],
             "summary": {
                 "generated_markdown_files": artifact_evidence["citations"]["generated_markdown_files"],
-                "generated_markdown_citation_occurrences": artifact_evidence["citations"][
-                    "generated_markdown_citation_occurrences"
-                ],
+                "generated_markdown_citation_occurrences": artifact_evidence["citations"]["generated_markdown_citation_occurrences"],
                 "figures": artifact_evidence["figures"]["figure_count"],
                 "pdf_pages": artifact_evidence["pdf"]["page_count"],
                 "pdf_stale": artifact_evidence["pdf"]["stale_pdf"],
                 "bad_pdf_link_targets": artifact_evidence["pdf"]["link_audit"]["bad_target_count"],
                 "claim_hard_fail_rows": artifact_evidence["claim_calibration"]["summary"]["hard_fail_rows"],
                 "scholarship_hard_fail_rows": len(artifact_evidence["scholarship_quality"]["hard_fail_rows"]),
-                "agency_source_coverage_ok": bool(
-                    artifact_checks.get("agency_source_coverage_ok", True)
-                ),
-                "new_official_us_ic_anchors": artifact_evidence.get("agency_source_coverage", {})
-                .get("summary", {})
-                .get("new_official_us_ic_anchor_count", 0),
-                "agency_source_unrouted_rows": artifact_evidence.get("agency_source_coverage", {})
-                .get("summary", {})
-                .get("unrouted_new_anchor_count", 0),
-                "agency_source_missing_metadata": artifact_evidence.get("agency_source_coverage", {})
-                .get("summary", {})
-                .get("missing_required_metadata_count", 0),
-                "reference_quality_issues": artifact_evidence.get("reference_quality", {})
-                .get("summary", {})
-                .get("issue_count", 0),
-                "generic_detail_heading_issues": artifact_evidence.get("reference_quality", {})
-                .get("summary", {})
-                .get("generic_heading_issues", 0),
-                "citation_context_issues": artifact_evidence.get("reference_quality", {})
-                .get("summary", {})
-                .get("citation_context_issues", 0),
+                "agency_source_coverage_ok": bool(artifact_checks.get("agency_source_coverage_ok", True)),
+                "new_official_us_ic_anchors": artifact_evidence.get("agency_source_coverage", {}).get("summary", {}).get("new_official_us_ic_anchor_count", 0),
+                "agency_source_unrouted_rows": artifact_evidence.get("agency_source_coverage", {}).get("summary", {}).get("unrouted_new_anchor_count", 0),
+                "agency_source_missing_metadata": artifact_evidence.get("agency_source_coverage", {}).get("summary", {}).get("missing_required_metadata_count", 0),
+                "reference_quality_issues": artifact_evidence.get("reference_quality", {}).get("summary", {}).get("issue_count", 0),
+                "generic_detail_heading_issues": artifact_evidence.get("reference_quality", {}).get("summary", {}).get("generic_heading_issues", 0),
+                "citation_context_issues": artifact_evidence.get("reference_quality", {}).get("summary", {}).get("citation_context_issues", 0),
             },
         },
         "source_refresh_due": {
-            "report_paths": [
-                "output/reports/source_refresh_due.json",
-                "output/reports/source_refresh_due.md",
-            ],
+            "report_paths": ["output/reports/source_refresh_due.json", "output/reports/source_refresh_due.md"],
             "summary": source_refresh_due["summary"],
             "issue_row_count": source_refresh_due["issue_row_count"],
         },
         "artifact_manifest": manifest_status,
-        "release_surface_scan": {
-            "issue_count": len(release_surface),
-            "issues": [issue.as_dict() for issue in release_surface],
-        },
+        "release_surface_scan": {"issue_count": len(release_surface), "issues": [issue.as_dict() for issue in release_surface]},
         "source_license_posture": source_license,
         "task_status": task_status,
         "parent_confidentiality_guard": parent_guard,
-        "release_decision": (
-            "Ready for an explicit local release decision only when this report is ok. "
-            "This report does not publish, push, archive, promote, or create a public record."
-        ),
+        "release_decision": ("Ready for an explicit local release decision only when this report is ok. This report does not publish, push, archive, promote, or create a public record."),
     }
     return PublicationReadinessReport(payload)
 
 
-def write_publication_readiness(
-    project_root: Path,
-    *,
-    run_parent_guard: bool = True,
-) -> tuple[Path, Path, PublicationReadinessReport]:
+def write_publication_readiness(project_root: Path, *, run_parent_guard: bool = True) -> tuple[Path, Path, PublicationReadinessReport]:
     """Write JSON and Markdown publication-readiness reports under ``output/reports``."""
 
     root = Path(project_root)
@@ -303,9 +256,7 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
         if row.get("kind") == "ai_generated" and "synthetic" not in str(provenance.get("safety", "")).lower():
             issues.append({"surface": label, "issue": "synthetic_asset_missing_safety_provenance"})
 
-    source_metadata = _load_json_with_schema(
-        root / "output" / "reports" / "source_metadata.json", output_root=root / "output"
-    )
+    source_metadata = _load_json_with_schema(root / "output" / "reports" / "source_metadata.json", output_root=root / "output")
     metadata_summary = source_metadata.get("summary", {}) if isinstance(source_metadata, dict) else {}
     if metadata_summary.get("blank_source_lane_count") != 0 or metadata_summary.get("blank_source_tier_count") != 0:
         issues.append({"surface": "output/reports/source_metadata.json", "issue": "source_metadata_not_explicit"})
@@ -313,11 +264,7 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
         "ok": not issues,
         "issue_count": len(issues),
         "issues": issues,
-        "license": {
-            "book": book.get("license", ""),
-            "code": book.get("code_license", ""),
-            "metadata": metadata.get("license", ""),
-        },
+        "license": {"book": book.get("license", ""), "code": book.get("code_license", ""), "metadata": metadata.get("license", "")},
         "figure_count": len(figures),
     }
 
@@ -325,30 +272,17 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
 def artifact_manifest_status(project_root: Path) -> dict[str, Any]:
     path = Path(project_root) / "output" / "reports" / "artifact_manifest.json"
     if not path.is_file():
-        return {
-            "ok": False,
-            "path": "output/reports/artifact_manifest.json",
-            "issue_count": 1,
-            "issues": ["missing artifact manifest"],
-        }
+        return {"ok": False, "path": "output/reports/artifact_manifest.json", "issue_count": 1, "issues": ["missing artifact manifest"]}
     payload = _load_json(path)
     issues = [str(issue) for issue in payload.get("issues", [])] if isinstance(payload, dict) else ["invalid manifest"]
-    return {
-        "ok": not issues,
-        "path": "output/reports/artifact_manifest.json",
-        "issue_count": len(issues),
-        "issues": issues,
-    }
+    return {"ok": not issues, "path": "output/reports/artifact_manifest.json", "issue_count": len(issues), "issues": issues}
 
 
 def collect_task_status(project_root: Path) -> dict[str, Any]:
     payload = _load_yaml(Path(project_root) / "tasks.yaml")
     tasks = payload.get("tasks", []) if isinstance(payload, dict) else []
     by_id = {str(row.get("id")): row for row in tasks if isinstance(row, dict)}
-    required = {
-        task_id: str(by_id.get(task_id, {}).get("status", "missing"))
-        for task_id in REQUIRED_DONE_TASKS
-    }
+    required = {task_id: str(by_id.get(task_id, {}).get("status", "missing")) for task_id in REQUIRED_DONE_TASKS}
     milestone_status = str(by_id.get("ageint-m1", {}).get("status", "missing"))
     return {
         "required_done_tasks": required,
@@ -359,63 +293,24 @@ def collect_task_status(project_root: Path) -> dict[str, Any]:
     }
 
 
-def run_parent_confidentiality_guard(
-    project_root: Path,
-    *,
-    template_root: Path | None = None,
-) -> dict[str, Any]:
+def run_parent_confidentiality_guard(project_root: Path, *, template_root: Path | None = None) -> dict[str, Any]:
     template = template_root or _default_template_root(project_root)
     if not template or not template.is_dir():
-        return {
-            "checked": False,
-            "ok": False,
-            "stdout": "",
-            "stderr": "template repo not found",
-            "returncode": 1,
-        }
-    result = subprocess.run(
-        ["uv", "run", "python", "scripts/check_tracked_projects.py"],
-        cwd=template,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
-    )
-    return {
-        "checked": True,
-        "ok": result.returncode == 0,
-        "stdout": _clean_output(result.stdout),
-        "stderr": _clean_output(result.stderr),
-        "returncode": result.returncode,
-    }
+        return {"checked": False, "ok": False, "stdout": "", "stderr": "template repo not found", "returncode": 1}
+    result = subprocess.run(["uv", "run", "python", "scripts/check_tracked_projects.py"], cwd=template, check=False, capture_output=True, text=True, timeout=180)
+    return {"checked": True, "ok": result.returncode == 0, "stdout": _clean_output(result.stdout), "stderr": _clean_output(result.stderr), "returncode": result.returncode}
 
 
 def _release_text_paths(root: Path) -> tuple[Path, ...]:
     paths: list[Path] = []
-    roots = [
-        root / "output" / "manuscript",
-        root / "output" / "web",
-        root / "output" / "pdf",
-    ]
+    roots = [root / "output" / "manuscript", root / "output" / "web", root / "output" / "pdf"]
     for base in roots:
         if base.is_dir():
-            paths.extend(
-                path
-                for path in base.rglob("*")
-                if path.is_file() and path.suffix.lower() in {".md", ".tex", ".html", ".yaml", ".yml", ".bib"}
-            )
+            paths.extend(path for path in base.rglob("*") if path.is_file() and path.suffix.lower() in {".md", ".tex", ".html", ".yaml", ".yml", ".bib"})
     reports_dir = root / "output" / "reports"
     if reports_dir.is_dir():
-        paths.extend(
-            path
-            for path in reports_dir.rglob("*")
-            if path.is_file() and path.suffix.lower() in {".json", ".jsonl", ".md", ".txt", ".html"}
-        )
-    explicit = [
-        root / "output" / "figures" / "figure_registry.json",
-        root / "output" / "figures" / "visual_quality_audit.json",
-        root / "output" / "figures" / "cover" / "ageint-cover-synthesis.json",
-    ]
+        paths.extend(path for path in reports_dir.rglob("*") if path.is_file() and path.suffix.lower() in {".json", ".jsonl", ".md", ".txt", ".html"})
+    explicit = [root / "output" / "figures" / "figure_registry.json", root / "output" / "figures" / "visual_quality_audit.json", root / "output" / "figures" / "cover" / "ageint-cover-synthesis.json"]
     paths.extend(path for path in explicit if path.is_file())
     return tuple(sorted(set(paths)))
 

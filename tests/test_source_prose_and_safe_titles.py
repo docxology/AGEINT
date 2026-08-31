@@ -22,6 +22,7 @@ from intelligence_content import _07_safe_titles as safe_titles  # noqa: E402
 
 # --- _source_prose.stable_index -------------------------------------------------
 
+
 def test_stable_index_is_deterministic_across_calls() -> None:
     assert prose.stable_index("Social Engineering", 4) == prose.stable_index("Social Engineering", 4)
 
@@ -52,6 +53,7 @@ def test_stable_index_spreads_across_all_buckets() -> None:
 
 # --- _source_prose rotation banks ----------------------------------------------
 
+
 def test_rotation_banks_have_distinct_variants() -> None:
     for bank in (prose.NOTE_INTROS, prose.USE_CLAUSES, prose.EVIDENCE_CLOSERS, prose.EVIDENCE_LEADS):
         assert len(bank) >= 4
@@ -79,6 +81,7 @@ def test_note_carrier_picks_most_specific_note() -> None:
 
 # --- _07_safe_titles.distinguishing_phrase -------------------------------------
 
+
 def test_distinguishing_phrase_returns_empty_for_citation_noise() -> None:
     # The empty return is the case the artifact-prompt caller must guard (T7-01):
     # a bare year or a "Case Study: <year>" carries no distinguishing topic words.
@@ -87,10 +90,7 @@ def test_distinguishing_phrase_returns_empty_for_citation_noise() -> None:
 
 
 def test_distinguishing_phrase_prefers_topic_specific_tail_after_generic_head() -> None:
-    assert (
-        safe_titles.distinguishing_phrase("Historical Foundations: Soviet Active Measures")
-        == "Soviet Active Measures"
-    )
+    assert safe_titles.distinguishing_phrase("Historical Foundations: Soviet Active Measures") == "Soviet Active Measures"
 
 
 def test_distinguishing_phrase_strips_parenthetical_and_keeps_contiguous_phrase() -> None:
@@ -99,20 +99,15 @@ def test_distinguishing_phrase_strips_parenthetical_and_keeps_contiguous_phrase(
 
 # --- _07_safe_titles high-risk rewrite -----------------------------------------
 
+
 def test_is_generic_display_title_flags_category_fallbacks_only() -> None:
-    assert safe_titles.is_generic_display_title(
-        "AI-enabled recruitment-risk ethics and source-protection case study"
-    )
+    assert safe_titles.is_generic_display_title("AI-enabled recruitment-risk ethics and source-protection case study")
     assert not safe_titles.is_generic_display_title("The Intelligence Cycle")
 
 
 def test_safe_curriculum_treatment_rewrites_operational_title_to_educational() -> None:
     # The safety property: an operational-sounding source title is rewritten to a
     # bounded, educational label before it can become a lesson header.
-    rewritten = safe_titles.safe_curriculum_treatment(
-        "Dead Drops: Physical and Digital Methods",
-        "Human Intelligence",
-        "Tradecraft History",
-    )
+    rewritten = safe_titles.safe_curriculum_treatment("Dead Drops: Physical and Digital Methods", "Human Intelligence", "Tradecraft History")
     assert rewritten == "Historical clandestine-communications ethics review"
     assert "dead drop" not in rewritten.lower()

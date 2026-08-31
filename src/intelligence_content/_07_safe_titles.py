@@ -43,94 +43,36 @@ def _clean_shard_title(title: str) -> str:
 
 def _safe_title_for_risk(risk_category: str) -> str:
     labels = {
-        "agentic_cyber_misuse": (
-            "Agentic cyber-misuse control review using sample prompt records, "
-            "fabricated logs, and deny-by-default tool policies"
-        ),
-        "historical_humint_source_protection": (
-            "Declassified source-protection and institutional-control case study"
-        ),
-        "ics_evasion_coverage": (
-            "ICS evasion coverage-control review using defensive detection questions"
-        ),
-        "ics_collection_detection": (
-            "ICS collection-risk detection review using synthetic tag records"
-        ),
-        "osint_tool_governance": (
-            "OSINT tool-governance source-audit exercise using instructor-provided "
-            "records, toy inputs, and provenance checklists"
-        ),
-        "geoint_data_quality": (
-            "GEOINT data-quality audit using provided imagery metadata and "
-            "non-sensitive synthetic change examples"
-        ),
-        "humint_recruitment_risk": (
-            "AI-enabled recruitment-risk ethics and source-protection case study"
-        ),
-        "humint_handling_history": (
-            "HUMINT handling history and source-protection ethics tabletop"
-        ),
-        "sigint_authority": (
-            "SIGINT legal-authority and communications-security governance exercise"
-        ),
-        "cyber_taxonomy": (
-            "Cyber defensive taxonomy mapping using published labels and fabricated alerts"
-        ),
-        "ics_safety": (
-            "ICS defensive coverage and safety tabletop using synthetic process records"
-        ),
-        "cognitive_resilience": (
-            "Cognitive-security resilience lesson using sample materials and transparent labels"
-        ),
-        "software_supply_chain_social_trust": (
-            "Maintainer-contact and social-engineering resilience review for software supply-chain governance"
-        ),
-        "agentic_tool_isolation": (
-            "Tool-isolation lab using toy fixtures, sandbox policy review, and no external execution"
-        ),
-        "target_monitoring": (
-            "Requirements-scoped source-card aggregation exercise with no real targets"
-        ),
-        "geoint_uncertainty": (
-            "synthetic GEOINT uncertainty exercise focused on data quality and caveats"
-        ),
-        "public_source_comparison": (
-            "Bounded public-source comparison exercise with fixed inputs and deduplication"
-        ),
+        "agentic_cyber_misuse": ("Agentic cyber-misuse control review using sample prompt records, fabricated logs, and deny-by-default tool policies"),
+        "historical_humint_source_protection": ("Declassified source-protection and institutional-control case study"),
+        "ics_evasion_coverage": ("ICS evasion coverage-control review using defensive detection questions"),
+        "ics_collection_detection": ("ICS collection-risk detection review using synthetic tag records"),
+        "osint_tool_governance": ("OSINT tool-governance source-audit exercise using instructor-provided records, toy inputs, and provenance checklists"),
+        "geoint_data_quality": ("GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples"),
+        "humint_recruitment_risk": ("AI-enabled recruitment-risk ethics and source-protection case study"),
+        "humint_handling_history": ("HUMINT handling history and source-protection ethics tabletop"),
+        "sigint_authority": ("SIGINT legal-authority and communications-security governance exercise"),
+        "cyber_taxonomy": ("Cyber defensive taxonomy mapping using published labels and fabricated alerts"),
+        "ics_safety": ("ICS defensive coverage and safety tabletop using synthetic process records"),
+        "cognitive_resilience": ("Cognitive-security resilience lesson using sample materials and transparent labels"),
+        "software_supply_chain_social_trust": ("Maintainer-contact and social-engineering resilience review for software supply-chain governance"),
+        "agentic_tool_isolation": ("Tool-isolation lab using toy fixtures, sandbox policy review, and no external execution"),
+        "target_monitoring": ("Requirements-scoped source-card aggregation exercise with no real targets"),
+        "geoint_uncertainty": ("synthetic GEOINT uncertainty exercise focused on data quality and caveats"),
+        "public_source_comparison": ("Bounded public-source comparison exercise with fixed inputs and deduplication"),
         "soc_tabletop": "SOC tabletop triage exercise over fabricated alerts and debrief notes",
-        "evidence_change_memory": (
-            "Claim-ledger memory exercise that tracks evidence changes rather than people"
-        ),
-        "control_coverage": (
-            "Control-coverage tabletop critique using high-level defensive tactics"
-        ),
-        "identity_provenance": (
-            "Identity-and-provenance ethics audit with no impersonation"
-        ),
+        "evidence_change_memory": ("Claim-ledger memory exercise that tracks evidence changes rather than people"),
+        "control_coverage": ("Control-coverage tabletop critique using high-level defensive tactics"),
+        "identity_provenance": ("Identity-and-provenance ethics audit with no impersonation"),
         "media_literacy": "Opt-in media-literacy lesson plan for a sample classroom scenario",
-        "gray_zone_governance": (
-            "Hybrid-threat indicator review using sample scenarios and policy thresholds"
-        ),
-        "non_state_actor_governance": (
-            "Non-state actor indicator review with attribution caution and governance boundaries"
-        ),
-        "financial_due_diligence": (
-            "Financial due-diligence typology exercise using synthetic records and compliance boundaries"
-        ),
-        "counterintelligence_vetting": (
-            "Source-vetting and insider-threat review using sample personnel records"
-        ),
-        "operator_decision_hygiene": (
-            "Operator decision-hygiene tabletop using workload, evidence, and review checkpoints"
-        ),
-        "operational_tradecraft_governance": (
-            "Operational tradecraft governance review using sample scenarios and oversight checkpoints"
-        ),
+        "gray_zone_governance": ("Hybrid-threat indicator review using sample scenarios and policy thresholds"),
+        "non_state_actor_governance": ("Non-state actor indicator review with attribution caution and governance boundaries"),
+        "financial_due_diligence": ("Financial due-diligence typology exercise using synthetic records and compliance boundaries"),
+        "counterintelligence_vetting": ("Source-vetting and insider-threat review using sample personnel records"),
+        "operator_decision_hygiene": ("Operator decision-hygiene tabletop using workload, evidence, and review checkpoints"),
+        "operational_tradecraft_governance": ("Operational tradecraft governance review using sample scenarios and oversight checkpoints"),
     }
-    return labels.get(
-        risk_category,
-        "Governance-bounded intelligence topic review using instructor-provided sample records",
-    )
+    return labels.get(risk_category, "Governance-bounded intelligence topic review using instructor-provided sample records")
 
 
 def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) -> str:
@@ -276,10 +218,7 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
             return "Audience-resilience and persuasion-literacy review using sample materials"
         return _clean_shard_title(raw_title)
     if risk_category == "geoint_data_quality":
-        if any(
-            token in lower
-            for token in ("optical", "sar", "infrared", "hyperspectral", "multispectral")
-        ):
+        if any(token in lower for token in ("optical", "sar", "infrared", "hyperspectral", "multispectral")):
             return "Imagery modality literacy: resolution, scale, and sensor-fit review"
         if "collection platform" in lower or "satellite" in lower or "uav" in lower:
             return "Imagery collection-platform literacy: resolution and revisit tradeoffs"
@@ -318,15 +257,9 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
         return _clean_shard_title(raw_title)
     if risk_category == "operator_decision_hygiene":
         if "mice framework" in lower and "moral" in lower:
-            return (
-                "MICE motivation literacy and ethical-boundary review "
-                "for operator psychology"
-            )
+            return "MICE motivation literacy and ethical-boundary review for operator psychology"
         if "spycraft" in lower and "cognitive performance" in lower:
-            return (
-                "Spycraft psychology literacy: stress, trust, and "
-                "reviewer-boundary review"
-            )
+            return "Spycraft psychology literacy: stress, trust, and reviewer-boundary review"
         return base_title
     if risk_category == "analytic_tradecraft":
         return base_title
@@ -340,11 +273,7 @@ def safe_curriculum_treatment(title: str, part_title: str = "", chapter_title: s
     risk_category = topic_risk_category(title, part_title, chapter_title)
     if risk_category == "standard":
         return title
-    base_title = (
-        title
-        if risk_category in PRESERVE_TITLE_RISK_CATEGORIES
-        else _safe_title_for_risk(risk_category)
-    )
+    base_title = title if risk_category in PRESERVE_TITLE_RISK_CATEGORIES else _safe_title_for_risk(risk_category)
     return _contextual_safe_title(title, risk_category, base_title)
 
 
@@ -352,66 +281,18 @@ def _topic_anchor_words(topic: str, limit: int = 3) -> str:
     words = [
         word
         for word in re.findall(r"[A-Za-z][A-Za-z0-9]+", topic)
-        if word.lower()
-        not in {
-            "and",
-            "the",
-            "for",
-            "with",
-            "from",
-            "into",
-            "using",
-            "source",
-            "safe",
-            "exercise",
-            "intelligence",
-            "to",
-            "of",
-            "as",
-            "vs",
-            "or",
-        }
+        if word.lower() not in {"and", "the", "for", "with", "from", "into", "using", "source", "safe", "exercise", "intelligence", "to", "of", "as", "vs", "or"}
     ]
     return ", ".join(words[:limit]) if words else topic
 
 
 # Function words that should not begin or end a distinguishing phrase.
-_PHRASE_EDGE_STOPWORDS: Final[frozenset[str]] = frozenset(
-    {
-        "the",
-        "a",
-        "an",
-        "and",
-        "or",
-        "of",
-        "in",
-        "on",
-        "for",
-        "to",
-        "with",
-        "from",
-        "as",
-        "at",
-        "by",
-        "vs",
-    }
-)
+_PHRASE_EDGE_STOPWORDS: Final[frozenset[str]] = frozenset({"the", "a", "an", "and", "or", "of", "in", "on", "for", "to", "with", "from", "as", "at", "by", "vs"})
 
 # Pre-colon heads that are generic lead-ins; when the title carries a colon, the
 # topic-specific text after the colon is the better distinguisher.
 _GENERIC_PHRASE_HEADS: Final[frozenset[str]] = frozenset(
-    {
-        "historical foundations",
-        "methods",
-        "overview",
-        "introduction",
-        "definitions",
-        "background",
-        "case study",
-        "case",
-        "fundamentals",
-        "principles",
-    }
+    {"historical foundations", "methods", "overview", "introduction", "definitions", "background", "case study", "case", "fundamentals", "principles"}
 )
 
 

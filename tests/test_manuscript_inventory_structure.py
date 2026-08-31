@@ -51,22 +51,9 @@ def _chapter_title(text: str) -> str:
 
 def test_source_uses_neutral_template_library_without_numbered_modules() -> None:
     payload = load_curriculum(DATA).payload
-    template_names = {
-        path.name
-        for path in TEMPLATES.glob("*.md")
-        if path.name not in {"AGENTS.md", "README.md"}
-    }
+    template_names = {path.name for path in TEMPLATES.glob("*.md") if path.name not in {"AGENTS.md", "README.md"}}
 
-    assert template_names == {
-        "abstract.md",
-        "appendix.md",
-        "bibliography_atlas.md",
-        "chapter.md",
-        "method_assurance_reference.md",
-        "orientation.md",
-        "part.md",
-        "references.md",
-    }
+    assert template_names == {"abstract.md", "appendix.md", "bibliography_atlas.md", "chapter.md", "method_assurance_reference.md", "orientation.md", "part.md", "references.md"}
     assert payload["stats"]["chapters"] == 51
     assert not list(MANUSCRIPT.glob("[0-9][0-9]_*.md"))
 
@@ -79,13 +66,7 @@ def test_source_uses_neutral_template_library_without_numbered_modules() -> None
 
 def test_generated_output_uses_semantic_paths_without_numbered_modules(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    chapter = (
-        output_manuscript
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "00-overview.md"
-    )
+    chapter = output_manuscript / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md"
     assert chapter.is_file()
     assert not list(output_manuscript.rglob("[0-9][0-9]_*.md"))
 
@@ -98,18 +79,9 @@ def test_generated_output_uses_semantic_paths_without_numbered_modules(built_out
 
 def test_generated_config_orders_semantic_files(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    ordered = [
-        path.relative_to(output_manuscript).as_posix()
-        for path in discover_manuscript_files(output_manuscript)
-    ]
-    assert ordered[:2] == [
-        "abstract.md",
-        "orientation/00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md",
-    ]
-    assert (
-        ordered[2]
-        == "orientation/01-synthetic-analytic-tradecraft-thesis-synthetic-fixtures-source-discipline-and-reviewable-claims-sec-synthetic-analytic-tradecraft-thesis.md"
-    )
+    ordered = [path.relative_to(output_manuscript).as_posix() for path in discover_manuscript_files(output_manuscript)]
+    assert ordered[:2] == ["abstract.md", "orientation/00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md"]
+    assert ordered[2] == "orientation/01-synthetic-analytic-tradecraft-thesis-synthetic-fixtures-source-discipline-and-reviewable-claims-sec-synthetic-analytic-tradecraft-thesis.md"
     assert "parts/ageint-agentic-intelligence/unit_intro.md" in ordered
     assert "parts/ageint-agentic-intelligence/foundations-of-ageint/00-overview.md" in ordered
     assert ordered[-1] == "references.md"
@@ -117,16 +89,9 @@ def test_generated_config_orders_semantic_files(built_output: Path) -> None:
 
 def test_bibliography_keys_cover_cited_references_and_source_anchors(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    bib = "\n".join(
-        path.read_text(encoding="utf-8") for path in sorted(output_manuscript.glob("*.bib"))
-    )
+    bib = "\n".join(path.read_text(encoding="utf-8") for path in sorted(output_manuscript.glob("*.bib")))
     payload = load_curriculum(DATA).payload
-    cited = {
-        number
-        for part in payload["parts"]
-        for chapter in part["chapters"]
-        for number in chapter["citations"]
-    }
+    cited = {number for part in payload["parts"] for chapter in part["chapters"] for number in chapter["citations"]}
     for number in cited:
         assert f"@misc{{ageint{number:03d}," in bib
 
@@ -139,46 +104,18 @@ def test_generated_chapter_modules_have_consistent_expansion_sections(built_outp
     assert len(chapter_files) == 51
     for path in chapter_files:
         text = chapter_text(path)
-        h2_headings = {
-            line.removeprefix("## ").strip()
-            for line in text.splitlines()
-            if line.startswith("## ") and not line.startswith("### ")
-        }
+        h2_headings = {line.removeprefix("## ").strip() for line in text.splitlines() if line.startswith("## ") and not line.startswith("### ")}
         title = _chapter_title(text)
         assert len(h2_headings) == 3, f"{path.name}: {sorted(h2_headings)}"
-        assert any(
-            heading.endswith(
-                f" frame for {title}: source context, topic focus, and reader task"
-            )
-            for heading in h2_headings
-        ), f"{path.name}: {sorted(h2_headings)}"
-        assert any(
-            heading.endswith(f" path for {title}: lesson cluster, safe artifact, and review")
-            for heading in h2_headings
-        ), f"{path.name}: {sorted(h2_headings)}"
-        assert (
-            f"{title} assurance handoff: evidence, governance, refresh, and capstone"
-            in h2_headings
-        ), f"{path.name}: {sorted(h2_headings)}"
+        assert any(heading.endswith(f" frame for {title}: source context, topic focus, and reader task") for heading in h2_headings), f"{path.name}: {sorted(h2_headings)}"
+        assert any(heading.endswith(f" path for {title}: lesson cluster, safe artifact, and review") for heading in h2_headings), f"{path.name}: {sorted(h2_headings)}"
+        assert f"{title} assurance handoff: evidence, governance, refresh, and capstone" in h2_headings, f"{path.name}: {sorted(h2_headings)}"
         for heading in h2_headings:
-            assert not any(heading.endswith(suffix) for suffix in RETIRED_TOC_SUFFIXES), (
-                path.name,
-                heading,
-            )
+            assert not any(heading.endswith(suffix) for suffix in RETIRED_TOC_SUFFIXES), (path.name, heading)
         for scaffold in chapter_scaffold_titles(title).values():
-            assert re.search(rf"^### {re.escape(scaffold)}$", text, flags=re.MULTILINE), (
-                path.name,
-                scaffold,
-            )
+            assert re.search(rf"^### {re.escape(scaffold)}$", text, flags=re.MULTILINE), (path.name, scaffold)
         required_sections = required_module_sections_for(title)
-        missing = {
-            section
-            for section in required_sections
-            if not any(
-                line.startswith(("### ", "#### ")) and line.lstrip("#").strip() == section
-                for line in text.splitlines()
-            )
-        }
+        missing = {section for section in required_sections if not any(line.startswith(("### ", "#### ")) and line.lstrip("#").strip() == section for line in text.splitlines())}
         assert missing == set(), f"{path.name}: {sorted(missing)}"
         repeated = REMOVED_REPEATED_MODULE_SECTIONS & h2_headings
         assert repeated == set(), f"{path.name}: {sorted(repeated)}"

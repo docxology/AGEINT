@@ -19,12 +19,7 @@ from rendered_reference_audit import audit_rendered_references  # noqa: E402
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "output_root",
-        nargs="?",
-        default=str(PROJECT_ROOT / "output"),
-        help="Rendered output root to scan; defaults to AGEINT/output.",
-    )
+    parser.add_argument("output_root", nargs="?", default=str(PROJECT_ROOT / "output"), help="Rendered output root to scan; defaults to AGEINT/output.")
     return parser
 
 

@@ -67,7 +67,16 @@ where = ["src"]
 
 [tool.ruff]
 target-version = "py310"
-line-length = 88
+# 200, not 88: AGEINT carries by-design long data-table/generated lines
+# (E501 is ignored). At 88, ruff format explodes src/figures/* content tuples
+# past the 500-line cap (measured 2026-08-31: _03r_early_orientation.py
+# 452 -> 759 lines). 200 keeps formatting to structural normalization.
+line-length = 200
+
+[tool.ruff.format]
+# Without this, a trailing comma forces one-element-per-line explosion of the
+# large figure-spec tuples, blowing files past the 500-line cap.
+skip-magic-trailing-comma = true
 
 [tool.ruff.lint]
 # Ruff's default rule selection changes between releases. With no explicit
@@ -112,3 +121,4 @@ exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:", "raise NotImp
 
 [tool.template]
 skip_combined_pytest = true
+

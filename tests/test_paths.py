@@ -76,4 +76,3 @@ def test_ensure_project_paths_adds_root_and_src_then_is_idempotent(tmp_path: Pat
     # Second call must not duplicate entries.
     ensure_project_paths(root)
     assert sys.path.count(str(root.resolve() / "src")) == 1
-

@@ -13,39 +13,12 @@ except ImportError:  # pragma: no cover - exercised by package imports
 
 from ._04b_part import INTELLIGENCE_PROFILES
 from ._01_part import TopicEntry
-from ._topic_anaphora import (
-    AnchorState,
-    anaphorize_field as _anaphorize_field,
-    keeps_title_keywords as _keeps_title_keywords,
-    misconception_line as _misconception_line,
-)
-from ._06_part import (
-    expanded_profile_anchor_keys,
-    practice_lens_for_titles,
-    profile_for_titles,
-)
-from ._09_part import (
-    _chapter_ref_context,
-    _coursebook_profile_for_titles,
-    _table_cell,
-    _topic_context,
-    citation_cluster,
-    profile_triangulation_anchors,
-)
+from ._topic_anaphora import AnchorState, anaphorize_field as _anaphorize_field, keeps_title_keywords as _keeps_title_keywords, misconception_line as _misconception_line
+from ._06_part import expanded_profile_anchor_keys, practice_lens_for_titles, profile_for_titles
+from ._09_part import _chapter_ref_context, _coursebook_profile_for_titles, _table_cell, _topic_context, citation_cluster, profile_triangulation_anchors
 from ._12_topic_frames import lesson_intro_paragraph
-from .source_grounding import (
-    SourceRecord,
-    annotated_source_table,
-    cited_sources,
-    evidence_from_sources,
-    source_support_sentence,
-    sources_for_numbers,
-)
-from .tradecraft_source_support import (
-    curated_tradecraft_evidence,
-    primary_topic_sources,
-    tradecraft_context_support,
-)
+from .source_grounding import SourceRecord, annotated_source_table, cited_sources, evidence_from_sources, source_support_sentence, sources_for_numbers
+from .tradecraft_source_support import curated_tradecraft_evidence, primary_topic_sources, tradecraft_context_support
 from .topic_entries import safe_topic_entries
 from .topic_formalisms import lesson_formalism_field
 from .topic_lesson_voice import compact_topic
@@ -68,15 +41,7 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         profile_triangulation_anchors(part_title, title, chapter=chapter, surface="topic-lessons section"),
     ]
     for index, entry in enumerate(entries, 1):
-        fields = resolve_topic_lesson_fields(
-            entry,
-            coursebook=coursebook,
-            profile=profile,
-            lens=lens,
-            lesson_index=index,
-            chapter_title=title,
-            unit_profile=unit_profile,
-        )
+        fields = resolve_topic_lesson_fields(entry, coursebook=coursebook, profile=profile, lens=lens, lesson_index=index, chapter_title=title, unit_profile=unit_profile)
         sources = cited_sources(entry, limit=3)
         support_sources = primary_topic_sources(entry.risk_category, sources)
         evidence = (
@@ -105,22 +70,11 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         # title-keyword check). Every later field uses a short or anaphoric
         # reference so a single lesson never restates the bold title ~9 times.
         anchor = AnchorState()
-        body_fields = [
-            field
-            if field.startswith("**Source support.**")
-            else _anaphorize_field(entry.display_title, field, anchor=anchor, forbidden=forbidden)
-            for field in body_fields
-        ]
+        body_fields = [field if field.startswith("**Source support.**") else _anaphorize_field(entry.display_title, field, anchor=anchor, forbidden=forbidden) for field in body_fields]
         formalism = lesson_formalism_field(entry.display_title)
         if formalism:
             body_fields.append(formalism)
-        lessons.extend(
-            [
-                f"#### Lesson {index}: {entry.display_title}",
-                f"**Concept.** {fields.concept}",
-                *body_fields,
-            ]
-        )
+        lessons.extend([f"#### Lesson {index}: {entry.display_title}", f"**Concept.** {fields.concept}", *body_fields])
     return "\n\n".join(lessons)
 
 
@@ -128,49 +82,26 @@ def chapter_source_annotations(chapter: dict[str, Any], limit: int = 30) -> str:
     """Render a module's real annotated source list from its cited works."""
     records = sources_for_numbers(chapter.get("citations", []), limit=limit)
     if not records:
-        return (
-            "This module carries no direct source-guide citations; it inherits the "
-            "surrounding part bibliography, and the gap stays visible in the claim ledger."
-        )
+        return "This module carries no direct source-guide citations; it inherits the surrounding part bibliography, and the gap stays visible in the claim ledger."
     table = annotated_source_table(records)
     total = len(set(int(number) for number in chapter.get("citations", [])))
     if total > len(records):
         remaining = total - len(records)
-        table = (
-            f"{table}\n\nThe remaining {remaining} cited source(s) "
-            "appear in the bibliography appendix with the same verification metadata."
-        )
+        table = f"{table}\n\nThe remaining {remaining} cited source(s) appear in the bibliography appendix with the same verification metadata."
     return table
 
 
-def _topic_source_support(
-    entry: TopicEntry,
-    chapter: dict[str, Any],
-    sources: tuple[SourceRecord, ...] = (),
-    *,
-    original_sources: tuple[SourceRecord, ...] = (),
-) -> str:
+def _topic_source_support(entry: TopicEntry, chapter: dict[str, Any], sources: tuple[SourceRecord, ...] = (), *, original_sources: tuple[SourceRecord, ...] = ()) -> str:
     """Render direct topic citations or an honest module-spine fallback."""
 
     if sources:
         return source_support_sentence(entry.display_title, sources)
     if entry.risk_category == "analytic_tradecraft" and original_sources:
-        return tradecraft_context_support(
-            entry.display_title,
-            source_citation_spine(entry.citation_numbers),
-        )
+        return tradecraft_context_support(entry.display_title, source_citation_spine(entry.citation_numbers))
     if entry.citation_numbers:
-        return (
-            f"Source-guide row {entry.source_locus} cites "
-            f"{source_citation_spine(entry.citation_numbers)} Use it for the topic definition, "
-            "scope boundary, and refresh check before transfer."
-        )
+        return f"Source-guide row {entry.source_locus} cites {source_citation_spine(entry.citation_numbers)} Use it for the topic definition, scope boundary, and refresh check before transfer."
     if chapter.get("citations"):
-        return (
-            "This row has no direct citation; the module source spine is "
-            f"{source_citation_spine(chapter['citations'])} It supplies context, and the "
-            "gap remains visible in the claim ledger."
-        )
+        return f"This row has no direct citation; the module source spine is {source_citation_spine(chapter['citations'])} It supplies context, and the gap remains visible in the claim ledger."
     return source_citation_spine([])
 
 
@@ -194,16 +125,8 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
         [
             f"Worked example: {coursebook.worked_scenario}. {source_context}",
             profile_triangulation_anchors(part_title, title, chapter=chapter, surface="worked-example section"),
-            (
-                f"**Unit discipline spine.** Discipline: **{unit_profile.concept}**. "
-                f"Learners use a **{unit_profile.practice_artifact}** and keep this boundary visible: "
-                f"{unit_profile.safety_boundary}"
-            ),
-            (
-                f"**Frame.** The classroom question centers on **{anchor_topic}**. "
-                f"Excluded actions stay explicit, and the **{lens.title}** planning "
-                f"question is: {lens.planning_question}"
-            ),
+            (f"**Unit discipline spine.** Discipline: **{unit_profile.concept}**. Learners use a **{unit_profile.practice_artifact}** and keep this boundary visible: {unit_profile.safety_boundary}"),
+            (f"**Frame.** The classroom question centers on **{anchor_topic}**. Excluded actions stay explicit, and the **{lens.title}** planning question is: {lens.planning_question}"),
             (
                 f"**Inputs.** For the **{short_anchor}** scenario, use {coursebook.worked_input}. "
                 f"The {lens.title} intake note records provenance, sensitivity, "
@@ -224,7 +147,7 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
             ),
             (
                 f"**Flawed answer to revise.** Treating **{short_anchor}** as "
-                f"\"{lens.title} confirms it\" is not enough. The revision ties the claim to "
+                f'"{lens.title} confirms it" is not enough. The revision ties the claim to '
                 f"{coursebook.practice_focus}, adds the missing caveat, states confidence, "
                 "and records the reviewer who accepted the bounded judgment."
             ),
@@ -250,15 +173,7 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     first_entry_topic = compact_topic(entries[0].display_title)
     if not _keeps_title_keywords(first_entry_topic, entries[0].display_title):
         first_entry_topic = entries[0].display_title
-    misconception = resolve_topic_misconception(
-        entries[0],
-        coursebook=coursebook,
-        profile=profile,
-        lens=lens,
-        lesson_index=1,
-        chapter_title=title,
-        unit_profile=unit_profile,
-    )
+    misconception = resolve_topic_misconception(entries[0], coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=title, unit_profile=unit_profile)
     topic_context = _topic_context(chapter, part)
     source_context = _chapter_ref_context(chapter)
     practice_rows = "\n".join(
@@ -275,11 +190,7 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     )
     return "\n\n".join(
         [
-            (
-                f"The studio sequence uses the **{lens.title}** "
-                "practice lens. Moves 1-3 form the compressed path; the full seminar "
-                f"path adds challenge, handoff, and a review memo for {topic_context}."
-            ),
+            (f"The studio sequence uses the **{lens.title}** practice lens. Moves 1-3 form the compressed path; the full seminar path adds challenge, handoff, and a review memo for {topic_context}."),
             profile_triangulation_anchors(part_title, title, chapter=chapter, surface="practice-sequence section"),
             practice_rows,
             f"#### {title} instructor notes: source reasoning, review points, and studio focus",
@@ -343,35 +254,18 @@ def subsection_practice_rows(chapter: dict[str, Any], part: dict[str, Any]) -> s
     entries = safe_topic_entries(chapter, part)
     if not chapter.get("sections"):
         lens = practice_lens_for_titles(str(part["title"]), str(chapter["title"]), chapter=chapter)
-        return (
-            "| Lesson topic | Practice lens | Evidence artifact | Safety check |\n"
-            "|---|---|---|---|\n"
-            f"| {entries[0].display_title} | {lens.title} | {lens.evidence_artifact} | "
-            f"{lens.safety_check} |"
-        )
+        return f"| Lesson topic | Practice lens | Evidence artifact | Safety check |\n|---|---|---|---|\n| {entries[0].display_title} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |"
 
-    rows = [
-        "| Lesson topic | Practice lens | Evidence artifact | Safety check |",
-        "|---|---|---|---|",
-    ]
+    rows = ["| Lesson topic | Practice lens | Evidence artifact | Safety check |", "|---|---|---|---|"]
     for entry in entries:
         lens = practice_lens_for_titles(str(part["title"]), entry.display_title)
-        rows.append(
-            f"| {entry.display_title} | {lens.title} | {lens.evidence_artifact} | "
-            f"{lens.safety_check} |"
-        )
+        rows.append(f"| {entry.display_title} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
     return "\n".join(rows)
 
 
 def profile_inventory_rows() -> str:
     """Render the available intelligence profile taxonomy."""
-    rows = [
-        "| Profile | Anchor count | Core contract |",
-        "|---|---:|---|",
-    ]
+    rows = ["| Profile | Anchor count | Core contract |", "|---|---:|---|"]
     for profile in INTELLIGENCE_PROFILES:
-        rows.append(
-            f"| {profile.title} | {len(expanded_profile_anchor_keys(profile))} | "
-            f"{profile.composability_contract} |"
-        )
+        rows.append(f"| {profile.title} | {len(expanded_profile_anchor_keys(profile))} | {profile.composability_contract} |")
     return "\n".join(rows)

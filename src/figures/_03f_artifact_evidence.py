@@ -15,14 +15,7 @@ def _render_artifact_evidence_control_loop(output: Path, spec: FigureSpec) -> No
         ("Rendered PDF", ("page count", "URI links", "no file actions", "stale check")),
         ("Evidence report", ("single manifest", "current counts", "validator status", "release blocker")),
     ]
-    draw_control_matrix(
-        output,
-        spec.title,
-        rows,
-        ("Artifact", "Evidence", "Verifier", "Failure signal"),
-        "#bae6fd",
-        "#dcfce7",
-    )
+    draw_control_matrix(output, spec.title, rows, ("Artifact", "Evidence", "Verifier", "Failure signal"), "#bae6fd", "#dcfce7")
 
 
 __all__ = ["_render_artifact_evidence_control_loop"]

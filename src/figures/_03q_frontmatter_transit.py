@@ -15,25 +15,14 @@ from ._05_visual_style import INK, MUTED, PALETTE, SOFT_PALETTE, draw_wrapped_te
 FRONTMATTER_OUTPUT_PATH = Path("output/figures/frontmatter/ageint-evidence-transit-map.png")
 
 
-def render_evidence_transit_map(
-    project_root: Path,
-    curriculum: Curriculum,
-    *,
-    figure_count: int,
-    generated_markdown_files: int,
-) -> Path:
+def render_evidence_transit_map(project_root: Path, curriculum: Curriculum, *, figure_count: int, generated_markdown_files: int) -> Path:
     """Render the non-numbered page-two AGEINT evidence transit map."""
 
     root = Path(project_root)
     output = root / FRONTMATTER_OUTPUT_PATH
     output.parent.mkdir(parents=True, exist_ok=True)
 
-    telemetry = _collect_telemetry(
-        root,
-        curriculum,
-        figure_count=figure_count,
-        generated_markdown_files=generated_markdown_files,
-    )
+    telemetry = _collect_telemetry(root, curriculum, figure_count=figure_count, generated_markdown_files=generated_markdown_files)
     metadata = _frontmatter_metadata(telemetry)
 
     image_mod, draw_mod, font_mod, _ = _pil_modules()
@@ -65,20 +54,11 @@ def render_evidence_transit_map(
         png_info.add_text(key, value, zip=len(value) > 180)
     canvas.save(output, format="PNG", compress_level=3, pnginfo=png_info)
     _validate_png_asset(output)
-    output.with_suffix(".json").write_text(
-        json.dumps(metadata, indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
+    output.with_suffix(".json").write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return output
 
 
-def _collect_telemetry(
-    project_root: Path,
-    curriculum: Curriculum,
-    *,
-    figure_count: int,
-    generated_markdown_files: int,
-) -> dict[str, Any]:
+def _collect_telemetry(project_root: Path, curriculum: Curriculum, *, figure_count: int, generated_markdown_files: int) -> dict[str, Any]:
     source_metadata = collect_source_metadata(project_root).payload
     source_refresh = collect_source_refresh_due(project_root).payload
     agency_coverage = collect_agency_source_coverage(project_root).payload
@@ -115,10 +95,7 @@ def _collect_telemetry(
             "unrouted": agency_summary["unrouted_new_anchor_count"],
             "missing_metadata": agency_summary["missing_required_metadata_count"],
         },
-        "outputs": {
-            "registered_figures": figure_count,
-            "generated_markdown_files": generated_markdown_files,
-        },
+        "outputs": {"registered_figures": figure_count, "generated_markdown_files": generated_markdown_files},
     }
 
 
@@ -136,10 +113,7 @@ def _frontmatter_metadata(telemetry: dict[str, Any]) -> dict[str, Any]:
         ),
         "provenance": {
             "renderer": "python_pillow",
-            "source": (
-                "data/curriculum/, source metadata, source refresh due, agency source "
-                "coverage, generated figure registry, and generated manuscript files"
-            ),
+            "source": ("data/curriculum/, source metadata, source refresh due, agency source coverage, generated figure registry, and generated manuscript files"),
             "telemetry": telemetry,
         },
     }
@@ -157,47 +131,20 @@ def _draw_map_background(draw: Any, size: int) -> None:
 def _draw_header(draw: Any, font_mod: Any) -> None:
     draw.rounded_rectangle((150, 135, 2050, 330), radius=44, fill="#0f172a", outline="#334155", width=5)
     draw.text((215, 180), "AGEINT EVIDENCE TRANSIT MAP", fill="#f8fafc", font=_font(font_mod, 58))
-    draw.text(
-        (218, 255),
-        "source reservoirs -> claim packet station -> verifier gates -> generated artifacts",
-        fill="#cbd5e1",
-        font=_font(font_mod, 29),
-    )
+    draw.text((218, 255), "source reservoirs -> claim packet station -> verifier gates -> generated artifacts", fill="#cbd5e1", font=_font(font_mod, 29))
 
 
 def _draw_column_labels(draw: Any, font_mod: Any) -> None:
-    labels = [
-        (235, "SOURCE RESERVOIRS", PALETTE[0]),
-        (760, "CLAIM SWITCHYARD", PALETTE[3]),
-        (1275, "VERIFIER GATES", PALETTE[1]),
-        (1770, "OUTPUT ARTIFACTS", PALETTE[2]),
-    ]
+    labels = [(235, "SOURCE RESERVOIRS", PALETTE[0]), (760, "CLAIM SWITCHYARD", PALETTE[3]), (1275, "VERIFIER GATES", PALETTE[1]), (1770, "OUTPUT ARTIFACTS", PALETTE[2])]
     for x, label, color in labels:
         draw.text((x, 390), label, fill=color, font=_font(font_mod, 27))
         draw.line((x, 428, x + 310, 428), fill=color, width=6)
 
 
 def _draw_rails(draw: Any) -> None:
-    rail_specs = [
-        ("#2563eb", 544, 1026),
-        ("#0f766e", 709, 1176),
-        ("#b45309", 874, 1326),
-        ("#7c3aed", 1039, 1476),
-    ]
+    rail_specs = [("#2563eb", 544, 1026), ("#0f766e", 709, 1176), ("#b45309", 874, 1326), ("#7c3aed", 1039, 1476)]
     for color, source_y, gate_y in rail_specs:
-        _draw_polyline(
-            draw,
-            (
-                (560, source_y),
-                (700, source_y),
-                (735, source_y),
-                (735, gate_y),
-                (1225, gate_y),
-                (1588, gate_y),
-                (1650, gate_y),
-            ),
-            color,
-        )
+        _draw_polyline(draw, ((560, source_y), (700, source_y), (735, source_y), (735, gate_y), (1225, gate_y), (1588, gate_y), (1650, gate_y)), color)
 
 
 def _draw_source_reservoirs(draw: Any, font_mod: Any, telemetry: dict[str, Any]) -> None:
@@ -213,27 +160,9 @@ def _draw_source_reservoirs(draw: Any, font_mod: Any, telemetry: dict[str, Any])
             PALETTE[0],
             480,
         ),
-        (
-            "Source anchors",
-            f"{metadata['records']} rows | {metadata['intelligence_anchors']} intelligence",
-            f"{metadata['support_anchors']} source-quality support anchors",
-            PALETTE[1],
-            645,
-        ),
-        (
-            "Guide references",
-            f"{curriculum['references']} parsed references",
-            "source identity lock preserves ageint keys",
-            PALETTE[2],
-            810,
-        ),
-        (
-            "Agency source packs",
-            f"{agency['new_official_us_ic_anchors']} new official US IC anchors",
-            f"{agency['routed']} routed profiles | as-of {freshness['as_of']}",
-            PALETTE[3],
-            975,
-        ),
+        ("Source anchors", f"{metadata['records']} rows | {metadata['intelligence_anchors']} intelligence", f"{metadata['support_anchors']} source-quality support anchors", PALETTE[1], 645),
+        ("Guide references", f"{curriculum['references']} parsed references", "source identity lock preserves ageint keys", PALETTE[2], 810),
+        ("Agency source packs", f"{agency['new_official_us_ic_anchors']} new official US IC anchors", f"{agency['routed']} routed profiles | as-of {freshness['as_of']}", PALETTE[3], 975),
     ]
     for title, value, body, color, y in cards:
         _draw_station_card(draw, font_mod, (170, y, 570, y + 128), title, value, body, color)
@@ -245,39 +174,14 @@ def _draw_switchyard(draw: Any, font_mod: Any) -> None:
     draw.text((815, 615), "CLAIM", fill="#4c1d95", font=_font(font_mod, 48))
     draw.text((795, 670), "PACKET", fill="#4c1d95", font=_font(font_mod, 48))
     draw.text((770, 725), "SWITCHYARD", fill="#4c1d95", font=_font(font_mod, 38))
-    packets = [
-        ("source key", "#ede9fe"),
-        ("claim scope", "#dbeafe"),
-        ("caveat", "#fef3c7"),
-        ("reviewer", "#ccfbf1"),
-        ("refresh trigger", "#ffe4e6"),
-        ("output route", "#e0f2fe"),
-    ]
+    packets = [("source key", "#ede9fe"), ("claim scope", "#dbeafe"), ("caveat", "#fef3c7"), ("reviewer", "#ccfbf1"), ("refresh trigger", "#ffe4e6"), ("output route", "#e0f2fe")]
     for index, (label, fill) in enumerate(packets):
         x0 = 790 + (index % 2) * 170
         y0 = 850 + (index // 2) * 142
         draw.rounded_rectangle((x0, y0, x0 + 145, y0 + 92), radius=22, fill=fill, outline="#94a3b8", width=3)
-        draw_wrapped_text(
-            draw,
-            (x0 + 17, y0 + 23),
-            label,
-            _font(font_mod, 24),
-            fill=INK,
-            width=11,
-            max_lines=2,
-            line_height=28,
-        )
+        draw_wrapped_text(draw, (x0 + 17, y0 + 23), label, _font(font_mod, 24), fill=INK, width=11, max_lines=2, line_height=28)
     draw.rounded_rectangle((780, 1295, 1100, 1415), radius=30, fill="#f8fafc", outline="#7c3aed", width=4)
-    draw_wrapped_text(
-        draw,
-        (812, 1320),
-        "Only bounded, cited, reviewable packets can leave the yard.",
-        _font(font_mod, 25),
-        fill=MUTED,
-        width=25,
-        max_lines=3,
-        line_height=31,
-    )
+    draw_wrapped_text(draw, (812, 1320), "Only bounded, cited, reviewable packets can leave the yard.", _font(font_mod, 25), fill=MUTED, width=25, max_lines=3, line_height=31)
 
 
 def _draw_verifier_gates(draw: Any, font_mod: Any, telemetry: dict[str, Any]) -> None:
@@ -286,14 +190,7 @@ def _draw_verifier_gates(draw: Any, font_mod: Any, telemetry: dict[str, Any]) ->
     agency = telemetry["agency_source_routing"]
     outputs = telemetry["outputs"]
     gates = [
-        (
-            "metadata gate",
-            "PASS",
-            f"{metadata['blank_lanes']} blank lanes | {metadata['blank_tiers']} blank tiers",
-            f"{metadata['fallback_rows']} fallback rows",
-            PALETTE[1],
-            965,
-        ),
+        ("metadata gate", "PASS", f"{metadata['blank_lanes']} blank lanes | {metadata['blank_tiers']} blank tiers", f"{metadata['fallback_rows']} fallback rows", PALETTE[1], 965),
         (
             "freshness gate",
             "PASS",
@@ -302,22 +199,8 @@ def _draw_verifier_gates(draw: Any, font_mod: Any, telemetry: dict[str, Any]) ->
             PALETTE[0],
             1115,
         ),
-        (
-            "agency routing",
-            "PASS",
-            f"{agency['unrouted']} unrouted | {agency['missing_metadata']} missing metadata",
-            f"{agency['routed']} profile routes checked",
-            PALETTE[3],
-            1265,
-        ),
-        (
-            "artifact registry",
-            "PASS",
-            f"{outputs['registered_figures']} registered figures",
-            f"{outputs['generated_markdown_files']} generated manuscript files",
-            PALETTE[2],
-            1415,
-        ),
+        ("agency routing", "PASS", f"{agency['unrouted']} unrouted | {agency['missing_metadata']} missing metadata", f"{agency['routed']} profile routes checked", PALETTE[3], 1265),
+        ("artifact registry", "PASS", f"{outputs['registered_figures']} registered figures", f"{outputs['generated_markdown_files']} generated manuscript files", PALETTE[2], 1415),
     ]
     for title, status, value, body, color, y in gates:
         _draw_gate_card(draw, font_mod, (1225, y, 1588, y + 122), title, status, value, body, color)
@@ -326,34 +209,10 @@ def _draw_verifier_gates(draw: Any, font_mod: Any, telemetry: dict[str, Any]) ->
 def _draw_output_artifacts(draw: Any, font_mod: Any, telemetry: dict[str, Any]) -> None:
     outputs = telemetry["outputs"]
     artifacts = [
-        (
-            "Semantic manuscript",
-            f"{outputs['generated_markdown_files']} generated Markdown files",
-            "labels, citations, and reader routes",
-            PALETTE[0],
-            1026,
-        ),
-        (
-            "Figure system",
-            f"{outputs['registered_figures']} numbered registry figures",
-            "front-matter furniture is non-numbered",
-            PALETTE[1],
-            1176,
-        ),
-        (
-            "Evidence reports",
-            "metadata, refresh, agency routing, quality",
-            "fail-closed audits before trust claims",
-            PALETTE[3],
-            1326,
-        ),
-        (
-            "PDF front matter",
-            "cover refreshed | page-two telemetry visual",
-            "publishing info carries telemetry caveat",
-            PALETTE[2],
-            1476,
-        ),
+        ("Semantic manuscript", f"{outputs['generated_markdown_files']} generated Markdown files", "labels, citations, and reader routes", PALETTE[0], 1026),
+        ("Figure system", f"{outputs['registered_figures']} numbered registry figures", "front-matter furniture is non-numbered", PALETTE[1], 1176),
+        ("Evidence reports", "metadata, refresh, agency routing, quality", "fail-closed audits before trust claims", PALETTE[3], 1326),
+        ("PDF front matter", "cover refreshed | page-two telemetry visual", "publishing info carries telemetry caveat", PALETTE[2], 1476),
     ]
     for title, value, body, color, y in artifacts:
         _draw_terminal_card(draw, font_mod, (1615, y - 62, 2045, y + 60), title, value, body, color)
@@ -374,42 +233,16 @@ def _draw_boundary_footer(draw: Any, font_mod: Any) -> None:
     )
 
 
-def _draw_station_card(
-    draw: Any,
-    font_mod: Any,
-    box: tuple[int, int, int, int],
-    title: str,
-    value: str,
-    body: str,
-    color: str,
-) -> None:
+def _draw_station_card(draw: Any, font_mod: Any, box: tuple[int, int, int, int], title: str, value: str, body: str, color: str) -> None:
     x0, y0, x1, y1 = box
     draw.rounded_rectangle(box, radius=26, fill="#ffffff", outline=color, width=5)
     draw.ellipse((x1 - 56, y0 + 36, x1 - 20, y0 + 72), fill=color, outline=color)
     draw.text((x0 + 25, y0 + 18), title.upper(), fill=color, font=_font(font_mod, 23))
     draw_wrapped_text(draw, (x0 + 25, y0 + 53), value, _font(font_mod, 27), fill=INK, width=28, max_lines=1)
-    draw_wrapped_text(
-        draw,
-        (x0 + 25, y0 + 84),
-        body,
-        _font(font_mod, 18),
-        fill=MUTED,
-        width=39,
-        max_lines=2,
-        line_height=22,
-    )
+    draw_wrapped_text(draw, (x0 + 25, y0 + 84), body, _font(font_mod, 18), fill=MUTED, width=39, max_lines=2, line_height=22)
 
 
-def _draw_gate_card(
-    draw: Any,
-    font_mod: Any,
-    box: tuple[int, int, int, int],
-    title: str,
-    status: str,
-    value: str,
-    body: str,
-    color: str,
-) -> None:
+def _draw_gate_card(draw: Any, font_mod: Any, box: tuple[int, int, int, int], title: str, status: str, value: str, body: str, color: str) -> None:
     x0, y0, x1, y1 = box
     draw.rounded_rectangle(box, radius=24, fill="#ffffff", outline=color, width=5)
     draw.rounded_rectangle((x1 - 95, y0 + 16, x1 - 24, y0 + 50), radius=14, fill="#ecfccb", outline="#4d7c0f", width=2)
@@ -419,15 +252,7 @@ def _draw_gate_card(
     draw_wrapped_text(draw, (x0 + 22, y0 + 82), body, _font(font_mod, 19), fill=MUTED, width=32, max_lines=1)
 
 
-def _draw_terminal_card(
-    draw: Any,
-    font_mod: Any,
-    box: tuple[int, int, int, int],
-    title: str,
-    value: str,
-    body: str,
-    color: str,
-) -> None:
+def _draw_terminal_card(draw: Any, font_mod: Any, box: tuple[int, int, int, int], title: str, value: str, body: str, color: str) -> None:
     x0, y0, x1, y1 = box
     draw.rounded_rectangle(box, radius=24, fill=SOFT_PALETTE[PALETTE.index(color) % len(SOFT_PALETTE)], outline=color, width=4)
     draw.text((x0 + 22, y0 + 15), title.upper(), fill=color, font=_font(font_mod, 20))

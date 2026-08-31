@@ -38,12 +38,7 @@ def line_count(text: str) -> int:
     return len(text.splitlines())
 
 
-def split_long_table(
-    relative_path: str,
-    text: str,
-    *,
-    max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES,
-) -> list[tuple[str, str]]:
+def split_long_table(relative_path: str, text: str, *, max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES) -> list[tuple[str, str]]:
     lines = text.splitlines()
     table_spans = _pipe_table_spans(lines)
     if not table_spans:
@@ -76,12 +71,7 @@ def split_long_table(
             body.extend(suffix)
         fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(body).rstrip()))
     if suffix and not fragments[-1][1].splitlines()[-len(suffix) :] == suffix:
-        fragments.append(
-            (
-                path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"),
-                "\n".join([f"## {heading} (continued {len(fragments) + 1})", *suffix]).rstrip(),
-            )
-        )
+        fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join([f"## {heading} (continued {len(fragments) + 1})", *suffix]).rstrip()))
     return fragments
 
 
@@ -111,12 +101,7 @@ def _is_pipe_table_separator(line: str) -> bool:
     return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell) for cell in cells)
 
 
-def split_at_h3(
-    relative_path: str,
-    text: str,
-    *,
-    max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES,
-) -> list[tuple[str, str]]:
+def split_at_h3(relative_path: str, text: str, *, max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES) -> list[tuple[str, str]]:
     lines = text.splitlines()
     first_h3 = next((index for index, line in enumerate(lines) if line.startswith("### ")), -1)
     if first_h3 < 0:
@@ -138,30 +123,15 @@ def split_at_h3(
     current_lines = list(lead)
     for block in h3_blocks:
         if len(current_lines) + len(block) > max_lines - 8 and current_lines != lead:
-            fragments.append(
-                (
-                    path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"),
-                    "\n".join(current_lines).rstrip(),
-                )
-            )
+            fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(current_lines).rstrip()))
             current_lines = [f"## {heading} (continued {len(fragments) + 1})"]
         current_lines.extend(block)
     if current_lines:
-        fragments.append(
-            (
-                path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"),
-                "\n".join(current_lines).rstrip(),
-            )
-        )
+        fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(current_lines).rstrip()))
     return fragments
 
 
-def split_by_line_budget(
-    relative_path: str,
-    text: str,
-    *,
-    max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES,
-) -> list[tuple[str, str]]:
+def split_by_line_budget(relative_path: str, text: str, *, max_lines: int = DEFAULT_MAX_TEXT_FILE_LINES) -> list[tuple[str, str]]:
     text = text.rstrip()
     if line_count(text) <= max_lines:
         return [(relative_path, text)]
@@ -172,10 +142,5 @@ def split_by_line_budget(
     lines = text.splitlines()
     fragments: list[tuple[str, str]] = []
     for index in range(0, len(lines), max_lines - 5):
-        fragments.append(
-            (
-                path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"),
-                "\n".join(lines[index : index + max_lines - 5]).rstrip(),
-            )
-        )
+        fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(lines[index : index + max_lines - 5]).rstrip()))
     return fragments

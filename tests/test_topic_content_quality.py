@@ -5,13 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from manuscript_quality.inventory_helpers import (
-    REMOVED_GENERIC_CONCEPT_PHRASES,
-    chapter_text,
-    generated_chapter_files,
-    manuscript_dir,
-    section_text,
-)
+from manuscript_quality.inventory_helpers import REMOVED_GENERIC_CONCEPT_PHRASES, chapter_text, generated_chapter_files, manuscript_dir, section_text
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -39,18 +33,12 @@ TITLE_KEYWORD_STOPWORDS = {
 }
 
 COLLAPSED_COGSEC_BASE = "Cognitive-security resilience lesson using sample materials and transparent labels"
-GOVERNANCE_BOUNDED_GENERIC = (
-    "Governance-bounded intelligence topic review using instructor-provided sample records"
-)
+GOVERNANCE_BOUNDED_GENERIC = "Governance-bounded intelligence topic review using instructor-provided sample records"
 TEAMS_CONFUSE_MARKER = "teams confuse source material"
 
 
 def _title_keywords(title: str) -> set[str]:
-    words = {
-        word
-        for word in re.findall(r"[a-z0-9]+", title.lower())
-        if len(word) >= 4 and word not in TITLE_KEYWORD_STOPWORDS
-    }
+    words = {word for word in re.findall(r"[a-z0-9]+", title.lower()) if len(word) >= 4 and word not in TITLE_KEYWORD_STOPWORDS}
     return words or set(re.findall(r"[a-z0-9]+", title.lower()))
 
 
@@ -92,10 +80,7 @@ def test_topic_lesson_concepts_anchor_title_keywords(built_output: Path) -> None
     assert chapter_failures == []
 
 
-TIER_C_CONCEPT_MARKERS = (
-    ("applies the ", "discipline:"),
-    ("in the ", "lane:"),
-)
+TIER_C_CONCEPT_MARKERS = (("applies the ", "discipline:"), ("in the ", "lane:"))
 
 GENERIC_MISCONCEPTION_MARKER = "can be used while ignoring the rule to"
 
@@ -119,8 +104,7 @@ def test_tier_c_concept_repetition_capped_per_chapter(built_output: Path) -> Non
                 sum(
                     1
                     for block in re.split(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE)[1:]
-                    if left in block.split("**Concept.**", 1)[-1].lower()
-                    and right in block.split("**Concept.**", 1)[-1].lower()
+                    if left in block.split("**Concept.**", 1)[-1].lower() and right in block.split("**Concept.**", 1)[-1].lower()
                 ),
             )
         if tier_c_hits / lesson_count > 0.15:
@@ -184,11 +168,7 @@ def test_category_concept_repetition_capped_per_chapter(built_output: Path) -> N
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         section = _chapter_topic_lessons_section(path)
-        concepts = [
-            block.split("**Concept.**", 1)[1].split("\n", 1)[0].strip()
-            for block in re.split(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE)[1:]
-            if "**Concept.**" in block
-        ]
+        concepts = [block.split("**Concept.**", 1)[1].split("\n", 1)[0].strip() for block in re.split(r"^#{3,4} Lesson \d+:", section, flags=re.MULTILINE)[1:] if "**Concept.**" in block]
         if not concepts:
             continue
         from collections import Counter
@@ -232,14 +212,8 @@ SPOT_CHECK_REQUIRED_PHRASES = {
     "american-intelligence-history": ("oversight", "declassified"),
     "foundations-of-ageint": ("AGEINT", "agent"),
     "cognitive-security-foundations-and-definitions": ("cognitive security", "provenance"),
-    "structured-analytic-techniques-sats": (
-        "Analysis of Competing Hypotheses",
-        "ICD 203",
-    ),
-    "the-intelligent-operator-as-cognitive-athlete": (
-        "Getting Things Done",
-        "NASA-TLX",
-    ),
+    "structured-analytic-techniques-sats": ("Analysis of Competing Hypotheses", "ICD 203"),
+    "the-intelligent-operator-as-cognitive-athlete": ("Getting Things Done", "NASA-TLX"),
     "industrial-control-systems-ics-and-operational-technology": ("ICS", "safety"),
     "ethics-of-intelligence-and-cognitive-security": ("rights", "oversight"),
 }

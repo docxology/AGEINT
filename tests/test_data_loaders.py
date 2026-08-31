@@ -63,12 +63,7 @@ def test_transfer_task_keyword_routes_loaded() -> None:
 
 def test_topic_prompt_routes_payload_has_required_sections() -> None:
     payload = topic_prompt_routes_payload()
-    for key in (
-        "evidence_category_prompts",
-        "evidence_keyword_routes",
-        "artifact_keyword_routes",
-        "artifact_risk_category_prompts",
-    ):
+    for key in ("evidence_category_prompts", "evidence_keyword_routes", "artifact_keyword_routes", "artifact_risk_category_prompts"):
         assert isinstance(payload[key], list)
         assert payload[key]
 
@@ -82,14 +77,7 @@ def test_topic_prompt_route_loaders_return_non_empty() -> None:
 
 def test_topic_rotation_templates_payload_has_required_sections() -> None:
     payload = topic_rotation_templates_payload()
-    for key in (
-        "why_it_matters_templates",
-        "risk_why_failure_hints",
-        "misconception_fallbacks",
-        "misconception_risk_templates",
-        "misconception_keyword_routes",
-        "transfer_task_keyword_routes",
-    ):
+    for key in ("why_it_matters_templates", "risk_why_failure_hints", "misconception_fallbacks", "misconception_risk_templates", "misconception_keyword_routes", "transfer_task_keyword_routes"):
         assert isinstance(payload[key], list)
         assert payload[key]
 

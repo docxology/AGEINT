@@ -11,22 +11,14 @@ import template_resolver
 from build_pipeline import run_build
 from curriculum import load_curriculum
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
-from manuscript_variables import (
-    generate_variables,
-    reference_bibtex_files,
-    save_variables,
-    write_bibtex_files,
-)
+from manuscript_variables import generate_variables, reference_bibtex_files, save_variables, write_bibtex_files
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # See the matching guard in test_build_curriculum_script.py: run_build()
 # unconditionally needs the sibling docxology/template repo for
 # {{TOKEN}} substitution, regardless of tmp_path isolation.
-requires_template_repo = pytest.mark.skipif(
-    template_resolver.resolve_template_repo(PROJECT_ROOT) is None,
-    reason="sibling docxology/template repo not resolvable in this checkout",
-)
+requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 
 
 def test_save_variables_writes_sorted_json(tmp_path: Path) -> None:
@@ -46,12 +38,7 @@ def test_write_bibtex_files_replaces_legacy_combined_bib(tmp_path: Path) -> None
     (target / "references.bib").write_text("@misc{legacy}", encoding="utf-8")
     (target / "references-stale.bib").write_text("@misc{stale}", encoding="utf-8")
 
-    write_bibtex_files(
-        target,
-        {
-            "references-source-guide-001-050.bib": "@misc{ageint001, title = {One}}",
-        },
-    )
+    write_bibtex_files(target, {"references-source-guide-001-050.bib": "@misc{ageint001, title = {One}}"})
 
     assert not (target / "references.bib").exists()
     assert not (target / "references-stale.bib").exists()
@@ -93,6 +80,4 @@ def test_generate_variables_matches_curriculum_stats() -> None:
     assert "never hand-edit `output/manuscript/`" in variables["CITATION_WORKFLOW_GUIDE"]
     assert "| Source sections | 723 |" in variables["CITATION_WORKFLOW_GUIDE"]
     assert "723 source sections" in variables["SOURCE_CITATION_COVERAGE_SUMMARY"]
-    assert "| Section | Module and source section | Citations | Citation links |" in variables[
-        "SOURCE_SECTION_CITATION_ROWS"
-    ]
+    assert "| Section | Module and source section | Citations | Citation links |" in variables["SOURCE_SECTION_CITATION_ROWS"]

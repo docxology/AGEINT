@@ -45,30 +45,21 @@ def _with_visual_semantics(spec: FigureSpec) -> FigureSpec:
             spec,
             semantic_role="historical_source_example",
             evidence_role="public-domain provenance example and reader context",
-            interpretation_limit=(
-                "The image is a historical context example, not a measured capability score, "
-                "current collection product, operational cue, or empirical validation result."
-            ),
+            interpretation_limit=("The image is a historical context example, not a measured capability score, current collection product, operational cue, or empirical validation result."),
         )
     if spec.kind is FigureKind.AI_GENERATED:
         return replace(
             spec,
             semantic_role="synthetic_concept_plate",
             evidence_role="safe visual metaphor for a bounded curriculum concept",
-            interpretation_limit=(
-                "The plate is synthetic and illustrative, not a measured capability score, "
-                "real event depiction, empirical result, or operational instruction."
-            ),
+            interpretation_limit=("The plate is synthetic and illustrative, not a measured capability score, real event depiction, empirical result, or operational instruction."),
         )
     if spec.kind is FigureKind.MERMAID:
         return replace(
             spec,
             semantic_role="conceptual_relationship_diagram",
             evidence_role="reader navigation, source relationship, or governance boundary map",
-            interpretation_limit=(
-                "Node position, color, and arrows are explanatory, not a measured capability "
-                "score, statistical weight, source-quality ranking, or operational sequence."
-            ),
+            interpretation_limit=("Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence."),
         )
     return spec
 

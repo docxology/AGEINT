@@ -68,11 +68,7 @@ PIPELINE_STAGE_CONTRACTS: tuple[PipelineStageContract, ...] = (
         title="Variables and bibliography",
         purpose="Refresh manuscript variables plus source and output BibTeX files from current references.",
         inputs=(Path("data/research_anchors"), Path("data/curriculum/references"), Path("src/manuscript_variables")),
-        outputs=(
-            Path("output/data/manuscript_variables.json"),
-            Path("manuscript/references-source-guide-001-050.bib"),
-            Path("output/manuscript/references-source-guide-001-050.bib"),
-        ),
+        outputs=(Path("output/data/manuscript_variables.json"), Path("manuscript/references-source-guide-001-050.bib"), Path("output/manuscript/references-source-guide-001-050.bib")),
         depends_on=("curriculum_build",),
         strict_gate="manuscript_variable_and_reference_tests",
         failure_mode="Counts, citation keys, or bibliography shards certify stale source metadata.",
@@ -82,11 +78,7 @@ PIPELINE_STAGE_CONTRACTS: tuple[PipelineStageContract, ...] = (
         title="Figure registry and assets",
         purpose="Render Mermaid, Python, historical, and synthetic figures with registry metadata.",
         inputs=(Path("data/figures"), Path("src/figures"), Path("data/curriculum")),
-        outputs=(
-            Path("output/figures/figure_registry.json"),
-            Path("output/figures/visual_quality_audit.json"),
-            Path("output/figures/cover/ageint-cover-synthesis.png"),
-        ),
+        outputs=(Path("output/figures/figure_registry.json"), Path("output/figures/visual_quality_audit.json"), Path("output/figures/cover/ageint-cover-synthesis.png")),
         depends_on=("curriculum_build",),
         strict_gate="figure_registry_and_quality_tests",
         failure_mode="A figure is decorative, inaccessible, stale, or rendered with unsupported chart semantics.",
@@ -141,12 +133,7 @@ def pipeline_contract_by_id() -> dict[str, PipelineStageContract]:
 
 def source_freshness_roots() -> tuple[Path, ...]:
     """Return unique source paths that should make generated outputs stale."""
-    paths: list[Path] = [
-        Path("pyproject.toml"),
-        Path("scripts/build_curriculum.py"),
-        Path("scripts/generate_figures.py"),
-        Path("scripts/z_generate_manuscript_variables.py"),
-    ]
+    paths: list[Path] = [Path("pyproject.toml"), Path("scripts/build_curriculum.py"), Path("scripts/generate_figures.py"), Path("scripts/z_generate_manuscript_variables.py")]
     for stage in PIPELINE_STAGE_CONTRACTS:
         for path in stage.inputs:
             if path.parts and path.parts[0] == "output":
@@ -222,9 +209,7 @@ def pipeline_contract_report(project_root: Path) -> dict[str, Any]:
         "stages": [stage.as_dict() for stage in PIPELINE_STAGE_CONTRACTS],
         "source_freshness_roots": [path.as_posix() for path in source_roots],
         "output_build_sentinels": [path.as_posix() for path in sentinels],
-        "missing_output_sentinels": [
-            path.as_posix() for path in sentinels if not (output / path).exists()
-        ],
+        "missing_output_sentinels": [path.as_posix() for path in sentinels if not (output / path).exists()],
     }
 
 
@@ -246,18 +231,8 @@ def render_pipeline_contract_markdown(payload: dict[str, Any]) -> str:
         "|---|---|---|---|",
     ]
     for stage in payload["stages"]:
-        lines.append(
-            f"| `{stage['stage_id']}` | {stage['purpose']} | `{stage['strict_gate']}` | {stage['failure_mode']} |"
-        )
-    lines.extend(
-        [
-            "",
-            "## Output Sentinels",
-            "",
-            "| Sentinel |",
-            "|---|",
-        ]
-    )
+        lines.append(f"| `{stage['stage_id']}` | {stage['purpose']} | `{stage['strict_gate']}` | {stage['failure_mode']} |")
+    lines.extend(["", "## Output Sentinels", "", "| Sentinel |", "|---|"])
     for path in payload["output_build_sentinels"]:
         lines.append(f"| `{path}` |")
     return "\n".join(lines) + "\n"

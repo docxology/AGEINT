@@ -19,22 +19,7 @@ def lower_first_word(text: str) -> str:
 # Prepositions/conjunctions that begin a trailing qualifier in a colon-free
 # title ("Micro-Expression Analysis FOR Source Validation"). Cutting before the
 # first one yields the natural noun-phrase short form.
-_TITLE_TAIL_MARKERS = (
-    " for ",
-    " of ",
-    " in ",
-    " with ",
-    " and ",
-    " using ",
-    " through ",
-    " across ",
-    " under ",
-    " from ",
-    " to ",
-    " as ",
-    " via ",
-    " between ",
-)
+_TITLE_TAIL_MARKERS = (" for ", " of ", " in ", " with ", " and ", " using ", " through ", " across ", " under ", " from ", " to ", " as ", " via ", " between ")
 
 
 def short_title(display_title: str) -> str:
@@ -108,12 +93,7 @@ def compact_topic_cluster(titles: list[str]) -> str:
 # Anaphoric references that stand in for the bold title after its first mention.
 # Indexed by a stable per-lesson hash so the same lesson varies its references
 # across fields without ever drifting into a fixed cadence.
-_ANAPHORA = (
-    "this topic",
-    "the same topic",
-    "this lesson topic",
-    "the topic above",
-)
+_ANAPHORA = ("this topic", "the same topic", "this lesson topic", "the topic above")
 
 
 def topic_reference(display_title: str, slot: int) -> str:
@@ -185,13 +165,7 @@ def reader_facing_concept(entry: TopicEntry, frame: str) -> str:
     return f"**{entry.display_title}** — {text}"
 
 
-def evidence_packet_sentence(
-    entry: TopicEntry,
-    text: str,
-    *,
-    unit_profile: UnitEducationProfile | None = None,
-    slot: int = 1,
-) -> str:
+def evidence_packet_sentence(entry: TopicEntry, text: str, *, unit_profile: UnitEducationProfile | None = None, slot: int = 1) -> str:
     rendered = for_topic(entry, text, slot=slot)
     rendered = rendered.replace(", evidence packet:", ", the evidence packet contains", 1)
     if unit_profile is not None:
@@ -199,19 +173,9 @@ def evidence_packet_sentence(
     return rendered
 
 
-def student_artifact_sentence(
-    entry: TopicEntry,
-    text: str,
-    *,
-    unit_profile: UnitEducationProfile | None = None,
-    slot: int = 1,
-) -> str:
+def student_artifact_sentence(entry: TopicEntry, text: str, *, unit_profile: UnitEducationProfile | None = None, slot: int = 1) -> str:
     rendered = for_topic(entry, text, slot=slot)
-    for source, replacement in (
-        (", submit a completed **", ", build a **"),
-        (", submit an ", ", build an "),
-        (", submit a ", ", build a "),
-    ):
+    for source, replacement in ((", submit a completed **", ", build a **"), (", submit an ", ", build an "), (", submit a ", ", build a ")):
         rendered = rendered.replace(source, replacement, 1)
     if rendered.startswith("Submit a completed **"):
         rendered = "Build a **" + rendered.removeprefix("Submit a completed **")

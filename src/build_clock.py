@@ -49,14 +49,9 @@ def build_datetime() -> datetime:
     try:
         epoch = int(text)
     except ValueError as exc:
-        raise ValueError(
-            f"{SOURCE_DATE_EPOCH_ENV} must be an integer number of seconds "
-            f"since the Unix epoch; got {raw!r}"
-        ) from exc
+        raise ValueError(f"{SOURCE_DATE_EPOCH_ENV} must be an integer number of seconds since the Unix epoch; got {raw!r}") from exc
     if epoch < 0:
-        raise ValueError(
-            f"{SOURCE_DATE_EPOCH_ENV} must not be negative; got {epoch}"
-        )
+        raise ValueError(f"{SOURCE_DATE_EPOCH_ENV} must not be negative; got {epoch}")
     return datetime.fromtimestamp(epoch, tz=timezone.utc)
 
 

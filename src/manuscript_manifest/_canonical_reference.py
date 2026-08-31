@@ -17,11 +17,7 @@ def canonical_claim_ledger_rows() -> str:
         [
             "| Claim class | Evidence required | Review gate |",
             "|---|---|---|",
-            (
-                "| Source-spine claim | Parsed module title, module section map, and "
-                "curriculum citation spine | Confirm the generated text does not invent "
-                "counts, paths, or labels. |"
-            ),
+            ("| Source-spine claim | Parsed module title, module section map, and curriculum citation spine | Confirm the generated text does not invent counts, paths, or labels. |"),
             (
                 "| Research-backed governance claim | Direct official, standards, "
                 "public-domain, or scholarly anchor in `references-*.bib` | "
@@ -55,11 +51,7 @@ def canonical_claim_ledger_rows() -> str:
                 "the module blocks live targeting, exploitation, covert collection, "
                 "manipulation, and unsafe cyber-physical action. |"
             ),
-            (
-                "| Cross-module claim | Link to the current unit and adjacent curriculum "
-                "modules | Confirm the handoff names inputs, outputs, uncertainty, and "
-                "next-review owner. |"
-            ),
+            ("| Cross-module claim | Link to the current unit and adjacent curriculum modules | Confirm the handoff names inputs, outputs, uncertainty, and next-review owner. |"),
         ]
     )
 

@@ -60,10 +60,7 @@ def test_generated_chapters_are_coursebook_not_meta_scaffold(built_output: Path)
         assert "#### Lesson 1:" in before_runtime_map
         assert "**Misconception check.**" in before_runtime_map
         assert "**Filled artifact.**" in before_runtime_map
-        assert (
-            f"#### {chapter_title_from_text(text)} answer quality rubric: source evidence, uncertainty, and safe transfer"
-            in before_runtime_map
-        )
+        assert f"#### {chapter_title_from_text(text)} answer quality rubric: source evidence, uncertainty, and safe transfer" in before_runtime_map
         assert before_runtime_map.count("|") < 220, path
 
 
@@ -96,17 +93,10 @@ def test_major_module_sections_have_reader_facing_introductions(built_output: Pa
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
         details = chapter_detail_titles(chapter_title_from_text(text))
-        intro_sections = {
-            details["evidence"],
-            details["governance"],
-            details["refresh"],
-            details["links"],
-        }
+        intro_sections = {details["evidence"], details["governance"], details["refresh"], details["links"]}
         for heading in intro_sections:
             section = section_text(text, heading)
-            first_nonblank = next(
-                (line.strip() for line in section.splitlines() if line.strip()), ""
-            )
+            first_nonblank = next((line.strip() for line in section.splitlines() if line.strip()), "")
             assert first_nonblank
             assert not first_nonblank.startswith("### "), f"{path}: {heading}"
             intro = section.split("\n### ", 1)[0]
@@ -115,28 +105,29 @@ def test_major_module_sections_have_reader_facing_introductions(built_output: Pa
 
 def test_generated_detail_headings_are_chapter_specific_not_generic(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    generic_headings = {
-        "Module architecture and transfer contract",
-        "Evidence canon and source spine",
-        "Source-backed analytic synthesis",
-        "Agentic translation: assist, approve, block",
-        "Governance, rights, and assurance",
-        "Assessment artifacts and capstone pathway",
-        "Refresh, safety, and source maps",
-        "Reviewer challenge checklist",
-        "Learning-path cross-links",
-        "Cross-links",
-    } | set(GENERIC_TEACHING_SECTION_KEYS) | set(GENERIC_DETAIL_SECTION_KEYS) | RETIRED_GENERIC_HEADING_LABELS
+    generic_headings = (
+        {
+            "Module architecture and transfer contract",
+            "Evidence canon and source spine",
+            "Source-backed analytic synthesis",
+            "Agentic translation: assist, approve, block",
+            "Governance, rights, and assurance",
+            "Assessment artifacts and capstone pathway",
+            "Refresh, safety, and source maps",
+            "Reviewer challenge checklist",
+            "Learning-path cross-links",
+            "Cross-links",
+        }
+        | set(GENERIC_TEACHING_SECTION_KEYS)
+        | set(GENERIC_DETAIL_SECTION_KEYS)
+        | RETIRED_GENERIC_HEADING_LABELS
+    )
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
         title = chapter_title_from_text(text)
         assert required_module_sections_for(title)
         for heading in generic_headings:
-            assert not any(
-                line.lstrip("#").strip() == heading
-                for line in text.splitlines()
-                if line.startswith("###")
-            ), f"{path}: {heading}"
+            assert not any(line.lstrip("#").strip() == heading for line in text.splitlines() if line.startswith("###")), f"{path}: {heading}"
 
 
 def test_core_vocabulary_definitions_are_curated_not_source_heading_fillers(built_output: Path) -> None:
@@ -155,17 +146,8 @@ def test_unsafe_source_motifs_do_not_become_direct_student_tasks(built_output: P
     output_manuscript = manuscript_dir(built_output)
     for path in generated_chapter_files(output_manuscript):
         text = chapter_text(path)
-        teaching_sections = "\n".join(
-            [
-                section_text(text, "Core vocabulary"),
-                section_text(text, "Topic lessons"),
-                section_text(text, "Practice sequence"),
-                section_text(text, "Knowledge check"),
-            ]
-        )
-        matches = [
-            match.group(0) for match in DIRECT_STUDENT_TASK_MOTIFS.finditer(teaching_sections)
-        ]
+        teaching_sections = "\n".join([section_text(text, "Core vocabulary"), section_text(text, "Topic lessons"), section_text(text, "Practice sequence"), section_text(text, "Knowledge check")])
+        matches = [match.group(0) for match in DIRECT_STUDENT_TASK_MOTIFS.finditer(teaching_sections)]
         assert matches == [], f"{path}: {matches}"
 
 

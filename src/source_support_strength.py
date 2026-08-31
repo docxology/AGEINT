@@ -14,53 +14,11 @@ except ImportError:  # pragma: no cover - direct script imports
     from _jsonl import read_jsonl  # type: ignore[no-redef]
 
 
-PRIMARY_STRENGTHS = frozenset(
-    {
-        "official_primary",
-        "standard_primary",
-        "scholarly_primary",
-        "law_policy_primary",
-        "public_domain_primary",
-        "source_quality_anchor",
-        "source_guide_primary",
-    }
-)
-WEAK_STRENGTHS = frozenset(
-    {
-        "practitioner_or_vendor_context",
-        "social_or_video_context",
-        "mirror_or_copy_context",
-        "source_guide_context",
-        "unknown",
-    }
-)
+PRIMARY_STRENGTHS = frozenset({"official_primary", "standard_primary", "scholarly_primary", "law_policy_primary", "public_domain_primary", "source_quality_anchor", "source_guide_primary"})
+WEAK_STRENGTHS = frozenset({"practitioner_or_vendor_context", "social_or_video_context", "mirror_or_copy_context", "source_guide_context", "unknown"})
 
-OFFICIAL_DOMAINS = (
-    ".gov",
-    ".mil",
-    "dni.gov",
-    "odni.gov",
-    "cia.gov",
-    "cisa.gov",
-    "nist.gov",
-    "nsa.gov",
-    "usgs.gov",
-    "oecd.org",
-    "europa.eu",
-    "international.gc.ca",
-    "canada.ca",
-    "ico.org.uk",
-)
-STANDARD_DOMAINS = (
-    "iso.org",
-    "iec.ch",
-    "ieee.org",
-    "oasis-open.org",
-    "w3.org",
-    "rfc-editor.org",
-    "ietf.org",
-    "mitre.org",
-)
+OFFICIAL_DOMAINS = (".gov", ".mil", "dni.gov", "odni.gov", "cia.gov", "cisa.gov", "nist.gov", "nsa.gov", "usgs.gov", "oecd.org", "europa.eu", "international.gc.ca", "canada.ca", "ico.org.uk")
+STANDARD_DOMAINS = ("iso.org", "iec.ch", "ieee.org", "oasis-open.org", "w3.org", "rfc-editor.org", "ietf.org", "mitre.org")
 SCHOLARLY_DOMAINS = (
     "doi.org",
     "arxiv.org",
@@ -90,20 +48,8 @@ PRACTITIONER_VENDOR_DOMAINS = (
     "simbian.ai",
     "dynatrace.com",
 )
-SOCIAL_VIDEO_DOMAINS = (
-    "youtube.com",
-    "youtu.be",
-    "reddit.com",
-    "x.com",
-    "twitter.com",
-)
-MIRROR_COPY_DOMAINS = (
-    "scribd.com",
-    "wikipedia.org",
-    "researchgate.net",
-    "academia.edu",
-    "slideshare.net",
-)
+SOCIAL_VIDEO_DOMAINS = ("youtube.com", "youtu.be", "reddit.com", "x.com", "twitter.com")
+MIRROR_COPY_DOMAINS = ("scribd.com", "wikipedia.org", "researchgate.net", "academia.edu", "slideshare.net")
 
 
 @dataclass(frozen=True)
@@ -222,21 +168,11 @@ def _profile_from_source_guide_row(key: str, row: dict[str, Any]) -> SourceSuppo
     else:
         strength = "source_guide_context"
         family = "source_guide"
-    return _profile(
-        key,
-        strength,
-        family,
-        source_title=title,
-        source_url=url,
-        source_tier="source_guide",
-    )
+    return _profile(key, strength, family, source_title=title, source_url=url, source_tier="source_guide")
 
 
 def _profile_from_anchor(key: str, row: dict[str, Any]) -> SourceSupportProfile:
-    text = " ".join(
-        str(row.get(field, ""))
-        for field in ("source_tier", "source_type", "source_lane", "domain", "citation_role", "key")
-    ).lower()
+    text = " ".join(str(row.get(field, "")) for field in ("source_tier", "source_type", "source_lane", "domain", "citation_role", "key")).lower()
     if "source_quality_anchor" in text:
         strength = "source_quality_anchor"
         family = "source_quality"
@@ -261,14 +197,7 @@ def _profile_from_anchor(key: str, row: dict[str, Any]) -> SourceSupportProfile:
     else:
         strength = "curated_context"
         family = "curated_anchor"
-    return _profile(
-        key,
-        strength,
-        family,
-        source_title=str(row.get("title", "")),
-        source_url=str(row.get("url", "")),
-        source_tier=str(row.get("source_tier") or row.get("source_type") or ""),
-    )
+    return _profile(key, strength, family, source_title=str(row.get("title", "")), source_url=str(row.get("url", "")), source_tier=str(row.get("source_tier") or row.get("source_type") or ""))
 
 
 def _profile_from_key(key: str) -> SourceSupportProfile:
@@ -282,27 +211,11 @@ def _profile_from_key(key: str) -> SourceSupportProfile:
     return _unknown(key)
 
 
-def _profile(
-    key: str,
-    strength: str,
-    family: str,
-    *,
-    source_title: str = "",
-    source_url: str = "",
-    source_tier: str = "",
-) -> SourceSupportProfile:
+def _profile(key: str, strength: str, family: str, *, source_title: str = "", source_url: str = "", source_tier: str = "") -> SourceSupportProfile:
     primary = strength in PRIMARY_STRENGTHS
     weak = strength in WEAK_STRENGTHS or not primary and strength != "curated_context"
     return SourceSupportProfile(
-        key=key,
-        strength=strength,
-        family=family,
-        primary_support=primary,
-        weak_context=weak,
-        source_title=source_title,
-        source_url=source_url,
-        source_tier=source_tier,
-        note=_support_note(strength),
+        key=key, strength=strength, family=family, primary_support=primary, weak_context=weak, source_title=source_title, source_url=source_url, source_tier=source_tier, note=_support_note(strength)
     )
 
 
@@ -327,12 +240,4 @@ def _matches(host: str, domains: tuple[str, ...]) -> bool:
     return any(host == domain or host.endswith(domain) for domain in domains)
 
 
-__all__ = [
-    "PRIMARY_STRENGTHS",
-    "SourceSupportProfile",
-    "WEAK_STRENGTHS",
-    "has_primary_support",
-    "source_support_strength",
-    "support_family_for_key",
-    "support_profiles_for_keys",
-]
+__all__ = ["PRIMARY_STRENGTHS", "SourceSupportProfile", "WEAK_STRENGTHS", "has_primary_support", "source_support_strength", "support_family_for_key", "support_profiles_for_keys"]

@@ -14,9 +14,7 @@ ORIENTATION_EARLY_VISUAL_SLOTS = {
     "ORIENTATION_SOURCE_CONSTELLATION_VISUALS": ("source_constellation",),
     "ORIENTATION_ASSURANCE_VISUALS": ("assurance_cockpit",),
 }
-_EARLY_ORIENTATION_SLOT_VALUES = frozenset(
-    slot for slots in ORIENTATION_EARLY_VISUAL_SLOTS.values() for slot in slots
-)
+_EARLY_ORIENTATION_SLOT_VALUES = frozenset(slot for slots in ORIENTATION_EARLY_VISUAL_SLOTS.values() for slot in slots)
 _ORIENTATION_SLOT_BRIDGES = {
     "ORIENTATION_OPENING_VISUALS": (
         "The opening route visual turns the atlas handoff into a concrete reader "
@@ -30,9 +28,7 @@ _ORIENTATION_SLOT_BRIDGES = {
         "evidence of field capability."
     ),
     "ORIENTATION_SOURCE_CONSTELLATION_VISUALS": (
-        "The source constellation visual ties the runtime inventory back to the "
-        "evidence families and lanes that govern source choice, caveat language, "
-        "and refresh duties."
+        "The source constellation visual ties the runtime inventory back to the evidence families and lanes that govern source choice, caveat language, and refresh duties."
     ),
     "ORIENTATION_ASSURANCE_VISUALS": (
         "The assurance cockpit visual summarizes how a reader should interpret "
@@ -42,26 +38,11 @@ _ORIENTATION_SLOT_BRIDGES = {
 }
 
 
-def orientation_early_visual_context(
-    project_root: Path,
-    out_dir: Path,
-    section: ManuscriptSection,
-    figures: list[dict[str, Any]],
-    *,
-    render_relative_path: str,
-) -> dict[str, str]:
+def orientation_early_visual_context(project_root: Path, out_dir: Path, section: ManuscriptSection, figures: list[dict[str, Any]], *, render_relative_path: str) -> dict[str, str]:
     if section.relative_path != "orientation.md":
         return {}
     return {
-        token: _orientation_early_visual_block(
-            project_root,
-            out_dir,
-            section,
-            figures,
-            token,
-            slots,
-            render_relative_path=render_relative_path,
-        )
+        token: _orientation_early_visual_block(project_root, out_dir, section, figures, token, slots, render_relative_path=render_relative_path)
         for token, slots in ORIENTATION_EARLY_VISUAL_SLOTS.items()
     }
 
@@ -71,20 +52,9 @@ def is_early_orientation_figure(entry: dict[str, Any]) -> bool:
 
 
 def _orientation_early_visual_block(
-    project_root: Path,
-    out_dir: Path,
-    section: ManuscriptSection,
-    figures: list[dict[str, Any]],
-    token: str,
-    slots: tuple[str, ...],
-    *,
-    render_relative_path: str,
+    project_root: Path, out_dir: Path, section: ManuscriptSection, figures: list[dict[str, Any]], token: str, slots: tuple[str, ...], *, render_relative_path: str
 ) -> str:
-    entries = [
-        entry
-        for entry in figures_for_section(figures, section.relative_path)
-        if _entry_orientation_slot(entry) in slots
-    ]
+    entries = [entry for entry in figures_for_section(figures, section.relative_path) if _entry_orientation_slot(entry) in slots]
     if not entries:
         return ""
     refs = [f"[@{entry['label']}]" for entry in entries]
@@ -92,21 +62,8 @@ def _orientation_early_visual_block(
         figure_group = refs[0]
     else:
         figure_group = ", ".join(refs[:-1]) + ", and " + refs[-1]
-    definitions = [
-        figure_markdown(
-            entry,
-            project_root=project_root,
-            manuscript_output_dir=out_dir,
-            section_relative_path=render_relative_path,
-        )
-        for entry in entries
-    ]
-    return "\n\n".join(
-        [
-            f"{_ORIENTATION_SLOT_BRIDGES[token]} See {figure_group}.",
-            *definitions,
-        ]
-    )
+    definitions = [figure_markdown(entry, project_root=project_root, manuscript_output_dir=out_dir, section_relative_path=render_relative_path) for entry in entries]
+    return "\n\n".join([f"{_ORIENTATION_SLOT_BRIDGES[token]} See {figure_group}.", *definitions])
 
 
 def _entry_orientation_slot(entry: dict[str, Any]) -> str:

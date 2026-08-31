@@ -18,10 +18,7 @@ class ResearchAnchor:
     domain: str
     source_type: str
     checked_as_of: str = "2026-05-21"
-    verification_note: str = (
-        "Direct source URL verified against an official, standards, public-domain, "
-        "or scholarly source for AGEINT curriculum use."
-    )
+    verification_note: str = "Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use."
     citation_role: str = "curriculum_anchor"
     source_lane: str = ""
     source_tier: str = ""

@@ -60,11 +60,7 @@ SAT_METHOD_VISUALS: tuple[dict[str, str], ...] = (
             "claims so each one has a required evidence packet, validation question, "
             "failure condition, and remediation path."
         ),
-        "alt_text": (
-            "Matrix connecting AGEINT claim classes to evidence packets, validation "
-            "questions, failure conditions, and reviewer dispositions for manuscript "
-            "analysis validation."
-        ),
+        "alt_text": ("Matrix connecting AGEINT claim classes to evidence packets, validation questions, failure conditions, and reviewer dispositions for manuscript analysis validation."),
         "renderer": "analysis_validation_matrix",
         "source_section": "orientation.md",
     },
@@ -79,10 +75,7 @@ SAT_METHOD_VISUALS: tuple[dict[str, str], ...] = (
             "signal that should block local readiness if a family becomes "
             "claim-bearing without a review class."
         ),
-        "alt_text": (
-            "Matrix mapping AGEINT claim-bearing manuscript families to analysis "
-            "validation lanes, evidence signals, and failure signals."
-        ),
+        "alt_text": ("Matrix mapping AGEINT claim-bearing manuscript families to analysis validation lanes, evidence signals, and failure signals."),
         "renderer": "analysis_validation_family_coverage",
         "source_section": "orientation.md",
     },

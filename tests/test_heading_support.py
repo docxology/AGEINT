@@ -5,13 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from manuscript_quality.inventory_helpers import manuscript_dir
-from rendered_heading_support import (
-    add_heading_support,
-    heading_support_inventory,
-    heading_support_summary,
-    render_heading_support_markdown,
-    unsupported_heading_rows,
-)
+from rendered_heading_support import add_heading_support, heading_support_inventory, heading_support_summary, render_heading_support_markdown, unsupported_heading_rows
 
 
 def test_add_heading_support_adds_contextual_reference_line() -> None:

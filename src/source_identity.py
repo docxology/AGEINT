@@ -29,11 +29,7 @@ def _source_payload(source_path: Path) -> dict[str, Any]:
     return resolve_curriculum_payload(source_path)
 
 
-def build_source_identity_lock(
-    guide_path: Path,
-    *,
-    max_reference: int = 231,
-) -> dict[str, Any]:
+def build_source_identity_lock(guide_path: Path, *, max_reference: int = 231) -> dict[str, Any]:
     """Build a stable identity lock for existing source-guide references."""
     payload = _source_payload(guide_path)
     locked_by_number: dict[int, dict[str, Any]] = {}
@@ -41,30 +37,16 @@ def build_source_identity_lock(
         number = int(reference["number"])
         if number > max_reference or number in locked_by_number:
             continue
-        locked_by_number[number] = {
-            "number": number,
-            "key": reference["key"],
-            "title": reference["title"],
-            "url": reference["url"],
-        }
+        locked_by_number[number] = {"number": number, "key": reference["key"], "title": reference["title"], "url": reference["url"]}
     locked = [locked_by_number[number] for number in sorted(locked_by_number)]
-    return {
-        "schema_version": LOCK_SCHEMA_VERSION,
-        "source": guide_path.name,
-        "max_reference": max_reference,
-        "locked_reference_count": len(locked),
-        "references": locked,
-    }
+    return {"schema_version": LOCK_SCHEMA_VERSION, "source": guide_path.name, "max_reference": max_reference, "locked_reference_count": len(locked), "references": locked}
 
 
 def write_source_identity_lock_shards(lock: dict[str, Any], directory: Path) -> Path:
     """Write source identity lock shards under ``directory``."""
     directory.mkdir(parents=True, exist_ok=True)
     metadata = {key: lock[key] for key in ("schema_version", "source", "max_reference", "locked_reference_count")}
-    (directory / "metadata.json").write_text(
-        json.dumps(metadata, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    (directory / "metadata.json").write_text(json.dumps(metadata, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     lock_dir = directory / "lock"
     lock_dir.mkdir(exist_ok=True)
     references = lock["references"]
@@ -80,11 +62,7 @@ def load_source_identity_lock(lock_path: Path) -> dict[str, Any]:
     """Load a source identity lock from JSON or sharded source-identity directory."""
     if lock_path.is_dir():
         metadata = json.loads((lock_path / "metadata.json").read_text(encoding="utf-8"))
-        references = [
-            row
-            for path in sorted((lock_path / "lock").glob("*.jsonl"))
-            for row in _read_jsonl(path)
-        ]
+        references = [row for path in sorted((lock_path / "lock").glob("*.jsonl")) for row in _read_jsonl(path)]
         return {**metadata, "references": references}
     if lock_path.is_file():
         return json.loads(lock_path.read_text(encoding="utf-8"))
@@ -95,16 +73,10 @@ def load_source_identity_lock(lock_path: Path) -> dict[str, Any]:
     raise FileNotFoundError(f"No source identity lock found: {lock_path}")
 
 
-def source_identity_mismatches(
-    guide_path: Path,
-    lock_path: Path,
-) -> list[str]:
+def source_identity_mismatches(guide_path: Path, lock_path: Path) -> list[str]:
     """Return human-readable mismatches between the current guide and lock."""
     lock = load_source_identity_lock(lock_path)
-    current = build_source_identity_lock(
-        guide_path,
-        max_reference=int(lock["max_reference"]),
-    )
+    current = build_source_identity_lock(guide_path, max_reference=int(lock["max_reference"]))
     expected = {entry["number"]: entry for entry in lock["references"]}
     actual = {entry["number"]: entry for entry in current["references"]}
     mismatches: list[str] = []
@@ -115,8 +87,5 @@ def source_identity_mismatches(
             continue
         for field in ("key", "title", "url"):
             if actual_entry[field] != expected_entry[field]:
-                mismatches.append(
-                    f"ageint{number:03d} {field}: "
-                    f"{actual_entry[field]!r} != {expected_entry[field]!r}"
-                )
+                mismatches.append(f"ageint{number:03d} {field}: {actual_entry[field]!r} != {expected_entry[field]!r}")
     return mismatches

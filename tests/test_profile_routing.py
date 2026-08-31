@@ -55,26 +55,12 @@ def test_chapter_shards_match_former_profile_and_lens_overrides() -> None:
 
 
 def test_profile_for_titles_prefers_shard_content_profile() -> None:
-    chapter = {
-        "content_profile": "legal_oversight",
-        "title": "Cyber Intelligence Fundamentals",
-    }
-    profile = profile_for_titles(
-        "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
-        "Cyber Intelligence Fundamentals",
-        chapter=chapter,
-    )
+    chapter = {"content_profile": "legal_oversight", "title": "Cyber Intelligence Fundamentals"}
+    profile = profile_for_titles("TECHNICAL INTELLIGENCE AND CYBER OPERATIONS", "Cyber Intelligence Fundamentals", chapter=chapter)
     assert profile.identifier == "legal_oversight"
 
 
 def test_practice_lens_for_titles_prefers_shard_practice_lens() -> None:
-    chapter = {
-        "practice_lens": "oversight_and_rights",
-        "title": "Cyber Intelligence Fundamentals",
-    }
-    lens = practice_lens_for_titles(
-        "TECHNICAL INTELLIGENCE AND CYBER OPERATIONS",
-        "Cyber Intelligence Fundamentals",
-        chapter=chapter,
-    )
+    chapter = {"practice_lens": "oversight_and_rights", "title": "Cyber Intelligence Fundamentals"}
+    lens = practice_lens_for_titles("TECHNICAL INTELLIGENCE AND CYBER OPERATIONS", "Cyber Intelligence Fundamentals", chapter=chapter)
     assert lens.identifier == "oversight_and_rights"

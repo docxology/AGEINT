@@ -28,6 +28,7 @@ except ImportError:
     def get_logger(name: str) -> logging.Logger:
         return logging.getLogger(name)
 
+
 logger = get_logger(__name__)
 
 
@@ -46,10 +47,7 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     logger.info("Starting AGEINT curriculum build")
-    result = run_build(
-        PROJECT_ROOT,
-        regenerate_source_template_library=args.regenerate_source_template_library,
-    )
+    result = run_build(PROJECT_ROOT, regenerate_source_template_library=args.regenerate_source_template_library)
     stats = result.curriculum.stats
     summary = (
         "Built AGEINT curriculum: "

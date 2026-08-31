@@ -16,13 +16,7 @@ except ImportError:  # pragma: no cover - direct script imports
     from source_metadata import collect_source_metadata  # type: ignore[no-redef]
 
 
-CADENCE_DAYS: dict[str, int] = {
-    "monthly": 31,
-    "quarterly": 92,
-    "semiannual": 183,
-    "annual": 365,
-    "biennial": 730,
-}
+CADENCE_DAYS: dict[str, int] = {"monthly": 31, "quarterly": 92, "semiannual": 183, "annual": 365, "biennial": 730}
 DUE_SOON_DAYS = 30
 
 
@@ -140,15 +134,7 @@ def render_source_refresh_due_markdown(report: SourceRefreshDueReport) -> str:
     lines.extend(["", "## Due-Date Buckets", "", "| Bucket | Rows |", "|---|---:|"])
     for bucket, count in summary["bucket_counts"].items():
         lines.append(f"| {bucket} | {count} |")
-    lines.extend(
-        [
-            "",
-            "## Blocking Rows",
-            "",
-            "| Path | Line | Key | Cadence | Checked as of | Bucket | Flags |",
-            "|---|---:|---|---|---|---|---|",
-        ]
-    )
+    lines.extend(["", "## Blocking Rows", "", "| Path | Line | Key | Cadence | Checked as of | Bucket | Flags |", "|---|---:|---|---|---|---|---|"])
     if payload["issue_rows"]:
         for row in payload["issue_rows"]:
             lines.append(
@@ -169,38 +155,10 @@ def source_refresh_due_figure_rows(project_root: Path) -> tuple[tuple[str, tuple
     buckets = summary["bucket_counts"]
     cadences = summary["cadence_counts"]
     return (
-        (
-            "Refresh status",
-            (
-                f"{buckets.get('current', 0)} current",
-                f"{buckets.get('due_soon', 0)} due soon",
-                f"{buckets.get('due', 0) + buckets.get('stale', 0)} due/stale",
-            ),
-        ),
-        (
-            "Cadence coverage",
-            (
-                f"{len(cadences)} cadence classes",
-                f"{cadences.get('annual', 0)} annual",
-                f"{cadences.get('semiannual', 0)} semiannual",
-            ),
-        ),
-        (
-            "Metadata readiness",
-            (
-                f"{summary['row_count']} source rows",
-                f"{summary['missing_checked_as_of_count']} missing dates",
-                f"{summary['unknown_cadence_count']} unknown cadences",
-            ),
-        ),
-        (
-            "Release preflight",
-            (
-                "source_refresh_due_ok",
-                "due/stale fails",
-                "dates are not auto-updated",
-            ),
-        ),
+        ("Refresh status", (f"{buckets.get('current', 0)} current", f"{buckets.get('due_soon', 0)} due soon", f"{buckets.get('due', 0) + buckets.get('stale', 0)} due/stale")),
+        ("Cadence coverage", (f"{len(cadences)} cadence classes", f"{cadences.get('annual', 0)} annual", f"{cadences.get('semiannual', 0)} semiannual")),
+        ("Metadata readiness", (f"{summary['row_count']} source rows", f"{summary['missing_checked_as_of_count']} missing dates", f"{summary['unknown_cadence_count']} unknown cadences")),
+        ("Release preflight", ("source_refresh_due_ok", "due/stale fails", "dates are not auto-updated")),
     )
 
 
@@ -259,9 +217,7 @@ def _summary(rows: list[SourceRefreshDueRow]) -> dict[str, Any]:
         "row_count": len(rows),
         "bucket_counts": dict(sorted(Counter(row.bucket for row in rows).items())),
         "cadence_counts": dict(sorted(Counter(row.refresh_cadence for row in rows).items())),
-        "source_lane_due_counts": dict(
-            sorted(Counter(row.source_lane for row in rows if row.bucket in {"due", "stale"}).items())
-        ),
+        "source_lane_due_counts": dict(sorted(Counter(row.source_lane for row in rows if row.bucket in {"due", "stale"}).items())),
         "missing_checked_as_of_count": flags.get("missing_or_invalid_checked_as_of", 0),
         "unknown_cadence_count": flags.get("unknown_refresh_cadence", 0),
         "due_or_stale_count": sum(1 for row in rows if row.bucket in {"due", "stale"}),

@@ -6,11 +6,7 @@ from pathlib import Path
 from typing import Any, Sequence
 
 from ._01_part import FigureSpec
-from ._02c_reader_text import (
-    MIN_ALT_TEXT_WORDS,
-    MIN_LONG_DESCRIPTION_WORDS,
-    MIN_READER_CAPTION_WORDS,
-)
+from ._02c_reader_text import MIN_ALT_TEXT_WORDS, MIN_LONG_DESCRIPTION_WORDS, MIN_READER_CAPTION_WORDS
 from ._04_part import _pil_modules, _validate_png_asset
 
 PNG_METADATA_KEYS = (
@@ -33,12 +29,7 @@ PNG_METADATA_KEYS = (
 )
 
 
-def write_visual_quality_audit(
-    project_root: Path,
-    specs: Sequence[FigureSpec],
-    *,
-    registry_schema: str,
-) -> dict[str, Any]:
+def write_visual_quality_audit(project_root: Path, specs: Sequence[FigureSpec], *, registry_schema: str) -> dict[str, Any]:
     """Write a machine-readable audit of rendered figure quality gates."""
     rows = [_audit_row(Path(project_root), spec) for spec in specs]
     summary = _summary(rows, specs)
@@ -96,23 +87,9 @@ def _audit_row(project_root: Path, spec: FigureSpec) -> dict[str, Any]:
         "png_metadata_matches_registry": metadata_matches and provenance_matches,
         "provenance_present": bool(spec.provenance),
         "source_section_present": bool(spec.source_section and spec.section_label),
-        "visual_semantics_present": bool(
-            spec.semantic_role
-            and spec.evidence_role
-            and spec.interpretation_limit
-        ),
-        "quantitative_semantics_complete": (
-            not spec.quantitative
-            or (
-                spec.unit != "not_applicable"
-                and spec.denominator != "not_applicable"
-                and spec.counting_rule != "not_applicable"
-            )
-        ),
-        "conceptual_limit_present": (
-            spec.quantitative
-            or "not a measured" in spec.interpretation_limit.lower()
-        ),
+        "visual_semantics_present": bool(spec.semantic_role and spec.evidence_role and spec.interpretation_limit),
+        "quantitative_semantics_complete": (not spec.quantitative or (spec.unit != "not_applicable" and spec.denominator != "not_applicable" and spec.counting_rule != "not_applicable")),
+        "conceptual_limit_present": (spec.quantitative or "not a measured" in spec.interpretation_limit.lower()),
     }
     return {
         "label": spec.label,
@@ -149,24 +126,12 @@ def _summary(rows: Sequence[dict[str, Any]], specs: Sequence[FigureSpec]) -> dic
         "quantitative_figures": sum(1 for spec in specs if spec.quantitative),
         "conceptual_figures": sum(1 for spec in specs if not spec.quantitative),
         "missing_visual_semantics": sum(
-            1
-            for row in rows
-            if not (
-                row["checks"]["visual_semantics_present"]
-                and row["checks"]["quantitative_semantics_complete"]
-                and row["checks"]["conceptual_limit_present"]
-            )
+            1 for row in rows if not (row["checks"]["visual_semantics_present"] and row["checks"]["quantitative_semantics_complete"] and row["checks"]["conceptual_limit_present"])
         ),
-        "check_counts": {
-            check: sum(1 for row in rows if row["checks"][check])
-            for check in checks
-        },
+        "check_counts": {check: sum(1 for row in rows if row["checks"][check]) for check in checks},
         "min_caption_words": min((row["caption_words"] for row in rows), default=0),
         "min_alt_text_words": min((row["alt_text_words"] for row in rows), default=0),
-        "min_long_description_words": min(
-            (row["long_description_words"] for row in rows),
-            default=0,
-        ),
+        "min_long_description_words": min((row["long_description_words"] for row in rows), default=0),
         "max_aspect_ratio": max((row["aspect_ratio"] for row in rows), default=0),
     }
 

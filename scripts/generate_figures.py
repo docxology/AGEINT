@@ -25,6 +25,7 @@ except ImportError:
     def get_logger(name: str) -> logging.Logger:
         return logging.getLogger(name)
 
+
 from build_pipeline import BuildConfig, run_build_figures  # noqa: E402
 from figures import load_figure_registry  # noqa: E402
 
@@ -40,10 +41,7 @@ def main() -> int:
         "--allow-placeholder-figures",
         action=argparse.BooleanOptionalAction,
         default=default_placeholder,
-        help=(
-            "Allow deterministic text-plate fallbacks when Mermaid/Chrome is unavailable "
-            "(default: on unless AGEINT_REQUIRE_RENDERED_FIGURES=1)"
-        ),
+        help=("Allow deterministic text-plate fallbacks when Mermaid/Chrome is unavailable (default: on unless AGEINT_REQUIRE_RENDERED_FIGURES=1)"),
     )
     args = parser.parse_args()
 
@@ -51,10 +49,7 @@ def main() -> int:
     if registry_path.is_file() and not args.allow_placeholder_figures:
         logger.info("Existing figure registry at %s; re-rendering figures", registry_path)
 
-    registry_path = run_build_figures(
-        PROJECT_ROOT,
-        allow_placeholder_figures=args.allow_placeholder_figures,
-    )
+    registry_path = run_build_figures(PROJECT_ROOT, allow_placeholder_figures=args.allow_placeholder_figures)
     registry = load_figure_registry(registry_path)
     message = f"Rendered {registry['figure_count']} AGEINT figures to {registry_path}"
     logger.info(message)

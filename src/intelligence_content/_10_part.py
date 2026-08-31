@@ -4,13 +4,7 @@ from typing import Any
 
 from ._06_part import expanded_profile_anchor_keys, practice_lens_for_titles, profile_for_titles
 from ._07_safe_titles import _topic_anchor_words
-from ._09_part import (
-    _chapter_ref_context,
-    _coursebook_profile_for_titles,
-    _table_cell,
-    _topic_context,
-    citation_cluster,
-)
+from ._09_part import _chapter_ref_context, _coursebook_profile_for_titles, _table_cell, _topic_context, citation_cluster
 from .topic_entries import safe_topic_entries
 
 
@@ -74,25 +68,15 @@ def chapter_learning_outcomes(chapter: dict[str, Any], part: dict[str, Any]) -> 
     topic_clause = " and ".join(topics) if len(topics) == 2 else topics[0]
     return "\n".join(
         [
-            (
-                f"- Connect **{topic_clause}** to **{profile.title}** by naming "
-                "shared vocabulary, evidence burden, and audience-facing caveats."
-            ),
+            (f"- Connect **{topic_clause}** to **{profile.title}** by naming shared vocabulary, evidence burden, and audience-facing caveats."),
             (
                 f"- Build {_indefinite_article(lens.evidence_artifact)} "
                 f"**{lens.evidence_artifact}** that keeps observation, "
                 "inference, uncertainty, source quality, reviewer decision, and "
                 "refresh trigger separate."
             ),
-            (
-                f"- Apply the key distinction: {coursebook.key_distinction}; "
-                "show where an apparently useful shortcut would cross that line."
-            ),
-            (
-                f"- Diagnose failure modes such as {profile.failure_modes}, then "
-                "write one recovery move for each failure mode that preserves the "
-                "learning objective."
-            ),
+            (f"- Apply the key distinction: {coursebook.key_distinction}; show where an apparently useful shortcut would cross that line."),
+            (f"- Diagnose failure modes such as {profile.failure_modes}, then write one recovery move for each failure mode that preserves the learning objective."),
             f"- Teach the defensive boundary back to a peer: {profile.safety_boundary}.",
         ]
     )

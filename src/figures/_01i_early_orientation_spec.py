@@ -12,10 +12,7 @@ EARLY_ORIENTATION_VISUALS: tuple[dict[str, str], ...] = (
             "section. It is navigation support, not a learning-outcome or performance "
             "claim."
         ),
-        "alt_text": (
-            "Compass-style map of AGEINT reader paths for instructor, learner, "
-            "reviewer, and maintainer, with retained evidence attached to each route."
-        ),
+        "alt_text": ("Compass-style map of AGEINT reader paths for instructor, learner, reviewer, and maintainer, with retained evidence attached to each route."),
         "renderer": "reader_route_compass",
         "source_section": "orientation.md",
         "canvas_size": "2400",
@@ -34,10 +31,7 @@ EARLY_ORIENTATION_VISUALS: tuple[dict[str, str], ...] = (
             "analyst can challenge. It is a classroom artifact route, not an autonomous "
             "action claim or field-capability proof."
         ),
-        "alt_text": (
-            "Assembly-line diagram moving from synthetic fixture to source "
-            "description, analytic fields, claim packet, and reviewer gate."
-        ),
+        "alt_text": ("Assembly-line diagram moving from synthetic fixture to source description, analytic fields, claim packet, and reviewer gate."),
         "renderer": "synthetic_tradecraft_workbench",
         "source_section": "orientation.md",
         "canvas_size": "2400",
@@ -56,10 +50,7 @@ EARLY_ORIENTATION_VISUALS: tuple[dict[str, str], ...] = (
             "supports them. Route density shows coverage, not a ranking of source "
             "quality or evidence strength."
         ),
-        "alt_text": (
-            "Constellation map of AGEINT source families and evidence lanes "
-            "surrounding the central source spine."
-        ),
+        "alt_text": ("Constellation map of AGEINT source families and evidence lanes surrounding the central source spine."),
         "renderer": "source_constellation_map",
         "source_section": "orientation.md",
         "canvas_size": "2400",
@@ -78,11 +69,7 @@ EARLY_ORIENTATION_VISUALS: tuple[dict[str, str], ...] = (
             "orientation only; authoritative status — the pass, warn, or block state — "
             "lives in the generated audits, not in this figure."
         ),
-        "alt_text": (
-            "Cockpit dashboard with audit status tiles for AGEINT build freshness, "
-            "reference quality, source metadata, figure quality, readiness stack, "
-            "and publication boundary."
-        ),
+        "alt_text": ("Cockpit dashboard with audit status tiles for AGEINT build freshness, reference quality, source metadata, figure quality, readiness stack, and publication boundary."),
         "renderer": "assurance_cockpit",
         "source_section": "orientation.md",
         "canvas_size": "2400",
