@@ -46,6 +46,15 @@ Measured, not copied. Re-run the commands rather than trusting these numbers.
 
 ## Resolved
 
+### 2026-08-31 — docs/manuscript canonicalization committed (agent-ergonomics fleet)
+
+The in-flight `manuscript/` -> `docs/manuscript/` migration (34 tracked moves,
+workflow path updates, doc path-reference sweep, per-directory AGENTS/README
+stubs across data/, output/, src/, tests/, .github/) was committed as
+`1285a63` and pushed to `main`. Tree is clean at that commit; later work builds
+on `docs/manuscript/` paths only.
+
+
 ### 2026-08-30 — source-refresh re-verification + 500-line headroom (AGEINT fleet lane)
 
 1. **27 anchors past quarterly refresh date re-verified.** `source_refresh_due`

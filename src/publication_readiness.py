@@ -11,6 +11,7 @@ from typing import Any
 
 import yaml
 from build_clock import build_timestamp
+from schema_gate import load_json_with_schema
 
 try:
     from .audit_contracts import publication_readiness_audit_check_ids
@@ -283,7 +284,7 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
         issues.append({"surface": "manuscript/config.yaml", "issue": "missing_code_license"})
 
     registry_path = root / "output" / "figures" / "figure_registry.json"
-    registry = _load_json(registry_path)
+    registry = _load_json_with_schema(registry_path, output_root=root / "output")
     figures = registry.get("figures", []) if isinstance(registry, dict) else []
     if not figures:
         issues.append({"surface": "output/figures/figure_registry.json", "issue": "missing_figure_registry"})
@@ -302,7 +303,9 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
         if row.get("kind") == "ai_generated" and "synthetic" not in str(provenance.get("safety", "")).lower():
             issues.append({"surface": label, "issue": "synthetic_asset_missing_safety_provenance"})
 
-    source_metadata = _load_json(root / "output" / "reports" / "source_metadata.json")
+    source_metadata = _load_json_with_schema(
+        root / "output" / "reports" / "source_metadata.json", output_root=root / "output"
+    )
     metadata_summary = source_metadata.get("summary", {}) if isinstance(source_metadata, dict) else {}
     if metadata_summary.get("blank_source_lane_count") != 0 or metadata_summary.get("blank_source_tier_count") != 0:
         issues.append({"surface": "output/reports/source_metadata.json", "issue": "source_metadata_not_explicit"})
@@ -427,6 +430,13 @@ def _is_pdf_bound_text(path: Path, root: Path) -> bool:
 
 def _issue(path: str, line: int, issue: str, text: str) -> ReleaseSurfaceIssue:
     return ReleaseSurfaceIssue(path=path, line=line, issue=issue, snippet=" ".join(text.split())[:220])
+
+
+def _load_json_with_schema(path: Path, *, output_root: Path) -> dict[str, Any]:
+    """Load a generated artifact, enforcing its declared schema version."""
+    if not path.is_file():
+        return {}
+    return load_json_with_schema(path, output_root=output_root)
 
 
 def _load_json(path: Path) -> dict[str, Any]:

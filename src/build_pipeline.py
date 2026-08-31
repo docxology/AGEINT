@@ -19,6 +19,7 @@ from orchestration_contracts import (
     validate_pipeline_stage_contracts,
 )
 from output_docs import write_output_directory_docs
+from published_counts_gate import verify_published_counts
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MANUSCRIPT_SUPPORT_MARKDOWN = {"AGENTS.md", "README.md", "preamble.md"}
@@ -232,6 +233,13 @@ def run_build(
         generated_markdown_files=_generated_markdown_file_count(output_manuscript),
     )
     write_bibtex_files(output_manuscript, bibtex_files)
+    # Gate: published counts must match a fresh re-count of the source data
+    # and the figure registry, or the build fails on drift.
+    verify_published_counts(
+        root,
+        curriculum_stats=curriculum.stats,
+        figure_count=len(figure_registry),
+    )
     # Written last: the stamp asserts "this output was produced from that source",
     # so it must only exist once every artifact above has been written.
     write_build_stamp(root, root / "output")

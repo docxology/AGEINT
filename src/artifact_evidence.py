@@ -23,6 +23,7 @@ from pdf_quality import audit_pdf_quality
 from reference_quality import collect_reference_quality, write_reference_quality
 from rendered_reference_audit import audit_rendered_references
 from scholarship_quality import collect_scholarship_quality, write_scholarship_quality
+from schema_gate import load_json_with_schema
 from source_metadata import collect_source_metadata, write_source_metadata
 from source_refresh_due import collect_source_refresh_due, write_source_refresh_due
 
@@ -55,8 +56,8 @@ def collect_artifact_evidence(project_root: Path) -> ArtifactEvidence:
     curriculum = load_curriculum(root / "data" / "curriculum")
     source_summary = source_citation_coverage_summary(curriculum)
     generated_rows = generated_markdown_citation_inventory(manuscript)
-    figure_registry = _load_json(output / "figures" / "figure_registry.json")
-    visual_audit = _load_json(output / "figures" / "visual_quality_audit.json")
+    figure_registry = _load_json(output / "figures" / "figure_registry.json", output_root=output)
+    visual_audit = _load_json(output / "figures" / "visual_quality_audit.json", output_root=output)
     pdf_report = audit_pdf_quality(pdf, manuscript_dir=manuscript)
     rendered_reference_violations = audit_rendered_references(output)
     scan_hits = _scan_generated_text(root)
@@ -370,10 +371,11 @@ def _iter_text_paths(roots: list[Path]) -> list[Path]:
     return sorted(paths)
 
 
-def _load_json(path: Path) -> dict[str, Any]:
+def _load_json(path: Path, *, output_root: Path) -> dict[str, Any]:
+    """Load a generated artifact, enforcing its declared schema version."""
     if not path.is_file():
         return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    return load_json_with_schema(path, output_root=output_root)
 
 
 __all__ = [
