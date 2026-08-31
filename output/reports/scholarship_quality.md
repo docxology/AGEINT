@@ -3,7 +3,7 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-14T00:28:02+00:00 |
+| Generated at | 2026-08-27T22:33:39+00:00 |
 | Generated Markdown files | 330 |
 | Cited generated files | 294 |
 | Claim-bearing files | 275 |
@@ -21,12 +21,12 @@
 |---|---:|
 | curated_anchor | 32 |
 | law_policy | 19 |
-| official | 3071 |
+| official | 3096 |
 | practitioner_vendor | 105 |
 | public_domain | 21 |
-| scholarly | 692 |
+| scholarly | 693 |
 | source_guide | 1502 |
-| standard | 882 |
+| standard | 883 |
 
 ## Hard-Fail Rows
 

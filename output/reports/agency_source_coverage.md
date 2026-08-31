@@ -4,7 +4,7 @@
 |---|---:|
 | OK | true |
 | agency_source_coverage_ok | true |
-| Generated at | 2026-08-14T00:28:02+00:00 |
+| Generated at | 2026-08-27T22:33:39+00:00 |
 | Curated intelligence anchors | 462 |
 | New official US IC anchors | 56 |
 | Missing required metadata | 0 |

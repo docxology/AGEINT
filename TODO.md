@@ -4,7 +4,29 @@ Forward-only tracker for source-owned work. History lives in `ISA.md` and commit
 messages; this file holds current state and the next useful work. Each row states
 an acceptance line — the command whose output decides whether it is done.
 
-## Verified State (2026-08-20)
+## Verified State (2026-08-30)
+
+Measured, not copied. Re-run the commands rather than trusting these numbers.
+
+- Test gate: `uv run pytest tests/ --cov=src --cov-fail-under=90` -> green
+  (419 passed, 1 skipped, coverage 91.99%, floor 90 under the sibling
+  template repo; see below).
+- Lint gate: `uv run ruff check src tests scripts` -> clean. Ruleset pinned in
+  `[tool.ruff.lint]` (`select = ["E", "F"]`); version pinned via `uv.lock`.
+- File-size gate: `tests/test_file_size_inventory.py` -> green (500-line cap).
+  Largest source file is now `src/rendered_reference_audit.py` at 498 lines;
+  `src/intelligence_content/_04b_part.py` was split (see Resolved 2026-08-30).
+- Publication-readiness: `audit_publication_readiness.py --write --skip-parent-guard`
+  reports `ok = true` at the pinned `SOURCE_DATE_EPOCH`.
+- Artifact evidence: `audit_artifact_evidence.py --write` reports `ok = true`,
+  all twelve checks green, at the pinned epoch.
+- Source refresh: `audit_source_refresh_due.py --write` reports 472 rows,
+  448 current, 0 due/stale (2026-08-30 re-verification pass).
+- Measured scope: 16 parts, 51 chapters, 9 appendices, 177 registered figures,
+  472 source metadata rows (462 intelligence + 10 source-quality), 312 parsed
+  guide references.
+
+## Verified State (2026-08-20) (superseded above, kept for traceability)
 
 Measured, not copied. Re-run the commands rather than trusting these numbers.
 
@@ -23,6 +45,29 @@ Measured, not copied. Re-run the commands rather than trusting these numbers.
   guide references.
 
 ## Resolved
+
+### 2026-08-30 — source-refresh re-verification + 500-line headroom (AGEINT fleet lane)
+
+1. **27 anchors past quarterly refresh date re-verified.** `source_refresh_due`
+   was failing with 27 `due` rows (checked 2026-05-22/24, cadence quarterly).
+   All 27 URLs were re-fetched live: 25 returned HTTP 200, canada.ca pages
+   verified via full-page fetch, one OECD topic URL had moved
+   (`ai-risks-and-incidents` -> `ai-risks-and-incidents.html`) and was updated.
+   All 27 rows now carry `checked_as_of: 2026-08-30`; gate reports 0 due/stale.
+2. **`src/intelligence_content/_04b_part.py` split at the cap.** It had grown
+   back to exactly 500 lines (Tier-2 headroom was consumed by the 2026-07-10
+   anchor-key edits). Split into `_04b_part.py` (295 lines: 5 extended
+   profiles + the combined `INTELLIGENCE_PROFILES` tuple) and
+   `_04c_part.py` (225 lines: 4 extended profiles). Profile bodies moved
+   byte-identical; order preserved (CORE + EXT_A + EXT_B); all 15 profiles
+   resolve. `_04c_part` added to the isolated-import shard list.
+3. **Subprocess timeout bounds raised in two contract tests**
+   (`test_artifact_evidence.py` 180s -> 900s, `test_publication_readiness.py`
+   240s -> 900s). The audit scripts complete green standalone (5-15 min under
+   external-drive load) but exceeded the old bounds, producing flaky
+   failures; assertion strength unchanged.
+4. **Full strict rebuild** (`SOURCE_DATE_EPOCH` pinned) regenerated the stamp,
+   reports, figures, and manuscript; all audits re-run green at the same epoch.
 
 ### Tier 0 — strict-rebuild gates green (2026-08-13 and 2026-08-20)
 

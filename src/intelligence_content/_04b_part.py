@@ -4,9 +4,11 @@ from typing import Final
 
 from ._01_part import IntelligenceProfile
 from ._04_part import _INTELLIGENCE_PROFILES_CORE
+from ._04c_part import _INTELLIGENCE_PROFILES_EXTENDED_B
 
 
-_INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
+
+_INTELLIGENCE_PROFILES_EXTENDED_A: Final[tuple[IntelligenceProfile, ...]] = (
     IntelligenceProfile(
         identifier="financial_economic_security",
         title="Financial Intelligence and Economic-Security Due Diligence",
@@ -283,218 +285,11 @@ _INTELLIGENCE_PROFILES_EXTENDED: Final[tuple[IntelligenceProfile, ...]] = (
             "cia_intelligence_profession",
         ),
     ),
-    IntelligenceProfile(
-        identifier="cyber_threat_intelligence",
-        title="Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense",
-        match_terms=(
-            "cyber intelligence",
-            "advanced persistent",
-            "apt",
-            "supply-chain",
-            "supply chain",
-            "threat intelligence",
-            "cyber response",
-            "incident",
-            "sharing",
-        ),
-        anchor_keys=(
-            "official_nist_sp_800_150",
-            "official_oasis_stix_21",
-            "official_oasis_taxii_21",
-            "official_mitre_attack_enterprise",
-            "official_cisa_kev_catalog",
-            "official_nist_sp_800_61r3",
-            "official_oecd_ai_incident_reporting_framework",
-            "official_nist_sp_800_161r1",
-            "official_nist_sp_800_137",
-            "official_nist_sp_800_172",
-            "official_nist_csf_2",
-            "official_nist_ssdf",
-            "official_mitre_atlas",
-            "official_cisa_deploying_ai_systems_securely",
-            "official_cset_adversarial_ml_cybersecurity_2022",
-            "scholarly_taddeo_floridi_2018_ai_cyber_arms_race",
-            "official_darpa_active_social_engineering_defense",
-            "scholarly_penmetsa_2025_adversarial_ml_cybersecurity",
-            "scholarly_wasil_2024_ai_emergency_preparedness",
-        ),
-        conceptual_focus=(
-            "turning indicators, TTPs, incidents, vendor risk, and response "
-            "lessons into shareable defensive intelligence with clear handling rules"
-        ),
-        method_stack=(
-            "threat-information sharing goals, indicator/TTP normalization, "
-            "incident-response review, supply-chain risk assessment, and lessons learned"
-        ),
-        composability_contract=(
-            "indicators, TTP mappings, affected assets, supplier evidence, "
-            "response actions, and sharing constraints remain independently reusable"
-        ),
-        failure_modes=(
-            "indicator fixation, unvetted sharing, vendor-assurance drift, "
-            "weak incident scoping, and treating CTI as a feed instead of a workflow"
-        ),
-        safety_boundary=(
-            "cyber material stays defensive and tabletop-based; it does not "
-            "provide exploit, persistence, evasion, or live-response instructions"
-        ),
-        source_pack_ids=(
-            "ic_cyber_geoint_history",
-            "odni_governance_directives",
-        ),
-    ),
-    IntelligenceProfile(
-        identifier="ics_ot_defense",
-        title="ICS/OT Cyber-Physical Defense and Tabletop Readiness",
-        match_terms=(
-            "ics",
-            "industrial",
-            "operational technology",
-            "cyber-physical",
-            "critical infrastructure",
-            "mitre",
-            "att&ck",
-        ),
-        anchor_keys=(
-            "official_nist_csf_2",
-            "official_nist_sp_800_160r1",
-            "official_nist_sp_800_82r3",
-            "official_isa_iec_62443",
-            "official_cisa_cross_sector_cpg",
-            "official_cisa_ics_recommended_practices",
-            "official_mitre_attack_ics",
-            "official_cisa_tabletop_exercises",
-            "official_nist_sp_800_84",
-            "official_nsa_ai_ot_integration",
-            "official_nist_cyber_physical_framework",
-            "official_nist_sp_1800_10_ics_integrity",
-            "official_nist_ai_rmf_critical_infrastructure_profile_concept",
-            "official_cisa_secure_by_demand_ot_procurement",
-            "official_cisa_ot_asset_inventory_guidance",
-            "official_cisa_ot_definitive_architecture",
-        ),
-        conceptual_focus=(
-            "defensive intelligence for safety-critical environments where "
-            "availability, engineering state, and physical consequence matter"
-        ),
-        method_stack=(
-            "asset/consequence mapping, ATT&CK-for-ICS coverage review, "
-            "defense-in-depth audit, remote-access check, and tabletop injects"
-        ),
-        composability_contract=(
-            "separate cyber indicators, engineering observations, safety impacts, "
-            "operator decisions, and recovery actions"
-        ),
-        failure_modes=(
-            "IT-first assumptions, unsafe automation, untested shutdown logic, "
-            "poor remote-access control, and missing after-action learning"
-        ),
-        safety_boundary=(
-            "all ICS work remains tabletop, lab, or accountable defensive review; "
-            "no exploitation, unsafe process manipulation, or live control actions"
-        ),
-    ),
-    IntelligenceProfile(
-        identifier="legal_oversight",
-        title="Legal, Ethical, and Oversight Architecture",
-        match_terms=("legal", "ethical", "oversight", "authority", "governance", "privacy"),
-        anchor_keys=(
-            "official_odni_eo_12333",
-            "official_nsa_fisa",
-            "official_eu_ai_act",
-            "official_council_europe_ai_convention",
-            "official_pclob_oversight_reports",
-            "official_ic_ai_ethics_principles",
-            "official_ic_ai_ethics_framework",
-            "official_odni_icd_505",
-            "official_nist_ai_rmf",
-            "official_imda_agentic_ai_framework",
-            "official_nist_privacy_framework",
-            "official_nist_sp_800_53r5",
-            "official_nist_sp_800_30r1",
-            "official_nist_sp_800_37r2",
-            "official_nist_sp_800_39",
-            "official_nist_ir_8477_mappings",
-            "official_oecd_governing_with_ai_public_sector",
-            "official_canada_algorithmic_impact_assessment",
-            "official_canada_ai_register",
-            "official_un_global_digital_compact",
-            "official_nara_2025_ai_compliance_plan",
-            "official_us_copyright_ai_training_report",
-            "official_wipo_ai_ip_policy",
-            "official_odni_icd_203",
-            "official_odni_icd_206",
-            "scholarly_ortega_2025_ai_incident_regime",
-        ),
-        conceptual_focus=(
-            "turning authority, accountability, transparency, and review into "
-            "design constraints rather than post-hoc paperwork"
-        ),
-        method_stack=(
-            "authority mapping, role assignment, impact assessment, documentation "
-            "review, escalation triggers, and independent oversight"
-        ),
-        composability_contract=(
-            "policies, approvals, audit logs, evidence, and action permissions "
-            "remain linked but independently inspectable"
-        ),
-        failure_modes=(
-            "authority laundering through tools, missing audit trails, privacy "
-            "overreach, and treating governance as a static checklist"
-        ),
-        safety_boundary=(
-            "governance content supports lawful design, education, and review; it "
-            "does not justify unauthorized collection or deployment"
-        ),
-        source_pack_ids=(
-            "odni_privacy_oversight",
-            "odni_disclosure_and_tearlines",
-        ),
-    ),
-    IntelligenceProfile(
-        identifier="operator_productivity",
-        title="Operator Productivity and Cognitive Performance",
-        match_terms=(
-            "intelligent operator",
-            "cognitive athlete",
-            "productivity intelligence",
-            "getting things done",
-            "flow state",
-            "nasa-tlx",
-            "cognitive load",
-            "circadian intelligence",
-        ),
-        anchor_keys=(
-            "official_odni_icd_203",
-            "scholarly_heuer_psychology_intelligence_analysis",
-            "official_nist_sp_800_161r1",
-        ),
-        conceptual_focus=(
-            "sustained intelligence work as cognitive performance engineering: "
-            "external memory, workload measurement, flow conditions, and "
-            "decision hygiene under operational tempo"
-        ),
-        method_stack=(
-            "GTD capture-clarify-organize cycles, NASA-TLX workload review, "
-            "flow precondition checklists, task-switching audits, and "
-            "reviewer handoff under fatigue"
-        ),
-        composability_contract=(
-            "requirements queues, workload signals, focus blocks, evidence "
-            "packets, and reviewer checkpoints remain separable artifacts"
-        ),
-        failure_modes=(
-            "heroic overtime, invisible cognitive debt, context-switch thrash, "
-            "uncalibrated confidence under load, and skipping handoff review"
-        ),
-        safety_boundary=(
-            "productivity material stays educational and synthetic; it does not "
-            "prescribe live operational tempo, surveillance of people, or "
-            "performance coercion"
-        ),
-    ),
 )
 
 INTELLIGENCE_PROFILES: Final[tuple[IntelligenceProfile, ...]] = (
-    _INTELLIGENCE_PROFILES_CORE + _INTELLIGENCE_PROFILES_EXTENDED
+    _INTELLIGENCE_PROFILES_CORE
+    + _INTELLIGENCE_PROFILES_EXTENDED_A
+    + _INTELLIGENCE_PROFILES_EXTENDED_B
 )
+

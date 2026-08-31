@@ -24,7 +24,9 @@ def _write_anchor(path: Path, payload: dict[str, object]) -> None:
 
 
 def test_source_refresh_due_current_rows_are_not_due() -> None:
-    report = collect_source_refresh_due(PROJECT_ROOT, as_of=date(2026, 6, 16))
+    # as_of must be at or after the latest committed `checked_as_of`; pin it to the
+    # 2026-08-30 re-verification pass so a future refresh only needs this date bumped.
+    report = collect_source_refresh_due(PROJECT_ROOT, as_of=date(2026, 8, 30))
     summary = report.payload["summary"]
 
     assert report.ok is True

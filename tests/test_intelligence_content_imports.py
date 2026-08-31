@@ -16,6 +16,7 @@ _SHARDS = [
     "_03_part",
     "_04_part",
     "_04b_part",
+    "_04c_part",
     "_05_part",
     "_06_part",
     "_07_risk_categories",

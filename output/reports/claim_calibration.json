@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T00:28:02+00:00",
+  "generated_at": "2026-08-27T22:33:39+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -1845,12 +1845,94 @@
     },
     {
       "citation_keys": [
-        "official_oecd_public_sector_ai"
+        "official_ec_ai_office"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 15,
+      "matched_terms": [
+        "accountability"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_ec_ai_office",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "European AI Office",
+          "source_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_ec_ai_office] / [European AI Office](https://digital-strategy.ec.europa.eu/en/policies/ai-office) / ai_conformity_compliance / AI conformity governance, public oversight, GPAI supervision, and institutional accountability / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_ec_gpai_code_practice"
       ],
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
       "line": 16,
+      "matched_terms": [
+        "compliance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_ec_gpai_code_practice",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "General-Purpose AI Code of Practice",
+          "source_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_ec_gpai_code_practice] / [General-Purpose AI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice) / ai_conformity_compliance / GPAI compliance scaffolding, documentation expectations, safety duties, and copyright transparency / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_ec_ai_act_framework"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 17,
+      "matched_terms": [
+        "regulatory",
+        "compliance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_ec_ai_act_framework",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "AI Act",
+          "source_url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_ec_ai_act_framework] / [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) / ai_conformity_compliance / AI Act compliance mapping, risk classification, governance timing, and enforcement context / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_oecd_public_sector_ai"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 19,
       "matched_terms": [
         "policy",
         "accountability"
@@ -1878,7 +1960,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 17,
+      "line": 21,
       "matched_terms": [
         "policy"
       ],
@@ -1900,12 +1982,229 @@
     },
     {
       "citation_keys": [
+        "official_doj_ada_title_ii_web_rule"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 24,
+      "matched_terms": [
+        "compliance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_doj_ada_title_ii_web_rule",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Fact Sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments",
+          "source_url": "https://www.ada.gov/resources/2024-03-08-web-rule/",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_doj_ada_title_ii_web_rule] / [Fact Sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments](https://www.ada.gov/resources/2024-03-08-web-rule/) / accessibility_digital_inclusion / public-sector accessibility obligations, contractor oversight, and digital-service compliance review / Direct source URL verified against an official, standards, public-domain"
+    },
+    {
+      "citation_keys": [
+        "official_nist_ai_security_resilience"
+      ],
+      "claim_class": "safety_or_assurance",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 25,
+      "matched_terms": [
+        "red-team",
+        "assurance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_nist_ai_security_resilience",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "AI Research: Security and Resilience",
+          "source_url": "https://www.nist.gov/artificial-intelligence/ai-research-security-and-resilience",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_nist_ai_security_resilience] / [AI Research: Security and Resilience](https://www.nist.gov/artificial-intelligence/ai-research-security-and-resilience) / ai_red_team_assurance / AI red-team assurance, adversarial ML terminology, mitigation taxonomy, and resilience evidence / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_nist_ai_resource_center_tev"
+      ],
+      "claim_class": "safety_or_assurance",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 26,
+      "matched_terms": [
+        "assurance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_nist_ai_resource_center_tev",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "NIST AI Resource Center",
+          "source_url": "https://airc.nist.gov/",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_nist_ai_resource_center_tev] / [NIST AI Resource Center](https://airc.nist.gov/) / ai_red_team_assurance / AI RMF operationalization, TEVV evidence, crosswalks, profiles, and assurance planning / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_uk_algorithmic_transparency_hub"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 27,
+      "matched_terms": [
+        "standard"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_uk_algorithmic_transparency_hub",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Algorithmic Transparency Recording Standard Hub",
+          "source_url": "https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_uk_algorithmic_transparency_hub] / [Algorithmic Transparency Recording Standard Hub](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub) / algorithmic_transparency_reporting / algorithmic transparency notices, public records, public-sector service disclosure, and exemptions / Direct source URL verified against an official, standards, public-domain, or scholarly sour"
+    },
+    {
+      "citation_keys": [
+        "official_uk_algorithmic_transparency_guidance"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 28,
+      "matched_terms": [
+        "standard"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_uk_algorithmic_transparency_guidance",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Guidance for Organisations Using the Algorithmic Transparency Recording Standard",
+          "source_url": "https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_uk_algorithmic_transparency_guidance] / [Guidance for Organisations Using the Algorithmic Transparency Recording Standard](https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard) / algorithmic_transparency_reporting / transparency notice fields, publication workflow, model specification, and review records / Direct source URL verified a"
+    },
+    {
+      "citation_keys": [
+        "official_nist_aria_pilot_evaluation_report"
+      ],
+      "claim_class": "empirical_or_evaluation",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 29,
+      "matched_terms": [
+        "evaluation"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_nist_aria_pilot_evaluation_report",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Assessing Risks and Impacts of AI (ARIA): Pilot Evaluation Report",
+          "source_url": "https://www.nist.gov/publications/assessing-risks-and-impacts-ai-aria-pilot-evaluation-report",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_nist_aria_pilot_evaluation_report] / [Assessing Risks and Impacts of AI (ARIA): Pilot Evaluation Report](https://www.nist.gov/publications/assessing-risks-and-impacts-ai-aria-pilot-evaluation-report) / assurance_evaluation_evidence / assurance evaluation evidence, scenario design, red-team testing, field testing, and measurement trees / Direct source URL verified against an official, standards, public-do"
+    },
+    {
+      "citation_keys": [
+        "official_omb_m_25_21_federal_ai_governance"
+      ],
+      "claim_class": "artifact_readiness",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 31,
+      "matched_terms": [
+        "pdf"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_omb_m_25_21_federal_ai_governance",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust",
+          "source_url": "https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_omb_m_25_21_federal_ai_governance] / [M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf) / risk_exception_governance / risk exception governance, AI maturity plans, data traceability, public trust, and oversight capacity / "
+    },
+    {
+      "citation_keys": [
+        "official_omb_m_25_22_federal_ai_acquisition"
+      ],
+      "claim_class": "artifact_readiness",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 32,
+      "matched_terms": [
+        "pdf"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_omb_m_25_22_federal_ai_acquisition",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government",
+          "source_url": "https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / [M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf) / procurement_performance_monitoring / AI procurement monitoring, vendor demonstrations, acquisition criteria, QASP evidence, and performance review "
+    },
+    {
+      "citation_keys": [
         "official_nist_ai_600_1_generative_ai_profile"
       ],
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 20,
+      "line": 33,
       "matched_terms": [
         "evaluation"
       ],
@@ -1932,7 +2231,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 21,
+      "line": 34,
       "matched_terms": [
         "pdf"
       ],
@@ -1954,12 +2253,259 @@
     },
     {
       "citation_keys": [
+        "official_nist_ai_rmf_critical_infrastructure_profile_concept"
+      ],
+      "claim_class": "safety_or_assurance",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 35,
+      "matched_terms": [
+        "risk",
+        "assurance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_nist_ai_rmf_critical_infrastructure_profile_concept",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Concept Note: AI RMF Profile on Trustworthy AI in Critical Infrastructure",
+          "source_url": "https://www.nist.gov/programs-projects/concept-note-ai-rmf-profile-trustworthy-ai-critical-infrastructure",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_nist_ai_rmf_critical_infrastructure_profile_concept] / [Concept Note: AI RMF Profile on Trustworthy AI in Critical Infrastructure](https://www.nist.gov/programs-projects/concept-note-ai-rmf-profile-trustworthy-ai-critical-infrastructure) / assurance_evaluation_evidence / critical-infrastructure AI trustworthiness, AI RMF profiling, infrastructure risk review, and sector assurance evidence / Direct source"
+    },
+    {
+      "citation_keys": [
+        "official_canada_algorithmic_impact_assessment"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 37,
+      "matched_terms": [
+        "accountability",
+        "rights"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_canada_algorithmic_impact_assessment",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Algorithmic Impact Assessment tool",
+          "source_url": "https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_canada_algorithmic_impact_assessment] / [Algorithmic Impact Assessment tool](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html) / rights_impact_privacy / algorithmic impact assessment, risk level, mitigation evidence, accountability, and rights-impact review / Direct source URL verified against an official, s"
+    },
+    {
+      "citation_keys": [
+        "official_canada_ai_register"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 38,
+      "matched_terms": [
+        "accountability"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_canada_ai_register",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Canada launches first register of AI uses in federal government",
+          "source_url": "https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_canada_ai_register] / [Canada launches first register of AI uses in federal government](https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html) / public_sector_transparency / public AI register, government AI use disclosure, use-case inventory, public transparency, and refresh accountability / Direct source URL verified agains"
+    },
+    {
+      "citation_keys": [
+        "official_oecd_ai_risks_incidents"
+      ],
+      "claim_class": "safety_or_assurance",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 40,
+      "matched_terms": [
+        "incident",
+        "risk"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_oecd_ai_risks_incidents",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "AI risks and incidents",
+          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents.html",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_oecd_ai_risks_incidents] / [AI risks and incidents](https://www.oecd.org/en/topics/ai-risks-and-incidents.html) / agent_incident_response / AI risks, incidents, hazards, incident monitoring, accountable risk management, and cross-jurisdictional learning / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_oecd_ai_incident_reporting_framework"
+      ],
+      "claim_class": "safety_or_assurance",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 41,
+      "matched_terms": [
+        "incident",
+        "risk"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_oecd_ai_incident_reporting_framework",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Towards a common reporting framework for AI incidents",
+          "source_url": "https://www.oecd.org/en/publications/towards-a-common-reporting-framework-for-ai-incidents_f326d4ac-en.html",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / [Towards a common reporting framework for AI incidents](https://www.oecd.org/en/publications/towards-a-common-reporting-framework-for-ai-incidents_f326d4ac-en.html) / agent_incident_response / common AI incident reporting framework, 29 reporting criteria, interoperability, high-risk systems, impact assessment, and emerging-risk review / Direct source URL verified a"
+    },
+    {
+      "citation_keys": [
+        "official_nist_dioptra"
+      ],
+      "claim_class": "empirical_or_evaluation",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 42,
+      "matched_terms": [
+        "evaluation"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_nist_dioptra",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Dioptra",
+          "source_url": "https://pages.nist.gov/dioptra/",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_nist_dioptra] / [Dioptra](https://pages.nist.gov/dioptra/) / ai_red_team_assurance / AI testbed evaluation, adversarial testing, red-team assurance, reproducible measurement, and risk assessment workflow / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+    },
+    {
+      "citation_keys": [
+        "official_csa_maestro_threat_modeling"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 44,
+      "matched_terms": [
+        "compliance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "official",
+          "key": "official_csa_maestro_threat_modeling",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "Agentic AI Threat Modeling Framework: MAESTRO",
+          "source_url": "https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro",
+          "strength": "official_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_csa_maestro_threat_modeling] / [Agentic AI Threat Modeling Framework: MAESTRO](https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro) / ai_red_team_assurance / MAESTRO seven-layer agentic threat model, per-layer threats and mitigations, cross-layer vulnerabilities, and security-compliance layer monitoring / Direct source URL verified live (HTTP 200, on-topic CSA M"
+    },
+    {
+      "citation_keys": [
+        "scholarly_agentic_ai_security_survey"
+      ],
+      "claim_class": "empirical_or_evaluation",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 45,
+      "matched_terms": [
+        "evaluation"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "scholarly",
+          "key": "scholarly_agentic_ai_security_survey",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "scholarly_preprint",
+          "source_title": "Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges",
+          "source_url": "https://arxiv.org/abs/2510.23883v2",
+          "strength": "scholarly_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@scholarly_agentic_ai_security_survey] / [Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges](https://arxiv.org/abs/2510.23883v2) / ai_red_team_assurance / agentic AI security threat taxonomy, prompt-injection and protocol threats, defense strategies, evaluation methodologies, and open challenges / Direct source URL verified live (HTTP 200, on-topic arXiv agentic-AI security survey) for AGEINT"
+    },
+    {
+      "citation_keys": [
+        "official_csa_nist_ai_agent_red_teaming_standards"
+      ],
+      "claim_class": "governance_or_rights",
+      "disposition": "pass",
+      "fix_hint": "claim language has citation support or remains bounded",
+      "line": 48,
+      "matched_terms": [
+        "compliance"
+      ],
+      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "source_support_profiles": [
+        {
+          "family": "standard",
+          "key": "official_csa_nist_ai_agent_red_teaming_standards",
+          "note": "direct support lane for bounded AGEINT claims",
+          "primary_support": true,
+          "source_tier": "official_primary",
+          "source_title": "CSA Research Note: NIST AI Agent Red-Teaming Standards (March 2026)",
+          "source_url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-red-teaming-standards-202603/",
+          "strength": "standard_primary",
+          "weak_context": false
+        }
+      ],
+      "text": "/ [@official_csa_nist_ai_agent_red_teaming_standards] / [CSA Research Note: NIST AI Agent Red-Teaming Standards (March 2026)](https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-red-teaming-standards-202603/) / ai_red_team_assurance / NIST AI agent red-teaming standards, adversarial-ML taxonomy, indirect prompt-injection and memory-poisoning test scenarios, and enterprise compliance / Dire"
+    },
+    {
+      "citation_keys": [
         "official_nist_ai_100_4_synthetic_content"
       ],
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 22,
+      "line": 49,
       "matched_terms": [
         "pdf"
       ],
@@ -1986,7 +2532,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 23,
+      "line": 50,
       "matched_terms": [
         "pdf"
       ],
@@ -2013,7 +2559,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 24,
+      "line": 51,
       "matched_terms": [
         "evaluation"
       ],
@@ -2040,7 +2586,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 25,
+      "line": 52,
       "matched_terms": [
         "policy"
       ],
@@ -2067,7 +2613,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 26,
+      "line": 53,
       "matched_terms": [
         "authorization"
       ],
@@ -2094,7 +2640,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 27,
+      "line": 54,
       "matched_terms": [
         "authorization"
       ],
@@ -2121,7 +2667,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 31,
+      "line": 58,
       "matched_terms": [
         "standard"
       ],
@@ -2148,7 +2694,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 34,
+      "line": 61,
       "matched_terms": [
         "compliance"
       ],
@@ -2175,7 +2721,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 35,
+      "line": 62,
       "matched_terms": [
         "risk"
       ],
@@ -2202,7 +2748,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 39,
+      "line": 66,
       "matched_terms": [
         "policy"
       ],
@@ -2229,7 +2775,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 50,
+      "line": 77,
       "matched_terms": [
         "rights"
       ],
@@ -2256,7 +2802,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 55,
+      "line": 82,
       "matched_terms": [
         "standard"
       ],
@@ -2283,7 +2829,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 56,
+      "line": 83,
       "matched_terms": [
         "standard"
       ],
@@ -2310,7 +2856,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 57,
+      "line": 84,
       "matched_terms": [
         "standard"
       ],
@@ -2337,7 +2883,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 60,
+      "line": 87,
       "matched_terms": [
         "evaluation"
       ],
@@ -2364,7 +2910,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 63,
+      "line": 90,
       "matched_terms": [
         "risk",
         "misuse"
@@ -2392,7 +2938,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 64,
+      "line": 91,
       "matched_terms": [
         "benchmark",
         "evaluations",
@@ -2421,7 +2967,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 66,
+      "line": 93,
       "matched_terms": [
         "pdf"
       ],
@@ -2448,7 +2994,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 67,
+      "line": 94,
       "matched_terms": [
         "improves"
       ],
@@ -2475,7 +3021,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 68,
+      "line": 95,
       "matched_terms": [
         "policy"
       ],
@@ -2502,7 +3048,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 69,
+      "line": 96,
       "matched_terms": [
         "policy"
       ],
@@ -2529,7 +3075,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 71,
+      "line": 98,
       "matched_terms": [
         "pdf"
       ],
@@ -2556,7 +3102,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 72,
+      "line": 99,
       "matched_terms": [
         "statutory",
         "law"
@@ -2584,7 +3130,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 73,
+      "line": 100,
       "matched_terms": [
         "pdf"
       ],
@@ -2611,7 +3157,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 74,
+      "line": 101,
       "matched_terms": [
         "policy"
       ],
@@ -2638,7 +3184,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 75,
+      "line": 102,
       "matched_terms": [
         "pdf"
       ],
@@ -2665,7 +3211,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 76,
+      "line": 103,
       "matched_terms": [
         "evaluation"
       ],
@@ -2692,7 +3238,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 78,
+      "line": 105,
       "matched_terms": [
         "accuracy"
       ],
@@ -2719,7 +3265,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 80,
+      "line": 107,
       "matched_terms": [
         "improve"
       ],
@@ -2746,7 +3292,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 82,
+      "line": 109,
       "matched_terms": [
         "policy"
       ],
@@ -2773,7 +3319,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 83,
+      "line": 110,
       "matched_terms": [
         "improve"
       ],
@@ -2800,7 +3346,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 84,
+      "line": 111,
       "matched_terms": [
         "benchmark"
       ],
@@ -2827,7 +3373,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 85,
+      "line": 112,
       "matched_terms": [
         "pdf"
       ],
@@ -2854,7 +3400,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 86,
+      "line": 113,
       "matched_terms": [
         "pdf"
       ],
@@ -2881,7 +3427,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 87,
+      "line": 114,
       "matched_terms": [
         "pdf"
       ],
@@ -2908,7 +3454,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 88,
+      "line": 115,
       "matched_terms": [
         "pdf"
       ],
@@ -2935,7 +3481,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 89,
+      "line": 116,
       "matched_terms": [
         "pdf"
       ],
@@ -2962,7 +3508,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 90,
+      "line": 117,
       "matched_terms": [
         "pdf"
       ],
@@ -2989,7 +3535,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 91,
+      "line": 118,
       "matched_terms": [
         "pdf"
       ],
@@ -3016,7 +3562,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 92,
+      "line": 119,
       "matched_terms": [
         "pdf"
       ],
@@ -3043,7 +3589,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 93,
+      "line": 120,
       "matched_terms": [
         "pdf"
       ],
@@ -3070,7 +3616,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 94,
+      "line": 121,
       "matched_terms": [
         "benchmark"
       ],
@@ -3097,7 +3643,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 95,
+      "line": 122,
       "matched_terms": [
         "pdf"
       ],
@@ -3124,7 +3670,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 96,
+      "line": 123,
       "matched_terms": [
         "pdf"
       ],
@@ -3151,7 +3697,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 97,
+      "line": 124,
       "matched_terms": [
         "benchmark"
       ],
@@ -3178,7 +3724,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 98,
+      "line": 125,
       "matched_terms": [
         "pdf"
       ],
@@ -3205,7 +3751,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 99,
+      "line": 126,
       "matched_terms": [
         "pdf"
       ],
@@ -3232,7 +3778,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 100,
+      "line": 127,
       "matched_terms": [
         "pdf"
       ],
@@ -3259,7 +3805,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 101,
+      "line": 128,
       "matched_terms": [
         "pdf"
       ],
@@ -3286,7 +3832,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 102,
+      "line": 129,
       "matched_terms": [
         "pdf"
       ],
@@ -3313,7 +3859,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 103,
+      "line": 130,
       "matched_terms": [
         "pdf"
       ],
@@ -3340,7 +3886,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 105,
+      "line": 132,
       "matched_terms": [
         "pdf"
       ],
@@ -3367,7 +3913,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 106,
+      "line": 133,
       "matched_terms": [
         "pdf"
       ],
@@ -3394,7 +3940,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 107,
+      "line": 134,
       "matched_terms": [
         "accuracy"
       ],
@@ -3421,7 +3967,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 108,
+      "line": 135,
       "matched_terms": [
         "pdf"
       ],
@@ -3448,7 +3994,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 109,
+      "line": 136,
       "matched_terms": [
         "benchmark"
       ],
@@ -3475,7 +4021,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 110,
+      "line": 137,
       "matched_terms": [
         "pdf"
       ],
@@ -3502,7 +4048,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 111,
+      "line": 138,
       "matched_terms": [
         "pdf"
       ],
@@ -3529,7 +4075,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 112,
+      "line": 139,
       "matched_terms": [
         "pdf"
       ],
@@ -3556,7 +4102,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 113,
+      "line": 140,
       "matched_terms": [
         "pdf"
       ],
@@ -3583,7 +4129,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 114,
+      "line": 141,
       "matched_terms": [
         "pdf"
       ],
@@ -3610,7 +4156,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 115,
+      "line": 142,
       "matched_terms": [
         "pdf"
       ],
@@ -3637,7 +4183,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 116,
+      "line": 143,
       "matched_terms": [
         "pdf"
       ],
@@ -3664,7 +4210,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 117,
+      "line": 144,
       "matched_terms": [
         "pdf"
       ],
@@ -3691,7 +4237,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 118,
+      "line": 145,
       "matched_terms": [
         "pdf"
       ],
@@ -3718,7 +4264,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 119,
+      "line": 146,
       "matched_terms": [
         "pdf"
       ],
@@ -3745,7 +4291,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 120,
+      "line": 147,
       "matched_terms": [
         "pdf"
       ],
@@ -3772,7 +4318,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 121,
+      "line": 148,
       "matched_terms": [
         "pdf"
       ],
@@ -3799,7 +4345,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 122,
+      "line": 149,
       "matched_terms": [
         "pdf"
       ],
@@ -3826,7 +4372,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 123,
+      "line": 150,
       "matched_terms": [
         "pdf"
       ],
@@ -3853,7 +4399,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 125,
+      "line": 152,
       "matched_terms": [
         "accountability",
         "legal"
@@ -3881,7 +4427,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 130,
+      "line": 157,
       "matched_terms": [
         "pdf"
       ],
@@ -3908,7 +4454,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 131,
+      "line": 158,
       "matched_terms": [
         "pdf"
       ],
@@ -3935,7 +4481,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 132,
+      "line": 159,
       "matched_terms": [
         "legal"
       ],
@@ -3962,7 +4508,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 135,
+      "line": 162,
       "matched_terms": [
         "benchmark"
       ],
@@ -3989,7 +4535,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 136,
+      "line": 163,
       "matched_terms": [
         "pdf"
       ],
@@ -4016,7 +4562,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 140,
+      "line": 167,
       "matched_terms": [
         "prove"
       ],
@@ -4043,7 +4589,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 144,
+      "line": 171,
       "matched_terms": [
         "risk"
       ],
@@ -4070,7 +4616,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 145,
+      "line": 172,
       "matched_terms": [
         "risk"
       ],
@@ -4097,7 +4643,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 146,
+      "line": 173,
       "matched_terms": [
         "misuse",
         "risk"
@@ -4125,7 +4671,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 148,
+      "line": 175,
       "matched_terms": [
         "policy"
       ],
@@ -4152,7 +4698,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 149,
+      "line": 176,
       "matched_terms": [
         "policy"
       ],
@@ -4179,7 +4725,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 150,
+      "line": 177,
       "matched_terms": [
         "policy"
       ],
@@ -4206,7 +4752,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 151,
+      "line": 178,
       "matched_terms": [
         "accuracy"
       ],
@@ -4233,7 +4779,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 153,
+      "line": 180,
       "matched_terms": [
         "policy"
       ],
@@ -4260,7 +4806,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 154,
+      "line": 181,
       "matched_terms": [
         "policy"
       ],
@@ -4287,7 +4833,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 155,
+      "line": 182,
       "matched_terms": [
         "pdf"
       ],
@@ -4314,7 +4860,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 156,
+      "line": 183,
       "matched_terms": [
         "policy"
       ],
@@ -4341,7 +4887,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 157,
+      "line": 184,
       "matched_terms": [
         "pdf"
       ],
@@ -4368,7 +4914,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 159,
+      "line": 186,
       "matched_terms": [
         "policy"
       ],
@@ -4395,7 +4941,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 163,
+      "line": 190,
       "matched_terms": [
         "risk"
       ],
@@ -4422,7 +4968,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 165,
+      "line": 192,
       "matched_terms": [
         "pdf"
       ],
@@ -4449,7 +4995,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 167,
+      "line": 194,
       "matched_terms": [
         "incident"
       ],
@@ -4476,7 +5022,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 169,
+      "line": 196,
       "matched_terms": [
         "risk"
       ],
@@ -4503,7 +5049,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 170,
+      "line": 197,
       "matched_terms": [
         "pdf"
       ],
@@ -4530,7 +5076,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "boundary_allowed",
       "fix_hint": "explicit boundary language keeps the claim calibrated",
-      "line": 173,
+      "line": 200,
       "matched_terms": [
         "prove"
       ],
@@ -4557,7 +5103,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 174,
+      "line": 201,
       "matched_terms": [
         "policy"
       ],
@@ -4584,7 +5130,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 175,
+      "line": 202,
       "matched_terms": [
         "incident"
       ],
@@ -4611,7 +5157,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 176,
+      "line": 203,
       "matched_terms": [
         "improves",
         "accuracy"
@@ -4639,7 +5185,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 177,
+      "line": 204,
       "matched_terms": [
         "policy"
       ],
@@ -4666,7 +5212,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 178,
+      "line": 205,
       "matched_terms": [
         "improve",
         "accuracy"
@@ -4694,7 +5240,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 179,
+      "line": 206,
       "matched_terms": [
         "evaluation"
       ],
@@ -4721,7 +5267,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 183,
+      "line": 210,
       "matched_terms": [
         "accuracy"
       ],
@@ -4748,7 +5294,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 185,
+      "line": 212,
       "matched_terms": [
         "improve",
         "evaluation"
@@ -4776,7 +5322,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 186,
+      "line": 213,
       "matched_terms": [
         "pdf"
       ],
@@ -4803,7 +5349,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "review",
       "fix_hint": "review weak-context-only support before treating this as a governing constraint",
-      "line": 190,
+      "line": 217,
       "matched_terms": [
         "risk"
       ],
@@ -4830,7 +5376,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 196,
+      "line": 223,
       "matched_terms": [
         "accuracy"
       ],
@@ -4857,7 +5403,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 197,
+      "line": 224,
       "matched_terms": [
         "accuracy"
       ],
@@ -4884,7 +5430,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 199,
+      "line": 226,
       "matched_terms": [
         "pdf"
       ],
@@ -4911,7 +5457,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 202,
+      "line": 229,
       "matched_terms": [
         "evaluation"
       ],
@@ -4938,7 +5484,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 203,
+      "line": 230,
       "matched_terms": [
         "pdf"
       ],
@@ -4965,7 +5511,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 204,
+      "line": 231,
       "matched_terms": [
         "pdf"
       ],
@@ -4992,7 +5538,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 205,
+      "line": 232,
       "matched_terms": [
         "pdf"
       ],
@@ -5019,7 +5565,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 206,
+      "line": 233,
       "matched_terms": [
         "pdf"
       ],
@@ -5046,7 +5592,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 207,
+      "line": 234,
       "matched_terms": [
         "pdf"
       ],
@@ -5073,7 +5619,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 208,
+      "line": 235,
       "matched_terms": [
         "pdf"
       ],
@@ -5100,7 +5646,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 209,
+      "line": 236,
       "matched_terms": [
         "pdf"
       ],
@@ -5127,7 +5673,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 210,
+      "line": 237,
       "matched_terms": [
         "pdf"
       ],
@@ -5154,7 +5700,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 212,
+      "line": 239,
       "matched_terms": [
         "standard"
       ],
@@ -5181,7 +5727,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 213,
+      "line": 240,
       "matched_terms": [
         "standard"
       ],
@@ -5208,7 +5754,7 @@
       "claim_class": "governance_or_rights",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 214,
+      "line": 241,
       "matched_terms": [
         "standard"
       ],
@@ -5235,7 +5781,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 215,
+      "line": 242,
       "matched_terms": [
         "pdf"
       ],
@@ -5262,7 +5808,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 216,
+      "line": 243,
       "matched_terms": [
         "pdf"
       ],
@@ -5289,7 +5835,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 220,
+      "line": 247,
       "matched_terms": [
         "pdf"
       ],
@@ -5316,7 +5862,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 221,
+      "line": 248,
       "matched_terms": [
         "pdf"
       ],
@@ -5343,7 +5889,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 222,
+      "line": 249,
       "matched_terms": [
         "pdf"
       ],
@@ -5370,7 +5916,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 223,
+      "line": 250,
       "matched_terms": [
         "pdf"
       ],
@@ -5397,7 +5943,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 228,
+      "line": 255,
       "matched_terms": [
         "pdf"
       ],
@@ -5424,7 +5970,7 @@
       "claim_class": "safety_or_assurance",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 230,
+      "line": 257,
       "matched_terms": [
         "risk"
       ],
@@ -5451,7 +5997,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 234,
+      "line": 261,
       "matched_terms": [
         "pdf"
       ],
@@ -5478,7 +6024,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 236,
+      "line": 263,
       "matched_terms": [
         "pdf"
       ],
@@ -5505,7 +6051,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 237,
+      "line": 264,
       "matched_terms": [
         "pdf"
       ],
@@ -5532,7 +6078,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 239,
+      "line": 266,
       "matched_terms": [
         "pdf"
       ],
@@ -5559,7 +6105,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 240,
+      "line": 267,
       "matched_terms": [
         "pdf"
       ],
@@ -5586,7 +6132,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 244,
+      "line": 271,
       "matched_terms": [
         "pdf"
       ],
@@ -5613,7 +6159,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 247,
+      "line": 274,
       "matched_terms": [
         "pdf"
       ],
@@ -5640,7 +6186,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 248,
+      "line": 275,
       "matched_terms": [
         "pdf"
       ],
@@ -5667,7 +6213,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 251,
+      "line": 278,
       "matched_terms": [
         "pdf"
       ],
@@ -5694,7 +6240,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 253,
+      "line": 280,
       "matched_terms": [
         "pdf"
       ],
@@ -5721,7 +6267,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 254,
+      "line": 281,
       "matched_terms": [
         "pdf"
       ],
@@ -5748,7 +6294,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 256,
+      "line": 283,
       "matched_terms": [
         "pdf"
       ],
@@ -5775,7 +6321,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 257,
+      "line": 284,
       "matched_terms": [
         "pdf"
       ],
@@ -5802,7 +6348,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 258,
+      "line": 285,
       "matched_terms": [
         "pdf"
       ],
@@ -5829,7 +6375,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 268,
+      "line": 295,
       "matched_terms": [
         "accuracy"
       ],
@@ -5856,7 +6402,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 271,
+      "line": 298,
       "matched_terms": [
         "pdf"
       ],
@@ -5883,7 +6429,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 272,
+      "line": 299,
       "matched_terms": [
         "pdf"
       ],
@@ -5910,7 +6456,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 273,
+      "line": 300,
       "matched_terms": [
         "pdf"
       ],
@@ -5937,7 +6483,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 274,
+      "line": 301,
       "matched_terms": [
         "pdf"
       ],
@@ -5964,7 +6510,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 289,
+      "line": 316,
       "matched_terms": [
         "evaluation"
       ],
@@ -5991,7 +6537,7 @@
       "claim_class": "empirical_or_evaluation",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 293,
+      "line": 320,
       "matched_terms": [
         "recall"
       ],
@@ -6018,7 +6564,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 294,
+      "line": 321,
       "matched_terms": [
         "pdf"
       ],
@@ -6045,7 +6591,7 @@
       "claim_class": "artifact_readiness",
       "disposition": "pass",
       "fix_hint": "claim language has citation support or remains bounded",
-      "line": 296,
+      "line": 323,
       "matched_terms": [
         "pdf"
       ],
@@ -8669,7 +9215,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_ec_ai_act_framework] / [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) / ai_conformity_compliance / official_primary / 2026-05-22 / quarterly / AI Act implementation date, delegated act, guidance, or harmonised-standard status changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+      "text": "/ [@official_ec_ai_act_framework] / [AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) / ai_conformity_compliance / official_primary / 2026-08-30 / quarterly / AI Act implementation date, delegated act, guidance, or harmonised-standard status changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
     },
     {
       "citation_keys": [
@@ -8966,7 +9512,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_gsa_ai_guide_for_government] / [AI Guide for Government](https://ai.gov/) / public_sector_agentic_ai / official_primary / 2026-05-22 / quarterly / federal AI guidance, agency practice, resource hub, or policy source changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+      "text": "/ [@official_gsa_ai_guide_for_government] / [AI Guide for Government](https://ai.gov/) / public_sector_agentic_ai / official_primary / 2026-08-30 / quarterly / federal AI guidance, agency practice, resource hub, or policy source changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
     },
     {
       "citation_keys": [
@@ -9128,7 +9674,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_doj_ada_title_ii_web_rule] / [Fact Sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments](https://www.ada.gov/resources/2024-03-08-web-rule/) / accessibility_digital_inclusion / official_primary / 2026-05-22 / quarterly / ADA Title II rule, Federal Register update, compliance date, or DOJ guidance changes / Direct source URL verified against an offici"
+      "text": "/ [@official_doj_ada_title_ii_web_rule] / [Fact Sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments](https://www.ada.gov/resources/2024-03-08-web-rule/) / accessibility_digital_inclusion / official_primary / 2026-08-30 / quarterly / ADA Title II rule, Federal Register update, compliance date, or DOJ guidance changes / Direct source URL verified against an offici"
     },
     {
       "citation_keys": [
@@ -9320,7 +9866,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_uk_algorithmic_transparency_hub] / [Algorithmic Transparency Recording Standard Hub](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub) / algorithmic_transparency_reporting / official_primary / 2026-05-22 / quarterly / ATRS template, scope policy, central government mandate, or publication guidance changes / Direct source URL verified against an official, standards"
+      "text": "/ [@official_uk_algorithmic_transparency_hub] / [Algorithmic Transparency Recording Standard Hub](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub) / algorithmic_transparency_reporting / official_primary / 2026-08-30 / quarterly / ATRS template, scope policy, central government mandate, or publication guidance changes / Direct source URL verified against an official, standards"
     },
     {
       "citation_keys": [
@@ -9348,7 +9894,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_uk_algorithmic_transparency_guidance] / [Guidance for Organisations Using the Algorithmic Transparency Recording Standard](https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard) / algorithmic_transparency_reporting / official_primary / 2026-05-22 / quarterly / ATRS completion guidance, repository process, or publication policy changes "
+      "text": "/ [@official_uk_algorithmic_transparency_guidance] / [Guidance for Organisations Using the Algorithmic Transparency Recording Standard](https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard) / algorithmic_transparency_reporting / official_primary / 2026-08-30 / quarterly / ATRS completion guidance, repository process, or publication policy changes "
     },
     {
       "citation_keys": [
@@ -9402,7 +9948,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_aria_pilot_evaluation_report] / [Assessing Risks and Impacts of AI (ARIA): Pilot Evaluation Report](https://www.nist.gov/publications/assessing-risks-and-impacts-ai-aria-pilot-evaluation-report) / assurance_evaluation_evidence / official_primary / 2026-05-22 / quarterly / ARIA evaluation program, pilot report, scenario design, or AI measurement guidance changes / Direct source URL verified against a"
+      "text": "/ [@official_nist_aria_pilot_evaluation_report] / [Assessing Risks and Impacts of AI (ARIA): Pilot Evaluation Report](https://www.nist.gov/publications/assessing-risks-and-impacts-ai-aria-pilot-evaluation-report) / assurance_evaluation_evidence / official_primary / 2026-08-30 / quarterly / ARIA evaluation program, pilot report, scenario design, or AI measurement guidance changes / Direct source URL verified against a"
     },
     {
       "citation_keys": [
@@ -9429,7 +9975,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nara_ai_use_case_inventory] / [Inventory of NARA Artificial Intelligence (AI) Use Cases](https://www.archives.gov/ai) / records_retention_auditability / official_primary / 2026-05-22 / quarterly / NARA AI use-case inventory, agency AI use-case disclosure, records policy, or FOIA workflow changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT cur"
+      "text": "/ [@official_nara_ai_use_case_inventory] / [Inventory of NARA Artificial Intelligence (AI) Use Cases](https://www.archives.gov/ai) / records_retention_auditability / official_primary / 2026-08-30 / quarterly / NARA AI use-case inventory, agency AI use-case disclosure, records policy, or FOIA workflow changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT cur"
     },
     {
       "citation_keys": [
@@ -9456,7 +10002,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_omb_m_25_21_federal_ai_governance] / [M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf) / risk_exception_governance / official_primary / 2026-05-22 / quarterly / OMB federal AI governance memo, agency strategy requirement,"
+      "text": "/ [@official_omb_m_25_21_federal_ai_governance] / [M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf) / risk_exception_governance / official_primary / 2026-08-30 / quarterly / OMB federal AI governance memo, agency strategy requirement,"
     },
     {
       "citation_keys": [
@@ -9483,7 +10029,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / [M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf) / procurement_performance_monitoring / official_primary / 2026-05-22 / quarterly / OMB AI acquisition memo, QASP guidance, solicitation transparency,"
+      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / [M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government](https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-22-Driving-Efficient-Acquisition-of-Artificial-Intelligence-in-Government.pdf) / procurement_performance_monitoring / official_primary / 2026-08-30 / quarterly / OMB AI acquisition memo, QASP guidance, solicitation transparency,"
     },
     {
       "citation_keys": [
@@ -9620,7 +10166,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / [Guide on the Use of Agentic Artificial Intelligence](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-agentic-artificial-antelligence.html) / public_sector_agentic_ai / official_primary / 2026-05-24 / quarterly / Canada agentic-AI guide, public-sector AI policy, autonomy control, transparency, or monitori"
+      "text": "/ [@official_canada_agentic_ai_guide] / [Guide on the Use of Agentic Artificial Intelligence](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/guide-use-agentic-artificial-antelligence.html) / public_sector_agentic_ai / official_primary / 2026-08-30 / quarterly / Canada agentic-AI guide, public-sector AI policy, autonomy control, transparency, or monitori"
     },
     {
       "citation_keys": [
@@ -9647,7 +10193,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_algorithmic_impact_assessment] / [Algorithmic Impact Assessment tool](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html) / rights_impact_privacy / official_primary / 2026-05-24 / quarterly / Algorithmic Impact Assessment tool, directive, scoring, mitigation, or government automated-decision policy chan"
+      "text": "/ [@official_canada_algorithmic_impact_assessment] / [Algorithmic Impact Assessment tool](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html) / rights_impact_privacy / official_primary / 2026-08-30 / quarterly / Algorithmic Impact Assessment tool, directive, scoring, mitigation, or government automated-decision policy chan"
     },
     {
       "citation_keys": [
@@ -9670,12 +10216,12 @@
           "primary_support": true,
           "source_tier": "official_primary",
           "source_title": "AI risks and incidents",
-          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents",
+          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents.html",
           "strength": "official_primary",
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_risks_incidents] / [AI risks and incidents](https://www.oecd.org/en/topics/ai-risks-and-incidents) / agent_incident_response / official_primary / 2026-05-24 / quarterly / OECD AI incident monitor, risk taxonomy, AI incident topic, or AI hazard reporting changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+      "text": "/ [@official_oecd_ai_risks_incidents] / [AI risks and incidents](https://www.oecd.org/en/topics/ai-risks-and-incidents.html) / agent_incident_response / official_primary / 2026-08-30 / quarterly / OECD AI incident monitor, risk taxonomy, AI incident topic, or AI hazard reporting changes / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
     },
     {
       "citation_keys": [
@@ -9702,7 +10248,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_incident_reporting_framework] / [Towards a common reporting framework for AI incidents](https://www.oecd.org/en/publications/towards-a-common-reporting-framework-for-ai-incidents_f326d4ac-en.html) / agent_incident_response / official_primary / 2026-05-24 / quarterly / OECD AI incident reporting framework, criteria, DOI landing page, implementation, or interoperable incident-reporting guidance cha"
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / [Towards a common reporting framework for AI incidents](https://www.oecd.org/en/publications/towards-a-common-reporting-framework-for-ai-incidents_f326d4ac-en.html) / agent_incident_response / official_primary / 2026-08-30 / quarterly / OECD AI incident reporting framework, criteria, DOI landing page, implementation, or interoperable incident-reporting guidance cha"
     },
     {
       "citation_keys": [
@@ -9729,7 +10275,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_dioptra] / [Dioptra](https://pages.nist.gov/dioptra/) / ai_red_team_assurance / official_primary / 2026-05-24 / quarterly / NIST Dioptra release, documentation, testbed capability, AI measurement, or adversarial-evaluation update / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
+      "text": "/ [@official_nist_dioptra] / [Dioptra](https://pages.nist.gov/dioptra/) / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / NIST Dioptra release, documentation, testbed capability, AI measurement, or adversarial-evaluation update / Direct source URL verified against an official, standards, public-domain, or scholarly source for AGEINT curriculum use. /"
     },
     {
       "citation_keys": [
@@ -9783,7 +10329,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@scholarly_agentic_ai_security_survey] / [Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges](https://arxiv.org/abs/2510.23883v2) / ai_red_team_assurance / scholarly_preprint / 2026-05-22 / quarterly / New arXiv version of the agentic-AI security survey, revised threat taxonomy, defense catalog, or evaluation-methodology updates / Direct source URL verified live (HTTP 200, on-topic arXiv agent"
+      "text": "/ [@scholarly_agentic_ai_security_survey] / [Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges](https://arxiv.org/abs/2510.23883v2) / ai_red_team_assurance / scholarly_preprint / 2026-08-30 / quarterly / New arXiv version of the agentic-AI security survey, revised threat taxonomy, defense catalog, or evaluation-methodology updates / Direct source URL verified live (HTTP 200, on-topic arXiv agent"
     },
     {
       "citation_keys": [
@@ -9810,7 +10356,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_csa_nist_ai_agent_red_teaming_standards] / [CSA Research Note: NIST AI Agent Red-Teaming Standards (March 2026)](https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-red-teaming-standards-202603/) / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / CSA/NIST AI agent red-teaming standards note revisions, CAISI findings, adversarial-ML taxonomy, or red-team stan"
+      "text": "/ [@official_csa_nist_ai_agent_red_teaming_standards] / [CSA Research Note: NIST AI Agent Red-Teaming Standards (March 2026)](https://labs.cloudsecurityalliance.org/research/csa-research-note-nist-ai-agent-red-teaming-standards-202603/) / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / CSA/NIST AI agent red-teaming standards note revisions, CAISI findings, adversarial-ML taxonomy, or red-team stan"
     },
     {
       "citation_keys": [
@@ -27685,7 +28231,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_ec_gpai_code_practice] / General-Purpose AI Code of Practice / curriculum_anchor / ai_conformity_compliance / official_primary / 2026-05-22 / quarterly / source guide context / bibliography traceability / source guide context / Official European Commission source for GPAI Code of Practice drafting, transparency, copyright, safety, security, and AI Act implementation support. /"
+      "text": "/ [@official_ec_gpai_code_practice] / General-Purpose AI Code of Practice / curriculum_anchor / ai_conformity_compliance / official_primary / 2026-08-30 / quarterly / source guide context / bibliography traceability / source guide context / Official European Commission source for GPAI Code of Practice drafting, transparency, copyright, safety, security, and AI Act implementation support. /"
     },
     {
       "citation_keys": [
@@ -27712,7 +28258,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_ec_ai_act_framework] / AI Act / curriculum_anchor / ai_conformity_compliance / official_primary / 2026-05-22 / quarterly / source guide context / bibliography traceability / source guide context / Official European Commission AI Act implementation page for risk tiers, prohibited practices, GPAI obligations, governance bodies, and phased application. /"
+      "text": "/ [@official_ec_ai_act_framework] / AI Act / curriculum_anchor / ai_conformity_compliance / official_primary / 2026-08-30 / quarterly / source guide context / bibliography traceability / source guide context / Official European Commission AI Act implementation page for risk tiers, prohibited practices, GPAI obligations, governance bodies, and phased application. /"
     },
     {
       "citation_keys": [
@@ -28012,7 +28558,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_gsa_ai_guide_for_government] / AI Guide for Government / curriculum_anchor / public_sector_agentic_ai / official_primary / 2026-05-22 / quarterly / source guide context / bibliography traceability / source guide context / Official U.S. government AI resource hub for agency adoption, responsible use, policy references, and public-sector implementation support. /"
+      "text": "/ [@official_gsa_ai_guide_for_government] / AI Guide for Government / curriculum_anchor / public_sector_agentic_ai / official_primary / 2026-08-30 / quarterly / source guide context / bibliography traceability / source guide context / Official U.S. government AI resource hub for agency adoption, responsible use, policy references, and public-sector implementation support. /"
     },
     {
       "citation_keys": [
@@ -28176,7 +28722,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_doj_ada_title_ii_web_rule] / Fact Sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments / curriculum_anchor / accessibility_digital_inclusion / official_primary / 2026-05-22 / quarterly / public entity, contractor, learner, disabled service user, and compliance reviewer / public-sector accessibility gate and vendor deliverable review / disability righ"
+      "text": "/ [@official_doj_ada_title_ii_web_rule] / Fact Sheet: New Rule on the Accessibility of Web Content and Mobile Apps Provided by State and Local Governments / curriculum_anchor / accessibility_digital_inclusion / official_primary / 2026-08-30 / quarterly / public entity, contractor, learner, disabled service user, and compliance reviewer / public-sector accessibility gate and vendor deliverable review / disability righ"
     },
     {
       "citation_keys": [
@@ -28367,7 +28913,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_security_resilience] / AI Research: Security and Resilience / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / red-team reviewer, assurance lead, instructor, and learner / adversarial assurance cycle and mitigation evidence / security, reliability, harm prevention, and accountable AI testing / NIST AI security and resilience research hub for secure-and-resil"
+      "text": "/ [@official_nist_ai_security_resilience] / AI Research: Security and Resilience / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / red-team reviewer, assurance lead, instructor, and learner / adversarial assurance cycle and mitigation evidence / security, reliability, harm prevention, and accountable AI testing / NIST AI security and resilience research hub for secure-and-resil"
     },
     {
       "citation_keys": [
@@ -28394,7 +28940,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_resource_center_tev] / NIST AI Resource Center / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / assurance lead, instructor, compliance reviewer, and learner / TEVV evidence plan and AI RMF crosswalk / trustworthy AI, accountability, safety, and rights-preserving evaluation / NIST AI Resource Center source for AI RMF operationalization, playbook resources, "
+      "text": "/ [@official_nist_ai_resource_center_tev] / NIST AI Resource Center / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / assurance lead, instructor, compliance reviewer, and learner / TEVV evidence plan and AI RMF crosswalk / trustworthy AI, accountability, safety, and rights-preserving evaluation / NIST AI Resource Center source for AI RMF operationalization, playbook resources, "
     },
     {
       "citation_keys": [
@@ -28533,7 +29079,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_uk_algorithmic_transparency_hub] / Algorithmic Transparency Recording Standard Hub / curriculum_anchor / algorithmic_transparency_reporting / official_primary / 2026-05-22 / quarterly / public official, transparency reviewer, instructor, affected community, and learner / transparency notice workflow and public accountability evidence / access to information, public accountability, participation, privacy,"
+      "text": "/ [@official_uk_algorithmic_transparency_hub] / Algorithmic Transparency Recording Standard Hub / curriculum_anchor / algorithmic_transparency_reporting / official_primary / 2026-08-30 / quarterly / public official, transparency reviewer, instructor, affected community, and learner / transparency notice workflow and public accountability evidence / access to information, public accountability, participation, privacy,"
     },
     {
       "citation_keys": [
@@ -28561,7 +29107,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_uk_algorithmic_transparency_guidance] / Guidance for Organisations Using the Algorithmic Transparency Recording Standard / curriculum_anchor / algorithmic_transparency_reporting / official_primary / 2026-05-22 / quarterly / public official, records steward, instructor, transparency reviewer, and learner / transparency notice field checklist and publication decision evidence / public transparency, explain"
+      "text": "/ [@official_uk_algorithmic_transparency_guidance] / Guidance for Organisations Using the Algorithmic Transparency Recording Standard / curriculum_anchor / algorithmic_transparency_reporting / official_primary / 2026-08-30 / quarterly / public official, records steward, instructor, transparency reviewer, and learner / transparency notice field checklist and publication decision evidence / public transparency, explain"
     },
     {
       "citation_keys": [
@@ -28615,7 +29161,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_aria_pilot_evaluation_report] / Assessing Risks and Impacts of AI (ARIA): Pilot Evaluation Report / curriculum_anchor / assurance_evaluation_evidence / official_primary / 2026-05-22 / quarterly / assurance lead, evaluator, instructor, learner, and affected user / agent evaluation protocol and adversarial assurance evidence / validity, reliability, safety, fairness, user impact, and accountable testi"
+      "text": "/ [@official_nist_aria_pilot_evaluation_report] / Assessing Risks and Impacts of AI (ARIA): Pilot Evaluation Report / curriculum_anchor / assurance_evaluation_evidence / official_primary / 2026-08-30 / quarterly / assurance lead, evaluator, instructor, learner, and affected user / agent evaluation protocol and adversarial assurance evidence / validity, reliability, safety, fairness, user impact, and accountable testi"
     },
     {
       "citation_keys": [
@@ -28642,7 +29188,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nara_ai_use_case_inventory] / Inventory of NARA Artificial Intelligence (AI) Use Cases / curriculum_anchor / records_retention_auditability / official_primary / 2026-05-22 / quarterly / records officer, public official, instructor, transparency reviewer, and learner / AI use-case inventory review and records-audit trail / records access, public transparency, privacy, archival integrity, and FOIA accounta"
+      "text": "/ [@official_nara_ai_use_case_inventory] / Inventory of NARA Artificial Intelligence (AI) Use Cases / curriculum_anchor / records_retention_auditability / official_primary / 2026-08-30 / quarterly / records officer, public official, instructor, transparency reviewer, and learner / AI use-case inventory review and records-audit trail / records access, public transparency, privacy, archival integrity, and FOIA accounta"
     },
     {
       "citation_keys": [
@@ -28669,7 +29215,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_omb_m_25_21_federal_ai_governance] / M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust / curriculum_anchor / risk_exception_governance / official_primary / 2026-05-22 / quarterly / agency AI officer, risk owner, instructor, oversight reviewer, and learner / risk exception memo and agency AI governance crosswalk / public trust, privacy, security, accessibility, trans"
+      "text": "/ [@official_omb_m_25_21_federal_ai_governance] / M-25-21: Accelerating Federal Use of AI through Innovation, Governance, and Public Trust / curriculum_anchor / risk_exception_governance / official_primary / 2026-08-30 / quarterly / agency AI officer, risk owner, instructor, oversight reviewer, and learner / risk exception memo and agency AI governance crosswalk / public trust, privacy, security, accessibility, trans"
     },
     {
       "citation_keys": [
@@ -28696,7 +29242,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government / curriculum_anchor / procurement_performance_monitoring / official_primary / 2026-05-22 / quarterly / procurement official, vendor assessor, instructor, system steward, and learner / procurement oversight loop and vendor-performance monitoring packet / transparent acquisition, vendor acc"
+      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / M-25-22: Driving Efficient Acquisition of Artificial Intelligence in Government / curriculum_anchor / procurement_performance_monitoring / official_primary / 2026-08-30 / quarterly / procurement official, vendor assessor, instructor, system steward, and learner / procurement oversight loop and vendor-performance monitoring packet / transparent acquisition, vendor acc"
     },
     {
       "citation_keys": [
@@ -28779,7 +29325,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_rmf_critical_infrastructure_profile_concept] / Concept Note: AI RMF Profile on Trustworthy AI in Critical Infrastructure / curriculum_anchor / assurance_evaluation_evidence / official_primary / 2026-05-22 / quarterly / critical-infrastructure steward, OT defender, assurance reviewer, instructor, and learner / critical-infrastructure AI RMF profile crosswalk and tabletop assurance review / safety,"
+      "text": "/ [@official_nist_ai_rmf_critical_infrastructure_profile_concept] / Concept Note: AI RMF Profile on Trustworthy AI in Critical Infrastructure / curriculum_anchor / assurance_evaluation_evidence / official_primary / 2026-08-30 / quarterly / critical-infrastructure steward, OT defender, assurance reviewer, instructor, and learner / critical-infrastructure AI RMF profile crosswalk and tabletop assurance review / safety,"
     },
     {
       "citation_keys": [
@@ -28863,7 +29409,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Guide on the Use of Agentic Artificial Intelligence / curriculum_anchor / public_sector_agentic_ai / official_primary / 2026-05-24 / quarterly / public-sector AI steward, service owner, instructor, learner, and oversight reviewer / bounded-autonomy run card, recoverability review, approval threshold, monitoring evidence, and public-sector service assurance / public trust, accou"
+      "text": "/ [@official_canada_agentic_ai_guide] / Guide on the Use of Agentic Artificial Intelligence / curriculum_anchor / public_sector_agentic_ai / official_primary / 2026-08-30 / quarterly / public-sector AI steward, service owner, instructor, learner, and oversight reviewer / bounded-autonomy run card, recoverability review, approval threshold, monitoring evidence, and public-sector service assurance / public trust, accou"
     },
     {
       "citation_keys": [
@@ -28891,7 +29437,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_algorithmic_impact_assessment] / Algorithmic Impact Assessment tool / curriculum_anchor / rights_impact_privacy / official_primary / 2026-05-24 / quarterly / AI program owner, privacy reviewer, rights-impact assessor, instructor, and learner / algorithmic impact worksheet, rights-risk triage, mitigation evidence, and review threshold / privacy, equality, procedural fairness, redress, transparency,"
+      "text": "/ [@official_canada_algorithmic_impact_assessment] / Algorithmic Impact Assessment tool / curriculum_anchor / rights_impact_privacy / official_primary / 2026-08-30 / quarterly / AI program owner, privacy reviewer, rights-impact assessor, instructor, and learner / algorithmic impact worksheet, rights-risk triage, mitigation evidence, and review threshold / privacy, equality, procedural fairness, redress, transparency,"
     },
     {
       "citation_keys": [
@@ -28918,7 +29464,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_ai_register] / Canada launches first register of AI uses in federal government / curriculum_anchor / public_sector_transparency / official_primary / 2026-05-24 / quarterly / public official, transparency reviewer, records officer, instructor, and learner / public AI-use inventory review, disclosure checklist, register refresh, and transparency evidence / public transparency, accountability, access"
+      "text": "/ [@official_canada_ai_register] / Canada launches first register of AI uses in federal government / curriculum_anchor / public_sector_transparency / official_primary / 2026-08-30 / quarterly / public official, transparency reviewer, records officer, instructor, and learner / public AI-use inventory review, disclosure checklist, register refresh, and transparency evidence / public transparency, accountability, access"
     },
     {
       "citation_keys": [
@@ -28942,12 +29488,12 @@
           "primary_support": true,
           "source_tier": "official_primary",
           "source_title": "AI risks and incidents",
-          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents",
+          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents.html",
           "strength": "official_primary",
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_risks_incidents] / AI risks and incidents / curriculum_anchor / agent_incident_response / official_primary / 2026-05-24 / quarterly / incident reviewer, AI risk owner, instructor, policy analyst, and learner / AI incident monitor review, risk pattern briefing, incident taxonomy, and debrief evidence / safety, security, privacy, discrimination, accountability, workplace rights, and public trust / "
+      "text": "/ [@official_oecd_ai_risks_incidents] / AI risks and incidents / curriculum_anchor / agent_incident_response / official_primary / 2026-08-30 / quarterly / incident reviewer, AI risk owner, instructor, policy analyst, and learner / AI incident monitor review, risk pattern briefing, incident taxonomy, and debrief evidence / safety, security, privacy, discrimination, accountability, workplace rights, and public trust / "
     },
     {
       "citation_keys": [
@@ -28976,7 +29522,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_incident_reporting_framework] / Towards a common reporting framework for AI incidents / curriculum_anchor / agent_incident_response / official_primary / 2026-05-24 / quarterly / AI incident lead, assurance reviewer, policy analyst, instructor, and learner / AI incident reporting template, classification checklist, impact review, and lessons-learned loop / safety, accountability, impact transparen"
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / Towards a common reporting framework for AI incidents / curriculum_anchor / agent_incident_response / official_primary / 2026-08-30 / quarterly / AI incident lead, assurance reviewer, policy analyst, instructor, and learner / AI incident reporting template, classification checklist, impact review, and lessons-learned loop / safety, accountability, impact transparen"
     },
     {
       "citation_keys": [
@@ -29030,7 +29576,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_dioptra] / Dioptra / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-05-24 / quarterly / assurance evaluator, red-team reviewer, instructor, system steward, and learner / AI red-team testbed evidence, reproducible evaluation run, measurement packet, and assurance artifact / trustworthy AI, safety, security, validity, reliability, transparency, and accountable testing / NIST Diopt"
+      "text": "/ [@official_nist_dioptra] / Dioptra / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / assurance evaluator, red-team reviewer, instructor, system steward, and learner / AI red-team testbed evidence, reproducible evaluation run, measurement packet, and assurance artifact / trustworthy AI, safety, security, validity, reliability, transparency, and accountable testing / NIST Diopt"
     },
     {
       "citation_keys": [
@@ -29209,7 +29755,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_csa_cdr_framework] / Introducing Cognitive Degradation Resilience (CDR): A Framework for Safeguarding Agentic AI Systems from Systemic Collapse / curriculum_anchor / agent_incident_response / official_primary / 2026-05-22 / quarterly / AI incident lead, resilience reviewer, instructor, system steward, and learner / agent degradation health probes, six-stage drift monitoring, QSAF-BC control mapping, and "
+      "text": "/ [@official_csa_cdr_framework] / Introducing Cognitive Degradation Resilience (CDR): A Framework for Safeguarding Agentic AI Systems from Systemic Collapse / curriculum_anchor / agent_incident_response / official_primary / 2026-08-30 / quarterly / AI incident lead, resilience reviewer, instructor, system steward, and learner / agent degradation health probes, six-stage drift monitoring, QSAF-BC control mapping, and "
     },
     {
       "citation_keys": [
@@ -29237,7 +29783,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_csa_maestro_threat_modeling] / Agentic AI Threat Modeling Framework: MAESTRO / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / threat modeler, red-team reviewer, instructor, system steward, and learner / seven-layer threat-model worksheet, cross-layer mitigation map, security-agent self-audit, and agentic threat-modeling review / security, accountability, transpare"
+      "text": "/ [@official_csa_maestro_threat_modeling] / Agentic AI Threat Modeling Framework: MAESTRO / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / threat modeler, red-team reviewer, instructor, system steward, and learner / seven-layer threat-model worksheet, cross-layer mitigation map, security-agent self-audit, and agentic threat-modeling review / security, accountability, transpare"
     },
     {
       "citation_keys": [
@@ -29265,7 +29811,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@scholarly_agentic_ai_security_survey] / Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges / curriculum_anchor / ai_red_team_assurance / scholarly_preprint / 2026-05-22 / quarterly / red-team reviewer, threat modeler, instructor, system steward, and learner / agentic threat-taxonomy crosswalk, defense-catalog review, evaluation-benchmark map, and open-challenge research log / security, accoun"
+      "text": "/ [@scholarly_agentic_ai_security_survey] / Agentic AI Security: Threats, Defenses, Evaluation, and Open Challenges / curriculum_anchor / ai_red_team_assurance / scholarly_preprint / 2026-08-30 / quarterly / red-team reviewer, threat modeler, instructor, system steward, and learner / agentic threat-taxonomy crosswalk, defense-catalog review, evaluation-benchmark map, and open-challenge research log / security, accoun"
     },
     {
       "citation_keys": [
@@ -29346,7 +29892,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_owasp_agentic_ai_threats_mitigations] / Agentic AI \u2013 Threats and Mitigations / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / red-team reviewer, threat modeler, instructor, system steward, and learner / agentic threat-model reference, mitigation baseline checklist, red-team scope guide, and ASI-aligned assurance review / security, accountability, transparency, and"
+      "text": "/ [@official_owasp_agentic_ai_threats_mitigations] / Agentic AI \u2013 Threats and Mitigations / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / red-team reviewer, threat modeler, instructor, system steward, and learner / agentic threat-model reference, mitigation baseline checklist, red-team scope guide, and ASI-aligned assurance review / security, accountability, transparency, and"
     },
     {
       "citation_keys": [
@@ -29373,7 +29919,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_csa_securing_autonomous_ai_agents] / Securing Autonomous AI Agents / curriculum_anchor / procurement_vendor_governance / official_primary / 2026-05-22 / quarterly / identity governance lead, procurement assessor, instructor, system steward, and learner / agent identity-governance gap review, IAM-readiness assessment, non-human identity inventory, and procurement assurance checklist / security, accountabi"
+      "text": "/ [@official_csa_securing_autonomous_ai_agents] / Securing Autonomous AI Agents / curriculum_anchor / procurement_vendor_governance / official_primary / 2026-08-30 / quarterly / identity governance lead, procurement assessor, instructor, system steward, and learner / agent identity-governance gap review, IAM-readiness assessment, non-human identity inventory, and procurement assurance checklist / security, accountabi"
     },
     {
       "citation_keys": [
@@ -29400,7 +29946,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_csa_nist_ai_agent_red_teaming_standards] / CSA Research Note: NIST AI Agent Red-Teaming Standards (March 2026) / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / red-team reviewer, assurance evaluator, instructor, compliance officer, and learner / AI red-team standards crosswalk, adversarial-ML test scope, multi-attempt evaluation plan, and enterprise compliance rev"
+      "text": "/ [@official_csa_nist_ai_agent_red_teaming_standards] / CSA Research Note: NIST AI Agent Red-Teaming Standards (March 2026) / curriculum_anchor / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / red-team reviewer, assurance evaluator, instructor, compliance officer, and learner / AI red-team standards crosswalk, adversarial-ML test scope, multi-attempt evaluation plan, and enterprise compliance rev"
     },
     {
       "citation_keys": [
@@ -43157,7 +43703,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_ec_gpai_code_practice] / ai_conformity_compliance / ai_conformity_compliance / official_primary / 2026-05-22 / quarterly / Official European Commission source for GPAI Code of Practice drafting, transparency, copyright, safety, security, and AI Act implementation support. /"
+      "text": "/ [@official_ec_gpai_code_practice] / ai_conformity_compliance / ai_conformity_compliance / official_primary / 2026-08-30 / quarterly / Official European Commission source for GPAI Code of Practice drafting, transparency, copyright, safety, security, and AI Act implementation support. /"
     },
     {
       "citation_keys": [
@@ -43184,7 +43730,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_ec_ai_act_framework] / ai_conformity_compliance / ai_conformity_compliance / official_primary / 2026-05-22 / quarterly / Official European Commission AI Act implementation page for risk tiers, prohibited practices, GPAI obligations, governance bodies, and phased application. /"
+      "text": "/ [@official_ec_ai_act_framework] / ai_conformity_compliance / ai_conformity_compliance / official_primary / 2026-08-30 / quarterly / Official European Commission AI Act implementation page for risk tiers, prohibited practices, GPAI obligations, governance bodies, and phased application. /"
     },
     {
       "citation_keys": [
@@ -43483,7 +44029,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_gsa_ai_guide_for_government] / public_sector_agentic_ai / public_sector_agentic_ai / official_primary / 2026-05-22 / quarterly / Official U.S. government AI resource hub for agency adoption, responsible use, policy references, and public-sector implementation support. /"
+      "text": "/ [@official_gsa_ai_guide_for_government] / public_sector_agentic_ai / public_sector_agentic_ai / official_primary / 2026-08-30 / quarterly / Official U.S. government AI resource hub for agency adoption, responsible use, policy references, and public-sector implementation support. /"
     },
     {
       "citation_keys": [
@@ -43646,7 +44192,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_doj_ada_title_ii_web_rule] / accessibility_digital_inclusion / accessibility_digital_inclusion / official_primary / 2026-05-22 / quarterly / DOJ ADA Title II fact sheet for state and local government web and mobile app accessibility obligations, WCAG technical standard use, contractors, and compliance timing. /"
+      "text": "/ [@official_doj_ada_title_ii_web_rule] / accessibility_digital_inclusion / accessibility_digital_inclusion / official_primary / 2026-08-30 / quarterly / DOJ ADA Title II fact sheet for state and local government web and mobile app accessibility obligations, WCAG technical standard use, contractors, and compliance timing. /"
     },
     {
       "citation_keys": [
@@ -43809,7 +44355,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_resource_center_tev] / agentic_ai_governance / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / NIST AI Resource Center source for AI RMF operationalization, playbook resources, crosswalks, profiles, and testing, evaluation, verification, and validation support. /"
+      "text": "/ [@official_nist_ai_resource_center_tev] / agentic_ai_governance / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / NIST AI Resource Center source for AI RMF operationalization, playbook resources, crosswalks, profiles, and testing, evaluation, verification, and validation support. /"
     },
     {
       "citation_keys": [
@@ -43919,7 +44465,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_uk_algorithmic_transparency_hub] / public_sector_agentic_ai / algorithmic_transparency_reporting / official_primary / 2026-05-22 / quarterly / Official UK hub for ATRS records, public-sector transparency expectations, mandatory-scope policy, template guidance, and publication support. /"
+      "text": "/ [@official_uk_algorithmic_transparency_hub] / public_sector_agentic_ai / algorithmic_transparency_reporting / official_primary / 2026-08-30 / quarterly / Official UK hub for ATRS records, public-sector transparency expectations, mandatory-scope policy, template guidance, and publication support. /"
     },
     {
       "citation_keys": [
@@ -43946,7 +44492,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_aria_pilot_evaluation_report] / agentic_ai_security / assurance_evaluation_evidence / official_primary / 2026-05-22 / quarterly / NIST ARIA pilot report describing evaluation scenarios, model testing, red teaming, field testing, dialogue annotation, tester questionnaires, and measurement trees. /"
+      "text": "/ [@official_nist_aria_pilot_evaluation_report] / agentic_ai_security / assurance_evaluation_evidence / official_primary / 2026-08-30 / quarterly / NIST ARIA pilot report describing evaluation scenarios, model testing, red teaming, field testing, dialogue annotation, tester questionnaires, and measurement trees. /"
     },
     {
       "citation_keys": [
@@ -43973,7 +44519,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / procurement_vendor_governance / procurement_performance_monitoring / official_primary / 2026-05-22 / quarterly / OMB memorandum for federal AI acquisition, product demonstrations, performance-based requirements, Quality Assurance Surveillance Plans, monitoring, and transparency requirements. /"
+      "text": "/ [@official_omb_m_25_22_federal_ai_acquisition] / procurement_vendor_governance / procurement_performance_monitoring / official_primary / 2026-08-30 / quarterly / OMB memorandum for federal AI acquisition, product demonstrations, performance-based requirements, Quality Assurance Surveillance Plans, monitoring, and transparency requirements. /"
     },
     {
       "citation_keys": [
@@ -44082,7 +44628,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / public_sector_agentic_ai / public_sector_agentic_ai / official_primary / 2026-05-24 / quarterly / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / public_sector_agentic_ai / public_sector_agentic_ai / official_primary / 2026-08-30 / quarterly / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. /"
     },
     {
       "citation_keys": [
@@ -44104,12 +44650,12 @@
           "primary_support": true,
           "source_tier": "official_primary",
           "source_title": "AI risks and incidents",
-          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents",
+          "source_url": "https://www.oecd.org/en/topics/ai-risks-and-incidents.html",
           "strength": "official_primary",
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_risks_incidents] / agentic_ai_security / agent_incident_response / official_primary / 2026-05-24 / quarterly / OECD topic page on AI risks and incidents, including AI incident monitoring, hazard evidence, and the need for common incident reporting. /"
+      "text": "/ [@official_oecd_ai_risks_incidents] / agentic_ai_security / agent_incident_response / official_primary / 2026-08-30 / quarterly / OECD topic page on AI risks and incidents, including AI incident monitoring, hazard evidence, and the need for common incident reporting. /"
     },
     {
       "citation_keys": [
@@ -44136,7 +44682,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_incident_reporting_framework] / agentic_ai_security / agent_incident_response / official_primary / 2026-05-24 / quarterly / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. /"
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / agentic_ai_security / agent_incident_response / official_primary / 2026-08-30 / quarterly / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. /"
     },
     {
       "citation_keys": [
@@ -44217,7 +44763,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_csa_maestro_threat_modeling] / agentic_ai_security / ai_red_team_assurance / official_primary / 2026-05-22 / quarterly / CSA MAESTRO seven-layer threat-modeling framework for the full agentic AI stack from foundation model through agent ecosystem, including the vertical security/compliance layer. /"
+      "text": "/ [@official_csa_maestro_threat_modeling] / agentic_ai_security / ai_red_team_assurance / official_primary / 2026-08-30 / quarterly / CSA MAESTRO seven-layer threat-modeling framework for the full agentic AI stack from foundation model through agent ecosystem, including the vertical security/compliance layer. /"
     },
     {
       "citation_keys": [
@@ -44244,7 +44790,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@scholarly_agentic_ai_security_survey] / agentic_ai_security / ai_red_team_assurance / scholarly_preprint / 2026-05-22 / quarterly / arXiv survey on agentic AI security providing a comprehensive threat taxonomy, defense catalog, evaluation review, and governance perspectives; vendor statistics within treated as ESTIMATE. /"
+      "text": "/ [@scholarly_agentic_ai_security_survey] / agentic_ai_security / ai_red_team_assurance / scholarly_preprint / 2026-08-30 / quarterly / arXiv survey on agentic AI security providing a comprehensive threat taxonomy, defense catalog, evaluation review, and governance perspectives; vendor statistics within treated as ESTIMATE. /"
     },
     {
       "citation_keys": [
@@ -49074,7 +49620,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [
@@ -67716,7 +68262,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [
@@ -68009,7 +68555,7 @@
       ],
       "path": "parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/03-governance-boundary.md",
       "source_support_profiles": [],
-      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-05-24. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery"
+      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery"
     },
     {
       "citation_keys": [],
@@ -71800,7 +72346,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [
@@ -72025,7 +72571,7 @@
       ],
       "path": "parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/03-governance-boundary.md",
       "source_support_profiles": [],
-      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **LangChain/LangGraph: State Machine Orchestration; LCEL: LangChain Expression Language**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-05-24. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded-autonomy run card, recoverability"
+      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **LangChain/LangGraph: State Machine Orchestration; LCEL: LangChain Expression Language**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded-autonomy run card, recoverability"
     },
     {
       "citation_keys": [],
@@ -74309,7 +74855,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [
@@ -74534,7 +75080,7 @@
       ],
       "path": "parts/ageint-agentic-intelligence/ageint-python-code-library/03-governance-boundary.md",
       "source_support_profiles": [],
-      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-05-24. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery pa"
+      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery pa"
     },
     {
       "citation_keys": [],
@@ -77903,7 +78449,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [
@@ -78180,7 +78726,7 @@
       ],
       "path": "parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/03-governance-boundary.md",
       "source_support_profiles": [],
-      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Agent Framework Security Vulnerabilities; Python REPL sandbox and approval-gate**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-05-24. / defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication; bounded-autonomy run card, recovera"
+      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Agent Framework Security Vulnerabilities; Python REPL sandbox and approval-gate**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. / defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication; bounded-autonomy run card, recovera"
     },
     {
       "citation_keys": [],
@@ -80562,7 +81108,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_canada_agentic_ai_guide] / Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [
@@ -80787,7 +81333,7 @@
       ],
       "path": "parts/ageint-agentic-intelligence/foundations-of-ageint/03-governance-boundary.md",
       "source_support_profiles": [],
-      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Defining AGEINT: From AI Agents to Autonomous Intelligence Systems; From LLMs to Agents: The Cognitive Controller Stack**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-05-24. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded"
+      "text": "/ What does the module inherit from `official_canada_agentic_ai_guide` for **Defining AGEINT: From AI Agents to Autonomous Intelligence Systems; From LLMs to Agents: The Cognitive Controller Stack**? / Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. / agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded"
     },
     {
       "citation_keys": [],
@@ -188896,7 +189442,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_incident_reporting_framework] / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [],
@@ -192047,7 +192593,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_incident_reporting_framework] / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [],
@@ -198509,7 +199055,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_oecd_ai_incident_reporting_framework] / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-05-24; role: curriculum_anchor. /"
+      "text": "/ [@official_oecd_ai_incident_reporting_framework] / OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-08-30; role: curriculum_anchor. /"
     },
     {
       "citation_keys": [],
@@ -199406,18 +199952,18 @@
   "schema_version": "1.0",
   "summary": {
     "boundary_allowed_rows": 482,
-    "candidate_rows": 9109,
+    "candidate_rows": 9129,
     "claim_class_counts": {
-      "artifact_readiness": 286,
-      "empirical_or_evaluation": 986,
+      "artifact_readiness": 288,
+      "empirical_or_evaluation": 989,
       "figure_or_visualization": 458,
       "formalism_or_statistical_expression": 2,
-      "governance_or_rights": 3089,
-      "safety_or_assurance": 4288
+      "governance_or_rights": 3099,
+      "safety_or_assurance": 4293
     },
     "disposition_counts": {
       "boundary_allowed": 482,
-      "pass": 3495,
+      "pass": 3515,
       "review": 5132
     },
     "hard_fail_rows": 0,
@@ -199425,15 +199971,15 @@
       "curated_context": 12,
       "law_policy_primary": 19,
       "mirror_or_copy_context": 36,
-      "official_primary": 1474,
+      "official_primary": 1492,
       "practitioner_or_vendor_context": 54,
       "public_domain_primary": 166,
-      "scholarly_primary": 371,
+      "scholarly_primary": 372,
       "social_or_video_context": 13,
       "source_guide_context": 255,
       "source_guide_primary": 2208,
       "source_quality_anchor": 504,
-      "standard_primary": 952
+      "standard_primary": 953
     },
     "warning_rows": 5132
   },

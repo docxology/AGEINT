@@ -226,19 +226,19 @@
     "citation_source_sections_covered": true,
     "claim_calibration_ok": true,
     "figure_quality_ok": true,
-    "generated_output_fresh": true,
+    "generated_output_fresh": false,
     "pdf_quality_ok": true,
     "reference_quality_ok": true,
     "rendered_references_resolve": true,
     "scholarship_quality_ok": true,
     "source_metadata_ok": true,
-    "source_refresh_due_ok": true,
+    "source_refresh_due_ok": false,
     "stale_output_scans_clean": true
   },
   "citations": {
     "generated_by_family": {
       "abstract.md": 3,
-      "appendices": 3056,
+      "appendices": 3083,
       "assessment-route": 1121,
       "evidence-contract": 4038,
       "governance-boundary": 1676,
@@ -249,7 +249,7 @@
       "practice-studio": 4412,
       "preamble.md": 0
     },
-    "generated_markdown_citation_occurrences": 16602,
+    "generated_markdown_citation_occurrences": 16629,
     "generated_markdown_files": 330,
     "source_citation_occurrences": 1468,
     "source_distribution": {
@@ -270,18 +270,18 @@
     ],
     "summary": {
       "boundary_allowed_rows": 482,
-      "candidate_rows": 9109,
+      "candidate_rows": 9129,
       "claim_class_counts": {
-        "artifact_readiness": 286,
-        "empirical_or_evaluation": 986,
+        "artifact_readiness": 288,
+        "empirical_or_evaluation": 989,
         "figure_or_visualization": 458,
         "formalism_or_statistical_expression": 2,
-        "governance_or_rights": 3089,
-        "safety_or_assurance": 4288
+        "governance_or_rights": 3099,
+        "safety_or_assurance": 4293
       },
       "disposition_counts": {
         "boundary_allowed": 482,
-        "pass": 3495,
+        "pass": 3515,
         "review": 5132
       },
       "hard_fail_rows": 0,
@@ -289,15 +289,15 @@
         "curated_context": 12,
         "law_policy_primary": 19,
         "mirror_or_copy_context": 36,
-        "official_primary": 1474,
+        "official_primary": 1492,
         "practitioner_or_vendor_context": 54,
         "public_domain_primary": 166,
-        "scholarly_primary": 371,
+        "scholarly_primary": 372,
         "social_or_video_context": 13,
         "source_guide_context": 255,
         "source_guide_primary": 2208,
         "source_quality_anchor": 504,
-        "standard_primary": 952
+        "standard_primary": 953
       },
       "warning_rows": 5132
     },
@@ -504,13 +504,13 @@
     },
     "schema_version": "1.5"
   },
-  "generated_at": "2026-08-14T00:28:02+00:00",
+  "generated_at": "2026-08-27T22:33:39+00:00",
   "generated_output_scan": {
     "hit_count": 0,
     "hits": [],
     "pattern_count": 5
   },
-  "ok": true,
+  "ok": false,
   "pdf": {
     "banned_phrase_hits": [],
     "creation_date": "Fri Jul 10 19:17:21 2026 PDT",
@@ -525,13 +525,13 @@
       "skipped_reason": "",
       "uri_links": 6281
     },
-    "newest_manuscript_mtime": 1786651685.6968534,
+    "newest_manuscript_mtime": 1787953576.2592518,
     "ok": true,
     "page_count": 1863,
-    "pdf_mtime": 1786651685.6252196,
+    "pdf_mtime": 1787953576.2031448,
     "pdf_path": "output/pdf/AGEINT_combined.pdf",
     "stale_pdf": false,
-    "text_character_count": 12994017
+    "text_character_count": 12994141
   },
   "project": "AGEINT",
   "reference_quality": {
@@ -662,12 +662,12 @@
       "source_family_mentions": {
         "curated_anchor": 32,
         "law_policy": 19,
-        "official": 3071,
+        "official": 3096,
         "practitioner_vendor": 105,
         "public_domain": 21,
-        "scholarly": 692,
+        "scholarly": 693,
         "source_guide": 1502,
-        "standard": 882
+        "standard": 883
       },
       "thin_claim_bearing_files": 0,
       "uncited_claim_bearing_files": 0,
@@ -692,8 +692,8 @@
       "blank_source_tier_count": 0,
       "checked_as_of_distribution": {
         "2026-05-21": 96,
-        "2026-05-22": 78,
-        "2026-05-24": 12,
+        "2026-05-22": 58,
+        "2026-05-24": 5,
         "2026-06-06": 16,
         "2026-06-08": 22,
         "2026-06-09": 1,
@@ -702,7 +702,8 @@
         "2026-06-12": 2,
         "2026-06-14": 55,
         "2026-06-15": 66,
-        "2026-06-16": 95
+        "2026-06-16": 95,
+        "2026-08-30": 27
       },
       "fallback_dependent_row_count": 0,
       "intelligence_anchor_count": 462,
@@ -897,16 +898,477 @@
     }
   },
   "source_refresh_due": {
-    "issue_row_count": 0,
-    "issue_rows": [],
+    "issue_row_count": 27,
+    "issue_rows": [
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_ec_ai_office",
+        "line": 41,
+        "path": "data/research_anchors/intelligence-anchors-051-100.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_conformity_compliance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_ec_gpai_code_practice",
+        "line": 42,
+        "path": "data/research_anchors/intelligence-anchors-051-100.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_conformity_compliance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_ec_ai_act_framework",
+        "line": 43,
+        "path": "data/research_anchors/intelligence-anchors-051-100.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_conformity_compliance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_gsa_ai_guide_for_government",
+        "line": 9,
+        "path": "data/research_anchors/intelligence-anchors-101-150.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "public_sector_agentic_ai",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_doj_ada_title_ii_web_rule",
+        "line": 34,
+        "path": "data/research_anchors/intelligence-anchors-101-150.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "accessibility_digital_inclusion",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_nist_ai_security_resilience",
+        "line": 41,
+        "path": "data/research_anchors/intelligence-anchors-101-150.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_nist_ai_resource_center_tev",
+        "line": 42,
+        "path": "data/research_anchors/intelligence-anchors-101-150.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_uk_algorithmic_transparency_hub",
+        "line": 47,
+        "path": "data/research_anchors/intelligence-anchors-101-150.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "algorithmic_transparency_reporting",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_uk_algorithmic_transparency_guidance",
+        "line": 48,
+        "path": "data/research_anchors/intelligence-anchors-101-150.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "algorithmic_transparency_reporting",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_nist_aria_pilot_evaluation_report",
+        "line": 1,
+        "path": "data/research_anchors/intelligence-anchors-151-160.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "assurance_evaluation_evidence",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_nara_ai_use_case_inventory",
+        "line": 2,
+        "path": "data/research_anchors/intelligence-anchors-151-160.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "records_retention_auditability",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_omb_m_25_21_federal_ai_governance",
+        "line": 3,
+        "path": "data/research_anchors/intelligence-anchors-151-160.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "risk_exception_governance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_omb_m_25_22_federal_ai_acquisition",
+        "line": 4,
+        "path": "data/research_anchors/intelligence-anchors-151-160.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "procurement_performance_monitoring",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_nist_ai_rmf_critical_infrastructure_profile_concept",
+        "line": 8,
+        "path": "data/research_anchors/intelligence-anchors-151-160.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "assurance_evaluation_evidence",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_canada_agentic_ai_guide",
+        "line": 1,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "public_sector_agentic_ai",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_canada_algorithmic_impact_assessment",
+        "line": 2,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "rights_impact_privacy",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_canada_ai_register",
+        "line": 3,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "public_sector_transparency",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_canada_ai_strategy_2025_2027",
+        "line": 4,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "workforce_governance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_oecd_ai_risks_incidents",
+        "line": 5,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "agent_incident_response",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_oecd_ai_incident_reporting_framework",
+        "line": 6,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "agent_incident_response",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_nist_dioptra",
+        "line": 8,
+        "path": "data/research_anchors/intelligence-anchors-161-172.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_csa_cdr_framework",
+        "line": 3,
+        "path": "data/research_anchors/intelligence-anchors-173-186.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "agent_incident_response",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_csa_maestro_threat_modeling",
+        "line": 4,
+        "path": "data/research_anchors/intelligence-anchors-173-186.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "scholarly_agentic_ai_security_survey",
+        "line": 6,
+        "path": "data/research_anchors/intelligence-anchors-173-186.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "scholarly_preprint"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_owasp_agentic_ai_threats_mitigations",
+        "line": 11,
+        "path": "data/research_anchors/intelligence-anchors-173-186.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_csa_securing_autonomous_ai_agents",
+        "line": 12,
+        "path": "data/research_anchors/intelligence-anchors-173-186.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "procurement_vendor_governance",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "unknown",
+        "checked_as_of": "2026-08-30",
+        "days_since_check": -3,
+        "days_until_due": 95,
+        "due_date": "2026-11-30",
+        "flags": [
+          "future_checked_as_of"
+        ],
+        "key": "official_csa_nist_ai_agent_red_teaming_standards",
+        "line": 13,
+        "path": "data/research_anchors/intelligence-anchors-173-186.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_primary"
+      }
+    ],
     "report_paths": [
       "output/reports/source_refresh_due.json",
       "output/reports/source_refresh_due.md"
     ],
     "summary": {
       "bucket_counts": {
-        "current": 431,
-        "due_soon": 41
+        "current": 421,
+        "due_soon": 24,
+        "unknown": 27
       },
       "cadence_counts": {
         "annual": 322,
@@ -915,8 +1377,10 @@
         "semiannual": 94
       },
       "due_or_stale_count": 0,
-      "due_soon_count": 41,
-      "flag_counts": {},
+      "due_soon_count": 24,
+      "flag_counts": {
+        "future_checked_as_of": 27
+      },
       "missing_checked_as_of_count": 0,
       "row_count": 472,
       "source_lane_due_counts": {},

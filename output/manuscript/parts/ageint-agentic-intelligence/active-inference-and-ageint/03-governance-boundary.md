@@ -24,7 +24,7 @@ Research lane: **Agentic AI Governance and Tool Security** for **The Free Energy
 | Anchor | Why it matters here |
 |---|---|
 | [@official_oecd_agentic_ai] | Official OECD conceptual foundation for agentic AI. Checked as of 2026-05-21; role: source_quality_anchor. |
-| [@official_canada_agentic_ai_guide] | Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-05-24; role: curriculum_anchor. |
+| [@official_canada_agentic_ai_guide] | Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. |
 | [@official_nist_ai_rmf] | Official NIST.AI.100-1 risk-management framework. Checked as of 2026-05-21; role: source_quality_anchor. |
 | [@official_nist_ai_600_1] | Official NIST AI 600-1 generative AI profile. Checked as of 2026-05-21; role: source_quality_anchor. |
 | [@official_ic_ai_ethics_principles] | Official IC principles for lawful, accountable, objective, human-centered, secure, resilient, and science-informed AI. Checked as of 2026-05-21; role: curriculum_anchor. |

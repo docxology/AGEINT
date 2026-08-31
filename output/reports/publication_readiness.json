@@ -12,7 +12,7 @@
       "citation_context_issues": 0,
       "claim_hard_fail_rows": 0,
       "figures": 177,
-      "generated_markdown_citation_occurrences": 16602,
+      "generated_markdown_citation_occurrences": 16629,
       "generated_markdown_files": 330,
       "generic_detail_heading_issues": 0,
       "new_official_us_ic_anchors": 56,
@@ -30,7 +30,7 @@
   },
   "checks": {
     "agency_source_coverage_ok": true,
-    "artifact_evidence_ok": true,
+    "artifact_evidence_ok": false,
     "artifact_manifest_ok": true,
     "claim_calibration_ok": true,
     "figure_quality_ok": true,
@@ -43,11 +43,11 @@
     "scholarship_quality_ok": true,
     "source_license_posture_ok": true,
     "source_metadata_ok": true,
-    "source_refresh_due_ok": true,
+    "source_refresh_due_ok": false,
     "task_prerequisites_done": true
   },
-  "generated_at": "2026-08-14T00:28:02+00:00",
-  "ok": true,
+  "generated_at": "2026-08-27T22:33:39+00:00",
+  "ok": false,
   "parent_confidentiality_guard": {
     "checked": false,
     "ok": true,
@@ -74,15 +74,16 @@
     "ok": true
   },
   "source_refresh_due": {
-    "issue_row_count": 0,
+    "issue_row_count": 27,
     "report_paths": [
       "output/reports/source_refresh_due.json",
       "output/reports/source_refresh_due.md"
     ],
     "summary": {
       "bucket_counts": {
-        "current": 431,
-        "due_soon": 41
+        "current": 421,
+        "due_soon": 24,
+        "unknown": 27
       },
       "cadence_counts": {
         "annual": 322,
@@ -91,8 +92,10 @@
         "semiannual": 94
       },
       "due_or_stale_count": 0,
-      "due_soon_count": 41,
-      "flag_counts": {},
+      "due_soon_count": 24,
+      "flag_counts": {
+        "future_checked_as_of": 27
+      },
       "missing_checked_as_of_count": 0,
       "row_count": 472,
       "source_lane_due_counts": {},

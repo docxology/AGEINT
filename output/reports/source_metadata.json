@@ -4,7 +4,7 @@
     "source_quality_blank_rows": 10,
     "total_blank_rows_closed": 119
   },
-  "generated_at": "2026-08-14T00:28:02+00:00",
+  "generated_at": "2026-08-27T22:33:39+00:00",
   "issue_row_count": 0,
   "issue_rows": [],
   "ok": true,
@@ -1181,7 +1181,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "ai_conformity_compliance",
       "flags": [],
       "key": "official_ec_ai_office",
@@ -1194,7 +1194,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "ai_conformity_compliance",
       "flags": [],
       "key": "official_ec_gpai_code_practice",
@@ -1207,7 +1207,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "ai_conformity_compliance",
       "flags": [],
       "key": "official_ec_ai_act_framework",
@@ -1415,7 +1415,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_gsa_ai_guide_for_government",
@@ -1740,7 +1740,7 @@
       "source_type": "education_standard"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "accessibility_digital_inclusion",
       "flags": [],
       "key": "official_doj_ada_title_ii_web_rule",
@@ -1831,7 +1831,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_nist_ai_security_resilience",
@@ -1844,7 +1844,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_nist_ai_resource_center_tev",
@@ -1909,7 +1909,7 @@
       "source_type": "scholarly"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_uk_algorithmic_transparency_hub",
@@ -1922,7 +1922,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_uk_algorithmic_transparency_guidance",
@@ -1961,7 +1961,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_nist_aria_pilot_evaluation_report",
@@ -1974,7 +1974,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_nara_ai_use_case_inventory",
@@ -1987,7 +1987,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_omb_m_25_21_federal_ai_governance",
@@ -2000,7 +2000,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "procurement_vendor_governance",
       "flags": [],
       "key": "official_omb_m_25_22_federal_ai_acquisition",
@@ -2052,7 +2052,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "ics_ot_defense",
       "flags": [],
       "key": "official_nist_ai_rmf_critical_infrastructure_profile_concept",
@@ -2091,7 +2091,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_canada_agentic_ai_guide",
@@ -2104,7 +2104,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "rights_impact_privacy",
       "flags": [],
       "key": "official_canada_algorithmic_impact_assessment",
@@ -2117,7 +2117,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_canada_ai_register",
@@ -2130,7 +2130,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "public_sector_agentic_ai",
       "flags": [],
       "key": "official_canada_ai_strategy_2025_2027",
@@ -2143,7 +2143,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_oecd_ai_risks_incidents",
@@ -2156,7 +2156,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_oecd_ai_incident_reporting_framework",
@@ -2182,7 +2182,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-24",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_nist_dioptra",
@@ -2273,7 +2273,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_csa_cdr_framework",
@@ -2286,7 +2286,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_csa_maestro_threat_modeling",
@@ -2312,7 +2312,7 @@
       "source_type": "scholarly_peer_reviewed"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "scholarly_agentic_ai_security_survey",
@@ -2377,7 +2377,7 @@
       "source_type": "scholarly_preprint"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_owasp_agentic_ai_threats_mitigations",
@@ -2390,7 +2390,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_csa_securing_autonomous_ai_agents",
@@ -2403,7 +2403,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-05-22",
+      "checked_as_of": "2026-08-30",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_csa_nist_ai_agent_red_teaming_standards",
@@ -6153,8 +6153,8 @@
     "blank_source_tier_count": 0,
     "checked_as_of_distribution": {
       "2026-05-21": 96,
-      "2026-05-22": 78,
-      "2026-05-24": 12,
+      "2026-05-22": 58,
+      "2026-05-24": 5,
       "2026-06-06": 16,
       "2026-06-08": 22,
       "2026-06-09": 1,
@@ -6163,7 +6163,8 @@
       "2026-06-12": 2,
       "2026-06-14": 55,
       "2026-06-15": 66,
-      "2026-06-16": 95
+      "2026-06-16": 95,
+      "2026-08-30": 27
     },
     "fallback_dependent_row_count": 0,
     "intelligence_anchor_count": 462,

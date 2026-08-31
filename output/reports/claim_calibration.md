@@ -3,8 +3,8 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-14T00:28:02+00:00 |
-| Candidate rows | 9109 |
+| Generated at | 2026-08-27T22:33:39+00:00 |
+| Candidate rows | 9129 |
 | Hard-fail rows | 0 |
 | Review-warning rows | 5132 |
 | Boundary-allowed rows | 482 |
@@ -13,12 +13,12 @@
 
 | Claim class | Rows |
 |---|---:|
-| artifact_readiness | 286 |
-| empirical_or_evaluation | 986 |
+| artifact_readiness | 288 |
+| empirical_or_evaluation | 989 |
 | figure_or_visualization | 458 |
 | formalism_or_statistical_expression | 2 |
-| governance_or_rights | 3089 |
-| safety_or_assurance | 4288 |
+| governance_or_rights | 3099 |
+| safety_or_assurance | 4293 |
 
 ## Source Support Distribution
 
@@ -27,15 +27,15 @@
 | curated_context | 12 |
 | law_policy_primary | 19 |
 | mirror_or_copy_context | 36 |
-| official_primary | 1474 |
+| official_primary | 1492 |
 | practitioner_or_vendor_context | 54 |
 | public_domain_primary | 166 |
-| scholarly_primary | 371 |
+| scholarly_primary | 372 |
 | social_or_video_context | 13 |
 | source_guide_context | 255 |
 | source_guide_primary | 2208 |
 | source_quality_anchor | 504 |
-| standard_primary | 952 |
+| standard_primary | 953 |
 
 ## Hard-Fail Rows
 

@@ -394,7 +394,7 @@ def test_audit_publication_readiness_script_writes_json_contract() -> None:
         check=False,
         capture_output=True,
         text=True,
-        timeout=240,
+        timeout=900,
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

@@ -25,9 +25,9 @@
         "registered_figures": 177
       },
       "source_freshness": {
-        "as_of": "2026-08-14",
+        "as_of": "2026-08-27",
         "due_or_stale": 0,
-        "due_soon": 41,
+        "due_soon": 24,
         "missing_dates": 0,
         "rows": 472,
         "unknown_cadence": 0
