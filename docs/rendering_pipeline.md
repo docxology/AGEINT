@@ -88,7 +88,7 @@ npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
 Confirm `mmdc` and `pandoc-crossref` are on `PATH` before PDF render. Combined
 PDF rendering may also require `chrome-headless-shell` for inline Mermaid in
 other projects; AGEINT pre-rasterizes module maps under `output/figures/mermaid/`.
-See template [`docs/operational/troubleshooting/common-errors.md`](../../../../template/docs/operational/troubleshooting/common-errors.md).
+See template [`docs/operational/troubleshooting/common-errors.md`](https://github.com/docxology/template/blob/main/docs/operational/troubleshooting/common-errors.md).
 
 Run strict figure tests:
 
@@ -174,4 +174,4 @@ stale pre-label orientation filenames removed by the renderer cleanup hook.
 ## Related documentation: output inventory and manuscript syntax
 
 - [`output_inventory.md`](output_inventory.md)
-- [`../manuscript/SYNTAX.md`](../manuscript/SYNTAX.md)
+- [`../manuscript/SYNTAX.md`](manuscript/SYNTAX.md)

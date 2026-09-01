@@ -15,7 +15,7 @@ Generated prose is an artifact. Fork the **source spine** and renderer code.
 
 ## Template parity: preserve validation and output-contract behavior
 
-Keep `src/`, `tests/`, `scripts/`, `docs/manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](../../../../template/docs/guides/new-project-setup.md) for Layer 2 conventions.
+Keep `src/`, `tests/`, `scripts/`, `docs/manuscript/config.yaml`, and `pyproject.toml`. See template [`docs/guides/new-project-setup.md`](https://github.com/docxology/template/blob/main/docs/guides/new-project-setup.md) for Layer 2 conventions.
 
 ## Confidentiality: keep AGEINT local unless promotion is approved
 

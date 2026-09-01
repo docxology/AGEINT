@@ -53,7 +53,7 @@ of `output/pdf/AGEINT_combined.pdf`.
 - Non-numbered generated visuals: 1 deterministic Python-rendered title-page cover at `output/figures/cover/ageint-cover-synthesis.png` and 1 front-matter Evidence Transit Map at `output/figures/frontmatter/ageint-evidence-transit-map.png` (both live outside the numbered registry)
 
 These counts are rebuild-time measurements: verify with
-`python3 -c "import json;print(json.load(open('output/data/curriculum_outline.json'))['summary'])"`
+`python3 -c "import json;print(json.load(open('output/data/curriculum_outline.json'))['stats'])"`
 or re-run `scripts/build_curriculum.py`; see [`TODO.md`](TODO.md) Verified State
 for the last measured pass.
 
