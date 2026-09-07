@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T03:43:43+00:00",
+  "generated_at": "2026-09-07T19:11:25+00:00",
   "issue_rows": [],
   "negative_control": "A generated Markdown link to a .md file, an old generic scaffold heading, a lesson cross-link line without sec/fig refs, or a table row that contains only citation keys must fail reference_quality_ok.",
   "ok": true,
@@ -13,6 +13,6 @@
     "markdown_file_link_issues": 0,
     "raw_literal_citation_issues": 0,
     "rendered_reference_issues": 0,
-    "scanned_files": 331
+    "scanned_files": 332
   }
 }

@@ -1,3 +1,5 @@
-# AGENTS.md - AGEINT Manuscript Appendices
+# AGENTS.md - Generated Manuscript Appendices
 
-Appendix output is regenerated from source data and renderer context. Keep edits in source data or renderer code, not generated Markdown.
+**Section anchor.** [@sec:bibliography_atlas].
+
+Appendix files are generated. Keep method descriptions educational, synthetic, defensive, and evidence-bounded; do not add live tool procedures or unauthorized collection workflows.

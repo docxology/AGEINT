@@ -6322,7 +6322,7 @@
     {
       "alt_text_words": 37,
       "aspect_ratio": 1.0,
-      "bytes": 160915,
+      "bytes": 160480,
       "caption_words": 55,
       "checks": {
         "alt_text_min_words": true,
@@ -7834,7 +7834,7 @@
     {
       "alt_text_words": 33,
       "aspect_ratio": 1.0,
-      "bytes": 302517,
+      "bytes": 302032,
       "caption_words": 72,
       "checks": {
         "alt_text_min_words": true,

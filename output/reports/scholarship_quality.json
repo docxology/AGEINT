@@ -66,7 +66,7 @@
     "missing": [],
     "ok": true
   },
-  "generated_at": "2026-09-07T03:39:03+00:00",
+  "generated_at": "2026-09-07T19:10:45+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -10811,6 +10811,15 @@
         "scholarly"
       ],
       "unique_citation_count": 60
+    },
+    {
+      "citation_count": 0,
+      "citation_keys": [],
+      "family": "preamble.md",
+      "flags": [],
+      "path": "preamble.md",
+      "source_families": [],
+      "unique_citation_count": 0
     }
   ],
   "sat_method_contract": {
@@ -10831,7 +10840,7 @@
       "practice-studio": 54
     },
     "claim_bearing_files": 275,
-    "generated_markdown_files": 329,
+    "generated_markdown_files": 330,
     "single_source_family_claim_bearing_files": 0,
     "source_family_file_counts": {
       "curated_anchor": 4,
@@ -10855,7 +10864,7 @@
     },
     "thin_claim_bearing_files": 0,
     "uncited_claim_bearing_files": 0,
-    "uncited_files": 35
+    "uncited_files": 36
   },
   "thresholds": {
     "claim_bearing_min_unique_citations": 2,

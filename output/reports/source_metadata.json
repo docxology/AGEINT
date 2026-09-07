@@ -4,7 +4,7 @@
     "source_quality_blank_rows": 10,
     "total_blank_rows_closed": 119
   },
-  "generated_at": "2026-09-07T03:39:06+00:00",
+  "generated_at": "2026-09-07T19:10:45+00:00",
   "issue_row_count": 0,
   "issue_rows": [],
   "ok": true,
@@ -440,7 +440,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-11",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_nist_ai_agent_standards_initiative",
@@ -479,7 +479,7 @@
       "source_type": "security_standard"
     },
     {
-      "checked_as_of": "2026-06-11",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_mitre_atlas",
@@ -2481,7 +2481,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-11",
+      "checked_as_of": "2026-09-07",
       "domain": "agent_interoperability_standards",
       "flags": [],
       "key": "official_model_context_protocol_specification",
@@ -2494,7 +2494,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-11",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_model_context_protocol_security_best_practices",
@@ -2975,7 +2975,7 @@
       "source_type": "scholarly_preprint"
     },
     {
-      "checked_as_of": "2026-06-11",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_nist_ai_800_2_automated_benchmark_evaluations",
@@ -3001,7 +3001,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-11",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_nsa_mcp_security_design_considerations",
@@ -3755,7 +3755,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "governed_intelligence_cycle",
       "flags": [],
       "key": "official_intelligence_gov_mission",
@@ -3768,7 +3768,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "legal_oversight",
       "flags": [],
       "key": "official_intelligence_gov_accountability",
@@ -3781,7 +3781,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "legal_oversight",
       "flags": [],
       "key": "official_intelligence_gov_transparency",
@@ -3794,7 +3794,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "governed_intelligence_cycle",
       "flags": [],
       "key": "official_intelligence_gov_about_site",
@@ -3807,7 +3807,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "governed_intelligence_cycle",
       "flags": [],
       "key": "official_intelligence_gov_collaboration",
@@ -3820,7 +3820,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_intelligence_gov_innovation",
@@ -3872,7 +3872,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "cyber_threat_intelligence",
       "flags": [],
       "key": "official_nsa_cybersecurity_advisories_guidance",
@@ -3885,7 +3885,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "governed_intelligence_cycle",
       "flags": [],
       "key": "official_nsa_about_mission",
@@ -3898,7 +3898,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_nsa_agentic_ai_services_guidance_2026",
@@ -3937,7 +3937,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-14",
+      "checked_as_of": "2026-09-07",
       "domain": "counterintelligence_source_integrity",
       "flags": [],
       "key": "official_fbi_counterintelligence_espionage",
@@ -6159,13 +6159,14 @@
       "2026-06-08": 22,
       "2026-06-09": 1,
       "2026-06-10": 3,
-      "2026-06-11": 26,
+      "2026-06-11": 20,
       "2026-06-12": 2,
-      "2026-06-14": 55,
+      "2026-06-14": 45,
       "2026-06-15": 66,
       "2026-06-16": 95,
       "2026-08-30": 27,
-      "2026-09-06": 8
+      "2026-09-06": 8,
+      "2026-09-07": 16
     },
     "fallback_dependent_row_count": 0,
     "intelligence_anchor_count": 462,

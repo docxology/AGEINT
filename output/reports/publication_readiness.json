@@ -13,7 +13,7 @@
       "claim_hard_fail_rows": 0,
       "figures": 177,
       "generated_markdown_citation_occurrences": 16629,
-      "generated_markdown_files": 329,
+      "generated_markdown_files": 330,
       "generic_detail_heading_issues": 0,
       "new_official_us_ic_anchors": 56,
       "pdf_pages": 1863,
@@ -41,13 +41,13 @@
     "release_surface_scan_ok": true,
     "rendered_references_resolve": true,
     "scholarship_quality_ok": true,
-    "source_license_posture_ok": false,
+    "source_license_posture_ok": true,
     "source_metadata_ok": true,
     "source_refresh_due_ok": true,
     "task_prerequisites_done": true
   },
-  "generated_at": "2026-09-07T02:52:50+00:00",
-  "ok": false,
+  "generated_at": "2026-09-07T19:18:39+00:00",
+  "ok": true,
   "parent_confidentiality_guard": {
     "checked": false,
     "ok": true,
@@ -64,23 +64,14 @@
   "schema_version": "1.0",
   "source_license_posture": {
     "figure_count": 177,
-    "issue_count": 2,
-    "issues": [
-      {
-        "issue": "missing_publication_license",
-        "surface": "manuscript/config.yaml"
-      },
-      {
-        "issue": "missing_code_license",
-        "surface": "manuscript/config.yaml"
-      }
-    ],
+    "issue_count": 0,
+    "issues": [],
     "license": {
-      "book": "",
-      "code": "",
-      "metadata": ""
+      "book": "CC BY 4.0",
+      "code": "Apache-2.0",
+      "metadata": "CC-BY-4.0"
     },
-    "ok": false
+    "ok": true
   },
   "source_refresh_due": {
     "issue_row_count": 0,
@@ -90,8 +81,7 @@
     ],
     "summary": {
       "bucket_counts": {
-        "current": 456,
-        "due_soon": 16
+        "current": 472
       },
       "cadence_counts": {
         "annual": 322,
@@ -100,7 +90,7 @@
         "semiannual": 94
       },
       "due_or_stale_count": 0,
-      "due_soon_count": 16,
+      "due_soon_count": 0,
       "flag_counts": {},
       "missing_checked_as_of_count": 0,
       "row_count": 472,
