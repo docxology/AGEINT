@@ -3,7 +3,7 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-09-07T19:10:49+00:00 |
+| Generated at | 2026-09-07T19:34:17+00:00 |
 | Candidate rows | 9129 |
 | Hard-fail rows | 0 |
 | Review-warning rows | 5132 |
