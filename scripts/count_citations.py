@@ -26,12 +26,7 @@ from curriculum import load_curriculum  # noqa: E402
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--format",
-        choices=("markdown", "json"),
-        default="markdown",
-        help="Output format for citation counts.",
-    )
+    parser.add_argument("--format", choices=("markdown", "json"), default="markdown", help="Output format for citation counts.")
     return parser
 
 
@@ -54,9 +49,7 @@ def main(argv: list[str] | None = None) -> int:
                     "source_zero_citation_sections": summary.zero_citation_sections,
                     "source_distribution": dict(summary.citation_count_distribution),
                     "generated_markdown_files": len(generated_rows),
-                    "generated_markdown_citation_occurrences": sum(
-                        row.citation_count for row in generated_rows
-                    ),
+                    "generated_markdown_citation_occurrences": sum(row.citation_count for row in generated_rows),
                     "generated_by_family": dict(sorted(generated_by_family.items())),
                 },
                 indent=2,

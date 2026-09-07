@@ -7,15 +7,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from claim_calibration import (
-    collect_claim_calibration,
-    render_claim_calibration_markdown,
-)
-from source_support_strength import (
-    SourceSupportProfile,
-    source_support_strength,
-    support_profiles_for_keys,
-)
+from claim_calibration import collect_claim_calibration, render_claim_calibration_markdown
+from source_support_strength import SourceSupportProfile, source_support_strength, support_profiles_for_keys
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -43,10 +36,7 @@ def test_claim_calibration_current_generated_output_passes(built_output: Path) -
 
 
 def test_claim_calibration_flags_unsupported_performance_claim(tmp_path: Path) -> None:
-    _write_markdown(
-        tmp_path / "chapter.md",
-        "# Chapter\n\nAGEINT proves measured performance and statistically significant learning gains.\n",
-    )
+    _write_markdown(tmp_path / "chapter.md", "# Chapter\n\nAGEINT proves measured performance and statistically significant learning gains.\n")
 
     report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
 
@@ -59,31 +49,18 @@ def test_claim_calibration_flags_unsupported_performance_claim(tmp_path: Path) -
 
 
 def test_claim_calibration_rejects_weak_source_only_statistical_claim(tmp_path: Path) -> None:
-    _write_markdown(
-        tmp_path / "chapter.md",
-        "# Chapter\n\nA classroom note reports a p-value and statistically significant "
-        "capability improvement [@ageint053].\n",
-    )
+    _write_markdown(tmp_path / "chapter.md", "# Chapter\n\nA classroom note reports a p-value and statistically significant capability improvement [@ageint053].\n")
 
     report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
 
     assert report.ok is False
     row = report.payload["hard_fail_rows"][0]
     assert row["citation_keys"] == ["ageint053"]
-    assert row["source_support_profiles"][0]["strength"] in {
-        "practitioner_or_vendor_context",
-        "social_or_video_context",
-        "mirror_or_copy_context",
-        "source_guide_context",
-    }
+    assert row["source_support_profiles"][0]["strength"] in {"practitioner_or_vendor_context", "social_or_video_context", "mirror_or_copy_context", "source_guide_context"}
 
 
 def test_claim_calibration_allows_explicit_boundary_language(tmp_path: Path) -> None:
-    _write_markdown(
-        tmp_path / "chapter.md",
-        "# Chapter\n\nAGEINT is not a benchmark proving measured performance; it is a "
-        "design and assurance framework [@official_nist_ai_rmf].\n",
-    )
+    _write_markdown(tmp_path / "chapter.md", "# Chapter\n\nAGEINT is not a benchmark proving measured performance; it is a design and assurance framework [@official_nist_ai_rmf].\n")
 
     report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
 
@@ -131,11 +108,7 @@ def test_claim_calibration_allows_empirical_requirement_lists(tmp_path: Path) ->
 
 
 def test_claim_calibration_skips_headings_with_performance_terms(tmp_path: Path) -> None:
-    _write_markdown(
-        tmp_path / "chapter.md",
-        "# Performance and capability vocabulary\n\n"
-        "The body states a bounded design reminder [@official_nist_ai_rmf].\n",
-    )
+    _write_markdown(tmp_path / "chapter.md", "# Performance and capability vocabulary\n\nThe body states a bounded design reminder [@official_nist_ai_rmf].\n")
 
     report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
 
@@ -146,18 +119,7 @@ def test_claim_calibration_skips_headings_with_performance_terms(tmp_path: Path)
 def test_claim_calibration_script_writes_json_contract(built_output: Path) -> None:
     assert (built_output / "manuscript").is_dir()
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_claim_calibration.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_claim_calibration.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
@@ -181,16 +143,9 @@ def test_source_support_strength_classifies_curated_and_source_guide_keys() -> N
 
 
 def test_support_profiles_for_keys_preserves_order_and_unknowns() -> None:
-    profiles = support_profiles_for_keys(
-        ["ageint053", "official_nist_ai_rmf", "missing_key"],
-        PROJECT_ROOT,
-    )
+    profiles = support_profiles_for_keys(["ageint053", "official_nist_ai_rmf", "missing_key"], PROJECT_ROOT)
 
-    assert [profile.key for profile in profiles] == [
-        "ageint053",
-        "official_nist_ai_rmf",
-        "missing_key",
-    ]
+    assert [profile.key for profile in profiles] == ["ageint053", "official_nist_ai_rmf", "missing_key"]
     assert all(isinstance(profile, SourceSupportProfile) for profile in profiles)
     assert profiles[-1].strength == "unknown"
     assert profiles[-1].weak_context is True

@@ -12,12 +12,7 @@ from curriculum import load_curriculum
 import curriculum as curriculum_module
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import reference_bibtex_files
-from source_identity import (
-    build_source_identity_lock,
-    load_source_identity_lock,
-    source_identity_mismatches,
-    write_source_identity_lock_shards,
-)
+from source_identity import build_source_identity_lock, load_source_identity_lock, source_identity_mismatches, write_source_identity_lock_shards
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 CURRICULUM = PROJECT_ROOT / "data" / "curriculum"
@@ -28,12 +23,7 @@ BIB_ENTRY_RE = re.compile(r"^@\w+\{(?P<label>[^,]+),", re.MULTILINE)
 
 
 def _jsonl_rows(directory: Path) -> list[dict[str, object]]:
-    return [
-        json.loads(line)
-        for path in sorted(directory.glob("*.jsonl"))
-        for line in path.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+    return [json.loads(line) for path in sorted(directory.glob("*.jsonl")) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def test_sharded_curriculum_composes_expected_runtime_payload() -> None:
@@ -84,11 +74,7 @@ def test_split_bibtex_files_cover_runtime_citation_keys(built_output: Path) -> N
     expected_files = reference_bibtex_files(curriculum.references)
     output_manuscript = built_output / "manuscript"
     generated_files = {path.name: path.read_text(encoding="utf-8") for path in output_manuscript.glob("*.bib")}
-    generated_keys = {
-        match.group("label")
-        for text in generated_files.values()
-        for match in BIB_ENTRY_RE.finditer(text)
-    }
+    generated_keys = {match.group("label") for text in generated_files.values() for match in BIB_ENTRY_RE.finditer(text)}
 
     assert set(expected_files) == set(generated_files)
     assert set(curriculum.citation_keys()) <= generated_keys
@@ -139,19 +125,10 @@ def test_legacy_chapter_file_shard_and_missing_shard_errors(tmp_path: Path) -> N
     (shard / "appendices").mkdir()
     (shard / "references").mkdir()
     (shard / "metadata.json").write_text('{"project":"AGEINT","title":"Fixture"}', encoding="utf-8")
-    (shard / "stats.json").write_text(
-        '{"parts":1,"chapters":1,"appendices":0,"patterns":0,"references":0}',
-        encoding="utf-8",
-    )
+    (shard / "stats.json").write_text('{"parts":1,"chapters":1,"appendices":0,"patterns":0,"references":0}', encoding="utf-8")
     (shard / "patterns.json").write_text("[]", encoding="utf-8")
-    (shard / "parts" / "01-test" / "part.json").write_text(
-        '{"number":1,"roman":"I","title":"TEST","source_line":1}',
-        encoding="utf-8",
-    )
-    (shard / "parts" / "01-test" / "chapters" / "01-test.json").write_text(
-        '{"number":1,"title":"Legacy","sections":[],"citations":[],"source_line":2}',
-        encoding="utf-8",
-    )
+    (shard / "parts" / "01-test" / "part.json").write_text('{"number":1,"roman":"I","title":"TEST","source_line":1}', encoding="utf-8")
+    (shard / "parts" / "01-test" / "chapters" / "01-test.json").write_text('{"number":1,"title":"Legacy","sections":[],"citations":[],"source_line":2}', encoding="utf-8")
 
     assert load_curriculum(shard).chapter(1)["title"] == "Legacy"
     with pytest.raises(FileNotFoundError):

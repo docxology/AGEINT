@@ -63,7 +63,7 @@ analysis-validation lane-contract, and claim-bearing family-coverage checks;
 claim checks and source-support strength; and the compact PDF preamble
 now uses 7.8 pt body text with 8.9 pt leading.
 The title-page cover art is intentionally outside the registry and is governed
-by `book.cover.image` in `manuscript/config.yaml`; the abstract is plaintext
+by `book.cover.image` in `docs/manuscript/config.yaml`; the abstract is plaintext
 rather than a figure-bearing graphical abstract. The orientation graphical
 abstract is the registered Python `ageint-graphical-abstract` Synthetic
 Tradecraft System Atlas, with its caption, alt text, long description, and PNG

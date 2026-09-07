@@ -5,9 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-_CONCEPT_PLATES_PATH = (
-    Path(__file__).resolve().parents[2] / "data" / "figures" / "concept_plates.jsonl"
-)
+_CONCEPT_PLATES_PATH = Path(__file__).resolve().parents[2] / "data" / "figures" / "concept_plates.jsonl"
 
 
 def _load_concept_plates() -> tuple[dict[str, str], ...]:

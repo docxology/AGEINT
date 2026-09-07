@@ -12,10 +12,7 @@ ARTIFACT_EVIDENCE_VISUALS: tuple[dict[str, str], ...] = (
             "metadata, PDF annotation audits, and current evidence reports so validators "
             "cannot certify a stale or partially copied artifact as complete."
         ),
-        "alt_text": (
-            "Control matrix linking AGEINT source inputs, build outputs, citation counts, "
-            "figure checks, PDF links, and evidence reports to validators and negative controls."
-        ),
+        "alt_text": ("Control matrix linking AGEINT source inputs, build outputs, citation counts, figure checks, PDF links, and evidence reports to validators and negative controls."),
         "renderer": "artifact_evidence_control_loop",
         "source_section": "orientation.md",
     },

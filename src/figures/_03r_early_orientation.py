@@ -31,11 +31,7 @@ def _render_reader_route_compass(output: Path, spec: FigureSpec) -> None:
     for title, task, evidence, x, y, color in routes:
         _draw_route_card(draw, font_mod, center, (x, y), title, task, evidence, color)
     _draw_ring_labels(draw, font_mod)
-    _draw_footer(
-        draw,
-        font_mod,
-        "Use as a navigation aid only: the compass routes reader duties and evidence handoffs, not learning outcomes or analytic performance.",
-    )
+    _draw_footer(draw, font_mod, "Use as a navigation aid only: the compass routes reader duties and evidence handoffs, not learning outcomes or analytic performance.")
     canvas.save(output, format="PNG", compress_level=3)
 
 
@@ -61,11 +57,7 @@ def _render_synthetic_tradecraft_workbench(output: Path, spec: FigureSpec) -> No
             _arrow(draw, (x0 + 350, 925), (x0 + 405, 925), "#64748b", width=8)
     _draw_workbench_belts(draw, font_mod)
     _draw_packet_drawer(draw, font_mod)
-    _draw_footer(
-        draw,
-        font_mod,
-        "Reader limit: the workbench assembles review-bounded classroom artifacts; it is not field-capability proof or an autonomous action claim.",
-    )
+    _draw_footer(draw, font_mod, "Reader limit: the workbench assembles review-bounded classroom artifacts; it is not field-capability proof or an autonomous action claim.")
     canvas.save(output, format="PNG", compress_level=3)
 
 
@@ -88,24 +80,11 @@ def _render_source_constellation_map(output: Path, spec: FigureSpec) -> None:
     draw.ellipse((985, 945, 1415, 1375), fill="#f8fafc", outline="#93c5fd", width=7)
     draw.text((1062, 1050), "AGEINT", fill=INK, font=_font(font_mod, 56))
     draw.text((1047, 1118), "source spine", fill="#334155", font=_font(font_mod, 30))
-    draw_wrapped_text(
-        draw,
-        (1040, 1180),
-        "claim class -> source lane -> caveat -> refresh duty",
-        _font(font_mod, 25),
-        fill=MUTED,
-        width=26,
-        max_lines=2,
-        line_height=31,
-    )
+    draw_wrapped_text(draw, (1040, 1180), "claim class -> source lane -> caveat -> refresh duty", _font(font_mod, 25), fill=MUTED, width=26, max_lines=2, line_height=31)
     for index, (title, body, x, y, color) in enumerate(families):
         _draw_constellation_family(draw, font_mod, center, (x, y), title, body, color, index)
     _draw_source_lanes(draw, font_mod)
-    _draw_footer_dark(
-        draw,
-        font_mod,
-        "Interpretation boundary: route density shows reader obligations and source families, not source quality rankings or evidence strength scores.",
-    )
+    _draw_footer_dark(draw, font_mod, "Interpretation boundary: route density shows reader obligations and source families, not source quality rankings or evidence strength scores.")
     canvas.save(output, format="PNG", compress_level=3)
 
 
@@ -129,11 +108,7 @@ def _render_assurance_cockpit(output: Path, spec: FigureSpec) -> None:
         _draw_status_tile(draw, font_mod, (x0, y0, x0 + 560, y0 + 300), title, subtitle, body, color)
     _draw_readiness_stack(draw, font_mod)
     _draw_boundary_console(draw, font_mod)
-    _draw_footer_dark(
-        draw,
-        font_mod,
-        "Cockpit statuses are schematic reader-orientation indicators; authoritative states live in generated audits.",
-    )
+    _draw_footer_dark(draw, font_mod, "Cockpit statuses are schematic reader-orientation indicators; authoritative states live in generated audits.")
     canvas.save(output, format="PNG", compress_level=3)
 
 
@@ -172,24 +147,14 @@ def _draw_compass_core(draw: Any, font_mod: Any, center: tuple[int, int]) -> Non
     cx, cy = center
     for radius, color, width in ((540, "#dbeafe", 12), (390, "#ccfbf1", 10), (235, "#fef3c7", 9)):
         draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), outline=color, width=width)
-    points = [(cx, cy - 360), (cx + 105, cy - 105), (cx + 360, cy), (cx + 105, cy + 105),
-              (cx, cy + 360), (cx - 105, cy + 105), (cx - 360, cy), (cx - 105, cy - 105)]
+    points = [(cx, cy - 360), (cx + 105, cy - 105), (cx + 360, cy), (cx + 105, cy + 105), (cx, cy + 360), (cx - 105, cy + 105), (cx - 360, cy), (cx - 105, cy - 105)]
     draw.polygon(points, fill="#ffffff", outline="#0f172a")
     draw.ellipse((cx - 205, cy - 205, cx + 205, cy + 205), fill="#0f172a", outline="#1e293b", width=6)
     draw.text((cx - 108, cy - 68), "START", fill="#f8fafc", font=_font(font_mod, 54))
     draw.text((cx - 142, cy + 4), "route by role", fill="#cbd5e1", font=_font(font_mod, 29))
 
 
-def _draw_route_card(
-    draw: Any,
-    font_mod: Any,
-    center: tuple[int, int],
-    xy: tuple[int, int],
-    title: str,
-    task: str,
-    evidence: str,
-    color: str,
-) -> None:
+def _draw_route_card(draw: Any, font_mod: Any, center: tuple[int, int], xy: tuple[int, int], title: str, task: str, evidence: str, color: str) -> None:
     x, y = xy
     card = (x - 285, y - 145, x + 285, y + 145)
     cx, cy = center
@@ -206,26 +171,13 @@ def _draw_route_card(
 
 
 def _draw_ring_labels(draw: Any, font_mod: Any) -> None:
-    labels = [
-        ("source lane", 1065, 705, "#2563eb"),
-        ("safety gate", 1325, 875, "#0f766e"),
-        ("claim packet", 1065, 1490, "#b45309"),
-        ("rebuild proof", 700, 875, "#7c3aed"),
-    ]
+    labels = [("source lane", 1065, 705, "#2563eb"), ("safety gate", 1325, 875, "#0f766e"), ("claim packet", 1065, 1490, "#b45309"), ("rebuild proof", 700, 875, "#7c3aed")]
     for text, x, y, color in labels:
         draw.rounded_rectangle((x, y, x + 270, y + 58), radius=24, fill="#f8fafc", outline=color, width=3)
         draw.text((x + 23, y + 17), text.upper(), fill=color, font=_font(font_mod, 20))
 
 
-def _draw_workbench_stage(
-    draw: Any,
-    font_mod: Any,
-    box: tuple[int, int, int, int],
-    number: str,
-    title: str,
-    body: str,
-    color: str,
-) -> None:
+def _draw_workbench_stage(draw: Any, font_mod: Any, box: tuple[int, int, int, int], number: str, title: str, body: str, color: str) -> None:
     draw.rounded_rectangle(box, radius=36, fill="#ffffff", outline=color, width=6)
     draw.ellipse((box[0] + 30, box[1] + 28, box[0] + 100, box[1] + 98), fill=color)
     draw.text((box[0] + 53, box[1] + 42), number, fill="#ffffff", font=_font(font_mod, 32))
@@ -238,14 +190,7 @@ def _draw_workbench_stage(
 def _draw_workbench_belts(draw: Any, font_mod: Any) -> None:
     draw.rounded_rectangle((160, 1275, 2240, 1510), radius=44, fill="#0f172a", outline="#334155", width=5)
     draw.text((230, 1318), "REVIEW BELT", fill="#f8fafc", font=_font(font_mod, 36))
-    belt_items = [
-        "source key",
-        "caveat",
-        "alternative",
-        "negative control",
-        "rights limit",
-        "refresh owner",
-    ]
+    belt_items = ["source key", "caveat", "alternative", "negative control", "rights limit", "refresh owner"]
     for index, item in enumerate(belt_items):
         x0 = 545 + index * 255
         draw.rounded_rectangle((x0, 1330, x0 + 205, 1448), radius=22, fill="#1e293b", outline="#475569", width=3)
@@ -269,16 +214,7 @@ def _draw_packet_drawer(draw: Any, font_mod: Any) -> None:
         draw_wrapped_text(draw, (x0 + 25, 1865), body, _font(font_mod, 20), fill=MUTED, width=21, max_lines=2)
 
 
-def _draw_constellation_family(
-    draw: Any,
-    font_mod: Any,
-    center: tuple[int, int],
-    xy: tuple[int, int],
-    title: str,
-    body: str,
-    color: str,
-    index: int,
-) -> None:
+def _draw_constellation_family(draw: Any, font_mod: Any, center: tuple[int, int], xy: tuple[int, int], title: str, body: str, color: str, index: int) -> None:
     x, y = xy
     _arrow(draw, center, (x, y), color, width=5)
     draw.ellipse((x - 172, y - 172, x + 172, y + 172), fill="#111827", outline=color, width=6)
@@ -314,15 +250,7 @@ def _draw_cockpit_background(draw: Any) -> None:
     draw.rounded_rectangle((160, 400, 2240, 2080), radius=62, fill="#111827", outline="#475569", width=5)
 
 
-def _draw_status_tile(
-    draw: Any,
-    font_mod: Any,
-    box: tuple[int, int, int, int],
-    title: str,
-    subtitle: str,
-    body: str,
-    color: str,
-) -> None:
+def _draw_status_tile(draw: Any, font_mod: Any, box: tuple[int, int, int, int], title: str, subtitle: str, body: str, color: str) -> None:
     x0, y0, x1, y1 = box
     draw.rounded_rectangle(box, radius=38, fill="#0f172a", outline=color, width=5)
     draw.rounded_rectangle((x0 + 30, y0 + 30, x0 + 168, y0 + 78), radius=18, fill="#111827", outline=color, width=3)
@@ -331,27 +259,10 @@ def _draw_status_tile(
         draw.text((x0 + 35, y0 + 105 + index * 41), line, fill="#f8fafc", font=_font(font_mod, 34))
     draw.text((x0 + 35, y0 + 194), subtitle, fill="#cbd5e1", font=_font(font_mod, 24))
     draw.line((x0 + 35, y0 + 235, x1 - 35, y0 + 235), fill="#334155", width=3)
-    draw_wrapped_text(
-        draw,
-        (x0 + 35, y0 + 252),
-        body,
-        _font(font_mod, 22),
-        fill="#dbeafe",
-        width=36,
-        max_lines=2,
-        line_height=26,
-    )
+    draw_wrapped_text(draw, (x0 + 35, y0 + 252), body, _font(font_mod, 22), fill="#dbeafe", width=36, max_lines=2, line_height=26)
 
 
-def _draw_gauge(
-    draw: Any,
-    font_mod: Any,
-    center: tuple[int, int],
-    title: str,
-    subtitle: str,
-    value: float,
-    color: str,
-) -> None:
+def _draw_gauge(draw: Any, font_mod: Any, center: tuple[int, int], title: str, subtitle: str, value: float, color: str) -> None:
     cx, cy = center
     box = (cx - 235, cy - 235, cx + 235, cy + 235)
     draw.ellipse(box, fill="#0f172a", outline="#334155", width=10)
@@ -400,11 +311,7 @@ def _draw_boundary_console(draw: Any, font_mod: Any) -> None:
     box = (280, 1725, 2120, 2025)
     draw.rounded_rectangle(box, radius=40, fill="#020617", outline="#64748b", width=4)
     draw.text((340, 1770), "PUBLICATION BOUNDARY CONSOLE", fill="#f8fafc", font=_font(font_mod, 34))
-    messages = [
-        ("READY", "local artifacts agree"),
-        ("WARN", "review caveat before reuse"),
-        ("BLOCK", "publication, push, or release still requires explicit action"),
-    ]
+    messages = [("READY", "local artifacts agree"), ("WARN", "review caveat before reuse"), ("BLOCK", "publication, push, or release still requires explicit action")]
     for index, (status, body) in enumerate(messages):
         x0 = 345 + index * 580
         color = ("#22c55e", "#f59e0b", "#ef4444")[index]
@@ -423,30 +330,14 @@ def _draw_footer_dark(draw: Any, font_mod: Any, text: str) -> None:
     draw_wrapped_text(draw, (205, 2212), text, _font(font_mod, 24), fill="#cbd5e1", width=118, max_lines=2, line_height=29)
 
 
-def _arrow(
-    draw: Any,
-    start: tuple[int, int],
-    end: tuple[int, int],
-    color: str,
-    *,
-    width: int = 5,
-) -> None:
+def _arrow(draw: Any, start: tuple[int, int], end: tuple[int, int], color: str, *, width: int = 5) -> None:
     sx, sy = start
     ex, ey = end
     draw.line((sx, sy, ex, ey), fill=color, width=width)
     angle = math.atan2(ey - sy, ex - sx)
     size = 24
-    points = [
-        (ex, ey),
-        (ex - math.cos(angle - math.pi / 7) * size, ey - math.sin(angle - math.pi / 7) * size),
-        (ex - math.cos(angle + math.pi / 7) * size, ey - math.sin(angle + math.pi / 7) * size),
-    ]
+    points = [(ex, ey), (ex - math.cos(angle - math.pi / 7) * size, ey - math.sin(angle - math.pi / 7) * size), (ex - math.cos(angle + math.pi / 7) * size, ey - math.sin(angle + math.pi / 7) * size)]
     draw.polygon(points, fill=color)
 
 
-__all__ = [
-    "_render_assurance_cockpit",
-    "_render_reader_route_compass",
-    "_render_source_constellation_map",
-    "_render_synthetic_tradecraft_workbench",
-]
+__all__ = ["_render_assurance_cockpit", "_render_reader_route_compass", "_render_source_constellation_map", "_render_synthetic_tradecraft_workbench"]

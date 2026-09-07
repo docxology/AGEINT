@@ -6,39 +6,11 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 MAX_LINES = 500
-TEXT_SUFFIXES = {
-    ".bib",
-    ".json",
-    ".jsonl",
-    ".md",
-    ".py",
-    ".toml",
-    ".yaml",
-    ".yml",
-}
-INCLUDED_ROOTS = [
-    "AGENTS.md",
-    "README.md",
-    "docs",
-    "data",
-    "manuscript",
-    "scripts",
-    "src",
-    "tests",
-    "output/data",
-    "output/manuscript",
-]
-EXCLUDED_PARTS = {
-    ".git",
-    ".mypy_cache",
-    ".pytest_cache",
-    ".ruff_cache",
-    "__pycache__",
-}
+TEXT_SUFFIXES = {".bib", ".json", ".jsonl", ".md", ".py", ".toml", ".yaml", ".yml"}
+INCLUDED_ROOTS = ["AGENTS.md", "README.md", "docs", "data", "manuscript", "scripts", "src", "tests", "output/data", "output/manuscript"]
+EXCLUDED_PARTS = {".git", ".mypy_cache", ".pytest_cache", ".ruff_cache", "__pycache__"}
 EXCLUDED_NAMES = {"uv.lock"}
-EXCLUDED_RELATIVE_PREFIXES = (
-    "tests/fixtures/",
-)
+EXCLUDED_RELATIVE_PREFIXES = ("tests/fixtures/",)
 
 
 def _candidate_files() -> list[Path]:

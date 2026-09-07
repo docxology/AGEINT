@@ -40,19 +40,8 @@ def main() -> None:
                         "risk_category": entry.risk_category,
                         "part_title": part_title,
                         "chapter_title": chapter_title,
-                        "why_it_matters": why_it_matters_for_entry(
-                            entry,
-                            profile,
-                            coursebook,
-                            lesson_index=1,
-                            chapter_title=chapter_title,
-                        ),
-                        "misconception": misconception_for_entry(
-                            entry,
-                            coursebook,
-                            lesson_index=1,
-                            chapter_title=chapter_title,
-                        ),
+                        "why_it_matters": why_it_matters_for_entry(entry, profile, coursebook, lesson_index=1, chapter_title=chapter_title),
+                        "misconception": misconception_for_entry(entry, coursebook, lesson_index=1, chapter_title=chapter_title),
                     }
                 )
     OUT.parent.mkdir(parents=True, exist_ok=True)

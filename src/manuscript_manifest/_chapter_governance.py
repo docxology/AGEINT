@@ -37,10 +37,7 @@ def _accessibility_udl_review(chapter: dict[str, Any]) -> str:
             "",
             accessibility_review_rows(),
             "",
-            (
-                "Minimum gate: no learner-facing artifact should depend on a single modality, "
-                "unstated accommodation, inaccessible figure, unlabeled table, or hidden tool assumption."
-            ),
+            ("Minimum gate: no learner-facing artifact should depend on a single modality, unstated accommodation, inaccessible figure, unlabeled table, or hidden tool assumption."),
         ]
     )
 
@@ -53,10 +50,7 @@ def _procurement_vendor_oversight(chapter: dict[str, Any]) -> str:
             "",
             procurement_oversight_rows(),
             "",
-            (
-                "Minimum gate: a classroom tool must be revocable, auditable, accessible, "
-                "privacy-reviewed, and replaceable with a synthetic or instructor-provided substitute."
-            ),
+            ("Minimum gate: a classroom tool must be revocable, auditable, accessible, privacy-reviewed, and replaceable with a synthetic or instructor-provided substitute."),
         ]
     )
 
@@ -69,10 +63,7 @@ def _hria_dpia_worksheet(chapter: dict[str, Any]) -> str:
             "",
             hria_dpia_worksheet_rows(),
             "",
-            (
-                "Minimum gate: if a scenario cannot identify affected groups, safeguards, "
-                "review owner, and residual risk, it stays at the discussion stage."
-            ),
+            ("Minimum gate: if a scenario cannot identify affected groups, safeguards, review owner, and residual risk, it stays at the discussion stage."),
         ]
     )
 
@@ -85,10 +76,7 @@ def _data_lineage_registry(chapter: dict[str, Any]) -> str:
             "",
             data_lineage_registry_rows(),
             "",
-            (
-                "Minimum gate: every retained artifact names source identity, transformation, "
-                "reviewer, sensitivity status, retention rule, and refresh owner."
-            ),
+            ("Minimum gate: every retained artifact names source identity, transformation, reviewer, sensitivity status, retention rule, and refresh owner."),
         ]
     )
 
@@ -101,10 +89,7 @@ def _assessment_integrity_protocol(chapter: dict[str, Any]) -> str:
             "",
             assessment_integrity_rows(),
             "",
-            (
-                "Minimum gate: learners may use agents only when tool use is declared, "
-                "evidence is retained, independent reasoning is visible, and grading criteria remain human-reviewed."
-            ),
+            ("Minimum gate: learners may use agents only when tool use is declared, evidence is retained, independent reasoning is visible, and grading criteria remain human-reviewed."),
         ]
     )
 
@@ -117,10 +102,7 @@ def _agent_incident_response_drill(chapter: dict[str, Any]) -> str:
             "",
             agent_incident_response_rows(),
             "",
-            (
-                "Minimum gate: the drill rehearses pause, revoke, preserve, review, "
-                "recover, and debrief actions without touching live services or private data."
-            ),
+            ("Minimum gate: the drill rehearses pause, revoke, preserve, review, recover, and debrief actions without touching live services or private data."),
         ]
     )
 
@@ -133,10 +115,7 @@ def _role_based_competency_map(chapter: dict[str, Any]) -> str:
             "",
             role_competency_rows(),
             "",
-            (
-                "Minimum gate: no artifact is accepted unless learner, instructor, source "
-                "steward, assurance reviewer, and rights/procurement responsibilities are separable."
-            ),
+            ("Minimum gate: no artifact is accepted unless learner, instructor, source steward, assurance reviewer, and rights/procurement responsibilities are separable."),
         ]
     )
 
@@ -149,10 +128,7 @@ def _adversarial_assurance_cycle(chapter: dict[str, Any]) -> str:
             "",
             adversarial_assurance_rows(),
             "",
-            (
-                "Minimum gate: every challenge produces an owner, a remediation path, "
-                "a retest result, and a source or safety refresh trigger."
-            ),
+            ("Minimum gate: every challenge produces an owner, a remediation path, a retest result, and a source or safety refresh trigger."),
         ]
     )
 
@@ -183,10 +159,7 @@ def _transparency_communication_notice(chapter: dict[str, Any]) -> str:
             "",
             transparency_notice_rows(),
             "",
-            (
-                "Minimum gate: a learner, reviewer, or affected public audience can see purpose, "
-                "authority, data summary, safeguards, human review, contact point, and publication limits."
-            ),
+            ("Minimum gate: a learner, reviewer, or affected public audience can see purpose, authority, data summary, safeguards, human review, contact point, and publication limits."),
         ]
     )
 
@@ -199,10 +172,7 @@ def _records_retention_audit_trail(chapter: dict[str, Any]) -> str:
             "",
             retention_audit_rows(),
             "",
-            (
-                "Minimum gate: prompts, sources, decisions, exceptions, incidents, outputs, "
-                "and remediation records have owners, retention rules, and deletion or refresh conditions."
-            ),
+            ("Minimum gate: prompts, sources, decisions, exceptions, incidents, outputs, and remediation records have owners, retention rules, and deletion or refresh conditions."),
         ]
     )
 
@@ -215,10 +185,7 @@ def _release_change_control_gate(chapter: dict[str, Any]) -> str:
             "",
             release_change_control_rows(),
             "",
-            (
-                "Minimum gate: scope, rights, security, version, rollback, monitoring, "
-                "incident threshold, and post-release review are all visible."
-            ),
+            ("Minimum gate: scope, rights, security, version, rollback, monitoring, incident threshold, and post-release review are all visible."),
         ]
     )
 
@@ -231,10 +198,7 @@ def _risk_exception_acceptance_memo(chapter: dict[str, Any]) -> str:
             "",
             risk_exception_rows(),
             "",
-            (
-                "Minimum gate: exceptions are narrow, time-bound, evidence-backed, "
-                "rights-reviewed, and closed by retest rather than left as permanent workarounds."
-            ),
+            ("Minimum gate: exceptions are narrow, time-bound, evidence-backed, rights-reviewed, and closed by retest rather than left as permanent workarounds."),
         ]
     )
 
@@ -247,10 +211,7 @@ def _learner_support_accommodation_plan(chapter: dict[str, Any]) -> str:
             "",
             learner_support_rows(),
             "",
-            (
-                "Minimum gate: each learner-facing artifact has an access path, alternative means, "
-                "allowed-tool statement, feedback path, and remediation owner."
-            ),
+            ("Minimum gate: each learner-facing artifact has an access path, alternative means, allowed-tool statement, feedback path, and remediation owner."),
         ]
     )
 
@@ -263,10 +224,7 @@ def _instructor_question_bank(chapter: dict[str, Any]) -> str:
             "",
             question_bank_rows(),
             "",
-            (
-                "Minimum gate: every question must produce a revision, retained evidence, "
-                "or an explicit decision that no change is required."
-            ),
+            ("Minimum gate: every question must produce a revision, retained evidence, or an explicit decision that no change is required."),
         ]
     )
 
@@ -279,9 +237,6 @@ def _remediation_backlog(chapter: dict[str, Any]) -> str:
             "",
             remediation_backlog_rows(),
             "",
-            (
-                "Minimum gate: backlog items have a trigger, owner, due date, closure evidence, "
-                "and retest result before the artifact is reused."
-            ),
+            ("Minimum gate: backlog items have a trigger, owner, due date, closure evidence, and retest result before the artifact is reused."),
         ]
     )

@@ -6,11 +6,7 @@ from pathlib import Path
 from curriculum import Curriculum
 
 from ._01_part import FigureSpec
-from ._03s_drawers import (
-    _draw_bar_chart,
-    _draw_concept_plate,
-    _draw_text_plate,
-)
+from ._03s_drawers import _draw_bar_chart, _draw_concept_plate, _draw_text_plate
 from ._04_part import _download_bytes, _font, _pil_modules, _png_asset_is_valid
 
 
@@ -25,21 +21,13 @@ def _render_historical_figure(root: Path, spec: FigureSpec, output: Path | None 
         return
     data = _download_bytes(spec.provenance["asset_url"])
     if data is None:
-        _draw_text_plate(
-            output,
-            spec.title,
-            "Official historical image could not be refreshed; provenance remains in registry.",
-        )
+        _draw_text_plate(output, spec.title, "Official historical image could not be refreshed; provenance remains in registry.")
         return
     image_mod, draw_mod, font_mod, ops_mod = _pil_modules()
     try:
         img_context = image_mod.open(io.BytesIO(data))
     except (OSError, ValueError):
-        _draw_text_plate(
-            output,
-            spec.title,
-            "Official historical image response was unreadable; provenance remains in registry.",
-        )
+        _draw_text_plate(output, spec.title, "Official historical image response was unreadable; provenance remains in registry.")
         return
     with img_context as img:
         canvas = image_mod.new("RGB", (1600, 1000), "#111827")

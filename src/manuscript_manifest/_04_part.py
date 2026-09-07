@@ -10,27 +10,11 @@ from markdown_refs import section_ref_list
 from manuscript_templates import template_text
 from manuscript_variables import appendix_rows
 
-from .types import (
-    ManuscriptManifest,
-    ManuscriptSection,
-    SlugRegistry as _SlugRegistry,
-    section_label as _label,
-)
+from .types import ManuscriptManifest, ManuscriptSection, SlugRegistry as _SlugRegistry, section_label as _label
 from ._appendix_support import appendix_body as _appendix_body
-from ._01_part import (
-    _chapter_source_context_inline,
-    _chapter_topic_context,
-    _part_chapter_rows,
-    _part_summary,
-)
+from ._01_part import _chapter_source_context_inline, _chapter_topic_context, _part_chapter_rows, _part_summary
 from ._03_part import _chapter_body
-from ._canonical_reference import (
-    canonical_claim_ledger_rows,
-    canonical_competency_rubric_rows,
-    canonical_mastery_rows,
-    canonical_refresh_trigger_rows,
-    canonical_safety_boundary,
-)
+from ._canonical_reference import canonical_claim_ledger_rows, canonical_competency_rubric_rows, canonical_mastery_rows, canonical_refresh_trigger_rows, canonical_safety_boundary
 from ._orientation_visuals import is_early_orientation_figure
 
 # Rotated framing for the per-chapter learning-path links block. The structural links
@@ -67,16 +51,11 @@ def _chapter_nav_prose(chapter: dict[str, Any], part: dict[str, Any]) -> str:
 
     topic = _chapter_topic_context(chapter, part)
     sources = _chapter_source_context_inline(chapter)
-    variant = _NAV_PROSE_VARIANTS[
-        template_index(str(part["title"]), count=len(_NAV_PROSE_VARIANTS))
-    ]
+    variant = _NAV_PROSE_VARIANTS[template_index(str(part["title"]), count=len(_NAV_PROSE_VARIANTS))]
     return variant.format(topic=topic, sources=sources)
 
 
-def _apply_section_metadata(
-    sections: list[ManuscriptSection],
-    figures: list[dict[str, Any]],
-) -> list[ManuscriptSection]:
+def _apply_section_metadata(sections: list[ManuscriptSection], figures: list[dict[str, Any]]) -> list[ManuscriptSection]:
     labeled = [section for section in sections if section.section_label]
     previous_by_path: dict[str, str] = {}
     next_by_path: dict[str, str] = {}
@@ -93,14 +72,7 @@ def _apply_section_metadata(
         next_label = next_by_path.get(section.relative_path, "")
         context = dict(section.context)
         if section.kind == "chapter":
-            context["SECTION_CROSSREFS"] = section_ref_list(
-                [
-                    "sec:curriculum_orientation",
-                    section.parent_label,
-                    previous_label,
-                    next_label,
-                ]
-            )
+            context["SECTION_CROSSREFS"] = section_ref_list(["sec:curriculum_orientation", section.parent_label, previous_label, next_label])
         refreshed.append(
             ManuscriptSection(
                 section.kind,
@@ -120,39 +92,21 @@ def _apply_section_metadata(
         )
     return refreshed
 
-def _visual_synthesis(
-    project_root: Path,
-    out_dir: Path,
-    section: ManuscriptSection,
-    manifest: ManuscriptManifest,
-    figures: list[dict[str, Any]],
-    *,
-    render_relative_path: str | None = None,
-) -> str:
+
+def _visual_synthesis(project_root: Path, out_dir: Path, section: ManuscriptSection, manifest: ManuscriptManifest, figures: list[dict[str, Any]], *, render_relative_path: str | None = None) -> str:
     if not figures:
-        return (
-            "No figure registry was supplied for this render. Re-run "
-            "`scripts/build_curriculum.py` to refresh figure references."
-        )
+        return "No figure registry was supplied for this render. Re-run `scripts/build_curriculum.py` to refresh figure references."
 
     own_figures = figures_for_section(figures, section.relative_path)
     if section.relative_path == "orientation.md":
-        own_figures = [
-            entry for entry in own_figures if not is_early_orientation_figure(entry)
-        ]
+        own_figures = [entry for entry in own_figures if not is_early_orientation_figure(entry)]
     reference_labels = [entry["label"] for entry in own_figures]
     for label in _fallback_figure_labels(section):
         if label not in reference_labels:
             reference_labels.append(label)
 
     nav = _section_navigation(section)
-    section_word = {
-        "chapter": "module",
-        "part": "unit",
-        "appendix": "appendix",
-        "front": "orientation",
-        "bibliography": "bibliography appendix",
-    }.get(section.kind, "section")
+    section_word = {"chapter": "module", "part": "unit", "appendix": "appendix", "front": "orientation", "bibliography": "bibliography appendix"}.get(section.kind, "section")
     # Join the figure references as a conjoined list ("Figure 1 and Figure 2",
     # "Figure 1, Figure 2, and Figure 3") instead of space-joined bare refs. Each
     # reference stays in its own [@fig:…] bracket so link-validation resolves it.
@@ -163,15 +117,7 @@ def _visual_synthesis(
         figure_group = f"{_refs[0]} and {_refs[1]}"
     else:
         figure_group = ", ".join(_refs[:-1]) + ", and " + _refs[-1]
-    definitions = [
-        figure_markdown(
-            entry,
-            project_root=project_root,
-            manuscript_output_dir=out_dir,
-            section_relative_path=render_relative_path or section.relative_path,
-        )
-        for entry in own_figures
-    ]
+    definitions = [figure_markdown(entry, project_root=project_root, manuscript_output_dir=out_dir, section_relative_path=render_relative_path or section.relative_path) for entry in own_figures]
     figure_sentence = (
         f"The {section_word} uses {figure_group} to map its evidence flow, safety boundaries, review artifacts, and refresh cues."
         if figure_group
@@ -185,6 +131,7 @@ def _visual_synthesis(
         parts.append(definition_block)
     _ = manifest
     return "\n\n".join(parts)
+
 
 def _fallback_figure_labels(section: ManuscriptSection) -> list[str]:
     if section.kind == "references":
@@ -200,6 +147,7 @@ def _fallback_figure_labels(section: ManuscriptSection) -> list[str]:
         return ["fig:ageint-safety-boundary-loop"]
     return []
 
+
 def _section_navigation(section: ManuscriptSection) -> str:
     refs: list[str] = []
     if section.relative_path != "orientation.md":
@@ -214,10 +162,8 @@ def _section_navigation(section: ManuscriptSection) -> str:
         return ""
     return "Navigation links: " + section_ref_list(refs) + "."
 
-def build_manuscript_manifest(
-    curriculum: Curriculum,
-    figures: list[dict[str, Any]] | None = None,
-) -> ManuscriptManifest:
+
+def build_manuscript_manifest(curriculum: Curriculum, figures: list[dict[str, Any]] | None = None) -> ManuscriptManifest:
     """Build ordered semantic output sections from a parsed curriculum."""
     registry = _SlugRegistry()
     sections: list[ManuscriptSection] = []
@@ -226,28 +172,10 @@ def build_manuscript_manifest(
     chapter_files: dict[int, str] = {}
     order = 0
 
-    sections.append(
-        ManuscriptSection(
-            "front",
-            "Abstract: Synthetic Analytic Tradecraft contract",
-            "abstract.md",
-            "abstract.md",
-            {},
-            order,
-            section_label="sec:abstract",
-        )
-    )
+    sections.append(ManuscriptSection("front", "Abstract: Synthetic Analytic Tradecraft contract", "abstract.md", "abstract.md", {}, order, section_label="sec:abstract"))
     order += 1
     sections.append(
-        ManuscriptSection(
-            "front",
-            "Curriculum Orientation: reader paths, evidence maps, and safety gates",
-            "orientation.md",
-            "orientation.md",
-            {},
-            order,
-            section_label="sec:curriculum_orientation",
-        )
+        ManuscriptSection("front", "Curriculum Orientation: reader paths, evidence maps, and safety gates", "orientation.md", "orientation.md", {}, order, section_label="sec:curriculum_orientation")
     )
     order += 1
     sections.append(
@@ -273,11 +201,7 @@ def build_manuscript_manifest(
         part_slug = registry.unique("parts", part["title"])
         part_dir = f"parts/{part_slug}"
         chapter_names: list[str] = []
-        unit: dict[str, Any] = {
-            "id": part_slug,
-            "directory": part_dir,
-            "chapters": chapter_names,
-        }
+        unit: dict[str, Any] = {"id": part_slug, "directory": part_dir, "chapters": chapter_names}
         units.append(unit)
         part_label = _label("part", part_slug)
         part_section = ManuscriptSection(
@@ -285,12 +209,7 @@ def build_manuscript_manifest(
             part["title"],
             f"{part_dir}/unit_intro.md",
             "part.md",
-            {
-                "SECTION_TITLE": part["title"],
-                "SECTION_LABEL": part_label,
-                "SECTION_SUMMARY": _part_summary(part),
-                "SECTION_ROWS": "",
-            },
+            {"SECTION_TITLE": part["title"], "SECTION_LABEL": part_label, "SECTION_SUMMARY": _part_summary(part), "SECTION_ROWS": ""},
             order,
             section_label=part_label,
         )
@@ -363,12 +282,7 @@ def build_manuscript_manifest(
                 appendix["title"],
                 f"appendices/{file_name}",
                 "appendix.md",
-                {
-                    "SECTION_TITLE": appendix["title"],
-                    "SECTION_LABEL": appendix_label,
-                    "SECTION_BODY": _appendix_body(appendix),
-                    "SECTION_ROWS": appendix_rows(appendix),
-                },
+                {"SECTION_TITLE": appendix["title"], "SECTION_LABEL": appendix_label, "SECTION_BODY": _appendix_body(appendix), "SECTION_ROWS": appendix_rows(appendix)},
                 order,
                 section_label=appendix_label,
                 appendix_letter=appendix["letter"],
@@ -389,18 +303,10 @@ def build_manuscript_manifest(
         )
     )
     order += 1
-    sections.append(
-        ManuscriptSection(
-            "references",
-            "References",
-            "references.md",
-            "references.md",
-            {},
-            order,
-        )
-    )
+    sections.append(ManuscriptSection("references", "References", "references.md", "references.md", {}, order))
     sections = _apply_section_metadata(sections, figures or [])
     return ManuscriptManifest(sections, units, appendix_files)
+
 
 def _read_template(templates_dir: Path, template_name: str) -> str:
     template_path = templates_dir / template_name

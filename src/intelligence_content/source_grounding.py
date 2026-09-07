@@ -206,11 +206,7 @@ def safe_source_title(title: str) -> str:
     return cleaned
 
 
-def sources_for_numbers(
-    numbers: Iterable[int],
-    *,
-    limit: int | None = None,
-) -> tuple[SourceRecord, ...]:
+def sources_for_numbers(numbers: Iterable[int], *, limit: int | None = None) -> tuple[SourceRecord, ...]:
     """Return resolved, deduplicated source records for citation numbers."""
     records: list[SourceRecord] = []
     seen: set[int] = set()
@@ -227,11 +223,7 @@ def sources_for_numbers(
     return tuple(records)
 
 
-def cited_sources(
-    entry: TopicEntry,
-    *,
-    limit: int | None = None,
-) -> tuple[SourceRecord, ...]:
+def cited_sources(entry: TopicEntry, *, limit: int | None = None) -> tuple[SourceRecord, ...]:
     """Return the resolved, deduplicated source records cited by ``entry``."""
     return sources_for_numbers(entry.citation_numbers, limit=limit)
 
@@ -258,9 +250,7 @@ def source_support_sentence(display_title: str, records: tuple[SourceRecord, ...
     """
     spine = _join_clause([record.citation for record in records])
     seed = f"{display_title}|{len(records)}"
-    lead_note = prose.lead_clause(
-        prose.note_carrier(record.note for record in records), seed=seed + "|lead"
-    )
+    lead_note = prose.lead_clause(prose.note_carrier(record.note for record in records), seed=seed + "|lead")
     intro = prose.NOTE_INTROS[prose.stable_index(seed + "|note", len(prose.NOTE_INTROS))]
     detail = f" {intro} {lead_note}" if lead_note else ""
     plural = "them" if len(records) > 1 else "it"
@@ -295,10 +285,7 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
     from the original truncated notes. Operational titles and notes are neutralised
     so the table stays evidence-bounded; table rows skip section-title sanitisation.
     """
-    rows = [
-        "| Source | Cited work | What it contributes | Status |",
-        "|---|---|---|---|",
-    ]
+    rows = ["| Source | Cited work | What it contributes | Status |", "|---|---|---|---|"]
     for record in records:
         title = safe_source_title(record.title)
         if title and record.url:

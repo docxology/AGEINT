@@ -29,7 +29,7 @@ Research lane: **Cyber Threat Intelligence, Incident Response, and Supply-Chain 
 | [@official_mitre_attack_enterprise] | Threat-informed enterprise matrix for defensive TTP mapping, coverage analysis, detection engineering, and analytic normalization. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_cisa_kev_catalog] | Official catalog for prioritizing known exploited vulnerabilities as defensive triage inputs, not as exploitation instructions. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_nist_sp_800_61r3] | Official incident-response profile for preparation, detection, response, recovery, and continuous improvement under CSF 2.0. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@official_oecd_ai_incident_reporting_framework] | OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-05-24; role: curriculum_anchor. |
+| [@official_oecd_ai_incident_reporting_framework] | OECD policy paper proposing a common AI incident reporting framework for jurisdictions and sectors, including criteria for impact and risk characterization. Checked as of 2026-08-30; role: curriculum_anchor. |
 
 
 #### Supply Chain Intelligence Attacks evidence standard and citation floor: source families and discovery limits

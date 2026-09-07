@@ -82,9 +82,7 @@ def test_curriculum_accessors_expose_stable_surfaces() -> None:
     assert curriculum.reference(140)["url"].startswith("https://www.oecd.org")
     assert curriculum.reference("ageint232")["title"] == "European AI Office"
     assert curriculum.reference("ageint285")["title"] == "NIST AI Resource Center"
-    assert curriculum.reference("ageint296")["title"] == (
-        "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile"
-    )
+    assert curriculum.reference("ageint296")["title"] == ("Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile")
     assert "ageint140" in curriculum.citation_keys()
 
 

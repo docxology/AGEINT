@@ -10,11 +10,7 @@ from typing import Any
 from build_clock import build_timestamp
 
 
-SOURCE_METADATA_BASELINE: dict[str, int] = {
-    "legacy_intelligence_blank_rows": 109,
-    "source_quality_blank_rows": 10,
-    "total_blank_rows_closed": 119,
-}
+SOURCE_METADATA_BASELINE: dict[str, int] = {"legacy_intelligence_blank_rows": 109, "source_quality_blank_rows": 10, "total_blank_rows_closed": 119}
 
 
 @dataclass(frozen=True)
@@ -148,44 +144,12 @@ def source_metadata_figure_rows(project_root: Path) -> tuple[tuple[str, tuple[st
     return (
         (
             "Intelligence anchors",
-            (
-                f"{summary['intelligence_anchor_count']} rows",
-                f"{baseline['legacy_intelligence_blank_rows']} legacy blanks closed",
-                f"{summary['blank_source_lane_count']} blank lanes",
-            ),
+            (f"{summary['intelligence_anchor_count']} rows", f"{baseline['legacy_intelligence_blank_rows']} legacy blanks closed", f"{summary['blank_source_lane_count']} blank lanes"),
         ),
-        (
-            "Source-quality anchors",
-            (
-                f"{summary['source_quality_anchor_count']} rows",
-                "source_quality_spine",
-                "source_quality_anchor",
-            ),
-        ),
-        (
-            "Metadata explicitness",
-            (
-                f"{summary['metadata_records']} records",
-                f"{summary['fallback_dependent_row_count']} fallback rows",
-                f"{summary['blank_source_tier_count']} blank tiers",
-            ),
-        ),
-        (
-            "Refresh cadence",
-            (
-                f"{len(summary['refresh_cadence_distribution'])} cadence classes",
-                "checked_as_of retained",
-                "refresh triggers preserved",
-            ),
-        ),
-        (
-            "Evidence manifest",
-            (
-                "source_metadata_ok",
-                "blank row fails",
-                "support semantics fail",
-            ),
-        ),
+        ("Source-quality anchors", (f"{summary['source_quality_anchor_count']} rows", "source_quality_spine", "source_quality_anchor")),
+        ("Metadata explicitness", (f"{summary['metadata_records']} records", f"{summary['fallback_dependent_row_count']} fallback rows", f"{summary['blank_source_tier_count']} blank tiers")),
+        ("Refresh cadence", (f"{len(summary['refresh_cadence_distribution'])} cadence classes", "checked_as_of retained", "refresh triggers preserved")),
+        ("Evidence manifest", ("source_metadata_ok", "blank row fails", "support semantics fail")),
     )
 
 
@@ -234,11 +198,7 @@ def _summary(rows: list[SourceMetadataRow]) -> dict[str, Any]:
     blank_lane = [row for row in rows if "blank_source_lane" in row.flags]
     blank_tier = [row for row in rows if "blank_source_tier" in row.flags]
     fallback_rows = sorted({(row.path, row.line, row.key) for row in (*blank_lane, *blank_tier)})
-    source_quality_issues = [
-        row
-        for row in rows
-        if "source_quality_lane_mismatch" in row.flags or "source_quality_tier_mismatch" in row.flags
-    ]
+    source_quality_issues = [row for row in rows if "source_quality_lane_mismatch" in row.flags or "source_quality_tier_mismatch" in row.flags]
     return {
         "metadata_records": len(rows),
         "intelligence_anchor_count": sum(1 for row in rows if row.row_class == "intelligence"),

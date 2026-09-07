@@ -56,8 +56,4 @@ def text_is_operational(text: str) -> bool:
     return bool(DIRECT_TASK_MOTIF_RE.search(text))
 
 
-__all__ = [
-    "BLOCKED_OPERATIONAL_PHRASES",
-    "DIRECT_TASK_MOTIF_RE",
-    "text_is_operational",
-]
+__all__ = ["BLOCKED_OPERATIONAL_PHRASES", "DIRECT_TASK_MOTIF_RE", "text_is_operational"]

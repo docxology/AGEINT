@@ -23,17 +23,8 @@ from artifact_evidence import (  # noqa: E402
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--format",
-        choices=("markdown", "json"),
-        default="markdown",
-        help="Output format.",
-    )
-    parser.add_argument(
-        "--write",
-        action="store_true",
-        help="Write output/reports/current_artifact_evidence.{json,md}.",
-    )
+    parser.add_argument("--format", choices=("markdown", "json"), default="markdown", help="Output format.")
+    parser.add_argument("--write", action="store_true", help="Write output/reports/current_artifact_evidence.{json,md}.")
     return parser
 
 
@@ -51,10 +42,7 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print(render_artifact_evidence_markdown(evidence), end="")
     if args.write and json_path and md_path:
-        print(
-            f"Wrote {json_path.relative_to(PROJECT_ROOT)} and {md_path.relative_to(PROJECT_ROOT)}",
-            file=sys.stderr,
-        )
+        print(f"Wrote {json_path.relative_to(PROJECT_ROOT)} and {md_path.relative_to(PROJECT_ROOT)}", file=sys.stderr)
     return 0 if evidence.ok else 1
 
 

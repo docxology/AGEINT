@@ -293,7 +293,7 @@ GitHub Actions workflow that was the natural next piece.
   one hour after `source-freshness.yml`), and on push to any source-owned
   path (`data/**` — not an enumerated allowlist, since `data/` holds 11+
   source YAML files that would drift a hand-picked list — plus
-  `manuscript/templates/**`, `src/manuscript_manifest/**`,
+  `docs/manuscript/templates/**`, `src/manuscript_manifest/**`,
   `src/intelligence_content/**`, `src/figures/**`, the two build scripts, and
   `domain_profile.yaml`). Installs `mmdc` + the exact pinned
   `chrome-headless-shell@131.0.6778.204` build that
@@ -319,7 +319,7 @@ GitHub Actions workflow that was the natural next piece.
   hour old, 14:46 CPU-minutes accumulated against ~0% real progress under
   contention) — it was competing with this pass's own verification runs for
   no remaining purpose.
-- Cleaned up all incidental `output/`/`manuscript/` diffs from this session's
+- Cleaned up all incidental `output/`/`docs/manuscript/` diffs from this session's
   local verification (the strict rebuild + the `--write` validation loop) at
   the end, same discipline as the prior pass: nothing beyond `.github/` and
   this `ISA.md` entry is left dirty in the working tree.
@@ -385,7 +385,7 @@ A second review workflow (5 surfaces: code modularization, manuscript modulariza
 signposted, then refine the early/orientation sections — reader-facing opening
 prose, deep-link signposting, and figure captions/placement — without weakening
 any verifier gate, deleting any `{{TOKEN}}`, or adding operational content. Source
-edits land in `manuscript/templates/*` and `src/figures/*`; output is rebuilt and
+edits land in `docs/manuscript/templates/*` and `src/figures/*`; output is rebuilt and
 re-audited.
 
 **Criteria (this scope):**
@@ -559,7 +559,7 @@ curriculum order, source identities, or publication status:
 
 - Added deterministic non-numbered cover art at
   `output/figures/cover/ageint-cover-synthesis.png` with a JSON sidecar and
-  wired it through `book.cover.image` in `manuscript/config.yaml`.
+  wired it through `book.cover.image` in `docs/manuscript/config.yaml`.
 - Kept the cover out of `output/figures/figure_registry.json`, so the registry
   remains 169 figures and the cover does not become a numbered manuscript
   figure.
@@ -970,5 +970,5 @@ visual-semantics artifacts on 2026-06-14:
 | AGEINT-TEMPLATE-MANIFEST-CONTRACT-2026-06-14 | done | Clean up the template artifact-manifest contract advisory. | Parent-template lifecycle-slug resolution now declares `projects/working/AGEINT/...` and `output/working/AGEINT/...` for symlinked/private projects; parent regression tests cover slash-qualified project IDs; current AGEINT `artifact_manifest.json` reports `issues: []`; `ageint-26` is marked done. |
 | AGEINT-V1-PREFLIGHT-2026-06-14 | done | Prepare the local v1 release preflight bundle without publishing. | `publication_readiness.{json,md}` reports `ok: true`; artifact evidence, source refresh, agency source coverage, artifact manifest, parent tracked-project confidentiality guard, release-surface scan, source/license posture, and task prerequisites all pass; current evidence records 330 generated Markdown files, 15,606 generated citation occurrences, 172 registered figures plus non-numbered cover art, a fresh 1,658-page 30.89 MB PDF, 4,704 URI links, 0 file actions, and 0 bad PDF link targets; no release/push/PR/archive/promotion/publication action was taken; `ageint-27` is marked done. |
 | AGEINT-US-IC-SOURCE-PACK-2026-06-14 | done | Add 56 official public US IC anchors and fail-closed agency/source-pack coverage. | `data/research_anchors/intelligence-anchors-249-304.jsonl` raises curated intelligence anchors to 304; `source_agency` and `source_pack` metadata are required for the new tranche; `data/agency_source_packs.yaml` routes packs into profiles; `agency_source_coverage.{json,md}` reports 56 new official US IC anchors, 0 missing metadata rows, 0 unrouted rows, 0 duplicate/collision rows, and CIA/DIA/ODNI-or-Intelligence.gov minimums satisfied; `agency_source_coverage_ok` is wired into artifact evidence and publication readiness; final validation passed 347 project tests with 7 expected skips and 90.43% coverage, template markdown/prerender/PDF validators reported 0 issues, and the AGEINT PDF audit reported 0 bad link targets; `ageint-32` is marked done. |
-| AGEINT-REFERENCE-QUALITY-2026-06-14 | done | Add fail-closed reference-quality, section-title, and citation-context hardening. | `reference_quality.{json,md}` reports `ok: true` across 332 scanned manuscript/PDF-bound files with 0 unresolved/rendered-reference issues, 0 Markdown-file links, 0 raw literal citation-key cells, 0 generic heading issues, 0 lesson cross-link issues, and 0 citation-context issues; `reference_quality_ok` is true in artifact evidence and publication readiness; the rebuilt artifact has 330 generated Markdown files, 15,606 generated citation occurrences, 172 figures, a fresh 1,658-page 30.91 MB PDF, 4,704 URI links, 0 file actions, 0 bad PDF link targets, 0 parent markdown/prerender/PDF validator issues, and final full project tests passed with 359 tests and 91.36% coverage. |
+| AGEINT-REFERENCE-QUALITY-2026-06-14 | done | Add fail-closed reference-quality, section-title, and citation-context hardening. | `reference_quality.{json,md}` reports `ok: true` across 332 scanned docs/manuscript/PDF-bound files with 0 unresolved/rendered-reference issues, 0 Markdown-file links, 0 raw literal citation-key cells, 0 generic heading issues, 0 lesson cross-link issues, and 0 citation-context issues; `reference_quality_ok` is true in artifact evidence and publication readiness; the rebuilt artifact has 330 generated Markdown files, 15,606 generated citation occurrences, 172 figures, a fresh 1,658-page 30.91 MB PDF, 4,704 URI links, 0 file actions, 0 bad PDF link targets, 0 parent markdown/prerender/PDF validator issues, and final full project tests passed with 359 tests and 91.36% coverage. |
 | AGEINT-M1 | done | Release/publish milestone. | PUBLISHED 2026-06-17 with Daniel's explicit approval. Repo public: <https://github.com/docxology/AGEINT> (main @ b8db5a6). GitHub Release v0.1.0 with the DOI-stamped PDF asset: <https://github.com/docxology/AGEINT/releases/tag/v0.1.0>. Zenodo published (state=done): concept DOI 10.5281/zenodo.20732274, version DOI 10.5281/zenodo.20732275, record <https://zenodo.org/records/20732275>, PDF uploaded, related-identifier → the GitHub repo. Cross-referenced both ways (README/PDF/release notes → DOI; Zenodo → repo). |

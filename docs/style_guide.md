@@ -13,7 +13,7 @@ Prose and naming conventions for generated curriculum content.
 | Surface | Rule |
 | --- | --- |
 | `data/curriculum/` | Authoritative structure and titles |
-| `manuscript/templates/` | Neutral tokens only (`{{SECTION_TITLE}}`, etc.) |
+| `docs/manuscript/templates/` | Neutral tokens only (`{{SECTION_TITLE}}`, etc.) |
 | `src/intelligence_content/` | Verified anchors, profiles, safety transforms |
 | `output/manuscript/` | **Never hand-edit** |
 

@@ -6,32 +6,17 @@ import json
 import re
 from pathlib import Path
 
-from manuscript_quality.inventory_helpers import (
-    chapter_title_from_text,
-    chapter_text,
-    generated_chapter_files,
-    manuscript_dir,
-    required_module_sections_for,
-    section_text,
-)
+from manuscript_quality.inventory_helpers import chapter_title_from_text, chapter_text, generated_chapter_files, manuscript_dir, required_module_sections_for, section_text
 from manuscript_manifest._heading_titles import chapter_detail_titles
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
 
 COLLAPSED_COGSEC_BASE = "Cognitive-security resilience lesson using sample materials and transparent labels"
-GOVERNANCE_BOUNDED_GENERIC = (
-    "Governance-bounded intelligence topic review using instructor-provided sample records"
-)
+GOVERNANCE_BOUNDED_GENERIC = "Governance-bounded intelligence topic review using instructor-provided sample records"
 DIRECT_ANCHOR_RE = re.compile(r"\[@(?:official|scholarly)_")
 
-MIN_SECTION_CHARS = {
-    "Textbook primer": 120,
-    "Learning outcomes": 80,
-    "Core vocabulary": 40,
-    "Topic lessons": 200,
-    "Worked safe example": 80,
-}
+MIN_SECTION_CHARS = {"Textbook primer": 120, "Learning outcomes": 80, "Core vocabulary": 40, "Topic lessons": 200, "Worked safe example": 80}
 
 
 def _chapter_slug(path: Path) -> str:
@@ -137,11 +122,7 @@ def test_topic_lessons_include_educational_cross_links(built_output: Path) -> No
 
 def _minimum_chars(section: str, chapter_title: str) -> int:
     details = chapter_detail_titles(chapter_title)
-    dynamic_minimums = {
-        details["architecture"]: 60,
-        details["evidence"]: 40,
-        details["assessment"]: 40,
-    }
+    dynamic_minimums = {details["architecture"]: 60, details["evidence"]: 40, details["assessment"]: 40}
     return dynamic_minimums.get(section, MIN_SECTION_CHARS.get(section, 20))
 
 
@@ -159,12 +140,7 @@ def test_topic_lessons_include_source_support_lines(built_output: Path) -> None:
 
 def test_claim_bearing_fragments_include_profile_triangulation_anchors(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
-    fragment_names = (
-        "01-practice-studio",
-        "02-evidence-contract",
-        "03-governance-boundary",
-        "04-assessment-route",
-    )
+    fragment_names = ("01-practice-studio", "02-evidence-contract", "03-governance-boundary", "04-assessment-route")
     failures: list[str] = []
     for path in generated_chapter_files(output_manuscript):
         for fragment_name in fragment_names:

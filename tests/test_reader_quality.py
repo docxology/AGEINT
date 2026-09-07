@@ -5,22 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 import re
 
-from manuscript_quality.inventory_helpers import (
-    chapter_text,
-    generated_chapter_files,
-    generated_output_files,
-    manuscript_dir,
-    section_text,
-)
+from manuscript_quality.inventory_helpers import chapter_text, generated_chapter_files, generated_output_files, manuscript_dir, section_text
 
-LESSON_FIELD_LABELS = (
-    "Concept",
-    "Why it matters",
-    "Evidence to inspect",
-    "Student artifact",
-    "Misconception check",
-    "Transfer task",
-)
+LESSON_FIELD_LABELS = ("Concept", "Why it matters", "Evidence to inspect", "Student artifact", "Misconception check", "Transfer task")
 RENDERED_FORMULA_PHRASES = (
     "The tool found the answer, so the claim is ready",
     "what the example proves, what it does not prove",
@@ -62,25 +49,7 @@ RENDERED_FORMULA_PHRASES = (
     "Use these links to read this module in sequence",
 )
 PDF_UNSUPPORTED_SOURCE_GLYPHS = ("🛰", "⃣")
-TITLE_KEYWORD_STOPWORDS = {
-    "about",
-    "after",
-    "against",
-    "agent",
-    "agentic",
-    "analysis",
-    "and",
-    "from",
-    "into",
-    "module",
-    "source",
-    "that",
-    "the",
-    "their",
-    "through",
-    "using",
-    "with",
-}
+TITLE_KEYWORD_STOPWORDS = {"about", "after", "against", "agent", "agentic", "analysis", "and", "from", "into", "module", "source", "that", "the", "their", "through", "using", "with"}
 
 
 def _reader_paragraphs(text: str) -> list[str]:
@@ -120,11 +89,7 @@ def _reader_paragraphs(text: str) -> list[str]:
 
 
 def _title_keywords(title: str) -> set[str]:
-    words = {
-        word
-        for word in re.findall(r"[a-z0-9]+", title.lower())
-        if len(word) >= 4 and word not in TITLE_KEYWORD_STOPWORDS
-    }
+    words = {word for word in re.findall(r"[a-z0-9]+", title.lower()) if len(word) >= 4 and word not in TITLE_KEYWORD_STOPWORDS}
     return words or set(re.findall(r"[a-z0-9]+", title.lower()))
 
 
@@ -153,11 +118,7 @@ def test_generated_reader_prose_does_not_repeat_template_paragraphs(built_output
         for paragraph in _reader_paragraphs(path.read_text(encoding="utf-8")):
             paragraph_locations.setdefault(paragraph, []).append(rel)
 
-    repeated = {
-        paragraph: locations
-        for paragraph, locations in paragraph_locations.items()
-        if len(set(locations)) > 6
-    }
+    repeated = {paragraph: locations for paragraph, locations in paragraph_locations.items() if len(set(locations)) > 6}
 
     assert repeated == {}
 
@@ -177,9 +138,7 @@ def test_topic_lessons_are_topic_specific_not_template_repeated(built_output: Pa
                 marker = f"**{field}.**"
                 assert marker in block
                 field_text = block.split(marker, 1)[1].split("\n", 1)[0]
-                assert _anchors_lesson_title_or_sanitized_module(field_text, title), (
-                    f"{path}: {title}: {field}"
-                )
+                assert _anchors_lesson_title_or_sanitized_module(field_text, title), f"{path}: {title}: {field}"
             concept = block.split("**Concept.**", 1)[1].split("\n", 1)[0]
             bold_anchors = " ".join(re.findall(r"\*\*(.+?)\*\*", concept))
             assert bold_anchors, f"{path}: {title}"
@@ -218,9 +177,7 @@ def test_generated_manuscript_avoids_pdf_unsupported_source_glyphs(built_output:
 
 def test_orientation_gives_reader_use_paths(built_output: Path) -> None:
     orientation_dir = manuscript_dir(built_output) / "orientation"
-    text = "\n\n".join(
-        path.read_text(encoding="utf-8") for path in sorted(orientation_dir.glob("*.md"))
-    )
+    text = "\n\n".join(path.read_text(encoding="utf-8") for path in sorted(orientation_dir.glob("*.md")))
 
     assert "## How to use this atlas" in text
     assert "## Reader paths" in text
@@ -235,9 +192,7 @@ def test_orientation_gives_reader_use_paths(built_output: Path) -> None:
 
 def test_orientation_front_loads_deep_link_signposts(built_output: Path) -> None:
     orientation_dir = manuscript_dir(built_output) / "orientation"
-    text = "\n\n".join(
-        path.read_text(encoding="utf-8") for path in sorted(orientation_dir.glob("*.md"))
-    )
+    text = "\n\n".join(path.read_text(encoding="utf-8") for path in sorted(orientation_dir.glob("*.md")))
     normalized = re.sub(r"\s+", " ", text)
 
     assert "Start here" in text
@@ -310,14 +265,7 @@ def test_grounding_closing_and_artifact_sentences_are_not_stamped(built_output: 
                 counts[f"artifact::{match.strip()}"] += 1
 
     assert counts, "expected grounding sentences in generated topic lessons"
-    over = {
-        sentence: total
-        for sentence, total in counts.items()
-        if total > _MAX_GROUNDING_SENTENCE_REPEAT
-    }
-    assert over == {}, (
-        "grounding sentence repeated verbatim past the de-boilerplating cap: "
-        + "; ".join(f"{total}x {sentence[:90]!r}" for sentence, total in sorted(
-            over.items(), key=lambda kv: kv[1], reverse=True
-        )[:5])
+    over = {sentence: total for sentence, total in counts.items() if total > _MAX_GROUNDING_SENTENCE_REPEAT}
+    assert over == {}, "grounding sentence repeated verbatim past the de-boilerplating cap: " + "; ".join(
+        f"{total}x {sentence[:90]!r}" for sentence, total in sorted(over.items(), key=lambda kv: kv[1], reverse=True)[:5]
     )

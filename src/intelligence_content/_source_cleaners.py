@@ -46,17 +46,103 @@ SITE_SUFFIXES = frozenset(
 # of a truncated note.
 TRAILING_STOPWORDS = frozenset(
     {
-        "and", "or", "the", "a", "an", "of", "in", "on", "at", "to", "for", "with",
-        "from", "by", "as", "is", "are", "was", "were", "be", "been", "being",
-        "that", "which", "this", "these", "those", "into", "onto", "upon", "about",
-        "above", "below", "between", "among", "through", "during", "before",
-        "after", "since", "until", "while", "against", "without", "within",
-        "along", "across", "behind", "beyond", "near", "toward", "towards",
-        "under", "over", "such", "than", "so", "if", "not", "no", "nor", "but",
-        "yet", "both", "either", "neither", "each", "every", "all", "any",
-        "some", "few", "more", "most", "other", "another", "its", "their", "his",
-        "her", "my", "your", "our", "whose", "whom", "who", "where", "when",
-        "why", "how", "also", "very", "too", "just", "then", "there", "here",
+        "and",
+        "or",
+        "the",
+        "a",
+        "an",
+        "of",
+        "in",
+        "on",
+        "at",
+        "to",
+        "for",
+        "with",
+        "from",
+        "by",
+        "as",
+        "is",
+        "are",
+        "was",
+        "were",
+        "be",
+        "been",
+        "being",
+        "that",
+        "which",
+        "this",
+        "these",
+        "those",
+        "into",
+        "onto",
+        "upon",
+        "about",
+        "above",
+        "below",
+        "between",
+        "among",
+        "through",
+        "during",
+        "before",
+        "after",
+        "since",
+        "until",
+        "while",
+        "against",
+        "without",
+        "within",
+        "along",
+        "across",
+        "behind",
+        "beyond",
+        "near",
+        "toward",
+        "towards",
+        "under",
+        "over",
+        "such",
+        "than",
+        "so",
+        "if",
+        "not",
+        "no",
+        "nor",
+        "but",
+        "yet",
+        "both",
+        "either",
+        "neither",
+        "each",
+        "every",
+        "all",
+        "any",
+        "some",
+        "few",
+        "more",
+        "most",
+        "other",
+        "another",
+        "its",
+        "their",
+        "his",
+        "her",
+        "my",
+        "your",
+        "our",
+        "whose",
+        "whom",
+        "who",
+        "where",
+        "when",
+        "why",
+        "how",
+        "also",
+        "very",
+        "too",
+        "just",
+        "then",
+        "there",
+        "here",
     }
 )
 
@@ -73,29 +159,45 @@ FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source g
 UNSUPPORTED_GLYPH_RE = re.compile("[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]")
 
 # Words that introduce a subordinate, prepositional, or relative clause.
-CLAUSE_INTRODUCERS = frozenset(
-    {
-        "as", "that", "which", "who", "whose", "where", "when", "while", "because",
-        "since", "although", "though", "during", "via",
-    }
-)
+CLAUSE_INTRODUCERS = frozenset({"as", "that", "which", "who", "whose", "where", "when", "while", "because", "since", "although", "though", "during", "via"})
 
 # Coordinating/adjective-joining words that, when trailing, signal an unfinished
 # noun phrase.
 TRAILING_MODIFIER_TAIL = frozenset(
     {
-        "and", "or", "but", "presents", "presented", "including", "such", "critical",
-        "committed", "human", "conceptual", "various", "several", "key", "core",
-        "potential", "specific", "certain", "particular", "significant", "major",
-        "common", "emerging", "strategic", "modern",
+        "and",
+        "or",
+        "but",
+        "presents",
+        "presented",
+        "including",
+        "such",
+        "critical",
+        "committed",
+        "human",
+        "conceptual",
+        "various",
+        "several",
+        "key",
+        "core",
+        "potential",
+        "specific",
+        "certain",
+        "particular",
+        "significant",
+        "major",
+        "common",
+        "emerging",
+        "strategic",
+        "modern",
     }
 )
 
 
 def rewrite_hard_coded_refs(text: str) -> str:
     """Replace hard-coded numbered references so crossref tests pass."""
-    text = re.sub(r'\bSection\s+508\b', 'the 508 accessibility standard', text)
-    text = re.sub(r'\bSection\s+255\b', 'the 255 guidelines', text)
+    text = re.sub(r"\bSection\s+508\b", "the 508 accessibility standard", text)
+    text = re.sub(r"\bSection\s+255\b", "the 255 guidelines", text)
     text = HARD_CODED_REF_RE.sub(lambda m: m.group(0).split()[0], text)
     return text
 

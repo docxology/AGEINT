@@ -6,27 +6,10 @@ import re
 from typing import Any, Final
 
 from curriculum import Curriculum
-from citation_workflow import (
-    source_citation_cell,
-    source_citation_spine,
-)
-from markdown_refs import (
-    citation_ref,
-    crossref_slug,
-    figure_ref,
-    part_module_map_figure_label,
-    section_ref,
-)
-from intelligence_content import (
-    INTELLIGENCE_RESEARCH_ANCHORS,
-    safe_curriculum_treatment,
-    safe_pattern_rows,
-    safe_pattern_treatment,
-)
-from intelligence_content.source_grounding import (
-    safe_source_note as _sg_safe_note,
-    safe_source_title as _sg_safe_title,
-)
+from citation_workflow import source_citation_cell, source_citation_spine
+from markdown_refs import citation_ref, crossref_slug, figure_ref, part_module_map_figure_label, section_ref
+from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS, safe_curriculum_treatment, safe_pattern_rows, safe_pattern_treatment
+from intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title
 
 
 SOURCE_QUALITY_ANCHORS: Final[list[dict[str, str]]] = [
@@ -186,11 +169,7 @@ def _append_unique(values: list[Any], value: Any) -> None:
 def section_rows(sections: list[dict[str, Any]], *, safe_patterns: bool = False) -> str:
     """Render source-guide subsection rows for a generated chapter."""
     if not sections:
-        return (
-            "| Curriculum treatment | Source loci | Citation spine |\n"
-            "|---|---|---|\n"
-            "| Module-level synthesis | Module source spine | - |"
-        )
+        return "| Curriculum treatment | Source loci | Citation spine |\n|---|---|---|\n| Module-level synthesis | Module source spine | - |"
     grouped: dict[str, dict[str, list[Any]]] = {}
     active_pattern_number: int | None = None
     for section in sections:
@@ -215,17 +194,12 @@ def section_rows(sections: list[dict[str, Any]], *, safe_patterns: bool = False)
 
 def part_rows(curriculum: Curriculum) -> str:
     """Render the top-level curriculum map."""
-    rows = [
-        "| Curriculum area | Part intro | Modules | Unit map | Runtime source |",
-        "|:--------------------------------------|:----------|--------:|:---------|:----------------|",
-    ]
+    rows = ["| Curriculum area | Part intro | Modules | Unit map | Runtime source |", "|:--------------------------------------|:----------|--------:|:---------|:----------------|"]
     for part in curriculum.parts:
         title = _curriculum_area_title(str(part["title"]))
         part_intro = section_ref(f"sec:part-{crossref_slug(title)}")
         unit_map = figure_ref(part_module_map_figure_label(part))
-        rows.append(
-            f"| {title} | {part_intro} | {len(part['chapters'])} | {unit_map} | parsed source guide |"
-        )
+        rows.append(f"| {title} | {part_intro} | {len(part['chapters'])} | {unit_map} | parsed source guide |")
     return "\n".join(rows)
 
 
@@ -262,21 +236,11 @@ def appendix_rows(appendix: dict[str, Any]) -> str:
         for citation in citations:
             _append_unique(bucket["citations"], citation)
 
-    rows = [
-        (
-            "| Safe curriculum treatment | Blocked source motif, audit-only | "
-            "Allowed fixture | Rejected action | Required artifact | Citation spine |"
-        ),
-        "|---|---|---|---|---|---|",
-    ]
+    rows = [("| Safe curriculum treatment | Blocked source motif, audit-only | Allowed fixture | Rejected action | Required artifact | Citation spine |"), "|---|---|---|---|---|---|"]
     for title, bucket in grouped.items():
         source_items = "; ".join(str(value) for value in bucket["source_items"])
         cite_text = _citation_cell([int(value) for value in bucket["citations"]])
-        rows.append(
-            f"| {title} | {source_items} | {_appendix_allowed_fixture(title)} | "
-            f"{_appendix_rejected_action(title)} | {_appendix_required_artifact(title)} | "
-            f"{cite_text} |"
-        )
+        rows.append(f"| {title} | {source_items} | {_appendix_allowed_fixture(title)} | {_appendix_rejected_action(title)} | {_appendix_required_artifact(title)} | {cite_text} |")
     return "\n".join(rows)
 
 
@@ -314,14 +278,7 @@ def _appendix_rejected_action(title: str) -> str:
     lower = title.lower()
     if "sandbox" in lower or "tool-isolation" in lower:
         return "external execution, credentialed access, network calls, or unmanaged tool use"
-    if (
-        "osint" in lower
-        or "geoint" in lower
-        or "geolocation" in lower
-        or "source aggregation" in lower
-        or "search-exposure" in lower
-        or "social-source" in lower
-    ):
+    if "osint" in lower or "geoint" in lower or "geolocation" in lower or "source aggregation" in lower or "search-exposure" in lower or "social-source" in lower:
         return "live collection expansion, tracking, private-data discovery, or targeting"
     if "humint" in lower or "identity" in lower or "source-protection" in lower:
         return "impersonation, contact activity, elicitation, handling, or source exposure"
@@ -338,14 +295,7 @@ def _appendix_required_artifact(title: str) -> str:
     lower = title.lower()
     if "sandbox" in lower or "tool-isolation" in lower:
         return "tool-isolation run card and denied-action evidence"
-    if (
-        "osint" in lower
-        or "geoint" in lower
-        or "geolocation" in lower
-        or "source aggregation" in lower
-        or "search-exposure" in lower
-        or "social-source" in lower
-    ):
+    if "osint" in lower or "geoint" in lower or "geolocation" in lower or "source aggregation" in lower or "search-exposure" in lower or "social-source" in lower:
         return "source-quality card and minimization note"
     if "humint" in lower or "identity" in lower or "source-protection" in lower:
         return "source-protection ethics memo and escalation path"
@@ -369,19 +319,12 @@ def _source_quality_references() -> list[dict[str, str]]:
 
 
 def _all_references(references: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    return [
-        *references,
-        *_source_quality_references(),
-        *(anchor.as_reference() for anchor in INTELLIGENCE_RESEARCH_ANCHORS),
-    ]
+    return [*references, *_source_quality_references(), *(anchor.as_reference() for anchor in INTELLIGENCE_RESEARCH_ANCHORS)]
 
 
 def bibliography_rows(references: list[dict[str, Any]]) -> str:
     """Render a bibliography atlas table."""
-    rows = [
-        "| Citation key | Title | Role | Lane | Tier | Checked | Refresh | Stakeholder | Assurance use | Rights dimension | Source note |",
-        "|---|---|---|---|---|---|---|---|---|---|---|",
-    ]
+    rows = ["| Citation key | Title | Role | Lane | Tier | Checked | Refresh | Stakeholder | Assurance use | Rights dimension | Source note |", "|---|---|---|---|---|---|---|---|---|---|---|"]
     for ref in _all_references(references):
         # Route note + title through the same cleaners as the .bib emission so the
         # atlas never shows a truncated fragment, [PDF] tag, or dangling title.
@@ -410,15 +353,7 @@ def bibliography_rows(references: list[dict[str, Any]]) -> str:
 def _clean_markdown_table_cell(value: object) -> str:
     """Keep generated bibliography tables plain-text and PDF-renderable."""
     text = re.sub(r"\s+", " ", str(value)).strip()
-    replacements = {
-        "🛰": "satellite",
-        "3️⃣": "3",
-        "\ufe0f": "",
-        "\u20e3": "",
-        "|": "/",
-    }
+    replacements = {"🛰": "satellite", "3️⃣": "3", "\ufe0f": "", "\u20e3": "", "|": "/"}
     for old, new in replacements.items():
         text = text.replace(old, new)
     return text
-
-

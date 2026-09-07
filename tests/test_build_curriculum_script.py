@@ -35,10 +35,7 @@ DATA = PROJECT_ROOT / "data" / "curriculum"
 # still surfaced 3 more tmp_path-based failures from this same file: all
 # call run_build() too, just non-destructively. Skip the whole class rather
 # than whack-a-mole discovering each one via another isolated run.
-requires_template_repo = pytest.mark.skipif(
-    template_resolver.resolve_template_repo(PROJECT_ROOT) is None,
-    reason="sibling docxology/template repo not resolvable in this checkout",
-)
+requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 REQUIRED_OUTPUT_DOC_DIRS = {
     Path("output"),
     Path("output/data"),
@@ -55,16 +52,23 @@ REQUIRED_OUTPUT_DOC_DIRS = {
 
 def _minimal_project(tmp_path: Path) -> Path:
     project = tmp_path / "AGEINT"
-    templates = project / "manuscript" / "templates"
+    templates = project / "docs" / "manuscript" / "templates"
     templates.mkdir(parents=True)
     data_dir = project / "data"
     data_dir.mkdir()
     shutil.copytree(DATA, data_dir / DATA.name)
-    (templates / "chapter.md").write_text(
-        "# {{SECTION_TITLE}}\n\n{{VISUAL_SYNTHESIS}}\n\nTEMPLATE SENTINEL\n\n{{SECTION_BODY}}\n",
+    (templates / "chapter.md").write_text("# {{SECTION_TITLE}}\n\n{{VISUAL_SYNTHESIS}}\n\nTEMPLATE SENTINEL\n\n{{SECTION_BODY}}\n", encoding="utf-8")
+    _write_minimal_source_config(project)
+    return project
+
+
+def _write_minimal_source_config(project: Path) -> None:
+    config = project / "docs" / "manuscript" / "config.yaml"
+    config.parent.mkdir(parents=True, exist_ok=True)
+    config.write_text(
+        "paper:\n  title: \"Fixture project\"\nbook:\n  title: \"Fixture project\"\n  license: \"CC BY 4.0\"\n  code_license: \"Apache-2.0\"\n",
         encoding="utf-8",
     )
-    return project
 
 
 def _force_mermaid_placeholders(monkeypatch) -> None:
@@ -75,13 +79,9 @@ def _force_mermaid_placeholders(monkeypatch) -> None:
 def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkeypatch) -> None:
     _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
-    template_file = project / "manuscript" / "templates" / "chapter.md"
+    template_file = project / "docs" / "manuscript" / "templates" / "chapter.md"
 
-    result = run_build(
-        project,
-        regenerate_source_template_library=False,
-        allow_placeholder_figures=True,
-    )
+    result = run_build(project, regenerate_source_template_library=False, allow_placeholder_figures=True)
 
     assert result.written_source_templates == 0
     assert "TEMPLATE SENTINEL" in template_file.read_text(encoding="utf-8")
@@ -91,50 +91,25 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     assert (project / "output" / "data" / "curriculum_outline.json").is_file()
     assert (project / "output" / "data" / "curriculum" / "metadata.json").is_file()
     assert (project / "output" / "data" / "manuscript_variables.json").is_file()
-    assert (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "00-overview.md"
-    ).is_file()
-    foundations = (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "01-practice-studio.md"
-    ).read_text(encoding="utf-8")
+    assert (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").is_file()
+    foundations = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
     assert "#### Lesson 1:" in foundations
-    worked = (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "01-practice-studio.md"
-    ).read_text(encoding="utf-8")
+    worked = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
     assert "**Filled artifact.**" in worked
-    assert (
-        "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer"
-        in worked
-    )
-    assert "uses [@fig:" in (
-        project
-        / "output"
-        / "manuscript"
-        / "parts"
-        / "ageint-agentic-intelligence"
-        / "foundations-of-ageint"
-        / "00-overview.md"
-    ).read_text(encoding="utf-8")
+    assert "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer" in worked
+    assert "uses [@fig:" in (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").read_text(encoding="utf-8")
     assert "Generated section context" not in foundations
 
+
+@requires_template_repo
+def test_missing_source_config_fails_the_build(tmp_path: Path, monkeypatch) -> None:
+    """A missing docs/manuscript/config.yaml must fail loudly, not silently drop book/paper metadata."""
+    _force_mermaid_placeholders(monkeypatch)
+    project = _minimal_project(tmp_path)
+    (project / "docs" / "manuscript" / "config.yaml").unlink()
+
+    with pytest.raises(FileNotFoundError, match="docs/manuscript/config.yaml"):
+        run_build(project, allow_placeholder_figures=True)
 
 @requires_template_repo
 def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None:
@@ -162,13 +137,9 @@ def test_build_freshness_uses_registered_stage_contracts(tmp_path: Path, monkeyp
 def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, monkeypatch) -> None:
     _force_mermaid_placeholders(monkeypatch)
     project = _minimal_project(tmp_path)
-    template_file = project / "manuscript" / "templates" / "chapter.md"
+    template_file = project / "docs" / "manuscript" / "templates" / "chapter.md"
 
-    result = run_build(
-        project,
-        regenerate_source_template_library=True,
-        allow_placeholder_figures=True,
-    )
+    result = run_build(project, regenerate_source_template_library=True, allow_placeholder_figures=True)
 
     assert result.written_source_templates == 8
     rewritten = template_file.read_text(encoding="utf-8")

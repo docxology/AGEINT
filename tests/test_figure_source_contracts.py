@@ -8,12 +8,7 @@ from pathlib import Path
 
 from curriculum import load_curriculum
 from figures import FigureKind, build_figure_specs
-from intelligence_content import (
-    INTELLIGENCE_PROFILES,
-    INTELLIGENCE_RESEARCH_ANCHORS,
-    expanded_profile_anchor_keys,
-    research_source_pack_payload,
-)
+from intelligence_content import INTELLIGENCE_PROFILES, INTELLIGENCE_RESEARCH_ANCHORS, expanded_profile_anchor_keys, research_source_pack_payload
 from manuscript_manifest import build_manuscript_manifest
 
 
@@ -21,13 +16,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
 LITERATURE_SHARD = PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-305-340.jsonl"
 SAT_LITERATURE_SHARD = PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-341-367.jsonl"
-CITATION_EXPANSION_SHARDS = (
-    PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-368-417.jsonl",
-    PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-418-462.jsonl",
-)
-CITATION_EXPANSION_REPORT = (
-    PROJECT_ROOT / "data" / "research_anchors" / "citation-expansion-2026-06-16-report.json"
-)
+CITATION_EXPANSION_SHARDS = (PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-368-417.jsonl", PROJECT_ROOT / "data" / "research_anchors" / "intelligence-anchors-418-462.jsonl")
+CITATION_EXPANSION_REPORT = PROJECT_ROOT / "data" / "research_anchors" / "citation-expansion-2026-06-16-report.json"
 LITERATURE_INTEGRATION_KEYS = {
     "scholarly_dylan_stivang_2025_emerging_tech_intelligence",
     "scholarly_caballero_jenkins_2024_llm_national_security",
@@ -56,11 +46,7 @@ SAT_LITERATURE_INTEGRATION_KEYS = {
 
 
 def _anchor_rows(path: Path) -> list[dict[str, object]]:
-    return [
-        json.loads(line)
-        for line in path.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def _literature_rows() -> list[dict[str, object]]:
@@ -110,11 +96,7 @@ def test_literature_integration_shard_is_metadata_complete_unique_and_routed() -
     }
     keys = [str(row["key"]) for row in rows]
     urls = [str(row["url"]) for row in rows]
-    routed = {
-        key
-        for profile in INTELLIGENCE_PROFILES
-        for key in expanded_profile_anchor_keys(profile)
-    }
+    routed = {key for profile in INTELLIGENCE_PROFILES for key in expanded_profile_anchor_keys(profile)}
 
     assert len(rows) == 36
     assert len(keys) == len(set(keys))
@@ -159,11 +141,7 @@ def test_sat_literature_shard_is_verified_deduped_complete_and_routed() -> None:
     urls = [str(row["url"]) for row in rows]
     anchors = {anchor.key: anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
     old_urls = {anchor.url for key, anchor in anchors.items() if key not in keys}
-    routed = {
-        key
-        for profile in INTELLIGENCE_PROFILES
-        for key in expanded_profile_anchor_keys(profile)
-    }
+    routed = {key for profile in INTELLIGENCE_PROFILES for key in expanded_profile_anchor_keys(profile)}
 
     assert len(rows) == 27
     assert len(INTELLIGENCE_RESEARCH_ANCHORS) == 462
@@ -175,12 +153,8 @@ def test_sat_literature_shard_is_verified_deduped_complete_and_routed() -> None:
     assert set(keys) <= routed
     assert "scholarly_heuer_pherson_sats" not in keys
     assert "scholarly_rand_2016_sat_evaluation" not in keys
-    assert anchors["scholarly_rand_2016_sat_evaluation"].author == (
-        "Stephen J. Artner; Richard S. Girven; James B. Bruce"
-    )
-    assert anchors["scholarly_ard_2023_sat_pragmatic"].title == (
-        "Structured Analytic Techniques: A Pragmatic Approach"
-    )
+    assert anchors["scholarly_rand_2016_sat_evaluation"].author == ("Stephen J. Artner; Richard S. Girven; James B. Bruce")
+    assert anchors["scholarly_ard_2023_sat_pragmatic"].title == ("Structured Analytic Techniques: A Pragmatic Approach")
     for row in rows:
         assert required_fields <= set(row), row
         assert str(row["checked_as_of"]) == "2026-06-15"
@@ -222,16 +196,8 @@ def test_citation_expansion_import_is_verified_bounded_deduped_and_routed() -> N
     urls = [str(row["url"]) for row in rows]
     anchors = {anchor.key: anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
     old_urls = {anchor.url for key, anchor in anchors.items() if key not in keys}
-    routed = {
-        key
-        for profile in INTELLIGENCE_PROFILES
-        for key in expanded_profile_anchor_keys(profile)
-    }
-    research_pack_keys = {
-        key
-        for keys_in_pack in research_source_pack_payload(PROJECT_ROOT).values()
-        for key in keys_in_pack
-    }
+    routed = {key for profile in INTELLIGENCE_PROFILES for key in expanded_profile_anchor_keys(profile)}
+    research_pack_keys = {key for keys_in_pack in research_source_pack_payload(PROJECT_ROOT).values() for key in keys_in_pack}
 
     assert report["candidate_heading_count"] == 106
     assert report["structurally_importable_count"] == 102
@@ -239,10 +205,7 @@ def test_citation_expansion_import_is_verified_bounded_deduped_and_routed() -> N
     assert report["deferred_count"] == 11
     assert report["new_intelligence_anchor_count_after_import"] == 462
     assert report["new_metadata_row_count_after_import"] == 472
-    assert report["accepted_shards"] == [
-        "intelligence-anchors-368-417.jsonl",
-        "intelligence-anchors-418-462.jsonl",
-    ]
+    assert report["accepted_shards"] == ["intelligence-anchors-368-417.jsonl", "intelligence-anchors-418-462.jsonl"]
     assert {str(item["original_key"]) for item in report["deferred"]} >= {
         "official_nist_sp_800_61r3_new",
         "official_nist_csf_2_0",
@@ -297,10 +260,7 @@ def test_internet_backed_visuals_have_current_source_anchor_contracts() -> None:
 
     specs = _figure_specs_by_label()
     assert specs["fig:ageint-source-freshness-coverage"].kind == FigureKind.PYTHON
-    assert (
-        specs["fig:ageint-source-freshness-coverage"].provenance["renderer_id"]
-        == "source_freshness_coverage"
-    )
+    assert specs["fig:ageint-source-freshness-coverage"].provenance["renderer_id"] == "source_freshness_coverage"
     analytic_boundary = specs["fig:ageint-analytic-source-quality-boundary"]
     assert analytic_boundary.kind == FigureKind.PYTHON
     assert analytic_boundary.provenance["renderer_id"] == "analytic_source_quality_boundary"
@@ -341,13 +301,7 @@ def test_analytic_tradecraft_source_refresh_has_boundary_contracts() -> None:
         assert date.fromisoformat(anchor.checked_as_of) >= date(2026, 6, 11)
         assert anchor.url.startswith("https://")
         assert not any(host in anchor.url for host in weak_hosts), anchor.url
-        assert anchor.source_lane in {
-            "analytic_tradecraft_evidence",
-            "warning_intelligence",
-            "intelligence_failure_postmortem",
-            "sat_evaluation_evidence",
-            "forecasting_calibration_evidence",
-        }
+        assert anchor.source_lane in {"analytic_tradecraft_evidence", "warning_intelligence", "intelligence_failure_postmortem", "sat_evaluation_evidence", "forecasting_calibration_evidence"}
         assert anchor.source_tier
         assert anchor.verification_method
         assert anchor.claim_scope
@@ -370,14 +324,4 @@ def test_analytic_tradecraft_source_refresh_has_boundary_contracts() -> None:
         spec = specs[label]
         assert spec.kind in {FigureKind.MERMAID, FigureKind.PYTHON}
         assert "Source-backed" in spec.caption
-        assert any(
-            token in spec.caption.lower()
-            for token in (
-                "overclaim",
-                "separat",
-                "single technique",
-                "universal debiasing",
-                "evidence lane",
-                "false-certification",
-            )
-        )
+        assert any(token in spec.caption.lower() for token in ("overclaim", "separat", "single technique", "universal debiasing", "evidence lane", "false-certification"))

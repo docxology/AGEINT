@@ -4,17 +4,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from manuscript_quality.inventory_helpers import (
-    BLOCKED_OPERATIONAL_PATTERN_PHRASES,
-    PROJECT_ROOT,
-    generated_output_files,
-    manuscript_dir,
-)
+from manuscript_quality.inventory_helpers import BLOCKED_OPERATIONAL_PATTERN_PHRASES, PROJECT_ROOT, generated_output_files, manuscript_dir
 
 
-def test_safety_audit_blocks_operational_phrases_outside_source_audit_contexts(
-    built_output: Path,
-) -> None:
+def test_safety_audit_blocks_operational_phrases_outside_source_audit_contexts(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     allowed_contexts = (
         "prohibit",
@@ -47,9 +40,7 @@ def test_safety_audit_blocks_operational_phrases_outside_source_audit_contexts(
             for phrase in BLOCKED_OPERATIONAL_PATTERN_PHRASES:
                 if phrase not in line:
                     continue
-                assert any(context in line for context in allowed_contexts), (
-                    f"{path}: {phrase}: {line}"
-                )
+                assert any(context in line for context in allowed_contexts), f"{path}: {phrase}: {line}"
 
 
 def test_safety_boundary_is_documented() -> None:

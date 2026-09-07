@@ -68,12 +68,7 @@ def note_carrier(notes: Iterable[str]) -> str:
 
 # Rotated lead-note introductions for the "source support" line. The note text
 # that follows varies per lesson, so these labels never read as a verbatim stamp.
-NOTE_INTROS: tuple[str, ...] = (
-    "The closest source to this row notes:",
-    "Its anchor reference records:",
-    "The most specific cited work observes:",
-    "The lead source's own note reads:",
-)
+NOTE_INTROS: tuple[str, ...] = ("The closest source to this row notes:", "Its anchor reference records:", "The most specific cited work observes:", "The lead source's own note reads:")
 
 # Rotated closing instructions for the "source support" line. Each names the
 # same method (define, bound, refresh) in different words AND weaves the lesson's
@@ -112,12 +107,4 @@ EVIDENCE_LEADS: tuple[str, ...] = (
 )
 
 
-__all__ = [
-    "EVIDENCE_CLOSERS",
-    "EVIDENCE_LEADS",
-    "NOTE_INTROS",
-    "USE_CLAUSES",
-    "lead_clause",
-    "note_carrier",
-    "stable_index",
-]
+__all__ = ["EVIDENCE_CLOSERS", "EVIDENCE_LEADS", "NOTE_INTROS", "USE_CLAUSES", "lead_clause", "note_carrier", "stable_index"]

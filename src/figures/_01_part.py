@@ -51,10 +51,7 @@ class FigureSpec:
     unit: str = "not_applicable"
     denominator: str = "not_applicable"
     counting_rule: str = "not_applicable"
-    interpretation_limit: str = (
-        "Visual structure is explanatory and not a measured capability score, "
-        "benchmark result, statistical finding, or hidden source-quality ranking."
-    )
+    interpretation_limit: str = "Visual structure is explanatory and not a measured capability score, benchmark result, statistical finding, or hidden source-quality ranking."
 
     def registry_entry(self, project_root: Path) -> dict[str, Any]:
         """Return a JSON-serializable registry row with current file hash."""
@@ -74,15 +71,8 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-citation-density",
         "title": "AGEINT Citation Density",
-        "caption": (
-            "Method-backed audit chart reporting direct external citation counts "
-            "per generated module; labels, denominators, and counting rule come "
-            "from the curriculum parser."
-        ),
-        "alt_text": (
-            "Bar chart of direct citation counts by generated AGEINT module, "
-            "used as a source-review workload signal rather than capability evidence."
-        ),
+        "caption": ("Method-backed audit chart reporting direct external citation counts per generated module; labels, denominators, and counting rule come from the curriculum parser."),
+        "alt_text": ("Bar chart of direct citation counts by generated AGEINT module, used as a source-review workload signal rather than capability evidence."),
         "renderer": "citation_density",
         "source_section": "orientation.md",
     },
@@ -90,9 +80,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
         "slug": "ageint-source-quality-spine",
         "title": "AGEINT Source-Quality Spine",
         "caption": (
-            "Compact audit matrix listing official source-quality anchors, their "
-            "source tier, claim role, evidence use, and refresh duty; it is a "
-            "source-management view, not quantitative evidence."
+            "Compact audit matrix listing official source-quality anchors, their source tier, claim role, evidence use, and refresh duty; it is a source-management view, not quantitative evidence."
         ),
         "alt_text": "Audit matrix of official source-quality anchors, source tiers, roles, and refresh duties.",
         "renderer": "source_quality_spine",
@@ -102,14 +90,9 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
         "slug": "ageint-source-freshness-coverage",
         "title": "AGEINT Source Freshness and Coverage",
         "caption": (
-            "Evidence-derived chart summarizing curated research-anchor freshness, "
-            "source lanes, and evidence tiers from local metadata; counts are audit "
-            "coverage signals, not source-quality scores."
+            "Evidence-derived chart summarizing curated research-anchor freshness, source lanes, and evidence tiers from local metadata; counts are audit coverage signals, not source-quality scores."
         ),
-        "alt_text": (
-            "Chart of AGEINT research-anchor counts by freshness bucket, evidence "
-            "tier, and largest source lanes."
-        ),
+        "alt_text": ("Chart of AGEINT research-anchor counts by freshness bucket, evidence tier, and largest source lanes."),
         "renderer": "source_freshness_coverage",
         "source_section": "bibliography-atlas.md",
     },
@@ -121,10 +104,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
             "official, standards, statutory, postmortem, scholarly evaluation, and "
             "forecasting evidence lanes for analytic-tradecraft claims."
         ),
-        "alt_text": (
-            "Chart grouping analytic-tradecraft research anchors by source lane, "
-            "evidence tier, verification method, and claim boundary."
-        ),
+        "alt_text": ("Chart grouping analytic-tradecraft research anchors by source lane, evidence tier, verification method, and claim boundary."),
         "renderer": "analytic_source_quality_boundary",
         "source_section": "chapter:41",
     },
@@ -139,10 +119,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-safety-boundary-loop",
         "title": "AGEINT Safety Boundary Loop",
-        "caption": (
-            "Conceptual governance schematic showing how accountable review, synthetic "
-            "fixtures, human oversight, logging, and evidence-bounded practice stay connected."
-        ),
+        "caption": ("Conceptual governance schematic showing how accountable review, synthetic fixtures, human oversight, logging, and evidence-bounded practice stay connected."),
         "alt_text": "Loop diagram showing defensive safety gates around AGEINT practice.",
         "renderer": "safety_boundary_loop",
         "source_section": "orientation.md",
@@ -159,11 +136,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-reference-coverage",
         "title": "AGEINT Reference Coverage",
-        "caption": (
-            "Audit table defining heterogeneous count types: parsed source-guide "
-            "references, curated research anchors, methods appendices, and named "
-            "AGEINT patterns."
-        ),
+        "caption": ("Audit table defining heterogeneous count types: parsed source-guide references, curated research anchors, methods appendices, and named AGEINT patterns."),
         "alt_text": "Reference coverage table with count type, denominator, source surface, and use.",
         "renderer": "reference_coverage",
         "source_section": "bibliography-atlas.md",
@@ -187,11 +160,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
     {
         "slug": "ageint-ai-compliance-map",
         "title": "AGEINT AI Compliance Map",
-        "caption": (
-            "Conceptual compliance matrix with rows as governance lanes and "
-            "columns as source, rights, assurance, artifact, and refresh "
-            "obligations; color groups cells only."
-        ),
+        "caption": ("Conceptual compliance matrix with rows as governance lanes and columns as source, rights, assurance, artifact, and refresh obligations; color groups cells only."),
         "alt_text": "Conceptual matrix mapping governance lanes to source, rights, assurance, artifact, and refresh obligations.",
         "renderer": "ai_compliance_map",
         "source_section": "orientation.md",
@@ -255,11 +224,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
             "long description, source section, provenance, and rendered-artifact validation "
             "before PDF or web use."
         ),
-        "alt_text": (
-            "Matrix showing how short alt text, long descriptions, captions, direct visual "
-            "labels, provenance, and rendered-output audits make AGEINT figures accessible "
-            "and traceable."
-        ),
+        "alt_text": ("Matrix showing how short alt text, long descriptions, captions, direct visual labels, provenance, and rendered-output audits make AGEINT figures accessible and traceable."),
         "renderer": "visual_accessibility_contract",
         "source_section": "orientation.md",
     },
@@ -274,10 +239,7 @@ PYTHON_VISUALS: tuple[dict[str, str], ...] = (
             "link safety. The companion machine-readable artifact is "
             "`output/figures/visual_quality_audit.json`."
         ),
-        "alt_text": (
-            "Matrix-style dashboard listing AGEINT figure quality gates for readable "
-            "assets, layout, reader text, metadata, provenance, and PDF or web link safety."
-        ),
+        "alt_text": ("Matrix-style dashboard listing AGEINT figure quality gates for readable assets, layout, reader text, metadata, provenance, and PDF or web link safety."),
         "renderer": "visual_quality_audit_dashboard",
         "source_section": "orientation.md",
     },

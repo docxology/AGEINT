@@ -12,18 +12,7 @@ from pathlib import Path
 import textwrap
 
 from ._04_part import _font, _pil_modules
-from ._05_visual_style import (
-    CANVAS_BG,
-    INK,
-    MUTED,
-    PALETTE,
-    SOFT_PALETTE,
-    draw_arrow,
-    draw_centered_text,
-    draw_footer,
-    draw_title_band,
-    draw_wrapped_text,
-)
+from ._05_visual_style import CANVAS_BG, INK, MUTED, PALETTE, SOFT_PALETTE, draw_arrow, draw_centered_text, draw_footer, draw_title_band, draw_wrapped_text
 
 
 def _draw_bar_chart(output: Path, title: str, labels: Sequence[str], values: Sequence[int], color: str) -> None:
@@ -32,14 +21,7 @@ def _draw_bar_chart(output: Path, title: str, labels: Sequence[str], values: Seq
     canvas = image_mod.new("RGB", (1600, 1000), CANVAS_BG)
     draw = draw_mod.Draw(canvas)
     label_font = _font(font_mod, 17)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        title,
-        subtitle="Evidence-derived chart; values are parser counts, not capability scores.",
-        accent=color,
-    )
+    draw_title_band(draw, font_mod, _font, title, subtitle="Evidence-derived chart; values are parser counts, not capability scores.", accent=color)
     chart = (95, 175, 1505, 835)
     max_value = max(values) or 1
     for step in range(5):
@@ -132,15 +114,7 @@ def _draw_loop(output: Path, title: str, steps: Sequence[str]) -> None:
         draw.rounded_rectangle(box, radius=36, fill=fill, outline=INK, width=3)
         draw_centered_text(draw, box, step, _font(font_mod, 21), fill="#ffffff", width=17, max_lines=2, line_height=25)
     draw.ellipse((center[0] - 175, center[1] - 175, center[0] + 175, center[1] + 175), outline="#334155", width=8)
-    draw_centered_text(
-        draw,
-        (center[0] - 150, center[1] - 55, center[0] + 150, center[1] + 55),
-        "Non-operational review boundary",
-        _font(font_mod, 28),
-        width=19,
-        max_lines=2,
-        line_height=34,
-    )
+    draw_centered_text(draw, (center[0] - 150, center[1] - 55, center[0] + 150, center[1] + 55), "Non-operational review boundary", _font(font_mod, 28), width=19, max_lines=2, line_height=34)
     draw_footer(draw, font_mod, _font, "Source: AGEINT renderer | Loop depicts governance sequence, not autonomous action.")
     canvas.save(output, format="PNG", optimize=True)
 
@@ -154,21 +128,8 @@ def _draw_concept_plate(output: Path, title: str, prompt: str, label: str, visua
         labels = ["Learning claim", "Evidence trace", "Safety boundary", "Human review", "Refresh duty"]
     canvas = image_mod.new("RGB", (1600, 1000), "#0b1220")
     draw = draw_mod.Draw(canvas)
-    draw_title_band(
-        draw,
-        font_mod,
-        _font,
-        title,
-        subtitle="Deterministic teaching plate; prompt retained only in registry provenance.",
-        accent=PALETTE[digest[0] % len(PALETTE)],
-    )
-    cards = [
-        (95, 180, 445, 330),
-        (625, 180, 975, 330),
-        (1155, 180, 1505, 330),
-        (315, 610, 665, 760),
-        (935, 610, 1285, 760),
-    ]
+    draw_title_band(draw, font_mod, _font, title, subtitle="Deterministic teaching plate; prompt retained only in registry provenance.", accent=PALETTE[digest[0] % len(PALETTE)])
+    cards = [(95, 180, 445, 330), (625, 180, 975, 330), (1155, 180, 1505, 330), (315, 610, 665, 760), (935, 610, 1285, 760)]
     center_box = (585, 395, 1015, 545)
     for index, box in enumerate(cards):
         fill = SOFT_PALETTE[index % len(SOFT_PALETTE)]
@@ -185,14 +146,7 @@ def _draw_concept_plate(output: Path, title: str, prompt: str, label: str, visua
         draw_arrow(draw, (800, center_box[3] + 10), ((box[0] + box[2]) / 2, box[1] - 10), fill="#99f6e4", width=5)
     boundary = (140, 805, 1460, 890)
     draw.rounded_rectangle(boundary, radius=16, fill="#fef3c7", outline="#b45309", width=4)
-    draw_centered_text(
-        draw,
-        boundary,
-        "Safety boundary: synthetic, defensive, no real people or targets",
-        _font(font_mod, 26),
-        width=64,
-        max_lines=1,
-    )
+    draw_centered_text(draw, boundary, "Safety boundary: synthetic, defensive, no real people or targets", _font(font_mod, 26), width=64, max_lines=1)
     draw_footer(draw, font_mod, _font, f"Provenance: local deterministic renderer | Label: {label}", width=1600)
     canvas.save(output, format="PNG", optimize=True)
 

@@ -17,12 +17,7 @@ class MermaidDiagramTypeContract:
     init_block: str = ""
 
     def as_dict(self) -> dict[str, Any]:
-        return {
-            "diagram_type": self.diagram_type,
-            "purpose": self.purpose,
-            "source_prefix": self.source_prefix,
-            "requires_reader_detail": self.requires_reader_detail,
-        }
+        return {"diagram_type": self.diagram_type, "purpose": self.purpose, "source_prefix": self.source_prefix, "requires_reader_detail": self.requires_reader_detail}
 
 
 _FLOWCHART_INIT = (
@@ -48,18 +43,9 @@ _GENERIC_INIT = (
 )
 
 MERMAID_DIAGRAM_TYPE_CONTRACTS: tuple[MermaidDiagramTypeContract, ...] = (
+    MermaidDiagramTypeContract(diagram_type="flowchart", purpose="Structural maps, routing diagrams, and governance boundary flows.", source_prefix="flowchart", init_block=_FLOWCHART_INIT),
     MermaidDiagramTypeContract(
-        diagram_type="flowchart",
-        purpose="Structural maps, routing diagrams, and governance boundary flows.",
-        source_prefix="flowchart",
-        init_block=_FLOWCHART_INIT,
-    ),
-    MermaidDiagramTypeContract(
-        diagram_type="stateDiagram-v2",
-        purpose="State, recovery, and circuit-breaker transitions.",
-        source_prefix="stateDiagram-v2",
-        requires_reader_detail=True,
-        init_block=_GENERIC_INIT,
+        diagram_type="stateDiagram-v2", purpose="State, recovery, and circuit-breaker transitions.", source_prefix="stateDiagram-v2", requires_reader_detail=True, init_block=_GENERIC_INIT
     ),
     MermaidDiagramTypeContract(
         diagram_type="sequenceDiagram",
@@ -69,25 +55,13 @@ MERMAID_DIAGRAM_TYPE_CONTRACTS: tuple[MermaidDiagramTypeContract, ...] = (
         init_block=_GENERIC_INIT,
     ),
     MermaidDiagramTypeContract(
-        diagram_type="journey",
-        purpose="Reviewer and learner experience paths across staged work.",
-        source_prefix="journey",
-        requires_reader_detail=True,
-        init_block=_GENERIC_INIT,
+        diagram_type="journey", purpose="Reviewer and learner experience paths across staged work.", source_prefix="journey", requires_reader_detail=True, init_block=_GENERIC_INIT
     ),
     MermaidDiagramTypeContract(
-        diagram_type="timeline",
-        purpose="Temporal degradation, incident, and refresh sequences.",
-        source_prefix="timeline",
-        requires_reader_detail=True,
-        init_block=_GENERIC_INIT,
+        diagram_type="timeline", purpose="Temporal degradation, incident, and refresh sequences.", source_prefix="timeline", requires_reader_detail=True, init_block=_GENERIC_INIT
     ),
     MermaidDiagramTypeContract(
-        diagram_type="quadrantChart",
-        purpose="Two-axis evidence-fit and claim-risk classification maps.",
-        source_prefix="quadrantChart",
-        requires_reader_detail=True,
-        init_block=_GENERIC_INIT,
+        diagram_type="quadrantChart", purpose="Two-axis evidence-fit and claim-risk classification maps.", source_prefix="quadrantChart", requires_reader_detail=True, init_block=_GENERIC_INIT
     ),
 )
 
@@ -114,27 +88,14 @@ def validate_mermaid_source_contract(diagram_type: str, source: str, reader_deta
     else:
         after_init = stripped
     if not after_init.startswith(contract.source_prefix):
-        raise ValueError(
-            f"Mermaid diagram type {diagram_type} must start with {contract.source_prefix!r}"
-        )
+        raise ValueError(f"Mermaid diagram type {diagram_type} must start with {contract.source_prefix!r}")
     if contract.requires_reader_detail and len(reader_detail.split()) < 12:
         raise ValueError(f"Mermaid diagram type {diagram_type} requires informative reader_detail")
 
 
 def mermaid_contract_report() -> dict[str, Any]:
     """Return machine-readable Mermaid diagram-type support metadata."""
-    return {
-        "schema_version": "1.0",
-        "diagram_type_count": len(MERMAID_DIAGRAM_TYPE_CONTRACTS),
-        "diagram_types": [contract.as_dict() for contract in MERMAID_DIAGRAM_TYPE_CONTRACTS],
-    }
+    return {"schema_version": "1.0", "diagram_type_count": len(MERMAID_DIAGRAM_TYPE_CONTRACTS), "diagram_types": [contract.as_dict() for contract in MERMAID_DIAGRAM_TYPE_CONTRACTS]}
 
 
-__all__ = [
-    "MERMAID_DIAGRAM_TYPE_CONTRACTS",
-    "MermaidDiagramTypeContract",
-    "mermaid_contract_report",
-    "mermaid_type_contract",
-    "mermaid_type_contracts",
-    "validate_mermaid_source_contract",
-]
+__all__ = ["MERMAID_DIAGRAM_TYPE_CONTRACTS", "MermaidDiagramTypeContract", "mermaid_contract_report", "mermaid_type_contract", "mermaid_type_contracts", "validate_mermaid_source_contract"]

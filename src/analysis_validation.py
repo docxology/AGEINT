@@ -133,24 +133,12 @@ ANALYSIS_VALIDATION_FAMILY_LANES: tuple[AnalysisValidationFamilyLane, ...] = (
 
 def analysis_validation_matrix_rows() -> tuple[tuple[str, tuple[str, str, str]], ...]:
     """Return compact rows for the rendered validation matrix."""
-    return tuple(
-        (
-            lane.claim_class,
-            (lane.matrix_evidence, lane.matrix_question, lane.matrix_failure),
-        )
-        for lane in ANALYSIS_VALIDATION_LANES
-    )
+    return tuple((lane.claim_class, (lane.matrix_evidence, lane.matrix_question, lane.matrix_failure)) for lane in ANALYSIS_VALIDATION_LANES)
 
 
 def analysis_validation_family_rows() -> tuple[tuple[str, tuple[str, str, str]], ...]:
     """Return compact rows for the manuscript-family coverage visual."""
-    return tuple(
-        (
-            row.manuscript_family,
-            (row.claim_class, row.evidence_signal, row.failure_signal),
-        )
-        for row in ANALYSIS_VALIDATION_FAMILY_LANES
-    )
+    return tuple((row.manuscript_family, (row.claim_class, row.evidence_signal, row.failure_signal)) for row in ANALYSIS_VALIDATION_FAMILY_LANES)
 
 
 def analysis_validation_family_figure_rows() -> tuple[tuple[str, tuple[str, str, str]], ...]:
@@ -159,22 +147,10 @@ def analysis_validation_family_figure_rows() -> tuple[tuple[str, tuple[str, str,
         "overview": ("Design guidance", "chapter primer; scope caveat; source mix", "guidance becomes performance claim"),
         "part unit intros": ("Design guidance", "unit profile; chapter roster; bounded reuse", "part framing overgeneralizes"),
         "practice-studio": ("Design guidance", "topic lessons; safe examples; source spines", "studio becomes generic or operational"),
-        "evidence-contract": (
-            "Empirical or evaluation claim",
-            "source notes; method limits; anchor metadata",
-            "summary implies unsupported proof",
-        ),
-        "governance-boundary": (
-            "Governance or rights claim",
-            "policy lane; owner; risk refresh",
-            "governance prose becomes assurance",
-        ),
+        "evidence-contract": ("Empirical or evaluation claim", "source notes; method limits; anchor metadata", "summary implies unsupported proof"),
+        "governance-boundary": ("Governance or rights claim", "policy lane; owner; risk refresh", "governance prose becomes assurance"),
         "assessment-route": ("Reviewer disposition", "rubric row; criteria; negative control", "review lacks decision rule"),
-        "method-assurance-reference.md": (
-            "Artifact readiness claim",
-            "render; refs; PDF; artifact gates",
-            "method claim lacks fresh artifact evidence",
-        ),
+        "method-assurance-reference.md": ("Artifact readiness claim", "render; refs; PDF; artifact gates", "method claim lacks fresh artifact evidence"),
     }
     return tuple((row.manuscript_family, display_cells[row.manuscript_family]) for row in ANALYSIS_VALIDATION_FAMILY_LANES)
 
@@ -188,14 +164,7 @@ def analysis_validation_contract_terms() -> tuple[str, ...]:
     """Return all lane terms the scholarship audit must find in orientation prose."""
     terms: list[str] = []
     for lane in ANALYSIS_VALIDATION_LANES:
-        terms.extend(
-            [
-                lane.claim_class,
-                lane.validation_question,
-                lane.required_evidence,
-                lane.failure_mode,
-            ]
-        )
+        terms.extend([lane.claim_class, lane.validation_question, lane.required_evidence, lane.failure_mode])
     return tuple(terms)
 
 

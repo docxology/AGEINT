@@ -15,8 +15,10 @@ Two facts from that lifecycle are still true and still matter:
 - **A few tests need that sibling checkout** and skip without it, which is why CI
   carries a lower coverage floor than `pyproject.toml` does.
 
-What still needs an explicit ask from Daniel is any *outward* action — pushing,
-cutting a release, or minting a DOI — not reading or editing the content.
+What still needs an explicit ask from Daniel is any *release-class* outward
+action — cutting a release, minting a DOI, or publishing to an archive. Routine
+pushes of content/doc work to `main` under a standing dispatch (e.g. a fleet
+brief) are normal operation, not release actions.
 
 ## System map
 
@@ -52,15 +54,18 @@ flowchart LR
 - Runtime source spine: `data/curriculum/`.
 - Optional historical guide filename: `SIST-Guide-TOC-and-Bibliography-v2.md` is recognized when present, but normal builds do not require restoring it.
 - Source identity lock: `data/source_identity/` for `ageint001` through `ageint231`.
-- Source-authoring surfaces: `data/curriculum/`, `manuscript/templates/*.md`,
+- Source-authoring surfaces: `data/curriculum/`, `docs/manuscript/templates/*.md`,
   `src/manuscript_manifest/`, and `src/intelligence_content/`.
 - Generated manuscript: `output/manuscript/`.
 - Generated figures and registry: `output/figures/figure_registry.json`.
-- Bibliography surfaces: `manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
+- Bibliography surfaces: `docs/manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
 - Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 177 registered figures, 462 research anchors, 10 source-quality support anchors, 312 parsed guide references.
 - Source metadata is explicit in `data/research_anchors/`: the 2026-06-13 hardening pass closed 119 blank lane/tier rows (109 legacy intelligence anchors plus 10 source-quality support anchors). `scripts/audit_source_metadata.py` and `source_metadata_ok` in the artifact evidence manifest must fail on any new blank `source_lane` or `source_tier`.
 - Official US IC source-pack metadata is explicit for `data/research_anchors/intelligence-anchors-249-304.jsonl`: `source_agency` and `source_pack` are required, `data/agency_source_packs.yaml` controls deterministic profile routing, and `scripts/audit_agency_source_coverage.py` plus `agency_source_coverage_ok` must fail missing or unrouted new agency anchors.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
+- Backlog and task state: [`TODO.md`](TODO.md) (forward-only, next actions in
+  its `Open` section) and `tasks.yaml` (taskboard source of truth). Do not
+  duplicate open work items anywhere else.
 - PDF render surface: `AGEINT.pdf` / `output/pdf/AGEINT_combined.pdf` is
   rendered by the sibling template repo's pandoc/xelatex pipeline (its
   `scripts/maintenance/rerender_working_pdfs.py`, run with AGEINT linked
@@ -89,7 +94,7 @@ flowchart LR
   `src/manuscript_manifest/`, source profiles/anchors in
   `src/intelligence_content/`, or neutral templates, not in
   `output/manuscript`.
-- Do not restore numbered source Markdown files under `manuscript/`; semantic generated files live only under `output/manuscript/`.
+- Do not restore numbered source Markdown files under `docs/manuscript/`; semantic generated files live only under `output/manuscript/`.
 - Preserve citation keys `ageintNNN` when the numbered source identity is unchanged.
 - Append new source-guide references after the locked range; do not renumber existing references.
 - Use Pandoc citation keys and Pandoc-crossref labels; do not hard-code Figure, Section, or Equation numbers.
@@ -145,4 +150,4 @@ uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT
 | `tests/` | [tests/AGENTS.md](tests/AGENTS.md) |
 | `docs/` | [docs/AGENTS.md](docs/AGENTS.md) |
 | `data/` | [data/AGENTS.md](data/AGENTS.md) |
-| `manuscript/` | [manuscript/AGENTS.md](manuscript/AGENTS.md) |
+| `docs/manuscript/` | [docs/manuscript/AGENTS.md](docs/manuscript/AGENTS.md) |

@@ -75,12 +75,7 @@ class ReferenceQualityIssue:
     snippet: str
 
     def as_dict(self) -> dict[str, Any]:
-        return {
-            "path": self.path,
-            "line": self.line,
-            "issue": self.issue,
-            "snippet": self.snippet,
-        }
+        return {"path": self.path, "line": self.line, "issue": self.issue, "snippet": self.snippet}
 
 
 @dataclass(frozen=True)
@@ -104,10 +99,7 @@ def collect_reference_quality(project_root: Path) -> ReferenceQualityReport:
     for violation in rendered_violations:
         issues.append(
             ReferenceQualityIssue(
-                path=_relative(violation.path, root),
-                line=violation.line_number,
-                issue=f"rendered_reference:{violation.reason.replace(' ', '_')}",
-                snippet=violation.line.strip()[:220],
+                path=_relative(violation.path, root), line=violation.line_number, issue=f"rendered_reference:{violation.reason.replace(' ', '_')}", snippet=violation.line.strip()[:220]
             )
         )
     for path in _pdf_bound_text_paths(root):
@@ -115,9 +107,7 @@ def collect_reference_quality(project_root: Path) -> ReferenceQualityReport:
     summary = {
         "scanned_files": len(_pdf_bound_text_paths(root)),
         "issue_count": len(issues),
-        "rendered_reference_issues": sum(
-            1 for issue in issues if issue.issue.startswith("rendered_reference:")
-        ),
+        "rendered_reference_issues": sum(1 for issue in issues if issue.issue.startswith("rendered_reference:")),
         "markdown_file_link_issues": sum(1 for issue in issues if issue.issue == "markdown_file_link"),
         "raw_literal_citation_issues": sum(1 for issue in issues if issue.issue == "raw_literal_citation_key"),
         "generic_heading_issues": sum(1 for issue in issues if issue.issue == "generic_detail_heading"),
@@ -183,10 +173,7 @@ def render_reference_quality_markdown(report: ReferenceQualityReport) -> str:
     ]
     if payload["issue_rows"]:
         for row in payload["issue_rows"][:80]:
-            lines.append(
-                f"| {_table_cell(row['path'])} | {row['line']} | "
-                f"{_table_cell(row['issue'])} | {_table_cell(row['snippet'])} |"
-            )
+            lines.append(f"| {_table_cell(row['path'])} | {row['line']} | {_table_cell(row['issue'])} | {_table_cell(row['snippet'])} |")
     else:
         lines.append("| None | 0 | - | - |")
     lines.extend(["", "## Negative Control", "", payload["negative_control"]])
@@ -229,9 +216,7 @@ def _citation_table_row_without_context(line: str) -> bool:
     cells = [cell.strip() for cell in stripped.strip("|").split("|")]
     if not cells or _is_separator_row(cells):
         return False
-    descriptive_cells = [
-        cell for cell in cells if _descriptive_cell_text(cell)
-    ]
+    descriptive_cells = [cell for cell in cells if _descriptive_cell_text(cell)]
     return not descriptive_cells
 
 
@@ -252,11 +237,7 @@ def _pdf_bound_text_paths(root: Path) -> tuple[Path, ...]:
     paths: list[Path] = []
     manuscript = root / "output" / "manuscript"
     if manuscript.is_dir():
-        paths.extend(
-            path
-            for path in sorted(manuscript.rglob("*.md"))
-            if path.name not in SUPPORT_NAMES
-        )
+        paths.extend(path for path in sorted(manuscript.rglob("*.md")) if path.name not in SUPPORT_NAMES)
     pdf = root / "output" / "pdf"
     for name in ("_combined_manuscript.md", "_combined_manuscript.tex"):
         path = pdf / name
@@ -266,12 +247,7 @@ def _pdf_bound_text_paths(root: Path) -> tuple[Path, ...]:
 
 
 def _issue(path: Path, root: Path, line: int, issue: str, text: str) -> ReferenceQualityIssue:
-    return ReferenceQualityIssue(
-        path=_relative(path, root),
-        line=line,
-        issue=issue,
-        snippet=" ".join(text.split())[:220],
-    )
+    return ReferenceQualityIssue(path=_relative(path, root), line=line, issue=issue, snippet=" ".join(text.split())[:220])
 
 
 def _relative(path: Path, root: Path) -> str:

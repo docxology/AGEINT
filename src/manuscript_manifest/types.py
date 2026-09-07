@@ -67,48 +67,25 @@ class ManuscriptManifest:
         return ordering_config_yaml(["abstract.md", "orientation.md"], self.units, self.appendix_files)
 
 
-def ordering_config_yaml(
-    front_matter_files: list[str],
-    units: list[dict[str, Any]],
-    appendix_files: list[str],
-    *,
-    front_matter_options: dict[str, Any] | None = None,
-) -> str:
+def ordering_config_yaml(front_matter_files: list[str], units: list[dict[str, Any]], appendix_files: list[str], *, front_matter_options: dict[str, Any] | None = None) -> str:
     """Return YAML ordering understood by infrastructure manuscript discovery."""
     lines = ["front_matter:"]
     if front_matter_options:
         lines.extend(_yaml_mapping_lines(front_matter_options, indent=2))
-    lines.extend(
-        [
-            "  include_front_matter: true",
-            f"  files: {_flow_file_entries(front_matter_files)}",
-        ]
-    )
+    lines.extend(["  include_front_matter: true", f"  files: {_flow_file_entries(front_matter_files)}"])
     lines.append("units:")
     for unit in units:
-        lines.extend(
-            [
-                f"  - id: {unit['id']}",
-                f"    directory: {unit['directory']}",
-                "    chapters:",
-            ]
-        )
+        lines.extend([f"  - id: {unit['id']}", f"    directory: {unit['directory']}", "    chapters:"])
         for chapter_file in unit["chapters"]:
             lines.append(f"      - file: {chapter_file}")
 
-    lines.extend(
-        [
-            "appendices:",
-            "  include_reference: true",
-            f"  reference: {_flow_file_entries(appendix_files)}",
-        ]
-    )
+    lines.extend(["appendices:", "  include_reference: true", f"  reference: {_flow_file_entries(appendix_files)}"])
     return "\n".join(lines) + "\n"
 
 
 def _flow_file_entries(file_names: list[str]) -> str:
     """Return compact YAML file-entry list for long generated ordering surfaces."""
-    return "[" + ", ".join(f'{{file: {json.dumps(file_name)}}}' for file_name in file_names) + "]"
+    return "[" + ", ".join(f"{{file: {json.dumps(file_name)}}}" for file_name in file_names) + "]"
 
 
 def _yaml_mapping_lines(mapping: dict[str, Any], *, indent: int) -> list[str]:
@@ -153,12 +130,4 @@ _slug = slugify
 _label = section_label
 _ordering_config_yaml = ordering_config_yaml
 
-__all__ = [
-    "ManuscriptManifest",
-    "ManuscriptSection",
-    "SlugRegistry",
-    "_flow_file_entries",
-    "ordering_config_yaml",
-    "section_label",
-    "slugify",
-]
+__all__ = ["ManuscriptManifest", "ManuscriptSection", "SlugRegistry", "_flow_file_entries", "ordering_config_yaml", "section_label", "slugify"]

@@ -14,7 +14,7 @@ lets you choose a domain part, [@sec:reader-paths] gives each reader a fast path
 and [@sec:safety-rail] states what the atlas refuses to teach.
 
 > **For maintainers.** This page is generated. The source templates under
-> `manuscript/templates/` keep guide-derived values — titles, labels, counts,
+> `docs/manuscript/templates/` keep guide-derived values — titles, labels, counts,
 > source spines, semantic paths, and bibliography rows — as neutral tokens; the
 > build resolves them from `data/curriculum/` into the rendered manuscript in
 > `output/manuscript/`. Edit the template, not the rendered output.

@@ -6,10 +6,7 @@ from ._01_part import ResearchAnchor, SafePatternProfile
 from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS
 
 
-
-ANCHORS_BY_KEY: Final[dict[str, ResearchAnchor]] = {
-    anchor.key: anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS
-}
+ANCHORS_BY_KEY: Final[dict[str, ResearchAnchor]] = {anchor.key: anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
 
 SOURCE_QUALITY_REFERENCE_FALLBACKS: Final[dict[str, ResearchAnchor]] = {
     "official_oecd_agentic_ai": ResearchAnchor(
@@ -144,10 +141,7 @@ SOURCE_QUALITY_REFERENCE_FALLBACKS: Final[dict[str, ResearchAnchor]] = {
     ),
 }
 
-ALL_PROFILE_ANCHORS_BY_KEY: Final[dict[str, ResearchAnchor]] = {
-    **SOURCE_QUALITY_REFERENCE_FALLBACKS,
-    **ANCHORS_BY_KEY,
-}
+ALL_PROFILE_ANCHORS_BY_KEY: Final[dict[str, ResearchAnchor]] = {**SOURCE_QUALITY_REFERENCE_FALLBACKS, **ANCHORS_BY_KEY}
 
 SAFE_PATTERN_PROFILES: Final[dict[int, SafePatternProfile]] = {
     1: SafePatternProfile(
@@ -274,11 +268,7 @@ SAFE_PATTERN_PROFILES: Final[dict[int, SafePatternProfile]] = {
         safe_name="GEOINT Data-Quality Audit Agent",
         methods="provided-image annotation, quality flags, geospatial metadata review, and caveat writing",
         application="synthetic imagery-change exercise focused on uncertainty and data quality",
-
-        safety_boundary=(
-            "limits work to non-sensitive metadata quality, uncertainty notes, "
-            "and synthetic location examples"
-        ),
+        safety_boundary=("limits work to non-sensitive metadata quality, uncertainty notes, and synthetic location examples"),
     ),
     19: SafePatternProfile(
         key="cognitive_inoculant",

@@ -85,14 +85,7 @@ class PdfLinkAudit:
             "uri_links": self.uri_links,
             "file_actions": self.file_actions,
             "bad_target_count": self.bad_target_count,
-            "bad_targets": [
-                {
-                    "page": issue.page,
-                    "issue": issue.issue,
-                    "target": issue.target,
-                }
-                for issue in self.bad_targets
-            ],
+            "bad_targets": [{"page": issue.page, "issue": issue.issue, "target": issue.target} for issue in self.bad_targets],
             "skipped_reason": self.skipped_reason,
             "ok": self.ok,
         }
@@ -116,14 +109,7 @@ class PdfQualityReport:
 
     @property
     def ok(self) -> bool:
-        return (
-            self.exists
-            and self.page_count > 0
-            and self.text_character_count > 0
-            and not self.stale_pdf
-            and not self.banned_phrase_hits
-            and self.link_audit.ok
-        )
+        return self.exists and self.page_count > 0 and self.text_character_count > 0 and not self.stale_pdf and not self.banned_phrase_hits and self.link_audit.ok
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -135,10 +121,7 @@ class PdfQualityReport:
             "pdf_mtime": self.pdf_mtime,
             "newest_manuscript_mtime": self.newest_manuscript_mtime,
             "stale_pdf": self.stale_pdf,
-            "banned_phrase_hits": [
-                {"phrase": hit.phrase, "page": hit.page, "count": hit.count}
-                for hit in self.banned_phrase_hits
-            ],
+            "banned_phrase_hits": [{"phrase": hit.phrase, "page": hit.page, "count": hit.count} for hit in self.banned_phrase_hits],
             "flagged_pages": list(self.flagged_pages),
             "link_audit": self.link_audit.as_dict(),
             "ok": self.ok,
@@ -147,23 +130,13 @@ class PdfQualityReport:
 
 def extract_pdf_text(pdf_path: Path) -> str:
     """Extract layout-preserving text from a PDF with ``pdftotext``."""
-    result = subprocess.run(
-        ["pdftotext", "-layout", str(pdf_path), "-"],
-        check=True,
-        capture_output=True,
-        text=True,
-    )
+    result = subprocess.run(["pdftotext", "-layout", str(pdf_path), "-"], check=True, capture_output=True, text=True)
     return result.stdout
 
 
 def pdf_metadata(pdf_path: Path) -> dict[str, str]:
     """Return parsed ``pdfinfo`` metadata."""
-    result = subprocess.run(
-        ["pdfinfo", str(pdf_path)],
-        check=True,
-        capture_output=True,
-        text=True,
-    )
+    result = subprocess.run(["pdfinfo", str(pdf_path)], check=True, capture_output=True, text=True)
     metadata: dict[str, str] = {}
     for line in result.stdout.splitlines():
         if ":" not in line:
@@ -173,12 +146,7 @@ def pdf_metadata(pdf_path: Path) -> dict[str, str]:
     return metadata
 
 
-def audit_pdf_quality(
-    pdf_path: Path,
-    *,
-    manuscript_dir: Path | None = None,
-    banned_phrases: tuple[str, ...] = DEFAULT_BANNED_PHRASES,
-) -> PdfQualityReport:
+def audit_pdf_quality(pdf_path: Path, *, manuscript_dir: Path | None = None, banned_phrases: tuple[str, ...] = DEFAULT_BANNED_PHRASES) -> PdfQualityReport:
     """Audit a rendered PDF for stale output and reader-facing banned phrases."""
     pdf_path = Path(pdf_path)
     if not pdf_path.is_file():
@@ -212,10 +180,7 @@ def audit_pdf_quality(
         creation_date=metadata.get("CreationDate", ""),
         pdf_mtime=pdf_mtime,
         newest_manuscript_mtime=newest_manuscript_mtime,
-        stale_pdf=bool(
-            newest_manuscript_mtime
-            and pdf_mtime < newest_manuscript_mtime - STALE_PDF_TOLERANCE_SECONDS
-        ),
+        stale_pdf=bool(newest_manuscript_mtime and pdf_mtime < newest_manuscript_mtime - STALE_PDF_TOLERANCE_SECONDS),
         banned_phrase_hits=tuple(hits),
         flagged_pages=flagged_pages,
         link_audit=link_audit,
@@ -233,7 +198,7 @@ def render_pdf_quality_markdown(report: PdfQualityReport) -> str:
         f"| Pages | {report.page_count} |",
         f"| Extracted text characters | {report.text_character_count} |",
         f"| Stale PDF | {str(report.stale_pdf).lower()} |",
-        f"| Flagged pages | {', '.join(str(page) for page in report.flagged_pages) or '-' } |",
+        f"| Flagged pages | {', '.join(str(page) for page in report.flagged_pages) or '-'} |",
         f"| URI links | {report.link_audit.uri_links} |",
         f"| File actions | {report.link_audit.file_actions} |",
         f"| Bad link targets | {report.link_audit.bad_target_count} |",
@@ -246,9 +211,7 @@ def render_pdf_quality_markdown(report: PdfQualityReport) -> str:
     if report.link_audit.bad_targets:
         lines.extend(["", "## Bad Link Targets", "", "| Page | Issue | Target |", "|---:|---|---|"])
         for issue in report.link_audit.bad_targets:
-            lines.append(
-                f"| {issue.page} | {_table_cell(issue.issue)} | {_table_cell(issue.target)} |"
-            )
+            lines.append(f"| {issue.page} | {_table_cell(issue.issue)} | {_table_cell(issue.target)} |")
     return "\n".join(lines)
 
 
@@ -270,10 +233,7 @@ def audit_pdf_links(pdf_path: Path) -> PdfLinkAudit:
     try:
         reader = PdfReader(str(pdf_path))
     except Exception as exc:  # pragma: no cover - corrupt PDFs fail earlier via pdfinfo.
-        return PdfLinkAudit(
-            available=False,
-            skipped_reason=f"pypdf could not read PDF annotations: {exc}",
-        )
+        return PdfLinkAudit(available=False, skipped_reason=f"pypdf could not read PDF annotations: {exc}")
 
     for page_number, page in enumerate(reader.pages, 1):
         annotations = page.get("/Annots") or []
@@ -289,12 +249,7 @@ def audit_pdf_links(pdf_path: Path) -> PdfLinkAudit:
             if action.get("/S") == "/Launch" or action.get("/F"):
                 file_actions += 1
                 issues.append(PdfLinkIssue(page_number, "file_or_launch_action", str(action)))
-    return PdfLinkAudit(
-        available=True,
-        uri_links=uri_links,
-        file_actions=file_actions,
-        bad_targets=tuple(issues),
-    )
+    return PdfLinkAudit(available=True, uri_links=uri_links, file_actions=file_actions, bad_targets=tuple(issues))
 
 
 def _split_pages(text: str) -> list[str]:
@@ -338,20 +293,13 @@ def _newest_markdown_mtime(manuscript_dir: Path | None) -> float:
     root = Path(manuscript_dir)
     if not root.is_dir():
         return 0.0
-    mtimes = [
-        path.stat().st_mtime
-        for path in root.rglob("*.md")
-        if path.name not in SUPPORT_DOC_NAMES
-    ]
+    mtimes = [path.stat().st_mtime for path in root.rglob("*.md") if path.name not in SUPPORT_DOC_NAMES]
     return max(mtimes) if mtimes else 0.0
 
 
 def _newest_pdf_source_mtime(pdf_path: Path, manuscript_dir: Path | None) -> float:
     """Return the newest source timestamp that should precede the PDF."""
-    combined_sources = [
-        pdf_path.parent / "_combined_manuscript.md",
-        pdf_path.parent / "_combined_manuscript.tex",
-    ]
+    combined_sources = [pdf_path.parent / "_combined_manuscript.md", pdf_path.parent / "_combined_manuscript.tex"]
     mtimes = [path.stat().st_mtime for path in combined_sources if path.is_file()]
     if mtimes:
         return max(mtimes)

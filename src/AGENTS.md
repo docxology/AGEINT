@@ -17,6 +17,7 @@ Do not hard-code figure numbers or section numbers. Figures must resolve through
 | `_slug.py` | Numbered curriculum path helpers (`curriculum_sections_jsonl_path`, …) |
 | `_curriculum_shards.py` | Shard load, reference dedupe, source-support hydration |
 | `_data_loaders.py` | YAML loaders for concept routes, topic risk routes, and module architecture tables |
+| `topic_route_tables.py` | Canonical data-as-code topic prompt-route and rotation-template tables; the thin `scripts/generate_topic_*_yaml.py` scripts emit these to `data/topic_prompt_routes.yaml` and `data/topic_rotation_templates.yaml` for `_data_loaders.py` |
 | `_markdown_split.py` | Generic Markdown fragment splitting for manuscript output |
 | `prose_policy.py` | Shared reader-facing title/prose transforms |
 | `safety_contract.py` | Canonical blocked operational phrases and direct-task motifs; imported by `source_grounding` and manuscript-safety tests |

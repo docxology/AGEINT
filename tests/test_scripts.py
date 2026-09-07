@@ -26,10 +26,7 @@ DATA = PROJECT_ROOT / "data" / "curriculum"
 # repo's actual output/ tree (not a tmp_path copy) — confirmed live to crash
 # partway through manuscript rendering and leave output/manuscript/ emptied
 # for the rest of the pytest session when the template repo isn't resolvable.
-requires_template_repo = pytest.mark.skipif(
-    template_resolver.resolve_template_repo(PROJECT_ROOT) is None,
-    reason="sibling docxology/template repo not resolvable in this checkout",
-)
+requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 
 
 def _write_pdf(path: Path, text: str) -> None:
@@ -49,7 +46,7 @@ def test_generated_output_staleness_detects_newer_source(tmp_path: Path) -> None
     output = tmp_path / "output"
     _write_at(tmp_path / "data" / "curriculum" / "sections.jsonl", "{}", 100.0)
     _write_at(tmp_path / "src" / "renderer.py", "VALUE = 1\n", 100.0)
-    _write_at(tmp_path / "manuscript" / "templates" / "chapter.md", "{{BODY}}\n", 100.0)
+    _write_at(tmp_path / "docs" / "manuscript" / "templates" / "chapter.md", "{{BODY}}\n", 100.0)
     _write_at(tmp_path / "scripts" / "build_curriculum.py", "print('build')\n", 100.0)
     _write_at(tmp_path / "pyproject.toml", "[project]\nname = 'fixture'\n", 100.0)
     for relative in output_build_sentinels():
@@ -83,13 +80,7 @@ def test_setup_hook_writes_output_docs() -> None:
     from output_docs import write_manuscript_output_docs
     from rendered_heading_support import ensure_heading_support_in_tree
 
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "setup_hook.py")],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
+    result = subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "setup_hook.py")], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True)
     try:
         assert result.returncode == 0
         assert (PROJECT_ROOT / "output" / "README.md").is_file()
@@ -105,17 +96,7 @@ def test_setup_hook_writes_output_docs() -> None:
 
 
 def test_generate_figures_script_runs() -> None:
-    result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "generate_figures.py"),
-            "--allow-placeholder-figures",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
+    result = subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "generate_figures.py"), "--allow-placeholder-figures"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True)
     assert result.returncode == 0
     assert "Rendered" in result.stdout
 
@@ -132,7 +113,10 @@ def test_z_generate_manuscript_variables_prints_path() -> None:
         # which re-renders all 64 figures (24 Mermaid/Chrome subprocesses, ~185s).
         # Corpus growth pushed the full build to ~150-190s, past the 120s used by
         # the lighter script tests; 300s gives headroom without masking a real hang.
-        timeout=300,
+        # 900s (matching the artifact-evidence/publication-readiness contract bounds)
+        # accounts for external-drive I/O latency under concurrent load, where the
+        # same run has been observed to exceed 300s without a real hang.
+        timeout=900,
     )
     assert result.returncode == 0
     assert result.stdout.strip().endswith("manuscript_variables.json")
@@ -145,26 +129,18 @@ def test_check_rendered_references_script_passes(built_output: Path) -> None:
         check=False,
         capture_output=True,
         text=True,
-        timeout=120,
+        # 120s was fine on local disks; on the external-drive checkout under load
+        # the full-output reference audit can exceed it (observed 2026-08-30).
+        # 900s matches the other subprocess contract bounds and still fails hard
+        # on a real hang.
+        timeout=900,
     )
     assert result.returncode == 0, result.stderr
     assert "Rendered reference audit passed" in result.stdout
 
 
 def test_count_citations_script_reports_source_counts() -> None:
-    result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "count_citations.py"),
-            "--format",
-            "json",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=120,
-    )
+    result = subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "count_citations.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120)
     assert result.returncode == 0, result.stderr
     payload = json.loads(result.stdout)
     summary = source_citation_coverage_summary(load_curriculum(DATA))
@@ -177,19 +153,7 @@ def test_audit_pdf_quality_script_reports_json_contract(tmp_path: Path) -> None:
     pdf = tmp_path / "quality-contract.pdf"
     _write_pdf(pdf, "AGEINT rendered quality contract.")
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_pdf_quality.py"),
-            "--pdf",
-            str(pdf),
-            "--format",
-            "json",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_pdf_quality.py"), "--pdf", str(pdf), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
@@ -199,17 +163,7 @@ def test_audit_pdf_quality_script_reports_json_contract(tmp_path: Path) -> None:
 
 def test_audit_heading_support_script_reports_json_contract() -> None:
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"),
-            "--format",
-            "json",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=120,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
@@ -220,17 +174,7 @@ def test_audit_heading_support_script_reports_json_contract() -> None:
 
 def test_audit_orchestration_contract_script_reports_json_contract() -> None:
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_orchestration_contract.py"),
-            "--format",
-            "json",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=120,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_orchestration_contract.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

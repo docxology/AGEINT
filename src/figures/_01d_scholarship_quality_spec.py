@@ -12,9 +12,7 @@ SCHOLARSHIP_QUALITY_VISUALS: tuple[dict[str, str], ...] = (
             "gates, single-family review warnings, and current artifact-evidence reports."
         ),
         "alt_text": (
-            "Control matrix linking claim-bearing generated sections, source-guide "
-            "citations, official and standards anchors, scholarly anchors, and hard-fail "
-            "or review-warning verifier outcomes."
+            "Control matrix linking claim-bearing generated sections, source-guide citations, official and standards anchors, scholarly anchors, and hard-fail or review-warning verifier outcomes."
         ),
         "renderer": "scholarship_triangulation_map",
         "source_section": "orientation.md",

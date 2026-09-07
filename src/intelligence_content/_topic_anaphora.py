@@ -31,20 +31,12 @@ _BARE_NOUNS = ("topic", "lesson topic", "subject")
 # carries title keywords from an earlier short-form mention.
 _STANDALONE = ("this topic", "the same topic", "this subject")
 
-_TITLE_KEYWORD_STOPWORDS = {
-    "about", "after", "against", "agent", "agentic", "analysis", "and",
-    "from", "into", "module", "source", "that", "the", "their", "through",
-    "using", "with",
-}
+_TITLE_KEYWORD_STOPWORDS = {"about", "after", "against", "agent", "agentic", "analysis", "and", "from", "into", "module", "source", "that", "the", "their", "through", "using", "with"}
 
 
 def title_keywords(title: str) -> set[str]:
     """Title keywords used by the reader-quality anchor gate (mirrors the test)."""
-    words = {
-        word
-        for word in re.findall(r"[a-z0-9]+", title.lower())
-        if len(word) >= 4 and word not in _TITLE_KEYWORD_STOPWORDS
-    }
+    words = {word for word in re.findall(r"[a-z0-9]+", title.lower()) if len(word) >= 4 and word not in _TITLE_KEYWORD_STOPWORDS}
     return words or set(re.findall(r"[a-z0-9]+", title.lower()))
 
 
@@ -69,13 +61,7 @@ def anaphor(before: str, anchor: AnchorState) -> str:
     return reference
 
 
-def anaphorize_field(
-    display_title: str,
-    field: str,
-    *,
-    anchor: AnchorState,
-    forbidden: frozenset[str] | set[str] = frozenset(),
-) -> str:
+def anaphorize_field(display_title: str, field: str, *, anchor: AnchorState, forbidden: frozenset[str] | set[str] = frozenset()) -> str:
     """Replace repeated bold full titles in one body field with shorter references.
 
     The first title occurrence WITHIN a field becomes the bolded short form so
@@ -110,12 +96,7 @@ def anaphorize_field(
     return rebuilt
 
 
-def misconception_line(
-    display_title: str,
-    misconception: str,
-    *,
-    forbidden: frozenset[str] | set[str] = frozenset(),
-) -> str:
+def misconception_line(display_title: str, misconception: str, *, forbidden: frozenset[str] | set[str] = frozenset()) -> str:
     """Render the misconception sentence, anchoring the topic only once.
 
     Risk-category templates already name the topic; keyword-routed and fallback
@@ -123,11 +104,7 @@ def misconception_line(
     field-anchor gate needs without producing the old double-title stutter.
     """
     text = misconception.strip().rstrip(".")
-    inner_anchored = (
-        f"**{display_title}**" in text
-        or display_title in text
-        or keeps_title_keywords(text, display_title)
-    )
+    inner_anchored = f"**{display_title}**" in text or display_title in text or keeps_title_keywords(text, display_title)
     if inner_anchored:
         return f"Correct the misconception {text}."
     compact = short_title(display_title)

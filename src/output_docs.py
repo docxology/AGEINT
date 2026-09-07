@@ -11,9 +11,7 @@ _OUTPUT_DOCS: dict[str, tuple[str, str, str]] = {
         "Generated AGEINT deliverables live here. The pipeline cleans this "
         "directory before each run, then rebuilds data, figures, manuscript "
         "sections, rendered assets, reports, and logs from project sources.",
-        "Treat this directory as generated output. Do not edit deliverables "
-        "by hand; update source data, templates, figures, or render logic and "
-        "rerun the pipeline.",
+        "Treat this directory as generated output. Do not edit deliverables by hand; update source data, templates, figures, or render logic and rerun the pipeline.",
     ),
     "data": (
         "AGEINT Output Data",
@@ -21,68 +19,49 @@ _OUTPUT_DOCS: dict[str, tuple[str, str, str]] = {
         "runtime variables, and validation reports. Key artifacts include "
         "`curriculum_outline.json` (compact parsed curriculum mirror) and "
         "`manuscript_variables.json` (runtime token payload).",
-        "Keep data artifacts reproducible from project scripts. Do not patch "
-        "generated JSON by hand except for emergency inspection notes outside "
-        "the pipeline contract.",
+        "Keep data artifacts reproducible from project scripts. Do not patch generated JSON by hand except for emergency inspection notes outside the pipeline contract.",
     ),
     "figures": (
         "AGEINT Figures",
         "Generated visual assets and the figure registry live here. Figure "
         "assets are regenerated from `src/figures/`, normalized as PNGs, and "
         "referenced from the manuscript by label-backed Pandoc-crossref syntax.",
-        "Do not edit rendered figures by hand. Update figure specs, source "
-        "data, or renderer logic, then rebuild so registry hashes and local "
-        "assets stay aligned.",
+        "Do not edit rendered figures by hand. Update figure specs, source data, or renderer logic, then rebuild so registry hashes and local assets stay aligned.",
     ),
     "manuscript": (
         "AGEINT Manuscript Output",
-        "Resolved semantic manuscript Markdown, BibTeX, generated ordering, "
-        "and render inputs live here after `scripts/build_curriculum.py` runs.",
-        "Treat this folder as generated. Fix source templates, curriculum "
-        "data, variables, figures, or manifest logic upstream and rebuild.",
+        "Resolved semantic manuscript Markdown, BibTeX, generated ordering, and render inputs live here after `scripts/build_curriculum.py` runs.",
+        "Treat this folder as generated. Fix source templates, curriculum data, variables, figures, or manifest logic upstream and rebuild.",
     ),
     "manuscript/appendices": (
         "AGEINT Manuscript Appendices",
-        "Appendix Markdown lives here, including source-verification, "
-        "evidence-package, and instructor capstone material.",
-        "Appendix output is regenerated from source data and renderer context. "
-        "Keep edits in source data or renderer code, not generated Markdown.",
+        "Appendix Markdown lives here, including source-verification, evidence-package, and instructor capstone material.",
+        "Appendix output is regenerated from source data and renderer context. Keep edits in source data or renderer code, not generated Markdown.",
     ),
     "manuscript/parts": (
         "AGEINT Manuscript Parts",
-        "Generated part folders and chapter modules live here with semantic "
-        "paths derived from the parsed curriculum outline.",
-        "Part output must remain semantic, defensive, and reproducible. Update "
-        "the guide, templates, or manifest renderer before rebuilding.",
+        "Generated part folders and chapter modules live here with semantic paths derived from the parsed curriculum outline.",
+        "Part output must remain semantic, defensive, and reproducible. Update the guide, templates, or manifest renderer before rebuilding.",
     ),
     "pdf": (
         "AGEINT PDF Output",
-        "Rendered manuscript PDFs and PDF metadata are written here by the "
-        "template rendering stage.",
-        "PDFs are render products. Fix source Markdown, figures, or LaTeX "
-        "configuration before regenerating instead of editing PDFs directly.",
+        "Rendered manuscript PDFs and PDF metadata are written here by the template rendering stage.",
+        "PDFs are render products. Fix source Markdown, figures, or LaTeX configuration before regenerating instead of editing PDFs directly.",
     ),
     "reports": (
         "AGEINT Reports",
-        "Test, validation, statistics, and project-quality reports are written "
-        "here during pipeline execution.",
-        "Use reports for diagnostics and audit evidence. Keep durable fixes in "
-        "source modules, tests, manifests, or configuration.",
+        "Test, validation, statistics, and project-quality reports are written here during pipeline execution.",
+        "Use reports for diagnostics and audit evidence. Keep durable fixes in source modules, tests, manifests, or configuration.",
     ),
     "slides": (
         "AGEINT Slides",
-        "Beamer slide PDFs and compilation intermediates are generated here "
-        "from resolved manuscript sections.",
-        "Slide artifacts are regenerated by rendering. Preserve source-level "
-        "label-backed cross-references and figure registry paths rather than editing TeX or "
-        "PDF output manually.",
+        "Beamer slide PDFs and compilation intermediates are generated here from resolved manuscript sections.",
+        "Slide artifacts are regenerated by rendering. Preserve source-level label-backed cross-references and figure registry paths rather than editing TeX or PDF output manually.",
     ),
     "web": (
         "AGEINT Web Output",
-        "HTML render outputs for individual sections and the combined "
-        "manuscript are written here.",
-        "HTML files are generated publication artifacts. Make content, style, "
-        "or reference fixes upstream and rerun the renderer.",
+        "HTML render outputs for individual sections and the combined manuscript are written here.",
+        "HTML files are generated publication artifacts. Make content, style, or reference fixes upstream and rerun the renderer.",
     ),
 }
 
@@ -294,27 +273,19 @@ def write_figures_output_docs(figures_dir: Path) -> list[Path]:
             "drawn from parsed AGEINT curriculum data. These images are "
             "regenerated by the figure pipeline and normalized onto square "
             "canvases for stable manuscript layout.",
-            "Update the chart logic or source data before rebuilding. Do not "
-            "patch rendered PNGs directly, and keep chart text compact enough "
-            "for PDF, slide, and web render targets.",
+            "Update the chart logic or source data before rebuilding. Do not patch rendered PNGs directly, and keep chart text compact enough for PDF, slide, and web render targets.",
         ),
         "historical": (
             "Historical Figure Assets",
-            "This generated directory stores public-domain historical imagery "
-            "used as contextual figures. Provenance, source URLs, and hashes "
-            "belong in `../figure_registry.json`.",
+            "This generated directory stores public-domain historical imagery used as contextual figures. Provenance, source URLs, and hashes belong in `../figure_registry.json`.",
             "Use only defensible public-domain or explicitly licensed imagery. "
             "Do not add private people, current operational targets, logos, "
             "or images whose provenance cannot be preserved in the registry.",
         ),
         "ai": (
             "Synthetic Concept Plates",
-            "This generated directory stores deterministic synthetic concept "
-            "plates for AGEINT patterns. The plates are intentionally abstract "
-            "and avoid real targets, people, interfaces, or logos.",
-            "Keep synthetic assets educational and evidence-bounded. Update "
-            "`src/figures/` prompts and render logic, then rebuild so the "
-            "registry, hashes, and manuscript references stay aligned.",
+            "This generated directory stores deterministic synthetic concept plates for AGEINT patterns. The plates are intentionally abstract and avoid real targets, people, interfaces, or logos.",
+            "Keep synthetic assets educational and evidence-bounded. Update `src/figures/` prompts and render logic, then rebuild so the registry, hashes, and manuscript references stay aligned.",
         ),
     }
     for subdir_name, (title, readme_body, agent_body) in subdir_docs.items():

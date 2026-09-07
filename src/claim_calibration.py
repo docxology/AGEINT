@@ -79,9 +79,7 @@ CLAIM_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ),
 )
 
-FORMALISM_RE = re.compile(
-    r"(\$[^$\n]{2,80}=[^$\n]{1,120}\$|\\\(|\\\[|\\begin\{equation\})"
-)
+FORMALISM_RE = re.compile(r"(\$[^$\n]{2,80}=[^$\n]{1,120}\$|\\\(|\\\[|\\begin\{equation\})")
 HARD_FAIL_RE = re.compile(
     r"\b("
     r"proves?|proof of|certif(?:y|ies|ied)|statistically significant|"
@@ -166,9 +164,7 @@ class ClaimCalibrationRow:
             "matched_terms": list(self.matched_terms),
             "text": self.text,
             "citation_keys": list(self.citation_keys),
-            "source_support_profiles": [
-                profile.as_dict() for profile in self.source_support_profiles
-            ],
+            "source_support_profiles": [profile.as_dict() for profile in self.source_support_profiles],
             "disposition": self.disposition,
             "fix_hint": self.fix_hint,
         }
@@ -185,11 +181,7 @@ class ClaimCalibrationReport:
         return bool(self.payload["ok"])
 
 
-def collect_claim_calibration(
-    manuscript_dir: Path,
-    *,
-    project_root: Path | None = None,
-) -> ClaimCalibrationReport:
+def collect_claim_calibration(manuscript_dir: Path, *, project_root: Path | None = None) -> ClaimCalibrationReport:
     """Collect high-risk claim-language evidence from generated Markdown."""
 
     root = Path(manuscript_dir)
@@ -203,12 +195,7 @@ def collect_claim_calibration(
         "generated_at": build_timestamp(),
         "ok": not hard_fail_rows,
         "summary": _summary(rows, hard_fail_rows, warning_rows),
-        "thresholds": {
-            "strong_claims_require_direct_support": True,
-            "boundary_language_is_allowed": True,
-            "headings_are_not_claim_rows": True,
-            "citation_presence_alone_is_not_sufficient": True,
-        },
+        "thresholds": {"strong_claims_require_direct_support": True, "boundary_language_is_allowed": True, "headings_are_not_claim_rows": True, "citation_presence_alone_is_not_sufficient": True},
         "hard_fail_rows": [row.as_dict() for row in hard_fail_rows],
         "warning_row_count": len(warning_rows),
         "warning_rows": [row.as_dict() for row in warning_rows[:50]],
@@ -255,32 +242,13 @@ def render_claim_calibration_markdown(report: ClaimCalibrationReport) -> str:
     ]
     for claim_class, count in summary["claim_class_counts"].items():
         lines.append(f"| {claim_class} | {count} |")
-    lines.extend(
-        [
-            "",
-            "## Source Support Distribution",
-            "",
-            "| Source support distribution | Mentions |",
-            "|---|---:|",
-        ]
-    )
+    lines.extend(["", "## Source Support Distribution", "", "| Source support distribution | Mentions |", "|---|---:|"])
     for strength, count in summary["source_support_distribution"].items():
         lines.append(f"| {strength} | {count} |")
-    lines.extend(
-        [
-            "",
-            "## Hard-Fail Rows",
-            "",
-            "| Path | Line | Claim class | Terms | Fix hint |",
-            "|---|---:|---|---|---|",
-        ]
-    )
+    lines.extend(["", "## Hard-Fail Rows", "", "| Path | Line | Claim class | Terms | Fix hint |", "|---|---:|---|---|---|"])
     if payload["hard_fail_rows"]:
         for row in payload["hard_fail_rows"]:
-            lines.append(
-                f"| {row['path']} | {row['line']} | {row['claim_class']} | "
-                f"{', '.join(row['matched_terms'])} | {row['fix_hint']} |"
-            )
+            lines.append(f"| {row['path']} | {row['line']} | {row['claim_class']} | {', '.join(row['matched_terms'])} | {row['fix_hint']} |")
     else:
         lines.append("| None | 0 | - | - | - |")
     lines.extend(
@@ -352,27 +320,16 @@ def _claim_class(text: str) -> tuple[str, tuple[str, ...]]:
             matches.append((claim_class, match.group(0).lower()))
     if not matches:
         return "", ()
-    priority = {
-        "empirical_or_evaluation": 0,
-        "governance_or_rights": 1,
-        "figure_or_visualization": 2,
-        "artifact_readiness": 3,
-        "safety_or_assurance": 4,
-    }
+    priority = {"empirical_or_evaluation": 0, "governance_or_rights": 1, "figure_or_visualization": 2, "artifact_readiness": 3, "safety_or_assurance": 4}
     claim_class = min((item[0] for item in matches), key=lambda value: priority[value])
     terms = tuple(dict.fromkeys(term for cls, term in matches if cls == claim_class))
     return claim_class, terms
 
 
-def _disposition(
-    text: str,
-    claim_class: str,
-    citation_keys: tuple[str, ...],
-    profiles: tuple[SourceSupportProfile, ...],
-) -> tuple[str, str]:
+def _disposition(text: str, claim_class: str, citation_keys: tuple[str, ...], profiles: tuple[SourceSupportProfile, ...]) -> tuple[str, str]:
     lowered = text.lower()
     if _boundary_language(lowered):
-        return "boundary_allowed", "explicit boundary language keeps the claim calibrated"
+        return ("boundary_allowed", "explicit boundary language keeps the claim calibrated")
     has_primary = any(profile.primary_support for profile in profiles)
     if claim_class == "formalism_or_statistical_expression" and not citation_keys:
         return "fail", _direct_support_hint("Add a citation and limitation language")
@@ -381,25 +338,20 @@ def _disposition(
     if HARD_FAIL_RE.search(text) and not has_primary:
         return "fail", _direct_support_hint("Replace proof language or add direct support")
     if claim_class in {"governance_or_rights", "safety_or_assurance"} and citation_keys and not has_primary:
-        return "review", "review weak-context-only support before treating this as a governing constraint"
+        return ("review", "review weak-context-only support before treating this as a governing constraint")
     if not citation_keys and claim_class == "empirical_or_evaluation":
-        return "review", "review empirical/evaluation vocabulary for direct support before reuse"
+        return ("review", "review empirical/evaluation vocabulary for direct support before reuse")
     if not citation_keys and claim_class in {"governance_or_rights", "safety_or_assurance"}:
-        return "review", "review governance or safety vocabulary before treating it as an authority-backed claim"
+        return ("review", "review governance or safety vocabulary before treating it as an authority-backed claim")
     return "pass", "claim language has citation support or remains bounded"
 
 
 def _direct_support_hint(prefix: str) -> str:
-    return (
-        f"{prefix}: use direct official, standards, scholarly, law/policy, or "
-        "source-quality support, or rewrite as bounded design guidance."
-    )
+    return f"{prefix}: use direct official, standards, scholarly, law/policy, or source-quality support, or rewrite as bounded design guidance."
 
 
 def _boundary_language(lowered: str) -> bool:
-    return any(phrase in lowered for phrase in BOUNDARY_PHRASES) or bool(
-        NEGATED_HIGH_RISK_BOUNDARY_RE.search(lowered)
-    )
+    return any(phrase in lowered for phrase in BOUNDARY_PHRASES) or bool(NEGATED_HIGH_RISK_BOUNDARY_RE.search(lowered))
 
 
 def _citation_keys(text: str) -> list[str]:
@@ -417,23 +369,13 @@ def _iter_markdown(root: Path) -> list[Path]:
         return [root]
     if not root.is_dir():
         return []
-    return sorted(
-        path for path in root.rglob("*.md") if path.is_file() and path.name not in SUPPORT_DOC_NAMES
-    )
+    return sorted(path for path in root.rglob("*.md") if path.is_file() and path.name not in SUPPORT_DOC_NAMES)
 
 
-def _summary(
-    rows: list[ClaimCalibrationRow],
-    hard_fail_rows: list[ClaimCalibrationRow],
-    warning_rows: list[ClaimCalibrationRow],
-) -> dict[str, Any]:
+def _summary(rows: list[ClaimCalibrationRow], hard_fail_rows: list[ClaimCalibrationRow], warning_rows: list[ClaimCalibrationRow]) -> dict[str, Any]:
     classes = Counter(row.claim_class for row in rows)
     dispositions = Counter(row.disposition for row in rows)
-    strengths = Counter(
-        profile.strength
-        for row in rows
-        for profile in row.source_support_profiles
-    )
+    strengths = Counter(profile.strength for row in rows for profile in row.source_support_profiles)
     return {
         "candidate_rows": len(rows),
         "hard_fail_rows": len(hard_fail_rows),
@@ -449,10 +391,4 @@ def _clean_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).replace("|", "/").strip()[:420]
 
 
-__all__ = [
-    "ClaimCalibrationReport",
-    "ClaimCalibrationRow",
-    "collect_claim_calibration",
-    "render_claim_calibration_markdown",
-    "write_claim_calibration",
-]
+__all__ = ["ClaimCalibrationReport", "ClaimCalibrationRow", "collect_claim_calibration", "render_claim_calibration_markdown", "write_claim_calibration"]

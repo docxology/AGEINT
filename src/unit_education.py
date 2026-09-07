@@ -60,18 +60,11 @@ def render_unit_profile_markdown(part: dict[str, Any]) -> str:
     return "\n\n".join(
         [
             f"### {profile.concept} discipline spine: domain question and learning focus",
-            (
-                f"This unit teaches **{profile.concept}**. "
-                f"{profile.discipline_spine}"
-            ),
+            (f"This unit teaches **{profile.concept}**. {profile.discipline_spine}"),
             f"### {profile.concept} source-use contract: citation roles and evidence limits",
             profile.source_use_contract,
             f"### {profile.concept} practice artifact: recurring packet and retained evidence",
-            (
-                f"The recurring practice artifact is a **{profile.practice_artifact}** "
-                f"that draws on {artifact_list}. The unit keeps its learning spine "
-                f"explicit. {profile.learning_spine}"
-            ),
+            (f"The recurring practice artifact is a **{profile.practice_artifact}** that draws on {artifact_list}. The unit keeps its learning spine explicit. {profile.learning_spine}"),
             f"### {profile.concept} safety boundary: accountable, synthetic, and evidence-bounded limits",
             profile.safety_boundary,
         ]
@@ -81,10 +74,7 @@ def render_unit_profile_markdown(part: dict[str, Any]) -> str:
 def unit_lesson_evidence_line(profile: UnitEducationProfile, topic_title: str) -> str:
     """Return a compact unit-specific evidence sentence for a topic lesson."""
     artifacts = ", ".join(profile.evidence_artifacts[:3])
-    return (
-        f"For **{topic_title}**, the unit-specific evidence focus is {artifacts}; "
-        f"it supports {profile.concept} without crossing the unit safety boundary."
-    )
+    return f"For **{topic_title}**, the unit-specific evidence focus is {artifacts}; it supports {profile.concept} without crossing the unit safety boundary."
 
 
 _VOWEL_SOUND_RE = re.compile(r"^[aeiouAEIOU]")
@@ -121,28 +111,14 @@ def unit_lesson_artifact_line(profile: UnitEducationProfile, topic_title: str) -
     """Return a compact unit-specific artifact sentence for a topic lesson."""
     artifact = profile.practice_artifact
     article = _indefinite_article(artifact)
-    closer = _ARTIFACT_CARD_CLOSERS[
-        _stable_index(f"{topic_title}|{artifact}", len(_ARTIFACT_CARD_CLOSERS))
-    ]
+    closer = _ARTIFACT_CARD_CLOSERS[_stable_index(f"{topic_title}|{artifact}", len(_ARTIFACT_CARD_CLOSERS))]
     return f"Shape **{topic_title}** work as {article} **{artifact}** that {closer}"
 
 
 def unit_specific_terms(profile: UnitEducationProfile) -> set[str]:
     """Return normalized terms expected to appear in rendered unit-specific lessons."""
     terms = {profile.concept, profile.practice_artifact, *profile.evidence_artifacts}
-    return {
-        token
-        for value in terms
-        for token in re.findall(r"[a-z0-9][a-z0-9-]{3,}", value.lower())
-    }
+    return {token for value in terms for token in re.findall(r"[a-z0-9][a-z0-9-]{3,}", value.lower())}
 
 
-__all__ = [
-    "UnitEducationProfile",
-    "render_unit_profile_markdown",
-    "unit_lesson_artifact_line",
-    "unit_lesson_evidence_line",
-    "unit_profile_for_number",
-    "unit_profile_for_part",
-    "unit_specific_terms",
-]
+__all__ = ["UnitEducationProfile", "render_unit_profile_markdown", "unit_lesson_artifact_line", "unit_lesson_evidence_line", "unit_profile_for_number", "unit_profile_for_part", "unit_specific_terms"]

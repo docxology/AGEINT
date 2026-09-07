@@ -32,12 +32,7 @@ class SourcePackContract:
                 path = path.relative_to(project_root)
             except ValueError:
                 pass
-        return {
-            "source_class": self.source_class,
-            "path": path.as_posix(),
-            "purpose": self.purpose,
-            "supports_profile_routes": self.supports_profile_routes,
-        }
+        return {"source_class": self.source_class, "path": path.as_posix(), "purpose": self.purpose, "supports_profile_routes": self.supports_profile_routes}
 
 
 @dataclass(frozen=True)
@@ -54,10 +49,7 @@ class SourcePackRegistry:
             "pack_count": len(self.packs),
             "profile_route_count": len(self.profile_routes),
             "packs": {pack_id: list(keys) for pack_id, keys in self.packs.items()},
-            "profile_routes": {
-                profile_id: list(pack_ids)
-                for profile_id, pack_ids in self.profile_routes.items()
-            },
+            "profile_routes": {profile_id: list(pack_ids) for profile_id, pack_ids in self.profile_routes.items()},
         }
 
     def validate_known_keys(self, known_keys: set[str]) -> list[dict[str, str]]:
@@ -65,25 +57,14 @@ class SourcePackRegistry:
         for pack_id, keys in self.packs.items():
             missing = [key for key in keys if key not in known_keys]
             for key in missing:
-                issues.append(
-                    {
-                        "source_class": self.contract.source_class,
-                        "pack_id": pack_id,
-                        "issue": "unknown_source_key",
-                        "key": key,
-                    }
-                )
+                issues.append({"source_class": self.contract.source_class, "pack_id": pack_id, "issue": "unknown_source_key", "key": key})
         return issues
 
 
 def _contract(project_root: Path | None, source_class: str) -> SourcePackContract:
     root = Path(project_root) if project_root is not None else Path(__file__).resolve().parents[2]
     if source_class == "agency":
-        return SourcePackContract(
-            source_class="agency",
-            path=root / "data" / "agency_source_packs.yaml",
-            purpose="Official US IC source packs routed through profile source_pack_ids.",
-        )
+        return SourcePackContract(source_class="agency", path=root / "data" / "agency_source_packs.yaml", purpose="Official US IC source packs routed through profile source_pack_ids.")
     if source_class == "research":
         return SourcePackContract(
             source_class="research",
@@ -123,10 +104,7 @@ def _cached_source_pack_registry(contract: SourcePackContract) -> SourcePackRegi
     return _load_source_pack_registry(contract)
 
 
-def source_pack_registry(
-    source_class: str,
-    project_root: Path | None = None,
-) -> SourcePackRegistry:
+def source_pack_registry(source_class: str, project_root: Path | None = None) -> SourcePackRegistry:
     """Return a validated registry for one source-pack class."""
     contract = _contract(project_root, source_class)
     if project_root is None:
@@ -134,28 +112,15 @@ def source_pack_registry(
     return _load_source_pack_registry(contract)
 
 
-def source_pack_contract_report(
-    project_root: Path | None = None,
-    *,
-    known_source_keys: set[str] | None = None,
-) -> dict[str, Any]:
+def source_pack_contract_report(project_root: Path | None = None, *, known_source_keys: set[str] | None = None) -> dict[str, Any]:
     """Return machine-readable source-pack contract metadata and validation issues."""
     root = Path(project_root) if project_root is not None else None
-    registries = [
-        source_pack_registry("agency", project_root),
-        source_pack_registry("research", project_root),
-    ]
+    registries = [source_pack_registry("agency", project_root), source_pack_registry("research", project_root)]
     issues: list[dict[str, str]] = []
     if known_source_keys is not None:
         for registry in registries:
             issues.extend(registry.validate_known_keys(known_source_keys))
-    return {
-        "schema_version": "1.0",
-        "registry_count": len(registries),
-        "registries": [registry.as_dict(root) for registry in registries],
-        "issue_count": len(issues),
-        "issues": issues,
-    }
+    return {"schema_version": "1.0", "registry_count": len(registries), "registries": [registry.as_dict(root) for registry in registries], "issue_count": len(issues), "issues": issues}
 
 
 def _load_source_pack_registry(contract: SourcePackContract) -> SourcePackRegistry:
@@ -179,18 +144,13 @@ def _load_pack_payload(contract: SourcePackContract) -> dict[str, tuple[str, ...
             raise ValueError(f"{contract.label} entry must contain at least one key: {pack_id}")
         duplicates = _duplicates(str(key) for key in raw_keys)
         if duplicates:
-            raise ValueError(
-                f"{contract.label} entry {pack_id} has duplicate source keys: {', '.join(duplicates)}"
-            )
+            raise ValueError(f"{contract.label} entry {pack_id} has duplicate source keys: {', '.join(duplicates)}")
         keys = tuple(_dedupe(str(key) for key in raw_keys))
         packs[pack_id] = keys
     return packs
 
 
-def _load_profile_routes(
-    contract: SourcePackContract,
-    packs: dict[str, tuple[str, ...]],
-) -> dict[str, tuple[str, ...]]:
+def _load_profile_routes(contract: SourcePackContract, packs: dict[str, tuple[str, ...]]) -> dict[str, tuple[str, ...]]:
     path = contract.path
     if not path.is_file():
         return {}
@@ -208,9 +168,7 @@ def _load_profile_routes(
             raise ValueError(f"Profile route must contain at least one pack id: {profile_id}")
         duplicates = _duplicates(str(pack_id) for pack_id in raw_pack_ids)
         if duplicates:
-            raise ValueError(
-                f"{contract.label} profile route {profile_id} has duplicate pack ids: {', '.join(duplicates)}"
-            )
+            raise ValueError(f"{contract.label} profile route {profile_id} has duplicate pack ids: {', '.join(duplicates)}")
         pack_ids = tuple(_dedupe(str(pack_id) for pack_id in raw_pack_ids))
         missing = [pack_id for pack_id in pack_ids if pack_id not in packs]
         if missing:
@@ -239,10 +197,7 @@ def research_source_pack_keys(pack_id: str, project_root: Path | None = None) ->
         raise KeyError(f"Unknown AGEINT research source pack: {pack_id}") from exc
 
 
-def expanded_profile_anchor_keys(
-    profile: IntelligenceProfile,
-    project_root: Path | None = None,
-) -> tuple[str, ...]:
+def expanded_profile_anchor_keys(profile: IntelligenceProfile, project_root: Path | None = None) -> tuple[str, ...]:
     """Return profile anchors plus deterministic source-pack expansion."""
 
     keys: list[str] = list(profile.anchor_keys)

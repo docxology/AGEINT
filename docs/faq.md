@@ -1,12 +1,12 @@
 # FAQ - AGEINT build, source identity, and validation answers
 
-## Why is there no `01_introduction.md` under `manuscript/`?
+## Why is there no `01_introduction.md` under `docs/manuscript/`?
 
 By design. Semantic chapters are generated under `output/manuscript/parts/…/` from curriculum shards and manifest code.
 
 ## Why does Stage 02 only run `build_curriculum.py`?
 
-`manuscript/config.yaml` declares an `analysis.scripts` allowlist so the pipeline does not triple-build. See [`../scripts/CONVENTIONS.md`](../scripts/CONVENTIONS.md).
+`docs/manuscript/config.yaml` declares an `analysis.scripts` allowlist so the pipeline does not triple-build. See [`../scripts/CONVENTIONS.md`](../scripts/CONVENTIONS.md).
 
 ## How do I refresh figures only?
 

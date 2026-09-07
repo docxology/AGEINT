@@ -6,7 +6,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_pdf_preamble_uses_compact_pdf_typography() -> None:
-    preamble = (PROJECT_ROOT / "manuscript" / "preamble.md").read_text(encoding="utf-8")
+    preamble = (PROJECT_ROOT / "docs" / "manuscript" / "preamble.md").read_text(encoding="utf-8")
     for snippet in (
         r"\changefontsizes[8.9pt]{7.8pt}",
         r"\setlength{\parskip}{0.15em}",

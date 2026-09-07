@@ -8,12 +8,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from source_refresh_due import (
-    collect_source_refresh_due,
-    render_source_refresh_due_markdown,
-    source_refresh_due_figure_rows,
-    write_source_refresh_due,
-)
+from source_refresh_due import collect_source_refresh_due, render_source_refresh_due_markdown, source_refresh_due_figure_rows, write_source_refresh_due
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,7 +19,9 @@ def _write_anchor(path: Path, payload: dict[str, object]) -> None:
 
 
 def test_source_refresh_due_current_rows_are_not_due() -> None:
-    report = collect_source_refresh_due(PROJECT_ROOT, as_of=date(2026, 6, 16))
+    # as_of must be at or after the latest committed `checked_as_of`; pin it to the
+    # 2026-09-07 re-verification pass so a future refresh only needs this date bumped.
+    report = collect_source_refresh_due(PROJECT_ROOT, as_of=date(2026, 9, 7))
     summary = report.payload["summary"]
 
     assert report.ok is True
@@ -93,10 +90,7 @@ def test_source_refresh_due_flags_unknown_or_missing_metadata(tmp_path: Path) ->
     assert report.ok is False
     assert report.payload["summary"]["missing_checked_as_of_count"] == 1
     assert report.payload["summary"]["unknown_cadence_count"] == 1
-    assert report.payload["issue_rows"][0]["flags"] == [
-        "missing_or_invalid_checked_as_of",
-        "unknown_refresh_cadence",
-    ]
+    assert report.payload["issue_rows"][0]["flags"] == ["missing_or_invalid_checked_as_of", "unknown_refresh_cadence"]
 
 
 def test_source_refresh_due_figure_rows_expose_release_preflight_gate() -> None:
@@ -110,18 +104,7 @@ def test_source_refresh_due_figure_rows_expose_release_preflight_gate() -> None:
 
 def test_audit_source_refresh_due_script_writes_json_contract() -> None:
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_source_refresh_due.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_source_refresh_due.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
@@ -254,4 +237,3 @@ def test_render_source_refresh_due_markdown_escapes_pipes_in_cells(tmp_path: Pat
     assert data_rows, "expected at least one data row in the blocking table"
     for line in data_rows:
         assert line.count("|") == 8, line
-

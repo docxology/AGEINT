@@ -22,29 +22,11 @@ from intelligence_content import (
     subsection_practice_rows,
 )
 from citation_workflow import source_citation_spine
-from ._chapter_practice_pathways import (
-    _assessment_and_capstone_pathway,
-    _security_synthesis_block,
-)
+from ._chapter_practice_pathways import _assessment_and_capstone_pathway, _security_synthesis_block
 
-from ._01_part import (
-    _chapter_source_context,
-    _chapter_source_context_inline,
-    _chapter_topic_context,
-    _claim_evidence_ledger,
-    _review_checklist,
-    _source_canon,
-)
-from ._02_part import (
-    _refresh_triggers,
-    _runtime_section_map,
-)
-from ._heading_titles import (
-    chapter_detail_titles,
-    chapter_landmark_titles,
-    chapter_scaffold_titles,
-    chapter_teaching_titles,
-)
+from ._01_part import _chapter_source_context, _chapter_source_context_inline, _chapter_topic_context, _claim_evidence_ledger, _review_checklist, _source_canon
+from ._02_part import _refresh_triggers, _runtime_section_map
+from ._heading_titles import chapter_detail_titles, chapter_landmark_titles, chapter_scaffold_titles, chapter_teaching_titles
 
 
 def _module_architecture(chapter: dict[str, Any], part: dict[str, Any]) -> str:
@@ -60,17 +42,11 @@ def _module_architecture(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         [
             f"#### {title} lineage and source tradition: profile, concepts, and first anchors",
             "",
-            (
-                f"This sits in the **{profile.title}** lineage: "
-                f"{profile.conceptual_focus}. {source_context}"
-            ),
+            (f"This sits in the **{profile.title}** lineage: {profile.conceptual_focus}. {source_context}"),
             "",
             f"#### {title} working model: inputs, constraints, transforms, outputs, and oversight",
             "",
-            (
-                "The work is modeled as inputs, constraints, transforms, outputs, "
-                f"feedback, and oversight for {topic_context}, with provenance and reviewability throughout."
-            ),
+            (f"The work is modeled as inputs, constraints, transforms, outputs, feedback, and oversight for {topic_context}, with provenance and reviewability throughout."),
             "",
             f"#### {title} knowledge architecture: inputs, transforms, outputs, and failure checks",
             "",
@@ -88,10 +64,7 @@ def _module_architecture(chapter: dict[str, Any], part: dict[str, Any]) -> str:
             "",
             f"#### {title} profile emphasis and local focus: method stack and topic cluster",
             "",
-            (
-                f"The matched profile emphasizes {profile.conceptual_focus}. "
-                f"The method stack is {profile.method_stack}; the local topic cluster is {topic_context}."
-            ),
+            (f"The matched profile emphasizes {profile.conceptual_focus}. The method stack is {profile.method_stack}; the local topic cluster is {topic_context}."),
         ]
     )
 
@@ -129,12 +102,7 @@ def _table_cell(value: str) -> str:
     return str(value).replace("|", "\\|").replace("\n", " ").strip()
 
 
-def _current_source_assurance(
-    chapter: dict[str, Any],
-    part: dict[str, Any],
-    profile: Any,
-    lens: Any,
-) -> str:
+def _current_source_assurance(chapter: dict[str, Any], part: dict[str, Any], profile: Any, lens: Any) -> str:
     """Render a chapter-specific source assurance crosswalk."""
     title = str(chapter["title"])
     source_context = _chapter_source_context(chapter)
@@ -143,11 +111,7 @@ def _current_source_assurance(
     rows = [
         f"#### {details['current_source']}",
         "",
-        (
-            "The source assurance check ties the current verified "
-            "anchor set to the local chapter artifact instead of relying on "
-            f"discovery summaries, here covering {topic_context}. {source_context}"
-        ),
+        (f"The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering {topic_context}. {source_context}"),
         "",
         "| Assurance question | Direct source evidence | Chapter artifact |",
         "|---|---|---|",
@@ -194,11 +158,7 @@ def _chapter_body(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         )
     profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    headings = chapter_landmark_titles(
-        title,
-        profile_title=profile.title,
-        practice_lens_title=lens.title,
-    )
+    headings = chapter_landmark_titles(title, profile_title=profile.title, practice_lens_title=lens.title)
     scaffolds = chapter_scaffold_titles(title)
     details = chapter_detail_titles(title)
     teaching = chapter_teaching_titles(title)

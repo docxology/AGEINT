@@ -43,17 +43,8 @@ def load_curriculum_shards_payload(directory: Path) -> dict[str, Any]:
         part["chapters"] = chapters
         parts.append(part)
 
-    appendices = [
-        json.loads(path.read_text(encoding="utf-8"))
-        for path in sorted((directory / "appendices").glob("*.json"))
-    ]
-    references = dedupe_references(
-        [
-            row
-            for path in sorted((directory / "references").glob("*.jsonl"))
-            for row in read_jsonl(path)
-        ]
-    )
+    appendices = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((directory / "appendices").glob("*.json"))]
+    references = dedupe_references([row for path in sorted((directory / "references").glob("*.jsonl")) for row in read_jsonl(path)])
     payload = {
         **json.loads(metadata_path.read_text(encoding="utf-8")),
         "parts": parts,
@@ -83,33 +74,19 @@ def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
 def hydrate_source_support(payload: dict[str, Any]) -> None:
     """Attach configured source support to uncited or part-default source sections."""
 
-    reference_numbers = {
-        int(reference["number"])
-        for reference in payload.get("references", [])
-        if isinstance(reference.get("number"), int)
-    }
+    reference_numbers = {int(reference["number"]) for reference in payload.get("references", []) if isinstance(reference.get("number"), int)}
     if not reference_numbers:
         return
     expansion = source_support_expansion()
     for part in payload.get("parts", []):
-        part_default = filtered_citation_numbers(
-            expansion.get("part_defaults", {}).get(int(part.get("number", 0)), ()),
-            reference_numbers,
-        )
+        part_default = filtered_citation_numbers(expansion.get("part_defaults", {}).get(int(part.get("number", 0)), ()), reference_numbers)
         for chapter in part.get("chapters", []):
             chapter_citations = unique_ints(chapter.get("citations", []))
             for section in chapter.get("sections", []):
                 section_citations = unique_ints(section.get("citations", []))
                 can_route = not section_citations or section_citations == part_default
                 if can_route:
-                    routed_citations = source_support_numbers_for_section(
-                        expansion,
-                        part,
-                        chapter,
-                        section,
-                        reference_numbers,
-                        part_default=part_default,
-                    )
+                    routed_citations = source_support_numbers_for_section(expansion, part, chapter, section, reference_numbers, part_default=part_default)
                     if routed_citations and (not section_citations or routed_citations != section_citations):
                         section_citations = routed_citations
                         section["citations"] = section_citations
@@ -120,29 +97,10 @@ def hydrate_source_support(payload: dict[str, Any]) -> None:
 
 
 def source_support_numbers_for_section(
-    expansion: dict[str, Any],
-    part: dict[str, Any],
-    chapter: dict[str, Any],
-    section: dict[str, Any],
-    reference_numbers: set[int],
-    *,
-    part_default: list[int],
+    expansion: dict[str, Any], part: dict[str, Any], chapter: dict[str, Any], section: dict[str, Any], reference_numbers: set[int], *, part_default: list[int]
 ) -> list[int]:
-    section_haystack = " ".join(
-        str(value)
-        for value in (
-            section.get("number", ""),
-            section.get("title", ""),
-            section.get("raw", ""),
-        )
-    ).lower()
-    context_haystack = " ".join(
-        str(value)
-        for value in (
-            part.get("title", ""),
-            chapter.get("title", ""),
-        )
-    ).lower()
+    section_haystack = " ".join(str(value) for value in (section.get("number", ""), section.get("title", ""), section.get("raw", ""))).lower()
+    context_haystack = " ".join(str(value) for value in (part.get("title", ""), chapter.get("title", ""))).lower()
     best_routed: list[int] = []
     best_score = 0
     for row in expansion.get("keyword_routes", []):

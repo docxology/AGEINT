@@ -10,13 +10,7 @@ _HTML_EMPHASIS_OPEN_RE = re.compile(r"<(strong|b)>", re.IGNORECASE)
 _TEX_EMPHASIS_OPEN_RE = re.compile(r"\\(?:textbf|emph)\{")
 
 
-def authored_emphasis_ranges(
-    line: str,
-    known_titles: frozenset[str],
-    suffix: str,
-    in_html_span: bool,
-    in_tex_span: bool,
-) -> tuple[list[tuple[int, int]], bool, bool]:
+def authored_emphasis_ranges(line: str, known_titles: frozenset[str], suffix: str, in_html_span: bool, in_tex_span: bool) -> tuple[list[tuple[int, int]], bool, bool]:
     ranges = _markdown_emphasis_ranges(line, known_titles)
     if suffix == ".html":
         html_ranges, in_html_span = _html_emphasis_ranges(line, known_titles, in_html_span)
@@ -36,11 +30,7 @@ def _markdown_emphasis_ranges(line: str, known_titles: frozenset[str]) -> list[t
     return ranges
 
 
-def _html_emphasis_ranges(
-    line: str,
-    known_titles: frozenset[str],
-    in_span: bool,
-) -> tuple[list[tuple[int, int]], bool]:
+def _html_emphasis_ranges(line: str, known_titles: frozenset[str], in_span: bool) -> tuple[list[tuple[int, int]], bool]:
     ranges: list[tuple[int, int]] = []
     lower = line.lower()
     pos = _protect_open_html_span(line, lower, ranges, in_span)
@@ -60,12 +50,7 @@ def _html_emphasis_ranges(
     return ranges, False
 
 
-def _protect_open_html_span(
-    line: str,
-    lower: str,
-    ranges: list[tuple[int, int]],
-    in_span: bool,
-) -> int | None:
+def _protect_open_html_span(line: str, lower: str, ranges: list[tuple[int, int]], in_span: bool) -> int | None:
     if not in_span:
         return 0
     strong = lower.find("</strong>")
@@ -84,11 +69,7 @@ def _clean_html_inner(inner: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", "", inner)).strip()
 
 
-def _tex_emphasis_ranges(
-    line: str,
-    known_titles: frozenset[str],
-    in_span: bool,
-) -> tuple[list[tuple[int, int]], bool]:
+def _tex_emphasis_ranges(line: str, known_titles: frozenset[str], in_span: bool) -> tuple[list[tuple[int, int]], bool]:
     ranges: list[tuple[int, int]] = []
     pos = _protect_open_tex_span(line, ranges, in_span)
     if pos is None:
@@ -104,11 +85,7 @@ def _tex_emphasis_ranges(
     return ranges, False
 
 
-def _protect_open_tex_span(
-    line: str,
-    ranges: list[tuple[int, int]],
-    in_span: bool,
-) -> int | None:
+def _protect_open_tex_span(line: str, ranges: list[tuple[int, int]], in_span: bool) -> int | None:
     if not in_span:
         return 0
     close = line.find("}")

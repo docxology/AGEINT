@@ -10,10 +10,7 @@ import re
 from typing import Any
 from build_clock import build_timestamp
 
-from analysis_validation import (
-    analysis_validation_contract_terms,
-    analysis_validation_family_lane_map,
-)
+from analysis_validation import analysis_validation_contract_terms, analysis_validation_family_lane_map
 from citation_workflow import CitationCountRow, generated_markdown_citation_inventory
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from source_support_strength import support_family_for_key
@@ -21,17 +18,7 @@ from source_support_strength import support_family_for_key
 
 SOURCE_GUIDE_KEY_RE = re.compile(r"^ageint\d{3}$")
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-CLAIM_BEARING_FAMILIES = frozenset(
-    {
-        "assessment-route",
-        "evidence-contract",
-        "governance-boundary",
-        "method-assurance-reference.md",
-        "overview",
-        "part unit intros",
-        "practice-studio",
-    }
-)
+CLAIM_BEARING_FAMILIES = frozenset({"assessment-route", "evidence-contract", "governance-boundary", "method-assurance-reference.md", "overview", "part unit intros", "practice-studio"})
 HARD_FAIL_FLAGS = frozenset({"uncited_claim_bearing", "thin_claim_bearing"})
 SAT_METHOD_CONTRACT_REQUIREMENTS: tuple[tuple[str, str], ...] = (
     ("abstract", "Synthetic Analytic Tradecraft"),
@@ -50,9 +37,7 @@ ANALYSIS_VALIDATION_CONTRACT_REQUIREMENTS: tuple[tuple[str, str], ...] = (
     ("orientation", "Failure mode"),
     ("orientation", "[@fig:ageint-analysis-validation-matrix]"),
 )
-ANALYSIS_VALIDATION_LANE_REQUIREMENTS: tuple[tuple[str, str], ...] = tuple(
-    ("orientation", term) for term in analysis_validation_contract_terms()
-)
+ANALYSIS_VALIDATION_LANE_REQUIREMENTS: tuple[tuple[str, str], ...] = tuple(("orientation", term) for term in analysis_validation_contract_terms())
 
 
 @dataclass(frozen=True)
@@ -106,18 +91,8 @@ def collect_scholarship_quality(manuscript_dir: Path) -> ScholarshipQualityRepor
         "project": "AGEINT",
         "schema_version": "1.0",
         "generated_at": build_timestamp(),
-        "ok": (
-            not hard_fail_rows
-            and sat_contract["ok"]
-            and analysis_contract["ok"]
-            and analysis_lane_contract["ok"]
-            and analysis_family_coverage["ok"]
-        ),
-        "thresholds": {
-            "claim_bearing_min_unique_citations": 2,
-            "hard_fail_flags": sorted(HARD_FAIL_FLAGS),
-            "single_source_family_is_warning": True,
-        },
+        "ok": (not hard_fail_rows and sat_contract["ok"] and analysis_contract["ok"] and analysis_lane_contract["ok"] and analysis_family_coverage["ok"]),
+        "thresholds": {"claim_bearing_min_unique_citations": 2, "hard_fail_flags": sorted(HARD_FAIL_FLAGS), "single_source_family_is_warning": True},
         "summary": _summary(rows, anchor_map),
         "sat_method_contract": sat_contract,
         "analysis_validation_contract": analysis_contract,
@@ -173,21 +148,10 @@ def render_scholarship_quality_markdown(report: ScholarshipQualityReport) -> str
     ]
     for family, count in summary["source_family_mentions"].items():
         lines.append(f"| {family} | {count} |")
-    lines.extend(
-        [
-            "",
-            "## Hard-Fail Rows",
-            "",
-            "| Path | Family | Citations | Unique | Flags |",
-            "|---|---|---:|---:|---|",
-        ]
-    )
+    lines.extend(["", "## Hard-Fail Rows", "", "| Path | Family | Citations | Unique | Flags |", "|---|---|---:|---:|---|"])
     if payload["hard_fail_rows"]:
         for row in payload["hard_fail_rows"]:
-            lines.append(
-                f"| {row['path']} | {row['family']} | {row['citation_count']} | "
-                f"{row['unique_citation_count']} | {', '.join(row['flags'])} |"
-            )
+            lines.append(f"| {row['path']} | {row['family']} | {row['citation_count']} | {row['unique_citation_count']} | {', '.join(row['flags'])} |")
     else:
         lines.append("| None | - | 0 | 0 | - |")
     lines.extend(
@@ -206,10 +170,7 @@ def render_scholarship_quality_markdown(report: ScholarshipQualityReport) -> str
     )
     if payload["warning_rows"]:
         for row in payload["warning_rows"]:
-            lines.append(
-                f"| {row['path']} | {row['family']} | "
-                f"{', '.join(row['source_families'])} | {row['unique_citation_count']} |"
-            )
+            lines.append(f"| {row['path']} | {row['family']} | {', '.join(row['source_families'])} | {row['unique_citation_count']} |")
     else:
         lines.append("| None | - | - | 0 |")
     lines.extend(
@@ -280,10 +241,7 @@ def render_scholarship_quality_markdown(report: ScholarshipQualityReport) -> str
         ]
     )
     for row in payload["analysis_validation_family_coverage"]["families"]:
-        lines.append(
-            f"| {row['family']} | {row['claim_class']} | "
-            f"{row['evidence_signal']} | {row['failure_signal']} |"
-        )
+        lines.append(f"| {row['family']} | {row['claim_class']} | {row['evidence_signal']} | {row['failure_signal']} |")
     if payload["analysis_validation_family_coverage"]["missing_families"]:
         lines.extend(["", "**Missing families:**"])
         for family in payload["analysis_validation_family_coverage"]["missing_families"]:
@@ -301,15 +259,7 @@ def citation_source_family(key: str, anchor_map: dict[str, Any] | None = None) -
     anchor = (anchor_map or {}).get(key)
     if anchor is not None:
         source_text = " ".join(
-            str(value)
-            for value in (
-                getattr(anchor, "source_tier", ""),
-                getattr(anchor, "source_type", ""),
-                getattr(anchor, "source_lane", ""),
-                getattr(anchor, "domain", ""),
-                key,
-            )
-            if value
+            str(value) for value in (getattr(anchor, "source_tier", ""), getattr(anchor, "source_type", ""), getattr(anchor, "source_lane", ""), getattr(anchor, "domain", ""), key) if value
         ).lower()
     else:
         source_text = key.lower()
@@ -329,9 +279,7 @@ def citation_source_family(key: str, anchor_map: dict[str, Any] | None = None) -
 
 
 def _classify_row(row: CitationCountRow, anchor_map: dict[str, Any]) -> ScholarshipQualityRow:
-    source_families = tuple(
-        dict.fromkeys(citation_source_family(key, anchor_map) for key in row.citation_keys)
-    )
+    source_families = tuple(dict.fromkeys(citation_source_family(key, anchor_map) for key in row.citation_keys))
     flags: list[str] = []
     is_claim_bearing = row.family in CLAIM_BEARING_FAMILIES
     if is_claim_bearing and row.citation_count == 0:
@@ -363,20 +311,12 @@ def _summary(rows: list[ScholarshipQualityRow], anchor_map: dict[str, Any]) -> d
         "cited_files": sum(1 for row in rows if row.citation_count > 0),
         "uncited_files": sum(1 for row in rows if row.citation_count == 0),
         "claim_bearing_files": len(claim_rows),
-        "uncited_claim_bearing_files": sum(
-            1 for row in claim_rows if "uncited_claim_bearing" in row.flags
-        ),
-        "thin_claim_bearing_files": sum(
-            1 for row in claim_rows if "thin_claim_bearing" in row.flags
-        ),
-        "single_source_family_claim_bearing_files": sum(
-            1 for row in claim_rows if "single_source_family_claim_bearing" in row.flags
-        ),
+        "uncited_claim_bearing_files": sum(1 for row in claim_rows if "uncited_claim_bearing" in row.flags),
+        "thin_claim_bearing_files": sum(1 for row in claim_rows if "thin_claim_bearing" in row.flags),
+        "single_source_family_claim_bearing_files": sum(1 for row in claim_rows if "single_source_family_claim_bearing" in row.flags),
         "source_family_mentions": dict(sorted(family_mentions.items())),
         "source_family_file_counts": dict(sorted(family_file_counts.items())),
-        "claim_bearing_family_counts": dict(
-            sorted(Counter(row.family for row in claim_rows).items())
-        ),
+        "claim_bearing_family_counts": dict(sorted(Counter(row.family for row in claim_rows).items())),
     }
 
 
@@ -384,9 +324,7 @@ def _analysis_validation_family_coverage(rows: list[ScholarshipQualityRow]) -> d
     lane_map = analysis_validation_family_lane_map()
     claim_families = sorted({row.family for row in rows if row.family in CLAIM_BEARING_FAMILIES})
     missing = [family for family in claim_families if family not in lane_map]
-    lane_counts = Counter(
-        lane_map[family].claim_class for family in claim_families if family in lane_map
-    )
+    lane_counts = Counter(lane_map[family].claim_class for family in claim_families if family in lane_map)
     families = []
     for family in claim_families:
         lane = lane_map.get(family)
@@ -435,11 +373,7 @@ def _contract_texts(root: Path, surface: str) -> list[tuple[str, str]]:
             paths.extend(sorted(orientation_dir.rglob("*.md")))
     else:
         paths = [root / f"{surface}.md"]
-    return [
-        (path.relative_to(root).as_posix(), path.read_text(encoding="utf-8"))
-        for path in paths
-        if path.is_file()
-    ]
+    return [(path.relative_to(root).as_posix(), path.read_text(encoding="utf-8")) for path in paths if path.is_file()]
 
 
 __all__ = [

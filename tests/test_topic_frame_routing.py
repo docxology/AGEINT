@@ -48,35 +48,21 @@ def test_concept_routes_for_representative_titles() -> None:
 
 
 def test_sats_and_icd_routes_use_specific_frames() -> None:
-    icd_frame = _first_matching_frame(
-        "icd 203 analytic standards: the nine tradecraft standards",
-        CONCEPT_KEYWORD_ROUTES,
-    )
+    icd_frame = _first_matching_frame("icd 203 analytic standards: the nine tradecraft standards", CONCEPT_KEYWORD_ROUTES)
     assert icd_frame is not None
     assert "Calibrate confidence" in icd_frame or "ICD 203 tradecraft standards" in icd_frame
-    ach_frame = _first_matching_frame(
-        "analysis of competing hypotheses (ach)",
-        CONCEPT_KEYWORD_ROUTES,
-    )
+    ach_frame = _first_matching_frame("analysis of competing hypotheses (ach)", CONCEPT_KEYWORD_ROUTES)
     assert ach_frame is not None
     assert "alternatives" in ach_frame.lower()
 
 
 def test_opsec_title_routes_to_operational_tradecraft_not_analytic() -> None:
-    category = topic_risk_category(
-        "Operations Security (OPSEC) Fundamentals",
-        part_title="Foundations of Intelligence Tradecraft",
-        chapter_title="Tradecraft: Core Principles",
-    )
+    category = topic_risk_category("Operations Security (OPSEC) Fundamentals", part_title="Foundations of Intelligence Tradecraft", chapter_title="Tradecraft: Core Principles")
     assert category == "operational_tradecraft_governance"
 
 
 def test_compartmentation_title_routes_to_operational_tradecraft() -> None:
-    category = topic_risk_category(
-        "Compartmentation and Need-to-Know",
-        part_title="Foundations of Intelligence Tradecraft",
-        chapter_title="Tradecraft: Core Principles",
-    )
+    category = topic_risk_category("Compartmentation and Need-to-Know", part_title="Foundations of Intelligence Tradecraft", chapter_title="Tradecraft: Core Principles")
     assert category == "operational_tradecraft_governance"
 
 
@@ -84,28 +70,18 @@ def test_stuxnet_title_routes_via_keyword_not_chapter_blanket() -> None:
     frame = _first_matching_frame("stuxnet case study review", CONCEPT_KEYWORD_ROUTES)
     assert frame is not None
     category = topic_risk_category(
-        "Stuxnet: Intelligence Analysis of a Landmark ICS Incident",
-        part_title="Industrial and Cyber-Physical Intelligence",
-        chapter_title="Historical ICS Cyber Incidents: Intelligence Analysis",
+        "Stuxnet: Intelligence Analysis of a Landmark ICS Incident", part_title="Industrial and Cyber-Physical Intelligence", chapter_title="Historical ICS Cyber Incidents: Intelligence Analysis"
     )
     assert category in {"standard", "ics_safety", "critical_infrastructure_sharing"}
 
 
 def test_epistemic_security_preserves_educational_title_category() -> None:
-    category = topic_risk_category(
-        "Epistemic Security and Malign Influence",
-        part_title="Cognitive Security",
-        chapter_title="Cognitive Security Foundations and Definitions",
-    )
+    category = topic_risk_category("Epistemic Security and Malign Influence", part_title="Cognitive Security", chapter_title="Cognitive Security Foundations and Definitions")
     assert category == "cognitive_resilience"
 
 
 def test_ach_title_routes_to_analytic_tradecraft_at_topic_level() -> None:
-    category = topic_risk_category(
-        "Analysis of Competing Hypotheses (ACH)",
-        part_title="Epistemic Rigor and Analytic Tradecraft",
-        chapter_title="Structured Analytic Techniques (SATs)",
-    )
+    category = topic_risk_category("Analysis of Competing Hypotheses (ACH)", part_title="Epistemic Rigor and Analytic Tradecraft", chapter_title="Structured Analytic Techniques (SATs)")
     assert category == "analytic_tradecraft"
 
 
@@ -127,10 +103,7 @@ def test_evidence_and_artifact_prompts_match_curriculum_parity_fixture() -> None
 
     from curriculum import load_curriculum
     from intelligence_content._11_part import _coursebook_profile_for_titles
-    from intelligence_content._12_topic_frames import (
-        artifact_prompt_for_entry,
-        evidence_prompt_for_entry,
-    )
+    from intelligence_content._12_topic_frames import artifact_prompt_for_entry, evidence_prompt_for_entry
     from intelligence_content import practice_lens_for_titles
     from intelligence_content.topic_entries import safe_topic_entries
 
@@ -151,13 +124,9 @@ def test_evidence_and_artifact_prompts_match_curriculum_parity_fixture() -> None
                 got_evidence = evidence_prompt_for_entry(entry, lens, coursebook)
                 got_artifact = artifact_prompt_for_entry(entry, lens, coursebook)
                 if got_evidence != expected["evidence_prompt"]:
-                    mismatches.append(
-                        f"{entry.display_title!r} evidence: fixture mismatch"
-                    )
+                    mismatches.append(f"{entry.display_title!r} evidence: fixture mismatch")
                 if got_artifact != expected["artifact_prompt"]:
-                    mismatches.append(
-                        f"{entry.display_title!r} artifact: fixture mismatch"
-                    )
+                    mismatches.append(f"{entry.display_title!r} artifact: fixture mismatch")
     assert index == len(expected_rows)
     assert mismatches == []
 
@@ -167,10 +136,7 @@ def test_rotation_fields_match_curriculum_parity_fixture() -> None:
 
     from curriculum import load_curriculum
     from intelligence_content._11_part import _coursebook_profile_for_titles
-    from intelligence_content.topic_rotation_templates import (
-        misconception_for_entry,
-        why_it_matters_for_entry,
-    )
+    from intelligence_content.topic_rotation_templates import misconception_for_entry, why_it_matters_for_entry
     from intelligence_content import profile_for_titles
     from intelligence_content.topic_entries import safe_topic_entries
 
@@ -188,19 +154,8 @@ def test_rotation_fields_match_curriculum_parity_fixture() -> None:
             for entry in safe_topic_entries(chapter, part):
                 expected = expected_rows[index]
                 index += 1
-                got_why = why_it_matters_for_entry(
-                    entry,
-                    profile,
-                    coursebook,
-                    lesson_index=1,
-                    chapter_title=chapter_title,
-                )
-                got_misconception = misconception_for_entry(
-                    entry,
-                    coursebook,
-                    lesson_index=1,
-                    chapter_title=chapter_title,
-                )
+                got_why = why_it_matters_for_entry(entry, profile, coursebook, lesson_index=1, chapter_title=chapter_title)
+                got_misconception = misconception_for_entry(entry, coursebook, lesson_index=1, chapter_title=chapter_title)
                 if got_why != expected["why_it_matters"]:
                     mismatches.append(f"{entry.display_title!r} why_it_matters: fixture mismatch")
                 if got_misconception != expected["misconception"]:

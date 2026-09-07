@@ -7,12 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from source_metadata import (
-    SOURCE_METADATA_BASELINE,
-    collect_source_metadata,
-    render_source_metadata_markdown,
-    source_metadata_figure_rows,
-)
+from source_metadata import SOURCE_METADATA_BASELINE, collect_source_metadata, render_source_metadata_markdown, source_metadata_figure_rows
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -89,10 +84,7 @@ def test_source_metadata_flags_source_quality_semantic_mismatch(tmp_path: Path) 
 
     assert report.ok is False
     assert report.payload["summary"]["source_quality_semantic_issue_count"] == 1
-    assert report.payload["issue_rows"][0]["flags"] == [
-        "source_quality_lane_mismatch",
-        "source_quality_tier_mismatch",
-    ]
+    assert report.payload["issue_rows"][0]["flags"] == ["source_quality_lane_mismatch", "source_quality_tier_mismatch"]
 
 
 def test_source_metadata_figure_rows_expose_manifest_gate() -> None:
@@ -107,18 +99,7 @@ def test_source_metadata_figure_rows_expose_manifest_gate() -> None:
 
 def test_audit_source_metadata_script_writes_json_contract() -> None:
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_source_metadata.py"),
-            "--format",
-            "json",
-            "--write",
-        ],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=180,
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_source_metadata.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

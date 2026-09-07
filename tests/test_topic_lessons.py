@@ -52,18 +52,8 @@ def test_transfer_task_for_entry_risk_branch_differs_from_standard() -> None:
             break
     assert risk_entry is not None
     assert standard_entry is not None
-    risk_text = transfer_task_for_entry(
-        risk_entry[0],
-        risk_entry[1],
-        lesson_index=1,
-        chapter_title="Test Module",
-    )
-    standard_text = transfer_task_for_entry(
-        standard_entry[0],
-        standard_entry[1],
-        lesson_index=1,
-        chapter_title="Test Module",
-    )
+    risk_text = transfer_task_for_entry(risk_entry[0], risk_entry[1], lesson_index=1, chapter_title="Test Module")
+    standard_text = transfer_task_for_entry(standard_entry[0], standard_entry[1], lesson_index=1, chapter_title="Test Module")
     assert "audit" in risk_text.lower() or "blocked" in risk_text.lower()
     assert "second module" in standard_text.lower()
 
@@ -80,14 +70,7 @@ def test_resolve_topic_lesson_fields_smoke_on_curriculum_entry() -> None:
             entries = safe_topic_entries(chapter, part)
             if not entries:
                 continue
-            fields = resolve_topic_lesson_fields(
-                entries[0],
-                coursebook=coursebook,
-                profile=profile,
-                lens=lens,
-                lesson_index=1,
-                chapter_title=chapter_title,
-            )
+            fields = resolve_topic_lesson_fields(entries[0], coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=chapter_title)
             assert fields.concept.strip()
             assert fields.why_it_matters.strip()
             assert fields.evidence_prompt.strip()
@@ -111,39 +94,19 @@ def test_resolve_topic_misconception_matches_lesson_fields() -> None:
             if not entries:
                 continue
             entry = entries[0]
-            fields = resolve_topic_lesson_fields(
-                entry,
-                coursebook=coursebook,
-                profile=profile,
-                lens=lens,
-                lesson_index=1,
-                chapter_title=chapter_title,
-            )
-            direct = resolve_topic_misconception(
-                entry,
-                coursebook=coursebook,
-                profile=profile,
-                lens=lens,
-                lesson_index=1,
-                chapter_title=chapter_title,
-            )
+            fields = resolve_topic_lesson_fields(entry, coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=chapter_title)
+            direct = resolve_topic_misconception(entry, coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=chapter_title)
             assert direct == fields.misconception
             return
     raise AssertionError("curriculum produced no topic entries")
 
 
 def test_short_title_uses_pre_colon_head() -> None:
-    assert (
-        short_title("Defining Intelligence: Collection, Analysis, Production, Dissemination")
-        == "Defining Intelligence"
-    )
+    assert short_title("Defining Intelligence: Collection, Analysis, Production, Dissemination") == "Defining Intelligence"
 
 
 def test_short_title_cuts_colon_free_qualifier() -> None:
-    assert (
-        short_title("AI-Enhanced Micro-Expression Analysis for Source Validation")
-        == "AI-Enhanced Micro-Expression Analysis"
-    )
+    assert short_title("AI-Enhanced Micro-Expression Analysis for Source Validation") == "AI-Enhanced Micro-Expression Analysis"
 
 
 def test_short_title_keeps_already_compact_title() -> None:
@@ -152,10 +115,7 @@ def test_short_title_keeps_already_compact_title() -> None:
 
 def test_short_title_rejects_stranded_list_fragment() -> None:
     # Cutting at " and " would strand "APT Definitions, Lifecycle," — keep full.
-    assert (
-        short_title("APT Definitions, Lifecycle, and Attribution")
-        == "APT Definitions, Lifecycle, and Attribution"
-    )
+    assert short_title("APT Definitions, Lifecycle, and Attribution") == "APT Definitions, Lifecycle, and Attribution"
 
 
 def test_anaphorize_field_keeps_first_mention_collapses_rest() -> None:
@@ -175,7 +135,5 @@ def test_anaphorize_field_respects_forbidden_short_form() -> None:
     field = f"Without explicit treatment of {token}, the failure mode dominates."
     # "Social Engineering" collides with a chapter title; keep full title to retain
     # keywords the section-title sanitiser would otherwise strip.
-    out = _anaphorize_field(
-        title, field, anchor=AnchorState(), forbidden={"social engineering"}
-    )
+    out = _anaphorize_field(title, field, anchor=AnchorState(), forbidden={"social engineering"})
     assert token in out

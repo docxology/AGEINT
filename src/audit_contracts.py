@@ -156,13 +156,7 @@ def publication_readiness_audit_check_ids() -> tuple[str, ...]:
     return tuple(
         contract.check_id
         for contract in AUDIT_CONTRACTS
-        if contract.publication_readiness_gate
-        and contract.check_id
-        not in {
-            "generated_output_fresh",
-            "stale_output_scans_clean",
-            "citation_source_sections_covered",
-        }
+        if contract.publication_readiness_gate and contract.check_id not in {"generated_output_fresh", "stale_output_scans_clean", "citation_source_sections_covered"}
     )
 
 
@@ -170,8 +164,7 @@ def false_certification_control() -> dict[str, Any]:
     """Return an aggregate false-certification scenario derived from contracts."""
     return {
         "scenario": (
-            "A reviewer trusts a copied PDF, citation count, current-evidence note, or green local report "
-            "without proving that all registered audits passed against the same rebuilt artifact set."
+            "A reviewer trusts a copied PDF, citation count, current-evidence note, or green local report without proving that all registered audits passed against the same rebuilt artifact set."
         ),
         "negative_control": " ".join(contract.negative_control for contract in AUDIT_CONTRACTS),
         "audit_contracts": [contract.as_dict() for contract in AUDIT_CONTRACTS],
@@ -180,19 +173,7 @@ def false_certification_control() -> dict[str, Any]:
 
 def audit_contract_report() -> dict[str, Any]:
     """Return machine-readable audit contract metadata."""
-    return {
-        "schema_version": "1.0",
-        "contract_count": len(AUDIT_CONTRACTS),
-        "contracts": [contract.as_dict() for contract in AUDIT_CONTRACTS],
-    }
+    return {"schema_version": "1.0", "contract_count": len(AUDIT_CONTRACTS), "contracts": [contract.as_dict() for contract in AUDIT_CONTRACTS]}
 
 
-__all__ = [
-    "AUDIT_CONTRACTS",
-    "AuditContract",
-    "audit_contract_by_check_id",
-    "audit_contract_report",
-    "audit_contracts",
-    "false_certification_control",
-    "publication_readiness_audit_check_ids",
-]
+__all__ = ["AUDIT_CONTRACTS", "AuditContract", "audit_contract_by_check_id", "audit_contract_report", "audit_contracts", "false_certification_control", "publication_readiness_audit_check_ids"]

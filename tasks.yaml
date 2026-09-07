@@ -494,8 +494,8 @@ tasks:
   - validation
   - docs
   notes: 'Closed by the 2026-06-12 local Synthetic Analytic Tradecraft orientation
-    pass. Strengthened `manuscript/templates/abstract.md` and
-    `manuscript/templates/orientation.md` so the early reader contract describes
+    pass. Strengthened `docs/manuscript/templates/abstract.md` and
+    `docs/manuscript/templates/orientation.md` so the early reader contract describes
     AGEINT as a source-governed, synthetic-fixture workbench for producing
     reviewable analytic artifacts, not an operational manual or autonomous
     analytic benchmark. Added the label-backed
@@ -642,7 +642,7 @@ tasks:
   notes: 'Closed by the 2026-06-13 local cover, abstract, and TOC hardening
     pass. Added deterministic non-numbered cover art at
     `output/figures/cover/ageint-cover-synthesis.png` with a metadata sidecar,
-    wired `book.cover.image` in `manuscript/config.yaml`, and kept the cover
+    wired `book.cover.image` in `docs/manuscript/config.yaml`, and kept the cover
     outside `figure_registry.json` so it does not become a numbered manuscript
     figure. Replaced the
     graphical-abstract wrapper with one 1,226-word plaintext Synthetic Analytic
@@ -902,7 +902,7 @@ tasks:
     chapter-specific generated H3/H4 detail headings, clearer source-section
     citation coverage naming, label-backed lesson learning-path links, and
     citation-table context checks. Final evidence: `reference_quality.{json,md}`
-    reports 332 scanned manuscript/PDF-bound files, 0 issue rows, 0
+    reports 332 scanned docs/manuscript/PDF-bound files, 0 issue rows, 0
     Markdown-file links, 0 raw literal citation-key cells, 0 generic heading
     issues, 0 lesson cross-link issues, and 0 citation-context issues;
     artifact evidence and publication readiness are ok; parent markdown,

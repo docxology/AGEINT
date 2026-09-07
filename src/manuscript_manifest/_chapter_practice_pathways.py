@@ -7,22 +7,10 @@ from __future__ import annotations
 
 from typing import Any
 
-from intelligence_content import (
-    practice_lens_for_titles,
-    safe_topic_entries,
-)
+from intelligence_content import practice_lens_for_titles, safe_topic_entries
 
-from ._01_part import (
-    _chapter_topic_context,
-    _failure_mode_drill,
-    _instructor_artifact,
-    _safe_practice_lab,
-)
-from ._02_part import (
-    _capstone_deliverable,
-    _instructor_facilitation_notes,
-    _safe_substitution_patterns,
-)
+from ._01_part import _chapter_topic_context, _failure_mode_drill, _instructor_artifact, _safe_practice_lab
+from ._02_part import _capstone_deliverable, _instructor_facilitation_notes, _safe_substitution_patterns
 from ._heading_titles import chapter_detail_titles
 
 
@@ -71,11 +59,7 @@ def _topic_assessment_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str
         if topic_key in seen_topics:
             continue
         seen_topics.add(topic_key)
-        rows.append(
-            f"| **{entry.display_title}** | Completed **{lens.evidence_artifact}** "
-            "with source descriptor, caveat, uncertainty, blocked-use note, and "
-            "named reviewer for this topic. |"
-        )
+        rows.append(f"| **{entry.display_title}** | Completed **{lens.evidence_artifact}** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |")
         if len(rows) >= 3:
             break
     return "\n".join(rows)

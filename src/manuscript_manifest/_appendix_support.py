@@ -116,10 +116,7 @@ def appendix_body(appendix: dict[str, Any]) -> str:
 
 
 def _appendix_topic_context(appendix: dict[str, Any], *, limit: int = 2) -> str:
-    titles = [
-        re.sub(r"^[A-Z]\.\d+\s+", "", str(item.get("title", "")).strip())
-        for item in appendix.get("items", [])[:limit]
-    ]
+    titles = [re.sub(r"^[A-Z]\.\d+\s+", "", str(item.get("title", "")).strip()) for item in appendix.get("items", [])[:limit]]
     titles = [title for title in titles if title]
     return "; ".join(titles) if titles else "the appendix source-item set"
 

@@ -111,19 +111,11 @@ def _embed_png_metadata(path: Path, spec: FigureSpec) -> None:
 
 
 def _pil_modules() -> tuple[Any, Any, Any, Any]:
-    return (
-        import_module("PIL.Image"),
-        import_module("PIL.ImageDraw"),
-        import_module("PIL.ImageFont"),
-        import_module("PIL.ImageOps"),
-    )
+    return (import_module("PIL.Image"), import_module("PIL.ImageDraw"), import_module("PIL.ImageFont"), import_module("PIL.ImageOps"))
 
 
 def _font(font_mod: Any, size: int) -> Any:
-    candidates = [
-        "/System/Library/Fonts/Supplemental/Arial.ttf",
-        "/System/Library/Fonts/Supplemental/Helvetica.ttf",
-    ]
+    candidates = ["/System/Library/Fonts/Supplemental/Arial.ttf", "/System/Library/Fonts/Supplemental/Helvetica.ttf"]
     for candidate in candidates:
         if Path(candidate).is_file():
             return font_mod.truetype(candidate, size)

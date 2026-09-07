@@ -12,40 +12,10 @@ MAX_LINES = 480
 SRC = Path(__file__).resolve().parents[1] / "src"
 
 PACKAGE_SPECS: dict[str, dict[str, object]] = {
-    "figures": {
-        "parts_dir": "figures_parts",
-        "public_names": [
-            "FigureKind",
-            "FigureSpec",
-            "build_figure_specs",
-            "render_figures",
-            "load_figure_registry",
-            "figures_for_section",
-            "figure_markdown",
-        ],
-    },
-    "manuscript_variables": {
-        "parts_dir": "manuscript_variables_parts",
-        "public_names": [
-            "generate_variables",
-            "save_variables",
-            "reference_bibtex_files",
-            "write_bibtex_files",
-        ],
-    },
-    "manuscript_manifest": {
-        "parts_dir": "manuscript_manifest_parts",
-        "public_names": [
-            "ManuscriptManifest",
-            "ManuscriptSection",
-            "build_manuscript_manifest",
-            "render_manuscript",
-        ],
-    },
-    "intelligence_content": {
-        "parts_dir": "intelligence_content_parts",
-        "public_names": [],
-    },
+    "figures": {"parts_dir": "figures_parts", "public_names": ["FigureKind", "FigureSpec", "build_figure_specs", "render_figures", "load_figure_registry", "figures_for_section", "figure_markdown"]},
+    "manuscript_variables": {"parts_dir": "manuscript_variables_parts", "public_names": ["generate_variables", "save_variables", "reference_bibtex_files", "write_bibtex_files"]},
+    "manuscript_manifest": {"parts_dir": "manuscript_manifest_parts", "public_names": ["ManuscriptManifest", "ManuscriptSection", "build_manuscript_manifest", "render_manuscript"]},
+    "intelligence_content": {"parts_dir": "intelligence_content_parts", "public_names": []},
 }
 
 
@@ -72,6 +42,7 @@ def _normalize_imports(source: str) -> str:
         ),
     ]
     for pattern in patterns:
+
         def _repl(match: re.Match[str]) -> str:
             groups = match.groups()
             if len(groups) == 4:
@@ -143,25 +114,13 @@ def migrate_package(name: str, spec: dict[str, object]) -> None:
         (package_dir / f"{mod_name}.py").write_text(header + chunk, encoding="utf-8")
 
     public = list(spec.get("public_names") or []) or _collect_public_names(stitched)
-    init_lines = [
-        f'"""AGEINT {name} package."""',
-        "",
-        *[f"from .{mod} import *  # noqa: F403" for mod in module_names],
-        "",
-        "__all__ = [",
-        *[f'    "{symbol}",' for symbol in public],
-        "]",
-        "",
-    ]
+    init_lines = [f'"""AGEINT {name} package."""', "", *[f"from .{mod} import *  # noqa: F403" for mod in module_names], "", "__all__ = [", *[f'    "{symbol}",' for symbol in public], "]", ""]
     (package_dir / "__init__.py").write_text("\n".join(init_lines), encoding="utf-8")
 
     facade = SRC / f"{name}.py"
     if facade.is_file():
         facade.unlink()
-    line_counts = [
-        len((package_dir / f"{mod}.py").read_text(encoding="utf-8").splitlines())
-        for mod in module_names
-    ]
+    line_counts = [len((package_dir / f"{mod}.py").read_text(encoding="utf-8").splitlines()) for mod in module_names]
     print(f"migrated {name}: {len(chunks)} modules, lines={line_counts}, exports={len(public)}")
 
 

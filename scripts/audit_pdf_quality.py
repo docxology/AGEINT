@@ -19,27 +19,14 @@ from pdf_quality import audit_pdf_quality, render_pdf_quality_markdown, report_j
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--pdf",
-        type=Path,
-        default=PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf",
-        help="Path to the rendered PDF.",
-    )
-    parser.add_argument(
-        "--format",
-        choices=("markdown", "json"),
-        default="markdown",
-        help="Output format.",
-    )
+    parser.add_argument("--pdf", type=Path, default=PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf", help="Path to the rendered PDF.")
+    parser.add_argument("--format", choices=("markdown", "json"), default="markdown", help="Output format.")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
-    report = audit_pdf_quality(
-        args.pdf,
-        manuscript_dir=PROJECT_ROOT / "output" / "manuscript",
-    )
+    report = audit_pdf_quality(args.pdf, manuscript_dir=PROJECT_ROOT / "output" / "manuscript")
     if args.format == "json":
         print(report_json(report))
     else:

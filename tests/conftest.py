@@ -30,9 +30,7 @@ from build_pipeline import generated_output_is_stale, run_build  # noqa: E402
 def built_output() -> Path:
     """Ensure generated output exists for integration tests (cold run may take several minutes)."""
     output = PROJECT_ROOT / "output"
-    has_output = (output / "manuscript").exists() and (
-        output / "figures" / "figure_registry.json"
-    ).is_file()
+    has_output = (output / "manuscript").exists() and (output / "figures" / "figure_registry.json").is_file()
     if not has_output:
         # No committed output at all — must build for real; if the sibling
         # template repo isn't resolvable this still raises (nothing to test

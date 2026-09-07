@@ -24,18 +24,8 @@ from rendered_heading_support import (  # noqa: E402
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--manuscript-dir",
-        type=Path,
-        default=PROJECT_ROOT / "output" / "manuscript",
-        help="Generated manuscript directory to audit.",
-    )
-    parser.add_argument(
-        "--format",
-        choices=("markdown", "json"),
-        default="markdown",
-        help="Output format.",
-    )
+    parser.add_argument("--manuscript-dir", type=Path, default=PROJECT_ROOT / "output" / "manuscript", help="Generated manuscript directory to audit.")
+    parser.add_argument("--format", choices=("markdown", "json"), default="markdown", help="Output format.")
     return parser
 
 

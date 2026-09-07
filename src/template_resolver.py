@@ -6,21 +6,13 @@ import os
 from pathlib import Path
 import sys
 
-_TEMPLATE_ENV_VARS = (
-    "AGEINT_TEMPLATE_REPO",
-    "DOCXOLOGY_TEMPLATE_REPO",
-    "DOCXOLOGY_TEMPLATE_ROOT",
-    "TEMPLATE_REPO_ROOT",
-)
+_TEMPLATE_ENV_VARS = ("AGEINT_TEMPLATE_REPO", "DOCXOLOGY_TEMPLATE_REPO", "DOCXOLOGY_TEMPLATE_ROOT", "TEMPLATE_REPO_ROOT")
 
 
 def _looks_like_template_repo(path: Path) -> bool:
     validation_cli = path / "infrastructure" / "validation" / "cli.py"
     validation_cli_package = path / "infrastructure" / "validation" / "cli" / "__init__.py"
-    return (
-        (path / "infrastructure" / "rendering").is_dir()
-        and (validation_cli.is_file() or validation_cli_package.is_file())
-    )
+    return (path / "infrastructure" / "rendering").is_dir() and (validation_cli.is_file() or validation_cli_package.is_file())
 
 
 def _candidate_paths(start: Path) -> list[Path]:
@@ -32,13 +24,7 @@ def _candidate_paths(start: Path) -> list[Path]:
 
     anchor = start if start.is_dir() else start.parent
     for ancestor in (anchor, *anchor.parents):
-        candidates.extend(
-            [
-                ancestor,
-                ancestor / "template",
-                ancestor.parent / "template",
-            ]
-        )
+        candidates.extend([ancestor, ancestor / "template", ancestor.parent / "template"])
     return candidates
 
 

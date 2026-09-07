@@ -11,20 +11,10 @@ from safety_contract import text_is_operational
 
 from ._01_part import TopicEntry
 from ._06_part import safe_pattern_treatment
-from ._07_safe_titles import (
-    _topic_anchor_words,
-    distinguishing_phrase,
-    is_generic_display_title,
-    safe_curriculum_treatment,
-)
+from ._07_safe_titles import _topic_anchor_words, distinguishing_phrase, is_generic_display_title, safe_curriculum_treatment
 from .risk_routes import topic_risk_category
 
-META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = (
-    "v2 source-lane extension:",
-    "deep expansion:",
-    "evidence-package expansion:",
-    "v2 ageint-depth extension:",
-)
+META_SOURCE_TOPIC_PREFIXES: Final[tuple[str, ...]] = ("v2 source-lane extension:", "deep expansion:", "evidence-package expansion:", "v2 ageint-depth extension:")
 
 
 def is_meta_source_topic(title: str) -> bool:
@@ -44,9 +34,7 @@ def normalize_display_key(title: str) -> str:
 # across every lesson slot. A retained quantitative claim must be attributed and
 # tagged ESTIMATE in prose per project rule; titles carry no such framing, so the
 # claim is dropped rather than displayed bare.
-_VENDOR_STAT_CLAUSE_RE = re.compile(
-    r"\b~?\d+(?:\.\d+)?\s*(?:%|x(?=[\s\b]|$))(?![\w-])[^,:;]*", flags=re.IGNORECASE
-)
+_VENDOR_STAT_CLAUSE_RE = re.compile(r"\b~?\d+(?:\.\d+)?\s*(?:%|x(?=[\s\b]|$))(?![\w-])[^,:;]*", flags=re.IGNORECASE)
 
 
 def _strip_vendor_stat_claims(title: str) -> str:
@@ -94,40 +82,20 @@ def filter_meta_sections(sections: list[dict[str, Any]]) -> list[dict[str, Any]]
     return filtered
 
 
-def apply_pattern_registry(
-    raw_title: str,
-    *,
-    safe_patterns: bool,
-    active_pattern_number: int | None,
-) -> tuple[str, int | None, str, str]:
+def apply_pattern_registry(raw_title: str, *, safe_patterns: bool, active_pattern_number: int | None) -> tuple[str, int | None, str, str]:
     working_title = raw_title
     source_locus = ""
     provenance_note = raw_title
     if not safe_patterns:
         return working_title, active_pattern_number, source_locus, provenance_note
-    working_title, active_pattern_number = safe_pattern_treatment(
-        working_title,
-        active_pattern_number,
-    )
-    source_locus = (
-        f"Pattern {active_pattern_number}" if active_pattern_number else "AGEINT pattern registry"
-    )
+    working_title, active_pattern_number = safe_pattern_treatment(working_title, active_pattern_number)
+    source_locus = f"Pattern {active_pattern_number}" if active_pattern_number else "AGEINT pattern registry"
     provenance_note = "Original source identity preserved in AGEINT pattern registry"
     return working_title, active_pattern_number, source_locus, provenance_note
 
 
-def safe_curriculum_title(
-    working_title: str,
-    *,
-    safe_patterns: bool,
-    part_title: str,
-    chapter_title: str,
-) -> str:
-    display_title = (
-        working_title
-        if safe_patterns
-        else safe_curriculum_treatment(working_title, part_title, chapter_title)
-    )
+def safe_curriculum_title(working_title: str, *, safe_patterns: bool, part_title: str, chapter_title: str) -> str:
+    display_title = working_title if safe_patterns else safe_curriculum_treatment(working_title, part_title, chapter_title)
     display_title = clean_display_title(display_title)
     if not safe_patterns and is_generic_display_title(display_title):
         shard_fallback = clean_display_title(working_title)
@@ -136,25 +104,14 @@ def safe_curriculum_title(
     return display_title
 
 
-def dedupe_display_title(
-    display_title: str,
-    *,
-    working_title: str,
-    raw_title: str,
-    source_locus: str,
-    seen_display_keys: set[str],
-) -> str:
+def dedupe_display_title(display_title: str, *, working_title: str, raw_title: str, source_locus: str, seen_display_keys: set[str]) -> str:
     display_key = normalize_display_key(display_title)
     if display_key in seen_display_keys:
         raw_key = normalize_display_key(clean_display_title(working_title))
         if raw_key != display_key:
             phrase = distinguishing_phrase(raw_title)
             lead = f"{phrase}: {display_title}" if phrase else ""
-            if (
-                phrase
-                and not text_is_operational(phrase)
-                and normalize_display_key(lead) not in seen_display_keys
-            ):
+            if phrase and not text_is_operational(phrase) and normalize_display_key(lead) not in seen_display_keys:
                 display_title = lead
             else:
                 qualifier = source_locus or _topic_anchor_words(raw_title, limit=3)
@@ -194,35 +151,17 @@ def safe_topic_entries(chapter: dict[str, Any], part: dict[str, Any]) -> list[To
         provenance_note = f"{source_locus} {raw_title}".strip()
         risk_category = topic_risk_category(raw_title, part_title, chapter_title)
 
-        working_title, active_pattern_number, pattern_locus, pattern_note = apply_pattern_registry(
-            raw_title,
-            safe_patterns=safe_patterns,
-            active_pattern_number=active_pattern_number,
-        )
+        working_title, active_pattern_number, pattern_locus, pattern_note = apply_pattern_registry(raw_title, safe_patterns=safe_patterns, active_pattern_number=active_pattern_number)
         if safe_patterns:
             source_locus = pattern_locus or source_locus
             provenance_note = pattern_note
             risk_category = "ageint_pattern_registry"
 
-        display_title = safe_curriculum_title(
-            working_title,
-            safe_patterns=safe_patterns,
-            part_title=part_title,
-            chapter_title=chapter_title,
-        )
-        display_title = dedupe_display_title(
-            display_title,
-            working_title=working_title,
-            raw_title=raw_title,
-            source_locus=source_locus,
-            seen_display_keys=seen_display_keys,
-        )
+        display_title = safe_curriculum_title(working_title, safe_patterns=safe_patterns, part_title=part_title, chapter_title=chapter_title)
+        display_title = dedupe_display_title(display_title, working_title=working_title, raw_title=raw_title, source_locus=source_locus, seen_display_keys=seen_display_keys)
 
         if risk_category not in {"standard", "ageint_pattern_registry"}:
-            provenance_note = (
-                f"{source_locus or 'chapter outline'} transformed from high-risk source title: "
-                f"{raw_title}"
-            )
+            provenance_note = f"{source_locus or 'chapter outline'} transformed from high-risk source title: {raw_title}"
         entries.append(
             TopicEntry(
                 raw_title=raw_title,

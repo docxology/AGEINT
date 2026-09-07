@@ -14,20 +14,8 @@ from intelligence_content.source_packs import agency_source_pack_payload
 
 NEW_SHARD_NAME = "intelligence-anchors-249-304.jsonl"
 EXPECTED_NEW_US_IC_ANCHORS = 56
-REQUIRED_NEW_METADATA: tuple[str, ...] = (
-    "source_agency",
-    "source_pack",
-    "source_lane",
-    "source_tier",
-    "checked_as_of",
-    "claim_scope",
-    "assurance_use",
-    "rights_dimension",
-)
-MINIMUM_AGENCY_COUNTS: dict[str, int] = {
-    "CIA": 25,
-    "DIA": 3,
-}
+REQUIRED_NEW_METADATA: tuple[str, ...] = ("source_agency", "source_pack", "source_lane", "source_tier", "checked_as_of", "claim_scope", "assurance_use", "rights_dimension")
+MINIMUM_AGENCY_COUNTS: dict[str, int] = {"CIA": 25, "DIA": 3}
 MINIMUM_ODNI_INTELGOV = 20
 
 
@@ -81,10 +69,7 @@ def collect_agency_source_coverage(project_root: Path) -> AgencySourceCoverageRe
     existing_rows = [row for row in raw_rows if not row["path"].endswith(NEW_SHARD_NAME)]
     duplicate_keys = sorted(_new_duplicate_values(new_rows, existing_rows, "key"))
     duplicate_urls = sorted(_new_duplicate_values(new_rows, existing_rows, "url"))
-    rows = [
-        _coverage_row(row, packs, key_to_profiles, duplicate_keys, duplicate_urls)
-        for row in new_rows
-    ]
+    rows = [_coverage_row(row, packs, key_to_profiles, duplicate_keys, duplicate_urls) for row in new_rows]
     row_issues = [row for row in rows if row.flags]
     global_issues = _global_issues(rows, new_rows, duplicate_keys, duplicate_urls)
     payload = {
@@ -95,11 +80,7 @@ def collect_agency_source_coverage(project_root: Path) -> AgencySourceCoverageRe
         "expected_new_us_ic_anchors": EXPECTED_NEW_US_IC_ANCHORS,
         "required_new_metadata": list(REQUIRED_NEW_METADATA),
         "summary": _summary(raw_rows, rows),
-        "minimums": {
-            "cia_new_minimum": MINIMUM_AGENCY_COUNTS["CIA"],
-            "dia_new_minimum": MINIMUM_AGENCY_COUNTS["DIA"],
-            "odni_or_intelligence_gov_new_minimum": MINIMUM_ODNI_INTELGOV,
-        },
+        "minimums": {"cia_new_minimum": MINIMUM_AGENCY_COUNTS["CIA"], "dia_new_minimum": MINIMUM_AGENCY_COUNTS["DIA"], "odni_or_intelligence_gov_new_minimum": MINIMUM_ODNI_INTELGOV},
         "global_issue_count": len(global_issues),
         "global_issues": global_issues,
         "issue_row_count": len(row_issues),
@@ -174,38 +155,10 @@ def agency_source_coverage_figure_rows(project_root: Path) -> tuple[tuple[str, t
     agencies = summary["agency_counts"]
     packs = summary["source_pack_counts"]
     return (
-        (
-            "US IC source tranche",
-            (
-                f"{summary['new_official_us_ic_anchor_count']} new anchors",
-                f"{agencies.get('CIA', 0)} CIA",
-                f"{agencies.get('DIA', 0)} DIA",
-            ),
-        ),
-        (
-            "ODNI and public IC",
-            (
-                f"{agencies.get('ODNI', 0)} ODNI",
-                f"{agencies.get('Intelligence.gov', 0)} Intelligence.gov",
-                f"{summary['odni_or_intelgov_count']} ODNI/Intel.gov",
-            ),
-        ),
-        (
-            "Pack routing",
-            (
-                f"{len(packs)} source packs",
-                f"{summary['profile_routed_new_anchor_count']} routed",
-                f"{summary['unrouted_new_anchor_count']} unrouted",
-            ),
-        ),
-        (
-            "Evidence manifest",
-            (
-                "agency_source_coverage_ok",
-                "missing pack fails",
-                "counts are coverage telemetry",
-            ),
-        ),
+        ("US IC source tranche", (f"{summary['new_official_us_ic_anchor_count']} new anchors", f"{agencies.get('CIA', 0)} CIA", f"{agencies.get('DIA', 0)} DIA")),
+        ("ODNI and public IC", (f"{agencies.get('ODNI', 0)} ODNI", f"{agencies.get('Intelligence.gov', 0)} Intelligence.gov", f"{summary['odni_or_intelgov_count']} ODNI/Intel.gov")),
+        ("Pack routing", (f"{len(packs)} source packs", f"{summary['profile_routed_new_anchor_count']} routed", f"{summary['unrouted_new_anchor_count']} unrouted")),
+        ("Evidence manifest", ("agency_source_coverage_ok", "missing pack fails", "counts are coverage telemetry")),
     )
 
 
@@ -223,13 +176,7 @@ def _load_anchor_rows(root: Path) -> list[dict[str, Any]]:
     return rows
 
 
-def _coverage_row(
-    row: dict[str, Any],
-    packs: dict[str, tuple[str, ...]],
-    key_to_profiles: dict[str, tuple[str, ...]],
-    duplicate_keys: list[str],
-    duplicate_urls: list[str],
-) -> AgencySourceCoverageRow:
+def _coverage_row(row: dict[str, Any], packs: dict[str, tuple[str, ...]], key_to_profiles: dict[str, tuple[str, ...]], duplicate_keys: list[str], duplicate_urls: list[str]) -> AgencySourceCoverageRow:
     key = str(row.get("key") or "")
     source_agency = str(row.get("source_agency") or "")
     source_pack = str(row.get("source_pack") or "")
@@ -292,46 +239,24 @@ def _summary(raw_rows: list[dict[str, Any]], rows: list[AgencySourceCoverageRow]
         "odni_or_intelgov_count": odni_or_intelgov,
         "profile_routed_new_anchor_count": sum(1 for row in rows if row.routed_profiles),
         "unrouted_new_anchor_count": flags.get("unrouted_new_anchor", 0),
-        "missing_required_metadata_count": sum(
-            count for flag, count in flags.items() if flag.startswith("missing_")
-        ),
+        "missing_required_metadata_count": sum(count for flag, count in flags.items() if flag.startswith("missing_")),
         "duplicate_key_count": flags.get("duplicate_key", 0),
         "duplicate_url_count": flags.get("duplicate_url", 0),
         "flag_counts": dict(sorted(flags.items())),
     }
 
 
-def _global_issues(
-    rows: list[AgencySourceCoverageRow],
-    new_rows: list[dict[str, Any]],
-    duplicate_keys: list[str],
-    duplicate_urls: list[str],
-) -> list[dict[str, str]]:
+def _global_issues(rows: list[AgencySourceCoverageRow], new_rows: list[dict[str, Any]], duplicate_keys: list[str], duplicate_urls: list[str]) -> list[dict[str, str]]:
     issues: list[dict[str, str]] = []
     if len(new_rows) != EXPECTED_NEW_US_IC_ANCHORS:
-        issues.append(
-            {
-                "issue": "new_shard_count_mismatch",
-                "detail": f"expected {EXPECTED_NEW_US_IC_ANCHORS}; found {len(new_rows)}",
-            }
-        )
+        issues.append({"issue": "new_shard_count_mismatch", "detail": f"expected {EXPECTED_NEW_US_IC_ANCHORS}; found {len(new_rows)}"})
     agencies = Counter(row.source_agency for row in rows)
     for agency, minimum in MINIMUM_AGENCY_COUNTS.items():
         if agencies.get(agency, 0) < minimum:
-            issues.append(
-                {
-                    "issue": "agency_minimum_not_met",
-                    "detail": f"{agency} expected at least {minimum}; found {agencies.get(agency, 0)}",
-                }
-            )
+            issues.append({"issue": "agency_minimum_not_met", "detail": f"{agency} expected at least {minimum}; found {agencies.get(agency, 0)}"})
     odni_or_intelgov = agencies.get("ODNI", 0) + agencies.get("Intelligence.gov", 0)
     if odni_or_intelgov < MINIMUM_ODNI_INTELGOV:
-        issues.append(
-            {
-                "issue": "odni_intelgov_minimum_not_met",
-                "detail": f"expected at least {MINIMUM_ODNI_INTELGOV}; found {odni_or_intelgov}",
-            }
-        )
+        issues.append({"issue": "odni_intelgov_minimum_not_met", "detail": f"expected at least {MINIMUM_ODNI_INTELGOV}; found {odni_or_intelgov}"})
     if duplicate_keys:
         issues.append({"issue": "duplicate_keys", "detail": ", ".join(duplicate_keys[:10])})
     if duplicate_urls:
@@ -339,11 +264,7 @@ def _global_issues(
     return issues
 
 
-def _new_duplicate_values(
-    new_rows: list[dict[str, Any]],
-    existing_rows: list[dict[str, Any]],
-    field: str,
-) -> set[str]:
+def _new_duplicate_values(new_rows: list[dict[str, Any]], existing_rows: list[dict[str, Any]], field: str) -> set[str]:
     new_values = [str(row.get(field) or "") for row in new_rows if row.get(field)]
     existing_values = {str(row.get(field) or "") for row in existing_rows if row.get(field)}
     return _duplicates(new_values) | {value for value in new_values if value in existing_values}

@@ -32,19 +32,13 @@ def test_appendix_blocked_label_does_not_duplicate_safe_treatment() -> None:
     assert same != "E.1 AES Overview"
     assert "verbatim" in same
     # A real transform still names the retained source id for audit.
-    transformed = _blocked_appendix_source_label(
-        "E.2 raw operational title", "E.2 safe treatment"
-    )
+    transformed = _blocked_appendix_source_label("E.2 raw operational title", "E.2 safe treatment")
     assert "E.2" in transformed
 
 
 def test_module_map_figures_announced_as_process_flow_not_matrix() -> None:
     registry = load_figure_registry(PROJECT_ROOT / "output/figures/figure_registry.json")
-    module_maps = [
-        fig
-        for fig in registry["figures"]
-        if fig["label"].startswith("fig:part-") and fig["label"].endswith("-module-map")
-    ]
+    module_maps = [fig for fig in registry["figures"] if fig["label"].startswith("fig:part-") and fig["label"].endswith("-module-map")]
     assert module_maps, "expected part module-map figures in the registry"
     for fig in module_maps:
         # Flowcharts must not be announced to screen readers as matrices.
@@ -53,9 +47,7 @@ def test_module_map_figures_announced_as_process_flow_not_matrix() -> None:
 
 
 def test_mid_chapter_fragments_link_back_to_orientation() -> None:
-    fragments = sorted(MANUSCRIPT.glob("parts/*/*/02-evidence-contract*.md")) + sorted(
-        MANUSCRIPT.glob("parts/*/*/03-governance-boundary*.md")
-    )
+    fragments = sorted(MANUSCRIPT.glob("parts/*/*/02-evidence-contract*.md")) + sorted(MANUSCRIPT.glob("parts/*/*/03-governance-boundary*.md"))
     assert fragments, "expected evidence-contract and governance-boundary fragments"
     for path in fragments:
         text = path.read_text(encoding="utf-8")

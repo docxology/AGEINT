@@ -31,12 +31,7 @@ def test_docs_use_working_checkout_template_validation_path() -> None:
 def test_docs_describe_registry_backed_contract_map() -> None:
     docs = "\n".join(
         path.read_text(encoding="utf-8")
-        for path in [
-            PROJECT_ROOT / "docs" / "README.md",
-            PROJECT_ROOT / "docs" / "architecture.md",
-            PROJECT_ROOT / "docs" / "orchestration_contract.md",
-            PROJECT_ROOT / "docs" / "quickstart.md",
-        ]
+        for path in [PROJECT_ROOT / "docs" / "README.md", PROJECT_ROOT / "docs" / "architecture.md", PROJECT_ROOT / "docs" / "orchestration_contract.md", PROJECT_ROOT / "docs" / "quickstart.md"]
     )
 
     assert "audit_orchestration_contract.py --format json" in docs
@@ -50,13 +45,7 @@ def test_docs_figure_counts_match_rendered_registry() -> None:
     registry = json.loads((PROJECT_ROOT / "output" / "figures" / "figure_registry.json").read_text(encoding="utf-8"))
     mermaid_count = sum(1 for figure in registry["figures"] if figure["kind"] == "mermaid")
     jsonl_declared_count = mermaid_count - 17
-    docs = "\n".join(
-        path.read_text(encoding="utf-8")
-        for path in [
-            PROJECT_ROOT / "docs" / "output_inventory.md",
-            PROJECT_ROOT / "docs" / "rendering_pipeline.md",
-        ]
-    )
+    docs = "\n".join(path.read_text(encoding="utf-8") for path in [PROJECT_ROOT / "docs" / "output_inventory.md", PROJECT_ROOT / "docs" / "rendering_pipeline.md"])
 
     assert registry["figure_count"] == 177
     assert mermaid_count == 115

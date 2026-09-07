@@ -42,13 +42,9 @@ def test_lesson_crossref_helpers_align_with_manifest_labels() -> None:
 
 
 def test_reference_list_helpers_deduplicate_and_skip_empty_values() -> None:
-    assert section_ref_list(
-        ["sec:curriculum_orientation", "", "sec:curriculum_orientation", "sec:abstract"]
-    ) == "[@sec:curriculum_orientation], [@sec:abstract]"
+    assert section_ref_list(["sec:curriculum_orientation", "", "sec:curriculum_orientation", "sec:abstract"]) == "[@sec:curriculum_orientation], [@sec:abstract]"
     assert figure_ref_list(["fig:one", "fig:two"]) == "[@fig:one] [@fig:two]"
-    assert citation_ref_list(["ageint137", "ageint137", "official_nist_ai_rmf"]) == (
-        "[@ageint137]; [@official_nist_ai_rmf]"
-    )
+    assert citation_ref_list(["ageint137", "ageint137", "official_nist_ai_rmf"]) == ("[@ageint137]; [@official_nist_ai_rmf]")
 
 
 @pytest.mark.parametrize(

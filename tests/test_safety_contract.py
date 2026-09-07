@@ -2,15 +2,8 @@
 
 from __future__ import annotations
 
-from manuscript_quality.inventory_helpers import (
-    BLOCKED_OPERATIONAL_PATTERN_PHRASES,
-    DIRECT_STUDENT_TASK_MOTIFS,
-)
-from safety_contract import (
-    BLOCKED_OPERATIONAL_PHRASES,
-    DIRECT_TASK_MOTIF_RE,
-    text_is_operational,
-)
+from manuscript_quality.inventory_helpers import BLOCKED_OPERATIONAL_PATTERN_PHRASES, DIRECT_STUDENT_TASK_MOTIFS
+from safety_contract import BLOCKED_OPERATIONAL_PHRASES, DIRECT_TASK_MOTIF_RE, text_is_operational
 
 
 def test_inventory_helpers_reexport_matches_safety_contract() -> None:

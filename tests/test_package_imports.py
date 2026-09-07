@@ -21,13 +21,7 @@ for name in list(sys.modules):
 importlib.import_module({module!r})
 print("ok")
 """
-    result = subprocess.run(
-        [sys.executable, "-c", script],
-        cwd=PROJECT_ROOT,
-        capture_output=True,
-        text=True,
-        timeout=120,
-    )
+    result = subprocess.run([sys.executable, "-c", script], cwd=PROJECT_ROOT, capture_output=True, text=True, timeout=120)
     assert result.returncode == 0, result.stderr.strip() or result.stdout.strip()
 
 

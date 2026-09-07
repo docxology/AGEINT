@@ -27,32 +27,11 @@ def test_split_long_table_chunks_rows() -> None:
 
 
 def test_split_by_line_budget_preserves_multiple_table_headers() -> None:
-    measure_table = "\n".join(
-        [
-            "| Measure | Count |",
-            "|---|---:|",
-            "| Source sections | 723 |",
-            "| Distribution | 1 citation(s): 275 section(s) |",
-        ]
-    )
-    inventory_header = "\n".join(
-        [
-            "| Section | Module and source section | Citations | Citation links |",
-            "|---:|---|---:|---|",
-        ]
-    )
-    inventory_rows = "\n".join(
-        f"| {index}.1 | Module {index} - Detailed source-section title with several words | 3 | [@ageint001]; [@ageint002] |"
-        for index in range(80)
-    )
+    measure_table = "\n".join(["| Measure | Count |", "|---|---:|", "| Source sections | 723 |", "| Distribution | 1 citation(s): 275 section(s) |"])
+    inventory_header = "\n".join(["| Section | Module and source section | Citations | Citation links |", "|---:|---|---:|---|"])
+    inventory_rows = "\n".join(f"| {index}.1 | Module {index} - Detailed source-section title with several words | 3 | [@ageint001]; [@ageint002] |" for index in range(80))
     text = "\n\n".join(
-        [
-            "## Add Or Extend A Citation",
-            "### Current citation coverage by source section",
-            measure_table,
-            "### Citation rows by source section",
-            f"{inventory_header}\n{inventory_rows}",
-        ]
+        ["## Add Or Extend A Citation", "### Current citation coverage by source section", measure_table, "### Citation rows by source section", f"{inventory_header}\n{inventory_rows}"]
     )
 
     fragments = split_by_line_budget("appendices/bibliography-atlas/coverage.md", text, max_lines=35)
@@ -62,8 +41,4 @@ def test_split_by_line_budget_preserves_multiple_table_headers() -> None:
     for _, body in fragments:
         if "| Section | Module and source section | Citations | Citation links |" in body:
             assert "|---:|---|---:|---|" in body
-    assert all(
-        "| Distribution | 1 citation(s): 275 section(s) |\n"
-        "| Section | Module and source section | Citations | Citation links |" not in body
-        for _, body in fragments
-    )
+    assert all("| Distribution | 1 citation(s): 275 section(s) |\n| Section | Module and source section | Citations | Citation links |" not in body for _, body in fragments)

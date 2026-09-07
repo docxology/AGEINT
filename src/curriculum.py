@@ -13,24 +13,7 @@ from _slug import curriculum_chapter_dir_name, curriculum_part_dir_name, slug_fo
 
 PATTERN_REGISTRY_CHAPTER_NUMBER = 32
 
-ROMAN = {
-    "I": 1,
-    "II": 2,
-    "III": 3,
-    "IV": 4,
-    "V": 5,
-    "VI": 6,
-    "VII": 7,
-    "VIII": 8,
-    "IX": 9,
-    "X": 10,
-    "XI": 11,
-    "XII": 12,
-    "XIII": 13,
-    "XIV": 14,
-    "XV": 15,
-    "XVI": 16,
-}
+ROMAN = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8, "IX": 9, "X": 10, "XI": 11, "XII": 12, "XIII": 13, "XIV": 14, "XV": 15, "XVI": 16}
 
 
 @dataclass(frozen=True)
@@ -57,17 +40,8 @@ class Curriculum:
         for reference in payload["references"]:
             references_by_key[str(reference["key"])] = reference
             references_by_number[int(reference["number"])] = reference
-        appendices_by_letter = {
-            str(appendix["letter"]).upper(): appendix for appendix in payload["appendices"]
-        }
-        return cls(
-            payload,
-            parts_by_number,
-            chapters_by_number,
-            references_by_key,
-            references_by_number,
-            appendices_by_letter,
-        )
+        appendices_by_letter = {str(appendix["letter"]).upper(): appendix for appendix in payload["appendices"]}
+        return cls(payload, parts_by_number, chapters_by_number, references_by_key, references_by_number, appendices_by_letter)
 
     @property
     def stats(self) -> dict[str, int]:
@@ -158,13 +132,7 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
         match = re.match(r"^(\d+)\. \[(.*?)\]\((.*?)\)(?: - (.*))?$", line.strip())
         if match:
             number = int(match.group(1))
-            references[number] = {
-                "number": number,
-                "key": f"ageint{number:03d}",
-                "title": match.group(2).strip(),
-                "url": match.group(3).strip(),
-                "note": (match.group(4) or "").strip(),
-            }
+            references[number] = {"number": number, "key": f"ageint{number:03d}", "title": match.group(2).strip(), "url": match.group(3).strip(), "note": (match.group(4) or "").strip()}
 
     parts: list[dict[str, Any]] = []
     appendices: list[dict[str, Any]] = []
@@ -183,25 +151,13 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
         if mode == "toc":
             part_match = re.match(r"^### PART ([IVX]+):\s*(.+)$", line)
             if part_match:
-                current_part = {
-                    "number": ROMAN[part_match.group(1)],
-                    "roman": part_match.group(1),
-                    "title": part_match.group(2).strip(),
-                    "chapters": [],
-                    "source_line": line_no,
-                }
+                current_part = {"number": ROMAN[part_match.group(1)], "roman": part_match.group(1), "title": part_match.group(2).strip(), "chapters": [], "source_line": line_no}
                 parts.append(current_part)
                 current_chapter = None
                 continue
             chapter_match = re.match(r"^\*\*Chapter (\d+) — (.+?)\*\*", line)
             if chapter_match and current_part is not None:
-                current_chapter = {
-                    "number": int(chapter_match.group(1)),
-                    "title": chapter_match.group(2).strip(),
-                    "sections": [],
-                    "citations": [],
-                    "source_line": line_no,
-                }
+                current_chapter = {"number": int(chapter_match.group(1)), "title": chapter_match.group(2).strip(), "sections": [], "citations": [], "source_line": line_no}
                 current_part["chapters"].append(current_chapter)
                 continue
             bullet_match = re.match(r"^(\s*)-\s+(.+)$", line)
@@ -225,36 +181,18 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
         elif mode == "appendix":
             appendix_match = re.match(r"^### Appendix ([A-Z]) — (.+)$", line)
             if appendix_match:
-                current_appendix = {
-                    "letter": appendix_match.group(1),
-                    "title": appendix_match.group(2).strip(),
-                    "items": [],
-                    "source_line": line_no,
-                }
+                current_appendix = {"letter": appendix_match.group(1), "title": appendix_match.group(2).strip(), "items": [], "source_line": line_no}
                 appendices.append(current_appendix)
                 continue
             bullet_match = re.match(r"^(\s*)-\s+(.+)$", line)
             if bullet_match and current_appendix is not None:
                 raw = bullet_match.group(2).strip()
                 current_appendix["items"].append(
-                    {
-                        "level": 1 + len(bullet_match.group(1)) // 2,
-                        "title": _strip_markdown(raw),
-                        "raw": raw,
-                        "citations": [int(n) for n in re.findall(r"\[\^(\d+)\]", raw)],
-                    }
+                    {"level": 1 + len(bullet_match.group(1)) // 2, "title": _strip_markdown(raw), "raw": raw, "citations": [int(n) for n in re.findall(r"\[\^(\d+)\]", raw)]}
                 )
 
     patterns: list[dict[str, Any]] = []
-    chapter_32 = next(
-        (
-            chapter
-            for part in parts
-            for chapter in part["chapters"]
-            if chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER
-        ),
-        None,
-    )
+    chapter_32 = next((chapter for part in parts for chapter in part["chapters"] if chapter["number"] == PATTERN_REGISTRY_CHAPTER_NUMBER), None)
     current_pattern: dict[str, Any] | None = None
     for section in chapter_32["sections"] if chapter_32 else []:
         pattern_match = re.match(r"\*\*Pattern (\d+):\s*(.+?)\*\*\s*—\s*(.*)", section["raw"])
@@ -283,70 +221,35 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
         "appendices": appendices,
         "patterns": patterns,
         "references": list(references.values()),
-        "stats": {
-            "parts": len(parts),
-            "chapters": sum(len(part["chapters"]) for part in parts),
-            "appendices": len(appendices),
-            "patterns": len(patterns),
-            "references": len(references),
-        },
+        "stats": {"parts": len(parts), "chapters": sum(len(part["chapters"]) for part in parts), "appendices": len(appendices), "patterns": len(patterns), "references": len(references)},
     }
 
 
 def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
     """Write curriculum payload shards under ``directory``."""
     directory.mkdir(parents=True, exist_ok=True)
-    (directory / "metadata.json").write_text(
-        json.dumps(
-            {key: payload[key] for key in ("project", "title") if key in payload},
-            indent=2,
-            ensure_ascii=False,
-        )
-        + "\n",
-        encoding="utf-8",
-    )
-    (directory / "stats.json").write_text(
-        json.dumps(payload["stats"], indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-    (directory / "patterns.json").write_text(
-        json.dumps(payload["patterns"], indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    (directory / "metadata.json").write_text(json.dumps({key: payload[key] for key in ("project", "title") if key in payload}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (directory / "stats.json").write_text(json.dumps(payload["stats"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (directory / "patterns.json").write_text(json.dumps(payload["patterns"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     for part in payload["parts"]:
         part_dir = directory / "parts" / curriculum_part_dir_name(part)
         part_dir.mkdir(parents=True, exist_ok=True)
         part_payload = {key: value for key, value in part.items() if key != "chapters"}
-        part_payload["chapter_files"] = [
-            f"{curriculum_chapter_dir_name(chapter)}/chapter.json"
-            for chapter in part["chapters"]
-        ]
-        (part_dir / "part.json").write_text(
-            json.dumps(part_payload, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
+        part_payload["chapter_files"] = [f"{curriculum_chapter_dir_name(chapter)}/chapter.json" for chapter in part["chapters"]]
+        (part_dir / "part.json").write_text(json.dumps(part_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         chapter_dir = part_dir / "chapters"
         chapter_dir.mkdir(exist_ok=True)
         for chapter in part["chapters"]:
             chapter_path = chapter_dir / curriculum_chapter_dir_name(chapter)
             chapter_path.mkdir(exist_ok=True)
             chapter_payload = {key: value for key, value in chapter.items() if key != "sections"}
-            (chapter_path / "chapter.json").write_text(
-                json.dumps(chapter_payload, indent=2, ensure_ascii=False) + "\n",
-                encoding="utf-8",
-            )
-            section_rows = "".join(
-                json.dumps(section, ensure_ascii=False, sort_keys=True) + "\n"
-                for section in chapter["sections"]
-            )
+            (chapter_path / "chapter.json").write_text(json.dumps(chapter_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            section_rows = "".join(json.dumps(section, ensure_ascii=False, sort_keys=True) + "\n" for section in chapter["sections"])
             (chapter_path / "sections.jsonl").write_text(section_rows, encoding="utf-8")
     appendix_dir = directory / "appendices"
     appendix_dir.mkdir(exist_ok=True)
     for appendix in payload["appendices"]:
-        (appendix_dir / f"{appendix['letter'].lower()}-{slug_for_path(appendix['title'])}.json").write_text(
-            json.dumps(appendix, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
+        (appendix_dir / f"{appendix['letter'].lower()}-{slug_for_path(appendix['title'])}.json").write_text(json.dumps(appendix, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     reference_dir = directory / "references"
     reference_dir.mkdir(exist_ok=True)
     for stale in reference_dir.glob("source-guide-*.jsonl"):
@@ -363,18 +266,11 @@ def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
 def write_compact_curriculum_payload(payload: dict[str, Any], output_path: Path) -> Path:
     """Write a one-line compatibility JSON payload without creating a long file."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(
-        json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n",
-        encoding="utf-8",
-    )
+    output_path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     return output_path
 
 
-def resolve_curriculum_payload(
-    source_path: Path,
-    *,
-    shard_path: Path | None = None,
-) -> dict[str, Any]:
+def resolve_curriculum_payload(source_path: Path, *, shard_path: Path | None = None) -> dict[str, Any]:
     """Resolve a curriculum payload from the guide file or sharded data."""
     if source_path.is_file():
         if source_path.suffix == ".json":
@@ -390,10 +286,7 @@ def resolve_curriculum_payload(
     for candidate in candidates:
         if candidate.exists():
             return load_curriculum(candidate).payload
-    raise FileNotFoundError(
-        f"No AGEINT curriculum source found: {source_path} or "
-        f"{', '.join(str(path) for path in candidates)}"
-    )
+    raise FileNotFoundError(f"No AGEINT curriculum source found: {source_path} or {', '.join(str(path) for path in candidates)}")
 
 
 def build_curriculum(source_path: Path, output_path: Path) -> Curriculum:
@@ -401,10 +294,7 @@ def build_curriculum(source_path: Path, output_path: Path) -> Curriculum:
     if source_path.exists():
         payload = parse_curriculum_guide(source_path.read_text(encoding="utf-8"))
     else:
-        payload = resolve_curriculum_payload(
-            source_path,
-            shard_path=output_path if output_path.exists() else None,
-        )
+        payload = resolve_curriculum_payload(source_path, shard_path=output_path if output_path.exists() else None)
     if output_path.suffix == ".json":
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")

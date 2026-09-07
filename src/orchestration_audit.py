@@ -28,12 +28,7 @@ def collect_orchestration_contract(project_root: Path) -> dict[str, Any]:
         "source_packs": source_packs,
         "mermaid": mermaid_contract_report(),
     }
-    payload["ok"] = (
-        not pipeline["missing_output_sentinels"]
-        and source_packs["issue_count"] == 0
-        and payload["audits"]["contract_count"] > 0
-        and payload["mermaid"]["diagram_type_count"] >= 6
-    )
+    payload["ok"] = not pipeline["missing_output_sentinels"] and source_packs["issue_count"] == 0 and payload["audits"]["contract_count"] > 0 and payload["mermaid"]["diagram_type_count"] >= 6
     return payload
 
 
@@ -75,24 +70,14 @@ def render_orchestration_contract_markdown(payload: dict[str, Any]) -> str:
     ]
     for contract in payload["audits"]["contracts"]:
         reports = ", ".join(f"`{path}`" for path in contract["report_paths"])
-        lines.append(
-            f"| `{contract['contract_id']}` | `{contract['check_id']}` | {reports} | {contract['negative_control']} |"
-        )
+        lines.append(f"| `{contract['contract_id']}` | `{contract['check_id']}` | {reports} | {contract['negative_control']} |")
     lines.extend(["", "## Source-Pack Contracts", "", "| Class | Packs | Routes | Issues |", "|---|---:|---:|---:|"])
     for registry in payload["source_packs"]["registries"]:
-        class_issues = [
-            issue
-            for issue in payload["source_packs"]["issues"]
-            if issue["source_class"] == registry["source_class"]
-        ]
-        lines.append(
-            f"| `{registry['source_class']}` | {registry['pack_count']} | {registry['profile_route_count']} | {len(class_issues)} |"
-        )
+        class_issues = [issue for issue in payload["source_packs"]["issues"] if issue["source_class"] == registry["source_class"]]
+        lines.append(f"| `{registry['source_class']}` | {registry['pack_count']} | {registry['profile_route_count']} | {len(class_issues)} |")
     lines.extend(["", "## Mermaid Diagram Types", "", "| Type | Purpose | Reader detail required |", "|---|---|---:|"])
     for diagram_type in payload["mermaid"]["diagram_types"]:
-        lines.append(
-            f"| `{diagram_type['diagram_type']}` | {diagram_type['purpose']} | {str(diagram_type['requires_reader_detail']).lower()} |"
-        )
+        lines.append(f"| `{diagram_type['diagram_type']}` | {diagram_type['purpose']} | {str(diagram_type['requires_reader_detail']).lower()} |")
     return "\n".join(lines) + "\n"
 
 
@@ -112,8 +97,4 @@ def _known_source_keys(project_root: Path) -> set[str]:
     return keys
 
 
-__all__ = [
-    "collect_orchestration_contract",
-    "render_orchestration_contract_markdown",
-    "write_orchestration_contract",
-]
+__all__ = ["collect_orchestration_contract", "render_orchestration_contract_markdown", "write_orchestration_contract"]

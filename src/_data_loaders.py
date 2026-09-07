@@ -39,10 +39,7 @@ def _yaml_routes(section: str) -> tuple[tuple[tuple[str, ...], str], ...]:
     if section not in payload:
         raise KeyError(f"Missing concept-route section: {section}")
     rows = payload[section]
-    return tuple(
-        (tuple(str(keyword) for keyword in row["keywords"]), str(row["frame"]))
-        for row in rows
-    )
+    return tuple((tuple(str(keyword) for keyword in row["keywords"]), str(row["frame"])) for row in rows)
 
 
 def concept_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
@@ -83,12 +80,7 @@ def module_architecture(profile_id: str) -> tuple[str, str, str, str]:
     profiles = payload.get("profiles", {})
     default = payload.get("default", {})
     row = profiles.get(profile_id, default)
-    return (
-        str(row["inputs"]),
-        str(row["transforms"]),
-        str(row["outputs"]),
-        str(row["failures"]),
-    )
+    return (str(row["inputs"]), str(row["transforms"]), str(row["outputs"]), str(row["failures"]))
 
 
 @lru_cache(maxsize=1)
@@ -126,12 +118,7 @@ def topic_risk_routes_payload() -> dict[str, Any]:
 def topic_prompt_routes_payload() -> dict[str, Any]:
     """Return evidence and artifact prompt routing tables."""
     payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "topic_prompt_routes.yaml")
-    for key in (
-        "evidence_category_prompts",
-        "evidence_keyword_routes",
-        "artifact_keyword_routes",
-        "artifact_risk_category_prompts",
-    ):
+    for key in ("evidence_category_prompts", "evidence_keyword_routes", "artifact_keyword_routes", "artifact_risk_category_prompts"):
         if key not in payload or not isinstance(payload[key], list):
             raise ValueError(f"Expected list {key!r} in topic_prompt_routes.yaml")
     return payload
@@ -144,10 +131,7 @@ def _prompt_category_map(section: str) -> dict[str, str]:
 
 def _prompt_keyword_routes(section: str) -> tuple[tuple[tuple[str, ...], str], ...]:
     rows = topic_prompt_routes_payload()[section]
-    return tuple(
-        (tuple(str(keyword) for keyword in row["keywords"]), str(row["prompt"]))
-        for row in rows
-    )
+    return tuple((tuple(str(keyword) for keyword in row["keywords"]), str(row["prompt"])) for row in rows)
 
 
 @lru_cache(maxsize=1)
@@ -178,14 +162,7 @@ def artifact_risk_category_prompts() -> dict[str, str]:
 def topic_rotation_templates_payload() -> dict[str, Any]:
     """Return why-it-matters and misconception rotation tables."""
     payload = _load_yaml_mapping(_PROJECT_ROOT / "data" / "topic_rotation_templates.yaml")
-    for key in (
-        "why_it_matters_templates",
-        "risk_why_failure_hints",
-        "misconception_fallbacks",
-        "misconception_risk_templates",
-        "misconception_keyword_routes",
-        "transfer_task_keyword_routes",
-    ):
+    for key in ("why_it_matters_templates", "risk_why_failure_hints", "misconception_fallbacks", "misconception_risk_templates", "misconception_keyword_routes", "transfer_task_keyword_routes"):
         if key not in payload or not isinstance(payload[key], list):
             raise ValueError(f"Expected list {key!r} in topic_rotation_templates.yaml")
     return payload
@@ -223,10 +200,7 @@ def misconception_risk_templates() -> tuple[str, ...]:
 def misconception_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered misconception keyword routes."""
     rows = topic_rotation_templates_payload()["misconception_keyword_routes"]
-    return tuple(
-        (tuple(str(keyword) for keyword in row["keywords"]), str(row["misconception"]))
-        for row in rows
-    )
+    return tuple((tuple(str(keyword) for keyword in row["keywords"]), str(row["misconception"])) for row in rows)
 
 
 @lru_cache(maxsize=1)
@@ -245,10 +219,7 @@ def misconception_category_routes() -> dict[str, str]:
 def transfer_task_keyword_routes() -> tuple[tuple[tuple[str, ...], str], ...]:
     """Return ordered transfer-task keyword routes."""
     rows = topic_rotation_templates_payload()["transfer_task_keyword_routes"]
-    return tuple(
-        (tuple(str(keyword) for keyword in row["keywords"]), str(row["template"]))
-        for row in rows
-    )
+    return tuple((tuple(str(keyword) for keyword in row["keywords"]), str(row["template"])) for row in rows)
 
 
 SAFETY_ARTIFACT_TABLE_NAMES: Final[tuple[str, ...]] = (
@@ -284,9 +255,7 @@ def coursebook_profiles_payload() -> list[dict[str, Any]]:
         if not isinstance(row, dict):
             raise ValueError("Expected mapping for each coursebook profile row")
         identifier = str(row["identifier"])
-        vocabulary = tuple(
-            (str(item["term"]), str(item["definition"])) for item in row["vocabulary"]
-        )
+        vocabulary = tuple((str(item["term"]), str(item["definition"])) for item in row["vocabulary"])
         rendered.append(
             {
                 "identifier": identifier,
@@ -325,10 +294,7 @@ def safety_artifact_tables_payload() -> dict[str, Any]:
     if yaml_keys != expected_keys:
         missing = expected_keys - yaml_keys
         extra = yaml_keys - expected_keys
-        raise ValueError(
-            "safety_artifact_tables.yaml key drift: "
-            f"missing={sorted(missing)!r}; extra={sorted(extra)!r}"
-        )
+        raise ValueError(f"safety_artifact_tables.yaml key drift: missing={sorted(missing)!r}; extra={sorted(extra)!r}")
     return payload
 
 
