@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-07T03:40:12+00:00",
+  "generated_at": "2026-09-07T19:34:17+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -7595,7 +7595,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_agent_standards_initiative] / [AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) / agent_interoperability_standards / official_primary / 2026-06-11 / quarterly / NIST AI-agent standards initiative, RFI, guidance, technical convening, protocol, identity, or evaluation deliverable changes / Direct NIST source URL verified live 2026-06-11; pag"
+      "text": "/ [@official_nist_ai_agent_standards_initiative] / [AI Agent Standards Initiative](https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative) / agent_interoperability_standards / official_primary / 2026-09-07 / quarterly / NIST AI-agent standards initiative, RFI, guidance, technical convening, protocol, identity, or evaluation deliverable changes / Direct NIST source URL verified live 2026-06-11; pag"
     },
     {
       "citation_keys": [
@@ -10519,7 +10519,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_model_context_protocol_specification] / [Specification - Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18) / agent_interoperability_standards / official_primary / 2026-06-11 / quarterly / MCP specification version, protocol capability model, authorization profile, transport guidance, or security model changes / Direct official MCP specification page verified live 2026-06-1"
+      "text": "/ [@official_model_context_protocol_specification] / [Specification - Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18) / agent_interoperability_standards / official_primary / 2026-09-07 / quarterly / MCP specification version, protocol capability model, authorization profile, transport guidance, or security model changes / Direct official MCP specification page verified live 2026-06-1"
     },
     {
       "citation_keys": [
@@ -10546,7 +10546,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_model_context_protocol_security_best_practices] / [Security Best Practices - Model Context Protocol](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) / secure_release_change_control / official_primary / 2026-06-11 / quarterly / MCP security guidance, authorization/security-best-practice page, confused-deputy mitigation, token-handling guidance, or tool-consent requirements"
+      "text": "/ [@official_model_context_protocol_security_best_practices] / [Security Best Practices - Model Context Protocol](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices) / secure_release_change_control / official_primary / 2026-09-07 / quarterly / MCP security guidance, authorization/security-best-practice page, confused-deputy mitigation, token-handling guidance, or tool-consent requirements"
     },
     {
       "citation_keys": [
@@ -11223,7 +11223,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_800_2_automated_benchmark_evaluations] / [Practices for Automated Benchmark Evaluations of Language Models and AI Agent Systems, NIST AI 800-2 Initial Public Draft](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-2.ipd.pdf) / assurance_evaluation_evidence / official_draft / 2026-06-11 / quarterly / NIST AI 800-2 draft revision, final publication, benchmark evaluation practice update, public comm"
+      "text": "/ [@official_nist_ai_800_2_automated_benchmark_evaluations] / [Practices for Automated Benchmark Evaluations of Language Models and AI Agent Systems, NIST AI 800-2 Initial Public Draft](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.800-2.ipd.pdf) / assurance_evaluation_evidence / official_draft / 2026-09-07 / quarterly / NIST AI 800-2 draft revision, final publication, benchmark evaluation practice update, public comm"
     },
     {
       "citation_keys": [
@@ -11277,7 +11277,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nsa_mcp_security_design_considerations] / [Model Context Protocol (MCP): Security Design Considerations for Organizations](https://www.nsa.gov/Portals/75/documents/Cybersecurity/CSI_MCP_SECURITY.pdf) / secure_release_change_control / official_primary / 2026-06-11 / quarterly / NSA MCP security guidance, MCP protocol security profile, implementation vulnerability guidance, or secure-adoption recommendatio"
+      "text": "/ [@official_nsa_mcp_security_design_considerations] / [Model Context Protocol (MCP): Security Design Considerations for Organizations](https://www.nsa.gov/Portals/75/documents/Cybersecurity/CSI_MCP_SECURITY.pdf) / secure_release_change_control / official_primary / 2026-09-07 / quarterly / NSA MCP security guidance, MCP protocol security profile, implementation vulnerability guidance, or secure-adoption recommendatio"
     },
     {
       "citation_keys": [
@@ -12655,7 +12655,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_intelligence_gov_accountability] / [Our Values: Accountability](https://www.intelligence.gov/mission/our-values/accountability) / ic_public_transparency / official_primary / 2026-06-14 / quarterly / Intelligence.gov page content, URL, or public values framing materially changes / Direct URL verified on 2026-06-14 through browser fetch because intelligence.gov returned 403 to plain curl; fetched HTML titl"
+      "text": "/ [@official_intelligence_gov_accountability] / [Our Values: Accountability](https://www.intelligence.gov/mission/our-values/accountability) / ic_public_transparency / official_primary / 2026-09-07 / quarterly / Intelligence.gov page content, URL, or public values framing materially changes / Direct URL verified on 2026-06-14 through browser fetch because intelligence.gov returned 403 to plain curl; fetched HTML titl"
     },
     {
       "citation_keys": [
@@ -27167,7 +27167,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_agent_standards_initiative] / AI Agent Standards Initiative / curriculum_anchor / agent_interoperability_standards / official_primary / 2026-06-11 / quarterly / standards steward, agent architect, assurance reviewer, procurement assessor, instructor, and learner / agent standards crosswalk, secure delegation review, identity evidence, interoperability claims, and evaluation-scope caveats / secure"
+      "text": "/ [@official_nist_ai_agent_standards_initiative] / AI Agent Standards Initiative / curriculum_anchor / agent_interoperability_standards / official_primary / 2026-09-07 / quarterly / standards steward, agent architect, assurance reviewer, procurement assessor, instructor, and learner / agent standards crosswalk, secure delegation review, identity evidence, interoperability claims, and evaluation-scope caveats / secure"
     },
     {
       "citation_keys": [
@@ -27254,7 +27254,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_mitre_atlas] / MITRE ATLAS / curriculum_anchor / ai_red_team_assurance / research_standard / 2026-06-11 / quarterly / AI security analyst, red-team reviewer, incident responder, instructor, and learner / adversarial-AI threat taxonomy, defensive red-team mapping, AI control coverage, and incident-response exercise scoping / security, accountable defensive testing, risk communication, incident readiness, "
+      "text": "/ [@official_mitre_atlas] / MITRE ATLAS / curriculum_anchor / ai_red_team_assurance / research_standard / 2026-09-07 / quarterly / AI security analyst, red-team reviewer, incident responder, instructor, and learner / adversarial-AI threat taxonomy, defensive red-team mapping, AI control coverage, and incident-response exercise scoping / security, accountable defensive testing, risk communication, incident readiness, "
     },
     {
       "citation_keys": [
@@ -30111,7 +30111,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_model_context_protocol_specification] / Specification - Model Context Protocol / curriculum_anchor / agent_interoperability_standards / official_primary / 2026-06-11 / quarterly / agent-platform engineer, interoperability reviewer, procurement assessor, instructor, and learner / bibliography traceability / interoperability, transparency, least-privilege integration, tool accountability, auditable agent c"
+      "text": "/ [@official_model_context_protocol_specification] / Specification - Model Context Protocol / curriculum_anchor / agent_interoperability_standards / official_primary / 2026-09-07 / quarterly / agent-platform engineer, interoperability reviewer, procurement assessor, instructor, and learner / bibliography traceability / interoperability, transparency, least-privilege integration, tool accountability, auditable agent c"
     },
     {
       "citation_keys": [
@@ -30138,7 +30138,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_model_context_protocol_security_best_practices] / Security Best Practices - Model Context Protocol / curriculum_anchor / secure_release_change_control / official_primary / 2026-06-11 / quarterly / security architect, release reviewer, agent-platform engineer, instructor, and learner / MCP deployment threat model, confused-deputy mitigation checklist, token-handling review, human-consent gate, least-privi"
+      "text": "/ [@official_model_context_protocol_security_best_practices] / Security Best Practices - Model Context Protocol / curriculum_anchor / secure_release_change_control / official_primary / 2026-09-07 / quarterly / security architect, release reviewer, agent-platform engineer, instructor, and learner / MCP deployment threat model, confused-deputy mitigation checklist, token-handling review, human-consent gate, least-privi"
     },
     {
       "citation_keys": [
@@ -30766,7 +30766,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_800_2_automated_benchmark_evaluations] / Practices for Automated Benchmark Evaluations of Language Models and AI Agent Systems, NIST AI 800-2 Initial Public Draft / curriculum_anchor / assurance_evaluation_evidence / official_draft / 2026-06-11 / quarterly / AI evaluator, procurement assessor, assurance reviewer, instructor, system steward, and learner / automated benchmark evaluation protocol, a"
+      "text": "/ [@official_nist_ai_800_2_automated_benchmark_evaluations] / Practices for Automated Benchmark Evaluations of Language Models and AI Agent Systems, NIST AI 800-2 Initial Public Draft / curriculum_anchor / assurance_evaluation_evidence / official_draft / 2026-09-07 / quarterly / AI evaluator, procurement assessor, assurance reviewer, instructor, system steward, and learner / automated benchmark evaluation protocol, a"
     },
     {
       "citation_keys": [
@@ -31667,7 +31667,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_intelligence_gov_accountability] / Our Values: Accountability / curriculum_anchor / ic_public_transparency / official_primary / 2026-06-14 / quarterly / learner, instructor, civil-liberties reviewer / anchors public-facing accountability language and oversight explanations / public education page used for rights, accountability, and oversight framing / Intelligence.gov public values page describing IC ac"
+      "text": "/ [@official_intelligence_gov_accountability] / Our Values: Accountability / curriculum_anchor / ic_public_transparency / official_primary / 2026-09-07 / quarterly / learner, instructor, civil-liberties reviewer / anchors public-facing accountability language and oversight explanations / public education page used for rights, accountability, and oversight framing / Intelligence.gov public values page describing IC ac"
     },
     {
       "citation_keys": [
@@ -31721,7 +31721,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nsa_cybersecurity_advisories_guidance] / NSA Cybersecurity Advisories and Guidance / curriculum_anchor / cyber_defense_guidance_index / official_primary / 2026-06-14 / quarterly / cyber analyst, instructor, reviewer / supports defensive CTI source routing without citing exploit instructions / public guidance index used for defensive education and source-refresh planning / NSA public index for cybersecuri"
+      "text": "/ [@official_nsa_cybersecurity_advisories_guidance] / NSA Cybersecurity Advisories and Guidance / curriculum_anchor / cyber_defense_guidance_index / official_primary / 2026-09-07 / quarterly / cyber analyst, instructor, reviewer / supports defensive CTI source routing without citing exploit instructions / public guidance index used for defensive education and source-refresh planning / NSA public index for cybersecuri"
     },
     {
       "citation_keys": [
@@ -31748,7 +31748,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nsa_agentic_ai_services_guidance_2026] / NSA Joins the ASD's ACSC and Others to Release Guidance on Agentic Artificial Intelligence Systems / curriculum_anchor / agentic_ai_security_governance / official_primary / 2026-06-14 / quarterly / AI security reviewer, system owner, instructor / supports agentic AI safety-boundary and adoption-gate language / public cybersecurity release used for defensive AI-gov"
+      "text": "/ [@official_nsa_agentic_ai_services_guidance_2026] / NSA Joins the ASD's ACSC and Others to Release Guidance on Agentic Artificial Intelligence Systems / curriculum_anchor / agentic_ai_security_governance / official_primary / 2026-09-07 / quarterly / AI security reviewer, system owner, instructor / supports agentic AI safety-boundary and adoption-gate language / public cybersecurity release used for defensive AI-gov"
     },
     {
       "citation_keys": [
@@ -42698,7 +42698,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_agent_standards_initiative] / agentic_ai_governance / agent_interoperability_standards / official_primary / 2026-06-11 / quarterly / Official NIST initiative for trusted, interoperable, and secure AI-agent standards, protocols, identity, and evaluation research. /"
+      "text": "/ [@official_nist_ai_agent_standards_initiative] / agentic_ai_governance / agent_interoperability_standards / official_primary / 2026-09-07 / quarterly / Official NIST initiative for trusted, interoperable, and secure AI-agent standards, protocols, identity, and evaluation research. /"
     },
     {
       "citation_keys": [
@@ -42753,7 +42753,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_mitre_atlas] / agentic_ai_governance / ai_red_team_assurance / research_standard / 2026-06-11 / quarterly / MITRE ATLAS is a living knowledge base for adversarial threats to AI-enabled systems, useful for defensive red-team mapping and control coverage. /"
+      "text": "/ [@official_mitre_atlas] / agentic_ai_governance / ai_red_team_assurance / research_standard / 2026-09-07 / quarterly / MITRE ATLAS is a living knowledge base for adversarial threats to AI-enabled systems, useful for defensive red-team mapping and control coverage. /"
     },
     {
       "citation_keys": [
@@ -45224,7 +45224,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nist_ai_800_2_automated_benchmark_evaluations] / agentic_ai_governance / assurance_evaluation_evidence / official_draft / 2026-06-11 / quarterly / NIST AI 800-2 initial public draft provides voluntary practices for automated benchmark evaluations of language models and AI agent systems. /"
+      "text": "/ [@official_nist_ai_800_2_automated_benchmark_evaluations] / agentic_ai_governance / assurance_evaluation_evidence / official_draft / 2026-09-07 / quarterly / NIST AI 800-2 initial public draft provides voluntary practices for automated benchmark evaluations of language models and AI agent systems. /"
     },
     {
       "citation_keys": [
@@ -45656,7 +45656,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_intelligence_gov_accountability] / legal_oversight / ic_public_transparency / official_primary / 2026-06-14 / quarterly / Intelligence.gov public values page describing IC accountability, lawfulness, oversight, and civil liberties framing. /"
+      "text": "/ [@official_intelligence_gov_accountability] / legal_oversight / ic_public_transparency / official_primary / 2026-09-07 / quarterly / Intelligence.gov public values page describing IC accountability, lawfulness, oversight, and civil liberties framing. /"
     },
     {
       "citation_keys": [
@@ -45683,7 +45683,7 @@
           "weak_context": false
         }
       ],
-      "text": "/ [@official_nsa_cybersecurity_advisories_guidance] / cyber_threat_intelligence / cyber_defense_guidance_index / official_primary / 2026-06-14 / quarterly / NSA public index for cybersecurity advisories, information sheets, technical reports, and operational risk notices. /"
+      "text": "/ [@official_nsa_cybersecurity_advisories_guidance] / cyber_threat_intelligence / cyber_defense_guidance_index / official_primary / 2026-09-07 / quarterly / NSA public index for cybersecurity advisories, information sheets, technical reports, and operational risk notices. /"
     },
     {
       "citation_keys": [

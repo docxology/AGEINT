@@ -11,7 +11,7 @@ from manuscript_manifest._heading_titles import chapter_detail_titles, chapter_t
 from safety_contract import BLOCKED_OPERATIONAL_PHRASES, DIRECT_TASK_MOTIF_RE
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-MANUSCRIPT = PROJECT_ROOT / "manuscript"
+MANUSCRIPT = PROJECT_ROOT / "docs" / "manuscript"
 TEMPLATES = MANUSCRIPT / "templates"
 OUTPUT_MANUSCRIPT = PROJECT_ROOT / "output" / "manuscript"
 

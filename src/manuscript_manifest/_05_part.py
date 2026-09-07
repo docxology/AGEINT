@@ -115,8 +115,13 @@ def _rendered_fragments(section: ManuscriptSection, rendered: str) -> list[tuple
 
 
 def _write_generated_config(project_root: Path, out_dir: Path, front_matter_files: list[str], units: list[dict[str, Any]], appendix_files: list[str]) -> None:
-    source_config = project_root / "manuscript" / "config.yaml"
-    base = source_config.read_text(encoding="utf-8").rstrip() if source_config.is_file() else ""
+    source_config = project_root / "docs" / "manuscript" / "config.yaml"
+    if not source_config.is_file():
+        raise FileNotFoundError(
+            f"Missing source manuscript config: {source_config.as_posix()}. "
+            "The generated output config would silently lose book/paper metadata without it."
+        )
+    base = source_config.read_text(encoding="utf-8").rstrip()
     front_matter_options = _source_front_matter_options(base)
     if front_matter_options:
         base = _strip_top_level_yaml_block(base, "front_matter")
@@ -171,7 +176,7 @@ def render_manuscript(project_root: Path, curriculum: Curriculum, variables: dic
     manifest = build_manuscript_manifest(curriculum, figures)
     rendered_title_rules = section_title_rules(manifest.sections)
     root = Path(project_root)
-    templates_dir = root / "manuscript" / "templates"
+    templates_dir = root / "docs" / "manuscript" / "templates"
     out_dir = root / "output" / "manuscript"
     from _paths import remove_tree
 
@@ -225,7 +230,7 @@ def render_manuscript(project_root: Path, curriculum: Curriculum, variables: dic
         legacy_bib.write_text(variables["BIBTEX_REFERENCES"], encoding="utf-8")
 
     _write_generated_config(root, out_dir, rendered_front, rendered_units, rendered_appendices)
-    preamble = root / "manuscript" / "preamble.md"
+    preamble = root / "docs" / "manuscript" / "preamble.md"
     if preamble.is_file():
         shutil.copy2(preamble, out_dir / "preamble.md")
     from output_docs import write_manuscript_output_docs

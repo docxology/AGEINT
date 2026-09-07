@@ -2,10 +2,10 @@
 
 | Measure | Value |
 |---|---:|
-| OK | false |
-| Generated at | 2026-09-07T01:48:43+00:00 |
-| Generated Markdown files | 39 |
-| Generated citation occurrences | 574 |
+| OK | true |
+| Generated at | 2026-09-07T19:25:04+00:00 |
+| Generated Markdown files | 330 |
+| Generated citation occurrences | 16629 |
 | Thin claim-bearing files | 0 |
 | Single-family claim-bearing files | 0 |
 | SAT method contract | true |
@@ -17,17 +17,17 @@
 | Source metadata fallback rows | 0 |
 | Blank source lanes | 0 |
 | Blank source tiers | 0 |
-| Source refresh due pass | false |
-| Source refresh due/stale rows | 8 |
+| Source refresh due pass | true |
+| Source refresh due/stale rows | 0 |
 | Source refresh missing checked dates | 0 |
 | Agency source coverage pass | true |
 | New official US IC anchors | 56 |
 | Agency-source unrouted rows | 0 |
 | Agency-source missing metadata | 0 |
 | Claim calibration pass | true |
-| Claim-calibration candidate rows | 397 |
+| Claim-calibration candidate rows | 9129 |
 | Claim-calibration hard fails | 0 |
-| Claim-calibration review warnings | 163 |
+| Claim-calibration review warnings | 5132 |
 | Reference quality pass | true |
 | Reference-quality issue rows | 0 |
 | Generic detail-heading issues | 0 |
@@ -44,7 +44,7 @@
 
 | Check | Pass |
 |---|---:|
-| generated output fresh | false |
+| generated output fresh | true |
 | rendered references resolve | true |
 | reference quality ok | true |
 | stale output scans clean | true |
@@ -53,7 +53,7 @@
 | citation source sections covered | true |
 | scholarship quality ok | true |
 | source metadata ok | true |
-| source refresh due ok | false |
+| source refresh due ok | true |
 | agency source coverage ok | true |
 | claim calibration ok | true |
 

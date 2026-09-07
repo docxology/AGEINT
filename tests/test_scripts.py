@@ -46,7 +46,7 @@ def test_generated_output_staleness_detects_newer_source(tmp_path: Path) -> None
     output = tmp_path / "output"
     _write_at(tmp_path / "data" / "curriculum" / "sections.jsonl", "{}", 100.0)
     _write_at(tmp_path / "src" / "renderer.py", "VALUE = 1\n", 100.0)
-    _write_at(tmp_path / "manuscript" / "templates" / "chapter.md", "{{BODY}}\n", 100.0)
+    _write_at(tmp_path / "docs" / "manuscript" / "templates" / "chapter.md", "{{BODY}}\n", 100.0)
     _write_at(tmp_path / "scripts" / "build_curriculum.py", "print('build')\n", 100.0)
     _write_at(tmp_path / "pyproject.toml", "[project]\nname = 'fixture'\n", 100.0)
     for relative in output_build_sentinels():

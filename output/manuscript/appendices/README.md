@@ -1,3 +1,7 @@
-# AGEINT Manuscript Appendices
+# Generated Manuscript Appendices
 
-Appendix Markdown lives here, including source-verification, evidence-package, and instructor capstone material.
+**Section anchor.** [@sec:bibliography_atlas].
+
+This directory contains methods appendices for safe source-item review, source verification, evidence packages, and capstone handoffs.
+
+Do not edit generated appendix Markdown directly; update source data or appendix renderer context and rebuild.

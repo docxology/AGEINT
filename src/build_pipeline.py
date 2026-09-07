@@ -184,12 +184,12 @@ def run_build(project_root: Path = PROJECT_ROOT, *, regenerate_source_template_l
 
     written_templates = 0
     if regenerate_source_template_library:
-        written = write_template_library(root / "manuscript" / "templates")
+        written = write_template_library(root / "docs" / "manuscript" / "templates")
         written_templates = len(written)
 
     variables = generate_variables(root)
     bibtex_files = reference_bibtex_files(curriculum.references)
-    write_bibtex_files(root / "manuscript", bibtex_files)
+    write_bibtex_files(root / "docs" / "manuscript", bibtex_files)
     variables_path = save_variables(variables, root / "output" / "data" / "manuscript_variables.json")
     figure_registry_path = render_figures(root, curriculum, allow_placeholder_figures=allow_placeholder_figures)
     figure_registry = load_figure_registry(figure_registry_path)["figures"]

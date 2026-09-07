@@ -62,7 +62,9 @@ def test_run_build_writes_variables_json(tmp_path: Path) -> None:
 
     project = tmp_path / "AGEINT"
     shutil.copytree(PROJECT_ROOT / "data", project / "data")
-    (project / "manuscript").mkdir()
+    config_dir = project / "docs" / "manuscript"
+    config_dir.mkdir(parents=True)
+    (config_dir / "config.yaml").write_text("paper:\n  title: \"Fixture project\"\nbook:\n  title: \"Fixture project\"\n", encoding="utf-8")
 
     result = run_build(project)
 

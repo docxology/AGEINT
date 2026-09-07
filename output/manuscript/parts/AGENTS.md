@@ -1,3 +1,5 @@
-# AGENTS.md - AGEINT Manuscript Parts
+# AGENTS.md - Generated Manuscript Parts
 
-Part output must remain semantic, defensive, and reproducible. Update the guide, templates, or manifest renderer before rebuilding.
+**Evidence anchor.** [@sec:curriculum_orientation].
+
+Part folders are generated manuscript output. Keep paths semantic, references Pandoc-backed, and content defensive, educational, accountable, synthetic, and evidence-bounded.

@@ -228,13 +228,13 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
 
     root = Path(project_root)
     issues: list[dict[str, str]] = []
-    config = _load_yaml(root / "manuscript" / "config.yaml")
+    config = _load_yaml(root / "docs" / "manuscript" / "config.yaml")
     book = config.get("book", {}) if isinstance(config, dict) else {}
     metadata = config.get("metadata", {}) if isinstance(config, dict) else {}
     if not book.get("license") and not metadata.get("license"):
-        issues.append({"surface": "manuscript/config.yaml", "issue": "missing_publication_license"})
+        issues.append({"surface": "docs/manuscript/config.yaml", "issue": "missing_publication_license"})
     if not book.get("code_license"):
-        issues.append({"surface": "manuscript/config.yaml", "issue": "missing_code_license"})
+        issues.append({"surface": "docs/manuscript/config.yaml", "issue": "missing_code_license"})
 
     registry_path = root / "output" / "figures" / "figure_registry.json"
     registry = _load_json_with_schema(registry_path, output_root=root / "output")

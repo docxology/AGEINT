@@ -128,7 +128,7 @@ def test_page_two_visual_is_generated_non_numbered_and_configured(built_output: 
 
 def test_abstract_is_single_substantial_plaintext_section(built_output: Path) -> None:
     abstract = (manuscript_dir(built_output) / "abstract.md").read_text(encoding="utf-8")
-    abstract_template = (PROJECT_ROOT / "manuscript" / "templates" / "abstract.md").read_text(encoding="utf-8")
+    abstract_template = (PROJECT_ROOT / "docs" / "manuscript" / "templates" / "abstract.md").read_text(encoding="utf-8")
 
     assert "\n## Graphical Abstract" not in abstract
     assert "graphical abstract" not in abstract.lower()
