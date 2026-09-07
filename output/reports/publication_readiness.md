@@ -2,9 +2,9 @@
 
 | Measure | Value |
 |---|---:|
-| OK | true |
-| Generated at | 2026-08-31T08:08:41+00:00 |
-| Generated Markdown files | 330 |
+| OK | false |
+| Generated at | 2026-09-07T02:52:50+00:00 |
+| Generated Markdown files | 329 |
 | Generated citation occurrences | 16629 |
 | Registered figures | 177 |
 | PDF pages | 1863 |
@@ -37,7 +37,7 @@
 | claim calibration ok | true |
 | artifact manifest ok | true |
 | release surface scan ok | true |
-| source license posture ok | true |
+| source license posture ok | false |
 | task prerequisites done | true |
 | release milestone still todo | true |
 | parent confidentiality guard ok | true |
@@ -47,7 +47,7 @@
 | Surface | Count |
 |---|---:|
 | Release surface scan | 0 |
-| Source/license posture | 0 |
+| Source/license posture | 2 |
 | Artifact manifest | 0 |
 
 ## Release Decision

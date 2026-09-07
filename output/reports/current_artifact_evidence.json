@@ -226,31 +226,24 @@
     "citation_source_sections_covered": true,
     "claim_calibration_ok": true,
     "figure_quality_ok": true,
-    "generated_output_fresh": true,
+    "generated_output_fresh": false,
     "pdf_quality_ok": true,
     "reference_quality_ok": true,
     "rendered_references_resolve": true,
     "scholarship_quality_ok": true,
     "source_metadata_ok": true,
-    "source_refresh_due_ok": true,
+    "source_refresh_due_ok": false,
     "stale_output_scans_clean": true
   },
   "citations": {
     "generated_by_family": {
       "abstract.md": 3,
-      "appendices": 3083,
-      "assessment-route": 1121,
-      "evidence-contract": 4038,
-      "governance-boundary": 1676,
       "method-assurance-reference.md": 9,
       "orientation": 489,
-      "overview": 561,
-      "part unit intros": 1237,
-      "practice-studio": 4412,
-      "preamble.md": 0
+      "part unit intros": 73
     },
-    "generated_markdown_citation_occurrences": 16629,
-    "generated_markdown_files": 330,
+    "generated_markdown_citation_occurrences": 574,
+    "generated_markdown_files": 39,
     "source_citation_occurrences": 1468,
     "source_distribution": {
       "1": 275,
@@ -269,37 +262,30 @@
       "output/reports/claim_calibration.md"
     ],
     "summary": {
-      "boundary_allowed_rows": 482,
-      "candidate_rows": 9129,
+      "boundary_allowed_rows": 19,
+      "candidate_rows": 397,
       "claim_class_counts": {
-        "artifact_readiness": 288,
-        "empirical_or_evaluation": 989,
-        "figure_or_visualization": 458,
-        "formalism_or_statistical_expression": 2,
-        "governance_or_rights": 3099,
-        "safety_or_assurance": 4293
+        "artifact_readiness": 10,
+        "empirical_or_evaluation": 70,
+        "figure_or_visualization": 35,
+        "governance_or_rights": 135,
+        "safety_or_assurance": 147
       },
       "disposition_counts": {
-        "boundary_allowed": 482,
-        "pass": 3515,
-        "review": 5132
+        "boundary_allowed": 19,
+        "pass": 215,
+        "review": 163
       },
       "hard_fail_rows": 0,
       "source_support_distribution": {
-        "curated_context": 12,
-        "law_policy_primary": 19,
-        "mirror_or_copy_context": 36,
-        "official_primary": 1492,
-        "practitioner_or_vendor_context": 54,
-        "public_domain_primary": 166,
-        "scholarly_primary": 372,
-        "social_or_video_context": 13,
-        "source_guide_context": 255,
-        "source_guide_primary": 2208,
-        "source_quality_anchor": 504,
-        "standard_primary": 953
+        "law_policy_primary": 4,
+        "official_primary": 81,
+        "public_domain_primary": 5,
+        "scholarly_primary": 48,
+        "source_guide_primary": 4,
+        "standard_primary": 32
       },
-      "warning_rows": 5132
+      "warning_rows": 163
     },
     "thresholds": {
       "boundary_language_is_allowed": true,
@@ -307,7 +293,7 @@
       "headings_are_not_claim_rows": true,
       "strong_claims_require_direct_support": true
     },
-    "warning_row_count": 5132
+    "warning_row_count": 163
   },
   "curriculum": {
     "appendices": 9,
@@ -504,13 +490,13 @@
     },
     "schema_version": "1.5"
   },
-  "generated_at": "2026-08-31T08:08:41+00:00",
+  "generated_at": "2026-09-07T01:48:43+00:00",
   "generated_output_scan": {
     "hit_count": 0,
     "hits": [],
     "pattern_count": 5
   },
-  "ok": true,
+  "ok": false,
   "pdf": {
     "banned_phrase_hits": [],
     "creation_date": "Fri Jul 10 19:17:21 2026 PDT",
@@ -549,7 +535,7 @@
       "markdown_file_link_issues": 0,
       "raw_literal_citation_issues": 0,
       "rendered_reference_issues": 0,
-      "scanned_files": 332
+      "scanned_files": 41
     }
   },
   "rendered_references": {
@@ -567,24 +553,6 @@
       "checked": true,
       "families": [
         {
-          "claim_class": "Reviewer disposition",
-          "evidence_signal": "rubric row, pass/warn/fail criteria, negative control",
-          "failure_signal": "review outcome lacks decision rule",
-          "family": "assessment-route"
-        },
-        {
-          "claim_class": "Empirical or evaluation claim",
-          "evidence_signal": "source annotations, transfer architecture, method limits, current anchor metadata",
-          "failure_signal": "evidence contract implies unsupported empirical proof",
-          "family": "evidence-contract"
-        },
-        {
-          "claim_class": "Governance or rights claim",
-          "evidence_signal": "synthesis, agent boundary, policy lane, owner, residual-risk and refresh duty",
-          "failure_signal": "governance boundary becomes assurance without authority",
-          "family": "governance-boundary"
-        },
-        {
           "claim_class": "Artifact readiness claim",
           "evidence_signal": "render, reference, PDF, figure, and report gates",
           "failure_signal": "method claim survives without fresh artifact evidence",
@@ -592,30 +560,15 @@
         },
         {
           "claim_class": "Design guidance",
-          "evidence_signal": "chapter primer, scope caveat, source-family support",
-          "failure_signal": "orientation guidance reads as measured performance",
-          "family": "overview"
-        },
-        {
-          "claim_class": "Design guidance",
           "evidence_signal": "unit profile, chapter roster, bounded reuse language",
           "failure_signal": "part-level framing becomes unsupported generalization",
           "family": "part unit intros"
-        },
-        {
-          "claim_class": "Design guidance",
-          "evidence_signal": "topic-specific lessons, safe example, source spines, safe substitutions",
-          "failure_signal": "practice studio prose becomes generic or operational",
-          "family": "practice-studio"
         }
       ],
-      "family_count": 7,
+      "family_count": 2,
       "lane_counts": {
         "Artifact readiness claim": 1,
-        "Design guidance": 3,
-        "Empirical or evaluation claim": 1,
-        "Governance or rights claim": 1,
-        "Reviewer disposition": 1
+        "Design guidance": 1
       },
       "missing_families": [],
       "ok": true
@@ -636,42 +589,35 @@
       "ok": true
     },
     "summary": {
-      "cited_files": 294,
+      "cited_files": 9,
       "claim_bearing_family_counts": {
-        "assessment-route": 51,
-        "evidence-contract": 51,
-        "governance-boundary": 51,
         "method-assurance-reference.md": 1,
-        "overview": 51,
-        "part unit intros": 16,
-        "practice-studio": 54
+        "part unit intros": 1
       },
-      "claim_bearing_files": 275,
-      "generated_markdown_files": 330,
+      "claim_bearing_files": 2,
+      "generated_markdown_files": 39,
       "single_source_family_claim_bearing_files": 0,
       "source_family_file_counts": {
-        "curated_anchor": 4,
-        "law_policy": 9,
-        "official": 285,
-        "practitioner_vendor": 27,
-        "public_domain": 5,
-        "scholarly": 98,
-        "source_guide": 216,
-        "standard": 197
+        "curated_anchor": 1,
+        "law_policy": 1,
+        "official": 8,
+        "public_domain": 2,
+        "scholarly": 8,
+        "source_guide": 1,
+        "standard": 4
       },
       "source_family_mentions": {
-        "curated_anchor": 32,
-        "law_policy": 19,
-        "official": 3096,
-        "practitioner_vendor": 105,
-        "public_domain": 21,
-        "scholarly": 693,
-        "source_guide": 1502,
-        "standard": 883
+        "curated_anchor": 8,
+        "law_policy": 4,
+        "official": 278,
+        "public_domain": 6,
+        "scholarly": 142,
+        "source_guide": 21,
+        "standard": 89
       },
       "thin_claim_bearing_files": 0,
       "uncited_claim_bearing_files": 0,
-      "uncited_files": 36
+      "uncited_files": 30
     },
     "warning_row_count": 0
   },
@@ -898,8 +844,145 @@
     }
   },
   "source_refresh_due": {
-    "issue_row_count": 0,
-    "issue_rows": [],
+    "issue_row_count": 8,
+    "issue_rows": [
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_us_aisi_nist_ai_800_1_misuse_risk",
+        "line": 3,
+        "path": "data/research_anchors/intelligence-anchors-187-194.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "ai_red_team_assurance",
+        "source_tier": "official_draft"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_agent2agent_protocol_specification",
+        "line": 7,
+        "path": "data/research_anchors/intelligence-anchors-187-194.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "agent_interoperability_standards",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_mitre_d3fend_knowledge_graph",
+        "line": 1,
+        "path": "data/research_anchors/intelligence-anchors-195-202.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "assurance_evaluation_evidence",
+        "source_tier": "research_standard"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_cyclonedx_bom_specification",
+        "line": 3,
+        "path": "data/research_anchors/intelligence-anchors-195-202.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "model_data_provenance",
+        "source_tier": "security_standard"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_nist_oscal",
+        "line": 5,
+        "path": "data/research_anchors/intelligence-anchors-195-202.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "records_retention_auditability",
+        "source_tier": "official_primary"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_slsa_supply_chain_security_specification",
+        "line": 6,
+        "path": "data/research_anchors/intelligence-anchors-195-202.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "secure_release_change_control",
+        "source_tier": "security_standard"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_in_toto_supply_chain_integrity",
+        "line": 7,
+        "path": "data/research_anchors/intelligence-anchors-195-202.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "secure_release_change_control",
+        "source_tier": "security_standard"
+      },
+      {
+        "bucket": "due",
+        "checked_as_of": "2026-06-06",
+        "days_since_check": 93,
+        "days_until_due": -1,
+        "due_date": "2026-09-06",
+        "flags": [
+          "refresh_due"
+        ],
+        "key": "official_sigstore_software_signing",
+        "line": 8,
+        "path": "data/research_anchors/intelligence-anchors-195-202.jsonl",
+        "refresh_cadence": "quarterly",
+        "row_class": "intelligence",
+        "source_lane": "secure_release_change_control",
+        "source_tier": "security_standard"
+      }
+    ],
     "report_paths": [
       "output/reports/source_refresh_due.json",
       "output/reports/source_refresh_due.md"
@@ -907,7 +990,8 @@
     "summary": {
       "bucket_counts": {
         "current": 448,
-        "due_soon": 24
+        "due": 8,
+        "due_soon": 16
       },
       "cadence_counts": {
         "annual": 322,
@@ -915,12 +999,21 @@
         "quarterly": 51,
         "semiannual": 94
       },
-      "due_or_stale_count": 0,
-      "due_soon_count": 24,
-      "flag_counts": {},
+      "due_or_stale_count": 8,
+      "due_soon_count": 16,
+      "flag_counts": {
+        "refresh_due": 8
+      },
       "missing_checked_as_of_count": 0,
       "row_count": 472,
-      "source_lane_due_counts": {},
+      "source_lane_due_counts": {
+        "agent_interoperability_standards": 1,
+        "ai_red_team_assurance": 1,
+        "assurance_evaluation_evidence": 1,
+        "model_data_provenance": 1,
+        "records_retention_auditability": 1,
+        "secure_release_change_control": 3
+      },
       "unknown_cadence_count": 0
     }
   }

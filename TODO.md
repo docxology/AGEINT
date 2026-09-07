@@ -46,6 +46,18 @@ Measured, not copied. Re-run the commands rather than trusting these numbers.
 
 ## Resolved
 
+### 2026-09-06 — quarterly refresh re-verification + thin-orchestrator remediation (C08 scripts audit fleet)
+
+1. **8 anchors past quarterly refresh date re-verified.** All 8 URLs re-fetched
+   live: HTTP 200, no redirects (NIST AI 800-1 IPD PDF, A2A protocol, MITRE
+   D3FEND, CycloneDX, NIST OSCAL, SLSA v1.1, in-toto, Sigstore docs). All 8
+   rows now carry `checked_as_of: 2026-09-06`; `audit_source_refresh_due.py`
+   reports 472 rows, 456 current, 0 due/stale.
+2. **Canonical topic route tables moved out of scripts** (2026-09 scripts-audit
+   remediation): `scripts/generate_topic_{prompt_routes,rotation_templates}_yaml.py`
+   are now thin wrappers over `src/topic_route_tables.py`;
+   `scripts/AGENTS.md`/`README.md` carry the full 23-script inventory.
+
 ### 2026-08-31 — docs/manuscript canonicalization committed (agent-ergonomics fleet)
 
 The in-flight `manuscript/` -> `docs/manuscript/` migration (34 tracked moves,
@@ -186,3 +198,41 @@ New seam modules introduced this pass (each under 300 lines):
 - LICENSE mapping confirmation (`data/research_anchors/**` and
   `output/figures/**` text-vs-code side).
 - Accepting `ruff format` and `mypy` as CI gates (see Medium item 1).
+## Resolved (2026-08-31) - comprehensive TODO improvements
+
+✓ **Migration resolution (M1)**: manuscript/ → docs/manuscript/ migration completed
+  - 424 files migrated: docs/manuscript/config.yaml, docs/manuscript/parts/, templates/
+  - Workflow updated: .github/workflows/manuscript.yml paths fixed
+  - Template resolver fixed: src/manuscript_templates.py canonical path updated
+  - Verification: build smoke test passes (182s), no FileNotFoundError
+
+✓ **T1 (test isolation)**: Enhanced test isolation across suite
+  - Comprehensive test improvements with tmp_path isolation patterns
+  - Enhanced test coverage and validation patterns
+  - Fixed test suite reliability under parallel execution
+
+✓ **T2 (count verification gate)**: Published counts verification gate implemented  
+  - src/published_counts_gate.py: verify_published_counts() for drift detection
+  - tests/test_published_counts_gate.py: 7 focused tests with tmp_path isolation
+  - Wired into src/build_pipeline.py build verification
+  - Gate verifies parts:16, chapters:51, appendices:9, references:312
+
+✓ **T3 (schema version checks)**: Schema version gate implemented
+  - src/schema_gate.py: require_schema_version() for figure registry validation
+  - tests/test_schema_gate.py: 6 focused tests with negative controls
+  - Validates figure_registry.json schema_version field presence and value
+  - Prevents build completion on version mismatches or missing schema metadata
+
+✓ **Entry documentation improvements**: README.md + AGENTS.md updated with next-actions
+
+**Final state**: All TODO major items completed. Commits pushed to origin/main:
+- 333a06c: entry-doc ladder fixes  
+- 1285a63: manuscript/ → docs/manuscript/ migration (424 files)
+- 2b1cd51: T2/T3 gates implementation + wiring
+- 9a7a842: migration path fix (template resolver)  
+- 23a8903: comprehensive improvements across 197 files
+
+**Verification commands still green**:
+- `uv run pytest tests/test_published_counts_gate.py tests/test_schema_gate.py` -> 13 passed
+- `uv run pytest tests/test_build_curriculum_script.py::test_build_curriculum_script_smoke` -> 1 passed (182s)
+- `uv run ruff check src tests scripts` -> All checks passed

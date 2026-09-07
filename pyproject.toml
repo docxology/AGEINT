@@ -59,6 +59,7 @@ py-modules = [
     "source_refresh_due",
     "source_support_strength",
     "template_resolver",
+    "topic_route_tables",
     "unit_education",
 ]
 

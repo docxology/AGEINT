@@ -3,7 +3,7 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-08-31T08:08:41+00:00 |
+| Generated at | 2026-09-07T03:39:06+00:00 |
 | Metadata records | 472 |
 | Intelligence anchors | 462 |
 | Source-quality support anchors | 10 |

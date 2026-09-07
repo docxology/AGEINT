@@ -4,7 +4,7 @@
     "source_quality_blank_rows": 10,
     "total_blank_rows_closed": 119
   },
-  "generated_at": "2026-08-31T08:08:41+00:00",
+  "generated_at": "2026-09-07T03:39:06+00:00",
   "issue_row_count": 0,
   "issue_rows": [],
   "ok": true,
@@ -2455,7 +2455,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "agentic_ai_governance",
       "flags": [],
       "key": "official_us_aisi_nist_ai_800_1_misuse_risk",
@@ -2507,7 +2507,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "agent_interoperability_standards",
       "flags": [],
       "key": "official_agent2agent_protocol_specification",
@@ -2533,7 +2533,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "cyber_threat_intelligence",
       "flags": [],
       "key": "official_mitre_d3fend_knowledge_graph",
@@ -2559,7 +2559,7 @@
       "source_type": "technical_standard"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_cyclonedx_bom_specification",
@@ -2585,7 +2585,7 @@
       "source_type": "technical_standard"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "legal_oversight",
       "flags": [],
       "key": "official_nist_oscal",
@@ -2598,7 +2598,7 @@
       "source_type": "official_primary"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_slsa_supply_chain_security_specification",
@@ -2611,7 +2611,7 @@
       "source_type": "security_standard_project"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "model_data_provenance",
       "flags": [],
       "key": "official_in_toto_supply_chain_integrity",
@@ -2624,7 +2624,7 @@
       "source_type": "security_standard_project"
     },
     {
-      "checked_as_of": "2026-06-06",
+      "checked_as_of": "2026-09-06",
       "domain": "agentic_ai_security",
       "flags": [],
       "key": "official_sigstore_software_signing",
@@ -6155,7 +6155,7 @@
       "2026-05-21": 96,
       "2026-05-22": 58,
       "2026-05-24": 5,
-      "2026-06-06": 16,
+      "2026-06-06": 8,
       "2026-06-08": 22,
       "2026-06-09": 1,
       "2026-06-10": 3,
@@ -6164,7 +6164,8 @@
       "2026-06-14": 55,
       "2026-06-15": 66,
       "2026-06-16": 95,
-      "2026-08-30": 27
+      "2026-08-30": 27,
+      "2026-09-06": 8
     },
     "fallback_dependent_row_count": 0,
     "intelligence_anchor_count": 462,
