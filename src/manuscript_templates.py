@@ -1,7 +1,7 @@
 """Neutral AGEINT manuscript template library generation.
 
 The source manuscript uses a small set of reusable templates under
-``manuscript/templates/``. Concrete chapter titles, labels, source spines,
+``docs/manuscript/templates/``. Concrete chapter titles, labels, source spines,
 section rows, paths, and bibliography material are injected into generated
 files under ``output/manuscript/`` by :mod:`manuscript_manifest`.
 """
@@ -150,7 +150,7 @@ def template_text(name: str) -> str:
     if canonical.is_file():
         return canonical.read_text(encoding="utf-8")
     if name in SOURCE_OWNED_TEMPLATE_NAMES:
-        raise FileNotFoundError(f"{name} is a source-owned manuscript template and has no embedded fallback; keep manuscript/templates available to avoid stale abstract or orientation prose.")
+        raise FileNotFoundError(f"{name} is a source-owned manuscript template and has no embedded fallback; keep docs/manuscript/templates available to avoid stale abstract or orientation prose.")
     return DEFAULT_TEMPLATES[name]
 
 

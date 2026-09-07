@@ -81,9 +81,9 @@ def test_release_surface_scan_flags_private_paths_and_markdown_links(tmp_path: P
 
 
 def test_source_license_posture_flags_private_figure_provenance(tmp_path: Path) -> None:
-    _write(tmp_path / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}, "metadata": {"license": "CC-BY-4.0"}}))
-    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "/Users/4d/Downloads/private.md"}}]}))
-    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
+    _write(tmp_path / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}, "metadata": {"license": "CC-BY-4.0"}}))
+    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "/Users/4d/Downloads/private.md"}}]}))
+    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
 
     posture = collect_source_license_posture(tmp_path)
 
@@ -136,9 +136,9 @@ def test_publication_readiness_collects_green_fixture_without_pdf(tmp_path: Path
         tmp_path / "tasks.yaml",
         yaml.safe_dump({"tasks": [{"id": "ageint-25", "status": "done"}, {"id": "ageint-26", "status": "done"}, {"id": "ageint-31", "status": "done"}, {"id": "ageint-m1", "status": "todo"}]}),
     )
-    _write(tmp_path / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}}))
-    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "fixture"}}]}))
-    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
+    _write(tmp_path / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}}))
+    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "fixture"}}]}))
+    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
     _write(tmp_path / "output" / "reports" / "artifact_manifest.json", json.dumps({"issues": []}))
     _write(tmp_path / "output" / "manuscript" / "fixture.md", "# Fixture\n\nClean text.\n")
 
@@ -187,9 +187,9 @@ def test_publication_readiness_writer_removes_stale_self_report_before_scan(tmp_
         tmp_path / "tasks.yaml",
         yaml.safe_dump({"tasks": [{"id": "ageint-25", "status": "done"}, {"id": "ageint-26", "status": "done"}, {"id": "ageint-31", "status": "done"}, {"id": "ageint-m1", "status": "todo"}]}),
     )
-    _write(tmp_path / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}}))
-    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"figures": [{"label": "fig:fixture", "provenance": {"source": "fixture"}}]}))
-    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
+    _write(tmp_path / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}}))
+    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "provenance": {"source": "fixture"}}]}))
+    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
     _write(tmp_path / "output" / "reports" / "artifact_manifest.json", json.dumps({"issues": []}))
     _write(tmp_path / "output" / "manuscript" / "fixture.md", "# Fixture\n\nClean text.\n")
     _write(tmp_path / "output" / "reports" / "publication_readiness.json", '{"stale": "/Users/4d/private/previous-run"}\n')

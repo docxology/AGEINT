@@ -174,4 +174,4 @@ stale pre-label orientation filenames removed by the renderer cleanup hook.
 ## Related documentation: output inventory and manuscript syntax
 
 - [`output_inventory.md`](output_inventory.md)
-- [`../manuscript/SYNTAX.md`](manuscript/SYNTAX.md)
+- [`manuscript/SYNTAX.md`](manuscript/SYNTAX.md)

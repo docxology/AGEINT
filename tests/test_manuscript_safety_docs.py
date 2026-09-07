@@ -317,8 +317,8 @@ def test_meaningful_folders_have_readme_and_agent_notes() -> None:
     required = [
         PROJECT_ROOT / "data",
         PROJECT_ROOT / "docs",
-        PROJECT_ROOT / "manuscript",
-        PROJECT_ROOT / "manuscript" / "templates",
+        PROJECT_ROOT / "docs" / "manuscript",
+        PROJECT_ROOT / "docs" / "manuscript" / "templates",
         PROJECT_ROOT / "output",
         PROJECT_ROOT / "output" / "data",
         PROJECT_ROOT / "output" / "figures",

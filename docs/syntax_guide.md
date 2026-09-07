@@ -2,7 +2,7 @@
 
 Canonical citation and cross-reference syntax for AGEINT manuscripts.
 
-Full reference: [`../manuscript/SYNTAX.md`](manuscript/SYNTAX.md).
+Full reference: [`manuscript/SYNTAX.md`](manuscript/SYNTAX.md).
 Contributor workflow: [`citation_workflow.md`](citation_workflow.md).
 
 ## Citations: Pandoc keys for guide references and curated anchors

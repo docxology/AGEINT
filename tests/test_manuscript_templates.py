@@ -67,7 +67,7 @@ def test_source_owned_templates_do_not_have_stale_embedded_fallbacks() -> None:
     assert SOURCE_OWNED_TEMPLATE_NAMES == {"abstract.md", "orientation.md"}
     assert set(DEFAULT_TEMPLATES) == set(TEMPLATE_NAMES) - SOURCE_OWNED_TEMPLATE_NAMES
     for name in SOURCE_OWNED_TEMPLATE_NAMES:
-        source_text = (PROJECT_ROOT / "manuscript" / "templates" / name).read_text(encoding="utf-8")
+        source_text = (PROJECT_ROOT / "docs" / "manuscript" / "templates" / name).read_text(encoding="utf-8")
         assert template_text(name) == source_text
 
 
