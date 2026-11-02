@@ -7,4 +7,4 @@ Parity fixture data for AGEINT tests.
 
 ## Gotchas
 - Regenerate fixtures with the generator scripts rather than hand-editing, so tests stay aligned with live data.
-- Local-only path under the AGEINT checkout (`projects/ongoing/docxology/AGEINT` in the template workspace); AGEINT itself is public (Zenodo DOI 10.5281/zenodo.20732274) but this checkout is not committed from here.
+- AGEINT is a public repository (Zenodo DOI 10.5281/zenodo.20732274); its contents are committed here.

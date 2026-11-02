@@ -10,4 +10,4 @@ Runtime manuscript-variable generation for the AGEINT curriculum atlas.
 
 ## Gotchas
 - Invoked via `scripts/z_generate_manuscript_variables.py`; feeds the render pipeline's variable injection.
-- Local-only path under the AGEINT checkout (`projects/ongoing/docxology/AGEINT` in the template workspace); AGEINT itself is public (Zenodo DOI 10.5281/zenodo.20732274) but this checkout is not committed from here.
+- AGEINT is a public repository (Zenodo DOI 10.5281/zenodo.20732274); its contents are committed here.

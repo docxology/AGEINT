@@ -7,4 +7,4 @@ GENERATED pipeline stage snapshots.
 
 ## Gotchas
 - Produced by the pipeline run (stage snapshots); hashes reflect the run that produced them — regenerate by re-running the pipeline, not by editing.
-- Local-only path under the AGEINT checkout (`projects/ongoing/docxology/AGEINT` in the template workspace); AGEINT itself is public (Zenodo DOI 10.5281/zenodo.20732274) but this checkout is not committed from here.
+- AGEINT is a public repository (Zenodo DOI 10.5281/zenodo.20732274); its contents are committed here.

@@ -4,4 +4,4 @@ Chapter data directories for this part. Each child `<NN-slug>/` holds `chapter.j
 
 ## Gotchas
 - Edit chapter content here; output copies regenerate via `scripts/build_curriculum.py`.
-- Local-only path under the AGEINT checkout (`projects/ongoing/docxology/AGEINT` in the template workspace); AGEINT itself is public (Zenodo DOI 10.5281/zenodo.20732274) but this checkout is not committed from here.
+- AGEINT is a public repository (Zenodo DOI 10.5281/zenodo.20732274); its contents are committed here.

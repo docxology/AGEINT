@@ -8,4 +8,4 @@ Curated research-anchor registry backing AGEINT citations.
 
 ## Gotchas
 - Source metadata is explicit per anchor (checked dates, refresh triggers); `scripts/audit_source_refresh_due.py` consumes these fields.
-- Local-only path under the AGEINT checkout (`projects/ongoing/docxology/AGEINT` in the template workspace); AGEINT itself is public (Zenodo DOI 10.5281/zenodo.20732274) but this checkout is not committed from here.
+- AGEINT is a public repository (Zenodo DOI 10.5281/zenodo.20732274); its contents are committed here.
