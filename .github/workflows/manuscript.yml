@@ -263,7 +263,13 @@ jobs:
           # The SDK's source-configured local web assets remain inside web/.
           (cd "$project/output" && zip -q -r "$destination/AGEINT-reader.zip" web figures)
           (cd "$evidence" && zip -q -r "$destination/AGEINT-evidence.zip" .)
-          (cd "$destination" && sha256sum AGEINT.pdf AGEINT-reader.zip AGEINT-evidence.zip source-sdk.json > SHA256SUMS)
+          # Preserve the post-readiness outputs, never the inspection snapshot.
+          (cd "$project" && tar \
+            --exclude='output/pdf/_*' --exclude='output/web/_combined_manuscript.md' \
+            -czf "$destination/AGEINT-generated.tar.gz" \
+            output/data output/manuscript output/figures output/pdf output/web output/reports \
+            docs/manuscript/references-*.bib)
+          (cd "$destination" && sha256sum AGEINT.pdf AGEINT-reader.zip AGEINT-evidence.zip AGEINT-generated.tar.gz source-sdk.json > SHA256SUMS)
       - name: Upload successful exact-Source deliverables only
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:

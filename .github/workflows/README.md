@@ -18,13 +18,16 @@ builds or audits stop the job. Old outputs are never restored after failure.
 The source manuscript config must select `render.html.asset_mode: local` for
 self-contained readers. The reader ZIP retains `web/` (canonical `index.html`
 and local browser assets) beside `figures/`, preserving `../figures/` links.
-Only a successful complete run uploads verified readers, evidence, source/SDK
-identity and SHA-256 checksums.
+Only a successful complete run uploads verified readers, the post-readiness
+generated-output archive, evidence, source/SDK identity and SHA-256 checksums.
+`AGEINT-generated.tar.gz` retains the generated manuscript, bibliography and
+non-temporary output tree for reviewed repository regeneration. Preserve local
+edits, including readiness reports, before promoting these gated outputs.
 Before aggregate readiness closure, a separately named
 `ageint-inspection-only-<run>-<attempt>` artifact retains generated source,
 figures, PDF and HTML with checksums and an explicit `acceptance: false` identity.
-Use it for actual reader inspection and reviewed output regeneration; it is not
-a release asset or a substitute for completed prerequisites. Failed runs retain
+Use it for actual reader inspection only; it is not a release asset or a
+substitute for completed prerequisites. Failed runs retain
 actual reports and compiler diagnostics under a diagnostics-only name. Neither
 artifact can satisfy the release workflow's verified handoff.
 Serve the extracted reader bundle root over local HTTP, then visit

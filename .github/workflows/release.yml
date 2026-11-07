@@ -81,6 +81,7 @@ jobs:
           test -s AGEINT.pdf
           test -s AGEINT-reader.zip
           test -s AGEINT-evidence.zip
+          test -s AGEINT-generated.tar.gz
           jq -e --arg source "$SOURCE" --arg sdk "$SDK_SOURCE" --arg tag "$TAG" \
             --arg repository "$GITHUB_REPOSITORY" --arg run "$GITHUB_RUN_ID" --arg attempt "$GITHUB_RUN_ATTEMPT" \
             '.source == $source and .sdk_source == $sdk and .sdk_tag == "v5.1.0" and .sdk_version == "5.1.0" and .sdk_candidate == false and .sdk_repository == "docxology/template" and .expected_tag == $tag and .repository == $repository and .run_id == $run and .run_attempt == $attempt' source-sdk.json
@@ -114,6 +115,8 @@ jobs:
           references, not remotely fetched runtime assets.
           AGEINT-evidence.zip contains the actual audit, test, coverage and tool
           provenance evidence. SHA256SUMS binds all reader/evidence assets.
+          AGEINT-generated.tar.gz retains the generated manuscript, bibliography
+          and non-temporary outputs after aggregate readiness passed.
           EOF
           # Last remote observation before the atomic create-only ref request.
           current=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
@@ -127,4 +130,5 @@ jobs:
           gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --verify-tag --target "$SOURCE" \
             --title "AGEINT $TAG" --notes-file "$RUNNER_TEMP/ageint-release-notes.txt" \
             verified/AGEINT.pdf verified/AGEINT-reader.zip verified/AGEINT-evidence.zip \
+            verified/AGEINT-generated.tar.gz \
             verified/source-sdk.json verified/SHA256SUMS

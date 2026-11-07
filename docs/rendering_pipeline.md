@@ -130,13 +130,20 @@ Existing tags/releases are refused; no tag movement or asset replacement is
 allowed. A green metadata check or ordinary CI result alone cannot publish.
 
 Successful verification packages `AGEINT.pdf`, `AGEINT-reader.zip`,
-`AGEINT-evidence.zip`, `source-sdk.json` and `SHA256SUMS`. The reader ZIP preserves
-`web/` beside `figures/`, including local browser assets. Serve the extracted
-bundle root over local HTTP and visit `/web/index.html`, not just `web/` and
-not an assumed fully capable `file://` page. Scholarly URLs are user-clicked
-references, not remotely fetched assets. Evidence includes actual audit reports,
-test and coverage results, tool provenance and exact source/SDK identities. Only artifacts
-from the successful reusable job in the same run can reach publication.
+`AGEINT-evidence.zip`, `AGEINT-generated.tar.gz`, `source-sdk.json` and
+`SHA256SUMS`. The reader ZIP preserves `web/` beside `figures/`, including local
+browser assets. Serve the extracted bundle root over local HTTP and visit
+`/web/index.html`, not just `web/` and not an assumed fully capable `file://`
+page. Scholarly URLs are user-clicked references, not remotely fetched assets.
+Evidence includes actual audit reports, test and coverage results, tool
+provenance and exact source/SDK identities. Only artifacts from the successful
+reusable job in the same run can reach publication.
+
+The generated archive captures `output/{data,manuscript,figures,pdf,web,reports}`
+and generated bibliography files after aggregate readiness passes, excluding
+temporary TeX and combined-Markdown files. Use this gated archive for reviewed
+repository output promotion; preserve existing local edits, including readiness
+reports, before replacing them. An inspection snapshot cannot substitute for it.
 
 An inspection-only artifact is captured after native rendering and enabled-format
 validation but before aggregate task/readiness closure. Its generated-source
