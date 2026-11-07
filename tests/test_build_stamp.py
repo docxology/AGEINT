@@ -98,16 +98,11 @@ def test_stamped_tree_is_stale_when_source_content_changes(tmp_path: Path) -> No
     [
         ("docs/manuscript/config.yaml", "paper:\n  version: 0.1.0\n", "paper:\n  version: 0.2.0\n"),
         ("docs/manuscript/preamble.md", "Older preamble.\n", "Newer preamble.\n"),
-        (
-            "uv.lock",
-            'version = 1\n[[package]]\nname = "pillow"\nversion = "13.0.0"\n',
-            'version = 1\n[[package]]\nname = "pillow"\nversion = "13.0.1"\n',
-        ),
+        ("docs/citation_workflow.md", "Old citation recipe.\n", "New citation recipe.\n"),
+        ("uv.lock", 'version = 1\n[[package]]\nname = "pillow"\nversion = "13.0.0"\n', 'version = 1\n[[package]]\nname = "pillow"\nversion = "13.0.1"\n'),
     ],
 )
-def test_publication_input_edits_stale_outputs_without_mtime_changes(
-    tmp_path: Path, relative: str, initial: str, changed: str
-) -> None:
+def test_publication_input_edits_stale_outputs_without_mtime_changes(tmp_path: Path, relative: str, initial: str, changed: str) -> None:
     root, output = _fake_tree(tmp_path)
     source = root / relative
     source.parent.mkdir(parents=True, exist_ok=True)
@@ -122,10 +117,11 @@ def test_publication_input_edits_stale_outputs_without_mtime_changes(
     assert generated_output_is_stale(root, output) is True
 
 
-def test_missing_sentinel_is_stale_regardless_of_stamp(tmp_path: Path) -> None:
+@pytest.mark.parametrize("sentinel", [output_build_sentinels()[0], Path("data/source_citation_coverage.json")])
+def test_missing_sentinel_is_stale_regardless_of_stamp(tmp_path: Path, sentinel: Path) -> None:
     root, output = _fake_tree(tmp_path)
     write_build_stamp(root, output)
-    (output / output_build_sentinels()[0]).unlink()
+    (output / sentinel).unlink()
 
     assert generated_output_is_stale(root, output) is True
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from intelligence_content import practice_lens_for_titles, safe_topic_entries
+from prose_policy import source_identifier_text
 
 from ._01_part import _chapter_topic_context
 from ._02_part import _capstone_deliverable, _instructor_facilitation_notes
@@ -37,7 +38,7 @@ def _topic_assessment_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str
     group_size = (len(topics) + len(operations) - 1) // len(operations)
     rows = []
     for operation, start in zip(operations, range(0, len(topics), group_size)):
-        topic_labels = "; ".join(f"**{topic}**" for topic in topics[start:start + group_size])
+        topic_labels = "; ".join(f"**{source_identifier_text(topic)}**" for topic in topics[start : start + group_size])
         rows.append(f"| {topic_labels} | {operation} |")
     return "\n".join(rows)
 

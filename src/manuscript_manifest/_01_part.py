@@ -9,6 +9,7 @@ try:
     from citation_workflow import source_citation_spine, source_citation_spine_inline
     from intelligence_content import capstone_scaffold_rows, part_research_brief, profile_triangulation_anchors, safe_topic_entries
     from manuscript_manifest.types import section_label as _label
+    from prose_policy import source_identifier_text
     from unit_education import render_unit_profile_markdown
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from ..citation_workflow import (  # type: ignore[no-redef]
@@ -21,6 +22,7 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
         profile_triangulation_anchors,
         safe_topic_entries,
     )
+    from ..prose_policy import source_identifier_text  # type: ignore[no-redef]
     from ..unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
     from .types import section_label as _label  # type: ignore[no-redef]
 
@@ -87,7 +89,7 @@ def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, lim
     # authored subject phrase: a lesson title like "History of Social
     # Engineering" must not have its embedded chapter-title substring
     # ("Social Engineering") neutralised into "History of the module".
-    return f"**{compact_topic_cluster(topics)}**"
+    return f"**{source_identifier_text(compact_topic_cluster(topics))}**"
 
 
 def _cognitive_attack_framework() -> str:

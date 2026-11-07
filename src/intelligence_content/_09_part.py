@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from markdown_refs import citation_ref, citation_ref_list
+from prose_policy import source_identifier_text
 
 from ._01_part import CoursebookProfile, ResearchAnchor
 from ._02_part import INTELLIGENCE_RESEARCH_ANCHORS
@@ -31,7 +32,7 @@ def source_lane_rows() -> str:
         cadences = ", ".join(sorted({anchor.refresh_cadence for anchor in anchors}))
         scopes = sorted({anchor.claim_scope for anchor in anchors})
         scope = scopes[0] if len(scopes) == 1 else f"{len(scopes)} scoped claim families"
-        rows.append(f"| {lane} | {len(anchors)} | {cadences} | {scope} |")
+        rows.append(f"| {lane} | {len(anchors)} | {cadences} | {source_identifier_text(scope)} |")
     return "\n".join(rows)
 
 
@@ -50,12 +51,13 @@ def source_refresh_rows(limit: int | None = None) -> str:
     rows = ["| Anchor | Source | Lane | Tier | Checked | Cadence | Refresh trigger | Verification note |", "|---|---|---|---|---|---|---|---|"]
     anchors = INTELLIGENCE_RESEARCH_ANCHORS if limit is None else INTELLIGENCE_RESEARCH_ANCHORS[:limit]
     for anchor in anchors:
-        source = f"[{table_cell(anchor.title)}]({anchor.url})" if anchor.url else table_cell(anchor.title)
+        title = table_cell(source_identifier_text(anchor.title))
+        source = f"[{title}]({anchor.url})" if anchor.url else title
         rows.append(
             f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | "
             f"{table_cell(anchor.source_tier or anchor.source_type)} | {anchor.checked_as_of} | "
             f"{table_cell(anchor.refresh_cadence)} | {table_cell(anchor.refresh_trigger)} | "
-            f"{table_cell(_verification_note_for_table(anchor))} |"
+            f"{table_cell(source_identifier_text(_verification_note_for_table(anchor)))} |"
         )
     return "\n".join(rows)
 
@@ -65,11 +67,14 @@ def current_source_update_rows(cutoff: str = "2026-06-06") -> str:
     rows = ["| Anchor | Source | Lane | Recorded checked date | Contribution to the manuscript | Verification caveat |", "|---|---|---|---|---|---|"]
     updates = [anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS if anchor.checked_as_of >= cutoff or cutoff in anchor.verification_note]
     for anchor in updates:
-        source = f"[{table_cell(anchor.title)}]({anchor.url})" if anchor.url else table_cell(anchor.title)
-        caveat = _verification_note_for_table(anchor)
+        title = table_cell(source_identifier_text(anchor.title))
+        source = f"[{title}]({anchor.url})" if anchor.url else title
+        caveat = source_identifier_text(_verification_note_for_table(anchor))
         if anchor.source_tier == "official_draft" and "draft status" not in caveat.lower():
             caveat = f"Draft status retained. {caveat}"
-        rows.append(f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | {anchor.checked_as_of} | {table_cell(anchor.claim_scope)} | {table_cell(caveat)} |")
+        rows.append(
+            f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | {anchor.checked_as_of} | {table_cell(source_identifier_text(anchor.claim_scope))} | {table_cell(caveat)} |"
+        )
     return "\n".join(rows)
 
 
@@ -162,7 +167,7 @@ def _topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int 
     topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:limit]]
     if not topics:
         return "the local topic cluster"
-    return f"**{compact_topic_cluster(topics)}**"
+    return f"**{source_identifier_text(compact_topic_cluster(topics))}**"
 
 
 def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
@@ -192,13 +197,13 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
     """Render chapter-level research synthesis."""
     title = str(chapter["title"])
     profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
-    distinct = list(dict.fromkeys(e.display_title for e in safe_topic_entries(chapter, part)))[:3]
+    distinct = [source_identifier_text(topic) for topic in dict.fromkeys(e.display_title for e in safe_topic_entries(chapter, part))][:3]
     source_context = _chapter_ref_context(chapter)
     topic_context = f"**{'; '.join(distinct[:2])}**" if distinct else "the local topic cluster"
     topic_line = f"**Curriculum topic spine:** {', '.join(f'**{topic}**' for topic in distinct)}.\n\n" if distinct else ""
     anchor_rows = ["| Anchor | Why it matters here |", "|---|---|"]
     for anchor in anchor_references(expanded_profile_anchor_keys(profile))[:7]:
-        anchor_rows.append(f"| {citation_ref(anchor.key)} | {anchor.note} Checked as of {anchor.checked_as_of}; role: {anchor.citation_role}. |")
+        anchor_rows.append(f"| {citation_ref(anchor.key)} | {source_identifier_text(anchor.note)} Checked as of {anchor.checked_as_of}; role: {anchor.citation_role}. |")
     return "\n".join(
         [
             f"Research lane: **{profile.title}** for {topic_context}. {source_context}",

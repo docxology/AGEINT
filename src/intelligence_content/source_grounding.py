@@ -16,6 +16,7 @@ import re
 from typing import TYPE_CHECKING
 
 from _jsonl import read_jsonl
+from prose_policy import source_identifier_text
 from safety_contract import text_is_operational
 
 from . import _source_prose as prose
@@ -223,6 +224,7 @@ def _join_clause(items: list[str]) -> str:
 
 def source_support_sentence(display_title: str, records: tuple[SourceRecord, ...]) -> str:
     """Preserve inherited source identity while keeping claim-support limits explicit."""
+    display_title = source_identifier_text(display_title)
     if not records:
         return f"No source-guide citation is available for **{display_title}**; claim-specific support remains unestablished."
     spine = _join_clause([record.citation for record in records])
@@ -236,12 +238,11 @@ def source_support_sentence(display_title: str, records: tuple[SourceRecord, ...
 
 def evidence_from_sources(display_title: str, records: tuple[SourceRecord, ...]) -> str:
     """Present key-bound curriculum annotations as leads for passage-level review."""
+    display_title = source_identifier_text(display_title)
     if not records:
         return f"No source-guide citation is available to inspect for **{display_title}**; record the evidence gap."
-    annotations = [prose.curriculum_annotation(record.citation, record.note) for record in records if record.note]
-    body = " ".join(annotations) if annotations else (
-        f"No displayable curriculum annotation is available for {_join_clause([record.citation for record in records])}."
-    )
+    annotations = [prose.curriculum_annotation(record.citation, source_identifier_text(record.note)) for record in records if record.note]
+    body = " ".join(annotations) if annotations else (f"No displayable curriculum annotation is available for {_join_clause([record.citation for record in records])}.")
     return (
         f"For **{display_title}**, inspect the original passages. {body} "
         "These editorial descriptions are not source-authored quotations or "
@@ -264,7 +265,7 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
     """
     rows = ["| Source | Cited work | Curriculum annotation | Status |", "|---|---|---|---|"]
     for record in records:
-        title = safe_source_title(record.title)
+        title = source_identifier_text(safe_source_title(record.title))
         if title and record.url:
             # Hyperlinked title — safe inside a table cell; the sanitiser skips table rows
             safe_url = record.url.replace("@", "%40").replace(" ", "%20")
@@ -273,7 +274,7 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
             title_cell = _cell(title)
         else:
             title_cell = "Cited source (see bibliography)"
-        note_cell = _cell(record.note) if record.note else "No displayable curriculum annotation; see original work for scope."
+        note_cell = _cell(source_identifier_text(record.note)) if record.note else "No displayable curriculum annotation; see original work for scope."
         status = f"{source_evidence_status(record)}; annotation metadata, not claim verification"
         rows.append(f"| {record.citation} | {title_cell} | {note_cell} | {status} |")
     return "\n".join(rows)

@@ -14,6 +14,8 @@ metadata or this document alone is not acceptance.
   operational effectiveness, legal determinations or safety guarantees.
 - Preserve stable guide-source identities and explicit source roles, metadata
   inspection limits, correction notes and claim-support boundaries.
+- Keep the methodological-dispute qualification beside the reported
+  meta-analysis sample count, including in shortened reader annotations.
 - Improve diagram semantics and print layouts; retain source-linked figure
   alternatives and reader-accessible long descriptions.
 
@@ -23,10 +25,16 @@ metadata or this document alone is not acceptance.
   refresh the configuration example without borrowing publication identifiers.
 - Remove unused compatibility shards and import/wording-only checks while
   preserving canonical source APIs and consumer-visible regressions.
-- Include config, preamble and dependency-lock bytes in build freshness,
-  including edits that preserve timestamps and file size.
+- Include config, preamble, embedded citation-recipe and dependency-lock bytes
+  in build freshness, including edits that preserve timestamps and file size.
 - Derive the nonblank authored-teaching-note count from the actual curriculum
   shards and expose it as numeric evidence, not a quality or entailment claim.
+- Emit source-section citation counts from the native counter as typed build
+  data with exact input hashes and claim-specific field bindings; do not borrow
+  later aggregate reports or treat coverage counts as citation correctness.
+- Render source loci and recognized instrument or institutional designations as
+  identifiers, while preserving literal editions, routing identities and
+  quantitative validation of ordinary measurements.
 - Align package, citation, paper and book versions; derive milestone
   prerequisites from the current version rather than a historical release.
 - Make missing, failed, timed-out or skipped SDK guards block readiness.
@@ -42,6 +50,8 @@ metadata or this document alone is not acceptance.
 
 - Require the genuine shared SDK 5.1.0 release, including nested-image registry
   matching and blocking native BibTeX failure handling before PDF promotion.
+- Require cold-process registry and snapshot initialization without caller
+  pre-imports; keep all existing SDK output-validation severities.
 - Preserve the text CC BY 4.0 / code Apache-2.0 grants. Keep the concept DOI;
   the historical 0.1.0 version DOI is not reassigned to this edition. No new
   archive deposit or package-index publication is claimed by these changes.

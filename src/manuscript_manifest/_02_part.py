@@ -5,6 +5,7 @@ from typing import Any
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 from intelligence_content.topic_entries import clean_display_title
 from intelligence_content import practice_lens_for_titles, safe_curriculum_treatment, safe_pattern_treatment
+from prose_policy import source_identifier_text
 
 from ._01_part import _chapter_source_context, _chapter_topic_context
 
@@ -106,19 +107,20 @@ def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     active_pattern_number: int | None = None
     for section in sections:
         source_title = str(section.get("title", "module section"))
-        source_title_for_provenance = _reader_provenance_title(source_title)
-        source_number = str(section.get("number", "")).strip()
+        source_title_for_provenance = source_identifier_text(_reader_provenance_title(source_title))
+        source_value = section.get("number")
+        source_number = str(source_value).strip() if source_value is not None else ""
+        source_locus = f"`{source_number}`" if source_number else "module section"
         working_title = source_title
-        provenance = f"{source_number} {source_title_for_provenance}".strip()
+        provenance = f"{source_locus} {source_title_for_provenance}" if source_number else source_title_for_provenance
 
         if safe_patterns:
             working_title, active_pattern_number = safe_pattern_treatment(working_title, active_pattern_number)
             provenance = "Source identity preserved in pattern registry with safe classroom treatment"
 
         rendered_title = _reader_section_title(working_title, str(part["title"]), str(chapter["title"]))
-        source_locus = str(section.get("number") or "module section")
         if not safe_patterns and rendered_title != source_title:
             provenance = f"{source_locus} source title transformed into safe curriculum treatment; original: {source_title_for_provenance}"
         lens = practice_lens_for_titles(str(part["title"]), rendered_title, chapter=chapter)
-        rows.append(f"| {rendered_title} | {source_locus} | {provenance} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
+        rows.append(f"| {source_identifier_text(rendered_title)} | {source_locus} | {provenance} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
     return "\n".join(rows)

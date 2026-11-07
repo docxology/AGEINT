@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from collections import Counter
 from collections.abc import Iterable
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
+import hashlib
+import json
 from pathlib import Path
 import re
 
@@ -41,6 +43,13 @@ DEFAULT_SOURCE_FALLBACK = "No direct source-guide citation is attached to this i
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md", "references.md"}
 CITATION_REF_RE = re.compile(r"(?<!`)\[@([^\]]+)\]")
 CROSSREF_PREFIXES = ("fig:", "sec:", "eq:", "tbl:")
+SOURCE_CITATION_COVERAGE_PATH = Path("output/data/source_citation_coverage.json")
+_COVERAGE_MEASURES = (
+    ("Source sections", "section_count", "Count source sections."),
+    ("Citation occurrences", "citation_occurrences", "Sum the lengths of source-section citations lists, including repeated entries."),
+    ("Unique source-guide keys", "unique_citation_keys", "Count distinct source-guide keys across source sections."),
+    ("Zero-citation source sections", "zero_citation_sections", "Count source sections with empty citations lists."),
+)
 
 
 @dataclass(frozen=True)
@@ -151,6 +160,35 @@ def source_citation_coverage_summary(curriculum: Curriculum) -> CitationCoverage
     )
 
 
+def write_source_citation_coverage(curriculum: Curriculum, project_root: Path, *, source_digest: str) -> Path:
+    """Persist current native counts and their exact input/field provenance.
+
+    The ordinary build supplies its current curriculum and existing freshness
+    digest; no previous report or rendered-reader audit is consulted.
+    """
+    root = Path(project_root)
+    input_path = Path("output/data/curriculum_outline.json")
+    summary = source_citation_coverage_summary(curriculum)
+    payload = {
+        "schema_version": "1.0",
+        "producer": "citation_workflow.source_citation_coverage_summary",
+        "source_digest": source_digest,
+        "input": {
+            "path": input_path.as_posix(),
+            "sha256": hashlib.sha256((root / input_path).read_bytes()).hexdigest(),
+            "section_field": "$.parts[*].chapters[*].sections[*]",
+            "citation_field": "$.parts[*].chapters[*].sections[*].citations",
+        },
+        "summary": asdict(summary),
+        "claim_bindings": {label: {"path": SOURCE_CITATION_COVERAGE_PATH.as_posix(), "field": f"$.summary.{field}", "counting_rule": rule} for label, field, rule in _COVERAGE_MEASURES},
+        "scope": "Structural source-section citation coverage only; not citation correctness, empirical support, or scientific quality.",
+    }
+    destination = root / SOURCE_CITATION_COVERAGE_PATH
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return destination
+
+
 def render_source_section_citation_rows(curriculum: Curriculum) -> str:
     """Render a source-section citation inventory as a Markdown table."""
 
@@ -208,15 +246,14 @@ def render_citation_workflow_markdown(curriculum: Curriculum) -> str:
             "### Contributor recipe",
             _contributor_recipe_markdown(),
             "### Current citation coverage by source section",
+            "These counts describe structural citation coverage only, not citation correctness, empirical support, or scientific quality. "
+            "The ordinary source build records the current input snapshot and its digest alongside the claim-specific integer fields below.",
             "\n".join(
                 [
-                    "| Measure | Count |",
-                    "|---|---:|",
-                    f"| Source sections | {summary.section_count} |",
-                    f"| Citation occurrences | {summary.citation_occurrences} |",
-                    f"| Unique source-guide keys | {summary.unique_citation_keys} |",
-                    f"| Zero-citation source sections | {summary.zero_citation_sections} |",
-                    f"| Distribution | {_table_cell(distribution)} |",
+                    "| Measure | Count | Build evidence path and field |",
+                    "|---|---:|---|",
+                    *(f"| {label} | {getattr(summary, field)} | `{SOURCE_CITATION_COVERAGE_PATH.as_posix()}` / `$.summary.{field}` |" for label, field, _rule in _COVERAGE_MEASURES),
+                    f"| Distribution | {_table_cell(distribution)} | `{SOURCE_CITATION_COVERAGE_PATH.as_posix()}` / `$.summary.citation_count_distribution` |",
                 ]
             ),
             "### Citation rows by source section",
@@ -299,6 +336,7 @@ def _table_cell(value: object) -> str:
 __all__ = [
     "CitationCountRow",
     "CitationCoverageSummary",
+    "SOURCE_CITATION_COVERAGE_PATH",
     "generated_markdown_citation_inventory",
     "render_citation_workflow_markdown",
     "render_source_section_citation_rows",
@@ -307,4 +345,5 @@ __all__ = [
     "source_citation_spine",
     "source_key",
     "source_section_citation_inventory",
+    "write_source_citation_coverage",
 ]

@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import NamedTuple
 
+from citation_workflow import write_source_citation_coverage
 from curriculum import Curriculum, build_curriculum, write_compact_curriculum_payload, write_curriculum_shards
 from figures import load_figure_registry, render_evidence_transit_map, render_figures
 from manuscript_manifest import render_manuscript
@@ -199,6 +200,7 @@ def run_build(project_root: Path = PROJECT_ROOT, *, regenerate_source_template_l
     # Gate: published counts must match a fresh re-count of the source data
     # and the figure registry, or the build fails on drift.
     verify_published_counts(root, curriculum_stats=curriculum.stats, figure_count=len(figure_registry))
+    write_source_citation_coverage(curriculum, root, source_digest=source_content_digest(root))
     # Written last: the stamp asserts "this output was produced from that source",
     # so it must only exist once every artifact above has been written.
     write_build_stamp(root, root / "output")

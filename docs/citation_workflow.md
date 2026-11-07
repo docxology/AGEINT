@@ -67,6 +67,23 @@ uv run python scripts/count_citations.py --format markdown
 uv run python scripts/count_citations.py --format json
 ```
 
+The normal build writes `output/data/source_citation_coverage.json` from
+`source_citation_coverage_summary()`, after the published-count check and before
+the final build stamp. Its `summary.section_count` and
+`summary.citation_occurrences` are integer-valued results; citation occurrences
+include repeated entries, whereas `summary.unique_citation_keys` counts distinct
+source-guide keys. The generated coverage table names the exact path and field.
+The same artifact records the parsed curriculum snapshot SHA256, counting rules
+and source freshness digest. It is a required build sentinel, not a restored
+aggregate audit report.
+
+Coverage counts establish structural coverage only, not citation correctness,
+claim/passage entailment, empirical support or scientific quality. Source
+locators such as `5.10` remain string identities, distinct from `5.1`; recognized
+legal, standard and institutional identifiers are marked only for display.
+Ordinary empirical and synthetic quantities remain quantitative claims.
+The embedded contributor recipe is also a registered byte-level build input.
+
 Run citation integrity tests:
 
 ```bash

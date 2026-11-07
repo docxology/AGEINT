@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import shutil
 
@@ -10,6 +11,7 @@ import pytest
 import template_resolver
 from _data_loaders import validate_declarative_tables
 from build_pipeline import generated_output_is_stale, run_build
+from citation_workflow import SOURCE_CITATION_COVERAGE_PATH, source_citation_coverage_summary
 from orchestration_contracts import output_build_sentinels, source_freshness_roots
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -48,10 +50,7 @@ def _minimal_project(tmp_path: Path) -> Path:
 def _write_minimal_source_config(project: Path) -> None:
     config = project / "docs" / "manuscript" / "config.yaml"
     config.parent.mkdir(parents=True, exist_ok=True)
-    config.write_text(
-        "paper:\n  title: \"Fixture project\"\nbook:\n  title: \"Fixture project\"\n  license: \"CC BY 4.0\"\n  code_license: \"Apache-2.0\"\n",
-        encoding="utf-8",
-    )
+    config.write_text('paper:\n  title: "Fixture project"\nbook:\n  title: "Fixture project"\n  license: "CC BY 4.0"\n  code_license: "Apache-2.0"\n', encoding="utf-8")
 
 
 def _force_mermaid_placeholders(monkeypatch) -> None:
@@ -75,6 +74,18 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     assert (project / "output" / "data" / "curriculum" / "metadata.json").is_file()
     assert (project / "output" / "data" / "manuscript_variables.json").is_file()
     assert (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").is_file()
+    coverage = json.loads((project / SOURCE_CITATION_COVERAGE_PATH).read_text(encoding="utf-8"))
+    summary = source_citation_coverage_summary(result.curriculum)
+    assert coverage["summary"]["section_count"] == summary.section_count
+    assert coverage["summary"]["citation_occurrences"] == summary.citation_occurrences
+    appendix = project / "output" / "manuscript" / "appendices" / "bibliography-atlas" / "05-bind-the-claim-not-merely-the-citation-01.md"
+    text = appendix.read_text(encoding="utf-8")
+    for label, binding in coverage["claim_bindings"].items():
+        field = binding["field"].removeprefix("$.summary.")
+        assert f"| {label} | {coverage['summary'][field]} |" in text
+        assert f"`{binding['path']}`" in text
+        assert f"`{binding['field']}`" in text
+    assert not (project / "output" / "reports" / "current_artifact_evidence.json").exists()
 
 
 @pytest.mark.parametrize("existing_output", [False, True])
@@ -113,8 +124,6 @@ def test_source_validation_rechecks_selected_project_config(tmp_path: Path) -> N
     assert missing_config.as_posix() in str(error.value)
 
 
-
-
 @requires_template_repo
 def test_build_freshness_uses_registered_stage_contracts(tmp_path: Path, monkeypatch) -> None:
     _force_mermaid_placeholders(monkeypatch)
@@ -141,5 +150,3 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, mo
     assert "TEMPLATE SENTINEL" not in rewritten
     assert "{{SECTION_TITLE}}" in rewritten
     assert "{{CHAPTER_031_TITLE}}" not in rewritten
-
-

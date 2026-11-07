@@ -42,9 +42,17 @@ The example includes `book.license` (`CC BY 4.0`), `book.code_license`
 front-matter file ordering is supplied by the build. Keep DOI and archive-record
 fields empty until that publication has its own deposited identifiers rather
 than borrowing another edition's or project's identifiers.
-Config, dependency-lock and optional `preamble.md` bytes are registered build
-inputs. Editing an edition, dependency, asset mode or preamble invalidates the
-build even when file size and timestamps are preserved.
+Config, dependency-lock, optional `preamble.md` and embedded
+`docs/citation_workflow.md` bytes are registered build inputs. Editing them
+invalidates the build even when file size and timestamps are preserved.
+
+The source build emits `output/data/source_citation_coverage.json` from its
+actual citation counter before the final stamp. The displayed coverage table
+binds each count to that artifact's exact field and input snapshot hash, without
+depending on a later reader audit. Source loci and recognized document or
+institutional designations are displayed as identifiers, not registered as
+measurements. Ordinary quantitative claims retain the SDK's existing evidence
+rules; a registry pass does not establish passage-level entailment.
 
 ## Shared SDK environment and canonical native renderer
 

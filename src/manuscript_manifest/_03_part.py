@@ -22,6 +22,7 @@ from intelligence_content import (
     subsection_practice_rows,
 )
 from citation_workflow import source_citation_spine
+from prose_policy import source_identifier_text
 from ._chapter_practice_pathways import _assessment_and_capstone_pathway, _security_synthesis_block
 
 from ._01_part import _chapter_source_context, _chapter_source_context_inline, _chapter_topic_context, _claim_evidence_ledger, _review_checklist, _source_canon
@@ -119,10 +120,10 @@ def _current_source_assurance(chapter: dict[str, Any], part: dict[str, Any], pro
     ]
     for anchor in anchor_references(expanded_profile_anchor_keys(profile))[:4]:
         lane = anchor.source_lane or anchor.domain
-        use = anchor.assurance_use or anchor.note
+        use = source_identifier_text(anchor.assurance_use or anchor.note)
         rows.append(
             f"| What does the module inherit from `{anchor.key}` for {topic_context}? | "
-            f"{_table_cell(anchor.title)}; lane `{_table_cell(lane)}`; "
+            f"{_table_cell(source_identifier_text(anchor.title))}; lane `{_table_cell(lane)}`; "
             f"checked {anchor.checked_as_of}. | "
             f"{_table_cell(lens.evidence_artifact)}; {_table_cell(use)} |"
         )

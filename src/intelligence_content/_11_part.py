@@ -5,10 +5,12 @@ from typing import Any
 try:  # Support package and script-level imports.
     from citation_workflow import source_citation_spine
     from markdown_refs import lesson_educational_crossrefs
+    from prose_policy import source_identifier_text
     from unit_education import unit_profile_for_part
 except ImportError:  # pragma: no cover - exercised by package imports
     from ..citation_workflow import source_citation_spine  # type: ignore[no-redef]
     from ..markdown_refs import lesson_educational_crossrefs  # type: ignore[no-redef]
+    from ..prose_policy import source_identifier_text  # type: ignore[no-redef]
     from ..unit_education import unit_profile_for_part  # type: ignore[no-redef]
 
 from ._04b_part import INTELLIGENCE_PROFILES
@@ -35,7 +37,7 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     coursebook = _coursebook_profile_for_titles(part_title, title, chapter=chapter)
     unit_profile = unit_profile_for_part(part)
     entries = safe_topic_entries(chapter, part)
-    distinct_openers = tuple(dict.fromkeys(entry.display_title for entry in entries[:3]))
+    distinct_openers = tuple(dict.fromkeys(source_identifier_text(entry.display_title) for entry in entries[:3]))
     lessons = [
         lesson_intro_paragraph(title, coursebook, lens, distinct_openers),
         lesson_educational_crossrefs(part, chapter),
@@ -75,8 +77,14 @@ def chapter_topic_lessons(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         formalism = lesson_formalism_field(entry.display_title)
         if formalism:
             body_fields.append(formalism)
-        teaching_note = [f"**Worked reasoning and limits.** {entry.teaching_note}"] if entry.teaching_note else []
-        lessons.extend([f"#### Lesson {index}: {entry.display_title}", f"**Concept.** {fields.concept}", *teaching_note, *body_fields])
+        display_title = source_identifier_text(entry.display_title)
+        concept = fields.concept.replace(f"**{entry.display_title}**", f"**{display_title}**")
+        # Only the displayed subject is marked here, after routing/anaphora have
+        # consumed the unmodified title; lesson claims are not a formatting pass.
+        for subject in (entry.display_title, compact_topic(entry.display_title)):
+            body_fields = [field.replace(f"**{subject}**", f"**{source_identifier_text(subject)}**") for field in body_fields]
+        teaching_note = [f"**Worked reasoning and limits.** {source_identifier_text(entry.teaching_note)}"] if entry.teaching_note else []
+        lessons.extend([f"#### Lesson {index}: {display_title}", f"**Concept.** {concept}", *teaching_note, *body_fields])
     return "\n\n".join(lessons)
 
 
@@ -101,7 +109,7 @@ def _topic_source_support(entry: TopicEntry, chapter: dict[str, Any], sources: t
     if entry.risk_category == "analytic_tradecraft" and original_sources:
         return tradecraft_context_support(entry.display_title, source_citation_spine(entry.citation_numbers))
     if entry.citation_numbers:
-        return f"Source-guide row {entry.source_locus} retains {source_citation_spine(entry.citation_numbers)} These are inherited context; inspect the original before claiming support for a definition, method, or result."
+        return f"Source-guide row `{entry.source_locus}` retains {source_citation_spine(entry.citation_numbers)} These are inherited context; inspect the original before claiming support for a definition, method, or result."
     if chapter.get("citations"):
         return f"This row has no direct citation; the module source spine is {source_citation_spine(chapter['citations'])} It supplies context, and the gap remains visible in the claim ledger."
     return source_citation_spine([])
@@ -123,6 +131,8 @@ def chapter_worked_example(chapter: dict[str, Any], part: dict[str, Any]) -> str
     short_anchor = compact_topic(anchor_topic)
     if not _keeps_title_keywords(short_anchor, anchor_topic):
         short_anchor = anchor_topic
+    anchor_topic = source_identifier_text(anchor_topic)
+    short_anchor = source_identifier_text(short_anchor)
     return "\n\n".join(
         [
             f"Worked example: {coursebook.worked_scenario}. {source_context}",
@@ -175,6 +185,8 @@ def chapter_practice_sequence(chapter: dict[str, Any], part: dict[str, Any]) -> 
     first_entry_topic = compact_topic(entries[0].display_title)
     if not _keeps_title_keywords(first_entry_topic, entries[0].display_title):
         first_entry_topic = entries[0].display_title
+    first_topics = source_identifier_text(first_topics)
+    first_entry_topic = source_identifier_text(first_entry_topic)
     misconception = resolve_topic_misconception(entries[0], coursebook=coursebook, profile=profile, lens=lens, lesson_index=1, chapter_title=title, unit_profile=unit_profile)
     topic_context = _topic_context(chapter, part)
     source_context = _chapter_ref_context(chapter)
@@ -230,9 +242,11 @@ def chapter_knowledge_check(chapter: dict[str, Any], part: dict[str, Any]) -> st
     short_second = compact_topic(second_topic.display_title)
     if not _keeps_title_keywords(short_second, second_topic.display_title):
         short_second = second_topic.display_title
+    short_topic = source_identifier_text(short_topic)
+    short_second = source_identifier_text(short_second)
     return "\n".join(
         [
-            f"1. For every topic in this module, identify a source-supported distinction, an unsupported inference to reject, and the exact evidence needed to decide. Start with **{topic.display_title}**.",
+            f"1. For every topic in this module, identify a source-supported distinction, an unsupported inference to reject, and the exact evidence needed to decide. Start with **{source_identifier_text(topic.display_title)}**.",
             f"2. Transfer the **{lens.title}** artifact from **{short_topic}** to the final topic, **{short_second}**; explain what changes and what cannot transfer.",
             f"3. Identify one failure mode from the **{profile.title}** lane and the evidence that would reveal it.",
             f"4. Answer the coursebook review question: {coursebook.review_question}",
@@ -256,12 +270,12 @@ def subsection_practice_rows(chapter: dict[str, Any], part: dict[str, Any]) -> s
     entries = safe_topic_entries(chapter, part)
     if not chapter.get("sections"):
         lens = practice_lens_for_titles(str(part["title"]), str(chapter["title"]), chapter=chapter)
-        return f"| Lesson topic | Practice lens | Evidence artifact | Safety check |\n|---|---|---|---|\n| {entries[0].display_title} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |"
+        return f"| Lesson topic | Practice lens | Evidence artifact | Safety check |\n|---|---|---|---|\n| {source_identifier_text(entries[0].display_title)} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |"
 
     rows = ["| Lesson topic | Practice lens | Evidence artifact | Safety check |", "|---|---|---|---|"]
     for entry in entries:
         lens = practice_lens_for_titles(str(part["title"]), entry.display_title, chapter=chapter)
-        rows.append(f"| {entry.display_title} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
+        rows.append(f"| {source_identifier_text(entry.display_title)} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
     return "\n".join(rows)
 
 
