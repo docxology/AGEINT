@@ -69,6 +69,26 @@ def test_digest_is_independent_of_checkout_location(tmp_path: Path) -> None:
     assert source_content_digest(root_a) == source_content_digest(root_b)
 
 
+@pytest.mark.parametrize("metadata_directory", ["ageint_curriculum.egg-info", "ageint_curriculum-0.2.0.dist-info"])
+def test_packaging_metadata_does_not_change_authored_source_freshness(tmp_path: Path, metadata_directory: str) -> None:
+    root, output = _fake_tree(tmp_path)
+    module = root / "src" / "reader.py"
+    module.write_text("VALUE = 1\n", encoding="utf-8")
+    write_build_stamp(root, output)
+    original_digest = source_content_digest(root)
+
+    metadata = root / "src" / metadata_directory / "PKG-INFO"
+    metadata.parent.mkdir()
+    metadata.write_text("Generated package metadata\n", encoding="utf-8")
+    assert source_content_digest(root) == original_digest
+    assert generated_output_is_stale(root, output) is False
+    metadata.write_text("Regenerated package metadata\n", encoding="utf-8")
+    assert generated_output_is_stale(root, output) is False
+
+    module.write_text("VALUE = 2\n", encoding="utf-8")
+    assert generated_output_is_stale(root, output) is True
+
+
 def test_stamped_tree_is_fresh_even_when_source_mtimes_are_newer(tmp_path: Path) -> None:
     # This is the checkout case the mtime heuristic gets wrong.
     root, output = _fake_tree(tmp_path)

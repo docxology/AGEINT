@@ -27,6 +27,9 @@ metadata or this document alone is not acceptance.
   preserving canonical source APIs and consumer-visible regressions.
 - Include config, preamble, embedded citation-recipe and dependency-lock bytes
   in build freshness, including edits that preserve timestamps and file size.
+- Exclude derived Python installation metadata from authored-source freshness,
+  so the same source and genuine outputs remain portable across installations
+  without ignoring actual code, config or dependency changes.
 - Independently re-count nonblank authored teaching notes from flat and sharded
   source chapters; verify the derived count and integer type before exposing it
   as numeric evidence, not a quality or entailment claim.

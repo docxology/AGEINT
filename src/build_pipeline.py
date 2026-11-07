@@ -74,7 +74,12 @@ def _iter_files(path: Path) -> list[Path]:
         return [path]
     if not path.is_dir():
         return []
-    return [candidate for candidate in path.rglob("*") if candidate.is_file() and "__pycache__" not in candidate.parts and ".pytest_cache" not in candidate.parts]
+    # Installation metadata is derived runtime state, not authored compiler input.
+    return [
+        candidate
+        for candidate in path.rglob("*")
+        if candidate.is_file() and not any(part in {"__pycache__", ".pytest_cache"} or part.endswith((".egg-info", ".dist-info")) for part in candidate.relative_to(path).parts)
+    ]
 
 
 def _latest_mtime(paths: list[Path]) -> float:

@@ -45,6 +45,9 @@ than borrowing another edition's or project's identifiers.
 Config, dependency-lock, optional `preamble.md` and embedded
 `docs/citation_workflow.md` bytes are registered build inputs. Editing them
 invalidates the build even when file size and timestamps are preserved.
+Python installation metadata (`*.egg-info` and `*.dist-info`) and interpreter/test
+caches are not authored inputs. Creating or refreshing them must not invalidate
+an otherwise identical committed source tree; actual source edits still do.
 
 The source build emits `output/data/source_citation_coverage.json` from its
 actual citation counter before the final stamp. The displayed coverage table
