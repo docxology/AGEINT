@@ -55,6 +55,11 @@ must replace the old measurements before publication.
 - `ageint-release-0-2-0`: publish only after those prerequisites and exact-main
   full acceptance. The historical 0.1.0 DOI is not a 0.2.0 archive record.
 
+The clean-source development [run 42383495664](https://github.com/docxology/AGEINT/actions/runs/42383495664)
+passed the full technical reader gates recorded under `ageint-36`. Aggregate
+readiness still rejects the unfinished SDK-dependent tasks; their status is not
+advanced by an inspection artifact or a successful development render.
+
 Implementation is not native qualification. Inspection-only snapshots and
 diagnostics cannot satisfy the verified release handoff; prior skipped-guard
 reports and the measurements above cannot certify current Source.
