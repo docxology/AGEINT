@@ -23,8 +23,9 @@ Root `pyproject.toml` includes `pillow` for pipeline Stage 02. Run `uv sync` at 
 Rebuild, then:
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+# From the prepared SDK root:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 Fix cross-refs in `src/manuscript_manifest/` or `src/markdown_refs.py`, not in generated output.

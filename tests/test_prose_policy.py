@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import pytest
+
 from prose_policy import source_identifier_text
 
 
@@ -24,6 +26,26 @@ def test_source_identifier_text_preserves_markdown_and_quantity_boundaries() -> 
     assert source_identifier_text(expected) == expected
     literal_block = "~~~text\nEO 12333 and section 2.3\n~~~"
     assert source_identifier_text(literal_block) == literal_block
+
+
+@pytest.mark.parametrize(
+    ("opening", "body", "closing"),
+    [
+        ("```text", "EO 12333 and ISO 19157:2013", "````"),
+        ("````text", "EO 12333\n```\nsection 5.10", "`````"),
+        ("  ```text", "EO 12333 and section 5.10", "   ````"),
+        ("~~~text", "EO 12333 and section 5.10", "~~~~"),
+    ],
+)
+def test_source_identifier_text_preserves_fenced_examples(opening: str, body: str, closing: str) -> None:
+    example = f"{opening}\n{body}\n{closing}"
+    assert source_identifier_text(f"EO 12333\n{example}\nUnit 8200") == f"`EO 12333`\n{example}\n`Unit 8200`"
+
+
+@pytest.mark.parametrize("opening", ["```text", "~~~text"])
+def test_source_identifier_text_preserves_unclosed_fenced_examples(opening: str) -> None:
+    example = f"{opening}\nEO 12333 and section 5.10\n"
+    assert source_identifier_text(f"Unit 8200\n{example}") == f"`Unit 8200`\n{example}"
 
 
 def test_source_identifier_text_marks_designations_not_entire_annotations() -> None:

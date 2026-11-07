@@ -9,8 +9,9 @@ Two facts from that lifecycle are still true and still matter:
 
 - **The PDF render lives elsewhere.** `AGEINT.pdf` and
   `output/pdf/AGEINT_combined.pdf` are produced by the sibling template repo's
-  pandoc/xelatex pipeline, with AGEINT linked under its `projects/working/` — not
-  by any script in this repo. See the PDF note under Ground truth before assuming
+  pandoc/xelatex pipeline, with the public checkout at `projects/active/AGEINT`
+  inside the SDK — not by any script in this repo. Use a regular directory for
+  confined offline assets. See the PDF note under Ground truth before assuming
   a render step is missing here.
 - **Standalone-core checks are deliberately limited.** Only complete SDK
   verification with real native outputs and at least 90% coverage establishes
@@ -68,7 +69,7 @@ flowchart LR
   its `Open` section) and `tasks.yaml` (taskboard source of truth). Do not
   duplicate open work items anywhere else.
 - PDF/HTML render surface: the prepared shared SDK's canonical
-  `scripts/pipeline/stage_03_render.py --project working/AGEINT
+  `scripts/pipeline/stage_03_render.py --project active/AGEINT
   --skip-manuscript-hydration` consumes the generated manuscript; its
   `stage_04_validate.py` validates enabled outputs. The authoritative PDF is
   `output/pdf/AGEINT_combined.pdf`, mirrored at `AGEINT.pdf`. Do not add a second
@@ -136,8 +137,8 @@ regressions; do not restore source-wording, import-wiring or phrase-ban tests.
 For manuscript checks from the template repo root, also run:
 
 ```bash
-.venv/bin/python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root . --strict
-.venv/bin/python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Package documentation

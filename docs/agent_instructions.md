@@ -18,9 +18,11 @@ Dual-use material stays defensive, educational, accountable, synthetic, and evid
 ## Verification before claiming done: rebuild, audits, tests, and validators
 
 ```bash
-uv run pytest tests/ --cov=src --cov-fail-under=90
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+# From AGEINT, using the frozen SDK runtime described in rendering_pipeline.md:
+python -m pytest tests/ --cov=src --cov-fail-under=90
+# From the prepared SDK root:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Related documentation: source rules, syntax, rendering, and tests

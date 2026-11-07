@@ -119,7 +119,7 @@ def test_curriculum_identity_and_template_error_branches(tmp_path: Path, monkeyp
 
     isolated = tmp_path / "isolated"
     isolated.mkdir()
-    monkeypatch.delenv("TEMPLATE_REPO", raising=False)
-    monkeypatch.delenv("DOCXOLOGY_TEMPLATE_REPO", raising=False)
+    for name in ("AGEINT_TEMPLATE_REPO", "DOCXOLOGY_TEMPLATE_REPO", "DOCXOLOGY_TEMPLATE_ROOT", "TEMPLATE_REPO_ROOT"):
+        monkeypatch.delenv(name, raising=False)
     assert template_resolver.resolve_template_repo(isolated) is None
     assert template_resolver.ensure_template_repo_on_path(isolated) is None

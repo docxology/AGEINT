@@ -90,11 +90,11 @@ python scripts/audit_claim_calibration.py --write --format markdown
 python scripts/audit_reference_quality.py --write --format markdown
 python scripts/audit_publication_readiness.py --write --format markdown
 
-# From the prepared SDK root, with this checkout linked as projects/working/AGEINT:
-.venv/bin/python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root . --strict
-.venv/bin/python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
-.venv/bin/python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
-.venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+# From the prepared SDK root, with this public checkout at projects/active/AGEINT:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
+.venv/bin/python scripts/pipeline/stage_03_render.py --project active/AGEINT --skip-manuscript-hydration
+.venv/bin/python scripts/pipeline/stage_04_validate.py --project active/AGEINT
 ```
 
 Use `--regenerate-source-template-library` only when intentionally resetting the

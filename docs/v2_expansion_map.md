@@ -7,9 +7,9 @@ The major v2 pass expands AGEINT without changing its architecture:
   substitutions, capstone scaffolds, figures, variables, and manifest prose.
 - `output/` remains generated.
 - Scripts stay thin.
-- AGEINT remains local under the lifecycle workspace (`projects/working/AGEINT`
-  in this checkout; parent-template workflows may link it as
-  `projects/active/AGEINT` or `projects/AGEINT` during promotion/hot-seat runs).
+- Public AGEINT rendering uses `projects/active/AGEINT` inside the prepared SDK.
+  Keep the checkout and offline assets confined there; do not publish a private
+  working-lifecycle path as a reader or diagnostic source identity.
 
 ## Structural changes: source anchors, figures, reports, and reader contracts
 

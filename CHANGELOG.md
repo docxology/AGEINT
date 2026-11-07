@@ -27,23 +27,29 @@ metadata or this document alone is not acceptance.
   preserving canonical source APIs and consumer-visible regressions.
 - Include config, preamble, embedded citation-recipe and dependency-lock bytes
   in build freshness, including edits that preserve timestamps and file size.
-- Derive the nonblank authored-teaching-note count from the actual curriculum
-  shards and expose it as numeric evidence, not a quality or entailment claim.
+- Independently re-count nonblank authored teaching notes from flat and sharded
+  source chapters; verify the derived count and integer type before exposing it
+  as numeric evidence, not a quality or entailment claim.
 - Emit source-section citation counts from the native counter as typed build
   data with exact input hashes and claim-specific field bindings; do not borrow
   later aggregate reports or treat coverage counts as citation correctness.
 - Render source loci and recognized instrument or institutional designations as
-  identifiers, while preserving literal editions, routing identities and
-  quantitative validation of ordinary measurements.
+  identifiers, preserving literal editions, routing identities and ordinary
+  quantity validation. Keep code opaque, including longer Markdown closing
+  fences and valid unclosed fenced examples.
 - Align package, citation, paper and book versions; derive milestone
   prerequisites from the current version rather than a historical release.
 - Make missing, failed, timed-out or skipped SDK guards block readiness.
+- Run public SDK verification from `active/AGEINT` in a regular nested checkout;
+  keep private working-lifecycle paths out of actual published diagnostics
+  without adding privacy exceptions or rewriting producer evidence.
 - Require complete native Mermaid/PDF/HTML verification, at least 90% coverage,
   all readiness gates and exact-main same-run asset custody for publication.
 - Keep audit CLI regression checks read-only: tests cannot replace the
   repository's publication evidence or reader bytes. Render genuine readers
   before consumer tests and refuse any mutation of their bytes.
-- Package local web assets beside figures for an offline-served reader.
+- Package genuine local web assets beside figures for an offline-served reader;
+  require the SDK to honor explicit local mode without CDN substitution.
   Inspection-only snapshots and failure diagnostics cannot authorize a release.
 
 ### Shared SDK and publication identity

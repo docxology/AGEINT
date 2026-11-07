@@ -59,9 +59,12 @@ rules; a registry pass does not establish passage-level entailment.
 Release rendering requires `docxology/template` at a genuinely published
 `v5.1.0`, not a second Pandoc/XeLaTeX driver in AGEINT. The SDK requires Python 3.14
 or later; AGEINT's separate standalone-core compatibility floor is unchanged.
-Link or check out AGEINT under the SDK's working projects directory. From the
-SDK root, prepare its frozen environment and explicitly keep nested `uv`
-commands from reconciling it against AGEINT's different project metadata:
+Check out or copy public AGEINT into `projects/active/AGEINT` inside the SDK
+root. Keep it a regular directory, not a link outside that root: local asset
+publication enforces confinement. The public build must not acquire the private
+working-lifecycle namespace in published diagnostic paths. From the SDK root,
+prepare its frozen environment and keep nested `uv` commands from reconciling it
+against AGEINT's different project metadata:
 
 ```bash
 uv sync --frozen --group dev --group rendering --python 3.14
@@ -69,14 +72,15 @@ export AGEINT_TEMPLATE_REPO="$PWD"
 export VIRTUAL_ENV="$PWD/.venv" UV_PROJECT_ENVIRONMENT="$PWD/.venv"
 export UV_PYTHON="$PWD/.venv/bin/python" UV_NO_SYNC=1 UV_FROZEN=true
 export PATH="$PWD/.venv/bin:$PATH"
-export PYTHONPATH="$PWD:$PWD/projects/working/AGEINT/src"
-export SOURCE_DATE_EPOCH="$(git -C projects/working/AGEINT log -1 --format=%ct)"
+export PYTHONPATH="$PWD:$PWD/projects/active/AGEINT/src"
+export SOURCE_DATE_EPOCH="$(git -C projects/active/AGEINT log -1 --format=%ct)"
 export AGEINT_REQUIRE_RENDERED_FIGURES=1
 export ENABLE_PDF=1 ENABLE_HTML=1 ENABLE_SLIDES=0 ENABLE_DOCX=0 ENABLE_EPUB=0
-(cd projects/working/AGEINT && python scripts/build_curriculum.py)
-python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
-python -m infrastructure.validation.cli pdf projects/working/AGEINT/output/pdf/AGEINT_combined.pdf
-python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+python -m infrastructure.reporting.native_dependency_preparation --repo-root .
+(cd projects/active/AGEINT && python scripts/build_curriculum.py)
+python scripts/pipeline/stage_03_render.py --project active/AGEINT --skip-manuscript-hydration
+python -m infrastructure.validation.cli pdf projects/active/AGEINT/output/pdf/AGEINT_combined.pdf
+python scripts/pipeline/stage_04_validate.py --project active/AGEINT
 ```
 
 These local commands require the genuine Mermaid/browser, Pandoc/crossref,
@@ -176,8 +180,8 @@ alone.
 ## Pre-flight validation: markdown and prerender checks before PDF work
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Mermaid figures: strict diagram rendering, hashes, and placeholder policy

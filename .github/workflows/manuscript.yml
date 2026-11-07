@@ -80,7 +80,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ inputs.source || github.sha }}
-          path: projects/working/AGEINT
+          path: projects/active/AGEINT
           persist-credentials: false
       - uses: ./.github/actions/setup-python-env
         with:
@@ -96,7 +96,7 @@ jobs:
           SDK_REF: ${{ steps.sdk.outputs.ref }}
         run: |
           set -euo pipefail
-          source=$(git -C projects/working/AGEINT rev-parse HEAD)
+          source=$(git -C projects/active/AGEINT rev-parse HEAD)
           test "$source" = "$REQUESTED_SOURCE"
           sdk=$(git rev-parse HEAD)
           if [ "$SDK_CANDIDATE" = true ]; then
@@ -106,7 +106,7 @@ jobs:
             test "$(uv version --short)" = 5.1.0
           fi
           echo "SDK_VERSION=$(uv version --short)" >> "$GITHUB_ENV"
-          epoch=$(git -C projects/working/AGEINT show -s --format=%ct "$source")
+          epoch=$(git -C projects/active/AGEINT show -s --format=%ct "$source")
           {
             echo "source=$source"
             echo "sdk-source=$sdk"
@@ -116,7 +116,7 @@ jobs:
             echo "SOURCE_DATE_EPOCH=$epoch"
             echo "TEMPLATE_BUILD_EPOCH_SOURCE=git:$source"
             echo "AGEINT_TEMPLATE_REPO=$GITHUB_WORKSPACE"
-            echo "PYTHONPATH=$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/projects/working/AGEINT/src"
+            echo "PYTHONPATH=$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/projects/active/AGEINT/src"
             echo "VIRTUAL_ENV=$GITHUB_WORKSPACE/.venv"
             echo "UV_PROJECT_ENVIRONMENT=$GITHUB_WORKSPACE/.venv"
             echo "UV_PYTHON=$GITHUB_WORKSPACE/.venv/bin/python"
@@ -133,7 +133,7 @@ jobs:
       - name: Prepare source-locked offline browser math assets
         run: .venv/bin/python -m infrastructure.reporting.native_dependency_preparation --repo-root .
       - name: Check source release metadata
-        working-directory: projects/working/AGEINT
+        working-directory: projects/active/AGEINT
         env:
           EXPECTED_TAG: ${{ inputs.expected-tag }}
         run: |
@@ -143,7 +143,7 @@ jobs:
           python scripts/audit_release_metadata.py "${args[@]}" > "$RUNNER_TEMP/ageint-evidence/release-metadata.json"
           cat "$RUNNER_TEMP/ageint-evidence/release-metadata.json"
       - name: Strict source build with newly rendered Mermaid figures
-        working-directory: projects/working/AGEINT
+        working-directory: projects/active/AGEINT
         run: |
           set -euo pipefail
           # Historical image inputs from this exact Source remain available;
@@ -154,24 +154,24 @@ jobs:
       - name: Render current native outputs before exercising PDF consumer tests
         run: |
           set -euo pipefail
-          .venv/bin/python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
-          .venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
-          cp projects/working/AGEINT/output/pdf/AGEINT_combined.pdf projects/working/AGEINT/AGEINT.pdf
+          .venv/bin/python scripts/pipeline/stage_03_render.py --project active/AGEINT --skip-manuscript-hydration
+          .venv/bin/python scripts/pipeline/stage_04_validate.py --project active/AGEINT
+          cp projects/active/AGEINT/output/pdf/AGEINT_combined.pdf projects/active/AGEINT/AGEINT.pdf
       - name: Record reader bytes before isolated tests
-        working-directory: projects/working/AGEINT
+        working-directory: projects/active/AGEINT
         run: |
           set -euo pipefail
           find AGEINT.pdf output/data output/manuscript output/figures output/pdf output/web output/reports \
             -type f -print0 | LC_ALL=C sort -z | xargs -0 -r sha256sum \
             > "$RUNNER_TEMP/ageint-evidence/readers-before-tests.sha256"
       - name: Complete real test suite including strict Mermaid tests (90% minimum)
-        working-directory: projects/working/AGEINT
+        working-directory: projects/active/AGEINT
         run: >-
           python -m pytest tests/ --cov=src --cov-report=term-missing
           --cov-report=xml:${{ runner.temp }}/ageint-evidence/coverage.xml
           --cov-fail-under=90 --junitxml=${{ runner.temp }}/ageint-evidence/tests.xml
       - name: Refuse reader mutation by tests and validate source contracts
-        working-directory: projects/working/AGEINT
+        working-directory: projects/active/AGEINT
         run: |
           set -euo pipefail
           find AGEINT.pdf output/data output/manuscript output/figures output/pdf output/web output/reports \
@@ -184,13 +184,13 @@ jobs:
       - name: SDK markdown and strict prerender validation
         run: |
           set -euo pipefail
-          .venv/bin/python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root . --strict
-          .venv/bin/python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+          .venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+          .venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
       - name: SDK PDF and enabled-format output validation with provenance
         run: |
           set -euo pipefail
-          .venv/bin/python -m infrastructure.validation.cli pdf projects/working/AGEINT/output/pdf/AGEINT_combined.pdf
-          .venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+          .venv/bin/python -m infrastructure.validation.cli pdf projects/active/AGEINT/output/pdf/AGEINT_combined.pdf
+          .venv/bin/python scripts/pipeline/stage_04_validate.py --project active/AGEINT
       - name: Prepare inspection-only generated snapshot
         env:
           SOURCE: ${{ steps.identity.outputs.source }}
@@ -207,7 +207,7 @@ jobs:
             > "$destination/inspection-source.json"
           # This supports native reader review before task prerequisites close.
           # It is never the verified artifact selected by the release workflow.
-          (cd projects/working/AGEINT && tar \
+          (cd projects/active/AGEINT && tar \
             --exclude='output/pdf/_*' --exclude='output/web/_combined_manuscript.md' \
             -czf "$destination/AGEINT-generated.tar.gz" \
             output/data output/manuscript output/figures output/pdf output/web output/reports \
@@ -221,7 +221,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
       - name: Enforce all source, figure, PDF and aggregate readiness gates
-        working-directory: projects/working/AGEINT
+        working-directory: projects/active/AGEINT
         run: |
           set -euo pipefail
           cp output/pdf/AGEINT_combined.pdf AGEINT.pdf
@@ -242,7 +242,7 @@ jobs:
           SDK_CANDIDATE: ${{ steps.sdk.outputs.candidate }}
         run: |
           set -euo pipefail
-          project="$GITHUB_WORKSPACE/projects/working/AGEINT"
+          project="$GITHUB_WORKSPACE/projects/active/AGEINT"
           destination="$RUNNER_TEMP/ageint-verified"
           evidence="$RUNNER_TEMP/ageint-evidence"
           mkdir "$destination"
@@ -278,8 +278,8 @@ jobs:
           name: ageint-diagnostics-only-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/ageint-evidence/
-            projects/working/AGEINT/output/reports/
-            projects/working/AGEINT/output/pdf/*.log
-            projects/working/AGEINT/output/pdf/*.blg
+            projects/active/AGEINT/output/reports/
+            projects/active/AGEINT/output/pdf/*.log
+            projects/active/AGEINT/output/pdf/*.blg
           if-no-files-found: ignore
           retention-days: 14
