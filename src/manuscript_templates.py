@@ -136,7 +136,7 @@ drafts. The full ledger below retains the complete recorded refresh history.
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}
 """,
-    "references.md": """# References {.unnumbered}
+    "references.md": """# References {#sec:references .unnumbered}
 
 The render pipeline reads `references-*.bib`, which is generated from parsed
 curriculum data plus official source-quality anchors. Manuscript prose should

@@ -22,7 +22,7 @@ BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
 _BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
 _TEX_HEADING_COMMAND_RE = re.compile(r"\\(?:part|chapter|section|subsection|subsubsection|paragraph)\*?\{")
-_SECTION_LABEL_RE = re.compile(r"\{#(sec:[A-Za-z0-9_-]+)\}")
+_SECTION_LABEL_RE = re.compile(r"\{#(sec:[A-Za-z0-9_-]+)(?:\s+[^}]*)?\}")
 _REFERENCE_GROUP_RE = re.compile(r"\[@([^\]\n]*)(?:\]|$)")
 
 
@@ -328,9 +328,7 @@ def _navigation_pattern(title: str) -> re.Pattern[str]:
 def _normalize_navigation(line: str, rules: Sequence[TitleRule]) -> str:
     for rule in rules:
         if re.fullmatch(r"sec:[A-Za-z0-9_-]+", rule.section_label):
-            line = _navigation_pattern(rule.title).sub(
-                lambda match: f"{match.group('lead')} [@{rule.section_label}]", line
-            )
+            line = _navigation_pattern(rule.title).sub(lambda match: f"{match.group('lead')} [@{rule.section_label}]", line)
     return line
 
 
@@ -411,5 +409,3 @@ def _tex_heading_line_state(stripped: str, current_depth: int) -> tuple[bool, in
 def _unescaped_brace_delta(text: str) -> int:
     text = re.sub(r"\\.", "", text)
     return text.count("{") - text.count("}")
-
-

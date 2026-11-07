@@ -263,6 +263,13 @@ chapter-specific H3/H4 body headings rather than generic repeated TOC labels.
 The same preamble owns TOC spacing controls so entries such as
 `42.10 Evidence...` do not collapse into `42.10Evidence...`.
 
+Heading navigation is audited on reader Markdown, excluding `README.md` and
+`AGENTS.md` repository helpers but retaining reader backmatter. References has
+an explicit unnumbered section target. Line-budget splitting keeps trailing
+headings with their following content, and continuation navigation uses only
+a label declared in the actual unsplit source section. A missing real target
+remains a failure; no citation is borrowed to manufacture support.
+
 PDF rendering and local validation do not publish an edition. The repository
 already records concept DOI `10.5281/zenodo.20732274` and Edition 0.1 DOI
 `10.5281/zenodo.20732275`; a local revision does not imply a new upload, release

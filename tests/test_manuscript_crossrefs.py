@@ -16,7 +16,7 @@ FIGURE_DEF_RE = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>fig:[a-z
 FIGURE_REF_RE = re.compile(r"\[@(?P<label>fig:[a-z0-9-]+)\]")
 MARKDOWN_FILE_LINK_RE = re.compile(r"\[[^\]]+\]\([^)]*\.(?:md|markdown)(?:#[^)]*)?\)", re.IGNORECASE)
 HTML_MARKDOWN_FILE_LINK_RE = re.compile(r"href=[\"'][^\"']*\.(?:md|markdown)(?:#[^\"']*)?[\"']", re.IGNORECASE)
-SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)\}")
+SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)(?:\s+[^}]*)?\}")
 SECTION_REF_RE = re.compile(r"\[@(?P<label>sec:[a-zA-Z0-9_-]+)\]")
 EQUATION_LABEL_RE = re.compile(r"\{#(?P<label>eq:[a-zA-Z0-9_-]+)\}")
 EQUATION_REF_RE = re.compile(r"\[@(?P<label>eq:[a-zA-Z0-9_-]+)\]")
@@ -163,14 +163,16 @@ def test_sanitizer_preserves_domain_names_and_bibliographic_titles() -> None:
         TitleRule("MITRE ATT&CK for ICS", "the module", "chapter", "sec:ics"),
         TitleRule("Social Engineering", "the module", "chapter", "sec:social"),
     ]
-    text = "\n".join([
-        "Clandestine Agent Recruitment is the source's title.",
-        "MITRE ATT&CK for ICS Navigator Layer is a technical artifact.",
-        'See "Social Engineering" by the cited author.',
-        "The bibliography names **Social Engineering**.",
-        "Social Engineering is also a domain term.",
-        "See MITRE ATT&CK for ICS Navigator Layer for the artifact.",
-    ])
+    text = "\n".join(
+        [
+            "Clandestine Agent Recruitment is the source's title.",
+            "MITRE ATT&CK for ICS Navigator Layer is a technical artifact.",
+            'See "Social Engineering" by the cited author.',
+            "The bibliography names **Social Engineering**.",
+            "Social Engineering is also a domain term.",
+            "See MITRE ATT&CK for ICS Navigator Layer for the artifact.",
+        ]
+    )
     assert sanitize_rendered_section_title_mentions(text, rules) == text
 
 
@@ -197,25 +199,16 @@ def test_reference_audit_distinguishes_domain_terms_from_navigation(tmp_path: Pa
         encoding="utf-8",
     )
     violations = audit_rendered_references(tmp_path)
-    assert [(v.reason, v.line_number) for v in violations] == [
-        ("unlabelled section navigation", 4), ("unlabelled section navigation", 5),
-    ]
+    assert [(v.reason, v.line_number) for v in violations] == [("unlabelled section navigation", 4), ("unlabelled section navigation", 5)]
 
 
 def test_reference_audit_rejects_bad_section_refs_even_in_tables(tmp_path: Path) -> None:
     manuscript = tmp_path / "manuscript"
     manuscript.mkdir()
     (manuscript / "chapter.md").write_text(
-        "# Topic {#sec:topic}\n"
-        "See [@sec:topic; @sec:topic].\n"
-        "| Missing | [@sec:missing] |\n"
-        "See [@sec:bad label].\n"
-        "```text\n{#sec:fake}\n```\nSee [@sec:fake].\n",
-        encoding="utf-8",
+        "# Topic {#sec:topic}\nSee [@sec:topic; @sec:topic].\n| Missing | [@sec:missing] |\nSee [@sec:bad label].\n```text\n{#sec:fake}\n```\nSee [@sec:fake].\n", encoding="utf-8"
     )
-    assert {(v.reason, v.line_number) for v in audit_rendered_references(tmp_path)} == {
-        ("unresolved section reference", 3), ("malformed section reference", 4), ("unresolved section reference", 8),
-    }
+    assert {(v.reason, v.line_number) for v in audit_rendered_references(tmp_path)} == {("unresolved section reference", 3), ("malformed section reference", 4), ("unresolved section reference", 8)}
 
 
 def test_reference_quality_keeps_markdown_file_link_gate(tmp_path: Path) -> None:

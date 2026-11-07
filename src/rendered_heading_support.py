@@ -8,6 +8,8 @@ import json
 import re
 from typing import Any
 
+from rendered_reference_audit import SUPPORT_DOC_NAMES
+
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 LOCAL_LABEL_RE = re.compile(r"\{#(?:sec|fig|tbl|eq):[^}]+\}")
@@ -15,7 +17,7 @@ PANDOC_REF_RE = re.compile(
     r"\[@(?:ageint\d{3}|sec:[^\]\s;]+|fig:[^\]\s;]+|tbl:[^\]\s;]+|eq:[^\]\s;]+|"
     r"[A-Za-z_][A-Za-z0-9_:-]*)(?:[^\]]*)\]"
 )
-SECTION_LABEL_RE = re.compile(r"\{#(sec:[^}]+)\}")
+SECTION_LABEL_RE = re.compile(r"\{#(sec:[A-Za-z0-9_-]+)(?:\s+[^}]*)?\}")
 
 
 @dataclass(frozen=True)
@@ -68,6 +70,8 @@ def heading_support_inventory(manuscript_dir: Path) -> list[HeadingSupportRow]:
     root = Path(manuscript_dir)
     rows: list[HeadingSupportRow] = []
     for path in sorted(root.rglob("*.md")):
+        if path.name in SUPPORT_DOC_NAMES:
+            continue
         text = path.read_text(encoding="utf-8")
         relative = path.relative_to(root).as_posix()
         for block in _heading_blocks(text):
@@ -98,8 +102,7 @@ def render_heading_support_markdown(manuscript_dir: Path) -> str:
     lines = [
         "# AGEINT Heading Navigation",
         "",
-        "Labels and references provide structural navigation, not evidence for a heading's claims. "
-        "Source relevance and link resolution require separate review.",
+        "Labels and references provide structural navigation, not evidence for a heading's claims. Source relevance and link resolution require separate review.",
         "",
         "| Measure | Count |",
         "|---|---:|",
@@ -124,15 +127,21 @@ def heading_support_json(manuscript_dir: Path) -> str:
     summary = heading_support_summary(rows)
     unsupported = [row for row in rows if not row.supported]
     return json.dumps(
-        {**summary.as_dict(), "scope": "structural_navigation_not_evidence", "unsupported_headings": [{"path": row.path, "line_number": row.line_number, "level": row.level, "title": row.title} for row in unsupported]}, indent=2, sort_keys=True
+        {
+            **summary.as_dict(),
+            "scope": "structural_navigation_not_evidence",
+            "unsupported_headings": [{"path": row.path, "line_number": row.line_number, "level": row.level, "title": row.title} for row in unsupported],
+        },
+        indent=2,
+        sort_keys=True,
     )
 
 
-def add_heading_support(text: str, relative_path: str | Path) -> str:
-    """Add parent navigation only where an actual local section label exists."""
+def add_heading_support(text: str, *, section_text: str | None = None) -> str:
+    """Add parent navigation only to a target declared in the actual source section."""
 
     blocks = _heading_blocks(text)
-    navigation = _navigation_sentence(text)
+    navigation = _navigation_sentence(text if section_text is None else section_text)
     if not blocks or not navigation:
         return text
     lines = text.splitlines()
@@ -152,8 +161,10 @@ def ensure_heading_support_in_tree(manuscript_dir: Path) -> list[Path]:
     root = Path(manuscript_dir)
     changed: list[Path] = []
     for path in sorted(root.rglob("*.md")):
+        if path.name in SUPPORT_DOC_NAMES:
+            continue
         original = path.read_text(encoding="utf-8")
-        revised = add_heading_support(original, path.relative_to(root))
+        revised = add_heading_support(original)
         if revised != original:
             path.write_text(revised, encoding="utf-8")
             changed.append(path)

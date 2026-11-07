@@ -14,7 +14,14 @@ from .types import ManuscriptManifest, ManuscriptSection, SlugRegistry as _SlugR
 from ._appendix_support import appendix_body as _appendix_body
 from ._01_part import _chapter_source_context_inline, _chapter_topic_context, _part_chapter_rows, _part_summary
 from ._03_part import _chapter_body
-from ._canonical_reference import canonical_analysis_workflow, canonical_claim_ledger_rows, canonical_competency_rubric_rows, canonical_mastery_rows, canonical_refresh_trigger_rows, canonical_safety_boundary
+from ._canonical_reference import (
+    canonical_analysis_workflow,
+    canonical_claim_ledger_rows,
+    canonical_competency_rubric_rows,
+    canonical_mastery_rows,
+    canonical_refresh_trigger_rows,
+    canonical_safety_boundary,
+)
 from ._orientation_visuals import is_early_orientation_figure
 
 # Rotated framing for the per-chapter learning-path links block. The structural links
@@ -304,7 +311,7 @@ def build_manuscript_manifest(curriculum: Curriculum, figures: list[dict[str, An
         )
     )
     order += 1
-    sections.append(ManuscriptSection("references", "References", "references.md", "references.md", {}, order))
+    sections.append(ManuscriptSection("references", "References", "references.md", "references.md", {}, order, section_label="sec:references"))
     sections = _apply_section_metadata(sections, figures or [])
     return ManuscriptManifest(sections, units, appendix_files)
 

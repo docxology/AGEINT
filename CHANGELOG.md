@@ -40,6 +40,10 @@ metadata or this document alone is not acceptance.
   identifiers, preserving literal editions, routing identities and ordinary
   quantity validation. Keep code opaque, including longer Markdown closing
   fences and valid unclosed fenced examples.
+- Audit reader headings rather than repository helper documents, while retaining
+  unlabeled reader backmatter as a failure. Keep split headings with their
+  following content, carry only genuine source-section navigation into
+  continuation fragments, and give References a real unnumbered section target.
 - Align package, citation, paper and book versions; derive milestone
   prerequisites from the current version rather than a historical release.
 - Make missing, failed, timed-out or skipped SDK guards block readiness.
