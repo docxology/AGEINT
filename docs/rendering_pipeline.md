@@ -285,6 +285,12 @@ already records concept DOI `10.5281/zenodo.20732274` and Edition 0.1 DOI
 `10.5281/zenodo.20732275`; a local revision does not imply a new upload, release
 approval or permission to push.
 
+Publishing the GitHub release is also an external-effect boundary: configured
+release hooks may cause automatic Zenodo archival without a direct API call.
+Follow the [manual release authorization](../.github/workflows/README.md#maintainer-commands);
+a tag, inspection artifact or another pane's pending approval is not permission
+to publish.
+
 ## Current local artifact evidence and limits
 
 Use `output/reports/current_artifact_evidence.{json,md}` for the artifact-specific

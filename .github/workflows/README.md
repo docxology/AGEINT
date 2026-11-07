@@ -15,6 +15,11 @@ blocking PDF, HTML, artifact and publication-readiness checks, including the
 actually-executed all-resource parent guard. Missing SDK tags and failed setup,
 builds or audits stop the job. Old outputs are never restored after failure.
 
+Standalone checks also inspect checked-in publication data. When pre-release
+Source intentionally precedes verified output promotion, freshness, count and
+heading failures remain real dependencies. Do not lower coverage, omit tests or
+rebuild over those originals merely to make CI green.
+
 The source manuscript config must select `render.html.asset_mode: local` for
 self-contained readers. The reader ZIP retains `web/` (canonical `index.html`
 and local browser assets) beside `figures/`, preserving `../figures/` links.
@@ -66,6 +71,11 @@ Normal CI, scheduled and release runs authenticate the published stable SDK
 and cannot be used by `release.yml`.
 
 Run the manual release only under explicit publication authorization:
+
+Publishing a GitHub release can automatically archive it through configured
+[Zenodo release integrations](https://help.zenodo.org/docs/github/archive-software/github-upload/).
+Authorization must cover that external deposition; no direct Zenodo API call is
+needed. Preserve independent pending approvals and existing hooks.
 
 ```bash
 gh workflow run release.yml --repo docxology/AGEINT --ref main -f tag=v0.2.0
