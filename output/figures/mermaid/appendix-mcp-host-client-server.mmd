@@ -1,20 +1,9 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  subgraph HOST["Agent host"]
-    direction TB
-    C1["Client A"]
-    C2["Client B"]
-  end
-  NEG["Capability negotiation"]
-  SCOPE{"Least-privilege scope"}
-  subgraph SRV["MCP servers expose"]
-    direction LR
-    RESN["Resources"]
-    PR["Prompts"]
-    TL["Tools"]
-  end
-  C1 --> NEG
-  C2 --> NEG
-  NEG --> SCOPE
-  SCOPE -->|"approved"| SRV
-  SCOPE -->|"denied"| DENY["Blocked capability"]
+  H["Host policy and user-approved purpose"] --> C["MCP client"]
+  C --> N["Declared version and capability negotiation"]
+  N --> G{"Identity, authorization, scope<br/>and applicable consent checked separately?"}
+  G -->|"no or unknown"| B["Block; do not infer permission from capabilities"]
+  G -->|"yes"| S["Server roles: resources, prompts and tools"]
+  S --> D["Treat returned content as untrusted data<br/>Preserve provenance and limits"]
+  D --> T["Before any proposed tool invocation,<br/>recheck permission and human boundary"]

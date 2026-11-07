@@ -37,8 +37,6 @@ authorized, tabletop, or owned-lab only.
 | `validate_declarative_yaml.py` | Validation wrapper → `src/_data_loaders.validate_declarative_tables` |
 | `generate_topic_prompt_routes_yaml.py` | Thin regenerable generator → `src/topic_route_tables.write_topic_prompt_routes_yaml` (emits `data/topic_prompt_routes.yaml`) |
 | `generate_topic_rotation_templates_yaml.py` | Thin regenerable generator → `src/topic_route_tables.write_topic_rotation_templates_yaml` (emits `data/topic_rotation_templates.yaml`) |
-| `generate_prompt_parity_fixture.py` | Fixture generator → curriculum prompt resolvers; writes `tests/fixtures/topic_prompt_parity.json` |
-| `generate_rotation_parity_fixture.py` | Fixture generator → curriculum rotation resolvers; writes `tests/fixtures/topic_rotation_parity.json` |
 
 Report/audit scripts share the same shape: `--format {markdown,json}` for
 stdout reporting and `--write` to refresh `output/reports/<name>.{json,md}`;
@@ -55,9 +53,6 @@ they exit non-zero when the underlying report is not ok.
   tables and the committed YAML. Edit the tables in `src/`, then regenerate;
   never change the committed YAML without the matching edit in
   `src/topic_route_tables.py`.
-- `generate_prompt_parity_fixture.py` and `generate_rotation_parity_fixture.py`
-  regenerate parity fixtures in `tests/fixtures/` when curriculum data or
-  resolver behavior changes intentionally; regenerate rather than hand-edit.
 - One-time migration helpers live under [`archive/`](archive/README.md); they
   are retained for history only, are not pipeline scripts, and are excluded
   from this inventory's contracts.

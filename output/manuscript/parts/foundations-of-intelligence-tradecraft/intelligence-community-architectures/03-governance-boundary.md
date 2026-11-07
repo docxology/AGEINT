@@ -1,15 +1,15 @@
 ### Intelligence Community Architectures governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-intelligence-community-architectures]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-intelligence-community-architectures].
 
 ### Intelligence Community Architectures analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 2's governance-boundary section, directly verified anchors for the **Analytic Tradecraft and Source Integrity** lane include [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 2's governance-boundary section, the **Analytic Tradecraft and Source Integrity** catalog routes include [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-Research lane: **Analytic Tradecraft and Source Integrity** for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**. [@ageint234]; [@ageint247].
+Research lane: **Analytic Tradecraft and Source Integrity** for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**. [@ageint234]; [@ageint247].
 
-**Curriculum topic spine:** **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships**, **Declassified source-protection and institutional-control case study**, **British Architecture: Declassified source-protection and institutional-control case study**.
-**Verified anchor cluster:** [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]; [@official_cia_sherman_kent_profession]; [@official_cia_kent_analyst_policymaker_relations]; [@official_dia_tradecraft_primer].
+**Curriculum topic spine:** **U.S. Intelligence Community: Elements, Functions, and Responsibility**, **Soviet and Russian Institutions: Historical Lineage and Comparison Limits**, **British Intelligence: Security, Foreign Intelligence, Defence, and Assessment Roles**.
+**Recorded source cluster; inspection and scope limits apply:** [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]; [@official_cia_sherman_kent_profession]; [@official_cia_kent_analyst_policymaker_relations]; [@official_dia_tradecraft_primer].
 
 **Conceptual depth:** turning uncertainty into reviewable judgment through sourcing, alternatives, separated likelihood and confidence language, warning indicators, and explicit analytic lineage.
 
@@ -19,7 +19,7 @@ Research lane: **Analytic Tradecraft and Source Integrity** for **U.S. Intellige
 
 **Known failure modes:** source laundering, automation bias, hidden assumptions, collapsed likelihood/confidence language, hindsight certainty, SAT-as-bias-cure overclaiming, and visually persuasive but weakly sourced claims.
 
-**Defensive boundary:** analysis remains educational and decision-supportive; it does not become tasking, targeting, covert collection, or policy advocacy. Applied to **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**.
+**Defensive boundary:** analysis remains educational and decision-supportive; it does not become tasking, targeting, covert collection, or policy advocacy. Applied to **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**.
 
 | Anchor | Why it matters here |
 |---|---|
@@ -43,66 +43,65 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint234]; [
 
 ### Intelligence Community Architectures agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-intelligence-community-architectures]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-intelligence-community-architectures].
 
 AGEINT translation is bounded by the **Analytic Tradecraft and Source Integrity** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
 checklists, summarize evidence, simulate benign scenarios, and audit reasoning.
 They do not initiate unauthorized collection, exploitation, covert targeting,
-manipulation, or cyber-physical action; examples stay tied to **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**.
+manipulation, or cyber-physical action; examples stay tied to **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**.
 
 #### Intelligence Community Architectures permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-intelligence-community-architectures]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-intelligence-community-architectures].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
 Work products fit the current unit's education, policy review, lab
-exercises, and accountable defensive analysis for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**.
+exercises, and accountable defensive analysis for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**.
 
 #### Intelligence Community Architectures excluded operational boundary: blocked actions and stop rules
 
-Keep all practice accountable, synthetic, defensive, logged, reversible, and evidence-bounded while working from [@ageint234]; [@ageint247] and **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**. Do not convert it into live targeting, evasion, exploitation, covert collection, manipulation, or unsafe cyber-physical action.
+Keep all practice accountable, synthetic, defensive, logged, reversible, and evidence-bounded while working from [@ageint234]; [@ageint247] and **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**. Do not convert it into live targeting, evasion, exploitation, covert collection, manipulation, or unsafe cyber-physical action.
 
 ### Intelligence Community Architectures governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-intelligence-community-architectures]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-intelligence-community-architectures].
 
 Governance is practiced as a gate on the **Analytic Tradecraft and Source Integrity**
 lane. Learners use the **Dissemination-and-Marking Control Lens** to decide who is accountable for the exercise,
 which evidence is sufficient, what rights and access issues remain, and when an
-agent-assisted artifact must stop for human review while using **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**.
+agent-assisted artifact must stop for human review while using **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**.
 
 #### Intelligence Community Architectures governance card: gates, retained evidence, and review owner
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint234]; [@ageint247]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint234]; [@ageint247]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Analytic Tradecraft and Source Integrity** failure modes and the **Dissemination-and-Marking Control Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### Intelligence Community Architectures evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-intelligence-community-architectures]; [@ageint234].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Dissemination-and-Marking Control Lens** evidence gate stays compact enough to apply during
-reading, practice, and revision for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**.
+reading, practice, and revision for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**.
 
 #### Intelligence Community Architectures current-source assurance: verified anchors and local artifact fit
 
-The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**. [@ageint234]; [@ageint247].
+The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**. [@ageint234]; [@ageint247].
 
 | Assurance question | Direct source evidence | Chapter artifact |
 |---|---|---|
-| What does the module inherit from `official_odni_icd_203` for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**? | Intelligence Community Directive 203: Analytic Standards; lane `source_quality_spine`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official ODNI analytic tradecraft standards directive. |
-| What does the module inherit from `official_odni_icd_206` for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**? | Intelligence Community Directive 206: Sourcing Requirements for Disseminated Analytic Products; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official sourcing directive for traceability, citations, source descriptors, and source summaries. |
-| What does the module inherit from `official_odni_objectivity` for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**? | Objectivity and IC Analytic Standards; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official ODNI explanation of analytic objectivity, ombuds, and tradecraft standards. |
-| What does the module inherit from `official_cia_tradecraft_primer` for **U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships; Declassified source-protection and institutional-control case study**? | A Tradecraft Primer: Structured Analytic Techniques for Improving Intelligence Analysis; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official structured analytic techniques primer for bias checks, alternatives, and warning analysis. |
+| What does the module inherit from `official_odni_icd_203` for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**? | Intelligence Community Directive 203: Analytic Standards; lane `source_quality_spine`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; source-quality triangulation and claim-boundary review |
+| What does the module inherit from `official_odni_icd_206` for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**? | Intelligence Community Directive 206: Sourcing Requirements for Disseminated Analytic Products; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official sourcing directive for traceability, citations, source descriptors, and source summaries. |
+| What does the module inherit from `official_odni_objectivity` for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**? | Objectivity and IC Analytic Standards; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official ODNI explanation of analytic objectivity, ombuds, and tradecraft standards. |
+| What does the module inherit from `official_cia_tradecraft_primer` for **U.S. Intelligence Community: Elements, Functions, and Responsibility; Soviet and Russian Institutions: Historical Lineage and Comparison Limits**? | A Tradecraft Primer: Structured Analytic Techniques for Improving Intelligence Analysis; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official structured analytic techniques primer for bias checks, alternatives, and warning analysis. |
 | How is Perplexity handled here? | Discovery and second-opinion notes are not citable authority unless converted into direct official, standards-body, public-domain, or scholarly anchors. | Claim ledger records the direct URL, checked date, source lane, refresh trigger, and reviewer. |
 
 **Where this sits.** This module's overview is [@sec:chapter-intelligence-community-architectures]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

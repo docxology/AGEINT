@@ -66,7 +66,7 @@
     "missing": [],
     "ok": true
   },
-  "generated_at": "2026-09-07T19:50:53+00:00",
+  "generated_at": "2026-11-06T23:12:04+00:00",
   "hard_fail_rows": [],
   "ok": true,
   "project": "AGEINT",
@@ -88,8 +88,10 @@
       "unique_citation_count": 3
     },
     {
-      "citation_count": 3,
+      "citation_count": 8,
       "citation_keys": [
+        "official_mitre_attack_enterprise",
+        "official_mitre_attack_ics",
         "ageint063",
         "ageint213",
         "ageint061"
@@ -101,7 +103,7 @@
         "standard",
         "source_guide"
       ],
-      "unique_citation_count": 3
+      "unique_citation_count": 5
     },
     {
       "citation_count": 12,
@@ -109,14 +111,14 @@
         "official_model_context_protocol_specification",
         "official_model_context_protocol_security_best_practices",
         "official_nsa_mcp_security_design_considerations",
-        "official_oasis_stix_21",
-        "official_oasis_taxii_21",
         "ageint147",
         "ageint153",
         "ageint155",
         "ageint299",
         "ageint309",
-        "ageint310"
+        "ageint310",
+        "official_oasis_stix_21",
+        "official_oasis_taxii_21"
       ],
       "family": "appendices",
       "flags": [],
@@ -139,12 +141,14 @@
       "unique_citation_count": 0
     },
     {
-      "citation_count": 314,
+      "citation_count": 321,
       "citation_keys": [
         "scholarly_heuer_psychology_intelligence_analysis",
+        "official_odni_eo_12333",
         "official_nist_ai_agent_standards_initiative",
         "official_owasp_agentic_top_10",
         "official_mitre_atlas",
+        "official_oasis_taxii_21",
         "official_ec_ai_office",
         "official_ec_gpai_code_practice",
         "official_ec_ai_act_framework",
@@ -173,9 +177,14 @@
         "official_oecd_ai_risks_incidents",
         "official_oecd_ai_incident_reporting_framework",
         "official_nist_dioptra",
+        "scholarly_ccdcoe_cognitive_warfare_reconception",
+        "official_darpa_intrinsic_cognitive_security",
         "official_csa_cdr_framework",
         "official_csa_maestro_threat_modeling",
+        "scholarly_mandel_tetlock_judgment_correctives",
         "scholarly_agentic_ai_security_survey",
+        "scholarly_deepmind_epistemic_agent_trust",
+        "scholarly_systems_security_agentic_computing",
         "official_owasp_agentic_ai_threats_mitigations",
         "official_csa_securing_autonomous_ai_agents",
         "official_csa_nist_ai_agent_red_teaming_standards",
@@ -458,16 +467,16 @@
       ],
       "family": "appendices",
       "flags": [],
-      "path": "appendices/bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md",
+      "path": "appendices/bibliography-atlas/01-checked-since-source-selections-recorded-dates-and-caveats-sec-current-source-additions-and-refreshes.md",
       "source_families": [
         "scholarly",
-        "standard",
         "official",
+        "standard",
         "law_policy",
         "public_domain",
         "curated_anchor"
       ],
-      "unique_citation_count": 314
+      "unique_citation_count": 321
     },
     {
       "citation_count": 462,
@@ -958,7 +967,16 @@
       "unique_citation_count": 0
     },
     {
-      "citation_count": 981,
+      "citation_count": 0,
+      "citation_keys": [],
+      "family": "appendices",
+      "flags": [],
+      "path": "appendices/bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata.md",
+      "source_families": [],
+      "unique_citation_count": 0
+    },
+    {
+      "citation_count": 940,
       "citation_keys": [
         "ageint238",
         "ageint237",
@@ -995,6 +1013,8 @@
         "ageint010",
         "ageint011",
         "ageint012",
+        "ageint306",
+        "ageint312",
         "ageint266",
         "ageint269",
         "ageint278",
@@ -1005,6 +1025,9 @@
         "ageint294",
         "ageint013",
         "ageint014",
+        "ageint305",
+        "ageint304",
+        "ageint303",
         "ageint015",
         "ageint016",
         "ageint017",
@@ -1033,8 +1056,6 @@
         "ageint031",
         "ageint032",
         "ageint307",
-        "ageint305",
-        "ageint304",
         "ageint033",
         "ageint034",
         "ageint255",
@@ -1077,7 +1098,6 @@
         "ageint063",
         "ageint064",
         "ageint065",
-        "ageint303",
         "ageint066",
         "ageint067",
         "ageint068",
@@ -1090,7 +1110,6 @@
         "ageint074",
         "ageint075",
         "ageint076",
-        "ageint306",
         "ageint077",
         "ageint256",
         "ageint078",
@@ -1162,7 +1181,6 @@
         "ageint232",
         "ageint235",
         "ageint299",
-        "ageint312",
         "ageint137",
         "ageint138",
         "ageint139",
@@ -1182,16 +1200,11 @@
         "ageint151",
         "ageint152",
         "ageint153",
-        "ageint154",
-        "ageint155",
-        "ageint156",
-        "ageint157",
-        "ageint158",
-        "ageint159"
+        "ageint154"
       ],
       "family": "appendices",
       "flags": [],
-      "path": "appendices/bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata-01.md",
+      "path": "appendices/bibliography-atlas/05-bind-the-claim-not-merely-the-citation-01.md",
       "source_families": [
         "source_guide",
         "official",
@@ -1199,11 +1212,23 @@
         "scholarly",
         "practitioner_vendor"
       ],
-      "unique_citation_count": 228
+      "unique_citation_count": 223
     },
     {
-      "citation_count": 487,
+      "citation_count": 530,
       "citation_keys": [
+        "ageint147",
+        "ageint153",
+        "ageint299",
+        "ageint306",
+        "ageint312",
+        "ageint144",
+        "ageint155",
+        "ageint156",
+        "ageint157",
+        "ageint158",
+        "ageint159",
+        "ageint137",
         "ageint146",
         "ageint234",
         "ageint235",
@@ -1214,13 +1239,6 @@
         "ageint288",
         "ageint289",
         "ageint293",
-        "ageint147",
-        "ageint299",
-        "ageint306",
-        "ageint312",
-        "ageint155",
-        "ageint159",
-        "ageint137",
         "ageint160",
         "ageint161",
         "ageint100",
@@ -1365,15 +1383,15 @@
       ],
       "family": "appendices",
       "flags": [],
-      "path": "appendices/bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata-02.md",
+      "path": "appendices/bibliography-atlas/05-bind-the-claim-not-merely-the-citation-02.md",
       "source_families": [
+        "practitioner_vendor",
         "source_guide",
         "official",
-        "standard",
-        "practitioner_vendor",
-        "scholarly"
+        "scholarly",
+        "standard"
       ],
-      "unique_citation_count": 158
+      "unique_citation_count": 163
     },
     {
       "citation_count": 494,
@@ -1875,13 +1893,13 @@
       ],
       "family": "appendices",
       "flags": [],
-      "path": "appendices/bibliography-atlas/05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md",
+      "path": "appendices/bibliography-atlas/06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md",
       "source_families": [
         "source_guide",
         "official",
+        "scholarly",
         "practitioner_vendor",
         "standard",
-        "scholarly",
         "law_policy"
       ],
       "unique_citation_count": 494
@@ -2182,7 +2200,7 @@
       ],
       "family": "appendices",
       "flags": [],
-      "path": "appendices/bibliography-atlas/05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md",
+      "path": "appendices/bibliography-atlas/06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md",
       "source_families": [
         "scholarly",
         "official",
@@ -2194,12 +2212,14 @@
       "unique_citation_count": 290
     },
     {
-      "citation_count": 7,
+      "citation_count": 9,
       "citation_keys": [
         "official_csa_cdr_framework",
         "official_csa_securing_autonomous_ai_agents",
         "scholarly_agentic_ai_security_survey",
         "scholarly_ccdcoe_cognitive_warfare_reconception",
+        "official_darpa_intrinsic_cognitive_security",
+        "scholarly_deepmind_epistemic_agent_trust",
         "ageint151",
         "ageint179",
         "ageint106"
@@ -2212,16 +2232,20 @@
         "scholarly",
         "source_guide"
       ],
-      "unique_citation_count": 7
+      "unique_citation_count": 9
     },
     {
-      "citation_count": 0,
-      "citation_keys": [],
+      "citation_count": 1,
+      "citation_keys": [
+        "official_odni_icd_203"
+      ],
       "family": "appendices",
       "flags": [],
       "path": "appendices/crewai-multi-agent-operations.md",
-      "source_families": [],
-      "unique_citation_count": 0
+      "source_families": [
+        "official"
+      ],
+      "unique_citation_count": 1
     },
     {
       "citation_count": 7,
@@ -2243,8 +2267,9 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 15,
+      "citation_count": 16,
       "citation_keys": [
+        "official_odni_icd_203",
         "ageint242",
         "ageint243",
         "ageint246",
@@ -2264,33 +2289,44 @@
       "flags": [],
       "path": "appendices/instructor-capstone-rubric-and-red-team-review-pack.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "standard"
       ],
-      "unique_citation_count": 14
+      "unique_citation_count": 15
     },
     {
-      "citation_count": 0,
-      "citation_keys": [],
+      "citation_count": 2,
+      "citation_keys": [
+        "official_oasis_stix_21",
+        "official_oasis_taxii_21"
+      ],
       "family": "appendices",
       "flags": [],
       "path": "appendices/langchain-langgraph-ageint-patterns.md",
-      "source_families": [],
-      "unique_citation_count": 0
+      "source_families": [
+        "standard"
+      ],
+      "unique_citation_count": 2
     },
     {
-      "citation_count": 0,
-      "citation_keys": [],
+      "citation_count": 2,
+      "citation_keys": [
+        "official_ic_osint_strategy",
+        "official_odni_icd_203"
+      ],
       "family": "appendices",
       "flags": [],
       "path": "appendices/python-osint-library.md",
-      "source_families": [],
-      "unique_citation_count": 0
+      "source_families": [
+        "official"
+      ],
+      "unique_citation_count": 2
     },
     {
-      "citation_count": 11,
+      "citation_count": 12,
       "citation_keys": [
+        "official_odni_icd_203",
         "ageint235",
         "ageint237",
         "ageint232",
@@ -2306,18 +2342,20 @@
       "flags": [],
       "path": "appendices/source-verification-and-claim-ledger-workbook.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "source_guide"
       ],
-      "unique_citation_count": 10
+      "unique_citation_count": 11
     },
     {
-      "citation_count": 9,
+      "citation_count": 5,
       "citation_keys": [
         "scholarly_rethlefsen_2021_prisma_s",
         "official_model_context_protocol_specification",
-        "official_model_context_protocol_security_best_practices"
+        "official_model_context_protocol_security_best_practices",
+        "official_odni_icd_203",
+        "scholarly_mandel_tetlock_judgment_correctives"
       ],
       "family": "method-assurance-reference.md",
       "flags": [],
@@ -2327,7 +2365,7 @@
         "standard",
         "official"
       ],
-      "unique_citation_count": 3
+      "unique_citation_count": 5
     },
     {
       "citation_count": 1,
@@ -2454,483 +2492,13 @@
       "unique_citation_count": 0
     },
     {
-      "citation_count": 462,
-      "citation_keys": [
-        "official_cia_tradecraft_primer",
-        "official_dia_tradecraft_primer",
-        "official_odni_icd_206",
-        "official_odni_objectivity",
-        "official_state_osint_strategy",
-        "scholarly_heuer_psychology_intelligence_analysis",
-        "official_odni_icd_204",
-        "official_joint_pub_2_0",
-        "official_army_atp_2_33_4",
-        "official_ncsc_counterintelligence_strategy",
-        "official_ic_osint_strategy",
-        "official_nga_strategy",
-        "official_odni_eo_12333",
-        "official_nsa_fisa",
-        "official_intelligence_gov_how_ic_works",
-        "official_ic_ai_ethics_principles",
-        "official_ic_ai_ethics_framework",
-        "official_odni_icd_505",
-        "official_odni_icd_504",
-        "official_odni_capco_register",
-        "official_pclob_oversight_reports",
-        "official_federal_data_strategy",
-        "official_cia_center_for_study_of_intelligence",
-        "official_nsa_historical_releases",
-        "official_nro_declassified_programs",
-        "official_nara_cia_records",
-        "official_fincen_advisories",
-        "official_ofac_sanctions_programs",
-        "official_fatf_recommendations",
-        "official_bis_export_enforcement",
-        "official_imda_agentic_ai_framework",
-        "official_five_eyes_agentic_ai_adoption",
-        "official_nist_agent_identity_authorization",
-        "official_nist_ai_agent_standards_initiative",
-        "official_uk_aisi_agent_evaluations",
-        "official_owasp_agentic_top_10",
-        "official_mitre_atlas",
-        "official_owasp_llm_top_10",
-        "official_nist_ssdf",
-        "official_nist_csf_2",
-        "official_nist_sp_800_160r1",
-        "official_nist_sp_800_150",
-        "official_nist_sp_800_61r3",
-        "official_nist_sp_800_161r1",
-        "official_cisa_ics_recommended_practices",
-        "official_cisa_tabletop_exercises",
-        "official_nist_sp_800_84",
-        "official_mitre_attack_ics",
-        "scholarly_gcsp_cognitive_security",
-        "official_nsa_ai_ot_integration",
-        "official_nsf_ai_agent_ecosystems",
-        "official_cdc_agentic_research_public_health",
-        "official_nist_ai_rmf_playbook",
-        "official_oecd_ai_principles",
-        "official_iso_iec_42001_ai_management",
-        "official_iso_iec_23894_ai_risk_management",
-        "official_council_europe_ai_convention",
-        "official_us_copyright_ai_training_report",
-        "official_nist_zero_trust_sp_800_207",
-        "official_nist_digital_identity_sp_800_63_4",
-        "official_rfc_9700_oauth_security",
-        "official_rfc_9449_oauth_dpop",
-        "official_nist_sp_800_30r1",
-        "official_nist_sp_800_37r2",
-        "official_nist_sp_800_137",
-        "official_nist_sp_800_39",
-        "official_nist_sp_800_172",
-        "official_nist_sp_1270_ai_bias",
-        "official_oasis_stix_21",
-        "official_oasis_taxii_21",
-        "official_mitre_attack_enterprise",
-        "official_cisa_cross_sector_cpg",
-        "official_cisa_secure_by_design",
-        "official_cisa_kev_catalog",
-        "official_nga_geoint_ai",
-        "official_iso_19157_data_quality",
-        "official_cisa_election_security_influence",
-        "official_nato_hybrid_threats",
-        "official_oecd_disinformation_misinformation",
-        "official_fincen_boi",
-        "official_ofac_compliance_commitments",
-        "official_fatf_virtual_assets_guidance",
-        "official_bis_fintech_digital_transformation",
-        "official_nist_cyber_physical_framework",
-        "official_nist_sp_1800_10_ics_integrity",
-        "official_wipo_ai_ip_policy",
-        "official_nist_privacy_framework",
-        "official_nist_sp_800_53r5",
-        "official_nist_ir_8477_mappings",
-        "official_nist_ai_100_2_adversarial_ml",
-        "official_ec_ai_office",
-        "official_ec_gpai_code_practice",
-        "official_ec_ai_act_framework",
-        "official_iso_iec_42005_ai_impact_assessment",
-        "official_iso_iec_tr_24028_ai_trustworthiness",
-        "official_gao_ai_accountability_framework",
-        "official_unesco_ai_ethics_recommendation",
-        "official_ohchr_digital_space_human_rights",
-        "official_ohchr_privacy_digital_age",
-        "official_council_europe_convention_108_modernised",
-        "official_unesco_generative_ai_education",
-        "official_unesco_ai_competency_frameworks",
-        "official_unesco_gem_ai_education",
-        "official_oecd_ai_education",
-        "official_ec_digital_education_action_plan",
-        "official_oecd_public_sector_ai",
-        "official_world_bank_govtech_ai_working_group",
-        "official_world_bank_govtech_program",
-        "official_gsa_ai_guide_for_government",
-        "official_ec_data_governance_act",
-        "official_ec_data_act_explained",
-        "official_ec_common_data_spaces",
-        "official_ec_data_strategy",
-        "official_w3c_wot_architecture_11",
-        "official_w3c_wot_thing_description_11",
-        "official_w3c_wot_discovery",
-        "official_openapi_specification",
-        "official_w3c_verifiable_credentials_20",
-        "official_w3c_did_core",
-        "official_ietf_http_semantics_rfc9110",
-        "official_ilo_artificial_intelligence",
-        "official_ilo_mind_ai_divide",
-        "official_ilo_global_commission_future_work",
-        "official_oecd_ai_work",
-        "official_w3c_prov_overview",
-        "official_w3c_prov_o",
-        "official_w3c_dcat_3",
-        "official_w3c_data_on_web_best_practices",
-        "official_nist_big_data_interoperability_framework",
-        "official_datacite_metadata_schema",
-        "official_c2pa_specifications",
-        "official_w3c_wcag_22",
-        "official_cast_udl_guidelines_30",
-        "official_doj_ada_title_ii_web_rule",
-        "official_edpb_dpia_faq",
-        "official_edpb_endorsed_dpia_guidelines",
-        "official_oecd_public_procurement_recommendation",
-        "official_open_contracting_data_standard",
-        "official_nist_sp_800_61r3_incident_response",
-        "official_enisa_ai_cybersecurity_challenges",
-        "official_nist_ai_security_resilience",
-        "official_nist_ai_resource_center_tev",
-        "official_oecd_open_government_recommendation",
-        "official_w3c_vc_data_integrity",
-        "scholarly_model_cards_model_reporting",
-        "scholarly_datasheets_for_datasets",
-        "official_uk_algorithmic_transparency_hub",
-        "official_uk_algorithmic_transparency_guidance",
-        "official_nist_sp_800_218a_ai_ssdf",
-        "official_us_access_board_revised_508_standards",
-        "official_nist_aria_pilot_evaluation_report",
-        "official_nara_ai_use_case_inventory",
-        "official_omb_m_25_21_federal_ai_governance",
-        "official_omb_m_25_22_federal_ai_acquisition",
-        "official_nist_ai_600_1_generative_ai_profile",
-        "official_cisa_ai_red_teaming_tev",
-        "official_cisa_ai_data_security_best_practices",
-        "official_nist_ai_rmf_critical_infrastructure_profile_concept",
-        "official_oecd_governing_with_ai_public_sector",
-        "official_nara_2025_ai_compliance_plan",
-        "official_canada_agentic_ai_guide",
-        "official_canada_algorithmic_impact_assessment",
-        "official_canada_ai_register",
-        "official_canada_ai_strategy_2025_2027",
-        "official_oecd_ai_risks_incidents",
-        "official_oecd_ai_incident_reporting_framework",
-        "official_un_global_digital_compact",
-        "official_nist_dioptra",
-        "official_cisa_deploying_ai_systems_securely",
-        "official_cisa_secure_by_demand_ot_procurement",
-        "official_cisa_ot_asset_inventory_guidance",
-        "official_cisa_ot_definitive_architecture",
-        "scholarly_ccdcoe_cognitive_warfare_reconception",
-        "official_darpa_intrinsic_cognitive_security",
-        "official_csa_cdr_framework",
-        "official_csa_maestro_threat_modeling",
-        "scholarly_mandel_tetlock_judgment_correctives",
-        "scholarly_agentic_ai_security_survey",
-        "scholarly_anthropic_building_effective_agents",
-        "scholarly_deepmind_epistemic_agent_trust",
-        "scholarly_prompt_infection_multi_agent",
-        "scholarly_systems_security_agentic_computing",
-        "official_owasp_agentic_ai_threats_mitigations",
-        "official_csa_securing_autonomous_ai_agents",
-        "official_csa_nist_ai_agent_red_teaming_standards",
-        "official_unu_macau_agentic_ai_boundaries",
-        "official_nist_ai_100_4_synthetic_content",
-        "official_nist_ai_100_5_global_ai_standards",
-        "official_us_aisi_nist_ai_800_1_misuse_risk",
-        "official_international_ai_safety_report_2026",
-        "official_model_context_protocol_specification",
-        "official_model_context_protocol_security_best_practices",
-        "official_agent2agent_protocol_specification",
-        "official_ncsc_secure_ai_system_development",
-        "official_mitre_d3fend_knowledge_graph",
-        "official_oasis_csaf_2_0",
-        "official_cyclonedx_bom_specification",
-        "official_spdx_3_0_1_specification",
-        "official_nist_oscal",
-        "official_slsa_supply_chain_security_specification",
-        "official_in_toto_supply_chain_integrity",
-        "official_sigstore_software_signing",
-        "scholarly_friston_2010_fep",
-        "scholarly_friston_2017_active_inference_process",
-        "scholarly_dacosta_2020_discrete_active_inference",
-        "scholarly_parr_2022_active_inference_textbook",
-        "scholarly_yao_2023_react",
-        "scholarly_shinn_2023_reflexion",
-        "scholarly_park_2023_generative_agents",
-        "scholarly_wei_2022_chain_of_thought",
-        "scholarly_schick_2023_toolformer",
-        "scholarly_wooldridge_1995_intelligent_agents",
-        "scholarly_wooldridge_2009_multiagent_systems",
-        "official_cia_burkett_rascls",
-        "scholarly_meissner_2017_hig",
-        "scholarly_brimbal_2020_rapport",
-        "scholarly_nunan_2020_chis_rapport",
-        "scholarly_kelly_2013_interrogation_taxonomy",
-        "scholarly_heuer_pherson_sats",
-        "official_nist_fips_197_aes",
-        "official_nist_fips_186_5_dss",
-        "official_nist_fips_180_4_shs",
-        "official_nist_sp_800_57pt1r5_key_management",
-        "scholarly_mcguire_1961_inoculation",
-        "scholarly_data_cards_dataset_documentation",
-        "scholarly_buckley_2017_fep_mathematical_review",
-        "scholarly_rethlefsen_2021_prisma_s",
-        "scholarly_greshake_2023_indirect_prompt_injection",
-        "official_nist_ai_800_2_automated_benchmark_evaluations",
-        "official_oecd_agentic_ai_landscape",
-        "official_nsa_mcp_security_design_considerations",
-        "scholarly_roozenbeek_2022_psychological_inoculation",
-        "official_cia_sherman_kent_profession",
-        "official_cia_kent_analyst_policymaker_relations",
-        "scholarly_wohlstetter_1962_pearl_harbor_warning_decision",
-        "official_cia_grabo_warning_intelligence_handbook",
-        "official_irtpa_2004_analytic_integrity",
-        "official_911_commission_report",
-        "official_robb_silberman_wmd_report",
-        "official_nato_alternative_analysis_handbook",
-        "scholarly_rand_2016_sat_evaluation",
-        "scholarly_marcoci_2019_tradecraft_reliability",
-        "scholarly_barnes_mandel_2014_forecast_accuracy",
-        "scholarly_ard_2023_sat_pragmatic",
-        "scholarly_stromer_galley_2020_flexible_sat",
-        "scholarly_betts_1978_intelligence_failure",
-        "scholarly_jervis_2022_postmortems_fail",
-        "scholarly_wirtz_2023_intelligence_failures_inevitable",
-        "official_cia_words_estimative_probability",
-        "official_cia_ic_struggle_express_uncertainty",
-        "official_cia_developing_taxonomy_analysis_variables",
-        "official_cia_analytic_culture_us_ic",
-        "official_cia_need_for_intelligence_literature",
-        "official_cia_studies_writers_guide_2025",
-        "official_cia_applying_epistemology_analysis_2025",
-        "official_cia_agile_analysis_2023",
-        "official_cia_managing_reliability_cycle",
-        "official_cia_why_bad_things_good_analysts",
-        "official_cia_future_of_analysis",
-        "official_cia_psychology_intelligence_analysis",
-        "official_cia_kent_board_estimates_collected",
-        "official_cia_sable_spear_ai_experiment",
-        "official_cia_call_for_humility_analysis",
-        "official_cia_principles_intelligence_analysis",
-        "official_cia_war_chance_uncertainty_review",
-        "official_cia_fifty_years_studies_intelligence",
-        "official_cia_thinking_writing_cognitive_science",
-        "official_cia_national_institute_analytic_methods",
-        "official_cia_when_everything_intelligence",
-        "official_cia_vietnam_policymaker_boundary",
-        "official_cia_uncertainty_analysis_review",
-        "official_cia_limits_of_prediction",
-        "official_cia_espionage_ai_future",
-        "official_odni_annual_threat_assessment_2026",
-        "official_odni_icd_205_analytic_outreach",
-        "official_odni_icd_207_national_intelligence_council",
-        "official_odni_icd_208_analytic_product_utility",
-        "official_odni_icd_209_tearline_production",
-        "official_odni_icd_403_foreign_disclosure_release",
-        "official_odni_icd_405_intelligence_diplomacy",
-        "official_odni_icd_406_non_state_entity_engagement",
-        "official_odni_icd_503_information_environment_risk",
-        "official_odni_icd_900_integrated_mission_management",
-        "official_odni_icd_121_information_environment",
-        "official_odni_icd_211_cfius_support",
-        "official_odni_icd_731_supply_chain_risk_management",
-        "official_odni_icd_710_classification_control_markings",
-        "official_odni_icd_750_counterintelligence_programs",
-        "official_intelligence_gov_mission",
-        "official_intelligence_gov_accountability",
-        "official_intelligence_gov_transparency",
-        "official_intelligence_gov_about_site",
-        "official_intelligence_gov_collaboration",
-        "official_intelligence_gov_innovation",
-        "official_dia_defense_osint_strategy_2024",
-        "official_dia_style_manual_intelligence_production",
-        "official_dia_privacy_civil_liberties_program",
-        "official_nsa_cybersecurity_advisories_guidance",
-        "official_nsa_about_mission",
-        "official_nsa_agentic_ai_services_guidance_2026",
-        "official_nga_geoint_basic_doctrine",
-        "official_nga_data_strategy",
-        "official_fbi_counterintelligence_espionage",
-        "official_nro_history_csnr",
-        "scholarly_dylan_stivang_2025_emerging_tech_intelligence",
-        "scholarly_caballero_jenkins_2024_llm_national_security",
-        "scholarly_mikhailov_2023_llm_national_security_strategy",
-        "scholarly_reddy_2023_smartbook_intelligence_reports",
-        "scholarly_khlaaf_2024_foundation_models_military_istar",
-        "scholarly_cardenuto_2023_synthetic_realities",
-        "scholarly_brundage_2018_malicious_use_ai",
-        "official_cset_adversarial_ml_cybersecurity_2022",
-        "scholarly_taddeo_floridi_2018_ai_cyber_arms_race",
-        "official_scsp_aspi_future_intelligence_analysis_ai_hmt",
-        "official_belfer_mcmahon_2024_ai_tradecraft_standards",
-        "scholarly_dhami_2019_ach_intelligence_analysis",
-        "scholarly_dhami_2024_confirmation_bias_hypotheses",
-        "official_reagan_nsdd_298_opsec",
-        "public_council_europe_information_disorder",
-        "official_unidir_synthetic_data_autonomous_systems",
-        "official_csis_crossing_deepfake_rubicon",
-        "official_nsa_cisa_contextualizing_deepfake_threats",
-        "official_darpa_active_social_engineering_defense",
-        "scholarly_friston_2015_active_inference_epistemic_value",
-        "scholarly_friston_2017_uncertainty_epistemics",
-        "scholarly_smith_2022_active_inference_tutorial",
-        "scholarly_friedman_2021_active_inference_conflict",
-        "scholarly_kozera_2020_fitness_osint",
-        "scholarly_penmetsa_2025_adversarial_ml_cybersecurity",
-        "scholarly_huang_2023_ai_cognitive_security_safety",
-        "scholarly_deppe_schaal_2024_cognitive_warfare_nato",
-        "scholarly_terp_breuer_2022_disarm",
-        "scholarly_shah_2024_llm_disinformation",
-        "scholarly_williams_2025_llm_election_disinformation",
-        "scholarly_uchendu_2023_llm_disinformation_detection",
-        "scholarly_farid_bohacek_2022_deepfake_leaders",
-        "scholarly_golob_2020_social_engineering_cognition",
-        "scholarly_gaeta_2021_situation_awareness_intelligence",
-        "scholarly_wasil_2024_ai_emergency_preparedness",
-        "scholarly_ortega_2025_ai_incident_regime",
-        "official_cia_cooper_2005_analytic_pathologies",
-        "scholarly_janis_1982_groupthink",
-        "scholarly_coulthart_2016_sat_use",
-        "scholarly_coulthart_2017_core_sat_evaluation",
-        "scholarly_chang_2018_restructuring_sats",
-        "scholarly_whitesmith_2019_ach_bias",
-        "scholarly_karvetski_mandel_2020_ach_coherence",
-        "scholarly_mandel_karvetski_dhami_2018_boosting_accuracy",
-        "scholarly_dhami_mandel_mellers_tetlock_2015_decision_science",
-        "official_national_academies_2011_intelligence_analysis_tomorrow",
-        "official_senate_2004_prewar_iraq_assessment",
-        "official_iarpa_ace_program",
-        "official_iarpa_reason_program",
-        "scholarly_dalkey_helmer_1963_delphi",
-        "professional_klein_2007_project_premortem",
-        "scholarly_marrin_2012_improving_intelligence_analysis",
-        "official_foi_2021_structured_analytic_techniques",
-        "official_jips_2021_jsat",
-        "scholarly_denzler_2024_sat_psychology",
-        "scholarly_wilcox_mandel_2024_ach_critical_review",
-        "scholarly_miksa_2024_assessment_tabling",
-        "scholarly_landon_murray_2025_fusion_centre_sats",
-        "scholarly_borg_gustafson_2025_teaching_sats_across_nations",
-        "scholarly_mccarthy_2024_alternative_futures_analysis",
-        "scholarly_ritchey_2013_general_morphological_analysis",
-        "scholarly_beebe_pherson_2014_cases_intelligence_analysis",
-        "scholarly_pherson_pherson_2020_critical_thinking_strategic_intelligence",
-        "official_army_fm_2_22_3_humint",
-        "official_odni_icd_304_humint",
-        "official_odni_icd_310_clandestine_humint_outside_us",
-        "public_church_committee_book_i_1976",
-        "public_church_committee_book_iii_nsasurveillance_1976",
-        "official_odni_icd_302_domex",
-        "official_jp_2_01_intelligence_support_2012",
-        "official_nsa_tempest_signal_problem",
-        "official_nsa_center_cryptologic_history_publications",
-        "official_nist_fips_203_ml_kem",
-        "official_nist_fips_204_ml_dsa",
-        "official_nist_fips_205_slh_dsa",
-        "official_odni_cai_report_2022",
-        "official_jp_2_03_geoint_joint_ops_2017",
-        "scholarly_clark_2020_geospatial_intelligence",
-        "scholarly_van_puyvelde_2025_rise_osint",
-        "official_odni_icd_206_sourcing_osint_pai",
-        "official_nga_geoint_pub1_doctrine_2018",
-        "official_odni_cai_fact_sheet_2024",
-        "professional_hutchins_2011_kill_chain",
-        "professional_caltagirone_2013_diamond_model",
-        "official_cisa_aa24_038a_volt_typhoon",
-        "official_cisa_aa23_144a_volt_typhoon_lotl",
-        "official_cisa_aa22_103a_apt_ics_scada",
-        "official_cisa_aa20_352a_solarwinds",
-        "official_eisac_sans_ukraine_2016",
-        "official_enisa_threat_landscape_2024",
-        "official_nist_sp_800_161r1_scrm",
-        "official_whitehouse_eo_14028",
-        "official_first_tlp_v2",
-        "official_nerc_cip_standards",
-        "professional_eset_win32_industroyer_2017",
-        "official_cisa_isc_cert_stuxnet_advisory",
-        "official_cisa_nsa_ics_know_opponent_2022",
-        "official_nerc_eisac_ukraine_duc6_2017",
-        "official_enisa_protecting_ics_2011",
-        "official_dod_jp3_13_information_operations",
-        "official_dod_jp3_13_2_miso",
-        "professional_rand_paul_matthews_firehose_falsehood",
-        "scholarly_lazer_2018_science_fake_news",
-        "official_fincen_sar_narrative_guidance",
-        "official_egmont_group_fiu_principles",
-        "official_unodc_money_laundering_overview",
-        "official_worldbank_aml_reference_guide",
-        "official_ncsc_national_ci_strategy_2024",
-        "official_ncsc_national_ci_strategy_2020",
-        "scholarly_pennycook_rand_2021_psychology_fake_news",
-        "scholarly_starbird_arif_wilson_2019_disinfo_collaborative",
-        "scholarly_hoffman_2007_hybrid_wars",
-        "scholarly_mazarr_2015_gray_zone",
-        "official_dod_iw_annex_2020",
-        "official_dod_jp3_05_special_operations",
-        "scholarly_cialdini_1984_influence_psychology",
-        "official_nato_stratcom_hybrid_threats_toolkit",
-        "official_dod_jp2_0_joint_intelligence",
-        "official_nato_stratcom_attributing_iio",
-        "scholarly_andrew_gordievsky_1990_kgb_inside_story",
-        "scholarly_andrew_mitrokhin_1999_sword_shield",
-        "scholarly_andrew_2009_defend_realm",
-        "scholarly_weiner_2007_legacy_ashes",
-        "public_church_committee_1976_final_report",
-        "scholarly_tversky_kahneman_1974_judgment_uncertainty",
-        "scholarly_kahneman_2011_thinking_fast_slow",
-        "scholarly_lewandowsky_vanderlinden_2021_inoculation_review",
-        "scholarly_lewandowsky_cook_2020_debunking_handbook",
-        "scholarly_pennycook_2021_accuracy_nudge_nature",
-        "scholarly_tetlock_2005_expert_political_judgment",
-        "scholarly_tetlock_gardner_2015_superforecasting",
-        "official_fisa_1978_statute",
-        "official_usa_patriot_act_2001",
-        "official_usa_freedom_act_2015",
-        "official_eo_12333_odni_text",
-        "scholarly_quinlan_2007_just_intelligence",
-        "scholarly_omand_2010_securing_the_state",
-        "scholarly_omand_phythian_2018_principled_spying",
-        "scholarly_russell_norvig_2020_aima",
-        "scholarly_rao_georgeff_1995_bdi",
-        "scholarly_vaswani_2017_attention",
-        "scholarly_yao_2023_tree_of_thoughts",
-        "scholarly_lewis_2020_rag",
-        "scholarly_patil_2023_gorilla",
-        "scholarly_qin_2023_toolllm",
-        "scholarly_wu_2023_autogen",
-        "professional_langchain_documentation",
-        "professional_langgraph_documentation",
-        "professional_crewai_documentation",
-        "scholarly_liang_2022_helm",
-        "scholarly_srivastava_2022_bigbench",
-        "scholarly_perez_2022_prompt_injection",
-        "scholarly_ericsson_1993_deliberate_practice",
-        "scholarly_cepeda_2006_spaced_repetition",
-        "scholarly_walker_stickgold_2006_sleep_memory",
-        "scholarly_kaplan_kaplan_1989_attention_restoration",
-        "official_nist_pqc_migration_ir8547",
-        "professional_weng_2023_agent_survey"
-      ],
+      "citation_count": 0,
+      "citation_keys": [],
       "family": "orientation",
       "flags": [],
       "path": "orientation/10-research-anchor-atlas-curated-sources-lanes-tiers-and-claim-scope-sec-research-anchor-atlas.md",
-      "source_families": [
-        "official",
-        "scholarly",
-        "standard",
-        "law_policy",
-        "public_domain",
-        "curated_anchor"
-      ],
-      "unique_citation_count": 462
+      "source_families": [],
+      "unique_citation_count": 0
     },
     {
       "citation_count": 0,
@@ -3171,7 +2739,7 @@
       "unique_citation_count": 0
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint247",
         "ageint248",
@@ -3189,9 +2757,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 60,
+      "citation_count": 64,
       "citation_keys": [
-        "ageint247",
         "scholarly_friston_2010_fep",
         "scholarly_buckley_2017_fep_mathematical_review",
         "scholarly_friston_2017_active_inference_process",
@@ -3204,21 +2771,22 @@
         "ageint309",
         "ageint310",
         "ageint300",
+        "ageint247",
         "ageint248"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/active-inference-and-ageint/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "scholarly",
+        "source_guide",
         "official",
         "standard"
       ],
       "unique_citation_count": 14
     },
     {
-      "citation_count": 83,
+      "citation_count": 74,
       "citation_keys": [
         "ageint247",
         "ageint248",
@@ -3257,34 +2825,29 @@
       "unique_citation_count": 24
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint247",
         "scholarly_friston_2010_fep",
         "scholarly_buckley_2017_fep_mathematical_review",
         "scholarly_friston_2017_active_inference_process",
         "scholarly_dacosta_2020_discrete_active_inference",
+        "ageint247",
         "ageint248",
-        "official_oecd_agentic_ai",
-        "official_canada_agentic_ai_guide",
-        "official_nist_ai_rmf",
-        "official_nist_ai_600_1",
-        "official_ic_ai_ethics_principles",
-        "official_ic_ai_ethics_framework",
-        "official_odni_icd_505"
+        "scholarly_parr_2022_active_inference_textbook",
+        "scholarly_friston_2015_active_inference_epistemic_value",
+        "scholarly_friston_2017_uncertainty_epistemics"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/active-inference-and-ageint/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "scholarly",
-        "official"
+        "source_guide"
       ],
-      "unique_citation_count": 13
+      "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint247",
         "ageint248",
@@ -3303,7 +2866,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint233",
         "ageint258",
@@ -3321,13 +2884,13 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 208,
+      "citation_count": 194,
       "citation_keys": [
-        "ageint233",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "scholarly_yao_2023_react",
         "ageint143",
         "ageint309",
         "ageint310",
@@ -3335,88 +2898,110 @@
         "ageint299",
         "ageint306",
         "ageint312",
+        "scholarly_shinn_2023_reflexion",
         "ageint139",
         "ageint297",
         "ageint298",
+        "official_model_context_protocol_specification",
         "ageint144",
+        "scholarly_anthropic_building_effective_agents",
         "ageint145",
+        "official_odni_icd_206",
         "ageint301",
+        "official_agent2agent_protocol_specification",
         "ageint146",
-        "ageint147",
-        "ageint148"
+        "official_odni_icd_203",
+        "official_cia_tradecraft_primer",
+        "ageint147"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-01.md",
       "source_families": [
         "official",
+        "scholarly",
         "practitioner_vendor",
         "standard",
-        "source_guide",
-        "scholarly"
+        "source_guide"
       ],
-      "unique_citation_count": 21
+      "unique_citation_count": 27
     },
     {
-      "citation_count": 226,
+      "citation_count": 209,
       "citation_keys": [
-        "ageint309",
-        "ageint310",
-        "ageint300",
-        "official_oecd_agentic_ai",
-        "official_canada_agentic_ai_guide",
-        "ageint138",
         "ageint299",
         "ageint306",
         "ageint312",
+        "official_oecd_agentic_ai",
+        "official_canada_agentic_ai_guide",
+        "scholarly_greshake_2023_indirect_prompt_injection",
+        "ageint148",
+        "ageint309",
+        "ageint310",
+        "ageint300",
+        "official_cisa_ai_data_security_best_practices",
+        "ageint138",
+        "official_model_context_protocol_security_best_practices",
         "ageint145",
         "ageint307",
         "ageint305",
         "ageint304",
+        "official_mitre_atlas",
+        "official_cisa_ai_red_teaming_tev",
         "ageint147",
-        "ageint308",
-        "ageint311",
-        "ageint004",
-        "ageint297",
-        "ageint298",
-        "ageint149",
-        "ageint150"
+        "official_c2pa_specifications",
+        "official_w3c_vc_data_integrity",
+        "official_odni_icd_203",
+        "official_odni_icd_206"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-02.md",
       "source_families": [
-        "standard",
+        "source_guide",
         "official",
         "scholarly",
-        "source_guide",
+        "standard",
         "practitioner_vendor"
       ],
-      "unique_citation_count": 21
+      "unique_citation_count": 24
     },
     {
-      "citation_count": 144,
+      "citation_count": 197,
       "citation_keys": [
-        "ageint302",
-        "ageint297",
+        "ageint308",
+        "ageint311",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
+        "official_c2pa_specifications",
         "ageint299",
         "ageint306",
         "ageint312",
+        "ageint004",
+        "ageint297",
+        "ageint298",
+        "official_oasis_stix_21",
+        "ageint149",
+        "ageint150",
+        "official_mitre_attack_enterprise",
+        "ageint302",
         "ageint309",
         "ageint310",
         "ageint300",
+        "official_nist_ssdf",
+        "official_nist_sp_800_161r1",
         "ageint303",
         "ageint304",
         "ageint305",
         "ageint076",
+        "official_iso_19157_data_quality",
+        "scholarly_roozenbeek_2022_psychological_inoculation",
         "ageint151",
-        "ageint308",
-        "ageint311",
         "ageint152",
+        "official_agent2agent_protocol_specification",
         "ageint139",
         "ageint137",
+        "scholarly_prompt_infection_multi_agent",
         "ageint233",
         "ageint258",
         "official_nist_ai_rmf",
@@ -3432,10 +3017,25 @@
         "practitioner_vendor",
         "scholarly"
       ],
-      "unique_citation_count": 24
+      "unique_citation_count": 37
     },
     {
-      "citation_count": 133,
+      "citation_count": 2,
+      "citation_keys": [
+        "ageint233",
+        "ageint258"
+      ],
+      "family": "practice-studio",
+      "flags": [],
+      "path": "parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-04.md",
+      "source_families": [
+        "official",
+        "source_guide"
+      ],
+      "unique_citation_count": 2
+    },
+    {
+      "citation_count": 124,
       "citation_keys": [
         "ageint233",
         "ageint258",
@@ -3495,13 +3095,13 @@
       "unique_citation_count": 44
     },
     {
-      "citation_count": 32,
+      "citation_count": 26,
       "citation_keys": [
-        "ageint233",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "ageint233",
         "ageint258",
         "official_ic_ai_ethics_principles",
         "official_ic_ai_ethics_framework",
@@ -3517,7 +3117,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint233",
         "ageint258",
@@ -3536,7 +3136,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -3554,13 +3154,13 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 198,
+      "citation_count": 194,
       "citation_keys": [
-        "ageint255",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "scholarly_anthropic_building_effective_agents",
         "ageint147",
         "ageint153",
         "ageint299",
@@ -3568,47 +3168,52 @@
         "ageint312",
         "ageint154",
         "ageint144",
+        "official_model_context_protocol_specification",
         "ageint155",
         "ageint156",
         "ageint157",
+        "official_nsa_mcp_security_design_considerations",
+        "official_model_context_protocol_security_best_practices",
+        "scholarly_greshake_2023_indirect_prompt_injection",
         "ageint159",
-        "ageint137",
-        "ageint146",
-        "ageint256"
+        "official_agent2agent_protocol_specification",
+        "ageint137"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/01-practice-studio-01.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "practitioner_vendor",
         "source_guide",
         "scholarly"
       ],
-      "unique_citation_count": 19
+      "unique_citation_count": 22
     },
     {
-      "citation_count": 9,
+      "citation_count": 16,
       "citation_keys": [
+        "ageint146",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
-        "official_nist_ai_rmf",
-        "official_nist_ai_600_1",
         "ageint255",
-        "ageint256"
+        "ageint256",
+        "official_nist_ai_rmf",
+        "official_nist_ai_600_1"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/01-practice-studio-02.md",
       "source_families": [
+        "source_guide",
         "official",
         "standard"
       ],
-      "unique_citation_count": 6
+      "unique_citation_count": 7
     },
     {
-      "citation_count": 92,
+      "citation_count": 83,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -3651,13 +3256,13 @@
       "unique_citation_count": 27
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint255",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "ageint255",
         "ageint256",
         "official_ic_ai_ethics_principles",
         "official_ic_ai_ethics_framework",
@@ -3667,13 +3272,13 @@
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/03-governance-boundary.md",
       "source_families": [
-        "standard",
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -3692,7 +3297,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint242",
         "ageint243",
@@ -3710,39 +3315,49 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 78,
+      "citation_count": 84,
       "citation_keys": [
-        "ageint242",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "official_oasis_stix_21",
+        "official_oasis_taxii_21",
         "ageint309",
         "ageint310",
         "ageint300",
         "ageint301",
         "ageint298",
+        "official_nist_ssdf",
+        "official_mitre_attack_enterprise",
         "ageint304",
         "ageint306",
+        "scholarly_greshake_2023_indirect_prompt_injection",
         "ageint305",
         "ageint303",
+        "scholarly_roozenbeek_2022_psychological_inoculation",
         "ageint308",
         "ageint311",
+        "official_nist_sp_800_161r1",
         "ageint307",
-        "ageint243"
+        "ageint242",
+        "ageint243",
+        "official_odni_icd_203",
+        "official_model_context_protocol_security_best_practices"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-python-code-library/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
-        "standard"
+        "standard",
+        "scholarly",
+        "source_guide"
       ],
-      "unique_citation_count": 18
+      "unique_citation_count": 27
     },
     {
-      "citation_count": 92,
+      "citation_count": 83,
       "citation_keys": [
         "ageint242",
         "ageint243",
@@ -3783,13 +3398,13 @@
       "unique_citation_count": 27
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint242",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "ageint242",
         "ageint243",
         "official_ic_ai_ethics_principles",
         "official_ic_ai_ethics_framework",
@@ -3799,13 +3414,13 @@
       "flags": [],
       "path": "parts/ageint-agentic-intelligence/ageint-python-code-library/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint242",
         "ageint243",
@@ -3824,7 +3439,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint234",
         "ageint235",
@@ -3842,9 +3457,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 130,
+      "citation_count": 135,
       "citation_keys": [
-        "ageint234",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
@@ -3853,15 +3467,23 @@
         "ageint299",
         "ageint306",
         "ageint312",
+        "official_model_context_protocol_specification",
+        "official_model_context_protocol_security_best_practices",
+        "official_nsa_mcp_security_design_considerations",
         "ageint155",
         "ageint159",
+        "scholarly_greshake_2023_indirect_prompt_injection",
+        "scholarly_prompt_infection_multi_agent",
         "ageint137",
         "ageint160",
         "ageint161",
+        "official_uk_aisi_agent_evaluations",
+        "official_nist_aria_pilot_evaluation_report",
         "ageint100",
         "ageint162",
         "ageint004",
         "ageint148",
+        "ageint234",
         "ageint235"
       ],
       "family": "practice-studio",
@@ -3871,13 +3493,13 @@
         "official",
         "practitioner_vendor",
         "source_guide",
-        "scholarly",
-        "standard"
+        "standard",
+        "scholarly"
       ],
-      "unique_citation_count": 19
+      "unique_citation_count": 26
     },
     {
-      "citation_count": 89,
+      "citation_count": 80,
       "citation_keys": [
         "ageint234",
         "ageint235",
@@ -3919,13 +3541,13 @@
       "unique_citation_count": 26
     },
     {
-      "citation_count": 36,
+      "citation_count": 31,
       "citation_keys": [
-        "ageint234",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "ageint234",
         "ageint235",
         "official_ic_ai_ethics_principles",
         "official_ic_ai_ethics_framework",
@@ -3945,7 +3567,7 @@
       "unique_citation_count": 12
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint234",
         "ageint235",
@@ -3964,7 +3586,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint232",
         "ageint235",
@@ -3982,18 +3604,21 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 92,
+      "citation_count": 94,
       "citation_keys": [
-        "ageint232",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "scholarly_anthropic_building_effective_agents",
         "ageint299",
         "ageint306",
         "ageint312",
         "ageint137",
         "ageint138",
+        "official_model_context_protocol_specification",
+        "official_model_context_protocol_security_best_practices",
+        "official_agent2agent_protocol_specification",
         "ageint139",
         "ageint140",
         "ageint141",
@@ -4002,6 +3627,7 @@
         "ageint142",
         "ageint004",
         "ageint005",
+        "ageint232",
         "ageint235"
       ],
       "family": "practice-studio",
@@ -4009,15 +3635,15 @@
       "path": "parts/ageint-agentic-intelligence/foundations-of-ageint/01-practice-studio.md",
       "source_families": [
         "official",
+        "standard",
         "source_guide",
         "scholarly",
-        "practitioner_vendor",
-        "standard"
+        "practitioner_vendor"
       ],
-      "unique_citation_count": 19
+      "unique_citation_count": 23
     },
     {
-      "citation_count": 89,
+      "citation_count": 80,
       "citation_keys": [
         "ageint232",
         "ageint235",
@@ -4059,13 +3685,13 @@
       "unique_citation_count": 26
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint232",
         "official_oecd_agentic_ai",
         "official_canada_agentic_ai_guide",
         "official_nist_ai_rmf",
         "official_nist_ai_600_1",
+        "ageint232",
         "ageint235",
         "official_ic_ai_ethics_principles",
         "official_ic_ai_ethics_framework",
@@ -4081,7 +3707,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint232",
         "ageint235",
@@ -4100,7 +3726,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 167,
+      "citation_count": 163,
       "citation_keys": [
         "ageint232",
         "ageint235",
@@ -4208,7 +3834,7 @@
       "unique_citation_count": 92
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4226,20 +3852,21 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 106,
+      "citation_count": 122,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
         "ageint165",
-        "ageint166",
         "ageint167",
+        "ageint166",
+        "ageint173",
+        "ageint175",
         "ageint095",
         "ageint096",
-        "ageint168",
         "ageint169",
+        "ageint168",
         "ageint170",
         "ageint171",
         "ageint107",
@@ -4247,25 +3874,24 @@
         "ageint307",
         "ageint305",
         "ageint304",
-        "ageint173",
         "ageint174",
-        "ageint175",
         "ageint001",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/cognitive-security/cognitive-security-foundations-and-definitions/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "practitioner_vendor",
         "scholarly"
       ],
       "unique_citation_count": 24
     },
     {
-      "citation_count": 104,
+      "citation_count": 95,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4312,13 +3938,13 @@
       "unique_citation_count": 31
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint239",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -4328,14 +3954,14 @@
       "flags": [],
       "path": "parts/cognitive-security/cognitive-security-foundations-and-definitions/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4354,7 +3980,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4372,15 +3998,16 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 58,
+      "citation_count": 64,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
         "ageint095",
         "ageint105",
+        "official_nsa_cisa_contextualizing_deepfake_threats",
+        "scholarly_cardenuto_2023_synthetic_realities",
         "ageint300",
         "ageint304",
         "ageint306",
@@ -4388,20 +4015,22 @@
         "ageint106",
         "ageint003",
         "ageint096",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/cognitive-security/cognitive-security-operations/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
+        "scholarly",
         "standard"
       ],
-      "unique_citation_count": 15
+      "unique_citation_count": 17
     },
     {
-      "citation_count": 77,
+      "citation_count": 68,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4438,13 +4067,13 @@
       "unique_citation_count": 22
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint239",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -4454,14 +4083,14 @@
       "flags": [],
       "path": "parts/cognitive-security/cognitive-security-operations/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4480,7 +4109,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -4498,9 +4127,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 72,
+      "citation_count": 80,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
@@ -4512,19 +4140,20 @@
         "ageint180",
         "ageint308",
         "ageint311",
+        "ageint238",
         "ageint240"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 13
     },
     {
-      "citation_count": 71,
+      "citation_count": 62,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -4558,13 +4187,13 @@
       "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint240",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -4574,14 +4203,14 @@
       "flags": [],
       "path": "parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -4600,7 +4229,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint242",
         "ageint243",
@@ -4618,9 +4247,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 80,
+      "citation_count": 93,
       "citation_keys": [
-        "ageint242",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
@@ -4629,6 +4257,7 @@
         "ageint182",
         "ageint183",
         "ageint152",
+        "scholarly_roozenbeek_2022_psychological_inoculation",
         "ageint184",
         "ageint185",
         "ageint186",
@@ -4636,19 +4265,21 @@
         "ageint151",
         "ageint308",
         "ageint311",
+        "ageint242",
         "ageint243"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/cognitive-security/psychological-inoculation-and-prebunking/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "scholarly",
+        "source_guide"
       ],
-      "unique_citation_count": 17
+      "unique_citation_count": 18
     },
     {
-      "citation_count": 83,
+      "citation_count": 74,
       "citation_keys": [
         "ageint242",
         "ageint243",
@@ -4681,18 +4312,19 @@
       "source_families": [
         "source_guide",
         "official",
-        "standard"
+        "standard",
+        "scholarly"
       ],
       "unique_citation_count": 24
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint242",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint242",
         "ageint243",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -4702,14 +4334,14 @@
       "flags": [],
       "path": "parts/cognitive-security/psychological-inoculation-and-prebunking/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint242",
         "ageint243",
@@ -4728,7 +4360,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 100,
+      "citation_count": 96,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -4818,7 +4450,7 @@
       "unique_citation_count": 74
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint239",
         "ageint240",
@@ -4836,9 +4468,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 44,
+      "citation_count": 43,
       "citation_keys": [
-        "ageint239",
         "official_ncsc_counterintelligence_strategy",
         "official_odni_eo_12333",
         "official_odni_icd_206",
@@ -4849,19 +4480,20 @@
         "ageint307",
         "ageint305",
         "ageint304",
+        "ageint239",
         "ageint240"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/counterintelligence/counterintelligence-against-non-state-actors/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 12
     },
     {
-      "citation_count": 68,
+      "citation_count": 59,
       "citation_keys": [
         "ageint239",
         "ageint240",
@@ -4894,13 +4526,13 @@
       "unique_citation_count": 19
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint239",
         "official_ncsc_counterintelligence_strategy",
         "official_odni_eo_12333",
         "official_odni_icd_206",
         "official_odni_icd_203",
+        "ageint239",
         "ageint240",
         "official_cia_tradecraft_primer",
         "scholarly_heuer_psychology_intelligence_analysis",
@@ -4910,14 +4542,14 @@
       "flags": [],
       "path": "parts/counterintelligence/counterintelligence-against-non-state-actors/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint239",
         "ageint240",
@@ -4936,7 +4568,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -4954,9 +4586,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 62,
+      "citation_count": 61,
       "citation_keys": [
-        "ageint238",
         "official_ncsc_counterintelligence_strategy",
         "official_odni_eo_12333",
         "official_odni_icd_206",
@@ -4966,19 +4597,20 @@
         "ageint029",
         "ageint297",
         "ageint298",
+        "ageint238",
         "ageint240"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/counterintelligence/counterintelligence-fundamentals/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 11
     },
     {
-      "citation_count": 65,
+      "citation_count": 56,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -5010,13 +4642,13 @@
       "unique_citation_count": 18
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_ncsc_counterintelligence_strategy",
         "official_odni_eo_12333",
         "official_odni_icd_206",
         "official_odni_icd_203",
+        "ageint238",
         "ageint240",
         "official_cia_tradecraft_primer",
         "scholarly_heuer_psychology_intelligence_analysis",
@@ -5026,14 +4658,14 @@
       "flags": [],
       "path": "parts/counterintelligence/counterintelligence-fundamentals/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -5052,7 +4684,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 46,
+      "citation_count": 42,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -5096,7 +4728,7 @@
       "unique_citation_count": 29
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5114,9 +4746,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 68,
+      "citation_count": 74,
       "citation_keys": [
-        "ageint237",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
@@ -5124,11 +4755,12 @@
         "ageint300",
         "ageint304",
         "ageint306",
+        "ageint266",
         "ageint309",
         "ageint310",
         "ageint297",
         "ageint298",
-        "ageint266"
+        "ageint237"
       ],
       "family": "practice-studio",
       "flags": [],
@@ -5140,7 +4772,7 @@
       "unique_citation_count": 13
     },
     {
-      "citation_count": 71,
+      "citation_count": 62,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5174,13 +4806,13 @@
       "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint237",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
         "official_cia_tradecraft_primer",
+        "ageint237",
         "ageint266",
         "official_cia_sherman_kent_profession",
         "official_cia_kent_analyst_policymaker_relations",
@@ -5197,7 +4829,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5216,7 +4848,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5234,16 +4866,19 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 382,
+      "citation_count": 401,
       "citation_keys": [
-        "ageint237",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
         "official_cia_tradecraft_primer",
         "ageint189",
+        "ageint108",
         "ageint002",
         "ageint190",
+        "ageint192",
+        "ageint191",
+        "ageint180",
         "official_cia_sherman_kent_profession",
         "official_cia_cooper_2005_analytic_pathologies",
         "official_cia_analytic_culture_us_ic",
@@ -5262,21 +4897,22 @@
         "official_iarpa_ace_program",
         "official_iarpa_reason_program",
         "official_belfer_mcmahon_2024_ai_tradecraft_standards",
-        "ageint180",
-        "ageint191",
-        "ageint192",
         "ageint193",
         "ageint194",
         "ageint297",
         "ageint298",
+        "scholarly_mandel_karvetski_dhami_2018_boosting_accuracy",
         "ageint300",
         "ageint304",
         "ageint306",
+        "scholarly_mccarthy_2024_alternative_futures_analysis",
         "ageint309",
         "ageint310",
+        "professional_klein_2007_project_premortem",
         "ageint195",
         "ageint196",
         "ageint188",
+        "ageint237",
         "ageint266"
       ],
       "family": "practice-studio",
@@ -5284,14 +4920,15 @@
       "path": "parts/epistemic-rigor-and-analytic-tradecraft/structured-analytic-techniques-sats/01-practice-studio.md",
       "source_families": [
         "official",
+        "source_guide",
         "scholarly",
         "standard",
-        "source_guide"
+        "curated_anchor"
       ],
-      "unique_citation_count": 42
+      "unique_citation_count": 46
     },
     {
-      "citation_count": 107,
+      "citation_count": 98,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5338,13 +4975,13 @@
       "unique_citation_count": 32
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint237",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
         "official_cia_tradecraft_primer",
+        "ageint237",
         "ageint266",
         "official_cia_sherman_kent_profession",
         "official_cia_kent_analyst_policymaker_relations",
@@ -5361,7 +4998,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5380,7 +5017,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 65,
+      "citation_count": 61,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5437,7 +5074,7 @@
       "unique_citation_count": 42
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint234",
         "ageint247",
@@ -5455,13 +5092,13 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 64,
+      "citation_count": 62,
       "citation_keys": [
-        "ageint234",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
         "official_cia_tradecraft_primer",
+        "official_intelligence_gov_how_ic_works",
         "ageint006",
         "ageint297",
         "ageint298",
@@ -5471,6 +5108,9 @@
         "ageint010",
         "ageint011",
         "ageint012",
+        "ageint306",
+        "ageint312",
+        "ageint234",
         "ageint247"
       ],
       "family": "practice-studio",
@@ -5480,10 +5120,10 @@
         "official",
         "source_guide"
       ],
-      "unique_citation_count": 15
+      "unique_citation_count": 18
     },
     {
-      "citation_count": 77,
+      "citation_count": 74,
       "citation_keys": [
         "ageint234",
         "ageint247",
@@ -5503,6 +5143,8 @@
         "ageint012",
         "ageint297",
         "ageint298",
+        "ageint306",
+        "ageint312",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
@@ -5516,16 +5158,16 @@
         "source_guide",
         "standard"
       ],
-      "unique_citation_count": 22
+      "unique_citation_count": 24
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint234",
         "official_odni_icd_203",
         "official_odni_icd_206",
         "official_odni_objectivity",
         "official_cia_tradecraft_primer",
+        "ageint234",
         "ageint247",
         "official_cia_sherman_kent_profession",
         "official_cia_kent_analyst_policymaker_relations",
@@ -5542,7 +5184,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint234",
         "ageint247",
@@ -5561,7 +5203,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint237",
@@ -5581,7 +5223,6 @@
     {
       "citation_count": 105,
       "citation_keys": [
-        "ageint238",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
         "official_odni_icd_204",
@@ -5591,6 +5232,7 @@
         "ageint300",
         "ageint297",
         "ageint298",
+        "official_joint_pub_2_0",
         "official_cia_tradecraft_primer",
         "official_cia_sherman_kent_profession",
         "official_cia_cooper_2005_analytic_pathologies",
@@ -5615,21 +5257,22 @@
         "ageint003",
         "ageint004",
         "ageint005",
+        "ageint238",
         "ageint237"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
         "standard",
-        "scholarly"
+        "scholarly",
+        "source_guide"
       ],
-      "unique_citation_count": 35
+      "unique_citation_count": 36
     },
     {
-      "citation_count": 80,
+      "citation_count": 71,
       "citation_keys": [
         "ageint238",
         "ageint237",
@@ -5667,13 +5310,13 @@
       "unique_citation_count": 23
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
         "official_odni_icd_204",
         "official_odni_icd_504",
+        "ageint238",
         "ageint237",
         "official_odni_capco_register",
         "official_federal_data_strategy",
@@ -5683,13 +5326,13 @@
       "flags": [],
       "path": "parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint237",
@@ -5708,7 +5351,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5726,24 +5369,27 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 68,
+      "citation_count": 67,
       "citation_keys": [
-        "ageint237",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
         "official_odni_icd_204",
         "official_odni_icd_504",
         "ageint013",
         "ageint014",
+        "ageint305",
+        "ageint304",
+        "ageint303",
         "ageint297",
         "ageint298",
         "ageint015",
+        "ageint266",
         "ageint016",
         "ageint017",
         "ageint018",
         "ageint005",
         "ageint019",
-        "ageint266"
+        "ageint237"
       ],
       "family": "practice-studio",
       "flags": [],
@@ -5753,7 +5399,7 @@
         "source_guide",
         "standard"
       ],
-      "unique_citation_count": 16
+      "unique_citation_count": 19
     },
     {
       "citation_count": 80,
@@ -5777,6 +5423,9 @@
         "ageint019",
         "ageint297",
         "ageint298",
+        "ageint305",
+        "ageint304",
+        "ageint303",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
         "official_odni_icd_204",
@@ -5790,36 +5439,32 @@
         "standard",
         "source_guide"
       ],
-      "unique_citation_count": 23
+      "unique_citation_count": 26
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint237",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
         "official_odni_icd_204",
         "official_odni_icd_504",
+        "ageint237",
         "ageint266",
-        "official_odni_icd_206",
-        "official_odni_objectivity",
-        "official_cia_tradecraft_primer",
-        "official_cia_sherman_kent_profession",
-        "official_cia_kent_analyst_policymaker_relations",
-        "official_dia_tradecraft_primer"
+        "official_odni_capco_register",
+        "official_federal_data_strategy",
+        "official_pclob_oversight_reports"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/foundations-of-intelligence-tradecraft/tradecraft-core-principles/03-governance-boundary.md",
       "source_families": [
         "official",
-        "standard",
-        "law_policy"
+        "standard"
       ],
-      "unique_citation_count": 12
+      "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint237",
         "ageint266",
@@ -5838,7 +5483,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 73,
+      "citation_count": 74,
       "citation_keys": [
         "ageint238",
         "ageint237",
@@ -5878,6 +5523,8 @@
         "ageint010",
         "ageint011",
         "ageint012",
+        "ageint306",
+        "ageint312",
         "ageint266",
         "ageint269",
         "ageint278",
@@ -5892,7 +5539,10 @@
         "ageint016",
         "ageint017",
         "ageint018",
-        "ageint019"
+        "ageint019",
+        "ageint305",
+        "ageint304",
+        "ageint303"
       ],
       "family": "part unit intros",
       "flags": [],
@@ -5903,16 +5553,16 @@
         "standard",
         "scholarly"
       ],
-      "unique_citation_count": 53
+      "unique_citation_count": 58
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint239",
         "ageint247",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0"
       ],
       "family": "overview",
       "flags": [],
@@ -5924,31 +5574,31 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 48,
+      "citation_count": 49,
       "citation_keys": [
-        "ageint239",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203",
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy",
         "ageint109",
         "ageint110",
         "ageint111",
         "ageint308",
         "ageint311",
+        "ageint239",
         "ageint247"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 11
     },
     {
-      "citation_count": 65,
+      "citation_count": 56,
       "citation_keys": [
         "ageint239",
         "ageint247",
@@ -5964,10 +5614,10 @@
         "ageint111",
         "ageint308",
         "ageint311",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -5980,37 +5630,36 @@
       "unique_citation_count": 18
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy",
         "ageint239",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203",
         "ageint247",
-        "official_cia_tradecraft_primer",
-        "scholarly_heuer_psychology_intelligence_analysis",
-        "official_cia_burkett_rascls"
+        "official_odni_eo_12333",
+        "official_nsa_fisa",
+        "official_odni_icd_206"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
-        "scholarly"
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint239",
         "ageint247",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy"
       ],
       "family": "assessment-route",
       "flags": [],
@@ -6022,13 +5671,13 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint239",
         "ageint249",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0"
       ],
       "family": "overview",
       "flags": [],
@@ -6040,37 +5689,37 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 61,
+      "citation_count": 65,
       "citation_keys": [
-        "ageint239",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203",
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy",
         "ageint112",
         "ageint113",
         "ageint114",
         "ageint115",
         "ageint116",
-        "ageint117",
         "ageint118",
         "ageint119",
+        "ageint117",
         "ageint120",
         "ageint308",
         "ageint311",
+        "ageint239",
         "ageint249"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 17
     },
     {
-      "citation_count": 83,
+      "citation_count": 74,
       "citation_keys": [
         "ageint239",
         "ageint249",
@@ -6092,10 +5741,10 @@
         "ageint120",
         "ageint308",
         "ageint311",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -6108,37 +5757,36 @@
       "unique_citation_count": 24
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy",
         "ageint239",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203",
         "ageint249",
-        "official_cia_tradecraft_primer",
-        "scholarly_heuer_psychology_intelligence_analysis",
-        "official_cia_burkett_rascls"
+        "official_odni_eo_12333",
+        "official_nsa_fisa",
+        "official_odni_icd_206"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
-        "scholarly"
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint239",
         "ageint249",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy"
       ],
       "family": "assessment-route",
       "flags": [],
@@ -6150,13 +5798,13 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint247",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0"
       ],
       "family": "overview",
       "flags": [],
@@ -6168,13 +5816,12 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 48,
+      "citation_count": 45,
       "citation_keys": [
-        "ageint238",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203",
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy",
         "ageint012",
         "ageint308",
         "ageint311",
@@ -6182,20 +5829,21 @@
         "ageint309",
         "ageint310",
         "ageint300",
+        "ageint238",
         "ageint247"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "standard"
       ],
       "unique_citation_count": 13
     },
     {
-      "citation_count": 71,
+      "citation_count": 62,
       "citation_keys": [
         "ageint238",
         "ageint247",
@@ -6213,10 +5861,10 @@
         "ageint309",
         "ageint310",
         "ageint300",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -6230,37 +5878,36 @@
       "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy",
         "ageint238",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203",
         "ageint247",
-        "official_cia_tradecraft_primer",
-        "scholarly_heuer_psychology_intelligence_analysis",
-        "official_cia_burkett_rascls"
+        "official_odni_eo_12333",
+        "official_nsa_fisa",
+        "official_odni_icd_206"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
-        "scholarly"
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint247",
-        "official_ncsc_counterintelligence_strategy",
-        "official_odni_eo_12333",
-        "official_odni_icd_206",
-        "official_odni_icd_203"
+        "official_intelligence_gov_how_ic_works",
+        "official_odni_icd_204",
+        "official_joint_pub_2_0",
+        "official_ic_osint_strategy"
       ],
       "family": "assessment-route",
       "flags": [],
@@ -6272,7 +5919,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 67,
+      "citation_count": 63,
       "citation_keys": [
         "ageint239",
         "ageint247",
@@ -6328,7 +5975,7 @@
       "unique_citation_count": 41
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint266",
         "ageint269",
@@ -6346,9 +5993,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 99,
+      "citation_count": 114,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
@@ -6358,13 +6004,15 @@
         "ageint117",
         "ageint119",
         "ageint118",
-        "ageint297",
+        "public_church_committee_book_i_1976",
         "ageint298",
+        "ageint297",
         "ageint130",
         "ageint120",
         "ageint088",
         "ageint089",
         "ageint090",
+        "ageint091",
         "ageint131",
         "ageint132",
         "ageint133",
@@ -6374,20 +6022,22 @@
         "ageint038",
         "ageint039",
         "ageint036",
+        "ageint266",
         "ageint269"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/historical-intelligence-services/american-intelligence-history/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
-        "source_guide"
+        "source_guide",
+        "public_domain",
+        "standard"
       ],
-      "unique_citation_count": 27
+      "unique_citation_count": 29
     },
     {
-      "citation_count": 115,
+      "citation_count": 106,
       "citation_keys": [
         "ageint266",
         "ageint269",
@@ -6436,13 +6086,13 @@
       "unique_citation_count": 35
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
         "official_nara_cia_records",
+        "ageint266",
         "ageint269",
         "official_odni_objectivity",
         "scholarly_heuer_psychology_intelligence_analysis",
@@ -6452,14 +6102,14 @@
       "flags": [],
       "path": "parts/historical-intelligence-services/american-intelligence-history/03-governance-boundary.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint266",
         "ageint269",
@@ -6478,7 +6128,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint266",
         "ageint269",
@@ -6496,9 +6146,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 42,
+      "citation_count": 44,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
@@ -6510,20 +6159,21 @@
         "ageint010",
         "ageint041",
         "ageint042",
+        "ageint266",
         "ageint269"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/historical-intelligence-services/british-and-allied-intelligence/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
-        "source_guide"
+        "source_guide",
+        "standard"
       ],
       "unique_citation_count": 13
     },
     {
-      "citation_count": 71,
+      "citation_count": 62,
       "citation_keys": [
         "ageint266",
         "ageint269",
@@ -6558,13 +6208,13 @@
       "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
         "official_nara_cia_records",
+        "ageint266",
         "ageint269",
         "official_odni_objectivity",
         "scholarly_heuer_psychology_intelligence_analysis",
@@ -6574,14 +6224,14 @@
       "flags": [],
       "path": "parts/historical-intelligence-services/british-and-allied-intelligence/03-governance-boundary.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint266",
         "ageint269",
@@ -6600,7 +6250,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6618,9 +6268,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 58,
+      "citation_count": 55,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
@@ -6629,20 +6278,21 @@
         "ageint136",
         "ageint297",
         "ageint298",
+        "ageint266",
         "ageint267"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/historical-intelligence-services/israeli-and-continental-services/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
-        "source_guide"
+        "source_guide",
+        "standard"
       ],
       "unique_citation_count": 10
     },
     {
-      "citation_count": 62,
+      "citation_count": 53,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6674,13 +6324,13 @@
       "unique_citation_count": 17
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
         "official_nara_cia_records",
+        "ageint266",
         "ageint267",
         "official_odni_objectivity",
         "scholarly_heuer_psychology_intelligence_analysis",
@@ -6690,14 +6340,14 @@
       "flags": [],
       "path": "parts/historical-intelligence-services/israeli-and-continental-services/03-governance-boundary.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6716,7 +6366,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6734,9 +6384,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 81,
+      "citation_count": 94,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
@@ -6751,21 +6400,23 @@
         "ageint124",
         "ageint125",
         "ageint126",
+        "ageint127",
         "ageint022",
+        "ageint266",
         "ageint267"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/historical-intelligence-services/soviet-and-russian-intelligence/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
-        "source_guide"
+        "source_guide",
+        "standard"
       ],
-      "unique_citation_count": 17
+      "unique_citation_count": 18
     },
     {
-      "citation_count": 86,
+      "citation_count": 77,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6804,13 +6455,13 @@
       "unique_citation_count": 25
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint266",
         "official_cia_center_for_study_of_intelligence",
         "official_nsa_historical_releases",
         "official_nro_declassified_programs",
         "official_nara_cia_records",
+        "ageint266",
         "ageint267",
         "official_odni_objectivity",
         "scholarly_heuer_psychology_intelligence_analysis",
@@ -6820,14 +6471,14 @@
       "flags": [],
       "path": "parts/historical-intelligence-services/soviet-and-russian-intelligence/03-governance-boundary.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6846,7 +6497,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 98,
+      "citation_count": 94,
       "citation_keys": [
         "ageint266",
         "ageint267",
@@ -6929,7 +6580,7 @@
       "unique_citation_count": 68
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint239",
         "ageint240",
@@ -6947,9 +6598,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 78,
+      "citation_count": 75,
       "citation_keys": [
-        "ageint239",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
@@ -6964,19 +6614,20 @@
         "ageint030",
         "ageint031",
         "ageint032",
+        "ageint239",
         "ageint240"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/human-intelligence-humint/agent-handling-and-management/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 16
     },
     {
-      "citation_count": 80,
+      "citation_count": 71,
       "citation_keys": [
         "ageint239",
         "ageint240",
@@ -7014,13 +6665,13 @@
       "unique_citation_count": 23
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint239",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
         "official_ic_osint_strategy",
+        "ageint239",
         "ageint240",
         "official_odni_eo_12333",
         "official_nsa_fisa",
@@ -7030,13 +6681,13 @@
       "flags": [],
       "path": "parts/human-intelligence-humint/agent-handling-and-management/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint239",
         "ageint240",
@@ -7055,7 +6706,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -7073,34 +6724,36 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 71,
+      "citation_count": 70,
       "citation_keys": [
-        "ageint238",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
         "official_ic_osint_strategy",
         "ageint020",
         "ageint021",
+        "official_cia_burkett_rascls",
         "ageint298",
         "ageint297",
         "ageint022",
         "ageint023",
         "ageint024",
         "ageint004",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/human-intelligence-humint/agent-recruitment/01-practice-studio.md",
       "source_families": [
+        "official",
         "source_guide",
-        "official"
+        "scholarly"
       ],
-      "unique_citation_count": 14
+      "unique_citation_count": 15
     },
     {
-      "citation_count": 74,
+      "citation_count": 65,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -7129,18 +6782,19 @@
       "path": "parts/human-intelligence-humint/agent-recruitment/02-evidence-contract.md",
       "source_families": [
         "source_guide",
-        "official"
+        "official",
+        "scholarly"
       ],
       "unique_citation_count": 21
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
         "official_ic_osint_strategy",
+        "ageint238",
         "ageint239",
         "official_odni_eo_12333",
         "official_nsa_fisa",
@@ -7150,13 +6804,13 @@
       "flags": [],
       "path": "parts/human-intelligence-humint/agent-recruitment/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -7175,13 +6829,13 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint241",
-        "official_intelligence_gov_how_ic_works",
-        "official_odni_icd_204",
-        "official_joint_pub_2_0"
+        "official_ncsc_counterintelligence_strategy",
+        "official_odni_eo_12333",
+        "official_odni_icd_206"
       ],
       "family": "overview",
       "flags": [],
@@ -7193,13 +6847,12 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 54,
+      "citation_count": 50,
       "citation_keys": [
-        "ageint238",
-        "official_intelligence_gov_how_ic_works",
-        "official_odni_icd_204",
-        "official_joint_pub_2_0",
-        "official_ic_osint_strategy",
+        "official_ncsc_counterintelligence_strategy",
+        "official_odni_eo_12333",
+        "official_odni_icd_206",
+        "official_odni_icd_203",
         "ageint307",
         "ageint305",
         "ageint304",
@@ -7207,19 +6860,20 @@
         "ageint033",
         "ageint019",
         "ageint034",
+        "ageint238",
         "ageint241"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/human-intelligence-humint/source-protection-and-ci-integration/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 13
     },
     {
-      "citation_count": 71,
+      "citation_count": 62,
       "citation_keys": [
         "ageint238",
         "ageint241",
@@ -7237,10 +6891,10 @@
         "ageint033",
         "ageint019",
         "ageint034",
-        "official_intelligence_gov_how_ic_works",
-        "official_odni_icd_204",
-        "official_joint_pub_2_0",
-        "official_ic_osint_strategy"
+        "official_ncsc_counterintelligence_strategy",
+        "official_odni_eo_12333",
+        "official_odni_icd_206",
+        "official_odni_icd_203"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -7254,36 +6908,37 @@
       "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
-        "official_intelligence_gov_how_ic_works",
-        "official_odni_icd_204",
-        "official_joint_pub_2_0",
-        "official_ic_osint_strategy",
-        "ageint241",
+        "official_ncsc_counterintelligence_strategy",
         "official_odni_eo_12333",
-        "official_nsa_fisa",
-        "official_odni_icd_206"
+        "official_odni_icd_206",
+        "official_odni_icd_203",
+        "ageint238",
+        "ageint241",
+        "official_cia_tradecraft_primer",
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_cia_burkett_rascls"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/human-intelligence-humint/source-protection-and-ci-integration/03-governance-boundary.md",
       "source_families": [
+        "official",
         "source_guide",
-        "official"
+        "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint241",
-        "official_intelligence_gov_how_ic_works",
-        "official_odni_icd_204",
-        "official_joint_pub_2_0",
-        "official_ic_osint_strategy"
+        "official_ncsc_counterintelligence_strategy",
+        "official_odni_eo_12333",
+        "official_odni_icd_206",
+        "official_odni_icd_203"
       ],
       "family": "assessment-route",
       "flags": [],
@@ -7295,7 +6950,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 69,
+      "citation_count": 65,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -7351,13 +7006,13 @@
       "source_families": [
         "source_guide",
         "official",
-        "standard",
-        "scholarly"
+        "scholarly",
+        "standard"
       ],
       "unique_citation_count": 47
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint251",
         "ageint252",
@@ -7375,19 +7030,20 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 56,
+      "citation_count": 54,
       "citation_keys": [
-        "ageint251",
         "official_fincen_advisories",
         "official_fincen_boi",
         "official_fatf_recommendations",
         "official_ofac_sanctions_programs",
         "ageint079",
         "ageint080",
-        "ageint302",
-        "ageint297",
+        "ageint298",
+        "ageint306",
+        "ageint312",
         "ageint081",
         "ageint082",
+        "ageint251",
         "ageint252"
       ],
       "family": "practice-studio",
@@ -7398,7 +7054,7 @@
         "standard",
         "source_guide"
       ],
-      "unique_citation_count": 12
+      "unique_citation_count": 13
     },
     {
       "citation_count": 68,
@@ -7418,6 +7074,9 @@
         "ageint082",
         "ageint302",
         "ageint297",
+        "ageint298",
+        "ageint306",
+        "ageint312",
         "official_fincen_advisories",
         "official_fincen_boi",
         "official_fatf_recommendations",
@@ -7432,16 +7091,16 @@
         "source_guide",
         "scholarly"
       ],
-      "unique_citation_count": 19
+      "unique_citation_count": 22
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint251",
         "official_fincen_advisories",
         "official_fincen_boi",
         "official_fatf_recommendations",
         "official_ofac_sanctions_programs",
+        "ageint251",
         "ageint252",
         "official_ofac_compliance_commitments",
         "official_fatf_virtual_assets_guidance",
@@ -7457,7 +7116,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint251",
         "ageint252",
@@ -7476,7 +7135,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint253",
         "ageint269",
@@ -7494,18 +7153,21 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 52,
+      "citation_count": 49,
       "citation_keys": [
-        "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
         "official_nga_strategy",
+        "ageint058",
         "ageint302",
         "ageint297",
         "ageint309",
         "ageint310",
         "ageint300",
+        "ageint301",
+        "ageint298",
+        "ageint253",
         "ageint269"
       ],
       "family": "practice-studio",
@@ -7513,12 +7175,13 @@
       "path": "parts/imagery-and-financial-intelligence/imagery-intelligence-imint/01-practice-studio.md",
       "source_families": [
         "official",
-        "standard"
+        "standard",
+        "source_guide"
       ],
-      "unique_citation_count": 11
+      "unique_citation_count": 14
     },
     {
-      "citation_count": 65,
+      "citation_count": 62,
       "citation_keys": [
         "ageint253",
         "ageint269",
@@ -7534,6 +7197,8 @@
         "ageint309",
         "ageint310",
         "ageint300",
+        "ageint301",
+        "ageint298",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
@@ -7547,16 +7212,16 @@
         "standard",
         "scholarly"
       ],
-      "unique_citation_count": 18
+      "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
         "official_nga_strategy",
+        "ageint253",
         "ageint269",
         "official_nga_geoint_ai",
         "official_odni_icd_206",
@@ -7572,7 +7237,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint253",
         "ageint269",
@@ -7591,7 +7256,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 46,
+      "citation_count": 47,
       "citation_keys": [
         "ageint253",
         "ageint269",
@@ -7610,6 +7275,8 @@
         "ageint309",
         "ageint310",
         "ageint300",
+        "ageint301",
+        "ageint298",
         "ageint251",
         "ageint252",
         "ageint254",
@@ -7620,7 +7287,9 @@
         "ageint079",
         "ageint080",
         "ageint081",
-        "ageint082"
+        "ageint082",
+        "ageint306",
+        "ageint312"
       ],
       "family": "part unit intros",
       "flags": [],
@@ -7631,10 +7300,10 @@
         "scholarly",
         "source_guide"
       ],
-      "unique_citation_count": 28
+      "unique_citation_count": 32
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -7652,35 +7321,35 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 64,
+      "citation_count": 72,
       "citation_keys": [
-        "ageint255",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
         "ageint307",
-        "ageint305",
         "ageint304",
+        "ageint305",
         "ageint299",
         "ageint306",
         "ageint312",
         "ageint213",
         "ageint300",
+        "ageint255",
         "ageint256"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "source_guide"
       ],
       "unique_citation_count": 14
     },
     {
-      "citation_count": 74,
+      "citation_count": 65,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -7716,13 +7385,13 @@
       "unique_citation_count": 21
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint255",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
+        "ageint255",
         "ageint256",
         "official_cisa_cross_sector_cpg",
         "official_cisa_ics_recommended_practices",
@@ -7732,13 +7401,13 @@
       "flags": [],
       "path": "parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/03-governance-boundary.md",
       "source_families": [
-        "standard",
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -7757,7 +7426,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint252",
         "ageint255",
@@ -7775,9 +7444,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 58,
+      "citation_count": 65,
       "citation_keys": [
-        "ageint252",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
@@ -7786,6 +7454,7 @@
         "ageint218",
         "ageint219",
         "ageint220",
+        "ageint252",
         "ageint255"
       ],
       "family": "practice-studio",
@@ -7799,7 +7468,7 @@
       "unique_citation_count": 10
     },
     {
-      "citation_count": 62,
+      "citation_count": 53,
       "citation_keys": [
         "ageint252",
         "ageint255",
@@ -7830,13 +7499,13 @@
       "unique_citation_count": 17
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint252",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
+        "ageint252",
         "ageint255",
         "official_cisa_cross_sector_cpg",
         "official_cisa_ics_recommended_practices",
@@ -7852,7 +7521,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint252",
         "ageint255",
@@ -7871,7 +7540,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -7889,9 +7558,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 63,
+      "citation_count": 69,
       "citation_keys": [
-        "ageint255",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
@@ -7901,21 +7569,22 @@
         "ageint210",
         "ageint211",
         "ageint212",
+        "ageint255",
         "ageint256"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "source_guide",
         "practitioner_vendor"
       ],
       "unique_citation_count": 11
     },
     {
-      "citation_count": 65,
+      "citation_count": 56,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -7949,13 +7618,13 @@
       "unique_citation_count": 18
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint255",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
+        "ageint255",
         "ageint256",
         "official_cisa_cross_sector_cpg",
         "official_cisa_ics_recommended_practices",
@@ -7965,13 +7634,13 @@
       "flags": [],
       "path": "parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/03-governance-boundary.md",
       "source_families": [
-        "standard",
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -7990,7 +7659,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint255",
         "ageint257",
@@ -8008,9 +7677,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 76,
+      "citation_count": 86,
       "citation_keys": [
-        "ageint255",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
@@ -8019,20 +7687,21 @@
         "ageint214",
         "ageint215",
         "ageint216",
+        "ageint255",
         "ageint257"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "source_guide"
       ],
       "unique_citation_count": 10
     },
     {
-      "citation_count": 62,
+      "citation_count": 53,
       "citation_keys": [
         "ageint255",
         "ageint257",
@@ -8064,13 +7733,13 @@
       "unique_citation_count": 17
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint255",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
+        "ageint255",
         "ageint257",
         "official_cisa_cross_sector_cpg",
         "official_cisa_ics_recommended_practices",
@@ -8080,13 +7749,13 @@
       "flags": [],
       "path": "parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/03-governance-boundary.md",
       "source_families": [
-        "standard",
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint255",
         "ageint257",
@@ -8105,7 +7774,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint253",
         "ageint258",
@@ -8124,18 +7793,20 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 60,
+      "citation_count": 62,
       "citation_keys": [
-        "ageint253",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
         "ageint077",
+        "official_first_tlp_v2",
         "ageint307",
         "ageint305",
         "ageint304",
+        "official_nerc_cip_standards",
         "ageint218",
+        "ageint253",
         "ageint258"
       ],
       "family": "practice-studio",
@@ -8147,10 +7818,10 @@
         "scholarly",
         "source_guide"
       ],
-      "unique_citation_count": 11
+      "unique_citation_count": 13
     },
     {
-      "citation_count": 65,
+      "citation_count": 56,
       "citation_keys": [
         "ageint253",
         "ageint258",
@@ -8183,13 +7854,13 @@
       "unique_citation_count": 18
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint253",
         "official_nist_csf_2",
         "official_nist_sp_800_160r1",
         "official_nist_sp_800_82r3",
         "official_isa_iec_62443",
+        "ageint253",
         "ageint258",
         "official_cisa_cross_sector_cpg",
         "official_cisa_ics_recommended_practices",
@@ -8206,7 +7877,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint253",
         "ageint258",
@@ -8226,7 +7897,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 88,
+      "citation_count": 84,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -8296,7 +7967,7 @@
       "unique_citation_count": 54
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -8314,29 +7985,29 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 48,
+      "citation_count": 51,
       "citation_keys": [
-        "ageint238",
         "official_odni_eo_12333",
         "official_nsa_fisa",
         "official_eu_ai_act",
         "official_council_europe_ai_convention",
-        "ageint298",
         "ageint297",
+        "ageint298",
         "ageint172",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 59,
+      "citation_count": 50,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -8365,13 +8036,13 @@
       "unique_citation_count": 16
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_odni_eo_12333",
         "official_nsa_fisa",
         "official_eu_ai_act",
         "official_council_europe_ai_convention",
+        "ageint238",
         "ageint239",
         "official_pclob_oversight_reports",
         "official_ic_ai_ethics_principles",
@@ -8381,13 +8052,13 @@
       "flags": [],
       "path": "parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -8406,7 +8077,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint234",
         "ageint238",
@@ -8424,18 +8095,19 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 50,
+      "citation_count": 59,
       "citation_keys": [
-        "ageint234",
         "official_odni_eo_12333",
         "official_nsa_fisa",
         "official_eu_ai_act",
         "official_council_europe_ai_convention",
         "ageint221",
-        "ageint298",
+        "official_eo_12333_odni_text",
         "ageint297",
+        "ageint298",
         "ageint006",
         "ageint222",
+        "ageint234",
         "ageint238"
       ],
       "family": "practice-studio",
@@ -8445,10 +8117,10 @@
         "official",
         "source_guide"
       ],
-      "unique_citation_count": 11
+      "unique_citation_count": 12
     },
     {
-      "citation_count": 65,
+      "citation_count": 56,
       "citation_keys": [
         "ageint234",
         "ageint238",
@@ -8480,13 +8152,13 @@
       "unique_citation_count": 18
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint234",
         "official_odni_eo_12333",
         "official_nsa_fisa",
         "official_eu_ai_act",
         "official_council_europe_ai_convention",
+        "ageint234",
         "ageint238",
         "official_pclob_oversight_reports",
         "official_ic_ai_ethics_principles",
@@ -8502,7 +8174,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint234",
         "ageint238",
@@ -8521,7 +8193,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 43,
+      "citation_count": 39,
       "citation_keys": [
         "ageint234",
         "ageint238",
@@ -8561,7 +8233,7 @@
       "unique_citation_count": 26
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint253",
         "ageint255",
@@ -8579,9 +8251,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 61,
+      "citation_count": 63,
       "citation_keys": [
-        "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
@@ -8592,6 +8263,7 @@
         "ageint302",
         "ageint297",
         "ageint060",
+        "ageint253",
         "ageint255"
       ],
       "family": "practice-studio",
@@ -8605,7 +8277,7 @@
       "unique_citation_count": 12
     },
     {
-      "citation_count": 74,
+      "citation_count": 65,
       "citation_keys": [
         "ageint253",
         "ageint255",
@@ -8640,13 +8312,13 @@
       "unique_citation_count": 21
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint253",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
         "official_nga_strategy",
+        "ageint253",
         "ageint255",
         "official_nga_geoint_ai",
         "official_odni_icd_206",
@@ -8662,7 +8334,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint253",
         "ageint255",
@@ -8681,7 +8353,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint251",
         "ageint253",
@@ -8699,9 +8371,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 50,
+      "citation_count": 49,
       "citation_keys": [
-        "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
@@ -8712,6 +8383,7 @@
         "ageint298",
         "ageint297",
         "ageint049",
+        "ageint251",
         "ageint253"
       ],
       "family": "practice-studio",
@@ -8725,7 +8397,7 @@
       "unique_citation_count": 12
     },
     {
-      "citation_count": 68,
+      "citation_count": 59,
       "citation_keys": [
         "ageint251",
         "ageint253",
@@ -8759,13 +8431,13 @@
       "unique_citation_count": 19
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
         "official_nga_strategy",
+        "ageint251",
         "ageint253",
         "official_nga_geoint_ai",
         "official_odni_icd_206",
@@ -8781,7 +8453,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint251",
         "ageint253",
@@ -8800,7 +8472,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint251",
         "ageint252",
@@ -8818,9 +8490,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 62,
+      "citation_count": 61,
       "citation_keys": [
-        "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
@@ -8832,6 +8503,7 @@
         "ageint054",
         "ageint055",
         "ageint056",
+        "ageint251",
         "ageint252"
       ],
       "family": "practice-studio",
@@ -8846,7 +8518,7 @@
       "unique_citation_count": 13
     },
     {
-      "citation_count": 71,
+      "citation_count": 62,
       "citation_keys": [
         "ageint251",
         "ageint252",
@@ -8881,13 +8553,13 @@
       "unique_citation_count": 20
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint251",
         "official_ic_osint_strategy",
         "official_state_osint_strategy",
         "official_iso_19157_data_quality",
         "official_nga_strategy",
+        "ageint251",
         "ageint252",
         "official_nga_geoint_ai",
         "official_odni_icd_206",
@@ -8903,7 +8575,7 @@
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint251",
         "ageint252",
@@ -8922,7 +8594,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 65,
+      "citation_count": 61,
       "citation_keys": [
         "ageint251",
         "ageint253",
@@ -8983,31 +8655,32 @@
       "unique_citation_count": 45
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint251",
         "ageint268",
-        "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
-        "official_odni_icd_204"
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_nist_sp_800_161r1"
       ],
       "family": "overview",
       "flags": [],
       "path": "parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/00-overview.md",
       "source_families": [
         "official",
-        "standard"
+        "standard",
+        "scholarly"
       ],
       "unique_citation_count": 5
     },
     {
-      "citation_count": 76,
+      "citation_count": 81,
       "citation_keys": [
-        "ageint251",
-        "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
-        "official_odni_icd_204",
-        "official_odni_icd_504",
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_nist_sp_800_161r1",
+        "ageint266",
+        "ageint269",
         "ageint308",
         "ageint311",
         "ageint307",
@@ -9015,26 +8688,27 @@
         "ageint304",
         "ageint052",
         "ageint051",
-        "ageint269",
         "ageint309",
         "ageint310",
         "ageint300",
+        "ageint268",
         "ageint055",
         "ageint301",
-        "ageint268"
+        "ageint251"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/01-practice-studio.md",
       "source_families": [
         "official",
-        "source_guide",
-        "standard"
+        "scholarly",
+        "standard",
+        "source_guide"
       ],
       "unique_citation_count": 19
     },
     {
-      "citation_count": 92,
+      "citation_count": 82,
       "citation_keys": [
         "ageint251",
         "ageint268",
@@ -9059,10 +8733,9 @@
         "ageint309",
         "ageint310",
         "ageint300",
-        "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
-        "official_odni_icd_204",
-        "official_odni_icd_504"
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_nist_sp_800_161r1"
       ],
       "family": "evidence-contract",
       "flags": [],
@@ -9070,53 +8743,51 @@
       "source_families": [
         "official",
         "standard",
-        "source_guide"
+        "source_guide",
+        "scholarly"
       ],
-      "unique_citation_count": 27
+      "unique_citation_count": 26
     },
     {
-      "citation_count": 33,
+      "citation_count": 19,
       "citation_keys": [
-        "ageint251",
-        "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
-        "official_odni_icd_204",
-        "official_odni_icd_504",
-        "ageint268",
-        "official_odni_capco_register",
-        "official_federal_data_strategy",
-        "official_pclob_oversight_reports"
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_nist_sp_800_161r1",
+        "ageint251",
+        "ageint268"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/03-governance-boundary.md",
       "source_families": [
         "official",
+        "scholarly",
         "standard"
       ],
-      "unique_citation_count": 9
+      "unique_citation_count": 5
     },
     {
-      "citation_count": 22,
+      "citation_count": 19,
       "citation_keys": [
         "ageint251",
         "ageint268",
-        "official_intelligence_gov_how_ic_works",
         "official_odni_icd_203",
-        "official_odni_icd_204",
-        "official_odni_icd_504"
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_nist_sp_800_161r1"
       ],
       "family": "assessment-route",
       "flags": [],
       "path": "parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/04-assessment-route.md",
       "source_families": [
         "official",
-        "standard"
+        "standard",
+        "scholarly"
       ],
-      "unique_citation_count": 6
+      "unique_citation_count": 5
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint262",
         "ageint263",
@@ -9136,25 +8807,26 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 126,
+      "citation_count": 146,
       "citation_keys": [
-        "ageint262",
         "official_odni_icd_203",
         "scholarly_heuer_psychology_intelligence_analysis",
         "official_nist_sp_800_161r1",
+        "ageint262",
+        "ageint264",
         "ageint308",
         "ageint311",
         "ageint197",
         "ageint198",
         "ageint199",
         "ageint179",
-        "ageint200",
         "ageint201",
+        "ageint206",
+        "ageint200",
         "ageint202",
         "ageint203",
         "ageint204",
         "ageint205",
-        "ageint206",
         "ageint207",
         "ageint025",
         "ageint300",
@@ -9164,18 +8836,38 @@
       ],
       "family": "practice-studio",
       "flags": [],
-      "path": "parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/01-practice-studio.md",
+      "path": "parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/01-practice-studio-01.md",
       "source_families": [
-        "source_guide",
         "official",
         "scholarly",
         "standard",
+        "source_guide",
         "practitioner_vendor"
       ],
-      "unique_citation_count": 23
+      "unique_citation_count": 24
     },
     {
-      "citation_count": 109,
+      "citation_count": 5,
+      "citation_keys": [
+        "official_odni_icd_203",
+        "scholarly_heuer_psychology_intelligence_analysis",
+        "official_nist_sp_800_161r1",
+        "ageint262",
+        "ageint263"
+      ],
+      "family": "practice-studio",
+      "flags": [],
+      "path": "parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/01-practice-studio-02.md",
+      "source_families": [
+        "official",
+        "scholarly",
+        "standard",
+        "source_guide"
+      ],
+      "unique_citation_count": 5
+    },
+    {
+      "citation_count": 100,
       "citation_keys": [
         "ageint262",
         "ageint263",
@@ -9223,27 +8915,27 @@
       "unique_citation_count": 32
     },
     {
-      "citation_count": 24,
+      "citation_count": 19,
       "citation_keys": [
-        "ageint262",
         "official_odni_icd_203",
         "scholarly_heuer_psychology_intelligence_analysis",
         "official_nist_sp_800_161r1",
+        "ageint262",
         "ageint263"
       ],
       "family": "governance-boundary",
       "flags": [],
       "path": "parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
         "scholarly",
-        "standard"
+        "standard",
+        "source_guide"
       ],
       "unique_citation_count": 5
     },
     {
-      "citation_count": 21,
+      "citation_count": 19,
       "citation_keys": [
         "ageint262",
         "ageint263",
@@ -9263,7 +8955,7 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 69,
+      "citation_count": 65,
       "citation_keys": [
         "ageint262",
         "ageint263",
@@ -9328,7 +9020,7 @@
       "unique_citation_count": 49
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9346,9 +9038,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 66,
+      "citation_count": 70,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
@@ -9364,19 +9055,20 @@
         "ageint094",
         "ageint095",
         "ageint096",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/psychological-operations-and-influence/active-measures-and-disinformation/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 17
     },
     {
-      "citation_count": 83,
+      "citation_count": 74,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9413,13 +9105,13 @@
       "unique_citation_count": 24
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint239",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -9429,14 +9121,14 @@
       "flags": [],
       "path": "parts/psychological-operations-and-influence/active-measures-and-disinformation/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9455,7 +9147,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9473,9 +9165,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 56,
+      "citation_count": 61,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
@@ -9490,20 +9181,21 @@
         "ageint106",
         "ageint003",
         "ageint107",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 16
     },
     {
-      "citation_count": 80,
+      "citation_count": 71,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9541,13 +9233,13 @@
       "unique_citation_count": 23
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint239",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -9557,14 +9249,14 @@
       "flags": [],
       "path": "parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9583,7 +9275,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9601,9 +9293,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 54,
+      "citation_count": 55,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
@@ -9613,23 +9304,24 @@
         "ageint085",
         "ageint086",
         "ageint087",
-        "ageint302",
         "ageint297",
+        "ageint302",
         "ageint308",
         "ageint311",
+        "ageint238",
         "ageint239"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/psychological-operations-and-influence/psyop-and-miso-doctrine/01-practice-studio.md",
       "source_families": [
-        "source_guide",
-        "official"
+        "official",
+        "source_guide"
       ],
       "unique_citation_count": 15
     },
     {
-      "citation_count": 77,
+      "citation_count": 68,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9665,13 +9357,13 @@
       "unique_citation_count": 22
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint239",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -9681,14 +9373,14 @@
       "flags": [],
       "path": "parts/psychological-operations-and-influence/psyop-and-miso-doctrine/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9707,7 +9399,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -9727,7 +9419,6 @@
     {
       "citation_count": 60,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
@@ -9741,21 +9432,22 @@
         "ageint308",
         "ageint311",
         "ageint100",
+        "ageint238",
         "ageint240"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/psychological-operations-and-influence/social-engineering/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "standard",
         "scholarly"
       ],
       "unique_citation_count": 15
     },
     {
-      "citation_count": 77,
+      "citation_count": 68,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -9792,13 +9484,13 @@
       "unique_citation_count": 22
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint238",
         "official_cisa_foreign_influence",
         "official_nato_counter_information_threats",
         "official_cisa_election_security_influence",
         "official_nato_hybrid_threats",
+        "ageint238",
         "ageint240",
         "official_oecd_disinformation_misinformation",
         "scholarly_gcsp_cognitive_security",
@@ -9808,14 +9500,14 @@
       "flags": [],
       "path": "parts/psychological-operations-and-influence/social-engineering/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "scholarly"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint238",
         "ageint240",
@@ -9834,7 +9526,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 92,
+      "citation_count": 88,
       "citation_keys": [
         "ageint238",
         "ageint239",
@@ -9911,7 +9603,7 @@
       "unique_citation_count": 62
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint258",
         "ageint260",
@@ -9932,7 +9624,6 @@
     {
       "citation_count": 70,
       "citation_keys": [
-        "ageint258",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
@@ -9941,6 +9632,7 @@
         "ageint042",
         "ageint298",
         "ageint297",
+        "official_nist_fips_186_5_dss",
         "ageint027",
         "ageint028",
         "ageint043",
@@ -9951,20 +9643,21 @@
         "ageint310",
         "ageint300",
         "ageint018",
+        "ageint258",
         "ageint260"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/signals-intelligence-sigint/modern-sigint-and-cryptography/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "standard"
       ],
-      "unique_citation_count": 20
+      "unique_citation_count": 21
     },
     {
-      "citation_count": 92,
+      "citation_count": 83,
       "citation_keys": [
         "ageint258",
         "ageint260",
@@ -10006,13 +9699,13 @@
       "unique_citation_count": 27
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint258",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
         "official_ic_osint_strategy",
+        "ageint258",
         "ageint260",
         "official_odni_eo_12333",
         "official_nsa_fisa",
@@ -10022,14 +9715,14 @@
       "flags": [],
       "path": "parts/signals-intelligence-sigint/modern-sigint-and-cryptography/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "official",
+        "source_guide",
         "standard"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint258",
         "ageint260",
@@ -10049,7 +9742,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint255",
         "ageint258",
@@ -10068,9 +9761,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 42,
+      "citation_count": 39,
       "citation_keys": [
-        "ageint255",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
@@ -10078,23 +9770,24 @@
         "ageint035",
         "ageint036",
         "ageint037",
-        "ageint038",
         "ageint039",
+        "ageint038",
         "ageint040",
+        "ageint255",
         "ageint258"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/signals-intelligence-sigint/sigint-fundamentals/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
-        "source_guide"
+        "source_guide",
+        "standard"
       ],
       "unique_citation_count": 12
     },
     {
-      "citation_count": 68,
+      "citation_count": 59,
       "citation_keys": [
         "ageint255",
         "ageint258",
@@ -10127,13 +9820,13 @@
       "unique_citation_count": 19
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint255",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
         "official_ic_osint_strategy",
+        "ageint255",
         "ageint258",
         "official_odni_eo_12333",
         "official_nsa_fisa",
@@ -10143,14 +9836,14 @@
       "flags": [],
       "path": "parts/signals-intelligence-sigint/sigint-fundamentals/03-governance-boundary.md",
       "source_families": [
-        "standard",
         "official",
+        "standard",
         "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint255",
         "ageint258",
@@ -10170,7 +9863,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 55,
+      "citation_count": 51,
       "citation_keys": [
         "ageint255",
         "ageint258",
@@ -10224,7 +9917,7 @@
       "unique_citation_count": 39
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint237",
         "ageint258",
@@ -10243,9 +9936,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 60,
+      "citation_count": 59,
       "citation_keys": [
-        "ageint237",
         "official_nist_sp_800_150",
         "official_oasis_stix_21",
         "official_oasis_taxii_21",
@@ -10258,20 +9950,21 @@
         "ageint071",
         "ageint309",
         "ageint310",
+        "ageint237",
         "ageint258"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/01-practice-studio.md",
       "source_families": [
-        "official",
         "standard",
-        "source_guide"
+        "source_guide",
+        "official"
       ],
       "unique_citation_count": 14
     },
     {
-      "citation_count": 74,
+      "citation_count": 65,
       "citation_keys": [
         "ageint237",
         "ageint258",
@@ -10307,13 +10000,13 @@
       "unique_citation_count": 21
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint237",
         "official_nist_sp_800_150",
         "official_oasis_stix_21",
         "official_oasis_taxii_21",
         "official_mitre_attack_enterprise",
+        "ageint237",
         "ageint258",
         "official_cisa_kev_catalog",
         "official_nist_sp_800_61r3",
@@ -10323,14 +10016,14 @@
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/03-governance-boundary.md",
       "source_families": [
-        "official",
         "standard",
+        "official",
         "source_guide"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint237",
         "ageint258",
@@ -10350,7 +10043,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint258",
         "ageint261",
@@ -10368,9 +10061,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 88,
+      "citation_count": 92,
       "citation_keys": [
-        "ageint258",
         "official_nist_sp_800_150",
         "official_oasis_stix_21",
         "official_oasis_taxii_21",
@@ -10383,27 +10075,29 @@
         "ageint300",
         "ageint303",
         "ageint304",
-        "ageint066",
         "ageint067",
         "ageint068",
+        "ageint310",
+        "ageint066",
         "ageint069",
-        "ageint009",
         "ageint070",
+        "ageint009",
         "ageint071",
+        "ageint258",
         "ageint261"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "standard",
+        "source_guide",
         "official"
       ],
-      "unique_citation_count": 21
+      "unique_citation_count": 22
     },
     {
-      "citation_count": 95,
+      "citation_count": 86,
       "citation_keys": [
         "ageint258",
         "ageint261",
@@ -10445,13 +10139,13 @@
       "unique_citation_count": 28
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint258",
         "official_nist_sp_800_150",
         "official_oasis_stix_21",
         "official_oasis_taxii_21",
         "official_mitre_attack_enterprise",
+        "ageint258",
         "ageint261",
         "official_cisa_kev_catalog",
         "official_nist_sp_800_61r3",
@@ -10461,14 +10155,14 @@
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "standard",
+        "source_guide",
         "official"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint258",
         "ageint261",
@@ -10487,7 +10181,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -10505,9 +10199,8 @@
       "unique_citation_count": 5
     },
     {
-      "citation_count": 50,
+      "citation_count": 46,
       "citation_keys": [
-        "ageint255",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
@@ -10520,20 +10213,21 @@
         "ageint305",
         "ageint302",
         "ageint297",
+        "ageint255",
         "ageint256"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/01-practice-studio.md",
       "source_families": [
-        "standard",
         "official",
-        "source_guide"
+        "source_guide",
+        "standard"
       ],
       "unique_citation_count": 14
     },
     {
-      "citation_count": 74,
+      "citation_count": 65,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -10568,13 +10262,13 @@
       "unique_citation_count": 21
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint255",
         "official_intelligence_gov_how_ic_works",
         "official_odni_icd_204",
         "official_joint_pub_2_0",
         "official_ic_osint_strategy",
+        "ageint255",
         "ageint256",
         "official_odni_eo_12333",
         "official_nsa_fisa",
@@ -10584,13 +10278,13 @@
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/03-governance-boundary.md",
       "source_families": [
-        "standard",
-        "official"
+        "official",
+        "standard"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint255",
         "ageint256",
@@ -10609,7 +10303,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 11,
+      "citation_count": 7,
       "citation_keys": [
         "ageint258",
         "ageint266",
@@ -10629,7 +10323,6 @@
     {
       "citation_count": 70,
       "citation_keys": [
-        "ageint258",
         "official_nist_sp_800_150",
         "official_oasis_stix_21",
         "official_oasis_taxii_21",
@@ -10640,25 +10333,27 @@
         "ageint074",
         "ageint075",
         "ageint076",
-        "ageint300",
         "ageint304",
+        "official_slsa_supply_chain_security_specification",
+        "ageint300",
         "ageint306",
         "ageint077",
+        "ageint258",
         "ageint266"
       ],
       "family": "practice-studio",
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/01-practice-studio.md",
       "source_families": [
-        "source_guide",
         "standard",
         "official",
+        "source_guide",
         "scholarly"
       ],
-      "unique_citation_count": 16
+      "unique_citation_count": 17
     },
     {
-      "citation_count": 80,
+      "citation_count": 71,
       "citation_keys": [
         "ageint258",
         "ageint266",
@@ -10696,13 +10391,13 @@
       "unique_citation_count": 23
     },
     {
-      "citation_count": 33,
+      "citation_count": 28,
       "citation_keys": [
-        "ageint258",
         "official_nist_sp_800_150",
         "official_oasis_stix_21",
         "official_oasis_taxii_21",
         "official_mitre_attack_enterprise",
+        "ageint258",
         "ageint266",
         "official_cisa_kev_catalog",
         "official_nist_sp_800_61r3",
@@ -10712,14 +10407,14 @@
       "flags": [],
       "path": "parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/03-governance-boundary.md",
       "source_families": [
-        "source_guide",
         "standard",
+        "source_guide",
         "official"
       ],
       "unique_citation_count": 9
     },
     {
-      "citation_count": 22,
+      "citation_count": 20,
       "citation_keys": [
         "ageint258",
         "ageint266",
@@ -10738,7 +10433,7 @@
       "unique_citation_count": 6
     },
     {
-      "citation_count": 94,
+      "citation_count": 90,
       "citation_keys": [
         "ageint258",
         "ageint261",
@@ -10829,7 +10524,7 @@
   },
   "schema_version": "1.0",
   "summary": {
-    "cited_files": 294,
+    "cited_files": 298,
     "claim_bearing_family_counts": {
       "assessment-route": 51,
       "evidence-contract": 51,
@@ -10837,34 +10532,34 @@
       "method-assurance-reference.md": 1,
       "overview": 51,
       "part unit intros": 16,
-      "practice-studio": 54
+      "practice-studio": 56
     },
-    "claim_bearing_files": 275,
-    "generated_markdown_files": 330,
+    "claim_bearing_files": 277,
+    "generated_markdown_files": 333,
     "single_source_family_claim_bearing_files": 0,
     "source_family_file_counts": {
       "curated_anchor": 4,
-      "law_policy": 9,
-      "official": 285,
+      "law_policy": 7,
+      "official": 287,
       "practitioner_vendor": 27,
       "public_domain": 5,
-      "scholarly": 98,
-      "source_guide": 216,
-      "standard": 197
+      "scholarly": 107,
+      "source_guide": 220,
+      "standard": 198
     },
     "source_family_mentions": {
-      "curated_anchor": 32,
-      "law_policy": 19,
-      "official": 3096,
-      "practitioner_vendor": 105,
-      "public_domain": 21,
-      "scholarly": 693,
-      "source_guide": 1502,
-      "standard": 883
+      "curated_anchor": 25,
+      "law_policy": 14,
+      "official": 2890,
+      "practitioner_vendor": 106,
+      "public_domain": 17,
+      "scholarly": 605,
+      "source_guide": 1498,
+      "standard": 842
     },
     "thin_claim_bearing_files": 0,
     "uncited_claim_bearing_files": 0,
-    "uncited_files": 36
+    "uncited_files": 35
   },
   "thresholds": {
     "claim_bearing_min_unique_citations": 2,

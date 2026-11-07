@@ -2,25 +2,30 @@
 
 ## FOUNDATIONS OF INTELLIGENCE TRADECRAFT learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-foundations-of-intelligence-tradecraft]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-foundations-of-intelligence-tradecraft].
 
 ### intelligence-cycle governance discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-foundations-of-intelligence-tradecraft]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-foundations-of-intelligence-tradecraft].
 
 This unit teaches **intelligence-cycle governance**. Requirements, collection, processing, analysis, dissemination, feedback, records, and oversight remain distinct so learners can see when research becomes intelligence work.
 
 ### intelligence-cycle governance source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-foundations-of-intelligence-tradecraft]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-foundations-of-intelligence-tradecraft].
 
 Use source-guide citations for inherited curriculum topics and official/standards anchors for claims about authority, quality, records, and review.
 
 ### intelligence-cycle governance practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-foundations-of-intelligence-tradecraft]; [@ageint238].
+The recurring practice artifact is a **requirements-to-product traceability ledger** that draws on requirement card, source descriptor, confidence statement, and dissemination and records note. The unit keeps its learning spine explicit. Classroom packet: a fictional storm desk must decide whether to postpone tomorrow's seminar. Bulletin A forecasts disruption; map B is two years old; notice C cancels today's bus service only.
 
-The recurring practice artifact is a **requirements-to-product traceability ledger** that draws on requirement card, source descriptor, confidence statement, and dissemination and records note. The unit keeps its learning spine explicit. Learners translate a decision need into an accountable question, identify evidence channels, write confidence language, and preserve audit context.
+1. Write a requirement card naming tomorrow's seminar, the decision deadline, and the instructor as customer; reject a stale requirement about today's attendance.
+2. Log each item's origin, date, and coverage, then separate the forecast from observed cancellations and identify the missing tomorrow-service notice.
+3. Test the draft against notice C with its date hidden, then restored: today's cancellation must not become evidence of tomorrow's cancellation.
+4. Submit a brief saying disruption is possible but tomorrow's transport status is unresolved; evidentiary confidence is limited by the missing current notice. Retain the source ledger and ask the customer whether this answers the requirement.
+Stop at the deadline without inventing service status; hand the unresolved notice check to the instructor before any dissemination beyond the class.
+The common claim-record format is provided in [@sec:analytic-workflow].
 
 ### intelligence-cycle governance safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +37,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint238]; [@ageint237].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint238]; [@ageint237].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint238]; [@ageint237].
 
 Capstone thread:
 
@@ -53,7 +58,7 @@ The unit uses [@fig:part-foundations-of-intelligence-tradecraft-module-map], [@f
 
 Navigation links: [@sec:curriculum_orientation], [@sec:method-assurance-reference], [@sec:chapter-the-nature-of-intelligence].
 
-![The unit module map traces the part's chapters as a linear reading sequence. The captioned view belongs to the foundations of intelligence tradecraft section and should be read as a map of 3 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last, not as a capability score or live-task instruction.](../../../figures/mermaid/part-foundations-of-intelligence-tradecraft-module-map.png){#fig:part-foundations-of-intelligence-tradecraft-module-map}
+![The FOUNDATIONS OF INTELLIGENCE TRADECRAFT module map traces the part's chapters as a linear reading sequence. The captioned view belongs to the foundations of intelligence tradecraft section and should be read as a map of 3 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last, not as a capability score or live-task instruction.](../../../figures/mermaid/part-foundations-of-intelligence-tradecraft-module-map.png){#fig:part-foundations-of-intelligence-tradecraft-module-map}
 
 ![Part I frames intelligence as a cyclic process (ch1) driven by community architecture (ch2) and disciplined at every step by tradecraft principles and control markings (ch3). Its reader value is to make The Intelligence Cycle (ch1), Planning and Direction, Collection, and Processing visible at a glance, with the foundations of intelligence tradecraft section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-foundations-governed-cycle.png){#fig:part-foundations-governed-cycle}
 
@@ -64,5 +69,5 @@ Navigation links: [@sec:curriculum_orientation], [@sec:method-assurance-referenc
 | Module | Section reference | Source spine |
 |---|---|---|
 | The Nature of Intelligence | [@sec:chapter-the-nature-of-intelligence] | [@ageint238]; [@ageint237]; [@ageint270]; [@ageint273]; [@ageint274]; [@ageint275]; [@ageint286]; [@ageint287]; [@ageint292]; [@ageint001]; [@ageint002]; [@ageint003]; [@ageint004]; [@ageint005]; [@ageint297]; [@ageint298]; [@ageint309]; [@ageint310]; [@ageint300]. |
-| Intelligence Community Architectures | [@sec:chapter-intelligence-community-architectures] | [@ageint234]; [@ageint247]; [@ageint249]; [@ageint276]; [@ageint277]; [@ageint284]; [@ageint288]; [@ageint289]; [@ageint293]; [@ageint006]; [@ageint007]; [@ageint008]; [@ageint009]; [@ageint010]; [@ageint011]; [@ageint012]; [@ageint297]; [@ageint298]. |
-| Tradecraft: Core Principles | [@sec:chapter-tradecraft-core-principles] | [@ageint237]; [@ageint266]; [@ageint269]; [@ageint278]; [@ageint279]; [@ageint283]; [@ageint290]; [@ageint291]; [@ageint294]; [@ageint013]; [@ageint014]; [@ageint015]; [@ageint016]; [@ageint017]; [@ageint018]; [@ageint005]; [@ageint019]; [@ageint297]; [@ageint298]. |
+| Intelligence Community Architectures | [@sec:chapter-intelligence-community-architectures] | [@ageint234]; [@ageint247]; [@ageint249]; [@ageint276]; [@ageint277]; [@ageint284]; [@ageint288]; [@ageint289]; [@ageint293]; [@ageint006]; [@ageint007]; [@ageint008]; [@ageint009]; [@ageint010]; [@ageint011]; [@ageint012]; [@ageint297]; [@ageint298]; [@ageint306]; [@ageint312]. |
+| Tradecraft: Core Principles | [@sec:chapter-tradecraft-core-principles] | [@ageint237]; [@ageint266]; [@ageint269]; [@ageint278]; [@ageint279]; [@ageint283]; [@ageint290]; [@ageint291]; [@ageint294]; [@ageint013]; [@ageint014]; [@ageint015]; [@ageint016]; [@ageint017]; [@ageint018]; [@ageint005]; [@ageint019]; [@ageint297]; [@ageint298]; [@ageint305]; [@ageint304]; [@ageint303]. |

@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,23 +182,425 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1 id="sec:part-psychological-operations-and-influence">PSYCHOLOGICAL
 OPERATIONS AND INFLUENCE</h1>
 <h2
 id="psychological-operations-and-influence-learning-spine-and-source-route-unit-purpose-module-order-and-evidence-handoff">PSYCHOLOGICAL
 OPERATIONS AND INFLUENCE learning spine and source route: unit purpose,
 module order, and evidence handoff</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:part-psychological-operations-and-influence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-psychological-operations-and-influence">[@sec:part-psychological-operations-and-influence]</span>.</p>
 <h3
 id="information-integrity-and-influence-analysis-discipline-spine-domain-question-and-learning-focus">information-integrity
 and influence analysis discipline spine: domain question and learning
 focus</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:part-psychological-operations-and-influence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-psychological-operations-and-influence">[@sec:part-psychological-operations-and-influence]</span>.</p>
 <p>This unit teaches <strong>information-integrity and influence
 analysis</strong>. Influence lessons analyze narratives, provenance,
 audience harm, attribution caution, and transparent resilience education
@@ -200,22 +609,38 @@ without persuasion design.</p>
 id="information-integrity-and-influence-analysis-source-use-contract-citation-roles-and-evidence-limits">information-integrity
 and influence analysis source-use contract: citation roles and evidence
 limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:part-psychological-operations-and-influence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-psychological-operations-and-influence">[@sec:part-psychological-operations-and-influence]</span>.</p>
 <p>Use CISA and NATO anchors for foreign influence, information threats,
 public resilience, and transparent mitigation claims.</p>
 <h3
 id="information-integrity-and-influence-analysis-practice-artifact-recurring-packet-and-retained-evidence">information-integrity
 and influence analysis practice artifact: recurring packet and retained
 evidence</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:part-psychological-operations-and-influence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-psychological-operations-and-influence">[@sec:part-psychological-operations-and-influence]</span>.</p>
 <p>The recurring practice artifact is a <strong>narrative-risk and
 resilience map</strong> that draws on narrative provenance chain,
 audience-harm note, attribution caveat, and transparent response option.
-The unit keeps its learning spine explicit. Learners separate message
-observation from attribution, identify harm, and choose transparent
-education or correction options.</p>
+The unit keeps its learning spine explicit. Classroom packet: six
+synthetic posts repeat a claim that a fictional museum will charge
+admission; five copy one post, while a dated museum notice limits a fee
+to a special exhibition.</p>
+<ol type="1">
+<li>Code the proposition, date, claimed source, and distinction between
+general admission and the exhibition.</li>
+<li>Build a repost tree and compare the claim with the notice without
+collecting audience identities.</li>
+<li>Remove the five copies: apparent volume falls, but independent
+support for the broader claim remains absent.</li>
+<li>Deliver a narrative-risk map judging the general-admission claim
+unsupported by this packet, with confusion about scope as a credible
+alternative to deliberate deception. Authorship, sponsorship, reach, and
+intent remain unresolved. Draft a transparent classroom correction
+quoting the fee scope, not a targeted persuasion plan. Stop if a
+proposed response profiles an audience or assigns an actor; hand release
+wording to the instructor.</li>
+</ol>
 <h3
 id="information-integrity-and-influence-analysis-safety-boundary-accountable-synthetic-and-evidence-bounded-limits">information-integrity
 and influence analysis safety boundary: accountable, synthetic, and
@@ -237,13 +662,17 @@ ledger, safe-practice lab packet, failure-mode note, instructor rubric,
 and debrief memo. The full source-lane and evidence-package ledgers
 appear in the orientation and appendices; this unit introduction keeps
 only the learner-facing spine for [ageint238]; [ageint239].</p>
-<p>This unit’s safety gates are scope authorization, rights review, data
-provenance, tool allowlisting, human oversight, rollback, and
-evidence-bounded output. A missing gate turns the activity into a
-tabletop, audit, or written governance exercise until the gate is
-restored against [ageint238]; [ageint239].</p>
+<p>This unit’s safety gates are documented authority for the exact
+activity, rights review, permitted data provenance, tool allowlisting,
+human oversight, and evidence-bounded output. A missing or unknown gate
+pauses the affected activity, including processing or sharing already
+supplied data. A written risk exception cannot waive authority or
+rights. A replacement tabletop may begin only after independently
+permitted synthetic inputs, tools and review responsibilities are
+established; it does not inherit permission from the stopped activity.
+Inspect the applicable source context: [ageint238]; [ageint239].</p>
 <p>Capstone thread:</p>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -293,7 +722,7 @@ handoff owner</td>
 <td>all unresolved questions and future approvals are explicit</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Research lane:</strong> Cognitive Security and Influence
 Resilience. Core anchors: [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
@@ -309,28 +738,34 @@ attention, trust, and decision quality without designing persuasion?
 id="psychological-operations-and-influence-visual-navigation-and-module-map-evidence-flow-order-and-safety-cues">PSYCHOLOGICAL
 OPERATIONS AND INFLUENCE visual navigation and module map: evidence
 flow, order, and safety cues</h3>
-<p>The unit uses
-[fig:part-psychological-operations-and-influence-module-map] and
-[fig:part-psyop-influence-cognitive-defense-spine] to map its evidence
-flow, safety boundaries, review artifacts, and refresh cues.</p>
-<p>Navigation links: [sec:curriculum_orientation],
-[sec:chapter-financial-intelligence-finint],
-[sec:chapter-psyop-and-miso-doctrine].</p>
+<p>The unit uses <span class="citation"
+data-cites="fig:part-psychological-operations-and-influence-module-map">[@fig:part-psychological-operations-and-influence-module-map]</span>
+and <span class="citation"
+data-cites="fig:part-psyop-influence-cognitive-defense-spine">[@fig:part-psyop-influence-cognitive-defense-spine]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:chapter-financial-intelligence-finint">[@sec:chapter-financial-intelligence-finint]</span>,
+<span class="citation"
+data-cites="sec:chapter-psyop-and-miso-doctrine">[@sec:chapter-psyop-and-miso-doctrine]</span>.</p>
 <figure id="fig:part-psychological-operations-and-influence-module-map">
-<img
-src="../../../figures/mermaid/part-psychological-operations-and-influence-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence." />
-<figcaption>The unit module map traces the part’s
-chapters as a linear reading sequence. Its reader value is to make 4
-module nodes in the unit’s ordered, source-backed reading sequence from
-its first module to its last visible at a glance, with the psychological
-operations and influence section as the source section and defensive
-review as the boundary.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/part-psychological-operations-and-influence-module-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The PSYCHOLOGICAL OPERATIONS AND INFLUENCE module map traces the part’s chapters as a linear…"><img
+src="../figures/mermaid/part-psychological-operations-and-influence-module-map.png"
+alt="Flow chart of PSYCHOLOGICAL OPERATIONS AND INFLUENCE chapter titles in reading order. Labeled content highlights 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, with the visual tied back to the psychological operations and influence section." aria-details="fig-part-psychological-operations-and-influence-module-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>The PSYCHOLOGICAL OPERATIONS AND
+INFLUENCE module map traces the part’s chapters as a linear reading
+sequence. Its reader value is to make 4 module nodes in the unit’s
+ordered, source-backed reading sequence from its first module to its
+last visible at a glance, with the psychological operations and
+influence section as the source section and defensive review as the
+boundary.</figcaption>
+<details id="fig-part-psychological-operations-and-influence-module-map-long-description" class="figure-long-description" data-figure-label="fig:part-psychological-operations-and-influence-module-map"><summary>Detailed description of figure part psychological operations and influence module map</summary><p>This process-flow figure is assigned to the psychological operations and influence section and should be read as an accessible equivalent for PSYCHOLOGICAL OPERATIONS AND INFLUENCE Module Map. The short alternative identifies the figure as: Flow chart of PSYCHOLOGICAL OPERATIONS AND INFLUENCE chapter titles in reading order. Labeled content highlights 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, with the visual tied back to the psychological operations and influence section. The full visual conveys 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last. The caption explains the reader task as follows: The PSYCHOLOGICAL OPERATIONS AND INFLUENCE module map traces the part&#x27;s chapters as a linear reading sequence. Its reader value is to make 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last visible at a glance, with the psychological operations and influence section as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:part-psyop-influence-cognitive-defense-spine">
-<img
-src="../../../figures/mermaid/part-psyop-influence-cognitive-defense-spine.png"
-alt="Studied defensively, this Part is a doctrine-and-countermeasure spine: each influence chapter is matched to the detection signals and cognitive-resilience controls that defend against it." />
+<a class="figure-full-size-link" href="../figures/mermaid/part-psyop-influence-cognitive-defense-spine.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Studied defensively, this Part is a doctrine-and-countermeasure spine: each influence…"><img
+src="../figures/mermaid/part-psyop-influence-cognitive-defense-spine.png"
+alt="Central doctrine spine with four influence chapters branching to defensive countermeasures: PSYOP/MISO doctrine to authority and oversight, Active Measures to provenance and attribution, Social Engineering to verification and consent, Info Warfare to cognitive resilience, all feeding a shared cognitive-defense posture." aria-details="fig-part-psyop-influence-cognitive-defense-spine-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Studied defensively, this Part is a
 doctrine-and-countermeasure spine: each influence chapter is matched to
 the detection signals and cognitive-resilience controls that defend
@@ -339,12 +774,12 @@ lets readers compare Influence and Cognitive Security Doctrine, Chapters
 (Defensive Lens), Ch18 PSYOP/MISO Doctrine, and Ch19 Active Measures so
 the visual functions as a traceable course aid rather than an unscoped
 assertion.</figcaption>
-</figure>
+<details id="fig-part-psyop-influence-cognitive-defense-spine-long-description" class="figure-long-description" data-figure-label="fig:part-psyop-influence-cognitive-defense-spine"><summary>Detailed description of figure part psyop influence cognitive defense spine</summary><p>This data-visualization figure is assigned to the psychological operations and influence section and should be read as an accessible equivalent for Psychological Operations and Influence: The Cognitive-Defense Doctrine Spine. The short alternative identifies the figure as: Central doctrine spine with four influence chapters branching to defensive countermeasures: PSYOP/MISO doctrine to authority and oversight, Active Measures to provenance and attribution, Social Engineering to verification and consent, Info Warfare to cognitive resilience, all feeding a shared cognitive-defense posture. The full visual conveys Influence and Cognitive Security Doctrine, Chapters (Defensive Lens), Ch18 PSYOP/MISO Doctrine, Ch19 Active Measures, Ch20 Social Engineering, Ch21 Info Warfare and CogSec, Authority and Oversight, and Provenance and Attribution. The caption explains the reader task as follows: Studied defensively, this Part is a doctrine-and-countermeasure spine: each influence chapter is matched to the detection signals and cognitive-resilience controls that defend against it. In the psychological operations and influence section, it lets readers compare Influence and Cognitive Security Doctrine, Chapters (Defensive Lens), Ch18 PSYOP/MISO Doctrine, and Ch19 Active Measures so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <h3
 id="psychological-operations-and-influence-module-roster-and-source-lane-inventory-citations-lanes-and-learner-route">PSYCHOLOGICAL
 OPERATIONS AND INFLUENCE module roster and source-lane inventory:
 citations, lanes, and learner route</h3>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -360,7 +795,8 @@ citations, lanes, and learner route</h3>
 <tbody>
 <tr>
 <td>PSYOP and MISO Doctrine</td>
-<td>[sec:chapter-psyop-and-miso-doctrine]</td>
+<td><span class="citation"
+data-cites="sec:chapter-psyop-and-miso-doctrine">[@sec:chapter-psyop-and-miso-doctrine]</span></td>
 <td>[ageint238]; [ageint239]; [ageint242]; [ageint276]; [ageint277];
 [ageint284]; [ageint288]; [ageint289]; [ageint293]; [ageint083];
 [ageint084]; [ageint085]; [ageint086]; [ageint087]; [ageint302];
@@ -368,7 +804,8 @@ citations, lanes, and learner route</h3>
 </tr>
 <tr>
 <td>Active Measures and Disinformation</td>
-<td>[sec:chapter-active-measures-and-disinformation]</td>
+<td><span class="citation"
+data-cites="sec:chapter-active-measures-and-disinformation">[@sec:chapter-active-measures-and-disinformation]</span></td>
 <td>[ageint238]; [ageint239]; [ageint240]; [ageint278]; [ageint279];
 [ageint283]; [ageint290]; [ageint291]; [ageint294]; [ageint088];
 [ageint089]; [ageint090]; [ageint091]; [ageint092]; [ageint093];
@@ -376,7 +813,8 @@ citations, lanes, and learner route</h3>
 </tr>
 <tr>
 <td>Social Engineering</td>
-<td>[sec:chapter-social-engineering]</td>
+<td><span class="citation"
+data-cites="sec:chapter-social-engineering">[@sec:chapter-social-engineering]</span></td>
 <td>[ageint238]; [ageint240]; [ageint242]; [ageint280]; [ageint281];
 [ageint282]; [ageint292]; [ageint295]; [ageint296]; [ageint097];
 [ageint098]; [ageint099]; [ageint100]; [ageint300]; [ageint304];
@@ -384,14 +822,15 @@ citations, lanes, and learner route</h3>
 </tr>
 <tr>
 <td>Information Warfare and Cognitive Security</td>
-<td>[sec:chapter-information-warfare-and-cognitive-security]</td>
+<td><span class="citation"
+data-cites="sec:chapter-information-warfare-and-cognitive-security">[@sec:chapter-information-warfare-and-cognitive-security]</span></td>
 <td>[ageint238]; [ageint239]; [ageint244]; [ageint273]; [ageint276];
 [ageint285]; [ageint286]; [ageint290]; [ageint294]; [ageint101];
 [ageint102]; [ageint103]; [ageint104]; [ageint105]; [ageint095];
 [ageint096]; [ageint106]; [ageint003]; [ageint107].</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

@@ -12,27 +12,27 @@ This module teaches the **Governed Intelligence Cycle and Dissemination Architec
 
 ## Governed Intelligence Cycle and Dissemination Architecture frame for The Nature of Intelligence: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-the-nature-of-intelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-the-nature-of-intelligence].
 
 ### The Nature of Intelligence orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-the-nature-of-intelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-the-nature-of-intelligence].
 
 ### The Nature of Intelligence conceptual primer: source context, core model, and reader task
 
-This chapter teaches intelligence as a governed information cycle: requirements become collection, collection becomes evaluated evidence, evidence becomes analytic judgment, and judgment becomes a disseminated product with markings, records, feedback, and oversight. The chapter uses **Dissemination-and-Marking Control Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Defining Intelligence: Collection, Analysis, Production, Dissemination; The Intelligence Cycle**.
+This chapter teaches intelligence as a governed information cycle: requirements become collection, collection becomes evaluated evidence, evidence becomes analytic judgment, and judgment becomes a disseminated product with markings, records, feedback, and oversight. The chapter uses **Dissemination-and-Marking Control Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Information, Reporting, Finished Judgment, and Decision Support; The Intelligence Cycle: Iteration, Feedback, and Limits**.
 
-The central distinction is to separate intelligence work from ordinary research by naming authority, audience, caveats, and feedback. Core topics include **Defining Intelligence: Collection, Analysis, Production, Dissemination; The Intelligence Cycle (Classic, Revised, and Critique); Types: Strategic, Operational, Tactical, Technical Intelligence**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
+The central distinction is to separate intelligence work from ordinary research by naming authority, audience, caveats, and feedback. Core topics include **Information, Reporting, Finished Judgment, and Decision Support; The Intelligence Cycle: Iteration, Feedback, and Limits; Strategic, Operational, Tactical Uses and Technical Specialties**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
 Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_203]; [@official_odni_icd_204]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint238]; [@ageint237].
 
-Learners move from vocabulary and the **Dissemination-and-Marking Control Lens** distinction through topic lessons on **Defining Intelligence: Collection, Analysis, Production, Dissemination** with evidence and misconception checks, then assemble a **dissemination map with audience, caveat, marking, records, and feedback fields** with safety and rights gates.
+Learners move from vocabulary and the **Dissemination-and-Marking Control Lens** distinction through topic lessons on **Information, Reporting, Finished Judgment, and Decision Support** with evidence and misconception checks, then assemble a **dissemination map with audience, caveat, marking, records, and feedback fields** with safety and rights gates.
 
 ### The Nature of Intelligence learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-the-nature-of-intelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-the-nature-of-intelligence].
 
-- Connect **Defining Intelligence: Collection, Analysis, Production, Dissemination and The Intelligence Cycle (Classic, Revised, and Critique)** to **Governed Intelligence Cycle and Dissemination Architecture** by naming shared vocabulary, evidence burden, and audience-facing caveats.
+- Connect **Information, Reporting, Finished Judgment, and Decision Support and The Intelligence Cycle: Iteration, Feedback, and Limits** to **Governed Intelligence Cycle and Dissemination Architecture** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **dissemination map with audience, caveat, marking, records, and feedback fields** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
 - Apply the key distinction: separate intelligence work from ordinary research by naming authority, audience, caveats, and feedback; show where an apparently useful shortcut would cross that line.
 - Diagnose failure modes such as cycle theater, undocumented dissemination, classification drift, unclear release authority, stale records assumptions, and feedback loops that hide bias, then write one recovery move for each failure mode that preserves the learning objective.
@@ -40,7 +40,7 @@ Learners move from vocabulary and the **Dissemination-and-Marking Control Lens**
 
 ### The Nature of Intelligence core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-the-nature-of-intelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-the-nature-of-intelligence].
 
 | Term | Working definition |
 |---|---|
@@ -51,5 +51,3 @@ Learners move from vocabulary and the **Dissemination-and-Marking Control Lens**
 | Records duty | the retention, deletion, or refresh obligation attached to an artifact |
 | Decision hygiene | habits that keep requirements, evidence, and reviewer judgment aligned under load |
 | Information architecture | how sources, notes, and products are organized so uncertainty stays visible |
-| Defining Intelligence: Collection, Analysis,… | Key terms: Defining, Collection, Analysis. |
-| The Intelligence Cycle (Classic, Revised, and… | Key terms: Cycle, Classic, Revised. |

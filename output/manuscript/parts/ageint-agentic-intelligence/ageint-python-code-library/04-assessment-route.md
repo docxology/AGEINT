@@ -1,22 +1,22 @@
 ### AGEINT Python Code Library assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-ageint-python-code-library].
 
 ### AGEINT Python Code Library assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-ageint-python-code-library].
 
 #### AGEINT Python Code Library capstone pathway: reviewable packet and excluded use
 
-The capstone deliverable is a reviewable packet that plugs into the broader unit thread. Run it through the canonical phase, artifact, and review-gate ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]); the local topic cluster is **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+The capstone deliverable is a reviewable packet that plugs into the broader unit thread. Run it through the canonical phase, artifact, and review-gate ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]); the local topic cluster is **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
-Minimum module submission: one-page analytic memo, source-lane map, claim ledger, safe-lab packet, rubric self-assessment, and debrief note. The packet must name what is excluded, who may approve reuse, and what would trigger a source refresh for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records** and [@ageint242]; [@ageint243].
+Minimum module submission: one-page analytic memo, source-lane map, claim ledger, safe-lab packet, rubric self-assessment, and debrief note. The packet must name what is excluded, who may approve reuse, and what would trigger a source refresh for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records** and [@ageint242]; [@ageint243].
 
 #### AGEINT Python Code Library instructor facilitation notes: studio roles and pause points
 
-Facilitate as a bounded studio around **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**, not as a lecture-only session.
+Facilitate as a bounded studio around **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**, not as a lecture-only session.
 
-- Start with the authority card and excluded-action list before showing examples from **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records** and [@ageint242]; [@ageint243].
+- Start with the authority card and excluded-action list before showing examples from **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records** and [@ageint242]; [@ageint243].
 - Assign one learner to maintain the claim ledger and one learner to challenge source quality.
 - Keep agent prompts visible enough for review and separate from final judgment.
 - Pause any activity that drifts toward live systems, real people, sensitive data, or external action.
@@ -24,43 +24,48 @@ Facilitate as a bounded studio around **Threat Intelligence Aggregation Agent: L
 
 #### AGEINT Python Code Library assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Search-exposure provenance review using instructor-provided records** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&CK Navigator** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Offline structured-evidence aggregation: supplied CTI-style records**; **Offline source-review crew: local handoff records**; **Offline review of supplied scanner-result records: no autonomous scanning** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: verify least privilege, prompt-injection exposure, provenance, observability, stop conditions, and incident-reporting triggers. |
+| **Offline passage retrieval and claim-support contracts**; **Offline longitudinal document-state review: no person tracking**; **Offline opt-in media-literacy lesson and isolated assessment records** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Offline software-provenance and advisory-record**; **Offline toy process-event review: no OT connection or actuation** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: block excessive agency, shadow tools, credential leakage, autonomous deployment, and irreversible actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### AGEINT Python Code Library refresh map: source changes, safety triggers, and retest duties
 
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
 incidents, and instructor debrief findings each produce a visible owner, action,
-and retest condition before the module is reused against [@ageint242]; [@ageint243] and **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+and retest condition before the module is reused against [@ageint242]; [@ageint243] and **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
 #### AGEINT Python Code Library refresh triggers: source changes and required actions
 
-Refresh against the canonical trigger-and-action table in the shared method-and-assurance reference ([@sec:method-assurance-reference]). When a source-guide reference, official standard, AI or public-sector policy, interface specification, safety audit, or instructor debrief signal appears, take the matching required action before reuse for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**. The local signals begin with [@ageint242]; [@ageint243].
+Refresh against the canonical trigger-and-action table in the shared method-and-assurance reference ([@sec:method-assurance-reference]). When a source-guide reference, official standard, AI or public-sector policy, interface specification, safety audit, or instructor debrief signal appears, take the matching required action before reuse for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**. The local signals begin with [@ageint242]; [@ageint243].
 
 #### AGEINT Python Code Library claim and evidence ledger: claim classes, caveats, and owners
 
-The claim and evidence ledger follows the canonical claim-class ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]). Apply the source-spine, research-backed governance, agentic-workflow, empirical or evaluated capability, safety, and cross-module claim classes to every assertion, attaching the required evidence and clearing the matching review gate before reuse. The local topic cluster is **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**, and the source spine for these checks begins with [@ageint242]; [@ageint243].
+The claim and evidence ledger follows the canonical claim-class ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]). Apply the source-spine, research-backed governance, agentic-workflow, empirical or evaluated capability, safety, and cross-module claim classes to every assertion, attaching the required evidence and clearing the matching review gate before reuse. The local topic cluster is **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**, and the source spine for these checks begins with [@ageint242]; [@ageint243].
 
 ### AGEINT Python Code Library reviewer challenge route: checklist, failure evidence, and remediation
 
 Before marking the work complete, verify the local source spine beginning with [@ageint242]; [@ageint243].
 
-**Triangulation anchors.** In module 36's review-checklist section, directly verified anchors for the **Agentic AI Governance and Tool Security** lane include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 36's review-checklist section, the **Agentic AI Governance and Tool Security** catalog routes include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**. [@ageint242]; [@ageint243].
+- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**. [@ageint242]; [@ageint243].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.
 - Agentic affordances are limited to retrieval, comparison, drafting, simulation, critique, and audit support.
 - The lab packet uses public, benign, owned-lab, or synthetic material only.
@@ -70,6 +75,6 @@ Before marking the work complete, verify the local source spine beginning with [
 
 ### AGEINT Python Code Library learning-path links: module map, overview, and curriculum atlas
 
-Use the cross-links below to place **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records** in the wider unit: the orientation sets the frame, the parent unit supplies the shared safety posture, and the neighbouring modules show what evidence enters and leaves. Lead sources: [@ageint242]; [@ageint243].
+Use the cross-links below to place **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records** in the wider unit: the orientation sets the frame, the parent unit supplies the shared safety posture, and the neighbouring modules show what evidence enters and leaves. Lead sources: [@ageint242]; [@ageint243].
 
 [@sec:curriculum_orientation], [@sec:part-ageint-agentic-intelligence], [@sec:chapter-active-inference-and-ageint], [@sec:part-cognitive-security]

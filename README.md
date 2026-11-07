@@ -1,12 +1,11 @@
 # AGEINT — Agentic Intelligence Curriculum
 
 AGEINT is a modular curriculum for Agentic Intelligence: atlas, library, course,
-textbook, cookbook, and playbook. It converts a source guide into a semantic
-manuscript, registry-backed figures, generated BibTeX, and auditable runtime
-variables. Everything here builds from a standalone checkout of this repository;
-the one exception is the combined PDF (`AGEINT.pdf`), which is rendered by a
-sibling template repository's pandoc/xelatex pipeline rather than by a script in
-this repo.
+textbook, cookbook, and playbook. It composes curriculum source shards into a
+semantic manuscript, registry-backed figures, generated BibTeX, and auditable
+runtime variables. Complete figure, PDF, and HTML qualification uses the shared
+research SDK, pinned to `docxology/template` **5.1.0**; a standalone source-data
+checkout is not a substitute for that prepared rendering runtime.
 
 The project is deliberately evidence-bounded. It can teach intelligence
 tradecraft, IC-cycle governance, OSINT/GEOINT integrity, FININT/economic
@@ -18,17 +17,19 @@ legal and human oversight constraints.
 ## Citation and DOI
 
 - **Repository:** <https://github.com/docxology/AGEINT>
-- **Concept DOI (cite this — resolves to the latest version):** [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274)
-- **Version DOI (Edition 0.1):** [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275)
+- **Concept DOI (latest archived edition):** [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274)
+- **Historical version DOI (Edition 0.1.0 only):** [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275)
 - **License:** text CC BY 4.0; code Apache-2.0
 
 > Friedman, Daniel Ari. *AGEINT: Agentic Intelligence — A Modular Atlas, Library,
-> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (Edition 0.1,
+> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (Edition 0.2.0,
 > 2026). Active Inference Institute. <https://github.com/docxology/AGEINT>.
 > <https://doi.org/10.5281/zenodo.20732274>.
 
-The DOI and repository are baked into the rendered title page and citation block
-of `output/pdf/AGEINT_combined.pdf`.
+Source publication identity is included in the SDK-rendered title page and
+citation block of `output/pdf/AGEINT_combined.pdf`, mirrored at `AGEINT.pdf`.
+The concept DOI identifies the archived work; no new archive deposit or 0.2.0
+version DOI is implied by source metadata.
 
 ## Source
 
@@ -61,35 +62,39 @@ for the last measured pass.
 
 - Backlog (canonical, forward-only): [`TODO.md`](TODO.md) — its `Open` section
   holds the next useful work; `tasks.yaml` is the taskboard source of truth.
+- Release changes: [`CHANGELOG.md`](CHANGELOG.md); the GitHub release and its
+  exact-source verification run establish publication, not this document.
 - Status: `output/reports/publication_readiness.json` (`ok` field) and
   `output/reports/current_artifact_evidence.json` are the generated status
   surfaces; re-run the audits in Commands below to refresh them.
+  Readiness `ok` records the evaluated gates; it is not publication authorization
+  or evidence that a tag, release, or archive deposit exists.
 
 ## Commands
 
+The commands below use a prepared compatible SDK Python runtime. See
+[`docs/rendering_pipeline.md`](docs/rendering_pipeline.md) for runtime and project
+link setup; `AGEINT_TEMPLATE_REPO` selects the actual SDK checkout, not an
+installation or a waiver of its version/guard requirements.
+
 ```bash
-uv run python scripts/build_curriculum.py
-AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py  # strict Mermaid PNGs
-uv run python scripts/generate_figures.py
-uv run pytest tests/ --cov=src --cov-fail-under=90
-uv run python scripts/audit_artifact_evidence.py --write --format markdown
-uv run python scripts/audit_scholarship_quality.py --write --format markdown
-uv run python scripts/audit_source_metadata.py --write --format markdown
-uv run python scripts/audit_agency_source_coverage.py --write --format markdown
-uv run python scripts/audit_claim_calibration.py --write --format markdown
-uv run python scripts/audit_reference_quality.py --write --format markdown
+AGEINT_REQUIRE_RENDERED_FIGURES=1 python scripts/build_curriculum.py
+AGEINT_REQUIRE_RENDERED_FIGURES=1 python scripts/generate_figures.py
+python -m pytest tests/ --cov=src --cov-fail-under=90
+python scripts/audit_release_metadata.py --expected-tag v0.2.0 --format json
+python scripts/audit_artifact_evidence.py --write --format markdown
+python scripts/audit_scholarship_quality.py --write --format markdown
+python scripts/audit_source_metadata.py --write --format markdown
+python scripts/audit_agency_source_coverage.py --write --format markdown
+python scripts/audit_claim_calibration.py --write --format markdown
+python scripts/audit_reference_quality.py --write --format markdown
+python scripts/audit_publication_readiness.py --write --format markdown
 
-# Coverage floor: 90% for `src/`; use the test command above for the current measured result.
-# Stage 02 pipeline analysis runs build_curriculum.py only (see docs/manuscript/config.yaml analysis.scripts).
-
-# From the sibling template repo root (AGEINT linked under projects/working/AGEINT):
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
-
-# PDF render (from the sibling template repo root, AGEINT linked under
-# projects/working/AGEINT): re-renders the combined PDF and copies it back
-# into this repo — the render/copy stages this repo does not itself carry.
-uv run python scripts/maintenance/rerender_working_pdfs.py --project AGEINT
+# From the prepared SDK root, with this public checkout at projects/active/AGEINT:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
+.venv/bin/python scripts/pipeline/stage_03_render.py --project active/AGEINT --skip-manuscript-hydration
+.venv/bin/python scripts/pipeline/stage_04_validate.py --project active/AGEINT
 ```
 
 Use `--regenerate-source-template-library` only when intentionally resetting the
@@ -101,7 +106,7 @@ The source manuscript stays small and neutral. `src/curriculum.py` composes the
 sharded curriculum, `src/build_pipeline.py` orchestrates the build,
 `src/manuscript_manifest/` creates semantic output paths and generated section
 contexts, `src/manuscript_variables/` writes runtime variables and BibTeX,
-`src/intelligence_content/` owns verified research profiles, deterministic
+`src/intelligence_content/` owns evidence-scoped research profiles, deterministic
 agency source packs, and three-tier topic lesson frames (keyword → category →
 synthesis), `src/source_metadata.py` audits
 explicit lane/tier metadata for curated and support anchors, and `src/figures/`
@@ -129,20 +134,24 @@ informative. The artifact-evidence manifest reports 0 single-source-family
 claim-bearing review warnings under the current source-strength classifier;
 the readiness gates treat any such family as a review row, not a blocker.
 
-**PDF rendering is external to this repository.** The combined PDF
-(`AGEINT.pdf` at the repo root, mirrored at `output/pdf/AGEINT_combined.pdf`)
-is produced by a shared research-project template's pandoc/xelatex render
-stage, not by any script inside this repo. `scripts/build_curriculum.py` and
-`scripts/generate_figures.py` produce everything that render step consumes —
-the semantic manuscript, the figure registry, and the generated BibTeX — but
-the PDF composition itself runs from the template checkout against this
-project linked under its `projects/working/` tree. Refreshing the PDF is
-therefore a manual, out-of-band step rather than something this repo's own
-CI performs; `scripts/audit_pdf_quality.py` (and the two audit scripts whose
-aggregate verdict includes it) stay informational in
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml) and
-[`.github/workflows/manuscript.yml`](.github/workflows/manuscript.yml) for
-that reason.
+**The SDK owns PDF/HTML compilation; this repository owns its release gate.**
+`scripts/build_curriculum.py` and `scripts/generate_figures.py` produce the
+semantic manuscript, figures, and BibTeX. The shared SDK's canonical render stage
+consumes those files; AGEINT does not carry a second Pandoc/TeX compiler.
+
+[Complete manuscript verification](.github/workflows/manuscript.yml) performs a
+fresh strict Mermaid build, the complete 90%-minimum test suite, canonical SDK
+PDF/HTML rendering, native validators, and every aggregate readiness gate.
+Missing tools, placeholders, failed compilation, stale outputs, or a skipped
+parent guard cannot establish acceptance. Manual development runs may select an
+explicit immutable SDK candidate commit; publication never uses that override.
+
+[Release AGEINT](.github/workflows/release.yml) accepts only exact current `main`
+with aligned source metadata and a genuine stable SDK `v5.1.0` release. It reruns
+complete acceptance, checks same-run asset hashes and Source/SDK identity, then
+creates a new tag/release without overwriting an existing publication.
+The offline reader ZIP preserves `web/`, local assets, and sibling `figures/`;
+serve its extracted root over local HTTP and open `/web/index.html`.
 
 Generated files under `output/` are not primary authoring surfaces. Edit
 `data/curriculum/` shards first when the guide is absent; otherwise update
@@ -160,9 +169,9 @@ See [`docs/output_inventory.md`](docs/output_inventory.md) for the generated art
 
 ## Scholarship posture
 
-Perplexity may be used for discovery and second opinions, but the manuscript
-cites directly verified sources. The current anchor set includes official and
-standards sources from ODNI, CIA, DIA, NIST, CISA, NSA, Five Eyes partners,
+Discovery tools provide leads, not verification. The manuscript retains source
+identities and records passage/metadata inspection, access limits, corrections
+and unresolved claims separately. The anchor catalog includes sources from ODNI, CIA, DIA, NIST, CISA, NSA, Five Eyes partners,
 IMDA, OECD, ISO, IETF, OASIS, OWASP, MITRE, NATO, the EU, UNESCO, OHCHR,
 World Bank, ILO, W3C, OpenAPI, Council of Europe, PCLOB, NARA, NRO, NGA,
 FinCEN, OFAC, FATF, BIS, WIPO, DataCite, C2PA, the Model Context Protocol
@@ -290,108 +299,54 @@ contract. Accepted rows use bounded claim scopes and explicitly exclude
 collection tasking, exploit steps, covert-action guidance, manipulation
 playbooks, unsafe cyber-physical actions, and live-target procedures.
 
-A 2026-06-12 local verifier-first, scholarship-quality, and Synthetic Analytic
-Tradecraft orientation pass keeps the same source corpus but raises the figure
-registry to 168 with the
-`ageint-artifact-evidence-control-loop` and
-`ageint-scholarship-triangulation-map` control figures and the
-`ageint-synthetic-tradecraft-method-contract` and
-`ageint-analysis-validation-matrix` method figures plus the
-`ageint-analysis-validation-family-coverage` coverage figure. It adds generated
-evidence manifests that bind the rebuilt manuscript, citation inventory,
-scholarship source-family audit, figure quality audit, rendered-reference audit,
-PDF quality/link audit, and stale-output scans into
-`output/reports/current_artifact_evidence.{json,md}` and
-`output/reports/scholarship_quality.{json,md}`. The current local manifest
-reports 330 configured generated Markdown files, 16,604 generated Markdown
-citation occurrences, 177 registered figures plus one non-numbered cover-art
-PNG, a non-stale 1,858-page ~34 MB PDF, 6,289 PDF URI links, 0 Markdown-file,
-`file:`, or launch-action PDF targets, 0 uncited or thin claim-bearing generated
-files, and six single-source-family claim-bearing review warnings, with passing
-SAT method and analysis-validation contracts plus source-metadata explicitness
-and claim-calibration checks. A follow-on RedTeam pass makes the analysis-validation claim classes
-canonical in `src/analysis_validation.py`, so the prose protocol, matrix
-renderer, scholarship audit, and artifact-evidence manifest now fail if a lane
-such as artifact readiness or reviewer disposition drops out while the heading
-and figure reference still remain. A second RedTeam follow-up adds a canonical
-manuscript-family-to-validation-lane map so a new claim-bearing generated family
-cannot enter the manuscript surface without a matching review lane, evidence
-signal, failure signal, and registry-backed coverage visual.
+## 2026-11-06 curriculum and workflow revision
 
-A 2026-06-13 metadata-verifier hardening pass keeps the same source corpus but
-closes the legacy lane/tier fallback dependency. It makes 119 previously blank
-metadata rows explicit: 109 legacy intelligence anchors now carry
-`source_lane` from their existing `domain` and `source_tier` from their existing
-`source_type`, while 10 source-quality support anchors carry
-`source_quality_spine` / `source_quality_anchor` semantics. The new
-`scripts/audit_source_metadata.py` report writes
-`output/reports/source_metadata.{json,md}` and is wired into
-`current_artifact_evidence.{json,md}` as `source_metadata_ok`, so a blank
-lane/tier row or support-anchor semantic mismatch fails local readiness. The
-same pass raised the then-current registry to 169 figures with
-`ageint-source-metadata-integrity`, a Python control-matrix figure for source
-metadata explicitness and refresh coverage.
+The CogSecSkills critical review and claim-evidence audit produced 564 authored
+topic notes across all 51 chapters, with over 41,000 words of domain-specific
+explanations, completed fictional decisions, counterexamples and limits. All
+16 units now carry concrete learning workflows; all nine methods appendices
+contain distinct offline workbooks rather than repeated generic forms.
 
-A 2026-06-13 cover, abstract, and TOC hardening pass keeps the same source
-corpus and figure registry count while adding deterministic cover art outside
-the numbered figure registry. The abstract is now one substantial plaintext
-Synthetic Analytic Tradecraft contract rather than a graphical-abstract wrapper.
-The graphical abstract itself is now the registry-backed Python
-`ageint-graphical-abstract` Synthetic Tradecraft System Atlas in orientation,
-not a Mermaid stack or title-page cover. The PDF table of contents is
-intentionally limited to H1/H2 entries; each module exposes three chapter-specific
-H2 landmarks (source/profile frame, practice-lens path, assurance handoff), while
-H3/H4 scaffolds remain in the body for local navigation and
-cross-reference targets. The compact LaTeX preamble also carries TOC spacing
-controls so multi-digit section numbers do not collide with headings.
+The shared method reference provides an eight-step claim-to-decision workflow,
+a completed source-dependence and correction case, a reusable claim record,
+bounded parallel-role contracts, and explicit hold/correction/handoff decisions.
+Orientation includes a 75-minute first session and manual accessible route.
+Chapter 35 works model-relative inference numerically. Chapter 36 supplies a
+complete standard-library Python example with expected output and duplicate,
+conflicting-copy, missing-current-record, permission and human-review controls.
 
-A 2026-06-14 claim-calibration and visual-semantics hardening pass keeps the
-same source corpus and adds the registry-backed
-`ageint-claim-calibration-and-visual-semantics` control figure. The figure
-registry schema is now `1.5`: every row declares semantic role, evidence role,
-quantitative status, unit, denominator, counting rule, and interpretation limit,
-and generated PNG metadata embeds the same fields. The new
-`scripts/audit_claim_calibration.py` report writes
-`output/reports/claim_calibration.{json,md}` and is wired into
-`current_artifact_evidence.{json,md}` as `claim_calibration_ok`, so unsupported
-proof-language, p-value language, measured-performance claims, unsupported
-formalisms, or weak-source-only high-risk claims fail local readiness.
+Human-source and software-agent subjects are distinguished; safe identity and
+chapter overrides control lesson routing. Source annotations remain editorial
+context rather than manufactured topic evidence. ACH consistency is not a
+Bayesian likelihood ratio; proposed cognitive-security frameworks and candidate
+neuromarkers are not validated assurance, diagnostic or efficacy claims.
+Corrected source notes disclose study corrections, disputed results, edition
+limits and blocked primary retrieval. Missing author/year metadata is left
+missing, not converted into invented authorship or the build year.
 
-A 2026-06-14 abstract/readiness hardening pass makes the Abstract one continuous
-reader-facing Synthetic Analytic Tradecraft paragraph instead of a multi-block
-front-matter summary. That paragraph integrates source-quality and research
-anchor counts inline, shows the learner/reviewer path through evidence packets,
-negative controls, human review, rollback, refresh triggers, figure semantics,
-and validator gates, and explicitly states that artifact telemetry is not a
-benchmark for model capability, learning outcomes, operational effectiveness,
-statistical significance, or safety performance. This is still a local-readiness
-claim, not a publication decision.
+The claim verifier now rejects nonexistent official-looking citation keys.
+Heading navigation uses existing labels, not borrowed citations masquerading as
+evidence; bare domain and bibliographic titles remain intact. Workflow diagrams
+separate permission from purpose, evidence from inference, and review from
+proof. The chapter assessments include later topics and justified abstention.
 
-After this pass, claim calibration reports 9,107 candidate rows, 0 hard fails,
-482 boundary-allowed rows, and 5,129 review rows; scholarship quality reports 0
-hard fails and keeps six single-source-family rows as non-blocking review
-warnings.
+### Current evidence and limits
 
-These counts are rebuild-time measurements, not hand-authored release claims:
-`output/data/curriculum_outline.json` carries the curriculum stats, and
-`output/figures/figure_registry.json` carries the figure count, hashes, and
-rendering provenance. Source-anchor rows include `checked_as_of` metadata and
-must be refreshed when source URLs, standards versions, legal text, or supported
-claim scope changes.
+Consult `output/reports/current_artifact_evidence.{json,md}`,
+`claim_calibration.{json,md}`, `scholarship_quality.{json,md}`,
+`source_metadata.{json,md}`, `source_refresh_due.{json,md}` and the figure
+registry for measured artifact status. Historical page, citation and link
+counts are not current release claims. These checks are structural and
+heuristic: they do not establish passage entailment, independent corroboration,
+learning gains, model reliability, legal compliance or production safety.
 
-## Public readiness
+### Public identity and local revision
 
-AGEINT is locally publication-ready as a preflight packet, not as a public
-release. The 2026-06-16 `publication_readiness` report is `ok: true`: artifact
-evidence is green, the source-refresh dashboard reports 472 current metadata
-rows and 0 due-soon/due/stale rows, the artifact manifest has `issues: []`, the
-parent tracked-project confidentiality guard passes, the release-surface scan
-finds 0 private/local path or Markdown-file-link issues, the source/license
-posture is recorded, and the fresh PDF audit reports 1,858 pages, 6,289 URI
-links, 0 file actions, and 0 bad link targets. `ageint-27` is therefore closed.
-`ageint-m1` remains todo because no public release, push, PR, archive,
-promotion, publication upload, DOI, or release record has been approved or
-performed.
+The repository already records the Edition 0.1 and concept DOIs above.
+This local revision is not a new publication or approval to push, promote,
+upload or release it. Source freshness is date- and scope-specific; a complete
+metadata row or a successful rebuild is not a fresh review of every source.
+
 
 ## Safety posture
 

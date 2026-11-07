@@ -1,10 +1,10 @@
 ### GEOINT and Imagery Intelligence assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-geoint-and-imagery-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-geoint-and-imagery-intelligence].
 
 ### GEOINT and Imagery Intelligence assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-geoint-and-imagery-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-geoint-and-imagery-intelligence].
 
 #### GEOINT and Imagery Intelligence capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Imagery quality literacy: resolution, te
 
 #### GEOINT and Imagery Intelligence assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Imagery quality literacy: resolution, temporal fit, and uncertainty** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Imagery collection-platform literacy: resolution and revisit tradeoffs** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Imagery quality literacy: resolution, temporal fit, and uncertainty**; **GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**; **Commercial Platforms and Public Programmes: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: show priority, authority, minimization, corroboration, and source quality before any claim is reused. |
+| **Claim-ledger memory exercise that tracks evidence changes rather than people**; **GEOINT in Counterinsurgency and Strike: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**; **DoD GEOINT Accreditation and Training: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **MCRP 2-10B 4: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**; **Imagery collection-platform literacy: resolution and revisit tradeoffs**; **Open-Source Geospatial Intelligence Library: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude live collection, recruitment, surveillance, interception, tracking, and identity exposure. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### GEOINT and Imagery Intelligence refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint253]; [@ageint255].
 
-**Triangulation anchors.** In module 11's review-checklist section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 11's review-checklist section, the **Open-Source and Geospatial Intelligence Integrity** catalog routes include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**. [@ageint253]; [@ageint255].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

@@ -1,10 +1,10 @@
 ### Active Inference and AGEINT assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
+**Navigation.** Parent section: [@sec:chapter-active-inference-and-ageint].
 
 ### Active Inference and AGEINT assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
+**Navigation.** Parent section: [@sec:chapter-active-inference-and-ageint].
 
 #### Active Inference and AGEINT capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **The Free Energy Principle and Predictive
 
 #### Active Inference and AGEINT assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **The Free Energy Principle and Predictive Processing** | Completed **theory-to-governance card with source, analogy limit, assumption, reviewer, and stop condition** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Active Inference as Computational Model of Intelligence Agent Behavior** | Completed **theory-to-governance card with source, analogy limit, assumption, reviewer, and stop condition** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Shared Protentions in Multi-Agent Active Inference** | Completed **theory-to-governance card with source, analogy limit, assumption, reviewer, and stop condition** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **The Free Energy Principle and Predictive Processing**; **Active Inference as Computational Model of Intelligence Agent Behavior**; **Shared Protentions in Multi-Agent Active Inference** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: separate formal claim, pedagogical analogy, implementation assumption, evaluation evidence, and governance duty before reuse. |
+| **Active Inference for Social Organization and Intelligence Communities**; **VERSES AI Research: Multi-Scale Active Inference Architectures**; **Cognitive Security Through the Active Inference Lens** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Proposed applications: anomaly interpretation and bounded threat modeling**; **TU Delft thesis: active-inference literature review and transfer limits** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: reject claims that the free-energy principle proves autonomous agency, intent, detection performance, or oversight-free action. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Active Inference and AGEINT refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint247]; [@ageint248].
 
-**Triangulation anchors.** In module 35's review-checklist section, directly verified anchors for the **Active-Inference Theory and Governed Agent Analogy** lane include [@scholarly_friston_2010_fep]; [@scholarly_buckley_2017_fep_mathematical_review]; [@scholarly_friston_2017_active_inference_process]; [@scholarly_dacosta_2020_discrete_active_inference]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 35's review-checklist section, the **Active-Inference Theory and Governed Agent Analogy** catalog routes include [@scholarly_friston_2010_fep]; [@scholarly_buckley_2017_fep_mathematical_review]; [@scholarly_friston_2017_active_inference_process]; [@scholarly_dacosta_2020_discrete_active_inference]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**. [@ageint247]; [@ageint248].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

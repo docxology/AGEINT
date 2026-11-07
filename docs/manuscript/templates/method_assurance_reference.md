@@ -50,6 +50,14 @@ formalisms without citations and limitations. The companion visual
 readable, while `output/reports/claim_calibration.json` and `.md` make the
 same disposition auditable by script.
 
+This is a heuristic screen of row-level wording, citation presence, and source
+metadata—not a semantic claim verifier. It does not establish that a cited
+passage entails a claim, that sources are independent, that contradictory
+evidence was included, or that a proposed control works. Boundary wording can
+also explain why a row is allowed without validating another claim in that
+row. A passing report therefore leaves a human source-to-claim review duty;
+the worked procedure below makes that duty inspectable.
+
 Protocol claims are version-sensitive. MCP references use the 2025-06-18
 specification for interoperability language and the current MCP security
 best-practice page for confused-deputy, token-handling, consent, and
@@ -73,6 +81,8 @@ a domain source is cited for that narrower taxonomy.
 ## Claim and evidence ledger: claim classes, evidence floors, and review duties
 
 {{CANONICAL_CLAIM_LEDGER_ROWS}}
+
+{{CANONICAL_ANALYSIS_WORKFLOW}}
 
 ## Competency and mastery rubric: scoring dimensions and visible proof
 

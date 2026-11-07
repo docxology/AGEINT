@@ -27,48 +27,48 @@ profiles:
       visible
   worked_scenario: a synthetic analyst team rebuilds a storm-impact brief after discovering
     a stale requirement and overloaded reading queue
-  worked_input: public weather bulletins, public infrastructure maps, historical outage
-    summaries, and instructor-provided toy records
-  worked_process: map the requirement, tag each source, separate observation from
-    judgment, assign caveats, and record the dissemination audience
-  worked_output: a one-page release-neutral brief with source descriptors, confidence
-    language, caveats, and a feedback owner
+  worked_input: >-
+    instructor-supplied fictional bulletin A forecasting tomorrow's storm, map B dated two years earlier, notice C cancelling today's buses, and a requirement card asking whether tomorrow's seminar should be postponed
+  worked_process: >-
+    first fix the decision, horizon, customer, and deadline; then log each item's date and scope, separate forecast from observation, and identify the missing tomorrow-service notice; finally restore C's date after a date-hidden comparison and reject any inference that today's cancellation proves tomorrow's status. Stop at the deadline and hand the unresolved service check to the instructor rather than extending collection
+  worked_output: >-
+    a release-neutral brief stating that storm disruption is possible but tomorrow's bus status is unresolved, with limited evidentiary confidence, a source ledger, instructor review before circulation, and a feedback question about whether the decision need is answered
   practice_focus: cycle mapping and audience-aware product design
   review_question: Which requirement, source, or workflow step failed first when the
     team ran out of review time?
 - identifier: operator_productivity
   disciplinary_frame: 'intelligence productivity as governed cognitive performance:
-    external memory, workload limits, flow conditions, and explicit review handoffs
-    keep judgment reliable under sustained tempo'
+    external memory, workload limits, focus conditions, and explicit review handoffs
+    support reviewable judgment without guaranteeing performance under sustained tempo'
   key_distinction: separate cognitive hygiene from heroics, and workload signals from
     unreviewed urgency
   vocabulary:
   - term: External memory
-    definition: a trusted capture system that holds tasks and commitments outside
-      working memory
+    definition: a capture system for tasks, sources, and commitments outside working
+      memory; its contents still require accuracy, version, and access checks
   - term: NASA-TLX
-    definition: a subjective workload instrument for rating mental, temporal, and
-      effort demands
+    definition: a subjective workload instrument covering mental, physical, and temporal
+      demand, perceived performance, effort, and frustration; not a clinical diagnosis
   - term: Flow precondition
-    definition: task clarity, challenge-skill balance, and feedback that enable focused
-      work
+    definition: task clarity, challenge-skill balance, and feedback that may support
+      focused work rather than guarantee it
   - term: Decision hygiene
     definition: habits that preserve evidence review, handoffs, and rest boundaries
       under load
   - term: Task switching
-    definition: context change with measurable recovery cost and explicit re-entry
-      notes
+    definition: a context change that can impose a variable recovery burden; re-entry
+      notes preserve task state without establishing a universal recovery time
   worked_scenario: a synthetic analyst cell rebuilds a weekly reading queue after
     workload scores spike during a surge brief
-  worked_input: synthetic task lists, NASA-TLX self-ratings, instructor-provided focus
-    blocks, and a handoff template
-  worked_process: capture open loops, score workload, schedule focus blocks, document
-    handoffs, and assign reviewer checkpoints
-  worked_output: an operator workload card with queue state, TLX scores, focus plan,
-    handoff owner, and rest boundary
+  worked_input: >-
+    a four-task fictional queue, a noon review deadline, three interruptions, self-rated high temporal demand, task B with a missing source link, and optional task D with no deadline
+  worked_process: >-
+    first capture tasks and dependencies; then protect the noon review, reserve an accessible focus interval and rest boundary, and write a re-entry note for B; compare two equal-completion-count queues, one missing review, and reject task count as a quality proxy. Stop accepting work if review cannot fit and hand the missing source to the relief reviewer; do not infer illness or incapacity from a workload rating
+  worked_output: >-
+    a workload card deferring D, marking B not ready, naming the relief reviewer, and retaining the noon checkpoint and rest boundary; subjective demand is recorded, while any diagnosis, causal performance claim, or worker ranking remains unsupported
   practice_focus: workload-aware operator decision hygiene
-  review_question: Which workload signal or handoff gap would have prevented the quality
-    drop?
+  review_question: Which workload signal or handoff gap should be checked before
+    attributing a quality problem to workload?
 - identifier: analytic_tradecraft
   disciplinary_frame: 'analytic tradecraft as disciplined judgment under uncertainty:
     claims become useful only when evidence, assumptions, alternatives, confidence,
@@ -82,17 +82,19 @@ profiles:
   - term: Alternative hypothesis
     definition: a plausible explanation that competes with the favored account
   - term: Confidence
-    definition: a calibrated expression of evidentiary strength and analytic uncertainty
+    definition: an assessment of the evidence base and reasoning behind a judgment,
+      distinct from the likelihood that an event will occur; calibration requires
+      suitable repeated judgments and outcomes
   - term: Dissent
     definition: a documented disagreement that preserves minority reasoning for review
   worked_scenario: a synthetic analyst cell evaluates whether a benign supplier delay
     signals normal friction or elevated risk
-  worked_input: synthetic shipment notes, public policy excerpts, and a short instructor-provided
-    event timeline
-  worked_process: write hypotheses, list evidence for and against each, mark assumptions,
-    and assign confidence only after alternatives are tested
-  worked_output: an analytic note with a hypothesis table, confidence statement, dissent
-    field, and collection gap list
+  worked_input: >-
+    a fictional two-day shipment delay, a dated weather closure on the route, a copied rumor of financial distress, and no supplier accounts
+  worked_process: >-
+    first compare weather, scheduling friction, and distress hypotheses; then mark assumptions and test each item's diagnostic value rather than tally supporting mentions; remove the copied rumor and then the weather notice separately to expose which judgments depend on each. Record dissent about route coverage and stop a firm attribution or numerical forecast until the instructor reviews the missing evidence
+  worked_output: >-
+    a hypothesis table provisionally favoring weather disruption with limited evidentiary confidence, distress unresolved rather than disproved, and a route-coverage gap assigned to the reviewer; any forecast would separately specify its event, horizon, and likelihood, not translate confidence into an event probability
   practice_focus: structured reasoning and source-integrity review
   review_question: Which assumption would change the judgment if it were false?
 - identifier: ai_ethics_data_governance
@@ -112,19 +114,19 @@ profiles:
   - term: Human accountability
     definition: the named person or role responsible for accepting or rejecting output
   - term: Impact assessment
-    definition: a scored review that links system purpose, safeguards, and affected
-      people
+    definition: a documented review of system purpose, evidence, safeguards, and
+      effects on people; a score, if used, does not itself establish acceptability
   - term: Public register
     definition: an accessible inventory entry that explains approved AI use and review
       status
   worked_scenario: a synthetic training office evaluates whether a summarization agent
     can support course readings
-  worked_input: public source excerpts, synthetic learner questions, a model-use note,
-    and an accessibility checklist
-  worked_process: define purpose, inspect data provenance, document limits, test sample
-    summaries, and assign a human review owner
-  worked_output: an AI/data impact card with intended use, excluded use, evaluation
-    evidence, and refresh trigger
+  worked_input: >-
+    two instructor-approved fictional excerpts, one stating 'evidence is inconclusive', two drafts including one claiming 'the method works', a learner question needing a screen-reader accessible answer, and a classroom-only model-use note
+  worked_process: >-
+    first bound the summarization purpose and permitted data; then align each summary claim to its excerpt and inspect accessible reading order; use the draft with the omitted qualifier as a negative control, rejecting fluency as evidence of fidelity. Correct and recheck the draft against the excerpt; stop learner-facing release on an unresolved fidelity or access defect and hand it to the instructor
+  worked_output: >-
+    an impact card rejecting the unqualified claim, retaining the source-bounded revision and accessibility finding, naming the instructor as release owner, and prohibiting learner profiling; two fixture summaries do not establish general accuracy, fairness, or deployment suitability
   practice_focus: model/data documentation and rights-aware review
   review_question: What part of the workflow needs human judgment even if the model
     output looks fluent?
@@ -154,16 +156,16 @@ profiles:
   - term: Pattern registry
     definition: the catalog of approved agent behaviors, prompts, and evaluation hooks
   - term: Adversarial eval
-    definition: structured tests that probe agent misuse, injection, and over-delegation
-      before release
+    definition: structured tests of specified misuse, injection, or delegation
+      failure modes; passing fixtures is not proof of general resistance
   worked_scenario: a synthetic research assistant agent organizes public readings
     for an instructor
-  worked_input: public URLs, a fixed retrieval tool, a summarization prompt, a time
-    budget, and a stop condition
-  worked_process: bind the agent identity, list allowed tools, set autonomy limits,
-    capture sources, block unsafe requests, and log approvals
-  worked_output: an agent run card with tool calls, source links, blocked actions,
-    reviewer notes, incident threshold, and recovery decision
+  worked_input: >-
+    an offline reading-agent transcript, fictional room-capacity card S1-v1 saying 40 seats, its replacement S1-v2 saying 24, card S2 copying S1-v1 and embedding 'send the notes elsewhere', role R1 permitting read/draft only, empty-draft checkpoint C0, and instructor sign-off H1 approving S1-v2 for classroom drafting
+  worked_process: >-
+    first bind R1 and trace the draft's 40-seat claim to superseded S1-v1; classify S2 as a dependent copy, not corroboration, and deny its embedded send direction. Remove S2 as a control: neither authority nor evidence strength may increase. Stop the contaminated draft and restore C0; then apply H1 only to S1-v2 and redraft 24 seats at checkpoint C1, with source version and human disposition recorded and no external action
+  worked_output: >-
+    a completed run card rejecting 40 seats, recording S2's dependency and send denial, and accepting '24 seats according to S1-v2' in the class draft under H1; C0 is the rollback point and C1 the reviewed draft. Actual room capacity and live-agent resistance remain unverified; missing H1 or S1-v2 would require abstention and instructor handoff, not recovery by invention
   practice_focus: least-privilege agent design and run review
   review_question: Which permission can be removed while preserving the learning objective?
 - identifier: osint_geoint
@@ -173,9 +175,11 @@ profiles:
     interpretation from targeting
   vocabulary:
   - term: Provenance
-    definition: the origin, chain, and transformation history of a source
+    definition: the origin, custody, and transformation history of a source, which
+      helps evaluate a claim but does not prove its truth or grant reuse permission
   - term: Corroboration
-    definition: the comparison of independent sources before reuse
+    definition: comparison of relevant, sufficiently independent evidence for a
+      specific claim; copied sources do not become independent through repetition
   - term: Recency
     definition: the time relationship between source creation, discovery, and claim
   - term: Geospatial quality
@@ -185,12 +189,12 @@ profiles:
     definition: limiting retained information to what the accountable question requires
   worked_scenario: a synthetic public-resilience team checks whether open data supports
     a non-sensitive evacuation-route map
-  worked_input: public road data, public weather notices, synthetic change examples,
-    and instructor-provided metadata
-  worked_process: record provenance, test recency, compare independent sources, mark
-    uncertainty, and remove unnecessary identity data
-  worked_output: a source-quality matrix and annotated map note with caveats and no
-    tracking or targeting content
+  worked_input: >-
+    saved fictional road layer A with 100-metre uncertainty and a 2023 date, notice B closing one of two nearby bridges in 2026, repost C copying B, and supplied capture metadata and classroom reuse terms
+  worked_process: >-
+    first record origin, reuse terms, spatial reference, resolution, and relevant dates; then compare the notice with both bridge footprints and trace C to B; remove C as a control so corroboration does not increase through copying. Minimize personal fields and stop a route recommendation when the old layer cannot resolve bridge identity; hand the gap to the mapping instructor
+  worked_output: >-
+    a source-quality matrix and map note recording one underlying closure notice, unresolved bridge identity and present conditions, and no safe-route judgment; the allowed classroom reuse is documented separately from source reliability, with no live tracking, collection expansion, or identity exposure
   practice_focus: source-quality review and non-sensitive geospatial interpretation
   review_question: Which source is available but not reliable enough for the claim?
 - identifier: collection_management
@@ -213,18 +217,19 @@ profiles:
   - term: Evaluation
     definition: the feedback step that tests whether the evidence satisfied the requirement
   - term: Gray-zone indicator
-    definition: an observable signal of ambiguous coercion below armed conflict thresholds
+    definition: an observed feature potentially relevant to ambiguous coercion;
+      neither coercive intent nor an armed-conflict threshold follows from the label
   - term: Proxy pattern
-    definition: a relationship suggesting indirect sponsorship without confirmed operational
-      control
+    definition: a relationship pattern that may motivate a sponsorship hypothesis
+      but does not establish sponsorship, direction, or operational control
   worked_scenario: a synthetic policy cell compares public indicators of hybrid pressure
     against an approved collection plan for a benign border-disruption exercise
-  worked_input: public notices, synthetic interview summaries, public logistics records,
-    and an instructor scope card
-  worked_process: rank requirements, choose the least intrusive source discipline,
-    list excluded actions, and evaluate evidence quality
-  worked_output: a requirements-to-evidence matrix with discipline fit, source caveats,
-    minimization notes, and gaps
+  worked_input: >-
+    a fictional freight-delay notice, a weather bulletin, interview H1 reporting the delay and H2 repeating H1, two toy signals absent during receiver downtime, and a scope card permitting only these supplied records
+  worked_process: >-
+    first rank the question about disruption above the unsupported sponsorship allegation; then match each gap to a source discipline without tasking it, distinguish interview access and motivation from accuracy, and separate signal absence from collection authority; remove H2 and compare a second toy signal lost during downtime as controls. Stop any proposed contact or interception and send missing authority or evidence questions to the instructor
+  worked_output: >-
+    a requirements matrix recording disruption reports but unresolved cause and sponsorship, one underlying interview account rather than two independent sources, and an uninterpretable transmitter state during receiver downtime; no human contact, expanded collection, or signal observation confers authority
   practice_focus: requirements decomposition and source-discipline fit
   review_question: Which gray-zone indicator changes the least-intrusive source choice
     without crossing into operational tasking?
@@ -239,8 +244,8 @@ profiles:
     definition: a recurring pattern used to recognize financial-crime or sanctions-risk
       signals
   - term: Sanctions program
-    definition: the legal and policy structure behind a restricted-party or country
-      measure
+    definition: a jurisdiction-specific legal and policy structure whose current
+      status, effective dates, scope, and applicable exceptions require verification
   - term: Beneficial ownership
     definition: the natural-person control or ownership question behind an entity
   - term: Red flag
@@ -250,12 +255,12 @@ profiles:
       evasion advice
   worked_scenario: a sample nonprofit screens a synthetic supplier record for classroom
     due-diligence practice
-  worked_input: toy entity records, public sanctions-program descriptions, synthetic
-    transaction summaries, and supplier-context notes
-  worked_process: check official list provenance, identify red flags, preserve beneficial-ownership
-    uncertainty, and avoid evasion guidance
-  worked_output: an economic-security packet with source links, uncertainty, red-flag
-    rationale, and a compliance review owner
+  worked_input: >-
+    toy supplier Cedar with registration ID C-17, a fictional screening-list snapshot naming Cedar with ID C-71, an undated ownership field, transaction summaries, and a jurisdiction-and-effective-date card marked incomplete
+  worked_process: >-
+    first verify the supplied list's provenance, date, and jurisdictional scope; then compare registration IDs, names, and ownership dates and document each mismatch; swap the same-name entities as a negative control, rejecting a name-only match. Treat red flags as review triggers, not findings of crime; stop clearance or restriction decisions until the compliance reviewer resolves applicable status and missing ownership evidence
+  worked_output: >-
+    a due-diligence packet marking the name hit unconfirmed because C-17 and C-71 differ, beneficial ownership unknown, and applicable legal status unresolved; the compliance owner receives the dated mismatch record, not an accusation, universal sanctions conclusion, or evasion recommendation
   practice_focus: defensive due diligence and uncertainty-preserving FININT
   review_question: Which red flag requires escalation, and what evidence is still
     missing?
@@ -267,24 +272,25 @@ profiles:
     security playbooks
   vocabulary:
   - term: Source integrity
-    definition: confidence that evidence has not been distorted, laundered, or compromised
+    definition: the assessed preservation of evidence origin, content, and context;
+      an intact chain does not establish that the underlying claim is true
   - term: Compromise signal
     definition: a clue that access, identity, or source reliability needs review
   - term: Corroboration
     definition: independent support that reduces single-source vulnerability
   - term: Insider risk
-    definition: risk created by trusted access combined with motive, pressure, or
-      control failure
+    definition: risk associated with trusted access and possible error, misuse,
+      or control failure; an anomaly does not establish motive or identify a culprit
   - term: Protected disclosure
     definition: a safe channel for reporting concerns without exposing sensitive details
   worked_scenario: a sample research lab reviews a synthetic source-quality anomaly
     after a disputed report
-  worked_input: toy access logs, public policy excerpts, synthetic source notes, and
-    a reviewer escalation path
-  worked_process: separate identity from access, list anomaly hypotheses, seek corroboration,
-    and route sensitive concerns to review
-  worked_output: a source-integrity memo with competing explanations, confidence,
-    protected-disclosure note, and next-review owner
+  worked_input: >-
+    toy download logs with an unusual hour, an authorized backup roster covering that hour, a second scheduled backup, two conflicting report versions, and no edit history
+  worked_process: >-
+    first preserve version identifiers and separate access timing from content change; then compare scheduled backup, transcription error, and unauthorized modification hypotheses; use the second backup as a benign timing control. Do not infer motive from an unusual hour; stop person-level inquiry and hand the minimized version discrepancy through the supplied protected-review channel
+  worked_output: >-
+    a challenge memo treating backup as an explanation for timing, leaving the report discrepancy unresolved pending edit history, and retaining both versions and alternative hypotheses for the instructor; no insider accusation or claim of proven compromise is warranted
   practice_focus: deception-aware source review and defensive escalation
   review_question: Which explanation preserves uncertainty without ignoring a possible
     compromise signal?
@@ -296,8 +302,8 @@ profiles:
   - term: Narrative provenance
     definition: where a claim, frame, or story came from and how it spread
   - term: Prebunking
-    definition: transparent education that helps people recognize misleading patterns
-      before exposure
+    definition: transparent education about misleading patterns before exposure;
+      its effectiveness and transfer require evidence rather than assumption
   - term: Audience harm
     definition: a privacy, dignity, autonomy, or trust risk for people receiving information
   - term: Attribution caution
@@ -306,22 +312,22 @@ profiles:
     definition: a transparent education, correction, or process improvement that avoids
       manipulation
   - term: MISO boundary
-    definition: the line between accountable public messaging analysis and covert influence
-      design
+    definition: the separation between this classroom analysis and authorized
+      military influence activities; MISO is not defined simply as covert messaging
   - term: Inoculation
-    definition: building recognition of manipulation tactics without deploying persuasion
-      against a population
+    definition: an approach intended to build recognition of misleading tactics;
+      it does not imply immunity or proven efficacy for a particular audience
   worked_scenario: a sample public-library class evaluates a synthetic rumor about
     a community service and compares transparent correction options
-  worked_input: sample posts, source timestamps, public-service facts, and a media-literacy
-    rubric
-  worked_process: trace narrative provenance, separate observation from attribution,
-    name audience harms, and design a transparent lesson
-  worked_output: a narrative-risk map with caveats, response options, and no microtargeted
-    persuasion
+  worked_input: >-
+    six fictional museum-fee posts, five copying one original, a dated notice limiting a fee to a special exhibition, and a classroom media-literacy rubric
+  worked_process: >-
+    first extract the claim and distinguish general admission from the exhibition; then trace the copying tree and compare scope and dates with the notice; remove the five copies as a negative control, requiring the evidentiary judgment to remain unchanged. Consider ordinary scope confusion alongside intentional deception; stop attribution or audience profiling and hand a transparent, source-linked correction to the instructor for release review
+  worked_output: >-
+    a narrative-risk map marking the general-admission claim unsupported by the packet, a correction quoting the exhibition-only scope, and unresolved intent, sponsorship, reach, and real audience effects; this fixture supports a correction decision, not a measured resilience benefit
   practice_focus: information-integrity analysis and resilience education
-  review_question: Which response informs people without crossing into MISO-style
-    manipulation or unverified attribution?
+  review_question: Which correction informs readers without audience manipulation,
+    unverified attribution, or assuming authority for military influence activities?
 - identifier: historical_declassified_sources
   disciplinary_frame: 'historical intelligence study as declassified evidence review:
     archives teach institutional lessons when provenance, redaction, context, and
@@ -332,9 +338,11 @@ profiles:
   - term: Declassification context
     definition: the release channel, date, and limits of an official historical source
   - term: Redaction caveat
-    definition: the warning that missing text may change interpretation
+    definition: a warning that withheld text and selective release constrain
+      interpretation; neither hidden contents nor absence of an event can be inferred
   - term: Institutional lesson
-    definition: the durable governance or analytic principle drawn from a case
+    definition: a context-bounded governance or analytic principle supported by a
+      case, whose transfer to another institution or era requires justification
   - term: Presentism
     definition: the error of forcing modern assumptions onto a historical record
   - term: Modern analogy
@@ -347,12 +355,12 @@ profiles:
       reconstructing live tradecraft
   worked_scenario: a sample seminar studies a declassified reform episode and extracts
     an oversight lesson without reconstructing current sources and methods
-  worked_input: public archive metadata, a short excerpt, a timeline template, and
-    an oversight-question worksheet
-  worked_process: record provenance, mark redactions, build timeline, distinguish
-    known from unknown, and extract a governance lesson
-  worked_output: a historical case card with release context, caveats, lesson, and
-    evidence-bounded boundary
+  worked_input: >-
+    a fictional 1974 memo released in 2005 with a missing annex, a 1975 oversight extract criticizing records, and a catalogue noting selective release
+  worked_process: >-
+    first separate event, authorship, and release dates; then build a timeline from visible text and compare the later review with the contemporary memo; leave the annex blank as a control rather than inventing its contents. Mark what depends on selection or redaction and stop any causal reconstruction or modern tactical analogy that needs missing text; refer chronology disputes to the seminar reviewer
+  worked_output: >-
+    a case card supporting the narrow finding that the supplied oversight extract criticized recordkeeping, while full causation, unseen participants, and completeness remain unresolved; the transferable records-review question is distinguished from any claim that historical context proves a modern lesson
   practice_focus: declassified-source interpretation and case-to-principle translation
   review_question: Which institutional lesson is defensible from the record, and which
     claim reconstructs live tradecraft?
@@ -366,7 +374,8 @@ profiles:
   - term: Indicator
     definition: an observable signal that may support defensive detection or investigation
   - term: TTP
-    definition: a tactic, technique, or procedure used for structured defensive mapping
+    definition: a tactic, technique, or procedure used for defensive behavioral
+      description; a taxonomy match is neither a unique actor signature nor attribution
   - term: Sighting
     definition: a bounded observation of a possible indicator in a given context
   - term: Handling rule
@@ -375,12 +384,12 @@ profiles:
     definition: the post-incident evidence that changes controls or playbooks
   worked_scenario: a sample campus SOC reviews fabricated alert records after a tabletop
     incident
-  worked_input: toy alerts, synthetic asset names, public ATT&CK technique descriptions,
-    and a sharing-policy card
-  worked_process: normalize indicators, map TTPs defensively, rate confidence, mark
-    sharing limits, and record lessons learned
-  worked_output: a CTI packet with indicators, TTP mapping, confidence, handling rule,
-    and remediation owner
+  worked_input: >-
+    fabricated alerts A and B sharing one event ID, clean-image control C with the same digest, a process excerpt lacking command context, taxonomy descriptions, and a class-only sharing card
+  worked_process: >-
+    first normalize timestamps, assets, event IDs, and indicator types; then merge A and B and compare the observed behavior with the taxonomy's requirements; use C to reject digest equality as sufficient evidence of maliciousness. Mark incomplete behavior mappings tentative and stop actor attribution or production response; hand the missing process context to the tabletop reviewer under the sharing restriction
+  worked_output: >-
+    a CTI packet with one deduplicated A/B event, the separate benign control, a nonspecific digest, a tentative behavior mapping, unresolved cause and actor, and a named review owner; neither an indicator hit nor an ATT&CK label proves compromise or identifies a campaign
   practice_focus: defensive CTI normalization and tabletop incident learning
   review_question: Which indicator is useful only after context and confidence are
     added?
@@ -402,15 +411,16 @@ profiles:
     definition: a synthetic event used to rehearse decisions without touching live
       systems
   - term: Recovery evidence
-    definition: proof that a safe state, service, or learning objective was restored
+    definition: records supporting a specified restored state, including appropriate
+      engineering checks and operator acceptance; alert silence alone is insufficient
   worked_scenario: a sample water-utility tabletop reviews synthetic process logs
     after a simulated anomaly
-  worked_input: toy HMI screenshots, fabricated network alerts, public ICS control
-    guidance, and a safety stop card
-  worked_process: map assets to consequences, classify tabletop injects, identify
-    human decisions, and preserve recovery evidence
-  worked_output: a cyber-physical tabletop packet with assets, consequences, ATT&CK
-    mapping, decisions, and debrief
+  worked_input: >-
+    a fictional tank display reading high at 09:10, two toy sensors reading normal, a same-time network alert, pre-change display values, a scaling-change note, and an instructor safety stop card; no equipment is connected
+  worked_process: >-
+    first map display, sensor, process consequence, and operator role and align clocks; then compare scaling error, sensor fault, and cyber interference; use the second sensor and pre-change values as controls against treating the network alert as proof of a physical excursion. Invoke the safety stop and hand the discrepancy to the engineering instructor without device commands or process changes
+  worked_output: >-
+    a tabletop packet distinguishing the display anomaly from unresolved physical level and cause, recording only supported defensive mappings, and withholding a recovery declaration until consistent readings and fictional operator acceptance are supplied; no attacker identity or safe plant state is established
   practice_focus: safety-aware tabletop readiness and defensive coverage review
   review_question: Which cyber observation changes meaning once physical consequence
     is considered?
@@ -422,9 +432,11 @@ profiles:
     review
   vocabulary:
   - term: Authority
-    definition: the legal, institutional, or classroom basis for an activity
+    definition: a specified basis for an activity tied to actor, purpose, jurisdiction,
+      data status, and applicable rule; classroom permission is not real legal authority
   - term: Proportionality
-    definition: the test that a method is no more intrusive than the need justifies
+    definition: a context-specific assessment of justified intrusion and impact under
+      applicable rules, not a substitute for lawful authority or a universal legal test
   - term: Oversight
     definition: independent review that can challenge or constrain the activity
   - term: Redress
@@ -433,12 +445,46 @@ profiles:
     definition: retained evidence that enables later review of decisions and outputs
   worked_scenario: a sample agency training team reviews whether a classroom AI workflow
     is allowed
-  worked_input: public policy excerpts, synthetic workflow notes, a rights-impact
-    checklist, and an audit-log template
-  worked_process: map authority, test proportionality, name affected groups, assign
-    oversight, and define redress or escalation
-  worked_output: an authority-and-impact register with approvals, limits, audit owner,
-    and review date
+  worked_input: >-
+    fictional policy P permitting synthetic or anonymized classroom copies in jurisdiction J, synthetic sample R, sample S with unknown jurisdiction, consent and retention status, workflow notes, and a rights-impact checklist
+  worked_process: >-
+    first map actors, purpose, audience, jurisdiction, data status, and policy version; then bind each proposed use to P and assess impact and less intrusive alternatives; substitute S for R as a negative control and refuse to transfer permission by technical similarity. Stop release on unresolved lawful basis or status and hand those questions to the designated legal/privacy reviewer
+  worked_output: >-
+    a register allowing only R's explicitly permitted classroom use under P, withholding S, and naming the audit owner, correction path, and review trigger; S's lawful basis and retention remain unresolved, and this exercise determines neither real-world legal compliance nor permission in other jurisdictions
   practice_focus: authority mapping and rights-aware release review
   review_question: What control turns a capability into an accountable, reviewable
     workflow?
+- identifier: cognitive_active_inference
+  disciplinary_frame: 'active inference as model-scoped inference and policy evaluation:
+    observations update beliefs under explicit generative assumptions, not a guarantee
+    of factual truth, biological equivalence, deception detection, or lawful agency'
+  key_distinction: separate posterior consistency under a model from evidence that the
+    model is adequate for the world
+  vocabulary:
+  - term: Generative model
+    definition: a specified joint distribution over observations and hidden states,
+      with assumptions that can be wrong
+  - term: Prior
+    definition: a probability distribution over states before the specified observation
+  - term: Likelihood
+    definition: probability of an observation conditional on a state and the chosen model,
+      not probability of that state given the observation
+  - term: Posterior
+    definition: the updated state distribution conditional on the observation and model
+  - term: Variational free energy
+    definition: a model-relative objective whose gap from surprise is a non-negative
+      divergence between an approximate and the model posterior
+  - term: Expected free energy
+    definition: a prospective policy-evaluation quantity under modeling and preference
+      assumptions, not an observed error score or a truth certificate
+  worked_scenario: an offline two-state classroom model compares a benign display fault
+    with a scheduled change
+  worked_input: >-
+    invented states A/B, prior probabilities 0.5/0.5, and an observed indicator with likelihoods 0.8/0.2 under model M1; alternative M2 reverses those likelihoods; no live system or person is observed
+  worked_process: >-
+    multiply each prior by its likelihood to obtain 0.4/0.1, normalize by 0.5 to get posterior 0.8/0.2, then repeat under M2 to get 0.2/0.8; compare what the observation establishes with what the likelihood assumption supplies, and hold any real-world causal claim
+  worked_output: >-
+    a theory-to-evidence card reporting both model-conditional posteriors, the explicit likelihood assumption, unresolved model adequacy, and no inference of hostile intent or guaranteed performance; a copied indicator is not a new independent update
+  practice_focus: model specification, posterior calculation, sensitivity, and theory-to-world limits
+  review_question: Which judgment changes when the likelihood model changes, and what
+    independent observation could discriminate the models?

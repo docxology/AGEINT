@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 from claim_calibration import collect_claim_calibration, render_claim_calibration_markdown
-from source_support_strength import SourceSupportProfile, source_support_strength, support_profiles_for_keys
+from source_support_strength import SourceSupportProfile, _profile_from_source_guide_row, source_support_strength, support_profiles_for_keys
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -116,17 +116,14 @@ def test_claim_calibration_skips_headings_with_performance_terms(tmp_path: Path)
     assert report.payload["summary"]["candidate_rows"] == 0
 
 
-def test_claim_calibration_script_writes_json_contract(built_output: Path) -> None:
-    assert (built_output / "manuscript").is_dir()
+def test_claim_calibration_script_reports_json_contract(built_output: Path) -> None:
     result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_claim_calibration.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_claim_calibration.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
     assert payload["ok"] is True
     assert payload["summary"]["hard_fail_rows"] == 0
-    assert (PROJECT_ROOT / "output" / "reports" / "claim_calibration.json").is_file()
-    assert (PROJECT_ROOT / "output" / "reports" / "claim_calibration.md").is_file()
 
 
 def test_source_support_strength_classifies_curated_and_source_guide_keys() -> None:
@@ -149,3 +146,112 @@ def test_support_profiles_for_keys_preserves_order_and_unknowns() -> None:
     assert all(isinstance(profile, SourceSupportProfile) for profile in profiles)
     assert profiles[-1].strength == "unknown"
     assert profiles[-1].weak_context is True
+
+
+def test_unknown_official_looking_key_cannot_validate_a_performance_claim(tmp_path: Path) -> None:
+    key = "official_nonexistent_review_fixture"
+    _write_markdown(tmp_path / "chapter.md", f"# Challenge\n\nThis proves statistically significant analytic accuracy [@{key}].\n")
+
+    support = source_support_strength(key, PROJECT_ROOT)
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+
+    assert support.strength == "unknown"
+    assert support.primary_support is False
+    assert report.ok is False
+    assert report.payload["hard_fail_rows"][0]["citation_keys"] == [key]
+
+
+def test_verified_editorial_annotation_does_not_establish_a_primary_source_lane() -> None:
+    profile = _profile_from_source_guide_row("ageint999", {"url": "https://example.org/editorial", "title": "Editorial note", "note_verified": True})
+    assert profile.primary_support is False
+    assert profile.strength == "source_guide_context"
+
+
+def test_negated_proof_is_not_an_unsupported_positive_claim(tmp_path: Path) -> None:
+    _write_markdown(tmp_path / "limits.md", "Neither source agreement nor a valid signature proves factual truth.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is True
+    assert report.payload["rows"][0]["disposition"] == "boundary_allowed"
+
+
+def test_boundary_in_one_clause_does_not_hide_a_positive_claim(tmp_path: Path) -> None:
+    for text in (
+        "This is not a benchmark. The workbook proves statistically significant accuracy.",
+        "This is not a benchmark, but it proves measured performance.",
+        "This is not only a benchmark; it proves learning gains.",
+    ):
+        _write_markdown(tmp_path / "mixed.md", text + "\n")
+        report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+        assert report.ok is False
+        assert report.payload["rows"][0]["disposition"] == "fail"
+
+
+def test_reported_bad_answer_does_not_waive_an_endorsed_claim(tmp_path: Path) -> None:
+    quoted = "A fictional input record claims 'the policy proves automated accuracy'."
+    path = tmp_path / "exercise.md"
+    _write_markdown(path, quoted + "\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.payload["rows"][0]["disposition"] == "review"
+    _write_markdown(path, quoted + " The workbook proves learning gains.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is False
+
+
+def test_conditional_observation_does_not_validate_its_consequent(tmp_path: Path) -> None:
+    path = tmp_path / "condition.md"
+    _write_markdown(path, "If the notice proves incomplete, withhold the accuracy judgment.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.payload["rows"][0]["disposition"] == "review"
+    _write_markdown(path, "If the notice proves incomplete, this proves measured performance.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is False
+
+
+def test_soft_wrap_preserves_negation_but_not_an_asserted_following_sentence(tmp_path: Path) -> None:
+    path = tmp_path / "wrapped.md"
+    _write_markdown(path, "Do not\npromote the artifact into proof of autonomous accuracy.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is True
+    _write_markdown(path, "Do not\npromote the artifact into proof of autonomous accuracy.\nThis proves learning gains.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is False
+
+
+def test_misconception_is_not_endorsed_and_cannot_mask_a_new_assertion(tmp_path: Path) -> None:
+    path = tmp_path / "misconception.md"
+    prompt = "Correct the misconception about **Theory vs. measurement**: that an indicator proves an incident."
+    _write_markdown(path, prompt + "\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.payload["rows"][0]["disposition"] == "review"
+    _write_markdown(path, prompt + " The classroom trial proves measured performance.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is False
+
+
+def test_postverbal_neither_does_not_waive_a_claim_of_no_effect(tmp_path: Path) -> None:
+    path = tmp_path / "negation.md"
+    _write_markdown(path, "A missing timestamp proves neither age nor falsity.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.payload["rows"][0]["disposition"] == "boundary_allowed"
+    _write_markdown(path, "The trial proves no effect.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is False
+
+
+def test_stop_instruction_is_not_a_certificate_for_a_stop_device(tmp_path: Path) -> None:
+    path = tmp_path / "stop.md"
+    _write_markdown(path, "Stop any inference that a vendor badge proves compliance.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.payload["rows"][0]["disposition"] == "boundary_allowed"
+    _write_markdown(path, "The emergency stop proves measured performance.\n")
+    report = collect_claim_calibration(tmp_path, project_root=PROJECT_ROOT)
+    assert report.ok is False
+
+
+def test_primary_lane_uses_hostname_boundaries_not_publisher_suffix_lookalikes() -> None:
+    lookalike = _profile_from_source_guide_row("ageint999", {"url": "https://notnature.com/article", "note_verified": True})
+    publisher = _profile_from_source_guide_row("ageint998", {"url": "https://www.nature.com/article", "note_verified": True})
+    official = _profile_from_source_guide_row("ageint997", {"url": "https://records.example.gov:443/policy", "note_verified": True})
+    assert lookalike.primary_support is False
+    assert publisher.primary_support is True
+    assert official.primary_support is True

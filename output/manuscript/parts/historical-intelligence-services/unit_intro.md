@@ -2,25 +2,31 @@
 
 ## HISTORICAL INTELLIGENCE SERVICES learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-historical-intelligence-services]; [@ageint266].
+**Navigation.** Parent section: [@sec:part-historical-intelligence-services].
 
 ### declassified-source interpretation discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-historical-intelligence-services]; [@ageint266].
+**Navigation.** Parent section: [@sec:part-historical-intelligence-services].
 
 This unit teaches **declassified-source interpretation**. Historical intelligence lessons use archives, redaction caveats, institutional context, and reform lessons without reconstructing live tradecraft.
 
 ### declassified-source interpretation source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-historical-intelligence-services]; [@ageint266].
+**Navigation.** Parent section: [@sec:part-historical-intelligence-services].
 
 Use source-guide citations and official historical-source anchors for release context, provenance, and oversight lessons.
 
 ### declassified-source interpretation practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-historical-intelligence-services]; [@ageint266].
+**Navigation.** Parent section: [@sec:part-historical-intelligence-services].
 
-The recurring practice artifact is a **declassified case-to-principle card** that draws on release metadata, redaction caveat, timeline note, and institutional lesson. The unit keeps its learning spine explicit. Learners mark what the record can support, what redaction leaves unknown, and what institutional lesson survives context shift.
+The recurring practice artifact is a **declassified case-to-principle card** that draws on release metadata, redaction caveat, timeline note, and institutional lesson. The unit keeps its learning spine explicit. Classroom packet: a fictional 1974 memo was released in 2005 with a missing annex; a 1975 oversight extract criticizes recordkeeping, while the archive catalogue says the release is selective.
+
+1. Separate event, authorship, accession, and release dates; record the memo's institutional audience.
+2. Build a timeline from visible text, marking every gap and distinguishing contemporaneous claims from later review.
+3. Compare the oversight extract with the memo. As a control, leave the annex blank rather than reconstructing it; conclusions that require its contents must remain unresolved.
+4. Produce a case-to-principle card supporting the narrow lesson that the cited review identified deficient records, not that the archive proves every cause or participant. Selection and redaction prevent a complete account.
+Stop modern tactical analogy when context or evidence differs; hand contested chronology to the seminar reviewer without reconstructing current methods.
 
 ### declassified-source interpretation safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint266]; [@ageint267].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint266]; [@ageint267].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint266]; [@ageint267].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-historical-intelligence-services-module-map] and [@fig:
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-irregular-warfare-and-special-operations], [@sec:chapter-soviet-and-russian-intelligence].
 
-![The unit module map traces the part's chapters as a linear reading sequence. In the historical intelligence services section, it lets readers compare 4 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-historical-intelligence-services-module-map.png){#fig:part-historical-intelligence-services-module-map}
+![The HISTORICAL INTELLIGENCE SERVICES module map traces the part's chapters as a linear reading sequence. In the historical intelligence services section, it lets readers compare 4 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-historical-intelligence-services-module-map.png){#fig:part-historical-intelligence-services-module-map}
 
 ![This part applies one comparative lens to four intelligence traditions and folds them into a synthesis that surfaces the recurring patterns of oversight, failure, and reform that shape modern governance. Its reader value is to make Comparative Lens (how to read each service), Doctrine and mission, Organizational structure, and Oversight and legal basis visible at a glance, with the historical intelligence services section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-historical-services-comparative-lens.png){#fig:part-historical-services-comparative-lens}
 

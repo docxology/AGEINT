@@ -10,6 +10,9 @@ output/.pipeline/
 output/llm/
 output/simulations/
 output/tex/
+output/pdf/_combined_manuscript.*
+output/pdf/*_stdout.log
+output/web/_combined_manuscript.md
 .coverage
 coverage*.json
 htmlcov/

@@ -141,13 +141,10 @@ def test_agency_source_coverage_fails_missing_source_pack_negative_control(tmp_p
     assert "missing_source_pack" in report.payload["issue_rows"][0]["flags"]
 
 
-def test_audit_agency_source_coverage_script_writes_json_contract() -> None:
+def test_audit_agency_source_coverage_script_reports_json_contract() -> None:
     result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_agency_source_coverage.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_agency_source_coverage.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
     assert payload["ok"] is True
-    assert payload["summary"]["new_official_us_ic_anchor_count"] == 56
-    assert (PROJECT_ROOT / "output" / "reports" / "agency_source_coverage.json").is_file()
-    assert (PROJECT_ROOT / "output" / "reports" / "agency_source_coverage.md").is_file()

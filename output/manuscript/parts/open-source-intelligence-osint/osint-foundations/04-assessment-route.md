@@ -1,10 +1,10 @@
 ### OSINT Foundations assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 ### OSINT Foundations assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 #### OSINT Foundations capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **History and Rise of OSINT in the Intelli
 
 #### OSINT Foundations assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **History and Rise of OSINT in the Intelligence Community** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **IC OSINT Strategy 2024–2026** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **OSINT vs. HUMINT vs. SIGINT: Comparative Value and Fusion** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **History and Rise of OSINT in the Intelligence Community**; **IC OSINT Strategy 2024–2026** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: show priority, authority, minimization, corroboration, and source quality before any claim is reused. |
+| **OSINT vs. HUMINT vs. SIGINT: Comparative Value and Fusion**; **Legal and Ethical Constraints in OSINT Collection** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Identity-and-provenance ethics audit with no impersonation**; **Open Source Intelligence: Trends and Issues** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude live collection, recruitment, surveillance, interception, tracking, and identity exposure. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### OSINT Foundations refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint251]; [@ageint253].
 
-**Triangulation anchors.** In module 9's review-checklist section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 9's review-checklist section, the **Open-Source and Geospatial Intelligence Integrity** catalog routes include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**. [@ageint251]; [@ageint253].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

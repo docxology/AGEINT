@@ -21,3 +21,7 @@ def _load_intelligence_research_anchors() -> tuple[ResearchAnchor, ...]:
 
 
 INTELLIGENCE_RESEARCH_ANCHORS: Final[tuple[ResearchAnchor, ...]] = _load_intelligence_research_anchors()
+
+SOURCE_QUALITY_RESEARCH_ANCHORS: Final[tuple[ResearchAnchor, ...]] = tuple(
+    ResearchAnchor(**row) for row in read_jsonl(_project_root() / "data" / "research_anchors" / "source-quality-anchors.jsonl")
+)

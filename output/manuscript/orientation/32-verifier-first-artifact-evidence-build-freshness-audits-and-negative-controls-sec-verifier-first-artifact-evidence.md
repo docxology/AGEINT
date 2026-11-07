@@ -1,7 +1,8 @@
 ## Verifier-first artifact evidence: build freshness, audits, and negative controls {#sec:verifier-first-artifact-evidence}
 
-AGEINT uses the RedTeam rule that a green validator is evidence only after the
-validator has been challenged. The artifact-evidence control loop in
+A green validator describes only the properties its checks exercised; negative
+controls help expose missed failures but do not establish semantic correctness.
+The artifact-evidence control loop in
 [@fig:ageint-artifact-evidence-control-loop] binds source-owned curriculum
 inputs, generated manuscript sections, citation inventories, figure metadata,
 PDF annotations, and current evidence reports into one falsifiable chain. This

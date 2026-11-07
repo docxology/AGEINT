@@ -2,25 +2,31 @@
 
 ## GRAY ZONE, HYBRID WARFARE, AND NON-STATE ACTORS learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors]; [@ageint239].
+**Navigation.** Parent section: [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors].
 
 ### hybrid-threat governance discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors]; [@ageint239].
+**Navigation.** Parent section: [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors].
 
 This unit teaches **hybrid-threat governance**. Gray-zone lessons analyze ambiguous coercion, proxy relationships, resilience choices, and policy thresholds without operationalizing response.
 
 ### hybrid-threat governance source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors]; [@ageint239].
+**Navigation.** Parent section: [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors].
 
 Use official and alliance anchors for threshold language, information threats, and resilience governance.
 
 ### hybrid-threat governance practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors]; [@ageint239].
+**Navigation.** Parent section: [@sec:part-gray-zone-hybrid-warfare-and-non-state-actors].
 
-The recurring practice artifact is a **ambiguous-threshold indicator matrix** that draws on threshold indicator, attribution caveat, proxy-pattern note, and policy review field. The unit keeps its learning spine explicit. Learners distinguish observable indicators from sponsorship claims and state the review needed before action.
+The recurring practice artifact is a **ambiguous-threshold indicator matrix** that draws on threshold indicator, attribution caveat, proxy-pattern note, and policy review field. The unit keeps its learning spine explicit. Classroom packet: a fictional freight corridor has a two-day delay notice, three reposts alleging proxy pressure, and an independent weather bulletin forecasting flooding. The supplied policy card defines review thresholds for this exercise only.
+
+1. Build an event timeline separating disruption, allegations, and policy definitions.
+2. Compare weather disruption, commercial friction, and coercion hypotheses; distinguish a proxy relationship allegation from evidence of sponsorship or control.
+3. Trace all three reposts to one source and test whether the weather bulletin predicts the same delay without coercion.
+4. Submit an indicator matrix: disruption is documented, coercion and sponsorship are unresolved, and no conflict threshold is established by the packet. List the missing independent evidence rather than voting among reposts.
+Hand the matrix to the instructor's policy reviewer if a threshold decision is requested. Stop before live tasking, attribution, or response planning.
 
 ### hybrid-threat governance safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint239]; [@ageint247].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint239]; [@ageint247].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint239]; [@ageint247].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-gray-zone-hybrid-warfare-and-non-state-actors-module-ma
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-counterintelligence-against-non-state-actors], [@sec:chapter-gray-zone-warfare].
 
-![The unit module map traces the part's chapters as a linear reading sequence. In the gray zone hybrid warfare and non state actors section, it lets readers compare 3 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-gray-zone-hybrid-warfare-and-non-state-actors-module-map.png){#fig:part-gray-zone-hybrid-warfare-and-non-state-actors-module-map}
+![The GRAY ZONE, HYBRID WARFARE, AND NON-STATE ACTORS module map traces the part's chapters as a linear reading sequence. In the gray zone hybrid warfare and non state actors section, it lets readers compare 3 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-gray-zone-hybrid-warfare-and-non-state-actors-module-map.png){#fig:part-gray-zone-hybrid-warfare-and-non-state-actors-module-map}
 
 ![This part traces how the contested space below the threshold of war is recognized, attributed, and met through a defensive governance spine that ties authorities, coordination, and societal resilience back into sharper detection. The captioned view belongs to the gray zone hybrid warfare and non state actors section and should be read as a map of The Contested Space (Ch24-26), Gray Zone: ambiguity below war threshold, Hybrid: blended military and non-military means, and Non-State Actors: networks, proxies, insurgents, not as a capability score or live-task instruction.](../../../figures/mermaid/part-gray-zone-defense-spine.png){#fig:part-gray-zone-defense-spine}
 

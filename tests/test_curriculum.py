@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide, resolve_curriculum_payload
+from _curriculum_shards import source_support_numbers_for_section
+from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide, resolve_curriculum_payload, write_curriculum_shards
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SOURCE = PROJECT_ROOT / "SIST-Guide-TOC-and-Bibliography-v2.md"
@@ -41,6 +42,31 @@ def test_parse_curriculum_guide_handles_minimal_fixture() -> None:
     assert payload["stats"]["appendices"] == 1
     assert payload["references"][0]["key"] == "ageint001"
 
+
+
+def test_authored_teaching_note_count_recomputed_from_nonblank_shards(tmp_path: Path) -> None:
+    payload = parse_curriculum_guide(MINIMAL_GUIDE)
+    chapter = payload["parts"][0]["chapters"][0]
+    chapter["sections"][0]["teaching_note"] = "An authored explanation."
+    chapter["sections"].extend(
+        {"number": f"1.{number}", "title": f"Section {number}", "citations": [1], **fields}
+        for number, fields in enumerate(
+            [{"teaching_note": " \n\t"}, {}, {"teaching_note": 17}], start=2
+        )
+    )
+    payload["parts"].append(
+        {"number": 2, "roman": "II", "title": "Second part", "chapters": [
+            {"number": 2, "title": "Second chapter", "sections": [
+                {"number": "2.1", "title": "Another explanation", "citations": [1], "teaching_note": "Another authored note."}
+            ]}
+        ]}
+    )
+    payload["stats"]["authored_teaching_note_count"] = 999
+    write_curriculum_shards(payload, tmp_path)
+
+    curriculum = load_curriculum(tmp_path)
+
+    assert curriculum.stats["authored_teaching_note_count"] == 2
 
 def test_ageint_part_is_dense_and_named() -> None:
     curriculum = load_curriculum(DATA)
@@ -106,3 +132,17 @@ def test_all_chapter_shards_declare_profile_and_lens() -> None:
 def test_resolve_curriculum_payload_uses_sharded_data_when_guide_missing() -> None:
     payload = resolve_curriculum_payload(PROJECT_ROOT / "missing-guide.md")
     assert payload["stats"]["chapters"] == 51
+
+
+def test_source_routing_requires_topic_terms_not_substrings_or_context_alone() -> None:
+    expansion = {"keyword_routes": [{"keywords": ["ot"], "citations": [2]}, {"keywords": ["cti"], "citations": [3]}]}
+    part = {"title": "OT and CTI"}
+    for title in ("Photographs and publication history", "Historical comparison"):
+        selected = source_support_numbers_for_section(expansion, part, {}, {"title": title}, {1, 2, 3}, part_default=[1])
+        assert selected == [1]
+
+
+def test_source_routing_recognizes_whole_terms_and_hyphenated_phrases() -> None:
+    expansion = {"keyword_routes": [{"keywords": ["ot"], "citations": [2]}, {"keywords": ["open source"], "citations": [3]}]}
+    assert source_support_numbers_for_section(expansion, {}, {}, {"title": "OT architecture"}, {1, 2, 3}, part_default=[1]) == [2]
+    assert source_support_numbers_for_section(expansion, {}, {}, {"title": "Open-source records"}, {1, 2, 3}, part_default=[1]) == [3]

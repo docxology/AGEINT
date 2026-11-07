@@ -40,7 +40,7 @@ def test_transfer_task_for_entry_risk_branch_differs_from_standard() -> None:
     for part in curriculum.parts:
         part_title = str(part["title"])
         for chapter in part["chapters"]:
-            coursebook = _coursebook_profile_for_titles(part_title, str(chapter["title"]))
+            coursebook = _coursebook_profile_for_titles(part_title, str(chapter["title"]), chapter=chapter)
             for entry in safe_topic_entries(chapter, part):
                 if entry.risk_category not in {"standard", "ageint_pattern_registry"} and risk_entry is None:
                     risk_entry = (entry, coursebook)
@@ -66,7 +66,7 @@ def test_resolve_topic_lesson_fields_smoke_on_curriculum_entry() -> None:
             chapter_title = str(chapter["title"])
             profile = profile_for_titles(part_title, chapter_title, chapter=chapter)
             lens = practice_lens_for_titles(part_title, chapter_title, chapter=chapter)
-            coursebook = _coursebook_profile_for_titles(part_title, chapter_title)
+            coursebook = _coursebook_profile_for_titles(part_title, chapter_title, chapter=chapter)
             entries = safe_topic_entries(chapter, part)
             if not entries:
                 continue
@@ -89,7 +89,7 @@ def test_resolve_topic_misconception_matches_lesson_fields() -> None:
             chapter_title = str(chapter["title"])
             profile = profile_for_titles(part_title, chapter_title, chapter=chapter)
             lens = practice_lens_for_titles(part_title, chapter_title, chapter=chapter)
-            coursebook = _coursebook_profile_for_titles(part_title, chapter_title)
+            coursebook = _coursebook_profile_for_titles(part_title, chapter_title, chapter=chapter)
             entries = safe_topic_entries(chapter, part)
             if not entries:
                 continue

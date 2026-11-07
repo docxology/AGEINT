@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,9 +182,411 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1 id="sec:curriculum_orientation">Curriculum Orientation: reader
 paths, evidence maps, and safety gates</h1>
 <p>AGEINT (Agentic Intelligence) is a curriculum-and-assurance atlas for
@@ -189,16 +598,20 @@ material, and an <strong>assurance reviewer</strong> checking that every
 claim can be traced back to a real source. Nothing here is operational —
 every exercise uses synthetic or public material, and every claim is
 built to be challenged rather than believed.</p>
-<p>Read it as a map, not a textbook to read front to back:
-[sec:curriculum-map] lets you choose a domain part, [sec:reader-paths]
-gives each reader a fast path, and [sec:safety-rail] states what the
-atlas refuses to teach.</p>
+<p>For a first session, go directly to <span class="citation"
+data-cites="sec:reader-paths">[@sec:reader-paths]</span> and use its
+proposed 75-minute route; no atlas survey is required. For a longer
+course, <span class="citation"
+data-cites="sec:curriculum-map">[@sec:curriculum-map]</span> helps
+select a domain part. <span class="citation"
+data-cites="sec:safety-rail">[@sec:safety-rail]</span> states the
+boundary for both routes.</p>
 <blockquote>
 <p><strong>For maintainers.</strong> This page is generated. The source
-templates under <code>manuscript/templates/</code> keep guide-derived
-values — titles, labels, counts, source spines, semantic paths, and
-bibliography rows — as neutral tokens; the build resolves them from
-<code>data/curriculum/</code> into the rendered manuscript in
+templates under <code>docs/manuscript/templates/</code> keep
+guide-derived values — titles, labels, counts, source spines, semantic
+paths, and bibliography rows — as neutral tokens; the build resolves
+them from <code>data/curriculum/</code> into the rendered manuscript in
 <code>output/manuscript/</code>. Edit the template, not the rendered
 output.</p>
 </blockquote>
@@ -206,24 +619,21 @@ output.</p>
 the next section shows the exact path.</p>
 <h2 id="sec:how-to-use-this-atlas">How to use this atlas: navigation
 path, evidence checks, and verifier handoff</h2>
-<p>Read AGEINT as a navigable curriculum-and-assurance atlas rather than
-a linear textbook or empirical evaluation report. Start with
-[sec:curriculum-map] and [fig:ageint-curriculum-map] to choose the part,
-open the linked part introduction to see the module sequence, then use
-each chapter overview for the figures, source lane, and assessment
-artifact that matter for the current decision. Keep
-[sec:bibliography_atlas] open when checking a claim, because it
-preserves source identity, provenance type, source tier, and refresh
-context in one place.</p>
-<p>Use the first pages as signposts, not as a preface to skip. The
-handoff is intentionally explicit and always moves in the same
-direction:</p>
-<p>domain part -&gt; module overview -&gt; practice studio -&gt;
-evidence contract -&gt; governance boundary -&gt; assessment route -&gt;
-bibliography/source lane -&gt; verifier reports.</p>
-<p>Work the table below in order: orient, then match each claim to its
-evidence, then verify before trusting anything.</p>
-<table>
+<p>For a single session, start with <span class="citation"
+data-cites="sec:reader-paths">[@sec:reader-paths]</span> and the
+completed case in <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>. For
+a course, use <span class="citation"
+data-cites="sec:curriculum-map">[@sec:curriculum-map]</span> and <span
+class="citation"
+data-cites="fig:ageint-curriculum-map">[@fig:ageint-curriculum-map]</span>
+to choose a part, then follow its module overviews to a practice studio,
+evidence contract, governance boundary, and assessment. Consult <span
+class="citation"
+data-cites="sec:bibliography_atlas">[@sec:bibliography_atlas]</span>
+when checking source identity, provenance, support role, and refresh
+context—not as required preliminary reading.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -239,38 +649,54 @@ evidence, then verify before trusting anything.</p>
 <tbody>
 <tr>
 <td>Start here</td>
-<td>[sec:curriculum-map], [sec:synthetic-analytic-tradecraft-thesis],
-and [sec:reader-paths]</td>
+<td><span class="citation"
+data-cites="sec:curriculum-map">[@sec:curriculum-map]</span>, <span
+class="citation"
+data-cites="sec:synthetic-analytic-tradecraft-thesis">[@sec:synthetic-analytic-tradecraft-thesis]</span>,
+and <span class="citation"
+data-cites="sec:reader-paths">[@sec:reader-paths]</span></td>
 <td>Choose a domain part, name the Synthetic Analytic Tradecraft
 contract, and decide which reader path governs the next move.</td>
 </tr>
 <tr>
 <td>Then check</td>
-<td>[sec:analysis-validation-protocol], [sec:source-lane-map], and
-[sec:bibliography_atlas]</td>
+<td><span class="citation"
+data-cites="sec:analysis-validation-protocol">[@sec:analysis-validation-protocol]</span>,
+<span class="citation"
+data-cites="sec:source-lane-map">[@sec:source-lane-map]</span>, and
+<span class="citation"
+data-cites="sec:bibliography_atlas">[@sec:bibliography_atlas]</span></td>
 <td>Match the claim class to evidence, lane, citation identity, and
 refresh duty before treating prose or figures as support.</td>
 </tr>
 <tr>
 <td>Before you trust</td>
-<td>[sec:safe-substitution-matrix],
-[sec:orientation-figures-and-course-links], and
-[sec:method-assurance-reference]</td>
+<td><span class="citation"
+data-cites="sec:safe-substitution-matrix">[@sec:safe-substitution-matrix]</span>,
+<span class="citation"
+data-cites="sec:orientation-figures-and-course-links">[@sec:orientation-figures-and-course-links]</span>,
+and <span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span></td>
 <td>Confirm risky motifs were converted to bounded artifacts, figures
 carry their limits, and verifier reports agree with the rendered
 manuscript.</td>
 </tr>
 <tr>
 <td>Govern and assure</td>
-<td>[sec:hria-and-dpia-worksheet], [sec:adversarial-assurance-cycle],
-[sec:model-and-dataset-documentation-card], and
-[sec:records-retention-and-audit-trail]</td>
+<td><span class="citation"
+data-cites="sec:hria-and-dpia-worksheet">[@sec:hria-and-dpia-worksheet]</span>,
+<span class="citation"
+data-cites="sec:adversarial-assurance-cycle">[@sec:adversarial-assurance-cycle]</span>,
+<span class="citation"
+data-cites="sec:model-and-dataset-documentation-card">[@sec:model-and-dataset-documentation-card]</span>,
+and <span class="citation"
+data-cites="sec:records-retention-and-audit-trail">[@sec:records-retention-and-audit-trail]</span></td>
 <td>Bind rights impact, red-team challenge, documentation provenance,
 and retention duty to each reusable artifact before it leaves the
 course.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Claim classes are separated at source-selection time. Governance
 claims, technical and theoretical claims, empirical capability claims,
 and source-construction claims each need a matching evidence type; the
@@ -279,18 +705,19 @@ fields used when a search or discovery process supports manuscript
 content [scholarly_rethlefsen_2021_prisma_s].</p>
 <p>The opening route visual turns the atlas handoff into a concrete
 reader choice: select the role, keep the evidence trace, and move to the
-next section with the right verifier question already named. See
-[fig:ageint-reader-route-compass].</p>
+next section with the right verifier question already named. See <span
+class="citation"
+data-cites="fig:ageint-reader-route-compass">[@fig:ageint-reader-route-compass]</span>.</p>
 <figure id="fig:ageint-reader-route-compass">
-<img src="../../figures/python/ageint-reader-route-compass.png"
-alt="Opening navigation compass for the AGEINT orientation." />
+<a class="figure-full-size-link" href="../figures/python/ageint-reader-route-compass.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Opening navigation compass for the AGEINT orientation."><img src="../figures/python/ageint-reader-route-compass.png"
+alt="Compass-style map of AGEINT reader paths for instructor, learner, reviewer, and maintainer, with retained evidence attached to each route. Labeled content highlights instructor, learner, assurance reviewer, and maintainer routes; source-lane, safety-gate, claim-packet, and rebuild-proof handoffs; the evidence each reader must retain; and the limit that the compass is navigation support rather than a learning-outcome or performance claim, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-reader-route-compass-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Opening navigation compass for the AGEINT
 orientation. It separates the instructor, learner, assurance reviewer,
 and maintainer routes and pairs each with the evidence trace that should
 survive the next reading move, so a reader can choose a path and know
 what to carry into the following section. It is navigation support, not
 a learning-outcome or performance claim.</figcaption>
-</figure>
+<details id="fig-ageint-reader-route-compass-long-description" class="figure-long-description" data-figure-label="fig:ageint-reader-route-compass"><summary>Detailed description of figure ageint reader route compass</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Reader Route Compass. The short alternative identifies the figure as: Compass-style map of AGEINT reader paths for instructor, learner, reviewer, and maintainer, with retained evidence attached to each route. Labeled content highlights instructor, learner, assurance reviewer, and maintainer routes; source-lane, safety-gate, claim-packet, and rebuild-proof handoffs; the evidence each reader must retain; and the limit that the compass is navigation support rather than a learning-outcome or performance claim, with the visual tied back to the curriculum orientation. The full visual conveys instructor, learner, assurance reviewer, and maintainer routes; source-lane, safety-gate, claim-packet, and rebuild-proof handoffs; the evidence each reader must retain; and the limit that the compass is navigation support rather than a learning-outcome or performance claim. The caption explains the reader task as follows: Opening navigation compass for the AGEINT orientation. It separates the instructor, learner, assurance reviewer, and maintainer routes and pairs each with the evidence trace that should survive the next reading move, so a reader can choose a path and know what to carry into the following section. It is navigation support, not a learning-outcome or performance claim. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 </main>
 </body>
 </html>

@@ -6,7 +6,7 @@ The module uses [@fig:imint-exploitation-confidence-ladder], [@fig:historical-he
 
 Navigation links: [@sec:curriculum_orientation], [@sec:part-imagery-and-financial-intelligence], [@sec:chapter-financial-intelligence-finint].
 
-![A requirements-to-evidence pipeline showing how imagery moves from tasking through interpretation to a graded confidence assessment before caveated dissemination. Its reader value is to make Collection Requirement, Tasking and Platform Selection, Imagery Acquisition, and Processing and Calibration visible at a glance, with the imagery and financial intelligence / imagery intelligence imint section as the source section and defensive review as the boundary.](../../../../figures/mermaid/imint-exploitation-confidence-ladder.png){#fig:imint-exploitation-confidence-ladder}
+![Imagery confidence depends on fitness for a particular claim, not a single-frame versus multi-source rule. This classroom workflow examines timing, calibration, comparable views, measurement limits, independent origins, contradictions, and alternative explanations. A named reviewer may approve a bounded interpretation with justified confidence, or require narrowing, rejection, or abstention. Missing evidence is documented or supplied by the instructor; the diagram does not authorize imagery acquisition or dissemination.](../../../../figures/mermaid/imint-exploitation-confidence-ladder.png){#fig:imint-exploitation-confidence-ladder}
 
 ![Public-domain USGS EROS declassified HEXAGON image used as a historical example of imagery becoming a governed analytic source. Its reader value is to make U.S. Geological Survey provenance, 1973-03-20 collection context, public-domain status, and analytic reuse boundary visible at a glance, with the imagery and financial intelligence / imagery intelligence imint section as the source section and defensive review as the boundary.](../../../../figures/historical/historical-hexagon-quang-tri.png){#fig:historical-hexagon-quang-tri}
 
@@ -16,11 +16,11 @@ This module teaches the **Open-Source and Geospatial Intelligence Integrity** la
 
 ## Open-Source and Geospatial Intelligence Integrity frame for Imagery Intelligence (IMINT): source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-imagery-intelligence-imint]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-imagery-intelligence-imint].
 
 ### Imagery Intelligence (IMINT) orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-imagery-intelligence-imint]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-imagery-intelligence-imint].
 
 ### Imagery Intelligence (IMINT) conceptual primer: source context, core model, and reader task
 
@@ -34,7 +34,7 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### Imagery Intelligence (IMINT) learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-imagery-intelligence-imint]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-imagery-intelligence-imint].
 
 - Connect **Imagery modality literacy: resolution, scale, and sensor-fit and Imagery collection-platform literacy: resolution and revisit tradeoffs** to **Open-Source and Geospatial Intelligence Integrity** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **requirements matrix with source descriptors, caveats, and collection limits** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -44,14 +44,12 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### Imagery Intelligence (IMINT) core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-imagery-intelligence-imint]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-imagery-intelligence-imint].
 
 | Term | Working definition |
 |---|---|
-| Provenance | the origin, chain, and transformation history of a source |
-| Corroboration | the comparison of independent sources before reuse |
+| Provenance | the origin, custody, and transformation history of a source, which helps evaluate a claim but does not prove its truth or grant reuse permission |
+| Corroboration | comparison of relevant, sufficiently independent evidence for a specific claim; copied sources do not become independent through repetition |
 | Recency | the time relationship between source creation, discovery, and claim |
 | Geospatial quality | accuracy, completeness, temporal fitness, and usability of location data |
 | Minimization | limiting retained information to what the accountable question requires |
-| Imagery modality literacy: resolution, scale,… | Key terms: Imagery, modality, literacy. |
-| Imagery collection-platform literacy:… | Key terms: Imagery, collection, platform. |

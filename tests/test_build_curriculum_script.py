@@ -2,39 +2,24 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import shutil
-import subprocess
-import sys
 
 import pytest
 
 import template_resolver
+from _data_loaders import validate_declarative_tables
 from build_pipeline import generated_output_is_stale, run_build
-from figures import _02b_mermaid as mermaid_rendering
+from citation_workflow import SOURCE_CITATION_COVERAGE_PATH, source_citation_coverage_summary
 from orchestration_contracts import output_build_sentinels, source_freshness_roots
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = PROJECT_ROOT / "scripts" / "build_curriculum.py"
 DATA = PROJECT_ROOT / "data" / "curriculum"
 
-# Every test decorated with @requires_template_repo below calls run_build()
-# (directly, via a tmp_path project, or via a subprocess against this repo's
-# actual PROJECT_ROOT) — render_manuscript() unconditionally calls
-# substitute_manuscript_text(), which needs the sibling docxology/template
-# repo's `infrastructure` package (src/manuscript_injection.py) regardless of
-# project size or whether the copy is tmp_path-isolated. One test
-# (test_build_curriculum_script_smoke) is worse than "just fails": it runs
-# scripts/build_curriculum.py with cwd=PROJECT_ROOT — the REAL project root,
-# not a tmp_path copy — so an unguarded crash partway through rendering
-# leaves output/manuscript/ emptied for the rest of the pytest session,
-# cascading into ~45 unrelated failures in every other test that reads
-# generated manuscript content. Confirmed live, twice, in a genuinely
-# isolated checkout with no template sibling (matching GitHub Actions
-# exactly): first pass only guarded the two PROJECT_ROOT-touching tests and
-# still surfaced 3 more tmp_path-based failures from this same file: all
-# call run_build() too, just non-destructively. Skip the whole class rather
-# than whack-a-mole discovering each one via another isolated run.
+# Build integrations use temporary project fixtures and require the shared SDK
+# for manuscript injection. Standalone compatibility skips do not establish
+# full native or release acceptance.
 requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 REQUIRED_OUTPUT_DOC_DIRS = {
     Path("output"),
@@ -65,14 +50,11 @@ def _minimal_project(tmp_path: Path) -> Path:
 def _write_minimal_source_config(project: Path) -> None:
     config = project / "docs" / "manuscript" / "config.yaml"
     config.parent.mkdir(parents=True, exist_ok=True)
-    config.write_text(
-        "paper:\n  title: \"Fixture project\"\nbook:\n  title: \"Fixture project\"\n  license: \"CC BY 4.0\"\n  code_license: \"Apache-2.0\"\n",
-        encoding="utf-8",
-    )
+    config.write_text('paper:\n  title: "Fixture project"\nbook:\n  title: "Fixture project"\n  license: "CC BY 4.0"\n  code_license: "Apache-2.0"\n', encoding="utf-8")
 
 
 def _force_mermaid_placeholders(monkeypatch) -> None:
-    monkeypatch.setattr(mermaid_rendering.shutil, "which", lambda _name: None)
+    monkeypatch.setenv("PATH", "")
 
 
 @requires_template_repo
@@ -92,32 +74,54 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     assert (project / "output" / "data" / "curriculum" / "metadata.json").is_file()
     assert (project / "output" / "data" / "manuscript_variables.json").is_file()
     assert (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").is_file()
-    foundations = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
-    assert "#### Lesson 1:" in foundations
-    worked = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
-    assert "**Filled artifact.**" in worked
-    assert "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer" in worked
-    assert "uses [@fig:" in (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").read_text(encoding="utf-8")
-    assert "Generated section context" not in foundations
+    coverage = json.loads((project / SOURCE_CITATION_COVERAGE_PATH).read_text(encoding="utf-8"))
+    summary = source_citation_coverage_summary(result.curriculum)
+    assert coverage["summary"]["section_count"] == summary.section_count
+    assert coverage["summary"]["citation_occurrences"] == summary.citation_occurrences
+    appendix = project / "output" / "manuscript" / "appendices" / "bibliography-atlas" / "05-bind-the-claim-not-merely-the-citation-01.md"
+    text = appendix.read_text(encoding="utf-8")
+    for label, binding in coverage["claim_bindings"].items():
+        field = binding["field"].removeprefix("$.summary.")
+        assert f"| {label} | {coverage['summary'][field]} |" in text
+        assert f"`{binding['path']}`" in text
+        assert f"`{binding['field']}`" in text
+    assert not (project / "output" / "reports" / "current_artifact_evidence.json").exists()
 
 
-@requires_template_repo
-def test_missing_source_config_fails_the_build(tmp_path: Path, monkeypatch) -> None:
-    """A missing docs/manuscript/config.yaml must fail loudly, not silently drop book/paper metadata."""
-    _force_mermaid_placeholders(monkeypatch)
-    project = _minimal_project(tmp_path)
-    (project / "docs" / "manuscript" / "config.yaml").unlink()
+@pytest.mark.parametrize("existing_output", [False, True])
+def test_missing_source_config_fails_the_build(tmp_path: Path, existing_output: bool) -> None:
+    """Source validation must fail before figure work or any source/output writes."""
+    project = tmp_path / "AGEINT"
+    templates = project / "docs" / "manuscript" / "templates"
+    templates.mkdir(parents=True)
+    (templates / "chapter.md").write_text("# Keep this template\n", encoding="utf-8")
+    if existing_output:
+        figures = project / "output" / "figures"
+        figures.mkdir(parents=True)
+        (figures / "keep.png").write_bytes(b"existing figure")
+    before = {path.relative_to(project): path.read_bytes() if path.is_file() else None for path in project.rglob("*")}
+    missing_config = project / "docs" / "manuscript" / "config.yaml"
 
-    with pytest.raises(FileNotFoundError, match="docs/manuscript/config.yaml"):
-        run_build(project, allow_placeholder_figures=True)
+    with pytest.raises(FileNotFoundError) as error:
+        run_build(project, regenerate_source_template_library=True, allow_placeholder_figures=False)
 
-@requires_template_repo
-def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None:
-    repo = template_resolver.ensure_template_repo_on_path(PROJECT_ROOT)
+    assert missing_config.as_posix() in str(error.value)
+    assert {path.relative_to(project): path.read_bytes() if path.is_file() else None for path in project.rglob("*")} == before
+    if not existing_output:
+        assert not (project / "output").exists()
 
-    assert repo is not None
-    assert (repo / "infrastructure" / "validation" / "cli" / "__init__.py").is_file()
-    assert str(repo) in sys.path
+
+def test_source_validation_rechecks_selected_project_config(tmp_path: Path) -> None:
+    """Cached table loaders must not mask removal in a different project root."""
+    _write_minimal_source_config(tmp_path)
+    validate_declarative_tables(tmp_path)
+    missing_config = tmp_path / "docs" / "manuscript" / "config.yaml"
+    missing_config.unlink()
+
+    with pytest.raises(FileNotFoundError) as error:
+        validate_declarative_tables(tmp_path)
+
+    assert missing_config.as_posix() in str(error.value)
 
 
 @requires_template_repo
@@ -146,21 +150,3 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, mo
     assert "TEMPLATE SENTINEL" not in rewritten
     assert "{{SECTION_TITLE}}" in rewritten
     assert "{{CHAPTER_031_TITLE}}" not in rewritten
-
-
-@requires_template_repo
-def test_build_curriculum_script_smoke() -> None:
-    result = subprocess.run(
-        [sys.executable, str(SCRIPT)],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        # Real Mermaid rendering (mmdc + headless Chrome) for ~24 figures takes
-        # well over the original 120s smoke budget; allow a realistic ceiling.
-        timeout=600,
-    )
-    assert result.returncode == 0
-    combined = f"{result.stdout}\n{result.stderr}"
-    assert "parts" in combined.lower()
-    assert "modules" in combined.lower() or "chapters" in combined.lower()

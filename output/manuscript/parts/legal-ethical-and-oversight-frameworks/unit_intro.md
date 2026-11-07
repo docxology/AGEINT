@@ -2,25 +2,31 @@
 
 ## LEGAL, ETHICAL, AND OVERSIGHT FRAMEWORKS learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-legal-ethical-and-oversight-frameworks]; [@ageint234].
+**Navigation.** Parent section: [@sec:part-legal-ethical-and-oversight-frameworks].
 
 ### authority, rights, oversight, and auditability discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-legal-ethical-and-oversight-frameworks]; [@ageint234].
+**Navigation.** Parent section: [@sec:part-legal-ethical-and-oversight-frameworks].
 
 This unit teaches **authority, rights, oversight, and auditability**. Legal and ethics lessons make authority, proportionality, privacy, transparency, redress, audit trails, and public accountability design constraints.
 
 ### authority, rights, oversight, and auditability source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-legal-ethical-and-oversight-frameworks]; [@ageint234].
+**Navigation.** Parent section: [@sec:part-legal-ethical-and-oversight-frameworks].
 
 Use directive, public-sector AI, and agentic AI anchors for authority mapping, transparency, records, and rights-impact claims.
 
 ### authority, rights, oversight, and auditability practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-legal-ethical-and-oversight-frameworks]; [@ageint234].
+**Navigation.** Parent section: [@sec:part-legal-ethical-and-oversight-frameworks].
 
-The recurring practice artifact is a **authority-and-impact review register** that draws on authority map, rights-impact note, audit log, and redress or escalation path. The unit keeps its learning spine explicit. Learners map authority, affected groups, oversight owner, audit evidence, and redress path before release.
+The recurring practice artifact is a **authority-and-impact review register** that draws on authority map, rights-impact note, audit log, and redress or escalation path. The unit keeps its learning spine explicit. Classroom packet: a fictional training office proposes summarizing a dataset. Policy excerpt P permits synthetic or anonymized classroom copies in jurisdiction J; sample R is labeled synthetic, but sample S has unknown consent, jurisdiction, and retention status.
+
+1. Map purpose, actors, data status, jurisdiction, policy version, affected people, and intended audience before assessing proportionality.
+2. Separate a classroom permission from real legal authority; link each proposed use to the exact supplied rule and mark missing legal interpretation.
+3. Substitute S for R as a negative control: the same technical capability must not inherit R's permission.
+4. Submit an authority-and-impact register allowing only the explicitly permitted R classroom exercise under P, withholding S, and preserving the audit owner, correction path, and unresolved status questions. This is a fixture judgment, not legal advice or universal compliance.
+Stop release when jurisdiction, lawful basis, or data status is unresolved; hand those questions to the instructor's designated legal/privacy reviewer.
 
 ### authority, rights, oversight, and auditability safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint234]; [@ageint238].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint234]; [@ageint238].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint234]; [@ageint238].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-legal-ethical-and-oversight-frameworks-module-map] and 
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-ageint-applied-to-ics-and-cyber-physical-intelligence], [@sec:chapter-legal-authorities-and-constraints].
 
-![The unit module map traces the part's chapters as a linear reading sequence. It is anchored to the legal ethical and oversight frameworks section; use it to inspect 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-legal-ethical-and-oversight-frameworks-module-map.png){#fig:part-legal-ethical-and-oversight-frameworks-module-map}
+![The LEGAL, ETHICAL, AND OVERSIGHT FRAMEWORKS module map traces the part's chapters as a linear reading sequence. It is anchored to the legal ethical and oversight frameworks section; use it to inspect 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-legal-ethical-and-oversight-frameworks-module-map.png){#fig:part-legal-ethical-and-oversight-frameworks-module-map}
 
 ![This part treats authority, proportionality, rights impact, accountable oversight, audit trail, transparency, and redress as a sequential gate ladder that any proposed capability must clear, with the legal and ethics chapters mapping authority and defining the duties that bind each gate.](../../../figures/mermaid/part-legal-ethical-oversight-gate-ladder.png){#fig:part-legal-ethical-oversight-gate-ladder}
 

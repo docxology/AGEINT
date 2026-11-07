@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -64,6 +65,13 @@ def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
         **payload.get("stats", {}),
         "parts": len(payload.get("parts", [])),
         "chapters": sum(len(part.get("chapters", [])) for part in payload.get("parts", [])),
+        "authored_teaching_note_count": sum(
+            1
+            for part in payload.get("parts", [])
+            for chapter in part.get("chapters", [])
+            for section in chapter.get("sections", [])
+            if isinstance(note := section.get("teaching_note"), str) and note.strip()
+        ),
         "appendices": len(payload.get("appendices", [])),
         "patterns": len(payload.get("patterns", [])),
         "references": len(payload.get("references", [])),
@@ -99,14 +107,17 @@ def hydrate_source_support(payload: dict[str, Any]) -> None:
 def source_support_numbers_for_section(
     expansion: dict[str, Any], part: dict[str, Any], chapter: dict[str, Any], section: dict[str, Any], reference_numbers: set[int], *, part_default: list[int]
 ) -> list[int]:
-    section_haystack = " ".join(str(value) for value in (section.get("number", ""), section.get("title", ""), section.get("raw", ""))).lower()
-    context_haystack = " ".join(str(value) for value in (part.get("title", ""), chapter.get("title", ""))).lower()
+    section_haystack = " ".join(str(value) for value in (section.get("number", ""), section.get("title", ""), section.get("raw", ""))).lower().replace("-", " ")
+    context_haystack = " ".join(str(value) for value in (part.get("title", ""), chapter.get("title", ""))).lower().replace("-", " ")
     best_routed: list[int] = []
     best_score = 0
     for row in expansion.get("keyword_routes", []):
         keywords = tuple(str(keyword).lower() for keyword in row.get("keywords", ()))
-        section_score = sum(1 for keyword in keywords if keyword in section_haystack)
-        context_score = sum(1 for keyword in keywords if keyword in context_haystack)
+        patterns = tuple(rf"(?<![a-z0-9]){re.escape(keyword)}(?![a-z0-9])" for keyword in keywords)
+        section_score = sum(1 for pattern in patterns if re.search(pattern, section_haystack))
+        if not section_score:
+            continue
+        context_score = sum(1 for pattern in patterns if re.search(pattern, context_haystack))
         score = section_score * 10 + context_score
         if score > best_score:
             routed = filtered_citation_numbers(row.get("citations", ()), reference_numbers)

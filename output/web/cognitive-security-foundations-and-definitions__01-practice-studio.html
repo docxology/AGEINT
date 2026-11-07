@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,53 +182,469 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="cognitive-resilience-lens-path-for-cognitive-security-foundations-and-definitions-lesson-cluster-safe-artifact-and-review">Cognitive-Resilience
 Lens path for Cognitive Security: Foundations and Definitions: lesson
 cluster, safe artifact, and review</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-cognitive-security-foundations-and-definitions];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span>.</p>
 <h3
 id="cognitive-security-foundations-and-definitions-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Cognitive
 Security: Foundations and Definitions practice studio: topic lessons,
 safe worked example, and knowledge check</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-cognitive-security-foundations-and-definitions];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span>.</p>
 <h3
 id="cognitive-security-foundations-and-definitions-topic-lessons-source-backed-concepts-and-transfer-tasks">Cognitive
 Security: Foundations and Definitions topic lessons: source-backed
 concepts and transfer tasks</h3>
-<p>This module builds cognitive security as protection of attention,
-trust, memory, and decision quality without creating manipulation. The
-sequence opens with <strong>Cognitive security definitions and
-scope</strong>, <strong>Comprehensive Definition: State and Process
-Against Malign Influence</strong>, <strong>Cognitive Security
-vs. Cybersecurity vs. Information Security</strong> and applies the
+<p><strong>Cognitive Security: Foundations and Definitions</strong>
+builds cognitive security as protection of attention, trust, memory, and
+decision quality without creating manipulation. The sequence opens with
+<strong>Cognitive security definitions and scope</strong>,
+<strong>Comprehensive Definition: State and Process Against Malign
+Influence</strong>, <strong>Cognitive Security vs. Cybersecurity
+vs. Information Security</strong> and applies the
 <strong>Cognitive-Resilience Lens</strong> practice frame through
 concept, evidence, artifact, misconception, and transfer tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-cognitive-security-module-map]; module overview
-[sec:chapter-cognitive-security-foundations-and-definitions]; curriculum
-atlas [sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 37’s topic-lessons
-section, directly verified anchors for the <strong>Cognitive Security
-and Influence Resilience</strong> lane include
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-cognitive-security-module-map">[@fig:part-cognitive-security-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 37’s
+topic-lessons section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
 <h4 id="lesson-1-cognitive-security-definitions-and-scope">Lesson 1:
 Cognitive security definitions and scope</h4>
 <p><strong>Concept.</strong> <strong>Cognitive security definitions and
 scope</strong> maps cognitive attack surfaces: attention, belief
 formation, narrative provenance, and transparent correction options.</p>
+<p><strong>Worked reasoning and limits.</strong> Cognitive security
+concerns conditions that protect informed, autonomous thinking and
+decision-making against information-related harms; definitions differ
+over whether the unit is a person, organization, or information
+environment. Cognitive warfare is a contested strategic/military
+framing, not a synonym for every cognitive-security problem: an ordinary
+mistaken notice does not establish an adversarial campaign. Neither term
+licenses deciding which opinions people may hold or treating
+biological/psychological/social labels as a universally validated
+taxonomy. The research article and its LinkedIn announcement are one
+underlying publication, not independent corroboration [ageint165;
+ageint167]; compare definitional scope rather than counting URLs.</p>
 <p><strong>Why it matters.</strong> Analysts use <strong>Cognitive
 security definitions</strong> to separate analysis of influence from
 persuasion design. A defensible treatment names the judgment it enables
@@ -229,40 +652,38 @@ for information-integrity analysis and resilience education review, the
 proof limit that treating resilience labels as permission to skip
 provenance review would otherwise hide, and the reviewer accountable for
 challenge.</p>
-<p><strong>Source support.</strong> <strong>Cognitive security
-definitions and scope</strong> rests on [ageint165], [ageint166], and
-[ageint167]. The most specific cited work observes: A LinkedIn post by
-Fran Casino announcing a research article titled ‘Unveiling the
-multifaceted concept of cognitive security: Trends, perspectives, and
-future challenges,’ published in the Elsevier journal Technology in
-Society. Use them for fixing what <strong>Cognitive security definitions
-and scope</strong> covers, marking the boundary it must not cross, and
-timing the next source refresh. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Cognitive security definitions and scope</strong>: [ageint165],
+[ageint166], and [ageint167]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Cognitive security
-definitions</strong>, work from the cited evidence behind this row.
-[ageint165] We provide a comprehensive review of the current state of
-cognitive security. [ageint166] Cognitive security, as an emerging
-field. [ageint167] A LinkedIn post by Fran Casino announcing a research
-article titled ‘Unveiling the multifaceted concept of cognitive
+definitions</strong>, inspect the original passages. Curriculum
+annotation for [ageint167]: A LinkedIn post by Fran Casino announcing a
+research article titled ‘Unveiling the multifaceted concept of cognitive
 security: Trends, perspectives, and future challenges,’ published in the
 Elsevier journal Technology in Society. The post describes the work as a
 literature review that analyzes definitions, challenges, and future
 trends in cognitive security and proposes a redefinition based on the
-concept’s core components. Read each cited work for what it can support
-about this topic, where that claim originated, how confident it is, and
-what evidence would change it.</p>
+concept’s core components. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> Build a <strong>narrative-risk map
 with provenance, uncertainty, audience harms, and response
 options</strong> for this information-integrity analysis and resilience
 education topic. The artifact must record the narrative provenance, the
 bounded claim about <strong>Cognitive security definitions</strong>, the
 audience-harm caveat, the uncertainty note, the transparent-use
-boundary, and the reviewer accountable for correction. Shape this
-subject work as an <strong>epistemic-integrity review packet</strong>
-that records its evidence, the residual uncertainty, the named reviewer,
-and the stop condition.</p>
+boundary, and the reviewer accountable for correction. Shape the same
+topic work as an <strong>epistemic-integrity review packet</strong> that
+records its evidence, the residual uncertainty, the named reviewer, and
+the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Cognitive security definitions</strong>: that a resilience label
 on a technique means it has been stress-tested, rather than a habit that
@@ -279,26 +700,35 @@ Influence</h4>
 Process Against Malign Influence</strong> protects knowledge production
 with provenance, dissent channels, and transparent correction—not
 narrative control.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Comprehensive
-Definition</strong> to separate analysis of influence from persuasion
-design. A defensible treatment names the judgment it enables for
-information-integrity analysis and resilience education review, the
-proof limit that treating resilience labels as permission to skip
-provenance review would otherwise hide, and the reviewer accountable for
-challenge.</p>
-<p><strong>Source support.</strong> <strong>Comprehensive Definition:
-State and Process Against Malign Influence</strong> rests on
-[ageint166]. Its anchor reference records: Cognitive security, as an
-emerging field. Use it for fixing what <strong>Comprehensive Definition:
-State and Process Against Malign Influence</strong> covers, marking the
-boundary it must not cross, and timing the next source refresh. External
-triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> A state of cognitive
+security describes a desired condition; a process describes ongoing
+source checking, correction, and rights-preserving response. Calling an
+influence malign requires evidence of the relevant conduct and intent,
+not merely disagreement or an emotional reaction. Treat the cited
+concept analysis as a definitional proposal, not an instrument that
+measures individual security or identifies malicious people
+[ageint166].</p>
+<p><strong>Why it matters.</strong> <strong>Comprehensive
+Definition</strong> connects classroom vocabulary to Cognitive Security
+and Influence Resilience practice: learners document evidence, caveats,
+and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Comprehensive Definition: State and Process Against Malign
+Influence</strong>: [ageint166]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Comprehensive
-Definition</strong> against the works cited for this row. [ageint166]
-Cognitive security, as an emerging field. Read each cited work for what
-it can support about this topic, where that claim originated, how
-confident it is, and what evidence would change it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Comprehensive
+Definition</strong>, inspect the original passages. No displayable
+curriculum annotation is available for [ageint166]. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Comprehensive
 Definition</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -325,28 +755,37 @@ id="lesson-3-cognitive-security-vs.-cybersecurity-vs.-information-security">Less
 vs. Cybersecurity vs. Information Security</strong> maps cognitive
 attack surfaces: attention, belief formation, narrative provenance, and
 transparent correction options.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
+<p><strong>Worked reasoning and limits.</strong> Information security
+protects information’s confidentiality, integrity, and availability;
+cybersecurity addresses risks in digital systems; cognitive security
+asks how information conditions affect judgment and autonomy. A
+technically intact message can still be misleading, while a mistaken
+message need not result from a cyber intrusion. Epistemic security
+additionally concerns institutions and practices through which knowledge
+is produced, checked, and distributed [ageint173; ageint175]; these
+scopes overlap without being interchangeable.</p>
+<p><strong>Why it matters.</strong> <strong>Cognitive Security
+vs. Cybersecurity vs. Information Security</strong> connects classroom
+vocabulary to Cognitive Security and Influence Resilience practice:
+learners document evidence, caveats, and reviewer ownership rather than
+repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Cognitive Security vs. Cybersecurity vs. Information
-Security</strong>, treating resilience labels as permission to skip
-provenance review undermines information-integrity analysis and
-resilience education review; the lesson builds the habit to separate
-analysis of influence from persuasion design.</p>
-<p><strong>Source support.</strong> <strong>Cognitive Security
-vs. Cybersecurity vs. Information Security</strong> rests on
-[ageint095]. The most specific cited work observes: This policy paper
-examines the emergence of cognitive security. Use it for the working
-definition that <strong>Cognitive Security vs. Cybersecurity
-vs. Information Security</strong> can defend, where that scope ends, and
-the refresh check owed before this evidence transfers. External
-triangulation uses [official_cisa_foreign_influence];
+Security</strong>: [ageint095]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Cognitive Security
-vs. Cybersecurity vs. Information Security</strong>, work from the cited
-evidence behind this row. [ageint095] This policy paper examines the
-emergence of cognitive security. From each source, pull the bounded
-claim it can carry for this topic, its provenance, the stated
-uncertainty, and the one condition that would overturn that
-judgment.</p>
+vs. Cybersecurity vs. Information Security</strong>, inspect the
+original passages. No displayable curriculum annotation is available for
+[ageint095]. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Cognitive Security
 vs. Cybersecurity vs. Information Security</strong>, build a
 <strong>narrative-risk map with provenance, uncertainty, audience harms,
@@ -355,7 +794,7 @@ and resilience education topic. The artifact must record the narrative
 provenance, the bounded claim about <strong>Cognitive Security vs
 Cybersecurity vs</strong>, the audience-harm caveat, the uncertainty
 note, the transparent-use boundary, and the reviewer accountable for
-correction. Shape this subject work as an <strong>epistemic-integrity
+correction. Shape the same topic work as an <strong>epistemic-integrity
 review packet</strong> that names evidence, uncertainty, reviewer, and
 stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
@@ -376,24 +815,36 @@ Action</h4>
 Situation Awareness + Purposeful Action</strong> focuses on transparent
 resilience education: provenance, audience harm, attribution caution,
 and non-manipulative response options.</p>
+<p><strong>Worked reasoning and limits.</strong> Use the three-pillar
+formulation as an attributed organizing model: awareness identifies a
+possible information problem, situation awareness places it in a
+specific evidence context, and purposeful action selects a proportionate
+response. In a synthetic notice exercise, noticing an inconsistent date
+is awareness; checking the supplied dated original is situation
+awareness; holding the draft until the date is resolved is action. This
+sequence does not establish a validated psychological taxonomy or
+guarantee resistance [ageint166].</p>
 <p><strong>Why it matters.</strong> <strong>Three Pillars</strong>
 connects classroom vocabulary to Cognitive Security and Influence
 Resilience practice: learners document evidence, caveats, and reviewer
 ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Three Pillars: Awareness +
-Situation Awareness + Purposeful Action</strong> rests on [ageint166].
-The closest source to this row notes: Cognitive security, as an emerging
-field. Use it for the working definition that <strong>Three Pillars:
-Awareness + Situation Awareness + Purposeful Action</strong> can defend,
-where that scope ends, and the refresh check owed before this evidence
-transfers. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Three Pillars: Awareness + Situation Awareness + Purposeful
+Action</strong>: [ageint166]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Three
-Pillars</strong> against the works cited for this row. [ageint166]
-Cognitive security, as an emerging field. Work source by source: name
-the bounded claim, its origin, the residual uncertainty, and the trigger
-that would change how this topic is judged.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Three
+Pillars</strong>, inspect the original passages. No displayable
+curriculum annotation is available for [ageint166]. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Three
 Pillars</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -421,35 +872,40 @@ id="lesson-5-unveiling-the-multifaceted-concept-of-cognitive-security-elsevier-2
 of Cognitive Security (Elsevier, 2025)</strong> maps cognitive attack
 surfaces: attention, belief formation, narrative provenance, and
 transparent correction options.</p>
+<p><strong>Worked reasoning and limits.</strong> A literature review can
+map competing definitions and research gaps without showing that a
+single intervention works across them. Compare each definition’s
+protected object, assumed threat, observable outcome, and rights
+implications; an individual recognition test and an institutional
+information-quality assessment answer different questions. The
+announcement is publication context only; it cannot independently
+validate the review’s proposed redefinition [ageint165; ageint167].</p>
 <p><strong>Why it matters.</strong> <strong>Unveiling the Multifaceted
-Concept</strong> matters in the <strong>Cognitive Security and Influence
-Resilience</strong> lane because information-integrity analysis and
-resilience education evidence must stay separate from judgment; treating
-resilience labels as permission to skip provenance review is a common
-failure.</p>
-<p><strong>Source support.</strong> <strong>Unveiling the Multifaceted
-Concept of Cognitive Security (Elsevier, 2025)</strong> rests on
-[ageint165] and [ageint167]. The lead source’s own note reads: The post
-describes the work as a literature review that analyzes definitions,
-challenges, and future trends in cognitive security and proposes a
-redefinition based on the concept’s core components. Use them for
-pinning down the scope of <strong>Unveiling the Multifaceted Concept of
-Cognitive Security (Elsevier, 2025)</strong>, the edge of that scope,
-and when these citations need re-verifying before transfer. External
-triangulation uses [official_cisa_foreign_influence];
+Concept</strong> connects classroom vocabulary to Cognitive Security and
+Influence Resilience practice: learners document evidence, caveats, and
+reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Unveiling the Multifaceted Concept of Cognitive Security
+(Elsevier, 2025)</strong>: [ageint165] and [ageint167]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Unveiling the
-Multifaceted Concept</strong>, reason from the sources cited in this
-row. [ageint165] We provide a comprehensive review of the current state
-of cognitive security. [ageint167] A LinkedIn post by Fran Casino
-announcing a research article titled ‘Unveiling the multifaceted concept
-of cognitive security: Trends, perspectives, and future challenges,’
-published in the Elsevier journal Technology in Society. The post
-describes the work as a literature review that analyzes definitions,
-challenges, and future trends in cognitive security and proposes a
-redefinition based on the concept’s core components. Read each cited
-work for what it can support about this topic, where that claim
-originated, how confident it is, and what evidence would change it.</p>
+Multifaceted Concept</strong>, inspect the original passages. Curriculum
+annotation for [ageint167]: A LinkedIn post by Fran Casino announcing a
+research article titled ‘Unveiling the multifaceted concept of cognitive
+security: Trends, perspectives, and future challenges,’ published in the
+Elsevier journal Technology in Society. The post describes the work as a
+literature review that analyzes definitions, challenges, and future
+trends in cognitive security and proposes a redefinition based on the
+concept’s core components. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Unveiling the
 Multifaceted Concept</strong>, build a <strong>narrative-risk map with
 provenance, uncertainty, audience harms, and response options</strong>
@@ -470,151 +926,181 @@ habit that still needs evidence, caveats, and reviewer challenge.</p>
 Multifaceted Concept</strong> from this module to a second motif by
 preserving information-integrity analysis and resilience education,
 replacing action with audit, and naming the blocked use.</p>
-<h4 id="lesson-6-neurocognitive-resilience-research-literacy">Lesson 6:
-Neurocognitive resilience research literacy</h4>
-<p><strong>Concept.</strong> <strong>Neurocognitive resilience research
-literacy</strong> maps cognitive attack surfaces: attention, belief
-formation, narrative provenance, and transparent correction options.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Neurocognitive
-resilience research literacy</strong> to separate analysis of influence
+<h4
+id="lesson-6-cognitive-security-in-the-age-of-ai-policy-perspective">Lesson
+6: Cognitive Security in the Age of AI: Policy Perspective</h4>
+<p><strong>Concept.</strong> <strong>Cognitive Security in the Age of
+AI: Policy Perspective</strong> maps cognitive attack surfaces:
+attention, belief formation, narrative provenance, and transparent
+correction options.</p>
+<p><strong>Worked reasoning and limits.</strong> Read the inherited
+RESAID heading as a policy-paper attribution, not neuroscience evidence.
+A proposal for public institutions or AI safeguards must specify
+authority, accountability, dissent protection, and a reviewable harm
+claim; institutional ambition is not measured effectiveness. The
+supplied citation is a policy source, and its recommendations do not
+themselves authorize surveillance, message targeting, or belief
+monitoring [ageint095].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Cognitive
+Security in the Age of AI</strong> to separate analysis of influence
 from persuasion design. A defensible treatment names the judgment it
 enables for information-integrity analysis and resilience education
 review, the proof limit that treating resilience labels as permission to
 skip provenance review would otherwise hide, and the reviewer
 accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Neurocognitive resilience
-research literacy</strong> rests on [ageint095]. The most specific cited
-work observes: This policy paper examines the emergence of cognitive
-security. Use it for the claim that <strong>Neurocognitive resilience
-research literacy</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Cognitive Security in the Age of AI: Policy
+Perspective</strong>: [ageint095]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Neurocognitive
-resilience research literacy</strong>, work from the cited evidence
-behind this row. [ageint095] This policy paper examines the emergence of
-cognitive security. Read each cited work for what it can support about
-this topic, where that claim originated, how confident it is, and what
-evidence would change it.</p>
-<p><strong>Student artifact.</strong> Build a <strong>narrative-risk map
-with provenance, uncertainty, audience harms, and response
-options</strong> for this information-integrity analysis and resilience
-education topic. The artifact must record the narrative provenance, the
-bounded claim about <strong>Neurocognitive resilience research
-literacy</strong>, the audience-harm caveat, the uncertainty note, the
-transparent-use boundary, and the reviewer accountable for correction.
-Shape this subject work as an <strong>epistemic-integrity review
-packet</strong> that logs the evidence, the uncertainty, the responsible
-reviewer, and the halt condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Neurocognitive resilience research literacy</strong>: that a
-resilience label on a technique means it has been stress-tested, rather
-than a habit that still needs evidence, caveats, and reviewer
-challenge.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>Neurocognitive resilience research literacy</strong> to another
-artifact while keeping information-integrity analysis and resilience
-education and reviewer ownership explicit.</p>
-<h4
-id="lesson-7-ai-development-should-prioritize-cognitive-neurocognitive-resilience-research-literacy">Lesson
-7: AI Development Should Prioritize Cognitive: Neurocognitive resilience
-research literacy</h4>
-<p><strong>Concept.</strong> <strong>AI Development Should Prioritize
-Cognitive: Neurocognitive resilience research literacy</strong> maps
-cognitive attack surfaces: attention, belief formation, narrative
-provenance, and transparent correction options.</p>
-<p><strong>Why it matters.</strong> <strong>AI Development Should
-Prioritize Cognitive</strong> connects classroom vocabulary to Cognitive
-Security and Influence Resilience practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>AI Development Should
-Prioritize Cognitive: Neurocognitive resilience research
-literacy</strong> rests on [ageint096]. Its anchor reference records: A
-position paper (Stanford authors, ICLR 2026 workshop) arguing that AI
-research and development should prioritize cognitive security, defined
-as protecting human cognitive processes from hazardous influence. Use it
-for the working definition that <strong>AI Development Should Prioritize
-Cognitive: Neurocognitive resilience research literacy</strong> can
-defend, where that scope ends, and the refresh check owed before this
-evidence transfers. External triangulation uses
-[official_cisa_foreign_influence];
-[official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>AI Development
-Should Prioritize Cognitive</strong> in the evidence the row cites.
-[ageint096] A position paper (Stanford authors, ICLR 2026 workshop)
-arguing that AI research and development should prioritize cognitive
-security, defined as protecting human cognitive processes from hazardous
-influence. It notes that generative AI systems increasingly designed to
-influence beliefs and behavior raise acute governance concerns, while
-research on these effects remains fragmented. Read each cited work for
-what it can support about this topic, where that claim originated, how
-confident it is, and what evidence would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>AI Development Should
-Prioritize Cognitive</strong>, build a <strong>narrative-risk map with
+<p><strong>Evidence to inspect.</strong> For <strong>Cognitive Security
+in the Age of AI</strong>, inspect the original passages. No displayable
+curriculum annotation is available for [ageint095]. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Cognitive Security in
+the Age of AI</strong>, build a <strong>narrative-risk map with
 provenance, uncertainty, audience harms, and response options</strong>
 for this information-integrity analysis and resilience education topic.
 The artifact must record the narrative provenance, the bounded claim
-about <strong>AI Development Should Prioritize Cognitive</strong>, the
-audience-harm caveat, the uncertainty note, the transparent-use
-boundary, and the reviewer accountable for correction. Shape <strong>AI
-Development Should Prioritize Cognitive</strong> work as an
-<strong>epistemic-integrity review packet</strong> that records its
-evidence, the residual uncertainty, the named reviewer, and the stop
-condition.</p>
+about <strong>Cognitive Security in the Age</strong>, the audience-harm
+caveat, the uncertainty note, the transparent-use boundary, and the
+reviewer accountable for correction. Shape <strong>Cognitive Security in
+the Age of AI</strong> work as an <strong>epistemic-integrity review
+packet</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>AI Development Should Prioritize Cognitive</strong>: that a
-resilience label on a technique means it has been stress-tested, rather
-than a habit that still needs evidence, caveats, and reviewer
+<strong>Cognitive Security in the Age of AI</strong>: that a resilience
+label on a technique means it has been stress-tested, rather than a
+habit that still needs evidence, caveats, and reviewer challenge.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Cognitive Security
+in the Age of AI</strong> audit pattern from this module on a different
+sample record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-7-ai-development-should-prioritize-cognitive-security-position-paper">Lesson
+7: AI Development Should Prioritize Cognitive Security: Position
+Paper</h4>
+<p><strong>Concept.</strong> <strong>AI Development Should Prioritize
+Cognitive Security: Position Paper</strong> maps cognitive attack
+surfaces: attention, belief formation, narrative provenance, and
+transparent correction options.</p>
+<p><strong>Worked reasoning and limits.</strong> The raw heading
+preserves inherited venue/year wording; use this source as an AI-policy
+position paper rather than endorsing that unverified NeurIPS-2023
+attribution. Proposing research on AI influence, belief-change metrics,
+and safeguards is different from demonstrating safe interventions or
+reliable intent detection. A defensible classroom question is whether a
+proposed metric distinguishes informed choice from compliance, not how
+to optimize persuasion of a selected audience [ageint096].</p>
+<p><strong>Why it matters.</strong> <strong>AI Development Should
+Prioritize Cognitive Security</strong> matters in the <strong>Cognitive
+Security and Influence Resilience</strong> lane because
+information-integrity analysis and resilience education evidence must
+stay separate from judgment; treating resilience labels as permission to
+skip provenance review is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>AI Development Should Prioritize Cognitive Security: Position
+Paper</strong>: [ageint096]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
+[official_nato_counter_information_threats].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>AI Development
+Should Prioritize Cognitive Security</strong>, inspect the original
+passages. Curriculum annotation for [ageint096]: A position paper
+(Stanford authors, ICLR 2026 workshop) arguing that AI research and
+development should prioritize cognitive security, defined as protecting
+human cognitive processes from hazardous influence. It notes that
+generative AI systems increasingly designed to influence beliefs and
+behavior raise acute governance concerns, while research on these
+effects remains fragmented. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>AI Development Should
+Prioritize Cognitive Security</strong>, build a <strong>narrative-risk
+map with provenance, uncertainty, audience harms, and response
+options</strong> for this information-integrity analysis and resilience
+education topic. The artifact must record the narrative provenance, the
+bounded claim about <strong>AI Development Should Prioritize
+Cognitive</strong>, the audience-harm caveat, the uncertainty note, the
+transparent-use boundary, and the reviewer accountable for correction.
+Shape <strong>AI Development Should Prioritize Cognitive
+Security</strong> work as an <strong>epistemic-integrity review
+packet</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>AI Development Should Prioritize Cognitive Security</strong>:
+that a resilience label on a technique means it has been stress-tested,
+rather than a habit that still needs evidence, caveats, and reviewer
 challenge.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>AI Development Should Prioritize Cognitive</strong> to another
-artifact while keeping information-integrity analysis and resilience
-education and reviewer ownership explicit.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>AI Development
+Should Prioritize Cognitive Security</strong> audit pattern from this
+module on a different sample record set with a new reviewer and
+blocked-use note.</p>
 <h4 id="lesson-8-darpa-cognitive-security-research-literacy">Lesson 8:
 DARPA cognitive-security research literacy</h4>
 <p><strong>Concept.</strong> <strong>DARPA cognitive-security research
-literacy</strong> maps cognitive attack surfaces: attention, belief
-formation, narrative provenance, and transparent correction options.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>DARPA
-cognitive-security research literacy</strong> to separate analysis of
-influence from persuasion design. A defensible treatment names the
-judgment it enables for information-integrity analysis and resilience
-education review, the proof limit that treating resilience labels as
-permission to skip provenance review would otherwise hide, and the
-reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>DARPA cognitive-security
-research literacy</strong> rests on [ageint168], [ageint169], and
-[ageint170]. The lead source’s own note reads: A HigherGov listing for
-the DARPA Intrinsic Cognitive Security (ICS) research solicitation,
-which seeks to develop tactical mixed-reality systems that protect users
-against cognitive attacks using formal methods with cognitive
-safeguards. Use them for pinning down the scope of <strong>DARPA
-cognitive-security research literacy</strong>, the edge of that scope,
-and when these citations need re-verifying before transfer. External
-triangulation uses [official_cisa_foreign_influence];
+literacy</strong> focuses on transparent resilience education:
+provenance, audience harm, attribution caution, and non-manipulative
+response options.</p>
+<p><strong>Worked reasoning and limits.</strong> DARPA ICS is a
+mixed-reality research program seeking cognitive safeguards and formal
+methods; aims, solicitation details, and demonstrated results are
+different evidence classes. News and procurement listings describe the
+same program, not three independent efficacy studies. Its mixed-reality
+scope must not be transferred into a claim of general LLM
+cognitive-security guarantees [ageint169].</p>
+<p><strong>Why it matters.</strong> <strong>DARPA cognitive-security
+research literacy</strong> matters in the <strong>Cognitive Security and
+Influence Resilience</strong> lane because information-integrity
+analysis and resilience education evidence must stay separate from
+judgment; treating resilience labels as permission to skip provenance
+review is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>DARPA cognitive-security research literacy</strong>:
+[ageint168], [ageint169], and [ageint170]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>DARPA
-cognitive-security research literacy</strong>, reason from the sources
-cited in this row. [ageint168] A Potomac Officers Club news article
-reporting on a DARPA request for proposals under its Intrinsic Cognitive
-Security program. The program seeks to protect mixed reality devices
-from cognitive attacks using mathematical approaches called formal
-methods, addressing risks such as flooding a device with information to
-induce motion sickness, distraction, or false alarms. [ageint169] This
-is an official DARPA program page for the Intrinsic Cognitive Security
-(ICS) program, which addresses vulnerabilities in mixed reality systems
-that could be exploited through cognitive attacks. The program aims to
-develop formal mathematical methods that guarantee mixed reality designs
-can protect users against adversarial interference. [ageint170] A
+cognitive-security research literacy</strong>, inspect the original
+passages. Curriculum annotation for [ageint168]: A Potomac Officers Club
+news article reporting on a DARPA request for proposals under its
+Intrinsic Cognitive Security program. The program seeks to protect mixed
+reality devices from cognitive attacks using mathematical approaches
+called formal methods, addressing risks such as flooding a device with
+information to induce motion sickness, distraction, or false alarms.
+Curriculum annotation for [ageint169]: This is an official DARPA program
+page for the Intrinsic Cognitive Security (ICS) program, which addresses
+vulnerabilities in mixed reality systems that could be exploited through
+cognitive attacks. The program aims to develop formal mathematical
+methods that guarantee mixed reality designs can protect users against
+adversarial interference. Curriculum annotation for [ageint170]: A
 HigherGov listing for the DARPA Intrinsic Cognitive Security (ICS)
 research solicitation, which seeks to develop tactical mixed-reality
 systems that protect users against cognitive attacks using formal
 methods with cognitive safeguards. The program is structured as a
 36-month effort in two 18-month phases, with defined funding ranges for
 a mixed-reality cognition technical area and an evaluation technical
-area. From each source, pull the bounded claim it can carry for this
-topic, its provenance, the stated uncertainty, and the one condition
-that would overturn that judgment.</p>
+area. These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> Build a <strong>narrative-risk map
 with provenance, uncertainty, audience harms, and response
 options</strong> for this information-integrity analysis and resilience
@@ -622,7 +1108,7 @@ education topic. The artifact must record the narrative provenance, the
 bounded claim about <strong>DARPA cognitive-security research
 literacy</strong>, the audience-harm caveat, the uncertainty note, the
 transparent-use boundary, and the reviewer accountable for correction.
-Shape this subject work as an <strong>epistemic-integrity review
+Shape the same topic work as an <strong>epistemic-integrity review
 packet</strong> that logs the evidence, the uncertainty, the responsible
 reviewer, and the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
@@ -634,105 +1120,121 @@ challenge.</p>
 cognitive-security research literacy</strong> audit pattern from this
 module on a different sample record set with a new reviewer and
 blocked-use note.</p>
-<h4
-id="lesson-9-financial-due-diligence-typology-exercise-using-synthetic-records-and-compliance-boundaries">Lesson
-9: Financial due-diligence typology exercise using synthetic records and
-compliance boundaries</h4>
-<p><strong>Concept.</strong> <strong>Financial due-diligence typology
-exercise using synthetic records and compliance boundaries</strong>
-structures financial-pattern review as typology-driven due diligence
-with escalation thresholds, not proof of wrongdoing.</p>
-<p><strong>Why it matters.</strong> <strong>Financial due-diligence
-typology exercise</strong> connects classroom vocabulary to Cognitive
+<h4 id="lesson-9-mixed-reality-influence-typology-literacy">Lesson 9:
+Mixed-reality influence typology literacy</h4>
+<p><strong>Concept.</strong> <strong>Mixed-reality influence typology
+literacy</strong> focuses on transparent resilience education:
+provenance, audience harm, attribution caution, and non-manipulative
+response options.</p>
+<p><strong>Worked reasoning and limits.</strong> Here typology concerns
+mixed-reality information hazards, not financial due diligence. A
+paper-only classroom classification can distinguish an obstructed field
+of view, conflicting simulated labels, and excessive alerts by their
+potential effects on perception and attention; it must not induce those
+effects in a person or device. The Reddit item is discovery/provenance,
+not a validated attack taxonomy; DARPA’s official program description
+supports the research context only [ageint171; ageint169].</p>
+<p><strong>Why it matters.</strong> <strong>Mixed-reality influence
+typology literacy</strong> connects classroom vocabulary to Cognitive
 Security and Influence Resilience practice: learners document evidence,
 caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Financial due-diligence
-typology exercise using synthetic records and compliance
-boundaries</strong> rests on [ageint171]. The closest source to this row
-notes: DARPA is putting together the Intrinsic Cognitive Security (ICS)
-research program “to build. Use it for pinning down the scope of
-<strong>Financial due-diligence typology exercise using synthetic
-records and compliance boundaries</strong>, the edge of that scope, and
-when these citations need re-verifying before transfer. External
-triangulation uses [official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Mixed-reality influence typology literacy</strong>: [ageint171].
+These citations preserve source identity, not automatic topical
+relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Financial
-due-diligence typology exercise</strong> in the evidence the row cites.
-[ageint171] DARPA is putting together the Intrinsic Cognitive Security
-(ICS) research program “to build. From each source, pull the bounded
-claim it can carry for this topic, its provenance, the stated
-uncertainty, and the one condition that would overturn that
-judgment.</p>
-<p><strong>Student artifact.</strong> For <strong>Financial
-due-diligence typology exercise</strong>, build a <strong>narrative-risk
-map with provenance, uncertainty, audience harms, and response
+<p><strong>Evidence to inspect.</strong> For <strong>Mixed-reality
+influence typology literacy</strong>, inspect the original passages. No
+displayable curriculum annotation is available for [ageint171]. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> Build a <strong>narrative-risk map
+with provenance, uncertainty, audience harms, and response
 options</strong> for this information-integrity analysis and resilience
-education topic. The artifact must note the typology descriptor, the
-bounded claim about <strong>Financial due-diligence typology exercise
-using</strong>, the intent caveat, the uncertainty threshold, the
-no-accusation boundary, and the reviewer who owns escalation. Shape
-<strong>Financial due-diligence typology exercise</strong> work as an
-<strong>epistemic-integrity review packet</strong> that records its
-evidence, the residual uncertainty, the named reviewer, and the stop
-condition.</p>
+education topic. The artifact must record the narrative provenance, the
+bounded claim about <strong>Mixed-reality influence typology
+literacy</strong>, the audience-harm caveat, the uncertainty note, the
+transparent-use boundary, and the reviewer accountable for correction.
+Shape the same topic work as an <strong>epistemic-integrity review
+packet</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Financial due-diligence typology exercise</strong>: that a
-typology or pattern match is proof of intent rather than a flag
-requiring corroboration and alternative explanations.</p>
+<strong>Mixed-reality influence typology literacy</strong>: that a
+resilience label on a technique means it has been stress-tested, rather
+than a habit that still needs evidence, caveats, and reviewer
+challenge.</p>
 <p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>Financial due-diligence typology exercise</strong> to another
+<strong>Mixed-reality influence typology literacy</strong> to another
 artifact while keeping information-integrity analysis and resilience
 education and reviewer ownership explicit.</p>
 <h4
-id="lesson-10-formal-methods-for-cognitive-guarantees-in-mr-systems">Lesson
-10: Formal Methods for Cognitive Guarantees in MR Systems</h4>
-<p><strong>Concept.</strong> <strong>Formal Methods for Cognitive
-Guarantees in MR Systems</strong> evaluates formal guarantees as design
-claims requiring assumptions, limits, and independent review.</p>
-<p><strong>Why it matters.</strong> <strong>Formal Methods</strong>
-matters in the <strong>Cognitive Security and Influence
-Resilience</strong> lane because information-integrity analysis and
-resilience education evidence must stay separate from judgment; treating
-resilience labels as permission to skip provenance review is a common
-failure.</p>
-<p><strong>Source support.</strong> <strong>Formal Methods for Cognitive
-Guarantees in MR Systems</strong> rests on [ageint169]. Its anchor
-reference records: The program aims to develop formal mathematical
-methods that guarantee mixed reality designs can protect users against
-adversarial interference. Use it for fixing what <strong>Formal Methods
-for Cognitive Guarantees in MR Systems</strong> covers, marking the
-boundary it must not cross, and timing the next source refresh. External
-triangulation uses [official_cisa_foreign_influence];
+id="lesson-10-model-scoped-formal-methods-for-mixed-reality-mixed-reality-influence-typology-literacy">Lesson
+10: Model-Scoped Formal Methods for Mixed-Reality: Mixed-reality
+influence typology literacy</h4>
+<p><strong>Concept.</strong> <strong>Model-Scoped Formal Methods for
+Mixed-Reality: Mixed-reality influence typology literacy</strong>
+evaluates formal guarantees as design claims requiring assumptions,
+limits, and independent review.</p>
+<p><strong>Worked reasoning and limits.</strong> A formal guarantee has
+premises: a specified system, environment, model of human interaction,
+property, and proof assumptions. Proving an alert-rate property in a
+model does not prove that all users remain attentive, that a clinical
+symptom cannot occur, or that an LLM is secure. Ask what happens when
+the cognitive model or sensor assumptions fail; an unmodeled condition
+leaves the real-world claim unestablished [ageint169].</p>
+<p><strong>Why it matters.</strong> <strong>Model-Scoped Formal Methods
+for Mixed-Reality</strong> connects classroom vocabulary to Cognitive
+Security and Influence Resilience practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Model-Scoped Formal Methods for Mixed-Reality: Mixed-reality
+influence typology literacy</strong>: [ageint169]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Formal
-Methods</strong>, reason from the sources cited in this row. [ageint169]
-This is an official DARPA program page for the Intrinsic Cognitive
-Security (ICS) program, which addresses vulnerabilities in mixed reality
-systems that could be exploited through cognitive attacks. The program
-aims to develop formal mathematical methods that guarantee mixed reality
-designs can protect users against adversarial interference. Each source
-above earns its place in this topic only when you can state its bounded
-claim, its provenance, its uncertainty, and the fact that would retire
-it.</p>
-<p><strong>Student artifact.</strong> For <strong>Formal
-Methods</strong>, build a <strong>narrative-risk map with provenance,
-uncertainty, audience harms, and response options</strong> for this
-information-integrity analysis and resilience education topic. The
-artifact must record the narrative provenance, the bounded claim about
-<strong>Formal Methods for Cognitive Guarantees</strong>, the
-audience-harm caveat, the uncertainty note, the transparent-use
-boundary, and the reviewer accountable for correction. Shape
-<strong>Formal Methods</strong> work as an <strong>epistemic-integrity
-review packet</strong> that records its evidence, the residual
-uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Model-Scoped Formal
+Methods for Mixed-Reality</strong>, inspect the original passages.
+Curriculum annotation for [ageint169]: This is an official DARPA program
+page for the Intrinsic Cognitive Security (ICS) program, which addresses
+vulnerabilities in mixed reality systems that could be exploited through
+cognitive attacks. The program aims to develop formal mathematical
+methods that guarantee mixed reality designs can protect users against
+adversarial interference. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Model-Scoped Formal
+Methods for Mixed-Reality</strong>, build a <strong>narrative-risk map
+with provenance, uncertainty, audience harms, and response
+options</strong> for this information-integrity analysis and resilience
+education topic. The artifact must record the narrative provenance, the
+bounded claim about <strong>Model-Scoped Formal Methods for
+Mixed-Reality</strong>, the audience-harm caveat, the uncertainty note,
+the transparent-use boundary, and the reviewer accountable for
+correction. Shape <strong>Model-Scoped Formal Methods for
+Mixed-Reality</strong> work as an <strong>epistemic-integrity review
+packet</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Formal Methods</strong>: that a resilience label on a technique
-means it has been stress-tested, rather than a habit that still needs
-evidence, caveats, and reviewer challenge.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Formal
-Methods</strong> from this module to a second motif by preserving
-information-integrity analysis and resilience education, replacing
-action with audit, and naming the blocked use.</p>
+<strong>Model-Scoped Formal Methods for Mixed-Reality</strong>: that a
+resilience label on a technique means it has been stress-tested, rather
+than a habit that still needs evidence, caveats, and reviewer
+challenge.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Model-Scoped Formal
+Methods for Mixed-Reality</strong> audit pattern from this module on a
+different sample record set with a new reviewer and blocked-use
+note.</p>
 <h4
 id="lesson-11-behavioral-outcomes-of-human-cognitive-security-arxiv-march-2026">Lesson
 11: Behavioral Outcomes of Human Cognitive Security (arXiv, March
@@ -741,35 +1243,40 @@ id="lesson-11-behavioral-outcomes-of-human-cognitive-security-arxiv-march-2026">
 Cognitive Security (arXiv, March 2026)</strong> maps cognitive attack
 surfaces: attention, belief formation, narrative provenance, and
 transparent correction options.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Behavioral
-Outcomes</strong> to separate analysis of influence from persuasion
-design. A defensible treatment names the judgment it enables for
-information-integrity analysis and resilience education review, the
-proof limit that treating resilience labels as permission to skip
-provenance review would otherwise hide, and the reviewer accountable for
-challenge.</p>
-<p><strong>Source support.</strong> <strong>Behavioral Outcomes of Human
-Cognitive Security (arXiv, March 2026)</strong> rests on [ageint107].
-The closest source to this row notes: It synthesizes Bayesian
-belief-updating with Prospect Theory to model how cognitive resources
-and emotional valuation shape behavior, and identifies three observable
-outcomes: veracity discernment, task-oriented actions, and information
-sharing. Use it for the claim that <strong>Behavioral Outcomes of Human
-Cognitive Security (arXiv, March 2026)</strong> lets you defend here,
-the limit it has to respect, and the re-check owed before reuse.
-External triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> Distinguish veracity
+discernment, task-oriented action, and information sharing: recognizing
+an unsupported claim does not imply withholding it, and sharing can have
+motives other than belief. The cited framework is a modeling
+contribution, not validation of a universal human-agent isomorphism or
+proof of an intervention’s effect. Keep observed task responses separate
+from explanations of the respondent’s intent [ageint107].</p>
+<p><strong>Why it matters.</strong> <strong>Behavioral Outcomes</strong>
+connects classroom vocabulary to Cognitive Security and Influence
+Resilience practice: learners document evidence, caveats, and reviewer
+ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Behavioral Outcomes of Human Cognitive Security (arXiv, March
+2026)</strong>: [ageint107]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Behavioral
-Outcomes</strong> against the works cited for this row. [ageint107] An
-arXiv research paper (March 2026) proposing an integrative modeling
-framework for human cognitive security, defined as the degree to which
-people rely on truthful information to make truth-aligned judgments. It
-synthesizes Bayesian belief-updating with Prospect Theory to model how
-cognitive resources and emotional valuation shape behavior, and
-identifies three observable outcomes: veracity discernment,
-task-oriented actions, and information sharing. Read each cited work for
-what it can support about this topic, where that claim originated, how
-confident it is, and what evidence would change it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Behavioral
+Outcomes</strong>, inspect the original passages. Curriculum annotation
+for [ageint107]: An arXiv research paper (March 2026) proposing an
+integrative modeling framework for human cognitive security, defined as
+the degree to which people rely on truthful information to make
+truth-aligned judgments. It synthesizes Bayesian belief-updating with
+Prospect Theory to model how cognitive resources and emotional valuation
+shape behavior, and identifies three observable outcomes: veracity
+discernment, task-oriented actions, and information sharing. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Behavioral
 Outcomes</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -797,26 +1304,34 @@ id="lesson-12-defining-comprehensive-cognitive-security-in-the-digital-era-ssrn-
 Security in the Digital Era (SSRN 2024)</strong> maps cognitive attack
 surfaces: attention, belief formation, narrative provenance, and
 transparent correction options.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Defining Comprehensive Cognitive Security</strong>, treating
-resilience labels as permission to skip provenance review undermines
-information-integrity analysis and resilience education review; the
-lesson builds the habit to separate analysis of influence from
-persuasion design.</p>
-<p><strong>Source support.</strong> <strong>Defining Comprehensive
-Cognitive Security in the Digital Era (SSRN 2024)</strong> rests on
-[ageint166]. The lead source’s own note reads: Cognitive security, as an
-emerging field. Use it for fixing what <strong>Defining Comprehensive
-Cognitive Security in the Digital Era (SSRN 2024)</strong> covers,
-marking the boundary it must not cross, and timing the next source
-refresh. External triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> Operationalize a broad
+definition by specifying what would count as improvement and what would
+count against it. Faster agreement is not necessarily better informed
+judgment; a reader who asks for missing evidence may be exercising
+autonomy rather than showing insecurity. A concept analysis supplies
+vocabulary and candidate boundaries, not a psychometric scale or a
+causal intervention evaluation [ageint166].</p>
+<p><strong>Why it matters.</strong> <strong>Defining Comprehensive
+Cognitive Security</strong> connects classroom vocabulary to Cognitive
+Security and Influence Resilience practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Defining Comprehensive Cognitive Security in the Digital Era
+(SSRN 2024)</strong>: [ageint166]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Defining
-Comprehensive Cognitive Security</strong>, work from the cited evidence
-behind this row. [ageint166] Cognitive security, as an emerging field.
-Work source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
+Comprehensive Cognitive Security</strong>, inspect the original
+passages. No displayable curriculum annotation is available for
+[ageint166]. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Defining Comprehensive
 Cognitive Security</strong>, build a <strong>narrative-risk map with
 provenance, uncertainty, audience harms, and response options</strong>
@@ -845,30 +1360,39 @@ id="lesson-13-ethics-of-cognitive-security-yorkspace-dissertation">Lesson
 (YorkSpace Dissertation)</strong> maps cognitive attack surfaces:
 attention, belief formation, narrative provenance, and transparent
 correction options.</p>
+<p><strong>Worked reasoning and limits.</strong> Protecting an
+information environment can itself threaten autonomy if an institution
+equates dissent with vulnerability or treats its own preferred account
+as unquestionable. Contrast a transparent correction with covert belief
+steering: both may change a message environment, but only the former
+exposes its reasons and allows contestation in this curriculum. The
+dissertation supplies ethical argument, not legal authorization or
+empirical proof that a chosen control works [ageint172].</p>
 <p><strong>Why it matters.</strong> <strong>Ethics of Cognitive Security
 (YorkSpace Dissertation)</strong> connects classroom vocabulary to
 Cognitive Security and Influence Resilience practice: learners document
 evidence, caveats, and reviewer ownership rather than repeating
 labels.</p>
-<p><strong>Source support.</strong> <strong>Ethics of Cognitive Security
-(YorkSpace Dissertation)</strong> rests on [ageint172]. The closest
-source to this row notes: This 2023 York University doctoral
-dissertation by Andrew Ward Buzzell provides an ethical and epistemic
-assessment of state power exercised to defend against information
-threats, a domain the author terms cognitive security. Use it for the
-claim that <strong>Ethics of Cognitive Security (YorkSpace
-Dissertation)</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Ethics of Cognitive Security (YorkSpace Dissertation)</strong>:
+[ageint172]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Ethics of Cognitive
-Security (YorkSpace Dissertation)</strong>, work from the cited evidence
-behind this row. [ageint172] This 2023 York University doctoral
-dissertation by Andrew Ward Buzzell provides an ethical and epistemic
-assessment of state power exercised to defend against information
-threats, a domain the author terms cognitive security. Work source by
-source: name the bounded claim, its origin, the residual uncertainty,
-and the trigger that would change how this topic is judged.</p>
+Security (YorkSpace Dissertation)</strong>, inspect the original
+passages. Curriculum annotation for [ageint172]: This 2023 York
+University doctoral dissertation by Andrew Ward Buzzell provides an
+ethical and epistemic assessment of state power exercised to defend
+against information threats, a domain the author terms cognitive
+security. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Ethics of Cognitive
 Security (YorkSpace Dissertation)</strong>, build a
 <strong>narrative-risk map with provenance, uncertainty, audience harms,
@@ -877,7 +1401,7 @@ and resilience education topic. The artifact must record the narrative
 provenance, the bounded claim about <strong>Ethics of Cognitive
 Security</strong>, the audience-harm caveat, the uncertainty note, the
 transparent-use boundary, and the reviewer accountable for correction.
-Shape this subject work as an <strong>epistemic-integrity review
+Shape the same topic work as an <strong>epistemic-integrity review
 packet</strong> that names evidence, uncertainty, reviewer, and stop
 condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
@@ -895,47 +1419,56 @@ Epistemic security and knowledge-integrity</h4>
 knowledge-integrity</strong> protects knowledge production with
 provenance, dissent channels, and transparent correction—not narrative
 control.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Epistemic security</strong>, treating resilience labels as
-permission to skip provenance review undermines information-integrity
-analysis and resilience education review; the lesson builds the habit to
-separate analysis of influence from persuasion design.</p>
-<p><strong>Source support.</strong> <strong>Epistemic security and
-knowledge-integrity</strong> rests on [ageint307], [ageint305], and
-[ageint304]. The lead source’s own note reads: NIST SP 800-218, the
-Secure Software Development Framework Version 1.1 published in February
-2022, establishes a set of high-level practices for integrating security
-into software development lifecycles in order to reduce vulnerabilities
-in released software, mitigate the impact of exploited vulnerabilities,
-and address root causes to prevent recurrences. Use them for the working
-definition that <strong>Epistemic security and
-knowledge-integrity</strong> can defend, where that scope ends, and the
-refresh check owed before this evidence transfers. External
-triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> Epistemic security
+examines whether people and institutions can obtain, evaluate, and
+correct knowledge, including source diversity, trustworthy processes,
+and access to contrary evidence [ageint173; ageint175]. The inherited
+ICS/DevSecOps/software-development citations describe governance
+context, not evidence for this definition. A perfectly signed but
+outdated announcement illustrates why technical provenance alone cannot
+establish current truth.</p>
+<p><strong>Why it matters.</strong> <strong>Epistemic security</strong>
+matters in the <strong>Cognitive Security and Influence
+Resilience</strong> lane because information-integrity analysis and
+resilience education evidence must stay separate from judgment; treating
+resilience labels as permission to skip provenance review is a common
+failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Epistemic security and knowledge-integrity</strong>:
+[ageint307], [ageint305], and [ageint304]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Epistemic
-security</strong> in the evidence the row cites. [ageint307] Official
-CISA Industrial Control Systems recommended practices page for defensive
-ICS/OT safety, resilience, and incident-preparation guidance.
-[ageint305] Official NIST NCCoE DevSecOps project page for software
-factory, secure pipeline, and continuous authorization source support.
-[ageint304] NIST SP 800-218, the Secure Software Development Framework
-Version 1.1 published in February 2022, establishes a set of high-level
-practices for integrating security into software development lifecycles
-in order to reduce vulnerabilities in released software, mitigate the
-impact of exploited vulnerabilities, and address root causes to prevent
-recurrences. Each source above earns its place in this topic only when
-you can state its bounded claim, its provenance, its uncertainty, and
-the fact that would retire it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Epistemic
+security</strong>, inspect the original passages. Curriculum annotation
+for [ageint307]: Official CISA Industrial Control Systems recommended
+practices page for defensive ICS/OT safety, resilience, and
+incident-preparation guidance. Curriculum annotation for [ageint305]:
+Official NIST NCCoE DevSecOps project page for software factory, secure
+pipeline, and continuous authorization source support. Curriculum
+annotation for [ageint304]: NIST SP 800-218, the Secure Software
+Development Framework Version 1.1 published in February 2022,
+establishes a set of high-level practices for integrating security into
+software development lifecycles in order to reduce vulnerabilities in
+released software, mitigate the impact of exploited vulnerabilities, and
+address root causes to prevent recurrences. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> Build a <strong>narrative-risk map
 with provenance, uncertainty, audience harms, and response
 options</strong> for this information-integrity analysis and resilience
 education topic. The artifact must record the narrative provenance, the
 bounded claim about <strong>Epistemic security</strong>, the
 audience-harm caveat, the uncertainty note, the transparent-use
-boundary, and the reviewer accountable for correction. Shape this
-subject work as an <strong>epistemic-integrity review packet</strong>
-that names evidence, uncertainty, reviewer, and stop condition.</p>
+boundary, and the reviewer accountable for correction. Shape the same
+topic work as an <strong>epistemic-integrity review packet</strong> that
+names evidence, uncertainty, reviewer, and stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Epistemic security</strong>: that a resilience label on a
 technique means it has been stress-tested, rather than a habit that
@@ -951,33 +1484,41 @@ id="lesson-15-seger-epistemic-security-and-knowledge-integrity">Lesson
 knowledge-integrity</strong> protects knowledge production with
 provenance, dissent channels, and transparent correction—not narrative
 control.</p>
+<p><strong>Worked reasoning and limits.</strong> A systems view asks how
+knowledge moves among originators, editors, institutions, platforms, and
+readers. Three outlets repeating one release provide reach, not
+independent confirmation; their common origin remains a single
+dependency. This field framing supports asking about the environment of
+informed choice, not ranking citizens by supposed epistemic fitness
+[ageint173].</p>
 <p><strong>Why it matters.</strong> <strong>Seger: Epistemic security
 and knowledge-integrity</strong> connects classroom vocabulary to
 Cognitive Security and Influence Resilience practice: learners document
 evidence, caveats, and reviewer ownership rather than repeating
 labels.</p>
-<p><strong>Source support.</strong> <strong>Seger: Epistemic security
-and knowledge-integrity</strong> rests on [ageint173]. The lead source’s
-own note reads: A project page from AI governance and ethics researcher
-Elizabeth Seger introducing the concept of epistemic security:
-protecting the processes through which information is created,
-distributed, and consumed in society. Use it for pinning down the scope
-of <strong>Seger: Epistemic security and knowledge-integrity</strong>,
-the edge of that scope, and when these citations need re-verifying
-before transfer. External triangulation uses
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Seger: Epistemic security and knowledge-integrity</strong>:
+[ageint173]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Seger: Epistemic
-security and knowledge-integrity</strong>, work from the cited evidence
-behind this row. [ageint173] A project page from AI governance and
-ethics researcher Elizabeth Seger introducing the concept of epistemic
-security: protecting the processes through which information is created,
-distributed, and consumed in society. It discusses information threats
-to democracies such as disinformation, eroding trust in institutions,
-polarization, and the misuse of generative AI, and how technologies
-shape knowledge production. From each source, pull the bounded claim it
-can carry for this topic, its provenance, the stated uncertainty, and
-the one condition that would overturn that judgment.</p>
+security and knowledge-integrity</strong>, inspect the original
+passages. Curriculum annotation for [ageint173]: A project page from AI
+governance and ethics researcher Elizabeth Seger introducing the concept
+of epistemic security: protecting the processes through which
+information is created, distributed, and consumed in society. It
+discusses information threats to democracies such as disinformation,
+eroding trust in institutions, polarization, and the misuse of
+generative AI, and how technologies shape knowledge production. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Seger</strong>, build
 a <strong>narrative-risk map with provenance, uncertainty, audience
 harms, and response options</strong> for this information-integrity
@@ -1002,9 +1543,17 @@ education, replacing action with audit, and naming the blocked use.</p>
 id="lesson-16-epistemic-security-epistemic-security-and-knowledge-integrity">Lesson
 16: Epistemic Security: Epistemic security and knowledge-integrity</h4>
 <p><strong>Concept.</strong> <strong>Epistemic Security: Epistemic
-security and knowledge-integrity</strong> shows how package provenance,
-social trust, build integrity, and assurance controls turn a software
-incident into reviewable evidence.</p>
+security and knowledge-integrity</strong> protects knowledge production
+with provenance, dissent channels, and transparent correction—not
+narrative control.</p>
+<p><strong>Worked reasoning and limits.</strong> Information supply
+chain here means the social production and distribution of information,
+not a software package/build pipeline. Trace a report from an
+originating record through editorial summaries and recommendation
+systems to an audience, noting where context or corrections can be lost.
+The report is a policy analysis and recommendations document; its
+future-oriented framing is not a measured forecast of conditions in 2029
+[ageint174].</p>
 <p><strong>Why it matters.</strong> Analysts use <strong>Epistemic
 Security</strong> to separate analysis of influence from persuasion
 design. A defensible treatment names the judgment it enables for
@@ -1012,26 +1561,28 @@ information-integrity analysis and resilience education review, the
 proof limit that treating resilience labels as permission to skip
 provenance review would otherwise hide, and the reviewer accountable for
 challenge.</p>
-<p><strong>Source support.</strong> <strong>Epistemic Security:
-Epistemic security and knowledge-integrity</strong> rests on
-[ageint174]. The closest source to this row notes: A February 2025 Demos
-report by Elizabeth Seger, Hannah Perry, and Jamie Hancock on
-strengthening the UK’s information supply chain. Use it for pinning down
-the scope of <strong>Epistemic Security: Epistemic security and
-knowledge-integrity</strong>, the edge of that scope, and when these
-citations need re-verifying before transfer. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Epistemic Security: Epistemic security and
+knowledge-integrity</strong>: [ageint174]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Epistemic
-Security</strong> in the evidence the row cites. [ageint174] A February
-2025 Demos report by Elizabeth Seger, Hannah Perry, and Jamie Hancock on
-strengthening the UK’s information supply chain. It frames epistemic
-security, securing healthy and robust flows of trustworthy information,
-as essential to countering what it calls a democratic emergency driven
-by institutional distrust, the decline of local news, and concentrated
-control of information by social media platforms. Read each cited work
-for what it can support about this topic, where that claim originated,
-how confident it is, and what evidence would change it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Epistemic
+Security</strong>, inspect the original passages. Curriculum annotation
+for [ageint174]: A February 2025 Demos report by Elizabeth Seger, Hannah
+Perry, and Jamie Hancock on strengthening the UK’s information supply
+chain. It frames epistemic security, securing healthy and robust flows
+of trustworthy information, as essential to countering what it calls a
+democratic emergency driven by institutional distrust, the decline of
+local news, and concentrated control of information by social media
+platforms. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Epistemic
 Security</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -1058,33 +1609,48 @@ id="lesson-17-tackling-threats-to-informed-decision-making-turing-institute">Les
 Decision-Making (Turing Institute)</strong> focuses on transparent
 resilience education: provenance, audience harm, attribution caution,
 and non-manipulative response options.</p>
+<p><strong>Worked reasoning and limits.</strong> <strong>Completed
+synthetic scope case.</strong> At 09:00 card A, a fictional museum’s
+dated notice, says the east entrance closes today; at 09:10 card B
+repeats it but omits east, and at 09:20 card C copies B. The scope
+matrix records: content claim = whole museum closed (unsupported);
+provenance = B and C share one origin; cognitive effect = possible
+confusion (hypothesis, not measured); rights = no basis to label a
+reader or author malicious. Decision: hold the whole-site closure claim
+and retain only the east-entrance statement. A supplied 09:30 correction
+restores east in B, so the revised brief links the correction and marks
+C stale; missing author intent remains unknown, and no attribution or
+targeted response follows. This applies the claim workflow in <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>, not
+a live influence investigation [ageint175].</p>
 <p><strong>Why it matters.</strong> <strong>Tackling Threats</strong>
 connects classroom vocabulary to Cognitive Security and Influence
 Resilience practice: learners document evidence, caveats, and reviewer
 ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Tackling Threats to Informed
-Decision-Making (Turing Institute)</strong> rests on [ageint175]. The
-most specific cited work observes: It examines threats to informed
-decision-making and collective action, analyzing vulnerabilities in
-social epistemic infrastructures such as adversaries and blunderers,
-attention scarcity, group polarization, and the erosion of trust. Use it
-for the claim that <strong>Tackling Threats to Informed Decision-Making
-(Turing Institute)</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Tackling Threats to Informed Decision-Making (Turing
+Institute)</strong>: [ageint175]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Tackling
-Threats</strong> against the works cited for this row. [ageint175] A
-2020 Alan Turing Institute report, authored by Elizabeth Seger, Shahar
-Avin, and colleagues from Cambridge and the UK Defence Science and
-Technology Laboratory, on promoting epistemic security in
-technologically advanced democracies. It examines threats to informed
-decision-making and collective action, analyzing vulnerabilities in
-social epistemic infrastructures such as adversaries and blunderers,
-attention scarcity, group polarization, and the erosion of trust. Work
-source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Tackling
+Threats</strong>, inspect the original passages. Curriculum annotation
+for [ageint175]: A 2020 Alan Turing Institute report, authored by
+Elizabeth Seger, Shahar Avin, and colleagues from Cambridge and the UK
+Defence Science and Technology Laboratory, on promoting epistemic
+security in technologically advanced democracies. It examines threats to
+informed decision-making and collective action, analyzing
+vulnerabilities in social epistemic infrastructures such as adversaries
+and blunderers, attention scarcity, group polarization, and the erosion
+of trust. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Tackling
 Threats</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -1112,28 +1678,36 @@ knowledge-integrity</h4>
 Epistemic security and knowledge-integrity</strong> protects knowledge
 production with provenance, dissent channels, and transparent
 correction—not narrative control.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Epistemic
-Governance in Crisis</strong> to separate analysis of influence from
-persuasion design. A defensible treatment names the judgment it enables
-for information-integrity analysis and resilience education review, the
-proof limit that treating resilience labels as permission to skip
-provenance review would otherwise hide, and the reviewer accountable for
-challenge.</p>
-<p><strong>Source support.</strong> <strong>Epistemic Governance in
-Crisis: Epistemic security and knowledge-integrity</strong> rests on
-[ageint001]. Its anchor reference records: This article examines the
-concept of epistemic governance during crises. Use it for the working
-definition that <strong>Epistemic Governance in Crisis: Epistemic
-security and knowledge-integrity</strong> can defend, where that scope
-ends, and the refresh check owed before this evidence transfers.
-External triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> Complexity language
+draws attention to feedback, interdependence, and unintended
+consequences; it does not make a system forecast certain or a governance
+intervention self-justifying. In the museum case, amplifying an
+unsupported closure to correct it could increase its reach, while
+suppressing discussion could conceal a real access problem. Prefer a
+narrowly sourced correction with visible uncertainty and a reversible
+classroom decision; the cited conceptual source is not an efficacy trial
+[ageint001].</p>
+<p><strong>Why it matters.</strong> <strong>Epistemic Governance in
+Crisis</strong> connects classroom vocabulary to Cognitive Security and
+Influence Resilience practice: learners document evidence, caveats, and
+reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Epistemic Governance in Crisis: Epistemic security and
+knowledge-integrity</strong>: [ageint001]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Epistemic
-Governance in Crisis</strong>, work from the cited evidence behind this
-row. [ageint001] This article examines the concept of epistemic
-governance during crises. Each source above earns its place in this
-topic only when you can state its bounded claim, its provenance, its
-uncertainty, and the fact that would retire it.</p>
+Governance in Crisis</strong>, inspect the original passages. No
+displayable curriculum annotation is available for [ageint001]. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Epistemic Governance
 in Crisis</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -1160,15 +1734,15 @@ inputs, evidence, and review</h3>
 <p>Worked example: a sample public-library class evaluates a synthetic
 rumor about a community service and compares transparent correction
 options. [ageint238]; [ageint239].</p>
-<p><strong>Triangulation anchors.</strong> In module 37’s worked-example
-section, directly verified anchors for the <strong>Cognitive Security
-and Influence Resilience</strong> lane include
+<p><strong>Contextual source routes.</strong> For module 37’s
+worked-example section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline: <strong>cognitive
 resilience and epistemic integrity</strong>. Learners use a
 <strong>epistemic-integrity review packet</strong> and keep this
@@ -1181,24 +1755,31 @@ Lens</strong> planning question is: How does the module protect
 autonomy, attention, trust, and decision quality without designing
 persuasion?</p>
 <p><strong>Inputs.</strong> For the <strong>Cognitive security
-definitions and scope</strong> scenario, use sample posts, source
-timestamps, public-service facts, and a media-literacy rubric. The
+definitions and scope</strong> scenario, use six fictional museum-fee
+posts, five copying one original, a dated notice limiting a fee to a
+special exhibition, and a classroom media-literacy rubric. The
 Cognitive-Resilience Lens intake note records provenance, sensitivity,
 fit-to-purpose, and why the fixture is enough for this bounded
 exercise.</p>
 <p><strong>Analysis.</strong> For <strong>Cognitive security definitions
-and scope</strong>, students trace narrative provenance, separate
-observation from attribution, name audience harms, and design a
-transparent lesson. Pause whenever an inference about Cognitive security
-definitions and scope appears without evidence, confidence outruns
-support, or an agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>Cognitive
-security definitions and scope</strong> classroom scenario; unit
-artifact = epistemic-integrity review packet; evidence = allowed inputs;
-method = information-integrity analysis and resilience education; output
-= a narrative-risk map with caveats, response options, and no
-microtargeted persuasion; boundary = no external action; reviewer =
-instructor or named peer.</p>
+and scope</strong>, students first extract the claim and distinguish
+general admission from the exhibition; then trace the copying tree and
+compare scope and dates with the notice; remove the five copies as a
+negative control, requiring the evidentiary judgment to remain
+unchanged. Consider ordinary scope confusion alongside intentional
+deception; stop attribution or audience profiling and hand a
+transparent, source-linked correction to the instructor for release
+review. Pause whenever an inference about Cognitive security definitions
+and scope appears without evidence, confidence outruns support, or an
+agent output is treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a narrative-risk map
+marking the general-admission claim unsupported by the packet, a
+correction quoting the exhibition-only scope, and unresolved intent,
+sponsorship, reach, and real audience effects; this fixture supports a
+correction decision, not a measured resilience benefit Retain it as the
+<strong>epistemic-integrity review packet</strong> for this classroom
+fixture, with the stated source IDs, uncertainty, review disposition,
+and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating <strong>Cognitive
 security definitions and scope</strong> as “Cognitive-Resilience Lens
 confirms it” is not enough. The revision ties the claim to
@@ -1218,16 +1799,16 @@ Lens</strong> practice lens. Moves 1-3 form the compressed path; the
 full seminar path adds challenge, handoff, and a review memo for
 <strong>Cognitive security definitions and scope; Comprehensive
 Definition: State and Process Against Malign Influence</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 37’s
-practice-sequence section, directly verified anchors for the
-<strong>Cognitive Security and Influence Resilience</strong> lane
-include [official_cisa_foreign_influence];
+<p><strong>Contextual source routes.</strong> For module 37’s
+practice-sequence section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
+[official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
-<table>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -1294,7 +1875,7 @@ influence from persuasion design.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="cognitive-security-foundations-and-definitions-instructor-notes-source-reasoning-review-points-and-studio-focus">Cognitive
 Security: Foundations and Definitions instructor notes: source
@@ -1309,9 +1890,8 @@ Definition: State and Process Against Malign Influence</strong>.
 id="cognitive-security-foundations-and-definitions-extension-exercise-peer-validation-and-refresh-trigger-review">Cognitive
 Security: Foundations and Definitions extension exercise: peer
 validation and refresh trigger review</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-cognitive-security-foundations-and-definitions];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span>.</p>
 <p>Have learners swap artifacts and apply the
 <strong>Cognitive-Resilience Lens</strong> validation rule to someone
 else’s work. The receiving learner must identify one strength, one
@@ -1322,23 +1902,24 @@ Against Malign Influence</strong>.</p>
 id="cognitive-security-foundations-and-definitions-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Cognitive
 Security: Foundations and Definitions knowledge check: misconceptions,
 evidence, and reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-cognitive-security-foundations-and-definitions];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>Cognitive security definitions and
-scope</strong> is defined here; name the source descriptor that supports
-the definition.</li>
-<li>Contrast <strong>Cognitive security definitions and scope</strong>
-with <strong>Comprehensive Definition: State and Process Against Malign
-Influence</strong> using the <strong>Cognitive-Resilience Lens</strong>
-artifact fields.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>Cognitive security definitions and
+scope</strong>.</li>
+<li>Transfer the <strong>Cognitive-Resilience Lens</strong> artifact
+from <strong>Cognitive security definitions and scope</strong> to the
+final topic, <strong>Epistemic Governance in Crisis: Epistemic security
+and knowledge-integrity</strong>; explain what changes and what cannot
+transfer.</li>
 <li>Identify one failure mode from the <strong>Cognitive Security and
 Influence Resilience</strong> lane and the evidence that would reveal
 it.</li>
-<li>Answer the coursebook review question: Which response informs people
-without crossing into MISO-style manipulation or unverified
-attribution?</li>
+<li>Answer the coursebook review question: Which correction informs
+readers without audience manipulation, unverified attribution, or
+assuming authority for military influence activities?</li>
 <li>Correct this misconception: that a resilience label on a technique
 means it has been stress-tested, rather than a habit that still needs
 evidence, caveats, and reviewer challenge.</li>
@@ -1348,13 +1929,13 @@ id="cognitive-security-foundations-and-definitions-answer-quality-rubric-source-
 Security: Foundations and Definitions answer quality rubric: source
 evidence, uncertainty, and safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>Cognitive security definitions and
-scope</strong> without source evidence, uncertainty, or a safe transfer
-task.</p>
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of <strong>Cognitive
+security definitions and scope</strong> without source evidence,
+uncertainty, or a safe transfer task.</p>
 </main>
 </body>
 </html>

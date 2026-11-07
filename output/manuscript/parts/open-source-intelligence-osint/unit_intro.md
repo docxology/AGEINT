@@ -2,25 +2,31 @@
 
 ## OPEN SOURCE INTELLIGENCE (OSINT) learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-open-source-intelligence-osint]; [@ageint251].
+**Navigation.** Parent section: [@sec:part-open-source-intelligence-osint].
 
 ### open-source intelligence governance discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-open-source-intelligence-osint]; [@ageint251].
+**Navigation.** Parent section: [@sec:part-open-source-intelligence-osint].
 
 This unit teaches **open-source intelligence governance**. OSINT work turns public availability into evaluated intelligence only after provenance, terms, reliability, minimization, and reproducibility are reviewed.
 
 ### open-source intelligence governance source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-open-source-intelligence-osint]; [@ageint251].
+**Navigation.** Parent section: [@sec:part-open-source-intelligence-osint].
 
 Use IC OSINT strategy and tool-governance anchors for public-source quality, transparency, and ethics claims.
 
 ### open-source intelligence governance practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-open-source-intelligence-osint]; [@ageint251].
+**Navigation.** Parent section: [@sec:part-open-source-intelligence-osint].
 
-The recurring practice artifact is a **OSINT provenance and minimization matrix** that draws on provenance chain, terms-of-use note, corroboration matrix, and minimization decision. The unit keeps its learning spine explicit. Learners document source origin, recency, independence, transformation history, and what cannot be inferred.
+The recurring practice artifact is a **OSINT provenance and minimization matrix** that draws on provenance chain, terms-of-use note, corroboration matrix, and minimization decision. The unit keeps its learning spine explicit. Classroom packet: three saved fictional council notices include an original dated closure notice, a repost copying it, and a later correction limiting closure to one entrance. Each has a supplied capture date and reuse note.
+
+1. Record publisher, publication and capture times, reuse terms, and transformations; redact an unnecessary contact name.
+2. Trace the repost to the original so two URLs are not counted as independent corroboration.
+3. Apply the correction to the precise entrance and date. Remove the repost as a control: the judgment should not change.
+4. Deliver a provenance matrix concluding that one entrance, not the whole building, is listed as closed; actual on-site conditions remain unverified. A documented origin does not itself prove the notice true.
+If permission or date coverage is unclear, retain only the permitted citation and mark reuse pending. Hand the gap to the instructor; do not expand into live collection.
 
 ### open-source intelligence governance safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint251]; [@ageint253].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint251]; [@ageint253].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint251]; [@ageint253].
 
 Capstone thread:
 
@@ -53,9 +59,9 @@ The unit uses [@fig:part-open-source-intelligence-osint-module-map] and [@fig:pa
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-modern-sigint-and-cryptography], [@sec:chapter-osint-foundations].
 
-![The unit module map traces the part's chapters as a linear reading sequence. It is anchored to the open source intelligence osint section; use it to inspect 3 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-open-source-intelligence-osint-module-map.png){#fig:part-open-source-intelligence-osint-module-map}
+![The OPEN SOURCE INTELLIGENCE (OSINT) module map traces the part's chapters as a linear reading sequence. It is anchored to the open source intelligence osint section; use it to inspect 3 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-open-source-intelligence-osint-module-map.png){#fig:part-open-source-intelligence-osint-module-map}
 
-![Part IV traces OSINT as a left-to-right pipeline from requirements through disciplined collection (ch9) and tooling (ch10) into a verification taxonomy that turns raw findings into an assessed product. Its reader value is to make Intelligence Requirements, Collection Planning, ch9, the module, ch9, and Discipline and Legal Ethics visible at a glance, with the open source intelligence osint section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-osint-requirements-to-evidence.png){#fig:part-osint-requirements-to-evidence}
+![Part IV traces OSINT as a left-to-right pipeline from requirements through disciplined collection (ch9) and tooling (ch10) into a verification taxonomy that turns raw findings into an assessed product. Its reader value is to make Intelligence Requirements, Collection Planning, ch9, OSINT Foundations, ch9, and Discipline and Legal Ethics visible at a glance, with the open source intelligence osint section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-osint-requirements-to-evidence.png){#fig:part-osint-requirements-to-evidence}
 
 ### OPEN SOURCE INTELLIGENCE (OSINT) module roster and source-lane inventory: citations, lanes, and learner route
 

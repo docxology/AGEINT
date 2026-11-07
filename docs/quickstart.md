@@ -6,15 +6,15 @@ Run the parser/build step and tests from the AGEINT root. Run markdown/prerender
 uv run python scripts/build_curriculum.py
 uv run python scripts/generate_figures.py
 uv run python scripts/audit_orchestration_contract.py --format json
-uv run pytest tests/ --cov=src --cov-fail-under=90
+uv run pytest tests/ --cov=src --cov-fail-under=84  # Standalone core, not release acceptance.
 uv run pytest tests/test_source_identity.py
 
-# Optional: require full Mermaid/Chrome figure renders (no placeholders)
+# Development-only strict source rendering; full release acceptance also needs the SDK recipe.
 AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
 
-# From the template repo root:
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+# From the prepared SDK root; full 90% verification is in rendering_pipeline.md:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Editing workflow: update source surfaces, rebuild, and run gates

@@ -9,135 +9,11 @@ from curriculum import Curriculum
 from citation_workflow import source_citation_cell, source_citation_spine
 from markdown_refs import citation_ref, crossref_slug, figure_ref, part_module_map_figure_label, section_ref
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS, safe_curriculum_treatment, safe_pattern_rows, safe_pattern_treatment
+from intelligence_content._02_part import SOURCE_QUALITY_RESEARCH_ANCHORS
 from intelligence_content.source_grounding import safe_source_note as _sg_safe_note, safe_source_title as _sg_safe_title
 
 
-SOURCE_QUALITY_ANCHORS: Final[list[dict[str, str]]] = [
-    {
-        "key": "official_oecd_agentic_ai",
-        "title": "The Agentic AI Landscape and Its Conceptual Foundations",
-        "author": "OECD",
-        "year": "2026",
-        "url": "https://www.oecd.org/en/publications/the-agentic-ai-landscape-and-its-conceptual-foundations_396cf758-en.html",
-        "note": "Official OECD conceptual foundation for agentic AI.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official OECD source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_nist_ai_rmf",
-        "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
-        "author": "National Institute of Standards and Technology",
-        "year": "2023",
-        "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
-        "note": "Official NIST.AI.100-1 risk-management framework.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official NIST source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_nist_ai_600_1",
-        "title": "Artificial Intelligence Risk Management Framework: Generative AI Profile",
-        "author": "National Institute of Standards and Technology",
-        "year": "2024",
-        "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
-        "note": "Official NIST AI 600-1 generative AI profile.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official NIST source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_nsa_mcp_security",
-        "title": "Security Design Considerations for AI-Driven Automation Leveraging MCP",
-        "author": "National Security Agency",
-        "year": "2025",
-        "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/4496698/nsa-releases-security-design-considerations-for-ai-driven-automation-leveraging/",
-        "note": "Official NSA security guidance for Model Context Protocol automation.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official NSA source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_nist_sp_800_82r3",
-        "title": "Guide to Operational Technology Security, NIST SP 800-82 Rev. 3",
-        "author": "National Institute of Standards and Technology",
-        "year": "2024",
-        "url": "https://csrc.nist.gov/pubs/sp/800/82/r3/final",
-        "note": "Official NIST operational technology security guidance.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official NIST source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_isa_iec_62443",
-        "title": "ISA/IEC 62443 Series of Standards",
-        "author": "International Society of Automation",
-        "year": "2026",
-        "url": "https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards",
-        "note": "Official ISA overview of industrial automation and control security standards.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official ISA source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_odni_icd_203",
-        "title": "Intelligence Community Directive 203: Analytic Standards",
-        "author": "Office of the Director of National Intelligence",
-        "year": "2015",
-        "url": "https://www.intel.gov/assets/documents/Intelligence%20Community%20Directives/ICD_203.pdf",
-        "note": "Official ODNI analytic tradecraft standards directive.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official ODNI source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_eu_ai_act",
-        "title": "Regulation (EU) 2024/1689: Artificial Intelligence Act",
-        "author": "European Union",
-        "year": "2024",
-        "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
-        "note": "Official EU Artificial Intelligence Act legal text.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official EU source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_cisa_foreign_influence",
-        "title": "Preparing for and Mitigating Foreign Influence Operations",
-        "author": "Cybersecurity and Infrastructure Security Agency",
-        "year": "2024",
-        "url": "https://www.cisa.gov/resources-tools/resources/cisa-insights-preparing-and-mitigating-foreign-influence-operations-targeting-critical",
-        "note": "Official CISA guidance on foreign influence operations targeting critical infrastructure.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official CISA source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-    {
-        "key": "official_nato_counter_information_threats",
-        "title": "Countering Information Threats",
-        "author": "North Atlantic Treaty Organization",
-        "year": "2026",
-        "url": "https://www.nato.int/cps/en/natohq/topics_219728.htm",
-        "note": "Official NATO counter-information-threat guidance.",
-        "checked_as_of": "2026-05-21",
-        "verification_note": "Directly verified official NATO source URL.",
-        "citation_role": "source_quality_anchor",
-    },
-]
-
-SOURCE_QUALITY_DEFAULTS: Final[dict[str, str]] = {
-    "domain": "source_quality_spine",
-    "source_type": "source_quality_anchor",
-    "source_lane": "source_quality_spine",
-    "source_tier": "source_quality_anchor",
-    "refresh_cadence": "semiannual",
-    "refresh_trigger": "source version, legal status, standard revision, or official guidance changes",
-    "verification_method": "direct_source_url_review",
-    "claim_scope": "baseline source-quality guardrail for generated AGEINT curriculum claims",
-    "stakeholder_role": "curriculum maintainer, instructor, reviewer, and learner",
-    "assurance_use": "source-quality triangulation and claim-boundary review",
-    "rights_dimension": "source transparency, accountability, and evidence traceability",
-}
+SOURCE_QUALITY_ANCHORS: Final[list[dict[str, str]]] = [anchor.as_reference() for anchor in SOURCE_QUALITY_RESEARCH_ANCHORS]
 
 
 def _slug(value: str) -> str:
@@ -236,11 +112,11 @@ def appendix_rows(appendix: dict[str, Any]) -> str:
         for citation in citations:
             _append_unique(bucket["citations"], citation)
 
-    rows = [("| Safe curriculum treatment | Blocked source motif, audit-only | Allowed fixture | Rejected action | Required artifact | Citation spine |"), "|---|---|---|---|---|---|"]
+    rows = ["| Source item / safe study title | Provenance status | Citation context |", "|---|---|---|"]
     for title, bucket in grouped.items():
         source_items = "; ".join(str(value) for value in bucket["source_items"])
         cite_text = _citation_cell([int(value) for value in bucket["citations"]])
-        rows.append(f"| {title} | {source_items} | {_appendix_allowed_fixture(title)} | {_appendix_rejected_action(title)} | {_appendix_required_artifact(title)} | {cite_text} |")
+        rows.append(f"| {title} | {source_items} | {cite_text} |")
     return "\n".join(rows)
 
 
@@ -255,67 +131,14 @@ def _blocked_appendix_source_label(raw_title: str, safe_title: str) -> str:
     return f"{source_id} retained for audit; operational wording transformed"
 
 
-def _appendix_allowed_fixture(title: str) -> str:
-    lower = title.lower()
-    if "sandbox" in lower or "tool-isolation" in lower:
-        return "toy OSINT fixtures, sandbox policy cards, and blocked-action logs"
-    if "osint" in lower or "source aggregation" in lower or "search-exposure" in lower or "social-source" in lower:
-        return "instructor-provided source cards, toy records, and provenance notes"
-    if "geoint" in lower or "geolocation" in lower or "imagery" in lower:
-        return "provided imagery metadata, synthetic change examples, and uncertainty notes"
-    if "humint" in lower or "identity" in lower or "source-protection" in lower:
-        return "sample role records, ethics cards, and reviewer notes"
-    if "cyber" in lower or "soc" in lower or "control-coverage" in lower:
-        return "fabricated alerts, published defensive taxonomy labels, and debrief notes"
-    if "ics" in lower:
-        return "synthetic process logs, operator-decision cards, and safety stop rules"
-    if "cognitive" in lower or "media-literacy" in lower:
-        return "sample messages, transparent labels, and opt-in classroom discussion cards"
-    return "public sources, synthetic records, owned-lab notes, and instructor handouts"
-
-
-def _appendix_rejected_action(title: str) -> str:
-    lower = title.lower()
-    if "sandbox" in lower or "tool-isolation" in lower:
-        return "external execution, credentialed access, network calls, or unmanaged tool use"
-    if "osint" in lower or "geoint" in lower or "geolocation" in lower or "source aggregation" in lower or "search-exposure" in lower or "social-source" in lower:
-        return "live collection expansion, tracking, private-data discovery, or targeting"
-    if "humint" in lower or "identity" in lower or "source-protection" in lower:
-        return "impersonation, contact activity, elicitation, handling, or source exposure"
-    if "cyber" in lower or "soc" in lower or "control-coverage" in lower:
-        return "scanning, exploitation, credential use, blocking, containment, or evasion"
-    if "ics" in lower:
-        return "live device interaction, process manipulation, unsafe actuation, or plant operation"
-    if "cognitive" in lower or "media-literacy" in lower:
-        return "covert persuasion, microtargeting, impersonation, or campaign design"
-    return "external action, private-data processing, unsafe system interaction, or deployment"
-
-
-def _appendix_required_artifact(title: str) -> str:
-    lower = title.lower()
-    if "sandbox" in lower or "tool-isolation" in lower:
-        return "tool-isolation run card and denied-action evidence"
-    if "osint" in lower or "geoint" in lower or "geolocation" in lower or "source aggregation" in lower or "search-exposure" in lower or "social-source" in lower:
-        return "source-quality card and minimization note"
-    if "humint" in lower or "identity" in lower or "source-protection" in lower:
-        return "source-protection ethics memo and escalation path"
-    if "cyber" in lower or "soc" in lower or "control-coverage" in lower:
-        return "defensive coverage matrix and incident debrief"
-    if "ics" in lower:
-        return "tabletop packet with asset, consequence, operator decision, and recovery evidence"
-    if "cognitive" in lower or "media-literacy" in lower:
-        return "narrative-risk map and transparent education note"
-    return "claim ledger, safe-lab packet, and reviewer handoff"
-
-
 def pattern_rows(patterns: list[dict[str, Any]]) -> str:
     """Render AGEINT design-pattern rows."""
     return safe_pattern_rows(patterns)
 
 
 def _source_quality_references() -> list[dict[str, str]]:
-    """Return source-quality anchors with v2 lane and refresh metadata."""
-    return [{**SOURCE_QUALITY_DEFAULTS, **anchor} for anchor in SOURCE_QUALITY_ANCHORS]
+    """Return fresh reference records from the canonical source-quality catalog."""
+    return [anchor.copy() for anchor in SOURCE_QUALITY_ANCHORS]
 
 
 def _all_references(references: list[dict[str, Any]]) -> list[dict[str, Any]]:

@@ -19,6 +19,7 @@ Canonical orchestration: `src/build_pipeline.py::run_build()`.
 | --- | --- | --- | --- |
 | `output/data/curriculum/` | Mirrored curriculum shards (parts, chapters, appendices) | `write_curriculum_shards()` in `src/curriculum.py` | Tests, figure assignment, manifest rendering |
 | `output/data/curriculum_outline.json` | Compact parsed curriculum mirror (stats, parts, citations) | `write_compact_curriculum_payload()` in `src/curriculum.py` | Runtime variables, evidence registry, validation |
+| `output/data/source_citation_coverage.json` | Current integer-valued citation counts, exact curriculum snapshot hash, source digest, counting rules and claim-specific field bindings; structural coverage, not claim support | `write_source_citation_coverage()` in `src/citation_workflow.py`, during the normal build before its final stamp | Generated coverage table, SDK evidence registry, build freshness |
 | `output/data/manuscript_variables.json` | `{TOKEN: value}` substitution map | `save_variables()` in `src/manuscript_variables/` | Manuscript hydration, PDF render when linked through template pipeline |
 | `output/figures/figure_registry.json` | Registry-backed figure metadata (177 figures: 115 Mermaid, 52 Python, 4 historical, 6 AI-generated) with captions, alt text, long descriptions, provenance, hashes, accessibility-guidance metadata, visual-semantics fields, and a visual-quality summary | `render_figures()` in `src/figures/` | Manuscript cross-refs, validation |
 | `output/figures/cover/ageint-cover-synthesis.png` and `.json` | Deterministic non-numbered title-page cover art and metadata sidecar; this asset is deliberately excluded from `figure_registry.json` so it does not become a numbered manuscript figure | `render_cover_art()` in `src/figures/` | PDF title page via `docs/manuscript/config.yaml` `book.cover.image` |
@@ -44,9 +45,10 @@ when Mermaid/Chrome is unavailable, but the current registry should contain no
 placeholder plates after a normal rebuild. Set `AGEINT_REQUIRE_RENDERED_FIGURES=1`
 to fail instead of falling back. See [`src/figures/AGENTS.md`](../src/figures/AGENTS.md).
 
-When AGEINT runs through the full template pipeline, `output/data/curriculum_outline.json`
-and `output/data/manuscript_variables.json` should appear in the project's
-declared artifact set so stage validation does not flag them as undeclared.
+When AGEINT runs through the full template pipeline, the curriculum mirror,
+manuscript variables and `source_citation_coverage.json` belong to the declared
+build output contract. The coverage artifact is a required freshness sentinel;
+its absence cannot be hidden by a previously successful build stamp.
 
 ## Regeneration sequence: full build, figures, strict renders, and hooks
 

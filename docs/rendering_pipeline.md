@@ -4,7 +4,21 @@ AGEINT does not use numbered source chapters under `docs/manuscript/`. The PDF p
 
 ## Resolution: generated manuscript directory and source config precedence
 
-`infrastructure.rendering.pipeline._resolve_manuscript_dir` prefers `output/manuscript/` when it contains markdown, and refreshes `config.yaml` and `*.bib` from source `docs/manuscript/`.
+`infrastructure.rendering.pipeline.resolve_manuscript_dir` prefers
+`output/manuscript/` when it contains top-level Markdown. AGEINT's compiler emits
+a resolved `config.yaml` with the standalone `# Generated manuscript ordering`
+marker and explicit file order; the SDK preserves this project-owned config
+rather than replacing it with the neutral authored template. A
+`# Project-resolved config` marker alone owns configuration, not the manuscript
+roster.
+
+SDK Stage 04 validates that declared, confined generated roster, including deep
+chapter paths, instead of treating `docs/manuscript/` templates or unselected
+generated residue as the book. Its render snapshot commits the consumed config,
+ordered input bytes, combined Markdown and stable outputs with null authored
+source mappings. This is not a claim that generated prose was manually authored
+or that the compiler is current: AGEINT's own build stamp and artifact-evidence
+checks establish source-to-output freshness separately.
 
 ## Build before render: refresh manuscript, figures, reports, and copied outputs
 
@@ -12,23 +26,134 @@ AGEINT does not use numbered source chapters under `docs/manuscript/`. The PDF p
 uv run python scripts/build_curriculum.py
 ```
 
-For local continuation hardening, prefer the template core pipeline so the clean
-stage removes stale standalone web/PDF files before rebuild and copy:
+The `source_validation` stage requires `docs/manuscript/config.yaml` in the
+selected project root before creating or changing outputs, refreshing source
+bibliographies or templates, or rendering figures. A missing config raises
+`FileNotFoundError` naming that exact file; an existing output tree is left
+untouched. `validate_declarative_tables(project_root)` checks that project's
+config while retaining the built-in declarative table loaders; its no-argument
+form and `scripts/validate_declarative_yaml.py` validate the current AGEINT
+checkout.
+
+For a new source configuration, copy `docs/manuscript/config.yaml.example` to
+`docs/manuscript/config.yaml` and customize the author and publication fields.
+The example includes `book.license` (`CC BY 4.0`), `book.code_license`
+(`Apache-2.0`), cover settings, and `front_matter.page_two_visual`; generated
+front-matter file ordering is supplied by the build. Keep DOI and archive-record
+fields empty until that publication has its own deposited identifiers rather
+than borrowing another edition's or project's identifiers.
+Config, dependency-lock, optional `preamble.md` and embedded
+`docs/citation_workflow.md` bytes are registered build inputs. Editing them
+invalidates the build even when file size and timestamps are preserved.
+Python installation metadata (`*.egg-info` and `*.dist-info`) and interpreter/test
+caches are not authored inputs. Creating or refreshing them must not invalidate
+an otherwise identical committed source tree; actual source edits still do.
+
+The source build emits `output/data/source_citation_coverage.json` from its
+actual citation counter before the final stamp. The displayed coverage table
+binds each count to that artifact's exact field and input snapshot hash, without
+depending on a later reader audit. Source loci and recognized document or
+institutional designations are displayed as identifiers, not registered as
+measurements. Ordinary quantitative claims retain the SDK's existing evidence
+rules; a registry pass does not establish passage-level entailment.
+
+## Shared SDK environment and canonical native renderer
+
+Release rendering requires `docxology/template` at a genuinely published
+`v5.1.0`, not a second Pandoc/XeLaTeX driver in AGEINT. The SDK requires Python 3.14
+or later; AGEINT's separate standalone-core compatibility floor is unchanged.
+Check out or copy public AGEINT into `projects/active/AGEINT` inside the SDK
+root. Keep it a regular directory, not a link outside that root: local asset
+publication enforces confinement. The public build must not acquire the private
+working-lifecycle namespace in published diagnostic paths. From the SDK root,
+prepare its frozen environment and keep nested `uv` commands from reconciling it
+against AGEINT's different project metadata:
 
 ```bash
-AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/execute_pipeline.py --project working/AGEINT --skip-llm --core-only
+uv sync --frozen --group dev --group rendering --python 3.14
+export AGEINT_TEMPLATE_REPO="$PWD"
+export VIRTUAL_ENV="$PWD/.venv" UV_PROJECT_ENVIRONMENT="$PWD/.venv"
+export UV_PYTHON="$PWD/.venv/bin/python" UV_NO_SYNC=1 UV_FROZEN=true
+export PATH="$PWD/.venv/bin:$PATH"
+export PYTHONPATH="$PWD:$PWD/projects/active/AGEINT/src"
+export SOURCE_DATE_EPOCH="$(git -C projects/active/AGEINT log -1 --format=%ct)"
+export AGEINT_REQUIRE_RENDERED_FIGURES=1
+export ENABLE_PDF=1 ENABLE_HTML=1 ENABLE_SLIDES=0 ENABLE_DOCX=0 ENABLE_EPUB=0
+python -m infrastructure.reporting.native_dependency_preparation --repo-root .
+(cd projects/active/AGEINT && python scripts/build_curriculum.py)
+python scripts/pipeline/stage_03_render.py --project active/AGEINT --skip-manuscript-hydration
+python -m infrastructure.validation.cli pdf projects/active/AGEINT/output/pdf/AGEINT_combined.pdf
+python scripts/pipeline/stage_04_validate.py --project active/AGEINT
 ```
 
-From template repo root after a direct build and PDF render:
+These local commands require the genuine Mermaid/browser, Pandoc/crossref,
+XeLaTeX/BibTeX and native-reader prerequisites. Hosted verification reuses the
+SDK's setup actions and source-owned document preparation rather than installing
+an unpinned global `mmdc` or an obsolete fixed Chrome build. The source manuscript
+config selects `render.html.asset_mode: local`; the SDK's source-locked browser
+math dependency preparation supplies the offline assets.
 
-```bash
-uv run python scripts/03_render_pdf.py --project working/AGEINT
-uv run python -m infrastructure.validation.cli pdf projects/working/AGEINT/output/pdf/AGEINT_combined.pdf
-```
+`stage_05_copy.py` is optional copied-output packaging, not the authoritative
+native renderer. `output/pdf/AGEINT_combined.pdf` is authoritative; copy it to
+`AGEINT.pdf`, never render a separate root PDF.
 
-Run `uv run python scripts/05_copy_outputs.py --project working/AGEINT` only
-when the template-side copied output package is explicitly needed; the
-authoritative local PDF path is `projects/working/AGEINT/output/pdf/AGEINT_combined.pdf`.
+## Blocking hosted verification and explicit publication
+
+`ci.yml` requires the reusable `manuscript.yml` complete verification job.
+The latter also supports manual dispatch and a weekly rebuild. It uses the
+exact AGEINT commit, published SDK tag and frozen SDK dev/rendering environment;
+it clears prior native deliverables and Mermaid render receipts, builds with
+real diagrams, renders current PDF/HTML before their consumer tests, then runs
+the complete test suite at **90% minimum coverage**. Reader-byte inventories
+before and after tests must agree; tests cannot rewrite the published book.
+SDK markdown/prerender and enabled-format output validation remain blocking.
+All source, reference, figure, license, PDF and aggregate readiness gates block
+failure. Publication readiness
+executes the actual SDK all-resource parent guard; skipping it is never a pass.
+Failed builds are not replaced by restored committed output.
+
+The separately named limited standalone-core jobs preserve Python compatibility
+without the SDK/native toolchain. Their lower environment-specific coverage
+floor does not authorize publication or replace the complete gate.
+
+Before the SDK release exists, an explicit manual `manuscript.yml` dispatch may
+select `sdk-candidate=<immutable 40-hex SDK commit>` for development verification.
+It runs the same complete acceptance, never falls back to main, and records the
+actual candidate SHA/version. Candidate evidence cannot authorize publication;
+normal CI, scheduled and release verification require published `v5.1.0`.
+
+Manual-only `release.yml` accepts a new `vX.Y.Z` tag, validates it with the
+read-only release-metadata CLI, and runs complete verification again on exact
+current main. Immediately before create-only publication it rechecks that main
+still equals verified Source and that the stable published SDK identity matches.
+Existing tags/releases are refused; no tag movement or asset replacement is
+allowed. A green metadata check or ordinary CI result alone cannot publish.
+
+Successful verification packages `AGEINT.pdf`, `AGEINT-reader.zip`,
+`AGEINT-evidence.zip`, `source-sdk.json` and `SHA256SUMS`. The reader ZIP preserves
+`web/` beside `figures/`, including local browser assets. Serve the extracted
+bundle root over local HTTP and visit `/web/index.html`, not just `web/` and
+not an assumed fully capable `file://` page. Scholarly URLs are user-clicked
+references, not remotely fetched assets. Evidence includes actual audit reports,
+test and coverage results, tool provenance and exact source/SDK identities. Only artifacts
+from the successful reusable job in the same run can reach publication.
+
+An inspection-only artifact is captured after native rendering and enabled-format
+validation but before aggregate task/readiness closure. Its generated-source
+archive, checksums and source/SDK identity support real reader review without
+pretending that pending verification tasks are done. Its identity explicitly
+says `acceptance: false`; release downloads only the separately named successful
+verified artifact. Failure diagnostics retain actual reports and compiler logs,
+not a fallback reader or a fabricated successful handoff.
+See [workflow commands and contracts](../.github/workflows/README.md) for manual
+verification and authorized release dispatch.
+
+The canonical HTML edition is `output/web/index.html`; per-section HTML files
+are build previews and do not carry the book's complete global citation and
+numbering context. Serve `output/`, not only `output/web/`, when checking the
+edition over HTTP so `../figures/` resolves. Verify real navigation and image
+disclosures in a browser; metadata and link-count gates do not establish visual
+readability or accessibility conformance.
 
 From the AGEINT root after the rendered PDF exists, bind the current local
 artifact evidence into one machine-readable report:
@@ -55,11 +180,17 @@ PDF quality, and PDF annotation/link checks so a stale, overclaimed,
 under-linked, or partially copied artifact cannot be certified by one green gate
 alone.
 
+The license preflight reads current canonical source metadata without writing
+reports. An absent or stale `source_metadata.json` cannot override those inputs
+or make readiness depend on audit command order. Metadata explicitness is not
+third-party rights clearance; private provenance and declared-license checks
+remain separate blocking requirements.
+
 ## Pre-flight validation: markdown and prerender checks before PDF work
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Mermaid figures: strict diagram rendering, hashes, and placeholder policy
@@ -81,8 +212,9 @@ when the source is byte-identical to the last real render.
 # Strict build (fail instead of placeholder PNGs when mmdc/Chrome is missing)
 AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
 
-# One-time Chrome install for mmdc (if renders fail)
-npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
+# Use installed Chrome when Puppeteer's managed browser is unavailable (macOS example)
+CHROME_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
 ```
 
 Confirm `mmdc` and `pandoc-crossref` are on `PATH` before PDF render. Combined
@@ -131,45 +263,46 @@ chapter-specific H3/H4 body headings rather than generic repeated TOC labels.
 The same preamble owns TOC spacing controls so entries such as
 `42.10 Evidence...` do not collapse into `42.10Evidence...`.
 
-PDF readiness is not public-release readiness. A successful local render and
-zero-issue markdown/prerender/PDF validation feed the local publication
-preflight, but they do not perform a release. The 2026-06-14 preflight closes
-`ageint-27`: artifact evidence, source refresh, artifact-manifest status,
-parent confidentiality guard, release-surface scan, source/license posture, and
-task prerequisites all report green. `ageint-m1` remains todo until a public
-release, push, PR, archive, promotion, publication upload, DOI, or release
-record is explicitly approved and executed.
+Heading navigation is audited on reader Markdown, excluding `README.md` and
+`AGENTS.md` repository helpers but retaining reader backmatter. References has
+an explicit unnumbered section target; navigation uses its named anchor link,
+not a numbered Pandoc-crossref section reference. Rendered HTML and TeX reject
+remaining Pandoc-crossref placeholders, including inside tables and headings.
+Line-budget splitting keeps trailing
+headings with their following content, and continuation navigation uses only
+a label declared in the actual unsplit source section. A missing real target
+remains a failure; no citation is borrowed to manufacture support.
 
-## Current local artifact evidence: latest counts, audits, PDF status, and limits
+PDF rendering and local validation do not publish an edition. The repository
+already records concept DOI `10.5281/zenodo.20732274` and Edition 0.1 DOI
+`10.5281/zenodo.20732275`; a local revision does not imply a new upload, release
+approval or permission to push.
 
-The 2026-06-12 through 2026-06-14 section/reference, figure-caption,
-visual-accessibility, table-layout/typography, verifier-first artifact-evidence,
-scholarship-quality, profile-anchor triangulation, Synthetic Analytic
-Tradecraft orientation, SAT method-contract, analysis-validation,
-analysis-validation family-coverage, source-metadata, cover/abstract/TOC,
-graphical-abstract/TOC-title, claim-calibration, visual-semantics, US IC
-agency-source coverage, early orientation visualization, and
-single-paragraph abstract hardening passes now render 330 configured manuscript
-Markdown files with 177 registered figures plus one non-numbered cover-art PNG.
-Figure PNGs carry embedded accessibility/provenance and visual-semantics
-metadata in addition to the JSON registry and `visual_quality_audit.json`. The
-combined AGEINT PDF rendered to `output/pdf/AGEINT_combined.pdf` at ~34 MB,
-1,858 pages, letter page size, and PDF version 1.7. The template PDF validator
-reported 0 issues, the AGEINT PDF quality audit reported `stale PDF: false` and
-`OK: true`, and the integrated PDF annotation audit found 6,289 URI links with
-0 `.md`, `.markdown`, `file:`, or launch targets in both the source and copied
-PDFs. The scholarship audit reports 0 uncited claim-bearing files, 0 thin
-claim-bearing files, and six single-source-family claim-bearing review-warning
-rows plus passing SAT method-contract, analysis-validation, analysis-validation
-lane, claim-bearing family-coverage, `source_metadata_ok`, and
-`claim_calibration_ok` contracts after profile-specific external triangulation
-was added to topic lessons, worked examples, source-canon sections, and
-review-checklist sections. Claim calibration remains green with 9,107 candidate
-rows, 0 hard fails, 482 boundary-allowed rows, and 5,129 review rows. The
-source-refresh due report is green with 472 current rows and 0 due-soon,
-due/stale, unknown-cadence, or missing-date rows. Local web output now contains
-331 HTML files: one combined manuscript and 330 standalone section views, with
-stale pre-label orientation filenames removed by the renderer cleanup hook.
+## Current local artifact evidence and limits
+
+Use `output/reports/current_artifact_evidence.{json,md}` for the artifact-specific
+measurement and its timestamp. Related source-metadata, freshness, scholarship,
+claim-calibration and figure reports retain their own scope and warning counts.
+Do not promote old page/link/citation totals into current measurements. The
+authoritative local render is `output/pdf/AGEINT_combined.pdf`; `AGEINT.pdf`
+must be copied from that render, not built independently.
+
+The 2026-11-06 revision adds source-specific teaching notes across all 51
+chapters, 16 concrete unit workflows, nine offline methods workbooks, a common
+analytic workflow, full-topic assessment groups and completed chapter 35/36
+examples. Source counts and figure identities are retained. Source routing and
+heading navigation are structural aids, not verification of a claim's meaning.
+Unknown citations now fail closed, but a real unrelated citation still needs a
+passage-level relevance review. Synthetic outputs establish no learning gains,
+legal compliance, live-model effectiveness or production safety.
+
+Strict figure rendering requires `mmdc` and a usable browser. If Puppeteer's
+expected downloaded headless shell is absent, set `CHROME_EXECUTABLE_PATH` to
+an installed Chrome/Chromium executable before building; the renderer writes
+that path into its generated Puppeteer configuration. Do not substitute
+placeholder plates for delivery. A render pass is incomplete until changed
+diagrams and representative actual PDF/HTML surfaces are visually checked.
+
 
 ## Related documentation: output inventory and manuscript syntax
 

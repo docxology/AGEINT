@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,47 +182,451 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="oversight-and-rights-lens-path-for-ethics-of-intelligence-and-cognitive-security-lesson-cluster-safe-artifact-and-review">Oversight-and-Rights
 Lens path for Ethics of Intelligence and Cognitive Security: lesson
 cluster, safe artifact, and review</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-ethics-of-intelligence-and-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-ethics-of-intelligence-and-cognitive-security">[@sec:chapter-ethics-of-intelligence-and-cognitive-security]</span>.</p>
 <h3
 id="ethics-of-intelligence-and-cognitive-security-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Ethics
 of Intelligence and Cognitive Security practice studio: topic lessons,
 safe worked example, and knowledge check</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-ethics-of-intelligence-and-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-ethics-of-intelligence-and-cognitive-security">[@sec:chapter-ethics-of-intelligence-and-cognitive-security]</span>.</p>
 <h3
 id="ethics-of-intelligence-and-cognitive-security-topic-lessons-source-backed-concepts-and-transfer-tasks">Ethics
 of Intelligence and Cognitive Security topic lessons: source-backed
 concepts and transfer tasks</h3>
-<p>This module builds legal and oversight architecture as design
-constraint: authority, rights, auditability, proportionality,
-transparency, and redress shape what work may proceed. The sequence
-opens with <strong>Intelligence Ethics: Deontological, Consequentialist,
-Virtue Frameworks</strong>, <strong>The Ethics of Cognitive Security
-(YorkSpace Dissertation)</strong>, <strong>AI Ethics in Intelligence:
+<p><strong>Ethics of Intelligence and Cognitive Security</strong> builds
+legal and oversight architecture as design constraint: authority,
+rights, auditability, proportionality, transparency, and redress shape
+what work may proceed. The sequence opens with <strong>Intelligence
+Ethics: Deontological, Consequentialist, Virtue Frameworks</strong>,
+<strong>The Ethics of Cognitive Security (YorkSpace
+Dissertation)</strong>, <strong>AI Ethics in Intelligence:
 Accountability, Transparency, Proportionality</strong> and applies the
 <strong>Oversight-and-Rights Lens</strong> practice frame through
 concept, evidence, artifact, misconception, and transfer tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-legal-ethical-and-oversight-frameworks-module-map]; module
-overview [sec:chapter-ethics-of-intelligence-and-cognitive-security];
-curriculum atlas [sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 51’s topic-lessons
-section, directly verified anchors for the <strong>Legal, Ethical, and
-Oversight Architecture</strong> lane include [official_odni_eo_12333];
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-legal-ethical-and-oversight-frameworks-module-map">[@fig:part-legal-ethical-and-oversight-frameworks-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-ethics-of-intelligence-and-cognitive-security">[@sec:chapter-ethics-of-intelligence-and-cognitive-security]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 51’s
+topic-lessons section, the <strong>Legal, Ethical, and Oversight
+Architecture</strong> catalog routes include [official_odni_eo_12333];
 [official_nsa_fisa]; [official_eu_ai_act];
-[official_council_europe_ai_convention]. Use them to test source-guide
-claims, method boundaries, governance constraints, and safety gates
-without replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_council_europe_ai_convention]. Check the actual passage,
+edition, claim scope and access limitations before use. Route membership
+does not establish relevance, independent corroboration or efficacy.</p>
 <h4
 id="lesson-1-intelligence-ethics-deontological-consequentialist-virtue-frameworks">Lesson
 1: Intelligence Ethics: Deontological, Consequentialist, Virtue
@@ -224,31 +635,51 @@ Frameworks</h4>
 Consequentialist, Virtue Frameworks</strong> focuses on transparent
 resilience education: provenance, audience harm, attribution caution,
 and non-manipulative response options.</p>
+<p><strong>Worked reasoning and limits.</strong> Deontological reasoning
+asks what duties and rights constrain a choice; consequentialist
+reasoning compares expected benefits and harms with uncertainty; virtue
+reasoning asks what integrity, restraint, and practical judgment require
+of the professional. These are normative lenses, not empirical findings
+supported by the inherited analytic-directive references [ageint297;
+ageint298]. In a fictional release choice, A publishes an unverified
+anomaly accusation, B circulates a minimized uncertainty-labelled
+technical note within the approved exercise, and C does no further
+processing: duties reject unsupported accusation, consequences favor
+avoiding reputational and availability harms, and integrity requires
+admitting the evidence gap. The decision owner selects B only because
+its synthetic data and audience are independently permitted, records
+dissent favoring C because benefit is unproven, and sets any new
+audience or real data as a reopening/hold trigger. Lawfulness would be
+necessary but would not by itself establish ethical acceptability, and
+expected benefit cannot outweigh a missing authority or non-negotiable
+rights constraint.</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Intelligence Ethics</strong>, treating resilience labels as
 permission to skip provenance review undermines authority mapping and
 rights-aware release review; the lesson builds the habit to separate
 having a capability from having authority and accountable review.</p>
-<p><strong>Source support.</strong> <strong>Intelligence Ethics:
-Deontological, Consequentialist, Virtue Frameworks</strong> rests on
-[ageint298] and [ageint297]. Its anchor reference records: Official ODNI
-Intelligence Community Directive 203 analytic standards source for
-objectivity, independence, timeliness, alternatives, confidence,
-sourcing, and accuracy in analytic products. Use them for the claim that
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Intelligence Ethics: Deontological, Consequentialist, Virtue
-Frameworks</strong> lets you defend here, the limit it has to respect,
-and the re-check owed before reuse. External triangulation uses
-[official_odni_eo_12333]; [official_nsa_fisa].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Intelligence
-Ethics</strong> in the evidence the row cites. [ageint298] Official ODNI
-index for Intelligence Community Directives used to locate current
-directive source material and preserve directive-context citations.
-[ageint297] Official ODNI Intelligence Community Directive 203 analytic
-standards source for objectivity, independence, timeliness,
-alternatives, confidence, sourcing, and accuracy in analytic products.
-From each source, pull the bounded claim it can carry for this topic,
-its provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
+Frameworks</strong>: [ageint298] and [ageint297]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_eo_12333];
+[official_nsa_fisa].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Intelligence
+Ethics</strong>, inspect the original passages. Curriculum annotation
+for [ageint298]: Official ODNI index for Intelligence Community
+Directives used to locate current directive source material and preserve
+directive-context citations. Curriculum annotation for [ageint297]:
+Official ODNI Intelligence Community Directive 203 analytic standards
+source for objectivity, independence, timeliness, alternatives,
+confidence, sourcing, and accuracy in analytic products. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Intelligence
 Ethics</strong>, build a <strong>authority-and-impact register with
 approvals, limits, public notice, audit owners, and review
@@ -275,30 +706,49 @@ id="lesson-2-the-ethics-of-cognitive-security-yorkspace-dissertation">Lesson
 (YorkSpace Dissertation)</strong> maps cognitive attack surfaces:
 attention, belief formation, narrative provenance, and transparent
 correction options.</p>
+<p><strong>Worked reasoning and limits.</strong> The dissertation is a
+normative source for examining state intervention in information
+environments, epistemic paternalism, and the conditions of responsible
+stewardship, not empirical proof that an intervention works [ageint172].
+Protecting knowledge practices can conflict with autonomy and pluralism;
+disagreement, error, or distrust alone does not justify treating an
+audience as a target. In a wholly fictional complaint exercise, a
+disputed unit-level label is held on receipt of a plain-language,
+accessible correction request; an independent reviewer acknowledges it
+by the next teaching session (a classroom target, not a statutory
+deadline), supplies the relevant reasons and permitted evidence, and
+finds that two supposed sources copied one report. The reviewer
+withdraws the label, records correction notices and acknowledgments from
+approved recipients, offers an accessible further-review route, and
+closes only after the requester can receive the outcome; absent usable
+contestability, the decision is hold/redesign, not automatic release.
+This affected-party remedy differs from an internal safety escalation or
+protected disclosure.</p>
 <p><strong>Why it matters.</strong> <strong>The Ethics of Cognitive
-Security (YorkSpace Dissertation)</strong> connects classroom vocabulary
-to Legal, Ethical, and Oversight Architecture practice: learners
-document evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>The Ethics of Cognitive
-Security (YorkSpace Dissertation)</strong> rests on [ageint172]. The
-lead source’s own note reads: This 2023 York University doctoral
-dissertation by Andrew Ward Buzzell provides an ethical and epistemic
-assessment of state power exercised to defend against information
-threats, a domain the author terms cognitive security. Use it for the
-claim that <strong>The Ethics of Cognitive Security (YorkSpace
-Dissertation)</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
-[official_odni_eo_12333]; [official_nsa_fisa].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>The Ethics of
-Cognitive Security (YorkSpace Dissertation)</strong> against the works
-cited for this row. [ageint172] This 2023 York University doctoral
-dissertation by Andrew Ward Buzzell provides an ethical and epistemic
-assessment of state power exercised to defend against information
-threats, a domain the author terms cognitive security. From each source,
-pull the bounded claim it can carry for this topic, its provenance, the
-stated uncertainty, and the one condition that would overturn that
-judgment.</p>
+Security (YorkSpace Dissertation)</strong> matters in the <strong>Legal,
+Ethical, and Oversight Architecture</strong> lane because authority
+mapping and rights-aware release evidence must stay separate from
+judgment; treating resilience labels as permission to skip provenance
+review is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>The Ethics of Cognitive Security (YorkSpace
+Dissertation)</strong>: [ageint172]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_eo_12333]; [official_nsa_fisa].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>The Ethics of
+Cognitive Security (YorkSpace Dissertation)</strong>, inspect the
+original passages. Curriculum annotation for [ageint172]: This 2023 York
+University doctoral dissertation by Andrew Ward Buzzell provides an
+ethical and epistemic assessment of state power exercised to defend
+against information threats, a domain the author terms cognitive
+security. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>The Ethics of
 Cognitive Security (YorkSpace Dissertation)</strong>, build a
 <strong>authority-and-impact register with approvals, limits, public
@@ -307,7 +757,7 @@ mapping and rights-aware release review topic. The artifact must record
 the narrative provenance, the bounded claim about <strong>Ethics of
 Cognitive Security</strong>, the audience-harm caveat, the uncertainty
 note, the transparent-use boundary, and the reviewer accountable for
-correction. Shape this subject work as an <strong>authority-and-impact
+correction. Shape the same topic work as an <strong>authority-and-impact
 review register</strong> that names evidence, uncertainty, reviewer, and
 stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
@@ -327,33 +777,59 @@ Proportionality</h4>
 Accountability, Transparency, Proportionality</strong> — Test whether a
 method is no more intrusive than the accountable need justifies and
 whether affected groups have redress.</p>
-<p><strong>Why it matters.</strong> <strong>AI Ethics in
-Intelligence</strong> matters in the <strong>Legal, Ethical, and
-Oversight Architecture</strong> lane because authority mapping and
-rights-aware release evidence must stay separate from judgment; treating
-resilience labels as permission to skip provenance review is a common
-failure.</p>
-<p><strong>Source support.</strong> <strong>AI Ethics in Intelligence:
-Accountability, Transparency, Proportionality</strong> rests on
-[ageint298] and [ageint297]. The most specific cited work observes:
-Official ODNI Intelligence Community Directive 203 analytic standards
-source for objectivity, independence, timeliness, alternatives,
-confidence, sourcing, and accuracy in analytic products. Use them for
-pinning down the scope of <strong>AI Ethics in Intelligence:
-Accountability, Transparency, Proportionality</strong>, the edge of that
-scope, and when these citations need re-verifying before transfer.
-External triangulation uses [official_odni_eo_12333];
+<p><strong>Worked reasoning and limits.</strong> Necessity asks whether
+processing is needed for the legitimate aim, suitability whether it can
+plausibly contribute, and proportionality whether the justified benefit
+warrants the residual impacts after considering less intrusive
+alternatives; these are proposed classroom questions, not a universal
+legal test derived from ICD 203. A completed synthetic options record
+has aim ‘explain a duplicated alert’: no-AI manual comparison of two
+approved cards suffices; an offline summary adds convenience but no
+demonstrated analytic benefit; external-provider upload adds an
+unresolved location/retention boundary and is rejected. The decision
+owner chooses manual comparison, records uncertain benefit and
+disproportionate disclosure risk for upload, and holds any reuse beyond
+the approved purpose. The lifecycle record assigns fixture owner F to
+approved source cards and selected excerpts, analyst A to offline
+context and derived claim C1, and records reviewer R to the minimized
+audit row; no provider copy, prompt log, cache, index, or embedding is
+authorized in this exercise, and discovering one stops processing for
+review. Fictional policy P1 permits working copies through session
+closure and only a source-pointer/decision audit row until its
+next-session review; a later correction to C1 is propagated to the
+permitted output and audit row before closure. If permission, actual
+provider processing, retention status, or a preservation duty is
+unknown, the owner restricts affected reuse and obtains an approved
+disposition rather than deleting or retaining everything by default;
+public availability, pseudonymization, or a ‘synthetic’ label does not
+cure unknown provenance.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>AI Ethics in Intelligence</strong>, treating resilience labels
+as permission to skip provenance review undermines authority mapping and
+rights-aware release review; the lesson builds the habit to separate
+having a capability from having authority and accountable review.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>AI Ethics in Intelligence: Accountability, Transparency,
+Proportionality</strong>: [ageint298] and [ageint297]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_eo_12333];
 [official_nsa_fisa].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>AI Ethics in
-Intelligence</strong>, work from the cited evidence behind this row.
-[ageint298] Official ODNI index for Intelligence Community Directives
-used to locate current directive source material and preserve
-directive-context citations. [ageint297] Official ODNI Intelligence
-Community Directive 203 analytic standards source for objectivity,
-independence, timeliness, alternatives, confidence, sourcing, and
-accuracy in analytic products. Read each cited work for what it can
-support about this topic, where that claim originated, how confident it
-is, and what evidence would change it.</p>
+Intelligence</strong>, inspect the original passages. Curriculum
+annotation for [ageint298]: Official ODNI index for Intelligence
+Community Directives used to locate current directive source material
+and preserve directive-context citations. Curriculum annotation for
+[ageint297]: Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>AI Ethics in
 Intelligence</strong>, build a <strong>authority-and-impact register
 with approvals, limits, public notice, audit owners, and review
@@ -380,34 +856,51 @@ Court</h4>
 Congressional, Inspector General, FISA Court</strong> maps the legal
 source to authority, oversight, retention, and redress fields before any
 workflow is allowed.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Oversight
-Mechanisms</strong> to separate having a capability from having
-authority and accountable review. A defensible treatment names the
-judgment it enables for authority mapping and rights-aware release
-review, the proof limit that treating resilience labels as permission to
-skip provenance review would otherwise hide, and the reviewer
-accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Oversight Mechanisms:
-Congressional, Inspector General, FISA Court</strong> rests on
-[ageint298] and [ageint297]. The closest source to this row notes:
-Official ODNI Intelligence Community Directive 203 analytic standards
-source for objectivity, independence, timeliness, alternatives,
-confidence, sourcing, and accuracy in analytic products. Use them for
-the working definition that <strong>Oversight Mechanisms: Congressional,
-Inspector General, FISA Court</strong> can defend, where that scope
-ends, and the refresh check owed before this evidence transfers.
-External triangulation uses [official_odni_eo_12333];
+<p><strong>Worked reasoning and limits.</strong> Project approval,
+specialist legal/privacy review, independent assurance,
+inspector-general functions, legislative oversight, and judicial review
+are different roles with different mandates; none is an interchangeable
+appeal destination or universal project approver. The inherited ICD
+index and analytic standard do not establish the current powers,
+jurisdiction, or procedure of a legislature, inspector general, or FISA
+court [ageint298; ageint297]. In a fictional role record, instructor I
+controls the exercise boundary, owner O proposes release, reviewer L
+assesses legal/privacy prerequisites, and independent reviewer R
+examines disputed evidence; O is then implicated in an unsupported
+source change, so I pauses affected reuse and sends the minimized
+decision/source-pointer record to R, not back to O for self-approval. R
+records ‘source authenticity unresolved; release held’, asks L to
+establish the authorized specialist route, and permits re-entry only
+after evidence and permission are resolved. A named reviewer is
+insufficient if that reviewer lacks authority, independence,
+accessibility, or the necessary information.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Oversight Mechanisms</strong>, treating resilience labels as
+permission to skip provenance review undermines authority mapping and
+rights-aware release review; the lesson builds the habit to separate
+having a capability from having authority and accountable review.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Oversight Mechanisms: Congressional, Inspector General, FISA
+Court</strong>: [ageint298] and [ageint297]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_eo_12333];
 [official_nsa_fisa].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Oversight
-Mechanisms</strong> against the works cited for this row. [ageint298]
-Official ODNI index for Intelligence Community Directives used to locate
-current directive source material and preserve directive-context
-citations. [ageint297] Official ODNI Intelligence Community Directive
-203 analytic standards source for objectivity, independence, timeliness,
+<p><strong>Evidence to inspect.</strong> For <strong>Oversight
+Mechanisms</strong>, inspect the original passages. Curriculum
+annotation for [ageint298]: Official ODNI index for Intelligence
+Community Directives used to locate current directive source material
+and preserve directive-context citations. Curriculum annotation for
+[ageint297]: Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
 alternatives, confidence, sourcing, and accuracy in analytic products.
-Work source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Oversight
 Mechanisms</strong>, build a <strong>authority-and-impact register with
 approvals, limits, public notice, audit owners, and review
@@ -435,33 +928,59 @@ Professionals</h4>
 Epistemic Duty of Intelligence Professionals</strong> — Separate lawful
 disclosure channels, source protection, and oversight from unauthorized
 release or targeting narratives.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
+<p><strong>Worked reasoning and limits.</strong> An epistemic duty to
+correct error does not create permission for public disclosure, and
+internal escalation, an affected-party complaint, and a potentially
+protected disclosure are distinct channels. Applicable protections
+depend on current jurisdiction, employee/contractor status, authorized
+recipient/channel, material sensitivity, and governing law; the
+inherited analytic-directive sources do not establish those protections
+or promise immunity [ageint297; ageint298]. In fictional
+retention/escalation record D, the analyst identifies an inaccurate
+derived claim, an approved working-copy deletion trigger, and a possible
+preservation obligation whose validity and scope are unknown: affected
+dissemination is stopped, access is restricted to the already authorized
+reviewers, and only the minimum authorized decision evidence is
+maintained pending counsel/records disposition. Retention for an
+approved purpose, preservation against a valid hold, restriction of
+access/use, and deletion under an approved schedule are separate
+decisions; a suspected conflict authorizes neither indefinite copying
+nor destruction. The independent reviewer must resolve the exact hold
+authority, covered representations, responsible owner, recipients,
+duration/review trigger, and correction duties before a disposition,
+using Section <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>; no
+real material is acquired or disclosed and no leaking procedure is
+taught.</p>
+<p><strong>Why it matters.</strong> <strong>Whistleblowing, Leaking, and
+the Epistemic Duty of Intelligence Professionals</strong> matters in the
+<strong>Legal, Ethical, and Oversight Architecture</strong> lane because
+authority mapping and rights-aware release evidence must stay separate
+from judgment; treating resilience labels as permission to skip
+provenance review is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Whistleblowing, Leaking, and the Epistemic Duty of Intelligence
-Professionals</strong>, treating resilience labels as permission to skip
-provenance review undermines authority mapping and rights-aware release
-review; the lesson builds the habit to separate having a capability from
-having authority and accountable review.</p>
-<p><strong>Source support.</strong> <strong>Whistleblowing, Leaking, and
-the Epistemic Duty of Intelligence Professionals</strong> rests on
-[ageint298] and [ageint297]. The most specific cited work observes:
-Official ODNI Intelligence Community Directive 203 analytic standards
-source for objectivity, independence, timeliness, alternatives,
-confidence, sourcing, and accuracy in analytic products. Use them for
-the claim that <strong>Whistleblowing, Leaking, and the Epistemic Duty
-of Intelligence Professionals</strong> lets you defend here, the limit
-it has to respect, and the re-check owed before reuse. External
-triangulation uses [official_odni_eo_12333]; [official_nsa_fisa].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Whistleblowing,
-Leaking, and the Epistemic Duty of Intelligence Professionals</strong>
-against the works cited for this row. [ageint298] Official ODNI index
-for Intelligence Community Directives used to locate current directive
-source material and preserve directive-context citations. [ageint297]
-Official ODNI Intelligence Community Directive 203 analytic standards
-source for objectivity, independence, timeliness, alternatives,
-confidence, sourcing, and accuracy in analytic products. From each
-source, pull the bounded claim it can carry for this topic, its
-provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
+Professionals</strong>: [ageint298] and [ageint297]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_eo_12333];
+[official_nsa_fisa].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Whistleblowing,
+Leaking, and the Epistemic Duty of Intelligence Professionals</strong>,
+inspect the original passages. Curriculum annotation for [ageint298]:
+Official ODNI index for Intelligence Community Directives used to locate
+current directive source material and preserve directive-context
+citations. Curriculum annotation for [ageint297]: Official ODNI
+Intelligence Community Directive 203 analytic standards source for
+objectivity, independence, timeliness, alternatives, confidence,
+sourcing, and accuracy in analytic products. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Whistleblowing,
 Leaking, and the Epistemic Duty of Intelligence Professionals</strong>,
 build a <strong>authority-and-impact register with approvals, limits,
@@ -470,8 +989,8 @@ authority mapping and rights-aware release review topic. The artifact
 must record the narrative provenance, the bounded claim about
 <strong>Whistleblowing Leaking and the Epistemic</strong>, the
 audience-harm caveat, the uncertainty note, the transparent-use
-boundary, and the reviewer accountable for correction. Shape this
-subject work as an <strong>authority-and-impact review register</strong>
+boundary, and the reviewer accountable for correction. Shape the same
+topic work as an <strong>authority-and-impact review register</strong>
 that states the evidence used, what stays uncertain, who reviews it, and
 when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
@@ -490,13 +1009,13 @@ of Intelligence and Cognitive Security worked safe example: synthetic
 inputs, evidence, and review</h3>
 <p>Worked example: a sample agency training team reviews whether a
 classroom AI workflow is allowed. [ageint238]; [ageint239].</p>
-<p><strong>Triangulation anchors.</strong> In module 51’s worked-example
-section, directly verified anchors for the <strong>Legal, Ethical, and
-Oversight Architecture</strong> lane include [official_odni_eo_12333];
+<p><strong>Contextual source routes.</strong> For module 51’s
+worked-example section, the <strong>Legal, Ethical, and Oversight
+Architecture</strong> catalog routes include [official_odni_eo_12333];
 [official_nsa_fisa]; [official_eu_ai_act];
-[official_council_europe_ai_convention]. Use them to test source-guide
-claims, method boundaries, governance constraints, and safety gates
-without replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_council_europe_ai_convention]. Check the actual passage,
+edition, claim scope and access limitations before use. Route membership
+does not establish relevance, independent corroboration or efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline:
 <strong>authority, rights, oversight, and auditability</strong>.
 Learners use a <strong>authority-and-impact review register</strong> and
@@ -511,24 +1030,31 @@ authority, impact assessment, public-register entry, audit record, and
 escalation path must exist before the workflow is allowed?</p>
 <p><strong>Inputs.</strong> For the <strong>Intelligence Ethics:
 Deontological, Consequentialist, Virtue Frameworks</strong> scenario,
-use public policy excerpts, synthetic workflow notes, a rights-impact
-checklist, and an audit-log template. The Oversight-and-Rights Lens
-intake note records provenance, sensitivity, fit-to-purpose, and why the
-fixture is enough for this bounded exercise.</p>
+use fictional policy P permitting synthetic or anonymized classroom
+copies in jurisdiction J, synthetic sample R, sample S with unknown
+jurisdiction, consent and retention status, workflow notes, and a
+rights-impact checklist. The Oversight-and-Rights Lens intake note
+records provenance, sensitivity, fit-to-purpose, and why the fixture is
+enough for this bounded exercise.</p>
 <p><strong>Analysis.</strong> For <strong>Intelligence Ethics:
 Deontological, Consequentialist, Virtue Frameworks</strong>, students
-map authority, test proportionality, name affected groups, assign
-oversight, and define redress or escalation. Pause whenever an inference
-about Intelligence Ethics: Deontological, Consequentialist, Virtue
-Frameworks appears without evidence, confidence outruns support, or an
-agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>Intelligence
-Ethics: Deontological, Consequentialist, Virtue Frameworks</strong>
-classroom scenario; unit artifact = authority-and-impact review
-register; evidence = allowed inputs; method = authority mapping and
-rights-aware release review; output = an authority-and-impact register
-with approvals, limits, audit owner, and review date; boundary = no
-external action; reviewer = instructor or named peer.</p>
+first map actors, purpose, audience, jurisdiction, data status, and
+policy version; then bind each proposed use to P and assess impact and
+less intrusive alternatives; substitute S for R as a negative control
+and refuse to transfer permission by technical similarity. Stop release
+on unresolved lawful basis or status and hand those questions to the
+designated legal/privacy reviewer. Pause whenever an inference about
+Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks
+appears without evidence, confidence outruns support, or an agent output
+is treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a register allowing only
+R’s explicitly permitted classroom use under P, withholding S, and
+naming the audit owner, correction path, and review trigger; S’s lawful
+basis and retention remain unresolved, and this exercise determines
+neither real-world legal compliance nor permission in other
+jurisdictions Retain it as the <strong>authority-and-impact review
+register</strong> for this classroom fixture, with the stated source
+IDs, uncertainty, review disposition, and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating
 <strong>Intelligence Ethics: Deontological, Consequentialist, Virtue
 Frameworks</strong> as “Oversight-and-Rights Lens confirms it” is not
@@ -549,14 +1075,14 @@ Lens</strong> practice lens. Moves 1-3 form the compressed path; the
 full seminar path adds challenge, handoff, and a review memo for
 <strong>Intelligence Ethics: Deontological, Consequentialist, Virtue
 Frameworks; The Ethics of Cognitive Security</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 51’s
-practice-sequence section, directly verified anchors for the
-<strong>Legal, Ethical, and Oversight Architecture</strong> lane include
-[official_odni_eo_12333]; [official_nsa_fisa]; [official_eu_ai_act];
-[official_council_europe_ai_convention]. Use them to test source-guide
-claims, method boundaries, governance constraints, and safety gates
-without replacing the module’s <code>ageintNNN</code> provenance.</p>
-<table>
+<p><strong>Contextual source routes.</strong> For module 51’s
+practice-sequence section, the <strong>Legal, Ethical, and Oversight
+Architecture</strong> catalog routes include [official_odni_eo_12333];
+[official_nsa_fisa]; [official_eu_ai_act];
+[official_council_europe_ai_convention]. Check the actual passage,
+edition, claim scope and access limitations before use. Route membership
+does not establish relevance, independent corroboration or efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -623,7 +1149,7 @@ capability from having authority and accountable review.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="ethics-of-intelligence-and-cognitive-security-instructor-notes-source-reasoning-review-points-and-studio-focus">Ethics
 of Intelligence and Cognitive Security instructor notes: source
@@ -638,9 +1164,8 @@ Frameworks; The Ethics of Cognitive Security</strong>. [ageint238];
 id="ethics-of-intelligence-and-cognitive-security-extension-exercise-peer-validation-and-refresh-trigger-review">Ethics
 of Intelligence and Cognitive Security extension exercise: peer
 validation and refresh trigger review</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-ethics-of-intelligence-and-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-ethics-of-intelligence-and-cognitive-security">[@sec:chapter-ethics-of-intelligence-and-cognitive-security]</span>.</p>
 <p>Have learners swap artifacts and apply the
 <strong>Oversight-and-Rights Lens</strong> validation rule to someone
 else’s work. The receiving learner must identify one strength, one
@@ -651,17 +1176,18 @@ Cognitive Security</strong>.</p>
 id="ethics-of-intelligence-and-cognitive-security-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Ethics
 of Intelligence and Cognitive Security knowledge check: misconceptions,
 evidence, and reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-ethics-of-intelligence-and-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-ethics-of-intelligence-and-cognitive-security">[@sec:chapter-ethics-of-intelligence-and-cognitive-security]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>Intelligence Ethics: Deontological,
-Consequentialist, Virtue Frameworks</strong> is defined here; name the
-source descriptor that supports the definition.</li>
-<li>Contrast <strong>Intelligence Ethics: Deontological,
-Consequentialist, Virtue Frameworks</strong> with <strong>The Ethics of
-Cognitive Security</strong> using the <strong>Oversight-and-Rights
-Lens</strong> artifact fields.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>Intelligence Ethics: Deontological,
+Consequentialist, Virtue Frameworks</strong>.</li>
+<li>Transfer the <strong>Oversight-and-Rights Lens</strong> artifact
+from <strong>Intelligence Ethics: Deontological, Consequentialist,
+Virtue Frameworks</strong> to the final topic, <strong>Whistleblowing,
+Leaking, and the Epistemic Duty of Intelligence Professionals</strong>;
+explain what changes and what cannot transfer.</li>
 <li>Identify one failure mode from the <strong>Legal, Ethical, and
 Oversight Architecture</strong> lane and the evidence that would reveal
 it.</li>
@@ -676,13 +1202,13 @@ id="ethics-of-intelligence-and-cognitive-security-answer-quality-rubric-source-e
 of Intelligence and Cognitive Security answer quality rubric: source
 evidence, uncertainty, and safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>Intelligence Ethics: Deontological,
-Consequentialist, Virtue Frameworks</strong> without source evidence,
-uncertainty, or a safe transfer task.</p>
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of <strong>Intelligence
+Ethics: Deontological, Consequentialist, Virtue Frameworks</strong>
+without source evidence, uncertainty, or a safe transfer task.</p>
 </main>
 </body>
 </html>

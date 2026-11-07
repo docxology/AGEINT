@@ -57,14 +57,17 @@ concept_keyword_routes_b:
   frame: 'Read the thesis as a scholarly application source: identify its question, method, assumptions, and limits before
     borrowing any intelligence lesson.'
 - keywords:
-  - perception
-  - memory
-  - reasoning
+  - human perception
+  - human memory
+  - working memory
+  - human reasoning
+  - cognitive science
   - brain
   frame: 'Connect cognitive science claims to analytic bias literacy: what the brain prioritizes, what it misses, and how
     review compensates.'
 - keywords:
-  - agent
+  - software agent
+  - ai agent
   - multi-agent
   - llm agent
   frame: Treat agents as software actors with explicit permissions, logs, stop conditions, and human approval—not autonomous

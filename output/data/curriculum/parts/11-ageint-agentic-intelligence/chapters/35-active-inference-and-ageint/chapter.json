@@ -25,5 +25,6 @@
   ],
   "source_line": 645,
   "content_profile": "cognitive_active_inference",
-  "practice_lens": "active_inference_boundary"
+  "practice_lens": "active_inference_boundary",
+  "worked_example": "model_scoped_inference"
 }

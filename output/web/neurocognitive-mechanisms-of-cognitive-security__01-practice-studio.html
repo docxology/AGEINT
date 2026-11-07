@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,49 +182,453 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="cognitive-resilience-lens-path-for-neurocognitive-mechanisms-of-cognitive-security-lesson-cluster-safe-artifact-and-review">Cognitive-Resilience
 Lens path for Neurocognitive Mechanisms of Cognitive Security: lesson
 cluster, safe artifact, and review</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <h3
 id="neurocognitive-mechanisms-of-cognitive-security-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Neurocognitive
 Mechanisms of Cognitive Security practice studio: topic lessons, safe
 worked example, and knowledge check</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <h3
 id="neurocognitive-mechanisms-of-cognitive-security-topic-lessons-source-backed-concepts-and-transfer-tasks">Neurocognitive
 Mechanisms of Cognitive Security topic lessons: source-backed concepts
 and transfer tasks</h3>
-<p>This module builds cognitive security as protection of attention,
-trust, memory, and decision quality without creating manipulation. The
-sequence opens with <strong>Understanding Neurocognitive Mechanisms of
-Cognitive Security (Neuroscience &amp; Biobehavioral Reviews,
-2025)</strong>, <strong>Executive Brain Systems and Vulnerability to
-Information Threats</strong>, <strong>Affective Systems: Emotional
-Exploitation in Manipulation</strong> and applies the
-<strong>Cognitive-Resilience Lens</strong> practice frame through
-concept, evidence, artifact, misconception, and transfer tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-cognitive-security-module-map]; module overview
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-curriculum atlas [sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 38’s topic-lessons
-section, directly verified anchors for the <strong>Cognitive Security
-and Influence Resilience</strong> lane include
+<p><strong>Neurocognitive Mechanisms of Cognitive Security</strong>
+builds cognitive security as protection of attention, trust, memory, and
+decision quality without creating manipulation. The sequence opens with
+<strong>Understanding Neurocognitive Mechanisms of Cognitive Security
+(Neuroscience &amp; Biobehavioral Reviews, 2025)</strong>,
+<strong>Executive Brain Systems: Research on Information-Related
+Tasks</strong>, <strong>Affective Systems: Emotion and Information
+Processing</strong> and applies the <strong>Cognitive-Resilience
+Lens</strong> practice frame through concept, evidence, artifact,
+misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-cognitive-security-module-map">[@fig:part-cognitive-security-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 38’s
+topic-lessons section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
 <h4
 id="lesson-1-understanding-neurocognitive-mechanisms-of-cognitive-security-neuroscience-biobehavioral-reviews-2025">Lesson
 1: Understanding Neurocognitive Mechanisms of Cognitive Security
@@ -227,36 +638,43 @@ Mechanisms of Cognitive Security (Neuroscience &amp; Biobehavioral
 Reviews, 2025)</strong> maps cognitive attack surfaces: attention,
 belief formation, narrative provenance, and transparent correction
 options.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Understanding
-Neurocognitive Mechanisms</strong> to separate analysis of influence
-from persuasion design. A defensible treatment names the judgment it
-enables for information-integrity analysis and resilience education
-review, the proof limit that treating resilience labels as permission to
-skip provenance review would otherwise hide, and the reviewer
-accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Understanding Neurocognitive
-Mechanisms of Cognitive Security (Neuroscience &amp; Biobehavioral
-Reviews, 2025)</strong> rests on [ageint176] and [ageint177]. The most
-specific cited work observes: The authors synthesize research on why
-people fall victim to false or deceptive information, proposing that
-certain brain systems are more exploitable than others. Use them for
-pinning down the scope of <strong>Understanding Neurocognitive
-Mechanisms of Cognitive Security (Neuroscience &amp; Biobehavioral
-Reviews, 2025)</strong>, the edge of that scope, and when these
-citations need re-verifying before transfer. External triangulation uses
+<p><strong>Worked reasoning and limits.</strong> The review proposes a
+framework spanning executive, affective, and integrative mechanisms and
+explicitly says the drivers and neurophysiology are incompletely
+understood. A mechanism hypothesis explains a possible process; a
+candidate measure is an observation proposed for study; a validated
+biomarker requires evidence for a specified use. Publisher and PubMed
+records refer to the same review, not independent replications, and the
+framework does not validate person-level vulnerability, credibility, or
+diagnostic judgments [ageint176; ageint177].</p>
+<p><strong>Why it matters.</strong> <strong>Understanding Neurocognitive
+Mechanisms</strong> matters in the <strong>Cognitive Security and
+Influence Resilience</strong> lane because information-integrity
+analysis and resilience education evidence must stay separate from
+judgment; treating resilience labels as permission to skip provenance
+review is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Understanding Neurocognitive Mechanisms of Cognitive Security
+(Neuroscience &amp; Biobehavioral Reviews, 2025)</strong>: [ageint176]
+and [ageint177]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Understanding
-Neurocognitive Mechanisms</strong>, reason from the sources cited in
-this row. [ageint176] Cognitive security is a relatively new field that
-aims to understand and defend against. [ageint177] A peer-reviewed
-review article published in Neuroscience &amp; Biobehavioral Reviews
-(December 2025) by Crum and colleagues examining the neurocognitive
-mechanisms of cognitive security. The authors synthesize research on why
-people fall victim to false or deceptive information, proposing that
-certain brain systems are more exploitable than others. Read each cited
-work for what it can support about this topic, where that claim
-originated, how confident it is, and what evidence would change it.</p>
+Neurocognitive Mechanisms</strong>, inspect the original passages.
+Curriculum annotation for [ageint177]: A peer-reviewed review article
+published in Neuroscience &amp; Biobehavioral Reviews (December 2025) by
+Crum and colleagues examining the neurocognitive mechanisms of cognitive
+security. The authors synthesize research on why people fall victim to
+false or deceptive information, proposing that certain brain systems are
+more exploitable than others. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Understanding
 Neurocognitive Mechanisms</strong>, build a <strong>narrative-risk map
 with provenance, uncertainty, audience harms, and response
@@ -279,49 +697,57 @@ Neurocognitive Mechanisms</strong> audit pattern from this module on a
 different sample record set with a new reviewer and blocked-use
 note.</p>
 <h4
-id="lesson-2-executive-brain-systems-and-vulnerability-to-information-threats">Lesson
-2: Executive Brain Systems and Vulnerability to Information Threats</h4>
-<p><strong>Concept.</strong> <strong>Executive Brain Systems and
-Vulnerability to Information Threats</strong> treats the vulnerability
-record as an assurance case: severity, affected component, provenance,
-mitigation status, and uncertainty stay separate.</p>
-<p><strong>Why it matters.</strong> <strong>Executive Brain
-Systems</strong> matters in the <strong>Cognitive Security and Influence
-Resilience</strong> lane because information-integrity analysis and
-resilience education evidence must stay separate from judgment; treating
-resilience labels as permission to skip provenance review is a common
-failure.</p>
-<p><strong>Source support.</strong> <strong>Executive Brain Systems and
-Vulnerability to Information Threats</strong> rests on [ageint177]. The
-closest source to this row notes: The authors synthesize research on why
-people fall victim to false or deceptive information, proposing that
-certain brain systems are more exploitable than others. Use it for the
-claim that <strong>Executive Brain Systems and Vulnerability to
-Information Threats</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
-[official_cisa_foreign_influence];
+id="lesson-2-executive-brain-systems-research-on-information-related-tasks">Lesson
+2: Executive Brain Systems: Research on Information-Related Tasks</h4>
+<p><strong>Concept.</strong> <strong>Executive Brain Systems: Research
+on Information-Related Tasks</strong> connects cognitive science claims
+to analytic bias literacy: what the brain prioritizes, what it misses,
+and how review compensates.</p>
+<p><strong>Worked reasoning and limits.</strong> Executive functions
+include maintaining task goals, holding and updating information, and
+inhibiting an irrelevant response; this is cognitive research
+vocabulary, not a software vulnerability record. An error on a demanding
+task may reflect unclear instructions, competing demands, or
+unfamiliarity rather than deficient executive capacity. Neither a task
+mistake nor a neural signal licenses a conclusion about an individual’s
+susceptibility or fitness [ageint177].</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Executive Brain Systems</strong>, treating resilience labels as
+permission to skip provenance review undermines information-integrity
+analysis and resilience education review; the lesson builds the habit to
+separate analysis of influence from persuasion design.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Executive Brain Systems: Research on Information-Related
+Tasks</strong>: [ageint177]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Executive Brain
-Systems</strong> against the works cited for this row. [ageint177] A
-peer-reviewed review article published in Neuroscience &amp;
-Biobehavioral Reviews (December 2025) by Crum and colleagues examining
-the neurocognitive mechanisms of cognitive security. The authors
-synthesize research on why people fall victim to false or deceptive
-information, proposing that certain brain systems are more exploitable
-than others. Each source above earns its place in this topic only when
-you can state its bounded claim, its provenance, its uncertainty, and
-the fact that would retire it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Executive Brain
+Systems</strong>, inspect the original passages. Curriculum annotation
+for [ageint177]: A peer-reviewed review article published in
+Neuroscience &amp; Biobehavioral Reviews (December 2025) by Crum and
+colleagues examining the neurocognitive mechanisms of cognitive
+security. The authors synthesize research on why people fall victim to
+false or deceptive information, proposing that certain brain systems are
+more exploitable than others. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Executive Brain
 Systems</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
 information-integrity analysis and resilience education topic. The
 artifact must record the narrative provenance, the bounded claim about
-<strong>Executive Brain Systems and Vulnerability</strong>, the
-audience-harm caveat, the uncertainty note, the transparent-use
-boundary, and the reviewer accountable for correction. Shape
-<strong>Executive Brain Systems</strong> work as an
-<strong>epistemic-integrity review packet</strong> that names evidence,
-uncertainty, reviewer, and stop condition.</p>
+<strong>Executive Brain Systems</strong>, the audience-harm caveat, the
+uncertainty note, the transparent-use boundary, and the reviewer
+accountable for correction. Shape <strong>Executive Brain
+Systems</strong> work as an <strong>epistemic-integrity review
+packet</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Executive Brain Systems</strong>: that a resilience label on a
 technique means it has been stress-tested, rather than a habit that
@@ -331,36 +757,47 @@ still needs evidence, caveats, and reviewer challenge.</p>
 keeping information-integrity analysis and resilience education and
 reviewer ownership explicit.</p>
 <h4
-id="lesson-3-affective-systems-emotional-exploitation-in-manipulation">Lesson
-3: Affective Systems: Emotional Exploitation in Manipulation</h4>
-<p><strong>Concept.</strong> <strong>Affective Systems: Emotional
-Exploitation in Manipulation</strong> focuses on transparent resilience
+id="lesson-3-affective-systems-emotion-and-information-processing">Lesson
+3: Affective Systems: Emotion and Information Processing</h4>
+<p><strong>Concept.</strong> <strong>Affective Systems: Emotion and
+Information Processing</strong> focuses on transparent resilience
 education: provenance, audience harm, attribution caution, and
 non-manipulative response options.</p>
-<p><strong>Why it matters.</strong> <strong>Affective Systems</strong>
-connects classroom vocabulary to Cognitive Security and Influence
-Resilience practice: learners document evidence, caveats, and reviewer
-ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Affective Systems: Emotional
-Exploitation in Manipulation</strong> rests on [ageint177]. The most
-specific cited work observes: The authors synthesize research on why
-people fall victim to false or deceptive information, proposing that
-certain brain systems are more exploitable than others. Use it for
-pinning down the scope of <strong>Affective Systems: Emotional
-Exploitation in Manipulation</strong>, the edge of that scope, and when
-these citations need re-verifying before transfer. External
-triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> Affective processing
+concerns emotional salience and valuation, which can matter in both
+legitimate communication and misleading messages. A truthful warning may
+be emotional; a calm presentation may be false. The discriminating
+question is whether evidence supports the content and the hypothesized
+mechanism, not whether a reader’s reaction proves manipulation or
+reveals private intent [ageint177].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Affective
+Systems</strong> to separate analysis of influence from persuasion
+design. A defensible treatment names the judgment it enables for
+information-integrity analysis and resilience education review, the
+proof limit that treating resilience labels as permission to skip
+provenance review would otherwise hide, and the reviewer accountable for
+challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Affective Systems: Emotion and Information Processing</strong>:
+[ageint177]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Affective
-Systems</strong>, reason from the sources cited in this row. [ageint177]
-A peer-reviewed review article published in Neuroscience &amp;
-Biobehavioral Reviews (December 2025) by Crum and colleagues examining
-the neurocognitive mechanisms of cognitive security. The authors
-synthesize research on why people fall victim to false or deceptive
-information, proposing that certain brain systems are more exploitable
-than others. Work source by source: name the bounded claim, its origin,
-the residual uncertainty, and the trigger that would change how this
-topic is judged.</p>
+Systems</strong>, inspect the original passages. Curriculum annotation
+for [ageint177]: A peer-reviewed review article published in
+Neuroscience &amp; Biobehavioral Reviews (December 2025) by Crum and
+colleagues examining the neurocognitive mechanisms of cognitive
+security. The authors synthesize research on why people fall victim to
+false or deceptive information, proposing that certain brain systems are
+more exploitable than others. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Affective
 Systems</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -376,43 +813,51 @@ to stop.</p>
 <strong>Affective Systems</strong>: that a resilience label on a
 technique means it has been stress-tested, rather than a habit that
 still needs evidence, caveats, and reviewer challenge.</p>
-<p><strong>Transfer task.</strong> Reuse the <strong>Affective
-Systems</strong> audit pattern from this module on a different sample
-record set with a new reviewer and blocked-use note.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Affective Systems</strong> to another artifact while keeping
+information-integrity analysis and resilience education and reviewer
+ownership explicit.</p>
 <h4
-id="lesson-4-integrative-systems-brain-network-interactions-during-threat-exposure">Lesson
-4: Integrative Systems: Brain Network Interactions During Threat
-Exposure</h4>
-<p><strong>Concept.</strong> <strong>Integrative Systems: Brain Network
-Interactions During Threat Exposure</strong> connects cognitive science
-claims to analytic bias literacy: what the brain prioritizes, what it
-misses, and how review compensates.</p>
+id="lesson-4-integrative-systems-proposed-brain-network-interactions">Lesson
+4: Integrative Systems: Proposed Brain-Network Interactions</h4>
+<p><strong>Concept.</strong> <strong>Integrative Systems: Proposed
+Brain-Network Interactions</strong> connects cognitive science claims to
+analytic bias literacy: what the brain prioritizes, what it misses, and
+how review compensates.</p>
+<p><strong>Worked reasoning and limits.</strong> Integrative accounts
+examine interactions among cognitive processes rather than assigning a
+complex judgment to a single brain location. Inferring a specific mental
+state from activation associated with many tasks is reverse inference;
+transferring a group association to an individual is a further
+unsupported step. The review’s proposed framework motivates research
+questions, not a surveillance system or a proven causal chain from
+exposure through brain activity to belief [ageint177].</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Integrative Systems</strong>, treating resilience labels as
 permission to skip provenance review undermines information-integrity
 analysis and resilience education review; the lesson builds the habit to
 separate analysis of influence from persuasion design.</p>
-<p><strong>Source support.</strong> <strong>Integrative Systems: Brain
-Network Interactions During Threat Exposure</strong> rests on
-[ageint177]. The most specific cited work observes: A peer-reviewed
-review article published in Neuroscience &amp; Biobehavioral Reviews
-(December 2025) by Crum and colleagues examining the neurocognitive
-mechanisms of cognitive security. Use it for pinning down the scope of
-<strong>Integrative Systems: Brain Network Interactions During Threat
-Exposure</strong>, the edge of that scope, and when these citations need
-re-verifying before transfer. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Integrative Systems: Proposed Brain-Network
+Interactions</strong>: [ageint177]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Integrative
-Systems</strong>, reason from the sources cited in this row. [ageint177]
-A peer-reviewed review article published in Neuroscience &amp;
-Biobehavioral Reviews (December 2025) by Crum and colleagues examining
-the neurocognitive mechanisms of cognitive security. The authors
-synthesize research on why people fall victim to false or deceptive
-information, proposing that certain brain systems are more exploitable
-than others. From each source, pull the bounded claim it can carry for
-this topic, its provenance, the stated uncertainty, and the one
-condition that would overturn that judgment.</p>
+Systems</strong>, inspect the original passages. Curriculum annotation
+for [ageint177]: A peer-reviewed review article published in
+Neuroscience &amp; Biobehavioral Reviews (December 2025) by Crum and
+colleagues examining the neurocognitive mechanisms of cognitive
+security. The authors synthesize research on why people fall victim to
+false or deceptive information, proposing that certain brain systems are
+more exploitable than others. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Integrative
 Systems</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -421,107 +866,126 @@ artifact must record the narrative provenance, the bounded claim about
 <strong>Integrative Systems</strong>, the audience-harm caveat, the
 uncertainty note, the transparent-use boundary, and the reviewer
 accountable for correction. Shape <strong>Integrative Systems</strong>
-work as an <strong>epistemic-integrity review packet</strong> that logs
-the evidence, the uncertainty, the responsible reviewer, and the halt
-condition.</p>
+work as an <strong>epistemic-integrity review packet</strong> that
+records its evidence, the residual uncertainty, the named reviewer, and
+the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Integrative Systems</strong>: that a resilience label on a
 technique means it has been stress-tested, rather than a habit that
 still needs evidence, caveats, and reviewer challenge.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>Integrative Systems</strong> to another artifact while keeping
-information-integrity analysis and resilience education and reviewer
-ownership explicit.</p>
-<h4 id="lesson-5-neuromarkers-of-susceptibility-and-resilience">Lesson
-5: Neuromarkers of Susceptibility and Resilience</h4>
-<p><strong>Concept.</strong> <strong>Neuromarkers of Susceptibility and
-Resilience</strong> focuses on transparent resilience education:
-provenance, audience harm, attribution caution, and non-manipulative
-response options.</p>
-<p><strong>Why it matters.</strong> <strong>Neuromarkers of
-Susceptibility and Resilience</strong> connects classroom vocabulary to
-Cognitive Security and Influence Resilience practice: learners document
-evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>Neuromarkers of
-Susceptibility and Resilience</strong> rests on [ageint177]. The lead
-source’s own note reads: A peer-reviewed review article published in
-Neuroscience &amp; Biobehavioral Reviews (December 2025) by Crum and
-colleagues examining the neurocognitive mechanisms of cognitive
-security. Use it for pinning down the scope of <strong>Neuromarkers of
-Susceptibility and Resilience</strong>, the edge of that scope, and when
-these citations need re-verifying before transfer. External
-triangulation uses [official_cisa_foreign_influence];
+<p><strong>Transfer task.</strong> Transfer <strong>Integrative
+Systems</strong> from this module to a second motif by preserving
+information-integrity analysis and resilience education, replacing
+action with audit, and naming the blocked use.</p>
+<h4
+id="lesson-5-candidate-neuromarkers-validation-and-inference-limits">Lesson
+5: Candidate Neuromarkers: Validation and Inference Limits</h4>
+<p><strong>Concept.</strong> <strong>Candidate Neuromarkers: Validation
+and Inference Limits</strong> focuses on transparent resilience
+education: provenance, audience harm, attribution caution, and
+non-manipulative response options.</p>
+<p><strong>Worked reasoning and limits.</strong> <strong>Completed
+synthetic abstract critique.</strong> A supplied fictional abstract
+reports that 20 simulated task records show higher EEG feature X during
+misleading than neutral notices; no held-out validation, individual
+ground truth, or intervention is supplied. The completed review records
+an observed task association, a candidate attention mechanism, and
+alternatives of task difficulty and stimulus differences; it rejects the
+proposed conclusion that X diagnoses susceptibility. A new card says the
+misleading notices were twice as long, so the interpretation narrows
+further to an unresolved length/difficulty confound. Decision: hold the
+biomarker and intervention claims pending matched-task and
+independent-validation evidence; no real EEG is collected and no
+individual is classified [ageint177].</p>
+<p><strong>Why it matters.</strong> <strong>Candidate
+Neuromarkers</strong> connects classroom vocabulary to Cognitive
+Security and Influence Resilience practice: learners document evidence,
+caveats, and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Candidate Neuromarkers: Validation and Inference
+Limits</strong>: [ageint177]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Neuromarkers of
-Susceptibility and Resilience</strong> against the works cited for this
-row. [ageint177] A peer-reviewed review article published in
+<p><strong>Evidence to inspect.</strong> For <strong>Candidate
+Neuromarkers</strong>, inspect the original passages. Curriculum
+annotation for [ageint177]: A peer-reviewed review article published in
 Neuroscience &amp; Biobehavioral Reviews (December 2025) by Crum and
 colleagues examining the neurocognitive mechanisms of cognitive
 security. The authors synthesize research on why people fall victim to
 false or deceptive information, proposing that certain brain systems are
-more exploitable than others. Work source by source: name the bounded
-claim, its origin, the residual uncertainty, and the trigger that would
-change how this topic is judged.</p>
-<p><strong>Student artifact.</strong> Build a <strong>narrative-risk map
-with provenance, uncertainty, audience harms, and response
-options</strong> for this information-integrity analysis and resilience
-education topic. The artifact must record the narrative provenance, the
-bounded claim about <strong>Neuromarkers of Susceptibility and
-Resilience</strong>, the audience-harm caveat, the uncertainty note, the
-transparent-use boundary, and the reviewer accountable for correction.
-Shape this subject work as an <strong>epistemic-integrity review
-packet</strong> that names evidence, uncertainty, reviewer, and stop
-condition.</p>
+more exploitable than others. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Candidate
+Neuromarkers</strong>, build a <strong>narrative-risk map with
+provenance, uncertainty, audience harms, and response options</strong>
+for this information-integrity analysis and resilience education topic.
+The artifact must record the narrative provenance, the bounded claim
+about <strong>Candidate Neuromarkers</strong>, the audience-harm caveat,
+the uncertainty note, the transparent-use boundary, and the reviewer
+accountable for correction. Shape <strong>Candidate
+Neuromarkers</strong> work as an <strong>epistemic-integrity review
+packet</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Neuromarkers of Susceptibility and Resilience</strong>: that a
-resilience label on a technique means it has been stress-tested, rather
-than a habit that still needs evidence, caveats, and reviewer
-challenge.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>Neuromarkers of Susceptibility and Resilience</strong> to
-another artifact while keeping information-integrity analysis and
-resilience education and reviewer ownership explicit.</p>
+<strong>Candidate Neuromarkers</strong>: that a resilience label on a
+technique means it has been stress-tested, rather than a habit that
+still needs evidence, caveats, and reviewer challenge.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Candidate
+Neuromarkers</strong> from this module to a second motif by preserving
+information-integrity analysis and resilience education, replacing
+action with audit, and naming the blocked use.</p>
 <h4
-id="lesson-6-neuro-cognitive-approaches-to-cybersecurity-systematic-review-emerald-2025">Lesson
-6: Neuro-Cognitive Approaches to Cybersecurity: Systematic Review
-(Emerald, 2025)</h4>
+id="lesson-6-neuro-cognitive-approaches-to-cybersecurity-systematic">Lesson
+6: Neuro-Cognitive Approaches to Cybersecurity: Systematic</h4>
 <p><strong>Concept.</strong> <strong>Neuro-Cognitive Approaches to
-Cybersecurity: Systematic Review (Emerald, 2025)</strong> connects
-neurocognitive claims to analytic bias literacy and review
-compensation—not operational timing advice.</p>
+Cybersecurity: Systematic</strong> connects neurocognitive claims to
+analytic bias literacy and review compensation—not operational timing
+advice.</p>
+<p><strong>Worked reasoning and limits.</strong> The raw heading retains
+an inherited 2025 attribution; the local source description identifies a
+January-2026 article, and the direct journal record was unavailable for
+resolving online-first versus issue dates. A systematic review can
+catalogue proposed measures and applications without validating each
+one. Separate controlled-task research, interface design hypotheses, and
+proposed insider-risk uses; the last does not justify personnel
+screening, inferred deception, or physiological monitoring in this
+curriculum [ageint178].</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Neuro-Cognitive Approaches to Cybersecurity</strong>, treating
 resilience labels as permission to skip provenance review undermines
 information-integrity analysis and resilience education review; the
 lesson builds the habit to separate analysis of influence from
 persuasion design.</p>
-<p><strong>Source support.</strong> <strong>Neuro-Cognitive Approaches
-to Cybersecurity: Systematic Review (Emerald, 2025)</strong> rests on
-[ageint178]. Its anchor reference records: A January 2026 systematic
-review in Information and Computer Security by the researcher Kritika,
-titled “Neuro-cognitive approaches to cybersecurity.” It integrates
-findings from neuroscience and cognitive psychology to analyze the human
-factor in security, examining how cognitive and neurological insights
-can improve security awareness education, behavioral policy development,
-insider threat detection, and user interface design. Use it for the
-working definition that <strong>Neuro-Cognitive Approaches to
-Cybersecurity: Systematic Review (Emerald, 2025)</strong> can defend,
-where that scope ends, and the refresh check owed before this evidence
-transfers. External triangulation uses
-[official_cisa_foreign_influence];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Neuro-Cognitive Approaches to Cybersecurity:
+Systematic</strong>: [ageint178]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Neuro-Cognitive
-Approaches to Cybersecurity</strong>, work from the cited evidence
-behind this row. [ageint178] A January 2026 systematic review in
-Information and Computer Security by the researcher Kritika, titled
+Approaches to Cybersecurity</strong>, inspect the original passages.
+Curriculum annotation for [ageint178]: A January 2026 systematic review
+in Information and Computer Security by the researcher Kritika, titled
 “Neuro-cognitive approaches to cybersecurity.” It integrates findings
 from neuroscience and cognitive psychology to analyze the human factor
 in security, examining how cognitive and neurological insights can
 improve security awareness education, behavioral policy development,
-insider threat detection, and user interface design. Read each cited
-work for what it can support about this topic, where that claim
-originated, how confident it is, and what evidence would change it.</p>
+insider threat detection, and user interface design. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Neuro-Cognitive
 Approaches to Cybersecurity</strong>, build a <strong>narrative-risk map
 with provenance, uncertainty, audience harms, and response
@@ -532,231 +996,268 @@ Cybersecurity</strong>, the audience-harm caveat, the uncertainty note,
 the transparent-use boundary, and the reviewer accountable for
 correction. Shape <strong>Neuro-Cognitive Approaches to
 Cybersecurity</strong> work as an <strong>epistemic-integrity review
-packet</strong> that logs the evidence, the uncertainty, the responsible
-reviewer, and the halt condition.</p>
+packet</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Neuro-Cognitive Approaches to Cybersecurity</strong>: that a
 resilience label on a technique means it has been stress-tested, rather
 than a habit that still needs evidence, caveats, and reviewer
 challenge.</p>
-<p><strong>Transfer task.</strong> Reuse the <strong>Neuro-Cognitive
-Approaches to Cybersecurity</strong> audit pattern from this module on a
-different sample record set with a new reviewer and blocked-use
-note.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Neuro-Cognitive Approaches to Cybersecurity</strong> to another
+artifact while keeping information-integrity analysis and resilience
+education and reviewer ownership explicit.</p>
 <h4
-id="lesson-7-cognitive-load-in-intelligence-community-settings-ncsu-survey-2024">Lesson
-7: Cognitive Load in Intelligence Community Settings (NCSU Survey,
-2024)</h4>
+id="lesson-7-cognitive-load-in-intelligence-community-settings-measurement-survey">Lesson
+7: Cognitive Load in Intelligence Community Settings: Measurement
+Survey</h4>
 <p><strong>Concept.</strong> <strong>Cognitive Load in Intelligence
-Community Settings (NCSU Survey, 2024)</strong> maps the theory to
-institutions: priorities, feedback, incentives, review loops, and
-records shape what an intelligence community notices and ignores.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Cognitive Load</strong>, counter-messaging as manipulation
-undermines information-integrity analysis and resilience education
-review; the lesson builds the habit to separate analysis of influence
-from persuasion design.</p>
-<p><strong>Source support.</strong> <strong>Cognitive Load in
-Intelligence Community Settings (NCSU Survey, 2024)</strong> rests on
-[ageint179]. The most specific cited work observes: Reviewing 125
-articles published between 1998 and 2024, it identifies 129 distinct
-metrics grouped into non-biometric methods (questionnaires such as
-NASA-TLX, task performance, interaction tracking) and biometric methods
-(eye tracking, heart rate). Use it for the working definition that
-<strong>Cognitive Load in Intelligence Community Settings (NCSU Survey,
-2024)</strong> can defend, where that scope ends, and the refresh check
-owed before this evidence transfers. External triangulation uses
-[official_cisa_foreign_influence];
+Community Settings: Measurement Survey</strong> compares civilian,
+military, and technical components by mission, oversight chain, and
+product type rather than by organizational chart alone.</p>
+<p><strong>Worked reasoning and limits.</strong> Cognitive load concerns
+demands on limited processing resources; subjective workload is a
+person’s reported experience of a task, not a direct readout of brain
+capacity. Select a measure by task, intended construct, validity
+evidence, feasibility, and pilot fit rather than popularity or apparent
+objectivity. The survey’s coverage of literature through 2024 is not
+itself its publication date or proof that a measure transfers to every
+analytic task [ageint179].</p>
+<p><strong>Why it matters.</strong> <strong>Cognitive Load in
+Intelligence Community Settings</strong> matters in the
+<strong>Cognitive Security and Influence Resilience</strong> lane
+because information-integrity analysis and resilience education evidence
+must stay separate from judgment; counter-messaging as manipulation is a
+common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Cognitive Load in Intelligence Community Settings: Measurement
+Survey</strong>: [ageint179]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Cognitive
-Load</strong>, reason from the sources cited in this row. [ageint179] An
-NCSU Laboratory for Analytic Sciences article summarizing a systematic
-survey of metrics for measuring cognitive load in intelligence-analysis
-and similar settings. Reviewing 125 articles published between 1998 and
-2024, it identifies 129 distinct metrics grouped into non-biometric
-methods (questionnaires such as NASA-TLX, task performance, interaction
-tracking) and biometric methods (eye tracking, heart rate). Read each
-cited work for what it can support about this topic, where that claim
-originated, how confident it is, and what evidence would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>Cognitive
-Load</strong>, build an institutional feedback-loop map with incentives,
-review points, and oversight hooks. Shape <strong>Cognitive
-Load</strong> work as an <strong>epistemic-integrity review
-packet</strong> that records its evidence, the residual uncertainty, the
-named reviewer, and the stop condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Cognitive Load</strong>: that feeling certain in the moment
-substitutes for the checklist, pause, and second-look that decision
-hygiene exists to enforce.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Cognitive
-Load</strong> from this module to a second motif by preserving
-information-integrity analysis and resilience education, replacing
-action with audit, and naming the blocked use.</p>
-<h4
-id="lesson-8-129-metrics-catalogued-questionnaire-biometric-task-performance">Lesson
-8: 129 Metrics Catalogued: Questionnaire, Biometric,
-Task-Performance</h4>
-<p><strong>Concept.</strong> <strong>129 Metrics Catalogued:
-Questionnaire, Biometric, Task-Performance</strong> evaluates biometric
-monitoring by consent, minimization, purpose limits, and human review of
-alerts.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>129 Metrics Catalogued</strong>, treating resilience labels as
-permission to skip provenance review undermines information-integrity
-analysis and resilience education review; the lesson builds the habit to
-separate analysis of influence from persuasion design.</p>
-<p><strong>Source support.</strong> <strong>129 Metrics Catalogued:
-Questionnaire, Biometric, Task-Performance</strong> rests on
-[ageint179]. The lead source’s own note reads: An NCSU Laboratory for
-Analytic Sciences article summarizing a systematic survey of metrics for
-measuring cognitive load in intelligence-analysis and similar settings.
-Use it for fixing what <strong>129 Metrics Catalogued: Questionnaire,
-Biometric, Task-Performance</strong> covers, marking the boundary it
-must not cross, and timing the next source refresh. External
-triangulation uses [official_cisa_foreign_influence];
-[official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>129 Metrics
-Catalogued</strong>, work from the cited evidence behind this row.
-[ageint179] An NCSU Laboratory for Analytic Sciences article summarizing
-a systematic survey of metrics for measuring cognitive load in
-intelligence-analysis and similar settings. Reviewing 125 articles
-published between 1998 and 2024, it identifies 129 distinct metrics
-grouped into non-biometric methods (questionnaires such as NASA-TLX,
-task performance, interaction tracking) and biometric methods (eye
-tracking, heart rate). Each source above earns its place in this topic
-only when you can state its bounded claim, its provenance, its
-uncertainty, and the fact that would retire it.</p>
-<p><strong>Student artifact.</strong> For <strong>129 Metrics
-Catalogued</strong>, build a <strong>narrative-risk map with provenance,
-uncertainty, audience harms, and response options</strong> for this
-information-integrity analysis and resilience education topic. The
-artifact must record the narrative provenance, the bounded claim about
-<strong>129 Metrics Catalogued</strong>, the audience-harm caveat, the
-uncertainty note, the transparent-use boundary, and the reviewer
-accountable for correction. Shape <strong>129 Metrics
-Catalogued</strong> work as an <strong>epistemic-integrity review
-packet</strong> that names evidence, uncertainty, reviewer, and stop
-condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>129 Metrics Catalogued</strong>: that a resilience label on a
-technique means it has been stress-tested, rather than a habit that
-still needs evidence, caveats, and reviewer challenge.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>129 Metrics
-Catalogued</strong> from this module to a second motif by preserving
-information-integrity analysis and resilience education, replacing
-action with audit, and naming the blocked use.</p>
-<h4
-id="lesson-9-nasa-tlx-and-its-intelligence-analytic-applications">Lesson
-9: NASA-TLX and Its Intelligence Analytic Applications</h4>
-<p><strong>Concept.</strong> <strong>NASA-TLX and Its Intelligence
-Analytic Applications</strong> uses workload indexes as review triggers
-for prioritization, handoff, and rest—not as heroics metrics.</p>
-<p><strong>Why it matters.</strong> <strong>NASA-TLX and Its
-Intelligence Analytic Applications</strong> connects classroom
-vocabulary to Cognitive Security and Influence Resilience practice:
-learners document evidence, caveats, and reviewer ownership rather than
-repeating labels.</p>
-<p><strong>Source support.</strong> <strong>NASA-TLX and Its
-Intelligence Analytic Applications</strong> rests on [ageint179]. Its
-anchor reference records: An NCSU Laboratory for Analytic Sciences
-article summarizing a systematic survey of metrics for measuring
-cognitive load in intelligence-analysis and similar settings. Use it for
-pinning down the scope of <strong>NASA-TLX and Its Intelligence Analytic
-Applications</strong>, the edge of that scope, and when these citations
-need re-verifying before transfer. External triangulation uses
-[official_cisa_foreign_influence];
-[official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>NASA-TLX and Its
-Intelligence Analytic Applications</strong>, reason from the sources
-cited in this row. [ageint179] An NCSU Laboratory for Analytic Sciences
-article summarizing a systematic survey of metrics for measuring
-cognitive load in intelligence-analysis and similar settings. Reviewing
-125 articles published between 1998 and 2024, it identifies 129 distinct
-metrics grouped into non-biometric methods (questionnaires such as
-NASA-TLX, task performance, interaction tracking) and biometric methods
-(eye tracking, heart rate). From each source, pull the bounded claim it
-can carry for this topic, its provenance, the stated uncertainty, and
-the one condition that would overturn that judgment.</p>
-<p><strong>Student artifact.</strong> For <strong>NASA-TLX and Its
-Intelligence Analytic Applications</strong>, build a
-<strong>narrative-risk map with provenance, uncertainty, audience harms,
-and response options</strong> for this information-integrity analysis
-and resilience education topic. The artifact must record the narrative
-provenance, the bounded claim about <strong>NASA-TLX and Its
-Intelligence Analytic</strong>, the audience-harm caveat, the
-uncertainty note, the transparent-use boundary, and the reviewer
-accountable for correction. Shape this subject work as an
-<strong>epistemic-integrity review packet</strong> that logs the
-evidence, the uncertainty, the responsible reviewer, and the halt
-condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>NASA-TLX and Its Intelligence Analytic Applications</strong>:
-that a resilience label on a technique means it has been stress-tested,
-rather than a habit that still needs evidence, caveats, and reviewer
-challenge.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>NASA-TLX and Its
-Intelligence Analytic Applications</strong> from this module to a second
-motif by preserving information-integrity analysis and resilience
-education, replacing action with audit, and naming the blocked use.</p>
-<h4
-id="lesson-10-eye-tracking-and-heart-rate-variability-for-analyst-overload-detection">Lesson
-10: Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</h4>
-<p><strong>Concept.</strong> <strong>Eye Tracking and Heart Rate
-Variability for Analyst Overload Detection</strong> focuses on
-transparent resilience education: provenance, audience harm, attribution
-caution, and non-manipulative response options.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Eye Tracking
-and Heart Rate Variability for Analyst Overload Detection</strong> to
-separate analysis of influence from persuasion design. A defensible
-treatment names the judgment it enables for information-integrity
-analysis and resilience education review, the proof limit that treating
-resilience labels as permission to skip provenance review would
-otherwise hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Eye Tracking and Heart Rate
-Variability for Analyst Overload Detection</strong> rests on
-[ageint179]. The most specific cited work observes: Reviewing 125
-articles published between 1998 and 2024, it identifies 129 distinct
-metrics grouped into non-biometric methods (questionnaires such as
-NASA-TLX, task performance, interaction tracking) and biometric methods
-(eye tracking, heart rate). Use it for pinning down the scope of
-<strong>Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</strong>, the edge of that scope, and when these citations
-need re-verifying before transfer. External triangulation uses
-[official_cisa_foreign_influence];
-[official_nato_counter_information_threats].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Eye Tracking and
-Heart Rate Variability for Analyst Overload Detection</strong> in the
-evidence the row cites. [ageint179] An NCSU Laboratory for Analytic
+<p><strong>Evidence to inspect.</strong> For <strong>Cognitive Load in
+Intelligence Community Settings</strong>, inspect the original passages.
+Curriculum annotation for [ageint179]: An NCSU Laboratory for Analytic
 Sciences article summarizing a systematic survey of metrics for
 measuring cognitive load in intelligence-analysis and similar settings.
 Reviewing 125 articles published between 1998 and 2024, it identifies
 129 distinct metrics grouped into non-biometric methods (questionnaires
 such as NASA-TLX, task performance, interaction tracking) and biometric
-methods (eye tracking, heart rate). Read each cited work for what it can
-support about this topic, where that claim originated, how confident it
-is, and what evidence would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>Eye Tracking</strong>,
+methods (eye tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Cognitive Load in
+Intelligence Community Settings</strong>, build an institutional
+feedback-loop map with incentives, review points, and oversight hooks.
+Shape <strong>Cognitive Load in Intelligence Community Settings</strong>
+work as an <strong>epistemic-integrity review packet</strong> that logs
+the evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Cognitive Load in Intelligence Community Settings</strong>: that
+feeling certain in the moment substitutes for the checklist, pause, and
+second-look that decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Cognitive Load in
+Intelligence Community Settings</strong> audit pattern from this module
+on a different sample record set with a new reviewer and blocked-use
+note.</p>
+<h4
+id="lesson-8-catalogued-metrics-questionnaire-biometric-task-performance">Lesson
+8: Catalogued Metrics: Questionnaire, Biometric, Task-Performance</h4>
+<p><strong>Concept.</strong> <strong>Catalogued Metrics: Questionnaire,
+Biometric, Task-Performance</strong> evaluates biometric monitoring by
+consent, minimization, purpose limits, and human review of alerts.</p>
+<p><strong>Worked reasoning and limits.</strong> A catalogue count
+describes measurement diversity, not 129 validated interchangeable
+instruments. Questionnaires report perceived demand; task measures
+report outcomes such as errors and latency; physiological measures
+record signals affected by many processes. Agreement among measures can
+be informative, but disagreement should prompt a construct/task review
+rather than averaging them into an invented susceptibility score
+[ageint179].</p>
+<p><strong>Why it matters.</strong> <strong>Catalogued Metrics</strong>
+connects classroom vocabulary to Cognitive Security and Influence
+Resilience practice: learners document evidence, caveats, and reviewer
+ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Catalogued Metrics: Questionnaire, Biometric,
+Task-Performance</strong>: [ageint179]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
+[official_nato_counter_information_threats].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Catalogued
+Metrics</strong>, inspect the original passages. Curriculum annotation
+for [ageint179]: An NCSU Laboratory for Analytic Sciences article
+summarizing a systematic survey of metrics for measuring cognitive load
+in intelligence-analysis and similar settings. Reviewing 125 articles
+published between 1998 and 2024, it identifies 129 distinct metrics
+grouped into non-biometric methods (questionnaires such as NASA-TLX,
+task performance, interaction tracking) and biometric methods (eye
+tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Catalogued
+Metrics</strong>, build a <strong>narrative-risk map with provenance,
+uncertainty, audience harms, and response options</strong> for this
+information-integrity analysis and resilience education topic. The
+artifact must record the narrative provenance, the bounded claim about
+<strong>Catalogued Metrics</strong>, the audience-harm caveat, the
+uncertainty note, the transparent-use boundary, and the reviewer
+accountable for correction. Shape <strong>Catalogued Metrics</strong>
+work as an <strong>epistemic-integrity review packet</strong> that
+records its evidence, the residual uncertainty, the named reviewer, and
+the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Catalogued Metrics</strong>: that a resilience label on a
+technique means it has been stress-tested, rather than a habit that
+still needs evidence, caveats, and reviewer challenge.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Catalogued
+Metrics</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-9-nasa-tlx-subjective-workload-and-declared-scoring">Lesson
+9: NASA-TLX: Subjective Workload and Declared Scoring</h4>
+<p><strong>Concept.</strong> <strong>NASA-TLX: Subjective Workload and
+Declared Scoring</strong> uses workload indexes as review triggers for
+prioritization, handoff, and rest—not as heroics metrics.</p>
+<p><strong>Worked reasoning and limits.</strong> NASA’s <a
+href="https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/">instrument
+description</a> identifies mental, physical, and temporal demand,
+performance, effort, and frustration; its weighted procedure is not the
+same as an unweighted raw mean. For a supplied fictional 20-minute
+document-comparison task, post-task ratings are respectively 60, 10, 70,
+30, 60, 40 on declared 0–100 scales (low to high
+demand/effort/frustration, good to poor performance): raw mean = 270/6 =
+45. All dimensions are present; if one were missing, report an
+incomplete record rather than silently imputing or comparing unlike
+totals. This is a scoring illustration, not administration guidance or
+an overload threshold; performance self-rating must remain separate from
+independently checked errors [ageint179].</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>NASA-TLX: Subjective Workload and Declared Scoring</strong>,
+treating resilience labels as permission to skip provenance review
+undermines information-integrity analysis and resilience education
+review; the lesson builds the habit to separate analysis of influence
+from persuasion design.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>NASA-TLX: Subjective Workload and Declared Scoring</strong>:
+[ageint179]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_cisa_foreign_influence];
+[official_nato_counter_information_threats].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>NASA-TLX:
+Subjective Workload and Declared Scoring</strong>, inspect the original
+passages. Curriculum annotation for [ageint179]: An NCSU Laboratory for
+Analytic Sciences article summarizing a systematic survey of metrics for
+measuring cognitive load in intelligence-analysis and similar settings.
+Reviewing 125 articles published between 1998 and 2024, it identifies
+129 distinct metrics grouped into non-biometric methods (questionnaires
+such as NASA-TLX, task performance, interaction tracking) and biometric
+methods (eye tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>NASA-TLX</strong>,
 build a <strong>narrative-risk map with provenance, uncertainty,
 audience harms, and response options</strong> for this
 information-integrity analysis and resilience education topic. The
 artifact must record the narrative provenance, the bounded claim about
-<strong>Eye Tracking and Heart Rate</strong>, the audience-harm caveat,
-the uncertainty note, the transparent-use boundary, and the reviewer
-accountable for correction. Shape <strong>Eye Tracking and Heart Rate
-Variability for Analyst Overload Detection</strong> work as an
-<strong>epistemic-integrity review packet</strong> that names evidence,
-uncertainty, reviewer, and stop condition.</p>
+<strong>NASA-TLX</strong>, the audience-harm caveat, the uncertainty
+note, the transparent-use boundary, and the reviewer accountable for
+correction. Shape <strong>NASA-TLX: Subjective Workload and Declared
+Scoring</strong> work as an <strong>epistemic-integrity review
+packet</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</strong>: that a resilience label on a technique means it has
-been stress-tested, rather than a habit that still needs evidence,
-caveats, and reviewer challenge.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</strong> to another artifact while keeping
-information-integrity analysis and resilience education and reviewer
-ownership explicit.</p>
+<strong>NASA-TLX: Subjective Workload and Declared Scoring</strong>:
+that a resilience label on a technique means it has been stress-tested,
+rather than a habit that still needs evidence, caveats, and reviewer
+challenge.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>NASA-TLX:
+Subjective Workload and Declared Scoring</strong> audit pattern from
+this module on a different sample record set with a new reviewer and
+blocked-use note.</p>
+<h4
+id="lesson-10-eye-tracking-and-heart-rate-variability-workload-research-limits">Lesson
+10: Eye Tracking and Heart-Rate Variability: Workload Research
+Limits</h4>
+<p><strong>Concept.</strong> <strong>Eye Tracking and Heart-Rate
+Variability: Workload Research Limits</strong> focuses on transparent
+resilience education: provenance, audience harm, attribution caution,
+and non-manipulative response options.</p>
+<p><strong>Worked reasoning and limits.</strong> Eye movements and
+heart-rate variability are candidate task-sensitive signals, not
+specific tests for overload, truthfulness, intent, illness, or readiness
+for work. Lighting, movement, interface layout, physical activity, and
+measurement quality can complicate interpretation; a baseline does not
+eliminate all confounding. Prefer supplied synthetic task/error logs and
+voluntary workload reports here, with no student biometric collection or
+person-level surveillance; missing task-fit validation means the
+physiological inference remains unestablished [ageint179].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Eye Tracking
+and Heart-Rate Variability</strong> to separate analysis of influence
+from persuasion design. A defensible treatment names the judgment it
+enables for information-integrity analysis and resilience education
+review, the proof limit that treating resilience labels as permission to
+skip provenance review would otherwise hide, and the reviewer
+accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Eye Tracking and Heart-Rate Variability: Workload Research
+Limits</strong>: [ageint179]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
+[official_nato_counter_information_threats].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Eye Tracking and
+Heart-Rate Variability</strong>, inspect the original passages.
+Curriculum annotation for [ageint179]: An NCSU Laboratory for Analytic
+Sciences article summarizing a systematic survey of metrics for
+measuring cognitive load in intelligence-analysis and similar settings.
+Reviewing 125 articles published between 1998 and 2024, it identifies
+129 distinct metrics grouped into non-biometric methods (questionnaires
+such as NASA-TLX, task performance, interaction tracking) and biometric
+methods (eye tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Eye Tracking and
+Heart-Rate Variability</strong>, build a <strong>narrative-risk map with
+provenance, uncertainty, audience harms, and response options</strong>
+for this information-integrity analysis and resilience education topic.
+The artifact must record the narrative provenance, the bounded claim
+about <strong>Eye Tracking and Heart-Rate Variability</strong>, the
+audience-harm caveat, the uncertainty note, the transparent-use
+boundary, and the reviewer accountable for correction. Shape <strong>Eye
+Tracking and Heart-Rate Variability</strong> work as an
+<strong>epistemic-integrity review packet</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Eye Tracking and Heart-Rate Variability</strong>: that a
+resilience label on a technique means it has been stress-tested, rather
+than a habit that still needs evidence, caveats, and reviewer
+challenge.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Eye Tracking and
+Heart-Rate Variability</strong> audit pattern from this module on a
+different sample record set with a new reviewer and blocked-use
+note.</p>
 <h4
 id="lesson-11-information-overload-and-cognitive-bias-in-intelligence-analysis">Lesson
 11: Information Overload and Cognitive Bias in Intelligence
@@ -765,29 +1266,41 @@ Analysis</h4>
 Bias in Intelligence Analysis</strong> manages workload and bias through
 prioritization, explicit handoffs, and review checkpoints—not
 unsustainable pace.</p>
-<p><strong>Why it matters.</strong> <strong>Information
-Overload</strong> connects classroom vocabulary to Cognitive Security
-and Influence Resilience practice: learners document evidence, caveats,
-and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Information Overload and
-Cognitive Bias in Intelligence Analysis</strong> rests on [ageint180].
-The closest source to this row notes: Heuer Jr.’s 1999 work Psychology
-of Intelligence Analysis and arguing for its continued relevance. Use it
-for pinning down the scope of <strong>Information Overload and Cognitive
-Bias in Intelligence Analysis</strong>, the edge of that scope, and when
-these citations need re-verifying before transfer. External
-triangulation uses [official_cisa_foreign_influence];
+<p><strong>Worked reasoning and limits.</strong> Information volume and
+biased reasoning are distinct: more documents can add redundancy rather
+than independent evidence, while a short packet can still anchor a
+judgment. In the fictional document task, five copied notices should
+become one dependency group before a reviewer asks what contrary
+evidence is missing. The SpecialEurasia account summarizes Heuer; it is
+not a primary neuroscience experiment or evidence that reducing every
+workload score improves analytic quality [ageint180].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Information
+Overload</strong> to separate analysis of influence from persuasion
+design. A defensible treatment names the judgment it enables for
+information-integrity analysis and resilience education review, the
+proof limit that counter-messaging as manipulation would otherwise hide,
+and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Information Overload and Cognitive Bias in Intelligence
+Analysis</strong>: [ageint180]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Information
-Overload</strong>, reason from the sources cited in this row.
-[ageint180] A SpecialEurasia article (2024) reviewing Richards J. Heuer
-Jr.’s 1999 work Psychology of Intelligence Analysis and arguing for its
-continued relevance. It summarizes Heuer’s account of how cognitive
-biases such as confirmation bias, anchoring, and availability heuristics
-distort analytic judgment, and how analysts’ backgrounds shape
-interpretation. Work source by source: name the bounded claim, its
-origin, the residual uncertainty, and the trigger that would change how
-this topic is judged.</p>
+Overload</strong>, inspect the original passages. Curriculum annotation
+for [ageint180]: A SpecialEurasia article (2024) reviewing Richards J.
+Heuer Jr.’s 1999 work Psychology of Intelligence Analysis and arguing
+for its continued relevance. It summarizes Heuer’s account of how
+cognitive biases such as confirmation bias, anchoring, and availability
+heuristics distort analytic judgment, and how analysts’ backgrounds
+shape interpretation. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Information
 Overload</strong>, build a <strong>narrative-risk map with provenance,
 uncertainty, audience harms, and response options</strong> for this
@@ -808,43 +1321,54 @@ decision hygiene exists to enforce.</p>
 information-integrity analysis and resilience education and reviewer
 ownership explicit.</p>
 <h4
-id="lesson-12-decision-making-under-uncertainty-neural-mechanisms-and-intelligence-implications">Lesson
-12: Decision-Making Under Uncertainty: Neural Mechanisms and
-Intelligence Implications</h4>
+id="lesson-12-decision-making-under-uncertainty-neural-hypotheses-and-analytic-limits">Lesson
+12: Decision-Making Under Uncertainty: Neural Hypotheses and Analytic
+Limits</h4>
 <p><strong>Concept.</strong> <strong>Decision-Making Under Uncertainty:
-Neural Mechanisms and Intelligence Implications</strong> focuses on
-transparent resilience education: provenance, audience harm, attribution
-caution, and non-manipulative response options.</p>
+Neural Hypotheses and Analytic Limits</strong> focuses on transparent
+resilience education: provenance, audience harm, attribution caution,
+and non-manipulative response options.</p>
+<p><strong>Worked reasoning and limits.</strong> An uncertain decision
+can be analyzed at behavioral, computational, and neural levels, but a
+model at one level does not automatically validate another. A defensible
+analytic output states alternatives, missing information, and a
+reversible hold decision without inferring a reader’s internal state.
+The inherited foreign-influence policy citations supply policy context,
+not direct neural-mechanism evidence; retain that gap rather than
+inventing a brain-based explanation [ageint177].</p>
 <p><strong>Why it matters.</strong> <strong>Decision-Making Under
-Uncertainty</strong> connects classroom vocabulary to Cognitive Security
-and Influence Resilience practice: learners document evidence, caveats,
-and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Decision-Making Under
-Uncertainty: Neural Mechanisms and Intelligence Implications</strong>
-rests on [ageint308] and [ageint311]. The lead source’s own note reads:
-It explains why such threats matter for democratic processes and
-institutional trust, and outlines a four-part framework of
-understanding, preventing, containing, and recovering. Use them for
-fixing what <strong>Decision-Making Under Uncertainty: Neural Mechanisms
-and Intelligence Implications</strong> covers, marking the boundary it
-must not cross, and timing the next source refresh. External
-triangulation uses [official_cisa_foreign_influence];
+Uncertainty</strong> matters in the <strong>Cognitive Security and
+Influence Resilience</strong> lane because information-integrity
+analysis and resilience education evidence must stay separate from
+judgment; treating resilience labels as permission to skip provenance
+review is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Decision-Making Under Uncertainty: Neural Hypotheses and
+Analytic Limits</strong>: [ageint308] and [ageint311]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_cisa_foreign_influence];
 [official_nato_counter_information_threats].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Decision-Making
-Under Uncertainty</strong>, work from the cited evidence behind this
-row. [ageint308] An archived CISA publication, “CISA Insights: Preparing
-for and Mitigating Foreign Influence Operations Targeting Critical
-Infrastructure,” providing guidance on the threat that foreign influence
-campaigns pose to U.S. critical infrastructure. [ageint311] An official
-NATO topic page describing the Alliance’s approach to countering
-information threats, defined as intentional, manipulative, and
-coordinated activities by state and non-state actors including
-disinformation and propaganda. It explains why such threats matter for
-democratic processes and institutional trust, and outlines a four-part
-framework of understanding, preventing, containing, and recovering. From
-each source, pull the bounded claim it can carry for this topic, its
-provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
+Under Uncertainty</strong>, inspect the original passages. Curriculum
+annotation for [ageint308]: An archived CISA publication, “CISA
+Insights: Preparing for and Mitigating Foreign Influence Operations
+Targeting Critical Infrastructure,” providing guidance on the threat
+that foreign influence campaigns pose to U.S. critical infrastructure.
+Curriculum annotation for [ageint311]: An official NATO topic page
+describing the Alliance’s approach to countering information threats,
+defined as intentional, manipulative, and coordinated activities by
+state and non-state actors including disinformation and propaganda. It
+explains why such threats matter for democratic processes and
+institutional trust, and outlines a four-part framework of
+understanding, preventing, containing, and recovering. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Decision-Making Under
 Uncertainty</strong>, build a <strong>narrative-risk map with
 provenance, uncertainty, audience harms, and response options</strong>
@@ -854,9 +1378,9 @@ about <strong>Decision-Making Under Uncertainty</strong>, the
 audience-harm caveat, the uncertainty note, the transparent-use
 boundary, and the reviewer accountable for correction. Shape
 <strong>Decision-Making Under Uncertainty</strong> work as an
-<strong>epistemic-integrity review packet</strong> that logs the
-evidence, the uncertainty, the responsible reviewer, and the halt
-condition.</p>
+<strong>epistemic-integrity review packet</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Decision-Making Under Uncertainty</strong>: that a resilience
 label on a technique means it has been stress-tested, rather than a
@@ -872,15 +1396,15 @@ evidence, and review</h3>
 <p>Worked example: a sample public-library class evaluates a synthetic
 rumor about a community service and compares transparent correction
 options. [ageint238]; [ageint240].</p>
-<p><strong>Triangulation anchors.</strong> In module 38’s worked-example
-section, directly verified anchors for the <strong>Cognitive Security
-and Influence Resilience</strong> lane include
+<p><strong>Contextual source routes.</strong> For module 38’s
+worked-example section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline: <strong>cognitive
 resilience and epistemic integrity</strong>. Learners use a
 <strong>epistemic-integrity review packet</strong> and keep this
@@ -894,24 +1418,31 @@ Lens</strong> planning question is: How does the module protect
 autonomy, attention, trust, and decision quality without designing
 persuasion?</p>
 <p><strong>Inputs.</strong> For the <strong>Understanding Neurocognitive
-Mechanisms of Cognitive Security</strong> scenario, use sample posts,
-source timestamps, public-service facts, and a media-literacy rubric.
-The Cognitive-Resilience Lens intake note records provenance,
-sensitivity, fit-to-purpose, and why the fixture is enough for this
-bounded exercise.</p>
+Mechanisms of Cognitive Security</strong> scenario, use six fictional
+museum-fee posts, five copying one original, a dated notice limiting a
+fee to a special exhibition, and a classroom media-literacy rubric. The
+Cognitive-Resilience Lens intake note records provenance, sensitivity,
+fit-to-purpose, and why the fixture is enough for this bounded
+exercise.</p>
 <p><strong>Analysis.</strong> For <strong>Understanding Neurocognitive
-Mechanisms of Cognitive Security</strong>, students trace narrative
-provenance, separate observation from attribution, name audience harms,
-and design a transparent lesson. Pause whenever an inference about
-Understanding the module appears without evidence, confidence outruns
-support, or an agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>Understanding
-Neurocognitive Mechanisms of Cognitive Security</strong> classroom
-scenario; unit artifact = epistemic-integrity review packet; evidence =
-allowed inputs; method = information-integrity analysis and resilience
-education; output = a narrative-risk map with caveats, response options,
-and no microtargeted persuasion; boundary = no external action; reviewer
-= instructor or named peer.</p>
+Mechanisms of Cognitive Security</strong>, students first extract the
+claim and distinguish general admission from the exhibition; then trace
+the copying tree and compare scope and dates with the notice; remove the
+five copies as a negative control, requiring the evidentiary judgment to
+remain unchanged. Consider ordinary scope confusion alongside
+intentional deception; stop attribution or audience profiling and hand a
+transparent, source-linked correction to the instructor for release
+review. Pause whenever an inference about Understanding Neurocognitive
+Mechanisms of Cognitive Security appears without evidence, confidence
+outruns support, or an agent output is treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a narrative-risk map
+marking the general-admission claim unsupported by the packet, a
+correction quoting the exhibition-only scope, and unresolved intent,
+sponsorship, reach, and real audience effects; this fixture supports a
+correction decision, not a measured resilience benefit Retain it as the
+<strong>epistemic-integrity review packet</strong> for this classroom
+fixture, with the stated source IDs, uncertainty, review disposition,
+and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating
 <strong>Understanding Neurocognitive Mechanisms of Cognitive
 Security</strong> as “Cognitive-Resilience Lens confirms it” is not
@@ -931,18 +1462,18 @@ artifact steps, and limits</h3>
 Lens</strong> practice lens. Moves 1-3 form the compressed path; the
 full seminar path adds challenge, handoff, and a review memo for
 <strong>Understanding Neurocognitive Mechanisms of Cognitive Security;
-Executive Brain Systems and Vulnerability to Information
-Threats</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 38’s
-practice-sequence section, directly verified anchors for the
-<strong>Cognitive Security and Influence Resilience</strong> lane
-include [official_cisa_foreign_influence];
+Executive Brain Systems: Research on Information-Related
+Tasks</strong>.</p>
+<p><strong>Contextual source routes.</strong> For module 38’s
+practice-sequence section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
+[official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
-<table>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -961,9 +1492,9 @@ replacing the module’s <code>ageintNNN</code> provenance.</p>
 <tr>
 <td>1. Distinguish</td>
 <td>Compare Understanding Neurocognitive Mechanisms of Cognitive
-Security, Executive Brain Systems and Vulnerability to Information
-Threats, Affective Systems: Emotional Exploitation in Manipulation; name
-what each topic can and cannot prove.</td>
+Security, Executive Brain Systems: Research on Information-Related
+Tasks, Affective Systems: Emotion and Information Processing; name what
+each topic can and cannot prove.</td>
 <td>Glossary-and-contrast card.</td>
 <td>Terms match the <strong>Cognitive Security and Influence
 Resilience</strong> lane.</td>
@@ -1009,7 +1540,7 @@ influence from persuasion design.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-instructor-notes-source-reasoning-review-points-and-studio-focus">Neurocognitive
 Mechanisms of Cognitive Security instructor notes: source reasoning,
@@ -1018,43 +1549,43 @@ review points, and studio focus</h4>
 inference, and a decision. Require a revision whenever a claim cannot be
 traced to a source descriptor or a human review point. Keep the focus on
 <strong>Understanding Neurocognitive Mechanisms of Cognitive Security;
-Executive Brain Systems and Vulnerability to Information
-Threats</strong>. [ageint238]; [ageint240].</p>
+Executive Brain Systems: Research on Information-Related Tasks</strong>.
+[ageint238]; [ageint240].</p>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-extension-exercise-peer-validation-and-refresh-trigger-review">Neurocognitive
 Mechanisms of Cognitive Security extension exercise: peer validation and
 refresh trigger review</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <p>Have learners swap artifacts and apply the
 <strong>Cognitive-Resilience Lens</strong> validation rule to someone
 else’s work. The receiving learner must identify one strength, one
 missing caveat, and one refresh trigger for <strong>Understanding
-Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems
-and Vulnerability to Information Threats</strong>.</p>
+Neurocognitive Mechanisms of Cognitive Security; Executive Brain
+Systems: Research on Information-Related Tasks</strong>.</p>
 <h3
 id="neurocognitive-mechanisms-of-cognitive-security-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Neurocognitive
 Mechanisms of Cognitive Security knowledge check: misconceptions,
 evidence, and reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>Understanding Neurocognitive Mechanisms of
-Cognitive Security (Neuroscience &amp; Biobehavioral Reviews,
-2025)</strong> is defined here; name the source descriptor that supports
-the definition.</li>
-<li>Contrast <strong>Understanding Neurocognitive Mechanisms of
-Cognitive Security</strong> with <strong>Executive Brain Systems and
-Vulnerability to Information Threats</strong> using the
-<strong>Cognitive-Resilience Lens</strong> artifact fields.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>Understanding Neurocognitive
+Mechanisms of Cognitive Security (Neuroscience &amp; Biobehavioral
+Reviews, 2025)</strong>.</li>
+<li>Transfer the <strong>Cognitive-Resilience Lens</strong> artifact
+from <strong>Understanding Neurocognitive Mechanisms of Cognitive
+Security</strong> to the final topic, <strong>Decision-Making Under
+Uncertainty: Neural Hypotheses and Analytic Limits</strong>; explain
+what changes and what cannot transfer.</li>
 <li>Identify one failure mode from the <strong>Cognitive Security and
 Influence Resilience</strong> lane and the evidence that would reveal
 it.</li>
-<li>Answer the coursebook review question: Which response informs people
-without crossing into MISO-style manipulation or unverified
-attribution?</li>
+<li>Answer the coursebook review question: Which correction informs
+readers without audience manipulation, unverified attribution, or
+assuming authority for military influence activities?</li>
 <li>Correct this misconception: that a resilience label on a technique
 means it has been stress-tested, rather than a habit that still needs
 evidence, caveats, and reviewer challenge.</li>
@@ -1064,13 +1595,14 @@ id="neurocognitive-mechanisms-of-cognitive-security-answer-quality-rubric-source
 Mechanisms of Cognitive Security answer quality rubric: source evidence,
 uncertainty, and safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>Understanding Neurocognitive Mechanisms
-of Cognitive Security</strong> without source evidence, uncertainty, or
-a safe transfer task.</p>
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of
+<strong>Understanding Neurocognitive Mechanisms of Cognitive
+Security</strong> without source evidence, uncertainty, or a safe
+transfer task.</p>
 </main>
 </body>
 </html>

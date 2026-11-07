@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>cognitive-security-and-inoculation-methods.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,894 +182,643 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1
 id="sec:appendix-cognitive-security-and-inoculation-methods">Cognitive
 Security and Inoculation Methods</h1>
-<p>The current appendix is an evidence workbook for reusable classroom
-methods. It is educational and evidence-bounded: examples remain
-synthetic, defensive, lawful, and bounded to owned labs, public sources,
-or tabletop exercises. Source-item focus: CAMBREX Taxonomy of
-Manipulation Techniques (van der Linden); Python Prebunking Agent:
-Manipulation Detection + Inoculation Content Generation.</p>
 <h2
 id="cognitive-security-and-inoculation-methods-workbook-scope-purpose-safety-envelope-and-reuse-decision">Cognitive
 Security and Inoculation Methods workbook scope: purpose, safety
 envelope, and reuse decision</h2>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:appendix-cognitive-security-and-inoculation-methods">[@sec:appendix-cognitive-security-and-inoculation-methods]</span>.</p>
 <h3
 id="cognitive-security-and-inoculation-methods-operating-purpose">Cognitive
 Security and Inoculation Methods operating purpose</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<p>The current appendix supports a reusable methods workbook. Each
-source item is treated as a reviewable classroom artifact rather than an
-operational instruction; examples begin with CAMBREX Taxonomy of
-Manipulation Techniques (van der Linden); Python Prebunking Agent:
-Manipulation Detection + Inoculation Content Generation.</p>
-<h3
-id="cognitive-security-and-inoculation-methods-allowed-input-boundary">Cognitive
-Security and Inoculation Methods allowed-input boundary</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<p>Allowed inputs for the current appendix are public official or
-scholarly sources, standards text, instructor-provided excerpts,
-synthetic datasets, owned-lab logs, toy examples, and generated rubrics
-that expose their provenance for CAMBREX Taxonomy of Manipulation
-Techniques (van der Linden); Python Prebunking Agent: Manipulation
-Detection + Inoculation Content Generation.</p>
-<h3
-id="cognitive-security-and-inoculation-methods-excluded-action-boundary">Cognitive
-Security and Inoculation Methods excluded-action boundary</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<p>Excluded actions for the current appendix are unauthorized
-collection, private-data processing, credential use, contact with real
-targets, live system interaction, exploit execution, deception, unsafe
-cyber-physical action, or external deployment while handling CAMBREX
-Taxonomy of Manipulation Techniques (van der Linden); Python Prebunking
-Agent: Manipulation Detection + Inoculation Content Generation.</p>
-<h3
-id="cognitive-security-and-inoculation-methods-expected-artifact-package">Cognitive
-Security and Inoculation Methods expected artifact package</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<p>Expected appendix artifacts are a purpose statement, allowed-inputs
-card, excluded-actions card, source-lane map, provenance record, claim
-ledger, safe-substitution note, output schema, review rubric, and
-capstone handoff memo for CAMBREX Taxonomy of Manipulation Techniques
-(van der Linden); Python Prebunking Agent: Manipulation Detection +
-Inoculation Content Generation.</p>
-<h3
-id="cognitive-security-and-inoculation-methods-safe-artifact-schema">Cognitive
-Security and Inoculation Methods safe artifact schema</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required evidence</th>
-<th>Reject condition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Purpose</td>
-<td>lawful educational, governance, research, or defensive purpose</td>
-<td>vague operational objective or missing authority</td>
-</tr>
-<tr>
-<td>Inputs</td>
-<td>public, official, scholarly, synthetic, owned-lab, or
-instructor-provided material</td>
-<td>private data, live target data, credentialed access, or unclear
-provenance</td>
-</tr>
-<tr>
-<td>Transform</td>
-<td>summary, comparison, rubric scoring, tabletop simulation, or audit
-review</td>
-<td>collection expansion, external action, or unsafe system
-interaction</td>
-</tr>
-<tr>
-<td>Output</td>
-<td>memo, matrix, checklist, ledger, rubric, or debrief packet</td>
-<td>deployable procedure, target package, or automated action plan</td>
-</tr>
-<tr>
-<td>Reviewer</td>
-<td>human reviewer, approval gate, revision note, and refresh owner</td>
-<td>anonymous ownership or no escalation path</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-inputoutput-contract">Cognitive
-Security and Inoculation Methods input/output contract</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Contract term</th>
-<th>Input rule</th>
-<th>Output rule</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source identity</td>
-<td>retain <code>ageintNNN</code>, title, URL, and checked status</td>
-<td>cite with Pandoc keys and avoid pasted raw URLs in prose</td>
-</tr>
-<tr>
-<td>Accessibility</td>
-<td>include plain-language labels, table headers, and figure
-alternatives</td>
-<td>reject inaccessible figures, unlabeled tables, or single-modality
-evidence</td>
-</tr>
-<tr>
-<td>Rights</td>
-<td>identify affected groups, safeguards, and residual risk</td>
-<td>preserve privacy, equality, access, contestability, and redress
-notes</td>
-</tr>
-<tr>
-<td>Tooling</td>
-<td>use allowlisted tools, visible prompts, logs, and stop
-conditions</td>
-<td>keep outputs evidence-bounded, reversible, and human-reviewed</td>
-</tr>
-<tr>
-<td>Refresh</td>
-<td>record source, policy, standard, incident, or assessment
-trigger</td>
-<td>assign an owner and date for revalidation</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-failure-cases-and-required-responses">Cognitive
-Security and Inoculation Methods failure cases and required
-responses</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Failure case</th>
-<th>Signal</th>
-<th>Required response</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source laundering</td>
-<td>claim cites an agent summary instead of a verified source</td>
-<td>rebuild the claim ledger from direct sources</td>
-</tr>
-<tr>
-<td>Boundary drift</td>
-<td>exercise starts asking for live targets, private data, or external
-action</td>
-<td>stop, substitute synthetic inputs, and document the block</td>
-</tr>
-<tr>
-<td>Accessibility gap</td>
-<td>learner cannot inspect, navigate, or complete the artifact</td>
-<td>remediate and retest before reuse</td>
-</tr>
-<tr>
-<td>Rights gap</td>
-<td>affected group, safeguard, or redress path is missing</td>
-<td>run HRIA/DPIA worksheet and escalate unresolved risk</td>
-</tr>
-<tr>
-<td>Vendor opacity</td>
-<td>tool owner, data use, logs, or exit path is unknown</td>
-<td>replace tool or pause until procurement evidence exists</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-evidence-package-schemas">Cognitive
-Security and Inoculation Methods evidence package schemas</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<p>Model and dataset card:</p>
-<table>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr>
-<th>Field</th>
-<th>Model card evidence</th>
-<th>Dataset card evidence</th>
-<th>Review gate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Intended use</td>
-<td>accountable task, excluded uses, affected users, human reviewer, and
-accountable owner</td>
-<td>Data Cards purpose statement, recommended use, prohibited reuse,
-stewardship owner, and affected stakeholder groups</td>
-<td>claim is rejected if intended use, excluded use, affected users, or
-owner is missing</td>
-</tr>
-<tr>
-<td>Provenance and collection</td>
-<td>model family, version, supplier or lab, training cutoff, deployment
-context, and configuration hash</td>
-<td>upstream source, collection process, annotation method, consent or
-authority basis, sensitivity class, and license</td>
-<td>artifact is held if provenance, license, authority, or collection
-process is opaque</td>
-</tr>
-<tr>
-<td>Composition and limits</td>
-<td>capability boundary, known failure modes, tool permissions, context
-window limits, and unsupported conditions</td>
-<td>population, sampling frame, coverage gaps, subgroup visibility,
-missingness, transformations, and known caveats</td>
-<td>artifact is revised if population, coverage, or source limits are
-invisible</td>
-</tr>
-<tr>
-<td>Evaluation and caveats</td>
-<td>benchmark suite, task-specific tests, subgroup or context results,
-red-team findings, uncertainty notes, and failure examples</td>
-<td>quality tests, label agreement, bias review, measurement limits,
-transformation log, and Data Cards answer-evaluation notes</td>
-<td>empirical or performance claims are rejected unless test context,
-subgroup caveats, and uncertainty are visible</td>
-</tr>
-<tr>
-<td>Lifecycle controls</td>
-<td>release gate, rollback path, monitoring signal, incident threshold,
-refresh trigger, and model-card update owner</td>
-<td>retention rule, access boundary, update cadence, deletion path,
-stewardship handoff, and dataset-card revision trigger</td>
-<td>reuse is blocked without owner, retention, monitoring, rollback, and
-refresh evidence</td>
-</tr>
-</tbody>
-</table>
-<p>Transparency notice:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Step</th>
-<th>Artifact</th>
-<th>Review gate</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Public purpose</td>
-<td>plain-language purpose, authority, affected service, and decision
-role</td>
-<td>reader can tell why the system exists and where human judgment
-remains</td>
-</tr>
-<tr>
-<td>Tool and data summary</td>
-<td>model, data, supplier, provenance, validation, and accessibility
-summary</td>
-<td>sensitive details are de-sensitized without hiding accountability
-fields</td>
-</tr>
-<tr>
-<td>Impact and review</td>
-<td>benefits, risks, safeguards, human review, appeal, and contact
-point</td>
-<td>affected groups can identify recourse and oversight owners</td>
-</tr>
-<tr>
-<td>Publication decision</td>
-<td>publish, partially publish, delay, or hold decision with exemption
-rationale</td>
-<td>non-public fields have a documented legal, security, privacy, or IP
-basis</td>
-</tr>
-</tbody>
-</table>
-<p>Records retention and audit trail:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Record</th>
-<th>Retained fields</th>
-<th>Audit question</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source and prompt register</td>
-<td>source identity, prompt version, tool allowlist, reviewer,
-timestamp, and caveat</td>
-<td>Can a later reviewer reconstruct the evidentiary path without
-private or live data?</td>
-</tr>
-<tr>
-<td>Decision and exception log</td>
-<td>risk owner, accepted exception, compensating control, expiry date,
-and approval</td>
-<td>Is every deviation time-bound, justified, and reviewable?</td>
-</tr>
-<tr>
-<td>Artifact retention note</td>
-<td>output type, sensitivity, access boundary, deletion rule, and
-refresh trigger</td>
-<td>Does the retention choice match the educational purpose and rights
-impact?</td>
-</tr>
-<tr>
-<td>Incident and remediation record</td>
-<td>incident signal, containment action, root cause, owner, retest
-result, and closure date</td>
-<td>Can the same failure be detected and prevented in the next reuse
-cycle?</td>
-</tr>
-</tbody>
-</table>
-<p>Release and change-control gate:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Gate</th>
-<th>Release evidence</th>
-<th>Block condition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Scope freeze</td>
-<td>accountable use case, excluded actions, tool profile, and data
-boundary</td>
-<td>scope expands to external action, live data, or an unreviewed
-capability</td>
-</tr>
-<tr>
-<td>Security and rights review</td>
-<td>privacy, accessibility, security, bias, and human-review checks</td>
-<td>rights impact, vulnerability, or accessibility issue has no
-owner</td>
-</tr>
-<tr>
-<td>Version and rollback</td>
-<td>model or prompt version, changelog, test fixture, and rollback
-path</td>
-<td>change cannot be reproduced, compared, or reverted</td>
-</tr>
-<tr>
-<td>Post-release monitoring</td>
-<td>monitoring signal, incident threshold, refresh trigger, and
-owner</td>
-<td>deployment or reuse occurs without logging and retest
-commitments</td>
-</tr>
-</tbody>
-</table>
-<p>Risk exception memo:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Field</th>
-<th>Minimum content</th>
-<th>Approval rule</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Exception requested</td>
-<td>what requirement cannot be met, why, affected groups, and
-duration</td>
-<td>exception must be specific, time-bound, and tied to a compensating
-control</td>
-</tr>
-<tr>
-<td>Risk basis</td>
-<td>likelihood, impact, evidence, uncertainty, alternatives, and
-rejected options</td>
-<td>unsupported confidence or missing alternatives returns the memo for
-revision</td>
-</tr>
-<tr>
-<td>Compensating control</td>
-<td>human review, monitoring, access limit, disclosure, remediation, and
-owner</td>
-<td>control must reduce risk without creating an operational
-workaround</td>
-</tr>
-<tr>
-<td>Expiry and retest</td>
-<td>expiry date, retest condition, review cadence, and closure
-criteria</td>
-<td>open-ended exceptions are rejected</td>
-</tr>
-</tbody>
-</table>
-<p>Learner support and accommodation plan:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Need</th>
-<th>Support</th>
-<th>Evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Access and modality</td>
-<td>captions, alt text, keyboard path, plain-language summary, and
-structured tables</td>
-<td>accessibility checklist, defect log, and retest result</td>
-</tr>
-<tr>
-<td>Cognitive load</td>
-<td>worked examples, staged release, glossary, checklist, and optional
-practice fixture</td>
-<td>UDL design note and learner feedback record</td>
-</tr>
-<tr>
-<td>Assessment fairness</td>
-<td>allowed-tool statement, AI-use declaration, alternative submission
-mode, and transparent rubric</td>
-<td>assessment-integrity note and accommodation record</td>
-</tr>
-<tr>
-<td>Feedback and remediation</td>
-<td>revision path, office-hour prompt, example correction, and due-date
-flexibility policy</td>
-<td>feedback log and instructor disposition</td>
-</tr>
-</tbody>
-</table>
-<p>Instructor question bank:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Question type</th>
-<th>Prompt</th>
-<th>Evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source challenge</td>
-<td>Which claim would fail if the strongest source were removed or
-downgraded?</td>
-<td>claim ledger revision and source-lane note</td>
-</tr>
-<tr>
-<td>Boundary challenge</td>
-<td>Where could this exercise drift from analysis into action, and what
-safe substitute prevents it?</td>
-<td>safe-substitution decision and excluded-action card</td>
-</tr>
-<tr>
-<td>Rights challenge</td>
-<td>Which affected group, accessibility need, privacy interest, or
-redress path is under-specified?</td>
-<td>HRIA/DPIA update and accommodation note</td>
-</tr>
-<tr>
-<td>Assurance challenge</td>
-<td>What failure would the current evaluation miss, and what retest
-would reveal it?</td>
-<td>adversarial assurance retest and remediation owner</td>
-</tr>
-</tbody>
-</table>
-<p>Remediation backlog:</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Backlog item</th>
-<th>Trigger</th>
-<th>Closure evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Unverified claim</td>
-<td>claim lacks a guide citation or directly verified anchor</td>
-<td>verified source, removed claim, or explicit source-guide context
-note</td>
-</tr>
-<tr>
-<td>Unsafe phrasing</td>
-<td>wording implies live targeting, external action, exploitation,
-manipulation, or unsafe control</td>
-<td>safe substitute, blocked context, and reviewer sign-off</td>
-</tr>
-<tr>
-<td>Accessibility defect</td>
-<td>artifact cannot be inspected through an expected assistive or
-alternative workflow</td>
-<td>defect fix, alternative means, and retest result</td>
-</tr>
-<tr>
-<td>Assurance gap</td>
-<td>evaluation, release, exception, incident, or vendor evidence is
-incomplete</td>
-<td>owner, due date, retest, and accepted disposition</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-rubric-scoring-bands">Cognitive
-Security and Inoculation Methods rubric scoring bands</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Band</th>
-<th>Evidence standard</th>
-<th>Disposition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>4 - ready</td>
-<td>source identity, accessibility, rights, safety, and reviewer
-evidence are complete</td>
-<td>may be reused after normal refresh review</td>
-</tr>
-<tr>
-<td>3 - revise</td>
-<td>one evidence field is incomplete but risk is bounded and
-remediable</td>
-<td>revise before reuse</td>
-</tr>
-<tr>
-<td>2 - hold</td>
-<td>multiple evidence fields are incomplete or ownership is unclear</td>
-<td>hold for instructor and assurance review</td>
-</tr>
-<tr>
-<td>1 - reject</td>
-<td>unsafe action, private data, inaccessible artifact, or unverified
-claim appears</td>
-<td>reject and rebuild from safe inputs</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-refresh-evidence">Cognitive
-Security and Inoculation Methods refresh evidence</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Evidence item</th>
-<th>Refresh trigger</th>
-<th>Retained support</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source lane</td>
-<td>official source, standard, or legal text changes</td>
-<td>checked-as-of date and source note</td>
-</tr>
-<tr>
-<td>Safety treatment</td>
-<td>operational wording or unsafe motif appears</td>
-<td>safe-substitution decision and blocked context</td>
-</tr>
-<tr>
-<td>Accessibility</td>
-<td>WCAG, UDL, or institutional accessibility duty changes</td>
-<td>defect log, retest result, and owner</td>
-</tr>
-<tr>
-<td>Rights</td>
-<td>privacy, human-rights, public transparency, or education guidance
-changes</td>
-<td>HRIA/DPIA revision note</td>
-</tr>
-<tr>
-<td>Vendor/tool</td>
-<td>contract, data-use, incident, or model capability changes</td>
-<td>procurement packet and incident review</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-validation-rubric">Cognitive
-Security and Inoculation Methods validation rubric</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>Criterion</th>
-<th>Passing evidence</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Source identity</td>
-<td>existing <code>ageintNNN</code> keys remain stable or new references
-are append-only</td>
-</tr>
-<tr>
-<td>Verification</td>
-<td>official, standards, public-domain, or scholarly URL is checked
-directly</td>
-</tr>
-<tr>
-<td>Safety</td>
-<td>method is converted into tabletop, audit, governance, or
-synthetic-data treatment</td>
-</tr>
-<tr>
-<td>Reproducibility</td>
-<td>another reviewer can rebuild the artifact from retained inputs</td>
-</tr>
-<tr>
-<td>Rights review</td>
-<td>privacy, IP, human-rights, workforce, and education impacts are
-considered where relevant</td>
-</tr>
-</tbody>
-</table>
-<h3
-id="cognitive-security-and-inoculation-methods-debrief-protocol-and-reuse-decision">Cognitive
-Security and Inoculation Methods debrief protocol and reuse
-decision</h3>
-<p><strong>Section anchor.</strong>
-[sec:appendix-cognitive-security-and-inoculation-methods].</p>
-<p>Debrief by naming what the artifact can support, what it does not
-establish, what source changed, what risk was avoided by safe
-substitution, what human approval is still required, and when the
-appendix should be refreshed for CAMBREX Taxonomy of Manipulation
-Techniques (van der Linden); Python Prebunking Agent: Manipulation
-Detection + Inoculation Content Generation.</p>
-<h2 id="cognitive-degradation-as-a-staged-cascade">Cognitive degradation
-as a staged cascade</h2>
-<p>The Cloud Security Alliance Cognitive Degradation Resilience model
-treats an attack on an agent network not as a single breach but as a
-six-stage slide that stays below conventional alerting thresholds,
-illustrated for this appendix in [fig:ageint-cdr-degradation-cascade].
-Stage one is trigger injection, where adversarial inputs win a foothold
-in agent reasoning; stage two is resource starvation, in which context
-windows and compute are deliberately consumed to degrade decision
-quality; stage three is behavioral drift, where outputs deviate from
-policy without tripping alerts; stage four is memory entrenchment, where
-corrupted beliefs solidify in agent memory stores; stage five is
-functional override, where adversary objectives supersede the legitimate
-task; and stage six is systemic collapse, where coordinated agent
-behavior serves adversarial ends. The decisive observation is that the
-intervention window opens early – between resource starvation and
-behavioral drift – because once beliefs entrench in memory, remediation
-cost rises sharply [official_csa_cdr_framework].</p>
-<p>Each stage is paired in the QSAF-BC control set with a named,
-testable countermeasure rather than a single catch-all monitor:
-starvation detection (BC-001) and token-overload limits (BC-002) defend
-the early stages, an entropy-drift monitor (BC-006) and a
-memory-integrity check (BC-007) defend the middle, and override
-resistance (BC-005) defends the late stages. Treat this cascade as a
-classroom tabletop: map a synthetic incident onto the six stages,
-identify which control would have fired first, and record the evidence a
-reviewer would need to confirm the agent recovered
+<p>Source-item focus: Manipulation-technique taxonomy: unresolved
+attribution; Opt-in media-literacy recognition and false-alarm review.
+The source-item map preserves the curriculum identity; it does not
+authorize the source item’s operational wording. Use only the offline
+substitutions below: no live queries, credentials, private records,
+external code execution, profiling, persuasion delivery, or
+cyber-physical actions.</p>
+<p>Use the claim record and eight-step analytic procedure in <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>, not
+a second local evidence schema. All inputs below are invented classroom
+records. Worked outputs and negative-control results are authored
+expectations, not executed tests, empirical findings, or evidence that a
+named framework is secure or effective.</p>
+<h2 id="cognitive-degradation-as-a-proposed-staged-cascade">Cognitive
+degradation as a proposed staged cascade</h2>
+<p>CSA proposes six CDR stages: trigger injection, resource starvation,
+behavioral drift, memory entrenchment, functional override, and systemic
+collapse, alongside QSAF-BC controls [official_csa_cdr_framework]; see
+<span class="citation"
+data-cites="fig:ageint-cdr-degradation-cascade">[@fig:ageint-cdr-degradation-cascade]</span>.
+Use them as hypotheses for organizing a tabletop. Neither a universal
+ordering, an empirically optimal early intervention window, nor a
+sharply rising remediation-cost curve follows from this proposal.
+Proposed monitors and limits need implementation-specific signals,
+thresholds, and evaluation; a named control is not proof of recovery
 [official_csa_securing_autonomous_ai_agents];
 [scholarly_agentic_ai_security_survey].</p>
-<h2 id="the-decoherence-degradation-isomorphism">The
-decoherence-degradation isomorphism</h2>
-<p>The same dynamic appears one scale up. The CCDCOE reconception of
-cognitive warfare describes how an adversary degrades a human
-organization by attacking systemic invariants – shared trust, identity,
-and epistemic standards – driving it through initiation, uncertainty
-amplification, polarization, hardened competing frameworks, narrative
-capture, and a final state where the institution functions formally but
-can no longer coordinate. As
-[fig:ageint-cognitive-decoherence-cdr-isomorphism] makes explicit, those
-six human-organization phases map one-to-one onto the CDR degradation
-stages in an agent network, phase for phase from initiation to collapse
-[scholarly_ccdcoe_cognitive_warfare_reconception]. The pedagogical
-payoff is that a single defensive vocabulary – early detection, drift
-monitoring, integrity of stored belief – transfers across both the human
-and the machine layer, which is why this appendix teaches them together
-rather than as separate disciplines.</p>
+<h2 id="bounded-human-organization-analogy">Bounded human-organization
+analogy</h2>
+<p>CCDCOE research discusses systemic invariants and cognitive
+decoherence, not a validated six-stage human/agent isomorphism; the
+study is not necessarily CCDCOE or NATO policy
+[scholarly_ccdcoe_cognitive_warfare_reconception]. Treat <span
+class="citation"
+data-cites="fig:ageint-cognitive-decoherence-cdr-isomorphism">[@fig:ageint-cognitive-decoherence-cdr-isomorphism]</span>
+as an analogy to critique, despite its retained identifier: trust in a
+human institution and integrity of an agent memory store are not
+interchangeable variables. Compare information provenance and correction
+duties without assigning people agent-failure stages. DARPA ICS
+describes mixed-reality research aims and model-scoped formal
+guarantees, not general LLM security
+[official_darpa_intrinsic_cognitive_security]. DeepMind’s trust paper is
+a normative roadmap, not efficacy evidence
+[scholarly_deepmind_epistemic_agent_trust].</p>
+<p><strong>Input.</strong> G1 is an invented memo saying ‘three reports
+confirm the outage’; all three copy one notice. G2 is a paper agent
+trace:
+<code>long input; summary drops caveat; later summary repeats dropped-caveat version</code>.
+G3 is a fictional workload card labelled ‘high effort’; no participant
+or population is measured.</p>
+<ol type="1">
+<li>Trace G1’s origins and repair its corroboration claim. Flag
+rhetorical certainty as a feature of this text, not a diagnosis of its
+author or evidence of a coordinated campaign.</li>
+<li>For each proposed CDR label on G2, cite the exact trace event and
+record alternatives such as ordinary truncation or a summarization
+defect. Mark resource starvation and memory entrenchment unestablished
+where resource measurements and persistent-memory evidence are
+absent.</li>
+<li>Draft a neutral literacy correction explaining duplicate sourcing.
+Review it for factual accuracy and uncertainty; do not deploy persuasion
+or claim inoculation effectiveness. Treat the source spine’s CAMBREX
+label as requiring a directly verified taxonomy before assigning
+categories.</li>
+<li>Keep the NASA-TLX item a workload-instrument interpretation
+exercise: G3 cannot establish measured workload, impairment, or a causal
+security effect. Active-inference toy assumptions and automated ACH bias
+flags likewise do not establish human cognition or diagnose a person’s
+bias.</li>
+<li>Hand a reviewer the observation/label/alternative table, proposed
+correction, unresolved evidence, and stop decision. No profiling,
+audience segmentation, delivery, or live agent attack is permitted.</li>
+</ol>
+<p><strong>Example output.</strong>
+<code>G1: one origin, corroboration overclaimed; G2: caveat loss observed in fixture, mechanism unknown; CDR stage assignment=provisional; recovery=not tested; G3: workload not measured; reuse=revise</code>.</p>
+<p><strong>Expected negative-control result.</strong> Repeat G1 in ten
+generated summaries: support stays one origin. Restore G2’s caveat in a
+later card: record a corrected output, not proof of durable recovery.
+Replace G3’s label with ‘low effort’: no measured human-performance
+conclusion should change, because there was no measurement.</p>
+<p><strong>Reuse disposition and applicability.</strong> Reuse only the
+revised evidence-literacy worksheet, with analogy and source-status
+limits visible. Apply documentation, assessment, accessibility, and
+release review to the handout. Human-study, privacy, and rights review
+is not satisfied by synthetic cards; any proposed participant evaluation
+is a separate activity requiring its own authority and design. Refresh
+on new primary evidence, framework revisions, or proposed
+population-level claims.</p>
+<h3
+id="cognitive-security-and-inoculation-methods-shared-forms-and-local-applicability-record">Cognitive
+Security and Inoculation Methods shared forms and local applicability
+record</h3>
+<p>Complete one local record:
+<code>packet/version; applicable forms and reason; not-applicable forms and reason; missing evidence; reviewer; disposition; refresh trigger</code>.
+The workbook’s applicability note is a starting point, not approval.
+Never replace a missing review with a bare ‘N/A’.</p>
+<p>For provenance and documentation, use <span class="citation"
+data-cites="sec:source-lane-map">[@sec:source-lane-map]</span>, <span
+class="citation"
+data-cites="sec:data-lineage-registry">[@sec:data-lineage-registry]</span>,
+and <span class="citation"
+data-cites="sec:model-and-dataset-documentation-card">[@sec:model-and-dataset-documentation-card]</span>.
+For communication and handling, use <span class="citation"
+data-cites="sec:transparency-and-communication-notice">[@sec:transparency-and-communication-notice]</span>
+and <span class="citation"
+data-cites="sec:records-retention-and-audit-trail">[@sec:records-retention-and-audit-trail]</span>.</p>
+<p>For rights, access, and tool changes, use <span class="citation"
+data-cites="sec:hria-and-dpia-worksheet">[@sec:hria-and-dpia-worksheet]</span>,
+<span class="citation"
+data-cites="sec:accessibility-and-udl-review">[@sec:accessibility-and-udl-review]</span>,
+<span class="citation"
+data-cites="sec:learner-support-and-accommodation-plan">[@sec:learner-support-and-accommodation-plan]</span>,
+and <span class="citation"
+data-cites="sec:procurement-and-vendor-oversight">[@sec:procurement-and-vendor-oversight]</span>.
+For reuse or exceptions, use <span class="citation"
+data-cites="sec:release-and-change-control-gate">[@sec:release-and-change-control-gate]</span>
+and <span class="citation"
+data-cites="sec:risk-exception-and-acceptance-memo">[@sec:risk-exception-and-acceptance-memo]</span>.</p>
+<p>For teaching and revision, use <span class="citation"
+data-cites="sec:assessment-integrity-protocol">[@sec:assessment-integrity-protocol]</span>,
+<span class="citation"
+data-cites="sec:instructor-question-bank">[@sec:instructor-question-bank]</span>,
+<span class="citation"
+data-cites="sec:adversarial-assurance-cycle">[@sec:adversarial-assurance-cycle]</span>,
+and <span class="citation"
+data-cites="sec:remediation-backlog">[@sec:remediation-backlog]</span>.
+Apply the competency and answer-quality rubrics in <span
+class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>;
+retain the relevant local evidence rather than copying every shared
+table into the packet.</p>
 <h3
 id="cognitive-security-and-inoculation-methods-visual-navigation-and-evidence-figures-purpose-source-flow-and-limits">Cognitive
 Security and Inoculation Methods visual navigation and evidence figures:
 purpose, source flow, and limits</h3>
-<p>The appendix uses [fig:ageint-cdr-degradation-cascade],
-[fig:ageint-cognitive-decoherence-cdr-isomorphism], and
-[fig:ageint-safety-boundary-loop] to map its evidence flow, safety
-boundaries, review artifacts, and refresh cues.</p>
-<p>Navigation links: [sec:curriculum_orientation],
-[sec:appendix-att-ck-and-kill-chain-mapping-templates],
-[sec:appendix-source-verification-and-claim-ledger-workbook].</p>
+<p>The appendix uses <span class="citation"
+data-cites="fig:ageint-cdr-degradation-cascade">[@fig:ageint-cdr-degradation-cascade]</span>,
+<span class="citation"
+data-cites="fig:ageint-cognitive-decoherence-cdr-isomorphism">[@fig:ageint-cognitive-decoherence-cdr-isomorphism]</span>,
+and <span class="citation"
+data-cites="fig:ageint-safety-boundary-loop">[@fig:ageint-safety-boundary-loop]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:appendix-att-ck-and-kill-chain-mapping-templates">[@sec:appendix-att-ck-and-kill-chain-mapping-templates]</span>,
+<span class="citation"
+data-cites="sec:appendix-source-verification-and-claim-ledger-workbook">[@sec:appendix-source-verification-and-claim-ledger-workbook]</span>.</p>
 <figure id="fig:ageint-cdr-degradation-cascade">
-<img src="../../figures/mermaid/ageint-cdr-degradation-cascade.png"
-alt="The CDR timeline places six degradation stages in chronological order and marks the control window where reviewer intervention can still preserve synthetic, evidence-bounded agent behavior." />
-<figcaption>The CDR timeline places six degradation
-stages in chronological order and marks the control window where
-reviewer intervention can still preserve synthetic, evidence-bounded
-agent behavior. Its reader value is to make six chronological CDR
-stages, defensive QSAF-BC controls for starvation, overload, entropy
-drift, memory integrity, and override resistance, early-detection and
-decisive-intervention windows, and evidence-bounded classroom review
-boundary visible at a glance, with the cognitive security and
-inoculation methods appendix as the source section and defensive review
-as the boundary.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-cdr-degradation-cascade.png" target="_blank" rel="noopener" aria-label="Open full-size figure, CSA’s CDR proposal describes six degradation stages"><img src="../figures/mermaid/ageint-cdr-degradation-cascade.png"
+alt="Conceptual timeline listing CSA&#x27;s six proposed CDR stages, from trigger injection to systemic collapse, with illustrative defensive review checks. Numbering is the proposal&#x27;s ordering, not elapsed time or a guaranteed sequence." aria-details="fig-ageint-cdr-degradation-cascade-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>CSA’s CDR proposal describes six
+degradation stages; this timeline preserves that conceptual ordering,
+not a measured or inevitable progression. The classroom checks
+illustrate how reviewers might inspect symptoms using proposed QSAF-BC
+controls. No stage boundary establishes an optimal intervention window,
+and any authorization, privacy, or unsafe-action breach requires an
+immediate pause.</figcaption>
+<details id="fig-ageint-cdr-degradation-cascade-long-description" class="figure-long-description" data-figure-label="fig:ageint-cdr-degradation-cascade"><summary>Detailed description of figure ageint cdr degradation cascade</summary><p>This matrix-style figure is assigned to the cognitive security and inoculation methods appendix and should be read as an accessible equivalent for AGEINT CDR Proposed Degradation Stages. The short alternative identifies the figure as: Conceptual timeline listing CSA&#x27;s six proposed CDR stages, from trigger injection to systemic collapse, with illustrative defensive review checks. Numbering is the proposal&#x27;s ordering, not elapsed time or a guaranteed sequence. The full visual conveys proposed conceptual ordering rather than measured time or guaranteed progression, six CDR labels from trigger injection through systemic collapse, illustrative review pairings using QSAF-BC token-pressure, starvation, drift, memory and recovery controls, and immediate pause for authorization, privacy or unsafe-action breaches at any stage, with no optimal intervention window established. The caption explains the reader task as follows: CSA&#x27;s CDR proposal describes six degradation stages; this timeline preserves that conceptual ordering, not a measured or inevitable progression. The classroom checks illustrate how reviewers might inspect symptoms using proposed QSAF-BC controls. No stage boundary establishes an optimal intervention window, and any authorization, privacy, or unsafe-action breach requires an immediate pause. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-cognitive-decoherence-cdr-isomorphism">
-<img
-src="../../figures/mermaid/ageint-cognitive-decoherence-cdr-isomorphism.png"
-alt="The six phases of CCDCOE cognitive decoherence in human organizations map one-to-one onto the CSA CDR cognitive-degradation stages in AI agent networks, exposing a shared adversarial dynamic." />
-<figcaption>The six phases of CCDCOE cognitive
-decoherence in human organizations map one-to-one onto the CSA CDR
-cognitive-degradation stages in AI agent networks, exposing a shared
-adversarial dynamic. It is anchored to the cognitive security and
-inoculation methods appendix; use it to inspect Phase 1 — Initiation,
-Human orgs / CCDCOE adversary targets systemic invariants: trust,
-identity, epistemic standards, AI agents / CDR Trigger Injection:
-adversarial inputs establish foothold, and Phase 2 — Early degradation
-while preserving the distinction between curriculum structure, evidence
-boundary, and accountable practice.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-cognitive-decoherence-cdr-isomorphism.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The CCDCOE-hosted study concerns social-system coherence"><img
+src="../figures/mermaid/ageint-cognitive-decoherence-cdr-isomorphism.png"
+alt="Two parallel source panels contrast a CCDCOE-hosted study&#x27;s social-system invariants with CSA&#x27;s proposed agent-degradation stages. They meet at an author-defined comparison question and a limit: no validated one-to-one mapping." aria-details="fig-ageint-cognitive-decoherence-cdr-isomorphism-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>The CCDCOE-hosted study concerns
+social-system coherence, while CSA’s CDR proposal concerns agent-runtime
+degradation. Their juxtaposition is an author-defined conceptual
+comparison about trustworthy interpretation and coordinated action, not
+a six-stage human/agent isomorphism or evidence of identical mechanisms.
+The study is not necessarily CCDCOE or NATO policy, and neither source
+validates this cross-domain analogy.</figcaption>
+<details id="fig-ageint-cognitive-decoherence-cdr-isomorphism-long-description" class="figure-long-description" data-figure-label="fig:ageint-cognitive-decoherence-cdr-isomorphism"><summary>Detailed description of figure ageint cognitive decoherence cdr isomorphism</summary><p>This matrix-style figure is assigned to the cognitive security and inoculation methods appendix and should be read as an accessible equivalent for AGEINT Social Coherence and Agent Degradation: A Limited Comparison. The short alternative identifies the figure as: Two parallel source panels contrast a CCDCOE-hosted study&#x27;s social-system invariants with CSA&#x27;s proposed agent-degradation stages. They meet at an author-defined comparison question and a limit: no validated one-to-one mapping. The full visual conveys separate source domains rather than paired human and agent stages, CCDCOE-hosted study concepts of social-system invariants and coordinated action, CSA&#x27;s proposed agent-runtime degradation concepts, author&#x27;s comparison question about evidence for reliable interpretation and coordination, and no validated one-to-one mapping or shared causal mechanism, and no implied CCDCOE or NATO policy endorsement. The caption explains the reader task as follows: The CCDCOE-hosted study concerns social-system coherence, while CSA&#x27;s CDR proposal concerns agent-runtime degradation. Their juxtaposition is an author-defined conceptual comparison about trustworthy interpretation and coordinated action, not a six-stage human/agent isomorphism or evidence of identical mechanisms. The study is not necessarily CCDCOE or NATO policy, and neither source validates this cross-domain analogy. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <h3
 id="cognitive-security-and-inoculation-methods-runtime-item-map-and-source-roster-generated-rows-and-citation-support">Cognitive
 Security and Inoculation Methods runtime item map and source roster:
 generated rows and citation support</h3>
-<table style="width:100%;">
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
 </colgroup>
 <thead>
 <tr>
-<th>Safe curriculum treatment</th>
-<th>Blocked source motif, audit-only</th>
-<th>Allowed fixture</th>
-<th>Rejected action</th>
-<th>Required artifact</th>
-<th>Citation spine</th>
+<th>Source item / safe study title</th>
+<th>Provenance status</th>
+<th>Citation context</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>G.1 CAMBREX Taxonomy of Manipulation Techniques (van der
-Linden)</td>
+<td>G.1 Manipulation-technique taxonomy: unresolved attribution</td>
 <td>no blocked motif; source title used verbatim</td>
-<td>public sources, synthetic records, owned-lab notes, and instructor
-handouts</td>
-<td>external action, private-data processing, unsafe system interaction,
-or deployment</td>
-<td>claim ledger, safe-lab packet, and reviewer handoff</td>
 <td>-</td>
 </tr>
 <tr>
-<td>Psychological inoculation and prebunking literacy review</td>
-<td>G.2 retained for audit; operational wording transformed</td>
-<td>public sources, synthetic records, owned-lab notes, and instructor
-handouts</td>
-<td>external action, private-data processing, unsafe system interaction,
-or deployment</td>
-<td>claim ledger, safe-lab packet, and reviewer handoff</td>
+<td>G.2 Opt-in media-literacy recognition and false-alarm review</td>
+<td>no blocked motif; source title used verbatim</td>
 <td>[ageint151]</td>
 </tr>
 <tr>
-<td>G.3 NASA-TLX Cognitive Load Measurement Implementation</td>
+<td>G.3 Fictional NASA-TLX raw-score record and interpretation
+limits</td>
 <td>no blocked motif; source title used verbatim</td>
-<td>sample messages, transparent labels, and opt-in classroom discussion
-cards</td>
-<td>covert persuasion, microtargeting, impersonation, or campaign
-design</td>
-<td>narrative-risk map and transparent education note</td>
 <td>[ageint179]</td>
 </tr>
 <tr>
-<td>G.4 Active Inference Agent: FEP-Based Decision Under Uncertainty
-(pymdp)</td>
+<td>G.4 Two-state model-relative inference: assumptions and
+sensitivity</td>
 <td>no blocked motif; source title used verbatim</td>
-<td>public sources, synthetic records, owned-lab notes, and instructor
-handouts</td>
-<td>external action, private-data processing, unsafe system interaction,
-or deployment</td>
-<td>claim ledger, safe-lab packet, and reviewer handoff</td>
 <td>[ageint106]</td>
 </tr>
 <tr>
-<td>G.5 Bias Detection Pipeline: Automated ACH with Cognitive Bias
-Flagging</td>
+<td>G.5 ACH evidence comparison: no automated bias diagnosis</td>
 <td>no blocked motif; source title used verbatim</td>
-<td>sample messages, transparent labels, and opt-in classroom discussion
-cards</td>
-<td>covert persuasion, microtargeting, impersonation, or campaign
-design</td>
-<td>narrative-risk map and transparent education note</td>
 <td>-</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

@@ -1,16 +1,11 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  A["Sensitive Information Asset"] --> B["Zone 1: Physical Security Perimeter"]
-  B --> C["Zone 2: Equipment Shielding and Filtering"]
-  C --> D["Zone 3: Faraday and RF Containment"]
-  C --> E["Power and Signal Line Filters"]
-  D --> F["TEMPEST Certified Equipment"]
-  E --> F
-  F --> G["Red-Black Separation Discipline"]
-  G --> H["Emanation Measurement and Testing"]
-  H --> I{"Within Allowed Emission Limits"}
-  I -->|"No"| J["Apply Additional Countermeasures"]
-  J --> H
-  I -->|"Yes"| K["Accreditation and Continuous Monitoring"]
-  K --> L["Periodic Re-Test and Audit"]
-  L --> H
+    A["EMSEC classroom concepts<br/>illustrative, not a compliance design"] --> B["Information asset and protection purpose"]
+    B --> C["Conceptual physical boundary<br/>access and environment"]
+    B --> D["Conceptual equipment boundary<br/>shielding, filtering and separation"]
+    C --> RECORD["Supplied measurement/report metadata<br/>calibration, baseline, environment<br/>repeatability and limitations"]
+    D --> RECORD
+    RECORD --> SOURCE{"Applicable authority and edition<br/>plus valid measurement basis<br/>directly reviewed?"}
+    SOURCE -->|No, missing or unknown| HOLD["Insufficient basis<br/>no certification or limits asserted"]
+    SOURCE -->|Yes within stated scope| REV["Named specialist reviews<br/>source-bounded interpretation only"]
+    REV --> LIMIT["No current compliance directive<br/>No universal zone count<br/>No live testing or interception"]

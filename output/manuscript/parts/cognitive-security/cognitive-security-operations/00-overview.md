@@ -12,17 +12,17 @@ This module teaches the **Cognitive Security and Influence Resilience** lane thr
 
 ## Cognitive Security and Influence Resilience frame for Cognitive Security Operations: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-operations]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-operations].
 
 ### Cognitive Security Operations orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-operations]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-operations].
 
 ### Cognitive Security Operations conceptual primer: source context, core model, and reader task
 
-This chapter teaches cognitive security as protection of attention, trust, memory, and decision quality without creating manipulation. The chapter uses **Cognitive-Resilience Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making; Cognitive influence-analysis case review using sample materials**.
+This chapter teaches cognitive security as protection of attention, trust, memory, and decision quality without creating manipulation. The chapter uses **Cognitive-Resilience Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making; Adversarial Cognitive Operations: Defensive Recognition and Attribution Limits**.
 
-The central distinction is to separate analysis of influence from persuasion design. Core topics include **The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making; Cognitive influence-analysis case review using sample materials; Deepfakes, Voice Cloning, and Digital Identity Attacks**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
+The central distinction is to separate analysis of influence from persuasion design. Core topics include **The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making; Adversarial Cognitive Operations: Defensive Recognition and Attribution Limits; Deepfakes, Voice Cloning, and Digital Identity Attacks**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
 Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint238]; [@ageint239].
 
@@ -30,9 +30,9 @@ Learners move from vocabulary and the **Cognitive-Resilience Lens** distinction 
 
 ### Cognitive Security Operations learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-operations]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-operations].
 
-- Connect **The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making and Cognitive influence-analysis case review using sample materials** to **Cognitive Security and Influence Resilience** by naming shared vocabulary, evidence burden, and audience-facing caveats.
+- Connect **The Cognitive Attack Surface: Attention, Memory, Trust, and Decision-Making and Adversarial Cognitive Operations: Defensive Recognition and Attribution Limits** to **Cognitive Security and Influence Resilience** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
 - Apply the key distinction: separate analysis of influence from persuasion design; show where an apparently useful shortcut would cross that line.
 - Diagnose failure modes such as counter-messaging as manipulation, overclaiming intent, pathologizing audiences, and collapsing uncertainty into moral certainty, then write one recovery move for each failure mode that preserves the learning objective.
@@ -40,16 +40,14 @@ Learners move from vocabulary and the **Cognitive-Resilience Lens** distinction 
 
 ### Cognitive Security Operations core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-operations]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-operations].
 
 | Term | Working definition |
 |---|---|
 | Narrative provenance | where a claim, frame, or story came from and how it spread |
-| Prebunking | transparent education that helps people recognize misleading patterns before exposure |
+| Prebunking | transparent education about misleading patterns before exposure; its effectiveness and transfer require evidence rather than assumption |
 | Audience harm | a privacy, dignity, autonomy, or trust risk for people receiving information |
 | Attribution caution | the rule that intent and origin claims need strong evidence |
 | Resilience response | a transparent education, correction, or process improvement that avoids manipulation |
-| MISO boundary | the line between accountable public messaging analysis and covert influence design |
-| Inoculation | building recognition of manipulation tactics without deploying persuasion against a population |
-| The Cognitive Attack Surface: Attention,… | Key terms: Cognitive, Attack, Surface. |
-| Cognitive influence-analysis case review using… | Key terms: Cognitive, influence, analysis. |
+| MISO boundary | the separation between this classroom analysis and authorized military influence activities; MISO is not defined simply as covert messaging |
+| Inoculation | an approach intended to build recognition of misleading tactics; it does not imply immunity or proven efficacy for a particular audience |
