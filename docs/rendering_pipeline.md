@@ -265,7 +265,10 @@ The same preamble owns TOC spacing controls so entries such as
 
 Heading navigation is audited on reader Markdown, excluding `README.md` and
 `AGENTS.md` repository helpers but retaining reader backmatter. References has
-an explicit unnumbered section target. Line-budget splitting keeps trailing
+an explicit unnumbered section target; navigation uses its named anchor link,
+not a numbered Pandoc-crossref section reference. Rendered HTML and TeX reject
+remaining Pandoc-crossref placeholders, including inside tables and headings.
+Line-budget splitting keeps trailing
 headings with their following content, and continuation navigation uses only
 a label declared in the actual unsplit source section. A missing real target
 remains a failure; no citation is borrowed to manufacture support.

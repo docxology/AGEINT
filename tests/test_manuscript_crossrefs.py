@@ -16,7 +16,7 @@ FIGURE_DEF_RE = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>fig:[a-z
 FIGURE_REF_RE = re.compile(r"\[@(?P<label>fig:[a-z0-9-]+)\]")
 MARKDOWN_FILE_LINK_RE = re.compile(r"\[[^\]]+\]\([^)]*\.(?:md|markdown)(?:#[^)]*)?\)", re.IGNORECASE)
 HTML_MARKDOWN_FILE_LINK_RE = re.compile(r"href=[\"'][^\"']*\.(?:md|markdown)(?:#[^\"']*)?[\"']", re.IGNORECASE)
-SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)(?:\s+[^}]*)?\}")
+SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)(?P<attributes>\s+[^}]*)?\}")
 SECTION_REF_RE = re.compile(r"\[@(?P<label>sec:[a-zA-Z0-9_-]+)\]")
 EQUATION_LABEL_RE = re.compile(r"\{#(?P<label>eq:[a-zA-Z0-9_-]+)\}")
 EQUATION_REF_RE = re.compile(r"\[@(?P<label>eq:[a-zA-Z0-9_-]+)\]")
@@ -69,9 +69,11 @@ def test_generated_section_references_resolve_without_raw_latex(built_output: Pa
     text = _all_output_text(output_manuscript)
     section_labels = {match.group("label") for match in SECTION_LABEL_RE.finditer(text)}
     section_refs = {match.group("label") for match in SECTION_REF_RE.finditer(text)}
+    unnumbered_labels = {match.group("label") for match in SECTION_LABEL_RE.finditer(text) if ".unnumbered" in (match.group("attributes") or "").split()}
 
     assert section_refs
     assert section_refs <= section_labels
+    assert section_refs.isdisjoint(unnumbered_labels)
     assert not RAW_LATEX_REF_RE.search(text)
 
 
@@ -228,6 +230,22 @@ def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path
     (web / "index.html").write_text("<p>Visual guide for the section Figure&nbsp;1.</p>\n<p>Navigation links: Section&nbsp;2, Section&nbsp;3.</p>\n", encoding="utf-8")
 
     assert audit_rendered_references(tmp_path) == []
+
+
+def test_rendered_reference_audit_rejects_visible_crossref_placeholders(tmp_path: Path) -> None:
+    web = tmp_path / "web"
+    web.mkdir()
+    (web / "index.html").write_text(
+        '<h1 class="unnumbered" id="sec:references">References</h1>\n<p>¿Dónde está el origen?</p>\n<table><tr><td>Section <strong>¿sec:references?</strong></td></tr></table>\n', encoding="utf-8"
+    )
+    pdf = tmp_path / "pdf"
+    pdf.mkdir()
+    (pdf / "_combined_manuscript.tex").write_text(r"\section{A formalism \textbf{¿eq:missing?}}" + "\n", encoding="utf-8")
+
+    assert {(violation.path.relative_to(tmp_path).as_posix(), violation.reason, violation.title) for violation in audit_rendered_references(tmp_path)} == {
+        ("web/index.html", "unresolved rendered cross-reference", "¿sec:references?"),
+        ("pdf/_combined_manuscript.tex", "unresolved rendered cross-reference", "¿eq:missing?"),
+    }
 
 
 def test_rendered_reference_audit_preserves_rendered_authored_emphasis(tmp_path: Path) -> None:

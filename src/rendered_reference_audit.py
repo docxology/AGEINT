@@ -17,6 +17,7 @@ HARD_CODED_REFERENCE_RE = re.compile(
 )
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
 UNRESOLVED_TEMPLATE_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}|\[\[(?:SEC|FIG|REF):")
+_UNRESOLVED_RENDERED_CROSSREF_RE = re.compile(r"¿(?:sec|fig|tbl|eq|lst):[A-Za-z0-9][A-Za-z0-9_-]*\?")
 
 BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
@@ -200,6 +201,8 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
         tex_heading_depth = 0
         for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             stripped = line.strip()
+            if suffix in {".html", ".tex"} and (match := _UNRESOLVED_RENDERED_CROSSREF_RE.search(line)):
+                violations.append(RenderedReferenceViolation(path, line_number, "unresolved rendered cross-reference", match.group(0), line))
             if suffix == ".md" and stripped.startswith("```"):
                 in_code = not in_code
                 continue

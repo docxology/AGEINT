@@ -44,6 +44,9 @@ metadata or this document alone is not acceptance.
   unlabeled reader backmatter as a failure. Keep split headings with their
   following content, carry only genuine source-section navigation into
   continuation fragments, and give References a real unnumbered section target.
+- Link unnumbered backmatter by its actual named anchor rather than an unresolved
+  numbered section reference. Reject remaining Pandoc-crossref placeholders in
+  rendered HTML and TeX, including otherwise structural tables and headings.
 - Align package, citation, paper and book versions; derive milestone
   prerequisites from the current version rather than a historical release.
 - Make missing, failed, timed-out or skipped SDK guards block readiness.

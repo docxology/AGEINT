@@ -6,7 +6,7 @@ from typing import Any
 from curriculum import Curriculum
 from figures import figure_markdown, figures_for_section
 from intelligence_content import practice_lens_for_titles, profile_for_titles
-from markdown_refs import section_ref_list
+from markdown_refs import section_ref, section_ref_list
 from manuscript_templates import template_text
 from manuscript_variables import appendix_rows
 
@@ -112,7 +112,7 @@ def _visual_synthesis(project_root: Path, out_dir: Path, section: ManuscriptSect
         if label not in reference_labels:
             reference_labels.append(label)
 
-    nav = _section_navigation(section)
+    nav = _section_navigation(section, manifest)
     section_word = {"chapter": "module", "part": "unit", "appendix": "appendix", "front": "orientation", "bibliography": "bibliography appendix"}.get(section.kind, "section")
     # Join the figure references as a conjoined list ("Figure 1 and Figure 2",
     # "Figure 1, Figure 2, and Figure 3") instead of space-joined bare refs. Each
@@ -136,7 +136,6 @@ def _visual_synthesis(project_root: Path, out_dir: Path, section: ManuscriptSect
         parts.append(nav)
     if definition_block:
         parts.append(definition_block)
-    _ = manifest
     return "\n\n".join(parts)
 
 
@@ -155,7 +154,7 @@ def _fallback_figure_labels(section: ManuscriptSection) -> list[str]:
     return []
 
 
-def _section_navigation(section: ManuscriptSection) -> str:
+def _section_navigation(section: ManuscriptSection, manifest: ManuscriptManifest) -> str:
     refs: list[str] = []
     if section.relative_path != "orientation.md":
         refs.append("sec:curriculum_orientation")
@@ -167,7 +166,9 @@ def _section_navigation(section: ManuscriptSection) -> str:
         refs.append(section.next_label)
     if not refs:
         return ""
-    return "Navigation links: " + section_ref_list(refs) + "."
+    unnumbered = {target.section_label: target.title for target in manifest.sections if target.kind == "references"}
+    links = [f"[{unnumbered[label]}](#{label})" if label in unnumbered else section_ref(label) for label in dict.fromkeys(refs)]
+    return "Navigation links: " + ", ".join(links) + "."
 
 
 def build_manuscript_manifest(curriculum: Curriculum, figures: list[dict[str, Any]] | None = None) -> ManuscriptManifest:
