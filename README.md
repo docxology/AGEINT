@@ -1,12 +1,11 @@
 # AGEINT — Agentic Intelligence Curriculum
 
 AGEINT is a modular curriculum for Agentic Intelligence: atlas, library, course,
-textbook, cookbook, and playbook. It converts a source guide into a semantic
-manuscript, registry-backed figures, generated BibTeX, and auditable runtime
-variables. Everything here builds from a standalone checkout of this repository;
-the one exception is the combined PDF (`AGEINT.pdf`), which is rendered by a
-sibling template repository's pandoc/xelatex pipeline rather than by a script in
-this repo.
+textbook, cookbook, and playbook. It composes curriculum source shards into a
+semantic manuscript, registry-backed figures, generated BibTeX, and auditable
+runtime variables. Complete figure, PDF, and HTML qualification uses the shared
+research SDK, pinned to `docxology/template` **5.1.0**; a standalone source-data
+checkout is not a substitute for that prepared rendering runtime.
 
 The project is deliberately evidence-bounded. It can teach intelligence
 tradecraft, IC-cycle governance, OSINT/GEOINT integrity, FININT/economic
@@ -18,17 +17,19 @@ legal and human oversight constraints.
 ## Citation and DOI
 
 - **Repository:** <https://github.com/docxology/AGEINT>
-- **Concept DOI (cite this — resolves to the latest version):** [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274)
-- **Version DOI (Edition 0.1):** [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275)
+- **Concept DOI (latest archived edition):** [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274)
+- **Historical version DOI (Edition 0.1.0 only):** [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275)
 - **License:** text CC BY 4.0; code Apache-2.0
 
 > Friedman, Daniel Ari. *AGEINT: Agentic Intelligence — A Modular Atlas, Library,
-> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (Edition 0.1,
+> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (Edition 0.2.0,
 > 2026). Active Inference Institute. <https://github.com/docxology/AGEINT>.
 > <https://doi.org/10.5281/zenodo.20732274>.
 
-The DOI and repository are baked into the rendered title page and citation block
-of `output/pdf/AGEINT_combined.pdf`.
+Source publication identity is included in the SDK-rendered title page and
+citation block of `output/pdf/AGEINT_combined.pdf`, mirrored at `AGEINT.pdf`.
+The concept DOI identifies the archived work; no new archive deposit or 0.2.0
+version DOI is implied by source metadata.
 
 ## Source
 
@@ -61,35 +62,39 @@ for the last measured pass.
 
 - Backlog (canonical, forward-only): [`TODO.md`](TODO.md) — its `Open` section
   holds the next useful work; `tasks.yaml` is the taskboard source of truth.
+- Release changes: [`CHANGELOG.md`](CHANGELOG.md); the GitHub release and its
+  exact-source verification run establish publication, not this document.
 - Status: `output/reports/publication_readiness.json` (`ok` field) and
   `output/reports/current_artifact_evidence.json` are the generated status
   surfaces; re-run the audits in Commands below to refresh them.
+  Readiness `ok` records the evaluated gates; it is not publication authorization
+  or evidence that a tag, release, or archive deposit exists.
 
 ## Commands
 
+The commands below use a prepared compatible SDK Python runtime. See
+[`docs/rendering_pipeline.md`](docs/rendering_pipeline.md) for runtime and project
+link setup; `AGEINT_TEMPLATE_REPO` selects the actual SDK checkout, not an
+installation or a waiver of its version/guard requirements.
+
 ```bash
-uv run python scripts/build_curriculum.py
-AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py  # strict Mermaid PNGs
-uv run python scripts/generate_figures.py
-uv run pytest tests/ --cov=src --cov-fail-under=90
-uv run python scripts/audit_artifact_evidence.py --write --format markdown
-uv run python scripts/audit_scholarship_quality.py --write --format markdown
-uv run python scripts/audit_source_metadata.py --write --format markdown
-uv run python scripts/audit_agency_source_coverage.py --write --format markdown
-uv run python scripts/audit_claim_calibration.py --write --format markdown
-uv run python scripts/audit_reference_quality.py --write --format markdown
+AGEINT_REQUIRE_RENDERED_FIGURES=1 python scripts/build_curriculum.py
+AGEINT_REQUIRE_RENDERED_FIGURES=1 python scripts/generate_figures.py
+python -m pytest tests/ --cov=src --cov-fail-under=90
+python scripts/audit_release_metadata.py --expected-tag v0.2.0 --format json
+python scripts/audit_artifact_evidence.py --write --format markdown
+python scripts/audit_scholarship_quality.py --write --format markdown
+python scripts/audit_source_metadata.py --write --format markdown
+python scripts/audit_agency_source_coverage.py --write --format markdown
+python scripts/audit_claim_calibration.py --write --format markdown
+python scripts/audit_reference_quality.py --write --format markdown
+python scripts/audit_publication_readiness.py --write --format markdown
 
-# Coverage floor: 90% for `src/`; use the test command above for the current measured result.
-# Stage 02 pipeline analysis runs build_curriculum.py only (see docs/manuscript/config.yaml analysis.scripts).
-
-# From the sibling template repo root (AGEINT linked under projects/working/AGEINT):
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
-
-# PDF render (from the sibling template repo root, AGEINT linked under
-# projects/working/AGEINT): re-renders the combined PDF and copies it back
-# into this repo — the render/copy stages this repo does not itself carry.
-uv run python scripts/maintenance/rerender_working_pdfs.py --project AGEINT
+# From the prepared SDK root, with this checkout linked as projects/working/AGEINT:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+.venv/bin/python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
+.venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
 ```
 
 Use `--regenerate-source-template-library` only when intentionally resetting the
@@ -101,7 +106,7 @@ The source manuscript stays small and neutral. `src/curriculum.py` composes the
 sharded curriculum, `src/build_pipeline.py` orchestrates the build,
 `src/manuscript_manifest/` creates semantic output paths and generated section
 contexts, `src/manuscript_variables/` writes runtime variables and BibTeX,
-`src/intelligence_content/` owns verified research profiles, deterministic
+`src/intelligence_content/` owns evidence-scoped research profiles, deterministic
 agency source packs, and three-tier topic lesson frames (keyword → category →
 synthesis), `src/source_metadata.py` audits
 explicit lane/tier metadata for curated and support anchors, and `src/figures/`
@@ -129,20 +134,24 @@ informative. The artifact-evidence manifest reports 0 single-source-family
 claim-bearing review warnings under the current source-strength classifier;
 the readiness gates treat any such family as a review row, not a blocker.
 
-**PDF rendering is external to this repository.** The combined PDF
-(`AGEINT.pdf` at the repo root, mirrored at `output/pdf/AGEINT_combined.pdf`)
-is produced by a shared research-project template's pandoc/xelatex render
-stage, not by any script inside this repo. `scripts/build_curriculum.py` and
-`scripts/generate_figures.py` produce everything that render step consumes —
-the semantic manuscript, the figure registry, and the generated BibTeX — but
-the PDF composition itself runs from the template checkout against this
-project linked under its `projects/working/` tree. Refreshing the PDF is
-therefore a manual, out-of-band step rather than something this repo's own
-CI performs; `scripts/audit_pdf_quality.py` (and the two audit scripts whose
-aggregate verdict includes it) stay informational in
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml) and
-[`.github/workflows/manuscript.yml`](.github/workflows/manuscript.yml) for
-that reason.
+**The SDK owns PDF/HTML compilation; this repository owns its release gate.**
+`scripts/build_curriculum.py` and `scripts/generate_figures.py` produce the
+semantic manuscript, figures, and BibTeX. The shared SDK's canonical render stage
+consumes those files; AGEINT does not carry a second Pandoc/TeX compiler.
+
+[Complete manuscript verification](.github/workflows/manuscript.yml) performs a
+fresh strict Mermaid build, the complete 90%-minimum test suite, canonical SDK
+PDF/HTML rendering, native validators, and every aggregate readiness gate.
+Missing tools, placeholders, failed compilation, stale outputs, or a skipped
+parent guard cannot establish acceptance. Manual development runs may select an
+explicit immutable SDK candidate commit; publication never uses that override.
+
+[Release AGEINT](.github/workflows/release.yml) accepts only exact current `main`
+with aligned source metadata and a genuine stable SDK `v5.1.0` release. It reruns
+complete acceptance, checks same-run asset hashes and Source/SDK identity, then
+creates a new tag/release without overwriting an existing publication.
+The offline reader ZIP preserves `web/`, local assets, and sibling `figures/`;
+serve its extracted root over local HTTP and open `/web/index.html`.
 
 Generated files under `output/` are not primary authoring surfaces. Edit
 `data/curriculum/` shards first when the guide is absent; otherwise update

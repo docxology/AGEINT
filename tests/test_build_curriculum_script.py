@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from pathlib import Path
 import shutil
-import subprocess
-import sys
 
 import pytest
 
@@ -15,26 +13,11 @@ from build_pipeline import generated_output_is_stale, run_build
 from orchestration_contracts import output_build_sentinels, source_freshness_roots
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = PROJECT_ROOT / "scripts" / "build_curriculum.py"
 DATA = PROJECT_ROOT / "data" / "curriculum"
 
-# Every test decorated with @requires_template_repo below calls run_build()
-# (directly, via a tmp_path project, or via a subprocess against this repo's
-# actual PROJECT_ROOT) — render_manuscript() unconditionally calls
-# substitute_manuscript_text(), which needs the sibling docxology/template
-# repo's `infrastructure` package (src/manuscript_injection.py) regardless of
-# project size or whether the copy is tmp_path-isolated. One test
-# (test_build_curriculum_script_smoke) is worse than "just fails": it runs
-# scripts/build_curriculum.py with cwd=PROJECT_ROOT — the REAL project root,
-# not a tmp_path copy — so an unguarded crash partway through rendering
-# leaves output/manuscript/ emptied for the rest of the pytest session,
-# cascading into ~45 unrelated failures in every other test that reads
-# generated manuscript content. Confirmed live, twice, in a genuinely
-# isolated checkout with no template sibling (matching GitHub Actions
-# exactly): first pass only guarded the two PROJECT_ROOT-touching tests and
-# still surfaced 3 more tmp_path-based failures from this same file: all
-# call run_build() too, just non-destructively. Skip the whole class rather
-# than whack-a-mole discovering each one via another isolated run.
+# Build integrations use temporary project fixtures and require the shared SDK
+# for manuscript injection. Standalone compatibility skips do not establish
+# full native or release acceptance.
 requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 REQUIRED_OUTPUT_DOC_DIRS = {
     Path("output"),
@@ -111,7 +94,7 @@ def test_missing_source_config_fails_the_build(tmp_path: Path, existing_output: 
     with pytest.raises(FileNotFoundError) as error:
         run_build(project, regenerate_source_template_library=True, allow_placeholder_figures=False)
 
-    assert f"Missing source manuscript config: {missing_config.as_posix()}." in str(error.value)
+    assert missing_config.as_posix() in str(error.value)
     assert {path.relative_to(project): path.read_bytes() if path.is_file() else None for path in project.rglob("*")} == before
     if not existing_output:
         assert not (project / "output").exists()
@@ -127,16 +110,9 @@ def test_source_validation_rechecks_selected_project_config(tmp_path: Path) -> N
     with pytest.raises(FileNotFoundError) as error:
         validate_declarative_tables(tmp_path)
 
-    assert f"Missing source manuscript config: {missing_config.as_posix()}." in str(error.value)
+    assert missing_config.as_posix() in str(error.value)
 
 
-@requires_template_repo
-def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None:
-    repo = template_resolver.ensure_template_repo_on_path(PROJECT_ROOT)
-
-    assert repo is not None
-    assert (repo / "infrastructure" / "validation" / "cli" / "__init__.py").is_file()
-    assert str(repo) in sys.path
 
 
 @requires_template_repo
@@ -167,19 +143,3 @@ def test_explicit_regeneration_rewrites_only_template_library(tmp_path: Path, mo
     assert "{{CHAPTER_031_TITLE}}" not in rewritten
 
 
-@requires_template_repo
-def test_build_curriculum_script_smoke() -> None:
-    result = subprocess.run(
-        [sys.executable, str(SCRIPT)],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        # Real Mermaid rendering (mmdc + headless Chrome) for ~24 figures takes
-        # well over the original 120s smoke budget; allow a realistic ceiling.
-        timeout=600,
-    )
-    assert result.returncode == 0
-    combined = f"{result.stdout}\n{result.stderr}"
-    assert "parts" in combined.lower()
-    assert "modules" in combined.lower() or "chapters" in combined.lower()

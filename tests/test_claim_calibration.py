@@ -116,17 +116,14 @@ def test_claim_calibration_skips_headings_with_performance_terms(tmp_path: Path)
     assert report.payload["summary"]["candidate_rows"] == 0
 
 
-def test_claim_calibration_script_writes_json_contract(built_output: Path) -> None:
-    assert (built_output / "manuscript").is_dir()
+def test_claim_calibration_script_reports_json_contract(built_output: Path) -> None:
     result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_claim_calibration.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_claim_calibration.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
     assert payload["ok"] is True
     assert payload["summary"]["hard_fail_rows"] == 0
-    assert (PROJECT_ROOT / "output" / "reports" / "claim_calibration.json").is_file()
-    assert (PROJECT_ROOT / "output" / "reports" / "claim_calibration.md").is_file()
 
 
 def test_source_support_strength_classifies_curated_and_source_guide_keys() -> None:

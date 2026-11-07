@@ -28,11 +28,14 @@ The example includes `book.license` (`CC BY 4.0`), `book.code_license`
 front-matter file ordering is supplied by the build. Keep DOI and archive-record
 fields empty until that publication has its own deposited identifiers rather
 than borrowing another edition's or project's identifiers.
+Config, dependency-lock and optional `preamble.md` bytes are registered build
+inputs. Editing an edition, dependency, asset mode or preamble invalidates the
+build even when file size and timestamps are preserved.
 
 ## Shared SDK environment and canonical native renderer
 
-Native rendering is owned by `docxology/template` at the published `v5.1.0`
-tag, not a second Pandoc/XeLaTeX driver in AGEINT. The SDK requires Python 3.14
+Release rendering requires `docxology/template` at a genuinely published
+`v5.1.0`, not a second Pandoc/XeLaTeX driver in AGEINT. The SDK requires Python 3.14
 or later; AGEINT's separate standalone-core compatibility floor is unchanged.
 Link or check out AGEINT under the SDK's working projects directory. From the
 SDK root, prepare its frozen environment and explicitly keep nested `uv`
@@ -71,10 +74,12 @@ native renderer. `output/pdf/AGEINT_combined.pdf` is authoritative; copy it to
 The latter also supports manual dispatch and a weekly rebuild. It uses the
 exact AGEINT commit, published SDK tag and frozen SDK dev/rendering environment;
 it clears prior native deliverables and Mermaid render receipts, builds with
-real diagrams, runs the complete test suite at **90% minimum coverage**, rebuilds
-authoritative output after tests, and runs SDK markdown/prerender, canonical
-PDF/HTML rendering and output validation. All source, reference, figure, license,
-PDF and aggregate artifact/readiness gates block failure. Publication readiness
+real diagrams, renders current PDF/HTML before their consumer tests, then runs
+the complete test suite at **90% minimum coverage**. Reader-byte inventories
+before and after tests must agree; tests cannot rewrite the published book.
+SDK markdown/prerender and enabled-format output validation remain blocking.
+All source, reference, figure, license, PDF and aggregate readiness gates block
+failure. Publication readiness
 executes the actual SDK all-resource parent guard; skipping it is never a pass.
 Failed builds are not replaced by restored committed output.
 
@@ -103,6 +108,14 @@ not an assumed fully capable `file://` page. Scholarly URLs are user-clicked
 references, not remotely fetched assets. Evidence includes actual audit reports,
 test and coverage results, tool provenance and exact source/SDK identities. Only artifacts
 from the successful reusable job in the same run can reach publication.
+
+An inspection-only artifact is captured after native rendering and enabled-format
+validation but before aggregate task/readiness closure. Its generated-source
+archive, checksums and source/SDK identity support real reader review without
+pretending that pending verification tasks are done. Its identity explicitly
+says `acceptance: false`; release downloads only the separately named successful
+verified artifact. Failure diagnostics retain actual reports and compiler logs,
+not a fallback reader or a fabricated successful handoff.
 See [workflow commands and contracts](../.github/workflows/README.md) for manual
 verification and authorized release dispatch.
 

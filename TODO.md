@@ -4,11 +4,14 @@ Forward-only tracker for source-owned work. History lives in `ISA.md` and commit
 messages; this file holds current state and the next useful work. Each row states
 an acceptance line — the command whose output decides whether it is done.
 
-## Verified State (2026-11-06)
+## Historical pre-refactor verification (2026-11-06)
 
 Evidence clock: `SOURCE_DATE_EPOCH=1794006724`. This pins report/build dates;
 it does not mean every source was freshly checked. Reports under
 `output/reports/` carry the detailed evidence and limits.
+This is the previous local content pass, not acceptance for the current 0.2.0
+refactor or its SDK dependency. Rebuilt outputs and current release evidence
+must replace the old measurements before publication.
 
 - Strict canonical build: 16 parts, 51 chapters, 9 appendices, 20 patterns,
   312 guide references and 177 registered figures; real rendered figures required.
@@ -38,28 +41,23 @@ it does not mean every source was freshly checked. Reports under
 
 ## Open
 
-### 1 (Medium) — fail source validation when the manuscript config is missing
+### 0.2.0 qualification and publication
 
-`_write_generated_config()` (`src/manuscript_manifest/_05_part.py`) now hard-fails
-on a missing `docs/manuscript/config.yaml` at render time (added 2026-09-07; see
-Resolved). Move the check earlier: `validate_declarative_tables()` in
-`src/_data_loaders.py` (the `source_validation` stage) should assert the file
-exists so a broken tree fails before any figure-rendering work, not after.
+`tasks.yaml` is the authoritative release state:
 
-Acceptance: on a scratch copy with `docs/manuscript/config.yaml` deleted,
-`uv run python scripts/build_curriculum.py` exits non-zero naming the missing
-config before rendering any figures.
+- `ageint-37`: integrate the real SDK consumer fixes through
+  [template PR #289](https://github.com/docxology/template/pull/289) into the
+  existing 5.1.0 release train, preserving all genuine SDK acceptance gates.
+- `ageint-36`: qualify the current complete reader, full regression/coverage
+  gate, native audits, browser surface and copied rendered program. Root-mutating
+  CLI wording smoke tests have been removed; reader bytes must remain unchanged
+  across the suite rather than being silently rebuilt over test side effects.
+- `ageint-release-0-2-0`: publish only after those prerequisites and exact-main
+  full acceptance. The historical 0.1.0 DOI is not a 0.2.0 archive record.
 
-### 2 (Minor) — regenerate `docs/manuscript/config.yaml.example`
-
-The example predates the current shape: it has no `book:` section (license,
-code_license, cover) and no `front_matter:` block, while
-`collect_source_license_posture()` reads exactly those keys from
-`docs/manuscript/config.yaml`. Regenerate the example from the real config with
-placeholder values so a copy-to-config workflow produces a gate-green file.
-
-Acceptance: `docs/manuscript/config.yaml.example` contains `book.license` and
-`book.code_license` keys.
+Implementation is not native qualification. Inspection-only snapshots and
+diagnostics cannot satisfy the verified release handoff; prior skipped-guard
+reports and the measurements above cannot certify current Source.
 
 ## Deferred (author decision required)
 
@@ -73,6 +71,19 @@ Acceptance: `docs/manuscript/config.yaml.example` contains `book.license` and
   particular `data/research_anchors/**` and `output/figures/**`).
 
 ## Resolved
+
+### 2026-11-07 — source refactoring qualified
+
+`ageint-35` is complete. Native metadata/tag and missing-config preservation
+smoke, full-source Ruff, workflow actionlint, the genuine offline lock check
+and 83 focused regressions passed with Source unchanged. The run is
+`ageint-readonly-cli-qualification-91d8806d`.
+
+Qualification exposed repository-writing audit CLI tests. Their report writes
+were removed; CI now fingerprints reports as well as reader bytes across the
+suite. The separately integrated SDK consumer source passed targeted Ruff,
+85 focused regressions and a genuine native PDF-revision smoke. Neither result
+is complete 0.2.0 reader qualification, hosted acceptance or publication.
 
 ### 2026-09-07 — manuscript canonicalization completed (`docs/manuscript/` is the only manuscript source dir)
 

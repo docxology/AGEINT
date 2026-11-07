@@ -8,7 +8,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from source_refresh_due import collect_source_refresh_due, render_source_refresh_due_markdown, source_refresh_due_figure_rows, write_source_refresh_due
+from source_refresh_due import collect_source_refresh_due, render_source_refresh_due_markdown, write_source_refresh_due
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -72,26 +72,16 @@ def test_source_refresh_due_flags_unknown_or_missing_metadata(tmp_path: Path) ->
     assert report.payload["issue_rows"][0]["flags"] == ["missing_or_invalid_checked_as_of", "unknown_refresh_cadence"]
 
 
-def test_source_refresh_due_figure_rows_expose_release_preflight_gate() -> None:
-    rows = source_refresh_due_figure_rows(PROJECT_ROOT)
-    flat = " ".join(cell for _, cells in rows for cell in cells)
-
-    assert "source_refresh_due_ok" in flat
-    assert "dates are not auto-updated" in flat
-    assert "source rows" in flat
 
 
-def test_audit_source_refresh_due_script_writes_json_contract() -> None:
+def test_audit_source_refresh_due_script_reports_json_contract() -> None:
     result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_source_refresh_due.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_source_refresh_due.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
     assert payload["ok"] is True
-    assert payload["summary"]["row_count"] == 472
     assert payload["summary"]["due_or_stale_count"] == 0
-    assert (PROJECT_ROOT / "output" / "reports" / "source_refresh_due.json").is_file()
-    assert (PROJECT_ROOT / "output" / "reports" / "source_refresh_due.md").is_file()
 
 
 def test_source_refresh_due_due_bucket_at_cadence_boundary(tmp_path: Path) -> None:

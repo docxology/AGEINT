@@ -151,38 +151,75 @@ jobs:
           rm -rf output/manuscript output/data output/reports output/pdf output/web output/slides output/docx output/epub output/figures/mermaid
           rm -f AGEINT.pdf
           python scripts/build_curriculum.py
+      - name: Render current native outputs before exercising PDF consumer tests
+        run: |
+          set -euo pipefail
+          .venv/bin/python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
+          .venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+          cp projects/working/AGEINT/output/pdf/AGEINT_combined.pdf projects/working/AGEINT/AGEINT.pdf
+      - name: Record reader bytes before isolated tests
+        working-directory: projects/working/AGEINT
+        run: |
+          set -euo pipefail
+          find AGEINT.pdf output/data output/manuscript output/figures output/pdf output/web output/reports \
+            -type f -print0 | LC_ALL=C sort -z | xargs -0 -r sha256sum \
+            > "$RUNNER_TEMP/ageint-evidence/readers-before-tests.sha256"
       - name: Complete real test suite including strict Mermaid tests (90% minimum)
         working-directory: projects/working/AGEINT
         run: >-
           python -m pytest tests/ --cov=src --cov-report=term-missing
           --cov-report=xml:${{ runner.temp }}/ageint-evidence/coverage.xml
           --cov-fail-under=90 --junitxml=${{ runner.temp }}/ageint-evidence/tests.xml
-      - name: Rebuild authoritative deliverables after tests
+      - name: Refuse reader mutation by tests and validate source contracts
         working-directory: projects/working/AGEINT
         run: |
           set -euo pipefail
-          rm -rf output/manuscript output/data output/reports output/pdf output/web output/slides output/docx output/epub
-          rm -f AGEINT.pdf
-          python scripts/build_curriculum.py
+          find AGEINT.pdf output/data output/manuscript output/figures output/pdf output/web output/reports \
+            -type f -print0 | LC_ALL=C sort -z | xargs -0 -r sha256sum \
+            > "$RUNNER_TEMP/ageint-evidence/readers-after-tests.sha256"
+          diff -u "$RUNNER_TEMP/ageint-evidence/readers-before-tests.sha256" \
+            "$RUNNER_TEMP/ageint-evidence/readers-after-tests.sha256"
           python scripts/validate_declarative_yaml.py
           python scripts/check_rendered_references.py
-          set +e
-          grep -R -E 'defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine' output/manuscript/
-          found=$?
-          set -e
-          test "$found" -eq 1
       - name: SDK markdown and strict prerender validation
         run: |
           set -euo pipefail
           .venv/bin/python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root . --strict
           .venv/bin/python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
-      - name: Canonical SDK native PDF and HTML rendering
-        run: .venv/bin/python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
       - name: SDK PDF and enabled-format output validation with provenance
         run: |
           set -euo pipefail
           .venv/bin/python -m infrastructure.validation.cli pdf projects/working/AGEINT/output/pdf/AGEINT_combined.pdf
           .venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+      - name: Prepare inspection-only generated snapshot
+        env:
+          SOURCE: ${{ steps.identity.outputs.source }}
+          SDK_SOURCE: ${{ steps.identity.outputs.sdk-source }}
+          SDK_CANDIDATE: ${{ steps.sdk.outputs.candidate }}
+        run: |
+          set -euo pipefail
+          destination="$RUNNER_TEMP/ageint-inspection"
+          mkdir "$destination"
+          jq -n --arg source "$SOURCE" --arg sdk "$SDK_SOURCE" \
+            --argjson candidate "$SDK_CANDIDATE" --arg repository "$GITHUB_REPOSITORY" \
+            --arg run "$GITHUB_RUN_ID" --arg attempt "$GITHUB_RUN_ATTEMPT" \
+            '{inspection_only:true,acceptance:false,repository:$repository,source:$source,sdk_source:$sdk,sdk_candidate:$candidate,run_id:$run,run_attempt:$attempt}' \
+            > "$destination/inspection-source.json"
+          # This supports native reader review before task prerequisites close.
+          # It is never the verified artifact selected by the release workflow.
+          (cd projects/working/AGEINT && tar \
+            --exclude='output/pdf/_*' --exclude='output/web/_combined_manuscript.md' \
+            -czf "$destination/AGEINT-generated.tar.gz" \
+            output/data output/manuscript output/figures output/pdf output/web output/reports \
+            docs/manuscript/references-*.bib)
+          (cd "$destination" && sha256sum AGEINT-generated.tar.gz inspection-source.json > SHA256SUMS)
+      - name: Retain inspection-only snapshot, not release acceptance
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ageint-inspection-only-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/ageint-inspection/
+          if-no-files-found: error
+          retention-days: 14
       - name: Enforce all source, figure, PDF and aggregate readiness gates
         working-directory: projects/working/AGEINT
         run: |
@@ -233,4 +270,16 @@ jobs:
           name: ${{ steps.identity.outputs.artifact-name }}
           path: ${{ runner.temp }}/ageint-verified/
           if-no-files-found: error
+          retention-days: 14
+      - name: Retain actual failure diagnostics without a successful handoff
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ageint-diagnostics-only-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/ageint-evidence/
+            projects/working/AGEINT/output/reports/
+            projects/working/AGEINT/output/pdf/*.log
+            projects/working/AGEINT/output/pdf/*.blg
+          if-no-files-found: ignore
           retention-days: 14

@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from reference_quality import collect_reference_quality, write_reference_quality
+from reference_quality import collect_reference_quality
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -94,15 +94,9 @@ def test_reference_quality_allows_contextual_citation_tables_and_linked_crossref
     assert report.payload["summary"]["issue_count"] == 0
 
 
-def test_reference_quality_writer_and_script_emit_json_contract(built_output: Path) -> None:
-    json_path, md_path, report = write_reference_quality(PROJECT_ROOT)
-
-    assert report.ok is True
-    assert json_path.is_file()
-    assert md_path.is_file()
-
+def test_reference_quality_script_reports_json_contract(built_output: Path) -> None:
     result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_reference_quality.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_reference_quality.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)

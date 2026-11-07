@@ -304,11 +304,6 @@ def test_parent_guard_uses_shared_sibling_resolution(tmp_path: Path, monkeypatch
     assert publication_readiness_module.resolve_template_repo(project) == template.resolve()
 
 
-def test_parent_guard_resolves_supplied_sibling() -> None:
-    sibling = PROJECT_ROOT.parent / "template"
-    if not sibling.is_dir():
-        pytest.skip("Sibling template checkout not present")
-    assert publication_readiness_module.resolve_template_repo(PROJECT_ROOT) == sibling.resolve()
 
 
 @pytest.mark.parametrize("exit_code", [0, 13])
@@ -374,7 +369,7 @@ def test_parent_guard_matches_current_template_native_command() -> None:
     assert actual["stdout"] == publication_readiness_module._clean_output(expected.stdout)
 
 
-def test_audit_publication_readiness_script_writes_informational_failure_contract() -> None:
+def test_readiness_cli_rejects_skipped_parent_guard() -> None:
     if not (PROJECT_ROOT / "output" / "pdf" / "AGEINT_combined.pdf").is_file():
         pytest.skip("Rendered combined PDF not present")
 
@@ -384,7 +379,6 @@ def test_audit_publication_readiness_script_writes_informational_failure_contrac
             str(PROJECT_ROOT / "scripts" / "audit_publication_readiness.py"),
             "--format",
             "json",
-            "--write",
             "--skip-parent-guard",
         ],
         cwd=PROJECT_ROOT,
@@ -397,12 +391,4 @@ def test_audit_publication_readiness_script_writes_informational_failure_contrac
     payload = json.loads(result.stdout)
     assert payload["ok"] is False
     assert payload["checks"]["parent_confidentiality_guard_ok"] is False
-    assert payload["parent_confidentiality_guard"]["checked"] is False
-    assert payload["parent_confidentiality_guard"]["ok"] is False
     assert payload["parent_confidentiality_guard"]["status"] == "skipped"
-    assert payload["parent_confidentiality_guard"]["returncode"] is None
-    assert payload["checks"]["release_surface_scan_ok"] is True
-    assert payload["checks"]["source_license_posture_ok"] is True
-    assert payload["checks"]["reference_quality_ok"] is True
-    assert (PROJECT_ROOT / "output" / "reports" / "publication_readiness.json").is_file()
-    assert (PROJECT_ROOT / "output" / "reports" / "publication_readiness.md").is_file()

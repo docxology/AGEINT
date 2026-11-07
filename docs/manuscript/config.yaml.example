@@ -5,13 +5,13 @@
 paper:
   title: "AGEINT: Agentic Intelligence"
   subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  version: "0.1"
+  version: "0.2.0"
   date: ""  # Auto-generated at render if empty
 
 book:
   title: "AGEINT: Agentic Intelligence"
   subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  edition: "0.1"
+  edition: "0.2.0"
   year: "2026"
   license: "CC BY 4.0"
   code_license: "Apache-2.0"

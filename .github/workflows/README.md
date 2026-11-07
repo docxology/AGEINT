@@ -20,6 +20,13 @@ self-contained readers. The reader ZIP retains `web/` (canonical `index.html`
 and local browser assets) beside `figures/`, preserving `../figures/` links.
 Only a successful complete run uploads verified readers, evidence, source/SDK
 identity and SHA-256 checksums.
+Before aggregate readiness closure, a separately named
+`ageint-inspection-only-<run>-<attempt>` artifact retains generated source,
+figures, PDF and HTML with checksums and an explicit `acceptance: false` identity.
+Use it for actual reader inspection and reviewed output regeneration; it is not
+a release asset or a substitute for completed prerequisites. Failed runs retain
+actual reports and compiler diagnostics under a diagnostics-only name. Neither
+artifact can satisfy the release workflow's verified handoff.
 Serve the extracted reader bundle root over local HTTP, then visit
 `http://localhost:8000/web/index.html`; do not serve only `web/`. Browser features
 are not all guaranteed under `file://`. External scholarly URLs remain

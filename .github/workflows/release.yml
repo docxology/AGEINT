@@ -102,6 +102,8 @@ jobs:
           cat > "$RUNNER_TEMP/ageint-release-notes.txt" <<EOF
           AGEINT $TAG
 
+          Changes: https://github.com/$GITHUB_REPOSITORY/blob/$SOURCE/CHANGELOG.md
+
           Source: $SOURCE
           SDK: docxology/template v5.1.0 (exact commit in source-sdk.json).
           Complete verification: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID

@@ -32,7 +32,7 @@ date-released: '2026-11-07'
 identifiers:
   - type: doi
     value: 10.5281/zenodo.20732274
-    description: Concept DOI (resolves to the latest version — cite this)
+    description: Concept DOI for the latest archived edition (not a new version DOI)
 keywords:
   - agentic intelligence
   - intelligence tradecraft
