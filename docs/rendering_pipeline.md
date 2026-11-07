@@ -180,6 +180,12 @@ PDF quality, and PDF annotation/link checks so a stale, overclaimed,
 under-linked, or partially copied artifact cannot be certified by one green gate
 alone.
 
+The license preflight reads current canonical source metadata without writing
+reports. An absent or stale `source_metadata.json` cannot override those inputs
+or make readiness depend on audit command order. Metadata explicitness is not
+third-party rights clearance; private provenance and declared-license checks
+remain separate blocking requirements.
+
 ## Pre-flight validation: markdown and prerender checks before PDF work
 
 ```bash

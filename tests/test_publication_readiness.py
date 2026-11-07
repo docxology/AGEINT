@@ -12,13 +12,7 @@ import yaml
 
 from audit_contracts import publication_readiness_audit_check_ids
 import publication_readiness as publication_readiness_module
-from publication_readiness import (
-    artifact_manifest_status,
-    collect_publication_readiness,
-    collect_source_license_posture,
-    render_publication_readiness_markdown,
-    scan_release_surfaces,
-)
+from publication_readiness import artifact_manifest_status, collect_publication_readiness, collect_source_license_posture, render_publication_readiness_markdown, scan_release_surfaces
 from release_metadata import collect_release_task_status
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -36,10 +30,11 @@ def _green_artifact_checks() -> dict[str, bool]:
 def _write_release_metadata(root: Path) -> None:
     _write(root / "pyproject.toml", '[project]\nversion = "0.2.0"\n[tool.template]\nplatform_version = "5.1.0"\n')
     _write(root / "CITATION.cff", 'version: "0.2.0"\n')
-    _write(root / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({
-        "paper": {"version": "0.2.0"},
-        "book": {"edition": "0.2.0", "license": "CC BY 4.0", "code_license": "Apache-2.0"},
-    }))
+    _write(root / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({"paper": {"version": "0.2.0"}, "book": {"edition": "0.2.0", "license": "CC BY 4.0", "code_license": "Apache-2.0"}}))
+
+
+def _write_source_anchor(root: Path, *, source_lane: str = "analytic_tradecraft", source_tier: str = "official_primary") -> None:
+    _write(root / "data" / "research_anchors" / "intelligence-anchors-001-050.jsonl", json.dumps({"key": "official_fixture", "source_lane": source_lane, "source_tier": source_tier}) + "\n")
 
 
 @pytest.fixture
@@ -49,11 +44,7 @@ def native_guard_template(tmp_path: Path) -> Path:
     _write(template / "pyproject.toml", '[project]\nname = "guard-fixture"\nversion = "0.0.0"\n')
     _write(template / "infrastructure" / "validation" / "cli.py", "")
     (template / "infrastructure" / "rendering").mkdir()
-    _write(
-        template / "scripts" / "audit" / "check_tracked_all.py",
-        "import json\nfrom pathlib import Path\n"
-        "print(json.dumps({'cwd': str(Path.cwd()), 'script': str(Path(__file__).resolve())}))\n",
-    )
+    _write(template / "scripts" / "audit" / "check_tracked_all.py", "import json\nfrom pathlib import Path\nprint(json.dumps({'cwd': str(Path.cwd()), 'script': str(Path(__file__).resolve())}))\n")
     return template
 
 
@@ -109,10 +100,11 @@ def test_release_surface_scan_flags_private_paths_and_markdown_links(tmp_path: P
     assert "working_lifecycle_path" in issue_names
 
 
-def test_source_license_posture_flags_private_figure_provenance(tmp_path: Path) -> None:
+@pytest.mark.parametrize("source", ["/Users/4d/Downloads/private.md", ".codex/private.md", ".agents/private.md"])
+def test_source_license_posture_flags_private_figure_provenance(tmp_path: Path, source: str) -> None:
     _write(tmp_path / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({"book": {"license": "CC BY 4.0", "code_license": "Apache-2.0"}, "metadata": {"license": "CC-BY-4.0"}}))
-    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "/Users/4d/Downloads/private.md"}}]}))
-    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
+    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": source}}]}))
+    _write_source_anchor(tmp_path)
 
     posture = collect_source_license_posture(tmp_path)
 
@@ -120,13 +112,51 @@ def test_source_license_posture_flags_private_figure_provenance(tmp_path: Path) 
     assert posture["issues"][0]["issue"] == "private_path_in_figure_provenance"
 
 
+@pytest.mark.parametrize(
+    ("source_lane", "source_tier", "stale_blank_count", "expected_ok"),
+    [
+        ("analytic_tradecraft", "official_primary", None, True),
+        ("analytic_tradecraft", "official_primary", 1, True),
+        ("", "official_primary", 0, False),
+        ("analytic_tradecraft", "", 0, False),
+        (None, None, 0, False),
+        (None, None, None, False),
+    ],
+)
+def test_source_license_posture_reads_current_metadata_without_writing_reports(
+    tmp_path: Path, source_lane: str | None, source_tier: str | None, stale_blank_count: int | None, expected_ok: bool
+) -> None:
+    _write_release_metadata(tmp_path)
+    _write(
+        tmp_path / "output" / "figures" / "figure_registry.json",
+        json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "data/curriculum/"}}]}),
+    )
+    if source_lane is not None and source_tier is not None:
+        _write_source_anchor(tmp_path, source_lane=source_lane, source_tier=source_tier)
+    report_path = tmp_path / "output" / "reports" / "source_metadata.json"
+    if stale_blank_count is not None:
+        _write(report_path, json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": stale_blank_count, "blank_source_tier_count": stale_blank_count}}))
+    before = report_path.read_bytes() if report_path.exists() else None
+
+    posture = collect_source_license_posture(tmp_path)
+
+    assert posture["ok"] is expected_ok
+    assert posture["issues"] == ([] if expected_ok else [{"surface": "data/research_anchors", "issue": "source_metadata_not_explicit"}])
+    assert (report_path.read_bytes() if report_path.exists() else None) == before
+
+
 def test_release_tasks_require_current_milestone_declared_prerequisites(tmp_path: Path) -> None:
     _write(
         tmp_path / "tasks.yaml",
-        yaml.safe_dump({"tasks": [
-            {"id": "new-render", "status": "done"}, {"id": "new-acceptance", "status": "todo"},
-            {"id": "ageint-release-0-2-0", "milestone": True, "deps": ["new-render", "new-acceptance"], "status": "todo"},
-        ]}),
+        yaml.safe_dump(
+            {
+                "tasks": [
+                    {"id": "new-render", "status": "done"},
+                    {"id": "new-acceptance", "status": "todo"},
+                    {"id": "ageint-release-0-2-0", "milestone": True, "deps": ["new-render", "new-acceptance"], "status": "todo"},
+                ]
+            }
+        ),
     )
 
     status = collect_release_task_status(tmp_path, version="0.2.0")
@@ -145,9 +175,7 @@ def test_artifact_manifest_status_fails_on_missing_declared_output_issue(tmp_pat
     assert status["issue_count"] == 1
 
 
-def test_publication_readiness_requires_parent_guard_even_with_green_local_evidence(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, native_guard_template: Path,
-) -> None:
+def test_publication_readiness_requires_parent_guard_even_with_green_local_evidence(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, native_guard_template: Path) -> None:
     class DummyReport:
         def __init__(self, payload: dict[str, object]) -> None:
             self.payload = payload
@@ -166,16 +194,12 @@ def test_publication_readiness_requires_parent_guard_even_with_green_local_evide
     monkeypatch.setattr(publication_readiness_module, "collect_artifact_evidence", lambda _root: DummyReport(artifact_payload))
     monkeypatch.setattr(publication_readiness_module, "collect_source_refresh_due", lambda _root: DummyReport(refresh_payload))
 
-    _write(
-        tmp_path / "tasks.yaml",
-        yaml.safe_dump({"tasks": [
-            {"id": "render", "status": "done"},
-            {"id": "ageint-release-0-2-0", "milestone": True, "deps": ["render"], "status": "todo"},
-        ]}),
-    )
+    _write(tmp_path / "tasks.yaml", yaml.safe_dump({"tasks": [{"id": "render", "status": "done"}, {"id": "ageint-release-0-2-0", "milestone": True, "deps": ["render"], "status": "todo"}]}))
     _write_release_metadata(tmp_path)
-    _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "fixture"}}]}))
-    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
+    _write(
+        tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "kind": "mermaid", "provenance": {"source": "fixture"}}]})
+    )
+    _write_source_anchor(tmp_path)
     _write(tmp_path / "output" / "reports" / "artifact_manifest.json", json.dumps({"issues": []}))
     _write(tmp_path / "output" / "manuscript" / "fixture.md", "# Fixture\n\nClean text.\n")
 
@@ -223,9 +247,7 @@ def test_publication_readiness_requires_parent_guard_even_with_green_local_evide
     assert failed.payload["parent_confidentiality_guard"]["status"] == "failed"
 
 
-def test_publication_readiness_writer_removes_stale_self_report_before_scan(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, native_guard_template: Path,
-) -> None:
+def test_publication_readiness_writer_removes_stale_self_report_before_scan(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, native_guard_template: Path) -> None:
     class DummyReport:
         def __init__(self, payload: dict[str, object]) -> None:
             self.payload = payload
@@ -247,20 +269,11 @@ def test_publication_readiness_writer_removes_stale_self_report_before_scan(
         ),
     )
     monkeypatch.setattr(publication_readiness_module, "collect_source_refresh_due", lambda _root: DummyReport({"ok": True, "summary": {"due_or_stale_count": 0}, "issue_row_count": 0}))
-    _write(
-        native_guard_template / "scripts" / "audit" / "check_tracked_all.py",
-        'import sys\nprint("ok")\nprint("warning: /Users/4d/private/env", file=sys.stderr)\n',
-    )
-    _write(
-        tmp_path / "tasks.yaml",
-        yaml.safe_dump({"tasks": [
-            {"id": "render", "status": "done"},
-            {"id": "ageint-release-0-2-0", "milestone": True, "deps": ["render"], "status": "done"},
-        ]}),
-    )
+    _write(native_guard_template / "scripts" / "audit" / "check_tracked_all.py", 'import sys\nprint("ok")\nprint("warning: /Users/4d/private/env", file=sys.stderr)\n')
+    _write(tmp_path / "tasks.yaml", yaml.safe_dump({"tasks": [{"id": "render", "status": "done"}, {"id": "ageint-release-0-2-0", "milestone": True, "deps": ["render"], "status": "done"}]}))
     _write_release_metadata(tmp_path)
     _write(tmp_path / "output" / "figures" / "figure_registry.json", json.dumps({"schema_version": "1.5", "figures": [{"label": "fig:fixture", "provenance": {"source": "fixture"}}]}))
-    _write(tmp_path / "output" / "reports" / "source_metadata.json", json.dumps({"schema_version": "1.0", "summary": {"blank_source_lane_count": 0, "blank_source_tier_count": 0}}))
+    _write_source_anchor(tmp_path)
     _write(tmp_path / "output" / "reports" / "artifact_manifest.json", json.dumps({"issues": []}))
     _write(tmp_path / "output" / "manuscript" / "fixture.md", "# Fixture\n\nClean text.\n")
     _write(tmp_path / "output" / "reports" / "publication_readiness.json", '{"stale": "/Users/4d/private/previous-run"}\n')
@@ -304,8 +317,6 @@ def test_parent_guard_uses_shared_sibling_resolution(tmp_path: Path, monkeypatch
     assert publication_readiness_module.resolve_template_repo(project) == template.resolve()
 
 
-
-
 @pytest.mark.parametrize("exit_code", [0, 13])
 def test_parent_guard_executes_current_script_in_template_cwd(native_guard_template: Path, exit_code: int) -> None:
     script = native_guard_template / "scripts" / "audit" / "check_tracked_all.py"
@@ -346,9 +357,7 @@ def test_parent_guard_needs_no_uv_or_dependency_sync(native_guard_template: Path
 
 def test_parent_guard_reports_real_subprocess_timeout(native_guard_template: Path) -> None:
     _write(native_guard_template / "scripts" / "audit" / "check_tracked_all.py", "import time\ntime.sleep(2)\n")
-    result = publication_readiness_module.run_parent_confidentiality_guard(
-        PROJECT_ROOT, template_root=native_guard_template, timeout=0.1,
-    )
+    result = publication_readiness_module.run_parent_confidentiality_guard(PROJECT_ROOT, template_root=native_guard_template, timeout=0.1)
     assert result["status"] == "timeout"
     assert result["checked"] is False
     assert result["ok"] is False
@@ -374,13 +383,7 @@ def test_readiness_cli_rejects_skipped_parent_guard() -> None:
         pytest.skip("Rendered combined PDF not present")
 
     result = subprocess.run(
-        [
-            sys.executable,
-            str(PROJECT_ROOT / "scripts" / "audit_publication_readiness.py"),
-            "--format",
-            "json",
-            "--skip-parent-guard",
-        ],
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_publication_readiness.py"), "--format", "json", "--skip-parent-guard"],
         cwd=PROJECT_ROOT,
         check=False,
         capture_output=True,

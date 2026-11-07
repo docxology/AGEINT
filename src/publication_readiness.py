@@ -18,12 +18,14 @@ try:
     from .audit_contracts import publication_readiness_audit_check_ids
     from .artifact_evidence import collect_artifact_evidence
     from .release_metadata import collect_release_metadata, collect_release_task_status
+    from .source_metadata import collect_source_metadata
     from .source_refresh_due import collect_source_refresh_due
     from .template_resolver import resolve_template_repo
 except ImportError:  # pragma: no cover - direct script imports
     from audit_contracts import publication_readiness_audit_check_ids  # type: ignore[no-redef]
     from artifact_evidence import collect_artifact_evidence  # type: ignore[no-redef]
     from release_metadata import collect_release_metadata, collect_release_task_status  # type: ignore[no-redef]
+    from source_metadata import collect_source_metadata  # type: ignore[no-redef]
     from source_refresh_due import collect_source_refresh_due  # type: ignore[no-redef]
     from template_resolver import resolve_template_repo  # type: ignore[no-redef]
 
@@ -94,12 +96,7 @@ def collect_publication_readiness(project_root: Path, *, template_root: Path | N
         "task_prerequisites_done": task_status["prerequisites_done"],
         "release_milestone_ready": task_status["release_milestone_ready"],
         "release_metadata_ok": release_metadata["ok"],
-        "parent_confidentiality_guard_ok": (
-            parent_guard["status"] == "passed"
-            and parent_guard["checked"] is True
-            and parent_guard["ok"] is True
-            and parent_guard["returncode"] == 0
-        ),
+        "parent_confidentiality_guard_ok": (parent_guard["status"] == "passed" and parent_guard["checked"] is True and parent_guard["ok"] is True and parent_guard["returncode"] == 0),
     }
     payload = {
         "project": "AGEINT",
@@ -138,7 +135,9 @@ def collect_publication_readiness(project_root: Path, *, template_root: Path | N
         "release_metadata": release_metadata,
         "task_status": task_status,
         "parent_confidentiality_guard": parent_guard,
-        "release_decision": ("Ready for an explicit local release decision only when this report is ok and the parent guard has completed successfully. A skipped or unavailable guard is informational evidence only, never release authorization. A completed milestone remains locally re-checkable and grants no authority for another publication. Metadata alignment does not prove SDK release acceptance or tag/DOI existence. This report does not publish, push, archive, promote, or create a public record."),
+        "release_decision": (
+            "Ready for an explicit local release decision only when this report is ok and the parent guard has completed successfully. A skipped or unavailable guard is informational evidence only, never release authorization. A completed milestone remains locally re-checkable and grants no authority for another publication. Metadata alignment does not prove SDK release acceptance or tag/DOI existence. This report does not publish, push, archive, promote, or create a public record."
+        ),
     }
     return PublicationReadinessReport(payload)
 
@@ -275,10 +274,10 @@ def collect_source_license_posture(project_root: Path) -> dict[str, Any]:
         if row.get("kind") == "ai_generated" and "synthetic" not in str(provenance.get("safety", "")).lower():
             issues.append({"surface": label, "issue": "synthetic_asset_missing_safety_provenance"})
 
-    source_metadata = _load_json_with_schema(root / "output" / "reports" / "source_metadata.json", output_root=root / "output")
-    metadata_summary = source_metadata.get("summary", {}) if isinstance(source_metadata, dict) else {}
-    if metadata_summary.get("blank_source_lane_count") != 0 or metadata_summary.get("blank_source_tier_count") != 0:
-        issues.append({"surface": "output/reports/source_metadata.json", "issue": "source_metadata_not_explicit"})
+    # Collect live source evidence: the standalone report may not exist yet or
+    # may describe older inputs. Readiness must not depend on audit write order.
+    if not collect_source_metadata(root).ok:
+        issues.append({"surface": "data/research_anchors", "issue": "source_metadata_not_explicit"})
     return {
         "ok": not issues,
         "issue_count": len(issues),
@@ -297,11 +296,7 @@ def artifact_manifest_status(project_root: Path) -> dict[str, Any]:
     return {"ok": not issues, "path": "output/reports/artifact_manifest.json", "issue_count": len(issues), "issues": issues}
 
 
-
-
-def run_parent_confidentiality_guard(
-    project_root: Path, *, template_root: Path | None = None, timeout: float = 180,
-) -> dict[str, Any]:
+def run_parent_confidentiality_guard(project_root: Path, *, template_root: Path | None = None, timeout: float = 180) -> dict[str, Any]:
     """Run the current template guard with this prepared Python, without syncing."""
     template = Path(template_root).resolve() if template_root is not None else resolve_template_repo(project_root)
     unavailable = {"status": "unavailable", "checked": False, "ok": False, "stdout": "", "stderr": "", "returncode": None}
@@ -311,22 +306,17 @@ def run_parent_confidentiality_guard(
     if not (template / guard_script).is_file():
         return {**unavailable, "stderr": "template confidentiality guard script not found"}
     try:
-        result = subprocess.run(
-            [sys.executable, guard_script.as_posix()],
-            cwd=template, check=False, capture_output=True, text=True, timeout=timeout,
-        )
+        result = subprocess.run([sys.executable, guard_script.as_posix()], cwd=template, check=False, capture_output=True, text=True, timeout=timeout)
     except subprocess.TimeoutExpired as exc:
-        return {
-            **unavailable, "status": "timeout",
-            "stdout": _clean_output(exc.stdout or ""),
-            "stderr": _clean_output(exc.stderr or "") or "template confidentiality guard timed out",
-        }
+        return {**unavailable, "status": "timeout", "stdout": _clean_output(exc.stdout or ""), "stderr": _clean_output(exc.stderr or "") or "template confidentiality guard timed out"}
     except OSError as exc:
         return {**unavailable, "stderr": _clean_output(str(exc))}
     return {
         "status": "passed" if result.returncode == 0 else "failed",
-        "checked": True, "ok": result.returncode == 0,
-        "stdout": _clean_output(result.stdout), "stderr": _clean_output(result.stderr),
+        "checked": True,
+        "ok": result.returncode == 0,
+        "stdout": _clean_output(result.stdout),
+        "stderr": _clean_output(result.stderr),
         "returncode": result.returncode,
     }
 

@@ -51,6 +51,9 @@ metadata or this document alone is not acceptance.
 - Keep audit CLI regression checks read-only: tests cannot replace the
   repository's publication evidence or reader bytes. Render genuine readers
   before consumer tests and refuse any mutation of their bytes.
+- Collect source-license posture read-only from current canonical metadata,
+  rather than requiring an earlier derived audit report or trusting stale
+  results. Preserve explicit-field and private-provenance rejection.
 - Package genuine local web assets beside figures for an offline-served reader;
   require the SDK to honor explicit local mode without CDN substitution.
   Inspection-only snapshots and failure diagnostics cannot authorize a release.
