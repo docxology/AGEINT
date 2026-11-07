@@ -4,7 +4,21 @@ AGEINT does not use numbered source chapters under `docs/manuscript/`. The PDF p
 
 ## Resolution: generated manuscript directory and source config precedence
 
-`infrastructure.rendering.pipeline._resolve_manuscript_dir` prefers `output/manuscript/` when it contains markdown, and refreshes `config.yaml` and `*.bib` from source `docs/manuscript/`.
+`infrastructure.rendering.pipeline.resolve_manuscript_dir` prefers
+`output/manuscript/` when it contains top-level Markdown. AGEINT's compiler emits
+a resolved `config.yaml` with the standalone `# Generated manuscript ordering`
+marker and explicit file order; the SDK preserves this project-owned config
+rather than replacing it with the neutral authored template. A
+`# Project-resolved config` marker alone owns configuration, not the manuscript
+roster.
+
+SDK Stage 04 validates that declared, confined generated roster, including deep
+chapter paths, instead of treating `docs/manuscript/` templates or unselected
+generated residue as the book. Its render snapshot commits the consumed config,
+ordered input bytes, combined Markdown and stable outputs with null authored
+source mappings. This is not a claim that generated prose was manually authored
+or that the compiler is current: AGEINT's own build stamp and artifact-evidence
+checks establish source-to-output freshness separately.
 
 ## Build before render: refresh manuscript, figures, reports, and copied outputs
 

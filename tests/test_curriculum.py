@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from _curriculum_shards import source_support_numbers_for_section
-from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide, resolve_curriculum_payload
+from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide, resolve_curriculum_payload, write_curriculum_shards
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SOURCE = PROJECT_ROOT / "SIST-Guide-TOC-and-Bibliography-v2.md"
@@ -42,6 +42,31 @@ def test_parse_curriculum_guide_handles_minimal_fixture() -> None:
     assert payload["stats"]["appendices"] == 1
     assert payload["references"][0]["key"] == "ageint001"
 
+
+
+def test_authored_teaching_note_count_recomputed_from_nonblank_shards(tmp_path: Path) -> None:
+    payload = parse_curriculum_guide(MINIMAL_GUIDE)
+    chapter = payload["parts"][0]["chapters"][0]
+    chapter["sections"][0]["teaching_note"] = "An authored explanation."
+    chapter["sections"].extend(
+        {"number": f"1.{number}", "title": f"Section {number}", "citations": [1], **fields}
+        for number, fields in enumerate(
+            [{"teaching_note": " \n\t"}, {}, {"teaching_note": 17}], start=2
+        )
+    )
+    payload["parts"].append(
+        {"number": 2, "roman": "II", "title": "Second part", "chapters": [
+            {"number": 2, "title": "Second chapter", "sections": [
+                {"number": "2.1", "title": "Another explanation", "citations": [1], "teaching_note": "Another authored note."}
+            ]}
+        ]}
+    )
+    payload["stats"]["authored_teaching_note_count"] = 999
+    write_curriculum_shards(payload, tmp_path)
+
+    curriculum = load_curriculum(tmp_path)
+
+    assert curriculum.stats["authored_teaching_note_count"] == 2
 
 def test_ageint_part_is_dense_and_named() -> None:
     curriculum = load_curriculum(DATA)

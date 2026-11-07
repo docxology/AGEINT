@@ -65,6 +65,13 @@ def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
         **payload.get("stats", {}),
         "parts": len(payload.get("parts", [])),
         "chapters": sum(len(part.get("chapters", [])) for part in payload.get("parts", [])),
+        "authored_teaching_note_count": sum(
+            1
+            for part in payload.get("parts", [])
+            for chapter in part.get("chapters", [])
+            for section in chapter.get("sections", [])
+            if isinstance(note := section.get("teaching_note"), str) and note.strip()
+        ),
         "appendices": len(payload.get("appendices", [])),
         "patterns": len(payload.get("patterns", [])),
         "references": len(payload.get("references", [])),

@@ -25,6 +25,8 @@ metadata or this document alone is not acceptance.
   preserving canonical source APIs and consumer-visible regressions.
 - Include config, preamble and dependency-lock bytes in build freshness,
   including edits that preserve timestamps and file size.
+- Derive the nonblank authored-teaching-note count from the actual curriculum
+  shards and expose it as numeric evidence, not a quality or entailment claim.
 - Align package, citation, paper and book versions; derive milestone
   prerequisites from the current version rather than a historical release.
 - Make missing, failed, timed-out or skipped SDK guards block readiness.
