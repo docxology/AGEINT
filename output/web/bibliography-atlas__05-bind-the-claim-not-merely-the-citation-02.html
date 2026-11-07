@@ -2,16 +2,19 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>04-add-or-extend-a-citation-preserve-identity-and-record-metadata-02.md.web</title>
+  <title>05-bind-the-claim-not-merely-the-citation-02.md.web</title>
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,14 +182,414 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
-<h2
-id="add-or-extend-a-citation-preserve-identity-and-record-metadata-continued-2">Add
-or extend a citation: preserve identity and record metadata (continued
-2)</h2>
-<table>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
+<h2 id="bind-the-claim-not-merely-the-citation-continued-2">Bind the
+claim, not merely the citation (continued 2)</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 28%" />
 <col style="width: 21%" />
@@ -199,9 +606,138 @@ or extend a citation: preserve identity and record metadata (continued
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">33.3</td>
+<td>AGEINT Frameworks and Infrastructure - AutoGen (Microsoft):
+Multi-Agent Conversation Patterns</td>
+<td style="text-align: right;">2</td>
+<td>[ageint147]; [ageint153]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3.1</td>
+<td>AGEINT Frameworks and Infrastructure - AssistantAgent and
+UserProxyAgent Pattern</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3.2</td>
+<td>AGEINT Frameworks and Infrastructure - GroupChat with RoundRobin and
+AutoSelect Managers</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.3.3</td>
+<td>AGEINT Frameworks and Infrastructure - Code Execution Risk and
+Sandboxing Requirements</td>
+<td style="text-align: right;">1</td>
+<td>[ageint147]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.4</td>
+<td>AGEINT Frameworks and Infrastructure - Semantic Kernel: Enterprise
+AI Orchestration</td>
+<td style="text-align: right;">1</td>
+<td>[ageint147]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5</td>
+<td>AGEINT Frameworks and Infrastructure - AWS Agentic Patterns:
+Production Architecture Guide</td>
+<td style="text-align: right;">1</td>
+<td>[ageint144]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.1</td>
+<td>AGEINT Frameworks and Infrastructure - Basic Reasoning Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.2</td>
+<td>AGEINT Frameworks and Infrastructure - Tool-Based Agents (Function
+Calling and MCP Servers)</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.3</td>
+<td>AGEINT Frameworks and Infrastructure - Computer-Use Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.4</td>
+<td>AGEINT Frameworks and Infrastructure - Coding Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.5</td>
+<td>AGEINT Frameworks and Infrastructure - Speech-to-Speech Agents</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.5.6</td>
+<td>AGEINT Frameworks and Infrastructure - Orchestration Patterns:
+Supervisor, Parallel, Subgraph</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6</td>
+<td>AGEINT Frameworks and Infrastructure - Model Context Protocol (MCP):
+interoperability metaphor and limits</td>
+<td style="text-align: right;">4</td>
+<td>[ageint155]; [ageint156]; [ageint157]; [ageint158]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.1</td>
+<td>AGEINT Frameworks and Infrastructure - MCP Architecture: Client,
+Server, Host</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.2</td>
+<td>AGEINT Frameworks and Infrastructure - NSA Security Design
+Considerations for MCP</td>
+<td style="text-align: right;">1</td>
+<td>[ageint155]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.3</td>
+<td>AGEINT Frameworks and Infrastructure - MCP Security Risks: Tool
+Poisoning, Prompt Injection via Server</td>
+<td style="text-align: right;">1</td>
+<td>[ageint159]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.6.4</td>
+<td>AGEINT Frameworks and Infrastructure - MCP in Intelligence
+Workflows: Structured Tool Registration</td>
+<td style="text-align: right;">3</td>
+<td>[ageint299]; [ageint306]; [ageint312]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.7</td>
+<td>AGEINT Frameworks and Infrastructure - Agent-to-Agent (A2A)
+Protocols: Interoperability Between Frameworks</td>
+<td style="text-align: right;">1</td>
+<td>[ageint137]</td>
+</tr>
+<tr>
+<td style="text-align: right;">33.8</td>
+<td>AGEINT Frameworks and Infrastructure - n8n and Make.com:
+No-Code/Low-Code Agentic Intelligence Pipelines</td>
+<td style="text-align: right;">1</td>
+<td>[ageint153]</td>
+</tr>
+<tr>
 <td style="text-align: right;">33.9</td>
-<td>AGEINT Frameworks and Infrastructure - Top 8 Agentic AI Frameworks
-Comparison (2026)</td>
+<td>AGEINT Frameworks and Infrastructure - Attributed 2026 framework
+comparison: evidence scope rather than ranking</td>
 <td style="text-align: right;">1</td>
 <td>[ageint146]</td>
 </tr>
@@ -254,22 +790,22 @@ Security Vulnerabilities</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.1.1</td>
-<td>AGEINT Security and Adversarial Considerations - LangChain
-PythonREPLTool: Arbitrary Code Execution</td>
+<td>AGEINT Security and Adversarial Considerations - PythonREPLTool
+risk: execution capability versus authorization</td>
 <td style="text-align: right;">3</td>
 <td>[ageint299]; [ageint306]; [ageint312]</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.1.2</td>
-<td>AGEINT Security and Adversarial Considerations - CrewAI Uncontrolled
-Lateral Movement Between Agents</td>
+<td>AGEINT Security and Adversarial Considerations - Cross-agent
+permission and contamination risk: source-guide CrewAI example</td>
 <td style="text-align: right;">3</td>
 <td>[ageint299]; [ageint306]; [ageint312]</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.1.3</td>
-<td>AGEINT Security and Adversarial Considerations - AutoGen Unsandboxed
-Code Execution</td>
+<td>AGEINT Security and Adversarial Considerations - Code-execution
+isolation risk: source-guide AutoGen example</td>
 <td style="text-align: right;">1</td>
 <td>[ageint147]</td>
 </tr>
@@ -345,36 +881,36 @@ Gathering by LLM Agents</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.6.2</td>
-<td>AGEINT Security and Adversarial Considerations - Automated
-Weaponization: Malware Generation</td>
+<td>AGEINT Security and Adversarial Considerations - Defensive review of
+reported malware-generation capability claims</td>
 <td style="text-align: right;">1</td>
 <td>[ageint100]</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.6.3</td>
-<td>AGEINT Security and Adversarial Considerations - Phishing and
-Spear-Phishing Automation</td>
+<td>AGEINT Security and Adversarial Considerations - Defensive review of
+reported phishing-automation risks</td>
 <td style="text-align: right;">1</td>
 <td>[ageint100]</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.6.4</td>
-<td>AGEINT Security and Adversarial Considerations - Multi-Agent
-Collaboration in Cyberattacks</td>
+<td>AGEINT Security and Adversarial Considerations - Defensive review of
+reported multi-agent cyberattack claims</td>
 <td style="text-align: right;">1</td>
 <td>[ageint100]</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.6.5</td>
-<td>AGEINT Security and Adversarial Considerations - Cyberattack
-Capabilities Across 6G, IoT, Satellite, UAV Networks</td>
+<td>AGEINT Security and Adversarial Considerations - Cross-domain
+cyber-risk claims: limits of transfer</td>
 <td style="text-align: right;">1</td>
 <td>[ageint100]</td>
 </tr>
 <tr>
 <td style="text-align: right;">34.7</td>
-<td>AGEINT Security and Adversarial Considerations - Observability as
-Control: Tracing, Logging, Audit for AGEINT Systems</td>
+<td>AGEINT Security and Adversarial Considerations - Observability,
+preventive controls and accountable audit</td>
 <td style="text-align: right;">1</td>
 <td>[ageint162]</td>
 </tr>
@@ -474,15 +1010,15 @@ Inference Lens</td>
 </tr>
 <tr>
 <td style="text-align: right;">35.7</td>
-<td>Active Inference and AGEINT - Applications: Deception Detection,
-Surprise Minimization, Threat Modeling</td>
+<td>Active Inference and AGEINT - Proposed applications: anomaly
+interpretation and bounded threat modeling</td>
 <td style="text-align: right;">3</td>
 <td>[ageint309]; [ageint310]; [ageint300]</td>
 </tr>
 <tr>
 <td style="text-align: right;">35.8</td>
-<td>Active Inference and AGEINT - Applications of Active Inference and
-FEP in Intelligence (TU Delft Thesis)</td>
+<td>Active Inference and AGEINT - TU Delft thesis: active-inference
+literature review and transfer limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint106]</td>
 </tr>
@@ -526,57 +1062,57 @@ remediation backlog for AGEINT Python Code Library</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.1</td>
-<td>AGEINT Python Code Library - Threat Intelligence Aggregation Agent:
-LangChain + STIX/TAXII</td>
+<td>AGEINT Python Code Library - Offline structured-evidence
+aggregation: supplied CTI-style records</td>
 <td style="text-align: right;">3</td>
 <td>[ageint309]; [ageint310]; [ageint300]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.2</td>
-<td>AGEINT Python Code Library - Multi-Agent OSINT Crew: CrewAI + Shodan
-+ theHarvester + Maltego</td>
+<td>AGEINT Python Code Library - Offline source-review crew: local
+handoff records</td>
 <td style="text-align: right;">2</td>
 <td>[ageint301]; [ageint298]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.3</td>
-<td>AGEINT Python Code Library - Autonomous Vulnerability Scanner:
-AutoGen + Nmap + MITRE ATT&amp;CK Navigator</td>
+<td>AGEINT Python Code Library - Offline review of supplied
+scanner-result records: no autonomous scanning</td>
 <td style="text-align: right;">3</td>
 <td>[ageint300]; [ageint304]; [ageint306]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.4</td>
-<td>AGEINT Python Code Library - RAG Pipeline for All-Source
-Intelligence Fusion: LangGraph + Chroma + OpenAI</td>
+<td>AGEINT Python Code Library - Offline passage retrieval and
+claim-support contracts</td>
 <td style="text-align: right;">3</td>
 <td>[ageint305]; [ageint304]; [ageint303]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.5</td>
-<td>AGEINT Python Code Library - Pattern-of-Life Analysis Agent:
-Persistent Memory + GEOINT + OSINT</td>
+<td>AGEINT Python Code Library - Offline longitudinal document-state
+review: no person tracking</td>
 <td style="text-align: right;">2</td>
 <td>[ageint301]; [ageint298]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.6</td>
-<td>AGEINT Python Code Library - Cognitive Security Inoculation Agent:
-Van der Linden Taxonomy + GPT-4o</td>
+<td>AGEINT Python Code Library - Offline opt-in media-literacy lesson
+and isolated assessment records</td>
 <td style="text-align: right;">2</td>
 <td>[ageint308]; [ageint311]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.7</td>
-<td>AGEINT Python Code Library - Supply Chain Inspector: SBOM + GitHub
-Commit Analysis + Anomaly Detection</td>
+<td>AGEINT Python Code Library - Offline software-provenance and
+advisory-record</td>
 <td style="text-align: right;">3</td>
 <td>[ageint303]; [ageint304]; [ageint305]</td>
 </tr>
 <tr>
 <td style="text-align: right;">36.8</td>
-<td>AGEINT Python Code Library - ICS Anomaly Detection Agent: OT Network
-+ MITRE ATT&amp;CK for ICS</td>
+<td>AGEINT Python Code Library - Offline toy process-event review: no OT
+connection or actuation</td>
 <td style="text-align: right;">3</td>
 <td>[ageint307]; [ageint305]; [ageint304]</td>
 </tr>
@@ -649,14 +1185,14 @@ Multifaceted Concept of Cognitive Security (Elsevier, 2025)</td>
 <tr>
 <td style="text-align: right;">37.3</td>
 <td>Cognitive Security: Foundations and Definitions - Cognitive Security
-in the Age of AI (RESAID Policy Paper, 2025)</td>
+in the Age of AI: Policy Perspective</td>
 <td style="text-align: right;">1</td>
 <td>[ageint095]</td>
 </tr>
 <tr>
 <td style="text-align: right;">37.4</td>
 <td>Cognitive Security: Foundations and Definitions - AI Development
-Should Prioritize Cognitive Security (NeurIPS Position Paper, 2023)</td>
+Should Prioritize Cognitive Security: Position Paper</td>
 <td style="text-align: right;">1</td>
 <td>[ageint096]</td>
 </tr>
@@ -669,15 +1205,15 @@ Cognitive Security (ICS) Program</td>
 </tr>
 <tr>
 <td style="text-align: right;">37.4.2</td>
-<td>Cognitive Security: Foundations and Definitions - Mixed Reality
-Cognitive Attack Typology</td>
+<td>Cognitive Security: Foundations and Definitions - Mixed-Reality
+Cognitive Hazard Literacy</td>
 <td style="text-align: right;">1</td>
 <td>[ageint171]</td>
 </tr>
 <tr>
 <td style="text-align: right;">37.4.3</td>
-<td>Cognitive Security: Foundations and Definitions - Formal Methods for
-Cognitive Guarantees in MR Systems</td>
+<td>Cognitive Security: Foundations and Definitions - Model-Scoped
+Formal Methods for Mixed-Reality Safeguards</td>
 <td style="text-align: right;">1</td>
 <td>[ageint169]</td>
 </tr>
@@ -719,7 +1255,7 @@ Security as a Field</td>
 <tr>
 <td style="text-align: right;">37.8.2</td>
 <td>Cognitive Security: Foundations and Definitions - Epistemic Security
-2029: Fortifying the UK’s Information Supply Chain</td>
+2029: The UK’s Information Supply Chain</td>
 <td style="text-align: right;">1</td>
 <td>[ageint174]</td>
 </tr>
@@ -779,63 +1315,63 @@ Biobehavioral Reviews, 2025)</td>
 <tr>
 <td style="text-align: right;">38.1.1</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Executive Brain
-Systems and Vulnerability to Information Threats</td>
+Systems: Research on Information-Related Tasks</td>
 <td style="text-align: right;">1</td>
 <td>[ageint177]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.1.2</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Affective Systems:
-Emotional Exploitation in Manipulation</td>
+Emotion and Information Processing</td>
 <td style="text-align: right;">1</td>
 <td>[ageint177]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.1.3</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Integrative
-Systems: Brain Network Interactions During Threat Exposure</td>
+Systems: Proposed Brain-Network Interactions</td>
 <td style="text-align: right;">1</td>
 <td>[ageint177]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.1.4</td>
-<td>Neurocognitive Mechanisms of Cognitive Security - Neuromarkers of
-Susceptibility and Resilience</td>
+<td>Neurocognitive Mechanisms of Cognitive Security - Candidate
+Neuromarkers: Validation and Inference Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint177]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.2</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Neuro-Cognitive
-Approaches to Cybersecurity: Systematic Review (Emerald, 2025)</td>
+Approaches to Cybersecurity: Systematic</td>
 <td style="text-align: right;">1</td>
 <td>[ageint178]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.3</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Cognitive Load in
-Intelligence Community Settings (NCSU Survey, 2024)</td>
+Intelligence Community Settings: Measurement Survey</td>
 <td style="text-align: right;">1</td>
 <td>[ageint179]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.3.1</td>
-<td>Neurocognitive Mechanisms of Cognitive Security - 129 Metrics
-Catalogued: Questionnaire, Biometric, Task-Performance</td>
+<td>Neurocognitive Mechanisms of Cognitive Security - Catalogued
+Metrics: Questionnaire, Biometric, Task-Performance</td>
 <td style="text-align: right;">1</td>
 <td>[ageint179]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.3.2</td>
-<td>Neurocognitive Mechanisms of Cognitive Security - NASA-TLX and Its
-Intelligence Analytic Applications</td>
+<td>Neurocognitive Mechanisms of Cognitive Security - NASA-TLX:
+Subjective Workload and Declared Scoring</td>
 <td style="text-align: right;">1</td>
 <td>[ageint179]</td>
 </tr>
 <tr>
 <td style="text-align: right;">38.3.3</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Eye Tracking and
-Heart Rate Variability for Analyst Overload Detection</td>
+Heart-Rate Variability: Workload Research Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint179]</td>
 </tr>
@@ -849,7 +1385,7 @@ Overload and Cognitive Bias in Intelligence Analysis</td>
 <tr>
 <td style="text-align: right;">38.5</td>
 <td>Neurocognitive Mechanisms of Cognitive Security - Decision-Making
-Under Uncertainty: Neural Mechanisms and Intelligence Implications</td>
+Under Uncertainty: Neural Hypotheses and Analytic Limits</td>
 <td style="text-align: right;">2</td>
 <td>[ageint308]; [ageint311]</td>
 </tr>
@@ -892,7 +1428,7 @@ McGuire and Papageorgis (1961) to Present</td>
 <tr>
 <td style="text-align: right;">39.2</td>
 <td>Psychological Inoculation and Prebunking - Psychological Inoculation
-Against Misinformation: Meta-Analysis</td>
+Against Misinformation: Corrected and Contested Meta-Analysis</td>
 <td style="text-align: right;">1</td>
 <td>[ageint182]</td>
 </tr>
@@ -905,29 +1441,29 @@ Based on Inoculation Theory (Harvard Kennedy School)</td>
 </tr>
 <tr>
 <td style="text-align: right;">39.4</td>
-<td>Psychological Inoculation and Prebunking - Cambridge/Jigsaw YouTube
-Field Study: 5.4 Million Users, 7 Experiments</td>
+<td>Psychological Inoculation and Prebunking - Cambridge/Jigsaw: Six
+Online Studies and a Seventh YouTube Field Study</td>
 <td style="text-align: right;">1</td>
 <td>[ageint152]</td>
 </tr>
 <tr>
 <td style="text-align: right;">39.4.1</td>
-<td>Psychological Inoculation and Prebunking - Inoculation Effect:
-Measured Improvement in Manipulation Recognition</td>
+<td>Psychological Inoculation and Prebunking - Measured Manipulation
+Recognition: Outcome and Follow-Up Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint152]</td>
 </tr>
 <tr>
 <td style="text-align: right;">39.4.2</td>
-<td>Psychological Inoculation and Prebunking - Source-Agnostic Design:
-Effective Across Political Affiliations</td>
+<td>Psychological Inoculation and Prebunking - Source-Agnostic Design
+and Measured Moderation Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint152]</td>
 </tr>
 <tr>
 <td style="text-align: right;">39.4.3</td>
-<td>Psychological Inoculation and Prebunking - Scaling at $0.05 Per
-View; Campaign Applications</td>
+<td>Psychological Inoculation and Prebunking - Study-Specific Cost per
+View: What Scaling Does Not Establish</td>
 <td style="text-align: right;">1</td>
 <td>[ageint152]</td>
 </tr>
@@ -948,15 +1484,14 @@ Misinformation (JAMA, 2024)</td>
 <tr>
 <td style="text-align: right;">39.7</td>
 <td>Psychological Inoculation and Prebunking - Psychological Inoculation
-Against Misinformation: Current Evidence and Boundary Conditions
-(ANNALS, 2022)</td>
+Against Misinformation: Evidence and Boundary Conditions</td>
 <td style="text-align: right;">1</td>
 <td>[ageint186]</td>
 </tr>
 <tr>
 <td style="text-align: right;">39.8</td>
 <td>Psychological Inoculation and Prebunking - NATO STRATCOM COE:
-Inoculation Theory and Misinformation (PDF)</td>
+Inoculation Theory and Misinformation</td>
 <td style="text-align: right;">1</td>
 <td>[ageint187]</td>
 </tr>
@@ -969,8 +1504,9 @@ Prebunking (Cambridge/Jigsaw/BBC)</td>
 </tr>
 <tr>
 <td style="text-align: right;">39.10</td>
-<td>Psychological Inoculation and Prebunking - Critical Thinking
-Training vs. Misinformation: Systematic Review (Nature Comms, 2025)</td>
+<td>Psychological Inoculation and Prebunking - Critical-Thinking
+Training Review: Humanities and Social Sciences Communications,
+2025/2026</td>
 <td style="text-align: right;">1</td>
 <td>[ageint181]</td>
 </tr>
@@ -1020,7 +1556,7 @@ Attention, Memory, Trust, and Decision-Making</td>
 <tr>
 <td style="text-align: right;">40.2</td>
 <td>Cognitive Security Operations - Adversarial Cognitive Operations:
-PSYOP, Active Measures, Synthetic Influence</td>
+Defensive Recognition and Attribution Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint105]</td>
 </tr>
@@ -1033,8 +1569,8 @@ Digital Identity Attacks</td>
 </tr>
 <tr>
 <td style="text-align: right;">40.4</td>
-<td>Cognitive Security Operations - From Spycraft to Self-Mastery: SATs
-for Personal Cognitive Security</td>
+<td>Cognitive Security Operations - SATs for Personal Cognitive
+Security: Reviewable Reasoning, Not Self-Diagnosis</td>
 <td style="text-align: right;">1</td>
 <td>[ageint188]</td>
 </tr>
@@ -1055,14 +1591,14 @@ Policy Proposals</td>
 <tr>
 <td style="text-align: right;">40.7</td>
 <td>Cognitive Security Operations - Cognitive Security and Active
-Inference: The Predictive Mind Under Attack</td>
+Inference: Modeling Perspective</td>
 <td style="text-align: right;">2</td>
 <td>[ageint106]; [ageint003]</td>
 </tr>
 <tr>
 <td style="text-align: right;">40.8</td>
-<td>Cognitive Security Operations - AI-Assisted Cognitive Security
-Tools: Detection and Intervention Systems</td>
+<td>Cognitive Security Operations - AI-Assisted Cognitive Security:
+Assistance, Detection Limits, and Human</td>
 <td style="text-align: right;">1</td>
 <td>[ageint096]</td>
 </tr>
@@ -1153,8 +1689,8 @@ Thinking Techniques</td>
 </tr>
 <tr>
 <td style="text-align: right;">41.4.5</td>
-<td>Structured Analytic Techniques (SATs) - Deception Detection
-SATs</td>
+<td>Structured Analytic Techniques (SATs) - Deception Hypotheses:
+Competing Accounts and Attribution Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint193]</td>
 </tr>
@@ -1180,7 +1716,7 @@ Analysis</td>
 <tr>
 <td style="text-align: right;">41.5</td>
 <td>Structured Analytic Techniques (SATs) - Analytic Tradecraft and the
-Intelligence Community (Tandfonline, 2014)</td>
+Intelligence Community: Professional Context</td>
 <td style="text-align: right;">1</td>
 <td>[ageint195]</td>
 </tr>
@@ -1200,8 +1736,8 @@ Confirmation Bias, Anchoring, Groupthink in Intelligence</td>
 </tr>
 <tr>
 <td style="text-align: right;">41.8</td>
-<td>Structured Analytic Techniques (SATs) - From Spycraft to
-Self-Mastery: SATs for Everyday Decision-Making</td>
+<td>Structured Analytic Techniques (SATs) - SATs for Everyday
+Decision-Making: Bounded Transfer</td>
 <td style="text-align: right;">1</td>
 <td>[ageint188]</td>
 </tr>
@@ -1258,7 +1794,7 @@ Sequencing</td>
 <tr>
 <td style="text-align: right;">42.4</td>
 <td>Advanced Analysis Methods - Collection Management: Requirements,
-Gaps, Tasking</td>
+Gaps, and Observation Opportunity</td>
 <td style="text-align: right;">3</td>
 <td>[ageint309]; [ageint310]; [ageint300]</td>
 </tr>
@@ -1271,15 +1807,15 @@ Assessments, Estimates, Warnings</td>
 </tr>
 <tr>
 <td style="text-align: right;">42.6</td>
-<td>Advanced Analysis Methods - Communicating Uncertainty: Analytic Line
-vs. Raw Reporting</td>
+<td>Advanced Analysis Methods - Communicating Uncertainty: Forecasts,
+Confidence, and Calibration</td>
 <td style="text-align: right;">2</td>
 <td>[ageint297]; [ageint298]</td>
 </tr>
 <tr>
 <td style="text-align: right;">42.7</td>
-<td>Advanced Analysis Methods - Machine-Assisted Analysis: When to
-Automate, When to Require Human Judgment</td>
+<td>Advanced Analysis Methods - Machine-Assisted Analysis: Automation,
+Independent Review, and Abstention</td>
 <td style="text-align: right;">2</td>
 <td>[ageint297]; [ageint298]</td>
 </tr>
@@ -1317,14 +1853,14 @@ Athlete</td>
 <tr>
 <td style="text-align: right;">43.1</td>
 <td>The Intelligent Operator as Cognitive Athlete - Productivity
-Tradecraft: Managing Cognitive Resources for Sustained Operations</td>
+Tradecraft: Sustainable Work, Review, and Recovery</td>
 <td style="text-align: right;">2</td>
 <td>[ageint308]; [ageint311]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.2</td>
-<td>The Intelligent Operator as Cognitive Athlete - The Science Behind
-Getting Things Done (GTD): Cognitive Foundations</td>
+<td>The Intelligent Operator as Cognitive Athlete - Getting Things Done
+(GTD): Theoretical Cognitive Rationale</td>
 <td style="text-align: right;">1</td>
 <td>[ageint197]</td>
 </tr>
@@ -1344,64 +1880,64 @@ Capture, Clarify, Organize, Reflect, Engage</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.2.3</td>
-<td>The Intelligent Operator as Cognitive Athlete - Why GTD Improves
-Team Intelligence Performance (Allen, 2024)</td>
+<td>The Intelligent Operator as Cognitive Athlete - Allen’s GTD
+Team-Performance Claims: Practitioner Perspective</td>
 <td style="text-align: right;">1</td>
 <td>[ageint199]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.2.4</td>
-<td>The Intelligent Operator as Cognitive Athlete - GTD and Reduction of
-Cognitive Load: Empirical Evidence</td>
+<td>The Intelligent Operator as Cognitive Athlete - GTD and Cognitive
+Load: Evidence Needed for an Efficacy Claim</td>
 <td style="text-align: right;">2</td>
 <td>[ageint179]; [ageint197]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3</td>
-<td>The Intelligent Operator as Cognitive Athlete - Flow State and Peak
-Performance in Intelligence Work</td>
+<td>The Intelligent Operator as Cognitive Athlete - Flow, Task
+Absorption, and Performance: Distinct Claims</td>
 <td style="text-align: right;">3</td>
 <td>[ageint200]; [ageint201]; [ageint202]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3.1</td>
 <td>The Intelligent Operator as Cognitive Athlete - Csikszentmihalyi’s
-Flow: Definition, Seven Conditions, Neurophysiology</td>
+Flow: Experience versus Proposed Conditions</td>
 <td style="text-align: right;">1</td>
 <td>[ageint203]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3.2</td>
 <td>The Intelligent Operator as Cognitive Athlete - Neuroscience of
-Flow: Prefrontal Cortex Deactivation, Dopamine</td>
+Flow: Proposed Accounts, Not a Brain-Shutdown Recipe</td>
 <td style="text-align: right;">1</td>
 <td>[ageint204]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3.3</td>
 <td>The Intelligent Operator as Cognitive Athlete - Flow Research
-Collective</td>
+Collective: Unverified Vendor Performance Claims</td>
 <td style="text-align: right;">1</td>
 <td>[ageint205]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3.4</td>
 <td>The Intelligent Operator as Cognitive Athlete - Go With the Flow:
-Neuroscientific View on Full Engagement (PMC, 2020)</td>
+Proposed Neuroscientific Model (Online 2020; Issue 2021)</td>
 <td style="text-align: right;">1</td>
 <td>[ageint201]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3.5</td>
 <td>The Intelligent Operator as Cognitive Athlete - Investigating the
-Flow Experience: Key Conceptual Issues (PMC, 2020)</td>
+Flow Experience: Conceptual and Measurement Disagreement</td>
 <td style="text-align: right;">1</td>
 <td>[ageint206]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.3.6</td>
-<td>The Intelligent Operator as Cognitive Athlete - Engineering Flow
-State for Intelligence Analysis Environments</td>
+<td>The Intelligent Operator as Cognitive Athlete - Work-Environment
+Design Hypotheses, Not Guaranteed Flow</td>
 <td style="text-align: right;">1</td>
 <td>[ageint205]</td>
 </tr>
@@ -1414,71 +1950,71 @@ Management in Intelligence Work</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.4.1</td>
-<td>The Intelligent Operator as Cognitive Athlete - Cognitive
-Load–Productivity Tradeoff in Task Switching</td>
+<td>The Intelligent Operator as Cognitive Athlete - Task Switching:
+Task-Specific Load and Performance Relationships</td>
 <td style="text-align: right;">1</td>
 <td>[ageint207]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.4.2</td>
-<td>The Intelligent Operator as Cognitive Athlete - NASA-TLX and Analyst
-Workload Monitoring</td>
+<td>The Intelligent Operator as Cognitive Athlete - NASA-TLX: Voluntary
+Task-Level Workload, Not Personnel Ranking</td>
 <td style="text-align: right;">1</td>
 <td>[ageint179]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.4.3</td>
-<td>The Intelligent Operator as Cognitive Athlete - Biometric Monitoring
-for Real-Time Load Detection</td>
+<td>The Intelligent Operator as Cognitive Athlete - Biometric Workload
+Research: Consent, Confounding, and No Diagnostic Use</td>
 <td style="text-align: right;">1</td>
 <td>[ageint179]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.5</td>
 <td>The Intelligent Operator as Cognitive Athlete - Spycraft and
-Cognitive Performance: Inside the Operative’s Mind</td>
+Cognitive Performance: Interview Testimony and Its Limits</td>
 <td style="text-align: right;">1</td>
 <td>[ageint025]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.5.1</td>
-<td>The Intelligent Operator as Cognitive Athlete - MICE Framework and
-Moral Flexibility: Operative Psychology</td>
+<td>The Intelligent Operator as Cognitive Athlete - MICE and
+Moral-Flexibility Narratives: Attribution without Profiling</td>
 <td style="text-align: right;">1</td>
 <td>[ageint025]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.5.2</td>
-<td>The Intelligent Operator as Cognitive Athlete - Trust, Loneliness,
-and the Psychological Cost of Tradecraft</td>
+<td>The Intelligent Operator as Cognitive Athlete - Trust and Loneliness
+in Interview Testimony: Non-Generalization</td>
 <td style="text-align: right;">1</td>
 <td>[ageint025]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.5.3</td>
-<td>The Intelligent Operator as Cognitive Athlete - Pattern Recognition,
-Not Task Management: Operative Cognitive Design</td>
+<td>The Intelligent Operator as Cognitive Athlete - Human Pattern
+Recognition and Task Management: Different Functions</td>
 <td style="text-align: right;">1</td>
 <td>[ageint025]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.6</td>
-<td>The Intelligent Operator as Cognitive Athlete - Circadian
-Intelligence: Timing Operations to Peak Cognitive Windows</td>
+<td>The Intelligent Operator as Cognitive Athlete - Scheduling,
+Recovery, and the Limits of Peak-Window Claims</td>
 <td style="text-align: right;">2</td>
 <td>[ageint308]; [ageint311]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.7</td>
-<td>The Intelligent Operator as Cognitive Athlete - Adversarial Stress
-Inoculation: Preparing the Analyst for High-Stakes Environments</td>
+<td>The Intelligent Operator as Cognitive Athlete - Stress Preparedness:
+Supportive Rehearsal and Clinical Boundaries</td>
 <td style="text-align: right;">3</td>
 <td>[ageint300]; [ageint304]; [ageint306]</td>
 </tr>
 <tr>
 <td style="text-align: right;">43.8</td>
-<td>The Intelligent Operator as Cognitive Athlete - The Red Zone: How
-Trauma, PTSD, and Moral Injury Affect Operator Cognition</td>
+<td>The Intelligent Operator as Cognitive Athlete - Trauma, PTSD, and
+Moral Injury: Awareness, Support, and Non-Diagnosis</td>
 <td style="text-align: right;">1</td>
 <td>[ageint205]</td>
 </tr>
@@ -1523,21 +2059,21 @@ Management (PKM) Systems for Intelligence Professionals</td>
 <tr>
 <td style="text-align: right;">44.1.1</td>
 <td>Information Architecture for Intelligence Work - Zettelkasten:
-German Note-Taking System for Researchers</td>
+Linked Atomic Notes and Evidence Boundaries</td>
 <td style="text-align: right;">3</td>
 <td>[ageint307]; [ageint305]; [ageint304]</td>
 </tr>
 <tr>
 <td style="text-align: right;">44.1.2</td>
 <td>Information Architecture for Intelligence Work - Obsidian, Roam
-Research, LogSeq: PKM Tools for Analysts</td>
+Research, LogSeq: Tool-Evaluation Questions</td>
 <td style="text-align: right;">3</td>
 <td>[ageint052]; [ageint051]; [ageint269]</td>
 </tr>
 <tr>
 <td style="text-align: right;">44.1.3</td>
-<td>Information Architecture for Intelligence Work - Second Brain
-Methodology Applied to Intelligence Collection</td>
+<td>Information Architecture for Intelligence Work - Second Brain as
+External Notes: Capture Is Not Understanding</td>
 <td style="text-align: right;">2</td>
 <td>[ageint308]; [ageint311]</td>
 </tr>
@@ -1551,21 +2087,22 @@ and Source Hygiene</td>
 <tr>
 <td style="text-align: right;">44.3</td>
 <td>Information Architecture for Intelligence Work - Distraction
-Architecture: Designing Environments for Deep Analytical Work</td>
+Architecture: Retrieval, Re-Entry, and Necessary Interruptions</td>
 <td style="text-align: right;">3</td>
 <td>[ageint309]; [ageint310]; [ageint300]</td>
 </tr>
 <tr>
 <td style="text-align: right;">44.4</td>
 <td>Information Architecture for Intelligence Work - Collaborative
-Intelligence: Team Workflows, Shared Notes, Secure Platforms</td>
+Intelligence: Shared Notes, Source of Truth, and Correction
+Propagation</td>
 <td style="text-align: right;">3</td>
 <td>[ageint307]; [ageint305]; [ageint304]</td>
 </tr>
 <tr>
 <td style="text-align: right;">44.5</td>
 <td>Information Architecture for Intelligence Work - The Analyst’s
-Toolkit: Hardware, Software, and Network Configuration</td>
+Toolkit: Governed Storage, Retrieval, and Lifecycle Limits</td>
 <td style="text-align: right;">3</td>
 <td>[ageint055]; [ageint051]; [ageint301]</td>
 </tr>
@@ -1631,15 +2168,16 @@ Programmable Logic Controllers — Field-Level Execution</td>
 </tr>
 <tr>
 <td style="text-align: right;">45.1.4</td>
-<td>Industrial Control Systems (ICS) and Operational Technology - OT
-vs. IT: Fundamental Security Philosophy Differences</td>
+<td>Industrial Control Systems (ICS) and Operational Technology - OT and
+IT: Process-dependent Safety, Availability, and Information
+Constraints</td>
 <td style="text-align: right;">2</td>
 <td>[ageint209]; [ageint210]</td>
 </tr>
 <tr>
 <td style="text-align: right;">45.1.5</td>
 <td>Industrial Control Systems (ICS) and Operational Technology -
-Air-Gap Erosion: The Digital Transformation Vulnerability</td>
+Air-gap Claims and Changing Connectivity Assumptions</td>
 <td style="text-align: right;">1</td>
 <td>[ageint209]</td>
 </tr>
@@ -1702,22 +2240,22 @@ remediation backlog for MITRE ATT&amp;CK for ICS</td>
 </tr>
 <tr>
 <td style="text-align: right;">46.1</td>
-<td>MITRE ATT&amp;CK for ICS - ICS Matrix: 12 Tactics, Full Technique
-Library</td>
+<td>MITRE ATT&amp;CK for ICS - ICS Matrix: Versioned Tactics and
+Technique Knowledge Base</td>
 <td style="text-align: right;">1</td>
 <td>[ageint213]</td>
 </tr>
 <tr>
 <td style="text-align: right;">46.1.1</td>
-<td>MITRE ATT&amp;CK for ICS - Initial Access (12 techniques): Drive-by,
-Remote Services, Wireless Compromise</td>
+<td>MITRE ATT&amp;CK for ICS - Initial Access: Version-dependent
+Entry-behavior Categories</td>
 <td style="text-align: right;">1</td>
 <td>[ageint213]</td>
 </tr>
 <tr>
 <td style="text-align: right;">46.1.2</td>
-<td>MITRE ATT&amp;CK for ICS - Execution: Modify Controller Tasking,
-Command-Line Interface</td>
+<td>MITRE ATT&amp;CK for ICS - Execution: Tasking Changes and Versioned
+Interpreter Categories</td>
 <td style="text-align: right;">1</td>
 <td>[ageint213]</td>
 </tr>
@@ -1839,16 +2377,15 @@ Framework for ICS Cyber Incidents (ScienceDirect 2021)</td>
 </tr>
 <tr>
 <td style="text-align: right;">47.2</td>
-<td>Historical ICS Cyber Incidents: Intelligence Analysis - The
-Cyber-Physical Six: Stuxnet, BlackEnergy, CrashOverride, Trisis,
-Irongate, Havex</td>
+<td>Historical ICS Cyber Incidents: Intelligence Analysis - Comparing
+Selected Cases with Honeywell’s Different Cyber-Physical Six</td>
 <td style="text-align: right;">1</td>
 <td>[ageint218]</td>
 </tr>
 <tr>
 <td style="text-align: right;">47.2.1</td>
 <td>Historical ICS Cyber Incidents: Intelligence Analysis - Stuxnet:
-First Cyber-Physical Weapon — Operation Olympic Games</td>
+Reported Physical Sabotage and Attributed Operation Context</td>
 <td style="text-align: right;">2</td>
 <td>[ageint219]; [ageint220]</td>
 </tr>
@@ -1862,7 +2399,8 @@ Ukraine Power Grid Attacks (2015)</td>
 <tr>
 <td style="text-align: right;">47.2.3</td>
 <td>Historical ICS Cyber Incidents: Intelligence Analysis -
-CrashOverride/Industroyer: Protocol-Agnostic Power Grid Weapon</td>
+CrashOverride/Industroyer: Protocol-aware Modular Industrial
+Malware</td>
 <td style="text-align: right;">1</td>
 <td>[ageint217]</td>
 </tr>
@@ -1876,21 +2414,22 @@ Triton/Trisis: Safety Instrumented System Attack</td>
 <tr>
 <td style="text-align: right;">47.2.5</td>
 <td>Historical ICS Cyber Incidents: Intelligence Analysis - Irongate:
-Stuxnet Descendant Against Simulated Environment</td>
+Reported Simulated-environment Case, Lineage Unestablished</td>
 <td style="text-align: right;">1</td>
 <td>[ageint217]</td>
 </tr>
 <tr>
 <td style="text-align: right;">47.2.6</td>
-<td>Historical ICS Cyber Incidents: Intelligence Analysis - Havex: IT-OT
-Pivot Using Weaponized OPC Software</td>
+<td>Historical ICS Cyber Incidents: Intelligence Analysis - Havex:
+Reported Industrial Reconnaissance and Evidence Boundaries</td>
 <td style="text-align: right;">1</td>
 <td>[ageint217]</td>
 </tr>
 <tr>
 <td style="text-align: right;">47.3</td>
-<td>Historical ICS Cyber Incidents: Intelligence Analysis - Threat
-Scoring Framework: Malware Sophistication × Attack Consequence</td>
+<td>Historical ICS Cyber Incidents: Intelligence Analysis - Comparing
+Malware Sophistication and Reported Consequence without an Unverified
+Formula</td>
 <td style="text-align: right;">1</td>
 <td>[ageint217]</td>
 </tr>
@@ -1929,8 +2468,8 @@ Intelligence Sharing for Critical Infrastructure</td>
 <tr>
 <td style="text-align: right;">48.1</td>
 <td>Threat Intelligence Sharing for Critical Infrastructure -
-Evidence-Driven Analysis of Threat Information Sharing for ICS (arXiv
-2025)</td>
+Evidence-Driven Analysis of ICS Threat Sharing: Versioned Corpus
+Study</td>
 <td style="text-align: right;">1</td>
 <td>[ageint077]</td>
 </tr>
@@ -2017,8 +2556,8 @@ for ICS Log Analysis and Threat Correlation</td>
 </tr>
 <tr>
 <td style="text-align: right;">49.3</td>
-<td>AGEINT Applied to ICS and Cyber-Physical Intelligence - Autonomous
-ICS Incident Response: AGEINT Pattern 16 in OT</td>
+<td>AGEINT Applied to ICS and Cyber-Physical Intelligence - Human-gated
+Advisory Review of AGEINT Pattern 16 in OT</td>
 <td style="text-align: right;">1</td>
 <td>[ageint213]</td>
 </tr>
@@ -2032,7 +2571,7 @@ SCADA Data Fusion and Pattern-of-Process Analysis</td>
 <tr>
 <td style="text-align: right;">49.5</td>
 <td>AGEINT Applied to ICS and Cyber-Physical Intelligence - Digital
-Twins for Industrial Intelligence: Simulation and Red Team</td>
+Twins: Disconnected Representations and Fidelity Limits</td>
 <td style="text-align: right;">3</td>
 <td>[ageint300]; [ageint304]; [ageint306]</td>
 </tr>
@@ -2074,8 +2613,8 @@ remediation backlog for Legal Authorities and Constraints</td>
 </tr>
 <tr>
 <td style="text-align: right;">50.1</td>
-<td>Legal Authorities and Constraints - Executive Order 12333: United
-States Intelligence Activities</td>
+<td>Legal Authorities and Constraints - Executive Order 12333: Version
+Limits and the Distinct PPD-28 Source</td>
 <td style="text-align: right;">1</td>
 <td>[ageint221]</td>
 </tr>
@@ -2088,21 +2627,21 @@ States Intelligence Activities</td>
 <tr>
 <td style="text-align: right;">50.3</td>
 <td>Legal Authorities and Constraints - Intelligence Community
-Directives: Full Index (IRP/FAS)</td>
+Directives: Index Provenance versus Current Text</td>
 <td style="text-align: right;">1</td>
 <td>[ageint006]</td>
 </tr>
 <tr>
 <td style="text-align: right;">50.4</td>
-<td>Legal Authorities and Constraints - CIA Classification Guide
-(National Archives)</td>
+<td>Legal Authorities and Constraints - CIA/NARA Classification Record:
+Document-type and Version Verification</td>
 <td style="text-align: right;">1</td>
 <td>[ageint222]</td>
 </tr>
 <tr>
 <td style="text-align: right;">50.5</td>
-<td>Legal Authorities and Constraints - Allied Legal Frameworks: RIPA,
-Investigatory Powers Act, GDPR</td>
+<td>Legal Authorities and Constraints - Selected UK/EU Instruments:
+Separate Applicability Questions, Not an Allied-law Map</td>
 <td style="text-align: right;">2</td>
 <td>[ageint298]; [ageint297]</td>
 </tr>
@@ -2180,7 +2719,7 @@ Leaking, and the Epistemic Duty of Intelligence Professionals</td>
 <td>[ageint298]; [ageint297]</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

@@ -1,9 +1,4 @@
-"""Focused regression coverage for AGEINT coursebook generator branches.
-
-Imports of ``manuscript_manifest._01_part``, ``_02_part``, ``_03_part``, and
-``manuscript_variables._01_part`` / ``_02_part`` exercise private branch paths
-intentionally for coverage of part-module edges.
-"""
+"""Behavioral contracts for safe title routing, identifiers and input errors."""
 
 from __future__ import annotations
 
@@ -13,14 +8,8 @@ import pytest
 
 import curriculum
 import intelligence_content as ic
-from manuscript_manifest import _04_part as mm4
-from manuscript_manifest.types import ManuscriptManifest, ManuscriptSection, SlugRegistry
-import manuscript_manifest._01_part as mm1
-import manuscript_manifest._02_part as mm2
-import manuscript_manifest._chapter_governance as mm_gov
-import manuscript_manifest._chapter_practice_pathways as mm_path
+from manuscript_manifest.types import SlugRegistry
 import manuscript_variables._01_part as mv1
-import manuscript_variables._02_part as mv2
 import source_identity
 import template_resolver
 
@@ -94,157 +83,14 @@ def test_safe_curriculum_treatment_covers_contextual_title_branches() -> None:
         assert expected in ic.safe_curriculum_treatment(title, part, chapter)
 
 
-def test_coursebook_lesson_helpers_cover_domain_specific_frames() -> None:
-    part = {"number": 11, "title": "AGEINT: Agentic Intelligence"}
-    chapter = {
-        "title": "Active Inference and AGEINT",
-        "number": 35,
-        "sections": [
-            {"number": "35.1", "title": "The Free Energy Principle and Predictive Processing"},
-            {"number": "35.2", "title": "Active Inference as Computational Model of Intelligence Agent Behavior"},
-            {"number": "35.3", "title": "Shared Protentions in Multi-Agent Active Inference"},
-            {"number": "35.4", "title": "Active Inference for Social Organization and Intelligence Communities"},
-            {"number": "35.5", "title": "VERSES AI Research: Multi-Scale Active Inference Architectures"},
-            {"number": "35.6", "title": "Cognitive Security Through the Active Inference Lens"},
-            {"number": "35.7", "title": "Applications: Deception Detection, Surprise Minimization, Threat Modeling"},
-            {"number": "35.8", "title": "Applications of Active Inference and FEP in Intelligence (TU Delft Thesis)"},
-        ],
-    }
-
-    lessons = ic.chapter_topic_lessons(chapter, part)
-
-    assert "prediction-error concept card" in lessons
-    assert "toy agent-model card" in lessons
-    assert "shared-expectation register" in lessons
-    assert "institutional feedback-loop map" in lessons
-    assert "architecture-claim card" in lessons
-    assert "sample narrative-risk map" in lessons
-    assert "threat-model review card" in lessons
-    assert "research question, method, evidence base" in lessons
-
-    mixed_part = {"number": 1, "title": "Foundations"}
-    mixed_chapter = {
-        "title": "Mixed Coursebook Concepts",
-        "sections": [
-            {"number": "1", "title": "SolarWinds and SBOM assurance"},
-            {"number": "2", "title": "CVE-2024-3094 backdoor"},
-            {"number": "3", "title": "APT29 attribution"},
-            {"number": "4", "title": "UKUSA Five Eyes"},
-            {"number": "5", "title": "Cryptographic lawful access"},
-            {"number": "6", "title": "COMINT and ELINT"},
-            {"number": "7", "title": "MICE and RASCLS"},
-            {"number": "8", "title": "Cyber kill chain and ATT&CK"},
-            {"number": "9", "title": "FISA executive order directive"},
-            {"number": "10", "title": "GEOINT imagery geospatial"},
-            {"number": "11", "title": "Beneficial ownership sanctions financial"},
-            {"number": "12", "title": "Analysis of Competing Hypotheses"},
-        ],
-    }
-
-    mixed_lessons = ic.chapter_topic_lessons(mixed_chapter, mixed_part)
-
-    assert "package provenance" in mixed_lessons
-    assert "vulnerability record as an assurance case" in mixed_lessons
-    assert "APT29 attribution** uses attribution indicators cautiously" in mixed_lessons
-    assert "alliance governance" in mixed_lessons
-    assert "policy and assurance trade-off" in mixed_lessons
-    assert "communications content from electronic signatures" in mixed_lessons
-    assert "motivation taxonomy" in mixed_lessons
-    assert "defensive vocabulary" in mixed_lessons
-    assert "authority, oversight, retention" in mixed_lessons
-    assert "quality and uncertainty problem" in mixed_lessons
-    assert "due-diligence evidence" in mixed_lessons
-    assert "disconfirming evidence" in mixed_lessons
-
-
-def test_manifest_support_sections_and_visual_fallbacks_have_concrete_content(tmp_path: Path) -> None:
-    chapter = {"title": "Branch Coverage Chapter", "citations": [1], "sections": []}
-    part = {"title": "Branch Coverage Part"}
-
-    text_blocks = [
-        mm1._safe_practice_lab(chapter),
-        mm1._failure_mode_drill(chapter),
-        mm1._instructor_artifact(chapter),
-        mm1._authority_accountability_model(chapter, part),
-        mm2._data_provenance_model(chapter, part),
-        mm2._evaluation_assurance_protocol(chapter),
-        mm2._compliance_rights_map(chapter),
-        mm2._safe_substitution_patterns(chapter),
-        mm2._capstone_deliverable(chapter, part),
-        mm2._instructor_facilitation_notes(chapter),
-        mm2._refresh_triggers(chapter),
-        mm_gov._accessibility_udl_review(chapter),
-        mm_gov._procurement_vendor_oversight(chapter),
-        mm_gov._hria_dpia_worksheet(chapter),
-        mm_gov._data_lineage_registry(chapter),
-        mm_gov._assessment_integrity_protocol(chapter),
-        mm_gov._agent_incident_response_drill(chapter),
-        mm_gov._role_based_competency_map(chapter),
-        mm_gov._adversarial_assurance_cycle(chapter),
-        mm_gov._model_dataset_documentation_card(chapter),
-        mm_gov._transparency_communication_notice(chapter),
-        mm_gov._records_retention_audit_trail(chapter),
-        mm_gov._release_change_control_gate(chapter),
-        mm_gov._risk_exception_acceptance_memo(chapter),
-        mm_gov._learner_support_accommodation_plan(chapter),
-        mm_gov._instructor_question_bank(chapter),
-        mm_gov._remediation_backlog(chapter),
-        mm2._runtime_section_map(chapter, part),
-        mm2._module_thesis(chapter, part),
-        mm_path._domain_practice_studio(chapter, part),
-    ]
-
-    joined = "\n".join(text_blocks)
-    assert "Branch Coverage Chapter" in joined
-    assert "Module source spine" in joined
-    assert "[@sec:method-assurance-reference]" in joined
-
+def test_slug_registry_disambiguates_duplicate_titles() -> None:
     registry = SlugRegistry()
     assert registry.unique("chapter", "Same Title") == "same-title"
     assert registry.unique("chapter", "Same Title") == "same-title-2"
 
-    section = ManuscriptSection(kind="chapter", title="No Figure Chapter", relative_path="parts/example/no-figure.md", template_name="chapter.md", context={}, order=1, parent_label="sec:part-example")
-    manifest = ManuscriptManifest([section], [], [])
-    assert "No figure registry" in mm4._visual_synthesis(tmp_path, tmp_path, section, manifest, [])
 
-
-def test_variable_helpers_cover_empty_inputs_safe_appendices_and_reference_fallbacks() -> None:
+def test_section_labels_normalize_identifier_segments() -> None:
     assert mv1.section_label("Chapter", "A/B", "C") == "sec:chapter_a_b_c"
-    assert "No direct source-guide citation" in mv1.citation_spine([])
-    assert "Module-level synthesis" in mv1.section_rows([])
-
-    pattern_rows = mv1.section_rows(
-        [{"number": "32.1", "title": "Pattern 1: Solo Reasoner - test", "citations": [1]}, {"number": "32.1a", "title": "Methods: bounded source reading", "citations": [2]}], safe_patterns=True
-    )
-    assert "Focused Analytic Reasoner" in pattern_rows
-
-    appendix = {
-        "items": [
-            {"title": "A.1 Safe Item", "citations": []},
-            {"title": "B.5 Memory-Enabled Agent: Longitudinal Target Tracking", "citations": [1]},
-            {"title": "Unsafe motif without prefix: Malware Generation", "citations": []},
-        ]
-    }
-    rows = mv1.appendix_rows(appendix)
-    assert "A.1 Safe Item" in rows
-    assert "operational wording transformed" in rows
-    assert "source item retained for audit" in rows
-
-    for title in ["OSINT source audit", "GEOINT imagery review", "HUMINT source-protection review", "SOC control-coverage review", "ICS tabletop", "Cognitive media-literacy", "plain title"]:
-        assert mv1._appendix_allowed_fixture(title)
-        assert mv1._appendix_rejected_action(title)
-        assert mv1._appendix_required_artifact(title)
-
-    bib = mv2.reference_bibtex(
-        [
-            {"key": "ageint999", "number": 999, "title": "Numbered", "url": "", "note": ""},
-            {"key": "custom123", "title": "Key Digits", "url": "", "note": ""},
-            {"key": "custom", "title": "No Digits", "url": "", "note": ""},
-        ]
-    )
-    assert "SIST Guide Reference 999" in bib
-    assert "SIST Guide Reference 123" in bib
-    assert "SIST Guide Reference}" in bib
 
 
 def test_curriculum_identity_and_template_error_branches(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

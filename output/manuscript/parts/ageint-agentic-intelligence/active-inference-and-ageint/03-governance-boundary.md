@@ -1,35 +1,35 @@
 ### Active Inference and AGEINT governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
+**Navigation.** Parent section: [@sec:chapter-active-inference-and-ageint].
 
 ### Active Inference and AGEINT analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 35's governance-boundary section, directly verified anchors for the **Active-Inference Theory and Governed Agent Analogy** lane include [@scholarly_friston_2010_fep]; [@scholarly_buckley_2017_fep_mathematical_review]; [@scholarly_friston_2017_active_inference_process]; [@scholarly_dacosta_2020_discrete_active_inference]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 35's governance-boundary section, the **Active-Inference Theory and Governed Agent Analogy** catalog routes include [@scholarly_friston_2010_fep]; [@scholarly_buckley_2017_fep_mathematical_review]; [@scholarly_friston_2017_active_inference_process]; [@scholarly_dacosta_2020_discrete_active_inference]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-Research lane: **Agentic AI Governance and Tool Security** for **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**. [@ageint247]; [@ageint248].
+Research lane: **Active-Inference Theory and Governed Agent Analogy** for **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**. [@ageint247]; [@ageint248].
 
 **Curriculum topic spine:** **The Free Energy Principle and Predictive Processing**, **Active Inference as Computational Model of Intelligence Agent Behavior**, **Shared Protentions in Multi-Agent Active Inference**.
-**Verified anchor cluster:** [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]; [@official_ic_ai_ethics_principles]; [@official_ic_ai_ethics_framework]; [@official_odni_icd_505].
+**Recorded source cluster; inspection and scope limits apply:** [@scholarly_friston_2010_fep]; [@scholarly_buckley_2017_fep_mathematical_review]; [@scholarly_friston_2017_active_inference_process]; [@scholarly_dacosta_2020_discrete_active_inference]; [@scholarly_parr_2022_active_inference_textbook]; [@scholarly_friston_2015_active_inference_epistemic_value]; [@scholarly_friston_2017_uncertainty_epistemics].
 
-**Conceptual depth:** delegated action under explicit authority, identity, permissions, tool boundaries, monitoring, and human escalation.
+**Conceptual depth:** using free-energy and active-inference theory as a bounded computational vocabulary for perception, action, uncertainty, and policy selection while keeping AGEINT governance claims separate.
 
-**Method stack:** AI RMF Govern-Map-Measure-Manage, least-privilege tool design, prompt-injection review, progressive deployment, and rollback drills.
+**Method stack:** formal-source review, theory-to-analogy mapping, assumption listing, implementation-evidence check, governance-control mapping, and human-review caveat.
 
-**Composability contract:** agents, tools, credentials, memory, retrieval stores, policies, and logs remain separately inspectable and revocable components.
+**Composability contract:** formal claim, pedagogical analogy, implementation assumption, evaluation evidence, and governance duty remain distinct fields.
 
-**Known failure modes:** excessive agency, shadow tools, indirect prompt injection, memory poisoning, confused authority, and unbounded action chains.
+**Known failure modes:** treating a formal theory as product evidence, using analogy as architecture proof, citing policy guidance for mathematical claims, and letting autonomy language outrun evaluation evidence.
 
-**Defensive boundary:** agentic workflows stay synthetic, owned-lab, supervised, logged, rate-limited, and reversible unless a lawful production authority exists. Applied to **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**.
+**Defensive boundary:** active-inference material stays theoretical and classroom bounded; it does not prove autonomous action, intent detection, operational performance, or deployment without explicit authority and review. Applied to **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**.
 
 | Anchor | Why it matters here |
 |---|---|
-| [@official_oecd_agentic_ai] | Official OECD conceptual foundation for agentic AI. Checked as of 2026-05-21; role: source_quality_anchor. |
-| [@official_canada_agentic_ai_guide] | Government of Canada guide for accountable public-sector use of agentic AI, including governance, risk, transparency, testing, monitoring, and human oversight considerations. Checked as of 2026-08-30; role: curriculum_anchor. |
-| [@official_nist_ai_rmf] | Official NIST.AI.100-1 risk-management framework. Checked as of 2026-05-21; role: source_quality_anchor. |
-| [@official_nist_ai_600_1] | Official NIST AI 600-1 generative AI profile. Checked as of 2026-05-21; role: source_quality_anchor. |
-| [@official_ic_ai_ethics_principles] | Official IC principles for lawful, accountable, objective, human-centered, secure, resilient, and science-informed AI. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@official_ic_ai_ethics_framework] | Official IC framework for AI goals, authorities, human judgment, bias mitigation, testing, documentation, explainability, and review. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@official_odni_icd_505] | Official IC AI governance directive covering CAIO roles, oversight, interoperability, civil-liberties review, training data, and impact assessment. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@scholarly_friston_2010_fep] | Karl Friston's flagship review introducing the free-energy principle, showing how a variational free-energy functional provides a tractable upper bound on surprise (negative log model evidence) that the brain minimizes through perception and action. Checked as of 2026-06-08; role: curriculum_anchor. |
+| [@scholarly_buckley_2017_fep_mathematical_review] | arXiv scholarly review that works through the free energy principle and active inference mathematically, including an agent-based model and the assumptions needed for the formal result. Checked as of 2026-06-10; role: curriculum_anchor. |
+| [@scholarly_friston_2017_active_inference_process] | Formalizes active inference as a process theory in which belief updating proceeds by gradient descent on variational free energy and policies are selected by minimizing expected free energy over a Markov decision process generative model. Checked as of 2026-06-08; role: curriculum_anchor. |
+| [@scholarly_dacosta_2020_discrete_active_inference] | A mathematical synthesis of active inference over discrete (POMDP) state-spaces, consolidating the partially observable Markov decision process model used to specify perception, planning, and action selection in agentic systems. Checked as of 2026-06-08; role: curriculum_anchor. |
+| [@scholarly_parr_2022_active_inference_textbook] | The open-access MIT Press monograph giving the book-length, chapter-organized foundational treatment of active inference, from the free-energy principle to discrete and continuous generative models and their behavioral implications. Checked as of 2026-06-08; role: curriculum_anchor. |
+| [@scholarly_friston_2015_active_inference_epistemic_value] | PubMed-indexed active-inference source on epistemic value, routed as theory support for bounded analogies in the cognitive-active-inference profile. Checked as of 2026-06-15; role: curriculum_anchor. |
+| [@scholarly_friston_2017_uncertainty_epistemics] | Open-access PMC article on uncertainty, epistemics, and active inference, encoded for theory boundaries and claim-calibration around active-inference analogies. Checked as of 2026-06-15; role: curriculum_anchor. |
 
 
 #### Active Inference and AGEINT evidence standard and citation floor: source families and discovery limits
@@ -43,7 +43,7 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint247]; [
 
 ### Active Inference and AGEINT agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
+**Navigation.** Parent section: [@sec:chapter-active-inference-and-ageint].
 
 AGEINT translation is bounded by the **Active-Inference Theory and Governed Agent Analogy** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **The Free Energy 
 
 #### Active Inference and AGEINT permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
+**Navigation.** Parent section: [@sec:chapter-active-inference-and-ageint].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -66,7 +66,7 @@ Keep all practice accountable, synthetic, defensive, logged, reversible, and evi
 
 ### Active Inference and AGEINT governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
+**Navigation.** Parent section: [@sec:chapter-active-inference-and-ageint].
 
 Governance is practiced as a gate on the **Active-Inference Theory and Governed Agent Analogy**
 lane. Learners use the **Active-Inference Boundary Lens** to decide who is accountable for the exercise,
@@ -77,19 +77,18 @@ agent-assisted artifact must stop for human review while using **The Free Energy
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint247]; [@ageint248]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint247]; [@ageint248]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Active-Inference Theory and Governed Agent Analogy** failure modes and the **Active-Inference Boundary Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### Active Inference and AGEINT evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-active-inference-and-ageint]; [@ageint247].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Active-Inference Boundary Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **The Free Energy Principle and Predictive Processing; Active Inference as Computational Model of Intelligence Agent Behavior**.
 

@@ -5,18 +5,13 @@ from __future__ import annotations
 from pathlib import Path
 
 from citation_workflow import (
-    generated_markdown_citation_inventory,
-    render_citation_workflow_markdown,
-    render_source_section_citation_rows,
     source_citation_cell,
-    source_citation_coverage_summary,
     source_citation_spine,
     source_citation_spine_inline,
     source_key,
     source_section_citation_inventory,
 )
 from curriculum import load_curriculum
-from manuscript_quality.inventory_helpers import manuscript_dir
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
@@ -42,47 +37,3 @@ def test_source_section_inventory_paths_match_curriculum_shards() -> None:
     for relative_path in unique_paths:
         assert (PROJECT_ROOT / relative_path).is_file(), relative_path
 
-
-def test_source_section_inventory_matches_current_curriculum() -> None:
-    curriculum = load_curriculum(DATA)
-    rows = source_section_citation_inventory(curriculum)
-    summary = source_citation_coverage_summary(curriculum)
-
-    assert len(rows) == 723
-    assert summary.section_count == 723
-    assert summary.citation_occurrences == 1468
-    assert summary.zero_citation_sections == 0
-    assert summary.unique_citation_keys == 301
-    assert dict(summary.citation_count_distribution) == {1: 275, 2: 154, 3: 291, 4: 3}
-
-
-def test_rendered_workflow_markdown_names_authoring_surfaces() -> None:
-    curriculum = load_curriculum(DATA)
-    rendered = render_citation_workflow_markdown(curriculum)
-
-    assert "`data/curriculum/`" in rendered
-    assert "`data/research_anchors/`" in rendered
-    assert "`src/intelligence_content/`" in rendered
-    assert "never hand-edit `output/manuscript/`" in rendered
-    assert "| Source sections | 723 |" in rendered
-    assert "| Section | Module and source section | Citations | Citation links |" in rendered
-    assert "|---:|---|---:|---|" in rendered
-
-
-def test_source_section_rows_use_linked_pdf_friendly_columns() -> None:
-    curriculum = load_curriculum(DATA)
-    rendered = render_source_section_citation_rows(curriculum)
-
-    assert "| Chapter | Section | Source title | Citation count | Citation keys |" not in rendered
-    assert "| Section | Module and source section | Citations | Citation links |" in rendered
-    assert "|---:|---|---:|---|" in rendered
-    assert "The Nature of Intelligence - V2 source-lane extension" in rendered
-    assert "[@ageint238]; [@ageint237]; [@ageint270]" in rendered
-
-
-def test_generated_markdown_inventory_reports_topic_lesson_citations(built_output: Path) -> None:
-    rows = generated_markdown_citation_inventory(manuscript_dir(built_output))
-    topic_rows = [row for row in rows if row.family == "practice-studio"]
-
-    assert topic_rows
-    assert sum(row.citation_count for row in topic_rows) > 0

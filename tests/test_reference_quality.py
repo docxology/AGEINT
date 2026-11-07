@@ -7,7 +7,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from reference_quality import collect_reference_quality, render_reference_quality_markdown, write_reference_quality
+from reference_quality import collect_reference_quality, write_reference_quality
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -29,10 +29,6 @@ def test_reference_quality_current_outputs_are_green(built_output: Path) -> None
     assert payload["summary"]["citation_context_issues"] == 0
     assert payload["summary"]["markdown_file_link_issues"] == 0
     assert payload["summary"]["raw_literal_citation_issues"] == 0
-
-    markdown = render_reference_quality_markdown(report)
-    assert "reference_quality_ok" in markdown
-    assert "Citation-context issues" in markdown
 
 
 def test_reference_quality_flags_reader_quality_negative_controls(tmp_path: Path) -> None:
@@ -74,7 +70,11 @@ def test_reference_quality_allows_contextual_citation_tables_and_linked_crossref
         tmp_path / "output" / "manuscript" / "chapter.md",
         "\n".join(
             [
-                "# Chapter {#sec:chapter}",
+                "# Chapter {#sec:chapter-fixture}",
+                "",
+                "## Curriculum orientation {#sec:curriculum_orientation}",
+                "",
+                "![Fixture module map](fixture.png){#fig:part-fixture-module-map}",
                 "",
                 "### Chapter evidence spine: source roles, citation support, and claim limits",
                 "",

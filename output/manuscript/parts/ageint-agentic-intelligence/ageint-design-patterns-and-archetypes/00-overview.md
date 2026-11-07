@@ -14,11 +14,11 @@ This module teaches the **Agentic AI Governance and Tool Security** lane through
 
 ## Agentic AI Governance and Tool Security frame for AGEINT Design Patterns and Archetypes: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 ### AGEINT Design Patterns and Archetypes orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 ### AGEINT Design Patterns and Archetypes conceptual primer: source context, core model, and reader task
 
@@ -32,7 +32,7 @@ Learners move from vocabulary and the **Agentic Tool-Governance Lens** distincti
 
 ### AGEINT Design Patterns and Archetypes learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 - Connect **Pattern 1: Focused Analytic Reasoner (source identity preserved in pattern registry) - keeps reasoning reviewable without exposing hidden reasoning or delegating action and Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes** to **Agentic AI Governance and Tool Security** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -42,7 +42,7 @@ Learners move from vocabulary and the **Agentic Tool-Governance Lens** distincti
 
 ### AGEINT Design Patterns and Archetypes core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 | Term | Working definition |
 |---|---|
@@ -54,6 +54,4 @@ Learners move from vocabulary and the **Agentic Tool-Governance Lens** distincti
 | AI incident | a logged event where an AI system creates or plausibly creates harm or loss of control |
 | Prompt injection | untrusted content that attempts to override instructions or authority boundaries |
 | Pattern registry | the catalog of approved agent behaviors, prompts, and evaluation hooks |
-| Adversarial eval | structured tests that probe agent misuse, injection, and over-delegation before release |
-| Pattern 1: Focused Analytic Reasoner (source… | Key terms: Pattern, Focused, Analytic. |
-| Safe methods: bounded source reading, explicit… | Key terms: methods, bounded, reading. |
+| Adversarial eval | structured tests of specified misuse, injection, or delegation failure modes; passing fixtures is not proof of general resistance |

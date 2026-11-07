@@ -9,9 +9,10 @@ traced back to a real source. Nothing here is operational — every exercise use
 synthetic or public material, and every claim is built to be challenged rather
 than believed.
 
-Read it as a map, not a textbook to read front to back: [@sec:curriculum-map]
-lets you choose a domain part, [@sec:reader-paths] gives each reader a fast path,
-and [@sec:safety-rail] states what the atlas refuses to teach.
+For a first session, go directly to [@sec:reader-paths] and use its proposed
+75-minute route; no atlas survey is required. For a longer course,
+[@sec:curriculum-map] helps select a domain part. [@sec:safety-rail] states the
+boundary for both routes.
 
 > **For maintainers.** This page is generated. The source templates under
 > `docs/manuscript/templates/` keep guide-derived values — titles, labels, counts,
@@ -24,24 +25,12 @@ section shows the exact path.
 
 ## How to use this atlas: navigation path, evidence checks, and verifier handoff {#sec:how-to-use-this-atlas}
 
-Read AGEINT as a navigable curriculum-and-assurance atlas rather than a linear
-textbook or empirical evaluation report. Start with [@sec:curriculum-map] and
-[@fig:ageint-curriculum-map] to choose the part, open the linked part
-introduction to see the module sequence, then use each chapter overview for the
-figures, source lane, and assessment artifact that matter for the current
-decision. Keep [@sec:bibliography_atlas] open when checking a claim, because it
-preserves source identity, provenance type, source tier, and refresh context in
-one place.
-
-Use the first pages as signposts, not as a preface to skip. The handoff is
-intentionally explicit and always moves in the same direction:
-
-domain part -> module overview -> practice studio -> evidence contract ->
-governance boundary -> assessment route -> bibliography/source lane ->
-verifier reports.
-
-Work the table below in order: orient, then match each claim to its evidence,
-then verify before trusting anything.
+For a single session, start with [@sec:reader-paths] and the completed case in
+[@sec:analytic-workflow]. For a course, use [@sec:curriculum-map] and
+[@fig:ageint-curriculum-map] to choose a part, then follow its module overviews
+to a practice studio, evidence contract, governance boundary, and assessment.
+Consult [@sec:bibliography_atlas] when checking source identity, provenance,
+support role, and refresh context—not as required preliminary reading.
 
 | Step | Where to go | Why this step matters |
 |---|---|---|

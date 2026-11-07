@@ -31,6 +31,7 @@ class ResearchAnchor:
     rights_dimension: str = ""
     source_agency: str = ""
     source_pack: str = ""
+    author_mode: str = "names"
 
     def as_reference(self) -> dict[str, str]:
         """Return a manuscript-variable compatible reference dictionary."""
@@ -57,6 +58,7 @@ class ResearchAnchor:
             "rights_dimension": self.rights_dimension,
             "source_agency": self.source_agency,
             "source_pack": self.source_pack,
+            "author_mode": self.author_mode,
         }
 
 
@@ -127,3 +129,4 @@ class TopicEntry:
     provenance_note: str
     risk_category: str
     citation_numbers: tuple[int, ...] = ()
+    teaching_note: str = ""

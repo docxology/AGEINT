@@ -160,9 +160,9 @@ See [`docs/output_inventory.md`](docs/output_inventory.md) for the generated art
 
 ## Scholarship posture
 
-Perplexity may be used for discovery and second opinions, but the manuscript
-cites directly verified sources. The current anchor set includes official and
-standards sources from ODNI, CIA, DIA, NIST, CISA, NSA, Five Eyes partners,
+Discovery tools provide leads, not verification. The manuscript retains source
+identities and records passage/metadata inspection, access limits, corrections
+and unresolved claims separately. The anchor catalog includes sources from ODNI, CIA, DIA, NIST, CISA, NSA, Five Eyes partners,
 IMDA, OECD, ISO, IETF, OASIS, OWASP, MITRE, NATO, the EU, UNESCO, OHCHR,
 World Bank, ILO, W3C, OpenAPI, Council of Europe, PCLOB, NARA, NRO, NGA,
 FinCEN, OFAC, FATF, BIS, WIPO, DataCite, C2PA, the Model Context Protocol
@@ -290,108 +290,54 @@ contract. Accepted rows use bounded claim scopes and explicitly exclude
 collection tasking, exploit steps, covert-action guidance, manipulation
 playbooks, unsafe cyber-physical actions, and live-target procedures.
 
-A 2026-06-12 local verifier-first, scholarship-quality, and Synthetic Analytic
-Tradecraft orientation pass keeps the same source corpus but raises the figure
-registry to 168 with the
-`ageint-artifact-evidence-control-loop` and
-`ageint-scholarship-triangulation-map` control figures and the
-`ageint-synthetic-tradecraft-method-contract` and
-`ageint-analysis-validation-matrix` method figures plus the
-`ageint-analysis-validation-family-coverage` coverage figure. It adds generated
-evidence manifests that bind the rebuilt manuscript, citation inventory,
-scholarship source-family audit, figure quality audit, rendered-reference audit,
-PDF quality/link audit, and stale-output scans into
-`output/reports/current_artifact_evidence.{json,md}` and
-`output/reports/scholarship_quality.{json,md}`. The current local manifest
-reports 330 configured generated Markdown files, 16,604 generated Markdown
-citation occurrences, 177 registered figures plus one non-numbered cover-art
-PNG, a non-stale 1,858-page ~34 MB PDF, 6,289 PDF URI links, 0 Markdown-file,
-`file:`, or launch-action PDF targets, 0 uncited or thin claim-bearing generated
-files, and six single-source-family claim-bearing review warnings, with passing
-SAT method and analysis-validation contracts plus source-metadata explicitness
-and claim-calibration checks. A follow-on RedTeam pass makes the analysis-validation claim classes
-canonical in `src/analysis_validation.py`, so the prose protocol, matrix
-renderer, scholarship audit, and artifact-evidence manifest now fail if a lane
-such as artifact readiness or reviewer disposition drops out while the heading
-and figure reference still remain. A second RedTeam follow-up adds a canonical
-manuscript-family-to-validation-lane map so a new claim-bearing generated family
-cannot enter the manuscript surface without a matching review lane, evidence
-signal, failure signal, and registry-backed coverage visual.
+## 2026-11-06 curriculum and workflow revision
 
-A 2026-06-13 metadata-verifier hardening pass keeps the same source corpus but
-closes the legacy lane/tier fallback dependency. It makes 119 previously blank
-metadata rows explicit: 109 legacy intelligence anchors now carry
-`source_lane` from their existing `domain` and `source_tier` from their existing
-`source_type`, while 10 source-quality support anchors carry
-`source_quality_spine` / `source_quality_anchor` semantics. The new
-`scripts/audit_source_metadata.py` report writes
-`output/reports/source_metadata.{json,md}` and is wired into
-`current_artifact_evidence.{json,md}` as `source_metadata_ok`, so a blank
-lane/tier row or support-anchor semantic mismatch fails local readiness. The
-same pass raised the then-current registry to 169 figures with
-`ageint-source-metadata-integrity`, a Python control-matrix figure for source
-metadata explicitness and refresh coverage.
+The CogSecSkills critical review and claim-evidence audit produced 564 authored
+topic notes across all 51 chapters, with over 41,000 words of domain-specific
+explanations, completed fictional decisions, counterexamples and limits. All
+16 units now carry concrete learning workflows; all nine methods appendices
+contain distinct offline workbooks rather than repeated generic forms.
 
-A 2026-06-13 cover, abstract, and TOC hardening pass keeps the same source
-corpus and figure registry count while adding deterministic cover art outside
-the numbered figure registry. The abstract is now one substantial plaintext
-Synthetic Analytic Tradecraft contract rather than a graphical-abstract wrapper.
-The graphical abstract itself is now the registry-backed Python
-`ageint-graphical-abstract` Synthetic Tradecraft System Atlas in orientation,
-not a Mermaid stack or title-page cover. The PDF table of contents is
-intentionally limited to H1/H2 entries; each module exposes three chapter-specific
-H2 landmarks (source/profile frame, practice-lens path, assurance handoff), while
-H3/H4 scaffolds remain in the body for local navigation and
-cross-reference targets. The compact LaTeX preamble also carries TOC spacing
-controls so multi-digit section numbers do not collide with headings.
+The shared method reference provides an eight-step claim-to-decision workflow,
+a completed source-dependence and correction case, a reusable claim record,
+bounded parallel-role contracts, and explicit hold/correction/handoff decisions.
+Orientation includes a 75-minute first session and manual accessible route.
+Chapter 35 works model-relative inference numerically. Chapter 36 supplies a
+complete standard-library Python example with expected output and duplicate,
+conflicting-copy, missing-current-record, permission and human-review controls.
 
-A 2026-06-14 claim-calibration and visual-semantics hardening pass keeps the
-same source corpus and adds the registry-backed
-`ageint-claim-calibration-and-visual-semantics` control figure. The figure
-registry schema is now `1.5`: every row declares semantic role, evidence role,
-quantitative status, unit, denominator, counting rule, and interpretation limit,
-and generated PNG metadata embeds the same fields. The new
-`scripts/audit_claim_calibration.py` report writes
-`output/reports/claim_calibration.{json,md}` and is wired into
-`current_artifact_evidence.{json,md}` as `claim_calibration_ok`, so unsupported
-proof-language, p-value language, measured-performance claims, unsupported
-formalisms, or weak-source-only high-risk claims fail local readiness.
+Human-source and software-agent subjects are distinguished; safe identity and
+chapter overrides control lesson routing. Source annotations remain editorial
+context rather than manufactured topic evidence. ACH consistency is not a
+Bayesian likelihood ratio; proposed cognitive-security frameworks and candidate
+neuromarkers are not validated assurance, diagnostic or efficacy claims.
+Corrected source notes disclose study corrections, disputed results, edition
+limits and blocked primary retrieval. Missing author/year metadata is left
+missing, not converted into invented authorship or the build year.
 
-A 2026-06-14 abstract/readiness hardening pass makes the Abstract one continuous
-reader-facing Synthetic Analytic Tradecraft paragraph instead of a multi-block
-front-matter summary. That paragraph integrates source-quality and research
-anchor counts inline, shows the learner/reviewer path through evidence packets,
-negative controls, human review, rollback, refresh triggers, figure semantics,
-and validator gates, and explicitly states that artifact telemetry is not a
-benchmark for model capability, learning outcomes, operational effectiveness,
-statistical significance, or safety performance. This is still a local-readiness
-claim, not a publication decision.
+The claim verifier now rejects nonexistent official-looking citation keys.
+Heading navigation uses existing labels, not borrowed citations masquerading as
+evidence; bare domain and bibliographic titles remain intact. Workflow diagrams
+separate permission from purpose, evidence from inference, and review from
+proof. The chapter assessments include later topics and justified abstention.
 
-After this pass, claim calibration reports 9,107 candidate rows, 0 hard fails,
-482 boundary-allowed rows, and 5,129 review rows; scholarship quality reports 0
-hard fails and keeps six single-source-family rows as non-blocking review
-warnings.
+### Current evidence and limits
 
-These counts are rebuild-time measurements, not hand-authored release claims:
-`output/data/curriculum_outline.json` carries the curriculum stats, and
-`output/figures/figure_registry.json` carries the figure count, hashes, and
-rendering provenance. Source-anchor rows include `checked_as_of` metadata and
-must be refreshed when source URLs, standards versions, legal text, or supported
-claim scope changes.
+Consult `output/reports/current_artifact_evidence.{json,md}`,
+`claim_calibration.{json,md}`, `scholarship_quality.{json,md}`,
+`source_metadata.{json,md}`, `source_refresh_due.{json,md}` and the figure
+registry for measured artifact status. Historical page, citation and link
+counts are not current release claims. These checks are structural and
+heuristic: they do not establish passage entailment, independent corroboration,
+learning gains, model reliability, legal compliance or production safety.
 
-## Public readiness
+### Public identity and local revision
 
-AGEINT is locally publication-ready as a preflight packet, not as a public
-release. The 2026-06-16 `publication_readiness` report is `ok: true`: artifact
-evidence is green, the source-refresh dashboard reports 472 current metadata
-rows and 0 due-soon/due/stale rows, the artifact manifest has `issues: []`, the
-parent tracked-project confidentiality guard passes, the release-surface scan
-finds 0 private/local path or Markdown-file-link issues, the source/license
-posture is recorded, and the fresh PDF audit reports 1,858 pages, 6,289 URI
-links, 0 file actions, and 0 bad link targets. `ageint-27` is therefore closed.
-`ageint-m1` remains todo because no public release, push, PR, archive,
-promotion, publication upload, DOI, or release record has been approved or
-performed.
+The repository already records the Edition 0.1 and concept DOIs above.
+This local revision is not a new publication or approval to push, promote,
+upload or release it. Source freshness is date- and scope-specific; a complete
+metadata row or a successful rebuild is not a fresh review of every source.
+
 
 ## Safety posture
 

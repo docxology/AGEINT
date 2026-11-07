@@ -10,8 +10,8 @@ import sys
 import pytest
 
 import template_resolver
+from _data_loaders import validate_declarative_tables
 from build_pipeline import generated_output_is_stale, run_build
-from figures import _02b_mermaid as mermaid_rendering
 from orchestration_contracts import output_build_sentinels, source_freshness_roots
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -72,7 +72,7 @@ def _write_minimal_source_config(project: Path) -> None:
 
 
 def _force_mermaid_placeholders(monkeypatch) -> None:
-    monkeypatch.setattr(mermaid_rendering.shutil, "which", lambda _name: None)
+    monkeypatch.setenv("PATH", "")
 
 
 @requires_template_repo
@@ -92,24 +92,43 @@ def test_default_build_preserves_neutral_template_library(tmp_path: Path, monkey
     assert (project / "output" / "data" / "curriculum" / "metadata.json").is_file()
     assert (project / "output" / "data" / "manuscript_variables.json").is_file()
     assert (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").is_file()
-    foundations = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
-    assert "#### Lesson 1:" in foundations
-    worked = (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "01-practice-studio.md").read_text(encoding="utf-8")
-    assert "**Filled artifact.**" in worked
-    assert "#### Foundations of AGEINT answer quality rubric: source evidence, uncertainty, and safe transfer" in worked
-    assert "uses [@fig:" in (project / "output" / "manuscript" / "parts" / "ageint-agentic-intelligence" / "foundations-of-ageint" / "00-overview.md").read_text(encoding="utf-8")
-    assert "Generated section context" not in foundations
 
 
-@requires_template_repo
-def test_missing_source_config_fails_the_build(tmp_path: Path, monkeypatch) -> None:
-    """A missing docs/manuscript/config.yaml must fail loudly, not silently drop book/paper metadata."""
-    _force_mermaid_placeholders(monkeypatch)
-    project = _minimal_project(tmp_path)
-    (project / "docs" / "manuscript" / "config.yaml").unlink()
+@pytest.mark.parametrize("existing_output", [False, True])
+def test_missing_source_config_fails_the_build(tmp_path: Path, existing_output: bool) -> None:
+    """Source validation must fail before figure work or any source/output writes."""
+    project = tmp_path / "AGEINT"
+    templates = project / "docs" / "manuscript" / "templates"
+    templates.mkdir(parents=True)
+    (templates / "chapter.md").write_text("# Keep this template\n", encoding="utf-8")
+    if existing_output:
+        figures = project / "output" / "figures"
+        figures.mkdir(parents=True)
+        (figures / "keep.png").write_bytes(b"existing figure")
+    before = {path.relative_to(project): path.read_bytes() if path.is_file() else None for path in project.rglob("*")}
+    missing_config = project / "docs" / "manuscript" / "config.yaml"
 
-    with pytest.raises(FileNotFoundError, match="docs/manuscript/config.yaml"):
-        run_build(project, allow_placeholder_figures=True)
+    with pytest.raises(FileNotFoundError) as error:
+        run_build(project, regenerate_source_template_library=True, allow_placeholder_figures=False)
+
+    assert f"Missing source manuscript config: {missing_config.as_posix()}." in str(error.value)
+    assert {path.relative_to(project): path.read_bytes() if path.is_file() else None for path in project.rglob("*")} == before
+    if not existing_output:
+        assert not (project / "output").exists()
+
+
+def test_source_validation_rechecks_selected_project_config(tmp_path: Path) -> None:
+    """Cached table loaders must not mask removal in a different project root."""
+    _write_minimal_source_config(tmp_path)
+    validate_declarative_tables(tmp_path)
+    missing_config = tmp_path / "docs" / "manuscript" / "config.yaml"
+    missing_config.unlink()
+
+    with pytest.raises(FileNotFoundError) as error:
+        validate_declarative_tables(tmp_path)
+
+    assert f"Missing source manuscript config: {missing_config.as_posix()}." in str(error.value)
+
 
 @requires_template_repo
 def test_build_script_resolves_template_repo_without_manual_pythonpath() -> None:

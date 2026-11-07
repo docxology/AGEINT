@@ -15,7 +15,7 @@ Tests use real curriculum shards, real builds, temp directories, and subprocess 
 | Curriculum shards | `test_curriculum.py`, `test_sharded_data_integrity.py` |
 | Source identity | `test_source_identity.py` |
 | Manuscript manifest | `test_manuscript_manifest.py`, `test_manuscript_inventory_*.py` |
-| Reader quality | `test_reader_quality.py`, `test_topic_content_quality.py` |
+| Reader output | `test_pdf_quality.py`, real PDF page inspection, and canonical HTML browser smoke |
 | Safety | `test_manuscript_safety_docs.py` |
 | Cross-refs | `test_manuscript_crossrefs.py` |
 | Artifact evidence | `test_artifact_evidence.py`, `test_pdf_quality.py`, `test_figure_quality_audit.py` |
@@ -25,6 +25,12 @@ Tests use real curriculum shards, real builds, temp directories, and subprocess 
 ## Coverage gate: per-project 90 percent source coverage
 
 90% minimum on `src/` (`pyproject.toml` `fail_under = 90`). Combined multi-project pytest union is skipped via `[tool.template] skip_combined_pytest = true` because the full build is expensive.
+
+Do not pin manuscript wording, full copied paragraphs, incidental live counts,
+or historical review dates. Keep tests for source identity, parser boundaries,
+precedence, transitions, errors, and native-format behavior. A fictional-case
+label is an honest disclosure, not evidence of unfinished prose. External source
+section locators are not hard-coded navigation within this book.
 
 ## Verifier-first evidence: audit artifacts and negative controls before polish
 

@@ -173,7 +173,7 @@ def run_build(project_root: Path = PROJECT_ROOT, *, regenerate_source_template_l
     ensure_template_repo_on_path(root)
     from _data_loaders import validate_declarative_tables
 
-    validate_declarative_tables()
+    validate_declarative_tables(root)
     if allow_placeholder_figures is None:
         allow_placeholder_figures = build_config.allow_placeholder_figures
     write_output_directory_docs(root)

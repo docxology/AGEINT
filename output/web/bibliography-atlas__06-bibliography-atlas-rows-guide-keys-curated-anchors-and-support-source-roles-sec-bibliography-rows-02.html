@@ -2,16 +2,19 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md.web</title>
+  <title>06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md.web</title>
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,14 +182,416 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-secbibliography-rows-continued-2">Bibliography
 atlas rows: guide keys, curated anchors, and support-source roles
 {#sec:bibliography-rows} (continued 2)</h2>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 9%" />
 <col style="width: 9%" />
@@ -218,15 +627,16 @@ atlas rows: guide keys, curated anchors, and support-source roles
 <td>curriculum_anchor</td>
 <td>human_rights_governance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>semiannual</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>CCDCOE 2026 research reconceptualising cognitive warfare as a
-contest over the structures of interpretation and decision-making rather
-than information content; introduces systemic invariants and cognitive
-decoherence.</td>
+<td>CCDCOE research summary and linked Ontological Foundations of
+Cognitive Warfare publication describe epistemic, value, identity,
+trust, and future-orientation structures. The publication disclaims
+necessarily representing CCDCOE or NATO policy; conceptual framing does
+not establish attribution or intervention efficacy.</td>
 </tr>
 <tr>
 <td>[official_darpa_intrinsic_cognitive_security]</td>
@@ -234,19 +644,19 @@ decoherence.</td>
 <td>curriculum_anchor</td>
 <td>assurance_evaluation_evidence</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>semiannual</td>
 <td>assurance evaluator, formal-methods reviewer, instructor, system
 steward, and learner</td>
-<td>formal-methods assurance evidence, cognitive-attack mitigation
-catalogue, and probabilistic-guarantee review for mixed-reality system
-design</td>
+<td>Review of mixed-reality formal-methods research aims and the
+assumptions needed for any model-scoped guarantee; not certification of
+general agent security.</td>
 <td>safety, cognitive integrity, perceptual security, accountable system
 design, and verifiable assurance</td>
-<td>DARPA Intrinsic Cognitive Security (ICS) program applying
-probabilistic formal methods to guarantee mixed-reality system designs
-mitigate cognitive attacks; CAMP knowledgebase analog to MITRE
-CAPEC.</td>
+<td>The official program description distinguishes developing proved
+model properties from validating their usefulness in mixed-reality
+prototypes. Treat these as research aims, not already-demonstrated
+guarantees for arbitrary agent systems.</td>
 </tr>
 <tr>
 <td>[official_csa_cdr_framework]</td>
@@ -255,18 +665,19 @@ Safeguarding Agentic AI Systems from Systemic Collapse</td>
 <td>curriculum_anchor</td>
 <td>agent_incident_response</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>quarterly</td>
 <td>AI incident lead, resilience reviewer, instructor, system steward,
 and learner</td>
-<td>agent degradation health probes, six-stage drift monitoring, QSAF-BC
-control mapping, and systemic-collapse incident review</td>
+<td>Critical comparison of proposed agent-degradation stages and QSAF-BC
+controls in synthetic incident records; not evidence of universal
+control efficacy.</td>
 <td>safety, reliability, operational resilience, accountable monitoring,
 and harm prevention</td>
-<td>CSA Cognitive Degradation Resilience (CDR) framework defining a
-six-stage degradation cascade for agentic AI networks and seven QSAF-BC
-controls; treated as a defensive evidence-bounded governance
-anchor.</td>
+<td>Primary publication of an industry-proposed framework, not a
+consensus standard or independent replication. Classroom use must
+distinguish proposed controls, observable synthetic signals, and
+source-specific evaluation evidence.</td>
 </tr>
 <tr>
 <td>[official_csa_maestro_threat_modeling]</td>
@@ -274,7 +685,7 @@ anchor.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>threat modeler, red-team reviewer, instructor, system steward, and
 learner</td>
@@ -293,16 +704,17 @@ Intelligence</td>
 <td>curriculum_anchor</td>
 <td>education_assessment</td>
 <td>scholarly_peer_reviewed</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>source guide context</td>
 <td>analytic-bias review checklist, noise-versus-bias diagnostic,
 recalibration evidence, and SAT-validation critique</td>
 <td>source guide context</td>
-<td>Peer-reviewed Frontiers in Psychology analysis (NIH PMC) on
-correcting judgment in national security intelligence, identifying
-neglect of noise and unipolar treatment of bipolar bias in IC
-debiasing.</td>
+<td>Frontiers in Psychology analysis distinguishes tradecraft
+endorsement from validity testing and discusses noise,
+overconfidence/underconfidence, and evaluation of judgment aids. Its
+policy prescriptions and cited empirical results have different
+evidentiary roles.</td>
 </tr>
 <tr>
 <td>[scholarly_agentic_ai_security_survey]</td>
@@ -311,7 +723,7 @@ Challenges</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>scholarly_preprint</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>red-team reviewer, threat modeler, instructor, system steward, and
 learner</td>
@@ -345,14 +757,15 @@ evaluator-optimizer).</td>
 <td>curriculum_anchor</td>
 <td>model_data_provenance</td>
 <td>frontier_lab_research</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Google DeepMind arXiv paper defining the epistemic AI agent and
-proposing demonstrable competence, falsifiability, virtuous behavior,
-provenance chains, verifier agents, and knowledge sanctuaries.</td>
+<td>arXiv preprint using an explicitly sociotechnical and normative
+lens. Proposed trust desiderata and infrastructure should be taught as
+design/review questions, not as established guarantees or measured
+performance.</td>
 </tr>
 <tr>
 <td>[scholarly_prompt_infection_multi_agent]</td>
@@ -378,7 +791,7 @@ counterintelligence anchor with LLM-tagging mitigation.</td>
 <td>curriculum_anchor</td>
 <td>secure_release_change_control</td>
 <td>scholarly_preprint</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>security architect, release reviewer, instructor, system steward,
 and learner</td>
@@ -387,9 +800,11 @@ change-control map, instruction-data separation evidence, and
 release-gate analysis</td>
 <td>security, integrity, least-privilege accountability, and operational
 resilience</td>
-<td>arXiv analysis framing prompt injection as structurally equivalent
-to dynamic code loading and arguing for dynamic, context-sensitive
-privilege management in agentic systems.</td>
+<td>The arXiv paper uses dynamic code loading as an analogy for prompt
+injection, identifies challenges in applying classical security
+principles to agents, and outlines research problems. Its 11 reported
+attack cases are illustrative; they were not independently reproduced in
+this review.</td>
 </tr>
 <tr>
 <td>[official_owasp_agentic_ai_threats_mitigations]</td>
@@ -397,7 +812,7 @@ privilege management in agentic systems.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>red-team reviewer, threat modeler, instructor, system steward, and
 learner</td>
@@ -415,7 +830,7 @@ defensive curriculum use.</td>
 <td>curriculum_anchor</td>
 <td>procurement_vendor_governance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>identity governance lead, procurement assessor, instructor, system
 steward, and learner</td>
@@ -434,7 +849,7 @@ curriculum discussion.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>red-team reviewer, assurance evaluator, instructor, compliance
 officer, and learner</td>
@@ -509,7 +924,7 @@ Initial Public Draft</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_draft</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>AI safety evaluator, red-team reviewer, release-gate owner,
 instructor, and learner</td>
@@ -547,7 +962,7 @@ endorsement.</td>
 <td>curriculum_anchor</td>
 <td>agent_interoperability_standards</td>
 <td>official_primary</td>
-<td>2026-06-11</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>agent-platform engineer, interoperability reviewer, procurement
 assessor, instructor, and learner</td>
@@ -564,7 +979,7 @@ protocol-boundary examples.</td>
 <td>curriculum_anchor</td>
 <td>secure_release_change_control</td>
 <td>official_primary</td>
-<td>2026-06-11</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>security architect, release reviewer, agent-platform engineer,
 instructor, and learner</td>
@@ -583,7 +998,7 @@ deployments.</td>
 <td>curriculum_anchor</td>
 <td>agent_interoperability_standards</td>
 <td>official_primary</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>multi-agent system architect, interoperability reviewer, instructor,
 procurement assessor, and learner</td>
@@ -618,7 +1033,7 @@ built on top of third-party tools or services.</td>
 <td>curriculum_anchor</td>
 <td>assurance_evaluation_evidence</td>
 <td>research_standard</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>cyber defense analyst, control assessor, red-team debriefer,
 instructor, and learner</td>
@@ -654,7 +1069,7 @@ ground audit-ready incident and procurement evidence.</td>
 <td>curriculum_anchor</td>
 <td>model_data_provenance</td>
 <td>security_standard</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>supply-chain analyst, SBOM steward, procurement assessor,
 secure-release reviewer, instructor, and learner</td>
@@ -690,7 +1105,7 @@ model/data/software documentation evidence.</td>
 <td>curriculum_anchor</td>
 <td>records_retention_auditability</td>
 <td>official_primary</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>control assessor, compliance engineer, audit-trail steward,
 instructor, and learner</td>
@@ -708,7 +1123,7 @@ compliance traceability.</td>
 <td>curriculum_anchor</td>
 <td>secure_release_change_control</td>
 <td>security_standard</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>release engineer, supply-chain reviewer, procurement assessor,
 instructor, and learner</td>
@@ -726,7 +1141,7 @@ release-control claims.</td>
 <td>curriculum_anchor</td>
 <td>secure_release_change_control</td>
 <td>security_standard</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>release engineer, provenance reviewer, assurance evaluator,
 instructor, and learner</td>
@@ -744,7 +1159,7 @@ evidence and provenance checks.</td>
 <td>curriculum_anchor</td>
 <td>secure_release_change_control</td>
 <td>security_standard</td>
-<td>2026-06-06</td>
+<td>2026-09-06</td>
 <td>quarterly</td>
 <td>release signer, supply-chain security reviewer, procurement
 assessor, instructor, and learner</td>
@@ -1111,11 +1526,11 @@ refutation of the same and alternative counterarguments</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The founding inoculation-theory experiment, showing that
-pre-exposing people to weakened counterarguments (refutational
-pre-bunking) builds resistance to later persuasion better than passive
-supportive defenses — the medical-vaccination analogy that grounds
-modern prebunking research.</td>
+<td>Historical scholarly work on active and passive prior refutation of
+the same and alternative counterarguments, used as context for the
+development of inoculation theory. This anchor does not establish
+durable protection against modern influence operations or the
+effectiveness of AGEINT prebunking exercises.</td>
 </tr>
 <tr>
 <td>[scholarly_data_cards_dataset_documentation]</td>
@@ -1204,7 +1619,7 @@ AI Agent Systems, NIST AI 800-2 Initial Public Draft</td>
 <td>curriculum_anchor</td>
 <td>assurance_evaluation_evidence</td>
 <td>official_draft</td>
-<td>2026-06-11</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>AI evaluator, procurement assessor, assurance reviewer, instructor,
 system steward, and learner</td>
@@ -1244,7 +1659,7 @@ Organizations</td>
 <td>curriculum_anchor</td>
 <td>secure_release_change_control</td>
 <td>official_primary</td>
-<td>2026-06-11</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>security architect, release reviewer, agent-platform engineer,
 procurement assessor, instructor, and learner</td>
@@ -1432,16 +1847,19 @@ US Intelligence Tradecraft Standards Requires Collective Analysis</td>
 <td>curriculum_anchor</td>
 <td>sat_evaluation_evidence</td>
 <td>scholarly_peer_reviewed</td>
-<td>2026-06-11</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>curriculum designer; quality reviewer; analytic standards
 trainer</td>
-<td>Grounds reviewer calibration, aggregate judgment, and
-quality-control lessons.</td>
+<td>Informs reviewer-calibration and rating-aggregation lessons while
+distinguishing assessment reliability from predictive validity.</td>
 <td>open-access scholarly article; cite DOI/journal source</td>
-<td>Peer-reviewed study showing poor individual reliability but stronger
-aggregated reliability when raters apply tradecraft standards to
-intelligence reports.</td>
+<td>Peer-reviewed study of 15 trained raters assessing 64 reports
+generated for hypothetical intelligence problems using an ICD203-derived
+rubric. Individual rating reliability was poor, while mathematically
+averaged ratings were more reliable under the study conditions.
+Reliability does not establish predictive validity or the truth of
+highly rated reports.</td>
 </tr>
 <tr>
 <td>[scholarly_barnes_mandel_2014_forecast_accuracy]</td>
@@ -2214,7 +2632,7 @@ programs across the IC.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, reviewer</td>
 <td>anchors introductory IC mission language to the public official
@@ -2230,7 +2648,7 @@ customers, and values at a high level.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, civil-liberties reviewer</td>
 <td>anchors public-facing accountability language and oversight
@@ -2246,7 +2664,7 @@ lawfulness, oversight, and civil liberties framing.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, transparency reviewer</td>
 <td>supports transparent manuscript and evidence-packet posture without
@@ -2263,7 +2681,7 @@ methods.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, publication reviewer</td>
 <td>anchors public-facing transparency language used in AGEINT
@@ -2279,7 +2697,7 @@ transparency platform and public front door.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, reviewer</td>
 <td>supports modular substrate language about collaboration without
@@ -2295,7 +2713,7 @@ IC elements and external partners.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, innovation reviewer</td>
 <td>keeps innovation claims tied to public IC values rather than
@@ -2357,7 +2775,7 @@ responsibilities, complaints, records, and safeguards.</td>
 <td>curriculum_anchor</td>
 <td>cyber_defense_guidance_index</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>cyber analyst, instructor, reviewer</td>
 <td>supports defensive CTI source routing without citing exploit
@@ -2373,7 +2791,7 @@ technical reports, and operational risk notices.</td>
 <td>curriculum_anchor</td>
 <td>ic_public_transparency</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>learner, instructor, reviewer</td>
 <td>anchors public NSA mission descriptions to the official page</td>
@@ -2389,7 +2807,7 @@ Artificial Intelligence Systems</td>
 <td>curriculum_anchor</td>
 <td>agentic_ai_security_governance</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>AI security reviewer, system owner, instructor</td>
 <td>supports agentic AI safety-boundary and adoption-gate language</td>
@@ -2434,7 +2852,7 @@ digital transformation in GEOINT.</td>
 <td>curriculum_anchor</td>
 <td>counterintelligence_program_governance</td>
 <td>official_primary</td>
-<td>2026-06-14</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>CI reviewer, analyst, instructor</td>
 <td>supports defensive CI/source-integrity framing without investigation
@@ -5385,7 +5803,7 @@ uses it for defensive, historical, governance, or method context, not
 for operational execution.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

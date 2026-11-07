@@ -1,15 +1,15 @@
 ### AGEINT Python Code Library governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-ageint-python-code-library].
 
 ### AGEINT Python Code Library analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 36's governance-boundary section, directly verified anchors for the **Agentic AI Governance and Tool Security** lane include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 36's governance-boundary section, the **Agentic AI Governance and Tool Security** catalog routes include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-Research lane: **Agentic AI Governance and Tool Security** for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**. [@ageint242]; [@ageint243].
+Research lane: **Agentic AI Governance and Tool Security** for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**. [@ageint242]; [@ageint243].
 
-**Curriculum topic spine:** **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII**, **Search-exposure provenance review using instructor-provided records**, **Autonomous Vulnerability Scanner: AutoGen + Nmap + MITRE ATT&CK Navigator**.
-**Verified anchor cluster:** [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]; [@official_ic_ai_ethics_principles]; [@official_ic_ai_ethics_framework]; [@official_odni_icd_505].
+**Curriculum topic spine:** **Offline structured-evidence aggregation: supplied CTI-style records**, **Offline source-review crew: local handoff records**, **Offline review of supplied scanner-result records: no autonomous scanning**.
+**Recorded source cluster; inspection and scope limits apply:** [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]; [@official_ic_ai_ethics_principles]; [@official_ic_ai_ethics_framework]; [@official_odni_icd_505].
 
 **Conceptual depth:** delegated action under explicit authority, identity, permissions, tool boundaries, monitoring, and human escalation.
 
@@ -19,7 +19,7 @@ Research lane: **Agentic AI Governance and Tool Security** for **Threat Intellig
 
 **Known failure modes:** excessive agency, shadow tools, indirect prompt injection, memory poisoning, confused authority, and unbounded action chains.
 
-**Defensive boundary:** agentic workflows stay synthetic, owned-lab, supervised, logged, rate-limited, and reversible unless a lawful production authority exists. Applied to **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+**Defensive boundary:** agentic workflows stay synthetic, owned-lab, supervised, logged, rate-limited, and reversible unless a lawful production authority exists. Applied to **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
 | Anchor | Why it matters here |
 |---|---|
@@ -43,66 +43,65 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint242]; [
 
 ### AGEINT Python Code Library agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-ageint-python-code-library].
 
 AGEINT translation is bounded by the **Agentic AI Governance and Tool Security** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
 checklists, summarize evidence, simulate benign scenarios, and audit reasoning.
 They do not initiate unauthorized collection, exploitation, covert targeting,
-manipulation, or cyber-physical action; examples stay tied to **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+manipulation, or cyber-physical action; examples stay tied to **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
 #### AGEINT Python Code Library permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-ageint-python-code-library].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
 Work products fit the current unit's education, policy review, lab
-exercises, and accountable defensive analysis for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+exercises, and accountable defensive analysis for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
 #### AGEINT Python Code Library excluded operational boundary: blocked actions and stop rules
 
-Keep all practice accountable, synthetic, defensive, logged, reversible, and evidence-bounded while working from [@ageint242]; [@ageint243] and **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**. Do not convert it into live targeting, evasion, exploitation, covert collection, manipulation, or unsafe cyber-physical action.
+Keep all practice accountable, synthetic, defensive, logged, reversible, and evidence-bounded while working from [@ageint242]; [@ageint243] and **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**. Do not convert it into live targeting, evasion, exploitation, covert collection, manipulation, or unsafe cyber-physical action.
 
 ### AGEINT Python Code Library governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-ageint-python-code-library].
 
 Governance is practiced as a gate on the **Agentic AI Governance and Tool Security**
 lane. Learners use the **Agentic Tool-Governance Lens** to decide who is accountable for the exercise,
 which evidence is sufficient, what rights and access issues remain, and when an
-agent-assisted artifact must stop for human review while using **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+agent-assisted artifact must stop for human review while using **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
 #### AGEINT Python Code Library governance card: gates, retained evidence, and review owner
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint242]; [@ageint243]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint242]; [@ageint243]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Agentic AI Governance and Tool Security** failure modes and the **Agentic Tool-Governance Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### AGEINT Python Code Library evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-ageint-python-code-library]; [@ageint242].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Agentic Tool-Governance Lens** evidence gate stays compact enough to apply during
-reading, practice, and revision for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**.
+reading, practice, and revision for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**.
 
 #### AGEINT Python Code Library current-source assurance: verified anchors and local artifact fit
 
-The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**. [@ageint242]; [@ageint243].
+The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**. [@ageint242]; [@ageint243].
 
 | Assurance question | Direct source evidence | Chapter artifact |
 |---|---|---|
-| What does the module inherit from `official_oecd_agentic_ai` for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**? | The Agentic AI Landscape and Its Conceptual Foundations; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; Official OECD conceptual foundation for agentic AI. |
-| What does the module inherit from `official_canada_agentic_ai_guide` for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**? | Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded-autonomy run card, recoverability review, approval threshold, monitoring evidence, and public-sector service assurance |
-| What does the module inherit from `official_nist_ai_rmf` for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**? | Artificial Intelligence Risk Management Framework (AI RMF 1.0); lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; Official NIST.AI.100-1 risk-management framework. |
-| What does the module inherit from `official_nist_ai_600_1` for **Threat Intelligence Aggregation Agent: LangChain + STIX/TAXII; Search-exposure provenance review using instructor-provided records**? | Artificial Intelligence Risk Management Framework: Generative AI Profile; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; Official NIST AI 600-1 generative AI profile. |
+| What does the module inherit from `official_oecd_agentic_ai` for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**? | The Agentic AI Landscape and Its Conceptual Foundations; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; source-quality triangulation and claim-boundary review |
+| What does the module inherit from `official_canada_agentic_ai_guide` for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**? | Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded-autonomy run card, recoverability review, approval threshold, monitoring evidence, and public-sector service assurance |
+| What does the module inherit from `official_nist_ai_rmf` for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**? | Artificial Intelligence Risk Management Framework (AI RMF 1.0); lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; source-quality triangulation and claim-boundary review |
+| What does the module inherit from `official_nist_ai_600_1` for **Offline structured-evidence aggregation: supplied CTI-style records; Offline source-review crew: local handoff records**? | Artificial Intelligence Risk Management Framework: Generative AI Profile; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; source-quality triangulation and claim-boundary review |
 | How is Perplexity handled here? | Discovery and second-opinion notes are not citable authority unless converted into direct official, standards-body, public-domain, or scholarly anchors. | Claim ledger records the direct URL, checked date, source lane, refresh trigger, and reviewer. |
 
 **Where this sits.** This module's overview is [@sec:chapter-ageint-python-code-library]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

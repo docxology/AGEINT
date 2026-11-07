@@ -161,15 +161,23 @@ def test_audit_pdf_quality_script_reports_json_contract(tmp_path: Path) -> None:
     assert payload["stale_pdf"] is False
 
 
-def test_audit_heading_support_script_reports_json_contract() -> None:
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120
-    )
+def test_audit_heading_support_script_reports_json_contract(tmp_path: Path) -> None:
+    document = tmp_path / "navigation.md"
+    document.write_text("# Local section {#sec:local}\n\nStructural navigation only.\n", encoding="utf-8")
+    command = [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"), "--manuscript-dir", str(tmp_path), "--format", "json"]
+    result = subprocess.run(command, cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120)
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
-    assert payload["heading_count"] > 0
-    assert payload["unsupported_heading_count"] == 0
+    assert payload["scope"] == "structural_navigation_not_evidence"
+    assert payload["heading_count"] == 1
     assert payload["unsupported_headings"] == []
+
+    document.write_text("## Rule without navigation\n\nAuthor-defined rule.\n", encoding="utf-8")
+    result = subprocess.run(command, cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120)
+    assert result.returncode == 1, result.stdout + result.stderr
+    payload = json.loads(result.stdout)
+    assert payload["unsupported_heading_count"] == 1
+    assert payload["unsupported_headings"][0]["title"] == "Rule without navigation"
 
 
 def test_audit_orchestration_contract_script_reports_json_contract() -> None:

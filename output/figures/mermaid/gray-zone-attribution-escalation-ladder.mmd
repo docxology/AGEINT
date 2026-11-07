@@ -1,15 +1,12 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  X(["Ambiguous incident"])
-  X --> AT["Attribution assessment"]
-  AT --> R1["Deniable"]
-  AT --> R2["Indicative"]
-  AT --> R3["Attributable"]
-  R1 --> B1["Diplomatic signaling"]
-  R2 --> B2["Coordinated resilience"]
-  R3 --> B3["Proportionate countermeasures"]
-  B1 --> G{"Authority and thresholds"}
-  B2 --> G
-  B3 --> G
-  G --> MO["Continuous monitoring"]
-  MO --> AT
+    X["Synthetic ambiguous incident"] --> SCOPE{"Permitted analytic purpose<br/>authority and minimization confirmed?"}
+    SCOPE -->|No or unknown| STOP["Stop or close with reason"]
+    SCOPE -->|Yes| OBS["Record observations<br/>separate inference from fact"]
+    OBS --> ALT["Compare explanations<br/>weather, maintenance, error<br/>and coercion hypotheses"]
+    ALT --> AT["Separate attribution claims<br/>activity, actor, sponsor<br/>intent and direction/control"]
+    AT --> G{"Discriminating evidence sufficient?"}
+    G -->|No or conflicting| UNKNOWN["Unresolved attribution<br/>document gaps or close"]
+    G -->|Claim-specific grounds documented| REV["Named human review<br/>confidence, dissent and limitations"]
+    REV --> NOTE["Classroom analytic note<br/>reopening and correction triggers"]
+    NOTE --> LIMIT["No automatic response ladder<br/>Confidence is not authority<br/>No external action or accusation"]

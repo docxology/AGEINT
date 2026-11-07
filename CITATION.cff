@@ -5,7 +5,7 @@ title: >-
   Cookbook, and Playbook for Agentic Intelligence
 abstract: >-
   A modular, evidence-bounded curriculum for Agentic Intelligence. AGEINT
-  converts a verified source guide into a semantic manuscript, a registry-backed
+  converts curriculum source shards into a semantic manuscript, a registry-backed
   figure set, generated BibTeX, and auditable runtime variables across 16 parts,
   51 chapters, and 9 appendices. It covers intelligence tradecraft, IC-cycle
   governance, OSINT/GEOINT integrity, FININT and economic security, declassified
@@ -27,15 +27,12 @@ license:
   - CC-BY-4.0
   - Apache-2.0
 doi: 10.5281/zenodo.20732274
-version: '0.1'
-date-released: '2026-06-17'
+version: '0.2.0'
+date-released: '2026-11-07'
 identifiers:
   - type: doi
     value: 10.5281/zenodo.20732274
     description: Concept DOI (resolves to the latest version — cite this)
-  - type: doi
-    value: 10.5281/zenodo.20732275
-    description: Version DOI (Edition 0.1)
 keywords:
   - agentic intelligence
   - intelligence tradecraft

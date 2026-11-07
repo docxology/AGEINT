@@ -4,24 +4,37 @@ Forward-only tracker for source-owned work. History lives in `ISA.md` and commit
 messages; this file holds current state and the next useful work. Each row states
 an acceptance line — the command whose output decides whether it is done.
 
-## Verified State (2026-09-07)
+## Verified State (2026-11-06)
 
-Measured, not copied. Re-run the commands rather than trusting these numbers.
+Evidence clock: `SOURCE_DATE_EPOCH=1794006724`. This pins report/build dates;
+it does not mean every source was freshly checked. Reports under
+`output/reports/` carry the detailed evidence and limits.
 
-- Test gate: `uv run pytest tests/ --cov=src --cov-fail-under=90` -> green
-  (437 passed, coverage 91.70%, floor 90).
-- Lint gate: `uv run ruff check src tests scripts` -> clean. Ruleset pinned in
-  `[tool.ruff.lint]` (`select = ["E", "F"]`); version pinned via `uv.lock`.
-- File-size gate: `tests/test_file_size_inventory.py` -> green (500-line cap).
-- Publication-readiness: `audit_publication_readiness.py --write --skip-parent-guard`
-  -> `ok = true` (exit 0, 2026-09-07 re-run after the canonicalization rebuild).
-- Artifact evidence: `audit_artifact_evidence.py --write` -> `ok = true`
-  (exit 0, 2026-09-07 re-run).
-- Source refresh: `audit_source_refresh_due.py --write` -> 472 rows, 0 due/stale
-  (2026-09-07 re-run).
-- Measured scope: 16 parts, 51 chapters, 9 appendices, 177 registered figures,
-  472 source metadata rows (462 intelligence + 10 source-quality), 312 parsed
-  guide references (rebuild log 2026-09-07).
+- Strict canonical build: 16 parts, 51 chapters, 9 appendices, 20 patterns,
+  312 guide references and 177 registered figures; real rendered figures required.
+- Native PDF: 1,825 pages; 6,579 URI links, zero bad targets, zero banned-marker
+  hits, not stale. Root `AGEINT.pdf` matches `output/pdf/AGEINT_combined.pdf`.
+- Actual Chrome reader: 177 images, zero broken loaded images, no horizontal
+  overflow at the exercised 1,280-pixel viewport; figure-detail disclosure works.
+- The Python example copied from canonical HTML executes with the documented
+  result. Duplicate-origin, conflicting-current-record, no-current-record,
+  superseded-record and exact-permission controls pass; human review stays pending.
+- Claim audit: zero hard failures, 4,729 lexical review flags. Reference audit:
+  333 files, zero issues. These are structural/lexical checks, not entailment,
+  learning-gain, security-effectiveness, legal or accessibility certifications.
+- Complete regression gate: `uv run pytest tests/ --cov=src --cov-fail-under=90`
+  passed: 392 tests, 90.04% coverage (floor 90). Ruff is clean. Focused
+  behavioral/native-format checks: 65 passed; file-size gate passed.
+- Shared `template` renderer: 60 focused tests passed for nested image-path,
+  alt-text and HTML contracts; the complete AGEINT PDF/HTML render also passed.
+- Live aggregate audit: all 12 checks passed; all 723 source sections cited;
+  472 explicit source-metadata rows, zero fallback rows.
+- Source refresh at the pinned evidence clock: 403 current, 69 due soon;
+  zero due/stale rows, missing checked dates or unknown cadences.
+- Local publication preflight passed with `--skip-parent-guard`. The parent
+  confidentiality guard was not run; no publication approval is implied.
+  Final artifact and local-preflight reports are written under `output/reports/`.
+- The PDF is untagged; no PDF/UA or screen-reader conformance claim is made.
 
 ## Open
 

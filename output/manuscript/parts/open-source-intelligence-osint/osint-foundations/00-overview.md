@@ -12,11 +12,11 @@ This module teaches the **Open-Source and Geospatial Intelligence Integrity** la
 
 ## Open-Source and Geospatial Intelligence Integrity frame for OSINT Foundations: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 ### OSINT Foundations orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 ### OSINT Foundations conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### OSINT Foundations learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 - Connect **History and Rise of OSINT in the Intelligence Community and IC OSINT Strategy 2024–2026** to **Open-Source and Geospatial Intelligence Integrity** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **requirements matrix with source descriptors, caveats, and collection limits** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### OSINT Foundations core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 | Term | Working definition |
 |---|---|
-| Provenance | the origin, chain, and transformation history of a source |
-| Corroboration | the comparison of independent sources before reuse |
+| Provenance | the origin, custody, and transformation history of a source, which helps evaluate a claim but does not prove its truth or grant reuse permission |
+| Corroboration | comparison of relevant, sufficiently independent evidence for a specific claim; copied sources do not become independent through repetition |
 | Recency | the time relationship between source creation, discovery, and claim |
 | Geospatial quality | accuracy, completeness, temporal fitness, and usability of location data |
 | Minimization | limiting retained information to what the accountable question requires |
-| History and Rise of OSINT in the Intelligence… | Key terms: History, Rise, OSINT. |
-| IC OSINT Strategy 2024–2026 | Key terms: IC, OSINT, Strategy. |

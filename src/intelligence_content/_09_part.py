@@ -46,7 +46,7 @@ def _verification_note_for_table(anchor: ResearchAnchor) -> str:
 
 
 def source_refresh_rows(limit: int | None = None) -> str:
-    """Render source-refresh ledger rows for verified anchors."""
+    """Render recorded source-refresh metadata and access limitations."""
     rows = ["| Anchor | Source | Lane | Tier | Checked | Cadence | Refresh trigger | Verification note |", "|---|---|---|---|---|---|---|---|"]
     anchors = INTELLIGENCE_RESEARCH_ANCHORS if limit is None else INTELLIGENCE_RESEARCH_ANCHORS[:limit]
     for anchor in anchors:
@@ -61,15 +61,15 @@ def source_refresh_rows(limit: int | None = None) -> str:
 
 
 def current_source_update_rows(cutoff: str = "2026-06-06") -> str:
-    """Render the current-source additions and refreshes from the latest audit pass."""
-    rows = ["| Anchor | Source | Lane | Contribution to the manuscript | Verification caveat |", "|---|---|---|---|---|"]
+    """Select recorded checked dates or dated caveats since a declared cutoff."""
+    rows = ["| Anchor | Source | Lane | Recorded checked date | Contribution to the manuscript | Verification caveat |", "|---|---|---|---|---|---|"]
     updates = [anchor for anchor in INTELLIGENCE_RESEARCH_ANCHORS if anchor.checked_as_of >= cutoff or cutoff in anchor.verification_note]
     for anchor in updates:
         source = f"[{table_cell(anchor.title)}]({anchor.url})" if anchor.url else table_cell(anchor.title)
         caveat = _verification_note_for_table(anchor)
         if anchor.source_tier == "official_draft" and "draft status" not in caveat.lower():
             caveat = f"Draft status retained. {caveat}"
-        rows.append(f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | {table_cell(anchor.claim_scope)} | {table_cell(caveat)} |")
+        rows.append(f"| {citation_ref(anchor.key)} | {source} | {table_cell(anchor.source_lane or anchor.domain)} | {anchor.checked_as_of} | {table_cell(anchor.claim_scope)} | {table_cell(caveat)} |")
     return "\n".join(rows)
 
 
@@ -85,23 +85,11 @@ def profile_triangulation_anchors(part_title: str, section_title: str = "", *, c
     module_number = str(chapter.get("number", "")).strip() if chapter else ""
     local_scope = f"module {module_number}" if module_number else "this module"
     return (
-        f"**Triangulation anchors.** In {local_scope}'s {surface}, directly "
-        f"verified anchors for the **{profile.title}** lane include {anchors} Use "
-        "them to test source-guide claims, method boundaries, governance constraints, "
-        "and safety gates without replacing the module's `ageintNNN` provenance."
+        f"**Contextual source routes.** For {local_scope}'s {surface}, the "
+        f"**{profile.title}** catalog routes include {anchors} Check the actual "
+        "passage, edition, claim scope and access limitations before use. Route "
+        "membership does not establish relevance, independent corroboration or efficacy."
     )
-
-
-def research_anchor_rows() -> str:
-    """Render a compact table of curated research anchors."""
-    rows = ["| Anchor | Domain | Lane | Tier | Checked | Refresh | Curriculum use |", "|---|---|---|---|---|---|---|"]
-    for anchor in INTELLIGENCE_RESEARCH_ANCHORS:
-        rows.append(
-            f"| {citation_ref(anchor.key)} | {anchor.domain} | {anchor.source_lane or anchor.domain} | "
-            f"{anchor.source_tier or anchor.source_type} | {anchor.checked_as_of} | "
-            f"{anchor.refresh_cadence} | {anchor.note} |"
-        )
-    return "\n".join(rows)
 
 
 def practice_lens_rows() -> str:
@@ -180,7 +168,7 @@ def _topic_context(chapter: dict[str, Any], part: dict[str, Any], *, limit: int 
 def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render a chapter-level practice lens."""
     title = str(chapter["title"])
-    lens = practice_lens_for_titles(str(part["title"]), title)
+    lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
     source_context = _chapter_ref_context(chapter)
     topic_context = _topic_context(chapter, part)
     return "\n".join(
@@ -203,7 +191,7 @@ def chapter_practice_lens(chapter: dict[str, Any], part: dict[str, Any]) -> str:
 def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render chapter-level research synthesis."""
     title = str(chapter["title"])
-    profile = profile_for_titles(str(part["title"]), title)
+    profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
     distinct = list(dict.fromkeys(e.display_title for e in safe_topic_entries(chapter, part)))[:3]
     source_context = _chapter_ref_context(chapter)
     topic_context = f"**{'; '.join(distinct[:2])}**" if distinct else "the local topic cluster"
@@ -216,7 +204,7 @@ def chapter_research_brief(chapter: dict[str, Any], part: dict[str, Any]) -> str
             f"Research lane: **{profile.title}** for {topic_context}. {source_context}",
             "",
             topic_line.rstrip(),
-            f"**Verified anchor cluster:** {citation_cluster(expanded_profile_anchor_keys(profile), limit=7)}",
+            f"**Recorded source cluster; inspection and scope limits apply:** {citation_cluster(expanded_profile_anchor_keys(profile), limit=7)}",
             "",
             f"**Conceptual depth:** {profile.conceptual_focus}.",
             "",
@@ -237,6 +225,6 @@ def _table_cell(value: str) -> str:
     return table_cell(value)
 
 
-def _coursebook_profile_for_titles(part_title: str, section_title: str = "") -> CoursebookProfile:
-    profile = profile_for_titles(part_title, section_title)
+def _coursebook_profile_for_titles(part_title: str, section_title: str = "", *, chapter: dict[str, Any] | None = None) -> CoursebookProfile:
+    profile = profile_for_titles(part_title, section_title, chapter=chapter)
     return COURSEBOOK_PROFILES[profile.identifier]

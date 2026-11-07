@@ -1,31 +1,50 @@
-## Add or extend a citation: preserve identity and record metadata
+## Bind the claim, not merely the citation
 
-**Section anchor.** [@sec:bibliography_atlas].
+**Navigation.** Parent section: [@sec:bibliography_atlas].
 
-1. Preserve `ageint001` through `ageint231`; do not renumber locked source identities.
-2. Append new source-guide references after the locked range. Current generated guide keys extend through `ageint312`.
-3. For curated anchors, record `source_lane`, `source_tier`, `checked_as_of`, `verification_method`, `claim_scope`, `refresh_cadence`, `refresh_trigger`, `stakeholder_role`, `assurance_use`, and `rights_dimension`.
-4. Use Pandoc citation syntax such as `[@ageint137]` or `[@official_nist_ai_rmf]`.
-5. Use label-backed cross-references to the curriculum orientation section and curriculum-map figure rather than hard-coded section or figure numbers.
-6. Rebuild from the AGEINT root:
+For each substantive assertion, record the exact passage/locator and edition,
+what it supports, what remains inference, contrary evidence, applicability and
+upstream origin. Multiple keys or copies of one study are one evidence family.
+Official status, a working URL, `note_verified`, note length and source-route
+membership do not establish entailment or effectiveness.
 
-```bash
-uv run python scripts/build_curriculum.py
-```
+Keep source inspection distinct from metadata-only review, search-index identity
+and blocked full-text attempts. Do not refresh `checked_as_of` merely because a
+build ran. Corrected or contested studies retain their identity and visible
+limitations. Missing publication year and authorship remain absent; verification
+date is not publication date. Use `and` between individual authors in a BibTeX
+author field, not a comma-separated list that can be parsed as one person's name.
+When authorship is absent, the generated BibTeX `key` field preserves the stable
+reference identifier for native sorting and labels. It is not an author or
+publication date; this also avoids `plainnat` label overflow among undated,
+unattributed references that share a citation-key prefix.
+
+Authored `teaching_note` Markdown in a source section can cite existing keys
+directly for its worked reasoning; inherited citation arrays remain provenance.
+Clearly label fictional quantities and exercise outcomes. Unknown citation keys
+fail closed even with an official-looking prefix. The lexical claim audit is a
+triage gate, not a semantic verifier; a genuine but unrelated citation still
+requires manual claim-to-passage review.
+
+Keep inherited raw source text and citation identities separate from the current
+teaching title. A title without a concept route receives honest profile framing,
+not a definition synthesized from its first words. Supply the topic-specific
+explanation, case, limits and source locator in `teaching_note`; keyword density
+and varied wording are not evidence of substantive coverage.
 
 never hand-edit `output/manuscript/` as the source of truth.
 
 ### Current citation coverage by source section
 
-**Coverage anchor.** Parent appendix: [@sec:bibliography_atlas]. Citation coverage by source section is validated from the generated citation inventory.
+**Navigation.** Parent section: [@sec:bibliography_atlas].
 
 | Measure | Count |
 |---|---:|
 | Source sections | 723 |
-| Citation occurrences | 1468 |
+| Citation occurrences | 1470 |
 | Unique source-guide keys | 301 |
 | Zero-citation source sections | 0 |
-| Distribution | 1 citation(s): 275 section(s), 2 citation(s): 154 section(s), 3 citation(s): 291 section(s), 4 citation(s): 3 section(s) |
+| Distribution | 1 citation(s): 275 section(s), 2 citation(s): 152 section(s), 3 citation(s): 293 section(s), 4 citation(s): 3 section(s) |
 
 ### Citation rows by source section
 
@@ -34,95 +53,95 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 1.99 | The Nature of Intelligence - V2 source-lane extension: bind The Nature of Intelligence to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint237]; [@ageint270] |
 | 1.101 | The Nature of Intelligence - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for The Nature of Intelligence | 3 | [@ageint273]; [@ageint274]; [@ageint275] |
 | 1.102 | The Nature of Intelligence - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for The Nature of Intelligence | 3 | [@ageint286]; [@ageint287]; [@ageint292] |
-| 1.1 | The Nature of Intelligence - Defining Intelligence: Collection, Analysis, Production, Dissemination | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
-| 1.2 | The Nature of Intelligence - The Intelligence Cycle (Classic, Revised, and Critique) | 2 | [@ageint297]; [@ageint298] |
-| 1.3 | The Nature of Intelligence - Types: Strategic, Operational, Tactical, Technical Intelligence | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
+| 1.1 | The Nature of Intelligence - Information, Reporting, Finished Judgment, and Decision Support | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
+| 1.2 | The Nature of Intelligence - The Intelligence Cycle: Iteration, Feedback, and Limits | 2 | [@ageint297]; [@ageint298] |
+| 1.3 | The Nature of Intelligence - Strategic, Operational, Tactical Uses and Technical Specialties | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
 | 1.4 | The Nature of Intelligence - Intelligence as Social and Epistemological Practice | 1 | [@ageint001] |
-| 1.5 | The Nature of Intelligence - National, Corporate, and Private Intelligence: Structural Differences | 2 | [@ageint297]; [@ageint298] |
-| 1.6 | The Nature of Intelligence - The Ethics of Intelligence: EO 12333, FISA, ICD 203, Allied Law | 1 | [@ageint002] |
-| 1.7 | The Nature of Intelligence - Active Inference as a Unifying Cognitive Framework for Intelligence | 1 | [@ageint003] |
-| 1.8 | The Nature of Intelligence - The AI Inflection Point: How Artificial Intelligence Reshapes Every Phase of the Intelligence Cycle | 2 | [@ageint004]; [@ageint005] |
+| 1.5 | The Nature of Intelligence - National, Corporate, and Private Intelligence: Purpose and Authority | 2 | [@ageint298]; [@ageint297] |
+| 1.6 | The Nature of Intelligence - Law, Executive Instruments, Analytic Standards, and Ethics | 1 | [@ageint002] |
+| 1.7 | The Nature of Intelligence - Active Inference as a Proposed Modeling Perspective | 1 | [@ageint003] |
+| 1.8 | The Nature of Intelligence - AI and the Intelligence Cycle: Proposed Changes and Evidence Gaps | 2 | [@ageint004]; [@ageint005] |
 | 2.99 | Intelligence Community Architectures - V2 source-lane extension: bind Intelligence Community Architectures to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint234]; [@ageint247]; [@ageint249] |
 | 2.101 | Intelligence Community Architectures - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Intelligence Community Architectures | 3 | [@ageint276]; [@ageint277]; [@ageint284] |
 | 2.102 | Intelligence Community Architectures - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Intelligence Community Architectures | 3 | [@ageint288]; [@ageint289]; [@ageint293] |
-| 2.1 | Intelligence Community Architectures - U.S. Intelligence Community: 18 Agencies, Authorities, and Relationships | 1 | [@ageint006] |
-| 2.2 | Intelligence Community Architectures - Soviet/Russian Architecture: Cheka → GPU → NKVD → MGB → KGB → SVR/FSB/GRU | 2 | [@ageint297]; [@ageint298] |
-| 2.3 | Intelligence Community Architectures - British Architecture: MI5, MI6/SIS, GCHQ, DI, JIC | 1 | [@ageint007] |
-| 2.4 | Intelligence Community Architectures - Israeli Architecture: Mossad, Shin Bet, Unit 8200, LAKAM | 1 | [@ageint008] |
-| 2.5 | Intelligence Community Architectures - Chinese Architecture: MSS, PLA-SSF, United Front Work Department, APT Groups | 1 | [@ageint009] |
-| 2.6 | Intelligence Community Architectures - Five Eyes and Allied Intelligence Sharing: BRUSA to UKUSA | 2 | [@ageint010]; [@ageint011] |
-| 2.7 | Intelligence Community Architectures - Non-State Intelligence Actors: Terrorist, Criminal, PMC | 1 | [@ageint012] |
-| 2.8 | Intelligence Community Architectures - Fusion Centers, JITFs, and Inter-Agency Coordination | 2 | [@ageint297]; [@ageint298] |
-| 2.9 | Intelligence Community Architectures - Intelligence Oversight: Congressional, Judicial, Executive Mechanisms | 2 | [@ageint298]; [@ageint297] |
+| 2.1 | Intelligence Community Architectures - U.S. Intelligence Community: Elements, Functions, and Responsibility | 1 | [@ageint006] |
+| 2.2 | Intelligence Community Architectures - Soviet and Russian Institutions: Historical Lineage and Comparison Limits | 2 | [@ageint297]; [@ageint298] |
+| 2.3 | Intelligence Community Architectures - British Intelligence: Security, Foreign Intelligence, Defence, and Assessment Roles | 1 | [@ageint007] |
+| 2.4 | Intelligence Community Architectures - Israeli Institutions: Role Labels and Historical Scope | 1 | [@ageint008] |
+| 2.5 | Intelligence Community Architectures - Chinese Institutions: Historical PLA-SSF Context and Attribution Limits | 1 | [@ageint009] |
+| 2.6 | Intelligence Community Architectures - BRUSA, UKUSA, and Allied Sharing: History versus Permission | 2 | [@ageint010]; [@ageint011] |
+| 2.7 | Intelligence Community Architectures - Non-State Intelligence Activity: Categories without Person-Level Attribution | 1 | [@ageint012] |
+| 2.8 | Intelligence Community Architectures - Fusion Centers and Task Forces: Specify the Coordination Model | 2 | [@ageint306]; [@ageint312] |
+| 2.9 | Intelligence Community Architectures - Oversight: Legislative, Judicial, and Executive Functions | 2 | [@ageint298]; [@ageint297] |
 | 3.99 | Tradecraft: Core Principles - V2 source-lane extension: bind Tradecraft: Core Principles to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint237]; [@ageint266]; [@ageint269] |
 | 3.101 | Tradecraft: Core Principles - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Tradecraft: Core Principles | 3 | [@ageint278]; [@ageint279]; [@ageint283] |
 | 3.102 | Tradecraft: Core Principles - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Tradecraft: Core Principles | 3 | [@ageint290]; [@ageint291]; [@ageint294] |
-| 3.1 | Tradecraft: Core Principles - What Is Tradecraft? Historical Definitions and Evolution | 2 | [@ageint013]; [@ageint014] |
-| 3.2 | Tradecraft: Core Principles - Operational Security (OPSEC): Process and the Five-Step Method | 2 | [@ageint297]; [@ageint298] |
-| 3.3 | Tradecraft: Core Principles - Compartmentation: Need-to-Know vs. Need-to-Share | 2 | [@ageint297]; [@ageint298] |
-| 3.4 | Tradecraft: Core Principles - Cover: Official, Non-Official Cover (NOC), Deep Cover, Legends | 1 | [@ageint015] |
-| 3.5 | Tradecraft: Core Principles - The Principle of Plausible Deniability | 2 | [@ageint297]; [@ageint298] |
-| 3.6 | Tradecraft: Core Principles - Pattern-of-Life Analysis and How to Disrupt It | 1 | [@ageint016] |
-| 3.7 | Tradecraft: Core Principles - Situational Awareness: Urban and Rural Tradecraft | 1 | [@ageint014] |
-| 3.8 | Tradecraft: Core Principles - Code Words, Glossaries, and the Language of Espionage | 1 | [@ageint017] |
-| 3.9 | Tradecraft: Core Principles - Return of Classical Tradecraft in the AI Era: Dead Drops, Brush Passes, In-Person Exchanges | 3 | [@ageint018]; [@ageint005]; [@ageint019] |
+| 3.1 | Tradecraft: Core Principles - Tradecraft: Historical Practice and Analytic Discipline | 2 | [@ageint013]; [@ageint014] |
+| 3.2 | Tradecraft: Core Principles - OPSEC: A Completed Synthetic Document-Release | 3 | [@ageint305]; [@ageint304]; [@ageint303] |
+| 3.3 | Tradecraft: Core Principles - Compartmentation: Protection without Erasing Necessary Context | 2 | [@ageint297]; [@ageint298] |
+| 3.4 | Tradecraft: Core Principles - Historical Cover Vocabulary and Limits of Public Descriptions | 1 | [@ageint015] |
+| 3.5 | Tradecraft: Core Principles - Plausible Deniability: Attribution Claims and Accountability | 2 | [@ageint297]; [@ageint298] |
+| 3.6 | Tradecraft: Core Principles - Versioned Evidence Memory without Person Tracking | 1 | [@ageint016] |
+| 3.7 | Tradecraft: Core Principles - Situational Awareness: Observation, Interpretation, and Uncertainty | 1 | [@ageint014] |
+| 3.8 | Tradecraft: Core Principles - Public Intelligence Vocabulary and Glossary Error Checking | 1 | [@ageint017] |
+| 3.9 | Tradecraft: Core Principles - Classical Tradecraft in AI Commentary: Forecasts, Not Operational Guidance | 3 | [@ageint018]; [@ageint005]; [@ageint019] |
 | 4.99 | Agent Recruitment - V2 source-lane extension: bind Agent Recruitment to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint239]; [@ageint240] |
 | 4.101 | Agent Recruitment - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Agent Recruitment | 3 | [@ageint280]; [@ageint281]; [@ageint282] |
 | 4.102 | Agent Recruitment - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Agent Recruitment | 3 | [@ageint292]; [@ageint295]; [@ageint296] |
-| 4.1 | Agent Recruitment - The MICE Framework: Money, Ideology, Coercion/Compromise, Ego | 2 | [@ageint020]; [@ageint021] |
-| 4.2 | Agent Recruitment - MICE Expanded: RASCLS — Reciprocity, Authority, Scarcity, Commitment, Liking, Social Proof | 2 | [@ageint298]; [@ageint297] |
-| 4.3 | Agent Recruitment - Targeting, Spotting, and Initial Assessment | 2 | [@ageint020]; [@ageint021] |
-| 4.4 | Agent Recruitment - Assessment and Development Operations | 2 | [@ageint020]; [@ageint021] |
-| 4.5 | Agent Recruitment - The Recruitment Pitch: Methods and Psychology | 1 | [@ageint020] |
-| 4.6 | Agent Recruitment - KGB Recruitment Doctrine: Psychological Methods and Manipulation | 2 | [@ageint021]; [@ageint022] |
-| 4.7 | Agent Recruitment - Digital-Age Recruitment: LinkedIn, Telegram, Cryptocurrencies, Dark Web | 1 | [@ageint023] |
-| 4.8 | Agent Recruitment - Shared Experience as a Recruitment Tool: Experimental Research | 1 | [@ageint024] |
-| 4.9 | Agent Recruitment - How AI Lowers the Cost of Recruitment and Social Engineering | 1 | [@ageint004] |
-| 4.10 | Agent Recruitment - Recruitment Ethics and Legal Constraints | 2 | [@ageint298]; [@ageint297] |
+| 4.1 | Agent Recruitment - MICE: Historical Motivation Vocabulary and Its Limits | 2 | [@ageint020]; [@ageint021] |
+| 4.2 | Agent Recruitment - RASCLS: A Distinct Practitioner Framework, Not a Predictive Model | 2 | [@ageint298]; [@ageint297] |
+| 4.3 | Agent Recruitment - Supplied-Record Review: Access Claims without Targeting People | 2 | [@ageint020]; [@ageint021] |
+| 4.4 | Agent Recruitment - Development Claims versus Consent, Scope, and Welfare | 2 | [@ageint020]; [@ageint021] |
+| 4.5 | Agent Recruitment - Recognizing Pressure in Supplied Messages: A Completed Ethics | 1 | [@ageint020] |
+| 4.6 | Agent Recruitment - Attributed KGB Doctrine: Translation, Provenance, and Historical Limits | 2 | [@ageint021]; [@ageint022] |
+| 4.7 | Agent Recruitment - Digital Contact Claims: Channel Labels Are Not Evidence of Intent | 1 | [@ageint023] |
+| 4.8 | Agent Recruitment - Shared-Experience Experiment: Closeness Is Not Commitment | 1 | [@ageint024] |
+| 4.9 | Agent Recruitment - AI Recruitment-Cost Claims: An Unverified Forecast | 1 | [@ageint004] |
+| 4.10 | Agent Recruitment - Human-Source Ethics: Authority, Consent, Withdrawal, and Protection | 2 | [@ageint298]; [@ageint297] |
 | 5.99 | Agent Handling and Management - V2 source-lane extension: bind Agent Handling and Management to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint239]; [@ageint240]; [@ageint241] |
 | 5.101 | Agent Handling and Management - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Agent Handling and Management | 3 | [@ageint273]; [@ageint276]; [@ageint285] |
 | 5.102 | Agent Handling and Management - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Agent Handling and Management | 3 | [@ageint286]; [@ageint290]; [@ageint294] |
-| 5.1 | Agent Handling and Management - The Case Officer–Agent Relationship: Building, Maintaining, Testing Trust | 1 | [@ageint025] |
-| 5.2 | Agent Handling and Management - Meeting Structures: Overt, Covert, and Clandestine | 2 | [@ageint029]; [@ageint004] |
-| 5.3 | Agent Handling and Management - The Surveillance Detection Route (SDR) | 2 | [@ageint026]; [@ageint016] |
-| 5.4 | Agent Handling and Management - Dead Drops: Physical and Digital Methods | 2 | [@ageint027]; [@ageint028] |
-| 5.5 | Agent Handling and Management - Cutouts, Intermediaries, and Deniability Chains | 1 | [@ageint029] |
-| 5.6 | Agent Handling and Management - Fronts and Shell Entities as Agent Infrastructure | 1 | [@ageint029] |
-| 5.7 | Agent Handling and Management - Counter-Surveillance and Detecting Hostile Surveillance | 2 | [@ageint030]; [@ageint031] |
-| 5.8 | Agent Handling and Management - Running Agents-in-Place: Frequency, Tasking, Validation | 2 | [@ageint029]; [@ageint004] |
-| 5.9 | Agent Handling and Management - Burning, Exfiltrating, and Terminating Agents | 2 | [@ageint029]; [@ageint004] |
-| 5.10 | Agent Handling and Management - KGB Working-with-Agents Doctrine (Declassified Manuals) | 1 | [@ageint032] |
-| 5.11 | Agent Handling and Management - AI-Enhanced Micro-Expression Analysis for Source Validation | 1 | [@ageint004] |
-| 5.12 | Agent Handling and Management - AI-Personalized Communication: Tailoring Persuasion to Source Personality | 1 | [@ageint004] |
+| 5.1 | Agent Handling and Management - Human-Source Relationships and the Credibility of Particular Reports | 1 | [@ageint025] |
+| 5.2 | Agent Handling and Management - Overt, Covert, and Clandestine: Historical Terminology and Ambiguity | 2 | [@ageint029]; [@ageint004] |
+| 5.3 | Agent Handling and Management - Surveillance-Detection Claims: Evidence Limits and Safe Historical Reading | 2 | [@ageint026]; [@ageint016] |
+| 5.4 | Agent Handling and Management - Historical Indirect Exchanges: Provenance and Information Loss | 2 | [@ageint027]; [@ageint028] |
+| 5.5 | Agent Handling and Management - Intermediaries: Hearsay, Transformation, and Attribution Limits | 1 | [@ageint029] |
+| 5.6 | Agent Handling and Management - Historical Entity Claims: Separate Ownership, Function, and Attribution | 1 | [@ageint029] |
+| 5.7 | Agent Handling and Management - Ambiguous Observations and Non-Accusatory Safety | 2 | [@ageint030]; [@ageint031] |
+| 5.8 | Agent Handling and Management - Human-Source Reporting: Access, Timing, and Corroboration | 2 | [@ageint029]; [@ageint004] |
+| 5.9 | Agent Handling and Management - Ending Participation: Welfare, Exposure, and Authorized | 2 | [@ageint029]; [@ageint004] |
+| 5.10 | Agent Handling and Management - Attributed KGB Manual: Catalog Evidence Is Not Authentication | 1 | [@ageint032] |
+| 5.11 | Agent Handling and Management - Micro-Expression Claims: Unsupported Deception and Source-Validation Inferences | 1 | [@ageint004] |
+| 5.12 | Agent Handling and Management - AI Personalization Claims: Consent, Profiling, and Evidence Boundaries | 1 | [@ageint004] |
 | 6.99 | Source Protection and CI Integration - V2 source-lane extension: bind Source Protection and CI Integration to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint241]; [@ageint266] |
 | 6.101 | Source Protection and CI Integration - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Source Protection and CI Integration | 3 | [@ageint274]; [@ageint278]; [@ageint280] |
 | 6.102 | Source Protection and CI Integration - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Source Protection and CI Integration | 3 | [@ageint287]; [@ageint288]; [@ageint295] |
-| 6.1 | Source Protection and CI Integration - Identifying Penetration: Signs of Compromise | 3 | [@ageint307]; [@ageint305]; [@ageint304] |
-| 6.2 | Source Protection and CI Integration - Compartmentation in Agent Networks | 1 | [@ageint029] |
-| 6.3 | Source Protection and CI Integration - Lie Detection, Vetting, Polygraph, and Its Alternatives | 3 | [@ageint307]; [@ageint305]; [@ageint304] |
-| 6.4 | Source Protection and CI Integration - The Double-Agent Operation | 1 | [@ageint029] |
-| 6.5 | Source Protection and CI Integration - Hostile Intelligence from Non-State Actors | 1 | [@ageint033] |
-| 6.6 | Source Protection and CI Integration - Espionage in the AI Era: Why HUMINT Will Grow in Importance | 2 | [@ageint019]; [@ageint034] |
+| 6.1 | Source Protection and CI Integration - Source-Quality Anomalies: Competing Explanations and Protected | 3 | [@ageint307]; [@ageint305]; [@ageint304] |
+| 6.2 | Source Protection and CI Integration - Human-Source Compartmentation: Access, Corroboration, and Protection | 1 | [@ageint029] |
+| 6.3 | Source Protection and CI Integration - Polygraph and Lie-Detection Claims: Physiology Is Not Truth | 3 | [@ageint307]; [@ageint305]; [@ageint304] |
+| 6.4 | Source Protection and CI Integration - Double-Agent Accounts: Defensive Deception and Source-Integrity Literacy | 1 | [@ageint029] |
+| 6.5 | Source Protection and CI Integration - Non-State Threat Accounts: Evidence, Attribution, and Disclosure Limits | 1 | [@ageint033] |
+| 6.6 | Source Protection and CI Integration - AI-Era HUMINT: An Attributed Forecast and Its Counterarguments | 2 | [@ageint019]; [@ageint034] |
 | 7.99 | SIGINT Fundamentals - V2 source-lane extension: bind SIGINT Fundamentals to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint255]; [@ageint258]; [@ageint261] |
 | 7.101 | SIGINT Fundamentals - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for SIGINT Fundamentals | 3 | [@ageint279]; [@ageint282]; [@ageint284] |
 | 7.102 | SIGINT Fundamentals - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for SIGINT Fundamentals | 3 | [@ageint289]; [@ageint291]; [@ageint296] |
-| 7.1 | SIGINT Fundamentals - COMINT and ELINT: Definitions and Distinctions | 1 | [@ageint035] |
-| 7.2 | SIGINT Fundamentals - Historical Foundations: WWII Axis SIGINT (NSA Declassified 9 Volumes) | 1 | [@ageint036] |
-| 7.3 | SIGINT Fundamentals - Spartans in Darkness: SIGINT in the Indochina War, 1945–1975 | 1 | [@ageint037] |
-| 7.4 | SIGINT Fundamentals - CIA–NSA SIGINT Relationship, 1947–1970 | 2 | [@ageint038]; [@ageint039] |
-| 7.5 | SIGINT Fundamentals - NSA Basic Cryptography (Friedman Documents) | 1 | [@ageint040] |
+| 7.1 | SIGINT Fundamentals - COMINT and ELINT: Content, Metadata, and Non-Communication Signals | 1 | [@ageint035] |
+| 7.2 | SIGINT Fundamentals - European Axis SIGINT Records: Wartime Scope and Archival Limits | 1 | [@ageint036] |
+| 7.3 | SIGINT Fundamentals - Spartans in Darkness: Retrospective History versus Contemporaneous Reporting | 1 | [@ageint037] |
+| 7.4 | SIGINT Fundamentals - CIA–NSA Historical Roles: Document Dates, Coordination, and Redactions | 2 | [@ageint038]; [@ageint039] |
+| 7.5 | SIGINT Fundamentals - Friedman Cryptography Records: Historical Concepts, Not Modern Security Advice | 1 | [@ageint040] |
 | 8.99 | Modern SIGINT and Cryptography - V2 source-lane extension: bind Modern SIGINT and Cryptography to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint258]; [@ageint260]; [@ageint261] |
 | 8.101 | Modern SIGINT and Cryptography - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Modern SIGINT and Cryptography | 3 | [@ageint275]; [@ageint276]; [@ageint283] |
 | 8.102 | Modern SIGINT and Cryptography - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Modern SIGINT and Cryptography | 3 | [@ageint286]; [@ageint293]; [@ageint295] |
-| 8.1 | Modern SIGINT and Cryptography - UKUSA and Five Eyes SIGINT Sharing | 2 | [@ageint041]; [@ageint042] |
-| 8.2 | Modern SIGINT and Cryptography - Bulk Collection, Metadata Analysis, and Legal Frameworks | 2 | [@ageint298]; [@ageint297] |
-| 8.3 | Modern SIGINT and Cryptography - The Cryptographic Arms Race: E2E Encryption and Lawful Access | 2 | [@ageint297]; [@ageint298] |
-| 8.4 | Modern SIGINT and Cryptography - Covert Communications Tradecraft: OTPs, Burst Transmission, Digital Dead Drops | 2 | [@ageint027]; [@ageint028] |
-| 8.5 | Modern SIGINT and Cryptography - Radio Frequency Intelligence (RFINT) and Technical Surveillance | 2 | [@ageint043]; [@ageint044] |
-| 8.6 | Modern SIGINT and Cryptography - Technical Surveillance Countermeasures (TSCM): Threat Levels and Detection | 2 | [@ageint045]; [@ageint046] |
-| 8.7 | Modern SIGINT and Cryptography - Non-Linear Junction Detectors, RF Spectrum Analysis, Infrared Imaging | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
-| 8.8 | Modern SIGINT and Cryptography - Steganography: LSB, DCT, and Network-Layer Methods | 1 | [@ageint028] |
-| 8.9 | Modern SIGINT and Cryptography - Signal Authentication in the Deepfake Era | 1 | [@ageint018] |
+| 8.1 | Modern SIGINT and Cryptography - UKUSA and Five Eyes Records: Sharing Caveats and Historical Scope | 2 | [@ageint041]; [@ageint042] |
+| 8.2 | Modern SIGINT and Cryptography - Metadata and Minimization: Unknown Authority Requires a Hold | 2 | [@ageint298]; [@ageint297] |
+| 8.3 | Modern SIGINT and Cryptography - Encryption, Integrity, Authentication, and Lawful-Access Claims | 2 | [@ageint297]; [@ageint298] |
+| 8.4 | Modern SIGINT and Cryptography - Historical Communications Concepts: Distinct Properties, No Construction Instructions | 2 | [@ageint027]; [@ageint028] |
+| 8.5 | Modern SIGINT and Cryptography - RF Evidence and Technical-Surveillance Claims: Observations versus Attribution | 2 | [@ageint043]; [@ageint044] |
+| 8.6 | Modern SIGINT and Cryptography - TSCM: Defensive Inspection Literacy and Detection Limits | 2 | [@ageint045]; [@ageint046] |
+| 8.7 | Modern SIGINT and Cryptography - Non-Linear Junction Detectors, RF Spectrum Analysis, and Infrared Imaging: Limits | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
+| 8.8 | Modern SIGINT and Cryptography - Steganography: Existence-Hiding Concepts and Detection Uncertainty | 1 | [@ageint028] |
+| 8.9 | Modern SIGINT and Cryptography - Deepfake-Era Authentication: Valid Credentials Can Carry False Content | 1 | [@ageint018] |
 | 9.99 | OSINT Foundations - V2 source-lane extension: bind OSINT Foundations to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint251]; [@ageint253]; [@ageint269] |
 | 9.101 | OSINT Foundations - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for OSINT Foundations | 3 | [@ageint273]; [@ageint274]; [@ageint275] |
 | 9.102 | OSINT Foundations - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for OSINT Foundations | 3 | [@ageint286]; [@ageint287]; [@ageint292] |
@@ -149,7 +168,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 11.102 | GEOINT and Imagery Intelligence - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for GEOINT and Imagery Intelligence | 3 | [@ageint290]; [@ageint291]; [@ageint294] |
 | 11.1 | GEOINT and Imagery Intelligence - Geospatial Intelligence Fundamentals: IMINT, GEOINT, Mapping | 1 | [@ageint057] |
 | 11.2 | GEOINT and Imagery Intelligence - GEOINT Essential Body of Knowledge (USGIF) | 1 | [@ageint058] |
-| 11.3 | GEOINT and Imagery Intelligence - Commercial Satellite Platforms: Maxar, Planet, Sentinel-1/2 | 1 | [@ageint059] |
+| 11.3 | GEOINT and Imagery Intelligence - Commercial Platforms and Public Programmes: Maxar, Planet, Sentinel-1/2 | 1 | [@ageint059] |
 | 11.4 | GEOINT and Imagery Intelligence - Change Detection and Pattern-of-Life Imagery Analysis | 2 | [@ageint302]; [@ageint297] |
 | 11.5 | GEOINT and Imagery Intelligence - GEOINT in Counterinsurgency and Strike Operations | 2 | [@ageint302]; [@ageint297] |
 | 11.6 | GEOINT and Imagery Intelligence - DoD GEOINT Accreditation and Training Standards | 1 | [@ageint060] |
@@ -160,7 +179,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 12.101 | Cyber Intelligence Fundamentals - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Cyber Intelligence Fundamentals | 3 | [@ageint280]; [@ageint281]; [@ageint282] |
 | 12.102 | Cyber Intelligence Fundamentals - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Cyber Intelligence Fundamentals | 3 | [@ageint292]; [@ageint295]; [@ageint296] |
 | 12.1 | Cyber Intelligence Fundamentals - The Cyber Kill Chain (Lockheed Martin) | 2 | [@ageint061]; [@ageint062] |
-| 12.2 | Cyber Intelligence Fundamentals - MITRE ATT&CK Framework: Enterprise Matrix v19 | 2 | [@ageint063]; [@ageint064] |
+| 12.2 | Cyber Intelligence Fundamentals - MITRE ATT&CK Framework: Enterprise Matrix (Inherited v19 Reference) | 2 | [@ageint063]; [@ageint064] |
 | 12.2.1 | Cyber Intelligence Fundamentals - Reconnaissance through Resource Development | 1 | [@ageint063] |
 | 12.2.2 | Cyber Intelligence Fundamentals - Initial Access, Execution, Persistence, Privilege Escalation | 1 | [@ageint065] |
 | 12.2.3 | Cyber Intelligence Fundamentals - Defense Evasion, Credential Access, Discovery, Lateral Movement | 3 | [@ageint300]; [@ageint303]; [@ageint304] |
@@ -178,7 +197,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 13.2 | Advanced Persistent Threats (APTs) - APT Risk Propagation Models: ATT&CK-Based Analysis | 1 | [@ageint072] |
 | 13.3 | Advanced Persistent Threats (APTs) - Nation-State vs. Ideological Actor Attack Patterns | 1 | [@ageint069] |
 | 13.4 | Advanced Persistent Threats (APTs) - APT Infrastructure: C2 Frameworks, Domain Fronting, Bulletproof Hosting | 3 | [@ageint300]; [@ageint303]; [@ageint304] |
-| 13.5 | Advanced Persistent Threats (APTs) - Incident Response on Nation-State Intrusions: Mandiant Methodology | 1 | [@ageint071] |
+| 13.5 | Advanced Persistent Threats (APTs) - Incident-Record Review: Limits of the Inherited Mandiant Methodology Claim | 1 | [@ageint071] |
 | 13.6 | Advanced Persistent Threats (APTs) - Threat Hunting Against APT Actors | 3 | [@ageint300]; [@ageint303]; [@ageint304] |
 | 13.7 | Advanced Persistent Threats (APTs) - APT Attribution: Technical Indicators vs. Geopolitical Context | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
 | 14.99 | Supply Chain Intelligence Attacks - V2 source-lane extension: bind Supply Chain Intelligence Attacks to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint258]; [@ageint266]; [@ageint268] |
@@ -189,8 +208,8 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 14.3 | Supply Chain Intelligence Attacks - XZ Utils/Jia Tan: Two-Year Social Engineering and Trust Infiltration | 3 | [@ageint074]; [@ageint075]; [@ageint076] |
 | 14.3.1 | Supply Chain Intelligence Attacks - Sock Puppetry as HUMINT Cover Tradecraft | 1 | [@ageint076] |
 | 14.3.2 | Supply Chain Intelligence Attacks - CVE-2024-3094: CVSS 10.0 Backdoor Mechanism | 1 | [@ageint076] |
-| 14.3.3 | Supply Chain Intelligence Attacks - Attribution Indicators: APT29/SVR Pattern Similarities | 1 | [@ageint076] |
-| 14.3.4 | Supply Chain Intelligence Attacks - "Friendly Yet Aggressive and Persistent" Social Engineering Signature | 1 | [@ageint076] |
+| 14.3.3 | Supply Chain Intelligence Attacks - Attribution Limits: The Inherited APT29/SVR Similarity Hypothesis | 1 | [@ageint076] |
+| 14.3.4 | Supply Chain Intelligence Attacks - Interaction Style Is Not an Attribution Signature | 1 | [@ageint076] |
 | 14.4 | Supply Chain Intelligence Attacks - Open-Source Maintainer Targeting as an Acquisition Operation | 1 | [@ageint076] |
 | 14.5 | Supply Chain Intelligence Attacks - Countermeasures: SBOM, SLSA Framework, Sigstore | 3 | [@ageint300]; [@ageint304]; [@ageint306] |
 | 14.6 | Supply Chain Intelligence Attacks - Threat Intelligence Sharing for ICS Supply Chain (arXiv Survey) | 1 | [@ageint077] |
@@ -209,7 +228,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 16.2 | Imagery Intelligence (IMINT) - Collection Platforms: Satellites, UAVs, Aircraft, Ground-Based | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
 | 16.3 | Imagery Intelligence (IMINT) - Photo Interpretation and All-Source Imagery Analysis | 2 | [@ageint302]; [@ageint297] |
 | 16.4 | Imagery Intelligence (IMINT) - Commercial IMINT and the Democratization of Space-Based Reconnaissance | 2 | [@ageint302]; [@ageint297] |
-| 16.5 | Imagery Intelligence (IMINT) - Open-Source Geolocation Methods: Bellingcat Methodology | 2 | [@ageint302]; [@ageint297] |
+| 16.5 | Imagery Intelligence (IMINT) - Open-Source Geolocation Methods: Bellingcat Methodology | 2 | [@ageint301]; [@ageint298] |
 | 17.99 | Financial Intelligence (FININT) - V2 source-lane extension: bind Financial Intelligence (FININT) to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint251]; [@ageint252]; [@ageint254] |
 | 17.101 | Financial Intelligence (FININT) - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Financial Intelligence (FININT) | 3 | [@ageint273]; [@ageint274]; [@ageint275] |
 | 17.102 | Financial Intelligence (FININT) - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Financial Intelligence (FININT) | 3 | [@ageint286]; [@ageint287]; [@ageint292] |
@@ -217,7 +236,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 17.2 | Financial Intelligence (FININT) - Suspicious Activity Reports (SARs) and Financial Intelligence Units | 1 | [@ageint079] |
 | 17.3 | Financial Intelligence (FININT) - Terrorist Financing: Identification, Typologies, Interdiction | 1 | [@ageint079] |
 | 17.4 | Financial Intelligence (FININT) - The SWIFT System and Intelligence Collection | 1 | [@ageint079] |
-| 17.5 | Financial Intelligence (FININT) - Cryptocurrency as Covert Finance: Monero, Mixers, Bridges | 2 | [@ageint302]; [@ageint297] |
+| 17.5 | Financial Intelligence (FININT) - Cryptocurrency Records: Privacy, Transfers and Inference Limits | 3 | [@ageint298]; [@ageint306]; [@ageint312] |
 | 17.6 | Financial Intelligence (FININT) - Economic Warfare and FININT as a Strategic Tool | 1 | [@ageint081] |
 | 17.7 | Financial Intelligence (FININT) - Money Laundering Detection: Data Mining and Matching Techniques | 1 | [@ageint080] |
 | 17.8 | Financial Intelligence (FININT) - FININT Supporting National Security: Pillars and Methods | 1 | [@ageint082] |
@@ -228,25 +247,25 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 18.2 | PSYOP and MISO Doctrine - Military Information Support Operations (MISO): JP 3-13.2 | 1 | [@ageint085] |
 | 18.3 | PSYOP and MISO Doctrine - Tactical PSYOP TTP: FM 3-05.302 | 1 | [@ageint086] |
 | 18.4 | PSYOP and MISO Doctrine - FM 3-05.301: PSYOP Process Tactics and Techniques | 1 | [@ageint087] |
-| 18.5 | PSYOP and MISO Doctrine - Target Audience Analysis (TAA) and Susceptibility Mapping | 2 | [@ageint302]; [@ageint297] |
+| 18.5 | PSYOP and MISO Doctrine - Historical audience analysis: protection and evidentiary limits | 2 | [@ageint302]; [@ageint297] |
 | 18.6 | PSYOP and MISO Doctrine - PSYOP in Full-Spectrum Operations: Themes and Objectives | 1 | [@ageint086] |
-| 18.7 | PSYOP and MISO Doctrine - Leaflets, Loudspeakers, and Digital Media: Product Development and Dissemination | 2 | [@ageint308]; [@ageint311] |
+| 18.7 | PSYOP and MISO Doctrine - Historical media products: accessibility and transparent correction | 2 | [@ageint308]; [@ageint311] |
 | 19.99 | Active Measures and Disinformation - V2 source-lane extension: bind Active Measures and Disinformation to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint239]; [@ageint240] |
 | 19.101 | Active Measures and Disinformation - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Active Measures and Disinformation | 3 | [@ageint278]; [@ageint279]; [@ageint283] |
 | 19.102 | Active Measures and Disinformation - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Active Measures and Disinformation | 3 | [@ageint290]; [@ageint291]; [@ageint294] |
 | 19.1 | Active Measures and Disinformation - Soviet Active Measures: Definitions and Doctrine | 2 | [@ageint088]; [@ageint089] |
 | 19.2 | Active Measures and Disinformation - Dezinformatsiya: Forgery, Front Organizations, Media Manipulation | 2 | [@ageint090]; [@ageint091] |
 | 19.3 | Active Measures and Disinformation - KGB Aktivnyye Meropriyatiya: Historical Organization | 1 | [@ageint089] |
-| 19.4 | Active Measures and Disinformation - Historical Active Measures Campaigns: INFEKTION, RYAN, DENVER | 1 | [@ageint091] |
+| 19.4 | Active Measures and Disinformation - Historical campaign labels: attribution, warning and unresolved aliases | 1 | [@ageint091] |
 | 19.5 | Active Measures and Disinformation - Russian Active Measures in the Contemporary Era | 1 | [@ageint092] |
 | 19.6 | Active Measures and Disinformation - Chinese Information Operations: United Front Work Department | 2 | [@ageint308]; [@ageint311] |
-| 19.7 | Active Measures and Disinformation - Deception, Disinformation, and Strategic Communications (NDU/Brown) | 2 | [@ageint093]; [@ageint094] |
+| 19.7 | Active Measures and Disinformation - Deception, Disinformation, and Strategic Communications: NDU case study | 2 | [@ageint093]; [@ageint094] |
 | 19.8 | Active Measures and Disinformation - AI-Driven Active Measures: Synthetic Influence at Scale | 2 | [@ageint095]; [@ageint096] |
 | 19.9 | Active Measures and Disinformation - Countermeasures: Disinformation Detection and Response | 1 | [@ageint092] |
 | 20.99 | Social Engineering - V2 source-lane extension: bind Social Engineering to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint240]; [@ageint242] |
 | 20.101 | Social Engineering - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Social Engineering | 3 | [@ageint280]; [@ageint281]; [@ageint282] |
 | 20.102 | Social Engineering - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Social Engineering | 3 | [@ageint292]; [@ageint295]; [@ageint296] |
-| 20.1 | Social Engineering - The Psychology of Influence: Cialdini's Seven Principles | 1 | [@ageint097] |
+| 20.1 | Social Engineering - Influence principles: edition-bounded recognition, not vulnerability diagnosis | 1 | [@ageint097] |
 | 20.2 | Social Engineering - History of Social Engineering | 1 | [@ageint097] |
 | 20.3 | Social Engineering - Social Engineering: The Science of Human Hacking (Hadnagy, 2018) | 1 | [@ageint098] |
 | 20.4 | Social Engineering - The Art of Human Hacking (Hadnagy, 2010) | 1 | [@ageint099] |
@@ -257,11 +276,11 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 21.99 | Information Warfare and Cognitive Security - V2 source-lane extension: bind Information Warfare and Cognitive Security to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint239]; [@ageint244] |
 | 21.101 | Information Warfare and Cognitive Security - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Information Warfare and Cognitive Security | 3 | [@ageint273]; [@ageint276]; [@ageint285] |
 | 21.102 | Information Warfare and Cognitive Security - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Information Warfare and Cognitive Security | 3 | [@ageint286]; [@ageint290]; [@ageint294] |
-| 21.1 | Information Warfare and Cognitive Security - Information Warfare Doctrine: Definitions, Theory, Air Force Policy | 2 | [@ageint101]; [@ageint102] |
-| 21.2 | Information Warfare and Cognitive Security - Military Deception: Six Principles and Historical Effectiveness | 2 | [@ageint103]; [@ageint104] |
+| 21.1 | Information Warfare and Cognitive Security - Information warfare: historical policy arguments and theory | 2 | [@ageint101]; [@ageint102] |
+| 21.2 | Information Warfare and Cognitive Security - Military deception: historical arguments and limits of effectiveness claims | 2 | [@ageint103]; [@ageint104] |
 | 21.3 | Information Warfare and Cognitive Security - Automated Influence and the Cognitive Security Challenge | 1 | [@ageint105] |
-| 21.4 | Information Warfare and Cognitive Security - Cognitive Security in the Age of AI: NATO/EU Paradigm Shift | 1 | [@ageint095] |
-| 21.5 | Information Warfare and Cognitive Security - Epistemic Chaos as an Adversarial Goal | 2 | [@ageint095]; [@ageint096] |
+| 21.4 | Information Warfare and Cognitive Security - Cognitive Security in the Age of AI: an attributed policy proposal | 1 | [@ageint095] |
+| 21.5 | Information Warfare and Cognitive Security - Epistemic Chaos as a hypothesized adversarial goal | 2 | [@ageint095]; [@ageint096] |
 | 21.6 | Information Warfare and Cognitive Security - Active Inference and Predictive Processing as Models for Cognitive Attack/Defense | 2 | [@ageint106]; [@ageint003] |
 | 21.7 | Information Warfare and Cognitive Security - Behavioral Outcomes of Human Cognitive Security (arXiv 2026) | 1 | [@ageint107] |
 | 22.99 | Counterintelligence Fundamentals - V2 source-lane extension: bind Counterintelligence Fundamentals to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint238]; [@ageint240]; [@ageint241] |
@@ -270,11 +289,11 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 22.1 | Counterintelligence Fundamentals - CI Definition, Scope, Relationship to Intelligence | 1 | [@ageint012] |
 | 22.2 | Counterintelligence Fundamentals - Offensive vs. Defensive Counterintelligence | 1 | [@ageint012] |
 | 22.3 | Counterintelligence Fundamentals - Insider Threat Analysis: Critical Thinking Techniques (CDSE) | 1 | [@ageint108] |
-| 22.4 | Counterintelligence Fundamentals - The Double-Agent and Triple-Cross Operations | 2 | [@ageint012]; [@ageint029] |
-| 22.5 | Counterintelligence Fundamentals - Penetration of Hostile Services | 2 | [@ageint297]; [@ageint298] |
+| 22.4 | Counterintelligence Fundamentals - Historical double-agent claims: dependence and verification | 2 | [@ageint012]; [@ageint029] |
+| 22.5 | Counterintelligence Fundamentals - Historical penetration claims: evidentiary and authority limits | 2 | [@ageint298]; [@ageint297] |
 | 22.6 | Counterintelligence Fundamentals - Polygraph: Use and Limitations in CI | 2 | [@ageint297]; [@ageint298] |
 | 22.7 | Counterintelligence Fundamentals - Damage Assessment and Control | 2 | [@ageint297]; [@ageint298] |
-| 22.8 | Counterintelligence Fundamentals - Case Studies: Hanssen, Ames, Lee, Pollard | 2 | [@ageint297]; [@ageint298] |
+| 22.8 | Counterintelligence Fundamentals - Named case comparisons: identity, adjudication and hindsight limits | 2 | [@ageint297]; [@ageint298] |
 | 23.99 | Counterintelligence Against Non-State Actors - V2 source-lane extension: bind Counterintelligence Against Non-State Actors to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint239]; [@ageint240]; [@ageint241] |
 | 23.101 | Counterintelligence Against Non-State Actors - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Counterintelligence Against Non-State Actors | 3 | [@ageint279]; [@ageint282]; [@ageint284] |
 | 23.102 | Counterintelligence Against Non-State Actors - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Counterintelligence Against Non-State Actors | 3 | [@ageint289]; [@ageint291]; [@ageint296] |
@@ -296,7 +315,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 25.101 | Non-State Actor Intelligence - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Non-State Actor Intelligence | 3 | [@ageint273]; [@ageint274]; [@ageint275] |
 | 25.102 | Non-State Actor Intelligence - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Non-State Actor Intelligence | 3 | [@ageint286]; [@ageint287]; [@ageint292] |
 | 25.1 | Non-State Actor Intelligence - Typology: Terrorist, Criminal, Commercial, Hacktivist, Proxy | 1 | [@ageint012] |
-| 25.2 | Non-State Actor Intelligence - Hezbollah, ISIS, MS-13: Intelligence Structures and Capabilities | 2 | [@ageint308]; [@ageint311] |
+| 25.2 | Non-State Actor Intelligence - Hezbollah, ISIS, MS-13: bounded comparison and source gaps | 2 | [@ageint308]; [@ageint311] |
 | 25.3 | Non-State Actor Intelligence - Private Military Corporations as Intelligence Actors | 2 | [@ageint308]; [@ageint311] |
 | 25.4 | Non-State Actor Intelligence - Counterintelligence Threat from Non-State Actors | 1 | [@ageint033] |
 | 25.5 | Non-State Actor Intelligence - Non-State Actor Use of Commercial AI for Intelligence Collection | 3 | [@ageint309]; [@ageint310]; [@ageint300] |
@@ -307,24 +326,24 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 26.2 | Irregular Warfare and Special Operations - FM 3-05.130: ARSOF Unconventional Warfare | 2 | [@ageint113]; [@ageint114] |
 | 26.3 | Irregular Warfare and Special Operations - FM 3-05.102: ARSOF Intelligence | 2 | [@ageint115]; [@ageint116] |
 | 26.4 | Irregular Warfare and Special Operations - OSS Origins and Training Manuals (1944) | 3 | [@ageint117]; [@ageint118]; [@ageint119] |
-| 26.5 | Irregular Warfare and Special Operations - Principles of Tradecraft for Resistance Organizations | 1 | [@ageint120] |
-| 26.6 | Irregular Warfare and Special Operations - Underground Intelligence Networks: Structure, Security, Continuity | 2 | [@ageint308]; [@ageint311] |
-| 26.7 | Irregular Warfare and Special Operations - OSS Simple Sabotage Field Manual (1944) | 1 | [@ageint117] |
+| 26.5 | Irregular Warfare and Special Operations - Principles of Tradecraft: private-publication provenance | 1 | [@ageint120] |
+| 26.6 | Irregular Warfare and Special Operations - Historical underground networks: evidence, coercion and continuity limits | 2 | [@ageint308]; [@ageint311] |
+| 26.7 | Irregular Warfare and Special Operations - OSS Simple Sabotage Field Manual (1944): historical source criticism | 1 | [@ageint117] |
 | 26.8 | Irregular Warfare and Special Operations - Morale Operations: OSS Psychological Warfare | 1 | [@ageint117] |
 | 27.99 | Soviet and Russian Intelligence - V2 source-lane extension: bind Soviet and Russian Intelligence to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint266]; [@ageint267]; [@ageint269] |
 | 27.101 | Soviet and Russian Intelligence - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Soviet and Russian Intelligence | 3 | [@ageint278]; [@ageint279]; [@ageint283] |
 | 27.102 | Soviet and Russian Intelligence - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Soviet and Russian Intelligence | 3 | [@ageint290]; [@ageint291]; [@ageint294] |
 | 27.1 | Soviet and Russian Intelligence - KGB Structure, Culture, and Doctrine: First Chief Directorate | 1 | [@ageint121] |
-| 27.2 | Soviet and Russian Intelligence - The Lubyanka Files: 29 KGB Training Manuals, 1965–1989 | 1 | [@ageint122] |
-| 27.2.1 | Soviet and Russian Intelligence - Working with Agents (Declassified Manual) | 1 | [@ageint032] |
+| 27.2 | Soviet and Russian Intelligence - The Lubyanka Files: attributed collection scope and provenance | 1 | [@ageint122] |
+| 27.2.1 | Soviet and Russian Intelligence - Working with Agents: historical translated-edition provenance | 1 | [@ageint032] |
 | 27.2.2 | Soviet and Russian Intelligence - Working with Information in Intelligence (1970s) | 1 | [@ageint121] |
-| 27.2.3 | Soviet and Russian Intelligence - Psychological Methods and Manipulation of Agents (1988) | 1 | [@ageint021] |
-| 27.2.4 | Soviet and Russian Intelligence - Some Aspects of Training Agents Psychologically (1985) | 1 | [@ageint021] |
+| 27.2.3 | Soviet and Russian Intelligence - Psychological Methods and Manipulation of Agents (1988): historical critique | 1 | [@ageint021] |
+| 27.2.4 | Soviet and Russian Intelligence - Some Aspects of Training Agents Psychologically (1985): source and harm limits | 1 | [@ageint021] |
 | 27.2.5 | Soviet and Russian Intelligence - Exposure of Disinformation in Intelligence Materials (1968) | 1 | [@ageint021] |
-| 27.2.6 | Soviet and Russian Intelligence - Organizational Structure and Management of Intelligence Residency | 2 | [@ageint297]; [@ageint298] |
-| 27.2.7 | Soviet and Russian Intelligence - On Organizing Work with Confidential Contacts | 1 | [@ageint122] |
-| 27.2.8 | Soviet and Russian Intelligence - Tasks of a KGB Resident Abroad | 1 | [@ageint122] |
-| 27.3 | Soviet and Russian Intelligence - KGB Alpha Team Training Manual | 1 | [@ageint123] |
+| 27.2.6 | Soviet and Russian Intelligence - Historical intelligence residency: structure and source gaps | 2 | [@ageint297]; [@ageint298] |
+| 27.2.7 | Soviet and Russian Intelligence - On Organizing Work with Confidential Contacts: historical terminology | 1 | [@ageint122] |
+| 27.2.8 | Soviet and Russian Intelligence - Tasks of a KGB Resident Abroad: intended role versus conduct | 1 | [@ageint122] |
+| 27.3 | Soviet and Russian Intelligence - KGB Alpha Team Training Manual: publication and attribution critique | 1 | [@ageint123] |
 | 27.4 | Soviet and Russian Intelligence - The Mitrokhin Archive: KGB Global Operations | 4 | [@ageint124]; [@ageint125]; [@ageint126]; [@ageint127] |
 | 27.5 | Soviet and Russian Intelligence - GRU: Soviet Military Intelligence Structure | 2 | [@ageint297]; [@ageint298] |
 | 27.6 | Soviet and Russian Intelligence - The Interpreter Magazine: KGB Manual Summaries | 1 | [@ageint022] |
@@ -332,15 +351,15 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 28.101 | American Intelligence History - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for American Intelligence History | 3 | [@ageint280]; [@ageint281]; [@ageint282] |
 | 28.102 | American Intelligence History - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for American Intelligence History | 3 | [@ageint292]; [@ageint295]; [@ageint296] |
 | 28.1 | American Intelligence History - OSS in World War II | 2 | [@ageint128]; [@ageint129] |
-| 28.1.1 | American Intelligence History - OSS Secret Intelligence Manual | 1 | [@ageint117] |
+| 28.1.1 | American Intelligence History - OSS Secret Intelligence Manual: historical provenance | 1 | [@ageint117] |
 | 28.1.2 | American Intelligence History - OSS Provisional Basic Field Manual | 1 | [@ageint119] |
 | 28.1.3 | American Intelligence History - Special Operations Field Manual | 1 | [@ageint118] |
-| 28.1.4 | American Intelligence History - OSS Special Weapons and Devices | 1 | [@ageint117] |
-| 28.1.5 | American Intelligence History - Simple Sabotage Field Manual (1944) | 1 | [@ageint117] |
+| 28.1.4 | American Intelligence History - OSS Special Weapons and Devices: archival and ethical context | 1 | [@ageint117] |
+| 28.1.5 | American Intelligence History - Simple Sabotage Field Manual (1944): historical limits | 1 | [@ageint117] |
 | 28.1.6 | American Intelligence History - Morale Operations Field Manual | 1 | [@ageint117] |
-| 28.2 | American Intelligence History - CIA Cold War Operations | 2 | [@ageint297]; [@ageint298] |
-| 28.2.1 | American Intelligence History - CIA Manual of Trickery and Deception (Mulholland) | 1 | [@ageint130] |
-| 28.2.2 | American Intelligence History - Principles of Tradecraft (Resistance Operations) | 1 | [@ageint120] |
+| 28.2 | American Intelligence History - CIA Cold War Operations: oversight, abuses and reform evidence | 2 | [@ageint298]; [@ageint297] |
+| 28.2.1 | American Intelligence History - CIA Manual of Trickery and Deception (Mulholland): historical accountability | 1 | [@ageint130] |
+| 28.2.2 | American Intelligence History - Principles of Tradecraft: a private publication, not CIA doctrine | 1 | [@ageint120] |
 | 28.2.3 | American Intelligence History - Soviet Active Measures Documents (CREST Collection) | 4 | [@ageint088]; [@ageint089]; [@ageint090]; [@ageint091] |
 | 28.3 | American Intelligence History - Studies in Intelligence: The CIA's Professional Journal | 3 | [@ageint131]; [@ageint132]; [@ageint133] |
 | 28.3.1 | American Intelligence History - Vol. 70, No. 1 (March 2026): "Espionage in Our AI Future" (Mulligan/RAND) | 2 | [@ageint019]; [@ageint034] |
@@ -358,12 +377,12 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 30.101 | Israeli and Continental Services - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Israeli and Continental Services | 3 | [@ageint274]; [@ageint278]; [@ageint280] |
 | 30.102 | Israeli and Continental Services - Evidence-package expansion: add model/dataset documentation cards, transparency notice, records-retention audit trail, release/change-control gate, risk-exception memo, learner support plan, instructor question bank, and remediation backlog for Israeli and Continental Services | 3 | [@ageint287]; [@ageint288]; [@ageint295] |
 | 30.1 | Israeli and Continental Services - Mossad: Structure, Culture, Notable Operations | 1 | [@ageint008] |
-| 30.2 | Israeli and Continental Services - Eli Cohen: Deep Cover Agent in Syria | 1 | [@ageint136] |
-| 30.3 | Israeli and Continental Services - Operation Wrath of God: PSYOP and Targeted Killing | 2 | [@ageint297]; [@ageint298] |
-| 30.4 | Israeli and Continental Services - Unit 8200: SIGINT, AI, and Cyber Excellence | 2 | [@ageint297]; [@ageint298] |
+| 30.2 | Israeli and Continental Services - Eli Cohen: historical human-agent attribution and source limits | 1 | [@ageint136] |
+| 30.3 | Israeli and Continental Services - Operation Wrath of God: historical attribution and accountability controversy | 2 | [@ageint297]; [@ageint298] |
+| 30.4 | Israeli and Continental Services - Unit 8200: SIGINT, AI, cyber claims and evidence limits | 2 | [@ageint297]; [@ageint298] |
 | 30.5 | Israeli and Continental Services - SDECE/DGSE: French Intelligence Tradition | 2 | [@ageint297]; [@ageint298] |
 | 30.6 | Israeli and Continental Services - BND: German Federal Intelligence Service | 2 | [@ageint297]; [@ageint298] |
-| 30.7 | Israeli and Continental Services - Stasi: East German Pervasive Domestic Intelligence | 2 | [@ageint297]; [@ageint298] |
+| 30.7 | Israeli and Continental Services - Stasi: East German repression and archival accountability | 2 | [@ageint297]; [@ageint298] |
 | 31.99 | Foundations of AGEINT - V2 source-lane extension: bind Foundations of AGEINT to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint232]; [@ageint235]; [@ageint247] |
 | 31.100 | Foundations of AGEINT - V2 AGEINT-depth extension: add agent evaluation and public-sector adoption gates that bind agency authority, AI Office-style accountability, impact assessment, and human review before any classroom agent workflow is rehearsed | 3 | [@ageint232]; [@ageint235]; [@ageint247] |
 | 31.101 | Foundations of AGEINT - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for Foundations of AGEINT | 3 | [@ageint279]; [@ageint282]; [@ageint284] |
@@ -380,7 +399,7 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 31.5 | Foundations of AGEINT - MIT Sloan Explanation of Agentic AI | 1 | [@ageint141] |
 | 31.6 | Foundations of AGEINT - AGEINT vs. Traditional OSINT vs. AI-Assisted Analysis: A Capability Matrix | 2 | [@ageint301]; [@ageint298] |
 | 31.7 | Foundations of AGEINT - Dual-Paradigm Framework: Symbolic/Classical vs. Neural/Generative Agents | 1 | [@ageint142] |
-| 31.8 | Foundations of AGEINT - The Return to HUMINT as Agentic AI Degrades Digital Trust | 2 | [@ageint004]; [@ageint005] |
+| 31.8 | Foundations of AGEINT - Attributed forecast: a return to HUMINT as agentic AI challenges digital trust | 2 | [@ageint004]; [@ageint005] |
 | 32.99 | AGEINT Design Patterns and Archetypes - V2 source-lane extension: bind AGEINT Design Patterns and Archetypes to source-lane evidence, claim-ledger review, safe substitution, compliance/rights mapping, instructor deliverables, and explicit refresh triggers | 3 | [@ageint233]; [@ageint258]; [@ageint272] |
 | 32.100 | AGEINT Design Patterns and Archetypes - V2 AGEINT-depth extension: transform every raw design motif into a safe registry entry, tabletop audit, provenance record, and interface contract rather than operational deployment | 3 | [@ageint233]; [@ageint258]; [@ageint272] |
 | 32.101 | AGEINT Design Patterns and Archetypes - Deep expansion: add accessibility/UDL review, procurement/vendor oversight, HRIA/DPIA worksheet, data-lineage registry, assessment-integrity protocol, agent incident drill, role-based competency map, and adversarial assurance cycle for AGEINT Design Patterns and Archetypes | 3 | [@ageint275]; [@ageint276]; [@ageint283] |
@@ -477,22 +496,3 @@ never hand-edit `output/manuscript/` as the source of truth.
 | 33.2.1 | AGEINT Frameworks and Infrastructure - Crew, Agent, Task, and Process Objects | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
 | 33.2.2 | AGEINT Frameworks and Infrastructure - Sequential, Parallel, and Hierarchical Process Modes | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
 | 33.2.3 | AGEINT Frameworks and Infrastructure - Built-in Tool Ecosystem | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.3 | AGEINT Frameworks and Infrastructure - AutoGen (Microsoft): Multi-Agent Conversation Patterns | 2 | [@ageint147]; [@ageint153] |
-| 33.3.1 | AGEINT Frameworks and Infrastructure - AssistantAgent and UserProxyAgent Pattern | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.3.2 | AGEINT Frameworks and Infrastructure - GroupChat with RoundRobin and AutoSelect Managers | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.3.3 | AGEINT Frameworks and Infrastructure - Code Execution Risk and Sandboxing Requirements | 1 | [@ageint147] |
-| 33.4 | AGEINT Frameworks and Infrastructure - Semantic Kernel: Enterprise AI Orchestration | 1 | [@ageint147] |
-| 33.5 | AGEINT Frameworks and Infrastructure - AWS Agentic Patterns: Production Architecture Guide | 1 | [@ageint144] |
-| 33.5.1 | AGEINT Frameworks and Infrastructure - Basic Reasoning Agents | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.5.2 | AGEINT Frameworks and Infrastructure - Tool-Based Agents (Function Calling and MCP Servers) | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.5.3 | AGEINT Frameworks and Infrastructure - Computer-Use Agents | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.5.4 | AGEINT Frameworks and Infrastructure - Coding Agents | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.5.5 | AGEINT Frameworks and Infrastructure - Speech-to-Speech Agents | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.5.6 | AGEINT Frameworks and Infrastructure - Orchestration Patterns: Supervisor, Parallel, Subgraph | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.6 | AGEINT Frameworks and Infrastructure - Model Context Protocol (MCP): The USB Standard for Agentic AI | 4 | [@ageint155]; [@ageint156]; [@ageint157]; [@ageint158] |
-| 33.6.1 | AGEINT Frameworks and Infrastructure - MCP Architecture: Client, Server, Host | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.6.2 | AGEINT Frameworks and Infrastructure - NSA Security Design Considerations for MCP | 1 | [@ageint155] |
-| 33.6.3 | AGEINT Frameworks and Infrastructure - MCP Security Risks: Tool Poisoning, Prompt Injection via Server | 1 | [@ageint159] |
-| 33.6.4 | AGEINT Frameworks and Infrastructure - MCP in Intelligence Workflows: Structured Tool Registration | 3 | [@ageint299]; [@ageint306]; [@ageint312] |
-| 33.7 | AGEINT Frameworks and Infrastructure - Agent-to-Agent (A2A) Protocols: Interoperability Between Frameworks | 1 | [@ageint137] |
-| 33.8 | AGEINT Frameworks and Infrastructure - n8n and Make.com: No-Code/Low-Code Agentic Intelligence Pipelines | 1 | [@ageint153] |

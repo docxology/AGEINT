@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>33-orientation-figures-and-course-links-visual-evidence-source-flow-and-navigation-sec-orientation-figures-and-course-links.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,50 +182,481 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2 id="sec:orientation-figures-and-course-links">Orientation figures
 and course links: visual evidence, source flow, and navigation</h2>
-<p>The orientation uses [fig:ageint-curriculum-map],
-[fig:ageint-claim-evidence-fit-map],
-[fig:ageint-synthetic-content-provenance-boundary],
-[fig:ageint-si-tradecraft-opsec-cogsec-convergence],
-[fig:ageint-citation-density], [fig:ageint-safety-boundary-loop],
-[fig:ageint-section-composability-matrix],
-[fig:ageint-ai-compliance-map], [fig:ageint-accessibility-workflow],
-[fig:ageint-visual-accessibility-contract],
-[fig:ageint-visual-quality-audit-dashboard],
-[fig:ageint-artifact-evidence-control-loop],
-[fig:ageint-scholarship-triangulation-map],
-[fig:ageint-graphical-abstract],
-[fig:ageint-synthetic-tradecraft-method-contract],
-[fig:ageint-analysis-validation-matrix],
-[fig:ageint-analysis-validation-family-coverage],
-[fig:ageint-source-metadata-integrity],
-[fig:ageint-claim-calibration-and-visual-semantics],
-[fig:ageint-procurement-oversight-loop],
-[fig:ageint-public-ai-register-lifecycle],
-[fig:ageint-model-dataset-card],
-[fig:ageint-agentic-intelligence-boundary],
-[fig:ageint-transparency-notice-flow], and
-[fig:ageint-visual-provenance-plate] to map its evidence flow, safety
-boundaries, review artifacts, and refresh cues.</p>
-<p>Navigation links: [sec:abstract],
-[sec:method-assurance-reference].</p>
+<p>The orientation uses <span class="citation"
+data-cites="fig:ageint-curriculum-map">[@fig:ageint-curriculum-map]</span>,
+<span class="citation"
+data-cites="fig:ageint-claim-evidence-fit-map">[@fig:ageint-claim-evidence-fit-map]</span>,
+<span class="citation"
+data-cites="fig:ageint-synthetic-content-provenance-boundary">[@fig:ageint-synthetic-content-provenance-boundary]</span>,
+<span class="citation"
+data-cites="fig:ageint-si-tradecraft-opsec-cogsec-convergence">[@fig:ageint-si-tradecraft-opsec-cogsec-convergence]</span>,
+<span class="citation"
+data-cites="fig:ageint-citation-density">[@fig:ageint-citation-density]</span>,
+<span class="citation"
+data-cites="fig:ageint-safety-boundary-loop">[@fig:ageint-safety-boundary-loop]</span>,
+<span class="citation"
+data-cites="fig:ageint-section-composability-matrix">[@fig:ageint-section-composability-matrix]</span>,
+<span class="citation"
+data-cites="fig:ageint-ai-compliance-map">[@fig:ageint-ai-compliance-map]</span>,
+<span class="citation"
+data-cites="fig:ageint-accessibility-workflow">[@fig:ageint-accessibility-workflow]</span>,
+<span class="citation"
+data-cites="fig:ageint-visual-accessibility-contract">[@fig:ageint-visual-accessibility-contract]</span>,
+<span class="citation"
+data-cites="fig:ageint-visual-quality-audit-dashboard">[@fig:ageint-visual-quality-audit-dashboard]</span>,
+<span class="citation"
+data-cites="fig:ageint-artifact-evidence-control-loop">[@fig:ageint-artifact-evidence-control-loop]</span>,
+<span class="citation"
+data-cites="fig:ageint-scholarship-triangulation-map">[@fig:ageint-scholarship-triangulation-map]</span>,
+<span class="citation"
+data-cites="fig:ageint-graphical-abstract">[@fig:ageint-graphical-abstract]</span>,
+<span class="citation"
+data-cites="fig:ageint-synthetic-tradecraft-method-contract">[@fig:ageint-synthetic-tradecraft-method-contract]</span>,
+<span class="citation"
+data-cites="fig:ageint-analysis-validation-matrix">[@fig:ageint-analysis-validation-matrix]</span>,
+<span class="citation"
+data-cites="fig:ageint-analysis-validation-family-coverage">[@fig:ageint-analysis-validation-family-coverage]</span>,
+<span class="citation"
+data-cites="fig:ageint-source-metadata-integrity">[@fig:ageint-source-metadata-integrity]</span>,
+<span class="citation"
+data-cites="fig:ageint-claim-calibration-and-visual-semantics">[@fig:ageint-claim-calibration-and-visual-semantics]</span>,
+<span class="citation"
+data-cites="fig:ageint-procurement-oversight-loop">[@fig:ageint-procurement-oversight-loop]</span>,
+<span class="citation"
+data-cites="fig:ageint-public-ai-register-lifecycle">[@fig:ageint-public-ai-register-lifecycle]</span>,
+<span class="citation"
+data-cites="fig:ageint-model-dataset-card">[@fig:ageint-model-dataset-card]</span>,
+<span class="citation"
+data-cites="fig:ageint-agentic-intelligence-boundary">[@fig:ageint-agentic-intelligence-boundary]</span>,
+<span class="citation"
+data-cites="fig:ageint-transparency-notice-flow">[@fig:ageint-transparency-notice-flow]</span>,
+and <span class="citation"
+data-cites="fig:ageint-visual-provenance-plate">[@fig:ageint-visual-provenance-plate]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:abstract">[@sec:abstract]</span>, <span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>.</p>
 <figure id="fig:ageint-curriculum-map">
-<img src="../../figures/mermaid/ageint-curriculum-map.png"
-alt="The curriculum map links AGEINT parts into a source-backed learning sequence." />
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-curriculum-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The curriculum map links AGEINT parts into a source-backed learning sequence."><img src="../figures/mermaid/ageint-curriculum-map.png"
+alt="Mermaid diagram showing AGEINT curriculum parts. Labeled content highlights 16 part nodes, source-backed module counts, and the reading path from tradecraft foundations through oversight frameworks, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-curriculum-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The curriculum map links AGEINT parts
 into a source-backed learning sequence. The captioned view belongs to
 the curriculum orientation and should be read as a map of 16 part nodes,
 source-backed module counts, and the reading path from tradecraft
 foundations through oversight frameworks, not as a capability score or
 live-task instruction.</figcaption>
-</figure>
+<details id="fig-ageint-curriculum-map-long-description" class="figure-long-description" data-figure-label="fig:ageint-curriculum-map"><summary>Detailed description of figure ageint curriculum map</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Curriculum Map. The short alternative identifies the figure as: Mermaid diagram showing AGEINT curriculum parts. Labeled content highlights 16 part nodes, source-backed module counts, and the reading path from tradecraft foundations through oversight frameworks, with the visual tied back to the curriculum orientation. The full visual conveys 16 part nodes, source-backed module counts, and the reading path from tradecraft foundations through oversight frameworks. The caption explains the reader task as follows: The curriculum map links AGEINT parts into a source-backed learning sequence. The captioned view belongs to the curriculum orientation and should be read as a map of 16 part nodes, source-backed module counts, and the reading path from tradecraft foundations through oversight frameworks, not as a capability score or live-task instruction. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-claim-evidence-fit-map">
-<img src="../../figures/mermaid/ageint-claim-evidence-fit-map.png"
-alt="The claim-evidence quadrant helps reviewers distinguish low-risk definitional claims, governance duties, artifact-derived evidence, and high-caveat theory analogies before a manuscript sentence is treated as reviewable." />
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-claim-evidence-fit-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The claim-evidence quadrant helps reviewers distinguish low-risk definitional claims…"><img src="../figures/mermaid/ageint-claim-evidence-fit-map.png"
+alt="Quadrant chart with evidence directness on the horizontal axis and claim strength on the vertical axis, placing definitions, governance duties, artifact-derived charts, and theory analogies in different review zones." aria-details="fig-ageint-claim-evidence-fit-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The claim-evidence quadrant helps
 reviewers distinguish low-risk definitional claims, governance duties,
 artifact-derived evidence, and high-caveat theory analogies before a
@@ -228,11 +666,11 @@ strength from descriptive to consequential, definition claims fit
 official or standard sources, and governance duties require policy or
 law text visible at a glance, with the curriculum orientation as the
 source section and defensive review as the boundary.</figcaption>
-</figure>
+<details id="fig-ageint-claim-evidence-fit-map-long-description" class="figure-long-description" data-figure-label="fig:ageint-claim-evidence-fit-map"><summary>Detailed description of figure ageint claim evidence fit map</summary><p>This data-visualization figure is assigned to the curriculum orientation and should be read as an accessible equivalent for Claim-Evidence Fit Quadrant for AGEINT Manuscript Review. The short alternative identifies the figure as: Quadrant chart with evidence directness on the horizontal axis and claim strength on the vertical axis, placing definitions, governance duties, artifact-derived charts, and theory analogies in different review zones. The full visual conveys x-axis evidence directness from indirect to direct, y-axis claim strength from descriptive to consequential, definition claims fit official or standard sources, governance duties require policy or law text, artifact-derived charts require parsed registry data, and theory analogies require scholarly support plus caveats. The caption explains the reader task as follows: The claim-evidence quadrant helps reviewers distinguish low-risk definitional claims, governance duties, artifact-derived evidence, and high-caveat theory analogies before a manuscript sentence is treated as reviewable. Its reader value is to make x-axis evidence directness from indirect to direct, y-axis claim strength from descriptive to consequential, definition claims fit official or standard sources, and governance duties require policy or law text visible at a glance, with the curriculum orientation as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-synthetic-content-provenance-boundary">
-<img
-src="../../figures/mermaid/ageint-synthetic-content-provenance-boundary.png"
-alt="Source-backed conceptual schematic using NIST AI 100-4 to separate provenance, labeling, detection, testing, audit, and redress duties for generated visual and media claims." />
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-synthetic-content-provenance-boundary.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Source-backed conceptual schematic using NIST AI 100-4 to separate provenance, labeling…"><img
+src="../figures/mermaid/ageint-synthetic-content-provenance-boundary.png"
+alt="Mermaid diagram showing synthetic content intake, provenance metadata, label or watermark, detection check, audit record, affected-party redress, and a stop path for unverifiable media claims." aria-details="fig-ageint-synthetic-content-provenance-boundary-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Source-backed conceptual schematic using
 NIST AI 100-4 to separate provenance, labeling, detection, testing,
 audit, and redress duties for generated visual and media claims. The
@@ -240,11 +678,11 @@ captioned view belongs to the curriculum orientation and should be read
 as a map of Generated or altered content, Provenance metadata, Label /
 watermark when applicable, and Detection or review not proof of truth,
 not as a capability score or live-task instruction.</figcaption>
-</figure>
+<details id="fig-ageint-synthetic-content-provenance-boundary-long-description" class="figure-long-description" data-figure-label="fig:ageint-synthetic-content-provenance-boundary"><summary>Detailed description of figure ageint synthetic content provenance boundary</summary><p>This diagram is assigned to the curriculum orientation and should be read as an accessible equivalent for Synthetic Content Provenance Boundary. The short alternative identifies the figure as: Mermaid diagram showing synthetic content intake, provenance metadata, label or watermark, detection check, audit record, affected-party redress, and a stop path for unverifiable media claims. The full visual conveys Generated or altered content, Provenance metadata, Label / watermark when applicable, Detection or review not proof of truth, Audit + maintenance NIST AI 100-4, Disclosure and redress where people are affected, Unknown source or missing chain, and Do not use as standalone evidence. The caption explains the reader task as follows: Source-backed conceptual schematic using NIST AI 100-4 to separate provenance, labeling, detection, testing, audit, and redress duties for generated visual and media claims. The captioned view belongs to the curriculum orientation and should be read as a map of Generated or altered content, Provenance metadata, Label / watermark when applicable, and Detection or review not proof of truth, not as a capability score or live-task instruction. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-si-tradecraft-opsec-cogsec-convergence">
-<img
-src="../../figures/mermaid/ageint-si-tradecraft-opsec-cogsec-convergence.png"
-alt="Source-backed architecture map showing four separate review lanes for synthetic intelligence, analytic tradecraft, OPSEC and zero-trust controls, and cognitive-security safeguards." />
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-si-tradecraft-opsec-cogsec-convergence.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Source-backed architecture map showing four separate review lanes"><img
+src="../figures/mermaid/ageint-si-tradecraft-opsec-cogsec-convergence.png"
+alt="Mermaid architecture diagram with four domain lanes, required review evidence, a central claim and safety gate, an allowed source-backed classroom artifact, reader comparison cues, and stop or revise conditions for unsupported efficacy, autonomy, manipulation, or live targeting." aria-details="fig-ageint-si-tradecraft-opsec-cogsec-convergence-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Source-backed architecture map showing
 four separate review lanes for synthetic intelligence, analytic
 tradecraft, OPSEC and zero-trust controls, and cognitive-security
@@ -253,10 +691,10 @@ refresh evidence, and safety-boundary evidence before an allowed
 classroom artifact can be treated as source-backed; unsupported
 efficacy, autonomous judgment, manipulation, or live-target claims must
 stop or be revised.</figcaption>
-</figure>
+<details id="fig-ageint-si-tradecraft-opsec-cogsec-convergence-long-description" class="figure-long-description" data-figure-label="fig:ageint-si-tradecraft-opsec-cogsec-convergence"><summary>Detailed description of figure ageint si tradecraft opsec cogsec convergence</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for Synthetic Intelligence Tradecraft OPSEC Cognitive Security Convergence. The short alternative identifies the figure as: Mermaid architecture diagram with four domain lanes, required review evidence, a central claim and safety gate, an allowed source-backed classroom artifact, reader comparison cues, and stop or revise conditions for unsupported efficacy, autonomy, manipulation, or live targeting. The full visual conveys Four domain lanes, Synthetic intelligence LLM support synthetic media AI-DSS caveats, Analytic tradecraft sources assumptions alternatives confidence, OPSEC / zero trust critical information least privilege logs, Cognitive security provenance prebunking resilience limits, Required review evidence, Direct source support, and Lane + tier metadata. The caption explains the reader task as follows: Source-backed architecture map showing four separate review lanes for synthetic intelligence, analytic tradecraft, OPSEC and zero-trust controls, and cognitive-security safeguards. The central gate requires direct source support, metadata, refresh evidence, and safety-boundary evidence before an allowed classroom artifact can be treated as source-backed; unsupported efficacy, autonomous judgment, manipulation, or live-target claims must stop or be revised. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-citation-density">
-<img src="../../figures/python/ageint-citation-density.png"
-alt="Method-backed audit chart reporting direct external citation counts per generated module; labels, denominators, and counting rule come from the curriculum parser." />
+<a class="figure-full-size-link" href="../figures/python/ageint-citation-density.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Method-backed audit chart reporting direct external citation counts per generated module"><img src="../figures/python/ageint-citation-density.png"
+alt="Bar chart of direct citation counts by generated AGEINT module, used as a source-review workload signal rather than capability evidence. Labeled content highlights citation density categories, denominators, evidence lanes, limitations, and reviewer-use cautions, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-citation-density-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Method-backed audit chart reporting
 direct external citation counts per generated module; labels,
 denominators, and counting rule come from the curriculum parser. In the
@@ -264,10 +702,10 @@ curriculum orientation, it lets readers compare citation density
 categories, denominators, evidence lanes, limitations, and reviewer-use
 cautions so the visual functions as a traceable course aid rather than
 an unscoped assertion.</figcaption>
-</figure>
+<details id="fig-ageint-citation-density-long-description" class="figure-long-description" data-figure-label="fig:ageint-citation-density"><summary>Detailed description of figure ageint citation density</summary><p>This data-visualization figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Citation Density. The short alternative identifies the figure as: Bar chart of direct citation counts by generated AGEINT module, used as a source-review workload signal rather than capability evidence. Labeled content highlights citation density categories, denominators, evidence lanes, limitations, and reviewer-use cautions, with the visual tied back to the curriculum orientation. The full visual conveys citation density categories, denominators, evidence lanes, limitations, and reviewer-use cautions. The caption explains the reader task as follows: Method-backed audit chart reporting direct external citation counts per generated module; labels, denominators, and counting rule come from the curriculum parser. In the curriculum orientation, it lets readers compare citation density categories, denominators, evidence lanes, limitations, and reviewer-use cautions so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-safety-boundary-loop">
-<img src="../../figures/python/ageint-safety-boundary-loop.png"
-alt="Conceptual governance schematic showing how accountable review, synthetic fixtures, human oversight, logging, and evidence-bounded practice stay connected." />
+<a class="figure-full-size-link" href="../figures/python/ageint-safety-boundary-loop.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Conceptual governance schematic showing how accountable review, synthetic fixtures, human…"><img src="../figures/python/ageint-safety-boundary-loop.png"
+alt="Loop diagram showing defensive safety gates around AGEINT practice. Labeled content highlights safety boundary loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-safety-boundary-loop-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Conceptual governance schematic showing
 how accountable review, synthetic fixtures, human oversight, logging,
 and evidence-bounded practice stay connected. In the curriculum
@@ -275,10 +713,10 @@ orientation, it lets readers compare safety boundary loop steps,
 decision gates, owner handoffs, refresh triggers, and closure evidence
 so the visual functions as a traceable course aid rather than an
 unscoped assertion.</figcaption>
-</figure>
+<details id="fig-ageint-safety-boundary-loop-long-description" class="figure-long-description" data-figure-label="fig:ageint-safety-boundary-loop"><summary>Detailed description of figure ageint safety boundary loop</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Safety Boundary Loop. The short alternative identifies the figure as: Loop diagram showing defensive safety gates around AGEINT practice. Labeled content highlights safety boundary loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys safety boundary loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence. The caption explains the reader task as follows: Conceptual governance schematic showing how accountable review, synthetic fixtures, human oversight, logging, and evidence-bounded practice stay connected. In the curriculum orientation, it lets readers compare safety boundary loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-section-composability-matrix">
-<img src="../../figures/python/ageint-section-composability-matrix.png"
-alt="The section composability matrix shows which reusable curriculum artifacts support each part." />
+<a class="figure-full-size-link" href="../figures/python/ageint-section-composability-matrix.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The section composability matrix shows which reusable curriculum artifacts support each part."><img src="../figures/python/ageint-section-composability-matrix.png"
+alt="Matrix of AGEINT parts and reusable artifact types. Labeled content highlights section composability matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-section-composability-matrix-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The section composability matrix shows
 which reusable curriculum artifacts support each part. It is anchored to
 the curriculum orientation; use it to inspect section composability
@@ -286,10 +724,10 @@ matrix fields, row and column obligations, source records, reviewer
 decisions, and closure evidence while preserving the distinction between
 curriculum structure, evidence boundary, and accountable
 practice.</figcaption>
-</figure>
+<details id="fig-ageint-section-composability-matrix-long-description" class="figure-long-description" data-figure-label="fig:ageint-section-composability-matrix"><summary>Detailed description of figure ageint section composability matrix</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Section Composability Matrix. The short alternative identifies the figure as: Matrix of AGEINT parts and reusable artifact types. Labeled content highlights section composability matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys section composability matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence. The caption explains the reader task as follows: The section composability matrix shows which reusable curriculum artifacts support each part. It is anchored to the curriculum orientation; use it to inspect section composability matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-ai-compliance-map">
-<img src="../../figures/python/ageint-ai-compliance-map.png"
-alt="Conceptual compliance matrix with rows as governance lanes and columns as source, rights, assurance, artifact, and refresh obligations; color groups cells only." />
+<a class="figure-full-size-link" href="../figures/python/ageint-ai-compliance-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Conceptual compliance matrix with rows as governance lanes"><img src="../figures/python/ageint-ai-compliance-map.png"
+alt="Conceptual matrix mapping governance lanes to source, rights, assurance, artifact, and refresh obligations. Labeled content highlights ai compliance map fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-ai-compliance-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Conceptual compliance matrix with rows as
 governance lanes and columns as source, rights, assurance, artifact, and
 refresh obligations; color groups cells only. Its reader value is to
@@ -297,20 +735,20 @@ make ai compliance map fields, row and column obligations, source
 records, reviewer decisions, and closure evidence visible at a glance,
 with the curriculum orientation as the source section and defensive
 review as the boundary.</figcaption>
-</figure>
+<details id="fig-ageint-ai-compliance-map-long-description" class="figure-long-description" data-figure-label="fig:ageint-ai-compliance-map"><summary>Detailed description of figure ageint ai compliance map</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT AI Compliance Map. The short alternative identifies the figure as: Conceptual matrix mapping governance lanes to source, rights, assurance, artifact, and refresh obligations. Labeled content highlights ai compliance map fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys ai compliance map fields, row and column obligations, source records, reviewer decisions, and closure evidence. The caption explains the reader task as follows: Conceptual compliance matrix with rows as governance lanes and columns as source, rights, assurance, artifact, and refresh obligations; color groups cells only. Its reader value is to make ai compliance map fields, row and column obligations, source records, reviewer decisions, and closure evidence visible at a glance, with the curriculum orientation as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-accessibility-workflow">
-<img src="../../figures/python/ageint-accessibility-workflow.png"
-alt="The accessibility workflow joins WCAG, UDL, remediation, and refresh evidence." />
+<a class="figure-full-size-link" href="../figures/python/ageint-accessibility-workflow.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The accessibility workflow joins WCAG, UDL, remediation, and refresh evidence."><img src="../figures/python/ageint-accessibility-workflow.png"
+alt="Loop diagram for AGEINT accessibility and UDL review. Labeled content highlights accessibility workflow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-accessibility-workflow-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The accessibility workflow joins WCAG,
 UDL, remediation, and refresh evidence. In the curriculum orientation,
 it lets readers compare accessibility workflow steps, decision gates,
 owner handoffs, refresh triggers, and closure evidence so the visual
 functions as a traceable course aid rather than an unscoped
 assertion.</figcaption>
-</figure>
+<details id="fig-ageint-accessibility-workflow-long-description" class="figure-long-description" data-figure-label="fig:ageint-accessibility-workflow"><summary>Detailed description of figure ageint accessibility workflow</summary><p>This process-flow figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Accessibility Workflow. The short alternative identifies the figure as: Loop diagram for AGEINT accessibility and UDL review. Labeled content highlights accessibility workflow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys accessibility workflow steps, decision gates, owner handoffs, refresh triggers, and closure evidence. The caption explains the reader task as follows: The accessibility workflow joins WCAG, UDL, remediation, and refresh evidence. In the curriculum orientation, it lets readers compare accessibility workflow steps, decision gates, owner handoffs, refresh triggers, and closure evidence so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-visual-accessibility-contract">
-<img src="../../figures/python/ageint-visual-accessibility-contract.png"
-alt="Source-backed accessibility contract mapping W3C WAI complex-image guidance, WCAG 2.2 non-text-content requirements, Section508 alternative-text and PDF checking guidance, and USWDS data-visualization guidance to AGEINT’s generated figure…" />
+<a class="figure-full-size-link" href="../figures/python/ageint-visual-accessibility-contract.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Source-backed accessibility contract mapping W3C WAI complex-image guidance, WCAG 2.2…"><img src="../figures/python/ageint-visual-accessibility-contract.png"
+alt="Matrix showing how short alt text, long descriptions, captions, direct visual labels, provenance, and rendered-output audits make AGEINT figures accessible and traceable. Labeled content highlights visual accessibility contract labels, source records, review gates, refresh cues, and reader-use boundaries, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-visual-accessibility-contract-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Source-backed accessibility contract
 mapping W3C WAI complex-image guidance, WCAG 2.2 non-text-content
 requirements, Section508 alternative-text and PDF checking guidance, and
@@ -318,11 +756,11 @@ USWDS data-visualization guidance to AGEINT’s generated figure registry.
 It shows how each figure carries a caption, short alt text, long
 description, source section, provenance, and rendered-artifact
 validation before PDF or web use.</figcaption>
-</figure>
+<details id="fig-ageint-visual-accessibility-contract-long-description" class="figure-long-description" data-figure-label="fig:ageint-visual-accessibility-contract"><summary>Detailed description of figure ageint visual accessibility contract</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Visual Accessibility Contract. The short alternative identifies the figure as: Matrix showing how short alt text, long descriptions, captions, direct visual labels, provenance, and rendered-output audits make AGEINT figures accessible and traceable. Labeled content highlights visual accessibility contract labels, source records, review gates, refresh cues, and reader-use boundaries, with the visual tied back to the curriculum orientation. The full visual conveys visual accessibility contract labels, source records, review gates, refresh cues, and reader-use boundaries. The caption explains the reader task as follows: Source-backed accessibility contract mapping W3C WAI complex-image guidance, WCAG 2.2 non-text-content requirements, Section508 alternative-text and PDF checking guidance, and USWDS data-visualization guidance to AGEINT&#x27;s generated figure registry. It shows how each figure carries a caption, short alt text, long description, source section, provenance, and rendered-artifact validation before PDF or web use. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-visual-quality-audit-dashboard">
-<img
-src="../../figures/python/ageint-visual-quality-audit-dashboard.png"
-alt="Machine-checkable dashboard for the generated figure pipeline." />
+<a class="figure-full-size-link" href="../figures/python/ageint-visual-quality-audit-dashboard.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Machine-checkable dashboard for the generated figure pipeline."><img
+src="../figures/python/ageint-visual-quality-audit-dashboard.png"
+alt="Matrix-style dashboard listing AGEINT figure quality gates for readable assets, layout, reader text, metadata, provenance, and PDF or web link safety. Labeled content highlights visual quality audit dashboard fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-visual-quality-audit-dashboard-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Machine-checkable dashboard for the
 generated figure pipeline. It summarizes the quality gates that every
 AGEINT visual must pass: readable PNG assets, square-normalized layout,
@@ -330,11 +768,11 @@ informative captions, short alt text, long descriptions, embedded PNG
 metadata, local provenance, and rendered-output link safety. The
 companion machine-readable artifact is
 <code>../figures/visual_quality_audit.json</code>.</figcaption>
-</figure>
+<details id="fig-ageint-visual-quality-audit-dashboard-long-description" class="figure-long-description" data-figure-label="fig:ageint-visual-quality-audit-dashboard"><summary>Detailed description of figure ageint visual quality audit dashboard</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Visual Quality Audit Dashboard. The short alternative identifies the figure as: Matrix-style dashboard listing AGEINT figure quality gates for readable assets, layout, reader text, metadata, provenance, and PDF or web link safety. Labeled content highlights visual quality audit dashboard fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys visual quality audit dashboard fields, row and column obligations, source records, reviewer decisions, and closure evidence. The caption explains the reader task as follows: Machine-checkable dashboard for the generated figure pipeline. It summarizes the quality gates that every AGEINT visual must pass: readable PNG assets, square-normalized layout, informative captions, short alt text, long descriptions, embedded PNG metadata, local provenance, and rendered-output link safety. The companion machine-readable artifact is `output/figures/visual_quality_audit.json`. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-artifact-evidence-control-loop">
-<img
-src="../../figures/python/ageint-artifact-evidence-control-loop.png"
-alt="Source-backed control-loop figure showing how AGEINT binds source-owned inputs, rebuilt manuscript files, citation inventory, figure registry metadata, PDF annotation audits, and current evidence reports so validators cannot certify a…" />
+<a class="figure-full-size-link" href="../figures/python/ageint-artifact-evidence-control-loop.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Source-backed control-loop figure showing how AGEINT binds source-owned inputs, rebuilt…"><img
+src="../figures/python/ageint-artifact-evidence-control-loop.png"
+alt="Control matrix linking AGEINT source inputs, build outputs, citation counts, figure checks, PDF links, and evidence reports to validators and negative controls. Labeled content highlights artifact evidence control loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-artifact-evidence-control-loop-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Source-backed control-loop figure showing
 how AGEINT binds source-owned inputs, rebuilt manuscript files, citation
 inventory, figure registry metadata, PDF annotation audits, and current
@@ -344,10 +782,10 @@ orientation; use it to inspect artifact evidence control loop steps,
 decision gates, owner handoffs, refresh triggers, and closure evidence
 while preserving the distinction between curriculum structure, evidence
 boundary, and accountable practice.</figcaption>
-</figure>
+<details id="fig-ageint-artifact-evidence-control-loop-long-description" class="figure-long-description" data-figure-label="fig:ageint-artifact-evidence-control-loop"><summary>Detailed description of figure ageint artifact evidence control loop</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Artifact Evidence Control Loop. The short alternative identifies the figure as: Control matrix linking AGEINT source inputs, build outputs, citation counts, figure checks, PDF links, and evidence reports to validators and negative controls. Labeled content highlights artifact evidence control loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys artifact evidence control loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence. The caption explains the reader task as follows: Source-backed control-loop figure showing how AGEINT binds source-owned inputs, rebuilt manuscript files, citation inventory, figure registry metadata, PDF annotation audits, and current evidence reports so validators cannot certify a stale or partially copied artifact as complete. It is anchored to the curriculum orientation; use it to inspect artifact evidence control loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-scholarship-triangulation-map">
-<img src="../../figures/python/ageint-scholarship-triangulation-map.png"
-alt="The scholarship triangulation map shows how generated AGEINT sections move from citation presence through source-family classification, thin-support gates, single-family review warnings, and current artifact-evidence reports." />
+<a class="figure-full-size-link" href="../figures/python/ageint-scholarship-triangulation-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The scholarship triangulation map shows how generated AGEINT sections move from citation…"><img src="../figures/python/ageint-scholarship-triangulation-map.png"
+alt="Control matrix linking claim-bearing generated sections, source-guide citations, official and standards anchors, scholarly anchors, and hard-fail or review-warning verifier outcomes. Labeled content highlights scholarship triangulation map fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-scholarship-triangulation-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The scholarship triangulation map shows
 how generated AGEINT sections move from citation presence through
 source-family classification, thin-support gates, single-family review
@@ -356,10 +794,10 @@ make scholarship triangulation map fields, row and column obligations,
 source records, reviewer decisions, and closure evidence visible at a
 glance, with the curriculum orientation as the source section and
 defensive review as the boundary.</figcaption>
-</figure>
+<details id="fig-ageint-scholarship-triangulation-map-long-description" class="figure-long-description" data-figure-label="fig:ageint-scholarship-triangulation-map"><summary>Detailed description of figure ageint scholarship triangulation map</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Scholarship Triangulation Map. The short alternative identifies the figure as: Control matrix linking claim-bearing generated sections, source-guide citations, official and standards anchors, scholarly anchors, and hard-fail or review-warning verifier outcomes. Labeled content highlights scholarship triangulation map fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys scholarship triangulation map fields, row and column obligations, source records, reviewer decisions, and closure evidence. The caption explains the reader task as follows: The scholarship triangulation map shows how generated AGEINT sections move from citation presence through source-family classification, thin-support gates, single-family review warnings, and current artifact-evidence reports. Its reader value is to make scholarship triangulation map fields, row and column obligations, source records, reviewer decisions, and closure evidence visible at a glance, with the curriculum orientation as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-graphical-abstract">
-<img src="../../figures/python/ageint-graphical-abstract.png"
-alt="The Synthetic Tradecraft System Atlas replaces the former graphical abstract with a governed-system view of AGEINT." />
+<a class="figure-full-size-link" href="../figures/python/ageint-graphical-abstract.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The Synthetic Tradecraft System Atlas replaces the former graphical abstract with a…"><img src="../figures/python/ageint-graphical-abstract.png"
+alt="Square system atlas for AGEINT. A dark source spine anchors locked reference keys and verified sources at the bottom. Discipline lanes for HUMINT, SIGINT, OSINT, GEOINT, FININT, cyber, cognitive security, and governance feed a central Synthetic Analytic Tradecraft core. Above it, bounded agentic assistance can retrieve, reason, structure, and hand off, but cannot approve external action. Around the system, verification and safety gates check citations, figures, metadata, PDF links, rights, and human review before any product is trusted." aria-details="fig-ageint-graphical-abstract-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The Synthetic Tradecraft System Atlas
 replaces the former graphical abstract with a governed-system view of
 AGEINT. It shows the source spine as the evidence floor; intelligence
@@ -369,11 +807,11 @@ assistance as a limited support layer; and verification, safety, and
 human-review gates as the outer assurance ring. The figure is a
 curriculum architecture map, not a claim that AGEINT has measured field
 capability or learning outcomes.</figcaption>
-</figure>
+<details id="fig-ageint-graphical-abstract-long-description" class="figure-long-description" data-figure-label="fig:ageint-graphical-abstract"><summary>Detailed description of figure ageint graphical abstract</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Synthetic Tradecraft System Atlas. The short alternative identifies the figure as: Square system atlas for AGEINT. A dark source spine anchors locked reference keys and verified sources at the bottom. Discipline lanes for HUMINT, SIGINT, OSINT, GEOINT, FININT, cyber, cognitive security, and governance feed a central Synthetic Analytic Tradecraft core. Above it, bounded agentic assistance can retrieve, reason, structure, and hand off, but cannot approve external action. Around the system, verification and safety gates check citations, figures, metadata, PDF links, rights, and human review before any product is trusted. The full visual conveys graphical abstract atlas labels, source records, review gates, refresh cues, and reader-use boundaries. The caption explains the reader task as follows: The Synthetic Tradecraft System Atlas replaces the former graphical abstract with a governed-system view of AGEINT. It shows the source spine as the evidence floor; intelligence disciplines as collection and context lanes; Synthetic Analytic Tradecraft as the central claim-making contract; bounded agentic assistance as a limited support layer; and verification, safety, and human-review gates as the outer assurance ring. The figure is a curriculum architecture map, not a claim that AGEINT has measured field capability or learning outcomes. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-synthetic-tradecraft-method-contract">
-<img
-src="../../figures/python/ageint-synthetic-tradecraft-method-contract.png"
-alt="The method-contract figure makes AGEINT’s Synthetic Analytic Tradecraft claim falsifiable." />
+<a class="figure-full-size-link" href="../figures/python/ageint-synthetic-tradecraft-method-contract.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The method-contract figure makes AGEINT’s Synthetic Analytic Tradecraft claim falsifiable."><img
+src="../figures/python/ageint-synthetic-tradecraft-method-contract.png"
+alt="Control matrix connecting source families, synthetic fixtures, analytic claim fields, negative controls, reviewer challenge, and artifact evidence for AGEINT Synthetic Analytic Tradecraft. Labeled content highlights synthetic tradecraft method contract labels, source records, review gates, refresh cues, and reader-use boundaries, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-synthetic-tradecraft-method-contract-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The method-contract figure makes AGEINT’s
 Synthetic Analytic Tradecraft claim falsifiable. It links source-family
 triangulation, synthetic fixtures, analytic field separation,
@@ -384,10 +822,10 @@ method contract labels, source records, review gates, refresh cues, and
 reader-use boundaries visible at a glance, with the curriculum
 orientation as the source section and defensive review as the
 boundary.</figcaption>
-</figure>
+<details id="fig-ageint-synthetic-tradecraft-method-contract-long-description" class="figure-long-description" data-figure-label="fig:ageint-synthetic-tradecraft-method-contract"><summary>Detailed description of figure ageint synthetic tradecraft method contract</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for Synthetic Analytic Tradecraft Method Contract. The short alternative identifies the figure as: Control matrix connecting source families, synthetic fixtures, analytic claim fields, negative controls, reviewer challenge, and artifact evidence for AGEINT Synthetic Analytic Tradecraft. Labeled content highlights synthetic tradecraft method contract labels, source records, review gates, refresh cues, and reader-use boundaries, with the visual tied back to the curriculum orientation. The full visual conveys synthetic tradecraft method contract labels, source records, review gates, refresh cues, and reader-use boundaries. The caption explains the reader task as follows: The method-contract figure makes AGEINT&#x27;s Synthetic Analytic Tradecraft claim falsifiable. It links source-family triangulation, synthetic fixtures, analytic field separation, negative-control testing, reviewer challenge, and artifact-evidence reports so early manuscript claims remain method commitments rather than prestige language. Its reader value is to make synthetic tradecraft method contract labels, source records, review gates, refresh cues, and reader-use boundaries visible at a glance, with the curriculum orientation as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-analysis-validation-matrix">
-<img src="../../figures/python/ageint-analysis-validation-matrix.png"
-alt="The analysis-validation matrix makes the manuscript’s scholarship and assurance claims reviewable by class." />
+<a class="figure-full-size-link" href="../figures/python/ageint-analysis-validation-matrix.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The analysis-validation matrix makes the manuscript’s scholarship"><img src="../figures/python/ageint-analysis-validation-matrix.png"
+alt="Matrix connecting AGEINT claim classes to evidence packets, validation questions, failure conditions, and reviewer dispositions for manuscript analysis validation. Labeled content highlights analysis validation matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-analysis-validation-matrix-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The analysis-validation matrix makes the
 manuscript’s scholarship and assurance claims reviewable by class. It
 separates design guidance, empirical or evaluation claims, governance
@@ -395,21 +833,21 @@ claims, figure/readability claims, rendered-artifact readiness claims,
 and reviewer disposition claims so each one has a required evidence
 packet, validation question, failure condition, and remediation
 path.</figcaption>
-</figure>
+<details id="fig-ageint-analysis-validation-matrix-long-description" class="figure-long-description" data-figure-label="fig:ageint-analysis-validation-matrix"><summary>Detailed description of figure ageint analysis validation matrix</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Analysis Validation Matrix. The short alternative identifies the figure as: Matrix connecting AGEINT claim classes to evidence packets, validation questions, failure conditions, and reviewer dispositions for manuscript analysis validation. Labeled content highlights analysis validation matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys analysis validation matrix fields, row and column obligations, source records, reviewer decisions, and closure evidence. The caption explains the reader task as follows: The analysis-validation matrix makes the manuscript&#x27;s scholarship and assurance claims reviewable by class. It separates design guidance, empirical or evaluation claims, governance claims, figure/readability claims, rendered-artifact readiness claims, and reviewer disposition claims so each one has a required evidence packet, validation question, failure condition, and remediation path. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-analysis-validation-family-coverage">
-<img
-src="../../figures/python/ageint-analysis-validation-family-coverage.png"
-alt="The analysis-validation family-coverage figure closes the gap between method prose and generated manuscript structure." />
+<a class="figure-full-size-link" href="../figures/python/ageint-analysis-validation-family-coverage.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The analysis-validation family-coverage figure closes the gap between method prose"><img
+src="../figures/python/ageint-analysis-validation-family-coverage.png"
+alt="Matrix mapping AGEINT claim-bearing manuscript families to analysis validation lanes, evidence signals, and failure signals. Labeled content highlights analysis validation family coverage categories, denominators, evidence lanes, limitations, and reviewer-use cautions, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-analysis-validation-family-coverage-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The analysis-validation family-coverage
 figure closes the gap between method prose and generated manuscript
 structure. It maps each claim-bearing manuscript family to a canonical
 analysis-validation lane, the evidence signal that should be present,
 and the failure signal that should block local readiness if a family
 becomes claim-bearing without a review class.</figcaption>
-</figure>
+<details id="fig-ageint-analysis-validation-family-coverage-long-description" class="figure-long-description" data-figure-label="fig:ageint-analysis-validation-family-coverage"><summary>Detailed description of figure ageint analysis validation family coverage</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Analysis Validation Family Coverage. The short alternative identifies the figure as: Matrix mapping AGEINT claim-bearing manuscript families to analysis validation lanes, evidence signals, and failure signals. Labeled content highlights analysis validation family coverage categories, denominators, evidence lanes, limitations, and reviewer-use cautions, with the visual tied back to the curriculum orientation. The full visual conveys analysis validation family coverage categories, denominators, evidence lanes, limitations, and reviewer-use cautions. The caption explains the reader task as follows: The analysis-validation family-coverage figure closes the gap between method prose and generated manuscript structure. It maps each claim-bearing manuscript family to a canonical analysis-validation lane, the evidence signal that should be present, and the failure signal that should block local readiness if a family becomes claim-bearing without a review class. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-source-metadata-integrity">
-<img src="../../figures/python/ageint-source-metadata-integrity.png"
-alt="The source metadata integrity figure makes the anchor-lane hardening contract visible to reviewers." />
+<a class="figure-full-size-link" href="../figures/python/ageint-source-metadata-integrity.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The source metadata integrity figure makes the anchor-lane hardening contract visible to…"><img src="../figures/python/ageint-source-metadata-integrity.png"
+alt="Dashboard showing AGEINT source metadata coverage across the local anchor denominator, explicit source lanes and tiers, refresh cadence fields, reviewer action cues, and fail-closed artifact-evidence checks." aria-details="fig-ageint-source-metadata-integrity-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The source metadata integrity figure
 makes the anchor-lane hardening contract visible to reviewers. It
 separates curated intelligence anchors, source-quality support anchors,
@@ -419,11 +857,11 @@ path so source rows cannot silently fall back to broad domain or
 source-type semantics while the rendered PDF still appears locally
 ready. Read it as local metadata telemetry, not a quality score for the
 cited sources.</figcaption>
-</figure>
+<details id="fig-ageint-source-metadata-integrity-long-description" class="figure-long-description" data-figure-label="fig:ageint-source-metadata-integrity"><summary>Detailed description of figure ageint source metadata integrity</summary><p>This data-visualization figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Source Metadata Integrity. The short alternative identifies the figure as: Dashboard showing AGEINT source metadata coverage across the local anchor denominator, explicit source lanes and tiers, refresh cadence fields, reviewer action cues, and fail-closed artifact-evidence checks. The full visual conveys source metadata denominator, explicit lane and tier fields, checked_as_of and refresh-cadence evidence, source_metadata_ok failure path, reviewer metadata checks, and the limit that the counts are local telemetry rather than source-quality scores. The caption explains the reader task as follows: The source metadata integrity figure makes the anchor-lane hardening contract visible to reviewers. It separates curated intelligence anchors, source-quality support anchors, explicit lane and tier fields, refresh cadence evidence, denominator context, reviewer action, and the artifact-evidence manifest failure path so source rows cannot silently fall back to broad domain or source-type semantics while the rendered PDF still appears locally ready. Read it as local metadata telemetry, not a quality score for the cited sources. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-claim-calibration-and-visual-semantics">
-<img
-src="../../figures/python/ageint-claim-calibration-and-visual-semantics.png"
-alt="The claim-calibration verifier figure makes the final RedTeam/Science hardening layer visible: high-risk manuscript claims are separated into empirical, governance, visualization, artifact-readiness, safety, and formalism lanes; each lane…" />
+<a class="figure-full-size-link" href="../figures/python/ageint-claim-calibration-and-visual-semantics.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The claim-calibration verifier figure makes the final RedTeam/Science hardening layer…"><img
+src="../figures/python/ageint-claim-calibration-and-visual-semantics.png"
+alt="Dashboard linking claim calibration, source-support strength, formalism limits, visualization semantics, negative controls, denominator context, reviewer action cues, and the artifact-evidence manifest gate. Labeled content highlights claim-calibration triggers, required evidence lanes, weak-source separation, formalism limits, visual-semantic metadata, fail-closed artifact gates, reviewer revision actions, and the limit that the map is not a capability score or measured performance claim, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-claim-calibration-and-visual-semantics-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The claim-calibration verifier figure
 makes the final RedTeam/Science hardening layer visible: high-risk
 manuscript claims are separated into empirical, governance,
@@ -436,10 +874,10 @@ and interpretation limit before the artifact-evidence manifest can pass.
 Compare the local manuscript, registry, source-support, and report
 surfaces as reviewer inputs; do not read the visual as a score,
 benchmark, or empirical performance claim.</figcaption>
-</figure>
+<details id="fig-ageint-claim-calibration-and-visual-semantics-long-description" class="figure-long-description" data-figure-label="fig:ageint-claim-calibration-and-visual-semantics"><summary>Detailed description of figure ageint claim calibration and visual semantics</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Claim Calibration and Visual Semantics. The short alternative identifies the figure as: Dashboard linking claim calibration, source-support strength, formalism limits, visualization semantics, negative controls, denominator context, reviewer action cues, and the artifact-evidence manifest gate. Labeled content highlights claim-calibration triggers, required evidence lanes, weak-source separation, formalism limits, visual-semantic metadata, fail-closed artifact gates, reviewer revision actions, and the limit that the map is not a capability score or measured performance claim, with the visual tied back to the curriculum orientation. The full visual conveys claim-calibration triggers, required evidence lanes, weak-source separation, formalism limits, visual-semantic metadata, fail-closed artifact gates, reviewer revision actions, and the limit that the map is not a capability score or measured performance claim. The caption explains the reader task as follows: The claim-calibration verifier figure makes the final RedTeam/Science hardening layer visible: high-risk manuscript claims are separated into empirical, governance, visualization, artifact-readiness, safety, and formalism lanes; each lane must show direct support or explicit boundary language; weak source-guide context cannot carry measured-performance or statistical claims alone; and figure metadata must state semantic role, evidence role, quantitative status, denominator, counting rule, reviewer action, and interpretation limit before the artifact-evidence manifest can pass. Compare the local manuscript, registry, source-support, and report surfaces as reviewer inputs; do not read the visual as a score, benchmark, or empirical performance claim. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-procurement-oversight-loop">
-<img src="../../figures/python/ageint-procurement-oversight-loop.png"
-alt="The procurement oversight loop connects need, transparency, criteria, contract controls, and lifecycle monitoring." />
+<a class="figure-full-size-link" href="../figures/python/ageint-procurement-oversight-loop.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The procurement oversight loop connects need, transparency, criteria, contract controls"><img src="../figures/python/ageint-procurement-oversight-loop.png"
+alt="Loop diagram for AGEINT procurement and vendor oversight. Labeled content highlights procurement oversight loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-procurement-oversight-loop-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The procurement oversight loop connects
 need, transparency, criteria, contract controls, and lifecycle
 monitoring. It is anchored to the curriculum orientation; use it to
@@ -447,20 +885,20 @@ inspect procurement oversight loop steps, decision gates, owner
 handoffs, refresh triggers, and closure evidence while preserving the
 distinction between curriculum structure, evidence boundary, and
 accountable practice.</figcaption>
-</figure>
+<details id="fig-ageint-procurement-oversight-loop-long-description" class="figure-long-description" data-figure-label="fig:ageint-procurement-oversight-loop"><summary>Detailed description of figure ageint procurement oversight loop</summary><p>This process-flow figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Procurement Oversight Loop. The short alternative identifies the figure as: Loop diagram for AGEINT procurement and vendor oversight. Labeled content highlights procurement oversight loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys procurement oversight loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence. The caption explains the reader task as follows: The procurement oversight loop connects need, transparency, criteria, contract controls, and lifecycle monitoring. It is anchored to the curriculum orientation; use it to inspect procurement oversight loop steps, decision gates, owner handoffs, refresh triggers, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-public-ai-register-lifecycle">
-<img src="../../figures/python/ageint-public-ai-register-lifecycle.png"
-alt="The public AI register lifecycle keeps use-case purpose, impact review, publication, feedback, and refresh visible." />
+<a class="figure-full-size-link" href="../figures/python/ageint-public-ai-register-lifecycle.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The public AI register lifecycle keeps use-case purpose, impact review, publication, feedback"><img src="../figures/python/ageint-public-ai-register-lifecycle.png"
+alt="Loop diagram for AGEINT public AI register and transparency lifecycle. Labeled content highlights public ai register lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-public-ai-register-lifecycle-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The public AI register lifecycle keeps
 use-case purpose, impact review, publication, feedback, and refresh
 visible. Its reader value is to make public ai register lifecycle steps,
 decision gates, owner handoffs, refresh triggers, and closure evidence
 visible at a glance, with the curriculum orientation as the source
 section and defensive review as the boundary.</figcaption>
-</figure>
+<details id="fig-ageint-public-ai-register-lifecycle-long-description" class="figure-long-description" data-figure-label="fig:ageint-public-ai-register-lifecycle"><summary>Detailed description of figure ageint public ai register lifecycle</summary><p>This process-flow figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Public AI Register Lifecycle. The short alternative identifies the figure as: Loop diagram for AGEINT public AI register and transparency lifecycle. Labeled content highlights public ai register lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys public ai register lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence. The caption explains the reader task as follows: The public AI register lifecycle keeps use-case purpose, impact review, publication, feedback, and refresh visible. Its reader value is to make public ai register lifecycle steps, decision gates, owner handoffs, refresh triggers, and closure evidence visible at a glance, with the curriculum orientation as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-model-dataset-card">
-<img src="../../figures/python/ageint-model-dataset-card.png"
-alt="The model and dataset card keeps purpose, provenance, collection process, evaluation caveats, lifecycle controls, and review ownership visible for model and dataset claims." />
+<a class="figure-full-size-link" href="../figures/python/ageint-model-dataset-card.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The model and dataset card keeps purpose, provenance, collection process, evaluation…"><img src="../figures/python/ageint-model-dataset-card.png"
+alt="Matrix showing AGEINT model-card and dataset-card fields for intended use, provenance, composition limits, evaluation caveats, lifecycle controls, and review gates. Labeled content highlights model dataset card fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-model-dataset-card-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The model and dataset card keeps purpose,
 provenance, collection process, evaluation caveats, lifecycle controls,
 and review ownership visible for model and dataset claims. It is
@@ -469,10 +907,10 @@ card fields, row and column obligations, source records, reviewer
 decisions, and closure evidence while preserving the distinction between
 curriculum structure, evidence boundary, and accountable
 practice.</figcaption>
-</figure>
+<details id="fig-ageint-model-dataset-card-long-description" class="figure-long-description" data-figure-label="fig:ageint-model-dataset-card"><summary>Detailed description of figure ageint model dataset card</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Model and Dataset Card. The short alternative identifies the figure as: Matrix showing AGEINT model-card and dataset-card fields for intended use, provenance, composition limits, evaluation caveats, lifecycle controls, and review gates. Labeled content highlights model dataset card fields, row and column obligations, source records, reviewer decisions, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys model dataset card fields, row and column obligations, source records, reviewer decisions, and closure evidence. The caption explains the reader task as follows: The model and dataset card keeps purpose, provenance, collection process, evaluation caveats, lifecycle controls, and review ownership visible for model and dataset claims. It is anchored to the curriculum orientation; use it to inspect model dataset card fields, row and column obligations, source records, reviewer decisions, and closure evidence while preserving the distinction between curriculum structure, evidence boundary, and accountable practice. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-agentic-intelligence-boundary">
-<img src="../../figures/python/ageint-agentic-intelligence-boundary.png"
-alt="The boundary-control matrix shows how purpose, tool permissions, data access, human review, logging, and rollback constrain agentic assistance before any external action can occur." />
+<a class="figure-full-size-link" href="../figures/python/ageint-agentic-intelligence-boundary.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The boundary-control matrix shows how purpose, tool permissions, data access, human review…"><img src="../figures/python/ageint-agentic-intelligence-boundary.png"
+alt="Matrix showing AGEINT agentic boundary controls across assist, approve, block, and recover states. Labeled content highlights agentic intelligence boundary categories, denominators, evidence lanes, limitations, and reviewer-use cautions, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-agentic-intelligence-boundary-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The boundary-control matrix shows how
 purpose, tool permissions, data access, human review, logging, and
 rollback constrain agentic assistance before any external action can
@@ -480,27 +918,27 @@ occur. In the curriculum orientation, it lets readers compare agentic
 intelligence boundary categories, denominators, evidence lanes,
 limitations, and reviewer-use cautions so the visual functions as a
 traceable course aid rather than an unscoped assertion.</figcaption>
-</figure>
+<details id="fig-ageint-agentic-intelligence-boundary-long-description" class="figure-long-description" data-figure-label="fig:ageint-agentic-intelligence-boundary"><summary>Detailed description of figure ageint agentic intelligence boundary</summary><p>This matrix-style figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Agentic Intelligence Boundary Controls. The short alternative identifies the figure as: Matrix showing AGEINT agentic boundary controls across assist, approve, block, and recover states. Labeled content highlights agentic intelligence boundary categories, denominators, evidence lanes, limitations, and reviewer-use cautions, with the visual tied back to the curriculum orientation. The full visual conveys agentic intelligence boundary categories, denominators, evidence lanes, limitations, and reviewer-use cautions. The caption explains the reader task as follows: The boundary-control matrix shows how purpose, tool permissions, data access, human review, logging, and rollback constrain agentic assistance before any external action can occur. In the curriculum orientation, it lets readers compare agentic intelligence boundary categories, denominators, evidence lanes, limitations, and reviewer-use cautions so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-transparency-notice-flow">
-<img src="../../figures/python/ageint-transparency-notice-flow.png"
-alt="The transparency notice flow links public purpose, tool and data summary, impact review, and publication decisions." />
+<a class="figure-full-size-link" href="../figures/python/ageint-transparency-notice-flow.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The transparency notice flow links public purpose, tool"><img src="../figures/python/ageint-transparency-notice-flow.png"
+alt="Loop diagram for AGEINT transparency notice preparation. Labeled content highlights transparency notice flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-transparency-notice-flow-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The transparency notice flow links public
 purpose, tool and data summary, impact review, and publication
 decisions. The captioned view belongs to the curriculum orientation and
 should be read as a map of transparency notice flow steps, decision
 gates, owner handoffs, refresh triggers, and closure evidence, not as a
 capability score or live-task instruction.</figcaption>
-</figure>
+<details id="fig-ageint-transparency-notice-flow-long-description" class="figure-long-description" data-figure-label="fig:ageint-transparency-notice-flow"><summary>Detailed description of figure ageint transparency notice flow</summary><p>This process-flow figure is assigned to the curriculum orientation and should be read as an accessible equivalent for AGEINT Transparency Notice Flow. The short alternative identifies the figure as: Loop diagram for AGEINT transparency notice preparation. Labeled content highlights transparency notice flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, with the visual tied back to the curriculum orientation. The full visual conveys transparency notice flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence. The caption explains the reader task as follows: The transparency notice flow links public purpose, tool and data summary, impact review, and publication decisions. The captioned view belongs to the curriculum orientation and should be read as a map of transparency notice flow steps, decision gates, owner handoffs, refresh triggers, and closure evidence, not as a capability score or live-task instruction. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-visual-provenance-plate">
-<img src="../../figures/ai/ageint-visual-provenance-plate.png"
-alt="Deterministic teaching plate showing how AGEINT visual assets preserve local source, renderer, hash, caption, and review metadata before manuscript use." />
+<a class="figure-full-size-link" href="../figures/ai/ageint-visual-provenance-plate.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Deterministic teaching plate showing how AGEINT visual assets preserve local source…"><img src="../figures/ai/ageint-visual-provenance-plate.png"
+alt="Deterministic teaching plate with local source, renderer, hash record, caption and alt text, and reviewer check zones connected into a provenance record. Labeled content highlights Local source, Renderer, Hash record, Caption and alt text, and Reviewer check, with the visual tied back to the curriculum orientation." aria-details="fig-ageint-visual-provenance-plate-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Deterministic teaching plate showing how
 AGEINT visual assets preserve local source, renderer, hash, caption, and
 review metadata before manuscript use. Its reader value is to make Local
 source, Renderer, Hash record, and Caption and alt text visible at a
 glance, with the curriculum orientation as the source section and
 defensive review as the boundary.</figcaption>
-</figure>
+<details id="fig-ageint-visual-provenance-plate-long-description" class="figure-long-description" data-figure-label="fig:ageint-visual-provenance-plate"><summary>Detailed description of figure ageint visual provenance plate</summary><p>This synthetic concept plate is assigned to the curriculum orientation and should be read as an accessible equivalent for Visual Provenance Teaching Plate. The short alternative identifies the figure as: Deterministic teaching plate with local source, renderer, hash record, caption and alt text, and reviewer check zones connected into a provenance record. Labeled content highlights Local source, Renderer, Hash record, Caption and alt text, and Reviewer check, with the visual tied back to the curriculum orientation. The full visual conveys Local source, Renderer, Hash record, Caption and alt text, and Reviewer check. The caption explains the reader task as follows: Deterministic teaching plate showing how AGEINT visual assets preserve local source, renderer, hash, caption, and review metadata before manuscript use. Its reader value is to make Local source, Renderer, Hash record, and Caption and alt text visible at a glance, with the curriculum orientation as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 </main>
 </body>
 </html>

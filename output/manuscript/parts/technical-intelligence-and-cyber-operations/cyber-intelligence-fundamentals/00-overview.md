@@ -12,11 +12,11 @@ This module teaches the **Cyber Threat Intelligence, Incident Response, and Supp
 
 ## Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense frame for Cyber Intelligence Fundamentals: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-cyber-intelligence-fundamentals]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-cyber-intelligence-fundamentals].
 
 ### Cyber Intelligence Fundamentals orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-cyber-intelligence-fundamentals]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-cyber-intelligence-fundamentals].
 
 ### Cyber Intelligence Fundamentals conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Defensive Cyber-Intelligence Lens** dist
 
 ### Cyber Intelligence Fundamentals learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-cyber-intelligence-fundamentals]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-cyber-intelligence-fundamentals].
 
 - Connect **Cyber defensive taxonomy mapping using published labels and fabricated alerts and MITRE ATT&CK Framework: Cyber defensive taxonomy mapping using published labels and fabricated alerts** to **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Defensive Cyber-Intelligence Lens** dist
 
 ### Cyber Intelligence Fundamentals core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-cyber-intelligence-fundamentals]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-cyber-intelligence-fundamentals].
 
 | Term | Working definition |
 |---|---|
 | Indicator | an observable signal that may support defensive detection or investigation |
-| TTP | a tactic, technique, or procedure used for structured defensive mapping |
+| TTP | a tactic, technique, or procedure used for defensive behavioral description; a taxonomy match is neither a unique actor signature nor attribution |
 | Sighting | a bounded observation of a possible indicator in a given context |
 | Handling rule | a sharing, marking, or retention limit for threat information |
 | Lessons learned | the post-incident evidence that changes controls or playbooks |
-| Cyber defensive taxonomy mapping using… | Key terms: Cyber, defensive, taxonomy. |
-| MITRE ATT&CK Framework: Cyber defensive… | Key terms: MITRE, ATT, CK. |

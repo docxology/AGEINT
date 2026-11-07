@@ -2,25 +2,31 @@
 
 ## INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-industrial-and-cyber-physical-intelligence]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-industrial-and-cyber-physical-intelligence].
 
 ### safety-aware ICS and OT intelligence discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-industrial-and-cyber-physical-intelligence]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-industrial-and-cyber-physical-intelligence].
 
 This unit teaches **safety-aware ICS and OT intelligence**. ICS/OT lessons connect cyber observations to engineering state, consequence, operator decision, recovery evidence, and safety governance.
 
 ### safety-aware ICS and OT intelligence source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-industrial-and-cyber-physical-intelligence]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-industrial-and-cyber-physical-intelligence].
 
 Use CISA ICS, NIST secure-development, DevSecOps, and MITRE anchors for defensive coverage and controlled release claims.
 
 ### safety-aware ICS and OT intelligence practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-industrial-and-cyber-physical-intelligence]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-industrial-and-cyber-physical-intelligence].
 
-The recurring practice artifact is a **cyber-physical tabletop evidence packet** that draws on asset-consequence map, operator decision log, recovery evidence, and safety stop card. The unit keeps its learning spine explicit. Learners map assets to consequence, classify observations defensively, and preserve recovery evidence.
+The recurring practice artifact is a **cyber-physical tabletop evidence packet** that draws on asset-consequence map, operator decision log, recovery evidence, and safety stop card. The unit keeps its learning spine explicit. Classroom packet: a fictional tank's toy display shows a high level at 09:10, two independent sensor cards show normal level, a pre-change display sample is normal, a network alert shares the anomaly time, and the maintenance note says display scaling changed. Nothing connects to equipment.
+
+1. Map display, sensor, process consequence, and operator role; align clocks before linking events.
+2. Compare scaling error, sensor fault, and cyber interference; map only behavior actually described to a defensive taxonomy.
+3. Use a second normal sensor and a pre-change display sample as controls: the alert alone must not establish a physical excursion or attacker.
+4. Submit a tabletop packet marking physical level and cause unresolved pending the engineering check. Recovery requires consistent readings and operator acceptance in the fictional record, not merely disappearance of the alert; that evidence is missing.
+Invoke the safety stop card and hand the discrepancy to the instructor acting as engineering authority. Do not issue device commands or simulate a process change.
 
 ### safety-aware ICS and OT intelligence safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint255]; [@ageint256].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint255]; [@ageint256].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint255]; [@ageint256].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-industrial-and-cyber-physical-intelligence-module-map] 
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-information-architecture-for-intelligence-work], [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
-![The unit module map traces the part's chapters as a linear reading sequence. In the industrial and cyber physical intelligence section, it lets readers compare 5 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-industrial-and-cyber-physical-intelligence-module-map.png){#fig:part-industrial-and-cyber-physical-intelligence-module-map}
+![The INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE module map traces the part's chapters as a linear reading sequence. In the industrial and cyber physical intelligence section, it lets readers compare 5 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-industrial-and-cyber-physical-intelligence-module-map.png){#fig:part-industrial-and-cyber-physical-intelligence-module-map}
 
 ![This part builds a defensive chain from cyber observation through engineering state, physical consequence, operator decision, and recovery evidence, with each of the five chapters feeding a stage and a hard safety boundary forbidding live control, exploitation, or operational response.](../../../figures/mermaid/part-industrial-cyber-to-physical-defensive-chain.png){#fig:part-industrial-cyber-to-physical-defensive-chain}
 

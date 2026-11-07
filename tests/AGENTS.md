@@ -6,27 +6,28 @@ Keep coverage focused on parser accessors, neutral templates, manifest paths, ge
 
 No mocks are needed for the local parser and renderer; use real guide fixtures and temporary project directories.
 
-Tests should protect the architectural contract: semantic generated paths, no
-numbered source modules, no unresolved tokens, no raw LaTeX refs, no hard-coded
-Figure/Section numbers, readable square-normalized figures, stable source
-anchors, source identity lock stability, source-lane metadata, safety-audit
-blocking rules, v2 appendix rendering, and generated README/AGENTS coverage for
-meaningful folders. Deep-pass tests should also protect accessibility/UDL
-review, procurement/vendor oversight, HRIA/DPIA worksheet, data lineage,
-assessment-integrity, agent incident response, role-competency, and
-adversarial-assurance sections.
+Tests protect semantic generated paths, token/reference resolution, stable
+source identities, structured source metadata, figure integrity, and explicit
+permission/error boundaries. External source section locators are not book
+navigation. Renderer and audit passes are structural evidence, not proof of
+truth, learning gain, safety, accessibility conformance, or legal compliance.
 
-Shared inventory constants and helpers live in `tests/manuscript_quality/inventory_helpers.py`.
-Manuscript inventory checks are split across `test_manuscript_inventory_structure.py`
-(structural contracts) and `test_manuscript_inventory_quality.py` (reader-facing
-prose quality). Topic spine integrity lives in `test_topic_spine.py` (deduped
-display titles, no case-review stubs). Generated lesson anti-fallback gates live in `test_topic_content_quality.py`
-(`REMOVED_GENERIC_CONCEPT_PHRASES`, ≥80% title-keyword anchoring per chapter,
-Tier C repetition caps ≤15% per chapter, `"teams confuse source material"` caps
-≤20%, collapsed cognitive-security base titles ≤1/chapter, governance-bounded
-lesson headers 0, category-concept repetition ≤25%, 16-chapter part spot-check).
-Fragment quality across all six module sections lives in
-`test_chapter_fragment_quality.py` (overview primer distinct titles, worked-practice
-profile/lens references, architecture-source echo caps, required module section
-lengths). Token-boundary keyword routing regressions live in
-`test_topic_frame_routing.py`. The session-scoped `built_output` fixture in `conftest.py` ensures generated output exists before integration tests run (rebuilds when manuscript or figure registry is missing). A cold full `run_build()` can take several minutes locally; CI should cache `output/` when possible. Output-dependent tests request `built_output` and derive manuscript paths via `manuscript_dir()`.
+Shared inventory helpers live in `tests/manuscript_quality/inventory_helpers.py`.
+`test_manuscript_inventory_structure.py` protects the generated structure;
+`test_manuscript_inventory_quality.py` protects teaching-phase order.
+`test_topic_spine.py` covers topic identity and deduplication, and
+`test_topic_frame_routing.py` covers token boundaries and safe-subject
+precedence under colliding raw-source terms. Native bibliography tests exercise
+Pandoc and XeLaTeX/BibTeX rather than pinning copied bibliography strings.
+
+Do not add manuscript wording snapshots, title-keyword density thresholds,
+repetition percentages, or live-count/date snapshots. Inspect the actual PDF
+and canonical HTML, exercise runnable examples, and review source-to-claim
+fit. Honest fictional-case labels and properly attributed source locators must
+not be rewritten merely to satisfy a word ban.
+
+The session-scoped `built_output` fixture reuses fresh generated output and
+rebuilds when required artifacts are missing or source inputs change. Tests
+derive manuscript paths via `manuscript_dir()` and isolate changes in temporary
+projects. Use environment isolation to exercise missing tools, not replacement
+of executable discovery.

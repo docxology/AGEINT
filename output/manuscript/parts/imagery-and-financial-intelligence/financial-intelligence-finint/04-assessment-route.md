@@ -1,10 +1,10 @@
 ### Financial Intelligence (FININT) assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 ### Financial Intelligence (FININT) assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 #### Financial Intelligence (FININT) capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **FININT Foundations: Collection, Analysis
 
 #### Financial Intelligence (FININT) assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **FININT Foundations: Collection, Analysis, Reporting** | Completed **economic-security packet with entity evidence, sanctions program, red flags, supplier context, uncertainty, and compliance boundary** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Financial due-diligence typology exercise using synthetic records and compliance boundaries** | Completed **economic-security packet with entity evidence, sanctions program, red flags, supplier context, uncertainty, and compliance boundary** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Non-state actor indicator review with attribution caution and governance boundaries** | Completed **economic-security packet with entity evidence, sanctions program, red flags, supplier context, uncertainty, and compliance boundary** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **FININT Foundations: Collection, Analysis, Reporting**; **Financial due-diligence typology exercise using synthetic records and compliance boundaries**; **Non-state actor indicator review with attribution caution and governance boundaries** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: verify official list source, typology provenance, beneficial-ownership uncertainty, export-control relevance, and non-evasion framing. |
+| **The SWIFT System and Intelligence Collection**; **Cryptocurrency Records: Privacy, Transfers and Inference Limits**; **Economic Warfare and FININT as a Strategic Tool** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Money Laundering Detection: Financial due-diligence typology exercise using synthetic records and compliance boundaries**; **FININT Supporting National Security: Pillars and Methods** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude sanctions evasion, laundering methods, threshold gaming, procurement bypasses, and tailored targeting of real firms. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Financial Intelligence (FININT) refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint251]; [@ageint252].
 
-**Triangulation anchors.** In module 17's review-checklist section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 17's review-checklist section, the **Financial Intelligence and Economic-Security Due Diligence** catalog routes include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries**. [@ageint251]; [@ageint252].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

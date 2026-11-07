@@ -31,6 +31,8 @@ SCHOLARLY_DOMAINS = (
     "sciencedirect.com",
     "science.org",
     "nature.com",
+    "ovid.com",
+    "wiley.com",
     "jstor.org",
 )
 PRACTITIONER_VENDOR_DOMAINS = (
@@ -93,7 +95,7 @@ def source_support_strength(key: str, project_root: Path) -> SourceSupportProfil
     anchor = _curated_anchor_index(root).get(clean_key)
     if anchor is not None:
         return _profile_from_anchor(clean_key, anchor)
-    return _profile_from_key(clean_key)
+    return _unknown(clean_key)
 
 
 def support_profiles_for_keys(keys: list[str] | tuple[str, ...], project_root: Path) -> list[SourceSupportProfile]:
@@ -162,9 +164,6 @@ def _profile_from_source_guide_row(key: str, row: dict[str, Any]) -> SourceSuppo
     elif _matches(host, SCHOLARLY_DOMAINS):
         strength = "scholarly_primary" if note_verified else "source_guide_context"
         family = "scholarly" if note_verified else "source_guide"
-    elif note_verified:
-        strength = "source_guide_primary"
-        family = "source_guide"
     else:
         strength = "source_guide_context"
         family = "source_guide"
@@ -200,17 +199,6 @@ def _profile_from_anchor(key: str, row: dict[str, Any]) -> SourceSupportProfile:
     return _profile(key, strength, family, source_title=str(row.get("title", "")), source_url=str(row.get("url", "")), source_tier=str(row.get("source_tier") or row.get("source_type") or ""))
 
 
-def _profile_from_key(key: str) -> SourceSupportProfile:
-    lowered = key.lower()
-    if lowered.startswith("official_"):
-        return _profile(key, "official_primary", "official")
-    if lowered.startswith("scholarly_"):
-        return _profile(key, "scholarly_primary", "scholarly")
-    if lowered.startswith("standard_"):
-        return _profile(key, "standard_primary", "standard")
-    return _unknown(key)
-
-
 def _profile(key: str, strength: str, family: str, *, source_title: str = "", source_url: str = "", source_tier: str = "") -> SourceSupportProfile:
     primary = strength in PRIMARY_STRENGTHS
     weak = strength in WEAK_STRENGTHS or not primary and strength != "curated_context"
@@ -233,11 +221,17 @@ def _support_note(strength: str) -> str:
 
 def _host(url: str) -> str:
     parsed = urlparse(url if "://" in url else f"https://{url}")
-    return parsed.netloc.lower().removeprefix("www.")
+    return (parsed.hostname or "").lower().removeprefix("www.")
 
 
 def _matches(host: str, domains: tuple[str, ...]) -> bool:
-    return any(host == domain or host.endswith(domain) for domain in domains)
+    for domain in domains:
+        if domain.startswith("."):
+            if host.endswith(domain):
+                return True
+        elif host == domain or host.endswith(f".{domain}"):
+            return True
+    return False
 
 
 __all__ = ["PRIMARY_STRENGTHS", "SourceSupportProfile", "WEAK_STRENGTHS", "has_primary_support", "source_support_strength", "support_family_for_key", "support_profiles_for_keys"]

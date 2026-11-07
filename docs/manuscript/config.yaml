@@ -2,13 +2,13 @@
 paper:
   title: "AGEINT: Agentic Intelligence"
   subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  version: "0.1"
-  date: "2026-06-17"
+  version: "0.2.0"
+  date: "2026-11-07"
 
 book:
   title: "AGEINT: Agentic Intelligence"
   subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  edition: "0.1"
+  edition: "0.2.0"
   year: "2026"
   license: "CC BY 4.0"
   code_license: "Apache-2.0"
@@ -34,12 +34,7 @@ publication:
   doi: "10.5281/zenodo.20732274"
   repository_url: "https://github.com/docxology/AGEINT"
   repository_label: "docxology/AGEINT"
-  journal: "Zenodo"
-  volume: ""
-  pages: ""
   year: "2026"
-  version_doi: "10.5281/zenodo.20732275"
-  version_record: "https://zenodo.org/records/20732275"
 
 keywords:
   - agentic intelligence
@@ -64,6 +59,8 @@ render:
     slides: false
     docx: false
     epub: false
+  html:
+    asset_mode: local
 
 # Stage 02 allowlist — single canonical build (see scripts/CONVENTIONS.md)
 analysis:

@@ -7,8 +7,6 @@ from pathlib import Path
 import re
 from typing import Iterable, Sequence
 
-from rendered_reference_emphasis import authored_emphasis_ranges
-
 
 SUPPORT_DOC_NAMES = {"AGENTS.md", "README.md"}
 REFERENCE_DOC_NAMES = {"references.md"}
@@ -23,17 +21,19 @@ UNRESOLVED_TEMPLATE_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}|\[\[(?:SEC|FIG|REF
 BRACKET_CITATION_RE = re.compile(r"\[@([^\]]+)\]")
 _CROSSREF_PREFIXES = ("sec:", "fig:", "tbl:", "eq:", "lst:")
 _BIB_ENTRY_RE = re.compile(r"^@\w+\{([^,]+),", re.MULTILINE)
-_BOLD_SPAN_RE = re.compile(r"\*\*(.+?)\*\*|__(.+?)__")
 _TEX_HEADING_COMMAND_RE = re.compile(r"\\(?:part|chapter|section|subsection|subsubsection|paragraph)\*?\{")
+_SECTION_LABEL_RE = re.compile(r"\{#(sec:[A-Za-z0-9_-]+)\}")
+_REFERENCE_GROUP_RE = re.compile(r"\[@([^\]\n]*)(?:\]|$)")
 
 
 @dataclass(frozen=True)
 class TitleRule:
-    """A generated section title and the generic reader-facing replacement."""
+    """A section title and its label-backed navigation replacement."""
 
     title: str
     replacement: str
     kind: str
+    section_label: str = ""
 
 
 @dataclass(frozen=True)
@@ -58,7 +58,7 @@ class RenderedReferenceViolation:
 
 
 def section_title_rules(sections: Iterable[object]) -> tuple[TitleRule, ...]:
-    """Return replacement rules for rendered section titles."""
+    """Return navigation rules using the manifest's actual section labels."""
 
     rules: list[TitleRule] = []
     for section in sections:
@@ -66,7 +66,8 @@ def section_title_rules(sections: Iterable[object]) -> tuple[TitleRule, ...]:
         kind = str(getattr(section, "kind", "")).strip()
         if not _title_is_scannable(title):
             continue
-        rules.append(TitleRule(title=title, replacement=_replacement_for_kind(kind, title), kind=kind))
+        label = str(getattr(section, "section_label", "")).strip()
+        rules.append(TitleRule(title=title, replacement=f"[@{label}]" if label else "", kind=kind, section_label=label))
     return _dedupe_rules(rules)
 
 
@@ -95,7 +96,7 @@ def collect_rendered_section_titles(output_root: Path) -> tuple[str, ...]:
 
 
 def sanitize_rendered_section_title_mentions(text: str, rules: Iterable[TitleRule]) -> str:
-    """Remove generated section titles from non-structural Markdown prose."""
+    """Normalize explicit navigation only; preserve domain and source names."""
 
     sorted_rules = _sort_rules(rules)
     if not sorted_rules:
@@ -111,8 +112,7 @@ def sanitize_rendered_section_title_mentions(text: str, rules: Iterable[TitleRul
         if in_code or _is_markdown_structural_line(stripped):
             lines.append(line)
             continue
-        sanitized = _neutralize_title_mentions(line, sorted_rules)
-        lines.append(_clean_generic_reference_grammar(sanitized))
+        lines.append(_normalize_navigation(line, sorted_rules))
     if text.endswith("\n"):
         return "\n".join(lines) + "\n"
     return "\n".join(lines)
@@ -180,11 +180,11 @@ def _unresolved_citation_keys(line: str, defined: frozenset[str]) -> list[str]:
 
 
 def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolation]:
-    """Find hard-coded rendered references and disallowed section-title mentions."""
+    """Find malformed references and unlabelled navigational title mentions."""
 
     titles = collect_rendered_section_titles(output_root)
-    title_patterns = [(title, _title_pattern(title)) for title in sorted(titles, key=len, reverse=True)]
-    known_titles = frozenset(titles)
+    title_patterns = [(title, _navigation_pattern(title)) for title in sorted(titles, key=len, reverse=True)]
+    section_labels = _defined_section_labels(output_root / "manuscript")
     bib_keys = load_bib_keys(output_root)
     violations: list[RenderedReferenceViolation] = []
     for path in iter_rendered_text_files(output_root):
@@ -194,12 +194,10 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
         in_code = False
         in_html_figure = False
         in_html_heading = False
-        in_html_emphasis = False
         in_html_nav = False
         in_html_table = False
         in_tex_table = False
         tex_heading_depth = 0
-        in_tex_emphasis = False
         for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             stripped = line.strip()
             if suffix == ".md" and stripped.startswith("```"):
@@ -221,6 +219,10 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
                     in_tex_table = False
                     continue
             in_tex_heading, next_tex_heading_depth = _tex_heading_line_state(stripped, tex_heading_depth)
+            if suffix == ".md" and not in_code:
+                prose = re.sub(r"`[^`\n]*`", "", line)
+                for reason, label in _section_reference_issues(prose, section_labels):
+                    violations.append(RenderedReferenceViolation(path, line_number, reason, label, line))
             if _line_allows_titles(
                 path,
                 stripped,
@@ -253,10 +255,9 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
             if suffix == ".md":
                 for key in _unresolved_citation_keys(line, bib_keys):
                     violations.append(RenderedReferenceViolation(path, line_number, "unresolved citation key", f"@{key}", line))
-            protected, in_html_emphasis, in_tex_emphasis = authored_emphasis_ranges(line, known_titles, suffix, in_html_emphasis, in_tex_emphasis)
             for title, pattern in title_patterns:
-                if any(not _within_ranges(m.start(), protected) for m in pattern.finditer(line)):
-                    violations.append(RenderedReferenceViolation(path, line_number, "generated title in prose", title, line))
+                if pattern.search(line):
+                    violations.append(RenderedReferenceViolation(path, line_number, "unlabelled section navigation", title, line))
                     break
             if suffix == ".html":
                 if "</nav>" in stripped:
@@ -272,6 +273,36 @@ def audit_rendered_references(output_root: Path) -> list[RenderedReferenceViolat
     return violations
 
 
+def _defined_section_labels(manuscript: Path) -> set[str]:
+    labels: set[str] = set()
+    for path in manuscript.rglob("*.md"):
+        fence = ""
+        for line in path.read_text(encoding="utf-8").splitlines():
+            stripped = line.lstrip()
+            if stripped.startswith(("```", "~~~")):
+                marker = stripped[:3]
+                if not fence:
+                    fence = marker
+                elif fence == marker:
+                    fence = ""
+                continue
+            if not fence:
+                labels.update(_SECTION_LABEL_RE.findall(re.sub(r"`[^`\n]*`", "", line)))
+    return labels
+
+
+def _section_reference_issues(prose: str, labels: set[str]) -> Iterable[tuple[str, str]]:
+    for match in _REFERENCE_GROUP_RE.finditer(prose):
+        for token in match.group(1).split(";"):
+            label = token.strip().lstrip("@")
+            if not label.startswith("sec:"):
+                continue
+            if not match.group(0).endswith("]") or not re.fullmatch(r"sec:[A-Za-z0-9_-]+", label):
+                yield "malformed section reference", label
+            elif label not in labels:
+                yield "unresolved section reference", label
+
+
 def _dedupe_rules(rules: Iterable[TitleRule]) -> tuple[TitleRule, ...]:
     deduped: dict[str, TitleRule] = {}
     for rule in rules:
@@ -283,55 +314,24 @@ def _sort_rules(rules: Iterable[TitleRule]) -> list[TitleRule]:
     return sorted(_dedupe_rules(rules), key=lambda rule: len(rule.title), reverse=True)
 
 
-def _replacement_for_kind(kind: str, title: str) -> str:
-    if kind == "chapter":
-        return "the module"
-    if kind == "part":
-        return "the unit"
-    if kind == "appendix":
-        return "the current appendix"
-    if kind == "bibliography":
-        return "the bibliography appendix"
-    if title == "Abstract":
-        return "the abstract"
-    if title == "Curriculum Orientation":
-        return "the orientation section"
-    return "the current section"
+def _navigation_pattern(title: str) -> re.Pattern[str]:
+    """Match explicit reading directions, not bare or quoted source titles."""
+    opening = r"(?:\*\*|__|<strong>|<em>|\\textbf\{|\\emph\{)?"
+    closing = r"(?:\*\*|__|</strong>|</em>|\})?"
+    return re.compile(
+        rf"(?P<lead>\b(?:[Ss]ee|[Cc]onsult|[Rr]efer to|[Rr]eturn to|[Cc]ontinue in))\s+"
+        rf"{opening}{re.escape(title)}{closing}"
+        r"(?=\s+(?:for|before|after|to)\b|[.,;:]|$)"
+    )
 
 
-def _within_ranges(index: int, ranges: list[tuple[int, int]]) -> bool:
-    return any(start <= index < end for start, end in ranges)
-
-
-def _neutralize_plain_text(text: str, rules: Sequence[TitleRule]) -> str:
-    """Replace bare (non-emphasised) section-title cross-references with generic
-    phrases. Titles inside authored ``**bold**`` spans are handled by the caller
-    (the topic-cluster generator bolds its lesson-title list so it is preserved);
-    bare matches here are genuine cross-references and are always neutralised."""
+def _normalize_navigation(line: str, rules: Sequence[TitleRule]) -> str:
     for rule in rules:
-        text = _title_pattern(rule.title).sub(rule.replacement, text)
-    return text
-
-
-def _neutralize_title_mentions(line: str, rules: Sequence[TitleRule]) -> str:
-    """Neutralise section-title cross-references in one line, leaving authored
-    bold spans verbatim (neutralised only when the whole span is a known title)."""
-    rule_by_title = {rule.title: rule for rule in rules}
-    pieces: list[str] = []
-    cursor = 0
-    for match in _BOLD_SPAN_RE.finditer(line):
-        pieces.append(_neutralize_plain_text(line[cursor : match.start()], rules))
-        inner = (match.group(1) or match.group(2) or "").strip()
-        rule = rule_by_title.get(inner)
-        pieces.append(rule.replacement if rule is not None else match.group(0))
-        cursor = match.end()
-    pieces.append(_neutralize_plain_text(line[cursor:], rules))
-    return "".join(pieces)
-
-
-def _title_pattern(title: str) -> re.Pattern[str]:
-    escaped = re.escape(title)
-    return re.compile(rf"(?<![A-Za-z0-9_]){escaped}(?![A-Za-z0-9_])")
+        if re.fullmatch(r"sec:[A-Za-z0-9_-]+", rule.section_label):
+            line = _navigation_pattern(rule.title).sub(
+                lambda match: f"{match.group('lead')} [@{rule.section_label}]", line
+            )
+    return line
 
 
 def _title_is_scannable(title: str) -> bool:
@@ -413,40 +413,3 @@ def _unescaped_brace_delta(text: str) -> int:
     return text.count("{") - text.count("}")
 
 
-def _clean_generic_reference_grammar(line: str) -> str:
-    replacements = (
-        ("The the module", "The module"),
-        ("the the module", "the module"),
-        ("a the module", "a module"),
-        ("an the module", "a module"),
-        ("The the unit", "The unit"),
-        ("the the unit", "the unit"),
-        ("a the unit", "a unit"),
-        ("an the unit", "a unit"),
-        ("The the current appendix", "The current appendix"),
-        ("the the current appendix", "the current appendix"),
-        ("the broader the unit thread", "the broader unit thread"),
-        ("Minimum the module submission", "Minimum module submission"),
-        ("Minimum the unit submission", "Minimum unit submission"),
-        ("The module matched profile", "The module profile"),
-        ("The unit matched profile", "The unit profile"),
-        ("the module matched profile", "the module profile"),
-        ("the unit matched profile", "the unit profile"),
-        ("Each the module", "Each module"),
-        ("Each the unit", "Each unit"),
-        ("Use this the module", "Use this module"),
-        ("Use this the unit", "Use this unit"),
-        ("This unit deliverables", "This unit's deliverables"),
-        ("This unit safety gates", "This unit's safety gates"),
-        ("one the unit", "one unit"),
-        ("the current appendix methods appendix", "current appendix"),
-    )
-    for old, new in replacements:
-        line = line.replace(old, new)
-    if line.startswith("the module"):
-        line = "This module" + line[len("the module") :]
-    if line.startswith("the unit"):
-        line = "This unit" + line[len("the unit") :]
-    if line.startswith("the current appendix"):
-        line = "This appendix" + line[len("the current appendix") :]
-    return line

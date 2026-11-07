@@ -1,12 +1,9 @@
-"""Ground topic-lesson prose in the real cited source records.
+"""Preserve source-guide identity without inventing claim-specific support.
 
-Each source-guide row carries ``citation_numbers`` that resolve to real
-reference records (title, descriptive note, URL) in
-``data/curriculum/references/source-guide-*.jsonl``. The lesson generators
-historically discarded that data and emitted category-level boilerplate, so
-every lesson in a chapter shared identical "evidence packet" and "source
-support" prose. This module re-attaches the real per-source descriptions so
-each lesson names the actual works it rests on and paraphrases what they say.
+Source-guide notes are curriculum annotations, not source-authored quotations.
+An inherited citation or a verified annotation does not establish topical fit,
+empirical efficacy, normative authority, or independent verification of a lesson
+claim. Claim-specific support requires checking the original passage and scope.
 """
 
 from __future__ import annotations
@@ -24,11 +21,9 @@ from safety_contract import text_is_operational
 from . import _source_prose as prose
 from ._source_cleaners import (
     SITE_SUFFIXES as _SITE_SUFFIXES,
-    balance_delimiters as _balance_delimiters,
     has_formula_phrase as _has_formula_phrase,
     rewrite_hard_coded_refs as _rewrite_hard_coded_refs,
     strip_unsupported_glyphs as _strip_unsupported_glyphs,
-    trim_dangling_modifier as _trim_dangling_modifier,
     trim_trailing_stopwords as _trim_trailing_stopwords,
 )
 from .source_tiers import source_evidence_status
@@ -38,12 +33,15 @@ if TYPE_CHECKING:
 
 _REFERENCES_DIR = Path(__file__).resolve().parents[2] / "data" / "curriculum" / "references"
 
-_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+_SENTENCE_END = re.compile(
+    r"(?<!\bNo\.)(?<!\bVol\.)(?<!\bDr\.)(?<!\bMr\.)(?<!\bMs\.)(?<!\b[A-Za-z]\.)"
+    r"(?<!\bProf\.)(?<!\be\.g\.)(?<!\bi\.e\.)(?<!\bet al\.)(?<=[.!?])\s+"
+)
 
 
 @dataclass(frozen=True)
 class SourceRecord:
-    """A cleaned, reader-facing view of one cited source-guide reference."""
+    """A source-guide identity and editorial note; ``verified`` is note metadata."""
 
     number: int
     key: str
@@ -113,37 +111,23 @@ def clean_source_title(title: str) -> str:
 
 
 def clean_source_note(note: str) -> str:
-    """Trim a truncated source note to a complete clause ending in a period.
+    """Keep intact notes or complete leading sentences of a truncated note.
 
-    Most source notes are captured with a trailing ``...`` truncation marker
-    and are cut mid-word. When that marker is present we drop the dangling final
-    token (an almost-certainly-incomplete word) and prefer to end on a whole
-    sentence so the rendered prose never exposes a broken fragment.
+    Never turn a captured fragment into an apparently complete assertion by
+    deleting its final word or adding punctuation. Incomplete single-sentence
+    notes are omitted; their source identity remains available.
     """
     raw = note.strip()
     if not raw:
         return ""
     was_truncated = bool(re.search(r"(?:\.{2,}|…)$", raw))
-    text = re.sub(r"\s*(?:\.{2,}|…)+$", "", raw).strip().rstrip(" ,;:-—")
+    text = re.sub(r"\s*(?:\.{2,}|…)+$", "", raw).strip()
     if not text:
         return ""
-    if was_truncated or text[-1] not in ".!?":
-        sentences = _SENTENCE_END.split(text)
-        if was_truncated and len(sentences) > 1 and sentences[-1][-1:] not in ".!?":
-            # Keep only complete sentences; drop the dangling final fragment.
-            text = " ".join(sentences[:-1]).rstrip(" ,;:-—")
-        elif was_truncated:
-            # Single truncated sentence: drop the partial trailing word.
-            head, _, _tail = text.rpartition(" ")
-            if head:
-                text = head.rstrip(" ,;:-—")
-        text = _balance_delimiters(text)
-        text = _trim_trailing_stopwords(text)
-        if was_truncated:
-            text = _trim_dangling_modifier(text)
-    if text and text[-1] not in ".!?":
-        text += "."
-    return text
+    if not was_truncated and text[-1] in ".!?":
+        return text
+    sentences = _SENTENCE_END.split(text)
+    return " ".join(sentences[:-1]).strip()
 
 
 _NOTE_DISPLAY_CAP = 480  # chars — keeps table cells and inline prose readable
@@ -161,18 +145,16 @@ def _cap_to_sentences(text: str, cap: int) -> str:
             result = candidate
         else:
             break
-    return result.strip() or text[:cap].rsplit(" ", 1)[0].rstrip(" ,;:-—") + "."
+    return result.strip()
 
 
 def safe_source_note(note: str) -> str:
-    """Return a cleaned, display-capped note fit for reader prose.
+    """Return a safe editorial annotation without fabricating a sentence.
 
-    Notes that reproduce operational tradecraft motifs are dropped entirely so
-    the source is attributed by citation key without echoing unsafe content.
-    PDF-unsupported glyphs, hard-coded numbered references, and scaffold phrases
-    are removed or rewritten. Fully-verified longer notes are capped
-    sentence-cleanly at ``_NOTE_DISPLAY_CAP`` chars so table cells and inline
-    evidence prose remain readable.
+    Operational notes are omitted. Glyphs and hard-coded references are cleaned;
+    display capping retains only complete leading sentences, never a word-cut
+    fragment. Neither cleaning nor the source's verification flag validates the
+    annotation as a quotation or as support for a generated lesson claim.
     """
     cleaned = _strip_unsupported_glyphs(clean_source_note(note)).strip()
     cleaned = re.sub(r"\s{2,}", " ", cleaned)
@@ -240,35 +222,33 @@ def _join_clause(items: list[str]) -> str:
 
 
 def source_support_sentence(display_title: str, records: tuple[SourceRecord, ...]) -> str:
-    """Render a reader-facing "source support" line citing the real works.
-
-    Attribution is by citation key, which resolves to the full bibliographic
-    entry downstream; the lead source's descriptive note carries the substance.
-    The lead-note intro and the closing instruction are rotated per lesson (see
-    :mod:`._source_prose`) so the line never reads as a verbatim stamp, and the
-    prose anchors on the lesson's (already safe) display title.
-    """
+    """Preserve inherited source identity while keeping claim-support limits explicit."""
+    if not records:
+        return f"No source-guide citation is available for **{display_title}**; claim-specific support remains unestablished."
     spine = _join_clause([record.citation for record in records])
-    seed = f"{display_title}|{len(records)}"
-    lead_note = prose.lead_clause(prose.note_carrier(record.note for record in records), seed=seed + "|lead")
-    intro = prose.NOTE_INTROS[prose.stable_index(seed + "|note", len(prose.NOTE_INTROS))]
-    detail = f" {intro} {lead_note}" if lead_note else ""
-    plural = "them" if len(records) > 1 else "it"
-    use_index = prose.stable_index(seed + "|use", len(prose.USE_CLAUSES))
-    use_clause = prose.USE_CLAUSES[use_index].format(title=display_title)
-    return f"**{display_title}** rests on {spine}.{detail} Use {plural} for {use_clause}"
+    return (
+        f"Inherited source-guide context for **{display_title}**: {spine}. "
+        "These citations preserve source identity, not automatic topical relevance, "
+        "empirical validation or normative authority. No claim-specific primary "
+        "support is established by this source-guide association alone."
+    )
 
 
 def evidence_from_sources(display_title: str, records: tuple[SourceRecord, ...]) -> str:
-    """Render source-grounded "evidence to inspect" prose for a lesson."""
-    # Only note-bearing records add substance inline; a bare citation key would
-    # render as a floating bracket number (it is already in the support spine).
-    described = [f"{record.citation} {record.note}" for record in records if record.note]
-    body = (" ".join(described) + " ") if described else ""
-    seed = f"{display_title}|{len(records)}"
-    lead = prose.EVIDENCE_LEADS[prose.stable_index(seed + "|lead2", len(prose.EVIDENCE_LEADS))]
-    closer = prose.EVIDENCE_CLOSERS[prose.stable_index(seed + "|evidence", len(prose.EVIDENCE_CLOSERS))]
-    return f"{lead.format(title=display_title)} {body}{closer.format(title=display_title)}"
+    """Present key-bound curriculum annotations as leads for passage-level review."""
+    if not records:
+        return f"No source-guide citation is available to inspect for **{display_title}**; record the evidence gap."
+    annotations = [prose.curriculum_annotation(record.citation, record.note) for record in records if record.note]
+    body = " ".join(annotations) if annotations else (
+        f"No displayable curriculum annotation is available for {_join_clause([record.citation for record in records])}."
+    )
+    return (
+        f"For **{display_title}**, inspect the original passages. {body} "
+        "These editorial descriptions are not source-authored quotations or "
+        "independently verified lesson support. Record a passage and locator, "
+        "distinguishing primary findings, normative requirements, proposals and "
+        "context using [@sec:analytic-workflow]; unsupported claims remain gaps."
+    )
 
 
 def _cell(value: str) -> str:
@@ -277,15 +257,12 @@ def _cell(value: str) -> str:
 
 
 def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
-    """Render a real annotated bibliography for a module's cited sources.
+    """Render source identities, key-bound editorial notes, and annotation metadata.
 
-    Each row pairs the citation key with the cleaned source title (linked to its
-    URL where available), a description of what the work contributes, and a
-    verification status flag so readers can distinguish real fetched descriptions
-    from the original truncated notes. Operational titles and notes are neutralised
-    so the table stays evidence-bounded; table rows skip section-title sanitisation.
+    The status column retains inherited verification/context flags; it does not
+    certify claim relevance or independently verify the generated lesson.
     """
-    rows = ["| Source | Cited work | What it contributes | Status |", "|---|---|---|---|"]
+    rows = ["| Source | Cited work | Curriculum annotation | Status |", "|---|---|---|---|"]
     for record in records:
         title = safe_source_title(record.title)
         if title and record.url:
@@ -296,8 +273,8 @@ def annotated_source_table(records: tuple[SourceRecord, ...]) -> str:
             title_cell = _cell(title)
         else:
             title_cell = "Cited source (see bibliography)"
-        note_cell = _cell(record.note) if record.note else "See bibliography for scope."
-        status = source_evidence_status(record)
+        note_cell = _cell(record.note) if record.note else "No displayable curriculum annotation; see original work for scope."
+        status = f"{source_evidence_status(record)}; annotation metadata, not claim verification"
         rows.append(f"| {record.citation} | {title_cell} | {note_cell} | {status} |")
     return "\n".join(rows)
 

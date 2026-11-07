@@ -1,10 +1,10 @@
 ### Imagery Intelligence (IMINT) assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-imagery-intelligence-imint]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-imagery-intelligence-imint].
 
 ### Imagery Intelligence (IMINT) assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-imagery-intelligence-imint]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-imagery-intelligence-imint].
 
 #### Imagery Intelligence (IMINT) capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Imagery modality literacy: resolution, s
 
 #### Imagery Intelligence (IMINT) assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Imagery modality literacy: resolution, scale, and sensor-fit** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Imagery collection-platform literacy: resolution and revisit tradeoffs** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Photo-interpretation literacy: resolution, uncertainty, and scale** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Imagery modality literacy: resolution, scale, and sensor-fit**; **Imagery collection-platform literacy: resolution and revisit tradeoffs** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: show priority, authority, minimization, corroboration, and source quality before any claim is reused. |
+| **Photo-interpretation literacy: resolution, uncertainty, and scale**; **Commercial imagery literacy: resolution tiers, licensing, and provenance** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Open-source geolocation literacy: resolution, corroboration, and uncertainty** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude live collection, recruitment, surveillance, interception, tracking, and identity exposure. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Imagery modality literacy: resolution, scale, and sensor-fit; Imagery collection-platform literacy: resolution and revisit tradeoffs** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Imagery modality literacy: resolution, scale, and sensor-fit; Imagery collection-platform literacy: resolution and revisit tradeoffs**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Imagery Intelligence (IMINT) refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint253]; [@ageint269].
 
-**Triangulation anchors.** In module 16's review-checklist section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 16's review-checklist section, the **Open-Source and Geospatial Intelligence Integrity** catalog routes include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Imagery modality literacy: resolution, scale, and sensor-fit; Imagery collection-platform literacy: resolution and revisit tradeoffs**. [@ageint253]; [@ageint269].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

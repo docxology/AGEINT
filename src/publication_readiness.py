@@ -7,20 +7,25 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 from typing import Any
 
 import yaml
 from build_clock import build_timestamp
-from schema_gate import load_json_with_schema
+from schema_gate import PUBLICATION_READINESS_SCHEMA_VERSION, load_json_with_schema
 
 try:
     from .audit_contracts import publication_readiness_audit_check_ids
     from .artifact_evidence import collect_artifact_evidence
+    from .release_metadata import collect_release_metadata, collect_release_task_status
     from .source_refresh_due import collect_source_refresh_due
+    from .template_resolver import resolve_template_repo
 except ImportError:  # pragma: no cover - direct script imports
     from audit_contracts import publication_readiness_audit_check_ids  # type: ignore[no-redef]
     from artifact_evidence import collect_artifact_evidence  # type: ignore[no-redef]
+    from release_metadata import collect_release_metadata, collect_release_task_status  # type: ignore[no-redef]
     from source_refresh_due import collect_source_refresh_due  # type: ignore[no-redef]
+    from template_resolver import resolve_template_repo  # type: ignore[no-redef]
 
 
 PRIVATE_TOKEN_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
@@ -34,7 +39,6 @@ PRIVATE_TOKEN_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
 LOCAL_PATH_RE = re.compile(r"/Users/[^\s`'\"),;]+")
 MARKDOWN_FILE_LINK_RE = re.compile(r"\]\([^)]*\.m(?:d|arkdown)(?:[#)\s]|$)", re.IGNORECASE)
 FILE_URI_LINK_RE = re.compile(r"(\]\(\s*file:|href=[\"']file:)", re.IGNORECASE)
-REQUIRED_DONE_TASKS = ("ageint-25", "ageint-26", "ageint-31")
 
 
 @dataclass(frozen=True)
@@ -71,11 +75,12 @@ def collect_publication_readiness(project_root: Path, *, template_root: Path | N
     manifest_status = artifact_manifest_status(root)
     release_surface = scan_release_surfaces(root)
     source_license = collect_source_license_posture(root)
-    task_status = collect_task_status(root)
+    release_metadata = collect_release_metadata(root).payload
+    task_status = collect_release_task_status(root, version=release_metadata["version"])
     parent_guard = (
         run_parent_confidentiality_guard(root, template_root=template_root)
         if run_parent_guard
-        else {"checked": False, "ok": True, "stdout": "not run in this invocation", "stderr": "", "returncode": 0}
+        else {"status": "skipped", "checked": False, "ok": False, "stdout": "not run in this informational invocation", "stderr": "", "returncode": None}
     )
     parent_guard = _sanitize_parent_guard(parent_guard)
     artifact_audit_checks = {check_id: bool(artifact_checks.get(check_id)) for check_id in publication_readiness_audit_check_ids()}
@@ -87,12 +92,18 @@ def collect_publication_readiness(project_root: Path, *, template_root: Path | N
         "release_surface_scan_ok": not release_surface,
         "source_license_posture_ok": source_license["ok"],
         "task_prerequisites_done": task_status["prerequisites_done"],
-        "release_milestone_still_todo": task_status["release_milestone_still_todo"],
-        "parent_confidentiality_guard_ok": bool(parent_guard["ok"]),
+        "release_milestone_ready": task_status["release_milestone_ready"],
+        "release_metadata_ok": release_metadata["ok"],
+        "parent_confidentiality_guard_ok": (
+            parent_guard["status"] == "passed"
+            and parent_guard["checked"] is True
+            and parent_guard["ok"] is True
+            and parent_guard["returncode"] == 0
+        ),
     }
     payload = {
         "project": "AGEINT",
-        "schema_version": "1.0",
+        "schema_version": PUBLICATION_READINESS_SCHEMA_VERSION,
         "generated_at": build_timestamp(),
         "ok": all(checks.values()),
         "checks": checks,
@@ -124,14 +135,15 @@ def collect_publication_readiness(project_root: Path, *, template_root: Path | N
         "artifact_manifest": manifest_status,
         "release_surface_scan": {"issue_count": len(release_surface), "issues": [issue.as_dict() for issue in release_surface]},
         "source_license_posture": source_license,
+        "release_metadata": release_metadata,
         "task_status": task_status,
         "parent_confidentiality_guard": parent_guard,
-        "release_decision": ("Ready for an explicit local release decision only when this report is ok. This report does not publish, push, archive, promote, or create a public record."),
+        "release_decision": ("Ready for an explicit local release decision only when this report is ok and the parent guard has completed successfully. A skipped or unavailable guard is informational evidence only, never release authorization. A completed milestone remains locally re-checkable and grants no authority for another publication. Metadata alignment does not prove SDK release acceptance or tag/DOI existence. This report does not publish, push, archive, promote, or create a public record."),
     }
     return PublicationReadinessReport(payload)
 
 
-def write_publication_readiness(project_root: Path, *, run_parent_guard: bool = True) -> tuple[Path, Path, PublicationReadinessReport]:
+def write_publication_readiness(project_root: Path, *, template_root: Path | None = None, run_parent_guard: bool = True) -> tuple[Path, Path, PublicationReadinessReport]:
     """Write JSON and Markdown publication-readiness reports under ``output/reports``."""
 
     root = Path(project_root)
@@ -141,7 +153,7 @@ def write_publication_readiness(project_root: Path, *, run_parent_guard: bool = 
     md_path = reports_dir / "publication_readiness.md"
     for stale_path in (json_path, md_path):
         stale_path.unlink(missing_ok=True)
-    report = collect_publication_readiness(root, run_parent_guard=run_parent_guard)
+    report = collect_publication_readiness(root, template_root=template_root, run_parent_guard=run_parent_guard)
     json_path.write_text(json.dumps(report.payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     md_path.write_text(render_publication_readiness_markdown(report), encoding="utf-8")
     return json_path, md_path, report
@@ -177,6 +189,11 @@ def render_publication_readiness_markdown(report: PublicationReadinessReport) ->
         f"| Source refresh due/stale rows | {refresh['due_or_stale_count']} |",
         f"| Release-surface issues | {payload['release_surface_scan']['issue_count']} |",
         f"| Artifact-manifest issues | {payload['artifact_manifest']['issue_count']} |",
+        f"| Release version | {payload['release_metadata']['version']} |",
+        f"| Release milestone | {payload['task_status']['release_milestone_id']} |",
+        f"| Release milestone status | {payload['task_status']['release_milestone_status']} |",
+        f"| Parent guard status | {payload['parent_confidentiality_guard']['status']} |",
+        f"| Parent guard checked | {str(payload['parent_confidentiality_guard']['checked']).lower()} |",
         "",
         "## Checks",
         "",
@@ -195,6 +212,8 @@ def render_publication_readiness_markdown(report: PublicationReadinessReport) ->
             f"| Release surface scan | {payload['release_surface_scan']['issue_count']} |",
             f"| Source/license posture | {payload['source_license_posture']['issue_count']} |",
             f"| Artifact manifest | {payload['artifact_manifest']['issue_count']} |",
+            f"| Release metadata | {payload['release_metadata']['issue_count']} |",
+            f"| Release tasks | {payload['task_status']['issue_count']} |",
             "",
             "## Release Decision",
             "",
@@ -278,27 +297,38 @@ def artifact_manifest_status(project_root: Path) -> dict[str, Any]:
     return {"ok": not issues, "path": "output/reports/artifact_manifest.json", "issue_count": len(issues), "issues": issues}
 
 
-def collect_task_status(project_root: Path) -> dict[str, Any]:
-    payload = _load_yaml(Path(project_root) / "tasks.yaml")
-    tasks = payload.get("tasks", []) if isinstance(payload, dict) else []
-    by_id = {str(row.get("id")): row for row in tasks if isinstance(row, dict)}
-    required = {task_id: str(by_id.get(task_id, {}).get("status", "missing")) for task_id in REQUIRED_DONE_TASKS}
-    milestone_status = str(by_id.get("ageint-m1", {}).get("status", "missing"))
+
+
+def run_parent_confidentiality_guard(
+    project_root: Path, *, template_root: Path | None = None, timeout: float = 180,
+) -> dict[str, Any]:
+    """Run the current template guard with this prepared Python, without syncing."""
+    template = Path(template_root).resolve() if template_root is not None else resolve_template_repo(project_root)
+    unavailable = {"status": "unavailable", "checked": False, "ok": False, "stdout": "", "stderr": "", "returncode": None}
+    if template is None or not template.is_dir():
+        return {**unavailable, "stderr": "template repo not found"}
+    guard_script = Path("scripts/audit/check_tracked_all.py")
+    if not (template / guard_script).is_file():
+        return {**unavailable, "stderr": "template confidentiality guard script not found"}
+    try:
+        result = subprocess.run(
+            [sys.executable, guard_script.as_posix()],
+            cwd=template, check=False, capture_output=True, text=True, timeout=timeout,
+        )
+    except subprocess.TimeoutExpired as exc:
+        return {
+            **unavailable, "status": "timeout",
+            "stdout": _clean_output(exc.stdout or ""),
+            "stderr": _clean_output(exc.stderr or "") or "template confidentiality guard timed out",
+        }
+    except OSError as exc:
+        return {**unavailable, "stderr": _clean_output(str(exc))}
     return {
-        "required_done_tasks": required,
-        "prerequisites_done": all(status == "done" for status in required.values()),
-        "ageint_27_status": str(by_id.get("ageint-27", {}).get("status", "missing")),
-        "ageint_m1_status": milestone_status,
-        "release_milestone_still_todo": milestone_status == "todo",
+        "status": "passed" if result.returncode == 0 else "failed",
+        "checked": True, "ok": result.returncode == 0,
+        "stdout": _clean_output(result.stdout), "stderr": _clean_output(result.stderr),
+        "returncode": result.returncode,
     }
-
-
-def run_parent_confidentiality_guard(project_root: Path, *, template_root: Path | None = None) -> dict[str, Any]:
-    template = template_root or _default_template_root(project_root)
-    if not template or not template.is_dir():
-        return {"checked": False, "ok": False, "stdout": "", "stderr": "template repo not found", "returncode": 1}
-    result = subprocess.run(["uv", "run", "python", "scripts/check_tracked_projects.py"], cwd=template, check=False, capture_output=True, text=True, timeout=180)
-    return {"checked": True, "ok": result.returncode == 0, "stdout": _clean_output(result.stdout), "stderr": _clean_output(result.stderr), "returncode": result.returncode}
 
 
 def _release_text_paths(root: Path) -> tuple[Path, ...]:
@@ -349,14 +379,9 @@ def _load_yaml(path: Path) -> dict[str, Any]:
     return payload if isinstance(payload, dict) else {}
 
 
-def _default_template_root(project_root: Path) -> Path | None:
-    docs_root = Path(project_root).resolve().parents[2]
-    candidate = docs_root / "template"
-    return candidate if candidate.is_dir() else None
-
-
-def _clean_output(value: str) -> str:
-    return LOCAL_PATH_RE.sub("<local-path>", " ".join(value.split()))[:500]
+def _clean_output(value: str | bytes) -> str:
+    text = value.decode("utf-8", errors="replace") if isinstance(value, bytes) else value
+    return LOCAL_PATH_RE.sub("<local-path>", " ".join(text.split()))[:500]
 
 
 def _sanitize_parent_guard(parent_guard: dict[str, Any]) -> dict[str, Any]:
@@ -374,7 +399,6 @@ __all__ = [
     "artifact_manifest_status",
     "collect_publication_readiness",
     "collect_source_license_posture",
-    "collect_task_status",
     "render_publication_readiness_markdown",
     "run_parent_confidentiality_guard",
     "scan_release_surfaces",

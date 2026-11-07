@@ -25,7 +25,6 @@ from intelligence_content import (
     question_bank_rows,
     release_change_control_rows,
     remediation_backlog_rows,
-    research_anchor_rows,
     research_spine_summary,
     retention_audit_rows,
     risk_exception_rows,
@@ -59,7 +58,7 @@ def _render_bibtex_entries(references: list[dict[str, Any]]) -> str:
         cleaned_title = _sg_clean_title(raw_title) if raw_title else raw_title
         title = _clean_bibtex_text(cleaned_title)
         author = _reference_author(ref)
-        year = _clean_bibtex_value(ref.get("year") or "2026")
+        year = _clean_bibtex_value(ref.get("year") or "")
         url = _clean_bibtex_value(ref.get("url") or "")
         # Use safe_source_note to get the best available cleaned description
         raw_note = str(ref.get("note") or "")
@@ -90,7 +89,17 @@ def _render_bibtex_entries(references: list[dict[str, Any]]) -> str:
         if ref.get("verification_note"):
             note_parts.append(str(ref["verification_note"]))
         note = _clean_bibtex_text(_join_note_parts(note_parts))
-        entries.append("\n".join([f"@misc{{{ref['key']},", f"  title = {{{title}}},", f"  author = {{{author}}},", f"  year = {{{year}}},", f"  url = {{{url}}},", f"  note = {{{note}}},", "}"]))
+        fields = [f"@misc{{{ref['key']},", f"  title = {{{title}}},"]
+        if author:
+            fields.append(f"  author = {{{author}}},")
+        else:
+            # A unique BibTeX label key prevents plainnat's three-character
+            # citation-key fallback from colliding; it is not an author.
+            fields.append(f"  key = {{{_clean_bibtex_text(ref['key'])}}},")
+        if year:
+            fields.append(f"  year = {{{year}}},")
+        fields.extend([f"  url = {{{url}}},", f"  note = {{{note}}},", "}"])
+        entries.append("\n".join(fields))
     return "\n\n".join(entries) + "\n"
 
 
@@ -160,7 +169,6 @@ def generate_variables(project_root: Path) -> dict[str, str]:
             "counter-information-threat guidance."
         ),
         "INTELLIGENCE_RESEARCH_SPINE": research_spine_summary(),
-        "INTELLIGENCE_RESEARCH_ROWS": research_anchor_rows(),
         "INTELLIGENCE_SOURCE_LANE_ROWS": source_lane_rows(),
         "SOURCE_REFRESH_ROWS": source_refresh_rows(),
         "CURRENT_SOURCE_UPDATE_ROWS": current_source_update_rows(),

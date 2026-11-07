@@ -2,16 +2,19 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md.web</title>
+  <title>06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md.web</title>
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,12 +182,414 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2 id="sec:bibliography-rows">Bibliography atlas rows: guide keys,
 curated anchors, and support-source roles</h2>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 9%" />
 <col style="width: 9%" />
@@ -221,12 +630,11 @@ curated anchors, and support-source roles</h2>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>This article examines the concept of epistemic governance during
-crises.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint002]</td>
-<td>Objectivity</td>
+<td>Objectivity / Office of the Director of National Intelligence</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -235,8 +643,7 @@ crises.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>ICD 203 directs the heads of IC elements to designate a similar
-individual or office to respond.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint003]</td>
@@ -322,8 +729,7 @@ Community.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>It is SIS’s task to pursue policy objectives by unorthodox means and
-to amass useful information.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint008]</td>
@@ -440,7 +846,7 @@ gathering.</td>
 </tr>
 <tr>
 <td>[ageint014]</td>
-<td>Tradecraft: Covert Operative Tactics and Techniques</td>
+<td>Tradecraft: Covert Operative Tactics and Techniques / TRDCRFT</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -627,7 +1033,12 @@ intelligence</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Source-guide bibliography entry.</td>
+<td>A Stage 2 registered report in Legal and Criminological Psychology
+29(1), 48–64 (February 2024), DOI 10.1111/lcrp.12251. The final analyzed
+sample was 182 after attention-check exclusions. Neither preregistered
+commitment hypothesis was supported: greater felt closeness and
+perceived social connection did not establish greater commitment under
+the study’s monetary-investment proxy.</td>
 </tr>
 <tr>
 <td>[ageint025]</td>
@@ -678,8 +1089,7 @@ recounted from personal experience.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Learn a technique for communicating with your family in an emergency
-using a method used by spies.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint028]</td>
@@ -769,8 +1179,7 @@ practice.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>How seriously is the U.S. Intelligence Community (IC) considering
-this challenge to U.S.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint034]</td>
@@ -785,7 +1194,7 @@ CSI</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
 <td>Thomas Mulligan is a researcher at the RAND Corporation and former
-CIA officer. Ana P.</td>
+CIA officer.</td>
 </tr>
 <tr>
 <td>[ageint035]</td>
@@ -798,8 +1207,7 @@ CIA officer. Ana P.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>SIGINT is intelligence derived from electronic signals and systems
-used by foreign targets.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint036]</td>
@@ -882,8 +1290,7 @@ access to intelligence.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Codes will first be considered, but as they do not fulfill the
-conditions required of a means.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint041]</td>
@@ -1005,8 +1412,7 @@ post-inspection written report with findings and recommendations.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Plans and strategies for improving open-source intelligence (OSINT)
-operations in the Intelligence.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint048]</td>
@@ -1019,8 +1425,7 @@ operations in the Intelligence.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Tradecraft and training standards must be flexible and updated
-regularly to keep pace with changes.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint049]</td>
@@ -1231,12 +1636,12 @@ countermeasures organizations can apply at each stage.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The official MITRE ATT&amp;CK Enterprise Matrix, a curated knowledge
-base of adversary tactics and techniques observed in real-world
-intrusions. It organizes activity into fifteen sequential tactics, from
-reconnaissance and resource development through initial access,
-persistence, privilege escalation, defense evasion, credential access,
-lateral movement, command and control, exfiltration, and impact.</td>
+<td>The official MITRE ATT&amp;CK Enterprise Matrix is a versioned
+knowledge base of tactics and techniques. Tactics describe adversary
+objectives, not mandatory sequential phases; technique matches alone do
+not establish an actor, attack progression, detection effectiveness or
+defensive coverage. The live page inspected on 2026-11-06 identifies
+version 20 and links source URL noted in guide</td>
 </tr>
 <tr>
 <td>[ageint064]</td>
@@ -1341,8 +1746,7 @@ subcommittees for STIX, TAXII, and interoperability.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>They found that the most common cyberattacks initiated by
-nation-states were espionage focused.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint070]</td>
@@ -1390,8 +1794,7 @@ propagation</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The Adversarial Tactics, Techniques, and Common Knowledge
-(ATT&amp;CK) Framework introduced.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint073]</td>
@@ -1477,13 +1880,13 @@ inserting the exploit, which received a maximum CVSS score of 10.0.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>An arXiv research paper presenting an evidence-driven analysis of
-why threat information sharing for industrial control systems remains
-ineffective. Drawing on three major ICS attacks and a review of 196
-procedure examples across 22 malware families, it identifies limitations
-including incomplete support in the STIX sharing standard, reliance on
-proprietary undocumented protocols, and insufficient technical detail in
-threat and vulnerability reports.</td>
+<td>An arXiv preprint, version 3 dated 27 January 2026. Its abstract and
+introduction describe three incident reviews, 196 procedure examples
+across 79 ATT&amp;CK techniques and 22 ICS-related malware families, and
+nine vulnerability advisories. The authors analyze representation and
+technical-detail limitations in that corpus using automated observable
+extraction; this is not a field evaluation proving that ICS information
+sharing generally remains ineffective.</td>
 </tr>
 <tr>
 <td>[ageint078]</td>
@@ -1538,8 +1941,7 @@ detect illicit activity such as money laundering, tax evasion, and
 terrorist financing. It distinguishes two core functions: collection of
 raw transaction data and suspicious activity reports by government
 financial intelligence units, and analysis using data-matching
-techniques to identify suspicious patterns. The article describes the
-U.S.</td>
+techniques to identify suspicious patterns.</td>
 </tr>
 <tr>
 <td>[ageint081]</td>
@@ -1618,8 +2020,7 @@ psychological operations in support of joint military operations.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>It sets forth joint doctrine to govern the activities and
-performance of the Armed Forces.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint086]</td>
@@ -1799,7 +2200,7 @@ Difference,’ INSS Strategic Perspectives No. 11 (NDU Press, June
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>This policy paper examines the emergence of cognitive security.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint096]</td>
@@ -1821,7 +2222,7 @@ research on these effects remains fragmented.</td>
 </tr>
 <tr>
 <td>[ageint097]</td>
-<td>The History of Social Engineering</td>
+<td>The History of Social Engineering - Mitnick Security Consulting</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -1839,7 +2240,8 @@ authority, and consensus that attackers exploit.</td>
 </tr>
 <tr>
 <td>[ageint098]</td>
-<td>Social Engineering: T he Science of Human Hacking</td>
+<td>Social Engineering: T he Science of Human Hacking - The Swiss
+Bay</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -1905,8 +2307,7 @@ Affairs</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The military’s use or misuse of information in psychological or
-deception operations, under.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint102]</td>
@@ -1928,7 +2329,7 @@ information itself as both weapon and target.</td>
 </tr>
 <tr>
 <td>[ageint103]</td>
-<td>Military Deception</td>
+<td>Military Deception / Journal of Information Warfare</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2020,7 +2421,7 @@ task-oriented actions, and information sharing.</td>
 </tr>
 <tr>
 <td>[ageint108]</td>
-<td>Critical Thinking techniques</td>
+<td>Critical Thinking techniques - CDSE</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2034,7 +2435,7 @@ Intelligence Analysis.</td>
 </tr>
 <tr>
 <td>[ageint109]</td>
-<td>The ‘Grey Zone’ and Hybrid Activities</td>
+<td>The ‘Grey Zone’ and Hybrid Activities / connections-qj.org</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2143,7 +2544,7 @@ defines unconventional warfare and situates it within U.S. national
 power, covering the seven phases of UW operations, Special Forces
 missions, psychological operations, civil affairs operations in the UW
 context, and the roles of supporting elements including interagency
-partners. Distribution was restricted to U.S.</td>
+partners.</td>
 </tr>
 <tr>
 <td>[ageint115]</td>
@@ -2183,7 +2584,7 @@ doctrine.</td>
 </tr>
 <tr>
 <td>[ageint117]</td>
-<td>Office of Strategic Services (OSS) Manuals</td>
+<td>Office of Strategic Services (OSS) Manuals / The Resistance Hub</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2385,9 +2786,7 @@ World</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>An Internet Archive full-text scan of the proceedings of a 1991
-National Archives conference on the Office of Strategic Services (OSS),
-the U.S.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint129]</td>
@@ -2437,8 +2836,7 @@ operational tasks.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The Center for the Study of Intelligence (CSI) serves as a producer
-and repository of unclassified.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint132]</td>
@@ -2490,8 +2888,7 @@ period.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>How To Be A Spy: The WW2 SOE Training Manual - Denis Rigden · The
-CIA Guide to Clandestine.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint135]</td>
@@ -2522,8 +2919,7 @@ integration of Australia and New Zealand through the 1950s.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The Mossad is concerned with foreign intelligence gathering,
-intelligence analysis.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint137]</td>
@@ -2577,7 +2973,7 @@ patterns for building production-grade AI agents.</td>
 </tr>
 <tr>
 <td>[ageint140]</td>
-<td>The agentic AI landscape and its conceptual foundations</td>
+<td>The agentic AI landscape and its conceptual foundations / OECD</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2592,7 +2988,7 @@ OECD staff with an expert group.</td>
 </tr>
 <tr>
 <td>[ageint141]</td>
-<td>Agentic AI, explained</td>
+<td>Agentic AI, explained / MIT Sloan</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2702,7 +3098,7 @@ Kernel.</td>
 </tr>
 <tr>
 <td>[ageint147]</td>
-<td>Agent Framework Security</td>
+<td>Agent Framework Security / redteams.ai</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -2711,8 +3107,7 @@ Kernel.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Security analysis of major AI agent frameworks including LangChain,
-CrewAI, AutoGen, Semantic.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint148]</td>
@@ -2799,12 +3194,7 @@ millions</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>A University of Cambridge news article describing a large study,
-conducted with Bristol University and Google’s Jigsaw, testing whether
-short animated videos can help people resist online manipulation. The
-90-second clips expose common manipulation techniques such as
-scapegoating, false dichotomies, and emotionally manipulative language,
-an approach the researchers call prebunking.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint153]</td>
@@ -2817,8 +3207,7 @@ an approach the researchers call prebunking.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The second half of the framework highlights common agentic
-frameworks.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint154]</td>
@@ -2848,12 +3237,12 @@ maintaining enterprise-level control.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Radosevich and Halloran (2025) audit security vulnerabilities in
-Anthropic’s Model Context Protocol (MCP), which allows LLMs to integrate
-with external tools and data sources. The authors demonstrate that
-language models using MCP can be manipulated through prompt injection to
-execute malicious code, enable remote access, and steal
-credentials.</td>
+<td>NSA cybersecurity information sheet on Model Context Protocol (MCP)
+security design considerations for AI-driven automation. It provides
+organizational design guidance for assessing MCP implementation risks
+and adoption safeguards; it is not evidence of experimental attack
+success rates, a vulnerability-scanner evaluation, or demonstrated
+control efficacy.</td>
 </tr>
 <tr>
 <td>[ageint156]</td>
@@ -3037,8 +3426,7 @@ speak.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>We provide a comprehensive review of the current state of cognitive
-security.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint166]</td>
@@ -3052,7 +3440,7 @@ Literature review and concept analysis</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Cognitive security, as an emerging field.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint167]</td>
@@ -3138,8 +3526,7 @@ area.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>DARPA is putting together the Intrinsic Cognitive Security (ICS)
-research program “to build.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint172]</td>
@@ -3227,8 +3614,7 @@ Security</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Cognitive security is a relatively new field that aims to understand
-and defend against.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint177]</td>
@@ -3318,8 +3704,12 @@ thinking</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Particularly noteworthy in this field is the resurgence of the
-cognitive inoculation theory.</td>
+<td>A systematic review in Humanities and Social Sciences
+Communications, published online 9 December 2025 and assigned to volume
+13, article 53 (2026), not Nature Communications. The abstract reports
+17 included studies, predominantly involving higher-education students
+and mainly moderate risks of bias, but only seven studies rigorously
+meeting its eligibility criteria.</td>
 </tr>
 <tr>
 <td>[ageint182]</td>
@@ -3332,13 +3722,12 @@ cognitive inoculation theory.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>A 2023 meta-analysis in the Journal of Medical Internet Research
-evaluating psychological inoculation, or prebunking, as a strategy
-against misinformation, drawing on 42 studies with over 42,000
-participants. It reports bounded improvements in people’s ability to
-distinguish misinformation from real information, while finding limited
-effect on intentions to share misinformation and leaving context,
-durability, and transfer conditions for review.</td>
+<td>A 2023 Journal of Medical Internet Research meta-analysis reporting
+42 independent studies with 42,530 participants. The authors report
+improvements in credibility and sharing discernment but no statistically
+significant overall effect on misinformation-sharing intention; these
+measured outcomes do not establish observed sharing behavior or durable
+real-world protection.</td>
 </tr>
 <tr>
 <td>[ageint183]</td>
@@ -3371,8 +3760,7 @@ deceptive content.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Sander van der Linden is Professor of Social Psychology in Society
-in the Department of Psychology.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint185]</td>
@@ -3457,12 +3845,11 @@ decision-support methods.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>This primer will assist analysts in dealing with the perennial
-problems of intelligence.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint190]</td>
-<td>Objectivity - Intelligence.gov</td>
+<td>Objectivity</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -3529,7 +3916,8 @@ States</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Heuer provides a number of starter questions in his book.</td>
+<td>Heuer provides a number of starter questions in his book (Structured
+Analytic Techniques for.</td>
 </tr>
 <tr>
 <td>[ageint194]</td>
@@ -3562,8 +3950,7 @@ Community</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The emphasis and visibility afforded analytic tradecraft in the
-Intelligence Community’s analytic.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint196]</td>
@@ -3576,8 +3963,7 @@ Intelligence Community’s analytic.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The nine analytic tradecraft standards in Intelligence Community
-Directive (ICD) 203, Analytic.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint197]</td>
@@ -3591,8 +3977,7 @@ Productivity</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>In 2001 David Allen proposed ‘Getting Things Done’ (GTD) as a method
-for enhancing personal.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint198]</td>
@@ -3624,7 +4009,8 @@ such as Todoist, OmniFocus, Trello, Evernote, and Notion.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Source-guide bibliography entry.</td>
+<td>… productive at work. Learn why your team needs GTD to improve
+performance and results.</td>
 </tr>
 <tr>
 <td>[ageint200]</td>
@@ -3939,8 +4325,7 @@ incidents</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>We analyze six significant ICS cyber incidents in the energy and
-power industries, namely Stuxnet.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint218]</td>
@@ -3994,7 +4379,7 @@ at Iran’s Natanz uranium enrichment facility.</td>
 </tr>
 <tr>
 <td>[ageint221]</td>
-<td>About</td>
+<td>About / Office of the Director of National Intelligence</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
 <td>source_guide_reference</td>
@@ -4003,11 +4388,13 @@ at Iran’s Natanz uranium enrichment facility.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Presidential Policy Directive 28 (PPD-28), Signals Intelligence
-Activities, in the ODNI IC Legal Reference Book, establishing principles
-and safeguards (data minimization and protections for personal
-information regardless of nationality) that govern U.S. signals
-intelligence collection and use.</td>
+<td>Historical Presidential Policy Directive 28 (PPD-28), Signals
+Intelligence Activities, issued 17 January 2014; it is not Executive
+Order 12333 or a complete statement of current signals-intelligence
+safeguards. National Security Memorandum 14 of 7 October 2022 partially
+revoked PPD-28, except sections 3 and 6 and its classified annex, and
+states that the accompanying executive order establishes enhanced
+safeguards superseding PPD-28 personal-information safeguards.</td>
 </tr>
 <tr>
 <td>[ageint222]</td>
@@ -4020,8 +4407,7 @@ intelligence collection and use.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>The scope of the CIA mission is vast and the complexities of
-intelligence tradecraft.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint223]</td>
@@ -4069,8 +4455,7 @@ persistent threats.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Illustration of the three core characteristics defining AI Agents:
-autonomy, task-specificity.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint226]</td>
@@ -4084,8 +4469,7 @@ Applications</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>A robust multidimensional taxonomy is proposed that classifies
-agents based on their structural.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint227]</td>
@@ -4137,8 +4521,7 @@ systems, safety, and benchmarks.</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>It explores the taxonomy of agents, bridging the gap between
-classical artificial intelligence.</td>
+<td>Source-guide bibliography entry.</td>
 </tr>
 <tr>
 <td>[ageint230]</td>
@@ -5545,11 +5928,11 @@ language for detection.</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
 <td>The OASIS Standard specification for TAXII (Trusted Automated
-Exchange of Intelligence Information) Version 2.1, published in 2021 by
-the OASIS Cyber Threat Intelligence Technical Committee. It defines a
-RESTful, HTTPS-based API protocol for sharing cyber threat intelligence
-between organizations, supporting two communication models: Collections
-(request-response) and Channels (publish-subscribe).</td>
+Exchange of Intelligence Information) Version 2.1, approved 10 June
+2021. It defines a RESTful, HTTPS-based API for exchanging cyber threat
+intelligence through Collections in a request-response model, including
+discovery, API roots, JSON serialization, content negotiation, object
+retrieval with filtering and pagination, and status monitoring.</td>
 </tr>
 <tr>
 <td>[ageint311]</td>
@@ -5636,8 +6019,10 @@ MCP</td>
 <td>curriculum maintainer, instructor, reviewer, and learner</td>
 <td>source-quality triangulation and claim-boundary review</td>
 <td>source transparency, accountability, and evidence traceability</td>
-<td>Official NSA security guidance for Model Context Protocol
-automation.</td>
+<td>Official NSA Model Context Protocol design guidance. Official
+indexed PDF metadata identifies May 2026, version 1.0; the earlier 2025
+year was incorrect. Primary full-text access was unavailable during this
+review, so detailed recommendations and efficacy remain unverified.</td>
 </tr>
 <tr>
 <td>[official_nist_sp_800_82r3]</td>
@@ -5645,12 +6030,16 @@ automation.</td>
 <td>source_quality_anchor</td>
 <td>source_quality_spine</td>
 <td>source_quality_anchor</td>
-<td>2026-05-21</td>
+<td>2026-11-06</td>
 <td>semiannual</td>
 <td>curriculum maintainer, instructor, reviewer, and learner</td>
 <td>source-quality triangulation and claim-boundary review</td>
 <td>source transparency, accountability, and evidence traceability</td>
-<td>Official NIST operational technology security guidance.</td>
+<td>NIST SP 800-82 Revision 3 was published in September 2023. The July
+2024 potential-updates attachment is not the original publication date.
+The landing page inspected on 2026-11-06 links a Revision 4 initial
+public draft; a draft is not silently substituted for the retained final
+Revision 3 identity.</td>
 </tr>
 <tr>
 <td>[official_isa_iec_62443]</td>
@@ -5896,18 +6285,23 @@ partnership resilience, resource stewardship, and AI integration.</td>
 </tr>
 <tr>
 <td>[official_odni_eo_12333]</td>
-<td>Executive Order 12333: United States Intelligence Activities</td>
+<td>Executive Order 12333: United States Intelligence Activities
+(historical DCI-era text)</td>
 <td>curriculum_anchor</td>
 <td>legal_oversight</td>
 <td>official_primary</td>
-<td>2026-05-21</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Official legal anchor for intelligence authorities, rights-aware
-collection, analytic competition, oversight, and source-method
-protection.</td>
+<td>National Archives transcription of the historical EO 12333 text
+citing the December 4, 1981 order at 46 FR 59941. Its institutional
+structure includes the Director of Central Intelligence, including
+section 1.5; use for historical legal context, not current consolidated
+authority. The separate official_eo_12333_odni_text anchor identifies an
+ODNI edition amended through 2008; neither edition alone establishes
+exhaustive current law.</td>
 </tr>
 <tr>
 <td>[official_nsa_fisa]</td>
@@ -6213,7 +6607,7 @@ to software and AI agents.</td>
 <td>curriculum_anchor</td>
 <td>agent_interoperability_standards</td>
 <td>official_primary</td>
-<td>2026-06-11</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>standards steward, agent architect, assurance reviewer, procurement
 assessor, instructor, and learner</td>
@@ -6264,7 +6658,7 @@ mitigations for autonomous and agentic AI applications.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>research_standard</td>
-<td>2026-06-11</td>
+<td>2026-09-07</td>
 <td>quarterly</td>
 <td>AI security analyst, red-team reviewer, incident responder,
 instructor, and learner</td>
@@ -6752,13 +7146,15 @@ markings.</td>
 <td>curriculum_anchor</td>
 <td>cyber_threat_intelligence</td>
 <td>international_standard</td>
-<td>2026-05-21</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>OASIS CTI transport standard for defensive threat-intelligence
-exchange channels, collections, discovery, and API contracts.</td>
+<td>OASIS CTI exchange standard specifying request-response Collections,
+discovery, API roots, and API contracts. Section describes the
+publish-subscribe Channel concept but explicitly excludes Channel
+services from this version; section 6 is RESERVED.</td>
 </tr>
 <tr>
 <td>[official_mitre_attack_enterprise]</td>
@@ -7062,7 +7458,7 @@ framing.</td>
 <td>curriculum_anchor</td>
 <td>ai_conformity_compliance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
@@ -7077,7 +7473,7 @@ implementation.</td>
 <td>curriculum_anchor</td>
 <td>ai_conformity_compliance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
@@ -7092,7 +7488,7 @@ implementation support.</td>
 <td>curriculum_anchor</td>
 <td>ai_conformity_compliance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
@@ -7225,14 +7621,16 @@ use.</td>
 <td>curriculum_anchor</td>
 <td>education_assessment</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-11-06</td>
 <td>annual</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
 <td>source guide context</td>
-<td>Official UNESCO source for AI competency frameworks supporting
-teacher development, student capabilities, ethics, and curriculum
-design.</td>
+<td>Official UNESCO overview of the 2024 AI competency frameworks for
+students and teachers, linking both publications. It describes
+human-centred, ethical AI education and the frameworks’ competency areas
+as guidance for policy, curriculum design, and professional development,
+not an evaluation demonstrating learning-effectiveness.</td>
 </tr>
 <tr>
 <td>[official_unesco_gem_ai_education]</td>
@@ -7328,7 +7726,7 @@ modernization.</td>
 <td>curriculum_anchor</td>
 <td>public_sector_agentic_ai</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>source guide context</td>
 <td>bibliography traceability</td>
@@ -7699,7 +8097,7 @@ Apps Provided by State and Local Governments</td>
 <td>curriculum_anchor</td>
 <td>accessibility_digital_inclusion</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>public entity, contractor, learner, disabled service user, and
 compliance reviewer</td>
@@ -7816,7 +8214,7 @@ needs.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>red-team reviewer, assurance lead, instructor, and learner</td>
 <td>adversarial assurance cycle and mitigation evidence</td>
@@ -7832,7 +8230,7 @@ taxonomy, and mitigation work.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>assurance lead, instructor, compliance reviewer, and learner</td>
 <td>TEVV evidence plan and AI RMF crosswalk</td>
@@ -7915,7 +8313,7 @@ transparency, and accountability.</td>
 <td>curriculum_anchor</td>
 <td>algorithmic_transparency_reporting</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>public official, transparency reviewer, instructor, affected
 community, and learner</td>
@@ -7933,7 +8331,7 @@ Recording Standard</td>
 <td>curriculum_anchor</td>
 <td>algorithmic_transparency_reporting</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>public official, records steward, instructor, transparency reviewer,
 and learner</td>
@@ -7989,7 +8387,7 @@ Report</td>
 <td>curriculum_anchor</td>
 <td>assurance_evaluation_evidence</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>assurance lead, evaluator, instructor, learner, and affected
 user</td>
@@ -8006,7 +8404,7 @@ questionnaires, and measurement trees.</td>
 <td>curriculum_anchor</td>
 <td>records_retention_auditability</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>records officer, public official, instructor, transparency reviewer,
 and learner</td>
@@ -8024,7 +8422,7 @@ Governance, and Public Trust</td>
 <td>curriculum_anchor</td>
 <td>risk_exception_governance</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>agency AI officer, risk owner, instructor, oversight reviewer, and
 learner</td>
@@ -8042,7 +8440,7 @@ Government</td>
 <td>curriculum_anchor</td>
 <td>procurement_performance_monitoring</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>procurement official, vendor assessor, instructor, system steward,
 and learner</td>
@@ -8116,7 +8514,7 @@ Infrastructure</td>
 <td>curriculum_anchor</td>
 <td>assurance_evaluation_evidence</td>
 <td>official_primary</td>
-<td>2026-05-22</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>critical-infrastructure steward, OT defender, assurance reviewer,
 instructor, and learner</td>
@@ -8166,7 +8564,7 @@ use, transparency, and compliance with federal AI policy.</td>
 <td>curriculum_anchor</td>
 <td>public_sector_agentic_ai</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>public-sector AI steward, service owner, instructor, learner, and
 oversight reviewer</td>
@@ -8184,7 +8582,7 @@ monitoring, and human oversight considerations.</td>
 <td>curriculum_anchor</td>
 <td>rights_impact_privacy</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>AI program owner, privacy reviewer, rights-impact assessor,
 instructor, and learner</td>
@@ -8202,7 +8600,7 @@ review of automated decision systems.</td>
 <td>curriculum_anchor</td>
 <td>public_sector_transparency</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>public official, transparency reviewer, records officer, instructor,
 and learner</td>
@@ -8221,7 +8619,7 @@ areas</td>
 <td>curriculum_anchor</td>
 <td>workforce_governance</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>public-sector AI leader, workforce planner, instructor, service
 steward, and learner</td>
@@ -8239,7 +8637,7 @@ responsible implementation.</td>
 <td>curriculum_anchor</td>
 <td>agent_incident_response</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>incident reviewer, AI risk owner, instructor, policy analyst, and
 learner</td>
@@ -8257,7 +8655,7 @@ reporting.</td>
 <td>curriculum_anchor</td>
 <td>agent_incident_response</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>AI incident lead, assurance reviewer, policy analyst, instructor,
 and learner</td>
@@ -8293,7 +8691,7 @@ governance.</td>
 <td>curriculum_anchor</td>
 <td>ai_red_team_assurance</td>
 <td>official_primary</td>
-<td>2026-05-24</td>
+<td>2026-08-30</td>
 <td>quarterly</td>
 <td>assurance evaluator, red-team reviewer, instructor, system steward,
 and learner</td>
@@ -8379,7 +8777,7 @@ architecture, used as an assurance-evidence anchor for cyber-physical
 readiness.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

@@ -30,8 +30,53 @@ profiles:
     transforms: authority mapping, proportionality review, rights-impact assessment, redress planning, and escalation routing
     outputs: authority-and-impact register, audit trail, redress note, and unresolved-risk owner
     failures: authority laundering, missing audit trails, privacy overreach, and governance-as-afterthought
+  cognitive_active_inference:
+    inputs: synthetic states, prior probabilities, observation likelihoods, model version, and explicit assumptions
+    transforms: normalize prior-times-likelihood weights, compare alternative models, inspect sensitivity, and distinguish inference from policy evaluation
+    outputs: model-conditional posterior table, assumption ledger, model-adequacy gap, and human-reviewed theory-to-evidence card
+    failures: treating a consistent posterior as truth, equating free energy with prediction error, double-counting copied evidence, or inferring hostile intent from model surprise
+  operator_productivity:
+    inputs: fictional work queue, task dependencies, workload self-ratings, review capacity, and correction records
+    transforms: capture and clarify tasks, set review limits, compare task conditions, preserve source versions, and rehearse re-entry
+    outputs: bounded task queue, non-diagnostic workload note, traceable atomic note, and corrected downstream claim
+    failures: treating flow or workload as accuracy, retaining unnecessary private material, missed dependencies, or unverified productivity claims
+  ai_ethics_data_governance:
+    inputs: fictional data lineage, proposed model use, affected groups, authority evidence, and lifecycle restrictions
+    transforms: check purpose and permission, compare less intrusive alternatives, map provider and retention boundaries, and review remedies
+    outputs: data-use decision, lifecycle register, rights-impact rationale, and unresolved prerequisite hold
+    failures: public-data permission assumptions, governance by checklist, undisclosed secondary use, or unusable redress
+  agentic_ai_governance:
+    inputs: offline evidence versions, source origins, local tool allowlist, authority card, and reviewer state
+    transforms: separate data from instructions, discard superseded records, deduplicate origins, deny unapproved actions, and request human acceptance
+    outputs: model-independent local evidence record, denied-action result, versioned approval request, and cancellation or correction trace
+    failures: copied-source consensus, stale approval, prompt-derived permission, or mistaking human review for verified truth
+  osint_geoint:
+    inputs: supplied public-source records, acquisition and publication times, origin families, sensor metadata, and reuse permissions
+    transforms: trace originals, distinguish availability from permission, compare spatial and temporal fit, test registration, and challenge apparent corroboration
+    outputs: provenance and claim-fitness table, uncertainty bounds, resolved comparison or explicit evidence gap, and minimized handoff
+    failures: map precision as certainty, old media as current observation, source-count confidence, or identity and location targeting
+  financial_economic_security:
+    inputs: fictional entity identifiers, dated list snapshots, transaction context, ownership claims, and applicability questions
+    transforms: compare identifiers and contradictory evidence, inspect lawful alternatives and dependencies, separate alerts from culpability, and obtain authorized review
+    outputs: entity-hypothesis table, unresolved-match record, source and jurisdiction limits, and compliance-review referral
+    failures: name-only accusation, no-hit clearance, address-link ownership inference, or invented reporting obligations
+  counterintelligence_source_integrity:
+    inputs: minimized fictional access records, report lineage, source-quality discrepancies, and protected reporting rules
+    transforms: distinguish anomaly from compromise, test benign alternatives, preserve provenance, minimize exposure, and route independent review
+    outputs: non-accusatory source-integrity judgment, protected evidence note, correction or hold, and accountable reviewer disposition
+    failures: suspicion as identity or guilt, relationship trust as accuracy, unauthorized contact, or punitive inference from screening signals
+  cognitive_influence_security:
+    inputs: benign fictional messages, factual source cards, provenance, consent conditions, and false-alarm controls
+    transforms: separate truth, technique cues, intent and effects; compare ordinary error; transparently review corrections; and preserve learner agency
+    outputs: bounded claim and provenance assessment, recognition and false-alarm record, educational correction, or unresolved attribution
+    failures: technique recognition as truth, affect as hostile intent, detector authority, covert persuasion, or assumed durable immunity
+  historical_declassified_sources:
+    inputs: dated archive records, authorship and release history, redactions, translations, and retrospective accounts
+    transforms: separate event, report and declassification dates; trace copying; compare contemporaneous alternatives; and state missing records
+    outputs: source-bounded chronology, contested-claim ledger, institutional comparison, and explicit modern-transfer limits
+    failures: archive hosting as authorship, declassification as completeness, hindsight causation, or assumed institutional continuity
 default:
-  inputs: source materials, domain constraints, learner questions, verified anchors, and artifact requirements
+  inputs: source materials, recorded source roles and limits, domain constraints, learner questions, and artifact requirements
   transforms: evidence normalization, structured reasoning, source evaluation, governance review, and handoff preparation
   outputs: annotated map, decision memo, rubric, tabletop packet, or audit artifact
   failures: over-automation, misplaced confidence, policy drift, and confusing simulation with deployment

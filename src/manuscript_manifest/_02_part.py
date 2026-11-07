@@ -4,76 +4,9 @@ from typing import Any
 
 from curriculum import PATTERN_REGISTRY_CHAPTER_NUMBER
 from intelligence_content.topic_entries import clean_display_title
-from intelligence_content import practice_lens_for_titles, profile_for_titles, safe_curriculum_treatment, safe_pattern_treatment, safe_substitution_rows
+from intelligence_content import practice_lens_for_titles, safe_curriculum_treatment, safe_pattern_treatment
 
-from ._01_part import _chapter_source_context, _chapter_source_context_inline, _chapter_topic_context
-
-
-def _data_provenance_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"Treat the workflow as provenance-first. Data may enter only through public, benign, owned-lab, or synthetic channels tied to {source_context}",
-            "",
-            "| Data object | Provenance field | Quality test |",
-            "|---|---|---|",
-            "| Source-guide citation | `ageintNNN`, title, URL, and source identity lock status | key and URL match the lock or append-only v2 reference list |",
-            "| Verified anchor | lane, tier, checked-as-of date, verification method, and claim scope | official or standards source resolves directly |",
-            "| Dataset or example | origin, license, sensitivity class, transformation note, and retention date | instructor can reproduce the artifact without private or live data |",
-            "| Agent output | prompt, tool allowlist, model context, budget, and reviewer | output is separated from evidence and cannot act externally |",
-            "| Handoff record | relation to the current unit and module | next reviewer can audit assumptions, transformations, and uncertainty |",
-        ]
-    )
-
-
-def _evaluation_assurance_protocol(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"Run a short assurance protocol before any student artifact is accepted; source checks begin with {source_context}",
-            "",
-            "| Assurance step | Passing evidence | Failing condition |",
-            "|---|---|---|",
-            "| Source verification | every material claim cites a guide reference or verified anchor | unverified source, broken URL, or missing checked date |",
-            "| Rights and safety | privacy, IP, labour, education, and human-rights impacts are named where relevant | rights impact is skipped or minimized |",
-            "| Agent control | tools are allowlisted, logged, revocable, and limited to benign analysis | agent can collect, contact, modify, or deploy outside the lab |",
-            "| Robustness | alternatives, uncertainty, confidence, and failure modes are explicit | single-path reasoning or unsupported confidence |",
-            "| Reproducibility | another reviewer can rebuild the map, memo, matrix, or rubric | missing inputs, hidden transformations, or vague prompt history |",
-        ]
-    )
-
-
-def _compliance_rights_map(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"The compliance and rights map converts source lanes into review questions anchored by {source_context}",
-            "",
-            "| Source lane | Review question | Minimum artifact |",
-            "|---|---|---|",
-            "| AI conformity/compliance | Does the workflow have risk classification, impact assessment, and accountability evidence? | conformity note and impact register |",
-            "| Education and assessment | Does the learning design preserve assessment integrity and instructor oversight? | rubric, allowed-use note, and feedback plan |",
-            "| Public-sector agentic AI | Would a public institution know the authority, service impact, and audit owner? | authority map and public-value statement |",
-            "| Cross-border data/data spaces | Are data access, reuse, metadata, and sharing limits explicit? | data provenance card and access rule |",
-            "| Human-rights governance | Are privacy, expression, equality, redress, and harm risks considered? | rights impact note and escalation path |",
-            "| Agent interoperability standards | Are APIs, credentials, tool descriptions, and errors contract-bound? | interface contract and revocation rule |",
-            "| Workforce governance | Are labour impacts, skill needs, and human role changes visible? | workforce impact note and training plan |",
-            "| Model/data provenance | Can sources, transformations, datasets, and outputs be traced? | claim ledger and provenance chain |",
-        ]
-    )
-
-
-def _safe_substitution_patterns(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context_inline(chapter)
-    return "\n".join(
-        [
-            f"Use the v2 safe-substitution table whenever a "
-            "risky motif is inherited from the source guide. The source identity remains "
-            f"visible through {source_context}, but the classroom treatment becomes review-bounded and evidence-bounded.",
-            "",
-            safe_substitution_rows(),
-        ]
-    )
+from ._01_part import _chapter_source_context, _chapter_topic_context
 
 
 def _capstone_deliverable(chapter: dict[str, Any], part: dict[str, Any]) -> str:
@@ -186,27 +119,6 @@ def _runtime_section_map(chapter: dict[str, Any], part: dict[str, Any]) -> str:
         source_locus = str(section.get("number") or "module section")
         if not safe_patterns and rendered_title != source_title:
             provenance = f"{source_locus} source title transformed into safe curriculum treatment; original: {source_title_for_provenance}"
-        lens = practice_lens_for_titles(str(part["title"]), rendered_title)
+        lens = practice_lens_for_titles(str(part["title"]), rendered_title, chapter=chapter)
         rows.append(f"| {rendered_title} | {source_locus} | {provenance} | {lens.title} | {lens.evidence_artifact} | {lens.safety_check} |")
     return "\n".join(rows)
-
-
-def _module_thesis(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    title = chapter["title"]
-    profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
-    lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    source_context = _chapter_source_context(chapter)
-    topic_context = _chapter_topic_context(chapter, part)
-    return "\n".join(
-        [
-            (f"This sits in the **{profile.title}** research lane and uses the **{lens.title}** practice lens for {topic_context}."),
-            "",
-            (
-                "The teaching claim is concrete: intelligence work becomes "
-                "reviewable when authority, evidence, provenance, accessibility, "
-                f"rights, assurance, and refresh duties are visible in the artifact. {source_context}"
-            ),
-            "",
-            (f"The chapter artifact is a **{lens.evidence_artifact}** plus a claim ledger, safe-lab packet, and reproducible handoff."),
-        ]
-    )

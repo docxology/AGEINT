@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from _curriculum_shards import source_support_numbers_for_section
 from curriculum import build_curriculum, load_curriculum, parse_curriculum_guide, resolve_curriculum_payload
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -106,3 +107,17 @@ def test_all_chapter_shards_declare_profile_and_lens() -> None:
 def test_resolve_curriculum_payload_uses_sharded_data_when_guide_missing() -> None:
     payload = resolve_curriculum_payload(PROJECT_ROOT / "missing-guide.md")
     assert payload["stats"]["chapters"] == 51
+
+
+def test_source_routing_requires_topic_terms_not_substrings_or_context_alone() -> None:
+    expansion = {"keyword_routes": [{"keywords": ["ot"], "citations": [2]}, {"keywords": ["cti"], "citations": [3]}]}
+    part = {"title": "OT and CTI"}
+    for title in ("Photographs and publication history", "Historical comparison"):
+        selected = source_support_numbers_for_section(expansion, part, {}, {"title": title}, {1, 2, 3}, part_default=[1])
+        assert selected == [1]
+
+
+def test_source_routing_recognizes_whole_terms_and_hyphenated_phrases() -> None:
+    expansion = {"keyword_routes": [{"keywords": ["ot"], "citations": [2]}, {"keywords": ["open source"], "citations": [3]}]}
+    assert source_support_numbers_for_section(expansion, {}, {}, {"title": "OT architecture"}, {1, 2, 3}, part_default=[1]) == [2]
+    assert source_support_numbers_for_section(expansion, {}, {}, {"title": "Open-source records"}, {1, 2, 3}, part_default=[1]) == [3]

@@ -1,10 +1,10 @@
 ### AGEINT Design Patterns and Archetypes assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 ### AGEINT Design Patterns and Archetypes assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 #### AGEINT Design Patterns and Archetypes capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Pattern 1: Focused Analytic Reasoner; Sa
 
 #### AGEINT Design Patterns and Archetypes assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Pattern 1: Focused Analytic Reasoner (source identity preserved in pattern registry) - keeps reasoning reviewable without exposing hidden reasoning or delegating action** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Safe defensive application: single public-source report critique with provenance and uncertainty fields** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Pattern 1: Focused Analytic Reasoner**; **Pattern 2: Reflection and Bias-Check Agent**; **Pattern 3: Tool-Allowlist Research Assistant**; **Pattern 4: Governed Planner-Executor**; **Pattern 5: Parallel Source-Corroboration Agent**; **Pattern 6: Role-Separated Review Crew**; **Pattern 7: Competing-Hypotheses Debate Agent** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: verify least privilege, prompt-injection exposure, provenance, observability, stop conditions, and incident-reporting triggers. |
+| **Pattern 8: Provenance-Bound Retrieval Operator**; **Pattern 9: Evidence-Memory State Machine**; **Pattern 10: Permissioned Control Plane Agent**; **Pattern 11: Monitoring-Governance Tabletop Agent**; **Pattern 12: Control-Coverage Critique Agent**; **Pattern 13: Identity-and-Provenance Fiction Audit**; **Pattern 14: Source-Reliability Verification Agent** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Pattern 15: Analyst-in-the-Loop Review Agent**; **Pattern 16: SOC Tabletop Triage Agent**; **Pattern 17: Software Provenance Review Agent**; **Pattern 18: GEOINT Data-Quality Audit Agent**; **Pattern 19: Cognitive-Resilience Education Agent**; **Pattern 20: Hierarchical Curriculum Orchestrator** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: block excessive agency, shadow tools, credential leakage, autonomous deployment, and irreversible actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### AGEINT Design Patterns and Archetypes refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint233]; [@ageint258].
 
-**Triangulation anchors.** In module 32's review-checklist section, directly verified anchors for the **Agentic AI Governance and Tool Security** lane include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 32's review-checklist section, the **Agentic AI Governance and Tool Security** catalog routes include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**. [@ageint233]; [@ageint258].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

@@ -3,11 +3,11 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-09-07T19:49:29+00:00 |
-| Generated Markdown files | 330 |
-| Generated citation occurrences | 16629 |
+| Generated at | 2026-11-06T23:12:04+00:00 |
+| Generated Markdown files | 333 |
+| Generated citation occurrences | 15334 |
 | Registered figures | 177 |
-| PDF pages | 1863 |
+| PDF pages | 1825 |
 | Bad PDF link targets | 0 |
 | Claim hard-fail rows | 0 |
 | Scholarship hard-fail rows | 0 |

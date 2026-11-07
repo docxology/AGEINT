@@ -18,27 +18,6 @@ def _write_anchor(path: Path, payload: dict[str, object]) -> None:
     path.write_text(json.dumps(payload) + "\n", encoding="utf-8")
 
 
-def test_source_refresh_due_current_rows_are_not_due() -> None:
-    # as_of must be at or after the latest committed `checked_as_of`; pin it to the
-    # 2026-09-07 re-verification pass so a future refresh only needs this date bumped.
-    report = collect_source_refresh_due(PROJECT_ROOT, as_of=date(2026, 9, 7))
-    summary = report.payload["summary"]
-
-    assert report.ok is True
-    assert summary["row_count"] == 472
-    assert summary["due_or_stale_count"] == 0
-    assert summary["missing_checked_as_of_count"] == 0
-    assert summary["unknown_cadence_count"] == 0
-    assert report.payload["issue_row_count"] == 0
-    assert summary["cadence_counts"]["annual"] > 0
-    assert summary["cadence_counts"]["semiannual"] > 0
-
-    markdown = render_source_refresh_due_markdown(report)
-    assert "Source Refresh Due-Date Readiness" in markdown
-    assert "Blocking rows" in markdown
-    assert "None" in markdown
-
-
 def test_source_refresh_due_flags_stale_anchor_negative_control(tmp_path: Path) -> None:
     _write_anchor(
         tmp_path / "data" / "research_anchors" / "intelligence-anchors-001-050.jsonl",

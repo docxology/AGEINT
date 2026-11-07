@@ -10,6 +10,8 @@ import subprocess
 from typing import Any
 
 
+# Fictional/synthetic case labels are disclosure, not unfinished content.
+# These lexical checks do not establish factuality, efficacy, or safe deployment.
 DEFAULT_BANNED_PHRASES: tuple[str, ...] = (
     "defensible claim whose meaning",
     "treats each source topic through",
@@ -17,7 +19,6 @@ DEFAULT_BANNED_PHRASES: tuple[str, ...] = (
     "Use this module studio plan",
     "The answer should",
     "completed artifact is a",
-    "fictional",
     "review review",
     "lens lens",
     "Lens lens",

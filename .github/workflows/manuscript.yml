@@ -1,242 +1,236 @@
-name: Manuscript Build & Validate
-
-# Scope note: this repo is the standalone published mirror. It does NOT
-# render `AGEINT.pdf` / `output/pdf/AGEINT_combined.pdf` — that pandoc/xelatex
-# driver lives in the sibling `docxology/template` repo (public, not
-# private — corrected 2026-07-11; a prior version of this comment called it
-# private, which was wrong), which this standalone repo does not carry
-# (confirmed: no `pandoc`/`xelatex` invocation anywhere under `scripts/` or
-# `src/` here). PDF refresh stays a manual, out-of-band release step;
-# `audit_pdf_quality.py` stays informational in `ci.yml` for that reason.
-#
-# Deeper than that (confirmed live on a real CI run, not assumed): even the
-# markdown/data/figures rebuild is not fully standalone.
-# `src/manuscript_injection.py` calls
-# `infrastructure.rendering.manuscript_injection.substitute_manuscript_text`
-# for `{{TOKEN}}` hydration, and `infrastructure/rendering/__init__.py`
-# eagerly imports the FULL rendering package (docx/epub/pdf renderers, which
-# pull in Pillow-chain dependencies the template's own `--group rendering`
-# extra provides but this repo's bare `uv sync` does not) — `import
-# infrastructure.rendering.manuscript_injection` only succeeds when a
-# template checkout is genuinely reachable (locally, via
-# `template_resolver.py`'s ancestor-directory search) AND has its own
-# dependencies synced. Properly wiring a cross-repo checkout + scoped sync
-# for this one job is a real but separate undertaking (see ISA.md follow-up)
-# — until then, the rebuild step below is informational, same as the
-# PDF-quality checks, rather than silently broken or an unverified
-# cross-repo dependency hack rushed into this pass.
+name: Complete manuscript verification
 
 on:
+  workflow_call:
+    inputs:
+      source:
+        description: Exact AGEINT commit to verify
+        type: string
+        required: true
+      expected-tag:
+        description: Optional stable release tag checked by the metadata CLI
+        type: string
+        default: ""
+    outputs:
+      source:
+        value: ${{ jobs.complete.outputs.source }}
+      sdk-source:
+        value: ${{ jobs.complete.outputs.sdk-source }}
+      artifact-name:
+        value: ${{ jobs.complete.outputs.artifact-name }}
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      # Whole data/ subtree, not an enumerated allowlist: it holds 11+
-      # source-owned YAML files (agency_source_packs, concept_routes,
-      # coursebook_profiles, manuscript_architecture, topic_risk_routes, ...)
-      # plus curriculum/research_anchors/source_identity/figures directories.
-      # A hand-picked list would drift the moment a new one is added.
-      - "data/**"
-      - "docs/manuscript/templates/**"
-      - "docs/manuscript/config.yaml"
-      - "src/manuscript_manifest/**"
-      - "src/intelligence_content/**"
-      - "src/figures/**"
-      - "domain_profile.yaml"
-      - "scripts/build_curriculum.py"
-      - "scripts/generate_figures.py"
+    inputs:
+      sdk-candidate:
+        description: Development verification only; optional immutable 40-hex SDK commit, never release authorization
+        type: string
+        default: ""
   schedule:
-    # Weekly Monday 15:00 UTC — one hour after source-freshness.yml's 14:00
-    # run, so a source-refresh drift issue (if any) lands before this rebuild.
     - cron: "0 15 * * 1"
 
 permissions:
   contents: read
 
-concurrency:
-  group: manuscript-${{ github.ref }}
-  cancel-in-progress: true
+env:
+  MPLBACKEND: Agg
+  AGEINT_REQUIRE_RENDERED_FIGURES: "1"
+  ENABLE_PDF: "1"
+  ENABLE_HTML: "1"
+  ENABLE_SLIDES: "0"
+  ENABLE_DOCX: "0"
+  ENABLE_EPUB: "0"
 
 jobs:
-  build-and-validate:
-    name: Strict rebuild (real Mermaid PNGs) + full audit suite
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
+  complete:
+    name: Fresh Mermaid + SDK PDF/HTML + 90% tests + all audits
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    outputs:
+      source: ${{ steps.identity.outputs.source }}
+      sdk-source: ${{ steps.identity.outputs.sdk-source }}
+      artifact-name: ${{ steps.identity.outputs.artifact-name }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # actions/checkout@v7.0.1
-
-      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # astral-sh/setup-uv@v10.3.3
-        with:
-          python-version-file: ".python-version"
-
-      - name: Sync dependencies (dev extra)
-        run: uv sync --extra dev
-
-      # See ci.yml's test job for the full rationale: bare ubuntu-latest has
-      # no poppler-utils, so src/pdf_quality.py's pdfinfo/pdftotext calls
-      # raise FileNotFoundError in both the test suite below and the
-      # audit_pdf_quality.py / audit_artifact_evidence.py steps further down.
-      - name: Install poppler-utils (pdfinfo/pdftotext for PDF quality checks)
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
-
-      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # actions/setup-node@v7.1.0
-        with:
-          node-version-file: ".node-version"
-
-      - name: Install mermaid-cli
-        run: npm install -g @mermaid-js/mermaid-cli
-
-      - name: Cache puppeteer chrome-headless-shell
-        id: puppeteer-cache
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # actions/cache@v6.1.0
-        with:
-          path: ~/.cache/puppeteer
-          key: puppeteer-chrome-headless-shell-131.0.6778.204-${{ runner.os }}
-
-      # Pinned version matches src/figures/AGENTS.md exactly: mmdc's
-      # `_discover_chrome_executable()` prefers this exact build over any
-      # other cached shell, so installing a different version would silently
-      # fall back instead of exercising the documented, tested path.
-      - name: Install pinned chrome-headless-shell for mermaid-cli
-        if: steps.puppeteer-cache.outputs.cache-hit != 'true'
-        run: npx --yes puppeteer browsers install chrome-headless-shell@131.0.6778.204
-
-      # Informational: see the workflow-level scope note above. Fails today
-      # on a bare checkout (ModuleNotFoundError: infrastructure, confirmed
-      # live) because template-injection needs the sibling template repo's
-      # own synced dependencies, not just its source on sys.path. When it
-      # fails, the steps below validate the committed output/ tree instead
-      # of a truly fresh one — same posture as ci.yml's content-gates job.
-      # SOURCE_DATE_EPOCH pins the build clock (src/build_clock.py) to the commit
-      # being built, so report timestamps and every date-relative field are a
-      # function of the commit rather than of when this runner happened to start.
-      # Without it, each rebuild differed from the last for reasons unrelated to
-      # the source, which is what stopped the drift comparison below from meaning
-      # anything.
-      - name: Strict manuscript rebuild (real Mermaid PNGs, no placeholders)
-        id: rebuild
-        continue-on-error: true
+      - name: Select published SDK or explicit development candidate
+        id: sdk
         env:
-          AGEINT_REQUIRE_RENDERED_FIGURES: "1"
-        run: |
-          SOURCE_DATE_EPOCH="$(git log -1 --format=%ct)" \
-            uv run python scripts/build_curriculum.py
-
-      # A failed rebuild can crash mid-write (e.g. partway through
-      # per-file manuscript substitution), leaving output/ in a partially
-      # rewritten state that isn't the fresh build OR the committed tree —
-      # restore the committed tree so every step below validates one
-      # coherent state, never a half-written hybrid.
-      - name: Note rebuild outcome and restore committed tree on failure
-        if: always()
-        run: |
-          if [ "${{ steps.rebuild.outcome }}" = "success" ]; then
-            echo "Strict rebuild succeeded — steps below validate FRESH output."
-          else
-            echo "::warning::Strict rebuild did not complete (see step above) — restoring the committed output/ tree so steps below validate that coherent state, not a partial rebuild."
-            git checkout -- output/ docs/manuscript/references-*.bib
-          fi
-
-      # Now that Chrome is actually present, the `requires_mermaid`-marked
-      # strict figure tests run for real instead of skipping (see
-      # src/figures/AGENTS.md "Run strict figure tests") — when the rebuild
-      # above succeeded. When it didn't, these still validate the committed
-      # tree's own consistency, which is still real signal.
-      # See ci.yml's matching step for the full rationale: the 90% floor in
-      # pyproject.toml's [tool.coverage.report] is real but needs the sibling
-      # docxology/template repo, which this job's rebuild step above can't
-      # reach either (that's exactly why it's continue-on-error) — so this
-      # job structurally can't clear 90% today. 84 (just under the measured
-      # 85.66% template-less baseline) keeps this a real gate against
-      # regression instead of disabling enforcement outright.
-      - name: Full test suite (incl. strict Mermaid figure tests when rebuild succeeded)
-        run: uv run pytest tests/ --cov=src --cov-report=term-missing --cov-fail-under=84
-
-      # Refresh every audit report against the FRESH build. Confirmed live
-      # (2026-07-10, run standalone against a real strict rebuild): rebuilding
-      # flips `audit_artifact_evidence.py`'s "generated output fresh" check
-      # false → true, so its OTHER findings are worth enforcing here — but its
-      # `OK` verdict AND `audit_publication_readiness.py`'s aggregate both
-      # bundle in `pdf_quality_ok`, which stays permanently false in this repo
-      # (no pandoc/xelatex driver exists here — see the workflow-level scope
-      # note at the top of this file). Neither script exposes a flag to
-      # exclude just that sub-check, so both stay informational here for the
-      # same structural reason as `audit_pdf_quality.py` itself, not because
-      # this job's own rebuild is suspect.
-      # Not every audit_*.py shares the same flags: audit_heading_support.py
-      # and audit_pdf_quality.py take only `--format`/`--pdf`/`--manuscript-dir`
-      # (no `--write`) — confirmed via each script's own `--help` before
-      # wiring this loop (Gate E: verify the CLI contract, don't assume
-      # uniformity across scripts just because most of them agree).
-      - name: Refresh and enforce all audit reports against the fresh build
+          GH_TOKEN: ${{ github.token }}
+          CANDIDATE: ${{ inputs.sdk-candidate }}
         run: |
           set -euo pipefail
-          for f in scripts/audit_*.py; do
-            case "$f" in
-              scripts/audit_publication_readiness.py)
-                uv run python "$f" --format markdown --write --skip-parent-guard || true
-                ;;
-              scripts/audit_artifact_evidence.py)
-                uv run python "$f" --format markdown --write || true
-                ;;
-              scripts/audit_pdf_quality.py)
-                uv run python "$f" --format markdown || true
-                ;;
-              scripts/audit_heading_support.py)
-                uv run python "$f" --format markdown
-                ;;
-              *)
-                uv run python "$f" --format markdown --write
-                ;;
-            esac
-          done
-
-      - name: Declarative YAML validation (topic/risk/rotation routes)
-        run: uv run python scripts/validate_declarative_yaml.py
-
-      - name: Rendered hard-coded section-reference check
-        run: uv run python scripts/check_rendered_references.py
-
-      # AGENTS.md "Verification": these fallback phrases must stay absent
-      # from the generated manuscript after any rebuild.
-      - name: Banned generic fallback phrases absent
+          if [ -n "$CANDIDATE" ]; then
+            test "$GITHUB_EVENT_NAME" = workflow_dispatch
+            [[ "$CANDIDATE" =~ ^[0-9a-f]{40}$ ]]
+            echo "ref=$CANDIDATE" >> "$GITHUB_OUTPUT"
+            echo "candidate=true" >> "$GITHUB_OUTPUT"
+          else
+            gh api repos/docxology/template/releases/tags/v5.1.0 \
+              | jq -e '.tag_name == "v5.1.0" and .draft == false and .prerelease == false'
+            echo "ref=refs/tags/v5.1.0" >> "$GITHUB_OUTPUT"
+            echo "candidate=false" >> "$GITHUB_OUTPUT"
+          fi
+      # SDK actions deliberately run at workspace root: their npm lock, Python
+      # lock, source-owned preparation modules and relative paths belong there.
+      - name: Check out exact selected SDK (no floating fallback)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: docxology/template
+          ref: ${{ steps.sdk.outputs.ref }}
+          submodules: true
+          persist-credentials: false
+      - name: Check out exact AGEINT Source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.source || github.sha }}
+          path: projects/working/AGEINT
+          persist-credentials: false
+      - uses: ./.github/actions/setup-python-env
+        with:
+          python-version: "3.14"
+          dependency-group: dev-rendering
+      - name: Prepare frozen SDK dev and rendering environment
+        run: uv sync --frozen --group dev --group rendering --python 3.14
+      - name: Bind exact source and explicit shared runtime
+        id: identity
+        env:
+          REQUESTED_SOURCE: ${{ inputs.source || github.sha }}
+          SDK_CANDIDATE: ${{ steps.sdk.outputs.candidate }}
+          SDK_REF: ${{ steps.sdk.outputs.ref }}
         run: |
+          set -euo pipefail
+          source=$(git -C projects/working/AGEINT rev-parse HEAD)
+          test "$source" = "$REQUESTED_SOURCE"
+          sdk=$(git rev-parse HEAD)
+          if [ "$SDK_CANDIDATE" = true ]; then
+            test "$sdk" = "$SDK_REF"
+          else
+            test "$sdk" = "$(git rev-parse 'refs/tags/v5.1.0^{commit}')"
+            test "$(uv version --short)" = 5.1.0
+          fi
+          echo "SDK_VERSION=$(uv version --short)" >> "$GITHUB_ENV"
+          epoch=$(git -C projects/working/AGEINT show -s --format=%ct "$source")
+          {
+            echo "source=$source"
+            echo "sdk-source=$sdk"
+            echo "artifact-name=verified-ageint-$source-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          } >> "$GITHUB_OUTPUT"
+          {
+            echo "SOURCE_DATE_EPOCH=$epoch"
+            echo "TEMPLATE_BUILD_EPOCH_SOURCE=git:$source"
+            echo "AGEINT_TEMPLATE_REPO=$GITHUB_WORKSPACE"
+            echo "PYTHONPATH=$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/projects/working/AGEINT/src"
+            echo "VIRTUAL_ENV=$GITHUB_WORKSPACE/.venv"
+            echo "UV_PROJECT_ENVIRONMENT=$GITHUB_WORKSPACE/.venv"
+            echo "UV_PYTHON=$GITHUB_WORKSPACE/.venv/bin/python"
+            echo "UV_NO_SYNC=1"
+            echo "UV_FROZEN=true"
+          } >> "$GITHUB_ENV"
+          echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"
+          mkdir -p "$RUNNER_TEMP/ageint-evidence"
+      - uses: ./.github/actions/setup-docs-lint
+      - uses: ./.github/actions/setup-acceptance-documents
+        with:
+          mode: native
+          python-executable: .venv/bin/python
+      - name: Prepare source-locked offline browser math assets
+        run: .venv/bin/python -m infrastructure.reporting.native_dependency_preparation --repo-root .
+      - name: Check source release metadata
+        working-directory: projects/working/AGEINT
+        env:
+          EXPECTED_TAG: ${{ inputs.expected-tag }}
+        run: |
+          set -euo pipefail
+          args=(--format json)
+          if [ -n "$EXPECTED_TAG" ]; then args+=(--expected-tag "$EXPECTED_TAG"); fi
+          python scripts/audit_release_metadata.py "${args[@]}" > "$RUNNER_TEMP/ageint-evidence/release-metadata.json"
+          cat "$RUNNER_TEMP/ageint-evidence/release-metadata.json"
+      - name: Strict source build with newly rendered Mermaid figures
+        working-directory: projects/working/AGEINT
+        run: |
+          set -euo pipefail
+          # Historical image inputs from this exact Source remain available;
+          # no prior manuscript, diagram render receipt or native output can pass.
+          rm -rf output/manuscript output/data output/reports output/pdf output/web output/slides output/docx output/epub output/figures/mermaid
+          rm -f AGEINT.pdf
+          python scripts/build_curriculum.py
+      - name: Complete real test suite including strict Mermaid tests (90% minimum)
+        working-directory: projects/working/AGEINT
+        run: >-
+          python -m pytest tests/ --cov=src --cov-report=term-missing
+          --cov-report=xml:${{ runner.temp }}/ageint-evidence/coverage.xml
+          --cov-fail-under=90 --junitxml=${{ runner.temp }}/ageint-evidence/tests.xml
+      - name: Rebuild authoritative deliverables after tests
+        working-directory: projects/working/AGEINT
+        run: |
+          set -euo pipefail
+          rm -rf output/manuscript output/data output/reports output/pdf output/web output/slides output/docx output/epub
+          rm -f AGEINT.pdf
+          python scripts/build_curriculum.py
+          python scripts/validate_declarative_yaml.py
+          python scripts/check_rendered_references.py
           set +e
-          grep -R -E "defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine" output/manuscript/
+          grep -R -E 'defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine' output/manuscript/
           found=$?
           set -e
-          if [ "$found" -eq 0 ]; then
-            echo "::error::Banned generic fallback phrase found in output/manuscript/"
-            exit 1
-          fi
-          echo "No banned fallback phrases found."
-
-      # Visibility only — never auto-commits. A fresh, audit-clean rebuild
-      # can still differ byte-for-byte from the committed tree (e.g. the
-      # frontmatter evidence-transit-map figure embeds a live "as of"
-      # timestamp/telemetry snapshot by design). Surfacing the diff lets a
-      # maintainer decide whether to commit the refresh, matching this
-      # project's existing deliberate rebuild-then-commit convention (see
-      # ISA.md's dated scopes) rather than a bot silently rewriting checked-in
-      # generated content.
-      - name: Report drift against the committed output/ tree (informational)
-        if: always()
+          test "$found" -eq 1
+      - name: SDK markdown and strict prerender validation
         run: |
-          if git diff --quiet -- output/ docs/manuscript/references-*.bib; then
-            echo "No drift: fresh build matches the committed output/ tree."
-          else
-            echo "::notice::Fresh strict rebuild differs from the committed output/ tree — review before refreshing."
-            git diff --stat -- output/ docs/manuscript/references-*.bib
-          fi
-
-      - name: Upload rebuilt manuscript + figure registry
-        if: always()
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # actions/upload-artifact@v7.0.2
+          set -euo pipefail
+          .venv/bin/python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root . --strict
+          .venv/bin/python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+      - name: Canonical SDK native PDF and HTML rendering
+        run: .venv/bin/python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
+      - name: SDK PDF and enabled-format output validation with provenance
+        run: |
+          set -euo pipefail
+          .venv/bin/python -m infrastructure.validation.cli pdf projects/working/AGEINT/output/pdf/AGEINT_combined.pdf
+          .venv/bin/python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+      - name: Enforce all source, figure, PDF and aggregate readiness gates
+        working-directory: projects/working/AGEINT
+        run: |
+          set -euo pipefail
+          cp output/pdf/AGEINT_combined.pdf AGEINT.pdf
+          for audit in scholarship_quality source_metadata agency_source_coverage claim_calibration reference_quality orchestration_contract source_refresh_due; do
+            python "scripts/audit_${audit}.py" --format markdown --write
+          done
+          python scripts/audit_heading_support.py --format json > "$RUNNER_TEMP/ageint-evidence/heading-support.json"
+          python scripts/audit_pdf_quality.py --format json > "$RUNNER_TEMP/ageint-evidence/pdf-quality.json"
+          python scripts/audit_artifact_evidence.py --format markdown --write
+          # This executes the SDK all-resource guard in its real checkout.
+          # A skipped, unavailable or failed guard makes this step fail.
+          python scripts/audit_publication_readiness.py --format markdown --write
+      - name: Package only verified current-run readers and evidence
+        env:
+          SOURCE: ${{ steps.identity.outputs.source }}
+          SDK_SOURCE: ${{ steps.identity.outputs.sdk-source }}
+          EXPECTED_TAG: ${{ inputs.expected-tag }}
+          SDK_CANDIDATE: ${{ steps.sdk.outputs.candidate }}
+        run: |
+          set -euo pipefail
+          project="$GITHUB_WORKSPACE/projects/working/AGEINT"
+          destination="$RUNNER_TEMP/ageint-verified"
+          evidence="$RUNNER_TEMP/ageint-evidence"
+          mkdir "$destination"
+          test -s "$project/output/web/index.html"
+          test -s "$project/output/pdf/AGEINT_combined.pdf"
+          cp "$project/AGEINT.pdf" "$destination/AGEINT.pdf"
+          cp -R "$project/output/reports" "$evidence/reports"
+          cp "$project/output/pdf/_combined_manuscript.blg" "$evidence/bibtex.blg"
+          cp "$project/output/pdf/_combined_manuscript.log" "$evidence/xelatex.log"
+          cp "$RUNNER_TEMP/template-acceptance-document-provenance.json" "$evidence/document-tool-provenance.json"
+          jq -n --arg source "$SOURCE" --arg sdk "$SDK_SOURCE" --arg tag "$EXPECTED_TAG" \
+            --arg version "$SDK_VERSION" --argjson candidate "$SDK_CANDIDATE" \
+            --arg repository "$GITHUB_REPOSITORY" --arg run "$GITHUB_RUN_ID" --arg attempt "$GITHUB_RUN_ATTEMPT" \
+            '{repository:$repository,source:$source,sdk_repository:"docxology/template",sdk_tag:(if $candidate then null else "v5.1.0" end),sdk_version:$version,sdk_candidate:$candidate,sdk_source:$sdk,expected_tag:$tag,run_id:$run,run_attempt:$attempt}' \
+            > "$destination/source-sdk.json"
+          cp "$destination/source-sdk.json" "$evidence/source-sdk.json"
+          # Keep sibling directories: web/index.html must resolve ../figures/.
+          # The SDK's source-configured local web assets remain inside web/.
+          (cd "$project/output" && zip -q -r "$destination/AGEINT-reader.zip" web figures)
+          (cd "$evidence" && zip -q -r "$destination/AGEINT-evidence.zip" .)
+          (cd "$destination" && sha256sum AGEINT.pdf AGEINT-reader.zip AGEINT-evidence.zip source-sdk.json > SHA256SUMS)
+      - name: Upload successful exact-Source deliverables only
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: manuscript-rebuild
-          path: |
-            output/manuscript/
-            output/figures/figure_registry.json
-            output/reports/
-          if-no-files-found: warn
+          name: ${{ steps.identity.outputs.artifact-name }}
+          path: ${{ runner.temp }}/ageint-verified/
+          if-no-files-found: error
           retention-days: 14

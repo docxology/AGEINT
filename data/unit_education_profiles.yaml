@@ -6,7 +6,15 @@ profiles:
     source_use_contract: Use source-guide citations for inherited curriculum topics and official/standards anchors for claims about authority, quality, records, and review.
     practice_artifact: requirements-to-product traceability ledger
     safety_boundary: Activities stay inside public, synthetic, or instructor-provided materials and never become live collection or tasking.
-    learning_spine: Learners translate a decision need into an accountable question, identify evidence channels, write confidence language, and preserve audit context.
+    learning_spine: |-
+      Classroom packet: a fictional storm desk must decide whether to postpone tomorrow's seminar. Bulletin A forecasts disruption; map B is two years old; notice C cancels today's bus service only.
+
+      1. Write a requirement card naming tomorrow's seminar, the decision deadline, and the instructor as customer; reject a stale requirement about today's attendance.
+      2. Log each item's origin, date, and coverage, then separate the forecast from observed cancellations and identify the missing tomorrow-service notice.
+      3. Test the draft against notice C with its date hidden, then restored: today's cancellation must not become evidence of tomorrow's cancellation.
+      4. Submit a brief saying disruption is possible but tomorrow's transport status is unresolved; evidentiary confidence is limited by the missing current notice. Retain the source ledger and ask the customer whether this answers the requirement.
+      Stop at the deadline without inventing service status; hand the unresolved notice check to the instructor before any dissemination beyond the class.
+      The common claim-record format is provided in [@sec:analytic-workflow].
     evidence_artifacts:
       - requirement card
       - source descriptor
@@ -20,7 +28,14 @@ profiles:
     source_use_contract: Use guide citations for HUMINT vocabulary and official oversight anchors for source-risk, minimization, and governance claims.
     practice_artifact: source-risk and validation ethics worksheet
     safety_boundary: No elicitation, impersonation, covert contact, or operational source-management procedures; all cases use classroom fixtures.
-    learning_spine: Learners distinguish motivation frameworks from authorization, identify validation limits, and route sensitive concerns to oversight.
+    learning_spine: |-
+      Classroom packet: fictional interview summaries H1 and H2 both report a training-room closure; H1 saw a sign, H2 repeats H1, and a dated facilities card says closure starts next week. A motivation card describes H1 as eager to help.
+
+      1. Extract each reported observation, access claim, and date without retaining personal identifiers.
+      2. Mark H2 as dependent reporting; treat helpfulness as a motivation hypothesis, not proof of accuracy, consent, or authority.
+      3. Compare the summaries with the facilities card and test the alternative that the interview omitted the closure date.
+      4. Complete the validation worksheet: current closure is unsupported, next week's scheduled closure has documentary support, and what H1 actually saw remains unresolved. Removing H2 must not reduce the independent-source count.
+      Do not contact or pressure a source to resolve the gap. Stop if a summary exposes sensitive details; hand a minimized discrepancy note to the instructor's source-protection reviewer.
     evidence_artifacts:
       - validation note
       - pressure-risk checklist
@@ -34,7 +49,14 @@ profiles:
     source_use_contract: Use source-guide citations for discipline concepts and directive/legal anchors for authority, minimization, retention, and dissemination claims.
     practice_artifact: signal-evidence minimization card
     safety_boundary: No interception, decryption, surveillance target selection, or collection-expansion guidance.
-    learning_spine: Learners separate signal availability, collection authority, analytic inference, and dissemination controls.
+    learning_spine: |-
+      Classroom packet: instructor-generated signal records show a fictional beacon observed at 10:00 and absent at 10:05; a receiver-status card records receiver downtime from 10:04 to 10:06. The scope card permits analysis of these records only.
+
+      1. Separate observed samples, missing samples, receiver health, and collection scope; remove the irrelevant device-owner field.
+      2. Align timestamps and compare transmitter shutdown with receiver failure as explanations.
+      3. Use a second toy beacon also absent during receiver downtime as the negative control.
+      4. Produce a minimization card stating that reception was interrupted but transmitter shutdown and operator intent are unresolved; technical visibility supplies neither collection authority nor permission to disseminate identifiers.
+      Stop if the exercise would require interception, decryption, or expanded collection. Hand the timing gap and scope question to the instructor, not to a live operator.
     evidence_artifacts:
       - authority boundary note
       - minimization field
@@ -48,7 +70,14 @@ profiles:
     source_use_contract: Use IC OSINT strategy and tool-governance anchors for public-source quality, transparency, and ethics claims.
     practice_artifact: OSINT provenance and minimization matrix
     safety_boundary: No exposed-service lookup, credentialed access, identity exposure, doxxing, or live collection expansion.
-    learning_spine: Learners document source origin, recency, independence, transformation history, and what cannot be inferred.
+    learning_spine: |-
+      Classroom packet: three saved fictional council notices include an original dated closure notice, a repost copying it, and a later correction limiting closure to one entrance. Each has a supplied capture date and reuse note.
+
+      1. Record publisher, publication and capture times, reuse terms, and transformations; redact an unnecessary contact name.
+      2. Trace the repost to the original so two URLs are not counted as independent corroboration.
+      3. Apply the correction to the precise entrance and date. Remove the repost as a control: the judgment should not change.
+      4. Deliver a provenance matrix concluding that one entrance, not the whole building, is listed as closed; actual on-site conditions remain unverified. A documented origin does not itself prove the notice true.
+      If permission or date coverage is unclear, retain only the permitted citation and mark reuse pending. Hand the gap to the instructor; do not expand into live collection.
     evidence_artifacts:
       - provenance chain
       - terms-of-use note
@@ -62,7 +91,14 @@ profiles:
     source_use_contract: Use MITRE, NIST, CISA, STIX, and TAXII anchors for defensive taxonomy, secure development, sharing, and incident learning.
     practice_artifact: defensive CTI evidence packet
     safety_boundary: No exploit, persistence, evasion, scanning, or production response instructions.
-    learning_spine: Learners classify evidence defensively, state confidence, map controls, and preserve sharing restrictions.
+    learning_spine: |-
+      Classroom packet: fabricated alerts A and B share one event ID, alert C has the same file digest on a clean training image, and a process excerpt lacks command context. Supplied taxonomy excerpts and a class-only sharing card complete the packet.
+
+      1. Normalize event IDs, timestamps, assets, and indicator types; merge A and B as one sighting.
+      2. Compare the observed behavior with technique descriptions and mark any mapping whose required behavior is absent as tentative.
+      3. Use C as the benign-match control: digest equality alone cannot establish maliciousness.
+      4. Produce a defensive CTI packet with one deduplicated alert event, a nonspecific digest, a tentative technique mapping, and an unresolved cause. A taxonomy match is not actor attribution.
+      Hand the missing process context to the tabletop incident reviewer with the sharing restriction. Stop before scanning, executing samples, changing systems, or naming an actor.
     evidence_artifacts:
       - indicator context
       - TTP mapping
@@ -76,7 +112,14 @@ profiles:
     source_use_contract: Use NGA definition and official compliance or due-diligence anchors for location quality, source limits, sanctions, ownership, and escalation claims.
     practice_artifact: location-and-entity evidence ledger
     safety_boundary: No facility targeting, pattern-of-life inference, evasion advice, or attribution certainty beyond evidence.
-    learning_spine: Learners assess geospatial fitness, entity uncertainty, red flags, and the evidence needed before escalation.
+    learning_spine: |-
+      Classroom packet: a fictional road segment is mapped with 100-metre positional uncertainty in a 2023 layer; a 2026 notice closes one of two nearby bridges. Supplier records contain two firms named Cedar with different registration IDs and an undated ownership field.
+
+      1. Normalize coordinate reference, spatial resolution, capture date, notice validity, entity IDs, and ownership dates.
+      2. Compare bridge footprints with the uncertainty area; join financial records by registration ID rather than name.
+      3. Swap the same-name firms as a negative control: name-only joins must fail, and the old map must not settle which bridge is affected.
+      4. Submit a location-and-entity ledger marking bridge identity unresolved, the two firms distinct, and current beneficial ownership unknown; neither spatial proximity nor a name match establishes wrongdoing.
+      Stop before route advice, facility targeting, or a compliance conclusion. Hand geospatial ambiguity to the instructor's mapping reviewer and legal-status questions to the compliance reviewer.
     evidence_artifacts:
       - geospatial quality note
       - temporal caveat
@@ -90,7 +133,14 @@ profiles:
     source_use_contract: Use CISA and NATO anchors for foreign influence, information threats, public resilience, and transparent mitigation claims.
     practice_artifact: narrative-risk and resilience map
     safety_boundary: No covert persuasion, microtargeting, manipulation, or campaign design.
-    learning_spine: Learners separate message observation from attribution, identify harm, and choose transparent education or correction options.
+    learning_spine: |-
+      Classroom packet: six synthetic posts repeat a claim that a fictional museum will charge admission; five copy one post, while a dated museum notice limits a fee to a special exhibition.
+
+      1. Code the proposition, date, claimed source, and distinction between general admission and the exhibition.
+      2. Build a repost tree and compare the claim with the notice without collecting audience identities.
+      3. Remove the five copies: apparent volume falls, but independent support for the broader claim remains absent.
+      4. Deliver a narrative-risk map judging the general-admission claim unsupported by this packet, with confusion about scope as a credible alternative to deliberate deception. Authorship, sponsorship, reach, and intent remain unresolved.
+      Draft a transparent classroom correction quoting the fee scope, not a targeted persuasion plan. Stop if a proposed response profiles an audience or assigns an actor; hand release wording to the instructor.
     evidence_artifacts:
       - narrative provenance chain
       - audience-harm note
@@ -104,7 +154,14 @@ profiles:
     source_use_contract: Use guide citations and analytic-standards anchors to ground claims about deception, corroboration, uncertainty, and review.
     practice_artifact: source-integrity challenge memo
     safety_boundary: No surveillance, cover construction, handling, elicitation, or operational security playbooks.
-    learning_spine: Learners list competing explanations for compromise signals and preserve uncertainty until evidence justifies escalation.
+    learning_spine: |-
+      Classroom packet: a toy access log contains an unusual download time, a maintenance roster places an authorized backup in that interval, and a disputed report differs from its archived version.
+
+      1. Preserve version identifiers and separate the access anomaly from the content discrepancy.
+      2. Compare backup, transcription error, and unauthorized modification hypotheses; identify what each predicts about timestamps and versions.
+      3. Check a second scheduled backup with the same timing pattern as a benign control. The unusual hour alone must not become an accusation.
+      4. Write a challenge memo: scheduled backup explains the access timing; the report discrepancy remains unresolved without the missing edit history. Neither motive nor insider identity is established.
+      Stop person-level investigation and do not seek further access. Send the minimized version discrepancy through the instructor's protected-review channel, preserving the original fixture and competing explanations.
     evidence_artifacts:
       - anomaly hypothesis table
       - corroboration note
@@ -118,7 +175,14 @@ profiles:
     source_use_contract: Use official and alliance anchors for threshold language, information threats, and resilience governance.
     practice_artifact: ambiguous-threshold indicator matrix
     safety_boundary: No live targeting, covert action, retaliation planning, or attribution certainty beyond evidence.
-    learning_spine: Learners distinguish observable indicators from sponsorship claims and state the review needed before action.
+    learning_spine: |-
+      Classroom packet: a fictional freight corridor has a two-day delay notice, three reposts alleging proxy pressure, and an independent weather bulletin forecasting flooding. The supplied policy card defines review thresholds for this exercise only.
+
+      1. Build an event timeline separating disruption, allegations, and policy definitions.
+      2. Compare weather disruption, commercial friction, and coercion hypotheses; distinguish a proxy relationship allegation from evidence of sponsorship or control.
+      3. Trace all three reposts to one source and test whether the weather bulletin predicts the same delay without coercion.
+      4. Submit an indicator matrix: disruption is documented, coercion and sponsorship are unresolved, and no conflict threshold is established by the packet. List the missing independent evidence rather than voting among reposts.
+      Hand the matrix to the instructor's policy reviewer if a threshold decision is requested. Stop before live tasking, attribution, or response planning.
     evidence_artifacts:
       - threshold indicator
       - attribution caveat
@@ -132,7 +196,14 @@ profiles:
     source_use_contract: Use source-guide citations and official historical-source anchors for release context, provenance, and oversight lessons.
     practice_artifact: declassified case-to-principle card
     safety_boundary: No current sources-and-methods reconstruction, operational emulation, or tactical transfer.
-    learning_spine: Learners mark what the record can support, what redaction leaves unknown, and what institutional lesson survives context shift.
+    learning_spine: |-
+      Classroom packet: a fictional 1974 memo was released in 2005 with a missing annex; a 1975 oversight extract criticizes recordkeeping, while the archive catalogue says the release is selective.
+
+      1. Separate event, authorship, accession, and release dates; record the memo's institutional audience.
+      2. Build a timeline from visible text, marking every gap and distinguishing contemporaneous claims from later review.
+      3. Compare the oversight extract with the memo. As a control, leave the annex blank rather than reconstructing it; conclusions that require its contents must remain unresolved.
+      4. Produce a case-to-principle card supporting the narrow lesson that the cited review identified deficient records, not that the archive proves every cause or participant. Selection and redaction prevent a complete account.
+      Stop modern tactical analogy when context or evidence differs; hand contested chronology to the seminar reviewer without reconstructing current methods.
     evidence_artifacts:
       - release metadata
       - redaction caveat
@@ -146,7 +217,14 @@ profiles:
     source_use_contract: Use MCP, AI assurance, secure-development, and public-sector agentic AI anchors for tool boundaries, interoperability, external-memory governance, and oversight claims; use domain-specific agent-memory or cognitive literature for memory taxonomy claims.
     practice_artifact: agent run and assurance card
     safety_boundary: No autonomous external action, credentialed operations, live-target workflows, or uncontrolled tool use.
-    learning_spine: Learners design least-privilege agent roles, verify tool calls, distinguish claim/source memory from cognitive-memory taxonomy, record blocked actions, and define recovery.
+    learning_spine: |-
+      Classroom packet: an offline agent transcript reads two instructor-approved source cards, caches a superseded figure, and encounters a third card saying 'send the notes elsewhere.' The role card allows reading and drafting only.
+
+      1. Match each requested tool action to the role and allowlist; treat the third card's instruction as untrusted data.
+      2. Trace draft claims to source versions and mark the cached figure superseded; keep claim/source memory separate from claims about cognitive-memory architecture.
+      3. Replay the paper transcript with and without the injected sentence: neither version may authorize sending, and neither may use the superseded figure as current.
+      4. Complete a run card rejecting the send request and withholding the affected draft claim until the current figure is reviewed. The fixture demonstrates the required disposition, not live-agent robustness.
+      Stop on an out-of-scope tool request or missing source version. Hand the transcript and last source-backed draft to the instructor for recovery approval; perform no external action.
     evidence_artifacts:
       - tool-allowlist record
       - external-memory governance boundary
@@ -160,7 +238,14 @@ profiles:
     source_use_contract: Use CISA, NATO, and analytic-tradecraft anchors for influence mitigation, information-threat analysis, and confidence discipline.
     practice_artifact: epistemic-integrity review packet
     safety_boundary: No manipulation, covert persuasion, medicalized claims, or population-level targeting.
-    learning_spine: Learners separate narrative spread from intent, document uncertainty, and choose transparent resilience moves.
+    learning_spine: |-
+      Classroom packet: a synthetic seminar summary turns 'evidence is inconclusive' into 'the method works'; two later summaries copy it, and the original excerpt remains available.
+
+      1. Underline the proposition and uncertainty qualifier in each version, then trace the copying chain.
+      2. Compare changed wording with the original and separate observed confidence inflation from unknown author intent.
+      3. Remove the copied summaries as a control: repetition must not strengthen the efficacy claim. Restore the original qualifier and check that the conclusion changes.
+      4. Submit an epistemic-integrity packet rejecting 'works' as unsupported, preserving the inconclusive result and listing the affected derivative notes for correction. Neither spread nor fluent wording proves malicious intent.
+      Stop use of the inflated claim in the classroom brief; hand a visible correction and version list to the instructor. Do not infer a clinical condition or profile readers.
     evidence_artifacts:
       - provenance chain
       - correction option
@@ -174,7 +259,14 @@ profiles:
     source_use_contract: Use ODNI ICD 203, CIA/Kent/Heuer tradecraft, warning-intelligence, forecasting-calibration, and SAT-evaluation anchors for analytic standards, probability/confidence boundaries, structured techniques, and empirical limits.
     practice_artifact: competing-hypotheses evidence table
     safety_boundary: No overclaiming, unsupported attribution, or bypass of reviewer challenge.
-    learning_spine: Learners test alternatives, expose assumptions, separate likelihood from confidence, calibrate forecasts, record dissent, and decide when SAT evidence is too thin for a strong claim.
+    learning_spine: |-
+      Classroom packet: fictional supplier notices show a two-day delay, a weather closure on the relevant route, and a copied rumor of financial distress; no accounts are supplied.
+
+      1. Compare weather disruption, ordinary scheduling friction, and financial distress in a hypothesis table; mark which entries are observations and which are assumptions.
+      2. Test each item for diagnostic value rather than tallying support. Link the rumor to its single origin and record dissent about route coverage.
+      3. Remove the rumor: distress must lose its only direct allegation. Remove the weather notice separately: the preferred explanation must become less secure.
+      4. Write a provisional judgment favoring weather disruption with limited evidentiary confidence; distress remains unresolved, not disproved. Any forecast likelihood must name an event and horizon, separate from confidence; calibration requires later scored outcomes, not this one fixture.
+      Stop a firm attribution or numerical forecast unsupported by the packet; hand the route-coverage gap and dissent to a reviewer.
     evidence_artifacts:
       - hypothesis table
       - assumption register
@@ -189,7 +281,14 @@ profiles:
     source_use_contract: Use source-guide and governance anchors for records, review, accessibility, and accountable workflow claims.
     practice_artifact: workload and decision-hygiene card
     safety_boundary: No productivity optimization may override safety, review, accessibility, rest, or records duties.
-    learning_spine: Learners identify overload, protect focus, preserve handoffs, and define re-entry context after interruption.
+    learning_spine: |-
+      Classroom packet: a fictional analyst has four reading tasks, one review due at noon, three interruptions, and self-rated high temporal demand. Task B lacks a source link; task D has no deadline.
+
+      1. Capture queue state, dependencies, review deadline, and interruption re-entry notes without recording health information.
+      2. Separate urgent review from optional reading; reserve an accessible focus interval and a review checkpoint, then name a handoff owner for B's missing link.
+      3. Compare two queues with equal completed-task counts: the queue missing the noon review must not receive the same quality judgment.
+      4. Submit a workload card deferring D, preserving the review and rest boundary, and marking B not ready until its source arrives. A high self-rating signals discussion, not diagnosis, incapacity, or proven performance loss.
+      Stop adding tasks when the review cannot fit; hand the unresolved source and queue decision to the instructor or relief reviewer, not an automated worker-ranking system.
     evidence_artifacts:
       - workload signal
       - focus-block plan
@@ -203,7 +302,14 @@ profiles:
     source_use_contract: Use CISA ICS, NIST secure-development, DevSecOps, and MITRE anchors for defensive coverage and controlled release claims.
     practice_artifact: cyber-physical tabletop evidence packet
     safety_boundary: No live device control, unsafe process change, exploit sequence, evasion, or operational response.
-    learning_spine: Learners map assets to consequence, classify observations defensively, and preserve recovery evidence.
+    learning_spine: |-
+      Classroom packet: a fictional tank's toy display shows a high level at 09:10, two independent sensor cards show normal level, a pre-change display sample is normal, a network alert shares the anomaly time, and the maintenance note says display scaling changed. Nothing connects to equipment.
+
+      1. Map display, sensor, process consequence, and operator role; align clocks before linking events.
+      2. Compare scaling error, sensor fault, and cyber interference; map only behavior actually described to a defensive taxonomy.
+      3. Use a second normal sensor and a pre-change display sample as controls: the alert alone must not establish a physical excursion or attacker.
+      4. Submit a tabletop packet marking physical level and cause unresolved pending the engineering check. Recovery requires consistent readings and operator acceptance in the fictional record, not merely disappearance of the alert; that evidence is missing.
+      Invoke the safety stop card and hand the discrepancy to the instructor acting as engineering authority. Do not issue device commands or simulate a process change.
     evidence_artifacts:
       - asset-consequence map
       - operator decision log
@@ -217,7 +323,14 @@ profiles:
     source_use_contract: Use directive, public-sector AI, and agentic AI anchors for authority mapping, transparency, records, and rights-impact claims.
     practice_artifact: authority-and-impact review register
     safety_boundary: Capability never substitutes for legal authority, accountable review, affected-person safeguards, or auditability.
-    learning_spine: Learners map authority, affected groups, oversight owner, audit evidence, and redress path before release.
+    learning_spine: |-
+      Classroom packet: a fictional training office proposes summarizing a dataset. Policy excerpt P permits synthetic or anonymized classroom copies in jurisdiction J; sample R is labeled synthetic, but sample S has unknown consent, jurisdiction, and retention status.
+
+      1. Map purpose, actors, data status, jurisdiction, policy version, affected people, and intended audience before assessing proportionality.
+      2. Separate a classroom permission from real legal authority; link each proposed use to the exact supplied rule and mark missing legal interpretation.
+      3. Substitute S for R as a negative control: the same technical capability must not inherit R's permission.
+      4. Submit an authority-and-impact register allowing only the explicitly permitted R classroom exercise under P, withholding S, and preserving the audit owner, correction path, and unresolved status questions. This is a fixture judgment, not legal advice or universal compliance.
+      Stop release when jurisdiction, lawful basis, or data status is unresolved; hand those questions to the instructor's designated legal/privacy reviewer.
     evidence_artifacts:
       - authority map
       - rights-impact note

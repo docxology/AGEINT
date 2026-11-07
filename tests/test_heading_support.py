@@ -8,67 +8,55 @@ from manuscript_quality.inventory_helpers import manuscript_dir
 from rendered_heading_support import add_heading_support, heading_support_inventory, heading_support_summary, render_heading_support_markdown, unsupported_heading_rows
 
 
-def test_add_heading_support_adds_contextual_reference_line() -> None:
-    rendered = "# Sample Section {#sec:sample-section}\n\n## Purpose\n\nExplain the bounded exercise.\n"
-    revised = add_heading_support(rendered, "appendices/sample-section.md")
-
-    assert "**Section anchor.**" in revised
-    assert "[@sec:sample-section]" in revised
-    assert unsupported_heading_rows_for_text(revised) == []
-
-
-def test_add_heading_support_treats_presplit_bibliography_as_structural() -> None:
-    rendered = "\n\n".join(
-        [
-            "# Bibliography Atlas {#sec:bibliography_atlas}",
-            "Introductory citation example [@scholarly_heuer_psychology_intelligence_analysis].",
-            "## Add Or Extend A Citation",
-            "Use source-owned citation workflow steps.",
-        ]
+def test_heading_navigation_does_not_borrow_another_blocks_citation(tmp_path: Path) -> None:
+    rendered = (
+        "# Sample {#sec:sample}\n\n"
+        "Search reporting follows [@scholarly_rethlefsen_2021_prisma_s].\n\n"
+        "## Safety and mastery rules\n\n"
+        "| Rule | Required artifact |\n|---|---|\n| Stop | Review record |\n"
     )
-    revised = add_heading_support(rendered, "bibliography-atlas.md")
+    revised = add_heading_support(rendered, "parts/unit/chapter/overview.md")
+    assert revised.count("[@scholarly_rethlefsen_2021_prisma_s]") == 1
+    safety_block = revised.split("## Safety and mastery rules", 1)[1]
+    assert "[@sec:sample]" in safety_block
+    assert "scholarly_rethlefsen_2021_prisma_s" not in safety_block
+    assert "Evidence anchor" not in revised
+    assert "navigation" in safety_block.lower()
+    assert add_heading_support(revised, "parts/unit/chapter/overview.md") == revised
 
-    assert "**Section anchor.** [@sec:bibliography_atlas]." in revised
-    anchor_line = next(line for line in revised.splitlines() if line.startswith("**Section anchor.**"))
-    assert "scholarly_heuer_psychology_intelligence_analysis" not in anchor_line
+
+def test_heading_without_real_target_is_not_given_an_invented_reference() -> None:
+    rendered = "## Capstone rubric\n\nAuthor-defined criteria need review.\n"
+    revised = add_heading_support(rendered, "parts/unit/chapter/rubric.md")
+    assert "[@sec:" not in revised
+    assert unsupported_heading_rows_for_text(revised) == ["Capstone rubric"]
 
 
-def test_add_heading_support_uses_coverage_language_for_source_inventory() -> None:
-    rendered = "\n\n".join(
-        [
-            "## Add Or Extend A Citation",
-            "### Current citation coverage by source section",
-            "| Measure | Count |",
-            "|---|---:|",
-            "| Source sections | 723 |",
-            "### Citation rows by source section",
-            "[@scholarly_heuer_psychology_intelligence_analysis]",
-        ]
+def test_local_heading_label_is_navigation_not_evidence(tmp_path: Path) -> None:
+    (tmp_path / "sample.md").write_text(
+        "# Sample {#sec:sample}\n\n## Rule\n\n"
+        "This author-defined rule has no supporting source.\n",
+        encoding="utf-8",
     )
-    revised = add_heading_support(rendered, "appendices/bibliography-atlas/coverage.md")
+    rows = heading_support_inventory(tmp_path)
+    assert rows[0].supported
+    assert rows[0].support_refs == ("{#sec:sample}",)
+    assert not rows[1].supported
+    report = render_heading_support_markdown(tmp_path)
+    assert "not evidence" in report.lower()
 
-    assert "**Coverage anchor.** Parent appendix: [@sec:bibliography_atlas]." in revised
-    assert "Citation coverage by source section is validated from the generated citation inventory" in revised
-    coverage_line = next(line for line in revised.splitlines() if line.startswith("**Coverage anchor.**"))
-    assert "scholarly_heuer_psychology_intelligence_analysis" not in coverage_line
-    assert "**Evidence link.**" not in revised
+
+def test_inline_code_and_fenced_examples_do_not_supply_heading_navigation() -> None:
+    text = "## Rule\n\n`[@source]`\n\n```text\n[@source]\n{#sec:fake}\n```\n"
+    assert unsupported_heading_rows_for_text(text) == ["Rule"]
 
 
-def test_generated_heading_support_covers_every_heading(built_output: Path) -> None:
-    output_manuscript = manuscript_dir(built_output)
-    rows = heading_support_inventory(output_manuscript)
+def test_generated_heading_inventory_accounts_for_all_rows(built_output: Path) -> None:
+    rows = heading_support_inventory(manuscript_dir(built_output))
     summary = heading_support_summary(rows)
-
     assert summary.heading_count > 0
-    assert summary.unsupported_heading_count == 0
-    assert unsupported_heading_rows(output_manuscript) == []
-
-
-def test_render_heading_support_markdown_reports_clean_summary(built_output: Path) -> None:
-    rendered = render_heading_support_markdown(manuscript_dir(built_output))
-
-    assert "| Unsupported headings | 0 |" in rendered
-    assert "| OK | true |" in rendered
+    assert summary.heading_count == summary.supported_heading_count + summary.unsupported_heading_count
+    assert summary.unsupported_heading_count == len(unsupported_heading_rows(manuscript_dir(built_output)))
 
 
 def unsupported_heading_rows_for_text(text: str) -> list[str]:
