@@ -70,6 +70,11 @@ Normal CI, scheduled and release runs authenticate the published stable SDK
 `v5.1.0` release/tag. Candidate artifacts identify their actual SDK SHA/version
 and cannot be used by `release.yml`.
 
+`CITATION.cff` uses the [official CFF 1.2.0 schema](https://citation-file-format.github.io/1.2.0/schema.json).
+Its `cff-version` is the format version, not AGEINT's separate `version`.
+Keep both licenses and the concept DOI. The source metadata CLI checks release
+version alignment; it does not establish full CFF-schema compatibility.
+
 Run the manual release only under explicit publication authorization:
 
 Publishing a GitHub release can automatically archive it through configured

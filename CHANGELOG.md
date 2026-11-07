@@ -49,6 +49,8 @@ metadata or this document alone is not acceptance.
   rendered HTML and TeX, including otherwise structural tables and headings.
 - Align package, citation, paper and book versions; derive milestone
   prerequisites from the current version rather than a historical release.
+- Use supported CFF 1.2.0 for citation-format metadata, independently of AGEINT's
+  release version; preserve both licenses, authors and the existing concept DOI.
 - Make missing, failed, timed-out or skipped SDK guards block readiness.
 - Run public SDK verification from `active/AGEINT` in a regular nested checkout;
   keep private working-lifecycle paths out of actual published diagnostics
