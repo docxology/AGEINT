@@ -50,6 +50,15 @@ manuscript variables and `source_citation_coverage.json` belong to the declared
 build output contract. The coverage artifact is a required freshness sentinel;
 its absence cannot be hidden by a previously successful build stamp.
 
+## Generated handoff: preserve manifested documentation
+
+Both inspection and verified `AGEINT-generated.tar.gz` archives include
+`output/README.md`, `output/AGENTS.md`, `output/slides/README.md`, and
+`output/slides/AGENTS.md` alongside the generated data, manuscript, figures,
+PDF, web, reports, and bibliography shards. The four documents remain part of
+the native artifact inventory even when slide rendering is disabled.
+Inspection archives remain separate from successful readiness and release assets.
+
 ## Regeneration sequence: full build, figures, strict renders, and hooks
 
 ```bash

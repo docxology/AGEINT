@@ -210,7 +210,9 @@ jobs:
           (cd projects/active/AGEINT && tar \
             --exclude='output/pdf/_*' --exclude='output/web/_combined_manuscript.md' \
             -czf "$destination/AGEINT-generated.tar.gz" \
+            output/README.md output/AGENTS.md \
             output/data output/manuscript output/figures output/pdf output/web output/reports \
+            output/slides/README.md output/slides/AGENTS.md \
             docs/manuscript/references-*.bib)
           (cd "$destination" && sha256sum AGEINT-generated.tar.gz inspection-source.json > SHA256SUMS)
       - name: Retain inspection-only snapshot, not release acceptance
@@ -267,7 +269,9 @@ jobs:
           (cd "$project" && tar \
             --exclude='output/pdf/_*' --exclude='output/web/_combined_manuscript.md' \
             -czf "$destination/AGEINT-generated.tar.gz" \
+            output/README.md output/AGENTS.md \
             output/data output/manuscript output/figures output/pdf output/web output/reports \
+            output/slides/README.md output/slides/AGENTS.md \
             docs/manuscript/references-*.bib)
           (cd "$destination" && sha256sum AGEINT.pdf AGEINT-reader.zip AGEINT-evidence.zip AGEINT-generated.tar.gz source-sdk.json > SHA256SUMS)
       - name: Upload successful exact-Source deliverables only

@@ -59,6 +59,9 @@ metadata or this document alone is not acceptance.
   all readiness gates and exact-main same-run asset custody for publication.
 - Package a checksummed generated-manuscript/output archive only after aggregate
   readiness succeeds; keep inspection snapshots separate from production promotion.
+- Preserve the four manifested root/slides README and AGENTS documents in both
+  generated archives; disabled slide rendering does not remove those documents
+  from the native artifact inventory.
 - Document automatic GitHub-release/Zenodo archival as a separate authorization
   boundary; retain genuine checked-in-publication CI guards until promotion.
 - Keep audit CLI regression checks read-only: tests cannot replace the
