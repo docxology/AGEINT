@@ -62,6 +62,9 @@ metadata or this document alone is not acceptance.
 - Preserve the four manifested root/slides README and AGENTS documents in both
   generated archives; disabled slide rendering does not remove those documents
   from the native artifact inventory.
+- Finalize the real SDK artifact inventory and rendered provenance after all
+  saved audit/readiness reports; keep the final readiness recheck read-only so
+  verified archives contain the validated output bytes.
 - Document automatic GitHub-release/Zenodo archival as a separate authorization
   boundary; retain genuine checked-in-publication CI guards until promotion.
 - Keep audit CLI regression checks read-only: tests cannot replace the

@@ -186,11 +186,10 @@ jobs:
           set -euo pipefail
           .venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
           .venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
-      - name: SDK PDF and enabled-format output validation with provenance
+      - name: Validate compiled PDF before inspection
         run: |
           set -euo pipefail
           .venv/bin/python -m infrastructure.validation.cli pdf projects/active/AGEINT/output/pdf/AGEINT_combined.pdf
-          .venv/bin/python scripts/pipeline/stage_04_validate.py --project active/AGEINT
       - name: Prepare inspection-only generated snapshot
         env:
           SOURCE: ${{ steps.identity.outputs.source }}
@@ -236,6 +235,15 @@ jobs:
           # This executes the SDK all-resource guard in its real checkout.
           # A skipped, unavailable or failed guard makes this step fail.
           python scripts/audit_publication_readiness.py --format markdown --write
+      - name: Finalize SDK output validation after audit reports
+        run: |
+          set -euo pipefail
+          # Audit reports belong to the final stable output inventory too.
+          # Run the real SDK validator; never relabel an older sealed receipt.
+          .venv/bin/python scripts/pipeline/stage_04_validate.py --project active/AGEINT
+          # Recheck readiness without changing the newly validated report bytes.
+          .venv/bin/python projects/active/AGEINT/scripts/audit_publication_readiness.py \
+            --format json > "$RUNNER_TEMP/ageint-evidence/final-publication-readiness.json"
       - name: Package only verified current-run readers and evidence
         env:
           SOURCE: ${{ steps.identity.outputs.source }}

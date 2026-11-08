@@ -28,6 +28,11 @@ generated-output archive, evidence, source/SDK identity and SHA-256 checksums.
 `AGEINT-generated.tar.gz` retains the generated manuscript, bibliography and
 non-temporary output tree for reviewed repository regeneration. Preserve local
 edits, including readiness reports, before promoting these gated outputs.
+After all audit/readiness report writers, the real SDK validator finalizes the
+complete stable output inventory and rendered provenance. The final read-only
+readiness recheck writes JSON under `RUNNER_TEMP`, outside project output.
+Packaging does not change those validated bytes; an earlier inspection receipt
+is never refreshed or relabeled as final acceptance.
 Before aggregate readiness closure, a separately named
 `ageint-inspection-only-<run>-<attempt>` artifact retains generated source,
 figures, PDF and HTML with checksums and an explicit `acceptance: false` identity.
