@@ -18,6 +18,12 @@ metadata or this document alone is not acceptance.
   meta-analysis sample count, including in shortened reader annotations.
 - Improve diagram semantics and print layouts; retain source-linked figure
   alternatives and reader-accessible long descriptions.
+- Make the root README a complete reader/developer/verification workflow hub:
+  distinguish standalone and strict SDK builds, report writers and inspection,
+  verified handoffs and create-only publication. Preserve dated research notes.
+- Remove the higher-priority `.github/README.md` configuration stub that hid the
+  curriculum homepage on GitHub; retain configuration guidance in the existing
+  workflow guide and document the routing invariant.
 
 ### Source and release refactoring
 

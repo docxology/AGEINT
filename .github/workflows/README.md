@@ -1,5 +1,13 @@
 # AGEINT workflows
 
+GitHub configuration includes [`../dependabot.yml`](../dependabot.yml) and the
+four pipelines below. The public project/workflow entry point is the
+[root README](../../README.md).
+
+Keep `.github/README.md` absent: [GitHub's documented display order](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)
+gives it precedence over the root README, replacing the curriculum homepage
+with internal configuration notes.
+
 | Workflow | Scope |
 | --- | --- |
 | `ci.yml` | Required complete SDK verification plus locked lint and separately named limited standalone Python checks |
