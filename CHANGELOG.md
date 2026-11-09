@@ -28,6 +28,8 @@ metadata or this document alone is not acceptance.
   moving its original dated chronology verbatim to a linked research-history
   record. Retire the wording-only README/citation-doc assertion; preserve
   generated reference resolution, reader navigation and publication gates.
+- Align the local audit runbook with hosted finalization: reseal the real SDK
+  output inventory after saved reports, then recheck readiness without writes.
 
 ### Source and release refactoring
 

@@ -249,12 +249,14 @@ python scripts/audit_pdf_quality.py --format json
 python scripts/audit_artifact_evidence.py --write --format json
 python scripts/audit_publication_readiness.py --write --format json
 
-# Final read-only readiness recheck, not authorization to publish.
+# SDK root: finalize stable output inventory after all saved reports.
+(cd "$AGEINT_TEMPLATE_REPO" && python scripts/pipeline/stage_04_validate.py --project active/AGEINT)
+# AGEINT root: final read-only readiness recheck, no publication authority.
 python scripts/audit_publication_readiness.py --format json
 ```
 
-The hosted lane additionally reruns SDK stage 04 **after** report writers and
-packages only the unchanged validated bytes. See its
+The hosted lane follows the same post-writer native validation and packages
+only unchanged validated bytes. See its
 [full acceptance order](.github/workflows/manuscript.yml).
 
 The readiness command runs the **actual parent guard**. A missing, failed,
