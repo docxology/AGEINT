@@ -24,6 +24,10 @@ metadata or this document alone is not acceptance.
 - Remove the higher-priority `.github/README.md` configuration stub that hid the
   curriculum homepage on GitHub; retain configuration guidance in the existing
   workflow guide and document the routing invariant.
+- Keep the complete workflow README within the native file-size budget by
+  moving its original dated chronology verbatim to a linked research-history
+  record. Retire the wording-only README/citation-doc assertion; preserve
+  generated reference resolution, reader navigation and publication gates.
 
 ### Source and release refactoring
 

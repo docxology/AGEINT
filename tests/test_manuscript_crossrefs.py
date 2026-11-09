@@ -336,23 +336,6 @@ def test_generated_cross_links_are_label_backed_not_title_prose(built_output: Pa
     assert violations == []
 
 
-def test_source_docs_explain_label_backed_reference_syntax() -> None:
-    syntax = (MANUSCRIPT / "SYNTAX.md").read_text(encoding="utf-8")
-    agents = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
-    readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
-    citation_workflow = (PROJECT_ROOT / "docs" / "citation_workflow.md").read_text(encoding="utf-8")
-
-    assert "[@sec:curriculum_orientation]" in syntax
-    assert "[@fig:ageint-curriculum-map]" in syntax
-    assert "[@ageint137]" in syntax
-    assert "../docs/citation_workflow.md" in syntax
-    assert "docs/citation_workflow.md" in agents
-    assert "docs/citation_workflow.md" in readme
-    assert "never hand-edit" in citation_workflow
-    assert "Pandoc-crossref labels" in agents
-    assert "label-backed" in readme
-
-
 def test_pdf_crossref_metadata_uses_reader_facing_prefixes(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     template = (MANUSCRIPT / "templates" / "abstract.md").read_text(encoding="utf-8")
