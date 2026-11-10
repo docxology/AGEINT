@@ -1,10 +1,13 @@
 # Quickstart: AGEINT build, validation, and editing entry points
 
-Run the parser/build step and tests from the AGEINT root. Run markdown/prerender validation from the sibling template root against the working checkout path.
+Run explicit generation from AGEINT's root when building a new development
+edition. Pytest's published-output fixture is read-only: when diagnosing an
+existing publication, preserve its original failures before rebuilding.
+Run markdown/prerender validation from the prepared SDK root; the complete
+environment and acceptance recipes are in the [root workflow](../README.md#commands).
 
 ```bash
 uv run python scripts/build_curriculum.py
-uv run python scripts/generate_figures.py
 uv run python scripts/audit_orchestration_contract.py --format json
 uv run pytest tests/ --cov=src --cov-fail-under=84  # Standalone core, not release acceptance.
 uv run pytest tests/test_source_identity.py

@@ -26,8 +26,8 @@ and canonical HTML, exercise runnable examples, and review source-to-claim
 fit. Honest fictional-case labels and properly attributed source locators must
 not be rewritten merely to satisfy a word ban.
 
-The session-scoped `built_output` fixture reuses fresh generated output and
-rebuilds when required artifacts are missing or source inputs change. Tests
-derive manuscript paths via `manuscript_dir()` and isolate changes in temporary
-projects. Use environment isolation to exercise missing tools, not replacement
-of executable discovery.
+The session-scoped `built_output` fixture only reads existing output; it never
+rebuilds missing or stale publications. Generate new editions explicitly before
+validation, preserving original failures. Derive paths via `manuscript_dir()`
+and isolate build mutations in temporary projects. Use environment isolation
+for missing tools, not replacement of executable discovery.

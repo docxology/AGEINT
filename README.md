@@ -133,10 +133,10 @@ uv run --no-sync python -m pytest tests/   --cov=src --cov-report=term-missing -
 ```
 
 That **84% compatibility lane does not replace the full 90% acceptance gate**.
-Tests can build missing/stale fixtures when an SDK is discoverable; they are not
-universally read-only. Do not rebuild a checked-in publication merely to hide
-its original freshness/count/heading failures. Diagnose it as found; use the
-separate fresh-checkout acceptance workflow for a newly built edition.
+`built_output` only reads existing artifacts; pytest does not rebuild missing or
+stale publications. Keep original freshness/count/heading failures visible.
+Use the explicit build above or the fresh-checkout acceptance workflow for a
+new edition; neither replaces reviewed publication-output promotion.
 
 ### 2. Full PDF/HTML workflow — prepared, pinned shared SDK
 

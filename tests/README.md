@@ -5,8 +5,12 @@ This folder contains AGEINT parser, template, manifest, figure-registry, build, 
 - Owner: AGEINT quality gates.
 - Status: manual tests.
 - Source of truth: project behavior and the token-injected architecture.
-- Run: `uv run pytest tests/ --cov=src --cov-fail-under=90` from the AGEINT root.
+- Run: `python -m pytest tests/ --cov=src --cov-fail-under=90` from AGEINT in the same prepared SDK environment as the [full workflow](../README.md#commands).
 - Safety: tests should catch unsafe operational framing and unresolved generated tokens.
+
+`built_output` reads existing artifacts without generating or repairing them.
+Build a new edition explicitly before validation; retain genuine missing,
+stale-output, navigation and typed-count failures in an existing publication.
 
 The suite uses real project inputs. It validates guide parsing, source-anchor
 BibTeX generation, neutral template behavior, semantic output ordering,

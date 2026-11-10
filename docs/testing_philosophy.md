@@ -4,9 +4,17 @@
 
 Tests use real curriculum shards, real builds, temp directories, and subprocess script smoke tests. Do not use `unittest.mock`, `MagicMock`, or `mocker.patch`. Environment isolation via pytest `monkeypatch.delenv` is limited to template-resolver branch tests.
 
-## Session build fixture: shared rebuilt output for manuscript tests
+## Read-only published-output fixture
 
-`tests/conftest.py` defines `built_output` (session scope). It runs `run_build()` once when `output/manuscript/` or `output/figures/figure_registry.json` is missing. Integration tests depend on this generated tree.
+`tests/conftest.py` defines session-scoped `built_output`, which returns the
+existing `output/` tree without invoking a builder. Missing artifacts and stale
+publication evidence must remain visible to their real guards; discovering an
+SDK does not authorize a test to repair the publication it is validating.
+
+Generate a new edition explicitly in a development or fresh acceptance checkout
+using the [build and verification recipes](../README.md#commands), then run the
+complete suite in the same prepared SDK environment. Preserve an original
+checked-in publication failure before rebuilding; generation is not promotion.
 
 ## Test categories: source identity, safety, figures, prose, and readiness
 

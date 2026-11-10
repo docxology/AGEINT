@@ -82,6 +82,12 @@ metadata or this document alone is not acceptance.
 - Keep audit CLI regression checks read-only: tests cannot replace the
   repository's publication evidence or reader bytes. Render genuine readers
   before consumer tests and refuse any mutation of their bytes.
+- Make the session published-output fixture read-only even when an SDK is
+  discoverable. Keep generation explicit and preserve genuine missing-artifact,
+  source-freshness, navigation and typed-count failures until reviewed promotion.
+- Retire caption, heading, editorial word-budget and renderer-helper copy pins;
+  retain real PNG decoding, metadata, layout, plaintext structure, figure
+  placement and unique reference behavior. Avoid duplicate full figure builds.
 - Collect source-license posture read-only from current canonical metadata,
   rather than requiring an earlier derived audit report or trusting stale
   results. Preserve explicit-field and private-provenance rejection.
