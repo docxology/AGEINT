@@ -57,11 +57,11 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory reader
 Open the same `/web/index.html` URL. Runtime assets are local; scholarly links
 remain external references that you choose to open.
 
-## Current generated scope
+## Source and generated scope
 
-These are the documented source/generated-snapshot counts, not a new release
-measurement or an effectiveness claim. Inspect or rebuild the corresponding
-source before reporting changed counts.
+Source rows describe current authored inputs; output rows describe the retained
+generated snapshot. Source curation does not rebuild or qualify the reader.
+Rebuild and inspect generated artifacts before claiming a current release.
 
 | Surface | Count | Source of truth |
 | --- | ---: | --- |
@@ -69,7 +69,7 @@ source before reporting changed counts.
 | Chapters | 51 | `data/curriculum/stats.json` |
 | Methods appendices | 9 | `data/curriculum/stats.json` |
 | AGEINT patterns | 20 | `output/data/curriculum_outline.json` |
-| Parsed guide references | 312 | `data/curriculum/references/` |
+| Numbered curriculum references | 315 | `data/curriculum/references/` (authored source) |
 | Curated research anchors | 462 | `data/research_anchors/` |
 | Source-quality support anchors | 10 | `data/research_anchors/source-quality-anchors.jsonl` |
 | Source-metadata rows | 472 | `output/reports/source_metadata.json` |
