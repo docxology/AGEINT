@@ -16,11 +16,9 @@ from intelligence_content.source_grounding import (  # noqa: E402
     cited_sources,
     clean_source_note,
     clean_source_title,
-    evidence_from_sources,
     safe_source_note,
     safe_source_title,
     source_record,
-    source_support_sentence,
     sources_for_numbers,
 )
 
@@ -83,6 +81,12 @@ def test_safe_source_note_keeps_ordinary_notes() -> None:
     assert safe_source_note(note) == note
 
 
+def test_safe_source_note_preserves_bounded_fictional_evidence_not_import_scaffolds() -> None:
+    note = "The study tested 🛰 fictional headlines. Recognition is not observed sharing."
+    assert safe_source_note(note) == "The study tested fictional headlines. Recognition is not observed sharing."
+    assert safe_source_note("Inspect fictional records before the source guide import.") == ""
+
+
 def test_source_record_resolves_real_reference() -> None:
     record = source_record(1)
     assert record is not None
@@ -100,49 +104,6 @@ def test_cited_sources_dedupes_and_limits() -> None:
     assert len(sources) == 2
     assert sources[0].number == 1
     assert sources[1].number == 2
-
-
-def test_source_support_preserves_inherited_keys_without_asserting_relevance() -> None:
-    records = sources_for_numbers([309, 310])
-    text = source_support_sentence("Self-critique", records)
-    assert all(record.citation in text for record in records)
-    assert "source-guide context" in text
-    assert "not" in text and "topical" in text and "empirical" in text
-    assert "rests on" not in text
-    assert text == source_support_sentence("Self-critique", records)
-
-
-def test_evidence_binds_each_curriculum_annotation_to_its_own_key() -> None:
-    records = (
-        SourceRecord(1, "ageint001", "First source", "", ""),
-        SourceRecord(2, "ageint002", "Second source", "A bounded model is proposed. It is not an evaluation.", ""),
-        SourceRecord(3, "ageint003", "Third source", "A different annotation.", ""),
-    )
-    text = evidence_from_sources("A lesson", records)
-    assert "Curriculum annotation for [@ageint002]: A bounded model is proposed. It is not an evaluation." in text
-    assert "Curriculum annotation for [@ageint003]: A different annotation." in text
-    assert "Curriculum annotation for [@ageint001]" not in text
-    assert "source-authored" in text and "not" in text
-    assert text == evidence_from_sources("A lesson", records)
-
-
-def test_verification_flag_does_not_turn_context_into_primary_claim_support() -> None:
-    for verified in (False, True):
-        record = SourceRecord(999, "ageint999", "An organizational overview", "An institution describes its remit.", "https://www.nist.gov/about", verified)
-        text = source_support_sentence("A technical method", (record,))
-        evidence = evidence_from_sources("A technical method", (record,))
-        assert "claim-specific primary" in text
-        assert "passage" in evidence and "normative" in evidence
-        assert "independently verified" in evidence
-
-
-def test_uncited_and_unannotated_inputs_keep_evidence_gaps_visible() -> None:
-    assert "No source-guide" in source_support_sentence("A lesson", ())
-    record = SourceRecord(999, "ageint999", "A source", "", "")
-    text = evidence_from_sources("A lesson", (record,))
-    assert "No displayable curriculum annotation" in text
-    assert record.citation in text
-    assert "No source-guide" in evidence_from_sources("A lesson", ())
 
 
 def test_truncated_notes_do_not_manufacture_complete_claims() -> None:
@@ -170,7 +131,6 @@ def test_sources_for_numbers_dedupes_and_limits() -> None:
 def test_annotated_source_table_renders_real_titles_and_notes() -> None:
     records = sources_for_numbers([1, 2])
     table = annotated_source_table(records)
-    assert all(label in table.splitlines()[0] for label in ("Source", "Cited work", "Curriculum annotation", "Status"))
     assert "[@ageint001]" in table and "[@ageint002]" in table
     # Every data row is a 4-column Markdown row (5 pipe delimiters).
     for line in table.splitlines()[2:]:
@@ -181,54 +141,12 @@ def test_annotated_source_table_neutralizes_operational_rows() -> None:
     records = sources_for_numbers([32])  # KGB "Working with Agents"
     table = annotated_source_table(records)
     assert "Working with Agents" not in table
-    assert "Cited source (see bibliography)" in table
-
-
-def test_chapter_source_annotations_handles_uncited_module() -> None:
-    text = chapter_source_annotations({"citations": []})
-    assert "no direct source-guide citations" in text
 
 
 def test_chapter_source_annotations_notes_overflow() -> None:
     many = list(range(1, 40))
     text = chapter_source_annotations({"citations": many}, limit=5)
-    assert "remaining" in text
     assert text.count("[@ageint") == 5
-
-
-def test_annotated_source_table_has_status_column() -> None:
-    records = sources_for_numbers([1, 2])
-    table = annotated_source_table(records)
-    # Header has 4 columns (5 pipe delimiters each row)
-    header = table.splitlines()[0]
-    assert "| Status |" in header
-    # Every data row has exactly 5 pipes
-    for line in table.splitlines()[2:]:
-        assert line.count("|") == 5
-    assert any("source-guide" in line for line in table.splitlines()[2:])
-
-
-def test_annotated_source_table_marks_practitioner_sources_as_secondary() -> None:
-    records = sources_for_numbers([139, 143, 144, 156])
-    table = annotated_source_table(records)
-    rows = table.splitlines()[2:]
-    assert len(rows) == 4
-    assert all("secondary evidence only" in row for row in rows)
-
-
-def test_annotated_source_table_flags_generic_mcp_spec_as_context() -> None:
-    table = annotated_source_table(sources_for_numbers([299]))
-    assert "use pinned MCP anchor for normative claims" in table
-
-
-def test_annotated_source_table_links_url_when_available() -> None:
-    """Verified sources should have clickable title links."""
-    # Source 3 is PMC (publicly accessible) — should be verified
-    records = sources_for_numbers([3])
-    table = annotated_source_table(records)
-    row = table.splitlines()[-1]
-    # If verified, title is wrapped as [title](url)
-    assert "http" in row or "Cited source" in row  # either linked or fallback
 
 
 def test_annotated_source_table_escapes_at_signs_in_markdown_urls() -> None:

@@ -65,7 +65,7 @@ def instructional_focus(entry: TopicEntry) -> tuple[str, str, str] | None:
             misconception,
         )
     title = entry.display_title.lower()
-    if _match_keywords(title, ("institutional architecture", "soviet/russian architecture", "british architecture", "israeli architecture", "chinese architecture")):
+    if _match_keywords(title, ("institutional architecture", "soviet and russian institutions", "british intelligence", "israeli institutions", "chinese institutions")):
         return (
             "Evidence packet: dated public institutional descriptions, historical versus current mandates, oversight records, and gaps in the institutional comparison.",
             "Build an institutional role matrix with institution, date, collection/analysis/coordination role, oversight, and unknown or unsupported relationship.",

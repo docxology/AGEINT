@@ -14,6 +14,14 @@ metadata or this document alone is not acceptance.
   operational effectiveness, legal determinations or safety guarantees.
 - Preserve stable guide-source identities and explicit source roles, metadata
   inspection limits, correction notes and claim-support boundaries.
+- Preserve bounded study annotations that describe fictional test material;
+  reject specific import scaffolds and operational motifs, not ordinary words.
+- Route current institutional display titles to dated role, mandate, oversight,
+  and uncertainty checks rather than unrelated generic or attribution prompts.
+- Replace unrelated AI/software citation bindings with append-only DHS,
+  historical NSDD 298 and dated FATF virtual-asset sources. Preserve existing
+  guide identities and distinguish historical doctrine, regulatory context,
+  instructor-authored examples and current-authority or efficacy claims.
 - Keep the methodological-dispute qualification beside the reported
   meta-analysis sample count, including in shortened reader annotations.
 - Improve diagram semantics and print layouts; retain source-linked figure
@@ -37,6 +45,9 @@ metadata or this document alone is not acceptance.
   refresh the configuration example without borrowing publication identifiers.
 - Remove unused compatibility shards and import/wording-only checks while
   preserving canonical source APIs and consumer-visible regressions.
+- Retire remaining source-prose, status-label and duplicate table assertions;
+  retain substantive annotation filtering, citation/table integrity, URL
+  escaping, registry shape and independent source-count regressions.
 - Include config, preamble, embedded citation-recipe and dependency-lock bytes
   in build freshness, including edits that preserve timestamps and file size.
 - Exclude derived Python installation metadata from authored-source freshness,
@@ -45,6 +56,9 @@ metadata or this document alone is not acceptance.
 - Independently re-count nonblank authored teaching notes from flat and sharded
   source chapters; verify the derived count and integer type before exposing it
   as numeric evidence, not a quality or entailment claim.
+- Derive optional-guide and sharded-source counts through the same pure
+  producer, including nonblank authored teaching notes, without changing
+  guide citation hydration or hiding stale generated-output failures.
 - Emit source-section citation counts from the native counter as typed build
   data with exact input hashes and claim-specific field bindings; do not borrow
   later aggregate reports or treat coverage counts as citation correctness.

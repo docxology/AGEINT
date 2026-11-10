@@ -57,12 +57,10 @@ def load_curriculum_shards_payload(directory: Path) -> dict[str, Any]:
     return finalize_curriculum_payload(payload)
 
 
-def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
-    """Normalize derived counts and hydrate data-backed citation support."""
+def curriculum_counts(payload: dict[str, Any]) -> dict[str, int]:
+    """Derive one count contract for parsed guides and loaded source shards."""
 
-    hydrate_source_support(payload)
-    payload["stats"] = {
-        **payload.get("stats", {}),
+    return {
         "parts": len(payload.get("parts", [])),
         "chapters": sum(len(part.get("chapters", [])) for part in payload.get("parts", [])),
         "authored_teaching_note_count": sum(
@@ -76,6 +74,13 @@ def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
         "patterns": len(payload.get("patterns", [])),
         "references": len(payload.get("references", [])),
     }
+
+
+def finalize_curriculum_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Normalize derived counts and hydrate data-backed citation support."""
+
+    hydrate_source_support(payload)
+    payload["stats"] = {**payload.get("stats", {}), **curriculum_counts(payload)}
     return payload
 
 

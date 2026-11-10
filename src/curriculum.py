@@ -8,7 +8,7 @@ from pathlib import Path
 import re
 from typing import Any
 
-from _curriculum_shards import load_curriculum_shards_payload as _load_curriculum_shards
+from _curriculum_shards import curriculum_counts, load_curriculum_shards_payload as _load_curriculum_shards
 from _slug import curriculum_chapter_dir_name, curriculum_part_dir_name, slug_for_path
 
 PATTERN_REGISTRY_CHAPTER_NUMBER = 32
@@ -214,15 +214,16 @@ def parse_curriculum_guide(text: str) -> dict[str, Any]:
                 key = detail_match.group(1).lower().replace(" ", "_")
                 current_pattern[key] = _strip_markdown(detail_match.group(2))
 
-    return {
+    payload = {
         "project": "AGEINT",
         "title": "Agentic Intelligence Modular Curriculum",
         "parts": parts,
         "appendices": appendices,
         "patterns": patterns,
         "references": list(references.values()),
-        "stats": {"parts": len(parts), "chapters": sum(len(part["chapters"]) for part in parts), "appendices": len(appendices), "patterns": len(patterns), "references": len(references)},
     }
+    payload["stats"] = curriculum_counts(payload)
+    return payload
 
 
 def write_curriculum_shards(payload: dict[str, Any], directory: Path) -> Path:
