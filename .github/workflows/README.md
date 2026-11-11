@@ -15,7 +15,7 @@ with internal configuration notes.
 | `release.yml` | Manual-only new stable release, after fresh complete verification of exact current main |
 | `source-freshness.yml` | Source refresh-due audits |
 
-Complete verification uses the genuine SDK `v5.1.0` tag, Python 3.14, frozen
+Complete verification uses the genuine SDK `v5.2.0` tag, Python 3.14, frozen
 SDK dev/rendering dependencies, pinned SDK Mermaid/browser/document setup and
 the SDK's canonical native renderer. The standalone 84% compatibility jobs are
 not release acceptance; the complete gate requires at least 90% coverage and
@@ -80,7 +80,7 @@ gh workflow run manuscript.yml --repo docxology/AGEINT --ref main -f "sdk-candid
 ```
 
 Normal CI, scheduled and release runs authenticate the published stable SDK
-`v5.1.0` release/tag. Candidate artifacts identify their actual SDK SHA/version
+`v5.2.0` release/tag. Candidate artifacts identify their actual SDK SHA/version
 and cannot be used by `release.yml`.
 
 Complete verification declares GitHub

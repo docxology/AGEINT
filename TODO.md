@@ -47,7 +47,7 @@ must replace the old measurements before publication.
 
 - `ageint-37`: integrate the real SDK consumer fixes through
   [template PR #289](https://github.com/docxology/template/pull/289) into the
-  existing 5.1.0 release train, preserving all genuine SDK acceptance gates.
+  existing 5.2.0 release train, preserving all genuine SDK acceptance gates.
 - `ageint-36`: qualify the current complete reader, full regression/coverage
   gate, native audits, browser surface and copied rendered program. Root-mutating
   CLI wording smoke tests have been removed; reader bytes must remain unchanged

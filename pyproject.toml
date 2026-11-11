@@ -122,5 +122,5 @@ exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:", "raise NotImp
 
 [tool.template]
 skip_combined_pytest = true
-platform_version = "5.1.0"
+platform_version = "5.2.0"
 

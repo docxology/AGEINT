@@ -11,7 +11,7 @@ GitHub Actions workflow definitions.
 
 ## Contracts
 
-- The complete gate checks out `docxology/template` at `refs/tags/v5.1.0` at workspace root and exact AGEINT Source under its working projects directory. Never replace that tag with main or a fallback.
+- The complete gate checks out `docxology/template` at `refs/tags/v5.2.0` at workspace root and exact AGEINT Source under its working projects directory. Never replace that tag with main or a fallback.
 - Manual development verification alone may explicitly select an immutable 40-hex SDK candidate SHA via `sdk-candidate`. No reusable/release override is exposed. Candidate runs retain full acceptance and record actual SDK SHA/version but never authorize publication.
 - Reuse SDK setup actions, frozen dev/rendering dependencies and canonical `stage_03_render.py`; do not add a second Pandoc driver here.
 - SDK execution uses Python 3.14 with an explicit shared interpreter/environment and `UV_NO_SYNC=1`, including nested `uv` subprocesses. This does not raise AGEINT's standalone Python floor.

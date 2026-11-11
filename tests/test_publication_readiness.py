@@ -28,7 +28,7 @@ def _green_artifact_checks() -> dict[str, bool]:
 
 
 def _write_release_metadata(root: Path) -> None:
-    _write(root / "pyproject.toml", '[project]\nversion = "0.2.0"\n[tool.template]\nplatform_version = "5.1.0"\n')
+    _write(root / "pyproject.toml", '[project]\nversion = "0.2.0"\n[tool.template]\nplatform_version = "5.2.0"\n')
     _write(root / "CITATION.cff", 'version: "0.2.0"\n')
     _write(root / "docs" / "manuscript" / "config.yaml", yaml.safe_dump({"paper": {"version": "0.2.0"}, "book": {"edition": "0.2.0", "license": "CC BY 4.0", "code_license": "Apache-2.0"}}))
 

@@ -10,7 +10,7 @@ inspectable reports. The shared research SDK compiles the PDF and HTML editions.
 
 **Source edition: 0.2.0.** A version in source, a checked-in reader, or an old
 `ok: true` report is not proof that this edition has been published or freshly
-qualified. Full publication requires the genuinely released SDK **v5.1.0** and
+qualified. Full publication requires the genuinely released SDK **v5.2.0** and
 the exact-source acceptance workflow. See [current state](#current-state-and-next-actions)
 and [citation and DOI](#citation-and-doi) before reusing an artifact.
 
@@ -141,7 +141,7 @@ new edition; neither replaces reviewed publication-output promotion.
 ### 2. Full PDF/HTML workflow — prepared, pinned shared SDK
 
 **Prerequisite:** a genuinely published, non-draft, non-prerelease SDK
-[`v5.1.0`](https://github.com/docxology/template/releases/tag/v5.1.0), plus its
+[`v5.2.0`](https://github.com/docxology/template/releases/tag/v5.2.0), plus its
 native document toolchain. If that release is unavailable, stop this stable
 route; do not substitute floating `main` or relabel a development candidate.
 [Manual candidate verification](#github-actions-and-releases) is a separate,
@@ -160,7 +160,7 @@ The `projects/active/` checkout is local project state, not something to add to
 the SDK's public tracked tree.
 
 ```bash
-git clone --branch v5.1.0 --recurse-submodules   https://github.com/docxology/template.git template
+git clone --branch v5.2.0 --recurse-submodules   https://github.com/docxology/template.git template
 cd template
 git clone https://github.com/docxology/AGEINT.git projects/active/AGEINT
 

@@ -14,7 +14,7 @@ from typing import Any
 import yaml
 
 STABLE_VERSION_RE = re.compile(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)")
-TEMPLATE_PLATFORM_VERSION = "5.1.0"
+TEMPLATE_PLATFORM_VERSION = "5.2.0"
 
 
 @dataclass(frozen=True)

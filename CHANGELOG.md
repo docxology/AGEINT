@@ -45,6 +45,9 @@ metadata or this document alone is not acceptance.
   refresh the configuration example without borrowing publication identifiers.
 - Remove unused compatibility shards and import/wording-only checks while
   preserving canonical source APIs and consumer-visible regressions.
+- Bind release metadata, exact hosted SDK identity checks and reader commands to
+  the shared 5.2.0 release train. Keep publication blocked until its genuine
+  stable release and required acceptance exist; no floating or fabricated SDK.
 - Retire remaining source-prose, status-label and duplicate table assertions;
   retain substantive annotation filtering, citation/table integrity, URL
   escaping, registry shape and independent source-count regressions.

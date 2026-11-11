@@ -19,7 +19,7 @@ def release_project(tmp_path: Path) -> Path:
     (tmp_path / "docs" / "manuscript").mkdir(parents=True)
     (tmp_path / "pyproject.toml").write_text(
         '[project]\nname = "ageint"\nversion = "0.2.0"\n'
-        '[tool.template]\nplatform_version = "5.1.0"\n', encoding="utf-8",
+        '[tool.template]\nplatform_version = "5.2.0"\n', encoding="utf-8",
     )
     (tmp_path / "CITATION.cff").write_text('version: "0.2.0"\n', encoding="utf-8")
     (tmp_path / "docs" / "manuscript" / "config.yaml").write_text(
@@ -86,7 +86,7 @@ def test_missing_or_malformed_metadata_fails_closed(release_project: Path, surfa
 
 def test_sdk_binding_must_match_release_train(release_project: Path) -> None:
     path = release_project / "pyproject.toml"
-    path.write_text(path.read_text().replace('"5.1.0"', '"main"'), encoding="utf-8")
+    path.write_text(path.read_text().replace('"5.2.0"', '"main"'), encoding="utf-8")
     assert collect_release_metadata(release_project).ok is False
 
 

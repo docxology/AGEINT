@@ -28,7 +28,7 @@ complete with a zero exit status.
 The canonical release version is the stable `X.Y.Z` string at
 `pyproject.toml` `[project].version`. `CITATION.cff` `version`,
 `docs/manuscript/config.yaml` `paper.version`, and `book.edition` must match it
-exactly. The SDK binding is `[tool.template].platform_version = "5.1.0"`.
+exactly. The SDK binding is `[tool.template].platform_version = "5.2.0"`.
 The read-only source metadata audit supports both output formats:
 
 ```bash
@@ -42,7 +42,7 @@ version fail with nonzero exit status. This check must pass before a
 publication operation. Without the flag, metadata alignment is still required
 but no externally supplied tag has been checked. The command writes nothing,
 contacts no service, and does not prove that a tag, SDK release, or DOI exists.
-SDK v5.1.0 must independently exist and pass its own acceptance; a floating
+SDK v5.2.0 must independently exist and pass its own acceptance; a floating
 branch is not a substitute. Metadata alignment is not artifact acceptance.
 
 Metadata CLI JSON keys are `project`, `schema_version` (`1.0`), `ok`,

@@ -1019,7 +1019,7 @@ tasks:
     targets. Inspection artifact 13580043282 retains genuine producer bytes but
     does not authorize release. SDK dependency ageint-37 remains outstanding.
 - id: ageint-37
-  title: Integrate and genuinely release the required shared SDK 5.1.0
+  title: Integrate and genuinely release the required shared SDK 5.2.0
   status: in_progress
   start: '2026-11-07'
   end: '2026-11-07'
@@ -1035,7 +1035,7 @@ tasks:
     boundary through the existing shared SDK minor train. Preserve concurrent
     work. Require its actual policy review, publication refresh, measured
     coverage, ordinary main integration and complete exact-main required
-    acceptance before publishing v5.1.0. No historical tags, bypasses, fabricated
+    acceptance before publishing v5.2.0. No historical tags, bypasses, fabricated
     receipts or implied package-index/archive publication are authorized.
 - id: ageint-release-0-2-0
   title: AGEINT 0.2.0 minor release

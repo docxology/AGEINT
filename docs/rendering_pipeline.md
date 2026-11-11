@@ -60,7 +60,7 @@ rules; a registry pass does not establish passage-level entailment.
 ## Shared SDK environment and canonical native renderer
 
 Release rendering requires `docxology/template` at a genuinely published
-`v5.1.0`, not a second Pandoc/XeLaTeX driver in AGEINT. The SDK requires Python 3.14
+`v5.2.0`, not a second Pandoc/XeLaTeX driver in AGEINT. The SDK requires Python 3.14
 or later; AGEINT's separate standalone-core compatibility floor is unchanged.
 Check out or copy public AGEINT into `projects/active/AGEINT` inside the SDK
 root. Keep it a regular directory, not a link outside that root: local asset
@@ -120,7 +120,7 @@ Before the SDK release exists, an explicit manual `manuscript.yml` dispatch may
 select `sdk-candidate=<immutable 40-hex SDK commit>` for development verification.
 It runs the same complete acceptance, never falls back to main, and records the
 actual candidate SHA/version. Candidate evidence cannot authorize publication;
-normal CI, scheduled and release verification require published `v5.1.0`.
+normal CI, scheduled and release verification require published `v5.2.0`.
 
 Manual-only `release.yml` accepts a new `vX.Y.Z` tag, validates it with the
 read-only release-metadata CLI, and runs complete verification again on exact
