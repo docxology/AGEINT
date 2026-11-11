@@ -83,6 +83,9 @@ metadata or this document alone is not acceptance.
   without adding privacy exceptions or rewriting producer evidence.
 - Require complete native Mermaid/PDF/HTML verification, at least 90% coverage,
   all readiness gates and exact-main same-run asset custody for publication.
+- Restrict complete-verification cache tokens to read-only access so selected
+  development SDK code cannot populate shared caches. Preserve stable/candidate
+  separation and every native publication gate.
 - Package a checksummed generated-manuscript/output archive only after aggregate
   readiness succeeds; keep inspection snapshots separate from production promotion.
 - Preserve the four manifested root/slides README and AGENTS documents in both

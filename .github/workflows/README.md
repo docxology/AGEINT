@@ -83,6 +83,18 @@ Normal CI, scheduled and release runs authenticate the published stable SDK
 `v5.1.0` release/tag. Candidate artifacts identify their actual SDK SHA/version
 and cannot be used by `release.yml`.
 
+Complete verification declares GitHub
+[`cache-mode: read`](https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching#controlling-cache-access-with-cache-mode).
+Its job token may restore accessible caches but cannot save one, including when
+an explicit development SDK runs from the default branch. This is a server
+capability restriction, not isolation by cache-key naming. Stable and candidate
+selection, immutable source checks and publication gates remain unchanged.
+
+Actionlint 1.7.12 does not recognize this GitHub key. Keep that diagnostic
+visible; do not remove the restriction or suppress the warning to obtain a
+green local syntax check. Qualify the permission on GitHub with its actual job
+cache mode, a real save attempt and the primary cache API.
+
 `CITATION.cff` uses the [official CFF 1.2.0 schema](https://citation-file-format.github.io/1.2.0/schema.json).
 Its `cff-version` is the format version, not AGEINT's separate `version`.
 Keep both licenses and the concept DOI. The source metadata CLI checks release

@@ -30,6 +30,9 @@ on:
 permissions:
   contents: read
 
+# Source-selected SDK code cannot populate caches used by trusted runs.
+cache-mode: read
+
 env:
   MPLBACKEND: Agg
   AGEINT_REQUIRE_RENDERED_FIGURES: "1"
