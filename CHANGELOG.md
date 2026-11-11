@@ -48,6 +48,25 @@ metadata or this document alone is not acceptance.
 - Bind release metadata, exact hosted SDK identity checks and reader commands to
   the shared 5.2.0 release train. Keep publication blocked until its genuine
   stable release and required acceptance exist; no floating or fabricated SDK.
+- Complete the 2026-11-10 Workflowz review without adding a second task format:
+  retain the already-blocking strict manuscript build and its fresh-output-only
+  handoff, rather than restoring stale committed outputs after failure.
+- Let the scheduled source-refresh workflow publish a valid not-ok audit report
+  after the CLI's expected exit 1. Reject malformed, unsupported or inconsistent
+  JSON and operational failures; preserve the original report, audit API,
+  baseline comparison and existing-issue deduplication.
+- Fail closed when either required agency/research source-pack YAML is missing,
+  empty or malformed; preserve native missing-path diagnostics, key/route
+  validation and the optional concept-route supplement. Exercise real required
+  input failures and isolated optional-supplement routing.
+- Pin the primary runtime and current CI leg to Python 3.15.2 while retaining
+  Python 3.11/3.12 compatibility and the existing dependency lock. Verify the
+  existing qualified environment through real `uv run --no-sync`, without
+  replacing a runtime or declaring full SDK/book acceptance.
+- Retire the contract-map heading/count/copy assertion that incorrectly expected
+  preserved legacy outputs to satisfy current build sentinels. The actual
+  orchestration CLI still refuses the missing current citation-coverage output;
+  only a genuine current build can satisfy that publication prerequisite.
 - Retire remaining source-prose, status-label and duplicate table assertions;
   retain substantive annotation filtering, citation/table integrity, URL
   escaping, registry shape and independent source-count regressions.

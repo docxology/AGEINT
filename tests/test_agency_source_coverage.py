@@ -133,6 +133,7 @@ def test_agency_source_coverage_fails_missing_source_pack_negative_control(tmp_p
     }
     (data_dir / "intelligence-anchors-249-304.jsonl").write_text(json.dumps(row) + "\n", encoding="utf-8")
     (tmp_path / "data" / "agency_source_packs.yaml").write_text("packs:\n  fixture_pack:\n    - official_fixture_us_ic\n", encoding="utf-8")
+    (tmp_path / "data" / "research_source_packs.yaml").write_text("packs:\n  fixture_research_pack:\n    - official_fixture_us_ic\n", encoding="utf-8")
 
     report = collect_agency_source_coverage(tmp_path)
 
