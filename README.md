@@ -270,11 +270,10 @@ The hosted lane follows the same post-writer native validation and packages
 only unchanged validated bytes. See its
 [full acceptance order](.github/workflows/manuscript.yml).
 
-The readiness command runs the **actual parent guard**. A missing, failed,
-timed-out, or skipped guard blocks readiness. `--skip-parent-guard` is
-informational and cannot produce passing acceptance. `ok` is local preflight
-evidence, not proof of source entailment, learning gains, legal compliance,
-production safety, hosted acceptance, a Git tag, or a DOI deposit.
+The readiness command runs the **actual parent guard**. A missing, failed, timed-out, or skipped guard blocks readiness.
+`--skip-parent-guard` is informational and cannot produce passing acceptance. `ok` is local preflight evidence, not
+proof of source entailment, learning gains, legal compliance, production safety, hosted acceptance, a Git tag, or a DOI
+deposit.
 
 ### Focused refreshes and reproducible clocks
 
@@ -289,11 +288,10 @@ python scripts/audit_artifact_evidence.py --format json
 python scripts/audit_source_refresh_due.py --format json
 ```
 
-`SOURCE_DATE_EPOCH` pins the UTC build instant for byte-comparable generation.
-Reuse the producer's epoch when reproducing its evidence; do not backdate a run
-to hide overdue source reviews. Invalid/negative epochs fail. A deterministic
-clock does not mean every source was freshly retrieved. Review-date audits
-inspect metadata, not live URLs or the truth of a claim.
+`SOURCE_DATE_EPOCH` pins the UTC build instant for byte-comparable generation. Reuse the producer's epoch when
+reproducing its evidence; do not backdate a run to hide overdue source reviews. Invalid/negative epochs fail. A
+deterministic clock does not mean every source was freshly retrieved. Review-date audits inspect metadata, not live URLs
+or the truth of a claim.
 
 `--regenerate-source-template-library` (also `--regenerate-source-templates`)
 on `build_curriculum.py` deliberately resets the neutral authored template
@@ -339,17 +337,15 @@ gh run download "$AGEINT_RUN_ID" --repo docxology/AGEINT --dir verified
 (cd verified/verified-ageint-* && shasum -a 256 --check SHA256SUMS)
 ```
 
-Only a successful `verified-ageint-<source>-<run-id>-<attempt>` handoff is
-acceptance evidence. `ageint-inspection-only-*` explicitly says
-`acceptance: false`; `ageint-diagnostics-only-*` retains failure evidence.
-Neither can replace the verified artifact. Actions artifacts are retained for
-14 days; do not confuse that operational retention with archival publication.
+Only a successful `verified-ageint-<source>-<run-id>-<attempt>` handoff is acceptance evidence.
+`ageint-inspection-only-*` explicitly says `acceptance: false`; `ageint-diagnostics-only-*` retains failure evidence.
+Neither can replace the verified artifact. Actions artifacts are retained for 14 days; do not confuse that operational
+retention with archival publication.
 
-The verified handoff contains `AGEINT.pdf`, `AGEINT-reader.zip`,
-`AGEINT-evidence.zip`, `AGEINT-generated.tar.gz`, `source-sdk.json`, and
-`SHA256SUMS`. Check all hashes and the exact AGEINT/SDK/run/attempt identity
-before reuse or reviewed generated-output promotion. Preserve local edits and
-original reports; never replace them with an inspection snapshot to imply success.
+The verified handoff contains `AGEINT.pdf`, `AGEINT-reader.zip`, `AGEINT-evidence.zip`, `AGEINT-generated.tar.gz`,
+`source-sdk.json`, and `SHA256SUMS`. Check all hashes and the exact AGEINT/SDK/run/attempt identity before reuse or
+reviewed generated-output promotion. Preserve local edits and original reports; never replace them with an inspection
+snapshot to imply success.
 
 ### Maintainer publication only
 
@@ -363,12 +359,10 @@ publication must be authorized. Do **not** pre-create the tag:
 gh workflow run release.yml --repo docxology/AGEINT --ref main -f tag=v0.2.0
 ```
 
-Release reruns complete acceptance rather than trusting a previous green run,
-rechecks current `main` and stable SDK identity, and verifies same-run asset
-hashes. Existing tags/releases are refused, not moved or overwritten. A partial
-publication can leave a tag; do not delete or move it to force a retry. A
-configured archive integration may have separate consequences and approvals.
-Source metadata and this README do not authorize a new deposit or mint a DOI.
+Release reruns complete acceptance rather than trusting a previous green run, rechecks current `main` and stable SDK
+identity, and verifies same-run asset hashes. Existing tags/releases are refused, not moved or overwritten. A partial
+publication can leave a tag; do not delete or move it to force a retry. A configured archive integration may have
+separate consequences and approvals. Source metadata and this README do not authorize a new deposit or mint a DOI.
 
 ## Source
 
@@ -381,12 +375,10 @@ Source metadata and this README do not authorize a new deposit or mint a DOI.
 | Build/audit behavior | `src/` business logic; thin wrappers in `scripts/` | Update behavioral consumers and [orchestration contracts](docs/orchestration_contract.md) |
 | Version and publication | `pyproject.toml`, `CITATION.cff`, manuscript/book config, `tasks.yaml` | Version-derived prerequisites and exact-source release workflow |
 
-When present, `SIST-Guide-TOC-and-Bibliography-v2.md` is an optional historical
-input. Normal builds use curriculum shards without restoring that file. Do not
-reintroduce numbered authored chapters under `docs/manuscript/` or hand-edit
-`output/manuscript/`: source templates and manifest/content modules own it.
-Use Pandoc citation/cross-reference labels rather than hard-coded figure,
-section, or equation numbers. [Syntax guide](docs/syntax_guide.md).
+When present, `SIST-Guide-TOC-and-Bibliography-v2.md` is an optional historical input. Normal builds use curriculum
+shards without restoring that file. Do not reintroduce numbered authored chapters under `docs/manuscript/` or hand-edit
+`output/manuscript/`: source templates and manifest/content modules own it. Use Pandoc citation/cross-reference labels
+rather than hard-coded figure, section, or equation numbers. [Syntax guide](docs/syntax_guide.md).
 
 ## Architecture
 
@@ -422,11 +414,10 @@ remain evidence with specific identities, not primary authoring surfaces.
 | `output/reports/publication_readiness.{json,md}` | Evaluated local preflight gates, not publication authority |
 | Matching GitHub verification/release | Exact-source hosted acceptance and actual publication records |
 
-Do not duplicate open work in another task format or infer that a taskboard
-server is connected merely because a YAML header names it. Inspect report
-identity, source freshness, guard execution, and unmet prerequisites—not just
-`ok`. Checked-in historical reports may predate the current contract; an old
-successful candidate or release milestone cannot qualify today's source.
+Do not duplicate open work in another task format or infer that a taskboard server is connected merely because a YAML
+header names it. Inspect report identity, source freshness, guard execution, and unmet prerequisites—not just `ok`.
+Checked-in historical reports may predate the current contract; an old successful candidate or release milestone cannot
+qualify today's source.
 
 ## Troubleshooting
 
@@ -502,6 +493,6 @@ accountability boundaries.
 
 ## Dated research notes
 
-Original [source and curriculum chronology](docs/research_history.md) is preserved
-separately so this workflow guide stays bounded. Dated counts and verification
-wording are historical, not current acceptance or a fresh review of every source.
+Original [source and curriculum chronology](docs/research_history.md) is preserved separately so this workflow guide
+stays bounded. Dated counts and verification wording are historical, not current acceptance or a fresh review of every
+source.

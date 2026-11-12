@@ -36,6 +36,9 @@ metadata or this document alone is not acceptance.
   moving its original dated chronology verbatim to a linked research-history
   record. Retire the wording-only README/citation-doc assertion; preserve
   generated reference resolution, reader navigation and publication gates.
+- Preserve incoming Main badges, hero and complete workflow content while
+  reflowing soft-wrapped README prose below the unchanged file-size budget.
+  Keep every command, link and publication boundary; do not regenerate outputs.
 - Align the local audit runbook with hosted finalization: reseal the real SDK
   output inventory after saved reports, then recheck readiness without writes.
 
