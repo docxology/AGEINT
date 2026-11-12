@@ -1,5 +1,16 @@
 # AGEINT — Agentic Intelligence Curriculum
 
+<p align="center">
+  <a href="https://github.com/docxology/AGEINT/actions/workflows/ci.yml"><img alt="ci.yml workflow status on main" src="https://github.com/docxology/AGEINT/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <a href="https://doi.org/10.5281/zenodo.20732274"><img alt="Digital Object Identifier (DOI), concept record: 10.5281/zenodo.20732274" src="https://zenodo.org/badge/DOI/10.5281/zenodo.20732274.svg"></a>
+  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
+  <img alt="Requires Python 3.11 or newer" src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white">
+</p>
+
+<p align="center">
+  <img src="output/figures/python/ageint-graphical-abstract.png" alt="AGEINT Synthetic Tradecraft System Atlas. Bounded agentic assistance (retrieve, reason, tool, memory, handoff) feeds a central synthetic analytic tradecraft core, surrounded by collection and assurance domains such as HUMINT, SIGINT, OSINT, GEOINT, FININT, cyber, cognitive security and governance. Outputs pass a human review gate to products, halts, citations, figures, PDF, metadata and red-team checks, all resting on a source spine and evidence floor." width="560">
+</p>
+
 AGEINT is a modular curriculum for Agentic Intelligence: atlas, library, course,
 textbook, cookbook, and playbook. It converts a source guide into a semantic
 manuscript, registry-backed figures, generated BibTeX, and auditable runtime
