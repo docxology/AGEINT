@@ -92,7 +92,7 @@ DIRECT_SUPPORT_REQUIRED_RE = re.compile(
     r"\b("
     r"statistically significant|p[- ]?value|measured performance|"
     r"operational performance|validated capability|capability improvement|"
-    r"learning gains?|benchmark(?:ed|ing)?"
+    r"learning gains?|benchmarked|benchmarking"
     r")\b",
     re.IGNORECASE,
 )
@@ -140,6 +140,23 @@ NEGATED_HIGH_RISK_BOUNDARY_RE = re.compile(
     r")\b",
     re.IGNORECASE,
 )
+RISK_LANGUAGE_RE = re.compile(f"(?:{HARD_FAIL_RE.pattern})|(?:{DIRECT_SUPPORT_REQUIRED_RE.pattern})", re.IGNORECASE)
+RISK_CLAUSE_START_RE = re.compile(r"[.!?;|\n]|\b(?:and|but|however|yet|while|because|therefore|thus)\b|,\s+(?=(?:it|this|that|we|they|the|a|an)\b)", re.IGNORECASE)
+NEGATED_RISK_PREFIX_RE = re.compile(
+    r"\b(?:cannot|neither|none|never|without|not(?!\s+only)|no(?!\s+(?:less|fewer|more|matter|doubt)))\b"
+    r"|\b\w+n['’]t\b|\b(?:reject(?:s|ed|ing)?|avoid(?:s|ed|ing)?|rather than|instead of|against treating)\b"
+    r"|\bdistinguish(?:ed|es|ing)?\b[^.;|]*\bfrom\b|^\s*stop\s+(?:(?:any|the|this|a)\s+)?(?:claim|inference|assumption)s?\b",
+    re.IGNORECASE,
+)
+BOUNDARY_SPAN_RE = re.compile("|".join(re.escape(phrase) for phrase in BOUNDARY_PHRASES), re.IGNORECASE)
+QUOTED_CLAIM_RE = re.compile(r"""(?<!\w)(?P<quote>['"`])(?P<content>.*?)(?P=quote)(?!\w)""")
+REPORTED_CLAIM_PREFIX_RE = re.compile(r"\b(?:claims?|claiming|claimed|says?|writes?|wrote|asserts?|asserting|drafts?)\s*[:=]?\s*$", re.IGNORECASE)
+MISCONCEPTION_CLAIM_RE = re.compile(
+    r"\b(?:correct|test)\s+(?:the|this|a)\s+misconception(?:\s+about\s+\*\*.*?\*\*)?"
+    r"(?:(?![.!?;|\n]|\b(?:but|however|yet|therefore|thus)\b).)*",
+    re.IGNORECASE,
+)
+CLAIM_LIST_START_RE = re.compile(r"^(?:[-+*]|\d+[.)])\s+")
 
 
 @dataclass(frozen=True)
@@ -265,17 +282,38 @@ def render_claim_calibration_markdown(report: ClaimCalibrationReport) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _claim_text_blocks(path: Path):
+    """Keep Markdown soft wraps together without joining distinct list/table rows."""
+    paragraph: list[str] = []
+    first_line = 0
+    in_fence = False
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        text = line.strip()
+        fence = text.startswith("```")
+        boundary = not text or fence or not _candidate_text_line(text)
+        standalone = text.startswith("|") or bool(CLAIM_LIST_START_RE.match(text))
+        if paragraph and (boundary or standalone):
+            yield first_line, " ".join(paragraph)
+            paragraph = []
+        if fence:
+            in_fence = not in_fence
+            continue
+        if in_fence or boundary:
+            continue
+        if text.startswith("|"):
+            yield line_number, text
+        else:
+            if not paragraph:
+                first_line = line_number
+            paragraph.append(text)
+    if paragraph:
+        yield first_line, " ".join(paragraph)
+
+
 def _scan_claim_rows(manuscript_dir: Path, project_root: Path) -> list[ClaimCalibrationRow]:
     rows: list[ClaimCalibrationRow] = []
     for path in _iter_markdown(manuscript_dir):
-        in_fence = False
-        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
-            stripped = line.strip()
-            if stripped.startswith("```"):
-                in_fence = not in_fence
-                continue
-            if in_fence or not _candidate_text_line(stripped):
-                continue
+        for line_number, stripped in _claim_text_blocks(path):
             claim_class, matched_terms = _claim_class(stripped)
             if not claim_class:
                 continue
@@ -327,16 +365,26 @@ def _claim_class(text: str) -> tuple[str, tuple[str, ...]]:
 
 
 def _disposition(text: str, claim_class: str, citation_keys: tuple[str, ...], profiles: tuple[SourceSupportProfile, ...]) -> tuple[str, str]:
-    lowered = text.lower()
-    if _boundary_language(lowered):
-        return ("boundary_allowed", "explicit boundary language keeps the claim calibrated")
+    risks = tuple(RISK_LANGUAGE_RE.finditer(text))
+    asserted = []
+    reported = False
+    for risk in risks:
+        if _risk_is_boundary(text, risk):
+            continue
+        if _risk_is_reported_or_conditional(text, risk):
+            reported = True
+        else:
+            asserted.append(risk.group())
     has_primary = any(profile.primary_support for profile in profiles)
+    if asserted and not has_primary:
+        prefix = "Narrow the empirical/statistical claim" if any(DIRECT_SUPPORT_REQUIRED_RE.search(term) for term in asserted) else "Replace proof language or add direct support"
+        return "fail", _direct_support_hint(prefix)
+    if not asserted and reported:
+        return "review", "review attributed or conditional claim language; it is not an endorsed empirical result"
+    if not asserted and (risks or _boundary_language(text.lower())):
+        return "boundary_allowed", "scoped boundary language does not endorse a proof or performance claim"
     if claim_class == "formalism_or_statistical_expression" and not citation_keys:
         return "fail", _direct_support_hint("Add a citation and limitation language")
-    if DIRECT_SUPPORT_REQUIRED_RE.search(text) and not has_primary:
-        return "fail", _direct_support_hint("Narrow the empirical/statistical claim")
-    if HARD_FAIL_RE.search(text) and not has_primary:
-        return "fail", _direct_support_hint("Replace proof language or add direct support")
     if claim_class in {"governance_or_rights", "safety_or_assurance"} and citation_keys and not has_primary:
         return ("review", "review weak-context-only support before treating this as a governing constraint")
     if not citation_keys and claim_class == "empirical_or_evaluation":
@@ -344,6 +392,29 @@ def _disposition(text: str, claim_class: str, citation_keys: tuple[str, ...], pr
     if not citation_keys and claim_class in {"governance_or_rights", "safety_or_assurance"}:
         return ("review", "review governance or safety vocabulary before treating it as an authority-backed claim")
     return "pass", "claim language has citation support or remains bounded"
+
+
+def _risk_is_boundary(text: str, risk: re.Match[str]) -> bool:
+    """Apply negation to this occurrence, never waive a neighboring assertion."""
+    prefix = RISK_CLAUSE_START_RE.split(text[:risk.start()])[-1]
+    if NEGATED_RISK_PREFIX_RE.search(prefix) or re.match(r"\s+neither\b", text[risk.end():], re.IGNORECASE):
+        return True
+    return any(span.start() <= risk.start() and risk.end() <= span.end() for span in BOUNDARY_SPAN_RE.finditer(text))
+
+
+def _risk_is_reported_or_conditional(text: str, risk: re.Match[str]) -> bool:
+    if any(span.start() <= risk.start() and risk.end() <= span.end() for span in MISCONCEPTION_CLAIM_RE.finditer(text)):
+        return True
+    for quote in QUOTED_CLAIM_RE.finditer(text):
+        if quote.start() < risk.start() < quote.end() and REPORTED_CLAIM_PREFIX_RE.search(text[:quote.start()]):
+            return True
+    prefix = RISK_CLAUSE_START_RE.split(text[:risk.start()])[-1].strip()
+    tail = re.split(r"[.!?;|\n]", text[risk.end():], maxsplit=1)[0]
+    if re.search(r"\b(?:treating|assuming|claiming)\b", prefix, re.IGNORECASE) and re.search(r"\bwould otherwise\b", tail, re.IGNORECASE):
+        return True
+    # A predicative if-clause mentions a condition, not an observed result.
+    # Any asserted consequent is assessed separately, including in the same row.
+    return bool(re.match(r"if\b", prefix, re.IGNORECASE) and re.match(r"\s+(?:to\s+be\s+)?[A-Za-z-]+\s*,", text[risk.end():]))
 
 
 def _direct_support_hint(prefix: str) -> str:

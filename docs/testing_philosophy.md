@@ -4,9 +4,17 @@
 
 Tests use real curriculum shards, real builds, temp directories, and subprocess script smoke tests. Do not use `unittest.mock`, `MagicMock`, or `mocker.patch`. Environment isolation via pytest `monkeypatch.delenv` is limited to template-resolver branch tests.
 
-## Session build fixture: shared rebuilt output for manuscript tests
+## Read-only published-output fixture
 
-`tests/conftest.py` defines `built_output` (session scope). It runs `run_build()` once when `output/manuscript/` or `output/figures/figure_registry.json` is missing. Integration tests depend on this generated tree.
+`tests/conftest.py` defines session-scoped `built_output`, which returns the
+existing `output/` tree without invoking a builder. Missing artifacts and stale
+publication evidence must remain visible to their real guards; discovering an
+SDK does not authorize a test to repair the publication it is validating.
+
+Generate a new edition explicitly in a development or fresh acceptance checkout
+using the [build and verification recipes](../README.md#commands), then run the
+complete suite in the same prepared SDK environment. Preserve an original
+checked-in publication failure before rebuilding; generation is not promotion.
 
 ## Test categories: source identity, safety, figures, prose, and readiness
 
@@ -15,7 +23,7 @@ Tests use real curriculum shards, real builds, temp directories, and subprocess 
 | Curriculum shards | `test_curriculum.py`, `test_sharded_data_integrity.py` |
 | Source identity | `test_source_identity.py` |
 | Manuscript manifest | `test_manuscript_manifest.py`, `test_manuscript_inventory_*.py` |
-| Reader quality | `test_reader_quality.py`, `test_topic_content_quality.py` |
+| Reader output | `test_pdf_quality.py`, real PDF page inspection, and canonical HTML browser smoke |
 | Safety | `test_manuscript_safety_docs.py` |
 | Cross-refs | `test_manuscript_crossrefs.py` |
 | Artifact evidence | `test_artifact_evidence.py`, `test_pdf_quality.py`, `test_figure_quality_audit.py` |
@@ -25,6 +33,12 @@ Tests use real curriculum shards, real builds, temp directories, and subprocess 
 ## Coverage gate: per-project 90 percent source coverage
 
 90% minimum on `src/` (`pyproject.toml` `fail_under = 90`). Combined multi-project pytest union is skipped via `[tool.template] skip_combined_pytest = true` because the full build is expensive.
+
+Do not pin manuscript wording, full copied paragraphs, incidental live counts,
+or historical review dates. Keep tests for source identity, parser boundaries,
+precedence, transitions, errors, and native-format behavior. A fictional-case
+label is an honest disclosure, not evidence of unfinished prose. External source
+section locators are not hard-coded navigation within this book.
 
 ## Verifier-first evidence: audit artifacts and negative controls before polish
 

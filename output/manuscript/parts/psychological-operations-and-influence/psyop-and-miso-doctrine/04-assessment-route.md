@@ -1,10 +1,10 @@
 ### PSYOP and MISO Doctrine assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-psyop-and-miso-doctrine]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-psyop-and-miso-doctrine].
 
 ### PSYOP and MISO Doctrine assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-psyop-and-miso-doctrine]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-psyop-and-miso-doctrine].
 
 #### PSYOP and MISO Doctrine capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Cognitive influence-analysis case review
 
 #### PSYOP and MISO Doctrine assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Cognitive influence-analysis case review using sample materials** | Completed **narrative-risk map with provenance, uncertainty, audience harms, and response options** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Military Information Support Operations (MISO): JP 3-13.2** | Completed **narrative-risk map with provenance, uncertainty, audience harms, and response options** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Tactical PSYOP TTP: Cognitive influence-analysis case review using sample materials** | Completed **narrative-risk map with provenance, uncertainty, audience harms, and response options** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Cognitive influence-analysis case review using sample materials**; **Military Information Support Operations (MISO): JP 3-13.2**; **Tactical PSYOP TTP: Cognitive influence-analysis case review using sample materials** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: distinguish observation, attribution, impact assessment, and resilience response. |
+| **FM 3-05 301: Cognitive influence-analysis case review using sample materials**; **Historical audience analysis: protection and evidentiary limits**; **PSYOP in Full-Spectrum Operations: Cognitive influence-analysis case review using sample materials** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Historical media products: accessibility and transparent correction** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude manipulation scripts, impersonation, persuasion targeting, and operational influence planning. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Cognitive influence-analysis case review using sample materials; Military Information Support Operations: JP 3-13.2** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Cognitive influence-analysis case review using sample materials; Military Information Support Operations: JP 3-13.2**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### PSYOP and MISO Doctrine refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint238]; [@ageint239].
 
-**Triangulation anchors.** In module 18's review-checklist section, directly verified anchors for the **Cognitive Security and Influence Resilience** lane include [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 18's review-checklist section, the **Cognitive Security and Influence Resilience** catalog routes include [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Cognitive influence-analysis case review using sample materials; Military Information Support Operations: JP 3-13.2**. [@ageint238]; [@ageint239].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

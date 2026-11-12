@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,79 +182,502 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="cyber-physical-readiness-lens-path-for-mitre-attck-for-ics-lesson-cluster-safe-artifact-and-review">Cyber-Physical
 Readiness Lens path for MITRE ATT&amp;CK for ICS: lesson cluster, safe
 artifact, and review</h2>
-<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
-[ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-mitre-att-ck-for-ics">[@sec:chapter-mitre-att-ck-for-ics]</span>.</p>
 <h3
 id="mitre-attck-for-ics-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">MITRE
 ATT&amp;CK for ICS practice studio: topic lessons, safe worked example,
 and knowledge check</h3>
-<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
-[ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-mitre-att-ck-for-ics">[@sec:chapter-mitre-att-ck-for-ics]</span>.</p>
 <h3
 id="mitre-attck-for-ics-topic-lessons-source-backed-concepts-and-transfer-tasks">MITRE
 ATT&amp;CK for ICS topic lessons: source-backed concepts and transfer
 tasks</h3>
-<p>This module builds ICS/OT intelligence as safety-aware defensive
-reasoning: asset state, engineering consequence, operator decision, and
-recovery evidence matter as much as cyber indicators. The sequence opens
-with <strong>ICS Matrix: 12 Tactics, Full Technique Library</strong>,
-<strong>Cyber access-and-execution taxonomy review using fabricated
-alerts</strong>, <strong>ICS controller-change coverage review using
-synthetic process records</strong> and applies the
-<strong>Cyber-Physical Readiness Lens</strong> practice frame through
-concept, evidence, artifact, misconception, and transfer tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-industrial-and-cyber-physical-intelligence-module-map]; module
-overview [sec:chapter-mitre-att-ck-for-ics]; curriculum atlas
-[sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 46’s topic-lessons
-section, directly verified anchors for the <strong>ICS/OT Cyber-Physical
-Defense and Tabletop Readiness</strong> lane include
+<p><strong>MITRE ATT&amp;CK for ICS</strong> builds ICS/OT intelligence
+as safety-aware defensive reasoning: asset state, engineering
+consequence, operator decision, and recovery evidence matter as much as
+cyber indicators. The sequence opens with <strong>ICS Matrix: Versioned
+Tactics and Technique Knowledge Base</strong>, <strong>Cyber
+access-and-execution taxonomy review using fabricated alerts</strong>,
+<strong>Execution: Tasking Changes and Versioned Interpreter
+Categories</strong> and applies the <strong>Cyber-Physical Readiness
+Lens</strong> practice frame through concept, evidence, artifact,
+misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-industrial-and-cyber-physical-intelligence-module-map">[@fig:part-industrial-and-cyber-physical-intelligence-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-mitre-att-ck-for-ics">[@sec:chapter-mitre-att-ck-for-ics]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 46’s
+topic-lessons section, the <strong>ICS/OT Cyber-Physical Defense and
+Tabletop Readiness</strong> catalog routes include
 [official_nist_csf_2]; [official_nist_sp_800_160r1];
-[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<h4 id="lesson-1-ics-matrix-12-tactics-full-technique-library">Lesson 1:
-ICS Matrix: 12 Tactics, Full Technique Library</h4>
-<p><strong>Concept.</strong> <strong>ICS Matrix: 12 Tactics, Full
-Technique Library</strong> applies ICS, Matrix, Tactics within ICS/OT
-Cyber-Physical Defense and Tabletop Readiness: learners use separate
-cyber analysis from unsafe process control or live operational action
-and safety-aware tabletop readiness and defensive coverage review
-evidence before any judgment moves forward.</p>
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<h4
+id="lesson-1-ics-matrix-versioned-tactics-and-technique-knowledge-base">Lesson
+1: ICS Matrix: Versioned Tactics and Technique Knowledge Base</h4>
+<p><strong>Concept.</strong> <strong>ICS Matrix: Versioned Tactics and
+Technique Knowledge Base</strong> is taught in the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> lane. The
+analytic distinction is to separate cyber analysis from unsafe process
+control or live operational action. Apply it to the supplied evidence; a
+topic label alone establishes neither a mechanism nor a conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> ATT&amp;CK for ICS
+organizes documented adversary behaviors by tactical objective; it is
+neither an exhaustive catalog of possible behavior nor a mandatory
+attack sequence [ageint213]. This walkthrough is a selected subset: the
+inspected v20 matrix (6 November 2026; version permalink
+https://attack.mitre.org/versions/v20/matrices/ics/) has twelve tactics,
+including Privilege Escalation, concerning higher-level permissions, and
+Command and Control, concerning communication with compromised systems,
+which the inherited subsections do not separately enumerate. Neither an
+administrative permission nor an ordinary communication alone proves
+those adversary objectives. Record version and technique identity for
+each mapping: counts and names can change, and a colored matrix cell is
+not evidence of local detection or prevention.</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>ICS Matrix: 12 Tactics, Full Technique Library</strong>,
-IT-first assumptions undermines safety-aware tabletop readiness and
-defensive coverage review; the lesson builds the habit to separate cyber
-analysis from unsafe process control or live operational action.</p>
-<p><strong>Source support.</strong> <strong>ICS Matrix: 12 Tactics, Full
-Technique Library</strong> rests on [ageint213]. The lead source’s own
-note reads: The matrix organizes methods into twelve tactical categories
-spanning initial access through impact, including ICS-specific concerns
-such as firmware modification and disruption of operational technology.
-Use it for pinning down the scope of <strong>ICS Matrix: 12 Tactics,
-Full Technique Library</strong>, the edge of that scope, and when these
-citations need re-verifying before transfer. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>ICS Matrix: 12
-Tactics, Full Technique Library</strong> against the works cited for
-this row. [ageint213] The Industrial Control Systems (ICS) domain of the
-MITRE ATT&amp;CK framework, a knowledge base documenting adversary
-behaviors based on real-world observations of attacks on critical
-infrastructure. The matrix organizes methods into twelve tactical
-categories spanning initial access through impact, including
-ICS-specific concerns such as firmware modification and disruption of
-operational technology. Read each cited work for what it can support
-about this topic, where that claim originated, how confident it is, and
-what evidence would change it.</p>
+<strong>ICS Matrix: Versioned Tactics and Technique Knowledge
+Base</strong>, IT-first assumptions undermines safety-aware tabletop
+readiness and defensive coverage review; the lesson builds the habit to
+separate cyber analysis from unsafe process control or live operational
+action.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>ICS Matrix: Versioned Tactics and Technique Knowledge
+Base</strong>: [ageint213]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>ICS Matrix:
+Versioned Tactics and Technique Knowledge Base</strong>, inspect the
+original passages. Curriculum annotation for [ageint213]: The Industrial
+Control Systems (ICS) domain of the MITRE ATT&amp;CK framework, a
+knowledge base documenting adversary behaviors based on real-world
+observations of attacks on critical infrastructure. The matrix organizes
+methods into twelve tactical categories spanning initial access through
+impact, including ICS-specific concerns such as firmware modification
+and disruption of operational technology. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>ICS Matrix</strong>,
 build a <strong>tabletop packet with OT asset inventory, architecture
 record, consequences, injects, and debrief rubric</strong> for this
@@ -255,18 +685,19 @@ safety-aware tabletop readiness and defensive coverage review topic. The
 artifact must name the source descriptor, the bounded claim about
 <strong>ICS Matrix</strong>, the caveat that limits it, the uncertainty
 note, the out-of-scope-use boundary, and the reviewer accountable for
-challenge. Shape <strong>ICS Matrix: 12 Tactics, Full Technique
-Library</strong> work as a <strong>cyber-physical tabletop evidence
-packet</strong> that logs the evidence, the uncertainty, the responsible
-reviewer, and the halt condition.</p>
+challenge. Shape <strong>ICS Matrix: Versioned Tactics and Technique
+Knowledge Base</strong> work as a <strong>cyber-physical tabletop
+evidence packet</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-ICS Matrix: 12 Tactics, Full Technique Library is optional whenever
-separate cyber analysis from unsafe process control or live operational
-action feels inconvenient.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>ICS Matrix: 12
-Tactics, Full Technique Library</strong> to a second module by
-preserving safety-aware tabletop readiness and defensive coverage
-review, changing the source evidence, and naming a new reviewer.</p>
+ICS Matrix: Versioned Tactics and Technique Knowledge Base is optional
+whenever separate cyber analysis from unsafe process control or live
+operational action feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>ICS Matrix:
+Versioned Tactics and Technique Knowledge Base</strong> to a second
+module by preserving safety-aware tabletop readiness and defensive
+coverage review, changing the source evidence, and naming a new
+reviewer.</p>
 <h4
 id="lesson-2-cyber-access-and-execution-taxonomy-review-using-fabricated-alerts">Lesson
 2: Cyber access-and-execution taxonomy review using fabricated
@@ -275,32 +706,40 @@ alerts</h4>
 review using fabricated alerts</strong> uses the taxonomy label to
 organize fabricated defensive observations, confidence, and control
 implications without describing adversary execution.</p>
+<p><strong>Worked reasoning and limits.</strong> Initial Access
+describes gaining a foothold, not every use of remote access
+[ageint213]. A fictional paper record showing a remote session is
+compatible with ordinary maintenance; without authorization context it
+supports only a session observation, not a compromise finding. The
+inherited count belongs to a matrix snapshot, not a permanent curriculum
+invariant; no live access or discovery is part of this lesson.</p>
 <p><strong>Why it matters.</strong> <strong>Cyber access-and-execution
-taxonomy review</strong> connects classroom vocabulary to ICS/OT
-Cyber-Physical Defense and Tabletop Readiness practice: learners
-document evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>Cyber access-and-execution
-taxonomy review using fabricated alerts</strong> rests on [ageint213].
-The most specific cited work observes: The Industrial Control Systems
-(ICS) domain of the MITRE ATT&amp;CK framework, a knowledge base
-documenting adversary behaviors based on real-world observations of
-attacks on critical infrastructure. Use it for fixing what <strong>Cyber
-access-and-execution taxonomy review using fabricated alerts</strong>
-covers, marking the boundary it must not cross, and timing the next
-source refresh. External triangulation uses [official_nist_csf_2];
-[official_nist_sp_800_160r1].</p>
+taxonomy review</strong> matters in the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane because safety-aware
+tabletop readiness and defensive coverage evidence must stay separate
+from judgment; treating defensive taxonomy labels as an action sequence
+is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Cyber access-and-execution taxonomy review using fabricated
+alerts</strong>: [ageint213]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Cyber
-access-and-execution taxonomy review</strong>, reason from the sources
-cited in this row. [ageint213] The Industrial Control Systems (ICS)
-domain of the MITRE ATT&amp;CK framework, a knowledge base documenting
-adversary behaviors based on real-world observations of attacks on
-critical infrastructure. The matrix organizes methods into twelve
-tactical categories spanning initial access through impact, including
-ICS-specific concerns such as firmware modification and disruption of
-operational technology. Read each cited work for what it can support
-about this topic, where that claim originated, how confident it is, and
-what evidence would change it.</p>
+access-and-execution taxonomy review</strong>, inspect the original
+passages. Curriculum annotation for [ageint213]: The Industrial Control
+Systems (ICS) domain of the MITRE ATT&amp;CK framework, a knowledge base
+documenting adversary behaviors based on real-world observations of
+attacks on critical infrastructure. The matrix organizes methods into
+twelve tactical categories spanning initial access through impact,
+including ICS-specific concerns such as firmware modification and
+disruption of operational technology. These editorial descriptions are
+not source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Cyber
 access-and-execution taxonomy review</strong>, build a <strong>tabletop
 packet with OT asset inventory, architecture record, consequences,
@@ -322,90 +761,106 @@ access-and-execution taxonomy review</strong> audit pattern from this
 module on a different sample record set with a new reviewer and
 blocked-use note.</p>
 <h4
-id="lesson-3-ics-controller-change-coverage-review-using-synthetic-process-records">Lesson
-3: ICS controller-change coverage review using synthetic process
-records</h4>
-<p><strong>Concept.</strong> <strong>ICS controller-change coverage
-review using synthetic process records</strong> maps requirements to
+id="lesson-3-execution-tasking-changes-and-versioned-interpreter-categories">Lesson
+3: Execution: Tasking Changes and Versioned Interpreter Categories</h4>
+<p><strong>Concept.</strong> <strong>Execution: Tasking Changes and
+Versioned Interpreter Categories</strong> maps requirements to
 collection gaps, priorities, and reviewer sign-off.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>ICS
-controller-change coverage review</strong> to separate cyber analysis
-from unsafe process control or live operational action. A defensible
-treatment names the judgment it enables for safety-aware tabletop
-readiness and defensive coverage review, the proof limit that IT-first
-assumptions would otherwise hide, and the reviewer accountable for
-challenge.</p>
-<p><strong>Source support.</strong> <strong>ICS controller-change
-coverage review using synthetic process records</strong> rests on
-[ageint213]. The lead source’s own note reads: The matrix organizes
+<p><strong>Worked reasoning and limits.</strong> Execution concerns
+running adversary-controlled activity; the inherited Command-Line
+Interface label should be reconciled against the pinned matrix, whose
+inspected v20 uses Command and Scripting Interpreter [ageint213]. An
+audit entry containing a tasking-change request does not prove
+execution, success, or physical effect. Use inert event descriptions to
+distinguish request, acknowledgment, and execution evidence without
+supplying commands.</p>
+<p><strong>Why it matters.</strong> <strong>Execution: Tasking Changes
+and Versioned Interpreter Categories</strong> matters in the
+<strong>ICS/OT Cyber-Physical Defense and Tabletop Readiness</strong>
+lane because safety-aware tabletop readiness and defensive coverage
+evidence must stay separate from judgment; IT-first assumptions is a
+common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Execution: Tasking Changes and Versioned Interpreter
+Categories</strong>: [ageint213]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Execution: Tasking
+Changes and Versioned Interpreter Categories</strong>, inspect the
+original passages. Curriculum annotation for [ageint213]: The Industrial
+Control Systems (ICS) domain of the MITRE ATT&amp;CK framework, a
+knowledge base documenting adversary behaviors based on real-world
+observations of attacks on critical infrastructure. The matrix organizes
 methods into twelve tactical categories spanning initial access through
 impact, including ICS-specific concerns such as firmware modification
-and disruption of operational technology. Use it for pinning down the
-scope of <strong>ICS controller-change coverage review using synthetic
-process records</strong>, the edge of that scope, and when these
-citations need re-verifying before transfer. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>ICS
-controller-change coverage review</strong> in the evidence the row
-cites. [ageint213] The Industrial Control Systems (ICS) domain of the
-MITRE ATT&amp;CK framework, a knowledge base documenting adversary
-behaviors based on real-world observations of attacks on critical
-infrastructure. The matrix organizes methods into twelve tactical
-categories spanning initial access through impact, including
-ICS-specific concerns such as firmware modification and disruption of
-operational technology. Read each cited work for what it can support
-about this topic, where that claim originated, how confident it is, and
-what evidence would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>ICS controller-change
-coverage review</strong>, build a <strong>tabletop packet with OT asset
-inventory, architecture record, consequences, injects, and debrief
-rubric</strong> for this safety-aware tabletop readiness and defensive
-coverage review topic. The artifact must list the asset descriptor, the
-bounded claim about <strong>ICS controller-change coverage review
-using</strong>, the safety caveat, the uncertainty note, the
-no-live-actuation boundary, and the reviewer who owns the safety case.
-Shape <strong>ICS controller-change coverage review</strong> work as a
-<strong>cyber-physical tabletop evidence packet</strong> that names
-evidence, uncertainty, reviewer, and stop condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>ICS controller-change coverage review</strong>: that an
-industrial control system behaving normally proves it is safe, rather
-than a state that depends on intact safeguards and monitoring.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>ICS controller-change coverage review</strong> to another
-artifact while keeping safety-aware tabletop readiness and defensive
-coverage review and reviewer ownership explicit.</p>
+and disruption of operational technology. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Execution</strong>,
+build a <strong>tabletop packet with OT asset inventory, architecture
+record, consequences, injects, and debrief rubric</strong> for this
+safety-aware tabletop readiness and defensive coverage review topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>Execution</strong>, the caveat that limits it, the uncertainty
+note, the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape <strong>Execution: Tasking Changes and Versioned
+Interpreter Categories</strong> work as a <strong>cyber-physical
+tabletop evidence packet</strong> that records its evidence, the
+residual uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Execution: Tasking Changes and Versioned Interpreter Categories replaces
+human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Execution: Tasking
+Changes and Versioned Interpreter Categories</strong> to a second module
+by preserving safety-aware tabletop readiness and defensive coverage
+review, changing the source evidence, and naming a new reviewer.</p>
 <h4 id="lesson-4-ics-firmware-and-project-integrity-coverage">Lesson 4:
 ICS firmware and project-integrity coverage</h4>
 <p><strong>Concept.</strong> <strong>ICS firmware and project-integrity
 coverage</strong> translates the technique family into safety,
 availability, operator decision, and recovery-evidence questions for a
 tabletop.</p>
+<p><strong>Worked reasoning and limits.</strong> Persistence describes
+maintaining access or activity, whereas firmware modification and
+project-file infection describe candidate mechanisms in the knowledge
+base [ageint213]. A changed file hash proves a byte difference only when
+the baseline and comparison are trustworthy; it does not establish
+malicious purpose, persistence, or controller deployment. Compare
+supplied fictional version records and approved-change explanations
+before assigning a technique.</p>
 <p><strong>Why it matters.</strong> <strong>ICS firmware and
-project-integrity coverage</strong> connects classroom vocabulary to
-ICS/OT Cyber-Physical Defense and Tabletop Readiness practice: learners
-document evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>ICS firmware and
-project-integrity coverage</strong> rests on [ageint213]. Its anchor
-reference records: The Industrial Control Systems (ICS) domain of the
-MITRE ATT&amp;CK framework, a knowledge base documenting adversary
-behaviors based on real-world observations of attacks on critical
-infrastructure. Use it for fixing what <strong>ICS firmware and
-project-integrity coverage</strong> covers, marking the boundary it must
-not cross, and timing the next source refresh. External triangulation
-uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>ICS firmware and
-project-integrity coverage</strong> against the works cited for this
-row. [ageint213] The Industrial Control Systems (ICS) domain of the
-MITRE ATT&amp;CK framework, a knowledge base documenting adversary
-behaviors based on real-world observations of attacks on critical
-infrastructure. The matrix organizes methods into twelve tactical
-categories spanning initial access through impact, including
-ICS-specific concerns such as firmware modification and disruption of
-operational technology. Work source by source: name the bounded claim,
-its origin, the residual uncertainty, and the trigger that would change
-how this topic is judged.</p>
+project-integrity coverage</strong> matters in the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> lane because
+safety-aware tabletop readiness and defensive coverage evidence must
+stay separate from judgment; IT-first assumptions is a common
+failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>ICS firmware and project-integrity coverage</strong>:
+[ageint213]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>ICS firmware and
+project-integrity coverage</strong>, inspect the original passages.
+Curriculum annotation for [ageint213]: The Industrial Control Systems
+(ICS) domain of the MITRE ATT&amp;CK framework, a knowledge base
+documenting adversary behaviors based on real-world observations of
+attacks on critical infrastructure. The matrix organizes methods into
+twelve tactical categories spanning initial access through impact,
+including ICS-specific concerns such as firmware modification and
+disruption of operational technology. These editorial descriptions are
+not source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> Build a <strong>tabletop packet
 with OT asset inventory, architecture record, consequences, injects, and
 debrief rubric</strong> for this safety-aware tabletop readiness and
@@ -413,7 +868,7 @@ defensive coverage review topic. The artifact must list the asset
 descriptor, the bounded claim about <strong>ICS firmware and
 project-integrity coverage</strong>, the safety caveat, the uncertainty
 note, the no-live-actuation boundary, and the reviewer who owns the
-safety case. Shape this subject work as a <strong>cyber-physical
+safety case. Shape the same topic work as a <strong>cyber-physical
 tabletop evidence packet</strong> that states the evidence used, what
 stays uncertain, who reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
@@ -433,33 +888,39 @@ using defensive detection questions</strong> uses the tactic family as a
 defensive coverage question: which monitoring, logging, and
 operator-review controls would reveal evasion in a tabletop
 scenario?</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>ICS evasion
-coverage-control review</strong> to separate cyber analysis from unsafe
-process control or live operational action. A defensible treatment names
-the judgment it enables for safety-aware tabletop readiness and
-defensive coverage review, the proof limit that IT-first assumptions
-would otherwise hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>ICS evasion coverage-control
-review using defensive detection questions</strong> rests on
-[ageint213]. Its anchor reference records: The matrix organizes methods
-into twelve tactical categories spanning initial access through impact,
-including ICS-specific concerns such as firmware modification and
-disruption of operational technology. Use it for the claim that
+<p><strong>Worked reasoning and limits.</strong> Evasion categories
+describe concealment or avoidance of defenses, but absent logs alone do
+not establish deliberate removal [ageint213]. Ordinary rotation,
+collection failure, and clock mismatch are competing explanations.
+Preserve an unknown disposition until an authorized artifact supports
+the distinguishing behavior; do not reconstruct or demonstrate
+concealment.</p>
+<p><strong>Why it matters.</strong> <strong>ICS evasion coverage-control
+review</strong> matters in the <strong>ICS/OT Cyber-Physical Defense and
+Tabletop Readiness</strong> lane because safety-aware tabletop readiness
+and defensive coverage evidence must stay separate from judgment;
+IT-first assumptions is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>ICS evasion coverage-control review using defensive detection
-questions</strong> lets you defend here, the limit it has to respect,
-and the re-check owed before reuse. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>ICS evasion
-coverage-control review</strong> against the works cited for this row.
-[ageint213] The Industrial Control Systems (ICS) domain of the MITRE
-ATT&amp;CK framework, a knowledge base documenting adversary behaviors
-based on real-world observations of attacks on critical infrastructure.
-The matrix organizes methods into twelve tactical categories spanning
-initial access through impact, including ICS-specific concerns such as
-firmware modification and disruption of operational technology. Read
-each cited work for what it can support about this topic, where that
-claim originated, how confident it is, and what evidence would change
-it.</p>
+questions</strong>: [ageint213]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>ICS evasion
+coverage-control review</strong>, inspect the original passages.
+Curriculum annotation for [ageint213]: The Industrial Control Systems
+(ICS) domain of the MITRE ATT&amp;CK framework, a knowledge base
+documenting adversary behaviors based on real-world observations of
+attacks on critical infrastructure. The matrix organizes methods into
+twelve tactical categories spanning initial access through impact,
+including ICS-specific concerns such as firmware modification and
+disruption of operational technology. These editorial descriptions are
+not source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>ICS evasion
 coverage-control review</strong>, build a <strong>tabletop packet with
 OT asset inventory, architecture record, consequences, injects, and
@@ -487,31 +948,39 @@ records</h4>
 tabletop using synthetic process records</strong> translates the
 technique family into safety, availability, operator decision, and
 recovery-evidence questions for a tabletop.</p>
+<p><strong>Worked reasoning and limits.</strong> Discovery concerns
+learning about an environment; the same observable may arise from an
+approved inventory process [ageint213]. A classroom analyst classifies
+already supplied fictional descriptions, not real packets or devices.
+Permission, timing, and the stated task separate benign inventory from a
+supported adversary-behavior assessment; no scanning, sniffing, or live
+connection is authorized.</p>
 <p><strong>Why it matters.</strong> <strong>ICS defensive
-coverage</strong> connects classroom vocabulary to ICS/OT Cyber-Physical
-Defense and Tabletop Readiness practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>ICS defensive coverage and
-safety tabletop using synthetic process records</strong> rests on
-[ageint213]. The most specific cited work observes: The matrix organizes
-methods into twelve tactical categories spanning initial access through
-impact, including ICS-specific concerns such as firmware modification
-and disruption of operational technology. Use it for the claim that
+coverage</strong> matters in the <strong>ICS/OT Cyber-Physical Defense
+and Tabletop Readiness</strong> lane because safety-aware tabletop
+readiness and defensive coverage evidence must stay separate from
+judgment; IT-first assumptions is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>ICS defensive coverage and safety tabletop using synthetic
-process records</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+process records</strong>: [ageint213]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>ICS defensive
-coverage</strong>, reason from the sources cited in this row.
-[ageint213] The Industrial Control Systems (ICS) domain of the MITRE
-ATT&amp;CK framework, a knowledge base documenting adversary behaviors
-based on real-world observations of attacks on critical infrastructure.
-The matrix organizes methods into twelve tactical categories spanning
-initial access through impact, including ICS-specific concerns such as
-firmware modification and disruption of operational technology. From
-each source, pull the bounded claim it can carry for this topic, its
-provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
+coverage</strong>, inspect the original passages. Curriculum annotation
+for [ageint213]: The Industrial Control Systems (ICS) domain of the
+MITRE ATT&amp;CK framework, a knowledge base documenting adversary
+behaviors based on real-world observations of attacks on critical
+infrastructure. The matrix organizes methods into twelve tactical
+categories spanning initial access through impact, including
+ICS-specific concerns such as firmware modification and disruption of
+operational technology. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>ICS defensive
 coverage</strong>, build a <strong>tabletop packet with OT asset
 inventory, architecture record, consequences, injects, and debrief
@@ -539,34 +1008,38 @@ alerts</h4>
 taxonomy review using fabricated alerts</strong> uses the taxonomy label
 to organize fabricated defensive observations, confidence, and control
 implications without describing adversary execution.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Cyber
-credential-and-movement taxonomy review</strong> to separate cyber
-analysis from unsafe process control or live operational action. A
-defensible treatment names the judgment it enables for safety-aware
-tabletop readiness and defensive coverage review, the proof limit that
-treating defensive taxonomy labels as an action sequence would otherwise
-hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Cyber
-credential-and-movement taxonomy review using fabricated alerts</strong>
-rests on [ageint213]. Its anchor reference records: The matrix organizes
-methods into twelve tactical categories spanning initial access through
-impact, including ICS-specific concerns such as firmware modification
-and disruption of operational technology. Use it for fixing what
+<p><strong>Worked reasoning and limits.</strong> Lateral Movement
+concerns movement between systems; a valid account identifies a
+credential context, not the human who used it [ageint213]. The presence
+of an account on two machines does not establish movement or
+attribution. A candidate mapping needs supplied evidence of the
+cross-system behavior and a comparison with authorized workflow.</p>
+<p><strong>Why it matters.</strong> <strong>Cyber
+credential-and-movement taxonomy review</strong> connects classroom
+vocabulary to ICS/OT Cyber-Physical Defense and Tabletop Readiness
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Cyber credential-and-movement taxonomy review using fabricated
-alerts</strong> covers, marking the boundary it must not cross, and
-timing the next source refresh. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Cyber
-credential-and-movement taxonomy review</strong> against the works cited
-for this row. [ageint213] The Industrial Control Systems (ICS) domain of
-the MITRE ATT&amp;CK framework, a knowledge base documenting adversary
-behaviors based on real-world observations of attacks on critical
-infrastructure. The matrix organizes methods into twelve tactical
-categories spanning initial access through impact, including
-ICS-specific concerns such as firmware modification and disruption of
-operational technology. From each source, pull the bounded claim it can
-carry for this topic, its provenance, the stated uncertainty, and the
-one condition that would overturn that judgment.</p>
+alerts</strong>: [ageint213]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Cyber
+credential-and-movement taxonomy review</strong>, inspect the original
+passages. Curriculum annotation for [ageint213]: The Industrial Control
+Systems (ICS) domain of the MITRE ATT&amp;CK framework, a knowledge base
+documenting adversary behaviors based on real-world observations of
+attacks on critical infrastructure. The matrix organizes methods into
+twelve tactical categories spanning initial access through impact,
+including ICS-specific concerns such as firmware modification and
+disruption of operational technology. These editorial descriptions are
+not source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Cyber
 credential-and-movement taxonomy review</strong>, build a
 <strong>tabletop packet with OT asset inventory, architecture record,
@@ -594,34 +1067,39 @@ id="lesson-8-ics-collection-risk-detection-review-using-synthetic-tag-records">L
 review using synthetic tag records</strong> uses the tactic family as a
 detection-design question over synthetic process tags, not as guidance
 for observing or changing a real process.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>ICS
-collection-risk detection review</strong> to separate cyber analysis
-from unsafe process control or live operational action. A defensible
-treatment names the judgment it enables for safety-aware tabletop
-readiness and defensive coverage review, the proof limit that IT-first
-assumptions would otherwise hide, and the reviewer accountable for
-challenge.</p>
-<p><strong>Source support.</strong> <strong>ICS collection-risk
-detection review using synthetic tag records</strong> rests on
-[ageint213]. The most specific cited work observes: The Industrial
-Control Systems (ICS) domain of the MITRE ATT&amp;CK framework, a
-knowledge base documenting adversary behaviors based on real-world
-observations of attacks on critical infrastructure. Use it for fixing
-what <strong>ICS collection-risk detection review using synthetic tag
-records</strong> covers, marking the boundary it must not cross, and
-timing the next source refresh. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Worked reasoning and limits.</strong> An I/O image represents
+controller-associated input/output state; process-state and tag
+observations concern operational meaning rather than just network
+identifiers [ageint213]. Reading such data can be routine supervision,
+so a collection mapping requires evidence of the relevant adversary
+behavior. A tag name alone may not establish its units, sensor lineage,
+or physical role; those remain missing process context.</p>
+<p><strong>Why it matters.</strong> <strong>ICS collection-risk
+detection review</strong> connects classroom vocabulary to ICS/OT
+Cyber-Physical Defense and Tabletop Readiness practice: learners
+document evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>ICS collection-risk detection review using synthetic tag
+records</strong>: [ageint213]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>ICS collection-risk
-detection review</strong>, work from the cited evidence behind this row.
-[ageint213] The Industrial Control Systems (ICS) domain of the MITRE
-ATT&amp;CK framework, a knowledge base documenting adversary behaviors
-based on real-world observations of attacks on critical infrastructure.
-The matrix organizes methods into twelve tactical categories spanning
-initial access through impact, including ICS-specific concerns such as
-firmware modification and disruption of operational technology. From
-each source, pull the bounded claim it can carry for this topic, its
-provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
+detection review</strong>, inspect the original passages. Curriculum
+annotation for [ageint213]: The Industrial Control Systems (ICS) domain
+of the MITRE ATT&amp;CK framework, a knowledge base documenting
+adversary behaviors based on real-world observations of attacks on
+critical infrastructure. The matrix organizes methods into twelve
+tactical categories spanning initial access through impact, including
+ICS-specific concerns such as firmware modification and disruption of
+operational technology. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>ICS collection-risk
 detection review</strong>, build a <strong>tabletop packet with OT asset
 inventory, architecture record, consequences, injects, and debrief
@@ -648,33 +1126,45 @@ ICS alarm and communications-resilience tabletop</h4>
 communications-resilience tabletop</strong> translates the technique
 family into safety, availability, operator decision, and
 recovery-evidence questions for a tabletop.</p>
-<p><strong>Why it matters.</strong> <strong>ICS alarm and
-communications-resilience tabletop</strong> matters in the
-<strong>ICS/OT Cyber-Physical Defense and Tabletop Readiness</strong>
-lane because safety-aware tabletop readiness and defensive coverage
-evidence must stay separate from judgment; IT-first assumptions is a
-common failure.</p>
-<p><strong>Source support.</strong> <strong>ICS alarm and
-communications-resilience tabletop</strong> rests on [ageint213]. The
-closest source to this row notes: The matrix organizes methods into
+<p><strong>Worked reasoning and limits.</strong> Inhibiting a response
+function concerns interference with protective or responsive functions,
+not merely the observation of a quiet alarm feed [ageint213]. In a
+synthetic paper case, card A has two missing messages and card B states
+maintenance: the mapping row is ‘candidate T0878 Alarm Suppression /
+ATT&amp;CK ICS v20; supporting observation A; alternative B; attack
+confidence low; direct alarm-configuration evidence absent; reviewer
+hold’. When corrected maintenance card B2 accounts for both messages,
+the candidate adversarial mapping is withdrawn as a benign-change
+negative control. No independent evidence establishes suppression, so
+the reviewer stops escalation of the attack claim and issues no device
+action; a new authorized record demonstrating relevant interference
+would reopen the assessment, not trigger an automatic response.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>ICS alarm and communications-resilience tabletop</strong>,
+IT-first assumptions undermines safety-aware tabletop readiness and
+defensive coverage review; the lesson builds the habit to separate cyber
+analysis from unsafe process control or live operational action.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>ICS alarm and communications-resilience tabletop</strong>:
+[ageint213]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>ICS alarm and
+communications-resilience tabletop</strong>, inspect the original
+passages. Curriculum annotation for [ageint213]: The Industrial Control
+Systems (ICS) domain of the MITRE ATT&amp;CK framework, a knowledge base
+documenting adversary behaviors based on real-world observations of
+attacks on critical infrastructure. The matrix organizes methods into
 twelve tactical categories spanning initial access through impact,
 including ICS-specific concerns such as firmware modification and
-disruption of operational technology. Use it for pinning down the scope
-of <strong>ICS alarm and communications-resilience tabletop</strong>,
-the edge of that scope, and when these citations need re-verifying
-before transfer. External triangulation uses [official_nist_csf_2];
-[official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>ICS alarm and
-communications-resilience tabletop</strong>, reason from the sources
-cited in this row. [ageint213] The Industrial Control Systems (ICS)
-domain of the MITRE ATT&amp;CK framework, a knowledge base documenting
-adversary behaviors based on real-world observations of attacks on
-critical infrastructure. The matrix organizes methods into twelve
-tactical categories spanning initial access through impact, including
-ICS-specific concerns such as firmware modification and disruption of
-operational technology. Work source by source: name the bounded claim,
-its origin, the residual uncertainty, and the trigger that would change
-how this topic is judged.</p>
+disruption of operational technology. These editorial descriptions are
+not source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> Build a <strong>tabletop packet
 with OT asset inventory, architecture record, consequences, injects, and
 debrief rubric</strong> for this safety-aware tabletop readiness and
@@ -682,7 +1172,7 @@ defensive coverage review topic. The artifact must list the asset
 descriptor, the bounded claim about <strong>ICS alarm and
 communications-resilience tabletop</strong>, the safety caveat, the
 uncertainty note, the no-live-actuation boundary, and the reviewer who
-owns the safety case. Shape this subject work as a
+owns the safety case. Shape the same topic work as a
 <strong>cyber-physical tabletop evidence packet</strong> that logs the
 evidence, the uncertainty, the responsible reviewer, and the halt
 condition.</p>
@@ -702,32 +1192,39 @@ id="lesson-10-ics-process-safety-consequence-review-using-synthetic-records">Les
 review using synthetic records</strong> translates the technique family
 into safety, availability, operator decision, and recovery-evidence
 questions for a tabletop.</p>
+<p><strong>Worked reasoning and limits.</strong> Impair Process Control
+concerns disruption or manipulation of control functions; a parameter
+difference is not automatically an unsafe state [ageint213]. Its
+significance depends on units, operating mode, approved limits, and the
+process at that time. This lesson evaluates fictional evidence
+descriptions only and supplies no parameter values for devices,
+actuation steps, or unsafe simulation.</p>
 <p><strong>Why it matters.</strong> <strong>ICS process-safety
-consequence review</strong> connects classroom vocabulary to ICS/OT
-Cyber-Physical Defense and Tabletop Readiness practice: learners
-document evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>ICS process-safety
-consequence review using synthetic records</strong> rests on
-[ageint213]. The most specific cited work observes: The matrix organizes
-methods into twelve tactical categories spanning initial access through
-impact, including ICS-specific concerns such as firmware modification
-and disruption of operational technology. Use it for fixing what
+consequence review</strong> matters in the <strong>ICS/OT Cyber-Physical
+Defense and Tabletop Readiness</strong> lane because safety-aware
+tabletop readiness and defensive coverage evidence must stay separate
+from judgment; IT-first assumptions is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>ICS process-safety consequence review using synthetic
-records</strong> covers, marking the boundary it must not cross, and
-timing the next source refresh. External triangulation uses
-[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>ICS process-safety
-consequence review</strong> against the works cited for this row.
-[ageint213] The Industrial Control Systems (ICS) domain of the MITRE
-ATT&amp;CK framework, a knowledge base documenting adversary behaviors
-based on real-world observations of attacks on critical infrastructure.
-The matrix organizes methods into twelve tactical categories spanning
-initial access through impact, including ICS-specific concerns such as
-firmware modification and disruption of operational technology. Each
-source above earns its place in this topic only when you can state its
-bounded claim, its provenance, its uncertainty, and the fact that would
-retire it.</p>
+records</strong>: [ageint213]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>ICS process-safety
+consequence review</strong>, inspect the original passages. Curriculum
+annotation for [ageint213]: The Industrial Control Systems (ICS) domain
+of the MITRE ATT&amp;CK framework, a knowledge base documenting
+adversary behaviors based on real-world observations of attacks on
+critical infrastructure. The matrix organizes methods into twelve
+tactical categories spanning initial access through impact, including
+ICS-specific concerns such as firmware modification and disruption of
+operational technology. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>ICS process-safety
 consequence review</strong>, build a <strong>tabletop packet with OT
 asset inventory, architecture record, consequences, injects, and debrief
@@ -756,34 +1253,41 @@ process records</h4>
 safety tabletop using synthetic process records</strong> translates the
 technique family into safety, availability, operator decision, and
 recovery-evidence questions for a tabletop.</p>
+<p><strong>Worked reasoning and limits.</strong> Impact categories name
+adversary objectives or reported consequences, not effects established
+by every preceding technique [ageint213]. Loss of view, loss of control,
+and physical damage are distinct claims requiring distinct evidence. An
+alert or a candidate technique mapping cannot by itself establish
+injury, equipment damage, or safety-system failure.</p>
 <p><strong>Why it matters.</strong> <strong>Impact: ICS defensive
 coverage and safety tabletop using synthetic process records</strong>
 matters in the <strong>ICS/OT Cyber-Physical Defense and Tabletop
 Readiness</strong> lane because safety-aware tabletop readiness and
 defensive coverage evidence must stay separate from judgment; IT-first
 assumptions is a common failure.</p>
-<p><strong>Source support.</strong> <strong>Impact: ICS defensive
-coverage and safety tabletop using synthetic process records</strong>
-rests on [ageint213]. Its anchor reference records: The matrix organizes
-methods into twelve tactical categories spanning initial access through
-impact, including ICS-specific concerns such as firmware modification
-and disruption of operational technology. Use it for fixing what
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Impact: ICS defensive coverage and safety tabletop using
-synthetic process records</strong> covers, marking the boundary it must
-not cross, and timing the next source refresh. External triangulation
-uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Impact: ICS
+synthetic process records</strong>: [ageint213]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_nist_csf_2];
+[official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Impact: ICS
 defensive coverage and safety tabletop using synthetic process
-records</strong> against the works cited for this row. [ageint213] The
-Industrial Control Systems (ICS) domain of the MITRE ATT&amp;CK
-framework, a knowledge base documenting adversary behaviors based on
-real-world observations of attacks on critical infrastructure. The
-matrix organizes methods into twelve tactical categories spanning
-initial access through impact, including ICS-specific concerns such as
-firmware modification and disruption of operational technology. Read
-each cited work for what it can support about this topic, where that
-claim originated, how confident it is, and what evidence would change
-it.</p>
+records</strong>, inspect the original passages. Curriculum annotation
+for [ageint213]: The Industrial Control Systems (ICS) domain of the
+MITRE ATT&amp;CK framework, a knowledge base documenting adversary
+behaviors based on real-world observations of attacks on critical
+infrastructure. The matrix organizes methods into twelve tactical
+categories spanning initial access through impact, including
+ICS-specific concerns such as firmware modification and disruption of
+operational technology. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Impact</strong>, build
 a <strong>tabletop packet with OT asset inventory, architecture record,
 consequences, injects, and debrief rubric</strong> for this safety-aware
@@ -808,37 +1312,49 @@ reviewer ownership explicit.</p>
 <h4 id="lesson-12-using-ics-attck-in-risk-assessment-isa-intech">Lesson
 12: Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</h4>
 <p><strong>Concept.</strong> <strong>Using ICS ATT&amp;CK in Risk
-Assessment (ISA InTech)</strong> applies ICS, ATT, CK within ICS/OT
-Cyber-Physical Defense and Tabletop Readiness: learners use separate
-cyber analysis from unsafe process control or live operational action
-and safety-aware tabletop readiness and defensive coverage review
-evidence before any judgment moves forward.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</strong>,
-IT-first assumptions undermines safety-aware tabletop readiness and
-defensive coverage review; the lesson builds the habit to separate cyber
-analysis from unsafe process control or live operational action.</p>
-<p><strong>Source support.</strong> <strong>Using ICS ATT&amp;CK in Risk
-Assessment (ISA InTech)</strong> rests on [ageint214]. The lead source’s
-own note reads: A June 2021 InTech Magazine article by Jacob Chapman,
-published by the International Society of Automation, on using the ICS
-ATT&amp;CK framework to strengthen cybersecurity for manufacturing and
-industrial IoT systems. Use it for the working definition that
-<strong>Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</strong>
-can defend, where that scope ends, and the refresh check owed before
-this evidence transfers. External triangulation uses
+Assessment (ISA InTech)</strong> is taught in the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> lane. The
+analytic distinction is to separate cyber analysis from unsafe process
+control or live operational action. Apply it to the supplied evidence; a
+topic label alone establishes neither a mechanism nor a conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> A technique map helps
+ask what behavior matters for a specified architecture; it does not
+supply the likelihood of compromise or severity of a physical
+consequence [ageint214]. Distinguish ‘mapped’ (a proposed taxonomy
+association), ‘observable in supplied data’ (the required evidence
+exists), ‘tested in this fixture’ (a bounded demonstration), ‘untested’,
+‘unknown’ (insufficient evidence), and ‘not applicable’ (an explained
+scope exclusion). Compare the behavior, required observable, available
+sensor coverage, and relevant process dependency before choosing a
+disposition. Unsupported combinations remain gaps, not zero risk or
+proof of inevitable harm.</p>
+<p><strong>Why it matters.</strong> <strong>Using ICS ATT&amp;CK in Risk
+Assessment (ISA InTech)</strong> connects classroom vocabulary to ICS/OT
+Cyber-Physical Defense and Tabletop Readiness practice: learners
+document evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Using ICS ATT&amp;CK in Risk Assessment (ISA InTech)</strong>:
+[ageint214]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Using ICS
-ATT&amp;CK in Risk Assessment (ISA InTech)</strong>, reason from the
-sources cited in this row. [ageint214] A June 2021 InTech Magazine
-article by Jacob Chapman, published by the International Society of
-Automation, on using the ICS ATT&amp;CK framework to strengthen
-cybersecurity for manufacturing and industrial IoT systems. It describes
-a three-phase risk-management approach: gathering information on assets
-and network architecture, mapping potential attack paths to identify
-vulnerabilities, and prioritizing mitigations by impact. Read each cited
-work for what it can support about this topic, where that claim
-originated, how confident it is, and what evidence would change it.</p>
+ATT&amp;CK in Risk Assessment (ISA InTech)</strong>, inspect the
+original passages. Curriculum annotation for [ageint214]: A June 2021
+InTech Magazine article by Jacob Chapman, published by the International
+Society of Automation, on using the ICS ATT&amp;CK framework to
+strengthen cybersecurity for manufacturing and industrial IoT systems.
+It describes a three-phase risk-management approach: gathering
+information on assets and network architecture, mapping potential attack
+paths to identify vulnerabilities, and prioritizing mitigations by
+impact. These editorial descriptions are not source-authored quotations
+or independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Using ICS
 ATT&amp;CK</strong>, build a <strong>tabletop packet with OT asset
 inventory, architecture record, consequences, injects, and debrief
@@ -865,36 +1381,40 @@ id="lesson-13-dragos-mitre-attck-for-ics-threat-actor-mapping">Lesson
 Threat Actor Mapping</strong> uses ATT&amp;CK for ICS as defensive
 vocabulary for sequencing observations over synthetic process
 records—not adversary execution.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Dragos: MITRE
-ATT&amp;CK for ICS Threat Actor Mapping</strong> to separate cyber
-analysis from unsafe process control or live operational action. A
-defensible treatment names the judgment it enables for safety-aware
-tabletop readiness and defensive coverage review, the proof limit that
-IT-first assumptions would otherwise hide, and the reviewer accountable
-for challenge.</p>
-<p><strong>Source support.</strong> <strong>Dragos: MITRE ATT&amp;CK for
-ICS Threat Actor Mapping</strong> rests on [ageint215]. The lead
-source’s own note reads: It explains how the Dragos Platform maps
-detections to ATT&amp;CK tactics and techniques through regular
-knowledge updates, profiles named threat groups, and organizes behaviors
-across tactic areas spanning initial access through impact scenarios
-such as loss of control, safety, or availability. Use it for fixing what
-<strong>Dragos: MITRE ATT&amp;CK for ICS Threat Actor Mapping</strong>
-covers, marking the boundary it must not cross, and timing the next
-source refresh. External triangulation uses [official_nist_csf_2];
-[official_nist_sp_800_160r1].</p>
+<p><strong>Worked reasoning and limits.</strong> A vendor mapping
+associates reported behavior with its analytic group labels; technique
+overlap alone cannot identify an actor [ageint215]. Record whether a
+statement is the vendor’s assessment, a quoted observation, or this
+manuscript’s inference. Several reports reusing one underlying incident
+do not create independent attribution support.</p>
+<p><strong>Why it matters.</strong> <strong>Dragos: MITRE ATT&amp;CK for
+ICS Threat Actor Mapping</strong> matters in the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> lane because
+safety-aware tabletop readiness and defensive coverage evidence must
+stay separate from judgment; IT-first assumptions is a common
+failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Dragos: MITRE ATT&amp;CK for ICS Threat Actor Mapping</strong>:
+[ageint215]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Dragos: MITRE
-ATT&amp;CK for ICS Threat Actor Mapping</strong>, work from the cited
-evidence behind this row. [ageint215] A Dragos solutions page describing
-the module framework, a knowledge base of adversary behaviors observed
-in attacks against industrial control system networks. It explains how
-the Dragos Platform maps detections to ATT&amp;CK tactics and techniques
-through regular knowledge updates, profiles named threat groups, and
-organizes behaviors across tactic areas spanning initial access through
-impact scenarios such as loss of control, safety, or availability. Work
-source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
+ATT&amp;CK for ICS Threat Actor Mapping</strong>, inspect the original
+passages. Curriculum annotation for [ageint215]: A Dragos solutions page
+describing the MITRE ATT&amp;CK for ICS framework, a knowledge base of
+adversary behaviors observed in attacks against industrial control
+system networks. It explains how the Dragos Platform maps detections to
+ATT&amp;CK tactics and techniques through regular knowledge updates,
+profiles named threat groups, and organizes behaviors across tactic
+areas spanning initial access through impact scenarios such as loss of
+control, safety, or availability. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Dragos</strong>, build
 a <strong>tabletop packet with OT asset inventory, architecture record,
 consequences, injects, and debrief rubric</strong> for this safety-aware
@@ -907,9 +1427,9 @@ Mapping</strong> work as a <strong>cyber-physical tabletop evidence
 packet</strong> that logs the evidence, the uncertainty, the responsible
 reviewer, and the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-Dragos: the module Threat Actor Mapping is optional whenever separate
-cyber analysis from unsafe process control or live operational action
-feels inconvenient.</p>
+Dragos: MITRE ATT&amp;CK for ICS Threat Actor Mapping is optional
+whenever separate cyber analysis from unsafe process control or live
+operational action feels inconvenient.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Dragos: MITRE
 ATT&amp;CK for ICS Threat Actor Mapping</strong> to a second module by
 preserving safety-aware tabletop readiness and defensive coverage
@@ -918,35 +1438,44 @@ review, changing the source evidence, and naming a new reviewer.</p>
 id="lesson-14-nozomi-networks-how-security-teams-use-the-ics-framework">Lesson
 14: Nozomi Networks: How Security Teams Use the ICS Framework</h4>
 <p><strong>Concept.</strong> <strong>Nozomi Networks: How Security Teams
-Use the ICS Framework</strong> applies Nozomi, Networks, How within
-ICS/OT Cyber-Physical Defense and Tabletop Readiness: learners use
-separate cyber analysis from unsafe process control or live operational
-action and safety-aware tabletop readiness and defensive coverage review
-evidence before any judgment moves forward.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Nozomi Networks</strong>, IT-first assumptions undermines
-safety-aware tabletop readiness and defensive coverage review; the
-lesson builds the habit to separate cyber analysis from unsafe process
-control or live operational action.</p>
-<p><strong>Source support.</strong> <strong>Nozomi Networks: How
-Security Teams Use the ICS Framework</strong> rests on [ageint216]. The
-most specific cited work observes: It explains that the ICS version is a
-community-sourced knowledge base mapping adversary tactics and behaviors
-specific to industrial environments, distinct from the IT-focused
-framework. Use it for the working definition that <strong>Nozomi
-Networks: How Security Teams Use the ICS Framework</strong> can defend,
-where that scope ends, and the refresh check owed before this evidence
-transfers. External triangulation uses [official_nist_csf_2];
-[official_nist_sp_800_160r1].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Nozomi
-Networks</strong> in the evidence the row cites. [ageint216] A Nozomi
-Networks resource (a 2020 webinar) on how security teams apply the MITRE
-ATT&amp;CK framework for Industrial Control Systems. It explains that
-the ICS version is a community-sourced knowledge base mapping adversary
-tactics and behaviors specific to industrial environments, distinct from
-the IT-focused framework. Each source above earns its place in this
-topic only when you can state its bounded claim, its provenance, its
-uncertainty, and the fact that would retire it.</p>
+Use the ICS Framework</strong> is taught in the <strong>ICS/OT
+Cyber-Physical Defense and Tabletop Readiness</strong> lane. The
+analytic distinction is to separate cyber analysis from unsafe process
+control or live operational action. Apply it to the supplied evidence; a
+topic label alone establishes neither a mechanism nor a conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> Vendor instruction can
+illustrate framework use without establishing comparative control
+efficacy [ageint216]. Separate documented mapping coverage, installed
+observation capability, demonstrated detection in a bounded fixture, and
+prevention of real process harm. None of these follows automatically
+from the preceding category; use Section <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span> for a
+claim record that preserves that boundary.</p>
+<p><strong>Why it matters.</strong> <strong>Nozomi Networks</strong>
+matters in the <strong>ICS/OT Cyber-Physical Defense and Tabletop
+Readiness</strong> lane because safety-aware tabletop readiness and
+defensive coverage evidence must stay separate from judgment; IT-first
+assumptions is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Nozomi Networks: How Security Teams Use the ICS
+Framework</strong>: [ageint216]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_nist_csf_2]; [official_nist_sp_800_160r1].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Nozomi
+Networks</strong>, inspect the original passages. Curriculum annotation
+for [ageint216]: A Nozomi Networks resource (a 2020 webinar) on how
+security teams apply the MITRE ATT&amp;CK framework for Industrial
+Control Systems. It explains that the ICS version is a community-sourced
+knowledge base mapping adversary tactics and behaviors specific to
+industrial environments, distinct from the IT-focused framework. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Nozomi
 Networks</strong>, build a <strong>tabletop packet with OT asset
 inventory, architecture record, consequences, injects, and debrief
@@ -971,53 +1500,63 @@ ATT&amp;CK for ICS worked safe example: synthetic inputs, evidence, and
 review</h3>
 <p>Worked example: a sample water-utility tabletop reviews synthetic
 process logs after a simulated anomaly. [ageint255]; [ageint257].</p>
-<p><strong>Triangulation anchors.</strong> In module 46’s worked-example
-section, directly verified anchors for the <strong>ICS/OT Cyber-Physical
-Defense and Tabletop Readiness</strong> lane include
+<p><strong>Contextual source routes.</strong> For module 46’s
+worked-example section, the <strong>ICS/OT Cyber-Physical Defense and
+Tabletop Readiness</strong> catalog routes include
 [official_nist_csf_2]; [official_nist_sp_800_160r1];
-[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline:
 <strong>safety-aware ICS and OT intelligence</strong>. Learners use a
 <strong>cyber-physical tabletop evidence packet</strong> and keep this
 boundary visible: No live device control, unsafe process change, exploit
 sequence, evasion, or operational response.</p>
 <p><strong>Frame.</strong> The classroom question centers on <strong>ICS
-Matrix: 12 Tactics, Full Technique Library</strong>. Excluded actions
-stay explicit, and the <strong>Cyber-Physical Readiness Lens</strong>
-planning question is: Which asset, architecture record, consequence,
-operator decision, and recovery path is being exercised defensively?</p>
-<p><strong>Inputs.</strong> For the <strong>ICS Matrix: 12 Tactics, Full
-Technique Library</strong> scenario, use toy HMI screenshots, fabricated
-network alerts, public ICS control guidance, and a safety stop card. The
+Matrix: Versioned Tactics and Technique Knowledge Base</strong>.
+Excluded actions stay explicit, and the <strong>Cyber-Physical Readiness
+Lens</strong> planning question is: Which asset, architecture record,
+consequence, operator decision, and recovery path is being exercised
+defensively?</p>
+<p><strong>Inputs.</strong> For the <strong>ICS Matrix: Versioned
+Tactics and Technique Knowledge Base</strong> scenario, use a fictional
+tank display reading high at 09:10, two toy sensors reading normal, a
+same-time network alert, pre-change display values, a scaling-change
+note, and an instructor safety stop card; no equipment is connected. The
 Cyber-Physical Readiness Lens intake note records provenance,
 sensitivity, fit-to-purpose, and why the fixture is enough for this
 bounded exercise.</p>
-<p><strong>Analysis.</strong> For <strong>ICS Matrix: 12 Tactics, Full
-Technique Library</strong>, students map assets to consequences,
-classify tabletop injects, identify human decisions, and preserve
-recovery evidence. Pause whenever an inference about ICS Matrix: 12
-Tactics, Full Technique Library appears without evidence, confidence
-outruns support, or an agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>ICS Matrix: 12
-Tactics, Full Technique Library</strong> classroom scenario; unit
-artifact = cyber-physical tabletop evidence packet; evidence = allowed
-inputs; method = safety-aware tabletop readiness and defensive coverage
-review; output = a cyber-physical tabletop packet with assets,
-consequences, ATT&amp;CK mapping, decisions, and debrief; boundary = no
-external action; reviewer = instructor or named peer.</p>
+<p><strong>Analysis.</strong> For <strong>ICS Matrix: Versioned Tactics
+and Technique Knowledge Base</strong>, students first map display,
+sensor, process consequence, and operator role and align clocks; then
+compare scaling error, sensor fault, and cyber interference; use the
+second sensor and pre-change values as controls against treating the
+network alert as proof of a physical excursion. Invoke the safety stop
+and hand the discrepancy to the engineering instructor without device
+commands or process changes. Pause whenever an inference about ICS
+Matrix: Versioned Tactics and Technique Knowledge Base appears without
+evidence, confidence outruns support, or an agent output is treated as
+judgment.</p>
+<p><strong>Completed synthetic result.</strong> a tabletop packet
+distinguishing the display anomaly from unresolved physical level and
+cause, recording only supported defensive mappings, and withholding a
+recovery declaration until consistent readings and fictional operator
+acceptance are supplied; no attacker identity or safe plant state is
+established Retain it as the <strong>cyber-physical tabletop evidence
+packet</strong> for this classroom fixture, with the stated source IDs,
+uncertainty, review disposition, and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating <strong>ICS
-Matrix: 12 Tactics, Full Technique Library</strong> as “Cyber-Physical
-Readiness Lens confirms it” is not enough. The revision ties the claim
-to safety-aware tabletop readiness and defensive coverage review, adds
-the missing caveat, states confidence, and records the reviewer who
-accepted the bounded judgment.</p>
-<p><strong>Debrief.</strong> The reuse note for <strong>ICS Matrix: 12
-Tactics, Full Technique Library</strong> records the defensible claim,
-the assumption most likely to fail, the evidence that would change
-confidence, and the review condition for stopping reuse.</p>
+Matrix: Versioned Tactics and Technique Knowledge Base</strong> as
+“Cyber-Physical Readiness Lens confirms it” is not enough. The revision
+ties the claim to safety-aware tabletop readiness and defensive coverage
+review, adds the missing caveat, states confidence, and records the
+reviewer who accepted the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>ICS Matrix:
+Versioned Tactics and Technique Knowledge Base</strong> records the
+defensible claim, the assumption most likely to fail, the evidence that
+would change confidence, and the review condition for stopping
+reuse.</p>
 <h3
 id="mitre-attck-for-ics-practice-sequence-studio-moves-artifact-steps-and-limits">MITRE
 ATT&amp;CK for ICS practice sequence: studio moves, artifact steps, and
@@ -1025,18 +1564,18 @@ limits</h3>
 <p>The studio sequence uses the <strong>Cyber-Physical Readiness
 Lens</strong> practice lens. Moves 1-3 form the compressed path; the
 full seminar path adds challenge, handoff, and a review memo for
-<strong>ICS Matrix: 12 Tactics, Full Technique Library; Cyber
-access-and-execution taxonomy review using fabricated
+<strong>ICS Matrix: Versioned Tactics and Technique Knowledge Base;
+Cyber access-and-execution taxonomy review using fabricated
 alerts</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 46’s
-practice-sequence section, directly verified anchors for the
-<strong>ICS/OT Cyber-Physical Defense and Tabletop Readiness</strong>
-lane include [official_nist_csf_2]; [official_nist_sp_800_160r1];
-[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<table>
+<p><strong>Contextual source routes.</strong> For module 46’s
+practice-sequence section, the <strong>ICS/OT Cyber-Physical Defense and
+Tabletop Readiness</strong> catalog routes include
+[official_nist_csf_2]; [official_nist_sp_800_160r1];
+[official_nist_sp_800_82r3]; [official_isa_iec_62443]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -1054,9 +1593,9 @@ provenance.</p>
 <tbody>
 <tr>
 <td>1. Distinguish</td>
-<td>Compare ICS Matrix: 12 Tactics, Full Technique Library, Cyber
-access-and-execution taxonomy review using fabricated alerts, ICS
-controller-change coverage review using synthetic process records; name
+<td>Compare ICS Matrix: Versioned Tactics and Technique Knowledge Base,
+Cyber access-and-execution taxonomy review using fabricated alerts,
+Execution: Tasking Changes and Versioned Interpreter Categories; name
 what each topic can and cannot prove.</td>
 <td>Glossary-and-contrast card.</td>
 <td>Terms match the <strong>ICS/OT Cyber-Physical Defense and Tabletop
@@ -1073,25 +1612,26 @@ explicit.</td>
 </tr>
 <tr>
 <td>3. Evidence</td>
-<td>Fill the artifact fields for ICS Matrix: 12 Tactics, Full Technique
-Library: tabletop packet with OT asset inventory, architecture record,
-consequences, injects, and debrief rubric.</td>
+<td>Fill the artifact fields for ICS Matrix: Versioned Tactics and
+Technique Knowledge Base: tabletop packet with OT asset inventory,
+architecture record, consequences, injects, and debrief rubric.</td>
 <td>Evidence packet.</td>
 <td>Sources, caveats, confidence, and uncertainty stay separable.</td>
 </tr>
 <tr>
 <td>3a. Unit artifact</td>
 <td>Add the cyber-physical tabletop evidence packet fields for ICS
-Matrix: 12 Tactics, Full Technique Library.</td>
+Matrix: Versioned Tactics and Technique Knowledge Base.</td>
 <td>Unit profile note.</td>
 <td>Evidence artifacts include asset-consequence map, operator decision
 log.</td>
 </tr>
 <tr>
 <td>4. Challenge</td>
-<td>Test the misconception that ICS Matrix: 12 Tactics, Full Technique
-Library is optional whenever separate cyber analysis from unsafe process
-control or live operational action feels inconvenient.</td>
+<td>Test the misconception that ICS Matrix: Versioned Tactics and
+Technique Knowledge Base is optional whenever separate cyber analysis
+from unsafe process control or live operational action feels
+inconvenient.</td>
 <td>Failure-mode note.</td>
 <td>The artifact applies the key distinction: separate cyber analysis
 from unsafe process control or live operational action.</td>
@@ -1104,7 +1644,7 @@ from unsafe process control or live operational action.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="mitre-attck-for-ics-instructor-notes-source-reasoning-review-points-and-studio-focus">MITRE
 ATT&amp;CK for ICS instructor notes: source reasoning, review points,
@@ -1112,43 +1652,45 @@ and studio focus</h4>
 <p>Ask learners to verbalize the difference between a source, an
 inference, and a decision. Require a revision whenever a claim cannot be
 traced to a source descriptor or a human review point. Keep the focus on
-<strong>ICS Matrix: 12 Tactics, Full Technique Library; Cyber
-access-and-execution taxonomy review using fabricated alerts</strong>.
-[ageint255]; [ageint257].</p>
+<strong>ICS Matrix: Versioned Tactics and Technique Knowledge Base;
+Cyber access-and-execution taxonomy review using fabricated
+alerts</strong>. [ageint255]; [ageint257].</p>
 <h4
 id="mitre-attck-for-ics-extension-exercise-peer-validation-and-refresh-trigger-review">MITRE
 ATT&amp;CK for ICS extension exercise: peer validation and refresh
 trigger review</h4>
-<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
-[ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-mitre-att-ck-for-ics">[@sec:chapter-mitre-att-ck-for-ics]</span>.</p>
 <p>Have learners swap artifacts and apply the <strong>Cyber-Physical
 Readiness Lens</strong> validation rule to someone else’s work. The
 receiving learner must identify one strength, one missing caveat, and
-one refresh trigger for <strong>ICS Matrix: 12 Tactics, Full Technique
-Library; Cyber access-and-execution taxonomy review using fabricated
-alerts</strong>.</p>
+one refresh trigger for <strong>ICS Matrix: Versioned Tactics and
+Technique Knowledge Base; Cyber access-and-execution taxonomy review
+using fabricated alerts</strong>.</p>
 <h3
 id="mitre-attck-for-ics-knowledge-check-misconceptions-evidence-and-reviewer-prompts">MITRE
 ATT&amp;CK for ICS knowledge check: misconceptions, evidence, and
 reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong> [sec:chapter-mitre-att-ck-for-ics];
-[ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-mitre-att-ck-for-ics">[@sec:chapter-mitre-att-ck-for-ics]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>ICS Matrix: 12 Tactics, Full Technique
-Library</strong> is defined here; name the source descriptor that
-supports the definition.</li>
-<li>Contrast <strong>ICS Matrix: 12 Tactics, Full Technique
-Library</strong> with <strong>Cyber access-and-execution taxonomy review
-using fabricated alerts</strong> using the <strong>Cyber-Physical
-Readiness Lens</strong> artifact fields.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>ICS Matrix: Versioned Tactics and
+Technique Knowledge Base</strong>.</li>
+<li>Transfer the <strong>Cyber-Physical Readiness Lens</strong> artifact
+from <strong>ICS Matrix: Versioned Tactics and Technique Knowledge
+Base</strong> to the final topic, <strong>Nozomi Networks: How Security
+Teams Use the ICS Framework</strong>; explain what changes and what
+cannot transfer.</li>
 <li>Identify one failure mode from the <strong>ICS/OT Cyber-Physical
 Defense and Tabletop Readiness</strong> lane and the evidence that would
 reveal it.</li>
 <li>Answer the coursebook review question: Which cyber observation
 changes meaning once physical consequence is considered?</li>
-<li>Correct this misconception: that ICS Matrix: 12 Tactics, Full
-Technique Library is optional whenever separate cyber analysis from
-unsafe process control or live operational action feels
+<li>Correct this misconception: that ICS Matrix: Versioned Tactics and
+Technique Knowledge Base is optional whenever separate cyber analysis
+from unsafe process control or live operational action feels
 inconvenient.</li>
 </ol>
 <h4
@@ -1156,13 +1698,13 @@ id="mitre-attck-for-ics-answer-quality-rubric-source-evidence-uncertainty-and-sa
 ATT&amp;CK for ICS answer quality rubric: source evidence, uncertainty,
 and safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>ICS Matrix: 12 Tactics, Full Technique
-Library</strong> without source evidence, uncertainty, or a safe
-transfer task.</p>
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of <strong>ICS Matrix:
+Versioned Tactics and Technique Knowledge Base</strong> without source
+evidence, uncertainty, or a safe transfer task.</p>
 </main>
 </body>
 </html>

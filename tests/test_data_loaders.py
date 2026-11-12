@@ -2,6 +2,12 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
+import pytest
+
+import _data_loaders as data_loaders
+
 from _data_loaders import (
     artifact_keyword_routes,
     artifact_risk_category_prompts,
@@ -26,6 +32,32 @@ def test_concept_route_loaders_return_non_empty_tuples() -> None:
     assert concept_keyword_routes()
     assert domain_concept_routes()
     assert merged_concept_keyword_routes()
+
+
+def test_concept_routes_without_optional_supplement_preserve_primary_routes(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (data_dir / "concept_routes.yaml").write_text(
+        "concept_keyword_routes:\n  - keywords: [primary]\n    frame: primary_frame\n"
+        "concept_keyword_routes_b:\n  - keywords: [secondary]\n    frame: secondary_frame\n"
+        "domain_concept_routes:\n  - keywords: [domain]\n    frame: domain_frame\n",
+        encoding="utf-8",
+    )
+    cached_loaders = (data_loaders._load_concept_routes_yaml, data_loaders._yaml_routes, data_loaders.merged_concept_keyword_routes)
+    for loader in cached_loaders:
+        loader.cache_clear()
+    try:
+        with monkeypatch.context() as patch:
+            patch.setattr(data_loaders, "_PROJECT_ROOT", tmp_path)
+
+            assert data_loaders.merged_concept_keyword_routes() == (
+                (("primary",), "primary_frame"),
+                (("secondary",), "secondary_frame"),
+                (("domain",), "domain_frame"),
+            )
+    finally:
+        for loader in cached_loaders:
+            loader.cache_clear()
 
 
 def test_category_concept_frames_maps_categories() -> None:
@@ -90,25 +122,6 @@ def test_topic_rotation_template_loaders_return_non_empty() -> None:
     from _data_loaders import misconception_keyword_routes
 
     assert misconception_keyword_routes()
-
-
-def test_coursebook_profiles_payload_returns_fourteen_rows() -> None:
-    from _data_loaders import coursebook_profiles_payload
-
-    rows = coursebook_profiles_payload()
-    assert len(rows) == 14
-    sample = rows[0]
-    assert sample["identifier"]
-    assert sample["vocabulary"]
-
-
-def test_build_coursebook_profiles_returns_typed_profiles() -> None:
-    from intelligence_content._06_part import COURSEBOOK_PROFILES
-
-    assert len(COURSEBOOK_PROFILES) == 14
-    sample = COURSEBOOK_PROFILES["analytic_tradecraft"]
-    assert sample.identifier == "analytic_tradecraft"
-    assert sample.vocabulary
 
 
 def test_safety_artifact_table_names_match_yaml() -> None:

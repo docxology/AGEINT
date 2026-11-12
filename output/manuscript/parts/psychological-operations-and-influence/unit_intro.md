@@ -2,25 +2,31 @@
 
 ## PSYCHOLOGICAL OPERATIONS AND INFLUENCE learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-psychological-operations-and-influence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-psychological-operations-and-influence].
 
 ### information-integrity and influence analysis discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-psychological-operations-and-influence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-psychological-operations-and-influence].
 
 This unit teaches **information-integrity and influence analysis**. Influence lessons analyze narratives, provenance, audience harm, attribution caution, and transparent resilience education without persuasion design.
 
 ### information-integrity and influence analysis source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-psychological-operations-and-influence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-psychological-operations-and-influence].
 
 Use CISA and NATO anchors for foreign influence, information threats, public resilience, and transparent mitigation claims.
 
 ### information-integrity and influence analysis practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-psychological-operations-and-influence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-psychological-operations-and-influence].
 
-The recurring practice artifact is a **narrative-risk and resilience map** that draws on narrative provenance chain, audience-harm note, attribution caveat, and transparent response option. The unit keeps its learning spine explicit. Learners separate message observation from attribution, identify harm, and choose transparent education or correction options.
+The recurring practice artifact is a **narrative-risk and resilience map** that draws on narrative provenance chain, audience-harm note, attribution caveat, and transparent response option. The unit keeps its learning spine explicit. Classroom packet: six synthetic posts repeat a claim that a fictional museum will charge admission; five copy one post, while a dated museum notice limits a fee to a special exhibition.
+
+1. Code the proposition, date, claimed source, and distinction between general admission and the exhibition.
+2. Build a repost tree and compare the claim with the notice without collecting audience identities.
+3. Remove the five copies: apparent volume falls, but independent support for the broader claim remains absent.
+4. Deliver a narrative-risk map judging the general-admission claim unsupported by this packet, with confusion about scope as a credible alternative to deliberate deception. Authorship, sponsorship, reach, and intent remain unresolved.
+Draft a transparent classroom correction quoting the fee scope, not a targeted persuasion plan. Stop if a proposed response profiles an audience or assigns an actor; hand release wording to the instructor.
 
 ### information-integrity and influence analysis safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint238]; [@ageint239].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint238]; [@ageint239].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint238]; [@ageint239].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-psychological-operations-and-influence-module-map] and 
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-financial-intelligence-finint], [@sec:chapter-psyop-and-miso-doctrine].
 
-![The unit module map traces the part's chapters as a linear reading sequence. Its reader value is to make 4 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last visible at a glance, with the psychological operations and influence section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-psychological-operations-and-influence-module-map.png){#fig:part-psychological-operations-and-influence-module-map}
+![The PSYCHOLOGICAL OPERATIONS AND INFLUENCE module map traces the part's chapters as a linear reading sequence. Its reader value is to make 4 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last visible at a glance, with the psychological operations and influence section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-psychological-operations-and-influence-module-map.png){#fig:part-psychological-operations-and-influence-module-map}
 
 ![Studied defensively, this Part is a doctrine-and-countermeasure spine: each influence chapter is matched to the detection signals and cognitive-resilience controls that defend against it. In the psychological operations and influence section, it lets readers compare Influence and Cognitive Security Doctrine, Chapters (Defensive Lens), Ch18 PSYOP/MISO Doctrine, and Ch19 Active Measures so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-psyop-influence-cognitive-defense-spine.png){#fig:part-psyop-influence-cognitive-defense-spine}
 

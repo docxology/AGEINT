@@ -1,10 +1,10 @@
 ### Ethics of Intelligence and Cognitive Security assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-ethics-of-intelligence-and-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-ethics-of-intelligence-and-cognitive-security].
 
 ### Ethics of Intelligence and Cognitive Security assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-ethics-of-intelligence-and-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-ethics-of-intelligence-and-cognitive-security].
 
 #### Ethics of Intelligence and Cognitive Security capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Intelligence Ethics: Deontological, Cons
 
 #### Ethics of Intelligence and Cognitive Security assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks** | Completed **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **The Ethics of Cognitive Security (YorkSpace Dissertation)** | Completed **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **AI Ethics in Intelligence: Accountability, Transparency, Proportionality** | Completed **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks**; **The Ethics of Cognitive Security (YorkSpace Dissertation)** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: confirm lawful purpose, proportionality, retention, review, and appeal or redress paths. |
+| **AI Ethics in Intelligence: Accountability, Transparency, Proportionality**; **Oversight Mechanisms: Congressional, Inspector General, FISA Court** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Whistleblowing, Leaking, and the Epistemic Duty of Intelligence Professionals** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: reject authority laundering, privacy overreach, unmanaged retention, and governance-as-afterthought. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks; The Ethics of Cognitive Security** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks; The Ethics of Cognitive Security**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Ethics of Intelligence and Cognitive Security refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint238]; [@ageint239].
 
-**Triangulation anchors.** In module 51's review-checklist section, directly verified anchors for the **Legal, Ethical, and Oversight Architecture** lane include [@official_odni_eo_12333]; [@official_nsa_fisa]; [@official_eu_ai_act]; [@official_council_europe_ai_convention]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 51's review-checklist section, the **Legal, Ethical, and Oversight Architecture** catalog routes include [@official_odni_eo_12333]; [@official_nsa_fisa]; [@official_eu_ai_act]; [@official_council_europe_ai_convention]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks; The Ethics of Cognitive Security**. [@ageint238]; [@ageint239].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

@@ -1,10 +1,10 @@
 ### Foundations of AGEINT assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-foundations-of-ageint]; [@ageint232].
+**Navigation.** Parent section: [@sec:chapter-foundations-of-ageint].
 
 ### Foundations of AGEINT assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-foundations-of-ageint]; [@ageint232].
+**Navigation.** Parent section: [@sec:chapter-foundations-of-ageint].
 
 #### Foundations of AGEINT capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Defining AGEINT: From AI Agents to Auton
 
 #### Foundations of AGEINT assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Defining AGEINT: From AI Agents to Autonomous Intelligence Systems** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **From LLMs to Agents: The Cognitive Controller Stack** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Unified Taxonomy: Perception → Brain → Planning → Action → Collaboration** | Completed **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Defining AGEINT: From AI Agents to Autonomous Intelligence Systems**; **From LLMs to Agents: The Cognitive Controller Stack**; **Unified Taxonomy: Perception → Brain → Planning → Action → Collaboration**; **Perception Modules: Multimodal Ingestion (Text, Vision, Audio, Sensor)**; **Brain/Reasoning: LLM as Cognitive Controller** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: verify least privilege, prompt-injection exposure, provenance, observability, stop conditions, and incident-reporting triggers. |
+| **Memory: In-Context, External VectorDB, Episodic, Semantic, Procedural**; **Agentic cyber-misuse control review using sample prompt records, fabricated logs, and deny-by-default tool policies**; **Collaboration: A2A Messaging, Shared Context, Role Specialization**; **The OECD Agentic AI Landscape and Conceptual Foundations (2026)**; **MIT Sloan Explanation of Agentic AI** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **AGEINT vs. Traditional OSINT vs. AI-Assisted Analysis: A Capability Matrix**; **Dual-Paradigm Framework: Symbolic/Classical vs. Neural/Generative Agents**; **Attributed forecast: a return to HUMINT as agentic AI challenges digital trust** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: block excessive agency, shadow tools, credential leakage, autonomous deployment, and irreversible actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Defining AGEINT: From AI Agents to Autonomous Intelligence Systems; From LLMs to Agents: The Cognitive Controller Stack** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Defining AGEINT: From AI Agents to Autonomous Intelligence Systems; From LLMs to Agents: The Cognitive Controller Stack**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Foundations of AGEINT refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint232]; [@ageint235].
 
-**Triangulation anchors.** In module 31's review-checklist section, directly verified anchors for the **Agentic AI Governance and Tool Security** lane include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 31's review-checklist section, the **Agentic AI Governance and Tool Security** catalog routes include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Defining AGEINT: From AI Agents to Autonomous Intelligence Systems; From LLMs to Agents: The Cognitive Controller Stack**. [@ageint232]; [@ageint235].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

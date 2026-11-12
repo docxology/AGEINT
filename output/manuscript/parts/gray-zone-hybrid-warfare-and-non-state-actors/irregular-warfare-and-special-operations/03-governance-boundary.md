@@ -1,41 +1,41 @@
 ### Irregular Warfare and Special Operations governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-irregular-warfare-and-special-operations].
 
 ### Irregular Warfare and Special Operations analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 26's governance-boundary section, directly verified anchors for the **Counterintelligence and Source-Integrity Defense** lane include [@official_ncsc_counterintelligence_strategy]; [@official_odni_eo_12333]; [@official_odni_icd_206]; [@official_odni_icd_203]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 26's governance-boundary section, the **Collection Management and Multi-INT Requirements Discipline** catalog routes include [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_204]; [@official_joint_pub_2_0]; [@official_ic_osint_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-Research lane: **Counterintelligence and Source-Integrity Defense** for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**. [@ageint239]; [@ageint249].
+Research lane: **Collection Management and Multi-INT Requirements Discipline** for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**. [@ageint239]; [@ageint249].
 
 **Curriculum topic spine:** **Hybrid-threat indicator review using sample scenarios and policy thresholds**, **FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**, **FM 3-05 102: Hybrid-threat indicator review using sample scenarios and policy thresholds**.
-**Verified anchor cluster:** [@official_ncsc_counterintelligence_strategy]; [@official_odni_eo_12333]; [@official_odni_icd_206]; [@official_odni_icd_203]; [@official_cia_tradecraft_primer]; [@scholarly_heuer_psychology_intelligence_analysis]; [@official_cia_burkett_rascls].
+**Recorded source cluster; inspection and scope limits apply:** [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_204]; [@official_joint_pub_2_0]; [@official_ic_osint_strategy]; [@official_odni_eo_12333]; [@official_nsa_fisa]; [@official_odni_icd_206].
 
-**Conceptual depth:** defending institutions, sources, and judgments against deception, insider risk, foreign-intelligence targeting, and source contamination.
+**Conceptual depth:** requirements-driven, authority-bounded collection where priorities, legal basis, minimization, source protection, and evaluation are explicit.
 
-**Method stack:** threat awareness, source-descriptor audit, corroboration, anomaly review, red-team challenge, and protected disclosure paths.
+**Method stack:** priority mapping, requirement decomposition, source-discipline fit, coverage-gap review, legal-authority check, and collection-feedback loop.
 
-**Composability contract:** identity, access, reporting, corroboration, caveats, and confidence are modeled independently so defensive review can happen without exposure.
+**Composability contract:** requirements, authorities, source disciplines, collection notes, retention limits, caveats, and evaluation metrics remain separable.
 
-**Known failure modes:** source compromise, deception acceptance, identity overconfidence, insider blind spots, and collapsing CI concerns into undifferentiated IT-security triage.
+**Known failure modes:** opportunistic collection, priority drift, over-collection, weak minimization, source exposure, and confusing availability with authority.
 
-**Defensive boundary:** CI content supports defensive awareness, source protection, and analytic integrity; it does not provide surveillance or handling playbooks. Applied to **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**.
+**Defensive boundary:** collection material remains doctrinal and governance-oriented; it does not teach recruitment, interception, surveillance, or tasking procedures. Applied to **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**.
 
 | Anchor | Why it matters here |
 |---|---|
-| [@official_ncsc_counterintelligence_strategy] | Official strategy for defensive CI integration, foreign-intelligence threat awareness, strategic advantage protection, and future readiness. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@official_odni_eo_12333] | Official legal anchor for intelligence authorities, rights-aware collection, analytic competition, oversight, and source-method protection. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@official_intelligence_gov_how_ic_works] | Official public explanation of the intelligence cycle, collection disciplines, dissemination, evaluation, oversight, and partners. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@official_odni_icd_204] | Official prioritization directive for translating national intelligence priorities into collection, analysis, risk management, and responsiveness evaluation. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@official_joint_pub_2_0] | Official joint-doctrine landing page for the keystone publication on joint intelligence principles, products, services, and assessments. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@official_ic_osint_strategy] | Official IC OSINT strategy for professionalizing OSINT, integrated collection management, open-source sharing, innovation, and tradecraft. Checked as of 2026-05-21; role: curriculum_anchor. |
+| [@official_odni_eo_12333] | National Archives transcription of the historical EO 12333 text citing the December 4, 1981 order at 46 FR 59941. Its institutional structure includes the Director of Central Intelligence, including section 1.5; use for historical legal context, not current consolidated authority. The separate official_eo_12333_odni_text anchor identifies an ODNI edition amended through 2008; neither edition alone establishes exhaustive current law. Checked as of 2026-11-06; role: curriculum_anchor. |
+| [@official_nsa_fisa] | Official NSA public explanation of FISA oversight for signals intelligence collection governed by statutory and court-authorized controls. Checked as of 2026-05-21; role: curriculum_anchor. |
 | [@official_odni_icd_206] | Official sourcing directive for traceability, citations, source descriptors, and source summaries. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@official_odni_icd_203] | Official ODNI analytic tradecraft standards directive. Checked as of 2026-05-21; role: source_quality_anchor. |
-| [@official_cia_tradecraft_primer] | Official structured analytic techniques primer for bias checks, alternatives, and warning analysis. Checked as of 2026-05-21; role: curriculum_anchor. |
-| [@scholarly_heuer_psychology_intelligence_analysis] | Foundational analytic cognition source for bias, mental models, and structured reasoning. Checked as of 2026-06-06; role: curriculum_anchor. |
-| [@official_cia_burkett_rascls] | A CIA Studies in Intelligence analyst essay arguing that the traditional MICE recruitment-motivation model (Money, Ideology, Compromise, Ego) is better understood through Cialdini's influence principles reframed as RASCLS (Reciprocation, Authority, Scarcity, Commitment/Consistency, Liking, Social Proof), grounding the historical and conceptual lineage of HUMINT recruitment frameworks. Checked as of 2026-06-08; role: curriculum_anchor. |
 
 
 #### Irregular Warfare and Special Operations evidence standard and citation floor: source families and discovery limits
 
 Official
-guidance supplies governance, safety, and legal constraints for the **Counterintelligence and Source-Integrity Defense**
+guidance supplies governance, safety, and legal constraints for the **Collection Management and Multi-INT Requirements Discipline**
 lane; scholarly or policy-scholarship sources supply explanatory frames; source-guide
 citations preserve the inherited AGEINT bibliography. Perplexity-assisted discovery
 is allowed during maintenance, but the manuscript citation itself must resolve to a
@@ -43,9 +43,9 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint239]; [
 
 ### Irregular Warfare and Special Operations agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-irregular-warfare-and-special-operations].
 
-AGEINT translation is bounded by the **Counterintelligence and Source-Integrity Defense** lane.
+AGEINT translation is bounded by the **Collection Management and Multi-INT Requirements Discipline** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
 checklists, summarize evidence, simulate benign scenarios, and audit reasoning.
 They do not initiate unauthorized collection, exploitation, covert targeting,
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **Hybrid-threat in
 
 #### Irregular Warfare and Special Operations permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-irregular-warfare-and-special-operations].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -66,10 +66,10 @@ Keep all practice accountable, synthetic, defensive, logged, reversible, and evi
 
 ### Irregular Warfare and Special Operations governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-irregular-warfare-and-special-operations].
 
-Governance is practiced as a gate on the **Counterintelligence and Source-Integrity Defense**
-lane. Learners use the **Dissemination-and-Marking Control Lens** to decide who is accountable for the exercise,
+Governance is practiced as a gate on the **Collection Management and Multi-INT Requirements Discipline**
+lane. Learners use the **Requirements-to-Evidence Lens** to decide who is accountable for the exercise,
 which evidence is sufficient, what rights and access issues remain, and when an
 agent-assisted artifact must stop for human review while using **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**.
 
@@ -77,20 +77,19 @@ agent-assisted artifact must stop for human review while using **Hybrid-threat i
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint239]; [@ageint249]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint239]; [@ageint249]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
-| Assurance | The artifact is challenged against **Counterintelligence and Source-Integrity Defense** failure modes and the **Dissemination-and-Marking Control Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
+| Assurance | The artifact is challenged against **Collection Management and Multi-INT Requirements Discipline** failure modes and the **Requirements-to-Evidence Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### Irregular Warfare and Special Operations evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
-The local **Dissemination-and-Marking Control Lens** evidence gate stays compact enough to apply during
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
+The local **Requirements-to-Evidence Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**.
 
 #### Irregular Warfare and Special Operations current-source assurance: verified anchors and local artifact fit
@@ -99,10 +98,10 @@ The source assurance check ties the current verified anchor set to the local cha
 
 | Assurance question | Direct source evidence | Chapter artifact |
 |---|---|---|
-| What does the module inherit from `official_ncsc_counterintelligence_strategy` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | The National Counterintelligence Strategy; lane `counterintelligence_source_integrity`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official strategy for defensive CI integration, foreign-intelligence threat awareness, strategic advantage protection, and future readiness. |
-| What does the module inherit from `official_odni_eo_12333` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | Executive Order 12333: United States Intelligence Activities; lane `legal_oversight`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official legal anchor for intelligence authorities, rights-aware collection, analytic competition, oversight, and source-method protection. |
-| What does the module inherit from `official_odni_icd_206` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | Intelligence Community Directive 206: Sourcing Requirements for Disseminated Analytic Products; lane `analytic_tradecraft`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official sourcing directive for traceability, citations, source descriptors, and source summaries. |
-| What does the module inherit from `official_odni_icd_203` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | Intelligence Community Directive 203: Analytic Standards; lane `source_quality_spine`; checked 2026-05-21. | dissemination map with audience, caveat, marking, records, and feedback fields; Official ODNI analytic tradecraft standards directive. |
+| What does the module inherit from `official_intelligence_gov_how_ic_works` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | How the IC Works; lane `governed_intelligence_cycle`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official public explanation of the intelligence cycle, collection disciplines, dissemination, evaluation, oversight, and partners. |
+| What does the module inherit from `official_odni_icd_204` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | Intelligence Community Directive 204: National Intelligence Priorities Framework; lane `collection_management`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official prioritization directive for translating national intelligence priorities into collection, analysis, risk management, and responsiveness evaluation. |
+| What does the module inherit from `official_joint_pub_2_0` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | JP 2-0: Joint Intelligence; lane `collection_management`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official joint-doctrine landing page for the keystone publication on joint intelligence principles, products, services, and assessments. |
+| What does the module inherit from `official_ic_osint_strategy` for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**? | The INT of First Resort: The IC OSINT Strategy 2024-2026; lane `osint_geoint`; checked 2026-05-21. | requirements matrix with source descriptors, caveats, and collection limits; Official IC OSINT strategy for professionalizing OSINT, integrated collection management, open-source sharing, innovation, and tradecraft. |
 | How is Perplexity handled here? | Discovery and second-opinion notes are not citable authority unless converted into direct official, standards-body, public-domain, or scholarly anchors. | Claim ledger records the direct URL, checked date, source lane, refresh trigger, and reviewer. |
 
 **Where this sits.** This module's overview is [@sec:chapter-irregular-warfare-and-special-operations]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

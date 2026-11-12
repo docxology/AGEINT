@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,93 +182,511 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="requirements-to-evidence-lens-path-for-agent-recruitment-lesson-cluster-safe-artifact-and-review">Requirements-to-Evidence
 Lens path for Agent Recruitment: lesson cluster, safe artifact, and
 review</h2>
-<p><strong>Evidence anchor.</strong> [sec:chapter-agent-recruitment];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-agent-recruitment">[@sec:chapter-agent-recruitment]</span>.</p>
 <h3
 id="agent-recruitment-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Agent
 Recruitment practice studio: topic lessons, safe worked example, and
 knowledge check</h3>
-<p><strong>Evidence anchor.</strong> [sec:chapter-agent-recruitment];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-agent-recruitment">[@sec:chapter-agent-recruitment]</span>.</p>
 <h3
 id="agent-recruitment-topic-lessons-source-backed-concepts-and-transfer-tasks">Agent
 Recruitment topic lessons: source-backed concepts and transfer
 tasks</h3>
-<p>This module builds collection management as requirements discipline:
-a source method is considered only after the priority, authority,
-minimization rule, source risk, and evaluation plan are explicit. The
-sequence opens with <strong>MICE Framework for recruitment-risk
-literacy</strong>, <strong>MICE Expanded: MICE Framework for
-recruitment-risk literacy</strong>, <strong>Spotting indicators literacy
-for recruitment-risk</strong> and applies the
+<p><strong>Agent Recruitment</strong> builds collection management as
+requirements discipline: a source method is considered only after the
+priority, authority, minimization rule, source risk, and evaluation plan
+are explicit. The sequence opens with <strong>MICE Framework for
+recruitment-risk literacy</strong>, <strong>RASCLS tradecraft vocabulary
+for recruitment-risk literacy</strong>, <strong>Supplied-Record Review:
+Access Claims without Targeting People</strong> and applies the
 <strong>Requirements-to-Evidence Lens</strong> practice frame through
 concept, evidence, artifact, misconception, and transfer tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-human-intelligence-humint-module-map]; module overview
-[sec:chapter-agent-recruitment]; curriculum atlas
-[sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 4’s topic-lessons
-section, directly verified anchors for the <strong>Collection Management
-and Multi-INT Requirements Discipline</strong> lane include
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-human-intelligence-humint-module-map">[@fig:part-human-intelligence-humint-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-agent-recruitment">[@sec:chapter-agent-recruitment]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 4’s
+topic-lessons section, the <strong>Collection Management and Multi-INT
+Requirements Discipline</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
-[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
 <h4 id="lesson-1-mice-framework-for-recruitment-risk-literacy">Lesson 1:
 MICE Framework for recruitment-risk literacy</h4>
 <p><strong>Concept.</strong> <strong>MICE Framework for recruitment-risk
-literacy</strong> uses the motivation taxonomy to recognize
-recruitment-risk narratives and ethics constraints, not to design
-persuasion.</p>
+literacy</strong> — MICE names money, ideology, coercion/compromise, and
+ego as a historical motivation taxonomy. Use it to critique
+recruitment-risk narratives and consent boundaries, not to predict an
+individual’s motives or design recruitment.</p>
+<p><strong>Worked reasoning and limits.</strong> MICE abbreviates Money,
+Ideology, Coercion/Compromise, and Ego in historical/practitioner
+discussion of recruitment. It is descriptive vocabulary, not a validated
+taxonomy that assigns a person’s motive, predicts cooperation, or
+establishes report credibility. In a synthetic message, accepting
+reimbursement could reflect an ordinary expense, convenience, or many
+other explanations; it does not establish a ‘money motive’ or a
+vulnerability to exploit. Compare documentary claims about a historical
+case without scoring, profiling, contacting, or recruiting anyone.</p>
 <p><strong>Why it matters.</strong> <strong>MICE Framework</strong>
-connects classroom vocabulary to Collection Management and Multi-INT
-Requirements Discipline practice: learners document evidence, caveats,
-and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>MICE Framework for
-recruitment-risk literacy</strong> rests on [ageint020] and [ageint021].
-The most specific cited work observes: The article describes how the
-manuals cover intelligence methods such as agent recruitment,
-psychological manipulation, and disinformation detection, and notes the
-materials remain relevant because related methods persist in modern
-Russian services. Use them for fixing what <strong>MICE Framework for
-recruitment-risk literacy</strong> covers, marking the boundary it must
-not cross, and timing the next source refresh. External triangulation
-uses [official_intelligence_gov_how_ic_works];
+matters in the <strong>Collection Management and Multi-INT Requirements
+Discipline</strong> lane because requirements decomposition and
+source-discipline fit evidence must stay separate from judgment;
+confusing motivation literacy with contact authorization is a common
+failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>MICE Framework for recruitment-risk literacy</strong>:
+[ageint020] and [ageint021]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_intelligence_gov_how_ic_works];
 [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>MICE
-Framework</strong> against the works cited for this row. [ageint020] A
-publisher and training-organization page from HSM Training and
-Consultancy (London) promoting the book The Human Source Management
-System, a guide of over 500 pages that applies social psychology to the
-management of confidential informants. The site states the book draws on
-research and practitioner interviews and is used by law enforcement and
-intelligence bodies across more than 40 countries. [ageint021] A July
-2019 story from The World (PRX public radio) about a project led by
-Michael Weiss to translate previously unpublished Soviet-era KGB
-training manuals from the 1970s-80s into English. The article describes
-how the manuals cover intelligence methods such as agent recruitment,
-psychological manipulation, and disinformation detection, and notes the
-materials remain relevant because related methods persist in modern
-Russian services. Each source above earns its place in this topic only
-when you can state its bounded claim, its provenance, its uncertainty,
-and the fact that would retire it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>MICE
+Framework</strong>, inspect the original passages. Curriculum annotation
+for [ageint020]: A publisher and training-organization page from HSM
+Training and Consultancy (London) promoting the book The Human Source
+Management System, a guide of over 500 pages that applies social
+psychology to the management of confidential informants. The site states
+the book draws on research and practitioner interviews and is used by
+law enforcement and intelligence bodies across more than 40 countries.
+Curriculum annotation for [ageint021]: A July 2019 story from The World
+(PRX public radio) about a project led by Michael Weiss to translate
+previously unpublished Soviet-era KGB training manuals from the
+1970s-80s into English. The article describes how the manuals cover
+intelligence methods such as agent recruitment, psychological
+manipulation, and disinformation detection, and notes the materials
+remain relevant because related methods persist in modern Russian
+services. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> Build a <strong>requirements
 matrix with source descriptors, caveats, and collection limits</strong>
 for this requirements decomposition and source-discipline fit topic. The
 artifact must note the motivation descriptor, the bounded claim about
 <strong>MICE Framework</strong>, the consent caveat, the uncertainty
 note, the no-contact boundary, and the reviewer who owns escalation
-duties. Shape this subject work as a <strong>source-risk and validation
-ethics worksheet</strong> that names evidence, uncertainty, reviewer,
-and stop condition.</p>
+duties. Shape the same topic work as a <strong>source-risk and
+validation ethics worksheet</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>MICE Framework</strong>: that a motivation taxonomy is a
 recruitment checklist.</p>
@@ -270,470 +695,627 @@ Framework</strong> from this module to a second motif by preserving
 requirements decomposition and source-discipline fit, replacing action
 with audit, and naming the blocked use.</p>
 <h4
-id="lesson-2-mice-expanded-mice-framework-for-recruitment-risk-literacy">Lesson
-2: MICE Expanded: MICE Framework for recruitment-risk literacy</h4>
-<p><strong>Concept.</strong> <strong>MICE Expanded: MICE Framework for
-recruitment-risk literacy</strong> uses the motivation taxonomy to
-recognize recruitment-risk narratives and ethics constraints, not to
-design persuasion.</p>
-<p><strong>Why it matters.</strong> <strong>MICE Expanded</strong>
-connects classroom vocabulary to Collection Management and Multi-INT
-Requirements Discipline practice: learners document evidence, caveats,
-and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>MICE Expanded: MICE
-Framework for recruitment-risk literacy</strong> rests on [ageint298]
-and [ageint297]. The closest source to this row notes: Official ODNI
-Intelligence Community Directive 203 analytic standards source for
-objectivity, independence, timeliness, alternatives, confidence,
-sourcing, and accuracy in analytic products. Use them for the working
-definition that <strong>MICE Expanded: MICE Framework for
-recruitment-risk literacy</strong> can defend, where that scope ends,
-and the refresh check owed before this evidence transfers. External
-triangulation uses [official_intelligence_gov_how_ic_works];
+id="lesson-2-rascls-tradecraft-vocabulary-for-recruitment-risk-literacy">Lesson
+2: RASCLS tradecraft vocabulary for recruitment-risk literacy</h4>
+<p><strong>Concept.</strong> <strong>RASCLS tradecraft vocabulary for
+recruitment-risk literacy</strong> — RASCLS names reciprocity,
+authority, scarcity, commitment, liking, and social proof as historical
+influence vocabulary, whereas MICE classifies money, ideology,
+coercion/compromise, and ego. Neither mnemonic validates person-level
+motive prediction or authorizes contact, profiling, or persuasion.</p>
+<p><strong>Worked reasoning and limits.</strong> RASCLS names
+Reciprocity, Authority, Scarcity, Commitment, Liking, and Social Proof;
+unlike MICE’s motive categories, it organizes proposed social-influence
+mechanisms in a practitioner framework. Burkett’s public essay is the
+provenance of the MICE-to-RASCLS comparison, not an empirical
+demonstration that these labels reliably predict individual behavior
+[official_cia_burkett_rascls]. A fictional reference to an official
+title can be ordinary identification rather than coercive authority, and
+friendly wording does not establish commitment. The diagnostic answer
+expands both mnemonics, distinguishes their organizing purposes, and
+refuses person-level predictions or operational scripts; inherited ICD
+citations support analytic discipline, not the framework’s
+definitions.</p>
+<p><strong>Why it matters.</strong> <strong>RASCLS tradecraft
+vocabulary</strong> connects classroom vocabulary to Collection
+Management and Multi-INT Requirements Discipline practice: learners
+document evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>RASCLS tradecraft vocabulary for recruitment-risk
+literacy</strong>: [ageint298] and [ageint297]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
 [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>MICE
-Expanded</strong> against the works cited for this row. [ageint298]
-Official ODNI index for Intelligence Community Directives used to locate
-current directive source material and preserve directive-context
-citations. [ageint297] Official ODNI Intelligence Community Directive
-203 analytic standards source for objectivity, independence, timeliness,
+<p><strong>Evidence to inspect.</strong> For <strong>RASCLS tradecraft
+vocabulary</strong>, inspect the original passages. Curriculum
+annotation for [ageint298]: Official ODNI index for Intelligence
+Community Directives used to locate current directive source material
+and preserve directive-context citations. Curriculum annotation for
+[ageint297]: Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
 alternatives, confidence, sourcing, and accuracy in analytic products.
-From each source, pull the bounded claim it can carry for this topic,
-its provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
-<p><strong>Student artifact.</strong> For <strong>MICE
-Expanded</strong>, build a <strong>requirements matrix with source
-descriptors, caveats, and collection limits</strong> for this
-requirements decomposition and source-discipline fit topic. The artifact
-must note the motivation descriptor, the bounded claim about
-<strong>MICE Expanded</strong>, the consent caveat, the uncertainty
-note, the no-contact boundary, and the reviewer who owns escalation
-duties. Shape <strong>MICE Expanded</strong> work as a
-<strong>source-risk and validation ethics worksheet</strong> that logs
-the evidence, the uncertainty, the responsible reviewer, and the halt
-condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>MICE Expanded</strong>: that a motivation taxonomy is a
-recruitment checklist.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>MICE Expanded</strong> to another artifact while keeping
-requirements decomposition and source-discipline fit and reviewer
-ownership explicit.</p>
-<h4
-id="lesson-3-spotting-indicators-literacy-for-recruitment-risk">Lesson
-3: Spotting indicators literacy for recruitment-risk</h4>
-<p><strong>Concept.</strong> <strong>Spotting indicators literacy for
-recruitment-risk</strong> reads recruitment doctrine as risk literacy:
-pressure, consent, validation, and the line that blocks operational
-contact.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Spotting indicators literacy</strong>, confusing motivation
-literacy with contact authorization undermines requirements
-decomposition and source-discipline fit review; the lesson builds the
-habit to separate collection discipline concepts from operational
-recruitment, interception, or tasking procedures.</p>
-<p><strong>Source support.</strong> <strong>Spotting indicators literacy
-for recruitment-risk</strong> rests on [ageint020] and [ageint021]. The
-lead source’s own note reads: A July 2019 story from The World (PRX
-public radio) about a project led by Michael Weiss to translate
-previously unpublished Soviet-era KGB training manuals from the
-1970s-80s into English. Use them for the claim that <strong>Spotting
-indicators literacy for recruitment-risk</strong> lets you defend here,
-the limit it has to respect, and the re-check owed before reuse.
-External triangulation uses [official_intelligence_gov_how_ic_works];
-[official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Spotting indicators
-literacy</strong>, reason from the sources cited in this row.
-[ageint020] A publisher and training-organization page from HSM Training
-and Consultancy (London) promoting the book The Human Source Management
-System, a guide of over 500 pages that applies social psychology to the
-management of confidential informants. The site states the book draws on
-research and practitioner interviews and is used by law enforcement and
-intelligence bodies across more than 40 countries. [ageint021] A July
-2019 story from The World (PRX public radio) about a project led by
-Michael Weiss to translate previously unpublished Soviet-era KGB
-training manuals from the 1970s-80s into English. The article describes
-how the manuals cover intelligence methods such as agent recruitment,
-psychological manipulation, and disinformation detection, and notes the
-materials remain relevant because related methods persist in modern
-Russian services. Each source above earns its place in this topic only
-when you can state its bounded claim, its provenance, its uncertainty,
-and the fact that would retire it.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
-artifact must note the motivation descriptor, the bounded claim about
-<strong>Spotting indicators literacy</strong>, the consent caveat, the
-uncertainty note, the no-contact boundary, and the reviewer who owns
-escalation duties. Shape this subject work as a <strong>source-risk and
-validation ethics worksheet</strong> that names evidence, uncertainty,
-reviewer, and stop condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Spotting indicators literacy</strong>: that motivation literacy
-is contact authorization.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Spotting indicators
-literacy</strong> from this module to a second motif by preserving
-requirements decomposition and source-discipline fit, replacing action
-with audit, and naming the blocked use.</p>
-<h4 id="lesson-4-assessment-and-development-ethics-literacy">Lesson 4:
-Assessment-and-development ethics literacy</h4>
-<p><strong>Concept.</strong> <strong>Assessment-and-development ethics
-literacy</strong> reads recruitment doctrine as risk literacy: pressure,
-consent, validation, and the line that blocks operational contact.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Assessment-and-development ethics literacy</strong>, confusing
-motivation literacy with contact authorization undermines requirements
-decomposition and source-discipline fit review; the lesson builds the
-habit to separate collection discipline concepts from operational
-recruitment, interception, or tasking procedures.</p>
-<p><strong>Source support.</strong> <strong>Assessment-and-development
-ethics literacy</strong> rests on [ageint020] and [ageint021]. Its
-anchor reference records: The article describes how the manuals cover
-intelligence methods such as agent recruitment, psychological
-manipulation, and disinformation detection, and notes the materials
-remain relevant because related methods persist in modern Russian
-services. Use them for pinning down the scope of
-<strong>Assessment-and-development ethics literacy</strong>, the edge of
-that scope, and when these citations need re-verifying before transfer.
-External triangulation uses [official_intelligence_gov_how_ic_works];
-[official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For
-<strong>Assessment-and-development ethics literacy</strong>, work from
-the cited evidence behind this row. [ageint020] A publisher and
-training-organization page from HSM Training and Consultancy (London)
-promoting the book The Human Source Management System, a guide of over
-500 pages that applies social psychology to the management of
-confidential informants. The site states the book draws on research and
-practitioner interviews and is used by law enforcement and intelligence
-bodies across more than 40 countries. [ageint021] A July 2019 story from
-The World (PRX public radio) about a project led by Michael Weiss to
-translate previously unpublished Soviet-era KGB training manuals from
-the 1970s-80s into English. The article describes how the manuals cover
-intelligence methods such as agent recruitment, psychological
-manipulation, and disinformation detection, and notes the materials
-remain relevant because related methods persist in modern Russian
-services. Each source above earns its place in this topic only when you
-can state its bounded claim, its provenance, its uncertainty, and the
-fact that would retire it.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
-artifact must note the motivation descriptor, the bounded claim about
-<strong>Assessment-and-development ethics literacy</strong>, the consent
-caveat, the uncertainty note, the no-contact boundary, and the reviewer
-who owns escalation duties. Shape this subject work as a
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>RASCLS tradecraft
+vocabulary</strong>, build a RASCLS versus MICE vocabulary comparison
+with historical context, consent boundary, and unsupported motive
+inference. Shape <strong>RASCLS tradecraft vocabulary</strong> work as a
 <strong>source-risk and validation ethics worksheet</strong> that states
 the evidence used, what stays uncertain, who reviews it, and when to
 stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Assessment-and-development ethics literacy</strong>: that
-motivation literacy is contact authorization.</p>
-<p><strong>Transfer task.</strong> Transfer
-<strong>Assessment-and-development ethics literacy</strong> from this
-module to a second motif by preserving requirements decomposition and
-source-discipline fit, replacing action with audit, and naming the
-blocked use.</p>
+<strong>RASCLS tradecraft vocabulary</strong>: that RASCLS labels
+predict an individual’s motives or authorize persuasion or contact.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>RASCLS tradecraft
+vocabulary</strong> from this module to a second motif by preserving
+requirements decomposition and source-discipline fit, replacing action
+with audit, and naming the blocked use.</p>
 <h4
-id="lesson-5-recruitment-doctrine-ethics-and-source-protection-literacy">Lesson
-5: Recruitment-doctrine ethics and source-protection literacy</h4>
-<p><strong>Concept.</strong> <strong>Recruitment-doctrine ethics and
-source-protection literacy</strong> reads recruitment doctrine as risk
-literacy: pressure, consent, validation, and the line that blocks
-operational contact.</p>
-<p><strong>Why it matters.</strong> <strong>Recruitment-doctrine
-ethics</strong> connects classroom vocabulary to Collection Management
-and Multi-INT Requirements Discipline practice: learners document
-evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>Recruitment-doctrine ethics
-and source-protection literacy</strong> rests on [ageint020]. The most
-specific cited work observes: A publisher and training-organization page
-from HSM Training and Consultancy (London) promoting the book The Human
-Source Management System, a guide of over 500 pages that applies social
-psychology to the management of confidential informants. Use it for the
-working definition that <strong>Recruitment-doctrine ethics and
-source-protection literacy</strong> can defend, where that scope ends,
-and the refresh check owed before this evidence transfers. External
-triangulation uses [official_intelligence_gov_how_ic_works];
+id="lesson-3-supplied-record-review-access-claims-without-targeting-people">Lesson
+3: Supplied-Record Review: Access Claims without Targeting People</h4>
+<p><strong>Concept.</strong> <strong>Supplied-Record Review: Access
+Claims without Targeting People</strong> is taught in the
+<strong>Collection Management and Multi-INT Requirements
+Discipline</strong> lane. The analytic distinction is to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures. Apply it to the supplied evidence;
+a topic label alone establishes neither a mechanism nor a
+conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> Access is a claim about
+a source’s opportunity to know particular information, not a personality
+trait or proof of truth. For a fictional supplied record saying ‘I heard
+the room changed,’ the supported basis is hearsay, not firsthand access
+to scheduling decisions. A learner should identify the missing origin
+and date rather than infer motive from a biography, seek real
+identities, or initiate contact. The inherited operational heading
+remains provenance; the classroom substitution is evidence-basis review
+only.</p>
+<p><strong>Why it matters.</strong> <strong>Supplied-Record
+Review</strong> matters in the <strong>Collection Management and
+Multi-INT Requirements Discipline</strong> lane because requirements
+decomposition and source-discipline fit evidence must stay separate from
+judgment; opportunistic collection is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Supplied-Record Review: Access Claims without Targeting
+People</strong>: [ageint020] and [ageint021]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
 [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Ground
-<strong>Recruitment-doctrine ethics</strong> in the evidence the row
-cites. [ageint020] A publisher and training-organization page from HSM
+<p><strong>Evidence to inspect.</strong> For <strong>Supplied-Record
+Review</strong>, inspect the original passages. Curriculum annotation
+for [ageint020]: A publisher and training-organization page from HSM
 Training and Consultancy (London) promoting the book The Human Source
 Management System, a guide of over 500 pages that applies social
 psychology to the management of confidential informants. The site states
 the book draws on research and practitioner interviews and is used by
 law enforcement and intelligence bodies across more than 40 countries.
-From each source, pull the bounded claim it can carry for this topic,
-its provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
-artifact must note the motivation descriptor, the bounded claim about
-<strong>Recruitment-doctrine ethics</strong>, the consent caveat, the
-uncertainty note, the no-contact boundary, and the reviewer who owns
-escalation duties. Shape this subject work as a <strong>source-risk and
-validation ethics worksheet</strong> that logs the evidence, the
-uncertainty, the responsible reviewer, and the halt condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Recruitment-doctrine ethics</strong>: that motivation literacy
-is contact authorization.</p>
-<p><strong>Transfer task.</strong> Reuse the
-<strong>Recruitment-doctrine ethics</strong> audit pattern from this
-module on a different sample record set with a new reviewer and
-blocked-use note.</p>
-<h4 id="lesson-6-declassified-psychological-pressure-ethics">Lesson 6:
-Declassified psychological-pressure ethics</h4>
-<p><strong>Concept.</strong> <strong>Declassified psychological-pressure
-ethics</strong> reads recruitment doctrine as risk literacy: pressure,
-consent, validation, and the line that blocks operational contact.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Declassified
-psychological-pressure ethics</strong> to separate collection discipline
-concepts from operational recruitment, interception, or tasking
-procedures. A defensible treatment names the judgment it enables for
-requirements decomposition and source-discipline fit review, the proof
-limit that opportunistic collection would otherwise hide, and the
-reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Declassified
-psychological-pressure ethics</strong> rests on [ageint021] and
-[ageint022]. The closest source to this row notes: It summarizes a set
-of newly obtained manuals spanning several decades and describes the
-topics they cover, including operational terminology, agent
-classification, information-gathering methods, recruitment and vetting
-procedures, and counterintelligence concerns. Use them for the claim
-that <strong>Declassified psychological-pressure ethics</strong> lets
-you defend here, the limit it has to respect, and the re-check owed
-before reuse. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Declassified
-psychological-pressure ethics</strong>, work from the cited evidence
-behind this row. [ageint021] A July 2019 story from The World (PRX
-public radio) about a project led by Michael Weiss to translate
+Curriculum annotation for [ageint021]: A July 2019 story from The World
+(PRX public radio) about a project led by Michael Weiss to translate
 previously unpublished Soviet-era KGB training manuals from the
 1970s-80s into English. The article describes how the manuals cover
 intelligence methods such as agent recruitment, psychological
 manipulation, and disinformation detection, and notes the materials
 remain relevant because related methods persist in modern Russian
-services. [ageint022] An article from The Interpreter, a publication
-focused on Russian affairs and disinformation, announcing a project to
-translate, analyze, and publish previously unpublished Soviet KGB
-training documents. It summarizes a set of newly obtained manuals
-spanning several decades and describes the topics they cover, including
-operational terminology, agent classification, information-gathering
-methods, recruitment and vetting procedures, and counterintelligence
-concerns. Read each cited work for what it can support about this topic,
-where that claim originated, how confident it is, and what evidence
-would change it.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
-artifact must cite the declassified source descriptor, the bounded
-lesson about <strong>Declassified psychological-pressure
-ethics</strong>, the redaction caveat, the attribution uncertainty, the
-protected-detail boundary, and the reviewer who clears release. Shape
-this subject work as a <strong>source-risk and validation ethics
-worksheet</strong> that logs the evidence, the uncertainty, the
-responsible reviewer, and the halt condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Declassified psychological-pressure ethics</strong>: that a
-source identity is safe to discuss once the operation is historical,
-when protection obligations and re-identification risk outlast the case
-itself.</p>
-<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
-<strong>Declassified psychological-pressure ethics</strong> to another
-artifact while keeping requirements decomposition and source-discipline
-fit and reviewer ownership explicit.</p>
+services. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Supplied-Record
+Review</strong>, build a <strong>requirements matrix with source
+descriptors, caveats, and collection limits</strong> for this
+requirements decomposition and source-discipline fit topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>Supplied-Record Review</strong>, the caveat that limits it, the
+uncertainty note, the out-of-scope-use boundary, and the reviewer
+accountable for challenge. Shape <strong>Supplied-Record Review</strong>
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that states the evidence used, what stays uncertain, who reviews it, and
+when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Supplied-Record Review: Access Claims without Targeting People can be
+used while ignoring the rule to separate collection discipline concepts
+from operational recruitment, interception, or tasking procedures.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Supplied-Record
+Review</strong> to a second module by preserving requirements
+decomposition and source-discipline fit, changing the source evidence,
+and naming a new reviewer.</p>
 <h4
-id="lesson-7-digital-age-recruitment-risk-and-consent-boundary">Lesson
-7: Digital-age recruitment-risk and consent-boundary</h4>
-<p><strong>Concept.</strong> <strong>Digital-age recruitment-risk and
-consent-boundary</strong> reads recruitment doctrine as risk literacy:
-pressure, consent, validation, and the line that blocks operational
-contact.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Digital-age
-recruitment-risk</strong> to separate collection discipline concepts
-from operational recruitment, interception, or tasking procedures. A
-defensible treatment names the judgment it enables for requirements
-decomposition and source-discipline fit review, the proof limit that
-confusing motivation literacy with contact authorization would otherwise
-hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Digital-age recruitment-risk
-and consent-boundary</strong> rests on [ageint023]. The lead source’s
-own note reads: A 2024 International Master in Security, Intelligence
-and Strategic Studies thesis (Glasgow, Trento, Charles University)
-titled ‘Human Intelligence in the Modern Era: The Impact of Digital
-Technology on Clandestine the module.’ It uses a literature-based
-analysis plus three case studies to compare traditional human-source
-practices with technology-enabled approaches. Use it for pinning down
-the scope of <strong>Digital-age recruitment-risk and
-consent-boundary</strong>, the edge of that scope, and when these
-citations need re-verifying before transfer. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Digital-age
-recruitment-risk</strong> against the works cited for this row.
-[ageint023] A 2024 International Master in Security, Intelligence and
-Strategic Studies thesis (Glasgow, Trento, Charles University) titled
-‘Human Intelligence in the Modern Era: The Impact of Digital Technology
-on Clandestine the module.’ It uses a literature-based analysis plus
-three case studies to compare traditional human-source practices with
-technology-enabled approaches. Read each cited work for what it can
-support about this topic, where that claim originated, how confident it
-is, and what evidence would change it.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
-artifact must note the motivation descriptor, the bounded claim about
-<strong>Digital-age recruitment-risk</strong>, the consent caveat, the
-uncertainty note, the no-contact boundary, and the reviewer who owns
-escalation duties. Shape this subject work as a <strong>source-risk and
-validation ethics worksheet</strong> that states the evidence used, what
-stays uncertain, who reviews it, and when to stop.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Digital-age recruitment-risk</strong>: that motivation literacy
-is contact authorization.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Digital-age
-recruitment-risk</strong> from this module to a second motif by
+id="lesson-4-development-claims-versus-consent-scope-and-welfare">Lesson
+4: Development Claims versus Consent, Scope, and Welfare</h4>
+<p><strong>Concept.</strong> <strong>Development Claims versus Consent,
+Scope, and Welfare</strong> is taught in the <strong>Collection
+Management and Multi-INT Requirements Discipline</strong> lane. The
+analytic distinction is to separate collection discipline concepts from
+operational recruitment, interception, or tasking procedures. Apply it
+to the supplied evidence; a topic label alone establishes neither a
+mechanism nor a conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> A relationship’s
+duration or familiarity does not establish freely given consent to every
+later use of information. Separate the supplied purpose, permitted
+reuse, stated withdrawal conditions, and welfare issue from assumptions
+about loyalty or willingness. Where a fictional record permits
+discussion in class but says nothing about publication, publication
+remains on hold; repeated engagement does not fill the permission gap.
+Historical doctrine is studied as attributed context, not enacted as a
+development operation or used to discover someone’s vulnerabilities.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Development
+Claims versus Consent, Scope, and Welfare</strong> to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures. A defensible treatment names the
+judgment it enables for requirements decomposition and source-discipline
+fit review, the proof limit that opportunistic collection would
+otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Development Claims versus Consent, Scope, and Welfare</strong>:
+[ageint020] and [ageint021]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Development Claims
+versus Consent, Scope, and Welfare</strong>, inspect the original
+passages. Curriculum annotation for [ageint020]: A publisher and
+training-organization page from HSM Training and Consultancy (London)
+promoting the book The Human Source Management System, a guide of over
+500 pages that applies social psychology to the management of
+confidential informants. The site states the book draws on research and
+practitioner interviews and is used by law enforcement and intelligence
+bodies across more than 40 countries. Curriculum annotation for
+[ageint021]: A July 2019 story from The World (PRX public radio) about a
+project led by Michael Weiss to translate previously unpublished
+Soviet-era KGB training manuals from the 1970s-80s into English. The
+article describes how the manuals cover intelligence methods such as
+agent recruitment, psychological manipulation, and disinformation
+detection, and notes the materials remain relevant because related
+methods persist in modern Russian services. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Development Claims
+versus Consent, Scope, and Welfare</strong>, build a
+<strong>requirements matrix with source descriptors, caveats, and
+collection limits</strong> for this requirements decomposition and
+source-discipline fit topic. The artifact must name the source
+descriptor, the bounded claim about <strong>Development Claims versus
+Consent Scope</strong>, the caveat that limits it, the uncertainty note,
+the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape the same topic work as a <strong>source-risk and
+validation ethics worksheet</strong> that logs the evidence, the
+uncertainty, the responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Development Claims versus Consent, Scope, and Welfare is optional
+whenever separate collection discipline concepts from operational
+recruitment, interception, or tasking procedures feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Development Claims
+versus Consent, Scope, and Welfare</strong> to a second module by
 preserving requirements decomposition and source-discipline fit,
-replacing action with audit, and naming the blocked use.</p>
+changing the source evidence, and naming a new reviewer.</p>
 <h4
-id="lesson-8-shared-experience-as-a-recruitment-tool-experimental-research">Lesson
-8: Shared Experience as a Recruitment Tool: Experimental Research</h4>
-<p><strong>Concept.</strong> <strong>Shared Experience as a Recruitment
-Tool: Experimental Research</strong> reads recruitment doctrine as risk
-literacy: pressure, consent, validation, and the line that blocks
-operational contact.</p>
-<p><strong>Why it matters.</strong> <strong>Shared Experience as a
-Recruitment Tool</strong> connects classroom vocabulary to Collection
+id="lesson-5-recognizing-pressure-in-supplied-messages-a-completed-ethics">Lesson
+5: Recognizing Pressure in Supplied Messages: A Completed Ethics</h4>
+<p><strong>Concept.</strong> <strong>Recognizing Pressure in Supplied
+Messages: A Completed Ethics</strong> is taught in the
+<strong>Collection Management and Multi-INT Requirements
+Discipline</strong> lane. The analytic distinction is to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures. Apply it to the supplied evidence;
+a topic label alone establishes neither a mechanism nor a
+conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> <strong>Completed
+synthetic case:</strong> instructor-provided message A links a fictional
+volunteer’s access to an unrelated benefit, while message B is an
+ordinary optional timetable reminder. The review records A’s conditional
+pressure as an observed wording feature, not proof of its author’s
+hidden motive, and records B as insufficient evidence of recruitment or
+coercion. A later supplied withdrawal notice removes permission for
+reusing the volunteer’s example: the reviewer replaces identifiers with
+case labels, holds further reuse, and refers the minimized record to the
+instructor/authorized oversight role. The final result is a
+welfare-and-permission hold with unresolved intent, not a recruitment
+script, allegation, or instruction to contact anyone; the instructor
+must resolve the permitted disposition before reuse.</p>
+<p><strong>Why it matters.</strong> <strong>Recognizing Pressure in
+Supplied Messages</strong> matters in the <strong>Collection Management
+and Multi-INT Requirements Discipline</strong> lane because requirements
+decomposition and source-discipline fit evidence must stay separate from
+judgment; opportunistic collection is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Recognizing Pressure in Supplied Messages: A Completed
+Ethics</strong>: [ageint020]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Recognizing
+Pressure in Supplied Messages</strong>, inspect the original passages.
+Curriculum annotation for [ageint020]: A publisher and
+training-organization page from HSM Training and Consultancy (London)
+promoting the book The Human Source Management System, a guide of over
+500 pages that applies social psychology to the management of
+confidential informants. The site states the book draws on research and
+practitioner interviews and is used by law enforcement and intelligence
+bodies across more than 40 countries. These editorial descriptions are
+not source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Recognizing Pressure
+in Supplied Messages</strong>, build a <strong>requirements matrix with
+source descriptors, caveats, and collection limits</strong> for this
+requirements decomposition and source-discipline fit topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>Recognizing Pressure in Supplied Messages</strong>, the caveat
+that limits it, the uncertainty note, the out-of-scope-use boundary, and
+the reviewer accountable for challenge. Shape <strong>Recognizing
+Pressure in Supplied Messages</strong> work as a <strong>source-risk and
+validation ethics worksheet</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Recognizing Pressure in Supplied Messages: A Completed Ethics
+establishes intent without reviewing alternative explanations.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Recognizing Pressure
+in Supplied Messages</strong> to a second module by preserving
+requirements decomposition and source-discipline fit, changing the
+source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-6-declassified-source-protection-and-institutional-control-case-study">Lesson
+6: Declassified source-protection and institutional-control case
+study</h4>
+<p><strong>Concept.</strong> <strong>Declassified source-protection and
+institutional-control case study</strong> studies the declassified
+record for institutional lessons about source protection, oversight, and
+the danger of translating historical methods into current practice.</p>
+<p><strong>Worked reasoning and limits.</strong> A translated historical
+doctrine text is evidence of what an identifiable document says only
+when its original date, custody, translation, and editorial scope are
+established. Prescriptive claims in that document are not proof that a
+technique worked, was universal practice, or applies to present people.
+Compare the original’s status, translator/editor, and omissions before
+extracting a bounded institutional or ethical lesson. Discussion remains
+historical and critical: no manipulation sequence, elicitation method,
+or reconstruction of recruitment practice is authorized.</p>
+<p><strong>Why it matters.</strong> <strong>Declassified
+source-protection</strong> connects classroom vocabulary to Collection
 Management and Multi-INT Requirements Discipline practice: learners
 document evidence, caveats, and reviewer ownership rather than repeating
 labels.</p>
-<p><strong>Source support.</strong> <strong>Shared Experience as a
-Recruitment Tool: Experimental Research</strong> rests on [ageint024].
-Use it for pinning down the scope of <strong>Shared Experience as a
-Recruitment Tool: Experimental Research</strong>, the edge of that
-scope, and when these citations need re-verifying before transfer.
-External triangulation uses [official_intelligence_gov_how_ic_works];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Declassified source-protection and institutional-control case
+study</strong>: [ageint021] and [ageint022]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
 [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Shared Experience
-as a Recruitment Tool</strong>, reason from the sources cited in this
-row. Work source by source: name the bounded claim, its origin, the
-residual uncertainty, and the trigger that would change how this topic
-is judged.</p>
-<p><strong>Student artifact.</strong> For <strong>Shared Experience as a
-Recruitment Tool</strong>, build a <strong>requirements matrix with
+<p><strong>Evidence to inspect.</strong> For <strong>Declassified
+source-protection</strong>, inspect the original passages. Curriculum
+annotation for [ageint021]: A July 2019 story from The World (PRX public
+radio) about a project led by Michael Weiss to translate previously
+unpublished Soviet-era KGB training manuals from the 1970s-80s into
+English. The article describes how the manuals cover intelligence
+methods such as agent recruitment, psychological manipulation, and
+disinformation detection, and notes the materials remain relevant
+because related methods persist in modern Russian services. Curriculum
+annotation for [ageint022]: An article from The Interpreter, a
+publication focused on Russian affairs and disinformation, announcing a
+project to translate, analyze, and publish previously unpublished Soviet
+KGB training documents. It summarizes a set of newly obtained manuals
+spanning several decades and describes the topics they cover, including
+operational terminology, agent classification, information-gathering
+methods, recruitment and vetting procedures, and counterintelligence
+concerns. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Declassified
+source-protection</strong>, build a <strong>requirements matrix with
 source descriptors, caveats, and collection limits</strong> for this
 requirements decomposition and source-discipline fit topic. The artifact
-must note the motivation descriptor, the bounded claim about
-<strong>Shared Experience as a Recruitment</strong>, the consent caveat,
-the uncertainty note, the no-contact boundary, and the reviewer who owns
-escalation duties. Shape <strong>Shared Experience as a Recruitment
-Tool</strong> work as a <strong>source-risk and validation ethics
-worksheet</strong> that states the evidence used, what stays uncertain,
-who reviews it, and when to stop.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Shared Experience as a Recruitment Tool</strong>: that
-motivation literacy is contact authorization.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Shared Experience as
-a Recruitment Tool</strong> from this module to a second motif by
-preserving requirements decomposition and source-discipline fit,
-replacing action with audit, and naming the blocked use.</p>
+must cite the declassified source descriptor, the bounded lesson about
+<strong>Declassified source-protection and institutional-control
+case</strong>, the redaction caveat, the attribution uncertainty, the
+protected-detail boundary, and the reviewer who clears release. Shape
+<strong>Declassified source-protection</strong> work as a
+<strong>source-risk and validation ethics worksheet</strong> that logs
+the evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+a source identity is safe to discuss once the operation is historical,
+when protection obligations and re-identification risk outlast the case
+itself.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Declassified source-protection</strong> to another artifact
+while keeping requirements decomposition and source-discipline fit and
+reviewer ownership explicit.</p>
 <h4
-id="lesson-9-how-ai-lowers-the-cost-of-recruitment-and-social-engineering">Lesson
-9: How AI Lowers the Cost of Recruitment and Social Engineering</h4>
-<p><strong>Concept.</strong> <strong>How AI Lowers the Cost of
-Recruitment and Social Engineering</strong> reads recruitment doctrine
-as risk literacy: pressure, consent, validation, and the line that
-blocks operational contact.</p>
-<p><strong>Why it matters.</strong> <strong>How AI Lowers the
-Cost</strong> matters in the <strong>Collection Management and Multi-INT
-Requirements Discipline</strong> lane because requirements decomposition
-and source-discipline fit evidence must stay separate from judgment;
-confusing motivation literacy with contact authorization is a common
-failure.</p>
-<p><strong>Source support.</strong> <strong>How AI Lowers the Cost of
-Recruitment and Social Engineering</strong> rests on [ageint004]. The
-most specific cited work observes: He maintains that uniquely human
-qualities such as intuition, experience, and independent judgment become
-more valuable as adversaries gain access to the same AI tools. Use it
-for the claim that <strong>How AI Lowers the Cost of Recruitment and
-Social Engineering</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>How AI Lowers the
-Cost</strong>, reason from the sources cited in this row. [ageint004]
-Tom Mulligan argues that artificial intelligence will enhance rather
-than replace human intelligence professionals, contending that the
-future of intelligence lies in human-machine collaboration. He maintains
-that uniquely human qualities such as intuition, experience, and
-independent judgment become more valuable as adversaries gain access to
-the same AI tools. Work source by source: name the bounded claim, its
-origin, the residual uncertainty, and the trigger that would change how
-this topic is judged.</p>
-<p><strong>Student artifact.</strong> For <strong>How AI Lowers the
-Cost</strong>, build a <strong>requirements matrix with source
+id="lesson-7-digital-contact-claims-channel-labels-are-not-evidence-of-intent">Lesson
+7: Digital Contact Claims: Channel Labels Are Not Evidence of
+Intent</h4>
+<p><strong>Concept.</strong> <strong>Digital Contact Claims: Channel
+Labels Are Not Evidence of Intent</strong> is taught in the
+<strong>Collection Management and Multi-INT Requirements
+Discipline</strong> lane. The analytic distinction is to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures. Apply it to the supplied evidence;
+a topic label alone establishes neither a mechanism nor a
+conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> A platform name,
+encrypted channel, or payment technology identifies a communication or
+transaction context, not recruitment, criminality, sponsorship, or a
+user’s motive. The inherited thesis concerns a defined
+digital-recruitment question; its title cannot support universal claims
+about the platforms listed in the source heading. In a supplied
+fictional screenshot description, missing origin, date, or conversation
+context is an evidence gap, not permission to find the account owner or
+inspect a real network. Assess the artifact’s stated content and
+uncertainty without profiling, searching, messaging, or joining
+groups.</p>
+<p><strong>Why it matters.</strong> <strong>Digital Contact
+Claims</strong> connects classroom vocabulary to Collection Management
+and Multi-INT Requirements Discipline practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Digital Contact Claims: Channel Labels Are Not Evidence of
+Intent</strong>: [ageint023]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Digital Contact
+Claims</strong>, inspect the original passages. Curriculum annotation
+for [ageint023]: A 2024 International Master in Security, Intelligence
+and Strategic Studies thesis (Glasgow, Trento, Charles University)
+titled ‘Human Intelligence in the Modern Era: The Impact of Digital
+Technology on Clandestine Agent Recruitment.’ It uses a literature-based
+analysis plus three case studies to compare traditional human-source
+practices with technology-enabled approaches. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Digital Contact
+Claims</strong>, build a <strong>requirements matrix with source
 descriptors, caveats, and collection limits</strong> for this
 requirements decomposition and source-discipline fit topic. The artifact
-must note the motivation descriptor, the bounded claim about <strong>How
-AI Lowers the Cost</strong>, the consent caveat, the uncertainty note,
-the no-contact boundary, and the reviewer who owns escalation duties.
-Shape <strong>How AI Lowers the Cost</strong> work as a
-<strong>source-risk and validation ethics worksheet</strong> that
-records its evidence, the residual uncertainty, the named reviewer, and
-the stop condition.</p>
+must name the source descriptor, the bounded claim about <strong>Digital
+Contact Claims</strong>, the caveat that limits it, the uncertainty
+note, the out-of-scope-use boundary, and the reviewer accountable for
+challenge. Shape <strong>Digital Contact Claims</strong> work as a
+<strong>source-risk and validation ethics worksheet</strong> that states
+the evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Digital Contact Claims: Channel Labels Are Not Evidence of Intent can be
+used while ignoring the rule to separate collection discipline concepts
+from operational recruitment, interception, or tasking procedures.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Digital Contact
+Claims</strong> to a second module by preserving requirements
+decomposition and source-discipline fit, changing the source evidence,
+and naming a new reviewer.</p>
+<h4
+id="lesson-8-shared-experience-experiment-closeness-is-not-commitment">Lesson
+8: Shared-Experience Experiment: Closeness Is Not Commitment</h4>
+<p><strong>Concept.</strong> <strong>Shared-Experience Experiment:
+Closeness Is Not Commitment</strong> is taught in the <strong>Collection
+Management and Multi-INT Requirements Discipline</strong> lane. The
+analytic distinction is to separate collection discipline concepts from
+operational recruitment, interception, or tasking procedures. Apply it
+to the supplied evidence; a topic label alone establishes neither a
+mechanism nor a conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> The directly inspected
+registered report tested a 2×2 shared-experience/social-connection
+design with final N=182 after 18 attention-check exclusions; commitment
+was a monetary-investment proxy for a later meeting, not actual
+long-term source reliability [ageint024]. Neither preregistered
+commitment hypothesis was supported: shared attention b=0.45, 95% CI
+[−2.16, 3.06], p=.734; the social-connection comparison b=0.91, 95% CI
+[−2.78, 4.60], p=.626. Perceived closeness/social connection increased,
+but this did not establish increased commitment; the authors discuss the
+shortfall from planned N=200 and limitations of the role-play/investment
+proxy. Model-answer correction: replace ‘rapport therefore commitment
+therefore truth’ with ‘interpersonal ratings changed; the proposed
+commitment extrapolations were unsupported in this study’; the null
+results do not prove no effect in every setting. This is
+research-literacy analysis only, with no replication of recruitment
+scripts or real-person exercise.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Shared-Experience Experiment</strong>, opportunistic collection
+undermines requirements decomposition and source-discipline fit review;
+the lesson builds the habit to separate collection discipline concepts
+from operational recruitment, interception, or tasking procedures.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Shared-Experience Experiment: Closeness Is Not
+Commitment</strong>: [ageint024]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Shared-Experience
+Experiment</strong>, inspect the original passages. Curriculum
+annotation for [ageint024]: A Stage 2 registered report in Legal and
+Criminological Psychology 29(1), 48–64 (February 2024), DOI
+10.1111/lcrp.12251. The final analyzed sample was 182 after
+attention-check exclusions. Neither preregistered commitment hypothesis
+was supported: greater felt closeness and perceived social connection
+did not establish greater commitment under the study’s
+monetary-investment proxy. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Shared-Experience
+Experiment</strong>, build a <strong>requirements matrix with source
+descriptors, caveats, and collection limits</strong> for this
+requirements decomposition and source-discipline fit topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>Shared-Experience Experiment</strong>, the caveat that limits
+it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>Shared-Experience
+Experiment</strong> work as a <strong>source-risk and validation ethics
+worksheet</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Shared-Experience Experiment: Closeness Is Not Commitment is optional
+whenever separate collection discipline concepts from operational
+recruitment, interception, or tasking procedures feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Shared-Experience
+Experiment</strong> to a second module by preserving requirements
+decomposition and source-discipline fit, changing the source evidence,
+and naming a new reviewer.</p>
+<h4
+id="lesson-9-ai-recruitment-cost-claims-an-unverified-forecast">Lesson
+9: AI Recruitment-Cost Claims: An Unverified Forecast</h4>
+<p><strong>Concept.</strong> <strong>AI Recruitment-Cost Claims: An
+Unverified Forecast</strong> reads recruitment doctrine as risk
+literacy: pressure, consent, validation, and the line that blocks
+operational contact.</p>
+<p><strong>Worked reasoning and limits.</strong> The inherited
+podcast/commentary does not establish measured reductions in recruitment
+cost or increased effectiveness. Producing text cheaply is not
+equivalent to lawful access, credible information, sustained
+cooperation, or lower total review and welfare costs. A comparative
+claim would need defined tasks, a full cost boundary, independent
+outcomes, and harms—not merely faster message generation. Retain the
+proposed mechanism as attributed conjecture and do not produce
+persuasive messages, personality targeting, or operational
+experiments.</p>
+<p><strong>Why it matters.</strong> <strong>AI Recruitment-Cost
+Claims</strong> matters in the <strong>Collection Management and
+Multi-INT Requirements Discipline</strong> lane because requirements
+decomposition and source-discipline fit evidence must stay separate from
+judgment; confusing motivation literacy with contact authorization is a
+common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>AI Recruitment-Cost Claims: An Unverified Forecast</strong>:
+[ageint004]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>AI Recruitment-Cost
+Claims</strong>, inspect the original passages. Curriculum annotation
+for [ageint004]: Tom Mulligan argues that artificial intelligence will
+enhance rather than replace human intelligence professionals, contending
+that the future of intelligence lies in human-machine collaboration. He
+maintains that uniquely human qualities such as intuition, experience,
+and independent judgment become more valuable as adversaries gain access
+to the same AI tools. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>AI Recruitment-Cost
+Claims</strong>, build a <strong>requirements matrix with source
+descriptors, caveats, and collection limits</strong> for this
+requirements decomposition and source-discipline fit topic. The artifact
+must note the motivation descriptor, the bounded claim about <strong>AI
+Recruitment-Cost Claims</strong>, the consent caveat, the uncertainty
+note, the no-contact boundary, and the reviewer who owns escalation
+duties. Shape <strong>AI Recruitment-Cost Claims</strong> work as a
+<strong>source-risk and validation ethics worksheet</strong> that states
+the evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>How AI Lowers the Cost</strong>: that motivation literacy is
+<strong>AI Recruitment-Cost Claims</strong>: that motivation literacy is
 contact authorization.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>How AI Lowers the
-Cost</strong> from this module to a second motif by preserving
-requirements decomposition and source-discipline fit, replacing action
-with audit, and naming the blocked use.</p>
-<h4 id="lesson-10-recruitment-ethics-and-legal-constraints">Lesson 10:
-Recruitment Ethics and Legal Constraints</h4>
-<p><strong>Concept.</strong> <strong>Recruitment Ethics and Legal
-Constraints</strong> reads recruitment doctrine as risk literacy:
-pressure, consent, validation, and the line that blocks operational
-contact.</p>
-<p><strong>Why it matters.</strong> <strong>Recruitment Ethics</strong>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>AI Recruitment-Cost Claims</strong> to another artifact while
+keeping requirements decomposition and source-discipline fit and
+reviewer ownership explicit.</p>
+<h4
+id="lesson-10-human-source-ethics-authority-consent-withdrawal-and-protection">Lesson
+10: Human-Source Ethics: Authority, Consent, Withdrawal, and
+Protection</h4>
+<p><strong>Concept.</strong> <strong>Human-Source Ethics: Authority,
+Consent, Withdrawal, and Protection</strong> is taught in the
+<strong>Collection Management and Multi-INT Requirements
+Discipline</strong> lane. The analytic distinction is to separate
+collection discipline concepts from operational recruitment,
+interception, or tasking procedures. Apply it to the supplied evidence;
+a topic label alone establishes neither a mechanism nor a
+conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> Authority to conduct a
+real activity, a person’s consent, protection duties, and permission to
+reuse a report are separate questions; none can be inferred from rapport
+or a classroom assignment. Analytic standards do not confer recruitment
+powers, and a foreign or historical example is not a present legal
+exemption. For the supplied withdrawal case, preserve only the
+authorized minimized review record, hold reuse, and route the unresolved
+retention/disposition question to the instructor rather than inventing
+deletion or publication permission. A critical error is treating
+agreement under pressure, silence, or prior participation as continuing
+consent.</p>
+<p><strong>Why it matters.</strong> <strong>Human-Source Ethics</strong>
 matters in the <strong>Collection Management and Multi-INT Requirements
 Discipline</strong> lane because requirements decomposition and
 source-discipline fit evidence must stay separate from judgment;
-confusing motivation literacy with contact authorization is a common
-failure.</p>
-<p><strong>Source support.</strong> <strong>Recruitment Ethics and Legal
-Constraints</strong> rests on [ageint298] and [ageint297]. Its anchor
-reference records: Official ODNI Intelligence Community Directive 203
-analytic standards source for objectivity, independence, timeliness,
-alternatives, confidence, sourcing, and accuracy in analytic products.
-Use them for pinning down the scope of <strong>Recruitment Ethics and
-Legal Constraints</strong>, the edge of that scope, and when these
-citations need re-verifying before transfer. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Recruitment
-Ethics</strong>, work from the cited evidence behind this row.
-[ageint298] Official ODNI index for Intelligence Community Directives
-used to locate current directive source material and preserve
-directive-context citations. [ageint297] Official ODNI Intelligence
-Community Directive 203 analytic standards source for objectivity,
-independence, timeliness, alternatives, confidence, sourcing, and
-accuracy in analytic products. Each source above earns its place in this
-topic only when you can state its bounded claim, its provenance, its
-uncertainty, and the fact that would retire it.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
-artifact must note the motivation descriptor, the bounded claim about
-<strong>Recruitment Ethics</strong>, the consent caveat, the uncertainty
-note, the no-contact boundary, and the reviewer who owns escalation
-duties. Shape this subject work as a <strong>source-risk and validation
-ethics worksheet</strong> that logs the evidence, the uncertainty, the
-responsible reviewer, and the halt condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Recruitment Ethics</strong>: that motivation literacy is contact
-authorization.</p>
-<p><strong>Transfer task.</strong> Reuse the <strong>Recruitment
-Ethics</strong> audit pattern from this module on a different sample
-record set with a new reviewer and blocked-use note.</p>
+opportunistic collection is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Human-Source Ethics: Authority, Consent, Withdrawal, and
+Protection</strong>: [ageint298] and [ageint297]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_204].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Human-Source
+Ethics</strong>, inspect the original passages. Curriculum annotation
+for [ageint298]: Official ODNI index for Intelligence Community
+Directives used to locate current directive source material and preserve
+directive-context citations. Curriculum annotation for [ageint297]:
+Official ODNI Intelligence Community Directive 203 analytic standards
+source for objectivity, independence, timeliness, alternatives,
+confidence, sourcing, and accuracy in analytic products. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Human-Source
+Ethics</strong>, build a <strong>requirements matrix with source
+descriptors, caveats, and collection limits</strong> for this
+requirements decomposition and source-discipline fit topic. The artifact
+must name the source descriptor, the bounded claim about
+<strong>Human-Source Ethics</strong>, the caveat that limits it, the
+uncertainty note, the out-of-scope-use boundary, and the reviewer
+accountable for challenge. Shape <strong>Human-Source Ethics</strong>
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that logs the evidence, the uncertainty, the responsible reviewer, and
+the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+Human-Source Ethics: Authority, Consent, Withdrawal, and Protection
+replaces human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Human-Source
+Ethics</strong> to a second module by preserving requirements
+decomposition and source-discipline fit, changing the source evidence,
+and naming a new reviewer.</p>
 <h3
 id="agent-recruitment-worked-safe-example-synthetic-inputs-evidence-and-review">Agent
 Recruitment worked safe example: synthetic inputs, evidence, and
@@ -741,14 +1323,14 @@ review</h3>
 <p>Worked example: a synthetic policy cell compares public indicators of
 hybrid pressure against an approved collection plan for a benign
 border-disruption exercise. [ageint238]; [ageint239].</p>
-<p><strong>Triangulation anchors.</strong> In module 4’s worked-example
-section, directly verified anchors for the <strong>Collection Management
-and Multi-INT Requirements Discipline</strong> lane include
+<p><strong>Contextual source routes.</strong> For module 4’s
+worked-example section, the <strong>Collection Management and Multi-INT
+Requirements Discipline</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
-[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline:
 <strong>human-source literacy and source protection</strong>. Learners
 use a <strong>source-risk and validation ethics worksheet</strong> and
@@ -762,25 +1344,32 @@ Lens</strong> planning question is: What accountable requirement
 justifies the evidence, and which source discipline is the least
 intrusive fit?</p>
 <p><strong>Inputs.</strong> For the <strong>MICE Framework for
-recruitment-risk literacy</strong> scenario, use public notices,
-synthetic interview summaries, public logistics records, and an
-instructor scope card. The Requirements-to-Evidence Lens intake note
-records provenance, sensitivity, fit-to-purpose, and why the fixture is
-enough for this bounded exercise.</p>
+recruitment-risk literacy</strong> scenario, use a fictional
+freight-delay notice, a weather bulletin, interview H1 reporting the
+delay and H2 repeating H1, two toy signals absent during receiver
+downtime, and a scope card permitting only these supplied records. The
+Requirements-to-Evidence Lens intake note records provenance,
+sensitivity, fit-to-purpose, and why the fixture is enough for this
+bounded exercise.</p>
 <p><strong>Analysis.</strong> For <strong>MICE Framework for
-recruitment-risk literacy</strong>, students rank requirements, choose
-the least intrusive source discipline, list excluded actions, and
-evaluate evidence quality. Pause whenever an inference about MICE
-Framework for recruitment-risk literacy appears without evidence,
-confidence outruns support, or an agent output is treated as
-judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>MICE Framework
-for recruitment-risk literacy</strong> classroom scenario; unit artifact
-= source-risk and validation ethics worksheet; evidence = allowed
-inputs; method = requirements decomposition and source-discipline fit;
-output = a requirements-to-evidence matrix with discipline fit, source
-caveats, minimization notes, and gaps; boundary = no external action;
-reviewer = instructor or named peer.</p>
+recruitment-risk literacy</strong>, students first rank the question
+about disruption above the unsupported sponsorship allegation; then
+match each gap to a source discipline without tasking it, distinguish
+interview access and motivation from accuracy, and separate signal
+absence from collection authority; remove H2 and compare a second toy
+signal lost during downtime as controls. Stop any proposed contact or
+interception and send missing authority or evidence questions to the
+instructor. Pause whenever an inference about MICE Framework for
+recruitment-risk literacy appears without evidence, confidence outruns
+support, or an agent output is treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a requirements matrix
+recording disruption reports but unresolved cause and sponsorship, one
+underlying interview account rather than two independent sources, and an
+uninterpretable transmitter state during receiver downtime; no human
+contact, expanded collection, or signal observation confers authority
+Retain it as the <strong>source-risk and validation ethics
+worksheet</strong> for this classroom fixture, with the stated source
+IDs, uncertainty, review disposition, and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating <strong>MICE
 Framework for recruitment-risk literacy</strong> as
 “Requirements-to-Evidence Lens confirms it” is not enough. The revision
@@ -798,18 +1387,17 @@ limits</h3>
 <p>The studio sequence uses the <strong>Requirements-to-Evidence
 Lens</strong> practice lens. Moves 1-3 form the compressed path; the
 full seminar path adds challenge, handoff, and a review memo for
-<strong>MICE Framework for recruitment-risk literacy; MICE Expanded:
-MICE Framework for recruitment-risk literacy</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 4’s
-practice-sequence section, directly verified anchors for the
-<strong>Collection Management and Multi-INT Requirements
-Discipline</strong> lane include
+<strong>MICE Framework for recruitment-risk literacy; RASCLS tradecraft
+vocabulary for recruitment-risk literacy</strong>.</p>
+<p><strong>Contextual source routes.</strong> For module 4’s
+practice-sequence section, the <strong>Collection Management and
+Multi-INT Requirements Discipline</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
-[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<table>
+[official_joint_pub_2_0]; [official_ic_osint_strategy]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -827,10 +1415,10 @@ provenance.</p>
 <tbody>
 <tr>
 <td>1. Distinguish</td>
-<td>Compare MICE Framework for recruitment-risk literacy, MICE Expanded:
-MICE Framework for recruitment-risk literacy, Spotting indicators
-literacy for recruitment-risk; name what each topic can and cannot
-prove.</td>
+<td>Compare MICE Framework for recruitment-risk literacy, RASCLS
+tradecraft vocabulary for recruitment-risk literacy, Supplied-Record
+Review: Access Claims without Targeting People; name what each topic can
+and cannot prove.</td>
 <td>Glossary-and-contrast card.</td>
 <td>Terms match the <strong>Collection Management and Multi-INT
 Requirements Discipline</strong> lane.</td>
@@ -876,7 +1464,7 @@ tasking procedures.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="agent-recruitment-instructor-notes-source-reasoning-review-points-and-studio-focus">Agent
 Recruitment instructor notes: source reasoning, review points, and
@@ -884,35 +1472,37 @@ studio focus</h4>
 <p>Ask learners to verbalize the difference between a source, an
 inference, and a decision. Require a revision whenever a claim cannot be
 traced to a source descriptor or a human review point. Keep the focus on
-<strong>MICE Framework for recruitment-risk literacy; MICE Expanded:
-MICE Framework for recruitment-risk literacy</strong>. [ageint238];
+<strong>MICE Framework for recruitment-risk literacy; RASCLS tradecraft
+vocabulary for recruitment-risk literacy</strong>. [ageint238];
 [ageint239].</p>
 <h4
 id="agent-recruitment-extension-exercise-peer-validation-and-refresh-trigger-review">Agent
 Recruitment extension exercise: peer validation and refresh trigger
 review</h4>
-<p><strong>Evidence anchor.</strong> [sec:chapter-agent-recruitment];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-agent-recruitment">[@sec:chapter-agent-recruitment]</span>.</p>
 <p>Have learners swap artifacts and apply the
 <strong>Requirements-to-Evidence Lens</strong> validation rule to
 someone else’s work. The receiving learner must identify one strength,
 one missing caveat, and one refresh trigger for <strong>MICE Framework
-for recruitment-risk literacy; MICE Expanded: MICE Framework for
+for recruitment-risk literacy; RASCLS tradecraft vocabulary for
 recruitment-risk literacy</strong>.</p>
 <h3
 id="agent-recruitment-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Agent
 Recruitment knowledge check: misconceptions, evidence, and reviewer
 prompts</h3>
-<p><strong>Evidence anchor.</strong> [sec:chapter-agent-recruitment];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-agent-recruitment">[@sec:chapter-agent-recruitment]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>MICE Framework for recruitment-risk
-literacy</strong> is defined here; name the source descriptor that
-supports the definition.</li>
-<li>Contrast <strong>MICE Framework for recruitment-risk
-literacy</strong> with <strong>MICE Expanded: MICE Framework for
-recruitment-risk literacy</strong> using the
-<strong>Requirements-to-Evidence Lens</strong> artifact fields.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>MICE Framework for recruitment-risk
+literacy</strong>.</li>
+<li>Transfer the <strong>Requirements-to-Evidence Lens</strong> artifact
+from <strong>MICE Framework for recruitment-risk literacy</strong> to
+the final topic, <strong>Human-Source Ethics: Authority, Consent,
+Withdrawal, and Protection</strong>; explain what changes and what
+cannot transfer.</li>
 <li>Identify one failure mode from the <strong>Collection Management and
 Multi-INT Requirements Discipline</strong> lane and the evidence that
 would reveal it.</li>
@@ -927,13 +1517,13 @@ id="agent-recruitment-answer-quality-rubric-source-evidence-uncertainty-and-safe
 Recruitment answer quality rubric: source evidence, uncertainty, and
 safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>MICE Framework for recruitment-risk
-literacy</strong> without source evidence, uncertainty, or a safe
-transfer task.</p>
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of <strong>MICE
+Framework for recruitment-risk literacy</strong> without source
+evidence, uncertainty, or a safe transfer task.</p>
 </main>
 </body>
 </html>

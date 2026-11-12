@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.13" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-practice-studio-01.md.web</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
+      background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        color-scheme: light only;
+      }
+      html, body, pre, code {
+        background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
+        color: black;
+      }
+      pre, code {
+        padding: 0;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a, a:visited {
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
+      color: #606060;
+      color: light-dark(#606060, #b6b6b6);
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid currentColor;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+    th {
+      border-top: 1px solid currentColor;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+
+<link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
+<h2
+id="operator-workload-hygiene-lens-path-for-the-intelligent-operator-as-cognitive-athlete-lesson-cluster-safe-artifact-and-review">Operator-Workload
+Hygiene Lens path for The Intelligent Operator as Cognitive Athlete:
+lesson cluster, safe artifact, and review</h2>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-the-intelligent-operator-as-cognitive-athlete">[@sec:chapter-the-intelligent-operator-as-cognitive-athlete]</span>.</p>
+<h3
+id="the-intelligent-operator-as-cognitive-athlete-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">The
+Intelligent Operator as Cognitive Athlete practice studio: topic
+lessons, safe worked example, and knowledge check</h3>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-the-intelligent-operator-as-cognitive-athlete">[@sec:chapter-the-intelligent-operator-as-cognitive-athlete]</span>.</p>
+<h3
+id="the-intelligent-operator-as-cognitive-athlete-topic-lessons-source-backed-concepts-and-transfer-tasks">The
+Intelligent Operator as Cognitive Athlete topic lessons: source-backed
+concepts and transfer tasks</h3>
+<p><strong>The Intelligent Operator as Cognitive Athlete</strong> builds
+intelligence productivity as governed cognitive performance: external
+memory, workload limits, focus conditions, and explicit review handoffs
+support reviewable judgment without guaranteeing performance under
+sustained tempo. The sequence opens with <strong>Productivity
+Tradecraft: Sustainable Work, Review, and Recovery</strong>,
+<strong>Getting Things Done (GTD): Theoretical Cognitive
+Rationale</strong>, <strong>GTD as External Memory and Affordance
+System</strong> and applies the <strong>Operator-Workload Hygiene
+Lens</strong> practice frame through concept, evidence, artifact,
+misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-productivity-intelligence-and-cognitive-performance-module-map">[@fig:part-productivity-intelligence-and-cognitive-performance-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-the-intelligent-operator-as-cognitive-athlete">[@sec:chapter-the-intelligent-operator-as-cognitive-athlete]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 43’s
+topic-lessons section, the <strong>Operator Productivity and Cognitive
+Performance</strong> catalog routes include [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis];
+[official_nist_sp_800_161r1]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
+<h4
+id="lesson-1-productivity-tradecraft-sustainable-work-review-and-recovery">Lesson
+1: Productivity Tradecraft: Sustainable Work, Review, and Recovery</h4>
+<p><strong>Concept.</strong> <strong>Productivity Tradecraft:
+Sustainable Work, Review, and Recovery</strong> manages workload and
+bias through prioritization, explicit handoffs, and review
+checkpoints—not unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> The cognitive-athlete
+title is a metaphor, not a brain-fitness assessment or a demand for
+heroic endurance. Useful output includes correctness, traceability,
+retained learning, and safe re-entry after interruptions, not simply
+completed-item counts. Foreign-influence policy sources do not establish
+productivity mechanisms; this chapter’s work-design proposals remain
+bounded by task fit, accessibility, rest, and non-coercion [ageint262;
+ageint264].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Productivity
+Tradecraft</strong> to separate cognitive hygiene from heroics, and
+workload signals from unreviewed urgency. A defensible treatment names
+the judgment it enables for workload-aware operator decision hygiene
+review, the proof limit that heroic overtime would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Productivity Tradecraft: Sustainable Work, Review, and
+Recovery</strong>: [ageint308] and [ageint311]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Productivity
+Tradecraft</strong>, inspect the original passages. Curriculum
+annotation for [ageint308]: An archived CISA publication, “CISA
+Insights: Preparing for and Mitigating Foreign Influence Operations
+Targeting Critical Infrastructure,” providing guidance on the threat
+that foreign influence campaigns pose to U.S. critical infrastructure.
+Curriculum annotation for [ageint311]: An official NATO topic page
+describing the Alliance’s approach to countering information threats,
+defined as intentional, manipulative, and coordinated activities by
+state and non-state actors including disinformation and propaganda. It
+explains why such threats matter for democratic processes and
+institutional trust, and outlines a four-part framework of
+understanding, preventing, containing, and recovering. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Productivity
+Tradecraft</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Productivity Tradecraft</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Productivity Tradecraft</strong> work as
+a <strong>workload and decision-hygiene card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Productivity Tradecraft</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Productivity Tradecraft</strong> to another artifact while
+keeping workload-aware operator decision hygiene and reviewer ownership
+explicit.</p>
+<h4
+id="lesson-2-getting-things-done-gtd-theoretical-cognitive-rationale">Lesson
+2: Getting Things Done (GTD): Theoretical Cognitive Rationale</h4>
+<p><strong>Concept.</strong> <strong>Getting Things Done (GTD):
+Theoretical Cognitive Rationale</strong> uses GTD as a decision-hygiene
+framework: capture, clarify, organize, review, and engage—with explicit
+authority for what enters analysis.</p>
+<p><strong>Worked reasoning and limits.</strong> Heylighen and Vidal
+explain GTD through situated/distributed cognition and external memory;
+the paper explicitly takes a theoretical approach rather than running a
+GTD effectiveness trial. A plausible rationale for capturing commitments
+does not establish better intelligence accuracy, lower stress, or
+improved team performance. Preserve the practical workflow while
+distinguishing theoretical explanation, practitioner testimony, and
+empirical evaluation [ageint197].</p>
+<p><strong>Why it matters.</strong> <strong>Getting Things Done
+(GTD)</strong> matters in the <strong>Operator Productivity and
+Cognitive Performance</strong> lane because workload-aware operator
+decision hygiene evidence must stay separate from judgment; heroic
+overtime is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Getting Things Done (GTD): Theoretical Cognitive
+Rationale</strong>: [ageint197]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Getting Things Done
+(GTD)</strong>, inspect the original passages. No displayable curriculum
+annotation is available for [ageint197]. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Getting Things Done
+(GTD)</strong>, build a <strong>operator workload card with queue state,
+NASA-TLX ratings, focus plan, handoff owner, and rest boundary</strong>
+for this workload-aware operator decision hygiene topic. The artifact
+must note the workload descriptor, the bounded claim about
+<strong>Getting Things Done</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Getting Things Done (GTD)</strong> work
+as a <strong>workload and decision-hygiene card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Getting Things Done (GTD)</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Getting Things Done
+(GTD)</strong> from this module to a second motif by preserving
+workload-aware operator decision hygiene, replacing action with audit,
+and naming the blocked use.</p>
+<h4 id="lesson-3-gtd-as-external-memory-and-affordance-system">Lesson 3:
+GTD as External Memory and Affordance System</h4>
+<p><strong>Concept.</strong> <strong>GTD as External Memory and
+Affordance System</strong> uses GTD as a decision-hygiene framework:
+capture, clarify, organize, review, and engage—with explicit authority
+for what enters analysis.</p>
+<p><strong>Worked reasoning and limits.</strong> External memory stores
+reminders outside the person; an affordance is an opportunity for action
+in a particular context. A note saying ‘check version on card D before
+drafting’ is more actionable than ‘archive project’, but only if it can
+be retrieved and reviewed when needed. Capture can also create stale or
+duplicated obligations, so it is not a substitute for provenance,
+priority decisions, or humane workload limits [ageint197].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>GTD as External
+Memory and Affordance System</strong> to separate cognitive hygiene from
+heroics, and workload signals from unreviewed urgency. A defensible
+treatment names the judgment it enables for workload-aware operator
+decision hygiene review, the proof limit that heroic overtime would
+otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>GTD as External Memory and Affordance System</strong>:
+[ageint197]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>GTD as External
+Memory and Affordance System</strong>, inspect the original passages. No
+displayable curriculum annotation is available for [ageint197]. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>GTD as External Memory
+and Affordance System</strong>, build a <strong>operator workload card
+with queue state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>GTD as External Memory and</strong>, the fatigue caveat,
+the uncertainty margin, the do-not-escalate boundary, and the reviewer
+who owns the handoff. Shape the same topic work as a <strong>workload
+and decision-hygiene card</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>GTD as External Memory and Affordance System</strong>: that
+feeling certain in the moment substitutes for the checklist, pause, and
+second-look that decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>GTD as External Memory and Affordance System</strong> to another
+artifact while keeping workload-aware operator decision hygiene and
+reviewer ownership explicit.</p>
+<h4
+id="lesson-4-the-five-gtd-phases-capture-clarify-organize-reflect-engage">Lesson
+4: The Five GTD Phases: Capture, Clarify, Organize, Reflect, Engage</h4>
+<p><strong>Concept.</strong> <strong>The Five GTD Phases: Capture,
+Clarify, Organize, Reflect, Engage</strong> uses GTD as a
+decision-hygiene framework: capture, clarify, organize, review, and
+engage—with explicit authority for what enters analysis.</p>
+<p><strong>Worked reasoning and limits.</strong> <strong>Completed
+synthetic queue.</strong> At 09:00 capture three supplied items:
+‘compare archive cards A/B by noon’, ‘await approved source C’, and
+‘read optional guide’; clarify them as one next action, one waiting-for
+item, and one someday/reference item, then organize with source IDs and
+a 10:30 review. At review, engage only in comparing A/B; a 09:15
+fictional interruption is parked with the re-entry note ‘A/B compared
+through paragraph 2; check date qualifier next’, preserving the
+scheduled break and independent review. At 10:30 card C arrives with a
+changed date, so the waiting item becomes ‘revise the date comparison’
+and the draft is held until corrected rather than rushed to meet an
+item-count target. The handoff contains the next action, last checked
+source/version, unresolved qualifier, and review time; this completes
+the workflow without claiming a measured GTD benefit [ageint198;
+ageint197].</p>
+<p><strong>Why it matters.</strong> <strong>The Five GTD Phases</strong>
+connects classroom vocabulary to Operator Productivity and Cognitive
+Performance practice: learners document evidence, caveats, and reviewer
+ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>The Five GTD Phases: Capture, Clarify, Organize, Reflect,
+Engage</strong>: [ageint198]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>The Five GTD
+Phases</strong>, inspect the original passages. Curriculum annotation
+for [ageint198]: A Czech-language explainer of the Getting Things Done
+(GTD) productivity method created by David Allen. It describes the
+system’s core steps of capturing thoughts, clarifying them into
+actionable items, organizing and prioritizing, regularly reviewing, and
+executing, including the principle of doing any task that takes under
+two minutes immediately. The page also surveys software tools for
+implementing GTD, such as Todoist, OmniFocus, Trello, Evernote, and
+Notion. These editorial descriptions are not source-authored quotations
+or independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>The Five GTD
+Phases</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Five GTD Phases</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>The Five GTD Phases</strong> work as a
+<strong>workload and decision-hygiene card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>The Five GTD Phases</strong>: that feeling certain in the moment
+substitutes for the checklist, pause, and second-look that decision
+hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>The Five GTD Phases</strong> to another artifact while keeping
+workload-aware operator decision hygiene and reviewer ownership
+explicit.</p>
+<h4
+id="lesson-5-allens-gtd-team-performance-claims-practitioner-perspective">Lesson
+5: Allen’s GTD Team-Performance Claims: Practitioner Perspective</h4>
+<p><strong>Concept.</strong> <strong>Allen’s GTD Team-Performance
+Claims: Practitioner Perspective</strong> uses GTD as a decision-hygiene
+framework: capture, clarify, organize, review, and engage—with explicit
+authority for what enters analysis.</p>
+<p><strong>Worked reasoning and limits.</strong> The raw heading records
+the practitioner’s causal claim, not an established finding of this
+curriculum. A promotional explainer can show how the method is advocated
+but does not isolate GTD from team experience, task selection, or
+enthusiasm. A comparative evaluation would need defined quality/error
+outcomes, a baseline or comparator, adoption burden, and task/population
+limits before claiming intelligence-team improvement [ageint199].</p>
+<p><strong>Why it matters.</strong> <strong>Allen’s GTD Team-Performance
+Claims</strong> connects classroom vocabulary to Operator Productivity
+and Cognitive Performance practice: learners document evidence, caveats,
+and reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Allen’s GTD Team-Performance Claims: Practitioner
+Perspective</strong>: [ageint199]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Allen’s GTD
+Team-Performance Claims</strong>, inspect the original passages.
+Curriculum annotation for [ageint199]: … productive at work. Learn why
+your team needs GTD to improve performance and results. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Allen’s GTD
+Team-Performance Claims</strong>, build a <strong>operator workload card
+with queue state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Allen’s GTD Team-Performance Claims</strong>, the fatigue
+caveat, the uncertainty margin, the do-not-escalate boundary, and the
+reviewer who owns the handoff. Shape <strong>Allen’s GTD
+Team-Performance Claims</strong> work as a <strong>workload and
+decision-hygiene card</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Allen’s GTD Team-Performance Claims</strong>: that feeling
+certain in the moment substitutes for the checklist, pause, and
+second-look that decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Allen’s GTD
+Team-Performance Claims</strong> from this module to a second motif by
+preserving workload-aware operator decision hygiene, replacing action
+with audit, and naming the blocked use.</p>
+<h4
+id="lesson-6-gtd-and-cognitive-load-evidence-needed-for-an-efficacy-claim">Lesson
+6: GTD and Cognitive Load: Evidence Needed for an Efficacy Claim</h4>
+<p><strong>Concept.</strong> <strong>GTD and Cognitive Load: Evidence
+Needed for an Efficacy Claim</strong> manages analyst workload through
+prioritization, checklists, rest boundaries, and explicit handoff—not
+heroics.</p>
+<p><strong>Worked reasoning and limits.</strong> The inherited
+‘empirical evidence’ wording overstates this source pair: a theoretical
+GTD account plus a workload-measurement survey is not a GTD intervention
+trial. In an invented pair of task logs, completed comparisons rise from
+3 to 4 while unchecked date errors rise from 0 to 2; more throughput
+would not establish better analytic work even if reported workload fell.
+Retain both quality and burden measures, and do not infer causation from
+an uncontrolled before/after example [ageint179; ageint197].</p>
+<p><strong>Why it matters.</strong> <strong>GTD and Cognitive
+Load</strong> matters in the <strong>Operator Productivity and Cognitive
+Performance</strong> lane because workload-aware operator decision
+hygiene evidence must stay separate from judgment; heroic overtime is a
+common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>GTD and Cognitive Load: Evidence Needed for an Efficacy
+Claim</strong>: [ageint179] and [ageint197]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>GTD and Cognitive
+Load</strong>, inspect the original passages. Curriculum annotation for
+[ageint179]: An NCSU Laboratory for Analytic Sciences article
+summarizing a systematic survey of metrics for measuring cognitive load
+in intelligence-analysis and similar settings. Reviewing 125 articles
+published between 1998 and 2024, it identifies 129 distinct metrics
+grouped into non-biometric methods (questionnaires such as NASA-TLX,
+task performance, interaction tracking) and biometric methods (eye
+tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>GTD and Cognitive
+Load</strong>, build a <strong>operator workload card with queue state,
+NASA-TLX ratings, focus plan, handoff owner, and rest boundary</strong>
+for this workload-aware operator decision hygiene topic. The artifact
+must note the workload descriptor, the bounded claim about <strong>GTD
+and Cognitive Load</strong>, the fatigue caveat, the uncertainty margin,
+the do-not-escalate boundary, and the reviewer who owns the handoff.
+Shape <strong>GTD and Cognitive Load</strong> work as a <strong>workload
+and decision-hygiene card</strong> that records its evidence, the
+residual uncertainty, the named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>GTD and Cognitive Load</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>GTD and Cognitive
+Load</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-7-flow-task-absorption-and-performance-distinct-claims">Lesson
+7: Flow, Task Absorption, and Performance: Distinct Claims</h4>
+<p><strong>Concept.</strong> <strong>Flow, Task Absorption, and
+Performance: Distinct Claims</strong> manages workload and bias through
+prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Flow concerns a
+subjective experience of intense task absorption; its operational
+definition is debated and it must not be equated with objectively
+correct work. Distinguish proposed antecedents, reported experience, and
+separately measured quality, errors, or retention. Blogs and an
+encyclopedia are orientation sources; the neural model and construct
+critique supply more relevant theoretical boundaries, not guaranteed
+productivity gains [ageint201; ageint206].</p>
+<p><strong>Why it matters.</strong> <strong>Flow, Task Absorption, and
+Performance</strong> connects classroom vocabulary to Operator
+Productivity and Cognitive Performance practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Flow, Task Absorption, and Performance: Distinct
+Claims</strong>: [ageint200], [ageint201], and [ageint202]. These
+citations preserve source identity, not automatic topical relevance,
+empirical validation or normative authority. No claim-specific primary
+support is established by this source-guide association alone. Profile
+context—not claim-specific validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Flow, Task
+Absorption, and Performance</strong>, inspect the original passages.
+Curriculum annotation for [ageint200]: A marketing blog post on the
+Dingbats Notebooks e-commerce site about flow state and how writing
+tools can support it. It summarizes Mihaly Csikszentmihalyi’s concept of
+flow as a state of full absorption marked by intense focus, clear goals,
+and immediate feedback, and reviews associated benefits and neuroscience
+such as reduced prefrontal-cortex activity and increased dopamine.
+Curriculum annotation for [ageint201]: A 2020 theoretical review article
+in the European Journal of Neuroscience by van der Linden, Tops, and
+Bakker proposing a neuroscientific model of flow, the state of full task
+absorption with strong drive and low self-referential thinking. The
+authors argue that the dopamine and norepinephrine systems drive the
+motivational and mood components of flow, and that interaction among the
+default mode, central executive, and salience networks produces its
+characteristic features. Curriculum annotation for [ageint202]: A
+Wikipedia article on flow, the psychological state of complete immersion
+and focused engagement in an activity, also known as being in the zone.
+It traces the concept to psychologist Mihaly Csikszentmihalyi and
+describes flow as a balance between challenge and skill, characterized
+by intense concentration, merging of action and awareness, loss of
+self-consciousness, a sense of control, distorted time perception, and
+intrinsic reward. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Flow, Task Absorption,
+and Performance</strong>, build a <strong>operator workload card with
+queue state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Flow Task Absorption and Performance</strong>, the fatigue
+caveat, the uncertainty margin, the do-not-escalate boundary, and the
+reviewer who owns the handoff. Shape <strong>Flow, Task Absorption, and
+Performance</strong> work as a <strong>workload and decision-hygiene
+card</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Flow, Task Absorption, and Performance</strong>: that feeling
+certain in the moment substitutes for the checklist, pause, and
+second-look that decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Flow, Task Absorption, and Performance</strong> to another
+artifact while keeping workload-aware operator decision hygiene and
+reviewer ownership explicit.</p>
+<h4
+id="lesson-8-csikszentmihalyis-flow-experience-versus-proposed-conditions">Lesson
+8: Csikszentmihalyi’s Flow: Experience versus Proposed Conditions</h4>
+<p><strong>Concept.</strong> <strong>Csikszentmihalyi’s Flow: Experience
+versus Proposed Conditions</strong> treats flow claims as
+operator-performance literacy: define task clarity, feedback, and review
+boundaries—not unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Clear goals, feedback,
+and a challenge-skill match are proposed enabling conditions, not
+equivalent to the experience they are intended to support. A task with
+all three can still be unenjoyable or poorly performed; observing the
+conditions alone is not a flow measurement. The blog’s numbered summary
+is not a canonical neural taxonomy, and the conceptual critique cautions
+against scales that combine antecedents with the outcome [ageint203;
+ageint206].</p>
+<p><strong>Why it matters.</strong> <strong>Csikszentmihalyi’s
+Flow</strong> connects classroom vocabulary to Operator Productivity and
+Cognitive Performance practice: learners document evidence, caveats, and
+reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Csikszentmihalyi’s Flow: Experience versus Proposed
+Conditions</strong>: [ageint203]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Csikszentmihalyi’s
+Flow</strong>, inspect the original passages. Curriculum annotation for
+[ageint203]: A blog article applying Mihaly Csikszentmihalyi’s Flow
+Theory to workplace and career performance. It describes flow as a state
+of full absorption in an activity, lists conditions associated with it
+such as clear goals, immediate feedback, and a balance between challenge
+and skill, and discusses how time can appear distorted during flow. The
+piece argues that achieving flow states enhances productivity and job
+satisfaction across roles and industries. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Csikszentmihalyi’s
+Flow</strong>, build a <strong>operator workload card with queue state,
+NASA-TLX ratings, focus plan, handoff owner, and rest boundary</strong>
+for this workload-aware operator decision hygiene topic. The artifact
+must note the workload descriptor, the bounded claim about
+<strong>Csikszentmihalyi’s Flow</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Csikszentmihalyi’s Flow</strong> work as
+a <strong>workload and decision-hygiene card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Csikszentmihalyi’s Flow</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Csikszentmihalyi’s Flow</strong> to another artifact while
+keeping workload-aware operator decision hygiene and reviewer ownership
+explicit.</p>
+<h4
+id="lesson-9-neuroscience-of-flow-proposed-accounts-not-a-brain-shutdown-recipe">Lesson
+9: Neuroscience of Flow: Proposed Accounts, Not a Brain-Shutdown
+Recipe</h4>
+<p><strong>Concept.</strong> <strong>Neuroscience of Flow: Proposed
+Accounts, Not a Brain-Shutdown Recipe</strong> connects cognitive
+science claims to analytic bias literacy: what the brain prioritizes,
+what it misses, and how review compensates.</p>
+<p><strong>Worked reasoning and limits.</strong> The LinkedIn article
+cannot establish that prefrontal deactivation or dopamine causally
+produces flow in intelligence work. The scholarly account proposes
+interactions among reward/attention systems and emphasizes limited
+direct evidence; a regional activity association is not proof of an
+entire cortex shutting down. No neural self-test, biochemical
+intervention, or performance prescription is derived from these accounts
+[ageint204; ageint201].</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Neuroscience of Flow</strong>, heroic overtime undermines
+workload-aware operator decision hygiene review; the lesson builds the
+habit to separate cognitive hygiene from heroics, and workload signals
+from unreviewed urgency.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Neuroscience of Flow: Proposed Accounts, Not a Brain-Shutdown
+Recipe</strong>: [ageint204]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Neuroscience of
+Flow</strong>, inspect the original passages. Curriculum annotation for
+[ageint204]: A LinkedIn article (Sana Noor, 2024) on the neuroscience of
+flow, the state of complete immersion in a task. It describes brain
+mechanisms associated with flow, including reduced prefrontal activity
+(transient hypofrontality) that lowers self-consciousness,
+dopamine-driven motivation, and deactivation of the default mode network
+to enable deep focus. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Neuroscience of
+Flow</strong>, build a <strong>operator workload card with queue state,
+NASA-TLX ratings, focus plan, handoff owner, and rest boundary</strong>
+for this workload-aware operator decision hygiene topic. The artifact
+must note the workload descriptor, the bounded claim about
+<strong>Neuroscience of Flow</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Neuroscience of Flow</strong> work as a
+<strong>workload and decision-hygiene card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Neuroscience of Flow</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Neuroscience of
+Flow</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-10-flow-research-collective-unverified-vendor-performance-claims">Lesson
+10: Flow Research Collective: Unverified Vendor Performance Claims</h4>
+<p><strong>Concept.</strong> <strong>Flow Research Collective:
+Unverified Vendor Performance Claims</strong> manages workload and bias
+through prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> The original percentage
+claims are retained only in the inherited raw source heading, not
+endorsed as effect estimates. A commercial homepage does not provide the
+task definition, comparator, denominator, follow-up, or independent
+replication needed to support them. Do not use those figures for
+scheduling, procurement, learner ranking, or expected skill acquisition;
+the citation remains vendor context rather than empirical validation
+[ageint205].</p>
+<p><strong>Why it matters.</strong> <strong>Flow Research
+Collective</strong> matters in the <strong>Operator Productivity and
+Cognitive Performance</strong> lane because workload-aware operator
+decision hygiene evidence must stay separate from judgment; heroic
+overtime is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Flow Research Collective: Unverified Vendor Performance
+Claims</strong>: [ageint205]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Flow Research
+Collective</strong>, inspect the original passages. Curriculum
+annotation for [ageint205]: This is the website of the Flow Research
+Collective, a research and development organization founded in 2018 that
+studies the neuroscience of human performance and brain health. It
+investigates flow states of focused absorption and applies that research
+to peak performance training for organizations as well as to mental
+health conditions such as PTSD and depression. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Flow Research
+Collective</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Flow Research Collective</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Flow Research Collective</strong> work
+as a <strong>workload and decision-hygiene card</strong> that records
+its evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Flow Research Collective</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Flow Research
+Collective</strong> from this module to a second motif by preserving
+workload-aware operator decision hygiene, replacing action with audit,
+and naming the blocked use.</p>
+<h4
+id="lesson-11-go-with-the-flow-proposed-neuroscientific-model-online-2020-issue-2021">Lesson
+11: Go With the Flow: Proposed Neuroscientific Model (Online 2020; Issue
+2021)</h4>
+<p><strong>Concept.</strong> <strong>Go With the Flow: Proposed
+Neuroscientific Model (Online 2020; Issue 2021)</strong> manages
+workload and bias through prioritization, explicit handoffs, and review
+checkpoints—not unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> The paper proposes
+links among dopaminergic/noradrenergic systems and default-mode,
+executive, and salience networks to generate hypotheses. It is a
+theoretical synthesis, not a controlled demonstration that engineering
+those networks improves analyst performance. Its online publication is
+2020 and issue date 2021; PMC is the access repository, not the journal
+or an endorsement [ageint201].</p>
+<p><strong>Why it matters.</strong> <strong>Go With the Flow: Proposed
+Neuroscientific Model (Online 2020; Issue 2021)</strong> connects
+classroom vocabulary to Operator Productivity and Cognitive Performance
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Go With the Flow: Proposed Neuroscientific Model (Online 2020;
+Issue 2021)</strong>: [ageint201]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Go With the Flow:
+Proposed Neuroscientific Model (Online 2020; Issue 2021)</strong>,
+inspect the original passages. Curriculum annotation for [ageint201]: A
+2020 theoretical review article in the European Journal of Neuroscience
+by van der Linden, Tops, and Bakker proposing a neuroscientific model of
+flow, the state of full task absorption with strong drive and low
+self-referential thinking. The authors argue that the dopamine and
+norepinephrine systems drive the motivational and mood components of
+flow, and that interaction among the default mode, central executive,
+and salience networks produces its characteristic features. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Go With the
+Flow</strong>, build a <strong>operator workload card with queue state,
+NASA-TLX ratings, focus plan, handoff owner, and rest boundary</strong>
+for this workload-aware operator decision hygiene topic. The artifact
+must note the workload descriptor, the bounded claim about <strong>Go
+With the Flow</strong>, the fatigue caveat, the uncertainty margin, the
+do-not-escalate boundary, and the reviewer who owns the handoff. Shape
+<strong>Go With the Flow: Proposed Neuroscientific Model (Online 2020;
+Issue 2021)</strong> work as a <strong>workload and decision-hygiene
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Go With the Flow: Proposed Neuroscientific Model (Online 2020;
+Issue 2021)</strong>: that feeling certain in the moment substitutes for
+the checklist, pause, and second-look that decision hygiene exists to
+enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Go With the Flow: Proposed Neuroscientific Model (Online 2020;
+Issue 2021)</strong> to another artifact while keeping workload-aware
+operator decision hygiene and reviewer ownership explicit.</p>
+<h4
+id="lesson-12-investigating-the-flow-experience-conceptual-and-measurement-disagreement">Lesson
+12: Investigating the Flow Experience: Conceptual and Measurement
+Disagreement</h4>
+<p><strong>Concept.</strong> <strong>Investigating the Flow Experience:
+Conceptual and Measurement Disagreement</strong> treats flow claims as
+operator-performance literacy: define task clarity, feedback, and review
+boundaries—not unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Abuhamdeh’s conceptual
+analysis reports 24 operationalizations across 42 reviewed studies,
+illustrating why apparently similar flow scores may measure different
+things. It argues for separating antecedents from experience and
+discusses disagreement about discreteness and enjoyment; that proposed
+definition is an argument, not a settled consensus. Before comparing
+studies or interpreting a classroom self-report, identify exactly which
+construct and items were used [ageint206].</p>
+<p><strong>Why it matters.</strong> <strong>Investigating the Flow
+Experience</strong> connects classroom vocabulary to Operator
+Productivity and Cognitive Performance practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Investigating the Flow Experience: Conceptual and Measurement
+Disagreement</strong>: [ageint206]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Investigating the
+Flow Experience</strong>, inspect the original passages. Curriculum
+annotation for [ageint206]: A 2020 conceptual analysis by Sami Abuhamdeh
+in Frontiers in Psychology arguing that flow research has stalled
+because the construct is operationalized inconsistently across studies.
+It identifies disagreements over whether flow is a discrete state or a
+continuum, whether enjoyment is essential to it, and whether scales
+conflate flow’s conditions with the experience itself. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Investigating the Flow
+Experience</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Investigating the Flow Experience</strong>, the fatigue
+caveat, the uncertainty margin, the do-not-escalate boundary, and the
+reviewer who owns the handoff. Shape <strong>Investigating the Flow
+Experience</strong> work as a <strong>workload and decision-hygiene
+card</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Investigating the Flow Experience</strong>: that feeling certain
+in the moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Investigating the
+Flow Experience</strong> from this module to a second motif by
+preserving workload-aware operator decision hygiene, replacing action
+with audit, and naming the blocked use.</p>
+<h4
+id="lesson-13-work-environment-design-hypotheses-not-guaranteed-flow">Lesson
+13: Work-Environment Design Hypotheses, Not Guaranteed Flow</h4>
+<p><strong>Concept.</strong> <strong>Work-Environment Design Hypotheses,
+Not Guaranteed Flow</strong> manages workload and bias through
+prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Treat a clear task
+goal, protected work interval, and feedback checkpoint as optional,
+reversible work-design hypotheses rather than a recipe for engineering a
+brain state. In the synthetic queue, a quiet comparison interval still
+ends for the planned break and the date review even if the fictional
+worker reports absorption. Feeling immersed cannot waive verification,
+accessibility, or recovery needs, and vendor training language does not
+establish efficacy [ageint205; ageint206].</p>
+<p><strong>Why it matters.</strong> <strong>Work-Environment Design
+Hypotheses, Not Guaranteed Flow</strong> matters in the <strong>Operator
+Productivity and Cognitive Performance</strong> lane because
+workload-aware operator decision hygiene evidence must stay separate
+from judgment; heroic overtime is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Work-Environment Design Hypotheses, Not Guaranteed
+Flow</strong>: [ageint205]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Work-Environment
+Design Hypotheses, Not Guaranteed Flow</strong>, inspect the original
+passages. Curriculum annotation for [ageint205]: This is the website of
+the Flow Research Collective, a research and development organization
+founded in 2018 that studies the neuroscience of human performance and
+brain health. It investigates flow states of focused absorption and
+applies that research to peak performance training for organizations as
+well as to mental health conditions such as PTSD and depression. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Work-Environment
+Design Hypotheses, Not Guaranteed Flow</strong>, build a
+<strong>operator workload card with queue state, NASA-TLX ratings, focus
+plan, handoff owner, and rest boundary</strong> for this workload-aware
+operator decision hygiene topic. The artifact must note the workload
+descriptor, the bounded claim about <strong>Work-Environment Design
+Hypotheses Guaranteed Flow</strong>, the fatigue caveat, the uncertainty
+margin, the do-not-escalate boundary, and the reviewer who owns the
+handoff. Shape the same topic work as a <strong>workload and
+decision-hygiene card</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Work-Environment Design Hypotheses, Not Guaranteed
+Flow</strong>: that feeling certain in the moment substitutes for the
+checklist, pause, and second-look that decision hygiene exists to
+enforce.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Work-Environment
+Design Hypotheses, Not Guaranteed Flow</strong> from this module to a
+second motif by preserving workload-aware operator decision hygiene,
+replacing action with audit, and naming the blocked use.</p>
+<h4 id="lesson-14-cognitive-load-management-in-intelligence-work">Lesson
+14: Cognitive Load Management in Intelligence Work</h4>
+<p><strong>Concept.</strong> <strong>Cognitive Load Management in
+Intelligence Work</strong> manages analyst workload through
+prioritization, checklists, rest boundaries, and explicit handoff—not
+heroics.</p>
+<p><strong>Worked reasoning and limits.</strong> Measure the intended
+construct before choosing a control: task difficulty, subjective
+workload, interruption count, and output quality are related questions,
+not substitutes. In the supplied queue case, compare re-entry errors and
+completion of the date check, not merely time spent or self-rated
+concentration. A fictional next-day retrieval card asks which source
+changed the date; the supplied response incorrectly names B rather than
+C, so the completed review records a retention error, revisits the
+C-linked note, and holds an unsupported claim of durable learning. High
+reported workload can accompany good work, and a low score can accompany
+disengagement; neither the score nor this invented retrieval result
+establishes capacity, health, or fitness for duty [ageint179].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Cognitive Load
+Management</strong> to separate cognitive hygiene from heroics, and
+workload signals from unreviewed urgency. A defensible treatment names
+the judgment it enables for workload-aware operator decision hygiene
+review, the proof limit that heroic overtime would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Cognitive Load Management in Intelligence Work</strong>:
+[ageint179]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Cognitive Load
+Management</strong>, inspect the original passages. Curriculum
+annotation for [ageint179]: An NCSU Laboratory for Analytic Sciences
+article summarizing a systematic survey of metrics for measuring
+cognitive load in intelligence-analysis and similar settings. Reviewing
+125 articles published between 1998 and 2024, it identifies 129 distinct
+metrics grouped into non-biometric methods (questionnaires such as
+NASA-TLX, task performance, interaction tracking) and biometric methods
+(eye tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Cognitive Load
+Management</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Cognitive Load Management in Intelligence</strong>, the
+fatigue caveat, the uncertainty margin, the do-not-escalate boundary,
+and the reviewer who owns the handoff. Shape <strong>Cognitive Load
+Management</strong> work as a <strong>workload and decision-hygiene
+card</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Cognitive Load Management</strong>: that feeling certain in the
+moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Cognitive Load
+Management</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-15-task-switching-task-specific-load-and-performance-relationships">Lesson
+15: Task Switching: Task-Specific Load and Performance
+Relationships</h4>
+<p><strong>Concept.</strong> <strong>Task Switching: Task-Specific Load
+and Performance Relationships</strong> manages workload and bias through
+prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Do not reduce the
+switching question to ‘fewer switches always lowers load and improves
+work’. The supplied source concerns a particular team search-and-rescue
+simulation, so its reported load-performance relationship is not a
+universal scheduling law. A defensible classroom comparison keeps task
+mix, quality/error definitions, interruption urgency, and re-entry
+requirements visible; the synthetic queue illustrates a reversible
+scheduling choice, not a causal replication [ageint207].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Task
+Switching</strong> to separate cognitive hygiene from heroics, and
+workload signals from unreviewed urgency. A defensible treatment names
+the judgment it enables for workload-aware operator decision hygiene
+review, the proof limit that heroic overtime would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Task Switching: Task-Specific Load and Performance
+Relationships</strong>: [ageint207]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Task
+Switching</strong>, inspect the original passages. Curriculum annotation
+for [ageint207]: A 2023 research article in the Proceedings of the Human
+Factors and Ergonomics Society Annual Meeting by Maximillian Chis and
+colleagues examining task switching during team-based search-and-rescue
+scenarios in Minecraft. Using an ACT-R model of working memory, the
+study found that teams switching between task sets less frequently
+showed both higher cognitive load and higher performance scores. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Task
+Switching</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Task Switching</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Task Switching</strong> work as a
+<strong>workload and decision-hygiene card</strong> that names evidence,
+uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Task Switching</strong>: that feeling certain in the moment
+substitutes for the checklist, pause, and second-look that decision
+hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Task Switching</strong> to another artifact while keeping
+workload-aware operator decision hygiene and reviewer ownership
+explicit.</p>
+<h4
+id="lesson-16-nasa-tlx-voluntary-task-level-workload-not-personnel-ranking">Lesson
+16: NASA-TLX: Voluntary Task-Level Workload, Not Personnel Ranking</h4>
+<p><strong>Concept.</strong> <strong>NASA-TLX: Voluntary Task-Level
+Workload, Not Personnel Ranking</strong> uses workload indexes as review
+triggers for prioritization, handoff, and rest—not as heroics
+metrics.</p>
+<p><strong>Worked reasoning and limits.</strong> NASA’s <a
+href="https://www.nasa.gov/human-systems-integration-division/nasa-task-load-index-tlx/">instrument
+description</a> identifies six subjective dimensions and a weighted
+procedure; declare any raw unweighted convention rather than mixing
+methods. For the fictional queue task, post-task
+mental/physical/temporal/performance/effort/frustration ratings are
+60/10/70/30/60/40 on 0–100 low-to-high burden scales, with performance
+oriented good-to-poor: raw mean = 45, not a weighted TLX score. A later
+supplied record 50/10/50/40/50/40 has raw mean 40 but a worse
+performance self-rating; without independent error checks it does not
+establish improvement. No missing dimensions are imputed, no universal
+cutoff is asserted, and no actual learner or worker is monitored
+[ageint179].</p>
+<p><strong>Why it matters.</strong> <strong>NASA-TLX: Voluntary
+Task-Level Workload, Not Personnel Ranking</strong> connects classroom
+vocabulary to Operator Productivity and Cognitive Performance practice:
+learners document evidence, caveats, and reviewer ownership rather than
+repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>NASA-TLX: Voluntary Task-Level Workload, Not Personnel
+Ranking</strong>: [ageint179]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>NASA-TLX: Voluntary
+Task-Level Workload, Not Personnel Ranking</strong>, inspect the
+original passages. Curriculum annotation for [ageint179]: An NCSU
+Laboratory for Analytic Sciences article summarizing a systematic survey
+of metrics for measuring cognitive load in intelligence-analysis and
+similar settings. Reviewing 125 articles published between 1998 and
+2024, it identifies 129 distinct metrics grouped into non-biometric
+methods (questionnaires such as NASA-TLX, task performance, interaction
+tracking) and biometric methods (eye tracking, heart rate). These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>NASA-TLX</strong>,
+build a <strong>operator workload card with queue state, NASA-TLX
+ratings, focus plan, handoff owner, and rest boundary</strong> for this
+workload-aware operator decision hygiene topic. The artifact must note
+the workload descriptor, the bounded claim about
+<strong>NASA-TLX</strong>, the fatigue caveat, the uncertainty margin,
+the do-not-escalate boundary, and the reviewer who owns the handoff.
+Shape <strong>NASA-TLX: Voluntary Task-Level Workload, Not Personnel
+Ranking</strong> work as a <strong>workload and decision-hygiene
+card</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>NASA-TLX: Voluntary Task-Level Workload, Not Personnel
+Ranking</strong>: that feeling certain in the moment substitutes for the
+checklist, pause, and second-look that decision hygiene exists to
+enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>NASA-TLX: Voluntary Task-Level Workload, Not Personnel
+Ranking</strong> to another artifact while keeping workload-aware
+operator decision hygiene and reviewer ownership explicit.</p>
+<h4
+id="lesson-17-biometric-workload-research-consent-confounding-and-no-diagnostic-use">Lesson
+17: Biometric Workload Research: Consent, Confounding, and No Diagnostic
+Use</h4>
+<p><strong>Concept.</strong> <strong>Biometric Workload Research:
+Consent, Confounding, and No Diagnostic Use</strong> evaluates biometric
+monitoring by consent, minimization, purpose limits, and human review of
+alerts.</p>
+<p><strong>Worked reasoning and limits.</strong> Physiological signals
+can vary with ordinary movement, environment, device quality, and task
+conditions; they are not specific readings of overload or analytic
+competence. The measurement survey supports examining task fit and
+validation, not universal real-time detection. Use synthetic logs and
+less-intrusive task/error records in this course; no student EEG, gaze,
+heart-rate, health inference, credentialing, or individual surveillance
+is required or permitted [ageint179].</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Biometric Workload Research</strong>, heroic overtime undermines
+workload-aware operator decision hygiene review; the lesson builds the
+habit to separate cognitive hygiene from heroics, and workload signals
+from unreviewed urgency.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Biometric Workload Research: Consent, Confounding, and No
+Diagnostic Use</strong>: [ageint179]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Biometric Workload
+Research</strong>, inspect the original passages. Curriculum annotation
+for [ageint179]: An NCSU Laboratory for Analytic Sciences article
+summarizing a systematic survey of metrics for measuring cognitive load
+in intelligence-analysis and similar settings. Reviewing 125 articles
+published between 1998 and 2024, it identifies 129 distinct metrics
+grouped into non-biometric methods (questionnaires such as NASA-TLX,
+task performance, interaction tracking) and biometric methods (eye
+tracking, heart rate). These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Biometric Workload
+Research</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Biometric Workload Research</strong>, the fatigue caveat,
+the uncertainty margin, the do-not-escalate boundary, and the reviewer
+who owns the handoff. Shape <strong>Biometric Workload Research</strong>
+work as a <strong>workload and decision-hygiene card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Biometric Workload Research</strong>: that feeling certain in
+the moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Biometric Workload
+Research</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-18-spycraft-psychology-literacy-stress-trust-and-reviewer-boundary">Lesson
+18: Spycraft psychology literacy: stress, trust, and
+reviewer-boundary</h4>
+<p><strong>Concept.</strong> <strong>Spycraft psychology literacy:
+stress, trust, and reviewer-boundary</strong> manages workload and bias
+through prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> An interview can convey
+one speaker’s recollections and interpretation, but it is not a
+representative psychological study of operatives. Separate what the
+interviewee says from independently checked events and from general
+claims about cognition or occupational health. No exercise asks learners
+to imitate covert conduct, disclose personal experiences, or infer a
+psychological profile from this testimony [ageint025].</p>
+<p><strong>Why it matters.</strong> <strong>Spycraft psychology
+literacy</strong> matters in the <strong>Operator Productivity and
+Cognitive Performance</strong> lane because workload-aware operator
+decision hygiene evidence must stay separate from judgment; heroic
+overtime is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Spycraft psychology literacy: stress, trust, and
+reviewer-boundary</strong>: [ageint025]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Spycraft psychology
+literacy</strong>, inspect the original passages. Curriculum annotation
+for [ageint025]: This is an episode of The Unmistakable Creative Podcast
+featuring former CIA field operative Andrew Bustamante discussing
+intelligence work. The conversation covers his background at the Air
+Force Academy and CIA training, and frames espionage as resting on
+reading people, trust, influence, and empathy rather than glamour or
+action. It also addresses how operatives are selected, the isolation of
+covert work, and its psychological effects on personal relationships.
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Spycraft psychology
+literacy</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Spycraft psychology literacy</strong>, the fatigue caveat,
+the uncertainty margin, the do-not-escalate boundary, and the reviewer
+who owns the handoff. Shape <strong>Spycraft psychology
+literacy</strong> work as a <strong>workload and decision-hygiene
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Spycraft psychology literacy</strong>: that feeling certain in
+the moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Spycraft psychology
+literacy</strong> audit pattern from this module on a different sample
+record set with a new reviewer and blocked-use note.</p>
+<h4
+id="lesson-19-mice-and-moral-flexibility-narratives-attribution-without-profiling">Lesson
+19: MICE and Moral-Flexibility Narratives: Attribution without
+Profiling</h4>
+<p><strong>Concept.</strong> <strong>MICE and Moral-Flexibility
+Narratives: Attribution without Profiling</strong> — MICE names money,
+ideology, coercion/compromise, and ego as a historical motivation
+taxonomy. Use it to critique recruitment-risk narratives and consent
+boundaries, not to predict an individual’s motives or design
+recruitment.</p>
+<p><strong>Worked reasoning and limits.</strong> MICE conventionally
+names money, ideology, compromise/coercion, and ego as a mnemonic for
+discussed motives; its categories are not a validated personality model
+or a way to diagnose moral flexibility. The interview supports
+attribution of a speaker’s account only. Do not map learners or real
+people to motives, use the mnemonic for recruitment, or treat a supposed
+motive as evidence that a particular act occurred [ageint025].</p>
+<p><strong>Why it matters.</strong> <strong>MICE and Moral-Flexibility
+Narratives</strong> matters in the <strong>Operator Productivity and
+Cognitive Performance</strong> lane because workload-aware operator
+decision hygiene evidence must stay separate from judgment; heroic
+overtime is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>MICE and Moral-Flexibility Narratives: Attribution without
+Profiling</strong>: [ageint025]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>MICE and
+Moral-Flexibility Narratives</strong>, inspect the original passages.
+Curriculum annotation for [ageint025]: This is an episode of The
+Unmistakable Creative Podcast featuring former CIA field operative
+Andrew Bustamante discussing intelligence work. The conversation covers
+his background at the Air Force Academy and CIA training, and frames
+espionage as resting on reading people, trust, influence, and empathy
+rather than glamour or action. It also addresses how operatives are
+selected, the isolation of covert work, and its psychological effects on
+personal relationships. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>MICE and
+Moral-Flexibility Narratives</strong>, build a <strong>operator workload
+card with queue state, NASA-TLX ratings, focus plan, handoff owner, and
+rest boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>MICE and Moral-Flexibility Narratives</strong>, the
+fatigue caveat, the uncertainty margin, the do-not-escalate boundary,
+and the reviewer who owns the handoff. Shape <strong>MICE and
+Moral-Flexibility Narratives</strong> work as a <strong>workload and
+decision-hygiene card</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>MICE and Moral-Flexibility Narratives</strong>: that a
+motivation taxonomy is a recruitment checklist.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>MICE and
+Moral-Flexibility Narratives</strong> audit pattern from this module on
+a different sample record set with a new reviewer and blocked-use
+note.</p>
+<h4
+id="lesson-20-trust-and-loneliness-in-interview-testimony-non-generalization">Lesson
+20: Trust and Loneliness in Interview Testimony: Non-Generalization</h4>
+<p><strong>Concept.</strong> <strong>Trust and Loneliness in Interview
+Testimony: Non-Generalization</strong> manages workload and bias through
+prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> A recollection of
+loneliness or mistrust is qualitative testimony, not a prevalence
+estimate, diagnosis, or inevitable occupational trajectory. A humane
+classroom discussion can identify the distinction between an
+organizational support need and a clinical inference without evaluating
+any participant’s private life. Offer opt-out and nonpersonal
+alternatives; the source does not establish a treatment or universal
+causal psychological cost [ageint025].</p>
+<p><strong>Why it matters.</strong> <strong>Trust and Loneliness in
+Interview Testimony</strong> connects classroom vocabulary to Operator
+Productivity and Cognitive Performance practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Trust and Loneliness in Interview Testimony:
+Non-Generalization</strong>: [ageint025]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Trust and
+Loneliness in Interview Testimony</strong>, inspect the original
+passages. Curriculum annotation for [ageint025]: This is an episode of
+The Unmistakable Creative Podcast featuring former CIA field operative
+Andrew Bustamante discussing intelligence work. The conversation covers
+his background at the Air Force Academy and CIA training, and frames
+espionage as resting on reading people, trust, influence, and empathy
+rather than glamour or action. It also addresses how operatives are
+selected, the isolation of covert work, and its psychological effects on
+personal relationships. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Trust and Loneliness
+in Interview Testimony</strong>, build a <strong>operator workload card
+with queue state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Trust and Loneliness in Interview</strong>, the fatigue
+caveat, the uncertainty margin, the do-not-escalate boundary, and the
+reviewer who owns the handoff. Shape <strong>Trust and Loneliness in
+Interview Testimony</strong> work as a <strong>workload and
+decision-hygiene card</strong> that logs the evidence, the uncertainty,
+the responsible reviewer, and the halt condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Trust and Loneliness in Interview Testimony</strong>: that
+feeling certain in the moment substitutes for the checklist, pause, and
+second-look that decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Trust and Loneliness in Interview Testimony</strong> to another
+artifact while keeping workload-aware operator decision hygiene and
+reviewer ownership explicit.</p>
+<h4
+id="lesson-21-human-pattern-recognition-and-task-management-different-functions">Lesson
+21: Human Pattern Recognition and Task Management: Different
+Functions</h4>
+<p><strong>Concept.</strong> <strong>Human Pattern Recognition and Task
+Management: Different Functions</strong> manages workload and bias
+through prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Pattern recognition
+identifies a familiar configuration; task management stores commitments
+and next actions. They are complementary functions, not rival agent
+architectures or proof that intuition makes records unnecessary. In the
+queue case, a familiar-looking date pattern is a hypothesis until the
+source/version check is completed; the interview is anecdotal support
+for the speaker’s perspective, not validation of superior human
+recognition under every condition [ageint025].</p>
+<p><strong>Why it matters.</strong> <strong>Human Pattern Recognition
+and Task Management</strong> matters in the <strong>Operator
+Productivity and Cognitive Performance</strong> lane because
+workload-aware operator decision hygiene evidence must stay separate
+from judgment; heroic overtime is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Human Pattern Recognition and Task Management: Different
+Functions</strong>: [ageint025]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Human Pattern
+Recognition and Task Management</strong>, inspect the original passages.
+Curriculum annotation for [ageint025]: This is an episode of The
+Unmistakable Creative Podcast featuring former CIA field operative
+Andrew Bustamante discussing intelligence work. The conversation covers
+his background at the Air Force Academy and CIA training, and frames
+espionage as resting on reading people, trust, influence, and empathy
+rather than glamour or action. It also addresses how operatives are
+selected, the isolation of covert work, and its psychological effects on
+personal relationships. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Human Pattern
+Recognition and Task Management</strong>, build a <strong>operator
+workload card with queue state, NASA-TLX ratings, focus plan, handoff
+owner, and rest boundary</strong> for this workload-aware operator
+decision hygiene topic. The artifact must note the workload descriptor,
+the bounded claim about <strong>Human Pattern Recognition and
+Task</strong>, the fatigue caveat, the uncertainty margin, the
+do-not-escalate boundary, and the reviewer who owns the handoff. Shape
+<strong>Human Pattern Recognition and Task Management</strong> work as a
+<strong>workload and decision-hygiene card</strong> that records its
+evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Human Pattern Recognition and Task Management</strong>: that
+feeling certain in the moment substitutes for the checklist, pause, and
+second-look that decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Human Pattern Recognition and Task Management</strong> to
+another artifact while keeping workload-aware operator decision hygiene
+and reviewer ownership explicit.</p>
+<h4
+id="lesson-22-scheduling-recovery-and-the-limits-of-peak-window-claims">Lesson
+22: Scheduling, Recovery, and the Limits of Peak-Window Claims</h4>
+<p><strong>Concept.</strong> <strong>Scheduling, Recovery, and the
+Limits of Peak-Window Claims</strong> manages workload and bias through
+prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> No cited
+foreign-influence policy source establishes individual circadian peak
+windows or a performance-optimization schedule. In the fictional queue,
+the choice is to preserve a planned break and move the unresolved
+comparison to a reviewed handoff rather than extending work because a
+deadline exists. That is a reversible work-design decision, not
+biological measurement or medical advice; no sleep tracking, chronotype
+inference, or coercive scheduling is part of the exercise.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Scheduling,
+Recovery, and the Limits of Peak-Window Claims</strong> to separate
+cognitive hygiene from heroics, and workload signals from unreviewed
+urgency. A defensible treatment names the judgment it enables for
+workload-aware operator decision hygiene review, the proof limit that
+heroic overtime would otherwise hide, and the reviewer accountable for
+challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Scheduling, Recovery, and the Limits of Peak-Window
+Claims</strong>: [ageint308] and [ageint311]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Scheduling,
+Recovery, and the Limits of Peak-Window Claims</strong>, inspect the
+original passages. Curriculum annotation for [ageint308]: An archived
+CISA publication, “CISA Insights: Preparing for and Mitigating Foreign
+Influence Operations Targeting Critical Infrastructure,” providing
+guidance on the threat that foreign influence campaigns pose to U.S.
+critical infrastructure. Curriculum annotation for [ageint311]: An
+official NATO topic page describing the Alliance’s approach to
+countering information threats, defined as intentional, manipulative,
+and coordinated activities by state and non-state actors including
+disinformation and propaganda. It explains why such threats matter for
+democratic processes and institutional trust, and outlines a four-part
+framework of understanding, preventing, containing, and recovering.
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Scheduling, Recovery,
+and the Limits of Peak-Window Claims</strong>, build a <strong>operator
+workload card with queue state, NASA-TLX ratings, focus plan, handoff
+owner, and rest boundary</strong> for this workload-aware operator
+decision hygiene topic. The artifact must note the workload descriptor,
+the bounded claim about <strong>Scheduling Recovery and the
+Limits</strong>, the fatigue caveat, the uncertainty margin, the
+do-not-escalate boundary, and the reviewer who owns the handoff. Shape
+the same topic work as a <strong>workload and decision-hygiene
+card</strong> that records its evidence, the residual uncertainty, the
+named reviewer, and the stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Scheduling, Recovery, and the Limits of Peak-Window
+Claims</strong>: that feeling certain in the moment substitutes for the
+checklist, pause, and second-look that decision hygiene exists to
+enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Scheduling,
+Recovery, and the Limits of Peak-Window Claims</strong> audit pattern
+from this module on a different sample record set with a new reviewer
+and blocked-use note.</p>
+<h4
+id="lesson-23-stress-preparedness-supportive-rehearsal-and-clinical-boundaries">Lesson
+23: Stress Preparedness: Supportive Rehearsal and Clinical
+Boundaries</h4>
+<p><strong>Concept.</strong> <strong>Stress Preparedness: Supportive
+Rehearsal and Clinical Boundaries</strong> manages workload and bias
+through prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Stress inoculation in
+occupational or clinical discussion is not misinformation prebunking;
+the shared word does not make the interventions equivalent.
+Software-security guidance does not validate a stress-training protocol,
+so this course claims no clinical or resilience efficacy. A calm, opt-in
+paper rehearsal may practice recording an unresolved item and handing it
+off, but must not induce stress, simulate trauma, penalize withdrawal,
+or replace qualified occupational/clinical support.</p>
+<p><strong>Why it matters.</strong> <strong>Stress Preparedness</strong>
+connects classroom vocabulary to Operator Productivity and Cognitive
+Performance practice: learners document evidence, caveats, and reviewer
+ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Stress Preparedness: Supportive Rehearsal and Clinical
+Boundaries</strong>: [ageint300], [ageint304], and [ageint306]. These
+citations preserve source identity, not automatic topical relevance,
+empirical validation or normative authority. No claim-specific primary
+support is established by this source-guide association alone. Profile
+context—not claim-specific validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Stress
+Preparedness</strong>, inspect the original passages. Curriculum
+annotation for [ageint300]: MITRE ATLAS knowledge base for adversarial
+threats to AI systems, used for defensive AI red-team assurance and
+misuse taxonomy. Curriculum annotation for [ageint304]: NIST SP 800-218,
+the Secure Software Development Framework Version 1.1 published in
+February 2022, establishes a set of high-level practices for integrating
+security into software development lifecycles in order to reduce
+vulnerabilities in released software, mitigate the impact of exploited
+vulnerabilities, and address root causes to prevent recurrences.
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Stress
+Preparedness</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Stress Preparedness</strong>, the fatigue caveat, the
+uncertainty margin, the do-not-escalate boundary, and the reviewer who
+owns the handoff. Shape <strong>Stress Preparedness</strong> work as a
+<strong>workload and decision-hygiene card</strong> that records its
+evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Stress Preparedness</strong>: that feeling certain in the moment
+substitutes for the checklist, pause, and second-look that decision
+hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Stress
+Preparedness</strong> from this module to a second motif by preserving
+workload-aware operator decision hygiene, replacing action with audit,
+and naming the blocked use.</p>
+<h4
+id="lesson-24-trauma-ptsd-and-moral-injury-awareness-support-and-non-diagnosis">Lesson
+24: Trauma, PTSD, and Moral Injury: Awareness, Support, and
+Non-Diagnosis</h4>
+<p><strong>Concept.</strong> <strong>Trauma, PTSD, and Moral Injury:
+Awareness, Support, and Non-Diagnosis</strong> manages workload and bias
+through prioritization, explicit handoffs, and review checkpoints—not
+unsustainable pace.</p>
+<p><strong>Worked reasoning and limits.</strong> Ordinary
+workload/fatigue, a potentially traumatic event, PTSD, and moral injury
+are not interchangeable labels. The <a
+href="https://www.ptsd.va.gov/understand/related/moral_injury_ptsd.asp">VA
+National Center for PTSD</a> distinguishes moral injury from a diagnosis
+and reserves PTSD diagnosis for a mental-health provider; the commercial
+flow homepage is not clinical evidence for the inherited causal heading.
+The course neither screens nor treats participants: no personal
+disclosure, reenactment, symptom scoring, or fitness judgment is
+requested, and GTD, flow, rest, or a workload card is not presented as
+PTSD treatment. Stop a distressing exercise, allow private
+withdrawal/accommodation and access to appropriate qualified support,
+and keep any clinical mechanism or treatment-efficacy claim outside the
+evidence supplied here [ageint205].</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Trauma, PTSD, and Moral Injury</strong>, heroic overtime
+undermines workload-aware operator decision hygiene review; the lesson
+builds the habit to separate cognitive hygiene from heroics, and
+workload signals from unreviewed urgency.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Trauma, PTSD, and Moral Injury: Awareness, Support, and
+Non-Diagnosis</strong>: [ageint205]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Trauma, PTSD, and
+Moral Injury</strong>, inspect the original passages. Curriculum
+annotation for [ageint205]: This is the website of the Flow Research
+Collective, a research and development organization founded in 2018 that
+studies the neuroscience of human performance and brain health. It
+investigates flow states of focused absorption and applies that research
+to peak performance training for organizations as well as to mental
+health conditions such as PTSD and depression. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Trauma, PTSD, and
+Moral Injury</strong>, build a <strong>operator workload card with queue
+state, NASA-TLX ratings, focus plan, handoff owner, and rest
+boundary</strong> for this workload-aware operator decision hygiene
+topic. The artifact must note the workload descriptor, the bounded claim
+about <strong>Trauma PTSD and Moral Injury</strong>, the fatigue caveat,
+the uncertainty margin, the do-not-escalate boundary, and the reviewer
+who owns the handoff. Shape <strong>Trauma, PTSD, and Moral
+Injury</strong> work as a <strong>workload and decision-hygiene
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Trauma, PTSD, and Moral Injury</strong>: that feeling certain in
+the moment substitutes for the checklist, pause, and second-look that
+decision hygiene exists to enforce.</p>
+<p><strong>Transfer task.</strong> Reuse the <strong>Trauma, PTSD, and
+Moral Injury</strong> audit pattern from this module on a different
+sample record set with a new reviewer and blocked-use note.</p>
+<h3
+id="the-intelligent-operator-as-cognitive-athlete-worked-safe-example-synthetic-inputs-evidence-and-review">The
+Intelligent Operator as Cognitive Athlete worked safe example: synthetic
+inputs, evidence, and review</h3>
+<p>Worked example: a synthetic analyst cell rebuilds a weekly reading
+queue after workload scores spike during a surge brief. [ageint262];
+[ageint263].</p>
+<p><strong>Contextual source routes.</strong> For module 43’s
+worked-example section, the <strong>Operator Productivity and Cognitive
+Performance</strong> catalog routes include [official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis];
+[official_nist_sp_800_161r1]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
+<p><strong>Unit discipline spine.</strong> Discipline: <strong>analyst
+cognitive performance</strong>. Learners use a <strong>workload and
+decision-hygiene card</strong> and keep this boundary visible: No
+productivity optimization may override safety, review, accessibility,
+rest, or records duties.</p>
+<p><strong>Frame.</strong> The classroom question centers on
+<strong>Productivity Tradecraft: Sustainable Work, Review, and
+Recovery</strong>. Excluded actions stay explicit, and the
+<strong>Operator-Workload Hygiene Lens</strong> planning question is:
+Which workload signal, capture habit, focus block, and reviewer handoff
+must stay explicit before the operator accepts more tasking?</p>
+<p><strong>Inputs.</strong> For the <strong>Productivity Tradecraft:
+Sustainable Work, Review, and Recovery</strong> scenario, use a
+four-task fictional queue, a noon review deadline, three interruptions,
+self-rated high temporal demand, task B with a missing source link, and
+optional task D with no deadline. The Operator-Workload Hygiene Lens
+intake note records provenance, sensitivity, fit-to-purpose, and why the
+fixture is enough for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>Productivity Tradecraft:
+Sustainable Work, Review, and Recovery</strong>, students first capture
+tasks and dependencies; then protect the noon review, reserve an
+accessible focus interval and rest boundary, and write a re-entry note
+for B; compare two equal-completion-count queues, one missing review,
+and reject task count as a quality proxy. Stop accepting work if review
+cannot fit and hand the missing source to the relief reviewer; do not
+infer illness or incapacity from a workload rating. Pause whenever an
+inference about Productivity Tradecraft: Sustainable Work, Review, and
+Recovery appears without evidence, confidence outruns support, or an
+agent output is treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a workload card
+deferring D, marking B not ready, naming the relief reviewer, and
+retaining the noon checkpoint and rest boundary; subjective demand is
+recorded, while any diagnosis, causal performance claim, or worker
+ranking remains unsupported Retain it as the <strong>workload and
+decision-hygiene card</strong> for this classroom fixture, with the
+stated source IDs, uncertainty, review disposition, and excluded-action
+boundary.</p>
+<p><strong>Flawed answer to revise.</strong> Treating
+<strong>Productivity Tradecraft: Sustainable Work, Review, and
+Recovery</strong> as “Operator-Workload Hygiene Lens confirms it” is not
+enough. The revision ties the claim to workload-aware operator decision
+hygiene, adds the missing caveat, states confidence, and records the
+reviewer who accepted the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>Productivity
+Tradecraft: Sustainable Work, Review, and Recovery</strong> records the
+defensible claim, the assumption most likely to fail, the evidence that
+would change confidence, and the review condition for stopping
+reuse.</p>
+</main>
+</body>
+</html>

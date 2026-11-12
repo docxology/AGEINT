@@ -191,10 +191,9 @@ def test_citation_source_family_classifies_existing_anchor_keys() -> None:
     assert citation_source_family("scholarly_rethlefsen_2021_prisma_s", anchor_map) == "scholarly"
 
 
-def test_audit_scholarship_quality_script_writes_json_contract(built_output: Path) -> None:
-    assert (built_output / "manuscript").is_dir()
+def test_audit_scholarship_quality_script_reports_json_contract(built_output: Path) -> None:
     result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_scholarship_quality.py"), "--format", "json", "--write"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_scholarship_quality.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=180
     )
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
@@ -202,5 +201,3 @@ def test_audit_scholarship_quality_script_writes_json_contract(built_output: Pat
     assert payload["summary"]["thin_claim_bearing_files"] == 0
     assert payload["analysis_validation_lane_contract"]["ok"] is True
     assert payload["analysis_validation_family_coverage"]["ok"] is True
-    assert (PROJECT_ROOT / "output" / "reports" / "scholarship_quality.json").is_file()
-    assert (PROJECT_ROOT / "output" / "reports" / "scholarship_quality.md").is_file()

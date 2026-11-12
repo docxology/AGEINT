@@ -16,11 +16,9 @@ from intelligence_content.source_grounding import (  # noqa: E402
     cited_sources,
     clean_source_note,
     clean_source_title,
-    evidence_from_sources,
     safe_source_note,
     safe_source_title,
     source_record,
-    source_support_sentence,
     sources_for_numbers,
 )
 
@@ -56,50 +54,6 @@ def test_clean_source_title_trims_trailing_function_word_without_ellipsis() -> N
     assert clean_source_title("Behavioral Outcomes of Human Cognitive Security within an") == ("Behavioral Outcomes of Human Cognitive Security")
 
 
-_NOTE_DANGLING_TAIL_WORDS = frozenset(
-    {"a", "an", "the", "to", "of", "for", "and", "or", "as", "in", "on", "with", "by", "that", "which", "critical", "committed", "human", "presents", "including", "distinct", "such"}
-)
-
-
-def _ends_on_complete_clause(cleaned: str) -> bool:
-    """A cleaned note is complete only if non-empty and not ending on a dangler."""
-    if not cleaned:
-        return True  # title-only fallback is an acceptable outcome
-    if not cleaned.endswith((".", "!", "?")):
-        return False
-    words = cleaned.rstrip(".!?").split()
-    if not words:
-        return False
-    return words[-1].strip(",;:-\"'()").lower() not in _NOTE_DANGLING_TAIL_WORDS
-
-
-def test_clean_source_note_drops_truncated_partial_word() -> None:
-    note = "We provide a comprehensive review of the current state, including its developm..."
-    cleaned = clean_source_note(note)
-    assert cleaned.endswith("state, including its.") is False
-    assert "developm" not in cleaned
-    assert cleaned.endswith(".")
-    # The clause must be complete, not a fabricated sentence ending on a dangler.
-    assert _ends_on_complete_clause(cleaned)
-
-
-def test_clean_source_note_drops_severed_attributive_adjective() -> None:
-    # Truncation that severs an adjective from its head noun must not be
-    # presented as a finished sentence; fall back to title-only ("").
-    assert clean_source_note("This research examined the possibility of using shared experiences to recruit committed hu...") == ""
-    assert clean_source_note("Explore ICS Cybersecurity and learn how to protect critical infrastruct...") == ""
-
-
-def test_clean_source_note_trims_trailing_function_words() -> None:
-    cleaned = clean_source_note("Prebunking builds preemptive resilience to...")
-    assert cleaned == "Prebunking builds preemptive resilience."
-
-
-def test_clean_source_note_balances_unmatched_paren_and_quote() -> None:
-    assert clean_source_note("Heuer gives starters in his book (Structured Analytic Techniques for...").endswith("in his book.")
-    assert clean_source_note('He shared an article: "Unveiling the multifaceted...').endswith("article.")
-
-
 def test_clean_source_note_keeps_complete_sentences() -> None:
     note = "First complete sentence here. A dangling second frag..."
     cleaned = clean_source_note(note)
@@ -109,21 +63,6 @@ def test_clean_source_note_keeps_complete_sentences() -> None:
 def test_clean_source_note_handles_empty() -> None:
     assert clean_source_note("") == ""
     assert clean_source_note("   ...") == ""
-
-
-def test_clean_source_note_cuts_dangling_adjective_clause() -> None:
-    note = "This policy paper examines the emergence of cognitive security as a distinct and critical strategic ..."
-    cleaned = clean_source_note(note)
-    assert cleaned == "This policy paper examines the emergence of cognitive security."
-    assert not cleaned.endswith("critical.")
-    assert not cleaned.endswith("and.")
-
-
-def test_clean_source_note_cuts_dangling_relative_clause() -> None:
-    note = "This article examines the concept of epistemic governance during crises, a situation that presents s..."
-    cleaned = clean_source_note(note)
-    assert cleaned == "This article examines the concept of epistemic governance during crises."
-    assert not cleaned.endswith("presents.")
 
 
 def test_safe_source_note_drops_operational_motifs() -> None:
@@ -140,6 +79,12 @@ def test_safe_source_note_strips_unsupported_glyphs() -> None:
 def test_safe_source_note_keeps_ordinary_notes() -> None:
     note = "This article reviews the current state of cognitive security."
     assert safe_source_note(note) == note
+
+
+def test_safe_source_note_preserves_bounded_fictional_evidence_not_import_scaffolds() -> None:
+    note = "The study tested 🛰 fictional headlines. Recognition is not observed sharing."
+    assert safe_source_note(note) == "The study tested fictional headlines. Recognition is not observed sharing."
+    assert safe_source_note("Inspect fictional records before the source guide import.") == ""
 
 
 def test_source_record_resolves_real_reference() -> None:
@@ -161,27 +106,15 @@ def test_cited_sources_dedupes_and_limits() -> None:
     assert sources[1].number == 2
 
 
-def test_source_support_sentence_anchors_on_title() -> None:
-    sources = cited_sources(_entry((1, 2)), limit=3)
-    sentence = source_support_sentence("My lesson topic", sources)
-    assert sentence.startswith("**My lesson topic** rests on")
-    assert "[@ageint001]" in sentence
-    assert "Use them" in sentence
+def test_truncated_notes_do_not_manufacture_complete_claims() -> None:
+    assert clean_source_note("This study demonstrates a reliable method for...") == ""
+    assert clean_source_note("A complete scoped statement. A truncated continuation...") == "A complete scoped statement."
+    assert clean_source_note("Studies in Intelligence, Vol. 70, No. 1 introduces...") == ""
+    assert clean_source_note("An institution in the U.S. reports...") == ""
 
 
-def test_evidence_from_sources_anchors_and_lists_citations() -> None:
-    sources = cited_sources(_entry((2,)), limit=3)
-    evidence = evidence_from_sources("My lesson topic", sources)
-    # The opening lead-in rotates deterministically across a small bank, but it
-    # always opens by weaving the bolded lesson title (no single verbatim stamp).
-    assert evidence.startswith(("For **My lesson topic**", "Ground **My lesson topic**", "Read **My lesson topic**"))
-    assert "[@ageint002]" in evidence
-    assert "Use it" not in evidence  # single-source phrasing lives in source support
-
-
-def test_source_support_single_source_uses_singular() -> None:
-    sources = cited_sources(_entry((2,)), limit=3)
-    assert "Use it for" in source_support_sentence("Topic", sources)
+def test_overlong_annotation_does_not_become_a_fabricated_sentence() -> None:
+    assert safe_source_note("A purported conclusion " + "with qualifications " * 40 + "under a narrow model.") == ""
 
 
 def test_safe_source_title_neutralizes_operational_titles() -> None:
@@ -198,7 +131,6 @@ def test_sources_for_numbers_dedupes_and_limits() -> None:
 def test_annotated_source_table_renders_real_titles_and_notes() -> None:
     records = sources_for_numbers([1, 2])
     table = annotated_source_table(records)
-    assert table.startswith("| Source | Cited work | What it contributes | Status |")
     assert "[@ageint001]" in table and "[@ageint002]" in table
     # Every data row is a 4-column Markdown row (5 pipe delimiters).
     for line in table.splitlines()[2:]:
@@ -209,54 +141,12 @@ def test_annotated_source_table_neutralizes_operational_rows() -> None:
     records = sources_for_numbers([32])  # KGB "Working with Agents"
     table = annotated_source_table(records)
     assert "Working with Agents" not in table
-    assert "Cited source (see bibliography)" in table
-
-
-def test_chapter_source_annotations_handles_uncited_module() -> None:
-    text = chapter_source_annotations({"citations": []})
-    assert "no direct source-guide citations" in text
 
 
 def test_chapter_source_annotations_notes_overflow() -> None:
     many = list(range(1, 40))
     text = chapter_source_annotations({"citations": many}, limit=5)
-    assert "remaining" in text
     assert text.count("[@ageint") == 5
-
-
-def test_annotated_source_table_has_status_column() -> None:
-    records = sources_for_numbers([1, 2])
-    table = annotated_source_table(records)
-    # Header has 4 columns (5 pipe delimiters each row)
-    header = table.splitlines()[0]
-    assert "| Status |" in header
-    # Every data row has exactly 5 pipes
-    for line in table.splitlines()[2:]:
-        assert line.count("|") == 5
-    assert any("source-guide" in line for line in table.splitlines()[2:])
-
-
-def test_annotated_source_table_marks_practitioner_sources_as_secondary() -> None:
-    records = sources_for_numbers([139, 143, 144, 156])
-    table = annotated_source_table(records)
-    rows = table.splitlines()[2:]
-    assert len(rows) == 4
-    assert all("secondary evidence only" in row for row in rows)
-
-
-def test_annotated_source_table_flags_generic_mcp_spec_as_context() -> None:
-    table = annotated_source_table(sources_for_numbers([299]))
-    assert "use pinned MCP anchor for normative claims" in table
-
-
-def test_annotated_source_table_links_url_when_available() -> None:
-    """Verified sources should have clickable title links."""
-    # Source 3 is PMC (publicly accessible) — should be verified
-    records = sources_for_numbers([3])
-    table = annotated_source_table(records)
-    row = table.splitlines()[-1]
-    # If verified, title is wrapped as [title](url)
-    assert "http" in row or "Cited source" in row  # either linked or fallback
 
 
 def test_annotated_source_table_escapes_at_signs_in_markdown_urls() -> None:

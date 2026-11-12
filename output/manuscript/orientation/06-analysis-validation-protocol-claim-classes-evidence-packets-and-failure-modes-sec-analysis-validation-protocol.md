@@ -12,16 +12,14 @@ text, rendered pixels, and link-safe PDF output; artifact-readiness claims need
 fresh builds and current audits; reviewer dispositions need a task ledger and
 negative control.
 
-The claim-calibration verifier adds the machine-checkable edge to that protocol
-[@fig:ageint-claim-calibration-and-visual-semantics]. Artifact telemetry such as
-citation counts, figure counts, page counts, link counts, and validator pass
-states is useful readiness evidence, but it is not a statistical result,
-learning-outcome estimate, operational-performance benchmark, or universal
-safety claim. The audit therefore fails unsupported proof-language,
-measured-performance claims, p-value or significance language, and decorative
-formalisms without direct support and limitation text, while allowing explicit
-boundary language and misconception checks that warn the reader what a source
-cannot establish.
+The claim-calibration verifier adds a machine-checkable screening layer
+[@fig:ageint-claim-calibration-and-visual-semantics]. Citation counts, figure
+counts, link checks, and validator pass states describe artifact properties,
+not semantic support, learning outcomes, operational performance, or safety.
+Its wording rules and source metadata can flag review candidates; a green audit
+does not establish that a passage entails a claim, sources are independent, or
+contradictory evidence was considered. A human must inspect the source-to-claim
+link and record a disposition using [@sec:analytic-workflow].
 
 | Claim class | Validation question | Required evidence | Failure mode |
 |---|---|---|---|

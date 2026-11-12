@@ -31,7 +31,40 @@ jobs:
         run: uv sync --extra dev
 
       - name: Compute current source-refresh-due facts
-        run: uv run python scripts/audit_source_refresh_due.py --format json > /tmp/source_refresh_due_latest.json
+        run: |
+          if uv run python scripts/audit_source_refresh_due.py --format json > /tmp/source_refresh_due_latest.json; then
+            audit_status=0
+          else
+            audit_status=$?
+          fi
+          case "$audit_status" in
+            0|1) ;;
+            *)
+              echo "::error::Source-refresh audit failed operationally (exit $audit_status)."
+              exit "$audit_status"
+              ;;
+          esac
+          # Exit 1 is a reportable finding only with one complete, consistent
+          # schema-1.0 report. Keep its original JSON for comparison and upload.
+          if ! jq -e -s --argjson audit_status "$audit_status" '
+            length == 1 and (.[0] |
+              type == "object"
+              and .project == "AGEINT" and .schema_version == "1.0"
+              and (.generated_at | type == "string")
+              and (.as_of | type == "string")
+              and (.ok | type == "boolean")
+              and (.summary | type == "object")
+              and (.rows | type == "array")
+              and (.issue_rows | type == "array")
+              and .summary.row_count == (.rows | length)
+              and .issue_row_count == (.issue_rows | length)
+              and .ok == ((.rows | length) > 0 and .issue_row_count == 0)
+              and .ok == ($audit_status == 0)
+            )
+          ' /tmp/source_refresh_due_latest.json > /dev/null; then
+            echo "::error::Source-refresh audit returned a missing, malformed, unsupported or inconsistent report (exit $audit_status)."
+            exit 1
+          fi
 
       - name: Compare with checked-in baseline
         id: diff

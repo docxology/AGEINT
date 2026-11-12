@@ -1,12 +1,4 @@
-"""Direct unit tests for the Turn-7 de-boilerplating and safe-title modules.
-
-The reader-quality suite exercises these modules only incidentally, through
-built-corpus snapshots. These tests pin their behaviour directly so a
-regression in determinism, rotation spread, citation-noise handling, or the
-high-risk title rewrite trips a focused unit failure rather than a diffuse
-corpus-snapshot drift. (Added 2026-06-09 after a RedTeam audit flagged the
-modules as covered only obliquely.)
-"""
+"""Behavioral tests for curriculum attribution and safe-title helpers."""
 
 from __future__ import annotations
 
@@ -20,63 +12,12 @@ from intelligence_content import _source_prose as prose  # noqa: E402
 from intelligence_content import _07_safe_titles as safe_titles  # noqa: E402
 
 
-# --- _source_prose.stable_index -------------------------------------------------
-
-
-def test_stable_index_is_deterministic_across_calls() -> None:
-    assert prose.stable_index("Social Engineering", 4) == prose.stable_index("Social Engineering", 4)
-
-
-def test_stable_index_pins_fixed_ordinal_digest() -> None:
-    # Pinned literals lock the algorithm to the salt-free polynomial digest. If
-    # someone swaps in Python's per-process salted hash(), these break (and the
-    # build stops being reproducible), which is exactly the regression to catch.
-    assert prose.stable_index("Social Engineering", 4) == 1
-    assert prose.stable_index("the-nature-of-intelligence", 4) == 3
-
-
-def test_stable_index_stays_in_range_and_handles_degenerate_modulo() -> None:
-    for seed in ("a", "topic|3|use", "Counterintelligence Fundamentals"):
-        for modulo in (2, 3, 4, 7):
-            assert 0 <= prose.stable_index(seed, modulo) < modulo
-    assert prose.stable_index("anything", 1) == 0
-    assert prose.stable_index("anything", 0) == 0
-
-
-def test_stable_index_spreads_across_all_buckets() -> None:
-    # A degenerate index (e.g. always 0) would re-stamp one variant; confirm the
-    # digest actually distributes distinct seeds across every bucket.
-    seeds = [f"lesson-title-{n}" for n in range(64)]
-    buckets = {prose.stable_index(seed, 4) for seed in seeds}
-    assert buckets == {0, 1, 2, 3}
-
-
-# --- _source_prose rotation banks ----------------------------------------------
-
-
-def test_rotation_banks_have_distinct_variants() -> None:
-    for bank in (prose.NOTE_INTROS, prose.USE_CLAUSES, prose.EVIDENCE_CLOSERS, prose.EVIDENCE_LEADS):
-        assert len(bank) >= 4
-        assert len(set(bank)) == len(bank)  # no duplicate variant re-stamps
-
-
-def test_title_woven_banks_carry_title_placeholder() -> None:
-    for bank in (prose.USE_CLAUSES, prose.EVIDENCE_CLOSERS, prose.EVIDENCE_LEADS):
-        assert all("{title}" in variant for variant in bank)
-
-
-def test_lead_clause_surfaces_one_sentence_deterministically() -> None:
-    note = "First sentence here. Second sentence follows. Third one closes."
-    first = prose.lead_clause(note, seed="alpha")
-    assert first == prose.lead_clause(note, seed="alpha")
-    assert first.count(".") == 1 and first.endswith(".")
-    # An empty note yields no clause (so the caller drops the detail entirely).
-    assert prose.lead_clause("") == ""
-
-
-def test_note_carrier_picks_most_specific_note() -> None:
-    notes = ["short", "the longest and most descriptive note of the set", "mid one"]
-    assert prose.note_carrier(notes) == "the longest and most descriptive note of the set"
+def test_curriculum_annotation_preserves_context_and_key_binding() -> None:
+    note = "Studies in Intelligence, Vol. 70, No. 1. This is curriculum commentary. Its antecedent stays visible."
+    text = prose.curriculum_annotation("[@ageint025]", note)
+    assert text == f"Curriculum annotation for [@ageint025]: {note}"
+    assert prose.curriculum_annotation("[@ageint025]", "") == ""
+    assert text == prose.curriculum_annotation("[@ageint025]", note)
 
 
 # --- _07_safe_titles.distinguishing_phrase -------------------------------------

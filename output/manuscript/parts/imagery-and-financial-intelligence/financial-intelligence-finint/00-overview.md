@@ -6,17 +6,17 @@ The module uses [@fig:finint-typology-review-governance-workflow] and [@fig:part
 
 Navigation links: [@sec:curriculum_orientation], [@sec:part-imagery-and-financial-intelligence], [@sec:chapter-imagery-intelligence-imint], [@sec:part-psychological-operations-and-influence].
 
-![This diagram shows the lawful due-diligence workflow where a financial signal is screened against official lists and typology context, with uncertainty preserved so a typology match triggers review rather than an accusation of intent. It is anchored to the imagery and financial intelligence / financial intelligence finint section; use it to inspect Financial signal on synthetic records, Match typology context, not intent, Weigh beneficial-ownership uncertainty, and No-accusation compliance boundary while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../../figures/mermaid/finint-typology-review-governance-workflow.png){#fig:finint-typology-review-governance-workflow}
+![List screening is one applicable check, not a gateway that can bypass transaction, ownership, or jurisdiction context. A no-hit case may still warrant review; an apparent hit may concern a different entity. This synthetic teaching flow preserves benign alternatives and uncertainty, with named review producing a bounded escalation note, justified closure, or insufficient-evidence finding—not an accusation, legal determination, or automatic clearance.](../../../../figures/mermaid/finint-typology-review-governance-workflow.png){#fig:finint-typology-review-governance-workflow}
 
 This module teaches the **Financial Intelligence and Economic-Security Due Diligence** lane through a bounded, source-backed coursebook chapter. [@ageint251]; [@ageint252].
 
 ## Financial Intelligence and Economic-Security Due Diligence frame for Financial Intelligence (FININT): source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 ### Financial Intelligence (FININT) orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 ### Financial Intelligence (FININT) conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Economic-Security Due-Diligence Lens** d
 
 ### Financial Intelligence (FININT) learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 - Connect **FININT Foundations: Collection, Analysis, Reporting and Financial due-diligence typology exercise using synthetic records and compliance boundaries** to **Financial Intelligence and Economic-Security Due Diligence** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **economic-security packet with entity evidence, sanctions program, red flags, supplier context, uncertainty, and compliance boundary** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Economic-Security Due-Diligence Lens** d
 
 ### Financial Intelligence (FININT) core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 | Term | Working definition |
 |---|---|
 | Typology | a recurring pattern used to recognize financial-crime or sanctions-risk signals |
-| Sanctions program | the legal and policy structure behind a restricted-party or country measure |
+| Sanctions program | a jurisdiction-specific legal and policy structure whose current status, effective dates, scope, and applicable exceptions require verification |
 | Beneficial ownership | the natural-person control or ownership question behind an entity |
 | Red flag | an indicator that triggers review rather than a standalone conclusion |
 | Compliance boundary | the line between lawful screening or resilience analysis and prohibited evasion advice |
-| FININT Foundations: Collection, Analysis,… | Key terms: FININT, Foundations, Collection. |
-| Financial due-diligence typology exercise using… | Key terms: Financial, due, diligence. |

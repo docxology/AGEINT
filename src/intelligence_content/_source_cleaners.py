@@ -152,8 +152,8 @@ HARD_CODED_REF_RE = re.compile(
     r"(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b|\bAppendix\s+[A-Z]\b"
 )
 
-# Curriculum-scaffold phrases that must not appear in reader-facing notes
-FORMULA_PHRASES = frozenset({"fictional", "inspect fictional records", "source guide import"})
+# Import scaffolds, not ordinary words that can accurately describe study evidence.
+FORMULA_PHRASES = frozenset({"inspect fictional records", "source guide import"})
 
 # Decorative/emoji glyphs that the PDF font set cannot render.
 UNSUPPORTED_GLYPH_RE = re.compile("[\U0001f000-\U0001faff☀-➿⬀-⯿️⃣]")

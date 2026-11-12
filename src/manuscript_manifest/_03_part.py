@@ -22,6 +22,7 @@ from intelligence_content import (
     subsection_practice_rows,
 )
 from citation_workflow import source_citation_spine
+from prose_policy import source_identifier_text
 from ._chapter_practice_pathways import _assessment_and_capstone_pathway, _security_synthesis_block
 
 from ._01_part import _chapter_source_context, _chapter_source_context_inline, _chapter_topic_context, _claim_evidence_ledger, _review_checklist, _source_canon
@@ -73,24 +74,25 @@ def _governance_rights_assurance(chapter: dict[str, Any], part: dict[str, Any]) 
     title = chapter["title"]
     profile = profile_for_titles(str(part["title"]), title, chapter=chapter)
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    source_context = _chapter_source_context(chapter)
+    source_context = _chapter_source_context_inline(chapter)
     topic_context = _chapter_topic_context(chapter, part)
     details = chapter_detail_titles(title)
     return f"""#### {details["governance_card"]}
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with {source_context} | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with {source_context}. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **{profile.title}** failure modes and the **{lens.title}** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### {details["evidence_handoff"]}
 
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **{lens.title}** evidence gate stays compact enough to apply during
 reading, practice, and revision for {topic_context}.
 
@@ -118,10 +120,10 @@ def _current_source_assurance(chapter: dict[str, Any], part: dict[str, Any], pro
     ]
     for anchor in anchor_references(expanded_profile_anchor_keys(profile))[:4]:
         lane = anchor.source_lane or anchor.domain
-        use = anchor.assurance_use or anchor.note
+        use = source_identifier_text(anchor.assurance_use or anchor.note)
         rows.append(
             f"| What does the module inherit from `{anchor.key}` for {topic_context}? | "
-            f"{_table_cell(anchor.title)}; lane `{_table_cell(lane)}`; "
+            f"{_table_cell(source_identifier_text(anchor.title))}; lane `{_table_cell(lane)}`; "
             f"checked {anchor.checked_as_of}. | "
             f"{_table_cell(lens.evidence_artifact)}; {_table_cell(use)} |"
         )

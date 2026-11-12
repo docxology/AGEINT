@@ -2,25 +2,31 @@
 
 ## TECHNICAL INTELLIGENCE AND CYBER OPERATIONS learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-technical-intelligence-and-cyber-operations]; [@ageint258].
+**Navigation.** Parent section: [@sec:part-technical-intelligence-and-cyber-operations].
 
 ### defensive cyber intelligence normalization discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-technical-intelligence-and-cyber-operations]; [@ageint258].
+**Navigation.** Parent section: [@sec:part-technical-intelligence-and-cyber-operations].
 
 This unit teaches **defensive cyber intelligence normalization**. Technical intelligence lessons normalize incidents, indicators, TTPs, supply-chain evidence, and sharing rules for defense and assurance.
 
 ### defensive cyber intelligence normalization source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-technical-intelligence-and-cyber-operations]; [@ageint258].
+**Navigation.** Parent section: [@sec:part-technical-intelligence-and-cyber-operations].
 
 Use MITRE, NIST, CISA, STIX, and TAXII anchors for defensive taxonomy, secure development, sharing, and incident learning.
 
 ### defensive cyber intelligence normalization practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-technical-intelligence-and-cyber-operations]; [@ageint258].
+**Navigation.** Parent section: [@sec:part-technical-intelligence-and-cyber-operations].
 
-The recurring practice artifact is a **defensive CTI evidence packet** that draws on indicator context, TTP mapping, handling rule, and remediation owner. The unit keeps its learning spine explicit. Learners classify evidence defensively, state confidence, map controls, and preserve sharing restrictions.
+The recurring practice artifact is a **defensive CTI evidence packet** that draws on indicator context, TTP mapping, handling rule, and remediation owner. The unit keeps its learning spine explicit. Classroom packet: fabricated alerts A and B share one event ID, alert C has the same file digest on a clean training image, and a process excerpt lacks command context. Supplied taxonomy excerpts and a class-only sharing card complete the packet.
+
+1. Normalize event IDs, timestamps, assets, and indicator types; merge A and B as one sighting.
+2. Compare the observed behavior with technique descriptions and mark any mapping whose required behavior is absent as tentative.
+3. Use C as the benign-match control: digest equality alone cannot establish maliciousness.
+4. Produce a defensive CTI packet with one deduplicated alert event, a nonspecific digest, a tentative technique mapping, and an unresolved cause. A taxonomy match is not actor attribution.
+Hand the missing process context to the tabletop incident reviewer with the sharing restriction. Stop before scanning, executing samples, changing systems, or naming an actor.
 
 ### defensive cyber intelligence normalization safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint258]; [@ageint261].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint258]; [@ageint261].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint258]; [@ageint261].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-technical-intelligence-and-cyber-operations-module-map]
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-geoint-and-imagery-intelligence], [@sec:chapter-cyber-intelligence-fundamentals].
 
-![The unit module map traces the part's chapters as a linear reading sequence. It is anchored to the technical intelligence and cyber operations section; use it to inspect 4 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-technical-intelligence-and-cyber-operations-module-map.png){#fig:part-technical-intelligence-and-cyber-operations-module-map}
+![The TECHNICAL INTELLIGENCE AND CYBER OPERATIONS module map traces the part's chapters as a linear reading sequence. It is anchored to the technical intelligence and cyber operations section; use it to inspect 4 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-technical-intelligence-and-cyber-operations-module-map.png){#fig:part-technical-intelligence-and-cyber-operations-module-map}
 
 ![Each technical-collection discipline in this Part feeds a shared defensive pipeline that turns raw signals into governed detection, attribution, and assurance products. Its reader value is to make Collection Disciplines (Ch12-15), Ch12 Cyber Intelligence, Ch13 APTs: Threat Actors, and Ch14 Supply-Chain Assurance visible at a glance, with the technical intelligence and cyber operations section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-techint-cyber-defensive-stack.png){#fig:part-techint-cyber-defensive-stack}
 

@@ -3,7 +3,6 @@ from __future__ import annotations
 from typing import Any
 
 from ._06_part import expanded_profile_anchor_keys, practice_lens_for_titles, profile_for_titles
-from ._07_safe_titles import _topic_anchor_words
 from ._09_part import _chapter_ref_context, _coursebook_profile_for_titles, _table_cell, _topic_context, citation_cluster
 from .topic_entries import safe_topic_entries
 
@@ -14,7 +13,7 @@ def chapter_textbook_primer(chapter: dict[str, Any], part: dict[str, Any]) -> st
     part_title = str(part["title"])
     profile = profile_for_titles(part_title, title, chapter=chapter)
     lens = practice_lens_for_titles(part_title, title, chapter=chapter)
-    coursebook = _coursebook_profile_for_titles(part_title, title)
+    coursebook = _coursebook_profile_for_titles(part_title, title, chapter=chapter)
     entries = safe_topic_entries(chapter, part)
     topics = [entry.display_title for entry in entries[:3]]
     topic_sentence = f"**{'; '.join(topics)}**" if topics else "the local topic cluster"
@@ -63,7 +62,7 @@ def chapter_learning_outcomes(chapter: dict[str, Any], part: dict[str, Any]) -> 
     part_title = str(part["title"])
     profile = profile_for_titles(part_title, title, chapter=chapter)
     lens = practice_lens_for_titles(part_title, title, chapter=chapter)
-    coursebook = _coursebook_profile_for_titles(part_title, title)
+    coursebook = _coursebook_profile_for_titles(part_title, title, chapter=chapter)
     topics = [entry.display_title for entry in safe_topic_entries(chapter, part)[:2]]
     topic_clause = " and ".join(topics) if len(topics) == 2 else topics[0]
     return "\n".join(
@@ -86,24 +85,8 @@ def chapter_key_terms(chapter: dict[str, Any], part: dict[str, Any]) -> str:
     """Render a profile-aware vocabulary table for a generated chapter."""
     title = str(chapter["title"])
     part_title = str(part["title"])
-    coursebook = _coursebook_profile_for_titles(part_title, title)
+    coursebook = _coursebook_profile_for_titles(part_title, title, chapter=chapter)
     rows = ["| Term | Working definition |", "|---|---|"]
     for term, definition in coursebook.vocabulary:
         rows.append(f"| {_table_cell(term)} | {_table_cell(definition)} |")
-    topic_terms = safe_topic_entries(chapter, part)
-    seen_topic_defs: set[str] = set()
-    for entry in topic_terms:
-        label = entry.display_title
-        if len(label) > 48:
-            label = label[:48].rsplit(" ", 1)[0] + "…"
-        if label and any(label.lower() in row.lower() for row in rows):
-            continue
-        anchor = _topic_anchor_words(entry.display_title, limit=3)
-        definition = f"Key terms: {anchor}."
-        if definition in seen_topic_defs:
-            continue
-        seen_topic_defs.add(definition)
-        rows.append(f"| {_table_cell(label)} | {_table_cell(definition)} |")
-        if len(seen_topic_defs) >= 2:
-            break
     return "\n".join(rows)

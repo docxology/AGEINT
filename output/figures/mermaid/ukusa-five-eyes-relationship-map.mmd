@@ -1,27 +1,11 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  BRUSA["BRUSA Agreement, 1943"]
-  UKUSA["UKUSA Agreement, 1946 to 1956"]
-  US["United States NSA"]
-  UK["United Kingdom GCHQ"]
-  CA["Canada CSE"]
-  AU["Australia ASD"]
-  NZ["New Zealand GCSB"]
-  Rules["Shared Handling and Marking Rules"]
-  Legal["Legal Authority per Nation"]
-  Caveat["Source-Protection Caveats"]
-  Oversight["National Oversight Bodies"]
-  Prov["Declassified 2010 Release Provenance"]
-  BRUSA --> UKUSA
-  UKUSA --> US
-  UKUSA --> UK
-  UKUSA --> CA
-  UKUSA --> AU
-  UKUSA --> NZ
-  UKUSA --> Rules
-  UKUSA --> Legal
-  UKUSA --> Caveat
-  Rules --> Oversight
-  Legal --> Oversight
-  Caveat --> Oversight
-  Prov --> UKUSA
+    ROOT["Historical agreement study<br/>dates and parties require document-level review"] --> W["Wartime antecedents<br/>distinct from the postwar agreement"]
+    ROOT --> A["1946 British-US<br/>communications agreement"]
+    ROOT --> B["1956 UKUSA evolution<br/>compare actual provisions and parties"]
+    ROOT --> COUNTRIES["Later Five Eyes country shorthand<br/>United States, United Kingdom, Canada<br/>Australia and New Zealand"]
+    W -. "separate source card" .-> REVIEW["Review each document<br/>date, signatories, scope and release record<br/>national-law and handling limits"]
+    A -.-> REVIEW
+    B -.-> REVIEW
+    COUNTRIES -.-> REVIEW
+    REVIEW --> LIMIT["Not a simultaneous-accession chart<br/>No timeless modern-agency mapping<br/>No present legal authority inferred"]

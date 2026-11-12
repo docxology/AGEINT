@@ -1,0 +1,2011 @@
+{
+  "algorithm": "web-renderer-combine-v1",
+  "binding_sha256": "0301d85250802e528f529acfab2355b20df71ece0d9212b5c3b45c12377ef379",
+  "combined_path": "output/web/_combined_manuscript.md",
+  "combined_sha256": "acefc1a2e4db27169a320d4941ab284959fc2a3c08671e789d2a077920e1ff18",
+  "combined_size_bytes": 6844444,
+  "input_root_kind": "hydrated",
+  "ordered_inputs": [
+    {
+      "ordinal": 1,
+      "path": "output/manuscript/abstract.md",
+      "sha256": "6de487b577dc3095771754f1351198facbb9082ec2576802c6828734d4b77ca1",
+      "size_bytes": 9351
+    },
+    {
+      "ordinal": 2,
+      "path": "output/manuscript/orientation/00-how-to-use-this-atlas-navigation-path-evidence-checks-and-verifier-handoff-sec-how-to-use-this-atlas.md",
+      "sha256": "524dcad38a8ea4a67d5f8f64d9955c591afb8b295f8e29538b387a14cd6f0e32",
+      "size_bytes": 4215
+    },
+    {
+      "ordinal": 3,
+      "path": "output/manuscript/orientation/01-synthetic-analytic-tradecraft-thesis-synthetic-fixtures-source-discipline-and-reviewable-claims-sec-synthetic-analytic-tradecraft-thesis.md",
+      "sha256": "d8cc29c999dbc65d75db4fa48518a58c18f3b42fa52ac17b6111d6c420051a8a",
+      "size_bytes": 5580
+    },
+    {
+      "ordinal": 4,
+      "path": "output/manuscript/orientation/02-reader-paths-instructor-learner-reviewer-and-maintainer-handoffs-sec-reader-paths.md",
+      "sha256": "b856d6d4fbfabb6be79e97a2e36000b83c416923348e28ded0d81919c6c647a0",
+      "size_bytes": 4659
+    },
+    {
+      "ordinal": 5,
+      "path": "output/manuscript/orientation/03-curriculum-map-parts-modules-and-source-backed-route-choices-sec-curriculum-map.md",
+      "sha256": "0863706f1459f3cf3ac6f7754c8fb92c93760d304e34b9f773684b5717d9d8ae",
+      "size_bytes": 3058
+    },
+    {
+      "ordinal": 6,
+      "path": "output/manuscript/orientation/04-runtime-inventory-generated-counts-anchors-and-method-appendices-sec-runtime-inventory.md",
+      "sha256": "b8c45f3ae858dce51ee3f4f50206f66de27108594d9abbe9a09a9d78ea8f04ca",
+      "size_bytes": 1379
+    },
+    {
+      "ordinal": 7,
+      "path": "output/manuscript/orientation/05-related-work-and-contribution-boundary-adjacent-literatures-and-ageint-limits-sec-related-work-and-contribution-boundary.md",
+      "sha256": "ec441707edc3e5aa507269b982528a8f6bb0d4df05e3c8e9670cdf85ca46479b",
+      "size_bytes": 2026
+    },
+    {
+      "ordinal": 8,
+      "path": "output/manuscript/orientation/06-analysis-validation-protocol-claim-classes-evidence-packets-and-failure-modes-sec-analysis-validation-protocol.md",
+      "sha256": "1e2579437cedca32382e21ba47808e42138699388202693b3f95b4eb9f171343",
+      "size_bytes": 3698
+    },
+    {
+      "ordinal": 9,
+      "path": "output/manuscript/orientation/07-consolidated-glossary-and-index-terms-audit-surfaces-and-reader-routing-sec-consolidated-glossary-and-index.md",
+      "sha256": "fe3a0a6e97c1709c5441d37212972faadc9011bed4f3c17cd17bf35e5e7306c6",
+      "size_bytes": 1852
+    },
+    {
+      "ordinal": 10,
+      "path": "output/manuscript/orientation/08-intelligence-research-profiles-domain-lanes-source-roles-and-profile-routing-sec-intelligence-research-profiles.md",
+      "sha256": "613b2f853edf961e9380d82db1514e44a03da9035ee55d3e9e337fd539ed01c8",
+      "size_bytes": 3075
+    },
+    {
+      "ordinal": 11,
+      "path": "output/manuscript/orientation/09-intelligence-practice-lenses-artifact-expectations-safety-checks-and-review-questions-sec-intelligence-practice-lenses.md",
+      "sha256": "b55193f64e7c36f19c59338b45d6b8373cdb3ee3a57a7dd7d4e6c3820b0164c6",
+      "size_bytes": 5467
+    },
+    {
+      "ordinal": 12,
+      "path": "output/manuscript/orientation/10-research-anchor-atlas-curated-sources-lanes-tiers-and-claim-scope-sec-research-anchor-atlas.md",
+      "sha256": "4a9aba46a6f84939bacc3024ce4a9bcbeb27a1226e605193d671a9114696eec9",
+      "size_bytes": 514
+    },
+    {
+      "ordinal": 13,
+      "path": "output/manuscript/orientation/11-source-lane-map-provenance-lanes-support-strength-and-refresh-context-sec-source-lane-map.md",
+      "sha256": "f4edcd0dccad209ca4ea3f6ebb3d5d477efe64722d5191d35ead664351050ff8",
+      "size_bytes": 25752
+    },
+    {
+      "ordinal": 14,
+      "path": "output/manuscript/orientation/12-safe-substitution-matrix-defensive-artifacts-for-risky-inherited-motifs-sec-safe-substitution-matrix.md",
+      "sha256": "7f1fea721bb2a0f3a47ce0034eb8e180a5002fa434b41cce225a542bab07a703",
+      "size_bytes": 2011
+    },
+    {
+      "ordinal": 15,
+      "path": "output/manuscript/orientation/13-capstone-workflow-phase-sequence-artifacts-and-reviewer-gates-sec-capstone-workflow.md",
+      "sha256": "59207f8b32cd0dbb7aa8010f3a4304daf495a20203167d436b30ad595c57cc9b",
+      "size_bytes": 1036
+    },
+    {
+      "ordinal": 16,
+      "path": "output/manuscript/orientation/14-capstone-model-answer-exemplars-strong-evidence-packets-and-revision-triggers-sec-capstone-model-answer-exemplars.md",
+      "sha256": "43afbfd8ddeac187b1c159d81a5d1c1fd02b5abf1f2e71ab587f9b25b14487d5",
+      "size_bytes": 995
+    },
+    {
+      "ordinal": 17,
+      "path": "output/manuscript/orientation/15-accessibility-and-udl-review-learner-access-modality-checks-and-accommodation-evidence-sec-accessibility-and-udl-review.md",
+      "sha256": "623bfc1b46c82de8c041dc0ec9899233ff852ab6cea25d646b8e176e1fc42c86",
+      "size_bytes": 1029
+    },
+    {
+      "ordinal": 18,
+      "path": "output/manuscript/orientation/16-procurement-and-vendor-oversight-tool-governance-revocation-and-vendor-evidence-sec-procurement-and-vendor-oversight.md",
+      "sha256": "18aefd3c799d0eebc1c7670f5da6ff939bdf4217426fce0fc4799092d4ad4d1e",
+      "size_bytes": 1098
+    },
+    {
+      "ordinal": 19,
+      "path": "output/manuscript/orientation/17-hria-and-dpia-worksheet-rights-impact-privacy-review-and-residual-risk-sec-hria-and-dpia-worksheet.md",
+      "sha256": "0091d02a210a8994ae6d698248b3a5aed116abe7b27dde63e5ff0c209fb816f0",
+      "size_bytes": 1079
+    },
+    {
+      "ordinal": 20,
+      "path": "output/manuscript/orientation/18-data-lineage-registry-source-identity-transformations-retention-and-review-sec-data-lineage-registry.md",
+      "sha256": "1ca30d47527b0f8d26885fe55ec72dffc9c2389eb92a458d00140c8ebbbb8e2b",
+      "size_bytes": 1017
+    },
+    {
+      "ordinal": 21,
+      "path": "output/manuscript/orientation/19-assessment-integrity-protocol-declared-agent-use-grading-evidence-and-human-judgment-sec-assessment-integrity-protocol.md",
+      "sha256": "148189df25cdd9cdad2c8a6a581c89627b20c34ba9f8b3ee6724a42e95f97230",
+      "size_bytes": 946
+    },
+    {
+      "ordinal": 22,
+      "path": "output/manuscript/orientation/20-agent-incident-response-drill-pause-revoke-preserve-recover-and-debrief-sec-agent-incident-response-drill.md",
+      "sha256": "ad418499ece3c83d4c5ee9232b1a1d4b3fc311d18a28860108d961c69e6075d1",
+      "size_bytes": 870
+    },
+    {
+      "ordinal": 23,
+      "path": "output/manuscript/orientation/21-role-based-competency-map-responsibilities-evidence-owners-and-assurance-roles-sec-role-based-competency-map.md",
+      "sha256": "147e71f394c912ca5f72ff2275ad5f92bda8dd084353090190d7b95756860acd",
+      "size_bytes": 917
+    },
+    {
+      "ordinal": 24,
+      "path": "output/manuscript/orientation/22-adversarial-assurance-cycle-challenge-rows-remediation-owners-and-retest-evidence-sec-adversarial-assurance-cycle.md",
+      "sha256": "1835e292445fc3613cbf6c4e8db5739094a13e12fb1f6e36f09f7dab660f597d",
+      "size_bytes": 913
+    },
+    {
+      "ordinal": 25,
+      "path": "output/manuscript/orientation/23-model-and-dataset-documentation-card-intended-use-provenance-caveats-and-lifecycle-sec-model-and-dataset-documentation-card.md",
+      "sha256": "30c2acdd216f0f1f4ca772e84fdc12ef5eda0ee3d90ed020e289f0559e9e10f6",
+      "size_bytes": 1942
+    },
+    {
+      "ordinal": 26,
+      "path": "output/manuscript/orientation/24-transparency-and-communication-notice-purpose-safeguards-human-review-and-limits-sec-transparency-and-communication-notice.md",
+      "sha256": "1045b97b641ee6f97962a8d800122bd32df5476dc78e0539050b11431af415e2",
+      "size_bytes": 857
+    },
+    {
+      "ordinal": 27,
+      "path": "output/manuscript/orientation/25-records-retention-and-audit-trail-owners-retention-rules-and-deletion-conditions-sec-records-retention-and-audit-trail.md",
+      "sha256": "0f11d49097ed534af5c0e2d31122ce16a736aa548b58f497dd223f2a502ee726",
+      "size_bytes": 950
+    },
+    {
+      "ordinal": 28,
+      "path": "output/manuscript/orientation/26-release-and-change-control-gate-reuse-approval-rollback-and-change-evidence-sec-release-and-change-control-gate.md",
+      "sha256": "a8bb47a1883b218f559dc72f4ef9c2ff977a5726f52cbece884bb37ce102bcf4",
+      "size_bytes": 825
+    },
+    {
+      "ordinal": 29,
+      "path": "output/manuscript/orientation/27-risk-exception-and-acceptance-memo-residual-risk-owner-approval-and-review-clock-sec-risk-exception-and-acceptance-memo.md",
+      "sha256": "56a5c5c44a9758e2f02a2692c5440c9cb01d63b78c33f625564b991e0e848c92",
+      "size_bytes": 833
+    },
+    {
+      "ordinal": 30,
+      "path": "output/manuscript/orientation/28-learner-support-and-accommodation-plan-support-rows-access-barriers-and-escalation-sec-learner-support-and-accommodation-plan.md",
+      "sha256": "6c1a0b464ba8a05e26749e343f8df0046986db2dcdc15504850ebb982e352cdb",
+      "size_bytes": 830
+    },
+    {
+      "ordinal": 31,
+      "path": "output/manuscript/orientation/29-instructor-question-bank-prompts-evidence-checks-and-misconception-probes-sec-instructor-question-bank.md",
+      "sha256": "3664af964d72bf1314874b8a1f14052e86d459c8cc7c81154ed8ccb093bd5de8",
+      "size_bytes": 805
+    },
+    {
+      "ordinal": 32,
+      "path": "output/manuscript/orientation/30-remediation-backlog-issue-owners-retest-evidence-and-closure-boundaries-sec-remediation-backlog.md",
+      "sha256": "0d42fe19cb78740ba3670cd8eeafe96455e3493d233ba61107f0aef031916571",
+      "size_bytes": 801
+    },
+    {
+      "ordinal": 33,
+      "path": "output/manuscript/orientation/31-scholarship-and-governance-stance-source-posture-claim-limits-and-public-readiness-boundary-sec-scholarship-and-governance-stance.md",
+      "sha256": "d4e60798c98f0bc7e40684bd738c484f70ec8ddc994cab23110a84fb3643973c",
+      "size_bytes": 2849
+    },
+    {
+      "ordinal": 34,
+      "path": "output/manuscript/orientation/32-verifier-first-artifact-evidence-build-freshness-audits-and-negative-controls-sec-verifier-first-artifact-evidence.md",
+      "sha256": "35d7a30824114d1a1aa161b85624f531992288cf24a52b51585a9007d8c5e47b",
+      "size_bytes": 1184
+    },
+    {
+      "ordinal": 35,
+      "path": "output/manuscript/orientation/33-orientation-figures-and-course-links-visual-evidence-source-flow-and-navigation-sec-orientation-figures-and-course-links.md",
+      "sha256": "67a49bbbbc6edbeaf467a1b8970d29734f8e78da76dc27c79d36225b6187d5b1",
+      "size_bytes": 15118
+    },
+    {
+      "ordinal": 36,
+      "path": "output/manuscript/orientation/34-ageint-pattern-library-design-pattern-rows-safe-substitutions-and-source-identity-sec-ageint-pattern-library.md",
+      "sha256": "57e5d286e2a694701d85f241b720c59a09d9d90063066e769d7d471ae66bec76",
+      "size_bytes": 7001
+    },
+    {
+      "ordinal": 37,
+      "path": "output/manuscript/orientation/35-safety-rail-accountable-synthetic-defensive-and-evidence-bounded-boundaries-sec-safety-rail.md",
+      "sha256": "7c69c3a45292a91cd2877a27c02b9ff8111cd8a9f0e6bcf8338601a17e91aa49",
+      "size_bytes": 459
+    },
+    {
+      "ordinal": 38,
+      "path": "output/manuscript/method-assurance-reference.md",
+      "sha256": "e13402870b2078e18db3bf5891f80dc756332a93b4cf165305a31f4623d59024",
+      "size_bytes": 20666
+    },
+    {
+      "ordinal": 39,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/unit_intro.md",
+      "sha256": "6eba95697635a40d420a48bb23ee9db10932247db78400431becf0b756a93945",
+      "size_bytes": 9291
+    },
+    {
+      "ordinal": 40,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/00-overview.md",
+      "sha256": "5d353d6015c95bec23860b82037f9589f0570d8563698738eec8592b60f75551",
+      "size_bytes": 5683
+    },
+    {
+      "ordinal": 41,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/01-practice-studio.md",
+      "sha256": "b56fe3b3cee3c0606a446f87218c55f1b351db4d559d8cc68836df6275d2c9fc",
+      "size_bytes": 43831
+    },
+    {
+      "ordinal": 42,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/02-evidence-contract.md",
+      "sha256": "6017d08b4dedf3d828bcf872cb83fdd94369a544111e0864543020cd592a0f2b",
+      "size_bytes": 25557
+    },
+    {
+      "ordinal": 43,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/03-governance-boundary.md",
+      "sha256": "cc9afdc69002e44cec11a90cdb87eecb2c03f5eed10c5cd197a4a47357490988",
+      "size_bytes": 12306
+    },
+    {
+      "ordinal": 44,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/the-nature-of-intelligence/04-assessment-route.md",
+      "sha256": "a3f7af7a4df8b1f97dfe97a260e41a829d0ee00317a95c9a2e335b18ca6ef00d",
+      "size_bytes": 8512
+    },
+    {
+      "ordinal": 45,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/intelligence-community-architectures/00-overview.md",
+      "sha256": "8a46413d5c4c14b3293722f7f9064b7d9174d1128637d5d1e8f4b5a3dea41a12",
+      "size_bytes": 5602
+    },
+    {
+      "ordinal": 46,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/intelligence-community-architectures/01-practice-studio.md",
+      "sha256": "eea25afcfa012a437bc3ff0d961d264a8acbd54329585bb6d70a239d1d9631de",
+      "size_bytes": 43853
+    },
+    {
+      "ordinal": 47,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/intelligence-community-architectures/02-evidence-contract.md",
+      "sha256": "72bb0d57269e5db3693ea89e7cb765543a681767f2b3b083c1d9fd780ecee26c",
+      "size_bytes": 27643
+    },
+    {
+      "ordinal": 48,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/intelligence-community-architectures/03-governance-boundary.md",
+      "sha256": "9c054354646a3255206d1985a728547d7090b1da70ea19511ccf1c13414d9cae",
+      "size_bytes": 12428
+    },
+    {
+      "ordinal": 49,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/intelligence-community-architectures/04-assessment-route.md",
+      "sha256": "47d8b34c9098e253ca251d3e663aef197d9fcdbf96ef6a917d1754f90bdd8315",
+      "size_bytes": 9008
+    },
+    {
+      "ordinal": 50,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/tradecraft-core-principles/00-overview.md",
+      "sha256": "7336957d4752463d4e90b157ca89b80c3508c0d2f69ffb966fa0c365757a863d",
+      "size_bytes": 5640
+    },
+    {
+      "ordinal": 51,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/tradecraft-core-principles/01-practice-studio.md",
+      "sha256": "24883b37f35d93ad32071e49f304b8afc68b3ded4b55242164415cd9edbf9398",
+      "size_bytes": 44678
+    },
+    {
+      "ordinal": 52,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/tradecraft-core-principles/02-evidence-contract.md",
+      "sha256": "21134bdce675126197d01d78ef446d38b10e13e5ee595c26e9e3d19b4665c2e7",
+      "size_bytes": 27425
+    },
+    {
+      "ordinal": 53,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/tradecraft-core-principles/03-governance-boundary.md",
+      "sha256": "74003504a0a6ab2c246701c763c06b60041f72d32f6afe40c255105007c198f0",
+      "size_bytes": 11846
+    },
+    {
+      "ordinal": 54,
+      "path": "output/manuscript/parts/foundations-of-intelligence-tradecraft/tradecraft-core-principles/04-assessment-route.md",
+      "sha256": "e362d879370a7d1b9ecd854bbfcebaaff042b2f5368fcc580ead046440a921c1",
+      "size_bytes": 8186
+    },
+    {
+      "ordinal": 55,
+      "path": "output/manuscript/parts/human-intelligence-humint/unit_intro.md",
+      "sha256": "9b5d710de9e2bdc75b360022b23c31c56ef182bc2e273bc15810bbfc365c6444",
+      "size_bytes": 8281
+    },
+    {
+      "ordinal": 56,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-recruitment/00-overview.md",
+      "sha256": "9c98477c8f27c4f45e8bb57ddcef2d483bdbe79f9f79ccc9c12fc20363b294b1",
+      "size_bytes": 5503
+    },
+    {
+      "ordinal": 57,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-recruitment/01-practice-studio.md",
+      "sha256": "05d0fdd6ee9c84ba4e2ffa595c6eff252873370f8d05320ac9798904dd2c4bf9",
+      "size_bytes": 49333
+    },
+    {
+      "ordinal": 58,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-recruitment/02-evidence-contract.md",
+      "sha256": "3d5b0aa9e2486a81ef310ab2ac662edc52c7e01957487535f65dfa87744b4b1c",
+      "size_bytes": 25917
+    },
+    {
+      "ordinal": 59,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-recruitment/03-governance-boundary.md",
+      "sha256": "d7cb488d95d3e9617858825a899655205b4abb7d8e8b6c5f76d8cc7c530665ea",
+      "size_bytes": 12137
+    },
+    {
+      "ordinal": 60,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-recruitment/04-assessment-route.md",
+      "sha256": "a156ed77baeb83a4eae2e24227ac16d96c1dafd039ef9871c6b2d721a67d7e58",
+      "size_bytes": 8314
+    },
+    {
+      "ordinal": 61,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-handling-and-management/00-overview.md",
+      "sha256": "03242e51ed58f349b3165cf156c6b40aa8240afbf869592a5a2f70ac80b8ddca",
+      "size_bytes": 5803
+    },
+    {
+      "ordinal": 62,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-handling-and-management/01-practice-studio.md",
+      "sha256": "471df237f7cd76821bb6257c7e5b92dca37ca19f69bb883522a04125b269f3dc",
+      "size_bytes": 57536
+    },
+    {
+      "ordinal": 63,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-handling-and-management/02-evidence-contract.md",
+      "sha256": "ba36a3e009b618dc26cbd2ad0b0dc4f43f589608c6a186afd5e422bed7de0beb",
+      "size_bytes": 27407
+    },
+    {
+      "ordinal": 64,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-handling-and-management/03-governance-boundary.md",
+      "sha256": "c7ad69b4cdad8beaba327edb61bd23021fd023044ac4cb961b4a80c051d35570",
+      "size_bytes": 12771
+    },
+    {
+      "ordinal": 65,
+      "path": "output/manuscript/parts/human-intelligence-humint/agent-handling-and-management/04-assessment-route.md",
+      "sha256": "1d7efbec44d7e46181eb29dc85df4c14d9def43f4a422e2f108b0052846cda88",
+      "size_bytes": 9049
+    },
+    {
+      "ordinal": 66,
+      "path": "output/manuscript/parts/human-intelligence-humint/source-protection-and-ci-integration/00-overview.md",
+      "sha256": "452cf8120e5e380e86d7b334ba420da3264eb9b19cbc61f43a36989fc3c934a0",
+      "size_bytes": 5466
+    },
+    {
+      "ordinal": 67,
+      "path": "output/manuscript/parts/human-intelligence-humint/source-protection-and-ci-integration/01-practice-studio.md",
+      "sha256": "510c85fc350f761a8a139865753b8da0420869a60659e2054f3f2d08a51acefc",
+      "size_bytes": 33356
+    },
+    {
+      "ordinal": 68,
+      "path": "output/manuscript/parts/human-intelligence-humint/source-protection-and-ci-integration/02-evidence-contract.md",
+      "sha256": "c2e37fd64ee74b23fa9a20da17de8d1e85d988f2ea1e9dbf03d0de9713bd9302",
+      "size_bytes": 22306
+    },
+    {
+      "ordinal": 69,
+      "path": "output/manuscript/parts/human-intelligence-humint/source-protection-and-ci-integration/03-governance-boundary.md",
+      "sha256": "670980a6c1120648e2809a6d47494663b64177ba953259f0e775078f82aa5f5f",
+      "size_bytes": 12835
+    },
+    {
+      "ordinal": 70,
+      "path": "output/manuscript/parts/human-intelligence-humint/source-protection-and-ci-integration/04-assessment-route.md",
+      "sha256": "a11d0e017f1ee9961b429d93a96933effdf48a5045a10bbac697077eae2f6c66",
+      "size_bytes": 8356
+    },
+    {
+      "ordinal": 71,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/unit_intro.md",
+      "sha256": "41709d861aea77d2fe2cf9572b2f67c4e9f66bfb3b1a0d756807beb742185fd9",
+      "size_bytes": 7928
+    },
+    {
+      "ordinal": 72,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/sigint-fundamentals/00-overview.md",
+      "sha256": "1a953b7fe0b51169eae9d3f59ddad9850637d52ebec6f4046193f57d3ba208b0",
+      "size_bytes": 5545
+    },
+    {
+      "ordinal": 73,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/sigint-fundamentals/01-practice-studio.md",
+      "sha256": "3807a32694ae26726515fda00ff21f84e55dfa977a28433ab14e3cd8a5607d8b",
+      "size_bytes": 29031
+    },
+    {
+      "ordinal": 74,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/sigint-fundamentals/02-evidence-contract.md",
+      "sha256": "675d0e7e34d7193c77c9ad3b94481db611b803b199aa55bab2e4debc639e0e94",
+      "size_bytes": 21557
+    },
+    {
+      "ordinal": 75,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/sigint-fundamentals/03-governance-boundary.md",
+      "sha256": "efeb645a25a9fbe3a88c64e8a741d18a076b88573c1a858de19cd806c6561d36",
+      "size_bytes": 12327
+    },
+    {
+      "ordinal": 76,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/sigint-fundamentals/04-assessment-route.md",
+      "sha256": "6cd61779435061c1a2cf37f19675559e5230b7d0314faa3f3538dba0e9d57017",
+      "size_bytes": 8225
+    },
+    {
+      "ordinal": 77,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/modern-sigint-and-cryptography/00-overview.md",
+      "sha256": "4a86335e505be323b9db8163515b62b245ab02a77138bfb4bdc401b2d0f608ab",
+      "size_bytes": 5747
+    },
+    {
+      "ordinal": 78,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/modern-sigint-and-cryptography/01-practice-studio.md",
+      "sha256": "5f7f6f207cbaaadf30559623a43f7f5d03fbdb684b0ca7db66621fe531f3c9d6",
+      "size_bytes": 47772
+    },
+    {
+      "ordinal": 79,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/modern-sigint-and-cryptography/02-evidence-contract.md",
+      "sha256": "8aa1ea603894a875f5f204eb736069c37c36a46174a4b58d341ab6a40ac7b3bf",
+      "size_bytes": 28687
+    },
+    {
+      "ordinal": 80,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/modern-sigint-and-cryptography/03-governance-boundary.md",
+      "sha256": "681c04a2f27a26853a32634759b9dc7319e67f484d52f4bf1063fdb7e6733e0f",
+      "size_bytes": 12632
+    },
+    {
+      "ordinal": 81,
+      "path": "output/manuscript/parts/signals-intelligence-sigint/modern-sigint-and-cryptography/04-assessment-route.md",
+      "sha256": "4ea338a4e8afe87e338b0979fc76be4af15f147b51be827e9564d4178c6fd6b1",
+      "size_bytes": 8730
+    },
+    {
+      "ordinal": 82,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/unit_intro.md",
+      "sha256": "bcbadb524df0455e79cba376a82813d9ca5cd0abff343c709911e0f43f467f0e",
+      "size_bytes": 8303
+    },
+    {
+      "ordinal": 83,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-foundations/00-overview.md",
+      "sha256": "1a74c32e272022473dc5715898ed70ecb9e94c3627697f6860e6be98800e9b10",
+      "size_bytes": 5307
+    },
+    {
+      "ordinal": 84,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-foundations/01-practice-studio.md",
+      "sha256": "36a5081b77d996a1335e9d11a91015a1d87fd1f6d4ba63ef2ee02a15f0328ba5",
+      "size_bytes": 30254
+    },
+    {
+      "ordinal": 85,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-foundations/02-evidence-contract.md",
+      "sha256": "d78e2912e1b515ddc4311cfa2fb1bd82ac583240e535f4c7f55da58557aca6cb",
+      "size_bytes": 20960
+    },
+    {
+      "ordinal": 86,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-foundations/03-governance-boundary.md",
+      "sha256": "652caa2879690b98f1ea4b4fef33dd033aaa55657a2f48f97f60e3ba4242b152",
+      "size_bytes": 11232
+    },
+    {
+      "ordinal": 87,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-foundations/04-assessment-route.md",
+      "sha256": "6aa6672868c744879325b190996d637782b614cfaa13ea66285ed6fc81a1f226",
+      "size_bytes": 7834
+    },
+    {
+      "ordinal": 88,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-techniques-and-tools/00-overview.md",
+      "sha256": "9741acd8ffbdcc5835e6e26f95e7cb6938b9cdec53326fd071bc8d79f7a5e96d",
+      "size_bytes": 5653
+    },
+    {
+      "ordinal": 89,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-techniques-and-tools/01-practice-studio.md",
+      "sha256": "c9139dd8d125bd9f5c5f3d0f6e599bfb1f9c4df75597c50423d38a6ad412c1fe",
+      "size_bytes": 40557
+    },
+    {
+      "ordinal": 90,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-techniques-and-tools/02-evidence-contract.md",
+      "sha256": "7c5fba92a0c225d07e67c6d21626b6daede6e4ead4e594bc1b6ecc93ba60a9fd",
+      "size_bytes": 23873
+    },
+    {
+      "ordinal": 91,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-techniques-and-tools/03-governance-boundary.md",
+      "sha256": "757e5a7b55b0f6bca11396c37f64036461cd34065e14ef3dd16cd7eabe1bee6a",
+      "size_bytes": 12014
+    },
+    {
+      "ordinal": 92,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/osint-techniques-and-tools/04-assessment-route.md",
+      "sha256": "4f9d972e329294af81f8a89f669a4b4a12ff7d58223027dc9c6a6a91cc9b9afa",
+      "size_bytes": 8756
+    },
+    {
+      "ordinal": 93,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/geoint-and-imagery-intelligence/00-overview.md",
+      "sha256": "48936380bc3a6fd9059af950c5ac5a687ee9135be46c88188617b2781984e0c3",
+      "size_bytes": 7012
+    },
+    {
+      "ordinal": 94,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/geoint-and-imagery-intelligence/01-practice-studio.md",
+      "sha256": "08f6b879406f5dba528fefa0f22637ceac796f11940039fbc79b67b6bd9cc3af",
+      "size_bytes": 44143
+    },
+    {
+      "ordinal": 95,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/geoint-and-imagery-intelligence/02-evidence-contract.md",
+      "sha256": "de88b56d0ff0cd349757fed60274cb8fc98970323a5f2fd931bcbe32daaf6b85",
+      "size_bytes": 26567
+    },
+    {
+      "ordinal": 96,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/geoint-and-imagery-intelligence/03-governance-boundary.md",
+      "sha256": "be2e247e9bdc1997aaff1a908bdf4447c035ccd9839db1eb9cc38bf3d9a16338",
+      "size_bytes": 12623
+    },
+    {
+      "ordinal": 97,
+      "path": "output/manuscript/parts/open-source-intelligence-osint/geoint-and-imagery-intelligence/04-assessment-route.md",
+      "sha256": "2d311c9406d983076239726f8e5396658bf02261d8a2e685722792060a29c566",
+      "size_bytes": 9628
+    },
+    {
+      "ordinal": 98,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/unit_intro.md",
+      "sha256": "7bb6e77814430ef1d95f35ac7c99ef0d237eee999815ecf2645905fbbb9ce4fe",
+      "size_bytes": 9102
+    },
+    {
+      "ordinal": 99,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/00-overview.md",
+      "sha256": "fd1840e9a90129201312bd89d913d43390abbaba3cc8521a940730a8c398cd94",
+      "size_bytes": 5839
+    },
+    {
+      "ordinal": 100,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/01-practice-studio.md",
+      "sha256": "fd70df4657f31d145552a69cd29e2ece269713dd76849f83bb74923cc231c60b",
+      "size_bytes": 59234
+    },
+    {
+      "ordinal": 101,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/02-evidence-contract.md",
+      "sha256": "5824f07a9eb9e75b8f22e3173a01f5dd2356dfdb9bb8d4539df90a721a2644fa",
+      "size_bytes": 35613
+    },
+    {
+      "ordinal": 102,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/03-governance-boundary.md",
+      "sha256": "ee0cc4b796135d30e2dc63f2b6e9ce31799a7ef68e23d348b52d070d52090ad6",
+      "size_bytes": 13551
+    },
+    {
+      "ordinal": 103,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/cyber-intelligence-fundamentals/04-assessment-route.md",
+      "sha256": "15fc1c5bbae6becc19b5d581da253f993e8e4b64bb0f52fd78648eb2955a7462",
+      "size_bytes": 9958
+    },
+    {
+      "ordinal": 104,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/00-overview.md",
+      "sha256": "ef6c9a7d0db4312811cec0065808c68d7500d9f375e8f3ea3d61c503a536d4c2",
+      "size_bytes": 5576
+    },
+    {
+      "ordinal": 105,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/01-practice-studio.md",
+      "sha256": "5e5c2b58f3a1c30bc45475597494fc20454ae666389ef3e8c7c1f133277e5283",
+      "size_bytes": 36464
+    },
+    {
+      "ordinal": 106,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/02-evidence-contract.md",
+      "sha256": "ab108b25078f8b48b2e9950e3aaa01f152a44d99e7889250b77ea964d7b83e52",
+      "size_bytes": 24716
+    },
+    {
+      "ordinal": 107,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/03-governance-boundary.md",
+      "sha256": "2f29f8e21b68b7446448811c5d6bed1fc533446f3f9907d89c16c1a77aa4bae2",
+      "size_bytes": 12409
+    },
+    {
+      "ordinal": 108,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/advanced-persistent-threats-apts/04-assessment-route.md",
+      "sha256": "d66f7005ab8ee086fda0384eb6946c4189cc46287504ee14fd2415293c09d4e8",
+      "size_bytes": 8377
+    },
+    {
+      "ordinal": 109,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/00-overview.md",
+      "sha256": "48b5860f30e350d19082dc33ebedb72666588fb77008b066792e855b5777be55",
+      "size_bytes": 5634
+    },
+    {
+      "ordinal": 110,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/01-practice-studio.md",
+      "sha256": "104d503c7261d5356fd49dc8850f0914f4a98106860cf1919d8736c83bd4f769",
+      "size_bytes": 46473
+    },
+    {
+      "ordinal": 111,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/02-evidence-contract.md",
+      "sha256": "e8362274a4d82574eaa561f65ad6d53bc6a25657d6ae039a4db0d8cca7e418c9",
+      "size_bytes": 29403
+    },
+    {
+      "ordinal": 112,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/03-governance-boundary.md",
+      "sha256": "812cc94d6763fbd4032be9c8a60c5a31238a9d16043f1d4e4fb77551bcb6fdf3",
+      "size_bytes": 12748
+    },
+    {
+      "ordinal": 113,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/supply-chain-intelligence-attacks/04-assessment-route.md",
+      "sha256": "4cd603f6db02ae0aff2da811e8645e46fbf2b9256c242746ae80252618f10418",
+      "size_bytes": 8744
+    },
+    {
+      "ordinal": 114,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/00-overview.md",
+      "sha256": "7f636a02ee8dcb30b815505607f7b23728b7c8580e695122e67f7b7f273340fe",
+      "size_bytes": 6055
+    },
+    {
+      "ordinal": 115,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/01-practice-studio.md",
+      "sha256": "23ab73894185237d57b7429141a6691711b67c491a67a9928549273a2416b357",
+      "size_bytes": 30126
+    },
+    {
+      "ordinal": 116,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/02-evidence-contract.md",
+      "sha256": "9486790cfe763ebc2140e3dd15d3c6b5340fcb7e0aef210403ba5496c89aa293",
+      "size_bytes": 22889
+    },
+    {
+      "ordinal": 117,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/03-governance-boundary.md",
+      "sha256": "6de3c5c6e9925ffabc79078624e4a76851c3e7855d553ea810d1f0f4a21a2344",
+      "size_bytes": 13077
+    },
+    {
+      "ordinal": 118,
+      "path": "output/manuscript/parts/technical-intelligence-and-cyber-operations/electronic-and-emanations-intelligence/04-assessment-route.md",
+      "sha256": "e658fdc915d18722d9d7a99fc31eeee5076fe59eec95097f67c4a0e4343be3cc",
+      "size_bytes": 8859
+    },
+    {
+      "ordinal": 119,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/unit_intro.md",
+      "sha256": "47c81a5ed1fd9c2ac42c30f7bb008cfaf583aa358567a81f34452b8f155cfe7b",
+      "size_bytes": 8215
+    },
+    {
+      "ordinal": 120,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/imagery-intelligence-imint/00-overview.md",
+      "sha256": "d0aed2c8f16345bdec9a331bf5dbdf2671bf5a33e2e5da3567ecb3f58608d825",
+      "size_bytes": 6616
+    },
+    {
+      "ordinal": 121,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/imagery-intelligence-imint/01-practice-studio.md",
+      "sha256": "6660a4ce1b26a6426c895d081f636f33124eb5b2be7d82a87972f03c96e2e176",
+      "size_bytes": 30159
+    },
+    {
+      "ordinal": 122,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/imagery-intelligence-imint/02-evidence-contract.md",
+      "sha256": "ede8d2ffa3b387063d1a7cb4878a65ce0e338bbd8ac27f9c71df2ffcfffd7eb8",
+      "size_bytes": 22469
+    },
+    {
+      "ordinal": 123,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/imagery-intelligence-imint/03-governance-boundary.md",
+      "sha256": "0a6b37679dcc00a6e5427ad09add590d5726d3e137f046e06bf908959f26d7e3",
+      "size_bytes": 11994
+    },
+    {
+      "ordinal": 124,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/imagery-intelligence-imint/04-assessment-route.md",
+      "sha256": "2885f881674a3fb01fef0dac7152f7ac503a93c634737949cd9c8ae3eefcd21f",
+      "size_bytes": 8463
+    },
+    {
+      "ordinal": 125,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/financial-intelligence-finint/00-overview.md",
+      "sha256": "37ce2207f484fa96a98f4cce4d2e52d71b83dee469af4e16634eff852777f876",
+      "size_bytes": 5837
+    },
+    {
+      "ordinal": 126,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/financial-intelligence-finint/01-practice-studio.md",
+      "sha256": "e9b7e3f3ccae8d8ab109d5265af2b5e1b286e16787251782ac6e0d47f9042a4e",
+      "size_bytes": 41305
+    },
+    {
+      "ordinal": 127,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/financial-intelligence-finint/02-evidence-contract.md",
+      "sha256": "bbcd77080957b0951636e38bd8473b8238dcf5e257b5921570826f8cf95ce2df",
+      "size_bytes": 27674
+    },
+    {
+      "ordinal": 128,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/financial-intelligence-finint/03-governance-boundary.md",
+      "sha256": "4eb8b1d2de507787b1a3e6352b10c278923189450b2d85ad8c0f18c32993b17e",
+      "size_bytes": 13185
+    },
+    {
+      "ordinal": 129,
+      "path": "output/manuscript/parts/imagery-and-financial-intelligence/financial-intelligence-finint/04-assessment-route.md",
+      "sha256": "a855ea117913cfa9236fd34de2ccaa3cb0579f1a4ad44a8b9da4f8f86616d267",
+      "size_bytes": 8964
+    },
+    {
+      "ordinal": 130,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/unit_intro.md",
+      "sha256": "c2b958c3fd92287b940bd74607320679e505120fe4d5f0494f9228d211ae2634",
+      "size_bytes": 8928
+    },
+    {
+      "ordinal": 131,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/psyop-and-miso-doctrine/00-overview.md",
+      "sha256": "5617d0411446b1eb88c656ccb1e280ecc00b75ee8a402c68961ed4eafd91a229",
+      "size_bytes": 5598
+    },
+    {
+      "ordinal": 132,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/psyop-and-miso-doctrine/01-practice-studio.md",
+      "sha256": "fb457e1a111305f77b922ee59718eb2ede11924e8d8ac1627f9b5778d0ee5e98",
+      "size_bytes": 35336
+    },
+    {
+      "ordinal": 133,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/psyop-and-miso-doctrine/02-evidence-contract.md",
+      "sha256": "5a8e18924adfd863b48be912e4ed537f67c2b28ea099b9b6b223df28e9db0edd",
+      "size_bytes": 24329
+    },
+    {
+      "ordinal": 134,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/psyop-and-miso-doctrine/03-governance-boundary.md",
+      "sha256": "f09b5f830f332becc488f208d926e9cb99f29bd1badc229e9197f8883ee55fa6",
+      "size_bytes": 11816
+    },
+    {
+      "ordinal": 135,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/psyop-and-miso-doctrine/04-assessment-route.md",
+      "sha256": "9592f6f62bf3ee1af1c7eba000e0ee39387f541420690800ed6e94c3af43624f",
+      "size_bytes": 8434
+    },
+    {
+      "ordinal": 136,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/active-measures-and-disinformation/00-overview.md",
+      "sha256": "48725d7af43004f7c961f20551fcb3a45f086deed17069ae19076b4f5d3c623c",
+      "size_bytes": 5771
+    },
+    {
+      "ordinal": 137,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/active-measures-and-disinformation/01-practice-studio.md",
+      "sha256": "6fce95203867db3e840fdfefe76980685bee390847da9b5b72d1fc5b9f8e0ce1",
+      "size_bytes": 44569
+    },
+    {
+      "ordinal": 138,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/active-measures-and-disinformation/02-evidence-contract.md",
+      "sha256": "7ac5f23393bf37cd44bec13ae67776308e5186eb6a17c4921911f6a3bf7dc647",
+      "size_bytes": 28173
+    },
+    {
+      "ordinal": 139,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/active-measures-and-disinformation/03-governance-boundary.md",
+      "sha256": "836a069cb1372a912256006c7456ed8244538177d29d434b7ccf69c57dfdb840",
+      "size_bytes": 12139
+    },
+    {
+      "ordinal": 140,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/active-measures-and-disinformation/04-assessment-route.md",
+      "sha256": "c6970bddc7bd5a45ae7e3d78e6d8955b9fda73307df497668747af8cafb7584b",
+      "size_bytes": 8881
+    },
+    {
+      "ordinal": 141,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/social-engineering/00-overview.md",
+      "sha256": "93e961e08f7203b4c5b3fb2f3e5ab63b30b3e0598d88c3a198d31d67320d858c",
+      "size_bytes": 5472
+    },
+    {
+      "ordinal": 142,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/social-engineering/01-practice-studio.md",
+      "sha256": "5a1691dbb090cd0904fd88cd9557ddd964f4be4b4dcafbb874fa7ac8be30ec04",
+      "size_bytes": 39486
+    },
+    {
+      "ordinal": 143,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/social-engineering/02-evidence-contract.md",
+      "sha256": "2eae90e608369c103e87f3f1e670710508572433de430552dfa9c558f746c303",
+      "size_bytes": 24905
+    },
+    {
+      "ordinal": 144,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/social-engineering/03-governance-boundary.md",
+      "sha256": "b79ce2455bc1d741f3a9bcd4073a7f7bbcb7b2f608007627d9c175c84da1ba33",
+      "size_bytes": 11623
+    },
+    {
+      "ordinal": 145,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/social-engineering/04-assessment-route.md",
+      "sha256": "f128ede3a57e921046da018cf5b516738859bc88de19be5f9e36a0a353ebbd65",
+      "size_bytes": 8290
+    },
+    {
+      "ordinal": 146,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/00-overview.md",
+      "sha256": "1c821d2ecccec78150ef37430aba3de74bda5073e4c89c2e367232355070ca86",
+      "size_bytes": 5881
+    },
+    {
+      "ordinal": 147,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/01-practice-studio.md",
+      "sha256": "86205fbe85e6d37f2d96d46adf97f3bdb1151b784531d3bbf5ba28fdb8781a82",
+      "size_bytes": 34993
+    },
+    {
+      "ordinal": 148,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/02-evidence-contract.md",
+      "sha256": "6f17767ca2a629525b0bbf8bde499f5d4d36f88079cc4921de1c39e634c0daf7",
+      "size_bytes": 25511
+    },
+    {
+      "ordinal": 149,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/03-governance-boundary.md",
+      "sha256": "d56e151ec2fa00f5bc2a37b018aa4bbaedcab44ce596117b9caabb4cb5993968",
+      "size_bytes": 12326
+    },
+    {
+      "ordinal": 150,
+      "path": "output/manuscript/parts/psychological-operations-and-influence/information-warfare-and-cognitive-security/04-assessment-route.md",
+      "sha256": "eae25e4a3fb86aafd51c6308dbfc09ef52d8318ecf141fee7303730bd1a3942a",
+      "size_bytes": 8829
+    },
+    {
+      "ordinal": 151,
+      "path": "output/manuscript/parts/counterintelligence/unit_intro.md",
+      "sha256": "72cfa03fa6ee95c78f8d6ea3cf498ddc5c03a9e93e1b326a27a49ac141e6dfa7",
+      "size_bytes": 7814
+    },
+    {
+      "ordinal": 152,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-fundamentals/00-overview.md",
+      "sha256": "5be425eaca16897f7bb3647988223a18fcf4a86b92831b9c95606d1c36a8c6ca",
+      "size_bytes": 5726
+    },
+    {
+      "ordinal": 153,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-fundamentals/01-practice-studio.md",
+      "sha256": "59c33a4a6dafedd64caa8ddc362a3707d298c458223d26ec43abefc7d41b29f5",
+      "size_bytes": 39455
+    },
+    {
+      "ordinal": 154,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-fundamentals/02-evidence-contract.md",
+      "sha256": "1a7caabd7eb5c01c52f80b7eaf002e5252b61b6f27168721ab006fb523c96a70",
+      "size_bytes": 24094
+    },
+    {
+      "ordinal": 155,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-fundamentals/03-governance-boundary.md",
+      "sha256": "9f9f262a91433b36711b4c8ad787244b035edec7dacddedc7d24264e800c8634",
+      "size_bytes": 13853
+    },
+    {
+      "ordinal": 156,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-fundamentals/04-assessment-route.md",
+      "sha256": "841f02c2013989492becacc58c2d5ef5de5d1a67f0d273ce8a9c3a8e889fe8dc",
+      "size_bytes": 9482
+    },
+    {
+      "ordinal": 157,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-against-non-state-actors/00-overview.md",
+      "sha256": "bf9c3b4f74ebef709f77d28a2b96f7a30538c7e92dd6af15bc61f24bff265ec6",
+      "size_bytes": 5873
+    },
+    {
+      "ordinal": 158,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-against-non-state-actors/01-practice-studio.md",
+      "sha256": "6042a8c6ad277f953b6872307fecd2ffedde848a658223d9586db5c47ce9c747",
+      "size_bytes": 28683
+    },
+    {
+      "ordinal": 159,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-against-non-state-actors/02-evidence-contract.md",
+      "sha256": "9dfd87d3af6959335d067652bc386742416edad5a0fee55366bea47dd880c050",
+      "size_bytes": 21819
+    },
+    {
+      "ordinal": 160,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-against-non-state-actors/03-governance-boundary.md",
+      "sha256": "451639e1efc490565ab920358d0828e2339066f9423ed0f0c03a7895ef758f30",
+      "size_bytes": 13626
+    },
+    {
+      "ordinal": 161,
+      "path": "output/manuscript/parts/counterintelligence/counterintelligence-against-non-state-actors/04-assessment-route.md",
+      "sha256": "cd31675fc46a18ae1b7fd957eb4b7688640b38cb208360640e9a2dc174857902",
+      "size_bytes": 9052
+    },
+    {
+      "ordinal": 162,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/unit_intro.md",
+      "sha256": "4b487ae68957ecd7dccd85edabf45cf8263ea37d685d541b1638facb38783f4b",
+      "size_bytes": 8654
+    },
+    {
+      "ordinal": 163,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/00-overview.md",
+      "sha256": "8bf326dc545726148fa13bb0af8948f2f9b3aa4d114c223c54f9d2cae72ee3fb",
+      "size_bytes": 5795
+    },
+    {
+      "ordinal": 164,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/01-practice-studio.md",
+      "sha256": "9ed02dd68d5987aeb57c2f5aa1ff24c588dd280e933316901c94439545b6cdbb",
+      "size_bytes": 33238
+    },
+    {
+      "ordinal": 165,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/02-evidence-contract.md",
+      "sha256": "8e779225e11300312b3fed994d261443458dcca42f0d955add92bc619fa202aa",
+      "size_bytes": 22598
+    },
+    {
+      "ordinal": 166,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/03-governance-boundary.md",
+      "sha256": "cdaf590d4b183b5c916e571c2090e67b2e70d8c4703603709158f7dd54cbe240",
+      "size_bytes": 13041
+    },
+    {
+      "ordinal": 167,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/gray-zone-warfare/04-assessment-route.md",
+      "sha256": "a6582487866d8dd376a3b2d5577d5ab577edefe8af61dab464990f9bcdfded80",
+      "size_bytes": 8962
+    },
+    {
+      "ordinal": 168,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/00-overview.md",
+      "sha256": "236894d759834913d104188a64d304f38fdebacefdf36ddaa4b8cb37e0a7957d",
+      "size_bytes": 6083
+    },
+    {
+      "ordinal": 169,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/01-practice-studio.md",
+      "sha256": "2f57874337632a7fb681f2acad9eafb7809543898e166eb2fb7db97907d88d0c",
+      "size_bytes": 30405
+    },
+    {
+      "ordinal": 170,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/02-evidence-contract.md",
+      "sha256": "09f7ae13244b03cb230adefb68358f7feac26927ce9a4cec131139892ed140be",
+      "size_bytes": 23011
+    },
+    {
+      "ordinal": 171,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/03-governance-boundary.md",
+      "sha256": "fac527199d020a0c8b1c2ec9f3f72642ae17f711f310b51cde8ca4f66d553348",
+      "size_bytes": 13195
+    },
+    {
+      "ordinal": 172,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/non-state-actor-intelligence/04-assessment-route.md",
+      "sha256": "4285ae138d0b44cdfed22f95afc59a90c20b738471ff585ca1483f455e9a1d1d",
+      "size_bytes": 9035
+    },
+    {
+      "ordinal": 173,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/00-overview.md",
+      "sha256": "3dbf88300f20a99f4015d8ff0e70cea2ed967679e837882af3018174c63347dc",
+      "size_bytes": 6157
+    },
+    {
+      "ordinal": 174,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/01-practice-studio.md",
+      "sha256": "b5d2e57cbda4526c50e1b354e4a863aaa1eb5b67987ea9254d82649197a224cd",
+      "size_bytes": 41628
+    },
+    {
+      "ordinal": 175,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/02-evidence-contract.md",
+      "sha256": "73ef337e95ef00cadfb385a9838245966c8eac7808b82203382e8df1cf512ac1",
+      "size_bytes": 28362
+    },
+    {
+      "ordinal": 176,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/03-governance-boundary.md",
+      "sha256": "7bc81a6271f5d6f05dab8c90e54982b33b7bd67f807115e47133df96220db4ab",
+      "size_bytes": 13302
+    },
+    {
+      "ordinal": 177,
+      "path": "output/manuscript/parts/gray-zone-hybrid-warfare-and-non-state-actors/irregular-warfare-and-special-operations/04-assessment-route.md",
+      "sha256": "e7148d7828113f5dc99e4d95ff5c76cf507814669149d263561c487983b9fe76",
+      "size_bytes": 9381
+    },
+    {
+      "ordinal": 178,
+      "path": "output/manuscript/parts/historical-intelligence-services/unit_intro.md",
+      "sha256": "a0acce33820de928cc09d9365d1a6f2cfb1d922a42eda117c42d0f20b39038cd",
+      "size_bytes": 9057
+    },
+    {
+      "ordinal": 179,
+      "path": "output/manuscript/parts/historical-intelligence-services/soviet-and-russian-intelligence/00-overview.md",
+      "sha256": "16ab08cda534f1553271474ea5418f5939f44228639edec719da3b41072a96b4",
+      "size_bytes": 5982
+    },
+    {
+      "ordinal": 180,
+      "path": "output/manuscript/parts/historical-intelligence-services/soviet-and-russian-intelligence/01-practice-studio.md",
+      "sha256": "9ca79e605fca4c10362007afe11ec4f38a5fc1db67bbc40e4818050462bc9dc5",
+      "size_bytes": 60776
+    },
+    {
+      "ordinal": 181,
+      "path": "output/manuscript/parts/historical-intelligence-services/soviet-and-russian-intelligence/02-evidence-contract.md",
+      "sha256": "a1c503fda2afd8c51ec42e43faaf94caab21224a6bac6851145d6aa6cb5ccd2d",
+      "size_bytes": 33071
+    },
+    {
+      "ordinal": 182,
+      "path": "output/manuscript/parts/historical-intelligence-services/soviet-and-russian-intelligence/03-governance-boundary.md",
+      "sha256": "f7c061c851afbabaff8fa8d7ac269b02b64caed11641c8f93b2f02e266189884",
+      "size_bytes": 12653
+    },
+    {
+      "ordinal": 183,
+      "path": "output/manuscript/parts/historical-intelligence-services/soviet-and-russian-intelligence/04-assessment-route.md",
+      "sha256": "66c8390f79c204ae8d0e54bcc847cd88fbd5350324b864035c84673a83e69aff",
+      "size_bytes": 9089
+    },
+    {
+      "ordinal": 184,
+      "path": "output/manuscript/parts/historical-intelligence-services/american-intelligence-history/00-overview.md",
+      "sha256": "56e4f280215f68dd14c634fffdbb83f7256cdfee245dc46042c82e929e0a7ed7",
+      "size_bytes": 6156
+    },
+    {
+      "ordinal": 185,
+      "path": "output/manuscript/parts/historical-intelligence-services/american-intelligence-history/01-practice-studio.md",
+      "sha256": "0134d7196f8a2a91ec0416c04ddf03c17e499b87fac4c77e79679f45c5147394",
+      "size_bytes": 70110
+    },
+    {
+      "ordinal": 186,
+      "path": "output/manuscript/parts/historical-intelligence-services/american-intelligence-history/02-evidence-contract.md",
+      "sha256": "543736ccf3505b99cd5a5921540f842370c43c395007fb745fc6f1c20d21ba3d",
+      "size_bytes": 41167
+    },
+    {
+      "ordinal": 187,
+      "path": "output/manuscript/parts/historical-intelligence-services/american-intelligence-history/03-governance-boundary.md",
+      "sha256": "e2084b05735924db33607215f17d62202f86454c986181d3d374824978b48881",
+      "size_bytes": 13151
+    },
+    {
+      "ordinal": 188,
+      "path": "output/manuscript/parts/historical-intelligence-services/american-intelligence-history/04-assessment-route.md",
+      "sha256": "b115b455f515aa5d9af2128fa3e8744f66b5668f3e888394129684b90f885f5f",
+      "size_bytes": 10091
+    },
+    {
+      "ordinal": 189,
+      "path": "output/manuscript/parts/historical-intelligence-services/british-and-allied-intelligence/00-overview.md",
+      "sha256": "e1ffec964b4803b03b0e3d93ae773303b9af042b0675e9368ef6b1e082e36b98",
+      "size_bytes": 6012
+    },
+    {
+      "ordinal": 190,
+      "path": "output/manuscript/parts/historical-intelligence-services/british-and-allied-intelligence/01-practice-studio.md",
+      "sha256": "04fdfdf9dcf3d301f7a8dca6a22fa066a87c9da4f2b2e8278b8bef6f966a559f",
+      "size_bytes": 25391
+    },
+    {
+      "ordinal": 191,
+      "path": "output/manuscript/parts/historical-intelligence-services/british-and-allied-intelligence/02-evidence-contract.md",
+      "sha256": "c7d086ed04b44af3ab1abf86407c839a127211035756415d3081b4f4e798fed8",
+      "size_bytes": 22559
+    },
+    {
+      "ordinal": 192,
+      "path": "output/manuscript/parts/historical-intelligence-services/british-and-allied-intelligence/03-governance-boundary.md",
+      "sha256": "e7e57dc6158698b09c8c1058e1e939f6f14fecd2707f01967eabc830625962cd",
+      "size_bytes": 12801
+    },
+    {
+      "ordinal": 193,
+      "path": "output/manuscript/parts/historical-intelligence-services/british-and-allied-intelligence/04-assessment-route.md",
+      "sha256": "399c41d85005b9266ffddc48dc7ea9129e8d143939648456122d85bba4448307",
+      "size_bytes": 8323
+    },
+    {
+      "ordinal": 194,
+      "path": "output/manuscript/parts/historical-intelligence-services/israeli-and-continental-services/00-overview.md",
+      "sha256": "0edf318350c877c796cf0ba8f4d11c4238f662f2ca1f3ba0033bd58abd7efeaf",
+      "size_bytes": 6120
+    },
+    {
+      "ordinal": 195,
+      "path": "output/manuscript/parts/historical-intelligence-services/israeli-and-continental-services/01-practice-studio.md",
+      "sha256": "c1878d1862bc78ae40a64d12eef06ebe909c79be53bebd050faaf2fd56f85b64",
+      "size_bytes": 36725
+    },
+    {
+      "ordinal": 196,
+      "path": "output/manuscript/parts/historical-intelligence-services/israeli-and-continental-services/02-evidence-contract.md",
+      "sha256": "1da6f16ccb8dcc0d8ed568f29602203d6abc81f12ff76f53ee87a51bde9c3a94",
+      "size_bytes": 23430
+    },
+    {
+      "ordinal": 197,
+      "path": "output/manuscript/parts/historical-intelligence-services/israeli-and-continental-services/03-governance-boundary.md",
+      "sha256": "702140c2d550993e64186deb84ae871e4322b3cdbfc09da7385c6e1609ca6113",
+      "size_bytes": 12883
+    },
+    {
+      "ordinal": 198,
+      "path": "output/manuscript/parts/historical-intelligence-services/israeli-and-continental-services/04-assessment-route.md",
+      "sha256": "b315fdf6a948019b816d8319d23cdfc828aa108b86c335adea6c71f5d93b27d7",
+      "size_bytes": 8952
+    },
+    {
+      "ordinal": 199,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/unit_intro.md",
+      "sha256": "2c1bc20fed06fc74cb474637824b5e1532b1aa53b7b0fbfc99dcbe700caf8a1b",
+      "size_bytes": 10633
+    },
+    {
+      "ordinal": 200,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/foundations-of-ageint/00-overview.md",
+      "sha256": "103f065e2dd6c3ecf175c64bc8cc4de5af8afdf2f656ca142af6b53b62443ddd",
+      "size_bytes": 5590
+    },
+    {
+      "ordinal": 201,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/foundations-of-ageint/01-practice-studio.md",
+      "sha256": "6502950954015f506797e9f4fd4015275e088bc168b36dbad00e43ed6761c708",
+      "size_bytes": 56075
+    },
+    {
+      "ordinal": 202,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/foundations-of-ageint/02-evidence-contract.md",
+      "sha256": "e3149c7a93d39acffe64b07c7440f258c9f26f90a9d359e4033bc42290ed8203",
+      "size_bytes": 31376
+    },
+    {
+      "ordinal": 203,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/foundations-of-ageint/03-governance-boundary.md",
+      "sha256": "49d6c335668bdd44c517effa5d9a2faba92d386f4dfb925b8dd6839211b1c759",
+      "size_bytes": 11635
+    },
+    {
+      "ordinal": 204,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/foundations-of-ageint/04-assessment-route.md",
+      "sha256": "d497785c39c90daf7f1b4d76f5ce606f25bca01e3ccbce059fc138db5f069e2d",
+      "size_bytes": 8869
+    },
+    {
+      "ordinal": 205,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/00-overview.md",
+      "sha256": "c951027c4224efe3e1d4a845b44b5dbed6669fadbf091fb1d60fbec6694c2731",
+      "size_bytes": 6829
+    },
+    {
+      "ordinal": 206,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-01.md",
+      "sha256": "61c07470bf1f39bba6f5aafe62464316ff42d5135a9b339c8dbc0c42defdab37",
+      "size_bytes": 100706
+    },
+    {
+      "ordinal": 207,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-02.md",
+      "sha256": "87db5da9622d8df99ea73d9d1f300d098dd78a961765d2adbea00f3e54213545",
+      "size_bytes": 103993
+    },
+    {
+      "ordinal": 208,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-03.md",
+      "sha256": "8cc3dc7820e29bbf9e7c6433dea86763d6feb1f66d91bc783a0826a9f794e617",
+      "size_bytes": 103439
+    },
+    {
+      "ordinal": 209,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/01-practice-studio-04.md",
+      "sha256": "deafa28ee62f94c201b033182ba2f2d3305f5991eba1991ccfceca9ab9785b6c",
+      "size_bytes": 4328
+    },
+    {
+      "ordinal": 210,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/02-evidence-contract.md",
+      "sha256": "57f6bebdbad850a2c6048020887a417279c5aac2171c2ffc7649ee318f0d754b",
+      "size_bytes": 93957
+    },
+    {
+      "ordinal": 211,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/03-governance-boundary.md",
+      "sha256": "d47074567a68ecf776158355927362c5c98653a048a58e989263db23ec5ba8c2",
+      "size_bytes": 12598
+    },
+    {
+      "ordinal": 212,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-design-patterns-and-archetypes/04-assessment-route.md",
+      "sha256": "6e963dd323f5023791d813e24739b76d0ce5fa53b4a9d4a780d407b5390da43b",
+      "size_bytes": 9266
+    },
+    {
+      "ordinal": 213,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/00-overview.md",
+      "sha256": "d8ebaeea6ea6fefc59d13e8c8ed0b095cf97ae15d35563ee50741cdc10e038ae",
+      "size_bytes": 5707
+    },
+    {
+      "ordinal": 214,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/01-practice-studio-01.md",
+      "sha256": "7216fcadf2abfc294fadc9c5598aa679536d3f7c3c3e5264e57b73ff14f1e20d",
+      "size_bytes": 91967
+    },
+    {
+      "ordinal": 215,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/01-practice-studio-02.md",
+      "sha256": "adbc4bf47bf9e30d3a4f1b8bbbcc4c9141dfd4628fc78e9cc7fde4d9a9af1cd7",
+      "size_bytes": 14039
+    },
+    {
+      "ordinal": 216,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/02-evidence-contract.md",
+      "sha256": "b2e4c0db87ce1409b929bb770f2d9f8bb9739742197124869b6c7cd21f774886",
+      "size_bytes": 42435
+    },
+    {
+      "ordinal": 217,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/03-governance-boundary.md",
+      "sha256": "b44d805e720b35c0c83ca1b5000d851634e397fead43cdd230b8224e73249fe6",
+      "size_bytes": 11385
+    },
+    {
+      "ordinal": 218,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-frameworks-and-infrastructure/04-assessment-route.md",
+      "sha256": "e9e4ce87b52df7e677491b0e1635fb2f8a98b7094640bc0615b4587bcc635f69",
+      "size_bytes": 9312
+    },
+    {
+      "ordinal": 219,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/00-overview.md",
+      "sha256": "198b7e0d23f5eb960b95918ce86408bae1cf895d281cb7ccfe212048724f65c9",
+      "size_bytes": 12890
+    },
+    {
+      "ordinal": 220,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/01-practice-studio.md",
+      "sha256": "22fd8f131ee219abf67c856f8c7ebe52858b4bfe26bb442cea758c452829f63d",
+      "size_bytes": 84432
+    },
+    {
+      "ordinal": 221,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/02-evidence-contract.md",
+      "sha256": "9ab91a8606bb0cf4c9fe8afdf3acf8d99da9e39be9bc1dc2a073864ba6bffa19",
+      "size_bytes": 40744
+    },
+    {
+      "ordinal": 222,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/03-governance-boundary.md",
+      "sha256": "15faf1b8668eb21508fc234aebacb593f0681dab8e6268814613ec27e02ed290",
+      "size_bytes": 14335
+    },
+    {
+      "ordinal": 223,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-security-and-adversarial-considerations/04-assessment-route.md",
+      "sha256": "f08459bb7a6702e28cad1cecffa156d57ec21288595e1f52b2b2502c70ec522a",
+      "size_bytes": 9451
+    },
+    {
+      "ordinal": 224,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/active-inference-and-ageint/00-overview.md",
+      "sha256": "2867c7665940637a845b9111ce0ce2a6b86e95b1981698948ea3f28ebef277f7",
+      "size_bytes": 6556
+    },
+    {
+      "ordinal": 225,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/active-inference-and-ageint/01-practice-studio.md",
+      "sha256": "051c2a2e4ba5e61d5267a4f916c1aea4021695c4356564be71da1fe68bc1a89d",
+      "size_bytes": 40879
+    },
+    {
+      "ordinal": 226,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/active-inference-and-ageint/02-evidence-contract.md",
+      "sha256": "865d15ae5612ed558f45ffac46bc32eb87994da20f96f01daa3ea95378654238",
+      "size_bytes": 27902
+    },
+    {
+      "ordinal": 227,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/active-inference-and-ageint/03-governance-boundary.md",
+      "sha256": "85cdabdb3a394fbd6a7e05483741378420b744b3e1f5146df92e78a071a57fb4",
+      "size_bytes": 13662
+    },
+    {
+      "ordinal": 228,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/active-inference-and-ageint/04-assessment-route.md",
+      "sha256": "83eeec7013512c264715bdc7f3e61405f315b039addd27db8a13785b383096ac",
+      "size_bytes": 8718
+    },
+    {
+      "ordinal": 229,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-python-code-library/00-overview.md",
+      "sha256": "30ca5906598c3f3bf0b396d90e1585b3a3f7de30342addd6b8cc61c940b0cdeb",
+      "size_bytes": 5660
+    },
+    {
+      "ordinal": 230,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-python-code-library/01-practice-studio.md",
+      "sha256": "e664ae9efa0cb79ebb230924ef6a67d7df209dd22a06687a405e505d6faabc45",
+      "size_bytes": 45968
+    },
+    {
+      "ordinal": 231,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-python-code-library/02-evidence-contract.md",
+      "sha256": "592068e82307b4a835e4a3e951b9825458d39a67c7f9b7169c6d851909be0c60",
+      "size_bytes": 28384
+    },
+    {
+      "ordinal": 232,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-python-code-library/03-governance-boundary.md",
+      "sha256": "8dc277b1f5c046256c515e78b70c682ec9ab13a40886c36b3dfa7a1639f11224",
+      "size_bytes": 11690
+    },
+    {
+      "ordinal": 233,
+      "path": "output/manuscript/parts/ageint-agentic-intelligence/ageint-python-code-library/04-assessment-route.md",
+      "sha256": "58b4378be5a999fb0fc89019c741788109c7c03bc790397feb4a500a7cb195ae",
+      "size_bytes": 8511
+    },
+    {
+      "ordinal": 234,
+      "path": "output/manuscript/parts/cognitive-security/unit_intro.md",
+      "sha256": "03c85caff683d3a359fc5fbe2a6dab8845d02fb6273685ab323edf60679575af",
+      "size_bytes": 11468
+    },
+    {
+      "ordinal": 235,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-foundations-and-definitions/00-overview.md",
+      "sha256": "ce8bbbb286ff3f1f0d5f2c8c4b4fef010edaee17e3e6468e2a1ded804b7d2850",
+      "size_bytes": 5784
+    },
+    {
+      "ordinal": 236,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-foundations-and-definitions/01-practice-studio.md",
+      "sha256": "6989c889dd9d6847b2b649f270816abc5b9d52c78c834834446571901be7957b",
+      "size_bytes": 71771
+    },
+    {
+      "ordinal": 237,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-foundations-and-definitions/02-evidence-contract.md",
+      "sha256": "81a3a1b62ae171fde4e575becf94dba33d0365660300dbe510984cbbc09b9326",
+      "size_bytes": 36656
+    },
+    {
+      "ordinal": 238,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-foundations-and-definitions/03-governance-boundary.md",
+      "sha256": "0d5d48dc4c23c577d01cfc92084fceb74e42f803139a3af4b86ac827a1a73b1b",
+      "size_bytes": 12063
+    },
+    {
+      "ordinal": 239,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-foundations-and-definitions/04-assessment-route.md",
+      "sha256": "471e9616b953f93e3b4c99d4fd8fbd09f6dab4967f559d0499ff502134a32b2c",
+      "size_bytes": 9318
+    },
+    {
+      "ordinal": 240,
+      "path": "output/manuscript/parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/00-overview.md",
+      "sha256": "273f0b2e96267acb565a042ce4f2b9155527b6124298b8a8b5b7eb32c5448521",
+      "size_bytes": 6042
+    },
+    {
+      "ordinal": 241,
+      "path": "output/manuscript/parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/01-practice-studio.md",
+      "sha256": "8b68bf3fd4f07da4e08a620f593e15f222ef1c87642e9e1b8aaa3d2317934648",
+      "size_bytes": 53563
+    },
+    {
+      "ordinal": 242,
+      "path": "output/manuscript/parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/02-evidence-contract.md",
+      "sha256": "3925ca38eb7eda205e28e436e6682a664610a3a70e04cb0f2e6e4117e751c4c5",
+      "size_bytes": 27829
+    },
+    {
+      "ordinal": 243,
+      "path": "output/manuscript/parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/03-governance-boundary.md",
+      "sha256": "e3f92afcfd4b238f0384fb37de3c94cf84293a24e4bc80db96debd7c84efcc7e",
+      "size_bytes": 12390
+    },
+    {
+      "ordinal": 244,
+      "path": "output/manuscript/parts/cognitive-security/neurocognitive-mechanisms-of-cognitive-security/04-assessment-route.md",
+      "sha256": "9a6e5779bc257d3086955122a9df5ba1e2e54a21cfd77814511d50b60fc6b85a",
+      "size_bytes": 9176
+    },
+    {
+      "ordinal": 245,
+      "path": "output/manuscript/parts/cognitive-security/psychological-inoculation-and-prebunking/00-overview.md",
+      "sha256": "0494a850dbf2818062562865fbb223ab51bd8cb21ecdd4e6963d00349a189b34",
+      "size_bytes": 6703
+    },
+    {
+      "ordinal": 246,
+      "path": "output/manuscript/parts/cognitive-security/psychological-inoculation-and-prebunking/01-practice-studio.md",
+      "sha256": "4f7f872896c7902887d166a16e0e9e12593b56f5f7ad5ad4344508f6f33607c8",
+      "size_bytes": 61035
+    },
+    {
+      "ordinal": 247,
+      "path": "output/manuscript/parts/cognitive-security/psychological-inoculation-and-prebunking/02-evidence-contract.md",
+      "sha256": "88bbff9f232d3de6a67472fe05efc2f7b44a485ecec91e65aa20e0ae2fd24d09",
+      "size_bytes": 31144
+    },
+    {
+      "ordinal": 248,
+      "path": "output/manuscript/parts/cognitive-security/psychological-inoculation-and-prebunking/03-governance-boundary.md",
+      "sha256": "d18fa74691fba23d21336966382e7512441f26fd4317962c89e8007eccea1e83",
+      "size_bytes": 12518
+    },
+    {
+      "ordinal": 249,
+      "path": "output/manuscript/parts/cognitive-security/psychological-inoculation-and-prebunking/04-assessment-route.md",
+      "sha256": "669f3b69b9c152a22b5fae4c583be7d9b5382b21093a98d5757fc0b6ec4945bc",
+      "size_bytes": 9577
+    },
+    {
+      "ordinal": 250,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-operations/00-overview.md",
+      "sha256": "6147ba32462521c6da5f15ea140d75e560c58ec5935c2cff473220ec0e03ffdb",
+      "size_bytes": 5715
+    },
+    {
+      "ordinal": 251,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-operations/01-practice-studio.md",
+      "sha256": "3cd9d7fab341b8e50a006b89eff0c00bf16f98c0f75086b751260823a3941c88",
+      "size_bytes": 40101
+    },
+    {
+      "ordinal": 252,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-operations/02-evidence-contract.md",
+      "sha256": "ce45f0461a824dc4350fef35b05a114513a7009ba64f856d6c232ba6bf2c28a1",
+      "size_bytes": 25903
+    },
+    {
+      "ordinal": 253,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-operations/03-governance-boundary.md",
+      "sha256": "97b9a7c553cf9969254f9157b901a5324adac87db290fb36f7719af49566939d",
+      "size_bytes": 12376
+    },
+    {
+      "ordinal": 254,
+      "path": "output/manuscript/parts/cognitive-security/cognitive-security-operations/04-assessment-route.md",
+      "sha256": "6e36311c450066360b9a30633fbfbc1e8abb83e75233574c6337983803c1421c",
+      "size_bytes": 8968
+    },
+    {
+      "ordinal": 255,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/unit_intro.md",
+      "sha256": "865967d02038a003bfd3b371c3a0e8528d54299ddbdecbb7ba7c61511f07fbe5",
+      "size_bytes": 11715
+    },
+    {
+      "ordinal": 256,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/structured-analytic-techniques-sats/00-overview.md",
+      "sha256": "d824783b55f21346e45d1d65240593f8c1b980b644f68f2714de609b2a5853ad",
+      "size_bytes": 8489
+    },
+    {
+      "ordinal": 257,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/structured-analytic-techniques-sats/01-practice-studio.md",
+      "sha256": "e9f483f8b121bbeac11f4e6bf88adce001801bf62016314433427f78f791f305",
+      "size_bytes": 75183
+    },
+    {
+      "ordinal": 258,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/structured-analytic-techniques-sats/02-evidence-contract.md",
+      "sha256": "693ebab43324bbde37806e9e0580f1614c74c924a171cedc934fb470a819ba55",
+      "size_bytes": 34114
+    },
+    {
+      "ordinal": 259,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/structured-analytic-techniques-sats/03-governance-boundary.md",
+      "sha256": "39ecc0bb109b2776bd4b61eb0c45e5881d3f8094c65c36ac7477f6e68f9a71cb",
+      "size_bytes": 11955
+    },
+    {
+      "ordinal": 260,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/structured-analytic-techniques-sats/04-assessment-route.md",
+      "sha256": "f3eaec7433614cc7047a03656b251bbb22c9882a933f1c5c1ef250ea89ad4a67",
+      "size_bytes": 8790
+    },
+    {
+      "ordinal": 261,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/advanced-analysis-methods/00-overview.md",
+      "sha256": "423c60abd58ff0e901d213a1541dd3da5f88c6c3f60e157305e599c55e7faa49",
+      "size_bytes": 7589
+    },
+    {
+      "ordinal": 262,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/advanced-analysis-methods/01-practice-studio.md",
+      "sha256": "ae60cf97264f75da6ee2b9abdc9769b4900bb23b786ebd044c33ca57ba43151d",
+      "size_bytes": 36736
+    },
+    {
+      "ordinal": 263,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/advanced-analysis-methods/02-evidence-contract.md",
+      "sha256": "c15b9b5cf01fc0dfa82506307d9569b4bd94e391e7cf1438e86db2e9fef589d0",
+      "size_bytes": 22718
+    },
+    {
+      "ordinal": 264,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/advanced-analysis-methods/03-governance-boundary.md",
+      "sha256": "4c279e57cae439384cde5a9a97fb23e161b614aec95280ef343a261b4e1f4f51",
+      "size_bytes": 11848
+    },
+    {
+      "ordinal": 265,
+      "path": "output/manuscript/parts/epistemic-rigor-and-analytic-tradecraft/advanced-analysis-methods/04-assessment-route.md",
+      "sha256": "c54728c9304a038b50013c2485a62d47cbe2f7ae6d8bd2b74679f3c0e37d202e",
+      "size_bytes": 8413
+    },
+    {
+      "ordinal": 266,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/unit_intro.md",
+      "sha256": "bb28ec17f596e017c35e3e7ca6468ea7400474c21869c8c58fa7faf55b71d2e1",
+      "size_bytes": 8628
+    },
+    {
+      "ordinal": 267,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/00-overview.md",
+      "sha256": "02de1499df1096dc6e707b50374ac5d0b1ca72a56f09715a67384aa55ab032bd",
+      "size_bytes": 6093
+    },
+    {
+      "ordinal": 268,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/01-practice-studio-01.md",
+      "sha256": "d09e3e1b0666ca71cbce7bedc5aaa4ea900b0737ebe5a76cb0de2eb2829036db",
+      "size_bytes": 90142
+    },
+    {
+      "ordinal": 269,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/01-practice-studio-02.md",
+      "sha256": "82def100536fb074b9dc80b4705478917e000bf03161a6a0ae229eb936461924",
+      "size_bytes": 5450
+    },
+    {
+      "ordinal": 270,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/02-evidence-contract.md",
+      "sha256": "8e4104852b7777b385635a0656248705eca8642f2c38668f0d635744fd2534e5",
+      "size_bytes": 45547
+    },
+    {
+      "ordinal": 271,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/03-governance-boundary.md",
+      "sha256": "2d9b53fdadb64db63c0426e5f34205711d5fd94651b3b373fea213fc1f6b9870",
+      "size_bytes": 10780
+    },
+    {
+      "ordinal": 272,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/the-intelligent-operator-as-cognitive-athlete/04-assessment-route.md",
+      "sha256": "3737b44eba6faa0d030fc8f1619bdbbe1b868566ddb7eb8b660c3009109279d8",
+      "size_bytes": 9836
+    },
+    {
+      "ordinal": 273,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/00-overview.md",
+      "sha256": "f85977ddf835b67a7bcf204a48589c2c387f53b6fc0609d5ceb2b858140c5a3c",
+      "size_bytes": 6813
+    },
+    {
+      "ordinal": 274,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/01-practice-studio.md",
+      "sha256": "56c92514efe948f1e752c252cebb1f21914c266468878014d227179e5d9e24b7",
+      "size_bytes": 42070
+    },
+    {
+      "ordinal": 275,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/02-evidence-contract.md",
+      "sha256": "9d8132d826f94a4fc91e1c2609864daf489e596d4ce982a1d5b3124c77907a4d",
+      "size_bytes": 28538
+    },
+    {
+      "ordinal": 276,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/03-governance-boundary.md",
+      "sha256": "0353a0c72f7ad450048abf85d3d8ac5601b1326eee8e823908152975c1ce7905",
+      "size_bytes": 10929
+    },
+    {
+      "ordinal": 277,
+      "path": "output/manuscript/parts/productivity-intelligence-and-cognitive-performance/information-architecture-for-intelligence-work/04-assessment-route.md",
+      "sha256": "50f803f2e122e20d23aa6cb5fb9129c070cf213e2c33e92cc09e2f17f3a35d77",
+      "size_bytes": 8922
+    },
+    {
+      "ordinal": 278,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/unit_intro.md",
+      "sha256": "ac1426a9f8a6a4e105d8db9f9be4d042a90cfc169369027dda96b0e2f4d4f2ed",
+      "size_bytes": 9161
+    },
+    {
+      "ordinal": 279,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/00-overview.md",
+      "sha256": "3be451198289332b27c34eccca36b3838b16305d9cc43e7052f90773a8a877cb",
+      "size_bytes": 6572
+    },
+    {
+      "ordinal": 280,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/01-practice-studio.md",
+      "sha256": "7dc971daacd99e4a8686942bd2f906e0d993af90f207f322714637ab021851ef",
+      "size_bytes": 45315
+    },
+    {
+      "ordinal": 281,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/02-evidence-contract.md",
+      "sha256": "d288f0bea2c3a8f35ddfdde656aacd635caa94346799ebc9fc18c432c446a215",
+      "size_bytes": 25807
+    },
+    {
+      "ordinal": 282,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/03-governance-boundary.md",
+      "sha256": "20c4ad4fba1b7ee7e9af4e9cecd7a9ba2e28699bb02073ac001f8b544017369f",
+      "size_bytes": 12313
+    },
+    {
+      "ordinal": 283,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/industrial-control-systems-ics-and-operational-technology/04-assessment-route.md",
+      "sha256": "ea727cfc6b1a6c06d31fc27764b20e2f4b479c6d495a2267e207aad5387112e9",
+      "size_bytes": 8708
+    },
+    {
+      "ordinal": 284,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/00-overview.md",
+      "sha256": "9823e4f53ad18b967578a090c6fb2ebfbf715e28c532a0d4694306e27383ccd9",
+      "size_bytes": 5486
+    },
+    {
+      "ordinal": 285,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/01-practice-studio.md",
+      "sha256": "f893f0e2f0b5697fdd2ce09d86640400414c7551b3099db4a6e44dba532483b4",
+      "size_bytes": 59813
+    },
+    {
+      "ordinal": 286,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/02-evidence-contract.md",
+      "sha256": "1f3816af0e24f0b260ddecfe72e6b61b6c0e7e398cbd091ad3ec9a75e7789135",
+      "size_bytes": 28696
+    },
+    {
+      "ordinal": 287,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/03-governance-boundary.md",
+      "sha256": "4ec15b13a168cc2941f9e03830d32ff17bea12a30819cf2ee689da0d712768ec",
+      "size_bytes": 12081
+    },
+    {
+      "ordinal": 288,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/mitre-att-ck-for-ics/04-assessment-route.md",
+      "sha256": "e9aeef6f8c0b98162eb2d322ac4b7be585dae876ee1520c056a55716dc280451",
+      "size_bytes": 9006
+    },
+    {
+      "ordinal": 289,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/historical-ics-cyber-incidents-intelligence-analysis/00-overview.md",
+      "sha256": "4a377cecd6dbe30c622d1368f3102d6cceb8d86c2b54df27ef4b2409a18baebf",
+      "size_bytes": 5912
+    },
+    {
+      "ordinal": 290,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/historical-ics-cyber-incidents-intelligence-analysis/01-practice-studio.md",
+      "sha256": "3a8a934fa0a4a4122319d58d033e36e525fd92c2bb57814d984b2b6e8718e51a",
+      "size_bytes": 41423
+    },
+    {
+      "ordinal": 291,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/historical-ics-cyber-incidents-intelligence-analysis/02-evidence-contract.md",
+      "sha256": "ac61f5d68188c1db881edf1bab4a7c1ca9d75af61f111e2ddb08d5e21f83970c",
+      "size_bytes": 24446
+    },
+    {
+      "ordinal": 292,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/historical-ics-cyber-incidents-intelligence-analysis/03-governance-boundary.md",
+      "sha256": "c3bbe20a91f84a9417cff81952719b5576e05bd2cb95ea674cc7c386dcac786b",
+      "size_bytes": 12509
+    },
+    {
+      "ordinal": 293,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/historical-ics-cyber-incidents-intelligence-analysis/04-assessment-route.md",
+      "sha256": "e3320724804b1fef52d6b0ccfb5bc1a378fa228a42655cead1919ff0493ba0be",
+      "size_bytes": 8968
+    },
+    {
+      "ordinal": 294,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/threat-intelligence-sharing-for-critical-infrastructure/00-overview.md",
+      "sha256": "4487e182b90ed47a9edbcac80da9e010a4902d90acf4082910a82f1e1d24242d",
+      "size_bytes": 5951
+    },
+    {
+      "ordinal": 295,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/threat-intelligence-sharing-for-critical-infrastructure/01-practice-studio.md",
+      "sha256": "ade9ab5e3dafc888f2b48179ddbbda6713adadf5cec712ac54b061fcec50b780",
+      "size_bytes": 34428
+    },
+    {
+      "ordinal": 296,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/threat-intelligence-sharing-for-critical-infrastructure/02-evidence-contract.md",
+      "sha256": "491528168ea1e59efe128956219ee94b5bc98b58d80e2c9037209a6068cf21af",
+      "size_bytes": 23033
+    },
+    {
+      "ordinal": 297,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/threat-intelligence-sharing-for-critical-infrastructure/03-governance-boundary.md",
+      "sha256": "a48962ab3e4bbb45fcd82c78c314449b44fc7010b1e1559f5b7aeda1373ae238",
+      "size_bytes": 12313
+    },
+    {
+      "ordinal": 298,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/threat-intelligence-sharing-for-critical-infrastructure/04-assessment-route.md",
+      "sha256": "3a9caed8ce1d27d9945815b35fb8b5cde36f0e7cf5b50efdea0be2782b655985",
+      "size_bytes": 8570
+    },
+    {
+      "ordinal": 299,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/00-overview.md",
+      "sha256": "fc97d37a9324e62bb3a13ce7810f1c1e23e4567b966664bf8611e5944f5a0e27",
+      "size_bytes": 6132
+    },
+    {
+      "ordinal": 300,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/01-practice-studio.md",
+      "sha256": "a2b1c98e7bc7507b9906a078023646e7891009d9afc2e985da1b7575bf2492de",
+      "size_bytes": 35271
+    },
+    {
+      "ordinal": 301,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/02-evidence-contract.md",
+      "sha256": "de0791bc7635d1588206e81146226a7a48132d11d2208af24e13785c42e884a3",
+      "size_bytes": 23862
+    },
+    {
+      "ordinal": 302,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/03-governance-boundary.md",
+      "sha256": "c2461a9bcee5b716f81adbc26168298916355db6c2eb1ac9a98c7f0364b4d007",
+      "size_bytes": 12203
+    },
+    {
+      "ordinal": 303,
+      "path": "output/manuscript/parts/industrial-and-cyber-physical-intelligence/ageint-applied-to-ics-and-cyber-physical-intelligence/04-assessment-route.md",
+      "sha256": "4735882770010791e8f1e24dc086ce34e82d0c618a8b4d700ab9088aff92072f",
+      "size_bytes": 8533
+    },
+    {
+      "ordinal": 304,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/unit_intro.md",
+      "sha256": "2b32c1e25f8d532a1aaee8ba81d3420084c801d89e2a71df1e36d5ea73d62d1e",
+      "size_bytes": 8146
+    },
+    {
+      "ordinal": 305,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/legal-authorities-and-constraints/00-overview.md",
+      "sha256": "14423a9bd0d342a533ef99b7997224cbebfb9722f31d4f2a8a4c057cfee2b49c",
+      "size_bytes": 5539
+    },
+    {
+      "ordinal": 306,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/legal-authorities-and-constraints/01-practice-studio.md",
+      "sha256": "26909cd09deb3f343ca680fbb70f334208c3a3e1a01fcbc568c270559da4b336",
+      "size_bytes": 32460
+    },
+    {
+      "ordinal": 307,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/legal-authorities-and-constraints/02-evidence-contract.md",
+      "sha256": "220e4700e46e398fff567bc9be3b2867ec3707ecada9b19ffdad583f7419ad7a",
+      "size_bytes": 21481
+    },
+    {
+      "ordinal": 308,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/legal-authorities-and-constraints/03-governance-boundary.md",
+      "sha256": "65fa59e465001debc62026bdfbb4fc5bbf0e6600ff6cffe7e7e65e63d84b4767",
+      "size_bytes": 12307
+    },
+    {
+      "ordinal": 309,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/legal-authorities-and-constraints/04-assessment-route.md",
+      "sha256": "f9de46fe8bc4d4f4095a0d3fc93f911d151ab659f677a6020c974d231fb65b1c",
+      "size_bytes": 8151
+    },
+    {
+      "ordinal": 310,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/00-overview.md",
+      "sha256": "31a5495b37db01e06d6fab568d33156426fc67cf92ed511eb5de89089ca93298",
+      "size_bytes": 5586
+    },
+    {
+      "ordinal": 311,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/01-practice-studio.md",
+      "sha256": "dde8ca61ea412fd0db2f938b3cab6220bf9f595f0a603236668a2c6e5295bfbe",
+      "size_bytes": 32175
+    },
+    {
+      "ordinal": 312,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/02-evidence-contract.md",
+      "sha256": "166690dc6364e103a6db66249f00cbe9461a4a694a946895012810b2e4a349a6",
+      "size_bytes": 20015
+    },
+    {
+      "ordinal": 313,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/03-governance-boundary.md",
+      "sha256": "5fe0429ce8e56106fbd9b9ce4db53810363e72c643bb5963da7160196e3af279",
+      "size_bytes": 12693
+    },
+    {
+      "ordinal": 314,
+      "path": "output/manuscript/parts/legal-ethical-and-oversight-frameworks/ethics-of-intelligence-and-cognitive-security/04-assessment-route.md",
+      "sha256": "5ddc8348f26d1a5b56bd1dffebf8c1614be01139179acf5e8303e294eda3655e",
+      "size_bytes": 8404
+    },
+    {
+      "ordinal": 315,
+      "path": "output/manuscript/appendices/python-osint-library.md",
+      "sha256": "1cec49b2362d16339841a44e1237a2ad2d5efd707a79bfc42a9e6fd2548e12ce",
+      "size_bytes": 6975
+    },
+    {
+      "ordinal": 316,
+      "path": "output/manuscript/appendices/langchain-langgraph-ageint-patterns.md",
+      "sha256": "73c615c6039d5aef719aff8fd4d874d76a60f645c97a484984fc71a0f23328f8",
+      "size_bytes": 6858
+    },
+    {
+      "ordinal": 317,
+      "path": "output/manuscript/appendices/crewai-multi-agent-operations.md",
+      "sha256": "8126d7b2ed179b01c8a9aa9d6a525644b283b20008020ff09980457e1bb03094",
+      "size_bytes": 6714
+    },
+    {
+      "ordinal": 318,
+      "path": "output/manuscript/appendices/autogen-and-mcp-patterns.md",
+      "sha256": "1b24a9af44f796e5d316fe72a4ab713a2bbd9b959f9dcef627613dc51c32d567",
+      "size_bytes": 7287
+    },
+    {
+      "ordinal": 319,
+      "path": "output/manuscript/appendices/cryptographic-methods.md",
+      "sha256": "65f2b9c16016c796d8b5afaef8151f45b53231bfcabfc5d9f1d63e91ddbb2d54",
+      "size_bytes": 7081
+    },
+    {
+      "ordinal": 320,
+      "path": "output/manuscript/appendices/att-ck-and-kill-chain-mapping-templates.md",
+      "sha256": "d6e85231dd3d659abe6e3d53def9778249a30cfa45c70d73dab165fafb3ab177",
+      "size_bytes": 6947
+    },
+    {
+      "ordinal": 321,
+      "path": "output/manuscript/appendices/cognitive-security-and-inoculation-methods.md",
+      "sha256": "f6eb7d2bbc1bb2f30971b5050b1fa49c2e6149531e80cc7f8dd23cfac19ef358",
+      "size_bytes": 9019
+    },
+    {
+      "ordinal": 322,
+      "path": "output/manuscript/appendices/source-verification-and-claim-ledger-workbook.md",
+      "sha256": "63f1ce86f7ead9c20bd9ce00834402dc079f9c0c77e20fb5303363685e5c27b2",
+      "size_bytes": 12601
+    },
+    {
+      "ordinal": 323,
+      "path": "output/manuscript/appendices/instructor-capstone-rubric-and-red-team-review-pack.md",
+      "sha256": "776f21b2e7e0b2b4e55472ea4e7795a1c13b9eda5a819f029a21137be1137500",
+      "size_bytes": 13223
+    },
+    {
+      "ordinal": 324,
+      "path": "output/manuscript/appendices/bibliography-atlas/00-bibliography-atlas-navigation-figures-and-source-links-visual-route-through-citation-evidence.md",
+      "sha256": "c1b6da344a23805645095ed8582db9ef20afb9d7064bb26ebb1985fff4e6641a",
+      "size_bytes": 4543
+    },
+    {
+      "ordinal": 325,
+      "path": "output/manuscript/appendices/bibliography-atlas/01-checked-since-source-selections-recorded-dates-and-caveats-sec-current-source-additions-and-refreshes.md",
+      "sha256": "152f0746ee3d144e96bfee2fd1cfe43600687c5fafea9eb8d4aad9e25210ce2f",
+      "size_bytes": 170241
+    },
+    {
+      "ordinal": 326,
+      "path": "output/manuscript/appendices/bibliography-atlas/02-source-refresh-ledger-cadence-checked-dates-and-due-status-evidence-sec-source-refresh-ledger.md",
+      "sha256": "a9b9d070ab47a5c528adc00cd756bb267da60718934d0a2dd9ba3004cbd9186c",
+      "size_bytes": 219865
+    },
+    {
+      "ordinal": 327,
+      "path": "output/manuscript/appendices/bibliography-atlas/03-citation-workflow-and-source-section-coverage.md",
+      "sha256": "6c8e7822d2fd2cb2dd063dcc883053adc72e20d530bc8dc627f4db982650f4e4",
+      "size_bytes": 993
+    },
+    {
+      "ordinal": 328,
+      "path": "output/manuscript/appendices/bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata.md",
+      "sha256": "dfb631aff867d62069cdd527e84b9c8b42d4699231a903e4f7acf1a11a866b7d",
+      "size_bytes": 871
+    },
+    {
+      "ordinal": 329,
+      "path": "output/manuscript/appendices/bibliography-atlas/05-bind-the-claim-not-merely-the-citation-01.md",
+      "sha256": "8aa2ed1013ef424da8254923cdf8ca80a4aae8b6ece4807e63f616bd86d7422d",
+      "size_bytes": 85344
+    },
+    {
+      "ordinal": 330,
+      "path": "output/manuscript/appendices/bibliography-atlas/05-bind-the-claim-not-merely-the-citation-02.md",
+      "sha256": "8436381f43f36d843b1b3cf9ef0ed6b72323bac2d48a86f1d9a8a3be61b86a7d",
+      "size_bytes": 52069
+    },
+    {
+      "ordinal": 331,
+      "path": "output/manuscript/appendices/bibliography-atlas/06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md",
+      "sha256": "e72f9653e96335bc2b66df02ebd630d9dec6bdc13911d360c0926115ec92bc40",
+      "size_bytes": 259299
+    },
+    {
+      "ordinal": 332,
+      "path": "output/manuscript/appendices/bibliography-atlas/06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md",
+      "sha256": "231dd5e164c72c682a918799c8cc14b4e4f2348f153a6a02c085850818bf3183",
+      "size_bytes": 187865
+    },
+    {
+      "ordinal": 333,
+      "path": "output/manuscript/references.md",
+      "sha256": "d1badb1ddbb38e77b6f84e707c9d2dbb8761cd6de0c618ce4f19920f3cb858da",
+      "size_bytes": 291
+    }
+  ],
+  "ordered_inputs_sha256": "95e3eec20ca4150e34b277b49ec13e7cec2b9933c149e1d7112c65fc2758ea97",
+  "project": "working/AGEINT",
+  "schema_version": "template-manuscript-composition-v1"
+}

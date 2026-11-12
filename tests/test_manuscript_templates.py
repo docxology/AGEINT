@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
+import re
+import shutil
+import subprocess
+
+import pytest
 
 import src
 from curriculum import load_curriculum
@@ -15,11 +21,12 @@ from intelligence_content import (
     practice_lens_for_titles,
     practice_lens_rows,
     profile_for_titles,
-    research_anchor_rows,
     safe_curriculum_treatment,
     subsection_practice_rows,
 )
 from manuscript_templates import DEFAULT_TEMPLATES, SOURCE_OWNED_TEMPLATE_NAMES, TEMPLATE_NAMES, template_text, write_manuscript_templates, write_template_library
+from intelligence_content._09_part import _coursebook_profile_for_titles
+from manuscript_variables._02_part import _render_bibtex_entries
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA = PROJECT_ROOT / "data" / "curriculum"
@@ -100,10 +107,6 @@ def test_research_profiles_route_sections_to_domain_content() -> None:
     assert cyber.identifier == "cyber_threat_intelligence"
     assert ics.identifier == "ics_ot_defense"
     assert supply_chain.identifier == "cyber_threat_intelligence"
-    assert "official_owasp_llm_top_10" in research_anchor_rows()
-    assert "official_odni_icd_204" in research_anchor_rows()
-    assert "official_odni_icd_505" in research_anchor_rows()
-    assert "official_fincen_advisories" in research_anchor_rows()
     assert "Requirements-to-Evidence Lens" in practice_lens_rows()
 
 
@@ -152,3 +155,71 @@ def test_safe_coursebook_helpers_cover_edge_topic_fallbacks() -> None:
     fallback_rows = subsection_practice_rows(empty_chapter, part)
     assert "Fallback Coursebook Topic" in fallback_rows
     assert "Source-guide module" not in fallback_rows
+
+
+def test_explicit_theory_profile_overrides_ambiguous_agentic_titles() -> None:
+    curriculum = load_curriculum(DATA)
+    part = next(part for part in curriculum.parts if int(part["number"]) == 11)
+    chapter = next(chapter for chapter in part["chapters"] if int(chapter["number"]) == 35)
+    title_only = _coursebook_profile_for_titles(str(part["title"]), str(chapter["title"]))
+    explicit = _coursebook_profile_for_titles(str(part["title"]), str(chapter["title"]), chapter=chapter)
+    assert title_only.identifier == "agentic_ai_governance"
+    assert explicit.identifier == "cognitive_active_inference"
+
+
+def test_bibliography_does_not_turn_verification_metadata_into_authorship_or_date() -> None:
+    unknown = _render_bibtex_entries(
+        [{"key": "ageint999", "number": 999, "title": "Undated record", "checked_as_of": "2026-11-06", "note_verified": True}]
+    )
+    assert not re.search(r"^\s*(?:author|year)\s*=", unknown, re.MULTILINE)
+    known = _render_bibtex_entries([{"key": "known", "title": "Dated record", "author": "Actual Author", "year": "2018"}])
+    assert re.search(r"^\s*author\s*=\s*\{Actual Author\}", known, re.MULTILINE)
+    assert re.search(r"^\s*year\s*=\s*\{2018\}", known, re.MULTILINE)
+
+
+@pytest.mark.skipif(shutil.which("pandoc") is None, reason="Pandoc is required for bibliography consumer validation")
+def test_bibliography_preserves_literal_attribution_without_merging_personal_authors() -> None:
+    bibliography = _render_bibtex_entries(
+        [
+            {"key": "organization", "title": "Guidance", "author": "Institute for Methods and Evidence, Review Office", "author_mode": "literal"},
+            {"key": "people", "title": "Study", "author": "Ada Example and Bo Review"},
+        ]
+    )
+    result = subprocess.run(["pandoc", "-f", "biblatex", "-t", "csljson"], input=bibliography, capture_output=True, text=True, check=True)
+    records = {record["id"]: record for record in json.loads(result.stdout)}
+    assert records["organization"]["author"] == [{"literal": "Institute for Methods and Evidence, Review Office"}]
+    assert [name["family"] for name in records["people"]["author"]] == ["Example", "Review"]
+
+
+def test_bibliography_rejects_unknown_author_serialization_mode() -> None:
+    with pytest.raises(ValueError, match="Unsupported author mode"):
+        _render_bibtex_entries([{"key": "invalid", "title": "Record", "author": "Declared author", "author_mode": "unsupported"}])
+
+
+@pytest.mark.skipif(
+    shutil.which("xelatex") is None or shutil.which("bibtex") is None,
+    reason="Native bibliography validation requires XeLaTeX and BibTeX",
+)
+def test_many_undated_unattributed_sources_render_without_label_collisions(tmp_path: Path) -> None:
+    from pypdf import PdfReader
+
+    references = [
+        {"key": f"ageint{number:03d}", "title": f"Undated record {number}"}
+        for number in range(1, 33)
+    ]
+    (tmp_path / "references.bib").write_text(_render_bibtex_entries(references), encoding="utf-8")
+    (tmp_path / "probe.tex").write_text(
+        r"\documentclass{article}\usepackage{natbib}\begin{document}"
+        r"\nocite{*}\bibliographystyle{plainnat}\bibliography{references}\end{document}",
+        encoding="utf-8",
+    )
+    commands = [
+        ["xelatex", "-interaction=nonstopmode", "-halt-on-error", "probe.tex"],
+        ["bibtex", "probe"],
+        ["xelatex", "-interaction=nonstopmode", "-halt-on-error", "probe.tex"],
+    ]
+    for command in commands:
+        result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True, timeout=30)
+        assert result.returncode == 0, result.stdout + result.stderr
+    text = "\n".join(page.extract_text() for page in PdfReader(tmp_path / "probe.pdf").pages)
+    assert all(f"Undated record {number}." in text for number in range(1, 33))

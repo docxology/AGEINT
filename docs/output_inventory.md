@@ -19,6 +19,7 @@ Canonical orchestration: `src/build_pipeline.py::run_build()`.
 | --- | --- | --- | --- |
 | `output/data/curriculum/` | Mirrored curriculum shards (parts, chapters, appendices) | `write_curriculum_shards()` in `src/curriculum.py` | Tests, figure assignment, manifest rendering |
 | `output/data/curriculum_outline.json` | Compact parsed curriculum mirror (stats, parts, citations) | `write_compact_curriculum_payload()` in `src/curriculum.py` | Runtime variables, evidence registry, validation |
+| `output/data/source_citation_coverage.json` | Current integer-valued citation counts, exact curriculum snapshot hash, source digest, counting rules and claim-specific field bindings; structural coverage, not claim support | `write_source_citation_coverage()` in `src/citation_workflow.py`, during the normal build before its final stamp | Generated coverage table, SDK evidence registry, build freshness |
 | `output/data/manuscript_variables.json` | `{TOKEN: value}` substitution map | `save_variables()` in `src/manuscript_variables/` | Manuscript hydration, PDF render when linked through template pipeline |
 | `output/figures/figure_registry.json` | Registry-backed figure metadata (177 figures: 115 Mermaid, 52 Python, 4 historical, 6 AI-generated) with captions, alt text, long descriptions, provenance, hashes, accessibility-guidance metadata, visual-semantics fields, and a visual-quality summary | `render_figures()` in `src/figures/` | Manuscript cross-refs, validation |
 | `output/figures/cover/ageint-cover-synthesis.png` and `.json` | Deterministic non-numbered title-page cover art and metadata sidecar; this asset is deliberately excluded from `figure_registry.json` so it does not become a numbered manuscript figure | `render_cover_art()` in `src/figures/` | PDF title page via `docs/manuscript/config.yaml` `book.cover.image` |
@@ -26,6 +27,8 @@ Canonical orchestration: `src/build_pipeline.py::run_build()`.
 | `output/figures/{mermaid,python,historical,ai}/` | Square-normalized PNG assets (+ `.mmd` sources) with embedded AGEINT label, caption, alt-text, long-description, source-section, provenance, and visual-semantics metadata | `src/figures/` | Manuscript `[@fig:…]` references |
 | `output/figures/mermaid/` synthesis cluster | 115 Mermaid-rendered figures: 17 curriculum or part module maps plus 98 JSONL-declared synthesis, boundary, chapter, part, cross-cutting, and appendix diagrams. The former Mermaid graphical abstract is now the Python `ageint-graphical-abstract` atlas. | `src/figures/_02b_mermaid.py` + `data/figures/synthesis_extra.jsonl` | Methods appendices and boundary sections `[@fig:…]` references |
 | `output/figures/python/ageint-graphical-abstract.png` | High-resolution registered Synthetic Tradecraft System Atlas for `fig:ageint-graphical-abstract`; this is the numbered orientation graphical abstract and carries embedded caption, alt-text, long-description, and provenance metadata | `graphical_abstract_atlas` renderer in `src/figures/` | Orientation `[@fig:ageint-graphical-abstract]` reference |
+| `output/reports/artifact_manifest.json` | SDK stable output inventory binding paths, sizes and SHA-256 digests, including audit reports saved after rendering | Real SDK `stage_04_validate.py`, after audit/readiness writers | Strict current-output and generated-handoff verification |
+| `output/reports/rendered_provenance.json` | Genuine SDK validation binding current Source, configuration, stage implementation, output and consumed manuscript inputs | Real SDK final validation, never a relabeled inspection receipt or maintenance snapshot | Rendered-input and verified-handoff custody |
 | `output/reports/current_artifact_evidence.json` and `.md` | Unified verifier-first evidence manifest binding freshness, citation coverage, scholarship quality, source metadata, agency-source coverage, claim calibration, reference quality, figure quality, rendered-reference resolution, stale-output scans, PDF quality, and PDF link targets | `scripts/audit_artifact_evidence.py` / `src/artifact_evidence.py` | Local readiness validation |
 | `output/reports/scholarship_quality.json` and `.md` | Generated-manuscript scholarship audit covering source-family mix, uncited/thin claim-bearing sections, single-source-family warning rows, the early Synthetic Analytic Tradecraft method contract, the analysis-validation protocol contract, and the claim-bearing family coverage contract | `scripts/audit_scholarship_quality.py` / `src/scholarship_quality.py` | Local readiness validation, source-triangulation review |
 | `output/reports/source_metadata.json` and `.md` | Source-anchor metadata audit covering 462 curated intelligence anchors, 10 source-quality support anchors, blank lane/tier counts, fallback-dependent rows, lane/tier distributions, refresh-cadence buckets, and the 119-row fallback closure baseline | `scripts/audit_source_metadata.py` / `src/source_metadata.py` | Local readiness validation, artifact evidence |
@@ -44,9 +47,24 @@ when Mermaid/Chrome is unavailable, but the current registry should contain no
 placeholder plates after a normal rebuild. Set `AGEINT_REQUIRE_RENDERED_FIGURES=1`
 to fail instead of falling back. See [`src/figures/AGENTS.md`](../src/figures/AGENTS.md).
 
-When AGEINT runs through the full template pipeline, `output/data/curriculum_outline.json`
-and `output/data/manuscript_variables.json` should appear in the project's
-declared artifact set so stage validation does not flag them as undeclared.
+When AGEINT runs through the full template pipeline, the curriculum mirror,
+manuscript variables and `source_citation_coverage.json` belong to the declared
+build output contract. The coverage artifact is a required freshness sentinel;
+its absence cannot be hidden by a previously successful build stamp.
+
+## Generated handoff: preserve manifested documentation
+
+Both inspection and verified `AGEINT-generated.tar.gz` archives include
+`output/README.md`, `output/AGENTS.md`, `output/slides/README.md`, and
+`output/slides/AGENTS.md` alongside the generated data, manuscript, figures,
+PDF, web, reports, and bibliography shards. The four documents remain part of
+the native artifact inventory even when slide rendering is disabled.
+Inspection archives remain separate from successful readiness and release assets.
+
+Verified handoff finalization follows every audit/readiness report writer. The
+real SDK validator produces the final inventory and rendered provenance, then a
+read-only readiness recheck writes only under `RUNNER_TEMP`. No subsequent
+project-output writer may invalidate those bindings before packaging.
 
 ## Regeneration sequence: full build, figures, strict renders, and hooks
 

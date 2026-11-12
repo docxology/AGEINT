@@ -4,71 +4,85 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
+from _markdown_split import split_by_line_budget
+
 from manuscript_quality.inventory_helpers import manuscript_dir
-from rendered_heading_support import add_heading_support, heading_support_inventory, heading_support_summary, render_heading_support_markdown, unsupported_heading_rows
+from rendered_heading_support import add_heading_support, heading_support_inventory, heading_support_summary, unsupported_heading_rows
 
 
-def test_add_heading_support_adds_contextual_reference_line() -> None:
-    rendered = "# Sample Section {#sec:sample-section}\n\n## Purpose\n\nExplain the bounded exercise.\n"
-    revised = add_heading_support(rendered, "appendices/sample-section.md")
-
-    assert "**Section anchor.**" in revised
-    assert "[@sec:sample-section]" in revised
-    assert unsupported_heading_rows_for_text(revised) == []
-
-
-def test_add_heading_support_treats_presplit_bibliography_as_structural() -> None:
-    rendered = "\n\n".join(
-        [
-            "# Bibliography Atlas {#sec:bibliography_atlas}",
-            "Introductory citation example [@scholarly_heuer_psychology_intelligence_analysis].",
-            "## Add Or Extend A Citation",
-            "Use source-owned citation workflow steps.",
-        ]
+def test_heading_navigation_does_not_borrow_another_blocks_citation() -> None:
+    rendered = (
+        "# Sample {#sec:sample}\n\n"
+        "Search reporting follows [@scholarly_rethlefsen_2021_prisma_s].\n\n"
+        "## Safety and mastery rules\n\n"
+        "| Rule | Required artifact |\n|---|---|\n| Stop | Review record |\n"
     )
-    revised = add_heading_support(rendered, "bibliography-atlas.md")
-
-    assert "**Section anchor.** [@sec:bibliography_atlas]." in revised
-    anchor_line = next(line for line in revised.splitlines() if line.startswith("**Section anchor.**"))
-    assert "scholarly_heuer_psychology_intelligence_analysis" not in anchor_line
-
-
-def test_add_heading_support_uses_coverage_language_for_source_inventory() -> None:
-    rendered = "\n\n".join(
-        [
-            "## Add Or Extend A Citation",
-            "### Current citation coverage by source section",
-            "| Measure | Count |",
-            "|---|---:|",
-            "| Source sections | 723 |",
-            "### Citation rows by source section",
-            "[@scholarly_heuer_psychology_intelligence_analysis]",
-        ]
-    )
-    revised = add_heading_support(rendered, "appendices/bibliography-atlas/coverage.md")
-
-    assert "**Coverage anchor.** Parent appendix: [@sec:bibliography_atlas]." in revised
-    assert "Citation coverage by source section is validated from the generated citation inventory" in revised
-    coverage_line = next(line for line in revised.splitlines() if line.startswith("**Coverage anchor.**"))
-    assert "scholarly_heuer_psychology_intelligence_analysis" not in coverage_line
-    assert "**Evidence link.**" not in revised
+    revised = add_heading_support(rendered)
+    assert revised.count("[@scholarly_rethlefsen_2021_prisma_s]") == 1
+    safety_block = revised.split("## Safety and mastery rules", 1)[1]
+    assert "[@sec:sample]" in safety_block
+    assert "scholarly_rethlefsen_2021_prisma_s" not in safety_block
+    assert add_heading_support(revised) == revised
 
 
-def test_generated_heading_support_covers_every_heading(built_output: Path) -> None:
-    output_manuscript = manuscript_dir(built_output)
-    rows = heading_support_inventory(output_manuscript)
-    summary = heading_support_summary(rows)
-
-    assert summary.heading_count > 0
-    assert summary.unsupported_heading_count == 0
-    assert unsupported_heading_rows(output_manuscript) == []
+@pytest.mark.parametrize("section_text", [None, "# Parent without a label\n", "```markdown\n# Parent {#sec:fake}\n```\n"])
+def test_heading_without_real_target_is_not_given_an_invented_reference(section_text: str | None) -> None:
+    rendered = "## Capstone rubric\n\nAuthor-defined criteria need review.\n"
+    revised = add_heading_support(rendered, section_text=section_text)
+    assert "[@sec:" not in revised
+    assert unsupported_heading_rows_for_text(revised) == ["Capstone rubric"]
 
 
-def test_render_heading_support_markdown_reports_clean_summary(built_output: Path) -> None:
-    rendered = render_heading_support_markdown(manuscript_dir(built_output))
+def test_local_heading_label_is_navigation_not_evidence(tmp_path: Path) -> None:
+    (tmp_path / "sample.md").write_text("# Sample {#sec:sample}\n\n## Rule\n\nThis author-defined rule has no supporting source.\n", encoding="utf-8")
+    rows = heading_support_inventory(tmp_path)
+    assert rows[0].supported
+    assert rows[0].support_refs == ("{#sec:sample}",)
+    assert not rows[1].supported
 
-    assert "| Unsupported headings | 0 |" in rendered
-    assert "| OK | true |" in rendered
+
+def test_inline_code_and_fenced_examples_do_not_supply_heading_navigation() -> None:
+    text = "## Rule\n\n`[@source]`\n\n```text\n[@source]\n{#sec:fake}\n```\n"
+    assert unsupported_heading_rows_for_text(text) == ["Rule"]
+
+
+def test_generated_reader_headings_all_have_navigation(built_output: Path) -> None:
+    root = manuscript_dir(built_output)
+    summary = heading_support_summary(heading_support_inventory(root))
+    assert summary.ok, unsupported_heading_rows(root)
+
+
+def test_audit_excludes_repository_helpers_but_keeps_reader_backmatter(tmp_path: Path) -> None:
+    (tmp_path / "chapter.md").write_text("# Chapter {#sec:chapter}\n", encoding="utf-8")
+    (tmp_path / "references.md").write_text("# References\n", encoding="utf-8")
+    nested = tmp_path / "parts"
+    nested.mkdir()
+    for name in ["README.md", "AGENTS.md"]:
+        (nested / name).write_text("# Repository instructions without reader navigation\n", encoding="utf-8")
+    rows = heading_support_inventory(tmp_path)
+    assert [(row.path, row.supported) for row in rows] == [("chapter.md", True), ("references.md", False)]
+
+
+def test_fragment_navigation_uses_only_the_actual_source_section_target(tmp_path: Path) -> None:
+    source = "# Overview {#sec:overview .unnumbered}\n\nSource discussion [@scholarly_example].\n"
+    fragment = "### Continued overview\n\n#### Practice rule\n\nAuthor-defined criteria.\n"
+    revised = add_heading_support(fragment, section_text=source)
+    (tmp_path / "fragment.md").write_text(revised, encoding="utf-8")
+    rows = heading_support_inventory(tmp_path)
+    assert [(row.title, row.support_refs) for row in rows] == [("Continued overview", ("[@sec:overview]",)), ("Practice rule", ("[@sec:overview]",))]
+    assert "scholarly_example" not in revised
+    assert "{#sec:" not in revised
+
+
+def test_line_budget_keeps_trailing_heading_with_following_content() -> None:
+    source = "# Overview {#sec:overview}\n\none\ntwo\nthree\nfour\n#### Boundary lesson\n\nFirst supporting paragraph.\n" + "\n".join(f"Following paragraph {index}." for index in range(15))
+    fragments = split_by_line_budget("chapter.md", source, max_lines=12)
+    lesson = next(text for _, text in fragments if "#### Boundary lesson" in text)
+    assert "First supporting paragraph." in lesson
+    assert all(len(text.splitlines()) <= 12 for _, text in fragments)
+    assert [line for _, text in fragments for line in text.splitlines() if line.strip()] == [line for line in source.splitlines() if line.strip()]
 
 
 def unsupported_heading_rows_for_text(text: str) -> list[str]:

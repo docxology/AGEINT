@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ageint_curriculum"
-version = "0.1.0"
+version = "0.2.0"
 description = "Shard-first Agentic Intelligence modular curriculum and manuscript build"
 authors = [{name = "DAF"}]
 requires-python = ">=3.11"
@@ -48,9 +48,9 @@ py-modules = [
     "publication_readiness",
     "published_counts_gate",
     "reference_quality",
+    "release_metadata",
     "rendered_heading_support",
     "rendered_reference_audit",
-    "rendered_reference_emphasis",
     "safety_contract",
     "scholarship_quality",
     "schema_gate",
@@ -67,7 +67,7 @@ py-modules = [
 where = ["src"]
 
 [tool.ruff]
-target-version = "py310"
+target-version = "py311"
 # 200, not 88: AGEINT carries by-design long data-table/generated lines
 # (E501 is ignored). At 88, ruff format explodes src/figures/* content tuples
 # past the 500-line cap (measured 2026-08-31: _03r_early_orientation.py
@@ -122,4 +122,5 @@ exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:", "raise NotImp
 
 [tool.template]
 skip_combined_pytest = true
+platform_version = "5.2.0"
 

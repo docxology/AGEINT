@@ -3,10 +3,10 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-09-07T19:50:53+00:00 |
-| Generated Markdown files | 330 |
-| Cited generated files | 294 |
-| Claim-bearing files | 275 |
+| Generated at | 2026-11-06T23:12:04+00:00 |
+| Generated Markdown files | 333 |
+| Cited generated files | 298 |
+| Claim-bearing files | 277 |
 | Uncited claim-bearing files | 0 |
 | Thin claim-bearing files | 0 |
 | Single-family claim-bearing files | 0 |
@@ -19,14 +19,14 @@
 
 | Source family | File-key mentions |
 |---|---:|
-| curated_anchor | 32 |
-| law_policy | 19 |
-| official | 3096 |
-| practitioner_vendor | 105 |
-| public_domain | 21 |
-| scholarly | 693 |
-| source_guide | 1502 |
-| standard | 883 |
+| curated_anchor | 25 |
+| law_policy | 14 |
+| official | 2890 |
+| practitioner_vendor | 106 |
+| public_domain | 17 |
+| scholarly | 605 |
+| source_guide | 1498 |
+| standard | 842 |
 
 ## Hard-Fail Rows
 

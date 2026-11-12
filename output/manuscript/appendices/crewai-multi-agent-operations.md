@@ -1,177 +1,38 @@
 # CrewAI Multi-Agent Operations {#sec:appendix-crewai-multi-agent-operations}
 
-The current appendix is an evidence workbook for reusable classroom methods. It is educational and evidence-bounded: examples remain synthetic, defensive, lawful, and bounded to owned labs, public sources, or tabletop exercises. Source-item focus: OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents.
-
 ## CrewAI Multi-Agent Operations workbook scope: purpose, safety envelope, and reuse decision
 
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+**Navigation.** Parent section: [@sec:appendix-crewai-multi-agent-operations].
 
 ### CrewAI Multi-Agent Operations operating purpose
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+Source-item focus: OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents. The source-item map preserves the curriculum identity; it does not authorize the source item's operational wording. Use only the offline substitutions below: no live queries, credentials, private records, external code execution, profiling, persuasion delivery, or cyber-physical actions.
 
-The current appendix supports a reusable methods workbook. Each source item is treated as a reviewable classroom artifact rather than an operational instruction; examples begin with OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents.
+Use the claim record and eight-step analytic procedure in [@sec:analytic-workflow], not a second local evidence schema. All inputs below are invented classroom records. Worked outputs and negative-control results are authored expectations, not executed tests, empirical findings, or evidence that a named framework is secure or effective.
 
-### CrewAI Multi-Agent Operations allowed-input boundary
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+## Multi-role handoff, dissent, and ownership exercise
 
-Allowed inputs for the current appendix are public official or scholarly sources, standards text, instructor-provided excerpts, synthetic datasets, owned-lab logs, toy examples, and generated rubrics that expose their provenance for OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents.
+**Input.** Give five classroom roles the same frozen packet: C1, a fictional sensor alarm at 09:00; C2, a maintenance ticket at 08:55; C3, a retelling of C1. Roles are planner, source steward, synthetic-log reviewer, analyst, and reporter. They are paper roles, not autonomous collectors or real SIGINT/OT operators.
 
-### CrewAI Multi-Agent Operations excluded-action boundary
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+1. The planner sets the question: does this packet distinguish scheduled work from an unexplained fault? Assign one accountable human owner and forbid new collection or plant interaction.
+2. The source steward records C3's dependence on C1. The log reviewer marks the time-zone assumption and missing sensor-health record. Neither role may fill missing evidence with a generated narrative.
+3. Two reviewers write competing explanations against the same observations: maintenance-related alarm and unrelated fault. In an ACH-style comparison, record inconsistencies and gaps rather than counting votes or treating duplicated role outputs as independent evidence.
+4. Each role hands off `task; packet_revision; source_refs; conclusion_type; unresolved_issue; next_owner`. The recipient acknowledges or returns the packet; a disagreement remains attached to the reporter's draft.
+5. The reporter writes a bounded synthesis and the owner records the disposition. Convert the source spine's inoculation-delivery motif into review of an invented media-literacy handout; do not deliver messages to audiences or infer their vulnerabilities.
 
-Excluded actions for the current appendix are unauthorized collection, private-data processing, credential use, contact with real targets, live system interaction, exploit execution, deception, unsafe cyber-physical action, or external deployment while handling OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents.
+**Example output.** `C-review: maintenance plausible; unrelated fault not excluded; time-zone unresolved; dissent=log-reviewer; next=inspect instructor-supplied sensor-health card; reuse=hold`. A completed five-role conversation is not five-source corroboration or evidence of superior analysis.
 
-### CrewAI Multi-Agent Operations expected artifact package
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+**Expected negative-control result.** Have all five roles repeat C1: origin support remains one. Withhold C2: the maintenance explanation loses its direct support. Remove the source steward's handoff: return the report for provenance repair rather than accepting majority agreement.
 
-Expected appendix artifacts are a purpose statement, allowed-inputs card, excluded-actions card, source-lane map, provenance record, claim ledger, safe-substitution note, output schema, review rubric, and capstone handoff memo for OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents.
+**Reuse disposition and applicability.** Reuse after each handoff has a recipient and unresolved dissent survives into the final packet. Apply role ownership, assessment integrity, lineage, and accessibility forms; model/vendor review is unnecessary for the paper roles, not waived for a later CrewAI implementation. Refresh on role authority or input changes. The analytic tradecraft basis concerns alternatives and source quality, not validated multi-agent performance [@official_odni_icd_203]; use the shared rubric in [@sec:method-assurance-reference].
 
-### CrewAI Multi-Agent Operations safe artifact schema
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+### CrewAI Multi-Agent Operations shared forms and local applicability record
+Complete one local record: `packet/version; applicable forms and reason; not-applicable forms and reason; missing evidence; reviewer; disposition; refresh trigger`. The workbook's applicability note is a starting point, not approval. Never replace a missing review with a bare 'N/A'.
 
-| Field | Required evidence | Reject condition |
-|---|---|---|
-| Purpose | lawful educational, governance, research, or defensive purpose | vague operational objective or missing authority |
-| Inputs | public, official, scholarly, synthetic, owned-lab, or instructor-provided material | private data, live target data, credentialed access, or unclear provenance |
-| Transform | summary, comparison, rubric scoring, tabletop simulation, or audit review | collection expansion, external action, or unsafe system interaction |
-| Output | memo, matrix, checklist, ledger, rubric, or debrief packet | deployable procedure, target package, or automated action plan |
-| Reviewer | human reviewer, approval gate, revision note, and refresh owner | anonymous ownership or no escalation path |
+For provenance and documentation, use [@sec:source-lane-map], [@sec:data-lineage-registry], and [@sec:model-and-dataset-documentation-card]. For communication and handling, use [@sec:transparency-and-communication-notice] and [@sec:records-retention-and-audit-trail].
 
-### CrewAI Multi-Agent Operations input/output contract
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+For rights, access, and tool changes, use [@sec:hria-and-dpia-worksheet], [@sec:accessibility-and-udl-review], [@sec:learner-support-and-accommodation-plan], and [@sec:procurement-and-vendor-oversight]. For reuse or exceptions, use [@sec:release-and-change-control-gate] and [@sec:risk-exception-and-acceptance-memo].
 
-| Contract term | Input rule | Output rule |
-|---|---|---|
-| Source identity | retain `ageintNNN`, title, URL, and checked status | cite with Pandoc keys and avoid pasted raw URLs in prose |
-| Accessibility | include plain-language labels, table headers, and figure alternatives | reject inaccessible figures, unlabeled tables, or single-modality evidence |
-| Rights | identify affected groups, safeguards, and residual risk | preserve privacy, equality, access, contestability, and redress notes |
-| Tooling | use allowlisted tools, visible prompts, logs, and stop conditions | keep outputs evidence-bounded, reversible, and human-reviewed |
-| Refresh | record source, policy, standard, incident, or assessment trigger | assign an owner and date for revalidation |
-
-### CrewAI Multi-Agent Operations failure cases and required responses
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
-
-| Failure case | Signal | Required response |
-|---|---|---|
-| Source laundering | claim cites an agent summary instead of a verified source | rebuild the claim ledger from direct sources |
-| Boundary drift | exercise starts asking for live targets, private data, or external action | stop, substitute synthetic inputs, and document the block |
-| Accessibility gap | learner cannot inspect, navigate, or complete the artifact | remediate and retest before reuse |
-| Rights gap | affected group, safeguard, or redress path is missing | run HRIA/DPIA worksheet and escalate unresolved risk |
-| Vendor opacity | tool owner, data use, logs, or exit path is unknown | replace tool or pause until procurement evidence exists |
-
-### CrewAI Multi-Agent Operations evidence package schemas
-
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
-
-Model and dataset card:
-
-| Field | Model card evidence | Dataset card evidence | Review gate |
-|---|---|---|---|
-| Intended use | accountable task, excluded uses, affected users, human reviewer, and accountable owner | Data Cards purpose statement, recommended use, prohibited reuse, stewardship owner, and affected stakeholder groups | claim is rejected if intended use, excluded use, affected users, or owner is missing |
-| Provenance and collection | model family, version, supplier or lab, training cutoff, deployment context, and configuration hash | upstream source, collection process, annotation method, consent or authority basis, sensitivity class, and license | artifact is held if provenance, license, authority, or collection process is opaque |
-| Composition and limits | capability boundary, known failure modes, tool permissions, context window limits, and unsupported conditions | population, sampling frame, coverage gaps, subgroup visibility, missingness, transformations, and known caveats | artifact is revised if population, coverage, or source limits are invisible |
-| Evaluation and caveats | benchmark suite, task-specific tests, subgroup or context results, red-team findings, uncertainty notes, and failure examples | quality tests, label agreement, bias review, measurement limits, transformation log, and Data Cards answer-evaluation notes | empirical or performance claims are rejected unless test context, subgroup caveats, and uncertainty are visible |
-| Lifecycle controls | release gate, rollback path, monitoring signal, incident threshold, refresh trigger, and model-card update owner | retention rule, access boundary, update cadence, deletion path, stewardship handoff, and dataset-card revision trigger | reuse is blocked without owner, retention, monitoring, rollback, and refresh evidence |
-
-Transparency notice:
-
-| Step | Artifact | Review gate |
-|---|---|---|
-| Public purpose | plain-language purpose, authority, affected service, and decision role | reader can tell why the system exists and where human judgment remains |
-| Tool and data summary | model, data, supplier, provenance, validation, and accessibility summary | sensitive details are de-sensitized without hiding accountability fields |
-| Impact and review | benefits, risks, safeguards, human review, appeal, and contact point | affected groups can identify recourse and oversight owners |
-| Publication decision | publish, partially publish, delay, or hold decision with exemption rationale | non-public fields have a documented legal, security, privacy, or IP basis |
-
-Records retention and audit trail:
-
-| Record | Retained fields | Audit requirement |
-|---|---|---|
-| Source and prompt register | source identity, prompt version, tool allowlist, reviewer, timestamp, and caveat | Can a later reviewer reconstruct the evidentiary path without private or live data? |
-| Decision and exception log | risk owner, accepted exception, compensating control, expiry date, and approval | Is every deviation time-bound, justified, and reviewable? |
-| Artifact retention note | output type, sensitivity, access boundary, deletion rule, and refresh trigger | Does the retention choice match the educational purpose and rights impact? |
-| Incident and remediation record | incident signal, containment action, root cause, owner, retest result, and closure date | Can the same failure be detected and prevented in the next reuse cycle? |
-
-Release and change-control gate:
-
-| Gate | Release evidence | Block condition |
-|---|---|---|
-| Scope freeze | accountable use case, excluded actions, tool profile, and data boundary | scope expands to external action, live data, or an unreviewed capability |
-| Security and rights review | privacy, accessibility, security, bias, and human-review checks | rights impact, vulnerability, or accessibility issue has no owner |
-| Version and rollback | model or prompt version, changelog, test fixture, and rollback path | change cannot be reproduced, compared, or reverted |
-| Post-release monitoring | monitoring signal, incident threshold, refresh trigger, and owner | deployment or reuse occurs without logging and retest commitments |
-
-Risk exception memo:
-
-| Field | Minimum content | Approval rule |
-|---|---|---|
-| Exception requested | what requirement cannot be met, why, affected groups, and duration | exception must be specific, time-bound, and tied to a compensating control |
-| Risk basis | likelihood, impact, evidence, uncertainty, alternatives, and rejected options | unsupported confidence or missing alternatives returns the memo for revision |
-| Compensating control | human review, monitoring, access limit, disclosure, remediation, and owner | control must reduce risk without creating an operational workaround |
-| Expiry and retest | expiry date, retest condition, review cadence, and closure criteria | open-ended exceptions are rejected |
-
-Learner support and accommodation plan:
-
-| Need | Support | Evidence |
-|---|---|---|
-| Access and modality | captions, alt text, keyboard path, plain-language summary, and structured tables | accessibility checklist, defect log, and retest result |
-| Cognitive load | worked examples, staged release, glossary, checklist, and optional practice fixture | UDL design note and learner feedback record |
-| Assessment fairness | allowed-tool statement, AI-use declaration, alternative submission mode, and transparent rubric | assessment-integrity note and accommodation record |
-| Feedback and remediation | revision path, office-hour prompt, example correction, and due-date flexibility policy | feedback log and instructor disposition |
-
-Instructor question bank:
-
-| Question type | Prompt | Evidence |
-|---|---|---|
-| Source challenge | Which claim would fail if the strongest source were removed or downgraded? | claim ledger revision and source-lane note |
-| Boundary challenge | Where could this exercise drift from analysis into action, and what safe substitute prevents it? | safe-substitution decision and excluded-action card |
-| Rights challenge | Which affected group, accessibility need, privacy interest, or redress path is under-specified? | HRIA/DPIA update and accommodation note |
-| Assurance challenge | What failure would the current evaluation miss, and what retest would reveal it? | adversarial assurance retest and remediation owner |
-
-Remediation backlog:
-
-| Backlog item | Trigger | Closure evidence |
-|---|---|---|
-| Unverified claim | claim lacks a guide citation or directly verified anchor | verified source, removed claim, or explicit source-guide context note |
-| Unsafe phrasing | wording implies live targeting, external action, exploitation, manipulation, or unsafe control | safe substitute, blocked context, and reviewer sign-off |
-| Accessibility defect | artifact cannot be inspected through an expected assistive or alternative workflow | defect fix, alternative means, and retest result |
-| Assurance gap | evaluation, release, exception, incident, or vendor evidence is incomplete | owner, due date, retest, and accepted disposition |
-
-### CrewAI Multi-Agent Operations rubric scoring bands
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
-
-| Band | Evidence standard | Disposition |
-|---|---|---|
-| 4 - ready | source identity, accessibility, rights, safety, and reviewer evidence are complete | may be reused after normal refresh review |
-| 3 - revise | one evidence field is incomplete but risk is bounded and remediable | revise before reuse |
-| 2 - hold | multiple evidence fields are incomplete or ownership is unclear | hold for instructor and assurance review |
-| 1 - reject | unsafe action, private data, inaccessible artifact, or unverified claim appears | reject and rebuild from safe inputs |
-
-### CrewAI Multi-Agent Operations refresh evidence
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
-
-| Evidence item | Refresh trigger | Retained support |
-|---|---|---|
-| Source lane | official source, standard, or legal text changes | checked-as-of date and source note |
-| Safety treatment | operational wording or unsafe motif appears | safe-substitution decision and blocked context |
-| Accessibility | WCAG, UDL, or institutional accessibility duty changes | defect log, retest result, and owner |
-| Rights | privacy, human-rights, public transparency, or education guidance changes | HRIA/DPIA revision note |
-| Vendor/tool | contract, data-use, incident, or model capability changes | procurement packet and incident review |
-
-### CrewAI Multi-Agent Operations validation rubric
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
-
-| Criterion | Passing evidence |
-|---|---|
-| Source identity | existing `ageintNNN` keys remain stable or new references are append-only |
-| Verification | official, standards, public-domain, or scholarly URL is checked directly |
-| Safety | method is converted into tabletop, audit, governance, or synthetic-data treatment |
-| Reproducibility | another reviewer can rebuild the artifact from retained inputs |
-| Rights review | privacy, IP, human-rights, workforce, and education impacts are considered where relevant |
-
-### CrewAI Multi-Agent Operations debrief protocol and reuse decision
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
-
-Debrief by naming what the artifact can support, what it does not establish, what source changed, what risk was avoided by safe substitution, what human approval is still required, and when the appendix should be refreshed for OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter); Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents.
+For teaching and revision, use [@sec:assessment-integrity-protocol], [@sec:instructor-question-bank], [@sec:adversarial-assurance-cycle], and [@sec:remediation-backlog]. Apply the competency and answer-quality rubrics in [@sec:method-assurance-reference]; retain the relevant local evidence rather than copying every shared table into the packet.
 
 ### CrewAI Multi-Agent Operations visual navigation and evidence figures: purpose, source flow, and limits
 
@@ -179,15 +40,15 @@ The appendix uses [@fig:appendix-crewai-multi-agent-roles] and [@fig:ageint-safe
 
 Navigation links: [@sec:curriculum_orientation], [@sec:appendix-langchain-langgraph-ageint-patterns], [@sec:appendix-autogen-and-mcp-patterns].
 
-![The multi-agent crew separates duties across specialized roles coordinated by an orchestrator, with a reviewer role and shared memory enforcing accountability before any output is released. The captioned view belongs to the crewai multi agent operations appendix and should be read as a map of Orchestrator agent, Specialized roles, Researcher: retrieval, and Analyst: synthesis, not as a capability score or live-task instruction.](../../figures/mermaid/appendix-crewai-multi-agent-roles.png){#fig:appendix-crewai-multi-agent-roles}
+![Illustrative role contract, not a measured CrewAI guarantee. Role separation and shared memory do not themselves enforce accountability or create independent evidence. Permissions cannot expand by delegation, refusals propagate, and actual framework checkpoint, cancellation and authorization behavior requires version-specific verification.](../../figures/mermaid/appendix-crewai-multi-agent-roles.png){#fig:appendix-crewai-multi-agent-roles}
 
 ### CrewAI Multi-Agent Operations runtime item map and source roster: generated rows and citation support
 
-**Section anchor.** [@sec:appendix-crewai-multi-agent-operations].
+**Navigation.** Parent section: [@sec:appendix-crewai-multi-agent-operations].
 
-| Safe curriculum treatment | Blocked source motif, audit-only | Allowed fixture | Rejected action | Required artifact | Citation spine |
-|---|---|---|---|---|---|
-| C.1 OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter) | no blocked motif; source title used verbatim | instructor-provided source cards, toy records, and provenance notes | live collection expansion, tracking, private-data discovery, or targeting | source-quality card and minimization note | - |
-| C.2 Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents | no blocked motif; source title used verbatim | public sources, synthetic records, owned-lab notes, and instructor handouts | external action, private-data processing, unsafe system interaction, or deployment | claim ledger, safe-lab packet, and reviewer handoff | - |
-| C.3 ICS Anomaly Investigation Crew: OT + MITRE ATT&CK for ICS Tools | no blocked motif; source title used verbatim | synthetic process logs, operator-decision cards, and safety stop rules | live device interaction, process manipulation, unsafe actuation, or plant operation | tabletop packet with asset, consequence, operator decision, and recovery evidence | - |
-| Psychological inoculation and prebunking literacy review | C.4 retained for audit; operational wording transformed | public sources, synthetic records, owned-lab notes, and instructor handouts | external action, private-data processing, unsafe system interaction, or deployment | claim ledger, safe-lab packet, and reviewer handoff | - |
+| Source item / safe study title | Provenance status | Citation context |
+|---|---|---|
+| C.1 OSINT Crew: 5-Agent System (Planner, OSINT Collector, SIGINT, Analyst, Reporter) | no blocked motif; source title used verbatim | - |
+| C.2 Red/Blue Cell Debate Crew: Automated ACH with Adversarial Agents | no blocked motif; source title used verbatim | - |
+| C.3 ICS Anomaly Investigation Crew: OT + MITRE ATT&CK for ICS Tools | no blocked motif; source title used verbatim | - |
+| Psychological inoculation and prebunking literacy review | C.4 retained for audit; operational wording transformed | - |

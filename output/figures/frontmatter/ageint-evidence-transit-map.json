@@ -21,13 +21,13 @@
         "references": 312
       },
       "outputs": {
-        "generated_markdown_files": 330,
+        "generated_markdown_files": 333,
         "registered_figures": 177
       },
       "source_freshness": {
-        "as_of": "2026-09-07",
+        "as_of": "2026-11-06",
         "due_or_stale": 0,
-        "due_soon": 0,
+        "due_soon": 69,
         "missing_dates": 0,
         "rows": 472,
         "unknown_cadence": 0

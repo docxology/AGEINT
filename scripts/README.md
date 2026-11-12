@@ -36,8 +36,6 @@ contract and [`CONVENTIONS.md`](CONVENTIONS.md) for pipeline-stage rules.
 | `validate_declarative_yaml.py` | Validates authoritative declarative YAML tables | `src/_data_loaders.validate_declarative_tables` | `uv run python scripts/validate_declarative_yaml.py` |
 | `generate_topic_prompt_routes_yaml.py` | Regenerates `data/topic_prompt_routes.yaml` from canonical tables (regenerable, idempotent) | `src/topic_route_tables.write_topic_prompt_routes_yaml` | `uv run python scripts/generate_topic_prompt_routes_yaml.py` |
 | `generate_topic_rotation_templates_yaml.py` | Regenerates `data/topic_rotation_templates.yaml` from canonical tables (regenerable, idempotent) | `src/topic_route_tables.write_topic_rotation_templates_yaml` | `uv run python scripts/generate_topic_rotation_templates_yaml.py` |
-| `generate_prompt_parity_fixture.py` | Regenerates `tests/fixtures/topic_prompt_parity.json` | `src/intelligence_content` prompt resolvers | `uv run python scripts/generate_prompt_parity_fixture.py` |
-| `generate_rotation_parity_fixture.py` | Regenerates `tests/fixtures/topic_rotation_parity.json` | `src/intelligence_content` rotation resolvers | `uv run python scripts/generate_rotation_parity_fixture.py` |
 
 `build_curriculum.py` delegates to `src/build_pipeline.run_build`, which refreshes
 parsed JSON, mirrored output data, runtime variables, BibTeX, the figure registry,

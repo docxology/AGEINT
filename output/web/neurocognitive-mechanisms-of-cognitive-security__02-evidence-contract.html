@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>02-evidence-contract.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,30 +182,429 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="neurocognitive-mechanisms-of-cognitive-security-assurance-handoff-evidence-governance-refresh-and-capstone">Neurocognitive
 Mechanisms of Cognitive Security assurance handoff: evidence,
 governance, refresh, and capstone</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <h3
 id="neurocognitive-mechanisms-of-cognitive-security-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">Neurocognitive
 Mechanisms of Cognitive Security evidence contract: source spine,
 verified anchors, transfer architecture, and claim limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <h3
 id="neurocognitive-mechanisms-of-cognitive-security-transfer-architecture-module-inputs-outputs-and-review-boundary">Neurocognitive
 Mechanisms of Cognitive Security transfer architecture: module inputs,
 outputs, and review boundary</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-lineage-and-source-tradition-profile-concepts-and-first-anchors">Neurocognitive
 Mechanisms of Cognitive Security lineage and source tradition: profile,
@@ -211,43 +617,43 @@ decision quality without turning resilience education into manipulation.
 id="neurocognitive-mechanisms-of-cognitive-security-working-model-inputs-constraints-transforms-outputs-and-oversight">Neurocognitive
 Mechanisms of Cognitive Security working model: inputs, constraints,
 transforms, outputs, and oversight</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <p>The work is modeled as inputs, constraints, transforms, outputs,
 feedback, and oversight for <strong>Understanding Neurocognitive
-Mechanisms of Cognitive Security; Executive Brain Systems and
-Vulnerability to Information Threats</strong>, with provenance and
-reviewability throughout.</p>
+Mechanisms of Cognitive Security; Executive Brain Systems: Research on
+Information-Related Tasks</strong>, with provenance and reviewability
+throughout.</p>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">Neurocognitive
 Mechanisms of Cognitive Security knowledge architecture: inputs,
 transforms, outputs, and failure checks</h4>
 <ul>
-<li><strong>Inputs:</strong> source materials, domain constraints,
-learner questions, verified anchors, and artifact requirements.
+<li><strong>Inputs:</strong> benign fictional messages, factual source
+cards, provenance, consent conditions, and false-alarm controls.
 [ageint238]; [ageint240].</li>
-<li><strong>Transforms:</strong> evidence normalization, structured
-reasoning, source evaluation, governance review, and handoff
-preparation.</li>
-<li><strong>Outputs:</strong> annotated map, decision memo, rubric,
-tabletop packet, or audit artifact.</li>
-<li><strong>Failure modes:</strong> over-automation, misplaced
-confidence, policy drift, and confusing simulation with deployment.</li>
+<li><strong>Transforms:</strong> separate truth, technique cues, intent
+and effects; compare ordinary error; transparently review corrections;
+and preserve learner agency.</li>
+<li><strong>Outputs:</strong> bounded claim and provenance assessment,
+recognition and false-alarm record, educational correction, or
+unresolved attribution.</li>
+<li><strong>Failure modes:</strong> technique recognition as truth,
+affect as hostile intent, detector authority, covert persuasion, or
+assumed durable immunity.</li>
 </ul>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-transfer-contracts-authority-evidence-tools-and-auditable-output">Neurocognitive
 Mechanisms of Cognitive Security transfer contracts: authority,
 evidence, tools, and auditable output</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <ul>
 <li><strong>Authority contract:</strong> define why the work is being
 practiced, who reviews it, and which actions are excluded for
 <strong>Understanding Neurocognitive Mechanisms of Cognitive Security;
-Executive Brain Systems and Vulnerability to Information
-Threats</strong>.</li>
+Executive Brain Systems: Research on Information-Related
+Tasks</strong>.</li>
 <li><strong>Evidence contract:</strong> keep the <strong>Cognitive
 Security and Influence Resilience</strong> source descriptors,
 transformations, claims, uncertainty, and confidence separable.</li>
@@ -255,36 +661,35 @@ transformations, claims, uncertainty, and confidence separable.</li>
 explicit tools, permissions, budgets, logging, and rollback
 conditions.</li>
 <li><strong>Output contract:</strong> render the chapter artifact as
-annotated map, decision memo, rubric, tabletop packet, or audit artifact
-that another reviewer can audit.</li>
+bounded claim and provenance assessment, recognition and false-alarm
+record, educational correction, or unresolved attribution that another
+reviewer can audit.</li>
 </ul>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">Neurocognitive
 Mechanisms of Cognitive Security profile emphasis and local focus:
 method stack and topic cluster</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <p>The matched profile emphasizes protecting attention, belief
 formation, and decision quality without turning resilience education
 into manipulation. The method stack is claim decomposition, narrative
 provenance, inoculation framing, bias checks, audience-risk review, and
 after-action learning; the local topic cluster is <strong>Understanding
-Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems
-and Vulnerability to Information Threats</strong>.</p>
+Neurocognitive Mechanisms of Cognitive Security; Executive Brain
+Systems: Research on Information-Related Tasks</strong>.</p>
 <h3
 id="neurocognitive-mechanisms-of-cognitive-security-evidence-spine-source-roles-citation-support-and-claim-limits">Neurocognitive
 Mechanisms of Cognitive Security evidence spine: source roles, citation
 support, and claim limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
 <p>Guide citations preserve the inherited bibliography, verified anchors
 supply lane constraints, and the <strong>Cognitive Security and
 Influence Resilience</strong> profile tells reviewers what evidence is
 strong enough for the module artifact built around <strong>Understanding
-Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems
-and Vulnerability to Information Threats</strong>.</p>
+Neurocognitive Mechanisms of Cognitive Security; Executive Brain
+Systems: Research on Information-Related Tasks</strong>.</p>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-guide-source-spine-inherited-keys-and-local-citation-roles">Neurocognitive
 Mechanisms of Cognitive Security guide source spine: inherited keys and
@@ -299,7 +704,7 @@ Mechanisms of Cognitive Security verified source canon: direct anchors
 and claim boundaries</h4>
 <p>The source canon has three tiers; the local spine begins with
 [ageint238]; [ageint240].</p>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -336,29 +741,29 @@ constraints.</td>
 defensive boundary for generated prose.</td>
 </tr>
 </tbody>
-</table>
-<p><strong>Triangulation anchors.</strong> In module 38’s source-canon
-section, directly verified anchors for the <strong>Cognitive Security
-and Influence Resilience</strong> lane include
+</table></div>
+<p><strong>Contextual source routes.</strong> For module 38’s
+source-canon section, the <strong>Cognitive Security and Influence
+Resilience</strong> catalog routes include
 [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
 [official_cisa_election_security_influence];
-[official_nato_hybrid_threats]. Use them to test source-guide claims,
-method boundaries, governance constraints, and safety gates without
-replacing the module’s <code>ageintNNN</code> provenance.</p>
+[official_nato_hybrid_threats]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
 <p>Maintenance rule: Perplexity may suggest candidates for
 <strong>Understanding Neurocognitive Mechanisms of Cognitive Security;
-Executive Brain Systems and Vulnerability to Information
-Threats</strong> and [ageint238]; [ageint240], but only directly
-verified source URLs are encoded as citations.</p>
+Executive Brain Systems: Research on Information-Related Tasks</strong>
+and [ageint238]; [ageint240], but only directly verified source URLs are
+encoded as citations.</p>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-intelligence-practice-lens-evidence-artifact-and-safety-check">Neurocognitive
 Mechanisms of Cognitive Security intelligence practice lens: evidence
 artifact and safety check</h4>
 <p>Practice lens: <strong>Cognitive-Resilience Lens</strong> for
 <strong>Understanding Neurocognitive Mechanisms of Cognitive Security;
-Executive Brain Systems and Vulnerability to Information
-Threats</strong>. [ageint238]; [ageint240].</p>
+Executive Brain Systems: Research on Information-Related Tasks</strong>.
+[ageint238]; [ageint240].</p>
 <p><strong>Planning question:</strong> How does the module protect
 autonomy, attention, trust, and decision quality without designing
 persuasion?</p>
@@ -367,8 +772,8 @@ provenance, uncertainty, audience harms, and response options.</p>
 <p><strong>Validation rule:</strong> distinguish observation,
 attribution, impact assessment, and resilience response. Applied to
 <strong>Understanding Neurocognitive Mechanisms of Cognitive Security;
-Executive Brain Systems and Vulnerability to Information
-Threats</strong>.</p>
+Executive Brain Systems: Research on Information-Related
+Tasks</strong>.</p>
 <p><strong>Handoff contract:</strong> handoff supports transparency,
 education, and resilience, not microtargeted influence or deception.</p>
 <p><strong>Safety check:</strong> exclude manipulation scripts,
@@ -378,10 +783,9 @@ planning.</p>
 id="neurocognitive-mechanisms-of-cognitive-security-runtime-to-reader-map-generated-sections-and-verifier-surfaces">Neurocognitive
 Mechanisms of Cognitive Security runtime-to-reader map: generated
 sections and verifier surfaces</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
-<table style="width:100%;">
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table style="width:99%;" data-responsive-table="true">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 16%" />
@@ -409,11 +813,11 @@ original: V2 source-lane extension: bind Neurocognitive Mechanisms of
 Cognitive Security to source-lane evidence, claim-ledger review, safe
 substitution, compliance/rights mapping, instructor deliverables, and
 explicit refresh triggers</td>
-<td>Requirements-to-Evidence Lens</td>
-<td>requirements matrix with source descriptors, caveats, and collection
-limits</td>
-<td>exclude live collection, recruitment, surveillance, interception,
-tracking, and identity exposure</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
 </tr>
 <tr>
 <td>Bounded autonomy, procurement, incident-response, and assurance
@@ -460,11 +864,10 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Executive Brain Systems and Vulnerability to Information
-Threats</td>
+<td>Executive Brain Systems: Research on Information-Related Tasks</td>
 <td>38.1.1</td>
-<td>38.1.1 Executive Brain Systems and Vulnerability to Information
-Threats</td>
+<td>38.1.1 Executive Brain Systems: Research on Information-Related
+Tasks</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -472,10 +875,9 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Affective Systems: Emotional Exploitation in Manipulation</td>
+<td>Affective Systems: Emotion and Information Processing</td>
 <td>38.1.2</td>
-<td>38.1.2 Affective Systems: Emotional Exploitation in
-Manipulation</td>
+<td>38.1.2 Affective Systems: Emotion and Information Processing</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -483,11 +885,9 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Integrative Systems: Brain Network Interactions During Threat
-Exposure</td>
+<td>Integrative Systems: Proposed Brain-Network Interactions</td>
 <td>38.1.3</td>
-<td>38.1.3 Integrative Systems: Brain Network Interactions During Threat
-Exposure</td>
+<td>38.1.3 Integrative Systems: Proposed Brain-Network Interactions</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -495,9 +895,9 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Neuromarkers of Susceptibility and Resilience</td>
+<td>Candidate Neuromarkers: Validation and Inference Limits</td>
 <td>38.1.4</td>
-<td>38.1.4 Neuromarkers of Susceptibility and Resilience</td>
+<td>38.1.4 Candidate Neuromarkers: Validation and Inference Limits</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -505,11 +905,10 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Neuro-Cognitive Approaches to Cybersecurity: Systematic Review
-(Emerald, 2025)</td>
+<td>Neuro-Cognitive Approaches to Cybersecurity: Systematic</td>
 <td>38.2</td>
-<td>38.2 Neuro-Cognitive Approaches to Cybersecurity: Systematic Review
-(Emerald, 2025)</td>
+<td>38.2 source title transformed into safe curriculum treatment;
+original: Neuro-Cognitive Approaches to Cybersecurity: Systematic</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -517,22 +916,21 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Cognitive Load in Intelligence Community Settings (NCSU Survey,
-2024)</td>
+<td>Cognitive Load in Intelligence Community Settings: Measurement
+Survey</td>
 <td>38.3</td>
-<td>38.3 Cognitive Load in Intelligence Community Settings (NCSU Survey,
-2024)</td>
-<td>Operator-Workload Hygiene Lens</td>
-<td>operator workload card with queue state, NASA-TLX ratings, focus
-plan, handoff owner, and rest boundary</td>
-<td>exclude live operational tempo mandates, surveillance of people,
-performance coercion, and unreviewed tasking under fatigue</td>
+<td>38.3 Cognitive Load in Intelligence Community Settings: Measurement
+Survey</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
 </tr>
 <tr>
-<td>129 Metrics Catalogued: Questionnaire, Biometric,
-Task-Performance</td>
+<td>Catalogued Metrics: Questionnaire, Biometric, Task-Performance</td>
 <td>38.3.1</td>
-<td>38.3.1 129 Metrics Catalogued: Questionnaire, Biometric,
+<td>38.3.1 Catalogued Metrics: Questionnaire, Biometric,
 Task-Performance</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
@@ -541,21 +939,21 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>NASA-TLX and Its Intelligence Analytic Applications</td>
+<td>NASA-TLX: Subjective Workload and Declared Scoring</td>
 <td>38.3.2</td>
-<td>38.3.2 NASA-TLX and Its Intelligence Analytic Applications</td>
-<td>Operator-Workload Hygiene Lens</td>
-<td>operator workload card with queue state, NASA-TLX ratings, focus
-plan, handoff owner, and rest boundary</td>
-<td>exclude live operational tempo mandates, surveillance of people,
-performance coercion, and unreviewed tasking under fatigue</td>
+<td>38.3.2 NASA-TLX: Subjective Workload and Declared Scoring</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
 </tr>
 <tr>
-<td>Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</td>
+<td>Eye Tracking and Heart-Rate Variability: Workload Research
+Limits</td>
 <td>38.3.3</td>
-<td>38.3.3 Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</td>
+<td>38.3.3 Eye Tracking and Heart-Rate Variability: Workload Research
+Limits</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -568,18 +966,18 @@ Analysis</td>
 <td>38.4</td>
 <td>38.4 Information Overload and Cognitive Bias in Intelligence
 Analysis</td>
-<td>Structured-Judgment Lens</td>
-<td>analytic note with hypotheses, evidence table, confidence, and
-dissent fields</td>
-<td>avoid policy advocacy, certainty inflation, source laundering, and
-claims without traceable evidence</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
 </tr>
 <tr>
-<td>Decision-Making Under Uncertainty: Neural Mechanisms and
-Intelligence Implications</td>
+<td>Decision-Making Under Uncertainty: Neural Hypotheses and Analytic
+Limits</td>
 <td>38.5</td>
-<td>38.5 Decision-Making Under Uncertainty: Neural Mechanisms and
-Intelligence Implications</td>
+<td>38.5 Decision-Making Under Uncertainty: Neural Hypotheses and
+Analytic Limits</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -587,15 +985,14 @@ response options</td>
 and operational influence planning</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">Neurocognitive
 Mechanisms of Cognitive Security reusable subsection contract: topic
 rows, artifacts, and safety duties</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security];
-[ageint238].</p>
-<table>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -621,8 +1018,7 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Executive Brain Systems and Vulnerability to Information
-Threats</td>
+<td>Executive Brain Systems: Research on Information-Related Tasks</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -630,7 +1026,7 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Affective Systems: Emotional Exploitation in Manipulation</td>
+<td>Affective Systems: Emotion and Information Processing</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -638,8 +1034,7 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Integrative Systems: Brain Network Interactions During Threat
-Exposure</td>
+<td>Integrative Systems: Proposed Brain-Network Interactions</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -647,7 +1042,7 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Neuromarkers of Susceptibility and Resilience</td>
+<td>Candidate Neuromarkers: Validation and Inference Limits</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -655,8 +1050,7 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Neuro-Cognitive Approaches to Cybersecurity: Systematic Review
-(Emerald, 2025)</td>
+<td>Neuro-Cognitive Approaches to Cybersecurity: Systematic</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -664,17 +1058,8 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>Cognitive Load in Intelligence Community Settings (NCSU Survey,
-2024)</td>
-<td>Operator-Workload Hygiene Lens</td>
-<td>operator workload card with queue state, NASA-TLX ratings, focus
-plan, handoff owner, and rest boundary</td>
-<td>exclude live operational tempo mandates, surveillance of people,
-performance coercion, and unreviewed tasking under fatigue</td>
-</tr>
-<tr>
-<td>129 Metrics Catalogued: Questionnaire, Biometric,
-Task-Performance</td>
+<td>Cognitive Load in Intelligence Community Settings: Measurement
+Survey</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -682,16 +1067,24 @@ response options</td>
 and operational influence planning</td>
 </tr>
 <tr>
-<td>NASA-TLX and Its Intelligence Analytic Applications</td>
-<td>Operator-Workload Hygiene Lens</td>
-<td>operator workload card with queue state, NASA-TLX ratings, focus
-plan, handoff owner, and rest boundary</td>
-<td>exclude live operational tempo mandates, surveillance of people,
-performance coercion, and unreviewed tasking under fatigue</td>
+<td>Catalogued Metrics: Questionnaire, Biometric, Task-Performance</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
 </tr>
 <tr>
-<td>Eye Tracking and Heart Rate Variability for Analyst Overload
-Detection</td>
+<td>NASA-TLX: Subjective Workload and Declared Scoring</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
+</tr>
+<tr>
+<td>Eye Tracking and Heart-Rate Variability: Workload Research
+Limits</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -701,15 +1094,15 @@ and operational influence planning</td>
 <tr>
 <td>Information Overload and Cognitive Bias in Intelligence
 Analysis</td>
-<td>Structured-Judgment Lens</td>
-<td>analytic note with hypotheses, evidence table, confidence, and
-dissent fields</td>
-<td>avoid policy advocacy, certainty inflation, source laundering, and
-claims without traceable evidence</td>
+<td>Cognitive-Resilience Lens</td>
+<td>narrative-risk map with provenance, uncertainty, audience harms, and
+response options</td>
+<td>exclude manipulation scripts, impersonation, persuasion targeting,
+and operational influence planning</td>
 </tr>
 <tr>
-<td>Decision-Making Under Uncertainty: Neural Mechanisms and
-Intelligence Implications</td>
+<td>Decision-Making Under Uncertainty: Neural Hypotheses and Analytic
+Limits</td>
 <td>Cognitive-Resilience Lens</td>
 <td>narrative-risk map with provenance, uncertainty, audience harms, and
 response options</td>
@@ -717,7 +1110,7 @@ response options</td>
 and operational influence planning</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="neurocognitive-mechanisms-of-cognitive-security-annotated-source-ledger-real-titles-and-local-contribution">Neurocognitive
 Mechanisms of Cognitive Security annotated source ledger: real titles
@@ -725,9 +1118,9 @@ and local contribution</h4>
 <p>Each source cited by this <strong>Cognitive Security and Influence
 Resilience</strong> module is paired below with its real title and a
 one-line note on what it contributes to <strong>Understanding
-Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems
-and Vulnerability to Information Threats</strong>.</p>
-<table>
+Neurocognitive Mechanisms of Cognitive Security; Executive Brain
+Systems: Research on Information-Related Tasks</strong>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -738,7 +1131,7 @@ and Vulnerability to Information Threats</strong>.</p>
 <tr>
 <th>Source</th>
 <th>Cited work</th>
-<th>What it contributes</th>
+<th>Curriculum annotation</th>
 <th>Status</th>
 </tr>
 </thead>
@@ -754,7 +1147,8 @@ AI ethics, adopted in 2021 and applicable to all 194 member states. It
 outlines four core values, including human rights protection and
 environmental flourishing, and ten guiding principles such as
 proportionality, privacy, transparency, and fairness.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint240]</td>
@@ -765,14 +1159,16 @@ page on the right to privacy in the digital age. It addresses how
 data-intensive technologies, particularly artificial intelligence,
 create risks for privacy, autonomy, and human dignity, and curates
 international standards, reports, and expert consultations.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint244]</td>
 <td><a href="https://www.unesco.org/gem-report/en/ai-and-education">AI
 and Education</a></td>
 <td>Official UNESCO GEM AI and education source hub.</td>
-<td>original source-guide</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint274]</td>
@@ -785,7 +1181,8 @@ and is organized around three principles: Engagement (motivation and
 emotional support), Representation (accessible presentation of
 information), and Action and Expression (diverse means of participation
 and communication).</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint278]</td>
@@ -797,7 +1194,8 @@ of the Council on Public Procurement</a></td>
 2015 on the proposal of the Public Governance Committee. It frames
 public procurement as a pillar of strategic governance and service
 delivery and sets out principles for governments to follow.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint280]</td>
@@ -810,7 +1208,8 @@ with the NIST Cybersecurity Framework 2.0, superseding the 2012 Rev. 2.
 The publication addresses cyber threat information sharing, incident
 handling and management practices, and procedures for detecting,
 responding to, and recovering from security incidents.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint287]</td>
@@ -823,7 +1222,8 @@ lacks consistent dataset documentation, which creates risk in
 high-stakes applications, and propose that datasets be accompanied by
 documentation covering motivation, composition, collection process,
 recommended uses, and test results.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint288]</td>
@@ -836,7 +1236,8 @@ Digital Service. It provides a standardized template for documenting
 public-sector use of algorithmic tools, completion guidance, policy on
 scope and compliance, and a searchable repository of published
 transparency records.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint295]</td>
@@ -850,16 +1251,18 @@ Executive Order 13960 and related directives. It provides guidance to
 federal agencies for acquiring effective and trustworthy AI in a timely,
 cost-effective manner, and rescinds and replaces earlier memorandum
 M-24-18.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint176]</td>
 <td><a
 href="https://www.sciencedirect.com/science/article/abs/pii/S014976342500449X">Understanding
 the Neurocognitive Mechanisms of Cognitive Security</a></td>
-<td>Cognitive security is a relatively new field that aims to understand
-and defend against.</td>
-<td>original source-guide</td>
+<td>No displayable curriculum annotation; see original work for
+scope.</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint177]</td>
@@ -871,7 +1274,8 @@ the neurocognitive mechanisms of cognitive security. The authors
 synthesize research on why people fall victim to false or deceptive
 information, proposing that certain brain systems are more exploitable
 than others.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint178]</td>
@@ -885,7 +1289,8 @@ cognitive psychology to analyze the human factor in security, examining
 how cognitive and neurological insights can improve security awareness
 education, behavioral policy development, insider threat detection, and
 user interface design.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint179]</td>
@@ -899,7 +1304,8 @@ published between 1998 and 2024, it identifies 129 distinct metrics
 grouped into non-biometric methods (questionnaires such as NASA-TLX,
 task performance, interaction tracking) and biometric methods (eye
 tracking, heart rate).</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint180]</td>
@@ -913,7 +1319,7 @@ biases such as confirmation bias, anchoring, and availability heuristics
 distort analytic judgment, and how analysts’ backgrounds shape
 interpretation.</td>
 <td>verified source-guide context; do not use as primary analytic
-support</td>
+support; annotation metadata, not claim verification</td>
 </tr>
 <tr>
 <td>[ageint308]</td>
@@ -925,7 +1331,8 @@ Infrastructure</a></td>
 Mitigating Foreign Influence Operations Targeting Critical
 Infrastructure,” providing guidance on the threat that foreign influence
 campaigns pose to U.S. critical infrastructure.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint311]</td>
@@ -938,14 +1345,18 @@ and coordinated activities by state and non-state actors including
 disinformation and propaganda. It explains why such threats matter for
 democratic processes and institutional trust, and outlines a four-part
 framework of understanding, preventing, containing, and recovering.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 </tbody>
-</table>
-<p><strong>Where this sits.</strong> This module’s overview is
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; return to
-the curriculum atlas [sec:curriculum_orientation] for the reader paths,
-evidence map, and safety gates that govern this module.</p>
+</table></div>
+<p><strong>Where this sits.</strong> This module’s overview is <span
+class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>;
+return to the curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>
+for the reader paths, evidence map, and safety gates that govern this
+module.</p>
 </main>
 </body>
 </html>

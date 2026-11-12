@@ -5,14 +5,31 @@
 paper:
   title: "AGEINT: Agentic Intelligence"
   subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
-  version: "0.1"
+  version: "0.2.0"
   date: ""  # Auto-generated at render if empty
+
+book:
+  title: "AGEINT: Agentic Intelligence"
+  subtitle: "A Modular Atlas, Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence"
+  edition: "0.2.0"
+  year: "2026"
+  license: "CC BY 4.0"
+  code_license: "Apache-2.0"
+  cover:
+    image: "../figures/cover/ageint-cover-synthesis.png"
+
+front_matter:
+  page_two_visual:
+    image: "../figures/frontmatter/ageint-evidence-transit-map.png"
+    title: "Evidence Transit Map"
+    caption: "Source telemetry from the generated curriculum and artifacts. This front-matter map is artifact telemetry only: it is not a benchmark, public-release certificate, publication claim, or learning-outcome result."
 
 authors:
   - name: "Author Name"
-    orcid: "0000-0000-0000-0000"
+    orcid: ""  # Add the author's own ORCID when available
     email: "author@example.com"
-    affiliation: "Institution"
+    affiliations:
+      - "Institution"
     corresponding: true
 
 publication:
@@ -23,6 +40,8 @@ publication:
   volume: ""
   pages: ""
   year: "2026"
+  version_doi: ""  # Add this edition's DOI only after its deposit
+  version_record: ""  # Add this edition's archive record URL after its deposit
 
 keywords:
   - agentic intelligence

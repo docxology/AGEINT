@@ -1,22 +1,22 @@
 ### MITRE ATT&CK for ICS assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-mitre-att-ck-for-ics]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-mitre-att-ck-for-ics].
 
 ### MITRE ATT&CK for ICS assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-mitre-att-ck-for-ics]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-mitre-att-ck-for-ics].
 
 #### MITRE ATT&CK for ICS capstone pathway: reviewable packet and excluded use
 
-The capstone deliverable is a reviewable packet that plugs into the broader unit thread. Run it through the canonical phase, artifact, and review-gate ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]); the local topic cluster is **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts**.
+The capstone deliverable is a reviewable packet that plugs into the broader unit thread. Run it through the canonical phase, artifact, and review-gate ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]); the local topic cluster is **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**.
 
-Minimum module submission: one-page analytic memo, source-lane map, claim ledger, safe-lab packet, rubric self-assessment, and debrief note. The packet must name what is excluded, who may approve reuse, and what would trigger a source refresh for **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts** and [@ageint255]; [@ageint257].
+Minimum module submission: one-page analytic memo, source-lane map, claim ledger, safe-lab packet, rubric self-assessment, and debrief note. The packet must name what is excluded, who may approve reuse, and what would trigger a source refresh for **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts** and [@ageint255]; [@ageint257].
 
 #### MITRE ATT&CK for ICS instructor facilitation notes: studio roles and pause points
 
-Facilitate as a bounded studio around **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts**, not as a lecture-only session.
+Facilitate as a bounded studio around **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**, not as a lecture-only session.
 
-- Start with the authority card and excluded-action list before showing examples from **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts** and [@ageint255]; [@ageint257].
+- Start with the authority card and excluded-action list before showing examples from **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts** and [@ageint255]; [@ageint257].
 - Assign one learner to maintain the claim ledger and one learner to challenge source quality.
 - Keep agent prompts visible enough for review and separate from final judgment.
 - Pause any activity that drifts toward live systems, real people, sensitive data, or external action.
@@ -24,43 +24,48 @@ Facilitate as a bounded studio around **ICS Matrix: 12 Tactics, Full Technique L
 
 #### MITRE ATT&CK for ICS assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **ICS Matrix: 12 Tactics, Full Technique Library** | Completed **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Cyber access-and-execution taxonomy review using fabricated alerts** | Completed **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **ICS controller-change coverage review using synthetic process records** | Completed **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **ICS Matrix: Versioned Tactics and Technique Knowledge Base**; **Cyber access-and-execution taxonomy review using fabricated alerts**; **Execution: Tasking Changes and Versioned Interpreter Categories**; **ICS firmware and project-integrity coverage**; **ICS evasion coverage-control review using defensive detection questions** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: validate against safety, availability, engineering state, incident scope, and after-action learning. |
+| **ICS defensive coverage and safety tabletop using synthetic process records**; **Cyber credential-and-movement taxonomy review using fabricated alerts**; **ICS collection-risk detection review using synthetic tag records**; **ICS alarm and communications-resilience tabletop**; **ICS process-safety consequence review using synthetic records** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Impact: ICS defensive coverage and safety tabletop using synthetic process records**; **Using ICS ATT&CK in Risk Assessment (ISA InTech)**; **Dragos: MITRE ATT&CK for ICS Threat Actor Mapping**; **Nozomi Networks: How Security Teams Use the ICS Framework** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: keep exercises lab-only or tabletop; exclude exploitation, process manipulation, unsafe actuation, and live-control actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### MITRE ATT&CK for ICS refresh map: source changes, safety triggers, and retest duties
 
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
 incidents, and instructor debrief findings each produce a visible owner, action,
-and retest condition before the module is reused against [@ageint255]; [@ageint257] and **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts**.
+and retest condition before the module is reused against [@ageint255]; [@ageint257] and **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**.
 
 #### MITRE ATT&CK for ICS refresh triggers: source changes and required actions
 
-Refresh against the canonical trigger-and-action table in the shared method-and-assurance reference ([@sec:method-assurance-reference]). When a source-guide reference, official standard, AI or public-sector policy, interface specification, safety audit, or instructor debrief signal appears, take the matching required action before reuse for **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts**. The local signals begin with [@ageint255]; [@ageint257].
+Refresh against the canonical trigger-and-action table in the shared method-and-assurance reference ([@sec:method-assurance-reference]). When a source-guide reference, official standard, AI or public-sector policy, interface specification, safety audit, or instructor debrief signal appears, take the matching required action before reuse for **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**. The local signals begin with [@ageint255]; [@ageint257].
 
 #### MITRE ATT&CK for ICS claim and evidence ledger: claim classes, caveats, and owners
 
-The claim and evidence ledger follows the canonical claim-class ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]). Apply the source-spine, research-backed governance, agentic-workflow, empirical or evaluated capability, safety, and cross-module claim classes to every assertion, attaching the required evidence and clearing the matching review gate before reuse. The local topic cluster is **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts**, and the source spine for these checks begins with [@ageint255]; [@ageint257].
+The claim and evidence ledger follows the canonical claim-class ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]). Apply the source-spine, research-backed governance, agentic-workflow, empirical or evaluated capability, safety, and cross-module claim classes to every assertion, attaching the required evidence and clearing the matching review gate before reuse. The local topic cluster is **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**, and the source spine for these checks begins with [@ageint255]; [@ageint257].
 
 ### MITRE ATT&CK for ICS reviewer challenge route: checklist, failure evidence, and remediation
 
 Before marking the work complete, verify the local source spine beginning with [@ageint255]; [@ageint257].
 
-**Triangulation anchors.** In module 46's review-checklist section, directly verified anchors for the **ICS/OT Cyber-Physical Defense and Tabletop Readiness** lane include [@official_nist_csf_2]; [@official_nist_sp_800_160r1]; [@official_nist_sp_800_82r3]; [@official_isa_iec_62443]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 46's review-checklist section, the **ICS/OT Cyber-Physical Defense and Tabletop Readiness** catalog routes include [@official_nist_csf_2]; [@official_nist_sp_800_160r1]; [@official_nist_sp_800_82r3]; [@official_isa_iec_62443]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts**. [@ageint255]; [@ageint257].
+- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts**. [@ageint255]; [@ageint257].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.
 - Agentic affordances are limited to retrieval, comparison, drafting, simulation, critique, and audit support.
 - The lab packet uses public, benign, owned-lab, or synthetic material only.
@@ -70,6 +75,6 @@ Before marking the work complete, verify the local source spine beginning with [
 
 ### MITRE ATT&CK for ICS learning-path links: module map, overview, and curriculum atlas
 
-Use the cross-links below to place **ICS Matrix: 12 Tactics, Full Technique Library; Cyber access-and-execution taxonomy review using fabricated alerts** in the wider unit: the orientation sets the frame, the parent unit supplies the shared safety posture, and the neighbouring modules show what evidence enters and leaves. Lead sources: [@ageint255]; [@ageint257].
+Use the cross-links below to place **ICS Matrix: Versioned Tactics and Technique Knowledge Base; Cyber access-and-execution taxonomy review using fabricated alerts** in the wider unit: the orientation sets the frame, the parent unit supplies the shared safety posture, and the neighbouring modules show what evidence enters and leaves. Lead sources: [@ageint255]; [@ageint257].
 
 [@sec:curriculum_orientation], [@sec:part-industrial-and-cyber-physical-intelligence], [@sec:chapter-industrial-control-systems-ics-and-operational-technology], [@sec:chapter-historical-ics-cyber-incidents-intelligence-analysis]

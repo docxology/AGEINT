@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,9 +182,411 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1
 id="sec:chapter-psychological-inoculation-and-prebunking">Psychological
 Inoculation and Prebunking</h1>
@@ -185,18 +594,26 @@ Inoculation and Prebunking</h1>
 id="psychological-inoculation-and-prebunking-figures-and-course-links-visual-evidence-source-flow-and-navigation">Psychological
 Inoculation and Prebunking figures and course links: visual evidence,
 source flow, and navigation</h3>
-<p>The module uses [fig:prebunking-inoculation-pipeline],
-[fig:ageint-prebunking-evidence-boundary], and
-[fig:part-cognitive-security-module-map] to map its evidence flow,
-safety boundaries, review artifacts, and refresh cues.</p>
-<p>Navigation links: [sec:curriculum_orientation],
-[sec:part-cognitive-security],
-[sec:chapter-neurocognitive-mechanisms-of-cognitive-security],
-[sec:chapter-cognitive-security-operations].</p>
+<p>The module uses <span class="citation"
+data-cites="fig:prebunking-inoculation-pipeline">[@fig:prebunking-inoculation-pipeline]</span>,
+<span class="citation"
+data-cites="fig:ageint-prebunking-evidence-boundary">[@fig:ageint-prebunking-evidence-boundary]</span>,
+and <span class="citation"
+data-cites="fig:part-cognitive-security-module-map">[@fig:part-cognitive-security-module-map]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:part-cognitive-security">[@sec:part-cognitive-security]</span>,
+<span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span>,
+<span class="citation"
+data-cites="sec:chapter-cognitive-security-operations">[@sec:chapter-cognitive-security-operations]</span>.</p>
 <figure id="fig:prebunking-inoculation-pipeline">
-<img
-src="../../../../figures/mermaid/prebunking-inoculation-pipeline.png"
-alt="Conceptual defensive education schematic for transparent prebunking: effects are bounded, context-dependent, measured, and refreshed rather than assumed." />
+<a class="figure-full-size-link" href="../figures/mermaid/prebunking-inoculation-pipeline.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Conceptual defensive education schematic"><img
+src="../figures/mermaid/prebunking-inoculation-pipeline.png"
+alt="A top-to-bottom educational pipeline. Monitoring identifies a manipulation technique. This feeds forewarning, a safe weakened-dose demonstration, refutation with technique-spotting skills, transparent delivery to a learner group, bounded outcome measurement, and a refresh decision if durability evidence weakens." aria-details="fig-prebunking-inoculation-pipeline-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Conceptual defensive education schematic
 for transparent prebunking: effects are bounded, context-dependent,
 measured, and refreshed rather than assumed. Its reader value is to make
@@ -206,11 +623,11 @@ demonstration, refutation with technique-spotting skills, and
 transparent delivery to a learner group visible at a glance, with the
 cognitive security / psychological inoculation and prebunking section as
 the source section and defensive review as the boundary.</figcaption>
-</figure>
+<details id="fig-prebunking-inoculation-pipeline-long-description" class="figure-long-description" data-figure-label="fig:prebunking-inoculation-pipeline"><summary>Detailed description of figure prebunking inoculation pipeline</summary><p>This process-flow figure is assigned to the cognitive security / psychological inoculation and prebunking section and should be read as an accessible equivalent for Psychological Inoculation and Prebunking Pipeline. The short alternative identifies the figure as: A top-to-bottom educational pipeline. Monitoring identifies a manipulation technique. This feeds forewarning, a safe weakened-dose demonstration, refutation with technique-spotting skills, transparent delivery to a learner group, bounded outcome measurement, and a refresh decision if durability evidence weakens. The full visual conveys A top-to-bottom educational pipeline. Monitoring identifies a manipulation technique. This feeds forewarning, a safe weakened-dose demonstration, refutation with technique-spotting skills, transparent delivery to a learner group, bounded outcome measurement, a refresh decision if durability evidence weakens. defensive education schematic for transparent prebunking: effects are bounded, and refreshed rather than assumed. The caption explains the reader task as follows: Conceptual defensive education schematic for transparent prebunking: effects are bounded, context-dependent, measured, and refreshed rather than assumed. Its reader value is to make A top-to-bottom educational pipeline. Monitoring identifies a manipulation technique. This feeds forewarning, a safe weakened-dose demonstration, refutation with technique-spotting skills, and transparent delivery to a learner group visible at a glance, with the cognitive security / psychological inoculation and prebunking section as the source section and defensive review as the boundary. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-prebunking-evidence-boundary">
-<img
-src="../../../../figures/mermaid/ageint-prebunking-evidence-boundary.png"
-alt="Source-backed conceptual schematic for bounded inoculation and prebunking claims: scholarly mechanism evidence, measured outcomes, rights safeguards, and refresh duties remain separate." />
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-prebunking-evidence-boundary.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Source-backed conceptual schematic for bounded inoculation"><img
+src="../figures/mermaid/ageint-prebunking-evidence-boundary.png"
+alt="Mermaid schematic separating prebunking lesson design, Science Advances inoculation evidence, outcome measures, rights safeguards, refresh review, and a stop path for unsupported transfer or manipulation framing." aria-details="fig-ageint-prebunking-evidence-boundary-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Source-backed conceptual schematic for
 bounded inoculation and prebunking claims: scholarly mechanism evidence,
 measured outcomes, rights safeguards, and refresh duties remain
@@ -221,7 +638,7 @@ Science Advances + reviews, Mechanism claim recognize manipulation
 technique, and Measured outcomes recognition / resilience not universal
 immunity, not as a capability score or live-task
 instruction.</figcaption>
-</figure>
+<details id="fig-ageint-prebunking-evidence-boundary-long-description" class="figure-long-description" data-figure-label="fig:ageint-prebunking-evidence-boundary"><summary>Detailed description of figure ageint prebunking evidence boundary</summary><p>This diagram is assigned to the cognitive security / psychological inoculation and prebunking section and should be read as an accessible equivalent for Prebunking Evidence Boundary. The short alternative identifies the figure as: Mermaid schematic separating prebunking lesson design, Science Advances inoculation evidence, outcome measures, rights safeguards, refresh review, and a stop path for unsupported transfer or manipulation framing. The full visual conveys Prebunking lesson defensive education only, Scholarly evidence Science Advances + reviews, Mechanism claim recognize manipulation technique, Measured outcomes recognition / resilience not universal immunity, Rights safeguard transparent, voluntary, non-censorial, Refresh review replication, durability, transfer, Scope caveat context and population matter, and No manipulation or censorship framing. The caption explains the reader task as follows: Source-backed conceptual schematic for bounded inoculation and prebunking claims: scholarly mechanism evidence, measured outcomes, rights safeguards, and refresh duties remain separate. The captioned view belongs to the cognitive security / psychological inoculation and prebunking section and should be read as a map of Prebunking lesson defensive education only, Scholarly evidence Science Advances + reviews, Mechanism claim recognize manipulation technique, and Measured outcomes recognition / resilience not universal immunity, not as a capability score or live-task instruction. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <p>This module teaches the <strong>Cognitive Security and Influence
 Resilience</strong> lane through a bounded, source-backed coursebook
 chapter. [ageint242]; [ageint243].</p>
@@ -229,14 +646,14 @@ chapter. [ageint242]; [ageint243].</p>
 id="cognitive-security-and-influence-resilience-frame-for-psychological-inoculation-and-prebunking-source-context-topic-focus-and-reader-task">Cognitive
 Security and Influence Resilience frame for Psychological Inoculation
 and Prebunking: source context, topic focus, and reader task</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-psychological-inoculation-and-prebunking]; [ageint242].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-psychological-inoculation-and-prebunking">[@sec:chapter-psychological-inoculation-and-prebunking]</span>.</p>
 <h3
 id="psychological-inoculation-and-prebunking-orientation-reader-task-conceptual-primer-outcomes-and-vocabulary">Psychological
 Inoculation and Prebunking orientation: reader task, conceptual primer,
 outcomes, and vocabulary</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-psychological-inoculation-and-prebunking]; [ageint242].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-psychological-inoculation-and-prebunking">[@sec:chapter-psychological-inoculation-and-prebunking]</span>.</p>
 <h3
 id="psychological-inoculation-and-prebunking-conceptual-primer-source-context-core-model-and-reader-task">Psychological
 Inoculation and Prebunking conceptual primer: source context, core
@@ -272,8 +689,8 @@ with safety and rights gates.</p>
 id="psychological-inoculation-and-prebunking-learning-outcomes-analytic-moves-evidence-duties-and-transfer">Psychological
 Inoculation and Prebunking learning outcomes: analytic moves, evidence
 duties, and transfer</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-psychological-inoculation-and-prebunking]; [ageint242].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-psychological-inoculation-and-prebunking">[@sec:chapter-psychological-inoculation-and-prebunking]</span>.</p>
 <ul>
 <li>Connect <strong>Psychological inoculation and prebunking literacy
 and Psychological Inoculation Against Misinformation: Psychological
@@ -299,9 +716,9 @@ campaigns, impersonation, or deception plans.</li>
 id="psychological-inoculation-and-prebunking-core-vocabulary-source-terms-method-roles-and-safety-limits">Psychological
 Inoculation and Prebunking core vocabulary: source terms, method roles,
 and safety limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-psychological-inoculation-and-prebunking]; [ageint242].</p>
-<table>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-psychological-inoculation-and-prebunking">[@sec:chapter-psychological-inoculation-and-prebunking]</span>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -319,8 +736,8 @@ and safety limits</h3>
 </tr>
 <tr>
 <td>Prebunking</td>
-<td>transparent education that helps people recognize misleading
-patterns before exposure</td>
+<td>transparent education about misleading patterns before exposure; its
+effectiveness and transfer require evidence rather than assumption</td>
 </tr>
 <tr>
 <td>Audience harm</td>
@@ -338,24 +755,18 @@ avoids manipulation</td>
 </tr>
 <tr>
 <td>MISO boundary</td>
-<td>the line between accountable public messaging analysis and covert
-influence design</td>
+<td>the separation between this classroom analysis and authorized
+military influence activities; MISO is not defined simply as covert
+messaging</td>
 </tr>
 <tr>
 <td>Inoculation</td>
-<td>building recognition of manipulation tactics without deploying
-persuasion against a population</td>
-</tr>
-<tr>
-<td>Psychological inoculation and prebunking…</td>
-<td>Key terms: Psychological, inoculation, prebunking.</td>
-</tr>
-<tr>
-<td>Psychological Inoculation Against…</td>
-<td>Key terms: Psychological, Inoculation, Against.</td>
+<td>an approach intended to build recognition of misleading tactics; it
+does not imply immunity or proven efficacy for a particular
+audience</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

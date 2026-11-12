@@ -1,4 +1,7 @@
-"""Profile-synthesized topic lesson frames and lesson field helpers."""
+"""Three-tier concept frames: safe identity/subject, category, then synthesis.
+
+The raw source title is provenance, never a competing instructional subject.
+"""
 
 from __future__ import annotations
 
@@ -9,8 +12,6 @@ from ._12_concept_routes import CONCEPT_KEYWORD_ROUTES, _first_matching_frame, _
 if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, PracticeLens, TopicEntry, IntelligenceProfile
 
-
-from ._07_safe_titles import _topic_anchor_words, is_generic_display_title
 
 from _data_loaders import category_concept_frames
 
@@ -38,7 +39,7 @@ def _cognitive_subcategory(raw_lower: str) -> str | None:
 
 
 def _category_frame_key(entry: TopicEntry) -> str:
-    raw = f"{entry.display_title} {entry.raw_title}".lower()
+    raw = entry.display_title.lower()
     if entry.risk_category == "analytic_tradecraft":
         sub = _analytic_subcategory(raw)
         if sub:
@@ -54,15 +55,27 @@ def _category_frame_key(entry: TopicEntry) -> str:
 
 
 def synthesized_concept_frame(entry: TopicEntry, coursebook: CoursebookProfile, profile: IntelligenceProfile) -> str:
-    """Profile-backed concept prose when no keyword or category route matches."""
-    anchor_source = entry.raw_title if is_generic_display_title(entry.display_title) else entry.display_title
-    anchor = _topic_anchor_words(anchor_source, limit=3)
-    return f"**{entry.display_title}** applies {anchor} within {profile.title}: learners use {coursebook.key_distinction} and {coursebook.practice_focus} evidence before any judgment moves forward."
+    """Provide honest profile framing, not a definition made from title words."""
+    distinction = coursebook.key_distinction.rstrip(".")
+    return (
+        f"**{entry.display_title}** is taught in the **{profile.title}** lane. "
+        f"The analytic distinction is to {distinction}. "
+        "Apply it to the supplied evidence; a topic label alone establishes "
+        "neither a mechanism nor a conclusion."
+    )
 
 
 def concept_frame_for_entry(entry: TopicEntry, coursebook: CoursebookProfile, profile: IntelligenceProfile) -> str:
-    raw = f"{entry.display_title} {entry.raw_title}".lower()
-    frame = _first_matching_frame(raw, CONCEPT_KEYWORD_ROUTES)
+    from .topic_prompt_routes import pattern_profile_for_entry
+
+    pattern = pattern_profile_for_entry(entry)
+    if pattern:
+        return (
+            f"**{pattern.safe_name}** uses {pattern.methods}. "
+            f"Its classroom application is {pattern.application}; it {pattern.safety_boundary}."
+        )
+    # Tier A follows the instructional subject, never a competing source title.
+    frame = _first_matching_frame(entry.display_title.lower(), CONCEPT_KEYWORD_ROUTES)
     if frame:
         return frame
     category_key = _category_frame_key(entry)
@@ -73,9 +86,11 @@ def concept_frame_for_entry(entry: TopicEntry, coursebook: CoursebookProfile, pr
 
 
 def synthesized_evidence_prompt(entry: TopicEntry, lens: PracticeLens, coursebook: CoursebookProfile) -> str:
-    anchor = _topic_anchor_words(entry.display_title, limit=2)
-    focus = coursebook.practice_focus.removesuffix(" review")
-    return f"The evidence packet for **{entry.display_title}** uses source descriptors, {focus} records, provenance gaps, and a documented judgment-change condition for {anchor}."
+    return (
+        f"For **{entry.display_title}**, inspect records relevant to {coursebook.practice_focus}, "
+        "their versions, original sources, and dependency links. "
+        f"Apply the **{lens.title}** check; record missing evidence and what would change the judgment."
+    )
 
 
 # Deferred import: breaks cycle with topic_prompt_routes importing _12_concept_routes.

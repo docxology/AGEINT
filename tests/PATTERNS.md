@@ -6,13 +6,11 @@
 
 ## Session fixture: `built_output`
 
-```python
-@pytest.fixture(scope="session")
-def built_output() -> Path:
-    ...
-```
-
-Runs `run_build(PROJECT_ROOT)` when manuscript or figure registry is absent. Most inventory and reader-quality tests depend on this.
+The session-scoped fixture returns the existing project `output/` directory.
+It never builds missing artifacts or refreshes stale evidence, even when the
+SDK is discoverable. Run the explicit generation workflow in a development or
+fresh acceptance checkout before validating a newly built edition; do not
+regenerate a checked-in publication to hide its original failures.
 
 ## Inventory helpers
 
@@ -34,8 +32,10 @@ Split across `test_manuscript_inventory_structure.py` and `test_manuscript_inven
 
 ## Running
 
+Use the same prepared SDK environment as the [full workflow](../README.md#commands):
+
 ```bash
-uv run pytest tests/ --cov=src --cov-fail-under=90
+python -m pytest tests/ --cov=src --cov-fail-under=90
 ```
 
 ## See also

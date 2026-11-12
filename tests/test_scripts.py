@@ -1,4 +1,4 @@
-"""Smoke tests for thin AGEINT script entrypoints."""
+"""CLI format/error contracts and source-freshness behavior using real inputs."""
 
 from __future__ import annotations
 
@@ -8,25 +8,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-import pytest
 from reportlab.pdfgen import canvas
 
-import template_resolver
 from build_pipeline import generated_output_is_stale
-from citation_workflow import source_citation_coverage_summary
-from curriculum import load_curriculum
 from orchestration_contracts import output_build_sentinels
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATA = PROJECT_ROOT / "data" / "curriculum"
-
-# See the matching guard in test_build_curriculum_script.py for the full
-# rationale: this test's subprocess runs scripts/z_generate_manuscript_variables.py
-# with cwd=PROJECT_ROOT, which delegates to the real run_build() against this
-# repo's actual output/ tree (not a tmp_path copy) — confirmed live to crash
-# partway through manuscript rendering and leave output/manuscript/ emptied
-# for the rest of the pytest session when the template repo isn't resolvable.
-requires_template_repo = pytest.mark.skipif(template_resolver.resolve_template_repo(PROJECT_ROOT) is None, reason="sibling docxology/template repo not resolvable in this checkout")
 
 
 def _write_pdf(path: Path, text: str) -> None:
@@ -59,94 +46,8 @@ def test_generated_output_staleness_detects_newer_source(tmp_path: Path) -> None
     assert generated_output_is_stale(tmp_path, output) is True
 
 
-def test_setup_hook_writes_output_docs() -> None:
-    # setup_hook.py hardcodes PROJECT_ROOT from its own __file__, so unlike
-    # every other subprocess test in this file it cannot be pointed at a
-    # tmp_path copy — it always writes into this repo's real output/ tree.
-    # write_output_directory_docs() (what it calls) writes a generic stub
-    # for EVERY output subdirectory including output/manuscript/, which the
-    # real build pipeline overwrites with manuscript-specific content via
-    # write_manuscript_output_docs() (src/manuscript_manifest/_05_part.py)
-    # as part of a full render_manuscript() pass. Confirmed live (real
-    # GitHub Actions run, py3.10 and py3.12): when no full rebuild follows
-    # in the same session (true whenever the sibling template repo isn't
-    # resolvable — CI's own `test` job never rebuilds before running
-    # pytest), the generic stub this test writes persists and causes
-    # test_audit_heading_support_script_reports_json_contract, which runs
-    # later in this same file, to see stale content and fail — a bug this
-    # test's own side effect causes, not a real content-quality issue.
-    # Restore the manuscript-specific docs immediately after asserting,
-    # matching what a full build always does.
-    from output_docs import write_manuscript_output_docs
-    from rendered_heading_support import ensure_heading_support_in_tree
-
-    result = subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "setup_hook.py")], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True)
-    try:
-        assert result.returncode == 0
-        assert (PROJECT_ROOT / "output" / "README.md").is_file()
-    finally:
-        # Mirror the exact restoration order render_manuscript() uses
-        # (src/manuscript_manifest/_05_part.py:311-312): write_manuscript_output_docs()
-        # alone leaves doc-stub headings without the citation-anchor lines that
-        # ensure_heading_support_in_tree() injects, which trips the heading-support
-        # audit for the rest of the pytest session.
-        manuscript_dir = PROJECT_ROOT / "output" / "manuscript"
-        write_manuscript_output_docs(manuscript_dir)
-        ensure_heading_support_in_tree(manuscript_dir)
 
 
-def test_generate_figures_script_runs() -> None:
-    result = subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "generate_figures.py"), "--allow-placeholder-figures"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True)
-    assert result.returncode == 0
-    assert "Rendered" in result.stdout
-
-
-@requires_template_repo
-def test_z_generate_manuscript_variables_prints_path() -> None:
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "z_generate_manuscript_variables.py")],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        # This script delegates to the full run_build() (template-compat contract),
-        # which re-renders all 64 figures (24 Mermaid/Chrome subprocesses, ~185s).
-        # Corpus growth pushed the full build to ~150-190s, past the 120s used by
-        # the lighter script tests; 300s gives headroom without masking a real hang.
-        # 900s (matching the artifact-evidence/publication-readiness contract bounds)
-        # accounts for external-drive I/O latency under concurrent load, where the
-        # same run has been observed to exceed 300s without a real hang.
-        timeout=900,
-    )
-    assert result.returncode == 0
-    assert result.stdout.strip().endswith("manuscript_variables.json")
-
-
-def test_check_rendered_references_script_passes(built_output: Path) -> None:
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "check_rendered_references.py"), str(built_output)],
-        cwd=PROJECT_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-        # 120s was fine on local disks; on the external-drive checkout under load
-        # the full-output reference audit can exceed it (observed 2026-08-30).
-        # 900s matches the other subprocess contract bounds and still fails hard
-        # on a real hang.
-        timeout=900,
-    )
-    assert result.returncode == 0, result.stderr
-    assert "Rendered reference audit passed" in result.stdout
-
-
-def test_count_citations_script_reports_source_counts() -> None:
-    result = subprocess.run([sys.executable, str(PROJECT_ROOT / "scripts" / "count_citations.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120)
-    assert result.returncode == 0, result.stderr
-    payload = json.loads(result.stdout)
-    summary = source_citation_coverage_summary(load_curriculum(DATA))
-    assert payload["source_sections"] == summary.section_count
-    assert payload["source_citation_occurrences"] == summary.citation_occurrences
-    assert payload["source_zero_citation_sections"] == summary.zero_citation_sections
 
 
 def test_audit_pdf_quality_script_reports_json_contract(tmp_path: Path) -> None:
@@ -161,24 +62,22 @@ def test_audit_pdf_quality_script_reports_json_contract(tmp_path: Path) -> None:
     assert payload["stale_pdf"] is False
 
 
-def test_audit_heading_support_script_reports_json_contract() -> None:
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120
-    )
+def test_audit_heading_support_script_reports_json_contract(tmp_path: Path) -> None:
+    document = tmp_path / "navigation.md"
+    document.write_text("# Local section {#sec:local}\n\nStructural navigation only.\n", encoding="utf-8")
+    command = [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_heading_support.py"), "--manuscript-dir", str(tmp_path), "--format", "json"]
+    result = subprocess.run(command, cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120)
     assert result.returncode == 0, result.stdout + result.stderr
     payload = json.loads(result.stdout)
-    assert payload["heading_count"] > 0
-    assert payload["unsupported_heading_count"] == 0
+    assert payload["scope"] == "structural_navigation_not_evidence"
+    assert payload["heading_count"] == 1
     assert payload["unsupported_headings"] == []
 
-
-def test_audit_orchestration_contract_script_reports_json_contract() -> None:
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_orchestration_contract.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120
-    )
-    assert result.returncode == 0, result.stdout + result.stderr
+    document.write_text("## Rule without navigation\n\nAuthor-defined rule.\n", encoding="utf-8")
+    result = subprocess.run(command, cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120)
+    assert result.returncode == 1, result.stdout + result.stderr
     payload = json.loads(result.stdout)
-    assert payload["ok"] is True
-    assert payload["pipeline"]["stage_count"] >= 8
-    assert payload["audits"]["contract_count"] >= 10
-    assert payload["source_packs"]["registry_count"] == 2
+    assert payload["unsupported_heading_count"] == 1
+    assert payload["unsupported_headings"][0]["title"] == "Rule without navigation"
+
+

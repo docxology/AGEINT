@@ -4,49 +4,65 @@ Forward-only tracker for source-owned work. History lives in `ISA.md` and commit
 messages; this file holds current state and the next useful work. Each row states
 an acceptance line — the command whose output decides whether it is done.
 
-## Verified State (2026-09-07)
+## Historical pre-refactor verification (2026-11-06)
 
-Measured, not copied. Re-run the commands rather than trusting these numbers.
+Evidence clock: `SOURCE_DATE_EPOCH=1794006724`. This pins report/build dates;
+it does not mean every source was freshly checked. Reports under
+`output/reports/` carry the detailed evidence and limits.
+This is the previous local content pass, not acceptance for the current 0.2.0
+refactor or its SDK dependency. Rebuilt outputs and current release evidence
+must replace the old measurements before publication.
 
-- Test gate: `uv run pytest tests/ --cov=src --cov-fail-under=90` -> green
-  (437 passed, coverage 91.70%, floor 90).
-- Lint gate: `uv run ruff check src tests scripts` -> clean. Ruleset pinned in
-  `[tool.ruff.lint]` (`select = ["E", "F"]`); version pinned via `uv.lock`.
-- File-size gate: `tests/test_file_size_inventory.py` -> green (500-line cap).
-- Publication-readiness: `audit_publication_readiness.py --write --skip-parent-guard`
-  -> `ok = true` (exit 0, 2026-09-07 re-run after the canonicalization rebuild).
-- Artifact evidence: `audit_artifact_evidence.py --write` -> `ok = true`
-  (exit 0, 2026-09-07 re-run).
-- Source refresh: `audit_source_refresh_due.py --write` -> 472 rows, 0 due/stale
-  (2026-09-07 re-run).
-- Measured scope: 16 parts, 51 chapters, 9 appendices, 177 registered figures,
-  472 source metadata rows (462 intelligence + 10 source-quality), 312 parsed
-  guide references (rebuild log 2026-09-07).
+- Strict canonical build: 16 parts, 51 chapters, 9 appendices, 20 patterns,
+  312 guide references and 177 registered figures; real rendered figures required.
+- Native PDF: 1,825 pages; 6,579 URI links, zero bad targets, zero banned-marker
+  hits, not stale. Root `AGEINT.pdf` matches `output/pdf/AGEINT_combined.pdf`.
+- Actual Chrome reader: 177 images, zero broken loaded images, no horizontal
+  overflow at the exercised 1,280-pixel viewport; figure-detail disclosure works.
+- The Python example copied from canonical HTML executes with the documented
+  result. Duplicate-origin, conflicting-current-record, no-current-record,
+  superseded-record and exact-permission controls pass; human review stays pending.
+- Claim audit: zero hard failures, 4,729 lexical review flags. Reference audit:
+  333 files, zero issues. These are structural/lexical checks, not entailment,
+  learning-gain, security-effectiveness, legal or accessibility certifications.
+- Complete regression gate: `uv run pytest tests/ --cov=src --cov-fail-under=90`
+  passed: 392 tests, 90.04% coverage (floor 90). Ruff is clean. Focused
+  behavioral/native-format checks: 65 passed; file-size gate passed.
+- Shared `template` renderer: 60 focused tests passed for nested image-path,
+  alt-text and HTML contracts; the complete AGEINT PDF/HTML render also passed.
+- Live aggregate audit: all 12 checks passed; all 723 source sections cited;
+  472 explicit source-metadata rows, zero fallback rows.
+- Source refresh at the pinned evidence clock: 403 current, 69 due soon;
+  zero due/stale rows, missing checked dates or unknown cadences.
+- Local publication preflight passed with `--skip-parent-guard`. The parent
+  confidentiality guard was not run; no publication approval is implied.
+  Final artifact and local-preflight reports are written under `output/reports/`.
+- The PDF is untagged; no PDF/UA or screen-reader conformance claim is made.
 
 ## Open
 
-### 1 (Medium) — fail source validation when the manuscript config is missing
+### 0.2.0 qualification and publication
 
-`_write_generated_config()` (`src/manuscript_manifest/_05_part.py`) now hard-fails
-on a missing `docs/manuscript/config.yaml` at render time (added 2026-09-07; see
-Resolved). Move the check earlier: `validate_declarative_tables()` in
-`src/_data_loaders.py` (the `source_validation` stage) should assert the file
-exists so a broken tree fails before any figure-rendering work, not after.
+`tasks.yaml` is the authoritative release state:
 
-Acceptance: on a scratch copy with `docs/manuscript/config.yaml` deleted,
-`uv run python scripts/build_curriculum.py` exits non-zero naming the missing
-config before rendering any figures.
+- `ageint-37`: integrate the real SDK consumer fixes through
+  [template PR #289](https://github.com/docxology/template/pull/289) into the
+  existing 5.2.0 release train, preserving all genuine SDK acceptance gates.
+- `ageint-36`: qualify the current complete reader, full regression/coverage
+  gate, native audits, browser surface and copied rendered program. Root-mutating
+  CLI wording smoke tests have been removed; reader bytes must remain unchanged
+  across the suite rather than being silently rebuilt over test side effects.
+- `ageint-release-0-2-0`: publish only after those prerequisites and exact-main
+  full acceptance. The historical 0.1.0 DOI is not a 0.2.0 archive record.
 
-### 2 (Minor) — regenerate `docs/manuscript/config.yaml.example`
+The clean-source development [run 42383495664](https://github.com/docxology/AGEINT/actions/runs/42383495664)
+passed the full technical reader gates recorded under `ageint-36`. Aggregate
+readiness still rejects the unfinished SDK-dependent tasks; their status is not
+advanced by an inspection artifact or a successful development render.
 
-The example predates the current shape: it has no `book:` section (license,
-code_license, cover) and no `front_matter:` block, while
-`collect_source_license_posture()` reads exactly those keys from
-`docs/manuscript/config.yaml`. Regenerate the example from the real config with
-placeholder values so a copy-to-config workflow produces a gate-green file.
-
-Acceptance: `docs/manuscript/config.yaml.example` contains `book.license` and
-`book.code_license` keys.
+Implementation is not native qualification. Inspection-only snapshots and
+diagnostics cannot satisfy the verified release handoff; prior skipped-guard
+reports and the measurements above cannot certify current Source.
 
 ## Deferred (author decision required)
 
@@ -60,6 +76,19 @@ Acceptance: `docs/manuscript/config.yaml.example` contains `book.license` and
   particular `data/research_anchors/**` and `output/figures/**`).
 
 ## Resolved
+
+### 2026-11-07 — source refactoring qualified
+
+`ageint-35` is complete. Native metadata/tag and missing-config preservation
+smoke, full-source Ruff, workflow actionlint, the genuine offline lock check
+and 83 focused regressions passed with Source unchanged. The run is
+`ageint-readonly-cli-qualification-91d8806d`.
+
+Qualification exposed repository-writing audit CLI tests. Their report writes
+were removed; CI now fingerprints reports as well as reader bytes across the
+suite. The separately integrated SDK consumer source passed targeted Ruff,
+85 focused regressions and a genuine native PDF-revision smoke. Neither result
+is complete 0.2.0 reader qualification, hosted acceptance or publication.
 
 ### 2026-09-07 — manuscript canonicalization completed (`docs/manuscript/` is the only manuscript source dir)
 
@@ -243,45 +272,3 @@ introduced (each under 300 lines): `src/intelligence_content/_04c_part.py`,
 `src/manuscript_manifest/_chapter_governance.py`,
 `src/manuscript_manifest/_chapter_practice_pathways.py`,
 `src/manuscript_variables/_bibtex_helpers.py`.
-
-## Workflowz review — 2026-11-10
-
-### 3 (P1; AGEINT-WZ-001) — make the strict manuscript rebuild a blocking CI gate
-
-Evidence: `.github/workflows/manuscript.yml:117-137` marks the strict rebuild `continue-on-error: true` and restores committed outputs after failure, so later tests and audits can pass against stale artifacts even when no fresh build exists. The stated prerequisite is stale: `substitute_manuscript_text()` now has a standalone token-substitution path when `infrastructure` cannot import (`src/manuscript_injection.py:13-34`).
-
-Outcome: a failed `AGEINT_REQUIRE_RENDERED_FIGURES=1` rebuild fails the workflow before any audit can certify committed output as fresh; successful runs validate only the newly built tree, and comments describe the current standalone adapter.
-
-Acceptance: from the repository root, `SOURCE_DATE_EPOCH=1788754689 AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py` exits 0, followed by `uv run pytest tests/test_build_curriculum_script.py tests/test_workflow_contracts.py -q`; the new workflow contract test must reject `continue-on-error` and committed-output restoration on the rebuild path. A forced rebuild failure must fail the workflow rather than run the audit suite.
-
-Dependencies/constraints: requires the Mermaid/Chrome toolchain already installed by `manuscript.yml`; PDF rendering remains external and informational. Do not weaken `AGEINT_REQUIRE_RENDERED_FIGURES=1` or suppress the separate PDF-only findings.
-
-### 4 (P1; AGEINT-WZ-002) — report due sources instead of aborting the freshness workflow
-
-Evidence: `main()` deliberately returns 1 when the report contains due/stale/invalid rows (`scripts/audit_source_refresh_due.py:35-48`), but the “Compute current source-refresh-due facts” step has no failure-tolerance (`.github/workflows/source-freshness.yml:34-35`). Consequently the exact due-source condition stops the job before baseline comparison and issue creation at `.github/workflows/source-freshness.yml:37-58`.
-
-Outcome: a valid nonzero audit result is still saved as JSON, compared with the baseline, uploaded, and routed to the idempotent drift-issue step; malformed/missing JSON and operational failures remain visible rather than being treated as a valid report.
-
-Acceptance: from the repository root, `uv run pytest tests/test_source_refresh_due.py tests/test_workflow_contracts.py -q` passes, including a workflow-contract negative control where `audit_source_refresh_due.py` exits 1 with valid JSON and comparison/issue steps remain reachable. `uv run python scripts/audit_source_refresh_due.py --format json > /tmp/ageint-source-refresh.json; test -s /tmp/ageint-source-refresh.json` must leave a nonempty JSON snapshot even when the audit exits 1.
-
-Dependencies/constraints: preserve the audit’s nonzero API for direct callers and preserve the existing open-issue deduplication; only the scheduled workflow must tolerate the expected “not ok” report long enough to publish it.
-
-### 5 (P2; AGEINT-WZ-003) — fail closed when required source-pack YAML is absent
-
-Evidence: `_load_pack_payload()` returns `{}` for a missing pack file (`src/intelligence_content/source_packs.py:131-134`), and `_load_profile_routes()` repeats that behavior (`src/intelligence_content/source_packs.py:151-154`). These are required inputs under `data/agency_source_packs.yaml` and `data/research_source_packs.yaml`; empty registries silently remove pack-expanded citations instead of identifying the broken source tree.
-
-Outcome: deleting either required source-pack file raises `FileNotFoundError` naming that path during registry loading/source validation, before a degraded manuscript can be generated; present-but-empty or malformed `packs:` mappings remain validation errors.
-
-Acceptance: from the repository root, `uv run pytest tests/test_orchestration_contracts.py tests/test_agency_source_coverage.py -q` passes with new negative controls for each missing file, asserting `FileNotFoundError` and the exact filename; the existing current-registry and unknown-key tests remain green.
-
-Dependencies/constraints: no optional source-pack mode is documented. Keep `concept_routes_supplement.yaml` optional; this change applies only to the two required pack registries.
-
-### 6 (P3; AGEINT-WZ-004) — pin the primary Python runtime to 3.15.2
-
-Evidence: the current primary pin is `3.15` in `.python-version:1`, consumed by all three workflows, and the CI current-runtime matrix leg is also `3.15` (`.github/workflows/ci.yml:53-60`). This leaves the patch release resolver-dependent rather than recording the preferred 3.15.2 runtime.
-
-Outcome: `.python-version` and the current-runtime CI leg select exactly Python 3.15.2, while the deliberate Python 3.12 compatibility leg and `requires-python = ">=3.11"` support contract remain unchanged.
-
-Acceptance: from the repository root, `uv sync --extra dev && uv run python -c 'import sys; assert sys.version_info[:3] == (3, 15, 2), sys.version'` exits 0; `uv run pytest tests/test_build_clock.py tests/test_build_curriculum_script.py -q` remains green.
-
-Dependencies/constraints: this is an exact patch-pin correction, not a claim that locked dependencies are outdated. Do not change the lower-bound support policy or dependency versions without separate compatibility evidence.

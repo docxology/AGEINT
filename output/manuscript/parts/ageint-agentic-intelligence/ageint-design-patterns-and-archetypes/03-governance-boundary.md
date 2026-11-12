@@ -1,15 +1,15 @@
 ### AGEINT Design Patterns and Archetypes governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 ### AGEINT Design Patterns and Archetypes analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 32's governance-boundary section, directly verified anchors for the **Agentic AI Governance and Tool Security** lane include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 32's governance-boundary section, the **Agentic AI Governance and Tool Security** catalog routes include [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 Research lane: **Agentic AI Governance and Tool Security** for **Pattern 1: Focused Analytic Reasoner (source identity preserved in pattern registry) - keeps reasoning reviewable without exposing hidden reasoning or delegating action; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**. [@ageint233]; [@ageint258].
 
 **Curriculum topic spine:** **Pattern 1: Focused Analytic Reasoner (source identity preserved in pattern registry) - keeps reasoning reviewable without exposing hidden reasoning or delegating action**, **Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**, **Safe defensive application: single public-source report critique with provenance and uncertainty fields**.
-**Verified anchor cluster:** [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]; [@official_ic_ai_ethics_principles]; [@official_ic_ai_ethics_framework]; [@official_odni_icd_505].
+**Recorded source cluster; inspection and scope limits apply:** [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]; [@official_nist_ai_600_1]; [@official_ic_ai_ethics_principles]; [@official_ic_ai_ethics_framework]; [@official_odni_icd_505].
 
 **Conceptual depth:** delegated action under explicit authority, identity, permissions, tool boundaries, monitoring, and human escalation.
 
@@ -43,7 +43,7 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint233]; [
 
 ### AGEINT Design Patterns and Archetypes agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 AGEINT translation is bounded by the **Agentic AI Governance and Tool Security** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **Pattern 1: Focus
 
 #### AGEINT Design Patterns and Archetypes permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -62,13 +62,13 @@ exercises, and accountable defensive analysis for **Pattern 1: Focused Analytic 
 
 #### AGEINT Design Patterns and Archetypes excluded operational boundary: blocked actions and stop rules
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 Raw design-pattern motifs are transformed into accountable tabletop, audit, provenance, control-coverage, and governance exercises. The module preserves source identity in the pattern registry while rewriting methods, applications, and architecture artifacts for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes** into evidence-bounded curriculum treatments.
 
 ### AGEINT Design Patterns and Archetypes governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
+**Navigation.** Parent section: [@sec:chapter-ageint-design-patterns-and-archetypes].
 
 Governance is practiced as a gate on the **Agentic AI Governance and Tool Security**
 lane. Learners use the **Agentic Tool-Governance Lens** to decide who is accountable for the exercise,
@@ -79,19 +79,18 @@ agent-assisted artifact must stop for human review while using **Pattern 1: Focu
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint233]; [@ageint258]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint233]; [@ageint258]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Agentic AI Governance and Tool Security** failure modes and the **Agentic Tool-Governance Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### AGEINT Design Patterns and Archetypes evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-ageint-design-patterns-and-archetypes]; [@ageint233].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Agentic Tool-Governance Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**.
 
@@ -101,10 +100,10 @@ The source assurance check ties the current verified anchor set to the local cha
 
 | Assurance question | Direct source evidence | Chapter artifact |
 |---|---|---|
-| What does the module inherit from `official_oecd_agentic_ai` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | The Agentic AI Landscape and Its Conceptual Foundations; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; Official OECD conceptual foundation for agentic AI. |
+| What does the module inherit from `official_oecd_agentic_ai` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | The Agentic AI Landscape and Its Conceptual Foundations; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; source-quality triangulation and claim-boundary review |
 | What does the module inherit from `official_canada_agentic_ai_guide` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | Guide on the Use of Agentic Artificial Intelligence; lane `public_sector_agentic_ai`; checked 2026-08-30. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; bounded-autonomy run card, recoverability review, approval threshold, monitoring evidence, and public-sector service assurance |
-| What does the module inherit from `official_nist_ai_rmf` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | Artificial Intelligence Risk Management Framework (AI RMF 1.0); lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; Official NIST.AI.100-1 risk-management framework. |
-| What does the module inherit from `official_nist_ai_600_1` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | Artificial Intelligence Risk Management Framework: Generative AI Profile; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; Official NIST AI 600-1 generative AI profile. |
+| What does the module inherit from `official_nist_ai_rmf` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | Artificial Intelligence Risk Management Framework (AI RMF 1.0); lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; source-quality triangulation and claim-boundary review |
+| What does the module inherit from `official_nist_ai_600_1` for **Pattern 1: Focused Analytic Reasoner; Safe methods: bounded source reading, explicit assumptions, self-critique, and confidence notes**? | Artificial Intelligence Risk Management Framework: Generative AI Profile; lane `source_quality_spine`; checked 2026-05-21. | agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path; source-quality triangulation and claim-boundary review |
 | How is Perplexity handled here? | Discovery and second-opinion notes are not citable authority unless converted into direct official, standards-body, public-domain, or scholarly anchors. | Claim ledger records the direct URL, checked date, source lane, refresh trigger, and reviewer. |
 
 **Where this sits.** This module's overview is [@sec:chapter-ageint-design-patterns-and-archetypes]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

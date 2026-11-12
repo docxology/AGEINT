@@ -912,11 +912,11 @@ tasks:
     Local-only task; no release, push, PR, archive, promotion, or publication
     action was taken.'
 - id: ageint-m1
-  title: AGEINT v1 curriculum release
-  status: todo
-  start: '2026-07-03'
-  end: '2026-07-03'
-  progress: 0
+  title: AGEINT 0.1.0 curriculum release
+  status: done
+  start: '2026-06-17'
+  end: '2026-06-17'
+  progress: 100
   milestone: true
   deps:
   - ageint-4
@@ -942,9 +942,118 @@ tasks:
   - ageint-32
   - ageint-33
   tags: []
-  notes: 'Local publication-readiness preflight is green as of 2026-06-14:
-    `ageint-27` is done, confidentiality/source-license/release-surface checks
-    pass, artifact manifest issues are empty, and the fresh PDF/rendered
-    validators pass. This milestone remains todo because no public release,
-    push, PR, archive, promotion, publication upload, DOI, or release record was
-    explicitly approved or performed.'
+  notes: |-
+    Historical release: https://github.com/docxology/AGEINT/releases/tag/v0.1.0
+    was published on 2026-06-17, as observed from GitHub release metadata on
+    2026-11-07. The previous todo/no-publication note described the 2026-06-14
+    local-only preflight and is superseded by that actual release record.
+    Historical technical measurements above are not evidence for edition 0.2.0.
+- id: ageint-34
+  title: Comprehension-first curriculum and worked operator workflows
+  status: done
+  start: '2026-11-06'
+  end: '2026-11-06'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-33
+  tags:
+  - manuscript
+  - workflows
+  - cognitive-security
+  notes: |-
+    Completed the prior local content review: unit spines, fifteen worked
+    profile cases, eight-step operator workflow, proposed 75-minute first
+    session, accessible manual fallbacks and offline workbooks. The copied
+    chapter-36 Python example and its duplicate/conflict/stale/action-boundary
+    controls ran against the rendered HTML. Historical 2026-11-06 evidence:
+    392 tests, 90.04% coverage, 177 registered figures and an 1,825-page PDF.
+    These are pre-refactor observations, not current 0.2.0 release acceptance.
+- id: ageint-35
+  title: Canonical source APIs and fail-closed release workflow refactoring
+  status: done
+  start: '2026-11-07'
+  end: '2026-11-07'
+  progress: 100
+  milestone: false
+  deps:
+  - ageint-34
+  tags:
+  - refactoring
+  - validation
+  - workflows
+  notes: |-
+    Implemented early selected-project config validation, canonical API cutover,
+    version-derived prerequisites, fail-closed parent guards and byte-based
+    config/preamble/lock freshness. Native metadata/tag and missing-config
+    preservation smoke, full-source Ruff, workflow actionlint, native locked
+    dependency check and 83 focused regressions passed on 2026-11-07.
+    Qualified run ageint-readonly-cli-qualification-91d8806d preserved Source
+    and reaped all observed children. Audit CLI controls are now read-only.
+    This closes source refactoring, not full reader or release acceptance.
+- id: ageint-36
+  title: Qualify the complete 0.2.0 reader and release gates
+  status: in_progress
+  start: '2026-11-07'
+  end: '2026-11-07'
+  progress: 0
+  milestone: false
+  deps:
+  - ageint-35
+  - ageint-37
+  tags:
+  - verification
+  - accessibility
+  - release
+  notes: |-
+    Requires a strict current-source build, genuine Mermaid rendering, complete
+    tests with at least 90% coverage, SDK PDF/HTML compilation, all native audits,
+    actual reader-surface inspection and execution of the rendered worked code.
+    A candidate preview, old output, skipped parent guard or metadata-only pass
+    is not acceptance. Record actual source/run/artifact evidence on completion.
+    Development evidence: clean AGEINT Source 66a07dbd371e1c49009bfe7948c6d75366b87822
+    with SDK candidate d8441e00098456a7c8d9d1e5ccfeb8099f810590 in hosted run
+    42383495664 passed 474 tests at 90.31% coverage and all 16 non-task technical
+    readiness checks, including the completed parent guard. All 3440 reader
+    headings had structural support; the current 1826-page PDF had no bad link
+    targets. Inspection artifact 13580043282 retains genuine producer bytes but
+    does not authorize release. SDK dependency ageint-37 remains outstanding.
+- id: ageint-37
+  title: Integrate and genuinely release the required shared SDK 5.2.0
+  status: in_progress
+  start: '2026-11-07'
+  end: '2026-11-07'
+  progress: 0
+  milestone: false
+  deps: []
+  tags:
+  - sdk
+  - integration
+  - release
+  notes: |-
+    Integrate nested-image registry matching and the native BibTeX failure
+    boundary through the existing shared SDK minor train. Preserve concurrent
+    work. Require its actual policy review, publication refresh, measured
+    coverage, ordinary main integration and complete exact-main required
+    acceptance before publishing v5.2.0. No historical tags, bypasses, fabricated
+    receipts or implied package-index/archive publication are authorized.
+- id: ageint-release-0-2-0
+  title: AGEINT 0.2.0 minor release
+  status: in_progress
+  start: '2026-11-07'
+  end: '2026-11-07'
+  progress: 0
+  milestone: true
+  deps:
+  - ageint-34
+  - ageint-35
+  - ageint-36
+  - ageint-37
+  tags:
+  - release
+  notes: |-
+    The user authorized cross-repository improvements through minor-version
+    releases to main on 2026-11-07. Publication still requires completed declared
+    prerequisites, the genuine stable SDK release and exact-main full acceptance.
+    Do not reuse the historical 0.1.0 version DOI for this edition. A local green
+    report is not hosted acceptance, tag creation, archive deposit or publication.

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 from _data_loaders import misconception_category_routes, misconception_fallbacks, misconception_keyword_routes, misconception_risk_templates, risk_why_failure_hints, why_it_matters_templates
 from ._12_concept_routes import _first_matching_frame
 from .topic_rotation import template_index
+from .topic_prompt_routes import instructional_focus
 
 if TYPE_CHECKING:
     from ._01_part import CoursebookProfile, TopicEntry
@@ -21,7 +22,7 @@ def why_it_matters_for_entry(entry: TopicEntry, profile: IntelligenceProfile, co
     # lesson_index. Adding lesson_index linearly made consecutive lessons march
     # through the templates in a predictable A-B-C-D cadence; hashing the topic's
     # identity decorrelates adjacent lessons while staying deterministic.
-    template_index_value = template_index(entry.display_title, entry.raw_title, chapter_title, entry.risk_category, str(lesson_index), count=len(templates))
+    template_index_value = template_index(entry.display_title, chapter_title, entry.risk_category, str(lesson_index), count=len(templates))
     template = templates[template_index_value]
     practice_focus = coursebook.practice_focus.removesuffix(" review")
     return template.format(topic=entry.display_title, distinction=coursebook.key_distinction, profile=profile.title, practice_focus=practice_focus, failure_hint=failure_hint)
@@ -30,14 +31,13 @@ def why_it_matters_for_entry(entry: TopicEntry, profile: IntelligenceProfile, co
 def misconception_for_entry(entry: TopicEntry, coursebook: CoursebookProfile, *, lesson_index: int = 1, chapter_title: str = "") -> str:
     """Resolve misconception text from YAML templates and keyword branches.
 
-    Precedence matches the other resolvers (route -> category -> fallback):
-    content-specific keyword routes (FISA, MICE, ATT&CK, GEOINT, ACH, ...) are
-    consulted first so a topic that matches one gets its tailored misconception
-    even when it also carries a non-standard risk category; only then do the
-    generic per-risk templates and round-robin fallbacks apply.
+    Explicit pattern identity and safe display subject precede category defaults.
+    Raw source titles remain provenance and cannot change the instructional topic.
     """
-    raw = f"{entry.display_title} {entry.raw_title}".lower()
-    routed = _first_matching_frame(raw, misconception_keyword_routes())
+    focus = instructional_focus(entry)
+    if focus:
+        return focus[2]
+    routed = _first_matching_frame(entry.display_title.lower(), misconception_keyword_routes())
     if routed:
         return routed
     category_route = misconception_category_routes().get(entry.risk_category)

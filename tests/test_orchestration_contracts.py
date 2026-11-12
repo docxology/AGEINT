@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-import json
-import subprocess
-import sys
 from pathlib import Path
 
 import pytest
@@ -13,7 +10,6 @@ from audit_contracts import audit_contracts, publication_readiness_audit_check_i
 from figures.mermaid_contracts import mermaid_type_contracts, validate_mermaid_source_contract
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from intelligence_content.source_packs import source_pack_contract_report, source_pack_registry
-from orchestration_audit import collect_orchestration_contract, render_orchestration_contract_markdown
 from orchestration_contracts import output_build_sentinels, pipeline_stage_contracts, source_freshness_roots, validate_pipeline_stage_contracts
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -74,6 +70,35 @@ def test_source_pack_registry_validates_known_keys_and_source_class_errors(tmp_p
         source_pack_registry("research", tmp_path)
 
 
+@pytest.mark.parametrize("missing_filename", ["agency_source_packs.yaml", "research_source_packs.yaml"])
+def test_source_pack_contract_report_rejects_missing_required_registry(tmp_path: Path, missing_filename: str) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    for filename in ("agency_source_packs.yaml", "research_source_packs.yaml"):
+        if filename != missing_filename:
+            (data_dir / filename).write_text("packs:\n  fixture_pack:\n    - fixture_source\n", encoding="utf-8")
+
+    with pytest.raises(FileNotFoundError) as exc_info:
+        source_pack_contract_report(tmp_path, known_source_keys={"fixture_source"})
+
+    assert exc_info.value.filename == str(data_dir / missing_filename)
+
+
+@pytest.mark.parametrize(
+    ("source_class", "filename"),
+    [("agency", "agency_source_packs.yaml"), ("research", "research_source_packs.yaml")],
+)
+def test_source_pack_registry_rejects_empty_required_packs(tmp_path: Path, source_class: str, filename: str) -> None:
+    path = tmp_path / "data" / filename
+    path.parent.mkdir()
+    path.write_text("packs: {}\n", encoding="utf-8")
+
+    with pytest.raises(ValueError) as exc_info:
+        source_pack_registry(source_class, tmp_path)
+
+    assert str(path) in str(exc_info.value)
+
+
 def test_current_source_pack_registry_routes_known_anchor_keys() -> None:
     known_keys = {anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
     report = source_pack_contract_report(PROJECT_ROOT, known_source_keys=known_keys)
@@ -96,28 +121,3 @@ def test_mermaid_type_contracts_cover_supported_types_and_fail_bad_sources() -> 
         validate_mermaid_source_contract("journey", "journey\n    title Review\n", "thin")
 
 
-def test_orchestration_contract_report_and_cli_expose_all_contract_families() -> None:
-    payload = collect_orchestration_contract(PROJECT_ROOT)
-    markdown = render_orchestration_contract_markdown(payload)
-    payload_text = json.dumps(payload, sort_keys=True)
-
-    assert payload["pipeline"]["stage_count"] >= 8
-    assert payload["audits"]["contract_count"] >= 10
-    assert payload["source_packs"]["registry_count"] == 2
-    assert payload["mermaid"]["diagram_type_count"] >= 6
-    assert PROJECT_ROOT.as_posix() not in payload_text
-    assert PROJECT_ROOT.as_posix() not in markdown
-    assert "AGEINT Contract Map" in markdown
-    assert "Pipeline Contract" in markdown
-    assert "Audit Contracts" in markdown
-    assert "Source-Pack Contracts" in markdown
-    assert "Mermaid Diagram Types" in markdown
-
-    result = subprocess.run(
-        [sys.executable, str(PROJECT_ROOT / "scripts" / "audit_orchestration_contract.py"), "--format", "json"], cwd=PROJECT_ROOT, check=False, capture_output=True, text=True, timeout=120
-    )
-    assert result.returncode == 0, result.stdout + result.stderr
-    cli_payload = json.loads(result.stdout)
-    assert cli_payload["ok"] is True
-    assert cli_payload["audits"]["contract_count"] == payload["audits"]["contract_count"]
-    assert PROJECT_ROOT.as_posix() not in result.stdout

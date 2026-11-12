@@ -9,11 +9,13 @@ Two facts from that lifecycle are still true and still matter:
 
 - **The PDF render lives elsewhere.** `AGEINT.pdf` and
   `output/pdf/AGEINT_combined.pdf` are produced by the sibling template repo's
-  pandoc/xelatex pipeline, with AGEINT linked under its `projects/working/` — not
-  by any script in this repo. See the PDF note under Ground truth before assuming
+  pandoc/xelatex pipeline, with the public checkout at `projects/active/AGEINT`
+  inside the SDK — not by any script in this repo. Use a regular directory for
+  confined offline assets. See the PDF note under Ground truth before assuming
   a render step is missing here.
-- **A few tests need that sibling checkout** and skip without it, which is why CI
-  carries a lower coverage floor than `pyproject.toml` does.
+- **Standalone-core checks are deliberately limited.** Only complete SDK
+  verification with real native outputs and at least 90% coverage establishes
+  technical acceptance; skipped integration checks cannot replace it.
 
 What still needs an explicit ask from Daniel is any *release-class* outward
 action — cutting a release, minting a DOI, or publishing to an archive. Routine
@@ -59,22 +61,26 @@ flowchart LR
 - Generated manuscript: `output/manuscript/`.
 - Generated figures and registry: `output/figures/figure_registry.json`.
 - Bibliography surfaces: `docs/manuscript/references-*.bib` and `output/manuscript/references-*.bib`.
-- Measured scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 177 registered figures, 462 research anchors, 10 source-quality support anchors, 312 parsed guide references.
+- Last full generated scope (rebuild to refresh): 16 parts, 51 chapters, 9 appendices, 177 registered figures, 462 research anchors, 10 source-quality support anchors, 312 guide references. Current authored source has 315 numbered references; that does not establish regenerated-output acceptance.
 - Source metadata is explicit in `data/research_anchors/`: the 2026-06-13 hardening pass closed 119 blank lane/tier rows (109 legacy intelligence anchors plus 10 source-quality support anchors). `scripts/audit_source_metadata.py` and `source_metadata_ok` in the artifact evidence manifest must fail on any new blank `source_lane` or `source_tier`.
 - Official US IC source-pack metadata is explicit for `data/research_anchors/intelligence-anchors-249-304.jsonl`: `source_agency` and `source_pack` are required, `data/agency_source_packs.yaml` controls deterministic profile routing, and `scripts/audit_agency_source_coverage.py` plus `agency_source_coverage_ok` must fail missing or unrouted new agency anchors.
 - Build mirror artifact: `output/data/curriculum_outline.json`.
 - Backlog and task state: [`TODO.md`](TODO.md) (forward-only, next actions in
   its `Open` section) and `tasks.yaml` (taskboard source of truth). Do not
   duplicate open work items anywhere else.
-- PDF render surface: `AGEINT.pdf` / `output/pdf/AGEINT_combined.pdf` is
-  rendered by the sibling template repo's pandoc/xelatex pipeline (its
-  `scripts/maintenance/rerender_working_pdfs.py`, run with AGEINT linked
-  under its `projects/working/`), not by any script in this repo — do not
-  add a pandoc/xelatex invocation here on the assumption one is missing.
-  `scripts/build_curriculum.py` / `scripts/generate_figures.py` produce
-  everything that render step consumes. `audit_pdf_quality.py` and the two
-  audits that aggregate it are informational in this repo's CI for that
-  reason (see `.github/workflows/ci.yml`, `.github/workflows/manuscript.yml`).
+- PDF/HTML render surface: the prepared shared SDK's canonical
+  `scripts/pipeline/stage_03_render.py --project active/AGEINT
+  --skip-manuscript-hydration` consumes the generated manuscript; its
+  `stage_04_validate.py` validates enabled outputs. The authoritative PDF is
+  `output/pdf/AGEINT_combined.pdf`, mirrored at `AGEINT.pdf`. Do not add a second
+  Pandoc/TeX/BibTeX driver in AGEINT. Full hosted CI now performs these stages
+  and blocks failed PDF, HTML, aggregate and actual parent-guard checks.
+- Source versions in `pyproject.toml`, `CITATION.cff`, and source paper/book
+  config must agree. The current release milestone is derived from that
+  version, with explicit completed dependencies; historical milestones are
+  not current release authorization.
+- Manuscript config, dependency lock and optional preamble bytes participate in build freshness.
+  Generated compiler intermediates are local-only, not public reader artifacts.
 
 ## Editing rules
 
@@ -86,7 +92,9 @@ flowchart LR
   and make every rebuild differ, which is what stops the freshness gates from
   meaning anything. Pin a build with `SOURCE_DATE_EPOCH=<unix-seconds>` to get
   byte-comparable output.
-- Regenerate with `uv run python scripts/build_curriculum.py` from the AGEINT root after source-guide, source-anchor, template, figure, or renderer edits.
+- Rebuild in the prepared compatible SDK runtime with
+  `AGEINT_REQUIRE_RENDERED_FIGURES=1 python scripts/build_curriculum.py` after
+  source, config, preamble, figure, or renderer edits.
 - Keep concrete chapter titles, visible generated section titles, counts,
   citations, paths, figures, and cross-references generated from data and
   manifest code.
@@ -118,25 +126,19 @@ flowchart LR
 Run the project test suite before claiming completion:
 
 ```bash
-uv run pytest tests/ --cov=src --cov-fail-under=90
+python -m pytest tests/ --cov=src --cov-fail-under=90
 ```
 
-The suite includes source identity stability, source-lane metadata, generated
-reader-facing section architecture, figure-registry, topic-frame routing
-(`test_topic_frame_routing.py`), topic content quality caps
-(`test_topic_content_quality.py`), and safety-audit checks.
-
-Banned generic fallback phrases must stay absent from generated manuscript after rebuild:
-
-```bash
-rg "defensible claim whose meaning|treats each source topic through|parsed AGEINT source spine" output/manuscript/
-```
+The suite covers source identity and metadata, generated reader architecture,
+figure-registry behavior, topic-frame routing, byte-based freshness, versioned
+release prerequisites and failure boundaries. Keep behavioral and native-format
+regressions; do not restore source-wording, import-wiring or phrase-ban tests.
 
 For manuscript checks from the template repo root, also run:
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Package documentation

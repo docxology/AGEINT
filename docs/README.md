@@ -62,6 +62,7 @@ public-domain, or scholarly sources encoded in the source layer.
 
 - **Safety & dual-use boundary:** [`safety.md`](safety.md), [`safety_audit.md`](safety_audit.md)
 - **Citation, source, and refresh spine:** [`source_identity_stability.md`](source_identity_stability.md), [`source_lane_map.md`](source_lane_map.md), [`source_refresh_ledger.md`](source_refresh_ledger.md), [`research.md`](research.md)
+- **Dated research/curriculum records:** [`research_history.md`](research_history.md) preserves the original source chronology separately from current workflow and acceptance claims.
 - **Pedagogy:** [`instructor_guide.md`](instructor_guide.md), [`learner_support_assessment.md`](learner_support_assessment.md)
 - **Governance & assurance artifacts:** [`evidence_package_map.md`](evidence_package_map.md), [`data_lineage_registry.md`](data_lineage_registry.md), [`accessibility_rights_review.md`](accessibility_rights_review.md), [`transparency_notice_workflow.md`](transparency_notice_workflow.md), [`procurement_vendor_governance.md`](procurement_vendor_governance.md), [`adversarial_assurance.md`](adversarial_assurance.md), [`agent_incident_response.md`](agent_incident_response.md), [`records_retention_audit.md`](records_retention_audit.md), [`release_change_control.md`](release_change_control.md)
 - **Roadmap & change history:** [`v2_expansion_map.md`](v2_expansion_map.md), [`citation_expansion_2026_06_16.md`](citation_expansion_2026_06_16.md), [`thermo_nuclear_code_quality_review.md`](thermo_nuclear_code_quality_review.md)
