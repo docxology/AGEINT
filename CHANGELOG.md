@@ -59,6 +59,9 @@ metadata or this document alone is not acceptance.
   empty or malformed; preserve native missing-path diagnostics, key/route
   validation and the optional concept-route supplement. Exercise real required
   input failures and isolated optional-supplement routing.
+- Render parent-guard metadata from fixed public status/boolean labels, rejecting
+  arbitrary payload text without reflecting rejected values. Keep actual guard
+  execution and every publication-readiness requirement unchanged.
 - Pin the primary runtime and current CI leg to Python 3.15.2 while retaining
   Python 3.11/3.12 compatibility and the existing dependency lock. Verify the
   existing qualified environment through real `uv run --no-sync`, without

@@ -161,6 +161,8 @@ def write_publication_readiness(project_root: Path, *, template_root: Path | Non
 def render_publication_readiness_markdown(report: PublicationReadinessReport) -> str:
     """Render a compact Markdown publication-readiness report."""
 
+    parent_status, parent_checked = _public_parent_guard_labels(report.payload["parent_confidentiality_guard"])
+
     payload = report.payload
     checks = payload["checks"]
     artifact = payload["artifact_evidence"]["summary"]
@@ -191,8 +193,8 @@ def render_publication_readiness_markdown(report: PublicationReadinessReport) ->
         f"| Release version | {payload['release_metadata']['version']} |",
         f"| Release milestone | {payload['task_status']['release_milestone_id']} |",
         f"| Release milestone status | {payload['task_status']['release_milestone_status']} |",
-        f"| Parent guard status | {payload['parent_confidentiality_guard']['status']} |",
-        f"| Parent guard checked | {str(payload['parent_confidentiality_guard']['checked']).lower()} |",
+        f"| Parent guard status | {parent_status} |",
+        f"| Parent guard checked | {parent_checked} |",
         "",
         "## Checks",
         "",
@@ -220,6 +222,31 @@ def render_publication_readiness_markdown(report: PublicationReadinessReport) ->
         ]
     )
     return "\n".join(lines) + "\n"
+
+
+def _public_parent_guard_labels(guard: dict[str, Any]) -> tuple[str, str]:
+    """Emit only public state literals, never arbitrary guard payload text."""
+    match guard["status"]:
+        case "passed":
+            status = "passed"
+        case "failed":
+            status = "failed"
+        case "skipped":
+            status = "skipped"
+        case "unavailable":
+            status = "unavailable"
+        case "timeout":
+            status = "timeout"
+        case _:
+            raise ValueError("Unknown parent guard status")
+    match guard["checked"]:
+        case True:
+            checked = "true"
+        case False:
+            checked = "false"
+        case _:
+            raise ValueError("Parent guard checked state must be a boolean")
+    return status, checked
 
 
 def scan_release_surfaces(project_root: Path) -> tuple[ReleaseSurfaceIssue, ...]:

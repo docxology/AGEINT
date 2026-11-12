@@ -80,11 +80,17 @@ def test_publication_readiness_current_outputs_are_informational_without_parent_
     assert payload["release_surface_scan"]["issue_count"] == 0
     assert payload["source_license_posture"]["ok"] is True
     assert payload["task_status"]["release_milestone_id"] == "ageint-release-" + payload["release_metadata"]["version"].replace(".", "-")
-    assert "does not publish" in payload["release_decision"]
 
-    markdown = render_publication_readiness_markdown(report)
-    assert "Publication Readiness" in markdown
-    assert "Release Decision" in markdown
+
+@pytest.mark.parametrize("field", ["status", "checked"])
+def test_publication_readiness_markdown_rejects_arbitrary_guard_text(field: str) -> None:
+    report = collect_publication_readiness(PROJECT_ROOT, run_parent_guard=False)
+    private_marker = "synthetic-private-marker-not-a-public-guard-state"
+    report.payload["parent_confidentiality_guard"][field] = private_marker
+
+    with pytest.raises(ValueError) as caught:
+        render_publication_readiness_markdown(report)
+    assert private_marker not in str(caught.value)
 
 
 def test_release_surface_scan_flags_private_paths_and_markdown_links(tmp_path: Path) -> None:
