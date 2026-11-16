@@ -23,6 +23,11 @@ missing or malformed current-version release milestones, incomplete declared
 prerequisite tasks, or a parent-template confidentiality guard that did not
 complete with a zero exit status.
 
+The artifact manifest must explicitly provide an `issues` list. A missing or
+non-list field cannot certify a clean inventory; only an empty list satisfies
+that local manifest-status check. This is not a replacement for the SDK's
+actual artifact inventory, native validation or any other readiness gate.
+
 ### Versioned source metadata and task contract
 
 The canonical release version is the stable `X.Y.Z` string at

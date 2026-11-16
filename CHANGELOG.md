@@ -65,6 +65,14 @@ metadata or this document alone is not acceptance.
 - Render parent-guard metadata from fixed public status/boolean labels, rejecting
   arbitrary payload text without reflecting rejected values. Keep actual guard
   execution and every publication-readiness requirement unchanged.
+- Fall back to standalone manuscript substitution only when the SDK module is
+  unavailable; propagate present-SDK import, dependency and execution failures.
+- Reject artifact manifests with missing or non-list `issues` instead of
+  treating malformed empty values as a clean publication inventory.
+- Separate independent AGEINT source/schema/metadata and isolated regression
+  work from genuine SDK-native/current-book acceptance. Track upstream SDK
+  publication through its sole owner without changing pins, release gates,
+  scientific protocols or the six preserved legacy-reader failures.
 - Pin the primary runtime and current CI leg to Python 3.15.2 while retaining
   Python 3.11/3.12 compatibility and the existing dependency lock. Verify the
   existing qualified environment through real `uv run --no-sync`, without
@@ -142,7 +150,7 @@ metadata or this document alone is not acceptance.
 
 ### Shared SDK and publication identity
 
-- Require the genuine shared SDK 5.1.0 release, including nested-image registry
+- Require the genuine shared SDK 5.2.0 release, including nested-image registry
   matching and blocking native BibTeX failure handling before PDF promotion.
 - Require cold-process registry and snapshot initialization without caller
   pre-imports; keep all existing SDK output-validation severities.

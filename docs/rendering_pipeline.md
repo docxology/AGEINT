@@ -57,6 +57,36 @@ institutional designations are displayed as identifiers, not registered as
 measurements. Ordinary quantitative claims retain the SDK's existing evidence
 rules; a registry pass does not establish passage-level entailment.
 
+## Independent source work versus current-edition acceptance
+
+Source authoring, schema/metadata audits and isolated compiler/adapter regressions
+can proceed in AGEINT's locked Python environment without a released SDK:
+
+```bash
+uv run --no-sync python scripts/audit_release_metadata.py --expected-tag v0.2.0 --format json
+uv run --no-sync python scripts/audit_source_metadata.py --format json
+uv run --no-sync python scripts/audit_agency_source_coverage.py --format json
+uv run --no-sync pytest tests/test_manuscript_injection.py tests/test_release_metadata.py tests/test_schema_gate.py tests/test_source_metadata.py
+```
+
+These read-only checks neither generate an edition nor establish publication
+acceptance. They must not write reports unless explicitly requested. AGEINT's
+runtime dependencies are Pillow, PyYAML and pypdf; the optional
+`infrastructure.rendering.manuscript_injection.substitute_manuscript_text`
+adapter is not a package-index dependency. Without that SDK module, standalone
+token substitution remains available. Once the SDK is present, its import,
+dependency and execution failures propagate rather than becoming fallback text.
+
+The limited standalone CI also reads checked-in publication artifacts. Source
+edits can therefore leave its freshness, counts, bibliography, heading-navigation
+and aggregate reader checks legitimately red. Keep those failures until genuine
+production and reviewed promotion replace the legacy edition; do not restamp it,
+rebuild it inside tests, or skip the current-edition assertions to claim green CI.
+Strict Mermaid production independently needs actual `mmdc` and Chrome. Complete
+native reader/CI/release acceptance additionally uses the exact published SDK
+and canonical interfaces below; an administrative global freeze is not another
+package or interface requirement.
+
 ## Shared SDK environment and canonical native renderer
 
 Release rendering requires `docxology/template` at a genuinely published

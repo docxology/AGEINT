@@ -1011,6 +1011,11 @@ tasks:
     actual reader-surface inspection and execution of the rendered worked code.
     A candidate preview, old output, skipped parent guard or metadata-only pass
     is not acceptance. Record actual source/run/artifact evidence on completion.
+    Source/schema/metadata work and isolated compiler/adapter regressions run
+    independently in AGEINT's locked environment. They do not qualify a new
+    edition or close this task. Preserve the actual legacy-reader refusals
+    until genuine production and verified promotion; never rebuild in tests,
+    restamp old outputs or waive current-publication checks.
     Development evidence: clean AGEINT Source 66a07dbd371e1c49009bfe7948c6d75366b87822
     with SDK candidate d8441e00098456a7c8d9d1e5ccfeb8099f810590 in hosted run
     42383495664 passed 474 tests at 90.31% coverage and all 16 non-task technical
@@ -1019,8 +1024,8 @@ tasks:
     targets. Inspection artifact 13580043282 retains genuine producer bytes but
     does not authorize release. SDK dependency ageint-37 remains outstanding.
 - id: ageint-37
-  title: Integrate and genuinely release the required shared SDK 5.2.0
-  status: in_progress
+  title: Qualify published shared SDK 5.2.0 for AGEINT consumption
+  status: blocked
   start: '2026-11-07'
   end: '2026-11-07'
   progress: 0
@@ -1031,12 +1036,16 @@ tasks:
   - integration
   - release
   notes: |-
-    Integrate nested-image registry matching and the native BibTeX failure
-    boundary through the existing shared SDK minor train. Preserve concurrent
-    work. Require its actual policy review, publication refresh, measured
-    coverage, ordinary main integration and complete exact-main required
-    acceptance before publishing v5.2.0. No historical tags, bypasses, fabricated
-    receipts or implied package-index/archive publication are authorized.
+    Track the actual AGEINT consumer prerequisite, not a second template
+    integration assignment. The existing sole template owner implements and
+    publishes the protected SDK train; historical PR289 integration alone is
+    not a qualified public release. Require genuine nondraft/nonprerelease
+    v5.2.0, matching peeled tag and package version, prepared source-locked
+    native dependencies, canonical render/validation interfaces and the
+    completed all-resource parent guard. Keep the SDK's own exact-main
+    acceptance and publication gates. Source-only AGEINT work remains
+    independent; no candidate adoption, historical-tag substitution,
+    fabricated receipts or implied package-index/archive publication.
 - id: ageint-release-0-2-0
   title: AGEINT 0.2.0 minor release
   status: in_progress

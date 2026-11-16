@@ -12,7 +12,7 @@ _TOKEN_RE = re.compile(r"\{\{([A-Z][A-Z0-9_]*)\}\}")
 
 
 def substitute_manuscript_text(template: str, context: dict[str, Any], *, project_root: Path | None = None) -> tuple[str, list[str]]:
-    """Substitute manuscript template tokens via infrastructure rendering or standalone fallback."""
+    """Use the SDK when present; fall back only when its module is unavailable."""
     if project_root is not None:
         ensure_template_repo_on_path(project_root)
     try:
@@ -20,19 +20,23 @@ def substitute_manuscript_text(template: str, context: dict[str, Any], *, projec
             substitute_manuscript_text as _substitute_manuscript_text,
         )
 
+    except ModuleNotFoundError as error:
+        if error.name not in ("infrastructure", "infrastructure.rendering", "infrastructure.rendering.manuscript_injection"):
+            raise
+    else:
         return _substitute_manuscript_text(template, context)
-    except (ImportError, ModuleNotFoundError):
-        unresolved: list[str] = []
 
-        def _replace(match: re.Match[str]) -> str:
-            key = match.group(1)
-            if key in context:
-                return str(context[key])
-            unresolved.append(key)
-            return match.group(0)
+    unresolved: list[str] = []
 
-        resolved = _TOKEN_RE.sub(_replace, template)
-        return resolved, unresolved
+    def _replace(match: re.Match[str]) -> str:
+        key = match.group(1)
+        if key in context:
+            return str(context[key])
+        unresolved.append(key)
+        return match.group(0)
+
+    resolved = _TOKEN_RE.sub(_replace, template)
+    return resolved, unresolved
 
 
 __all__ = ["substitute_manuscript_text"]

@@ -181,6 +181,27 @@ def test_artifact_manifest_status_fails_on_missing_declared_output_issue(tmp_pat
     assert status["issue_count"] == 1
 
 
+@pytest.mark.parametrize(
+    ("manifest", "expected_ok"),
+    [
+        ({"issues": []}, True),
+        ({}, False),
+        ({"issues": None}, False),
+        ({"issues": False}, False),
+        ({"issues": ""}, False),
+        ({"issues": {}}, False),
+        ([], False),
+    ],
+)
+def test_artifact_manifest_requires_an_explicit_issue_list(tmp_path: Path, manifest: object, expected_ok: bool) -> None:
+    _write(tmp_path / "output" / "reports" / "artifact_manifest.json", json.dumps(manifest))
+
+    status = artifact_manifest_status(tmp_path)
+
+    assert status["ok"] is expected_ok
+    assert status["issue_count"] == (0 if expected_ok else 1)
+
+
 def test_publication_readiness_requires_parent_guard_even_with_green_local_evidence(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, native_guard_template: Path) -> None:
     class DummyReport:
         def __init__(self, payload: dict[str, object]) -> None:

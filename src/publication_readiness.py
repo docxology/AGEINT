@@ -319,7 +319,8 @@ def artifact_manifest_status(project_root: Path) -> dict[str, Any]:
     if not path.is_file():
         return {"ok": False, "path": "output/reports/artifact_manifest.json", "issue_count": 1, "issues": ["missing artifact manifest"]}
     payload = _load_json(path)
-    issues = [str(issue) for issue in payload.get("issues", [])] if isinstance(payload, dict) else ["invalid manifest"]
+    declared_issues = payload.get("issues") if isinstance(payload, dict) else None
+    issues = [str(issue) for issue in declared_issues] if isinstance(declared_issues, list) else ["invalid manifest issue list"]
     return {"ok": not issues, "path": "output/reports/artifact_manifest.json", "issue_count": len(issues), "issues": issues}
 
 

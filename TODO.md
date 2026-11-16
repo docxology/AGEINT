@@ -45,15 +45,25 @@ must replace the old measurements before publication.
 
 `tasks.yaml` is the authoritative release state:
 
-- `ageint-37`: integrate the real SDK consumer fixes through
-  [template PR #289](https://github.com/docxology/template/pull/289) into the
-  existing 5.2.0 release train, preserving all genuine SDK acceptance gates.
+- `ageint-37`: qualify AGEINT's consumption of the genuinely published shared
+  SDK `v5.2.0`. Upstream implementation and publication remain with the single
+  template integration owner: [PR #289](https://github.com/docxology/template/pull/289)
+  is historical integration; [PR #309](https://github.com/docxology/template/pull/309)
+  continues the protected acceptance train. Do not create a second SDK lane.
 - `ageint-36`: qualify the current complete reader, full regression/coverage
-  gate, native audits, browser surface and copied rendered program. Root-mutating
-  CLI wording smoke tests have been removed; reader bytes must remain unchanged
+  gate, native audits, browser surface and copied rendered program. Independent
+  source, schema, metadata and isolated compiler/adapter work remains executable
+  in AGEINT's locked environment; the SDK dependency blocks native/current-book
+  closure, not every AGEINT edit or test. Reader bytes must remain unchanged
   across the suite rather than being silently rebuilt over test side effects.
 - `ageint-release-0-2-0`: publish only after those prerequisites and exact-main
   full acceptance. The historical 0.1.0 DOI is not a 0.2.0 archive record.
+
+The limited standalone CI's existing current-publication failures remain real:
+source freshness, typed counts, bibliography, heading navigation and aggregate
+artifact evidence cannot be made current by metadata edits or skipped tests.
+Exercise their source-owned producers with isolated fixtures; replace the
+legacy publication only through genuine generation and verified promotion.
 
 The clean-source development [run 42383495664](https://github.com/docxology/AGEINT/actions/runs/42383495664)
 passed the full technical reader gates recorded under `ageint-36`. Aggregate
