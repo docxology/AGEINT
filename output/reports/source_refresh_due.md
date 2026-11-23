@@ -3,11 +3,11 @@
 | Measure | Value |
 |---|---:|
 | OK | true |
-| Generated at | 2026-11-17T00:49:09+00:00 |
-| As of | 2026-11-17 |
+| Generated at | 2026-11-23T21:29:09+00:00 |
+| As of | 2026-11-23 |
 | Rows | 472 |
-| Current | 327 |
-| Due soon | 145 |
+| Current | 370 |
+| Due soon | 102 |
 | Due | 0 |
 | Stale | 0 |
 | Unknown | 0 |
@@ -26,8 +26,8 @@
 
 | Bucket | Rows |
 |---|---:|
-| current | 327 |
-| due_soon | 145 |
+| current | 370 |
+| due_soon | 102 |
 
 ## Blocking Rows
 
