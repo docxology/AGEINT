@@ -38,7 +38,7 @@ PIPELINE_STAGE_CONTRACTS: tuple[PipelineStageContract, ...] = (
         stage_id="source_validation",
         title="Source validation",
         purpose="Validate declarative curriculum, route, source, and template inputs before rendering.",
-        inputs=(Path("data"), Path("docs/manuscript/templates"), Path("src")),
+        inputs=(Path("data"), Path("docs/manuscript/config.yaml"), Path("docs/manuscript/templates"), Path("src")),
         outputs=(Path("output/README.md"), Path("output/AGENTS.md")),
         strict_gate="validate_declarative_tables",
         failure_mode="A malformed route table or source surface reaches manuscript rendering.",
@@ -48,7 +48,7 @@ PIPELINE_STAGE_CONTRACTS: tuple[PipelineStageContract, ...] = (
         title="Curriculum build",
         purpose="Load the sharded curriculum spine and optional guide source into the runtime curriculum model.",
         inputs=(Path("data/curriculum"), Path("SIST-Guide-TOC-and-Bibliography-v2.md")),
-        outputs=(Path("output/data/curriculum/metadata.json"), Path("output/data/curriculum_outline.json")),
+        outputs=(Path("output/data/curriculum/metadata.json"), Path("output/data/curriculum_outline.json"), Path("output/data/source_citation_coverage.json")),
         depends_on=("source_validation",),
         strict_gate="curriculum_stats_and_identity_tests",
         failure_mode="Generated paths, labels, or counts no longer match the source spine.",
@@ -87,7 +87,14 @@ PIPELINE_STAGE_CONTRACTS: tuple[PipelineStageContract, ...] = (
         stage_id="manuscript_render",
         title="Semantic manuscript render",
         purpose="Render source-owned manifest sections into generated Markdown under output/manuscript.",
-        inputs=(Path("src/manuscript_manifest"), Path("docs/manuscript/templates"), Path("output/figures/figure_registry.json")),
+        inputs=(
+            Path("src/manuscript_manifest"),
+            Path("docs/manuscript/config.yaml"),
+            Path("docs/manuscript/preamble.md"),
+            Path("docs/manuscript/templates"),
+            Path("docs/citation_workflow.md"),
+            Path("output/figures/figure_registry.json"),
+        ),
         outputs=(Path("output/manuscript/README.md"),),
         depends_on=("variables_and_bibliography", "figures"),
         strict_gate="manifest_inventory_reader_quality_tests",
@@ -133,7 +140,7 @@ def pipeline_contract_by_id() -> dict[str, PipelineStageContract]:
 
 def source_freshness_roots() -> tuple[Path, ...]:
     """Return unique source paths that should make generated outputs stale."""
-    paths: list[Path] = [Path("pyproject.toml"), Path("scripts/build_curriculum.py"), Path("scripts/generate_figures.py"), Path("scripts/z_generate_manuscript_variables.py")]
+    paths: list[Path] = [Path("pyproject.toml"), Path("uv.lock"), Path("scripts/build_curriculum.py"), Path("scripts/generate_figures.py"), Path("scripts/z_generate_manuscript_variables.py")]
     for stage in PIPELINE_STAGE_CONTRACTS:
         for path in stage.inputs:
             if path.parts and path.parts[0] == "output":

@@ -6,17 +6,17 @@ The module uses [@fig:supply-chain-integrity-assurance-flow] and [@fig:part-tech
 
 Navigation links: [@sec:curriculum_orientation], [@sec:part-technical-intelligence-and-cyber-operations], [@sec:chapter-advanced-persistent-threats-apts], [@sec:chapter-electronic-and-emanations-intelligence].
 
-![This diagram traces how package provenance, maintainer-trust signals, build integrity, and an SBOM converge into a reviewable assurance packet that names control gaps and an escalation boundary. It is anchored to the technical intelligence and cyber operations / supply chain intelligence attacks section; use it to inspect Dependency intake, Package provenance evidence, Maintainer-trust signal, and Build-integrity attestation while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../../figures/mermaid/supply-chain-integrity-assurance-flow.png){#fig:supply-chain-integrity-assurance-flow}
+![SBOM inventory, provenance and attestations, identity trust, affectedness analysis, and test evidence answer different questions. This author-defined classroom flow compares those objects against a particular artifact and declared policy rather than funneling them through an SBOM as certification. Missing, mismatched, or contradictory evidence remains explicit; any acceptance is scoped and reviewed, not proof that a signed or inventoried artifact is safe.](../../../../figures/mermaid/supply-chain-integrity-assurance-flow.png){#fig:supply-chain-integrity-assurance-flow}
 
 This module teaches the **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** lane through a bounded, source-backed coursebook chapter. [@ageint258]; [@ageint266].
 
 ## Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense frame for Supply Chain Intelligence Attacks: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-supply-chain-intelligence-attacks]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-supply-chain-intelligence-attacks].
 
 ### Supply Chain Intelligence Attacks orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-supply-chain-intelligence-attacks]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-supply-chain-intelligence-attacks].
 
 ### Supply Chain Intelligence Attacks conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Software-Supply-Chain Assurance Lens** d
 
 ### Supply Chain Intelligence Attacks learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-supply-chain-intelligence-attacks]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-supply-chain-intelligence-attacks].
 
 - Connect **Supply Chain Operations as Strategic Intelligence Tradecraft and SolarWinds/SUNBURST: The Six-Month Patient Operation** to **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **software-supply-chain assurance packet with package provenance, maintainer-risk notes, build-integrity evidence, and control gaps** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Software-Supply-Chain Assurance Lens** d
 
 ### Supply Chain Intelligence Attacks core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-supply-chain-intelligence-attacks]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-supply-chain-intelligence-attacks].
 
 | Term | Working definition |
 |---|---|
 | Indicator | an observable signal that may support defensive detection or investigation |
-| TTP | a tactic, technique, or procedure used for structured defensive mapping |
+| TTP | a tactic, technique, or procedure used for defensive behavioral description; a taxonomy match is neither a unique actor signature nor attribution |
 | Sighting | a bounded observation of a possible indicator in a given context |
 | Handling rule | a sharing, marking, or retention limit for threat information |
 | Lessons learned | the post-incident evidence that changes controls or playbooks |
-| Supply Chain Operations as Strategic… | Key terms: Supply, Chain, Operations. |
-| SolarWinds/SUNBURST: The Six-Month Patient… | Key terms: SolarWinds, SUNBURST, Six. |

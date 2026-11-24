@@ -1,10 +1,10 @@
 ### Electronic and Emanations Intelligence assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-electronic-and-emanations-intelligence]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-electronic-and-emanations-intelligence].
 
 ### Electronic and Emanations Intelligence assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-electronic-and-emanations-intelligence]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-electronic-and-emanations-intelligence].
 
 #### Electronic and Emanations Intelligence capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **SIGINT legal-authority and communication
 
 #### Electronic and Emanations Intelligence assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **SIGINT legal-authority and communications-security governance exercise** | Completed **dissemination map with audience, caveat, marking, records, and feedback fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **EMINT: SIGINT legal-authority and communications-security governance exercise** | Completed **dissemination map with audience, caveat, marking, records, and feedback fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Tempest and Van Eck Radiation: SIGINT legal-authority and communications-security governance exercise** | Completed **dissemination map with audience, caveat, marking, records, and feedback fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **SIGINT legal-authority and communications-security governance exercise**; **EMINT: SIGINT legal-authority and communications-security governance exercise** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: show priority, authority, minimization, corroboration, and source quality before any claim is reused. |
+| **Tempest and Van Eck Radiation: SIGINT legal-authority and communications-security governance exercise**; **RF-spectrum governance and communications-security** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **RF Mapping and Spectrum Intelligence: RF-spectrum governance and communications-security** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude live collection, recruitment, surveillance, interception, tracking, and identity exposure. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **SIGINT legal-authority and communications-security governance exercise; EMINT: SIGINT legal-authority and communications-security governance exercise** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**SIGINT legal-authority and communications-security governance exercise; EMINT: SIGINT legal-authority and communications-security governance exercise**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Electronic and Emanations Intelligence refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint255]; [@ageint256].
 
-**Triangulation anchors.** In module 15's review-checklist section, directly verified anchors for the **Collection Management and Multi-INT Requirements Discipline** lane include [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_204]; [@official_joint_pub_2_0]; [@official_ic_osint_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 15's review-checklist section, the **Collection Management and Multi-INT Requirements Discipline** catalog routes include [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_204]; [@official_joint_pub_2_0]; [@official_ic_osint_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **SIGINT legal-authority and communications-security governance exercise; EMINT: SIGINT legal-authority and communications-security governance exercise**. [@ageint255]; [@ageint256].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

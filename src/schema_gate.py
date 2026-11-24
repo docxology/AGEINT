@@ -6,10 +6,10 @@ registry, the visual-quality audit, and the audit reports under
 producer side must fail the audit that reads the artifact rather than being
 silently tolerated, so every read goes through :func:`load_json_with_schema`.
 
-Producers: ``src/figures/_02_part.py`` owns
-``FIGURE_REGISTRY_SCHEMA_VERSION``; the audit collectors stamp reports with
-``"1.0"``. Keep the expectations here in sync when a producer bumps its
-version — that edit is the intended friction point.
+Producers: ``src/figures/_02_part.py`` owns the figure-registry version;
+most audit reports use ``"1.0"``. Publication readiness uses ``"2.0"``.
+Keep these expectations in sync with their producers; incompatible field
+changes must fail readers instead of being treated as the previous schema.
 """
 
 from __future__ import annotations
@@ -21,6 +21,7 @@ from typing import Any
 FIGURE_REGISTRY_SCHEMA_VERSION = "1.5"
 AUDIT_REPORT_SCHEMA_VERSION = "1.0"
 VISUAL_QUALITY_AUDIT_SCHEMA_VERSION = "1.0"
+PUBLICATION_READINESS_SCHEMA_VERSION = "2.0"
 
 #: Expected ``schema_version`` per generated artifact, keyed by repo-relative
 #: path under ``output/``. Every report JSON stamped by an in-repo producer is
@@ -33,6 +34,7 @@ EXPECTED_SCHEMA_VERSIONS: dict[str, str] = {
     "figures/figure_registry.json": FIGURE_REGISTRY_SCHEMA_VERSION,
     "figures/visual_quality_audit.json": VISUAL_QUALITY_AUDIT_SCHEMA_VERSION,
     "reports/source_metadata.json": AUDIT_REPORT_SCHEMA_VERSION,
+    "reports/publication_readiness.json": PUBLICATION_READINESS_SCHEMA_VERSION,
 }
 
 

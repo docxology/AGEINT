@@ -18,21 +18,24 @@ from __future__ import annotations
 _LESSON_FORMULAS: tuple[tuple[str, str], ...] = (
     (
         "Analysis of Competing Hypotheses",
-        # Heuer's diagnosticity scoring is a likelihood-ratio judgment: an item of
-        # evidence shifts belief between hypotheses only insofar as it is more
-        # likely under one than another. The posterior-odds form makes the
-        # "weigh disconfirming evidence" rule precise.
-        "**Diagnosticity ratio.** The diagnosticity an ACH table scores is a "
-        "likelihood ratio. For two hypotheses $H_i, H_j$ and an item of evidence "
-        "$E$, the posterior odds update as "
+        # Ordinal ACH consistency cells are not numerical likelihoods. The
+        # Bayesian identity is a separate illustration under explicit assumptions.
+        "**Diagnosticity and Bayesian illustration.** Ordinary ACH consistency "
+        "marks are not likelihood ratios, calibrated probabilities, or a posterior "
+        "calculation. Separately, for mutually exclusive hypotheses $H_i, H_j$ "
+        "with nonzero prior odds and justified likelihoods for evidence $E$, "
+        "Bayes' rule gives "
         "$$\\frac{P(H_i \\mid E)}{P(H_j \\mid E)} = "
         "\\frac{P(E \\mid H_i)}{P(E \\mid H_j)} \\times "
         "\\frac{P(H_i)}{P(H_j)}.$$ "
-        "Evidence is diagnostic only when the likelihood ratio "
-        "$P(E \\mid H_i)/P(E \\mid H_j)$ departs from $1$; evidence consistent "
-        "with every hypothesis (ratio $\\approx 1$) carries no diagnostic weight, "
-        "which is exactly Heuer's rule to weigh disconfirming evidence over "
-        "confirming evidence [@ageint192]; [@ageint297].",
+        "Compatibility alone does not make evidence nondiagnostic: invented "
+        "likelihoods 0.8 and 0.2 are both compatible with the observation but "
+        "give a ratio of 4. Equal likelihoods give a ratio of 1. Dependence, "
+        "uncertain likelihoods, omitted alternatives, and unreliable reporting "
+        "must be addressed; do not add ordinal cells or repeatedly update on "
+        "copied reports. This identity is not proof that ACH improves accuracy "
+        "[@scholarly_karvetski_mandel_2020_ach_coherence]; "
+        "[@scholarly_mandel_karvetski_dhami_2018_boosting_accuracy].",
     ),
     (
         "Free Energy Principle",
@@ -44,10 +47,11 @@ _LESSON_FORMULAS: tuple[tuple[str, str], ...] = (
         "recognition density $q(s)$: "
         "$$F = D_{\\mathrm{KL}}\\!\\big(q(s)\\,\\|\\,p(s \\mid o)\\big) - "
         "\\ln p(o) \\;\\ge\\; -\\ln p(o).$$ "
-        "Because the Kullback-Leibler term is non-negative, minimizing $F$ over "
-        "$q(s)$ tightens the bound on surprise -- the precise statement of this "
-        "lesson's plain-language warning about a model explaining too much from "
-        "too little evidence [@scholarly_friston_2010_fep]; "
+        "For fixed model $p$ and observation $o$, minimizing $F$ over $q(s)$ "
+        "approximates that model's posterior; it does not establish that the "
+        "model or observation is true. The bound is not an equivalence between "
+        "free energy and prediction error, nor evidence of deception detection "
+        "or safe autonomous action [@scholarly_friston_2010_fep]; "
         "[@scholarly_buckley_2017_fep_mathematical_review].",
     ),
 )

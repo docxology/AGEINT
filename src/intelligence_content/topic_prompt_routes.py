@@ -1,16 +1,107 @@
-"""YAML-driven evidence and artifact prompt evaluation for topic lessons."""
+"""Safe-identity evidence/artifact checks, then display-subject YAML routes.
+
+Registry checks specialize the existing safe profiles; category and synthesized
+fallbacks remain available without consulting transformed-away source wording.
+"""
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable
 from typing import TYPE_CHECKING
 
 from _data_loaders import artifact_keyword_routes, artifact_risk_category_prompts, evidence_category_prompts, evidence_keyword_routes
-from ._07_safe_titles import _topic_anchor_words, distinguishing_phrase
-from ._12_concept_routes import _first_matching_frame
+from ._07_safe_titles import distinguishing_phrase
+from ._12_concept_routes import _first_matching_frame, _match_keywords
+from ._03_part import SAFE_PATTERN_PROFILES
 
 if TYPE_CHECKING:
-    from ._01_part import CoursebookProfile, PracticeLens, TopicEntry
+    from ._01_part import CoursebookProfile, PracticeLens, SafePatternProfile, TopicEntry
+
+# These checks follow registry identity, not keywords in the source-title ledger.
+# Each tuple names evidence to inspect, the artifact's discriminating fields, and
+# the misconception to challenge. They are classroom designs, not efficacy claims.
+_PATTERN_CHECKS = {
+    1: ("source passages, assumptions, and a self-critique against the same packet", "claim, passage, assumption, alternative, and confidence", "that a reasoner's self-critique supplies independent evidence"),
+    2: ("original answer, review rubric, feedback, and revised answer", "rubric finding, revision, source support, and unresolved error", "that reflection makes an unsupported answer independently verified"),
+    3: ("retrieval requests, connector allowlist, returned passages, and refusals", "tool schema, allowed request, source passage, and blocked scope change", "that an available retrieval tool grants permission to use it"),
+    4: ("milestones, dependencies, approval decisions, and rollback notes", "plan step, prerequisite, approval owner, and rollback condition", "that a planner's proposed task authorizes its execution"),
+    5: ("source-origin families, duplicate passages, and contradictory source claims", "source comparison, originating evidence family, duplicate, contradiction, and unresolved claim", "that agreeing source summaries from one origin are independent corroboration"),
+    6: ("role assignments, evidence returned by each role, and reviewer dissent", "role, granted scope, source passage, dissent, and final human disposition", "that assigning different roles makes their evidence independent"),
+    7: ("competing hypotheses, diagnostic evidence, and the judge's stated rubric", "hypothesis, supporting and disconfirming evidence, dissent, and rubric decision", "that winning a debate establishes factual truth"),
+    8: ("corpus version, retrieval hits, quoted snippets, and citation checks", "query, retrieved passage, supported claim, injection flag, and abstention", "that a retrieved citation necessarily supports the generated answer"),
+    9: ("claim revisions, source versions, retention rules, and contamination checks", "claim ledger, superseded version, dependency, retention decision, and correction", "that remembered claim text remains valid after its source changes"),
+    10: ("routing decisions, tool permissions, budgets, and deny logs", "request, policy decision, remaining budget, revocation, and human owner", "that a routing interface can grant itself additional permissions"),
+    11: ("toy asset-health records, synthetic event times, thresholds, and reviewed false alarms", "asset-health threshold rationale, false alarm, missing observation, and escalation decision", "that a toy asset-health alert proves a real incident or permits surveillance"),
+    12: ("high-level scenario cards, control mappings, and mitigation evidence gaps", "control objective, scenario, coverage gap, and bounded mitigation question", "that a control-coverage critique establishes exploitability"),
+    13: ("clearly synthetic identity artifacts, provenance labels, and consistency errors", "fiction label, artifact origin, inconsistency, and uncertainty", "that a consistent fictional identity is an authenticated real identity"),
+    14: ("source metadata, corroborating records, authenticity labels, and alternatives", "reliability claim, provenance check, alternative explanation, and uncertainty", "that a reliability warning proves deception or identifies its author"),
+    15: ("interrupt records, proposed actions, approval versions, and reviewer decisions", "exact action, scope, artifact version, authorized reviewer, and expiry", "that model confidence substitutes for human authorization"),
+    16: ("fabricated alerts, published ATT&CK descriptions, and triage rationales", "alert, taxonomy mapping, severity rationale, uncertainty, and no-response boundary", "that an ATT&CK label confirms an incident or authorizes response"),
+    17: ("sample SBOMs, dependency graphs, public advisories, and integrity evidence", "component version, advisory match, provenance gap, and uncertainty", "that a dependency match alone proves exploitability or maintainer intent"),
+    18: ("provided imagery metadata, synthetic changes, and image-quality caveats", "GEOINT quality flag, observation time, resolution, and alternative interpretation", "that an image feature alone supports a confident location or attribution claim"),
+    19: ("opt-in media-literacy materials, transparent labels, and learning-measurement limits", "media-literacy objective, consent, technique label, correction, and measurement limit", "that a media-literacy lesson's completion proves resistance to manipulation"),
+    20: ("delegation scopes, child results, aggregation decisions, and recovery records", "parent and child task, inherited scope, evidence dependency, failure, and next owner", "that hierarchical delegation permits a child to expand its parent's authority"),
+}
+
+
+def pattern_profile_for_entry(entry: TopicEntry) -> SafePatternProfile | None:
+    """Resolve only explicit registry identity; raw titles are provenance."""
+    if entry.risk_category != "ageint_pattern_registry":
+        return None
+    match = re.fullmatch(r"Pattern (\d+)", entry.source_locus)
+    return SAFE_PATTERN_PROFILES.get(int(match.group(1))) if match else None
+
+
+def instructional_focus(entry: TopicEntry) -> tuple[str, str, str] | None:
+    """Return aligned evidence/artifact/misconception for an explicit subject."""
+    pattern = pattern_profile_for_entry(entry)
+    if pattern:
+        number = int(entry.source_locus.split()[-1])
+        evidence, artifact, misconception = _PATTERN_CHECKS[number]
+        return (
+            f"Evidence packet for **{pattern.safe_name}**: {evidence}.",
+            f"Build a **{pattern.safe_name}** card with {artifact}; keep the exercise within its registry boundary.",
+            misconception,
+        )
+    title = entry.display_title.lower()
+    if _match_keywords(title, ("institutional architecture", "soviet and russian institutions", "british intelligence", "israeli institutions", "chinese institutions")):
+        return (
+            "Evidence packet: dated public institutional descriptions, historical versus current mandates, oversight records, and gaps in the institutional comparison.",
+            "Build an institutional role matrix with institution, date, collection/analysis/coordination role, oversight, and unknown or unsupported relationship.",
+            "that institutional lineage or a similar name establishes an unchanged current mandate or chain of command",
+        )
+    if _match_keywords(title, ("mcp", "model context protocol")):
+        return (
+            "Evidence packet: MCP host/client/server boundaries, versioned tool schemas, consent decisions, and untrusted tool or source text.",
+            "Build an MCP permission-boundary card with host, client, server, tool request, consent owner, and deny decision; protocol capability is not authorization.",
+            "that MCP tool registration, a schema, or server-provided text grants execution authority",
+        )
+    if _match_keywords(title, ("cognitive controller", "reasoning agents", "controller stack")):
+        return (
+            "Evidence packet: software-controller inputs, proposed plans, tool requests, source-grounded outputs, and stop decisions.",
+            "Build a reasoning-controller trace separating model proposal, application state, permission gate, tool result, and human decision.",
+            "that a software reasoning controller is a human brain or that plausible reasoning authorizes its proposed action",
+        )
+    if _match_keywords(title, ("perception modules", "multimodal ingestion")):
+        return (
+            "Evidence packet: supplied text, image, and audio descriptors, ingestion transforms, missing modalities, and provenance gaps.",
+            "Build an ingestion map with modality, original record, transform, information loss, and unsupported inference.",
+            "that ingesting multiple modalities establishes their authenticity or gives a software system human perception",
+        )
+    if entry.risk_category == "evidence_change_memory":
+        return (
+            "Evidence packet: claim IDs, source revisions, dependencies, retention rules, and contamination checks; no person or asset tracking.",
+            "Build a claim-change ledger linking original and revised passages, affected claims, retirement decisions, and reviewer corrections.",
+            "that stored claim memory is independent evidence or remains valid after its source has changed",
+        )
+    if _match_keywords(title, ("rascls",)):
+        return (
+            "Evidence packet: historical RASCLS definitions, source context, alternative explanations, and limits on person-level inference.",
+            "Build a RASCLS versus MICE vocabulary comparison with historical context, consent boundary, and unsupported motive inference.",
+            "that RASCLS labels predict an individual's motives or authorize persuasion or contact",
+        )
+    return None
 
 # Deterministic per-risk-category verification clause for the artifact fallback.
 # Each clause names the six required artifact elements (source descriptor, bounded
@@ -96,24 +187,26 @@ def evidence_prompt_for_entry(
     entry: TopicEntry, lens: PracticeLens, coursebook: CoursebookProfile, *, synthesized_evidence_prompt: Callable[[TopicEntry, PracticeLens, CoursebookProfile], str]
 ) -> str:
     """Resolve evidence prompt from YAML routes with synthesized fallback."""
-    raw = entry.raw_title.lower()
-    routed = _first_matching_frame(raw, evidence_keyword_routes())
+    focus = instructional_focus(entry)
+    if focus:
+        return focus[0]
+    # Transformed source wording remains in the provenance ledger, not routing.
+    routed = _first_matching_frame(entry.display_title.lower(), evidence_keyword_routes())
     if routed:
         return routed
     category_prompts = evidence_category_prompts()
     category = category_prompts.get(entry.risk_category)
     if category:
-        if "sample materials and transparent labels" in entry.display_title.lower():
-            anchor = _topic_anchor_words(entry.raw_title, limit=2)
-            return f"Evidence packet for **{entry.display_title}**: narrative provenance for {anchor}, audience-harm notes, attribution evidence, and transparent education options."
         return category
     return synthesized_evidence_prompt(entry, lens, coursebook)
 
 
 def artifact_prompt_for_entry(entry: TopicEntry, lens: PracticeLens, coursebook: CoursebookProfile) -> str:
     """Resolve artifact prompt from YAML routes with default template fallback."""
-    raw = entry.raw_title.lower()
-    routed = _first_matching_frame(raw, artifact_keyword_routes())
+    focus = instructional_focus(entry)
+    if focus:
+        return focus[1]
+    routed = _first_matching_frame(entry.display_title.lower(), artifact_keyword_routes())
     if routed:
         return routed
     risk_prompts = artifact_risk_category_prompts()

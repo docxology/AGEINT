@@ -37,7 +37,6 @@ The default full pipeline runs **one** canonical build per project invocation.
 | `setup_hook.py` | No | Post-clean output doc scaffolding (`_NON_ANALYSIS_SCRIPT_NAMES`) |
 | `generate_topic_prompt_routes_yaml.py` | No | Regenerates `data/topic_prompt_routes.yaml` from canonical tables in `src/topic_route_tables.py` (regenerable, idempotent) |
 | `generate_topic_rotation_templates_yaml.py` | No | Regenerates `data/topic_rotation_templates.yaml` from canonical tables in `src/topic_route_tables.py` (regenerable, idempotent) |
-| `generate_prompt_parity_fixture.py` / `generate_rotation_parity_fixture.py` | No | Regenerate parity fixtures under `tests/fixtures/` from the live curriculum |
 
 `AGENTS.md` is the canonical script inventory. Audit/coverage and
 declarative-YAML validation scripts (`audit_*.py`, `check_rendered_references.py`,

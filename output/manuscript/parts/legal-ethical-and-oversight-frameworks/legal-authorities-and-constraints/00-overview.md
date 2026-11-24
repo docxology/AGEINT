@@ -12,27 +12,27 @@ This module teaches the **Legal, Ethical, and Oversight Architecture** lane thro
 
 ## Legal, Ethical, and Oversight Architecture frame for Legal Authorities and Constraints: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-legal-authorities-and-constraints]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-legal-authorities-and-constraints].
 
 ### Legal Authorities and Constraints orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-legal-authorities-and-constraints]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-legal-authorities-and-constraints].
 
 ### Legal Authorities and Constraints conceptual primer: source context, core model, and reader task
 
-This chapter teaches legal and oversight architecture as design constraint: authority, rights, auditability, proportionality, transparency, and redress shape what work may proceed. The chapter uses **Oversight-and-Rights Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Executive Order 12333: United States Intelligence Activities; FISA and Surveillance Law**.
+This chapter teaches legal and oversight architecture as design constraint: authority, rights, auditability, proportionality, transparency, and redress shape what work may proceed. The chapter uses **Oversight-and-Rights Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Executive Order 12333: Version Limits and the Distinct PPD-28 Source; FISA and Surveillance Law**.
 
-The central distinction is to separate having a capability from having authority and accountable review. Core topics include **Executive Order 12333: United States Intelligence Activities; FISA and Surveillance Law; Intelligence Community Directives: Full Index (IRP/FAS)**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
+The central distinction is to separate having a capability from having authority and accountable review. Core topics include **Executive Order 12333: Version Limits and the Distinct PPD-28 Source; FISA and Surveillance Law; Intelligence Community Directives: Index Provenance versus Current Text**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
 Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_odni_eo_12333]; [@official_nsa_fisa]; [@official_eu_ai_act]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint234]; [@ageint238].
 
-Learners move from vocabulary and the **Oversight-and-Rights Lens** distinction through topic lessons on **Executive Order 12333: United States Intelligence Activities** with evidence and misconception checks, then assemble an **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** with safety and rights gates.
+Learners move from vocabulary and the **Oversight-and-Rights Lens** distinction through topic lessons on **Executive Order 12333: Version Limits and the Distinct PPD-28 Source** with evidence and misconception checks, then assemble an **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** with safety and rights gates.
 
 ### Legal Authorities and Constraints learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-legal-authorities-and-constraints]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-legal-authorities-and-constraints].
 
-- Connect **Executive Order 12333: United States Intelligence Activities and FISA and Surveillance Law** to **Legal, Ethical, and Oversight Architecture** by naming shared vocabulary, evidence burden, and audience-facing caveats.
+- Connect **Executive Order 12333: Version Limits and the Distinct PPD-28 Source and FISA and Surveillance Law** to **Legal, Ethical, and Oversight Architecture** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
 - Apply the key distinction: separate having a capability from having authority and accountable review; show where an apparently useful shortcut would cross that line.
 - Diagnose failure modes such as authority laundering through tools, missing audit trails, privacy overreach, and treating governance as a static checklist, then write one recovery move for each failure mode that preserves the learning objective.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Oversight-and-Rights Lens** distinction 
 
 ### Legal Authorities and Constraints core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-legal-authorities-and-constraints]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-legal-authorities-and-constraints].
 
 | Term | Working definition |
 |---|---|
-| Authority | the legal, institutional, or classroom basis for an activity |
-| Proportionality | the test that a method is no more intrusive than the need justifies |
+| Authority | a specified basis for an activity tied to actor, purpose, jurisdiction, data status, and applicable rule; classroom permission is not real legal authority |
+| Proportionality | a context-specific assessment of justified intrusion and impact under applicable rules, not a substitute for lawful authority or a universal legal test |
 | Oversight | independent review that can challenge or constrain the activity |
 | Redress | a path for affected people to contest or correct harm |
 | Audit trail | retained evidence that enables later review of decisions and outputs |
-| Executive Order 12333: United States… | Key terms: Executive, Order, United. |
-| FISA and Surveillance Law | Key terms: FISA, Surveillance, Law. |

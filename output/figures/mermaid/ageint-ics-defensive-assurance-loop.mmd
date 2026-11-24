@@ -1,14 +1,12 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  A["Synthetic OT telemetry in owned lab"] --> B["AI-driven anomaly detection"]
-  A --> C["LLM agent log analysis and correlation"]
-  B --> D["Advisory findings with confidence"]
-  C --> D
-  D --> E{"Allowlist and tool governance gate"}
-  E -->|"Deny by default"| A
-  E -->|"Permitted"| F["Analyst-in-the-loop review"]
-  F -->|"Unsafe automation"| A
-  F -->|"Approved"| G["Logged defensive recommendation"]
-  G --> H["Tabletop debrief with rollback evidence"]
-  H --> I(["Record coverage and refresh trigger"])
-  I --> A
+  P{"Permission, synthetic inputs,<br/>disconnected tools and reviewer confirmed?"}
+  P -->|"no or unknown"| STOP["Stop exercise processing<br/>Minimize record and escalate"]
+  P -->|"yes"| A["Supplied static process records<br/>No device connections or credentials"]
+  A --> B["Advisory comparison only<br/>Check clocks, units, mode and source lineage"]
+  B --> C["Challenge benign alert, missing data<br/>and embedded untrusted instruction"]
+  C --> D{"Boundary intact and evidence adequate?"}
+  D -->|"no or unknown"| STOP
+  D -->|"yes"| R["Named human reviews finding,<br/>alternatives and uncertainty"]
+  R --> OUT["Bounded classroom finding or abstention<br/>Never control, block or operate a plant"]
+  STOP --> RE["Resume only after reviewer disposition<br/>and recorded fixture/tool re-entry check"]

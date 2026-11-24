@@ -12,27 +12,27 @@ This module teaches the **ICS/OT Cyber-Physical Defense and Tabletop Readiness**
 
 ## ICS/OT Cyber-Physical Defense and Tabletop Readiness frame for Threat Intelligence Sharing for Critical Infrastructure: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure].
 
 ### Threat Intelligence Sharing for Critical Infrastructure orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure].
 
 ### Threat Intelligence Sharing for Critical Infrastructure conceptual primer: source context, core model, and reader task
 
-This chapter teaches ICS/OT intelligence as safety-aware defensive reasoning: asset state, engineering consequence, operator decision, and recovery evidence matter as much as cyber indicators. The chapter uses **Cyber-Physical Readiness Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Evidence-Driven Analysis of Threat Information Sharing for ICS; ISACs: E-ISAC, WaterISAC, FS-ISAC**.
+This chapter teaches ICS/OT intelligence as safety-aware defensive reasoning: asset state, engineering consequence, operator decision, and recovery evidence matter as much as cyber indicators. The chapter uses **Cyber-Physical Readiness Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Evidence-Driven Analysis of ICS Threat Sharing: Versioned Corpus Study; ISACs: E-ISAC, WaterISAC, FS-ISAC**.
 
-The central distinction is to separate cyber analysis from unsafe process control or live operational action. Core topics include **Evidence-Driven Analysis of Threat Information Sharing for ICS (arXiv 2025); ISACs: E-ISAC, WaterISAC, FS-ISAC; CISA Frameworks for Critical Infrastructure**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
+The central distinction is to separate cyber analysis from unsafe process control or live operational action. Core topics include **Evidence-Driven Analysis of ICS Threat Sharing: Versioned Corpus Study; ISACs: E-ISAC, WaterISAC, FS-ISAC; CISA Frameworks for Critical Infrastructure**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
 Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_nist_csf_2]; [@official_nist_sp_800_160r1]; [@official_nist_sp_800_82r3]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint253]; [@ageint258].
 
-Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinction through topic lessons on **Evidence-Driven Analysis of Threat Information Sharing for ICS (arXiv 2025)** with evidence and misconception checks, then assemble a **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with safety and rights gates.
+Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinction through topic lessons on **Evidence-Driven Analysis of ICS Threat Sharing: Versioned Corpus Study** with evidence and misconception checks, then assemble a **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with safety and rights gates.
 
 ### Threat Intelligence Sharing for Critical Infrastructure learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure].
 
-- Connect **Evidence-Driven Analysis of Threat Information Sharing for ICS (arXiv 2025) and ISACs: E-ISAC, WaterISAC, FS-ISAC** to **ICS/OT Cyber-Physical Defense and Tabletop Readiness** by naming shared vocabulary, evidence burden, and audience-facing caveats.
+- Connect **Evidence-Driven Analysis of ICS Threat Sharing: Versioned Corpus Study and ISACs: E-ISAC, WaterISAC, FS-ISAC** to **ICS/OT Cyber-Physical Defense and Tabletop Readiness** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
 - Apply the key distinction: separate cyber analysis from unsafe process control or live operational action; show where an apparently useful shortcut would cross that line.
 - Diagnose failure modes such as IT-first assumptions, unsafe automation, untested shutdown logic, poor remote-access control, and missing after-action learning, then write one recovery move for each failure mode that preserves the learning objective.
@@ -40,7 +40,7 @@ Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinct
 
 ### Threat Intelligence Sharing for Critical Infrastructure core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure].
 
 | Term | Working definition |
 |---|---|
@@ -48,6 +48,4 @@ Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinct
 | Consequence | the operational, safety, environmental, or service effect of a condition |
 | Defense in depth | layered prevention, detection, response, and recovery controls |
 | Tabletop inject | a synthetic event used to rehearse decisions without touching live systems |
-| Recovery evidence | proof that a safe state, service, or learning objective was restored |
-| Evidence-Driven Analysis of Threat Information… | Key terms: Evidence, Driven, Analysis. |
-| ISACs: E-ISAC, WaterISAC, FS-ISAC | Key terms: ISACs, ISAC, WaterISAC. |
+| Recovery evidence | records supporting a specified restored state, including appropriate engineering checks and operator acceptance; alert silence alone is insufficient |

@@ -1,16 +1,20 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  A([Perception of environment]) --> B[Belief state update]
-  B --> C[Intent formation]
-  C --> D{Policy and tool-allowlist gate}
-  D -->|Denied tool or scope| C
-  D -->|Permitted| E{Risk classifier}
-  E -->|High risk or irreversible| F[Human-in-the-loop review gate]
-  E -->|Low risk| G[Bounded action executor]
-  F -->|Approved| G
-  F -->|Rejected| C
-  G --> H[Observability tracing and audit log]
-  H --> I{Kill switch and loop detector}
-  I -->|Runaway or budget breach| J([Halt and escalate])
-  I -->|Within limits| A
-  H --> F
+    A["Perception and belief update"] --> C["Proposed action<br/>within declared task"]
+    C --> E{"Risk and reversibility review"}
+    E -->|High risk or irreversible| F["Named human approval<br/>specific action and scope"]
+    E -->|Within pre-authorized low-risk scope| P
+    F -->|Approved| P{"Per-action preflight guard<br/>permission, scope, arguments<br/>and privacy constraints"}
+    F -->|Rejected or uncertain| J["Pause actions<br/>retain evidence and escalate"]
+    P -->|Denied, uncertain or critical breach| J
+    P -->|Authorized now| K{"External execution interlock<br/>stop latch clear?"}
+    HS["Named human stop authority<br/>outside agent control"] -->|Sets stop latch| K
+    K -->|Stop latched| J
+    K -->|Clear| G["Bounded action executor"]
+    G --> H["Observability and audit log"]
+    H --> I{"Post-action monitoring<br/>loop, budget and boundary checks"}
+    I -->|Stop condition or critical breach| J
+    I -->|Within reviewed limits| A
+    J --> R["Named human reviews<br/>correction and resumption scope"]
+    R -->|Approved to propose again| C
+    H -.-> N["Monitoring cannot undo<br/>irreversible effects<br/>Guards require scoped assurance"]

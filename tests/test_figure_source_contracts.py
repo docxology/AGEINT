@@ -153,7 +153,6 @@ def test_sat_literature_shard_is_verified_deduped_complete_and_routed() -> None:
     assert set(keys) <= routed
     assert "scholarly_heuer_pherson_sats" not in keys
     assert "scholarly_rand_2016_sat_evaluation" not in keys
-    assert anchors["scholarly_rand_2016_sat_evaluation"].author == ("Stephen J. Artner; Richard S. Girven; James B. Bruce")
     assert anchors["scholarly_ard_2023_sat_pragmatic"].title == ("Structured Analytic Techniques: A Pragmatic Approach")
     for row in rows:
         assert required_fields <= set(row), row

@@ -170,6 +170,7 @@ def safe_topic_entries(chapter: dict[str, Any], part: dict[str, Any]) -> list[To
                 provenance_note=provenance_note,
                 risk_category=risk_category,
                 citation_numbers=tuple(int(number) for number in section.get("citations", [])),
+                teaching_note=str(section.get("teaching_note", "")),
             )
         )
 

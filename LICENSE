@@ -4,7 +4,7 @@ README.md ("text CC BY 4.0; code Apache-2.0") and maps it onto the tree.
 CURRICULUM AND MANUSCRIPT TEXT — Creative Commons Attribution 4.0 International
 (CC BY 4.0), <https://creativecommons.org/licenses/by/4.0/>:
 
-    data/curriculum/**        manuscript/**        output/manuscript/**
+    data/curriculum/**        output/manuscript/**
     docs/**                   AGEINT.pdf           output/pdf/**
     output/figures/**         data/research_anchors/**
 
@@ -17,7 +17,7 @@ Attribution for the CC BY 4.0 material:
 
     Friedman, Daniel Ari. AGEINT: Agentic Intelligence — A Modular Atlas,
     Library, Course, Textbook, Cookbook, and Playbook for Agentic Intelligence
-    (Edition 0.1, 2026). Active Inference Institute.
+    (Edition 0.2.0, 2026). Active Inference Institute.
     <https://github.com/docxology/AGEINT>. <https://doi.org/10.5281/zenodo.20732274>.
 
 Where a file could fall under either heading, the licence of the directory it

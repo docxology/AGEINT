@@ -12,11 +12,11 @@ This module teaches the **Open-Source and Geospatial Intelligence Integrity** la
 
 ## Open-Source and Geospatial Intelligence Integrity frame for OSINT Techniques and Tools: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 ### OSINT Techniques and Tools orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 ### OSINT Techniques and Tools conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### OSINT Techniques and Tools learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 - Connect **Search-exposure provenance review using instructor-provided records and Social-source provenance and minimization review using toy records** to **Open-Source and Geospatial Intelligence Integrity** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **requirements matrix with source descriptors, caveats, and collection limits** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### OSINT Techniques and Tools core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 | Term | Working definition |
 |---|---|
-| Provenance | the origin, chain, and transformation history of a source |
-| Corroboration | the comparison of independent sources before reuse |
+| Provenance | the origin, custody, and transformation history of a source, which helps evaluate a claim but does not prove its truth or grant reuse permission |
+| Corroboration | comparison of relevant, sufficiently independent evidence for a specific claim; copied sources do not become independent through repetition |
 | Recency | the time relationship between source creation, discovery, and claim |
 | Geospatial quality | accuracy, completeness, temporal fitness, and usability of location data |
 | Minimization | limiting retained information to what the accountable question requires |
-| Search-exposure provenance review using… | Key terms: Search, exposure, provenance. |
-| Social-source provenance and minimization… | Key terms: Social, provenance, minimization. |

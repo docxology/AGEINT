@@ -14,11 +14,11 @@ This module teaches the **ICS/OT Cyber-Physical Defense and Tabletop Readiness**
 
 ## ICS/OT Cyber-Physical Defense and Tabletop Readiness frame for Industrial Control Systems (ICS) and Operational Technology: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-industrial-control-systems-ics-and-operational-technology]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
 ### Industrial Control Systems (ICS) and Operational Technology orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-industrial-control-systems-ics-and-operational-technology]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
 ### Industrial Control Systems (ICS) and Operational Technology conceptual primer: source context, core model, and reader task
 
@@ -32,7 +32,7 @@ Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinct
 
 ### Industrial Control Systems (ICS) and Operational Technology learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-industrial-control-systems-ics-and-operational-technology]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
 - Connect **ICS Architecture: SCADA, DCS, PLC, HMI — Definitions and Roles and SCADA: Supervisory Control and Data Acquisition — Large Geographic Systems** to **ICS/OT Cyber-Physical Defense and Tabletop Readiness** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -42,7 +42,7 @@ Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinct
 
 ### Industrial Control Systems (ICS) and Operational Technology core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-industrial-control-systems-ics-and-operational-technology]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
 | Term | Working definition |
 |---|---|
@@ -50,6 +50,4 @@ Learners move from vocabulary and the **Cyber-Physical Readiness Lens** distinct
 | Consequence | the operational, safety, environmental, or service effect of a condition |
 | Defense in depth | layered prevention, detection, response, and recovery controls |
 | Tabletop inject | a synthetic event used to rehearse decisions without touching live systems |
-| Recovery evidence | proof that a safe state, service, or learning objective was restored |
-| ICS Architecture: SCADA, DCS, PLC, HMI —… | Key terms: ICS, Architecture, SCADA. |
-| SCADA: Supervisory Control and Data Acquisition… | Key terms: SCADA, Supervisory, Control. |
+| Recovery evidence | records supporting a specified restored state, including appropriate engineering checks and operator acceptance; alert silence alone is insufficient |

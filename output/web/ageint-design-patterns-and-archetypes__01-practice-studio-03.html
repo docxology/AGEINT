@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio-03.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,9 +182,862 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
+<p><strong>Concept.</strong> <strong>Safe defensive application:
+public-source validation packet with uncertainty and review
+escalations</strong> — <strong>Source-Reliability Verification
+Agent</strong> uses corroboration, metadata review, provenance checks,
+and content-authenticity labels. Its classroom application is
+public-source validation packet with uncertainty and review escalations;
+it supports verification and does not accuse, deanonymize, or profile
+real people.</p>
+<p><strong>Worked reasoning and limits.</strong> A synthetic authentic
+signed draft says review is optional, while a later current rule says
+required. The result is ‘authentic historical draft, not current
+support’, not ‘forgery’ or ‘deception detected’; if version order is
+unknown, retain both claims and abstain on the current rule.</p>
+<p><strong>Why it matters.</strong> <strong>Safe defensive
+application</strong> matters in the <strong>Agentic AI Governance and
+Tool Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: public-source validation packet with
+uncertainty and review escalations</strong>: [ageint308] and
+[ageint311]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
+application</strong>, inspect the original passages. Curriculum
+annotation for [ageint308]: An archived CISA publication, “CISA
+Insights: Preparing for and Mitigating Foreign Influence Operations
+Targeting Critical Infrastructure,” providing guidance on the threat
+that foreign influence campaigns pose to U.S. critical infrastructure.
+Curriculum annotation for [ageint311]: An official NATO topic page
+describing the Alliance’s approach to countering information threats,
+defined as intentional, manipulative, and coordinated activities by
+state and non-state actors including disinformation and propaganda. It
+explains why such threats matter for democratic processes and
+institutional trust, and outlines a four-part framework of
+understanding, preventing, containing, and recovering. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Safe defensive
+application</strong>, build a <strong>Source-Reliability Verification
+Agent</strong> card with reliability claim, provenance check,
+alternative explanation, and uncertainty; keep the exercise within its
+registry boundary. Shape <strong>Safe defensive application</strong>
+work as an <strong>agent run and assurance card</strong> that logs the
+evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Safe defensive application</strong>: that a reliability warning
+proves deception or identifies its author.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
+application</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-56-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable-workflow-for-source-reliability-verification-agent">Lesson
+56: Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Source-Reliability Verification Agent</h4>
+<p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
+an allowlisted, logged, revocable workflow for Source-Reliability
+Verification Agent</strong> — <strong>Source-Reliability Verification
+Agent</strong> uses corroboration, metadata review, provenance checks,
+and content-authenticity labels. Its classroom application is
+public-source validation packet with uncertainty and review escalations;
+it supports verification and does not accuse, deanonymize, or profile
+real people.</p>
+<p><strong>Worked reasoning and limits.</strong> The offline archetype
+returns a dimensioned record: authenticity evidence, claim support, date
+relevance, origin dependency and unresolved alternatives. A missing
+dimension remains unknown instead of being collapsed into a confident
+binary label; provenance standards do not establish factual truth.
+[official_c2pa_specifications]</p>
+<p><strong>Why it matters.</strong> <strong>Safe architecture
+artifact</strong> connects classroom vocabulary to Agentic AI Governance
+and Tool Security practice: learners document evidence, caveats, and
+reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Source-Reliability Verification Agent</strong>:
+[ageint299], [ageint306], and [ageint312]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Safe architecture
+artifact</strong>, build a <strong>Source-Reliability Verification
+Agent</strong> card with reliability claim, provenance check,
+alternative explanation, and uncertainty; keep the exercise within its
+registry boundary. Shape <strong>Safe architecture artifact</strong>
+work as an <strong>agent run and assurance card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Safe architecture artifact</strong>: that a reliability warning
+proves deception or identifies its author.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
+artifact</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-57-pattern-15-analyst-in-the-loop-review-agent-source-identity-preserved-in-pattern-registry---requires-accountable-human-review-before-any-external-communication-or-decision">Lesson
+57: Pattern 15: Analyst-in-the-Loop Review Agent (source identity
+preserved in pattern registry) - requires accountable human review
+before any external communication or decision</h4>
+<p><strong>Concept.</strong> <strong>Pattern 15: Analyst-in-the-Loop
+Review Agent (source identity preserved in pattern registry) - requires
+accountable human review before any external communication or
+decision</strong> — <strong>Analyst-in-the-Loop Review Agent</strong>
+uses interrupt gates, confidence thresholds, human approvals, and audit
+handoffs. Its classroom application is supervised classroom analysis
+workflow for compliance-constrained exercises; it requires accountable
+human review before any external communication or decision.</p>
+<p><strong>Worked reasoning and limits.</strong> The Analyst-in-the-Loop
+Review Agent routes consequential decisions to an accountable owner
+before the relevant transition. Review must be resourced and actionable;
+a human name in a diagram and high model confidence do not create
+approval. [official_canada_agentic_ai_guide]</p>
+<p><strong>Why it matters.</strong> <strong>Pattern 15:
+Analyst-in-the-Loop Review Agent (source identity preserved in pattern
+registry) - requires accountable human review before any external
+communication or decision</strong> connects classroom vocabulary to
+Agentic AI Governance and Tool Security practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Pattern 15: Analyst-in-the-Loop Review Agent (source identity
+preserved in pattern registry) - requires accountable human review
+before any external communication or decision</strong>: [ageint004].
+These citations preserve source identity, not automatic topical
+relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Pattern 15:
+Analyst-in-the-Loop Review Agent (source identity preserved in pattern
+registry) - requires accountable human review before any external
+communication or decision</strong>, inspect the original passages.
+Curriculum annotation for [ageint004]: Tom Mulligan argues that
+artificial intelligence will enhance rather than replace human
+intelligence professionals, contending that the future of intelligence
+lies in human-machine collaboration. He maintains that uniquely human
+qualities such as intuition, experience, and independent judgment become
+more valuable as adversaries gain access to the same AI tools. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Pattern 15</strong>,
+build a <strong>Analyst-in-the-Loop Review Agent</strong> card with
+exact action, scope, artifact version, authorized reviewer, and expiry;
+keep the exercise within its registry boundary. Shape <strong>Pattern
+15: Analyst-in-the-Loop Review Agent (source identity preserved in
+pattern registry) - requires accountable human review before any
+external communication or decision</strong> work as an <strong>agent run
+and assurance card</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Pattern 15: Analyst-in-the-Loop Review Agent (source identity
+preserved in pattern registry) - requires accountable human review
+before any external communication or decision</strong>: that model
+confidence substitutes for human authorization.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Pattern 15:
+Analyst-in-the-Loop Review Agent (source identity preserved in pattern
+registry) - requires accountable human review before any external
+communication or decision</strong> to a second module by preserving
+least-privilege agent design and run review, changing the source
+evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-58-safe-methods-interrupt-gates-confidence-thresholds-human-approvals-and-audit-handoffs">Lesson
+58: Safe methods: interrupt gates, confidence thresholds, human
+approvals, and audit handoffs</h4>
+<p><strong>Concept.</strong> <strong>Safe methods: interrupt gates,
+confidence thresholds, human approvals, and audit handoffs</strong> —
+<strong>Analyst-in-the-Loop Review Agent</strong> uses interrupt gates,
+confidence thresholds, human approvals, and audit handoffs. Its
+classroom application is supervised classroom analysis workflow for
+compliance-constrained exercises; it requires accountable human review
+before any external communication or decision.</p>
+<p><strong>Worked reasoning and limits.</strong> The gate asks for
+approve/revise/deny on an exact artifact version, proposed action,
+destination, evidence/caveats and expiry. Scope, rights and
+irreversibility gates apply regardless of confidence; unavailable or
+expired ownership means hold, not implicit consent.</p>
+<p><strong>Why it matters.</strong> <strong>Safe methods</strong>
+matters in the <strong>Agentic AI Governance and Tool Security</strong>
+lane because least-privilege agent design and run evidence must stay
+separate from judgment; treating pattern names as deployment playbooks
+is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe methods: interrupt gates, confidence thresholds, human
+approvals, and audit handoffs</strong>: [ageint297] and [ageint298].
+These citations preserve source identity, not automatic topical
+relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe
+methods</strong>, inspect the original passages. Curriculum annotation
+for [ageint297]: Official ODNI Intelligence Community Directive 203
+analytic standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Curriculum annotation for [ageint298]: Official ODNI index for
+Intelligence Community Directives used to locate current directive
+source material and preserve directive-context citations. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Safe methods</strong>,
+build a <strong>Analyst-in-the-Loop Review Agent</strong> card with
+exact action, scope, artifact version, authorized reviewer, and expiry;
+keep the exercise within its registry boundary. Shape <strong>Safe
+methods</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+model confidence substitutes for human authorization.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Safe
+methods</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-59-safe-defensive-application-supervised-classroom-analysis-workflow-for-compliance-constrained-exercises">Lesson
+59: Safe defensive application: supervised classroom analysis workflow
+for compliance-constrained exercises</h4>
+<p><strong>Concept.</strong> <strong>Safe defensive application:
+supervised classroom analysis workflow for compliance-constrained
+exercises</strong> — <strong>Analyst-in-the-Loop Review Agent</strong>
+uses interrupt gates, confidence thresholds, human approvals, and audit
+handoffs. Its classroom application is supervised classroom analysis
+workflow for compliance-constrained exercises; it requires accountable
+human review before any external communication or decision.</p>
+<p><strong>Worked reasoning and limits.</strong> Synthetic request A1
+asks reviewer Instructor-A to accept draft D1-v2 for local seminar
+review only until session end; the decision is revise because R3 is
+mislabeled current. D1-v3 corrects the label but requires a new
+decision; neither approval would authorize excluded external sharing,
+and a claimed 99% confidence changes nothing.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Safe defensive
+application</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: supervised classroom analysis
+workflow for compliance-constrained exercises</strong>: [ageint299],
+[ageint306], and [ageint312]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
+application</strong>, inspect the original passages. Curriculum
+annotation for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Safe defensive
+application</strong>, build a <strong>Analyst-in-the-Loop Review
+Agent</strong> card with exact action, scope, artifact version,
+authorized reviewer, and expiry; keep the exercise within its registry
+boundary. Shape <strong>Safe defensive application</strong> work as an
+<strong>agent run and assurance card</strong> that states the evidence
+used, what stays uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Safe defensive application</strong>: that model confidence
+substitutes for human authorization.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
+application</strong> to a second module by preserving least-privilege
+agent design and run review, changing the source evidence, and naming a
+new reviewer.</p>
+<h4
+id="lesson-60-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable-workflow-for-analyst-in-the-loop-review-agent">Lesson
+60: Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Analyst-in-the-Loop Review Agent</h4>
+<p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
+an allowlisted, logged, revocable workflow for Analyst-in-the-Loop
+Review Agent</strong> — <strong>Analyst-in-the-Loop Review
+Agent</strong> uses interrupt gates, confidence thresholds, human
+approvals, and audit handoffs. Its classroom application is supervised
+classroom analysis workflow for compliance-constrained exercises; it
+requires accountable human review before any external communication or
+decision.</p>
+<p><strong>Worked reasoning and limits.</strong> A resumable approval
+state stores request ID, owner, artifact version, exact action and
+decision expiry. Before resuming, compare all bound fields; a changed
+draft, action, destination or owner pauses the transition for a fresh
+decision rather than replaying a stale approval.</p>
+<p><strong>Why it matters.</strong> <strong>Safe architecture
+artifact</strong> matters in the <strong>Agentic AI Governance and Tool
+Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Analyst-in-the-Loop Review Agent</strong>:
+[ageint299], [ageint306], and [ageint312]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Safe architecture
+artifact</strong>, build a <strong>Analyst-in-the-Loop Review
+Agent</strong> card with exact action, scope, artifact version,
+authorized reviewer, and expiry; keep the exercise within its registry
+boundary. Shape <strong>Safe architecture artifact</strong> work as an
+<strong>agent run and assurance card</strong> that names evidence,
+uncertainty, reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Safe architecture artifact</strong>: that model confidence
+substitutes for human authorization.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
+artifact</strong> to a second module by preserving least-privilege agent
+design and run review, changing the source evidence, and naming a new
+reviewer.</p>
+<h4
+id="lesson-61-pattern-16-soc-tabletop-triage-agent-source-identity-preserved-in-pattern-registry---does-not-run-response-actions-touch-production-systems-or-publish-indicators-as-fact">Lesson
+61: Pattern 16: SOC Tabletop Triage Agent (source identity preserved in
+pattern registry) - does not run response actions, touch production
+systems, or publish indicators as fact</h4>
+<p><strong>Concept.</strong> <strong>Pattern 16: SOC Tabletop Triage
+Agent (source identity preserved in pattern registry) - does not run
+response actions, touch production systems, or publish indicators as
+fact</strong> — <strong>SOC Tabletop Triage Agent</strong> uses
+synthetic alert enrichment, ATT&amp;CK mapping, severity rationale, and
+debrief notes. Its classroom application is tier-1 incident tabletop
+over fabricated logs and published technique descriptions; it does not
+run response actions, touch production systems, or publish indicators as
+fact.</p>
+<p><strong>Worked reasoning and limits.</strong> The SOC Tabletop Triage
+Agent interprets fabricated alert records and recommends local review,
+not autonomous response. An observable is a recorded property, an
+indicator is an analytic assertion useful under stated conditions, and
+an incident requires contextual assessment; none follows automatically
+from the others. [official_oasis_stix_21]</p>
+<p><strong>Why it matters.</strong> <strong>Pattern 16: SOC Tabletop
+Triage Agent (source identity preserved in pattern registry) - does not
+run response actions, touch production systems, or publish indicators as
+fact</strong> matters in the <strong>Agentic AI Governance and Tool
+Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Pattern 16: SOC Tabletop Triage Agent (source identity preserved
+in pattern registry) - does not run response actions, touch production
+systems, or publish indicators as fact</strong>: [ageint149] and
+[ageint150]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Pattern 16: SOC
+Tabletop Triage Agent (source identity preserved in pattern registry) -
+does not run response actions, touch production systems, or publish
+indicators as fact</strong>, inspect the original passages. Curriculum
+annotation for [ageint149]: A 2025 blog article from Simbian AI
+explaining the application of agentic AI to security operations centers.
+It describes an architecture organized into perception, cognitive, and
+action modules, and a coordinated framework of specialized agents for
+tasks such as alert triage, threat investigation, and vulnerability
+management. Curriculum annotation for [ageint150]: An article from
+Cybersecurity Tribe examining where autonomous AI should and should not
+operate within security operations, drawing on survey data and
+commentary from numerous security experts. It identifies high-volume,
+repetitive tasks such as alert triage and policy validation as well
+suited to automation, while warning against autonomous handling of
+irreversible or high-impact decisions affecting infrastructure and
+access. These editorial descriptions are not source-authored quotations
+or independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Pattern 16</strong>,
+build a <strong>SOC Tabletop Triage Agent</strong> card with alert,
+taxonomy mapping, severity rationale, uncertainty, and no-response
+boundary; keep the exercise within its registry boundary. Shape
+<strong>Pattern 16: SOC Tabletop Triage Agent (source identity preserved
+in pattern registry) - does not run response actions, touch production
+systems, or publish indicators as fact</strong> work as an <strong>agent
+run and assurance card</strong> that names evidence, uncertainty,
+reviewer, and stop condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Pattern 16: SOC Tabletop Triage Agent (source identity preserved
+in pattern registry) - does not run response actions, touch production
+systems, or publish indicators as fact</strong>: that an ATT&amp;CK
+label confirms an incident or authorizes response.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Pattern 16: SOC
 Tabletop Triage Agent (source identity preserved in pattern registry) -
 does not run response actions, touch production systems, or publish
@@ -190,49 +1050,58 @@ id="lesson-62-safe-methods-synthetic-alert-enrichment-attck-mapping-severity-rat
 severity rationale, and debrief notes</h4>
 <p><strong>Concept.</strong> <strong>Safe methods: synthetic alert
 enrichment, ATT&amp;CK mapping, severity rationale, and debrief
-notes</strong> uses the pattern name as safe architectural vocabulary:
-allowlisted tools, logging, human approval, and blocked external
-action.</p>
+notes</strong> — <strong>SOC Tabletop Triage Agent</strong> uses
+synthetic alert enrichment, ATT&amp;CK mapping, severity rationale, and
+debrief notes. Its classroom application is tier-1 incident tabletop
+over fabricated logs and published technique descriptions; it does not
+run response actions, touch production systems, or publish indicators as
+fact.</p>
+<p><strong>Worked reasoning and limits.</strong> Map only behavior
+actually described by the supplied record and retain uncertainty when
+the taxonomy requires missing context. An ATT&amp;CK match is a
+classification aid, not attribution, severity or proof of compromise;
+the inherited NGA-style/contextual references do not validate a SOC
+mapping. [official_mitre_attack_enterprise]</p>
 <p><strong>Why it matters.</strong> <strong>Safe methods</strong>
-connects classroom vocabulary to Agentic AI Governance and Tool Security
-practice: learners document evidence, caveats, and reviewer ownership
-rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Safe methods: synthetic
-alert enrichment, ATT&amp;CK mapping, severity rationale, and debrief
-notes</strong> rests on [ageint302] and [ageint297]. The most specific
-cited work observes: Department of Defense and intelligence community
-organization. Use them for pinning down the scope of <strong>Safe
-methods: synthetic alert enrichment, ATT&amp;CK mapping, severity
-rationale, and debrief notes</strong>, the edge of that scope, and when
-these citations need re-verifying before transfer. External
-triangulation uses [official_oecd_agentic_ai];
-[official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Safe
-methods</strong> in the evidence the row cites. [ageint302] The official
-“About Us” page of the National Geospatial-Intelligence Agency (NGA), a
-U.S. Department of Defense and intelligence community organization. It
-describes NGA’s mission of delivering geospatial intelligence, or
-GEOINT, to support military operations, policymakers, and first
-responders, spanning imagery analysis, mapping, geodesy, and navigation
-safety. [ageint297] Official ODNI Intelligence Community Directive 203
+matters in the <strong>Agentic AI Governance and Tool Security</strong>
+lane because least-privilege agent design and run evidence must stay
+separate from judgment; treating pattern names as deployment playbooks
+is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe methods: synthetic alert enrichment, ATT&amp;CK mapping,
+severity rationale, and debrief notes</strong>: [ageint302] and
+[ageint297]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe
+methods</strong>, inspect the original passages. Curriculum annotation
+for [ageint302]: The official “About Us” page of the National
+Geospatial-Intelligence Agency (NGA), a U.S. Department of Defense and
+intelligence community organization. It describes NGA’s mission of
+delivering geospatial intelligence, or GEOINT, to support military
+operations, policymakers, and first responders, spanning imagery
+analysis, mapping, geodesy, and navigation safety. Curriculum annotation
+for [ageint297]: Official ODNI Intelligence Community Directive 203
 analytic standards source for objectivity, independence, timeliness,
 alternatives, confidence, sourcing, and accuracy in analytic products.
-Work source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe methods</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Safe
-methods</strong>, the safe-substitution caveat, the uncertainty note,
-the no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Safe methods</strong> work as an <strong>agent run and
-assurance card</strong> that states the evidence used, what stays
-uncertain, who reviews it, and when to stop.</p>
+build a <strong>SOC Tabletop Triage Agent</strong> card with alert,
+taxonomy mapping, severity rationale, uncertainty, and no-response
+boundary; keep the exercise within its registry boundary. Shape
+<strong>Safe methods</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe methods</strong>: that naming an agent pattern certifies it
-is safe to deploy without governance gates.</p>
+<strong>Safe methods</strong>: that an ATT&amp;CK label confirms an
+incident or authorizes response.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe
 methods</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -243,55 +1112,63 @@ id="lesson-63-safe-defensive-application-tier-1-incident-tabletop-over-fabricate
 logs and published technique descriptions</h4>
 <p><strong>Concept.</strong> <strong>Safe defensive application: tier-1
 incident tabletop over fabricated logs and published technique
-descriptions</strong> uses the pattern name as safe architectural
-vocabulary: allowlisted tools, logging, human approval, and blocked
-external action.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Safe defensive application</strong>, treating pattern names as
-deployment playbooks undermines least-privilege agent design and run
-review; the lesson builds the habit to separate agent assistance from
-autonomous external action.</p>
-<p><strong>Source support.</strong> <strong>Safe defensive application:
-tier-1 incident tabletop over fabricated logs and published technique
-descriptions</strong> rests on [ageint299], [ageint306], and
-[ageint312]. The most specific cited work observes: The official Model
-Context Protocol (MCP) specification, defining an open protocol that
-standardizes how LLM applications connect to external data sources and
-tools using JSON-RPC 2.0 messages. Use them for the working definition
-that <strong>Safe defensive application: tier-1 incident tabletop over
-fabricated logs and published technique descriptions</strong> can
-defend, where that scope ends, and the refresh check owed before this
-evidence transfers. External triangulation uses
-[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Safe defensive
-application</strong> against the works cited for this row. [ageint299]
-The official Model Context Protocol (MCP) specification, defining an
-open protocol that standardizes how LLM applications connect to external
-data sources and tools using JSON-RPC 2.0 messages. It describes the
-host, client, and server roles and capability negotiation, and the
-features servers expose (resources, prompts, tools) and clients offer
-(sampling, roots, elicitation). [ageint306] Official CISA Artificial
+descriptions</strong> — <strong>SOC Tabletop Triage Agent</strong> uses
+synthetic alert enrichment, ATT&amp;CK mapping, severity rationale, and
+debrief notes. Its classroom application is tier-1 incident tabletop
+over fabricated logs and published technique descriptions; it does not
+run response actions, touch production systems, or publish indicators as
+fact.</p>
+<p><strong>Worked reasoning and limits.</strong> Fictional alert E1
+reports three failed test logins; E2 records a scheduled local test in
+the same interval. The completed decision is ‘review context,
+insufficient evidence for incident’, retaining a benign test explanation
+and any timestamp mismatch; do not block an account, enrich a real
+indicator or publish anything.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Safe defensive
+application</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: tier-1 incident tabletop over
+fabricated logs and published technique descriptions</strong>:
+[ageint299], [ageint306], and [ageint312]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
+application</strong>, inspect the original passages. Curriculum
+annotation for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
 Intelligence page for AI security, safety, resilience, and
-critical-infrastructure governance source support. [ageint312] Official
-Government of Canada guide for responsible use of agentic AI, used for
-public-sector agent governance and accountability source support. Each
-source above earns its place in this topic only when you can state its
-bounded claim, its provenance, its uncertainty, and the fact that would
-retire it.</p>
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe defensive
-application</strong>, build a <strong>agent run card with tool
-allowlist, identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe defensive application</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe defensive
-application</strong> work as an <strong>agent run and assurance
-card</strong> that records its evidence, the residual uncertainty, the
-named reviewer, and the stop condition.</p>
+application</strong>, build a <strong>SOC Tabletop Triage Agent</strong>
+card with alert, taxonomy mapping, severity rationale, uncertainty, and
+no-response boundary; keep the exercise within its registry boundary.
+Shape <strong>Safe defensive application</strong> work as an
+<strong>agent run and assurance card</strong> that records its evidence,
+the residual uncertainty, the named reviewer, and the stop
+condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe defensive application</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+<strong>Safe defensive application</strong>: that an ATT&amp;CK label
+confirms an incident or authorizes response.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
 application</strong> to a second module by preserving least-privilege
 agent design and run review, changing the source evidence, and naming a
@@ -302,57 +1179,62 @@ id="lesson-64-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable
 revocable workflow for SOC Tabletop Triage Agent</h4>
 <p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
 an allowlisted, logged, revocable workflow for SOC Tabletop Triage
-Agent</strong> uses sharing standards to document indicator context,
-handling, confidence, and consumer responsibilities—not raw indicator
-hoarding.</p>
+Agent</strong> — <strong>SOC Tabletop Triage Agent</strong> uses
+synthetic alert enrichment, ATT&amp;CK mapping, severity rationale, and
+debrief notes. Its classroom application is tier-1 incident tabletop
+over fabricated logs and published technique descriptions; it does not
+run response actions, touch production systems, or publish indicators as
+fact.</p>
+<p><strong>Worked reasoning and limits.</strong> A deterministic local
+adapter reads fabricated alert IDs and emits a triage card with
+evidence, missing context and human disposition. No SIEM access,
+response connector or TAXII writer is enabled; export format validity
+would not authorize publication or establish the claim’s accuracy.</p>
 <p><strong>Why it matters.</strong> <strong>Safe architecture
 artifact</strong> connects classroom vocabulary to Agentic AI Governance
 and Tool Security practice: learners document evidence, caveats, and
 reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Safe architecture artifact:
-diagram an allowlisted, logged, revocable workflow for SOC Tabletop
-Triage Agent</strong> rests on [ageint309], [ageint310], and
-[ageint300]. The closest source to this row notes: The OASIS Standard
-specification for TAXII (Trusted Automated Exchange of Intelligence
-Information) Version 2.1, published in 2021 by the OASIS Cyber Threat
-Intelligence Technical Committee. Use them for the working definition
-that <strong>Safe architecture artifact: diagram an allowlisted, logged,
-revocable workflow for SOC Tabletop Triage Agent</strong> can defend,
-where that scope ends, and the refresh check owed before this evidence
-transfers. External triangulation uses [official_oecd_agentic_ai];
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for SOC Tabletop Triage Agent</strong>: [ageint309],
+[ageint310], and [ageint300]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Safe
-architecture artifact</strong> in the evidence the row cites.
-[ageint309] An OASIS standard specification defining STIX (Structured
-Threat Information Expression), a language for exchanging cyber threat
-intelligence in a standardized, machine-readable form. It establishes a
-graph-based model with STIX Domain Objects, Cyber-observable Objects,
-and Relationship Objects, plus meta objects, bundles, and a patterning
-language for detection. [ageint310] The OASIS Standard specification for
-TAXII (Trusted Automated Exchange of Intelligence Information) Version
-2.1, published in 2021 by the OASIS Cyber Threat Intelligence Technical
-Committee. It defines a RESTful, HTTPS-based API protocol for sharing
-cyber threat intelligence between organizations, supporting two
-communication models: Collections (request-response) and Channels
-(publish-subscribe). [ageint300] MITRE ATLAS knowledge base for
+<p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint309]: An OASIS standard specification defining STIX
+(Structured Threat Information Expression), a language for exchanging
+cyber threat intelligence in a standardized, machine-readable form. It
+establishes a graph-based model with STIX Domain Objects,
+Cyber-observable Objects, and Relationship Objects, plus meta objects,
+bundles, and a patterning language for detection. Curriculum annotation
+for [ageint310]: The OASIS Standard specification for TAXII (Trusted
+Automated Exchange of Intelligence Information) Version 2.1, approved 10
+June 2021. It defines a RESTful, HTTPS-based API for exchanging cyber
+threat intelligence through Collections in a request-response model,
+including discovery, API roots, JSON serialization, content negotiation,
+object retrieval with filtering and pagination, and status monitoring.
+Curriculum annotation for [ageint300]: MITRE ATLAS knowledge base for
 adversarial threats to AI systems, used for defensive AI red-team
-assurance and misuse taxonomy. Each source above earns its place in this
-topic only when you can state its bounded claim, its provenance, its
-uncertainty, and the fact that would retire it.</p>
+assurance and misuse taxonomy. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe architecture
-artifact</strong>, build a <strong>agent run card with tool allowlist,
-identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe architecture artifact</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe architecture
-artifact</strong> work as an <strong>agent run and assurance
-card</strong> that names evidence, uncertainty, reviewer, and stop
-condition.</p>
+artifact</strong>, build a <strong>SOC Tabletop Triage Agent</strong>
+card with alert, taxonomy mapping, severity rationale, uncertainty, and
+no-response boundary; keep the exercise within its registry boundary.
+Shape <strong>Safe architecture artifact</strong> work as an
+<strong>agent run and assurance card</strong> that names evidence,
+uncertainty, reviewer, and stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe architecture artifact</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+<strong>Safe architecture artifact</strong>: that an ATT&amp;CK label
+confirms an incident or authorizes response.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
 artifact</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -365,65 +1247,73 @@ produce exploitability claims without evidence</h4>
 <p><strong>Concept.</strong> <strong>Pattern 17: Software Provenance
 Review Agent (source identity preserved in pattern registry) - does not
 hunt real maintainers or produce exploitability claims without
-evidence</strong> shows how package provenance, social trust, build
-integrity, and assurance controls turn a software incident into
-reviewable evidence.</p>
-<p><strong>Why it matters.</strong> <strong>Pattern 17: Software
-Provenance Review Agent (source identity preserved in pattern registry)
-- does not hunt real maintainers or produce exploitability claims
-without evidence</strong> connects classroom vocabulary to Agentic AI
-Governance and Tool Security practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Pattern 17: Software
-Provenance Review Agent (source identity preserved in pattern registry)
-- does not hunt real maintainers or produce exploitability claims
-without evidence</strong> rests on [ageint303], [ageint304], and
-[ageint305]. Its anchor reference records: An official NIST page on
-software supply chain security issued under Executive Order 14028,
-focused on the Software Bill of Materials as a formal record of software
-components and their supply chain. Use them for fixing what
+evidence</strong> — <strong>Software Provenance Review Agent</strong>
+uses SBOM reading, dependency graph review, advisory matching, and
+integrity questions. Its classroom application is defensive
+package-governance exercise over sample manifests and public advisories;
+it does not hunt real maintainers or produce exploitability claims
+without evidence.</p>
+<p><strong>Worked reasoning and limits.</strong> The Software Provenance
+Review Agent separates package identity, build provenance, advisory
+affectedness and exploitability. An SBOM is an inventory representation,
+not proof that every dependency is safe or that a named maintainer acted
+maliciously. [official_nist_ssdf; official_nist_sp_800_161r1]</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Pattern 17: Software Provenance Review Agent (source identity
 preserved in pattern registry) - does not hunt real maintainers or
-produce exploitability claims without evidence</strong> covers, marking
-the boundary it must not cross, and timing the next source refresh.
-External triangulation uses [official_oecd_agentic_ai];
+produce exploitability claims without evidence</strong>, treating
+pattern names as deployment playbooks undermines least-privilege agent
+design and run review; the lesson builds the habit to separate agent
+assistance from autonomous external action.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Pattern 17: Software Provenance Review Agent (source identity
+preserved in pattern registry) - does not hunt real maintainers or
+produce exploitability claims without evidence</strong>: [ageint303],
+[ageint304], and [ageint305]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Pattern 17:
+<p><strong>Evidence to inspect.</strong> For <strong>Pattern 17:
 Software Provenance Review Agent (source identity preserved in pattern
 registry) - does not hunt real maintainers or produce exploitability
-claims without evidence</strong> in the evidence the row cites.
-[ageint303] An official NIST page on software supply chain security
-issued under Executive Order 14028, focused on the Software Bill of
-Materials as a formal record of software components and their supply
-chain. It explains the benefits of SBOMs for vulnerability
+claims without evidence</strong>, inspect the original passages.
+Curriculum annotation for [ageint303]: An official NIST page on software
+supply chain security issued under Executive Order 14028, focused on the
+Software Bill of Materials as a formal record of software components and
+their supply chain. It explains the benefits of SBOMs for vulnerability
 identification and supply-chain transparency, recommends
 machine-readable formats such as SPDX, CycloneDX, and SWID, and
 describes foundational, sustaining, and enhancing levels of
-implementation. [ageint304] NIST SP 800-218, the Secure Software
-Development Framework Version 1.1 published in February 2022,
-establishes a set of high-level practices for integrating security into
-software development lifecycles in order to reduce vulnerabilities in
-released software, mitigate the impact of exploited vulnerabilities, and
-address root causes to prevent recurrences. [ageint305] Official NIST
-NCCoE DevSecOps project page for software factory, secure pipeline, and
-continuous authorization source support. Work source by source: name the
-bounded claim, its origin, the residual uncertainty, and the trigger
-that would change how this topic is judged.</p>
+implementation. Curriculum annotation for [ageint304]: NIST SP 800-218,
+the Secure Software Development Framework Version 1.1 published in
+February 2022, establishes a set of high-level practices for integrating
+security into software development lifecycles in order to reduce
+vulnerabilities in released software, mitigate the impact of exploited
+vulnerabilities, and address root causes to prevent recurrences.
+Curriculum annotation for [ageint305]: Official NIST NCCoE DevSecOps
+project page for software factory, secure pipeline, and continuous
+authorization source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Pattern 17</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Pattern
-17</strong>, the safe-substitution caveat, the uncertainty note, the
-no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Pattern 17: Software Provenance Review Agent (source
-identity preserved in pattern registry) - does not hunt real maintainers
-or produce exploitability claims without evidence</strong> work as an
-<strong>agent run and assurance card</strong> that states the evidence
-used, what stays uncertain, who reviews it, and when to stop.</p>
-<p><strong>Misconception check.</strong> Correct the misconception that
-naming an agent pattern certifies it is safe to deploy without
-governance gates.</p>
+build a <strong>Software Provenance Review Agent</strong> card with
+component version, advisory match, provenance gap, and uncertainty; keep
+the exercise within its registry boundary. Shape <strong>Pattern 17:
+Software Provenance Review Agent (source identity preserved in pattern
+registry) - does not hunt real maintainers or produce exploitability
+claims without evidence</strong> work as an <strong>agent run and
+assurance card</strong> that states the evidence used, what stays
+uncertain, who reviews it, and when to stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Pattern 17: Software Provenance Review Agent (source identity
+preserved in pattern registry) - does not hunt real maintainers or
+produce exploitability claims without evidence</strong>: that a
+dependency match alone proves exploitability or maintainer intent.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Pattern 17: Software
 Provenance Review Agent (source identity preserved in pattern registry)
 - does not hunt real maintainers or produce exploitability claims
@@ -436,57 +1326,65 @@ id="lesson-66-safe-methods-sbom-reading-dependency-graph-review-advisory-matchin
 matching, and integrity questions</h4>
 <p><strong>Concept.</strong> <strong>Safe methods: SBOM reading,
 dependency graph review, advisory matching, and integrity
-questions</strong> shows how package provenance, social trust, build
-integrity, and assurance controls turn a software incident into
-reviewable evidence.</p>
-<p><strong>Why it matters.</strong> <strong>Safe methods</strong>
-connects classroom vocabulary to Agentic AI Governance and Tool Security
-practice: learners document evidence, caveats, and reviewer ownership
-rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Safe methods: SBOM reading,
-dependency graph review, advisory matching, and integrity
-questions</strong> rests on [ageint303], [ageint304], and [ageint305].
-The lead source’s own note reads: An official NIST page on software
-supply chain security issued under Executive Order 14028, focused on the
-Software Bill of Materials as a formal record of software components and
-their supply chain. Use them for the working definition that
+questions</strong> — <strong>Software Provenance Review Agent</strong>
+uses SBOM reading, dependency graph review, advisory matching, and
+integrity questions. Its classroom application is defensive
+package-governance exercise over sample manifests and public advisories;
+it does not hunt real maintainers or produce exploitability claims
+without evidence.</p>
+<p><strong>Worked reasoning and limits.</strong> Compare ecosystem,
+namespace, version, source and build identifiers before applying an
+advisory’s affected range. A dependency edge shows inclusion or
+relationship under the supplied inventory, not reachability of a
+vulnerable path; an unusual diff is a review cue, not evidence of
+intent.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Safe
+methods</strong> to separate agent assistance from autonomous external
+action. A defensible treatment names the judgment it enables for
+least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Safe methods: SBOM reading, dependency graph review, advisory
-matching, and integrity questions</strong> can defend, where that scope
-ends, and the refresh check owed before this evidence transfers.
-External triangulation uses [official_oecd_agentic_ai];
-[official_canada_agentic_ai_guide].</p>
+matching, and integrity questions</strong>: [ageint303], [ageint304],
+and [ageint305]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Safe
-methods</strong>, work from the cited evidence behind this row.
-[ageint303] An official NIST page on software supply chain security
+methods</strong>, inspect the original passages. Curriculum annotation
+for [ageint303]: An official NIST page on software supply chain security
 issued under Executive Order 14028, focused on the Software Bill of
 Materials as a formal record of software components and their supply
 chain. It explains the benefits of SBOMs for vulnerability
 identification and supply-chain transparency, recommends
 machine-readable formats such as SPDX, CycloneDX, and SWID, and
 describes foundational, sustaining, and enhancing levels of
-implementation. [ageint304] NIST SP 800-218, the Secure Software
-Development Framework Version 1.1 published in February 2022,
-establishes a set of high-level practices for integrating security into
-software development lifecycles in order to reduce vulnerabilities in
-released software, mitigate the impact of exploited vulnerabilities, and
-address root causes to prevent recurrences. [ageint305] Official NIST
-NCCoE DevSecOps project page for software factory, secure pipeline, and
-continuous authorization source support. Each source above earns its
-place in this topic only when you can state its bounded claim, its
-provenance, its uncertainty, and the fact that would retire it.</p>
+implementation. Curriculum annotation for [ageint304]: NIST SP 800-218,
+the Secure Software Development Framework Version 1.1 published in
+February 2022, establishes a set of high-level practices for integrating
+security into software development lifecycles in order to reduce
+vulnerabilities in released software, mitigate the impact of exploited
+vulnerabilities, and address root causes to prevent recurrences.
+Curriculum annotation for [ageint305]: Official NIST NCCoE DevSecOps
+project page for software factory, secure pipeline, and continuous
+authorization source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe methods</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Safe
-methods</strong>, the safe-substitution caveat, the uncertainty note,
-the no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Safe methods</strong> work as an <strong>agent run and
-assurance card</strong> that logs the evidence, the uncertainty, the
-responsible reviewer, and the halt condition.</p>
+build a <strong>Software Provenance Review Agent</strong> card with
+component version, advisory match, provenance gap, and uncertainty; keep
+the exercise within its registry boundary. Shape <strong>Safe
+methods</strong> work as an <strong>agent run and assurance
+card</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe methods</strong>: that naming an agent pattern certifies it
-is safe to deploy without governance gates.</p>
+<strong>Safe methods</strong>: that a dependency match alone proves
+exploitability or maintainer intent.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe
 methods</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -497,50 +1395,57 @@ id="lesson-67-safe-defensive-application-defensive-package-governance-exercise-o
 over sample manifests and public advisories</h4>
 <p><strong>Concept.</strong> <strong>Safe defensive application:
 defensive package-governance exercise over sample manifests and public
-advisories</strong> shows how package provenance, social trust, build
-integrity, and assurance controls turn a software incident into
-reviewable evidence.</p>
-<p><strong>Why it matters.</strong> <strong>Safe defensive
-application</strong> connects classroom vocabulary to Agentic AI
-Governance and Tool Security practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Safe defensive application:
-defensive package-governance exercise over sample manifests and public
-advisories</strong> rests on [ageint076]. Its anchor reference records:
-In early 2024, a malicious backdoor was discovered embedded in XZ Utils,
-a widely used compression library in Linux distributions, designed to
-enable unauthorized remote code execution via OpenSSH using an Ed448
-private key. Use it for the working definition that <strong>Safe
-defensive application: defensive package-governance exercise over sample
-manifests and public advisories</strong> can defend, where that scope
-ends, and the refresh check owed before this evidence transfers.
-External triangulation uses [official_oecd_agentic_ai];
-[official_canada_agentic_ai_guide].</p>
+advisories</strong> — <strong>Software Provenance Review Agent</strong>
+uses SBOM reading, dependency graph review, advisory matching, and
+integrity questions. Its classroom application is defensive
+package-governance exercise over sample manifests and public advisories;
+it does not hunt real maintainers or produce exploitability claims
+without evidence.</p>
+<p><strong>Worked reasoning and limits.</strong> Synthetic inventory
+lists classroom-parser 1.2 without an ecosystem; an advisory affects a
+similarly named package 1.0–1.4 in ecosystem E. The result is ‘identity
+unresolved; affectedness unknown’, with a request for the supplied
+lockfile or provenance record; name/version resemblance does not justify
+‘vulnerable’ or a maintainer accusation.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Safe defensive
+application</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: defensive package-governance
+exercise over sample manifests and public advisories</strong>:
+[ageint076]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
-application</strong>, reason from the sources cited in this row.
-[ageint076] In early 2024, a malicious backdoor was discovered embedded
-in XZ Utils, a widely used compression library in Linux distributions,
-designed to enable unauthorized remote code execution via OpenSSH using
-an Ed448 private key. The perpetrator, operating under the pseudonym Jia
-Tan, spent over two years building trust as a contributor before
-inserting the exploit, which received a maximum CVSS score of 10.0. Read
-each cited work for what it can support about this topic, where that
-claim originated, how confident it is, and what evidence would change
-it.</p>
+application</strong>, inspect the original passages. Curriculum
+annotation for [ageint076]: In early 2024, a malicious backdoor was
+discovered embedded in XZ Utils, a widely used compression library in
+Linux distributions, designed to enable unauthorized remote code
+execution via OpenSSH using an Ed448 private key. The perpetrator,
+operating under the pseudonym Jia Tan, spent over two years building
+trust as a contributor before inserting the exploit, which received a
+maximum CVSS score of 10.0. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe defensive
-application</strong>, build a <strong>agent run card with tool
-allowlist, identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe defensive application</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe defensive
-application</strong> work as an <strong>agent run and assurance
-card</strong> that records its evidence, the residual uncertainty, the
-named reviewer, and the stop condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception that
-naming an agent pattern certifies it is safe to deploy without
-governance gates.</p>
+application</strong>, build a <strong>Software Provenance Review
+Agent</strong> card with component version, advisory match, provenance
+gap, and uncertainty; keep the exercise within its registry boundary.
+Shape <strong>Safe defensive application</strong> work as an
+<strong>agent run and assurance card</strong> that records its evidence,
+the residual uncertainty, the named reviewer, and the stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Safe defensive application</strong>: that a dependency match
+alone proves exploitability or maintainer intent.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
 application</strong> to a second module by preserving least-privilege
 agent design and run review, changing the source evidence, and naming a
@@ -551,60 +1456,65 @@ id="lesson-68-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable
 revocable workflow for Software Provenance Review Agent</h4>
 <p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
 an allowlisted, logged, revocable workflow for Software Provenance
-Review Agent</strong> shows how package provenance, social trust, build
-integrity, and assurance controls turn a software incident into
-reviewable evidence.</p>
+Review Agent</strong> — <strong>Software Provenance Review
+Agent</strong> uses SBOM reading, dependency graph review, advisory
+matching, and integrity questions. Its classroom application is
+defensive package-governance exercise over sample manifests and public
+advisories; it does not hunt real maintainers or produce exploitability
+claims without evidence.</p>
+<p><strong>Worked reasoning and limits.</strong> Use local fixture
+parsers returning matched, not-matched or identity-unknown with advisory
+and inventory versions. Preserve an unknown result rather than treating
+a parse failure or missing provenance as ‘no vulnerabilities’; this
+archetype runs no package scanners or repository actions.</p>
 <p><strong>Why it matters.</strong> Analysts use <strong>Safe
 architecture artifact</strong> to separate agent assistance from
 autonomous external action. A defensible treatment names the judgment it
 enables for least-privilege agent design and run review, the proof limit
 that treating pattern names as deployment playbooks would otherwise
 hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Safe architecture artifact:
-diagram an allowlisted, logged, revocable workflow for Software
-Provenance Review Agent</strong> rests on [ageint303], [ageint304], and
-[ageint305]. The lead source’s own note reads: An official NIST page on
-software supply chain security issued under Executive Order 14028,
-focused on the Software Bill of Materials as a formal record of software
-components and their supply chain. Use them for the working definition
-that <strong>Safe architecture artifact: diagram an allowlisted, logged,
-revocable workflow for Software Provenance Review Agent</strong> can
-defend, where that scope ends, and the refresh check owed before this
-evidence transfers. External triangulation uses
-[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Software Provenance Review Agent</strong>:
+[ageint303], [ageint304], and [ageint305]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
-artifact</strong>, work from the cited evidence behind this row.
-[ageint303] An official NIST page on software supply chain security
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint303]: An official NIST page on software supply chain security
 issued under Executive Order 14028, focused on the Software Bill of
 Materials as a formal record of software components and their supply
 chain. It explains the benefits of SBOMs for vulnerability
 identification and supply-chain transparency, recommends
 machine-readable formats such as SPDX, CycloneDX, and SWID, and
 describes foundational, sustaining, and enhancing levels of
-implementation. [ageint304] NIST SP 800-218, the Secure Software
-Development Framework Version 1.1 published in February 2022,
-establishes a set of high-level practices for integrating security into
-software development lifecycles in order to reduce vulnerabilities in
-released software, mitigate the impact of exploited vulnerabilities, and
-address root causes to prevent recurrences. [ageint305] Official NIST
-NCCoE DevSecOps project page for software factory, secure pipeline, and
-continuous authorization source support. Work source by source: name the
-bounded claim, its origin, the residual uncertainty, and the trigger
-that would change how this topic is judged.</p>
+implementation. Curriculum annotation for [ageint304]: NIST SP 800-218,
+the Secure Software Development Framework Version 1.1 published in
+February 2022, establishes a set of high-level practices for integrating
+security into software development lifecycles in order to reduce
+vulnerabilities in released software, mitigate the impact of exploited
+vulnerabilities, and address root causes to prevent recurrences.
+Curriculum annotation for [ageint305]: Official NIST NCCoE DevSecOps
+project page for software factory, secure pipeline, and continuous
+authorization source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe architecture
-artifact</strong>, build a <strong>agent run card with tool allowlist,
-identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe architecture artifact</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe architecture
-artifact</strong> work as an <strong>agent run and assurance
-card</strong> that states the evidence used, what stays uncertain, who
-reviews it, and when to stop.</p>
+artifact</strong>, build a <strong>Software Provenance Review
+Agent</strong> card with component version, advisory match, provenance
+gap, and uncertainty; keep the exercise within its registry boundary.
+Shape <strong>Safe architecture artifact</strong> work as an
+<strong>agent run and assurance card</strong> that states the evidence
+used, what stays uncertain, who reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe architecture artifact</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+<strong>Safe architecture artifact</strong>: that a dependency match
+alone proves exploitability or maintainer intent.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
 artifact</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -617,64 +1527,71 @@ quality, uncertainty notes, and synthetic location examples</h4>
 <p><strong>Concept.</strong> <strong>Pattern 18: GEOINT Data-Quality
 Audit Agent (source identity preserved in pattern registry) - limits
 work to non-sensitive metadata quality, uncertainty notes, and synthetic
-location examples</strong> treats metadata as a distinct evidence class
-with its own minimization, correlation limits, and legal review
-requirements.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
+location examples</strong> — <strong>GEOINT Data-Quality Audit
+Agent</strong> uses provided-image annotation, quality flags, geospatial
+metadata review, and caveat writing. Its classroom application is
+synthetic imagery-change exercise focused on uncertainty and data
+quality; it limits work to non-sensitive metadata quality, uncertainty
+notes, and synthetic location examples.</p>
+<p><strong>Worked reasoning and limits.</strong> The GEOINT Data-Quality
+Audit Agent checks whether supplied synthetic image records permit
+comparison before interpreting apparent change. Resolution, temporal
+consistency and registration are distinct quality conditions; no real
+location, facility or order of battle is identified.
+[official_iso_19157_data_quality]</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Pattern 18:
+GEOINT Data-Quality Audit Agent (source identity preserved in pattern
+registry) - limits work to non-sensitive metadata quality, uncertainty
+notes, and synthetic location examples</strong> to separate agent
+assistance from autonomous external action. A defensible treatment names
+the judgment it enables for least-privilege agent design and run review,
+the proof limit that treating pattern names as deployment playbooks
+would otherwise hide, and the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Pattern 18: GEOINT Data-Quality Audit Agent (source identity
 preserved in pattern registry) - limits work to non-sensitive metadata
-quality, uncertainty notes, and synthetic location examples</strong>,
-treating pattern names as deployment playbooks undermines
-least-privilege agent design and run review; the lesson builds the habit
-to separate agent assistance from autonomous external action.</p>
-<p><strong>Source support.</strong> <strong>Pattern 18: GEOINT
-Data-Quality Audit Agent (source identity preserved in pattern registry)
-- limits work to non-sensitive metadata quality, uncertainty notes, and
-synthetic location examples</strong> rests on [ageint302] and
-[ageint297]. The closest source to this row notes: It describes NGA’s
-mission of delivering geospatial intelligence, or GEOINT, to support
-military operations, policymakers, and first responders, spanning
-imagery analysis, mapping, geodesy, and navigation safety. Use them for
-the working definition that <strong>Pattern 18: GEOINT Data-Quality
-Audit Agent (source identity preserved in pattern registry) - limits
-work to non-sensitive metadata quality, uncertainty notes, and synthetic
-location examples</strong> can defend, where that scope ends, and the
-refresh check owed before this evidence transfers. External
-triangulation uses [official_oecd_agentic_ai];
+quality, uncertainty notes, and synthetic location examples</strong>:
+[ageint302] and [ageint297]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Pattern 18: GEOINT
 Data-Quality Audit Agent (source identity preserved in pattern registry)
 - limits work to non-sensitive metadata quality, uncertainty notes, and
-synthetic location examples</strong>, reason from the sources cited in
-this row. [ageint302] The official “About Us” page of the National
-Geospatial-Intelligence Agency (NGA), a U.S. Department of Defense and
-intelligence community organization. It describes NGA’s mission of
-delivering geospatial intelligence, or GEOINT, to support military
-operations, policymakers, and first responders, spanning imagery
-analysis, mapping, geodesy, and navigation safety. [ageint297] Official
-ODNI Intelligence Community Directive 203 analytic standards source for
-objectivity, independence, timeliness, alternatives, confidence,
-sourcing, and accuracy in analytic products. Work source by source: name
-the bounded claim, its origin, the residual uncertainty, and the trigger
-that would change how this topic is judged.</p>
+synthetic location examples</strong>, inspect the original passages.
+Curriculum annotation for [ageint302]: The official “About Us” page of
+the National Geospatial-Intelligence Agency (NGA), a U.S. Department of
+Defense and intelligence community organization. It describes NGA’s
+mission of delivering geospatial intelligence, or GEOINT, to support
+military operations, policymakers, and first responders, spanning
+imagery analysis, mapping, geodesy, and navigation safety. Curriculum
+annotation for [ageint297]: Official ODNI Intelligence Community
+Directive 203 analytic standards source for objectivity, independence,
+timeliness, alternatives, confidence, sourcing, and accuracy in analytic
+products. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Pattern 18</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Pattern
-18</strong>, the safe-substitution caveat, the uncertainty note, the
-no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Pattern 18: GEOINT Data-Quality Audit Agent (source
-identity preserved in pattern registry) - limits work to non-sensitive
-metadata quality, uncertainty notes, and synthetic location
-examples</strong> work as an <strong>agent run and assurance
-card</strong> that records its evidence, the residual uncertainty, the
-named reviewer, and the stop condition.</p>
+build a <strong>GEOINT Data-Quality Audit Agent</strong> card with
+GEOINT quality flag, observation time, resolution, and alternative
+interpretation; keep the exercise within its registry boundary. Shape
+<strong>Pattern 18: GEOINT Data-Quality Audit Agent (source identity
+preserved in pattern registry) - limits work to non-sensitive metadata
+quality, uncertainty notes, and synthetic location examples</strong>
+work as an <strong>agent run and assurance card</strong> that records
+its evidence, the residual uncertainty, the named reviewer, and the stop
+condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Pattern 18: GEOINT Data-Quality Audit Agent (source identity
 preserved in pattern registry) - limits work to non-sensitive metadata
 quality, uncertainty notes, and synthetic location examples</strong>:
-that a visible feature is enough for a confident geospatial claim.</p>
+that an image feature alone supports a confident location or attribution
+claim.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Pattern 18: GEOINT
 Data-Quality Audit Agent (source identity preserved in pattern registry)
 - limits work to non-sensitive metadata quality, uncertainty notes, and
@@ -687,48 +1604,57 @@ id="lesson-70-safe-methods-provided-image-annotation-quality-flags-geospatial-me
 metadata review, and caveat writing</h4>
 <p><strong>Concept.</strong> <strong>Safe methods: provided-image
 annotation, quality flags, geospatial metadata review, and caveat
-writing</strong> treats metadata as a distinct evidence class with its
-own minimization, correlation limits, and legal review requirements.</p>
+writing</strong> — <strong>GEOINT Data-Quality Audit Agent</strong> uses
+provided-image annotation, quality flags, geospatial metadata review,
+and caveat writing. Its classroom application is synthetic
+imagery-change exercise focused on uncertainty and data quality; it
+limits work to non-sensitive metadata quality, uncertainty notes, and
+synthetic location examples.</p>
+<p><strong>Worked reasoning and limits.</strong> Compare acquisition
+times, pixel scale, registration uncertainty and processing differences
+before applying a change label. A vision model’s object name is a
+proposed interpretation, not validated ground truth, and cannot repair
+incompatible input geometry.</p>
 <p><strong>Why it matters.</strong> <strong>Safe methods</strong>
 matters in the <strong>Agentic AI Governance and Tool Security</strong>
 lane because least-privilege agent design and run evidence must stay
 separate from judgment; treating pattern names as deployment playbooks
 is a common failure.</p>
-<p><strong>Source support.</strong> <strong>Safe methods: provided-image
-annotation, quality flags, geospatial metadata review, and caveat
-writing</strong> rests on [ageint302] and [ageint297]. The most specific
-cited work observes: Department of Defense and intelligence community
-organization. Use them for the claim that <strong>Safe methods:
-provided-image annotation, quality flags, geospatial metadata review,
-and caveat writing</strong> lets you defend here, the limit it has to
-respect, and the re-check owed before reuse. External triangulation uses
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe methods: provided-image annotation, quality flags,
+geospatial metadata review, and caveat writing</strong>: [ageint302] and
+[ageint297]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Safe
-methods</strong> in the evidence the row cites. [ageint302] The official
-“About Us” page of the National Geospatial-Intelligence Agency (NGA), a
-U.S. Department of Defense and intelligence community organization. It
-describes NGA’s mission of delivering geospatial intelligence, or
-GEOINT, to support military operations, policymakers, and first
-responders, spanning imagery analysis, mapping, geodesy, and navigation
-safety. [ageint297] Official ODNI Intelligence Community Directive 203
+<p><strong>Evidence to inspect.</strong> For <strong>Safe
+methods</strong>, inspect the original passages. Curriculum annotation
+for [ageint302]: The official “About Us” page of the National
+Geospatial-Intelligence Agency (NGA), a U.S. Department of Defense and
+intelligence community organization. It describes NGA’s mission of
+delivering geospatial intelligence, or GEOINT, to support military
+operations, policymakers, and first responders, spanning imagery
+analysis, mapping, geodesy, and navigation safety. Curriculum annotation
+for [ageint297]: Official ODNI Intelligence Community Directive 203
 analytic standards source for objectivity, independence, timeliness,
 alternatives, confidence, sourcing, and accuracy in analytic products.
-Each source above earns its place in this topic only when you can state
-its bounded claim, its provenance, its uncertainty, and the fact that
-would retire it.</p>
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe methods</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Safe
-methods</strong>, the safe-substitution caveat, the uncertainty note,
-the no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Safe methods</strong> work as an <strong>agent run and
-assurance card</strong> that states the evidence used, what stays
-uncertain, who reviews it, and when to stop.</p>
+build a <strong>GEOINT Data-Quality Audit Agent</strong> card with
+GEOINT quality flag, observation time, resolution, and alternative
+interpretation; keep the exercise within its registry boundary. Shape
+<strong>Safe methods</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe methods</strong>: that naming an agent pattern certifies it
-is safe to deploy without governance gates.</p>
+<strong>Safe methods</strong>: that an image feature alone supports a
+confident location or attribution claim.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe
 methods</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -739,53 +1665,63 @@ id="lesson-71-safe-defensive-application-synthetic-imagery-change-exercise-focus
 focused on uncertainty and data quality</h4>
 <p><strong>Concept.</strong> <strong>Safe defensive application:
 synthetic imagery-change exercise focused on uncertainty and data
-quality</strong> treats location evidence as a quality and uncertainty
-problem, separating map interpretation from targeting or
-attribution.</p>
-<p><strong>Why it matters.</strong> <strong>Safe defensive
-application</strong> connects classroom vocabulary to Agentic AI
-Governance and Tool Security practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Safe defensive application:
-synthetic imagery-change exercise focused on uncertainty and data
-quality</strong> rests on [ageint299], [ageint306], and [ageint312]. The
-most specific cited work observes: It describes the host, client, and
-server roles and capability negotiation, and the features servers expose
-(resources, prompts, tools) and clients offer (sampling, roots,
-elicitation). Use them for fixing what <strong>Safe defensive
-application: synthetic imagery-change exercise focused on uncertainty
-and data quality</strong> covers, marking the boundary it must not
-cross, and timing the next source refresh. External triangulation uses
-[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Safe defensive
-application</strong> in the evidence the row cites. [ageint299] The
-official Model Context Protocol (MCP) specification, defining an open
-protocol that standardizes how LLM applications connect to external data
-sources and tools using JSON-RPC 2.0 messages. It describes the host,
-client, and server roles and capability negotiation, and the features
-servers expose (resources, prompts, tools) and clients offer (sampling,
-roots, elicitation). [ageint306] Official CISA Artificial Intelligence
-page for AI security, safety, resilience, and critical-infrastructure
-governance source support. [ageint312] Official Government of Canada
-guide for responsible use of agentic AI, used for public-sector agent
-governance and accountability source support. From each source, pull the
-bounded claim it can carry for this topic, its provenance, the stated
-uncertainty, and the one condition that would overturn that
-judgment.</p>
+quality</strong> — <strong>GEOINT Data-Quality Audit Agent</strong> uses
+provided-image annotation, quality flags, geospatial metadata review,
+and caveat writing. Its classroom application is synthetic
+imagery-change exercise focused on uncertainty and data quality; it
+limits work to non-sensitive metadata quality, uncertainty notes, and
+synthetic location examples.</p>
+<p><strong>Worked reasoning and limits.</strong> Synthetic image A has
+1-unit pixels, image B has 5-unit pixels and uncertain registration of 8
+units; a reported 3-unit edge shift is therefore not interpretable as
+physical change. The completed result is stop/inputs incompatible and
+request an approved comparable pair, not ‘object moved’ or an
+operational inference.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Safe defensive
+application</strong> to separate agent assistance from autonomous
+external action. A defensible treatment names the judgment it enables
+for least-privilege agent design and run review, the proof limit that
+treating pattern names as deployment playbooks would otherwise hide, and
+the reviewer accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: synthetic imagery-change exercise
+focused on uncertainty and data quality</strong>: [ageint299],
+[ageint306], and [ageint312]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
+application</strong>, inspect the original passages. Curriculum
+annotation for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe defensive
-application</strong>, build a <strong>agent run card with tool
-allowlist, identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe defensive application</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe defensive
-application</strong> work as an <strong>agent run and assurance
-card</strong> that states the evidence used, what stays uncertain, who
-reviews it, and when to stop.</p>
+application</strong>, build a <strong>GEOINT Data-Quality Audit
+Agent</strong> card with GEOINT quality flag, observation time,
+resolution, and alternative interpretation; keep the exercise within its
+registry boundary. Shape <strong>Safe defensive application</strong>
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe defensive application</strong>: that a visible feature is
-enough for a confident geospatial claim.</p>
+<strong>Safe defensive application</strong>: that an image feature alone
+supports a confident location or attribution claim.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
 application</strong> to a second module by preserving least-privilege
 agent design and run review, changing the source evidence, and naming a
@@ -796,56 +1732,60 @@ id="lesson-72-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable
 revocable workflow for GEOINT Data-Quality Audit Agent</h4>
 <p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
 an allowlisted, logged, revocable workflow for GEOINT Data-Quality Audit
-Agent</strong> treats location evidence as a quality and uncertainty
-problem, separating map interpretation from targeting or
-attribution.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Safe
-architecture artifact</strong> to separate agent assistance from
-autonomous external action. A defensible treatment names the judgment it
-enables for least-privilege agent design and run review, the proof limit
-that treating pattern names as deployment playbooks would otherwise
-hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Safe architecture artifact:
-diagram an allowlisted, logged, revocable workflow for GEOINT
-Data-Quality Audit Agent</strong> rests on [ageint299], [ageint306], and
-[ageint312]. Its anchor reference records: The official Model Context
-Protocol (MCP) specification, defining an open protocol that
-standardizes how LLM applications connect to external data sources and
-tools using JSON-RPC 2.0 messages. Use them for fixing what <strong>Safe
-architecture artifact: diagram an allowlisted, logged, revocable
-workflow for GEOINT Data-Quality Audit Agent</strong> covers, marking
-the boundary it must not cross, and timing the next source refresh.
-External triangulation uses [official_oecd_agentic_ai];
+Agent</strong> — <strong>GEOINT Data-Quality Audit Agent</strong> uses
+provided-image annotation, quality flags, geospatial metadata review,
+and caveat writing. Its classroom application is synthetic
+imagery-change exercise focused on uncertainty and data quality; it
+limits work to non-sensitive metadata quality, uncertainty notes, and
+synthetic location examples.</p>
+<p><strong>Worked reasoning and limits.</strong> The offline archetype
+validates metadata and produces comparable/not-comparable/unknown before
+any interpretation. Retain the failed quality conditions in the output,
+and never replace an incompatible pair with an external map lookup or a
+confident generated description.</p>
+<p><strong>Why it matters.</strong> <strong>Safe architecture
+artifact</strong> connects classroom vocabulary to Agentic AI Governance
+and Tool Security practice: learners document evidence, caveats, and
+reviewer ownership rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for GEOINT Data-Quality Audit Agent</strong>:
+[ageint299], [ageint306], and [ageint312]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Safe architecture
-artifact</strong> against the works cited for this row. [ageint299] The
-official Model Context Protocol (MCP) specification, defining an open
-protocol that standardizes how LLM applications connect to external data
-sources and tools using JSON-RPC 2.0 messages. It describes the host,
-client, and server roles and capability negotiation, and the features
-servers expose (resources, prompts, tools) and clients offer (sampling,
-roots, elicitation). [ageint306] Official CISA Artificial Intelligence
-page for AI security, safety, resilience, and critical-infrastructure
-governance source support. [ageint312] Official Government of Canada
-guide for responsible use of agentic AI, used for public-sector agent
-governance and accountability source support. From each source, pull the
-bounded claim it can carry for this topic, its provenance, the stated
-uncertainty, and the one condition that would overturn that
-judgment.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe architecture
-artifact</strong>, build a <strong>agent run card with tool allowlist,
-identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe architecture artifact</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe architecture
-artifact</strong> work as an <strong>agent run and assurance
-card</strong> that states the evidence used, what stays uncertain, who
-reviews it, and when to stop.</p>
+artifact</strong>, build a <strong>GEOINT Data-Quality Audit
+Agent</strong> card with GEOINT quality flag, observation time,
+resolution, and alternative interpretation; keep the exercise within its
+registry boundary. Shape <strong>Safe architecture artifact</strong>
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe architecture artifact</strong>: that a visible feature is
-enough for a confident geospatial claim.</p>
+<strong>Safe architecture artifact</strong>: that an image feature alone
+supports a confident location or attribution claim.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
 artifact</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -858,10 +1798,18 @@ microtargeting, or covert influence content</h4>
 <p><strong>Concept.</strong> <strong>Pattern 19: Cognitive-Resilience
 Education Agent (source identity preserved in pattern registry) - does
 not design persuasion campaigns, microtargeting, or covert influence
-content</strong> uses inoculation methods as evidence-informed, bounded,
-and context-dependent resilience education with transparent labels,
-source checks, non-manipulative corrections, and explicit measurement
-limits.</p>
+content</strong> — <strong>Cognitive-Resilience Education Agent</strong>
+uses manipulation-technique labeling, transparent prebunking, and
+audience-harm review. Its classroom application is opt-in media-literacy
+micro-lesson for a sample classroom scenario; it does not design
+persuasion campaigns, microtargeting, or covert influence content.</p>
+<p><strong>Worked reasoning and limits.</strong> The
+Cognitive-Resilience Education Agent presents an opt-in transparent
+media-literacy lesson, not population targeting or covert persuasion.
+Distinguish recognition/discernment on a study task from durable
+behavior change and from efficacy of agent-delivered teaching;
+practitioner guidance alone cannot establish those transfers.
+[scholarly_roozenbeek_2022_psychological_inoculation]</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Pattern 19: Cognitive-Resilience Education Agent (source
 identity preserved in pattern registry) - does not design persuasion
@@ -869,40 +1817,35 @@ campaigns, microtargeting, or covert influence content</strong>,
 treating pattern names as deployment playbooks undermines
 least-privilege agent design and run review; the lesson builds the habit
 to separate agent assistance from autonomous external action.</p>
-<p><strong>Source support.</strong> <strong>Pattern 19:
-Cognitive-Resilience Education Agent (source identity preserved in
-pattern registry) - does not design persuasion campaigns,
-microtargeting, or covert influence content</strong> rests on
-[ageint151]. The most specific cited work observes: Grounded in
-inoculation theory, it describes how exposing people to weakened forms
-of manipulative content can help them develop resistance before they
-encounter it in the wild. Use it for the claim that <strong>Pattern 19:
-Cognitive-Resilience Education Agent (source identity preserved in
-pattern registry) - does not design persuasion campaigns,
-microtargeting, or covert influence content</strong> lets you defend
-here, the limit it has to respect, and the re-check owed before reuse.
-External triangulation uses [official_oecd_agentic_ai];
-[official_canada_agentic_ai_guide].</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Pattern 19: Cognitive-Resilience Education Agent (source
+identity preserved in pattern registry) - does not design persuasion
+campaigns, microtargeting, or covert influence content</strong>:
+[ageint151]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Pattern 19:
 Cognitive-Resilience Education Agent (source identity preserved in
 pattern registry) - does not design persuasion campaigns,
-microtargeting, or covert influence content</strong>, work from the
-cited evidence behind this row. [ageint151] A practitioner guide from
-Inoculation Science explaining prebunking as a proactive strategy to
-build preemptive resilience to misinformation. Grounded in inoculation
-theory, it describes how exposing people to weakened forms of
-manipulative content can help them develop resistance before they
-encounter it in the wild. Read each cited work for what it can support
-about this topic, where that claim originated, how confident it is, and
-what evidence would change it.</p>
+microtargeting, or covert influence content</strong>, inspect the
+original passages. Curriculum annotation for [ageint151]: A practitioner
+guide from Inoculation Science explaining prebunking as a proactive
+strategy to build preemptive resilience to misinformation. Grounded in
+inoculation theory, it describes how exposing people to weakened forms
+of manipulative content can help them develop resistance before they
+encounter it in the wild. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Pattern 19</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Pattern
-19</strong>, the safe-substitution caveat, the uncertainty note, the
-no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Pattern 19: Cognitive-Resilience Education Agent (source
+build a <strong>Cognitive-Resilience Education Agent</strong> card with
+media-literacy objective, consent, technique label, correction, and
+measurement limit; keep the exercise within its registry boundary. Shape
+<strong>Pattern 19: Cognitive-Resilience Education Agent (source
 identity preserved in pattern registry) - does not design persuasion
 campaigns, microtargeting, or covert influence content</strong> work as
 an <strong>agent run and assurance card</strong> that records its
@@ -911,9 +1854,9 @@ condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Pattern 19: Cognitive-Resilience Education Agent (source
 identity preserved in pattern registry) - does not design persuasion
-campaigns, microtargeting, or covert influence content</strong>: that
-naming an agent pattern certifies it is safe to deploy without
-governance gates.</p>
+campaigns, microtargeting, or covert influence content</strong>: that a
+media-literacy lesson’s completion proves resistance to
+manipulation.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Pattern 19:
 Cognitive-Resilience Education Agent (source identity preserved in
 pattern registry) - does not design persuasion campaigns,
@@ -926,54 +1869,58 @@ id="lesson-74-safe-methods-manipulation-technique-labeling-transparent-prebunkin
 prebunking, and audience-harm</h4>
 <p><strong>Concept.</strong> <strong>Safe methods:
 manipulation-technique labeling, transparent prebunking, and
-audience-harm</strong> uses inoculation methods as evidence-informed,
-bounded, and context-dependent resilience education with transparent
-labels, source checks, non-manipulative corrections, and explicit
-measurement limits.</p>
+audience-harm</strong> — <strong>Cognitive-Resilience Education
+Agent</strong> uses manipulation-technique labeling, transparent
+prebunking, and audience-harm review. Its classroom application is
+opt-in media-literacy micro-lesson for a sample classroom scenario; it
+does not design persuasion campaigns, microtargeting, or covert
+influence content.</p>
+<p><strong>Worked reasoning and limits.</strong> A proposed micro-lesson
+explains false dilemmas with a benign fictional sentence, then asks for
+an explanation on an unseen item. Use explicit consent and fixed
+classroom materials; do not infer vulnerabilities, profile learners or
+adapt influence tactics to personal traits.</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Safe methods</strong>, treating pattern names as deployment
 playbooks undermines least-privilege agent design and run review; the
 lesson builds the habit to separate agent assistance from autonomous
 external action.</p>
-<p><strong>Source support.</strong> <strong>Safe methods:
-manipulation-technique labeling, transparent prebunking, and
-audience-harm</strong> rests on [ageint308] and [ageint311]. Its anchor
-reference records: An official NATO topic page describing the Alliance’s
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe methods: manipulation-technique labeling, transparent
+prebunking, and audience-harm</strong>: [ageint308] and [ageint311].
+These citations preserve source identity, not automatic topical
+relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe
+methods</strong>, inspect the original passages. Curriculum annotation
+for [ageint308]: An archived CISA publication, “CISA Insights: Preparing
+for and Mitigating Foreign Influence Operations Targeting Critical
+Infrastructure,” providing guidance on the threat that foreign influence
+campaigns pose to U.S. critical infrastructure. Curriculum annotation
+for [ageint311]: An official NATO topic page describing the Alliance’s
 approach to countering information threats, defined as intentional,
 manipulative, and coordinated activities by state and non-state actors
-including disinformation and propaganda. Use them for pinning down the
-scope of <strong>Safe methods: manipulation-technique labeling,
-transparent prebunking, and audience-harm</strong>, the edge of that
-scope, and when these citations need re-verifying before transfer.
-External triangulation uses [official_oecd_agentic_ai];
-[official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Safe
-methods</strong> in the evidence the row cites. [ageint308] An archived
-CISA publication, “CISA Insights: Preparing for and Mitigating Foreign
-Influence Operations Targeting Critical Infrastructure,” providing
-guidance on the threat that foreign influence campaigns pose to U.S.
-critical infrastructure. [ageint311] An official NATO topic page
-describing the Alliance’s approach to countering information threats,
-defined as intentional, manipulative, and coordinated activities by
-state and non-state actors including disinformation and propaganda. It
-explains why such threats matter for democratic processes and
-institutional trust, and outlines a four-part framework of
-understanding, preventing, containing, and recovering. Read each cited
-work for what it can support about this topic, where that claim
-originated, how confident it is, and what evidence would change it.</p>
+including disinformation and propaganda. It explains why such threats
+matter for democratic processes and institutional trust, and outlines a
+four-part framework of understanding, preventing, containing, and
+recovering. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe methods</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Safe
-methods</strong>, the safe-substitution caveat, the uncertainty note,
-the no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Safe methods</strong> work as an <strong>agent run and
-assurance card</strong> that states the evidence used, what stays
-uncertain, who reviews it, and when to stop.</p>
+build a <strong>Cognitive-Resilience Education Agent</strong> card with
+media-literacy objective, consent, technique label, correction, and
+measurement limit; keep the exercise within its registry boundary. Shape
+<strong>Safe methods</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe methods</strong>: that naming an agent pattern certifies it
-is safe to deploy without governance gates.</p>
+<strong>Safe methods</strong>: that a media-literacy lesson’s completion
+proves resistance to manipulation.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe
 methods</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -983,48 +1930,55 @@ id="lesson-75-safe-defensive-application-opt-in-media-literacy-micro-lesson-for-
 75: Safe defensive application: opt-in media-literacy micro-lesson for a
 sample classroom scenario</h4>
 <p><strong>Concept.</strong> <strong>Safe defensive application: opt-in
-media-literacy micro-lesson for a sample classroom scenario</strong>
-compares resolution, accuracy, and temporal fitness before drawing a
-geospatial conclusion from imagery or map products.</p>
-<p><strong>Why it matters.</strong> <strong>Safe defensive
-application</strong> connects classroom vocabulary to Agentic AI
-Governance and Tool Security practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Safe defensive application:
-opt-in media-literacy micro-lesson for a sample classroom
-scenario</strong> rests on [ageint152]. The closest source to this row
-notes: A University of Cambridge news article describing a large study,
-conducted with Bristol University and Google’s Jigsaw, testing whether
-short animated videos can help people resist online manipulation. Use it
-for the claim that <strong>Safe defensive application: opt-in
-media-literacy micro-lesson for a sample classroom scenario</strong>
-lets you defend here, the limit it has to respect, and the re-check owed
-before reuse. External triangulation uses [official_oecd_agentic_ai];
+media-literacy micro-lesson for a sample classroom scenario</strong> —
+<strong>Cognitive-Resilience Education Agent</strong> uses
+manipulation-technique labeling, transparent prebunking, and
+audience-harm review. Its classroom application is opt-in media-literacy
+micro-lesson for a sample classroom scenario; it does not design
+persuasion campaigns, microtargeting, or covert influence content.</p>
+<p><strong>Worked reasoning and limits.</strong> Teaching item: ‘Either
+our library changes its logo or it opposes reading’ excludes other
+choices; an illustrative transfer item, ‘Either extend opening hours or
+abandon students’, repeats that false-dilemma structure. The expected
+answer identifies the excluded alternatives, not merely the favored
+policy; a learner who only labels disagreement has not shown the target
+skill. This is a published answer-key illustration, not a genuine
+held-out evaluation or an observed learner outcome; actual evaluation
+needs new isolated items and cannot establish population effects from
+this example.</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Safe defensive application</strong>, treating pattern names as
+deployment playbooks undermines least-privilege agent design and run
+review; the lesson builds the habit to separate agent assistance from
+autonomous external action.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: opt-in media-literacy micro-lesson
+for a sample classroom scenario</strong>: [ageint152]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Safe defensive
-application</strong> in the evidence the row cites. [ageint152] A
-University of Cambridge news article describing a large study, conducted
-with Bristol University and Google’s Jigsaw, testing whether short
-animated videos can help people resist online manipulation. The
-90-second clips expose common manipulation techniques such as
-scapegoating, false dichotomies, and emotionally manipulative language,
-an approach the researchers call prebunking. Each source above earns its
-place in this topic only when you can state its bounded claim, its
-provenance, its uncertainty, and the fact that would retire it.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
+application</strong>, inspect the original passages. No displayable
+curriculum annotation is available for [ageint152]. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe defensive
-application</strong>, build a <strong>agent run card with tool
-allowlist, identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe defensive application</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe defensive
-application</strong> work as an <strong>agent run and assurance
-card</strong> that states the evidence used, what stays uncertain, who
-reviews it, and when to stop.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe defensive application</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+application</strong>, build a <strong>Cognitive-Resilience Education
+Agent</strong> card with media-literacy objective, consent, technique
+label, correction, and measurement limit; keep the exercise within its
+registry boundary. Shape <strong>Safe defensive application</strong>
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception that
+a media-literacy lesson’s completion proves resistance to
+manipulation.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
 application</strong> to a second module by preserving least-privilege
 agent design and run review, changing the source evidence, and naming a
@@ -1035,60 +1989,65 @@ id="lesson-76-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable
 revocable workflow for Cognitive-Resilience Education Agent</h4>
 <p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
 an allowlisted, logged, revocable workflow for Cognitive-Resilience
-Education Agent</strong> uses pattern names as architectural vocabulary
-for allowlisted, logged, revocable workflows—not as operational
-playbooks.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Safe architecture artifact</strong>, treating pattern names as
-deployment playbooks undermines least-privilege agent design and run
-review; the lesson builds the habit to separate agent assistance from
-autonomous external action.</p>
-<p><strong>Source support.</strong> <strong>Safe architecture artifact:
-diagram an allowlisted, logged, revocable workflow for
-Cognitive-Resilience Education Agent</strong> rests on [ageint305],
-[ageint304], and [ageint303]. The lead source’s own note reads: An
-official NIST page on software supply chain security issued under
-Executive Order 14028, focused on the Software Bill of Materials as a
-formal record of software components and their supply chain. Use them
-for the working definition that <strong>Safe architecture artifact:
-diagram an allowlisted, logged, revocable workflow for
-Cognitive-Resilience Education Agent</strong> can defend, where that
-scope ends, and the refresh check owed before this evidence transfers.
-External triangulation uses [official_oecd_agentic_ai];
+Education Agent</strong> — <strong>Cognitive-Resilience Education
+Agent</strong> uses manipulation-technique labeling, transparent
+prebunking, and audience-harm review. Its classroom application is
+opt-in media-literacy micro-lesson for a sample classroom scenario; it
+does not design persuasion campaigns, microtargeting, or covert
+influence content.</p>
+<p><strong>Worked reasoning and limits.</strong> The local archetype
+displays fixed lesson and assessment records separately, with the answer
+key unavailable to the answering component. Record item-level rationale
+and consent/withdrawal state; no API delivery, targeting or claim of
+durable resilience follows from completing the toy item.</p>
+<p><strong>Why it matters.</strong> <strong>Safe architecture
+artifact</strong> matters in the <strong>Agentic AI Governance and Tool
+Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Cognitive-Resilience Education Agent</strong>:
+[ageint305], [ageint304], and [ageint303]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
-artifact</strong>, reason from the sources cited in this row.
-[ageint305] Official NIST NCCoE DevSecOps project page for software
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint305]: Official NIST NCCoE DevSecOps project page for software
 factory, secure pipeline, and continuous authorization source support.
-[ageint304] NIST SP 800-218, the Secure Software Development Framework
-Version 1.1 published in February 2022, establishes a set of high-level
-practices for integrating security into software development lifecycles
-in order to reduce vulnerabilities in released software, mitigate the
-impact of exploited vulnerabilities, and address root causes to prevent
-recurrences. [ageint303] An official NIST page on software supply chain
-security issued under Executive Order 14028, focused on the Software
-Bill of Materials as a formal record of software components and their
-supply chain. It explains the benefits of SBOMs for vulnerability
+Curriculum annotation for [ageint304]: NIST SP 800-218, the Secure
+Software Development Framework Version 1.1 published in February 2022,
+establishes a set of high-level practices for integrating security into
+software development lifecycles in order to reduce vulnerabilities in
+released software, mitigate the impact of exploited vulnerabilities, and
+address root causes to prevent recurrences. Curriculum annotation for
+[ageint303]: An official NIST page on software supply chain security
+issued under Executive Order 14028, focused on the Software Bill of
+Materials as a formal record of software components and their supply
+chain. It explains the benefits of SBOMs for vulnerability
 identification and supply-chain transparency, recommends
 machine-readable formats such as SPDX, CycloneDX, and SWID, and
 describes foundational, sustaining, and enhancing levels of
-implementation. Work source by source: name the bounded claim, its
-origin, the residual uncertainty, and the trigger that would change how
-this topic is judged.</p>
+implementation. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe architecture
-artifact</strong>, build a <strong>agent run card with tool allowlist,
-identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe architecture artifact</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe architecture
-artifact</strong> work as an <strong>agent run and assurance
-card</strong> that states the evidence used, what stays uncertain, who
-reviews it, and when to stop.</p>
+artifact</strong>, build a <strong>Cognitive-Resilience Education
+Agent</strong> card with media-literacy objective, consent, technique
+label, correction, and measurement limit; keep the exercise within its
+registry boundary. Shape <strong>Safe architecture artifact</strong>
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe architecture artifact</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+<strong>Safe architecture artifact</strong>: that a media-literacy
+lesson’s completion proves resistance to manipulation.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
 artifact</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -1101,9 +2060,17 @@ and preserves human authorization gates</h4>
 <p><strong>Concept.</strong> <strong>Pattern 20: Hierarchical Curriculum
 Orchestrator (source identity preserved in pattern registry) -
 orchestrates learning artifacts only and preserves human authorization
-gates</strong> uses pattern names as architectural vocabulary for
-allowlisted, logged, revocable workflows—not as operational
-playbooks.</p>
+gates</strong> — <strong>Hierarchical Curriculum Orchestrator</strong>
+uses role delegation, output aggregation, exception routing, and failure
+recovery drills. Its classroom application is multi-domain capstone
+coordination across benign module artifacts; it orchestrates learning
+artifacts only and preserves human authorization gates.</p>
+<p><strong>Worked reasoning and limits.</strong> The Hierarchical
+Curriculum Orchestrator coordinates bounded child contracts and
+aggregates evidence dependencies, not obedience-based authority. A
+parent cannot delegate powers it lacks, and child agreement is not
+independent evidence. [official_canada_agentic_ai_guide;
+official_agent2agent_protocol_specification]</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
 <strong>Pattern 20: Hierarchical Curriculum Orchestrator (source
 identity preserved in pattern registry) - orchestrates learning
@@ -1111,50 +2078,50 @@ artifacts only and preserves human authorization gates</strong>,
 treating pattern names as deployment playbooks undermines
 least-privilege agent design and run review; the lesson builds the habit
 to separate agent assistance from autonomous external action.</p>
-<p><strong>Source support.</strong> <strong>Pattern 20: Hierarchical
-Curriculum Orchestrator (source identity preserved in pattern registry)
-- orchestrates learning artifacts only and preserves human authorization
-gates</strong> rests on [ageint139] and [ageint137]. The lead source’s
-own note reads: An arXiv paper surveying the shift from passive language
-models to Agentic AI, where large language models act as cognitive
-controllers that combine memory, tool use, and environmental feedback to
-pursue extended goals. Use them for the working definition that
+<p><strong>Source support.</strong> Inherited source-guide context for
 <strong>Pattern 20: Hierarchical Curriculum Orchestrator (source
 identity preserved in pattern registry) - orchestrates learning
-artifacts only and preserves human authorization gates</strong> can
-defend, where that scope ends, and the refresh check owed before this
-evidence transfers. External triangulation uses
-[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Pattern 20:
+artifacts only and preserves human authorization gates</strong>:
+[ageint139] and [ageint137]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Pattern 20:
 Hierarchical Curriculum Orchestrator (source identity preserved in
 pattern registry) - orchestrates learning artifacts only and preserves
-human authorization gates</strong> against the works cited for this row.
-[ageint139] A LinkedIn post by Aishwarya Srinivasan discussing agentic
-AI design patterns for building production-grade AI agents. [ageint137]
-An arXiv paper surveying the shift from passive language models to
-Agentic AI, where large language models act as cognitive controllers
-that combine memory, tool use, and environmental feedback to pursue
-extended goals. It proposes a unified taxonomy organizing agent systems
-into six components: perception, brain, planning, action, tool use, and
-collaboration. Each source above earns its place in this topic only when
-you can state its bounded claim, its provenance, its uncertainty, and
-the fact that would retire it.</p>
+human authorization gates</strong>, inspect the original passages.
+Curriculum annotation for [ageint139]: A LinkedIn post by Aishwarya
+Srinivasan discussing agentic AI design patterns for building
+production-grade AI agents. Curriculum annotation for [ageint137]: An
+arXiv paper surveying the shift from passive language models to Agentic
+AI, where large language models act as cognitive controllers that
+combine memory, tool use, and environmental feedback to pursue extended
+goals. It proposes a unified taxonomy organizing agent systems into six
+components: perception, brain, planning, action, tool use, and
+collaboration. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Pattern 20</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Pattern
-20</strong>, the safe-substitution caveat, the uncertainty note, the
-no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Pattern 20: Hierarchical Curriculum Orchestrator (source
+build a <strong>Hierarchical Curriculum Orchestrator</strong> card with
+parent and child task, inherited scope, evidence dependency, failure,
+and next owner; keep the exercise within its registry boundary. Shape
+<strong>Pattern 20: Hierarchical Curriculum Orchestrator (source
 identity preserved in pattern registry) - orchestrates learning
 artifacts only and preserves human authorization gates</strong> work as
 an <strong>agent run and assurance card</strong> that records its
 evidence, the residual uncertainty, the named reviewer, and the stop
 condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception that
-naming an agent pattern certifies it is safe to deploy without
-governance gates.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Pattern 20: Hierarchical Curriculum Orchestrator (source
+identity preserved in pattern registry) - orchestrates learning
+artifacts only and preserves human authorization gates</strong>: that
+hierarchical delegation permits a child to expand its parent’s
+authority.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Pattern 20:
 Hierarchical Curriculum Orchestrator (source identity preserved in
 pattern registry) - orchestrates learning artifacts only and preserves
@@ -1167,52 +2134,58 @@ id="lesson-78-safe-methods-role-delegation-output-aggregation-exception-routing-
 routing, and failure recovery drills</h4>
 <p><strong>Concept.</strong> <strong>Safe methods: role delegation,
 output aggregation, exception routing, and failure recovery
-drills</strong> uses the pattern name as safe architectural vocabulary:
-allowlisted tools, logging, human approval, and blocked external
-action.</p>
+drills</strong> — <strong>Hierarchical Curriculum Orchestrator</strong>
+uses role delegation, output aggregation, exception routing, and failure
+recovery drills. Its classroom application is multi-domain capstone
+coordination across benign module artifacts; it orchestrates learning
+artifacts only and preserves human authorization gates.</p>
+<p><strong>Worked reasoning and limits.</strong> Root T0 grants C1 only
+source-status review of R1/R3 and C2 only lineage review of R2/R4,
+expiring at checkpoint K1; neither may redelegate. Each returns input
+version, passages, accepted claims and pending/failed work, so
+aggregation can distinguish a missing branch from a negative
+finding.</p>
 <p><strong>Why it matters.</strong> <strong>Safe methods</strong>
-matters in the <strong>Agentic AI Governance and Tool Security</strong>
-lane because least-privilege agent design and run evidence must stay
-separate from judgment; treating pattern names as deployment playbooks
-is a common failure.</p>
-<p><strong>Source support.</strong> <strong>Safe methods: role
-delegation, output aggregation, exception routing, and failure recovery
-drills</strong> rests on [ageint299], [ageint306], and [ageint312]. The
-most specific cited work observes: It describes the host, client, and
-server roles and capability negotiation, and the features servers expose
-(resources, prompts, tools) and clients offer (sampling, roots,
-elicitation). Use them for fixing what <strong>Safe methods: role
-delegation, output aggregation, exception routing, and failure recovery
-drills</strong> covers, marking the boundary it must not cross, and
-timing the next source refresh. External triangulation uses
+connects classroom vocabulary to Agentic AI Governance and Tool Security
+practice: learners document evidence, caveats, and reviewer ownership
+rather than repeating labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe methods: role delegation, output aggregation, exception
+routing, and failure recovery drills</strong>: [ageint299], [ageint306],
+and [ageint312]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Safe
-methods</strong> against the works cited for this row. [ageint299] The
-official Model Context Protocol (MCP) specification, defining an open
-protocol that standardizes how LLM applications connect to external data
-sources and tools using JSON-RPC 2.0 messages. It describes the host,
-client, and server roles and capability negotiation, and the features
-servers expose (resources, prompts, tools) and clients offer (sampling,
-roots, elicitation). [ageint306] Official CISA Artificial Intelligence
-page for AI security, safety, resilience, and critical-infrastructure
-governance source support. [ageint312] Official Government of Canada
-guide for responsible use of agentic AI, used for public-sector agent
-governance and accountability source support. Work source by source:
-name the bounded claim, its origin, the residual uncertainty, and the
-trigger that would change how this topic is judged.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Safe
+methods</strong>, inspect the original passages. Curriculum annotation
+for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe methods</strong>,
-build a <strong>agent run card with tool allowlist, identity, logs,
-autonomy limit, approval gates, and recovery path</strong> for this
-least-privilege agent design and run review topic. The artifact must
-name the pattern descriptor, the bounded claim about <strong>Safe
-methods</strong>, the safe-substitution caveat, the uncertainty note,
-the no-deployment boundary, and the reviewer accountable for challenge.
-Shape <strong>Safe methods</strong> work as an <strong>agent run and
-assurance card</strong> that states the evidence used, what stays
-uncertain, who reviews it, and when to stop.</p>
+build a <strong>Hierarchical Curriculum Orchestrator</strong> card with
+parent and child task, inherited scope, evidence dependency, failure,
+and next owner; keep the exercise within its registry boundary. Shape
+<strong>Safe methods</strong> work as an <strong>agent run and assurance
+card</strong> that states the evidence used, what stays uncertain, who
+reviews it, and when to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe methods</strong>: that naming an agent pattern certifies it
-is safe to deploy without governance gates.</p>
+<strong>Safe methods</strong>: that hierarchical delegation permits a
+child to expand its parent’s authority.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe
 methods</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -1223,54 +2196,62 @@ id="lesson-79-safe-defensive-application-multi-domain-capstone-coordination-acro
 across benign module artifacts</h4>
 <p><strong>Concept.</strong> <strong>Safe defensive application:
 multi-domain capstone coordination across benign module
-artifacts</strong> uses the pattern name as safe architectural
-vocabulary: allowlisted tools, logging, human approval, and blocked
-external action.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Safe defensive application</strong>, treating pattern names as
-deployment playbooks undermines least-privilege agent design and run
-review; the lesson builds the habit to separate agent assistance from
-autonomous external action.</p>
-<p><strong>Source support.</strong> <strong>Safe defensive application:
-multi-domain capstone coordination across benign module
-artifacts</strong> rests on [ageint299], [ageint306], and [ageint312].
-The closest source to this row notes: The official Model Context
-Protocol (MCP) specification, defining an open protocol that
-standardizes how LLM applications connect to external data sources and
-tools using JSON-RPC 2.0 messages. Use them for fixing what <strong>Safe
-defensive application: multi-domain capstone coordination across benign
-module artifacts</strong> covers, marking the boundary it must not
-cross, and timing the next source refresh. External triangulation uses
+artifacts</strong> — <strong>Hierarchical Curriculum
+Orchestrator</strong> uses role delegation, output aggregation,
+exception routing, and failure recovery drills. Its classroom
+application is multi-domain capstone coordination across benign module
+artifacts; it orchestrates learning artifacts only and preserves human
+authorization gates.</p>
+<p><strong>Worked reasoning and limits.</strong> In the synthetic
+handoff, C1 completes but C2 consumes a suspect note and is cancelled;
+T0 marks lineage incomplete, quarantines C2’s descendants and drafts
+only source-status findings. The next owner receives checkpoint K0,
+rejected-note IDs and pending C2 review, not a fabricated complete
+synthesis; resume requires a clean local rerun and new owner
+acceptance.</p>
+<p><strong>Why it matters.</strong> <strong>Safe defensive
+application</strong> matters in the <strong>Agentic AI Governance and
+Tool Security</strong> lane because least-privilege agent design and run
+evidence must stay separate from judgment; treating pattern names as
+deployment playbooks is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe defensive application: multi-domain capstone coordination
+across benign module artifacts</strong>: [ageint299], [ageint306], and
+[ageint312]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
 [official_oecd_agentic_ai]; [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Safe defensive
-application</strong>, reason from the sources cited in this row.
-[ageint299] The official Model Context Protocol (MCP) specification,
-defining an open protocol that standardizes how LLM applications connect
-to external data sources and tools using JSON-RPC 2.0 messages. It
-describes the host, client, and server roles and capability negotiation,
-and the features servers expose (resources, prompts, tools) and clients
-offer (sampling, roots, elicitation). [ageint306] Official CISA
-Artificial Intelligence page for AI security, safety, resilience, and
-critical-infrastructure governance source support. [ageint312] Official
-Government of Canada guide for responsible use of agentic AI, used for
-public-sector agent governance and accountability source support. Each
-source above earns its place in this topic only when you can state its
-bounded claim, its provenance, its uncertainty, and the fact that would
-retire it.</p>
+application</strong>, inspect the original passages. Curriculum
+annotation for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe defensive
-application</strong>, build a <strong>agent run card with tool
-allowlist, identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe defensive application</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe defensive
-application</strong> work as an <strong>agent run and assurance
-card</strong> that states the evidence used, what stays uncertain, who
-reviews it, and when to stop.</p>
+application</strong>, build a <strong>Hierarchical Curriculum
+Orchestrator</strong> card with parent and child task, inherited scope,
+evidence dependency, failure, and next owner; keep the exercise within
+its registry boundary. Shape <strong>Safe defensive application</strong>
+work as an <strong>agent run and assurance card</strong> that states the
+evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe defensive application</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+<strong>Safe defensive application</strong>: that hierarchical
+delegation permits a child to expand its parent’s authority.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe defensive
 application</strong> to a second module by preserving least-privilege
 agent design and run review, changing the source evidence, and naming a
@@ -1281,56 +2262,62 @@ id="lesson-80-safe-architecture-artifact-diagram-an-allowlisted-logged-revocable
 revocable workflow for Hierarchical Curriculum Orchestrator</h4>
 <p><strong>Concept.</strong> <strong>Safe architecture artifact: diagram
 an allowlisted, logged, revocable workflow for Hierarchical Curriculum
-Orchestrator</strong> uses pattern names as architectural vocabulary for
-allowlisted, logged, revocable workflows—not as operational
-playbooks.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Safe
-architecture artifact</strong> to separate agent assistance from
-autonomous external action. A defensible treatment names the judgment it
-enables for least-privilege agent design and run review, the proof limit
-that treating pattern names as deployment playbooks would otherwise
-hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Safe architecture artifact:
-diagram an allowlisted, logged, revocable workflow for Hierarchical
-Curriculum Orchestrator</strong> rests on [ageint299], [ageint306], and
-[ageint312]. The closest source to this row notes: It describes the
-host, client, and server roles and capability negotiation, and the
-features servers expose (resources, prompts, tools) and clients offer
-(sampling, roots, elicitation). Use them for the claim that <strong>Safe
-architecture artifact: diagram an allowlisted, logged, revocable
-workflow for Hierarchical Curriculum Orchestrator</strong> lets you
-defend here, the limit it has to respect, and the re-check owed before
-reuse. External triangulation uses [official_oecd_agentic_ai];
+Orchestrator</strong> — <strong>Hierarchical Curriculum
+Orchestrator</strong> uses role delegation, output aggregation,
+exception routing, and failure recovery drills. Its classroom
+application is multi-domain capstone coordination across benign module
+artifacts; it orchestrates learning artifacts only and preserves human
+authorization gates.</p>
+<p><strong>Worked reasoning and limits.</strong> The supervisor stores a
+delegation tree, scope expiry, cancellation state and
+claim-to-child/source manifest; it rejects unsupported additions at
+merge time. Suspect memory may propagate through handoffs, so recovery
+excludes affected derived notes rather than trusting a fresh agent with
+the same contaminated context; this is a proposed control, not
+demonstrated immunity. [scholarly_prompt_infection_multi_agent]</p>
+<p><strong>Why it matters.</strong> Without explicit treatment of
+<strong>Safe architecture artifact</strong>, treating pattern names as
+deployment playbooks undermines least-privilege agent design and run
+review; the lesson builds the habit to separate agent assistance from
+autonomous external action.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Safe architecture artifact: diagram an allowlisted, logged,
+revocable workflow for Hierarchical Curriculum Orchestrator</strong>:
+[ageint299], [ageint306], and [ageint312]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Safe architecture
-artifact</strong>, work from the cited evidence behind this row.
-[ageint299] The official Model Context Protocol (MCP) specification,
-defining an open protocol that standardizes how LLM applications connect
-to external data sources and tools using JSON-RPC 2.0 messages. It
-describes the host, client, and server roles and capability negotiation,
-and the features servers expose (resources, prompts, tools) and clients
-offer (sampling, roots, elicitation). [ageint306] Official CISA
-Artificial Intelligence page for AI security, safety, resilience, and
-critical-infrastructure governance source support. [ageint312] Official
-Government of Canada guide for responsible use of agentic AI, used for
-public-sector agent governance and accountability source support. Work
-source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
+artifact</strong>, inspect the original passages. Curriculum annotation
+for [ageint299]: The official Model Context Protocol (MCP)
+specification, defining an open protocol that standardizes how LLM
+applications connect to external data sources and tools using JSON-RPC
+2.0 messages. It describes the host, client, and server roles and
+capability negotiation, and the features servers expose (resources,
+prompts, tools) and clients offer (sampling, roots, elicitation).
+Curriculum annotation for [ageint306]: Official CISA Artificial
+Intelligence page for AI security, safety, resilience, and
+critical-infrastructure governance source support. Curriculum annotation
+for [ageint312]: Official Government of Canada guide for responsible use
+of agentic AI, used for public-sector agent governance and
+accountability source support. These editorial descriptions are not
+source-authored quotations or independently verified lesson support.
+Record a passage and locator, distinguishing primary findings, normative
+requirements, proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Safe architecture
-artifact</strong>, build a <strong>agent run card with tool allowlist,
-identity, logs, autonomy limit, approval gates, and recovery
-path</strong> for this least-privilege agent design and run review
-topic. The artifact must name the pattern descriptor, the bounded claim
-about <strong>Safe architecture artifact</strong>, the safe-substitution
-caveat, the uncertainty note, the no-deployment boundary, and the
-reviewer accountable for challenge. Shape <strong>Safe architecture
-artifact</strong> work as an <strong>agent run and assurance
-card</strong> that names evidence, uncertainty, reviewer, and stop
-condition.</p>
+artifact</strong>, build a <strong>Hierarchical Curriculum
+Orchestrator</strong> card with parent and child task, inherited scope,
+evidence dependency, failure, and next owner; keep the exercise within
+its registry boundary. Shape <strong>Safe architecture artifact</strong>
+work as an <strong>agent run and assurance card</strong> that names
+evidence, uncertainty, reviewer, and stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Safe architecture artifact</strong>: that naming an agent
-pattern certifies it is safe to deploy without governance gates.</p>
+<strong>Safe architecture artifact</strong>: that hierarchical
+delegation permits a child to expand its parent’s authority.</p>
 <p><strong>Transfer task.</strong> Transfer <strong>Safe architecture
 artifact</strong> to a second module by preserving least-privilege agent
 design and run review, changing the source evidence, and naming a new
@@ -1341,13 +2328,13 @@ Design Patterns and Archetypes worked safe example: synthetic inputs,
 evidence, and review</h3>
 <p>Worked example: a synthetic research assistant agent organizes public
 readings for an instructor. [ageint233]; [ageint258].</p>
-<p><strong>Triangulation anchors.</strong> In module 32’s worked-example
-section, directly verified anchors for the <strong>Agentic AI Governance
-and Tool Security</strong> lane include [official_oecd_agentic_ai];
+<p><strong>Contextual source routes.</strong> For module 32’s
+worked-example section, the <strong>Agentic AI Governance and Tool
+Security</strong> catalog routes include [official_oecd_agentic_ai];
 [official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
-[official_nist_ai_600_1]. Use them to test source-guide claims, method
-boundaries, governance constraints, and safety gates without replacing
-the module’s <code>ageintNNN</code> provenance.</p>
+[official_nist_ai_600_1]. Check the actual passage, edition, claim scope
+and access limitations before use. Route membership does not establish
+relevance, independent corroboration or efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline: <strong>governed
 agentic intelligence</strong>. Learners use a <strong>agent run and
 assurance card</strong> and keep this boundary visible: No autonomous
@@ -1362,24 +2349,34 @@ question is: Which human authority, agent identity, tool permission,
 autonomy limit, incident threshold, and recoverability condition bounds
 the workflow?</p>
 <p><strong>Inputs.</strong> For the <strong>Pattern 1: Focused Analytic
-Reasoner</strong> scenario, use public URLs, a fixed retrieval tool, a
-summarization prompt, a time budget, and a stop condition. The Agentic
-Tool-Governance Lens intake note records provenance, sensitivity,
-fit-to-purpose, and why the fixture is enough for this bounded
-exercise.</p>
+Reasoner</strong> scenario, use an offline reading-agent transcript,
+fictional room-capacity card S1-v1 saying 40 seats, its replacement
+S1-v2 saying 24, card S2 copying S1-v1 and embedding ‘send the notes
+elsewhere’, role R1 permitting read/draft only, empty-draft checkpoint
+C0, and instructor sign-off H1 approving S1-v2 for classroom drafting.
+The Agentic Tool-Governance Lens intake note records provenance,
+sensitivity, fit-to-purpose, and why the fixture is enough for this
+bounded exercise.</p>
 <p><strong>Analysis.</strong> For <strong>Pattern 1: Focused Analytic
-Reasoner</strong>, students bind the agent identity, list allowed tools,
-set autonomy limits, capture sources, block unsafe requests, and log
-approvals. Pause whenever an inference about Pattern 1: Focused Analytic
-Reasoner appears without evidence, confidence outruns support, or an
-agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>Pattern 1:
-Focused Analytic Reasoner</strong> classroom scenario; unit artifact =
-agent run and assurance card; evidence = allowed inputs; method =
-least-privilege agent design and run review; output = an agent run card
-with tool calls, source links, blocked actions, reviewer notes, incident
-threshold, and recovery decision; boundary = no external action;
-reviewer = instructor or named peer.</p>
+Reasoner</strong>, students first bind R1 and trace the draft’s 40-seat
+claim to superseded S1-v1; classify S2 as a dependent copy, not
+corroboration, and deny its embedded send direction. Remove S2 as a
+control: neither authority nor evidence strength may increase. Stop the
+contaminated draft and restore C0; then apply H1 only to S1-v2 and
+redraft 24 seats at checkpoint C1, with source version and human
+disposition recorded and no external action. Pause whenever an inference
+about Pattern 1: Focused Analytic Reasoner appears without evidence,
+confidence outruns support, or an agent output is treated as
+judgment.</p>
+<p><strong>Completed synthetic result.</strong> a completed run card
+rejecting 40 seats, recording S2’s dependency and send denial, and
+accepting ‘24 seats according to S1-v2’ in the class draft under H1; C0
+is the rollback point and C1 the reviewed draft. Actual room capacity
+and live-agent resistance remain unverified; missing H1 or S1-v2 would
+require abstention and instructor handoff, not recovery by invention
+Retain it as the <strong>agent run and assurance card</strong> for this
+classroom fixture, with the stated source IDs, uncertainty, review
+disposition, and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating <strong>Pattern 1:
 Focused Analytic Reasoner</strong> as “Agentic Tool-Governance Lens
 confirms it” is not enough. The revision ties the claim to
@@ -1400,140 +2397,14 @@ full seminar path adds challenge, handoff, and a review memo for
 <strong>Pattern 1: Focused Analytic Reasoner; Safe methods: bounded
 source reading, explicit assumptions, self-critique, and confidence
 notes</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 32’s
-practice-sequence section, directly verified anchors for the
-<strong>Agentic AI Governance and Tool Security</strong> lane include
-[official_oecd_agentic_ai]; [official_canada_agentic_ai_guide];
-[official_nist_ai_rmf]; [official_nist_ai_600_1]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<table>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr>
-<th>Move</th>
-<th>Learner action</th>
-<th>Output</th>
-<th>Check</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1. Distinguish</td>
-<td>Compare Pattern 1: Focused Analytic Reasoner, Safe methods: bounded
-source reading, explicit assumptions, self-critique, and confidence
-notes, Safe defensive application: single public-source report critique
-with provenance and uncertainty fields; name what each topic can and
-cannot prove.</td>
-<td>Glossary-and-contrast card.</td>
-<td>Terms match the <strong>Agentic AI Governance and Tool
-Security</strong> lane.</td>
-</tr>
-<tr>
-<td>2. Frame</td>
-<td>Answer the lens question: Which human authority, agent identity,
-tool permission, autonomy limit, incident threshold, and recoverability
-condition bounds the workflow?</td>
-<td>Scope card.</td>
-<td>Authority, excluded actions, data boundary, and reviewer are
-explicit.</td>
-</tr>
-<tr>
-<td>3. Evidence</td>
-<td>Fill the artifact fields for Pattern 1: Focused Analytic Reasoner:
-agent run card with tool allowlist, identity, logs, autonomy limit,
-approval gates, and recovery path.</td>
-<td>Evidence packet.</td>
-<td>Sources, caveats, confidence, and uncertainty stay separable.</td>
-</tr>
-<tr>
-<td>3a. Unit artifact</td>
-<td>Add the agent run and assurance card fields for Pattern 1: Focused
-Analytic Reasoner.</td>
-<td>Unit profile note.</td>
-<td>Evidence artifacts include tool-allowlist record, external-memory
-governance boundary.</td>
-</tr>
-<tr>
-<td>4. Challenge</td>
-<td>Test the misconception that naming an agent pattern certifies it is
-safe to deploy without governance gates.</td>
-<td>Failure-mode note.</td>
-<td>The artifact applies the key distinction: separate agent assistance
-from autonomous external action.</td>
-</tr>
-<tr>
-<td>5. Handoff</td>
-<td>Prepare the artifact for another reviewer.</td>
-<td>Handoff memo.</td>
-<td>Inputs, transformations, reviewer, refresh trigger, and residual
-risk are visible.</td>
-</tr>
-</tbody>
-</table>
-<h4
-id="ageint-design-patterns-and-archetypes-instructor-notes-source-reasoning-review-points-and-studio-focus">AGEINT
-Design Patterns and Archetypes instructor notes: source reasoning,
-review points, and studio focus</h4>
-<p>Ask learners to verbalize the difference between a source, an
-inference, and a decision. Require a revision whenever a claim cannot be
-traced to a source descriptor or a human review point. Keep the focus on
-<strong>Pattern 1: Focused Analytic Reasoner; Safe methods: bounded
-source reading, explicit assumptions, self-critique, and confidence
-notes</strong>. [ageint233]; [ageint258].</p>
-<h4
-id="ageint-design-patterns-and-archetypes-extension-exercise-peer-validation-and-refresh-trigger-review">AGEINT
-Design Patterns and Archetypes extension exercise: peer validation and
-refresh trigger review</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-ageint-design-patterns-and-archetypes]; [ageint233].</p>
-<p>Have learners swap artifacts and apply the <strong>Agentic
-Tool-Governance Lens</strong> validation rule to someone else’s work.
-The receiving learner must identify one strength, one missing caveat,
-and one refresh trigger for <strong>Pattern 1: Focused Analytic
-Reasoner; Safe methods: bounded source reading, explicit assumptions,
-self-critique, and confidence notes</strong>.</p>
-<h3
-id="ageint-design-patterns-and-archetypes-knowledge-check-misconceptions-evidence-and-reviewer-prompts">AGEINT
-Design Patterns and Archetypes knowledge check: misconceptions,
-evidence, and reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-ageint-design-patterns-and-archetypes]; [ageint233].</p>
-<ol type="1">
-<li>Explain how <strong>Pattern 1: Focused Analytic Reasoner (source
-identity preserved in pattern registry) - keeps reasoning reviewable
-without exposing hidden reasoning or delegating action</strong> is
-defined here; name the source descriptor that supports the
-definition.</li>
-<li>Contrast <strong>Pattern 1: Focused Analytic Reasoner</strong> with
-<strong>Safe methods: bounded source reading, explicit assumptions,
-self-critique, and confidence notes</strong> using the <strong>Agentic
-Tool-Governance Lens</strong> artifact fields.</li>
-<li>Identify one failure mode from the <strong>Agentic AI Governance and
-Tool Security</strong> lane and the evidence that would reveal it.</li>
-<li>Answer the coursebook review question: Which permission can be
-removed while preserving the learning objective?</li>
-<li>Correct this misconception: that naming an agent pattern certifies
-it is safe to deploy without governance gates.</li>
-</ol>
-<h4
-id="ageint-design-patterns-and-archetypes-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">AGEINT
-Design Patterns and Archetypes answer quality rubric: source evidence,
-uncertainty, and safe transfer</h4>
-<p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>Pattern 1: Focused Analytic
-Reasoner</strong> without source evidence, uncertainty, or a safe
-transfer task.</p>
+<p><strong>Contextual source routes.</strong> For module 32’s
+practice-sequence section, the <strong>Agentic AI Governance and Tool
+Security</strong> catalog routes include [official_oecd_agentic_ai];
+[official_canada_agentic_ai_guide]; [official_nist_ai_rmf];
+[official_nist_ai_600_1]. Check the actual passage, edition, claim scope
+and access limitations before use. Route membership does not establish
+relevance, independent corroboration or efficacy.</p>
+<div class="line-block">Move | Learner action | Output | Check |</div>
 </main>
 </body>
 </html>

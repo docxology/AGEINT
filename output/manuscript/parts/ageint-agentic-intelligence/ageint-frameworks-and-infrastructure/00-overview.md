@@ -12,11 +12,11 @@ This module teaches the **Agentic AI Governance and Tool Security** lane through
 
 ## Agentic AI Governance and Tool Security frame for AGEINT Frameworks and Infrastructure: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-ageint-frameworks-and-infrastructure]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-ageint-frameworks-and-infrastructure].
 
 ### AGEINT Frameworks and Infrastructure orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-ageint-frameworks-and-infrastructure]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-ageint-frameworks-and-infrastructure].
 
 ### AGEINT Frameworks and Infrastructure conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Agentic Tool-Governance Lens** distincti
 
 ### AGEINT Frameworks and Infrastructure learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-ageint-frameworks-and-infrastructure]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-ageint-frameworks-and-infrastructure].
 
 - Connect **LangChain/LangGraph: State Machine Orchestration and LCEL: LangChain Expression Language** to **Agentic AI Governance and Tool Security** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **agent run card with tool allowlist, identity, logs, autonomy limit, approval gates, and recovery path** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,7 +40,7 @@ Learners move from vocabulary and the **Agentic Tool-Governance Lens** distincti
 
 ### AGEINT Frameworks and Infrastructure core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-ageint-frameworks-and-infrastructure]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-ageint-frameworks-and-infrastructure].
 
 | Term | Working definition |
 |---|---|
@@ -52,6 +52,4 @@ Learners move from vocabulary and the **Agentic Tool-Governance Lens** distincti
 | AI incident | a logged event where an AI system creates or plausibly creates harm or loss of control |
 | Prompt injection | untrusted content that attempts to override instructions or authority boundaries |
 | Pattern registry | the catalog of approved agent behaviors, prompts, and evaluation hooks |
-| Adversarial eval | structured tests that probe agent misuse, injection, and over-delegation before release |
-| LangChain/LangGraph: State Machine Orchestration | Key terms: LangChain, LangGraph, State. |
-| LCEL: LangChain Expression Language | Key terms: LCEL, LangChain, Expression. |
+| Adversarial eval | structured tests of specified misuse, injection, or delegation failure modes; passing fixtures is not proof of general resistance |

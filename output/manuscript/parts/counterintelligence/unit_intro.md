@@ -2,25 +2,31 @@
 
 ## COUNTERINTELLIGENCE learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-counterintelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-counterintelligence].
 
 ### source-integrity defense discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-counterintelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-counterintelligence].
 
 This unit teaches **source-integrity defense**. CI lessons teach deception awareness, source integrity, insider-risk signals, corroboration, and protected escalation as defensive governance.
 
 ### source-integrity defense source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-counterintelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-counterintelligence].
 
 Use guide citations and analytic-standards anchors to ground claims about deception, corroboration, uncertainty, and review.
 
 ### source-integrity defense practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-counterintelligence]; [@ageint238].
+**Navigation.** Parent section: [@sec:part-counterintelligence].
 
-The recurring practice artifact is a **source-integrity challenge memo** that draws on anomaly hypothesis table, corroboration note, protected-disclosure path, and uncertainty statement. The unit keeps its learning spine explicit. Learners list competing explanations for compromise signals and preserve uncertainty until evidence justifies escalation.
+The recurring practice artifact is a **source-integrity challenge memo** that draws on anomaly hypothesis table, corroboration note, protected-disclosure path, and uncertainty statement. The unit keeps its learning spine explicit. Classroom packet: a toy access log contains an unusual download time, a maintenance roster places an authorized backup in that interval, and a disputed report differs from its archived version.
+
+1. Preserve version identifiers and separate the access anomaly from the content discrepancy.
+2. Compare backup, transcription error, and unauthorized modification hypotheses; identify what each predicts about timestamps and versions.
+3. Check a second scheduled backup with the same timing pattern as a benign control. The unusual hour alone must not become an accusation.
+4. Write a challenge memo: scheduled backup explains the access timing; the report discrepancy remains unresolved without the missing edit history. Neither motive nor insider identity is established.
+Stop person-level investigation and do not seek further access. Send the minimized version discrepancy through the instructor's protected-review channel, preserving the original fixture and competing explanations.
 
 ### source-integrity defense safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint238]; [@ageint240].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint238]; [@ageint240].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint238]; [@ageint240].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-counterintelligence-module-map] and [@fig:part-counteri
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-information-warfare-and-cognitive-security], [@sec:chapter-counterintelligence-fundamentals].
 
-![The unit module map traces the part's chapters as a linear reading sequence. In the counterintelligence section, it lets readers compare 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-counterintelligence-module-map.png){#fig:part-counterintelligence-module-map}
+![The COUNTERINTELLIGENCE module map traces the part's chapters as a linear reading sequence. In the counterintelligence section, it lets readers compare 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-counterintelligence-module-map.png){#fig:part-counterintelligence-module-map}
 
 ![This Part presents counterintelligence as a continuous protective cycle whose detect-assess-deny-review loop is applied across both state and non-state adversaries. Its reader value is to make Threat Context, Ch22 CI Fundamentals: State Actors, Ch23 CI vs Non-State Actors, and Protective CI Cycle visible at a glance, with the counterintelligence section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-counterintelligence-protective-cycle.png){#fig:part-counterintelligence-protective-cycle}
 

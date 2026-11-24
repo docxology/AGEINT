@@ -28,5 +28,6 @@
   ],
   "source_line": 660,
   "content_profile": "agentic_ai_governance",
-  "practice_lens": "agentic_tool_governance"
+  "practice_lens": "agentic_tool_governance",
+  "worked_example": "offline_evidence_contract"
 }

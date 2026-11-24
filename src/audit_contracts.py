@@ -141,14 +141,46 @@ AUDIT_CONTRACTS: tuple[AuditContract, ...] = (
 )
 
 
+# Source-release gates are collected by publication_readiness, not artifact_evidence.
+RELEASE_READINESS_CONTRACTS: tuple[AuditContract, ...] = (
+    AuditContract(
+        contract_id="release_metadata",
+        check_id="release_metadata_ok",
+        title="Release metadata alignment",
+        report_paths=("output/reports/publication_readiness.json",),
+        purpose="Require canonical stable package, CFF, manuscript and SDK release-train metadata to align.",
+        negative_control="Mismatch package/CFF/paper/book versions or supply a foreign, malformed or mismatched expected tag.",
+        publication_readiness_gate=True,
+    ),
+    AuditContract(
+        contract_id="release_task_prerequisites",
+        check_id="task_prerequisites_done",
+        title="Current-version release prerequisites",
+        report_paths=("output/reports/publication_readiness.json",),
+        purpose="Require all explicitly declared current-version milestone dependencies to exist and be done.",
+        negative_control="Remove a declared dependency or leave it todo, in_progress or blocked.",
+        publication_readiness_gate=True,
+    ),
+    AuditContract(
+        contract_id="release_milestone",
+        check_id="release_milestone_ready",
+        title="Current-version release milestone",
+        report_paths=("output/reports/publication_readiness.json",),
+        purpose="Require a well-formed current-version release milestone, without treating completion as publishing authority.",
+        negative_control="Supply only a historical milestone, block the current milestone, or remove its explicit nonempty deps.",
+        publication_readiness_gate=True,
+    ),
+)
+
+
 def audit_contracts() -> tuple[AuditContract, ...]:
-    """Return all AGEINT audit contracts in evidence-report order."""
+    """Return artifact-evidence audit contracts in evidence-report order."""
     return AUDIT_CONTRACTS
 
 
 def audit_contract_by_check_id() -> dict[str, AuditContract]:
-    """Return audit contracts keyed by evidence ``checks`` id."""
-    return {contract.check_id: contract for contract in AUDIT_CONTRACTS}
+    """Return artifact and source-release contracts keyed by ``checks`` id."""
+    return {contract.check_id: contract for contract in (*AUDIT_CONTRACTS, *RELEASE_READINESS_CONTRACTS)}
 
 
 def publication_readiness_audit_check_ids() -> tuple[str, ...]:
@@ -162,18 +194,20 @@ def publication_readiness_audit_check_ids() -> tuple[str, ...]:
 
 def false_certification_control() -> dict[str, Any]:
     """Return an aggregate false-certification scenario derived from contracts."""
+    contracts = (*AUDIT_CONTRACTS, *RELEASE_READINESS_CONTRACTS)
     return {
         "scenario": (
             "A reviewer trusts a copied PDF, citation count, current-evidence note, or green local report without proving that all registered audits passed against the same rebuilt artifact set."
         ),
-        "negative_control": " ".join(contract.negative_control for contract in AUDIT_CONTRACTS),
-        "audit_contracts": [contract.as_dict() for contract in AUDIT_CONTRACTS],
+        "negative_control": " ".join(contract.negative_control for contract in contracts),
+        "audit_contracts": [contract.as_dict() for contract in contracts],
     }
 
 
 def audit_contract_report() -> dict[str, Any]:
     """Return machine-readable audit contract metadata."""
-    return {"schema_version": "1.0", "contract_count": len(AUDIT_CONTRACTS), "contracts": [contract.as_dict() for contract in AUDIT_CONTRACTS]}
+    contracts = (*AUDIT_CONTRACTS, *RELEASE_READINESS_CONTRACTS)
+    return {"schema_version": "1.0", "contract_count": len(contracts), "contracts": [contract.as_dict() for contract in contracts]}
 
 
-__all__ = ["AUDIT_CONTRACTS", "AuditContract", "audit_contract_by_check_id", "audit_contract_report", "audit_contracts", "false_certification_control", "publication_readiness_audit_check_ids"]
+__all__ = ["AUDIT_CONTRACTS", "RELEASE_READINESS_CONTRACTS", "AuditContract", "audit_contract_by_check_id", "audit_contract_report", "audit_contracts", "false_certification_control", "publication_readiness_audit_check_ids"]

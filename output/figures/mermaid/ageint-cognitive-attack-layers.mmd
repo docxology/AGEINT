@@ -1,27 +1,19 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-    root["NATO/INSS Cognitive Warfare 2026<br/>three layers of engagement"]
-    subgraph BIO["Biological layer"]
-        direction TB
-        bt["Target<br/>cognitive capacity"]
-        bm["Mechanism<br/>neuroscience-informed<br/>targeting of the<br/>nervous system"]
-        ba["AI role<br/>optimized delivery<br/>timing and channel<br/>selection"]
-        bt --> bm --> ba
+    root["Source invariants / classroom checks<br/>Author-grouped rows, not a source taxonomy"]
+    subgraph R1["Evidence standards"]
+        direction LR
+        e["Study: epistemic frameworks<br/>How a system interprets reality"] -. "proposed check" .-> ec["Classroom: claim record<br/>trace sources and contradictions<br/>state uncertainty"]
     end
-    subgraph PSY["Psychological layer"]
-        direction TB
-        pt["Target<br/>cognitive interpretation"]
-        pm["Mechanism<br/>manipulating individual<br/>cognition, exploiting<br/>biases at scale"]
-        pa["AI role<br/>tailored influence<br/>matched to cognitive<br/>vulnerability profiles"]
-        pt --> pm --> pa
+    subgraph R2["Trust and identity"]
+        direction LR
+        t["Study: trust architectures<br/>and collective identity"] -. "proposed check" .-> tc["Classroom: provenance review<br/>distinguish origin from authority<br/>avoid identity profiling"]
     end
-    subgraph SOC["Social layer"]
-        direction TB
-        st["Target<br/>cognitive cohesion"]
-        sm["Mechanism<br/>fracturing shared<br/>narratives, weaponizing<br/>identity, epistemic chaos"]
-        sa["AI role<br/>coordinating synthetic<br/>influence campaigns<br/>across platforms"]
-        st --> sm --> sa
+    subgraph R3["Values and future orientation"]
+        direction LR
+        v["Study: value systems<br/>and visions of the future"] -. "proposed check" .-> vc["Classroom: purpose review<br/>record constraints and assumptions<br/>name a review owner"]
     end
-    root --> BIO
-    root --> PSY
-    root --> SOC
+    root --> R1
+    R1 ~~~ R2
+    R2 ~~~ R3
+    R3 --> limit["Study, not necessarily CCDCOE or NATO policy<br/>Checks are proposals, not efficacy evidence"]

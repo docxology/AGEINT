@@ -131,11 +131,9 @@ def _load_source_pack_registry(contract: SourcePackContract) -> SourcePackRegist
 
 def _load_pack_payload(contract: SourcePackContract) -> dict[str, tuple[str, ...]]:
     path = contract.path
-    if not path.is_file():
-        return {}
     payload = yaml.safe_load(path.read_text(encoding="utf-8"))
-    if not isinstance(payload, dict) or not isinstance(payload.get("packs"), dict):
-        raise ValueError(f"{contract.label} must define a 'packs' mapping: {path}")
+    if not isinstance(payload, dict) or not isinstance(payload.get("packs"), dict) or not payload["packs"]:
+        raise ValueError(f"{contract.label} must define a non-empty 'packs' mapping: {path}")
     packs: dict[str, tuple[str, ...]] = {}
     for pack_id, raw_keys in payload["packs"].items():
         if not isinstance(pack_id, str) or not pack_id:
@@ -152,8 +150,6 @@ def _load_pack_payload(contract: SourcePackContract) -> dict[str, tuple[str, ...
 
 def _load_profile_routes(contract: SourcePackContract, packs: dict[str, tuple[str, ...]]) -> dict[str, tuple[str, ...]]:
     path = contract.path
-    if not path.is_file():
-        return {}
     payload = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ValueError(f"{contract.label} must define a mapping payload: {path}")

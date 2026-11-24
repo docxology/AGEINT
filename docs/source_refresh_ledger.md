@@ -56,10 +56,11 @@ May 21 and May 22 shards.
 The 2026-06-14 publication-readiness pass adds a refresh due-date oracle without
 changing any `checked_as_of` dates. Run
 `uv run python scripts/audit_source_refresh_due.py --write --format markdown` to
-write `output/reports/source_refresh_due.{json,md}`. The current report covers
-472 metadata rows, classifies 472 as current, and records 0 due-soon, due,
-stale, unknown-cadence, or missing-date rows. Cadence buckets are 322 annual,
-94 semiannual, 51 quarterly, and 5 biennial rows. The same pass adds the
+write `output/reports/source_refresh_due.{json,md}`. The 2026-06-14 snapshot
+reported 472 current rows; that is historical, not a permanent readiness claim.
+The measured 2026-11-06 snapshot has 403 current and 69 due-soon records, with
+zero due, stale, unknown or blocking records. Cadences remain 322 annual,
+94 semiannual, 51 quarterly and 5 biennial. The same pass adds the
 registry-backed `ageint-source-refresh-due-dashboard` figure and exposes the
 gate as `source_refresh_due_ok` in `current_artifact_evidence` and in the local
 publication-readiness report.
@@ -73,10 +74,13 @@ note), the OWASP agentic AI threats-and-mitigations reference, frontier-lab agen
 research from Anthropic and Google DeepMind, the Prompt Infection and Systems
 Security Foundations for Agentic Computing preprints, the Mandel-Tetlock analytic
 judgment-correctives study, and the UNU Macau bounded-agency policy analysis.
-These rows use `checked_as_of: "2026-05-22"`; the date records direct source
-verification, not publication chronology. Any vendor or quantitative figures
-inside the cited pages (readiness percentages, success-rate statistics) are
-treated as ESTIMATE in the anchor notes, never asserted as fact.
+The original batch used `checked_as_of: "2026-05-22"`; later record-specific
+dates supersede it. The 2026-11-06 review distinguishes CCDCOE conceptual
+research from NATO doctrine, DARPA research aims from achieved guarantees,
+CSA proposals from independently validated controls, and normative agent
+roadmaps from empirical assurance. Neither proposed degradation stages nor a
+teaching crosswalk establishes a universal intervention window or security
+guarantee. Read the actual record's scope, date and access limitation.
 
 A 2026-06-06 internet-citation batch is encoded in
 `data/research_anchors/intelligence-anchors-187-194.jsonl`. It adds NIST AI

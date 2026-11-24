@@ -1,15 +1,15 @@
 ### Neurocognitive Mechanisms of Cognitive Security governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security].
 
 ### Neurocognitive Mechanisms of Cognitive Security analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 38's governance-boundary section, directly verified anchors for the **Cognitive Security and Influence Resilience** lane include [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 38's governance-boundary section, the **Cognitive Security and Influence Resilience** catalog routes include [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-Research lane: **Cognitive Security and Influence Resilience** for **Understanding Neurocognitive Mechanisms of Cognitive Security (Neuroscience & Biobehavioral Reviews, 2025); Executive Brain Systems and Vulnerability to Information Threats**. [@ageint238]; [@ageint240].
+Research lane: **Cognitive Security and Influence Resilience** for **Understanding Neurocognitive Mechanisms of Cognitive Security (Neuroscience & Biobehavioral Reviews, 2025); Executive Brain Systems: Research on Information-Related Tasks**. [@ageint238]; [@ageint240].
 
-**Curriculum topic spine:** **Understanding Neurocognitive Mechanisms of Cognitive Security (Neuroscience & Biobehavioral Reviews, 2025)**, **Executive Brain Systems and Vulnerability to Information Threats**, **Affective Systems: Emotional Exploitation in Manipulation**.
-**Verified anchor cluster:** [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]; [@official_oecd_disinformation_misinformation]; [@scholarly_gcsp_cognitive_security]; [@official_ic_ai_ethics_framework].
+**Curriculum topic spine:** **Understanding Neurocognitive Mechanisms of Cognitive Security (Neuroscience & Biobehavioral Reviews, 2025)**, **Executive Brain Systems: Research on Information-Related Tasks**, **Affective Systems: Emotion and Information Processing**.
+**Recorded source cluster; inspection and scope limits apply:** [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]; [@official_oecd_disinformation_misinformation]; [@scholarly_gcsp_cognitive_security]; [@official_ic_ai_ethics_framework].
 
 **Conceptual depth:** protecting attention, belief formation, and decision quality without turning resilience education into manipulation.
 
@@ -19,7 +19,7 @@ Research lane: **Cognitive Security and Influence Resilience** for **Understandi
 
 **Known failure modes:** counter-messaging as manipulation, overclaiming intent, pathologizing audiences, and collapsing uncertainty into moral certainty.
 
-**Defensive boundary:** practice uses benign simulations and resilience education; it does not create persuasion campaigns, impersonation, or deception plans. Applied to **Understanding Neurocognitive Mechanisms of Cognitive Security (Neuroscience & Biobehavioral Reviews, 2025); Executive Brain Systems and Vulnerability to Information Threats**.
+**Defensive boundary:** practice uses benign simulations and resilience education; it does not create persuasion campaigns, impersonation, or deception plans. Applied to **Understanding Neurocognitive Mechanisms of Cognitive Security (Neuroscience & Biobehavioral Reviews, 2025); Executive Brain Systems: Research on Information-Related Tasks**.
 
 | Anchor | Why it matters here |
 |---|---|
@@ -43,66 +43,65 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint238]; [
 
 ### Neurocognitive Mechanisms of Cognitive Security agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security].
 
 AGEINT translation is bounded by the **Cognitive Security and Influence Resilience** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
 checklists, summarize evidence, simulate benign scenarios, and audit reasoning.
 They do not initiate unauthorized collection, exploitation, covert targeting,
-manipulation, or cyber-physical action; examples stay tied to **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**.
+manipulation, or cyber-physical action; examples stay tied to **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**.
 
 #### Neurocognitive Mechanisms of Cognitive Security permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
 Work products fit the current unit's education, policy review, lab
-exercises, and accountable defensive analysis for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**.
+exercises, and accountable defensive analysis for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**.
 
 #### Neurocognitive Mechanisms of Cognitive Security excluded operational boundary: blocked actions and stop rules
 
-Keep all practice accountable, synthetic, defensive, logged, reversible, and evidence-bounded while working from [@ageint238]; [@ageint240] and **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**. Do not convert it into live targeting, evasion, exploitation, covert collection, manipulation, or unsafe cyber-physical action.
+Keep all practice accountable, synthetic, defensive, logged, reversible, and evidence-bounded while working from [@ageint238]; [@ageint240] and **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**. Do not convert it into live targeting, evasion, exploitation, covert collection, manipulation, or unsafe cyber-physical action.
 
 ### Neurocognitive Mechanisms of Cognitive Security governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security].
 
 Governance is practiced as a gate on the **Cognitive Security and Influence Resilience**
 lane. Learners use the **Cognitive-Resilience Lens** to decide who is accountable for the exercise,
 which evidence is sufficient, what rights and access issues remain, and when an
-agent-assisted artifact must stop for human review while using **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**.
+agent-assisted artifact must stop for human review while using **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**.
 
 #### Neurocognitive Mechanisms of Cognitive Security governance card: gates, retained evidence, and review owner
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint238]; [@ageint240]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint238]; [@ageint240]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Cognitive Security and Influence Resilience** failure modes and the **Cognitive-Resilience Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### Neurocognitive Mechanisms of Cognitive Security evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; [@ageint238].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Cognitive-Resilience Lens** evidence gate stays compact enough to apply during
-reading, practice, and revision for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**.
+reading, practice, and revision for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**.
 
 #### Neurocognitive Mechanisms of Cognitive Security current-source assurance: verified anchors and local artifact fit
 
-The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**. [@ageint238]; [@ageint240].
+The source assurance check ties the current verified anchor set to the local chapter artifact instead of relying on discovery summaries, here covering **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**. [@ageint238]; [@ageint240].
 
 | Assurance question | Direct source evidence | Chapter artifact |
 |---|---|---|
-| What does the module inherit from `official_cisa_foreign_influence` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**? | Preparing for and Mitigating Foreign Influence Operations; lane `source_quality_spine`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; Official CISA guidance on foreign influence operations targeting critical infrastructure. |
-| What does the module inherit from `official_nato_counter_information_threats` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**? | Countering Information Threats; lane `source_quality_spine`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; Official NATO counter-information-threat guidance. |
-| What does the module inherit from `official_cisa_election_security_influence` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**? | Election Security; lane `cognitive_influence_security`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; Official CISA election-security source for public-resilience, foreign-influence awareness, rumor control, and defensive communication framing. |
-| What does the module inherit from `official_nato_hybrid_threats` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems and Vulnerability to Information Threats**? | Countering Hybrid Threats; lane `cognitive_influence_security`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; Official NATO source for hybrid-threat resilience across cyber, information, economic, political, and military pressure. |
+| What does the module inherit from `official_cisa_foreign_influence` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**? | Preparing for and Mitigating Foreign Influence Operations; lane `source_quality_spine`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; source-quality triangulation and claim-boundary review |
+| What does the module inherit from `official_nato_counter_information_threats` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**? | Countering Information Threats; lane `source_quality_spine`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; source-quality triangulation and claim-boundary review |
+| What does the module inherit from `official_cisa_election_security_influence` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**? | Election Security; lane `cognitive_influence_security`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; Official CISA election-security source for public-resilience, foreign-influence awareness, rumor control, and defensive communication framing. |
+| What does the module inherit from `official_nato_hybrid_threats` for **Understanding Neurocognitive Mechanisms of Cognitive Security; Executive Brain Systems: Research on Information-Related Tasks**? | Countering Hybrid Threats; lane `cognitive_influence_security`; checked 2026-05-21. | narrative-risk map with provenance, uncertainty, audience harms, and response options; Official NATO source for hybrid-threat resilience across cyber, information, economic, political, and military pressure. |
 | How is Perplexity handled here? | Discovery and second-opinion notes are not citable authority unless converted into direct official, standards-body, public-domain, or scholarly anchors. | Claim ledger records the direct URL, checked date, source lane, refresh trigger, and reviewer. |
 
 **Where this sits.** This module's overview is [@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

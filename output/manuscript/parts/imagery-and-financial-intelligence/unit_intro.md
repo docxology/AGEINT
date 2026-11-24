@@ -2,25 +2,31 @@
 
 ## IMAGERY AND FINANCIAL INTELLIGENCE learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-imagery-and-financial-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:part-imagery-and-financial-intelligence].
 
 ### geospatial and financial intelligence uncertainty discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-imagery-and-financial-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:part-imagery-and-financial-intelligence].
 
 This unit teaches **geospatial and financial intelligence uncertainty**. GEOINT and FININT lessons teach spatial, temporal, and entity-risk reasoning while preserving uncertainty and compliance boundaries.
 
 ### geospatial and financial intelligence uncertainty source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-imagery-and-financial-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:part-imagery-and-financial-intelligence].
 
 Use NGA definition and official compliance or due-diligence anchors for location quality, source limits, sanctions, ownership, and escalation claims.
 
 ### geospatial and financial intelligence uncertainty practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-imagery-and-financial-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:part-imagery-and-financial-intelligence].
 
-The recurring practice artifact is a **location-and-entity evidence ledger** that draws on geospatial quality note, temporal caveat, ownership uncertainty field, and escalation threshold. The unit keeps its learning spine explicit. Learners assess geospatial fitness, entity uncertainty, red flags, and the evidence needed before escalation.
+The recurring practice artifact is a **location-and-entity evidence ledger** that draws on geospatial quality note, temporal caveat, ownership uncertainty field, and escalation threshold. The unit keeps its learning spine explicit. Classroom packet: a fictional road segment is mapped with 100-metre positional uncertainty in a 2023 layer; a 2026 notice closes one of two nearby bridges. Supplier records contain two firms named Cedar with different registration IDs and an undated ownership field.
+
+1. Normalize coordinate reference, spatial resolution, capture date, notice validity, entity IDs, and ownership dates.
+2. Compare bridge footprints with the uncertainty area; join financial records by registration ID rather than name.
+3. Swap the same-name firms as a negative control: name-only joins must fail, and the old map must not settle which bridge is affected.
+4. Submit a location-and-entity ledger marking bridge identity unresolved, the two firms distinct, and current beneficial ownership unknown; neither spatial proximity nor a name match establishes wrongdoing.
+Stop before route advice, facility targeting, or a compliance conclusion. Hand geospatial ambiguity to the instructor's mapping reviewer and legal-status questions to the compliance reviewer.
 
 ### geospatial and financial intelligence uncertainty safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint253]; [@ageint269].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint253]; [@ageint269].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint253]; [@ageint269].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-imagery-and-financial-intelligence-module-map] and [@fi
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-electronic-and-emanations-intelligence], [@sec:chapter-imagery-intelligence-imint].
 
-![The unit module map traces the part's chapters as a linear reading sequence. Its reader value is to make 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last visible at a glance, with the imagery and financial intelligence section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-imagery-and-financial-intelligence-module-map.png){#fig:part-imagery-and-financial-intelligence-module-map}
+![The IMAGERY AND FINANCIAL INTELLIGENCE module map traces the part's chapters as a linear reading sequence. Its reader value is to make 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last visible at a glance, with the imagery and financial intelligence section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-imagery-and-financial-intelligence-module-map.png){#fig:part-imagery-and-financial-intelligence-module-map}
 
 ![This Part traces how imagery and financial sources move left-to-right through provenance verification and validation gates before becoming a defensible analytic judgment. In the imagery and financial intelligence section, it lets readers compare Source Disciplines, Ch11 GEOINT, Ch16 IMINT, and Ch17 FININT so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-imagery-financial-provenance-pipeline.png){#fig:part-imagery-financial-provenance-pipeline}
 
@@ -61,5 +67,5 @@ Navigation links: [@sec:curriculum_orientation], [@sec:chapter-electronic-and-em
 
 | Module | Section reference | Source spine |
 |---|---|---|
-| Imagery Intelligence (IMINT) | [@sec:chapter-imagery-intelligence-imint] | [@ageint253]; [@ageint269]; [@ageint270]; [@ageint275]; [@ageint276]; [@ageint283]; [@ageint286]; [@ageint293]; [@ageint295]; [@ageint302]; [@ageint297]; [@ageint309]; [@ageint310]; [@ageint300]. |
-| Financial Intelligence (FININT) | [@sec:chapter-financial-intelligence-finint] | [@ageint251]; [@ageint252]; [@ageint254]; [@ageint273]; [@ageint274]; [@ageint275]; [@ageint286]; [@ageint287]; [@ageint292]; [@ageint079]; [@ageint080]; [@ageint081]; [@ageint082]; [@ageint302]; [@ageint297]. |
+| Imagery Intelligence (IMINT) | [@sec:chapter-imagery-intelligence-imint] | [@ageint253]; [@ageint269]; [@ageint270]; [@ageint275]; [@ageint276]; [@ageint283]; [@ageint286]; [@ageint293]; [@ageint295]; [@ageint302]; [@ageint297]; [@ageint309]; [@ageint310]; [@ageint300]; [@ageint301]; [@ageint298]. |
+| Financial Intelligence (FININT) | [@sec:chapter-financial-intelligence-finint] | [@ageint251]; [@ageint252]; [@ageint254]; [@ageint273]; [@ageint274]; [@ageint275]; [@ageint286]; [@ageint287]; [@ageint292]; [@ageint079]; [@ageint080]; [@ageint081]; [@ageint082]; [@ageint302]; [@ageint297]; [@ageint298]; [@ageint306]; [@ageint312]. |

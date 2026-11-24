@@ -1,10 +1,10 @@
 ### Irregular Warfare and Special Operations assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-irregular-warfare-and-special-operations].
 
 ### Irregular Warfare and Special Operations assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-irregular-warfare-and-special-operations]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-irregular-warfare-and-special-operations].
 
 #### Irregular Warfare and Special Operations capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Hybrid-threat indicator review using sam
 
 #### Irregular Warfare and Special Operations assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Hybrid-threat indicator review using sample scenarios and policy thresholds** | Completed **dissemination map with audience, caveat, marking, records, and feedback fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds** | Completed **dissemination map with audience, caveat, marking, records, and feedback fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **FM 3-05 102: Hybrid-threat indicator review using sample scenarios and policy thresholds** | Completed **dissemination map with audience, caveat, marking, records, and feedback fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Hybrid-threat indicator review using sample scenarios and policy thresholds**; **FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**; **FM 3-05 102: Hybrid-threat indicator review using sample scenarios and policy thresholds** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: show priority, authority, minimization, corroboration, and source quality before any claim is reused. |
+| **Declassified training-manual archive**; **Principles of Tradecraft: Hybrid-threat indicator review using sample scenarios and policy thresholds**; **Historical underground networks: Hybrid-threat indicator review using sample scenarios and policy thresholds** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **OSS Simple Sabotage Field Manual: Hybrid-threat indicator review using sample scenarios and policy thresholds**; **Morale Operations: Hybrid-threat indicator review using sample scenarios and policy thresholds** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude live collection, recruitment, surveillance, interception, tracking, and identity exposure. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Irregular Warfare and Special Operations refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint239]; [@ageint249].
 
-**Triangulation anchors.** In module 26's review-checklist section, directly verified anchors for the **Counterintelligence and Source-Integrity Defense** lane include [@official_ncsc_counterintelligence_strategy]; [@official_odni_eo_12333]; [@official_odni_icd_206]; [@official_odni_icd_203]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 26's review-checklist section, the **Collection Management and Multi-INT Requirements Discipline** catalog routes include [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_204]; [@official_joint_pub_2_0]; [@official_ic_osint_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Hybrid-threat indicator review using sample scenarios and policy thresholds; FM 3-05 130: Hybrid-threat indicator review using sample scenarios and policy thresholds**. [@ageint239]; [@ageint249].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

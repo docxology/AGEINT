@@ -1,23 +1,10 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  subgraph DEF["Foundations (Ch37)"]
-    DEFN["Definitions: defending cognition, not censoring"]
-  end
-  subgraph MECH["Mechanism Layer (Ch38)"]
-    NEURO["Neurocognitive mechanisms and vulnerabilities"]
-  end
-  subgraph DEFENSE["Defensive Interventions (Ch39)"]
-    INOC["Inoculation and prebunking"]
-  end
-  subgraph OPS["Operations Layer (Ch40)"]
-    PLAN["Program planning and ethics"]
-    MEAS["Measurement and effect tracking"]
-    GOV["Oversight and rights safeguards"]
-  end
-  DEFN --> NEURO
-  NEURO --> INOC
-  INOC --> PLAN
-  PLAN --> MEAS
-  MEAS --> GOV
-  GOV -.->|"refine education"| INOC
-  NEURO -.->|"informs design"| INOC
+  D["Ch37: define claims and protected interests"] --> N["Ch38: proposed mechanisms and candidate measures<br/>No person-level diagnosis or susceptibility score"]
+  D --> S["Ch39: inspect studies, corrections and critique<br/>Separate recognition, discernment and behavior"]
+  N -.->|"hypotheses, not intervention proof"| Q["Evidence questions and unresolved limits"]
+  S --> Q
+  Q --> P["Ch40: transparent opt-in fictional lesson<br/>Neutral items, false alarms and consent"]
+  P --> R{"Source fit, rights and review adequate?"}
+  R -->|"no or unknown"| H["Hold or redesign; no accusation or persuasion"]
+  R -->|"yes"| O["Bounded educational result<br/>No durable-effect or clinical inference"]

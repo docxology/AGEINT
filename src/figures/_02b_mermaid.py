@@ -157,148 +157,6 @@ def _part_module_map_mermaid_source(curriculum: Curriculum, spec: FigureSpec, di
     return source
 
 
-_CDR_DEGRADATION_CASCADE = """flowchart TB
-    src["CSA Cognitive Degradation Resilience<br/>staged failure cascade<br/>below monitoring thresholds"]
-    src --> s1["Stage 1: Trigger Injection<br/>adversarial inputs establish<br/>foothold in agent reasoning<br/>control: BC-001 starvation detection"]
-    s1 --> s2["Stage 2: Resource Starvation<br/>context and compute consumed<br/>to degrade decision quality<br/>control: BC-002 token overload"]
-    s2 --> s3["Stage 3: Behavioral Drift<br/>outputs deviate from policy<br/>without triggering alerts<br/>control: BC-006 entropy drift monitor"]
-    s3 --> s4["Stage 4: Memory Entrenchment<br/>corrupted beliefs solidify<br/>in agent memory stores<br/>control: BC-007 memory integrity"]
-    s4 --> s5["Stage 5: Functional Override<br/>adversary objectives supersede<br/>legitimate task goals<br/>control: BC-005 override resistance"]
-    s5 --> s6["Stage 6: Systemic Collapse<br/>coordinated agent behavior<br/>serves adversarial ends"]
-    s2 -. early-detection window .-> s3
-    s3 -. decisive intervention point .-> s4
-"""
-
-_MAESTRO_SEVEN_LAYER = """flowchart LR
-    subgraph STACK["MAESTRO lifecycle stack"]
-        direction TB
-        l7["L7: Agent Ecosystem<br/>impersonation, marketplace<br/>manipulation, goal manipulation"]
-        l5["L5: Evaluation and Observability<br/>metric manipulation,<br/>detection evasion"]
-        l4["L4: Deployment and Infrastructure<br/>container escape,<br/>lateral movement"]
-        l3["L3: Agent Frameworks<br/>supply chain, compromised<br/>components, input validation"]
-        l2["L2: Data Operations<br/>data poisoning,<br/>RAG pipeline compromise"]
-        l1["L1: Foundation Models<br/>adversarial examples,<br/>model stealing, backdoors"]
-        l7 --> l5 --> l4 --> l3 --> l2 --> l1
-    end
-    l6["L6: Security and Compliance<br/>cross-cutting layer<br/>security agents are<br/>themselves attack surfaces<br/>monitor the monitors"]
-    l6 -. "spans every layer" .-> STACK
-"""
-
-_SRE_CIRCUIT_BREAKER = """flowchart TB
-    closed["CLOSED<br/>normal operation<br/>autonomy earned by<br/>clean safety record"]
-    open["OPEN<br/>agent suspended<br/>human takeover"]
-    half["HALF_OPEN<br/>limited capability<br/>restoration"]
-    trig["Activation triggers<br/>policy bypass attempts<br/>LLM provider errors<br/>tool timeout cascades<br/>trust score degradation<br/>reasoning loops and deadlocks"]
-    closed -->|"safety budget exhausted<br/>PolicyCompliance below 99 percent"| open
-    open -->|"recovery period<br/>plus validation"| half
-    half -->|"clean record maintained"| closed
-    half -->|"new violation"| open
-    trig -.->|"force"| open
-"""
-
-_COGNITIVE_DECOHERENCE_CDR_ISOMORPHISM = """flowchart TB
-    subgraph P1["Phase 1 — Initiation"]
-        direction LR
-        h1["Human orgs / CCDCOE<br/>adversary targets systemic<br/>invariants: trust, identity,<br/>epistemic standards"]
-        a1["AI agents / CDR<br/>Trigger Injection: adversarial<br/>inputs establish foothold"]
-        h1 -.->|"isomorphic"| a1
-    end
-    subgraph P2["Phase 2 — Early degradation"]
-        direction LR
-        h2["Human orgs / CCDCOE<br/>uncertainty amplification;<br/>inter-layer linkages weaken"]
-        a2["AI agents / CDR<br/>Resource Starvation:<br/>compute and context consumed"]
-        h2 -.->|"isomorphic"| a2
-    end
-    subgraph P3["Phase 3 — Drift"]
-        direction LR
-        h3["Human orgs / CCDCOE<br/>polarization rises;<br/>coordination capacity erodes"]
-        a3["AI agents / CDR<br/>Behavioral Drift: outputs<br/>deviate without alerts"]
-        h3 -.->|"isomorphic"| a3
-    end
-    subgraph P4["Phase 4 — Entrenchment"]
-        direction LR
-        h4["Human orgs / CCDCOE<br/>competing epistemic<br/>frameworks harden"]
-        a4["AI agents / CDR<br/>Memory Entrenchment:<br/>corrupted beliefs solidify"]
-        h4 -.->|"isomorphic"| a4
-    end
-    subgraph P5["Phase 5 — Override"]
-        direction LR
-        h5["Human orgs / CCDCOE<br/>adversary narrative fills<br/>the institutional vacuum"]
-        a5["AI agents / CDR<br/>Functional Override: adversary<br/>goals supersede legitimate tasks"]
-        h5 -.->|"isomorphic"| a5
-    end
-    subgraph P6["Phase 6 — Collapse"]
-        direction LR
-        h6["Human orgs / CCDCOE<br/>system functions formally<br/>but cannot coordinate"]
-        a6["AI agents / CDR<br/>Systemic Collapse: coordinated<br/>behavior serves adversary"]
-        h6 -.->|"isomorphic"| a6
-    end
-    P1 --> P2 --> P3 --> P4 --> P5 --> P6
-"""
-
-_UNIFIED_EPISTEMIC_STACK = """flowchart TB
-    l5["Layer 5: Institutional Governance<br/>National Cognitive Security Centers<br/>AI red team programs<br/>ICD 203-equivalent analytic standards<br/>error budget governance"]
-    l4["Layer 4: Epistemic Integrity<br/>KuppingerCole epistemic layer<br/>DeepMind verifier agents<br/>knowledge sanctuaries<br/>intent alignment monitoring"]
-    l3["Layer 3: Structured Reasoning / Tradecraft<br/>ACH as multi-hypothesis analysis<br/>pre-mortem red teaming<br/>key assumptions auditing<br/>AI-augmented SATs at scale"]
-    l2["Layer 2: Operational Security<br/>MAESTRO seven-layer modeling<br/>CDR six-stage monitoring<br/>zero-trust identity, circuit breakers<br/>compute separation, ephemeral VMs"]
-    l1["Layer 1: Technical Substrate<br/>formal verification (DARPA ICS)<br/>LLM tagging, prompt infection defense<br/>sandboxing, worktree isolation<br/>SynthID, C2PA provenance"]
-    l5 --> l4 --> l3 --> l2 --> l1
-    note["Each layer is necessary<br/>but insufficient alone;<br/>layers are mutually reinforcing"]
-    note -.-> l3
-"""
-
-_COGNITIVE_ATTACK_LAYERS = """flowchart TB
-    root["NATO/INSS Cognitive Warfare 2026<br/>three layers of engagement"]
-    subgraph BIO["Biological layer"]
-        direction TB
-        bt["Target<br/>cognitive capacity"]
-        bm["Mechanism<br/>neuroscience-informed<br/>targeting of the<br/>nervous system"]
-        ba["AI role<br/>optimized delivery<br/>timing and channel<br/>selection"]
-        bt --> bm --> ba
-    end
-    subgraph PSY["Psychological layer"]
-        direction TB
-        pt["Target<br/>cognitive interpretation"]
-        pm["Mechanism<br/>manipulating individual<br/>cognition, exploiting<br/>biases at scale"]
-        pa["AI role<br/>tailored influence<br/>matched to cognitive<br/>vulnerability profiles"]
-        pt --> pm --> pa
-    end
-    subgraph SOC["Social layer"]
-        direction TB
-        st["Target<br/>cognitive cohesion"]
-        sm["Mechanism<br/>fracturing shared<br/>narratives, weaponizing<br/>identity, epistemic chaos"]
-        sa["AI role<br/>coordinating synthetic<br/>influence campaigns<br/>across platforms"]
-        st --> sm --> sa
-    end
-    root --> BIO
-    root --> PSY
-    root --> SOC
-"""
-
-_HRO_GOVERNANCE_CROSSWALK = """flowchart LR
-    subgraph HRO["HRO Principles"]
-        direction TB
-        p1["Preoccupation with failure<br/>attention to near-misses<br/>and weak signals"]
-        p2["Reluctance to simplify<br/>demand deep root cause;<br/>resist reductive explanations"]
-        p3["Sensitivity to operations<br/>awareness of current<br/>operational state"]
-        p4["Commitment to resilience<br/>invest in corrective<br/>and adaptive capacity"]
-        p5["Deference to expertise<br/>authority follows<br/>demonstrated competence"]
-    end
-    subgraph GOV["AI Agent Governance"]
-        direction TB
-        g1["Safety SLI monitoring<br/>PolicyCompliance at or above 99 percent;<br/>CDR health probes; drift detection"]
-        g2["MAESTRO seven-layer modeling;<br/>multi-hypothesis behavioral analysis"]
-        g3["Real-time tool invocation auditing;<br/>context-window analysis; observability"]
-        g4["Circuit breakers; chaos engineering;<br/>progressive rollout with SLO gates"]
-        g5["Human-in-the-loop for high stakes;<br/>minimum necessary privilege"]
-    end
-    p1 --> g1
-    p2 --> g2
-    p3 --> g3
-    p4 --> g4
-    p5 --> g5
-"""
-
 # Synthesis and chapter-concept diagrams are declared as data in
 # data/figures/synthesis_extra.jsonl and merged into these structures by the
 # loader below, keeping the large Mermaid sources out of this module.
@@ -306,12 +164,9 @@ _SYNTHESIS_MERMAID_SOURCES: dict[str, str] = {}
 SYNTHESIS_MERMAID: tuple[dict[str, str], ...] = ()
 
 
-# Synthesis and chapter-concept diagrams live as data in
-# data/figures/synthesis_extra.jsonl (one JSON object per line) so the large
-# Mermaid sources stay out of this module and the file stays within the 500-line
-# cap. Each row carries the same fields as an inline entry plus its own
-# ``mermaid_source``. Merging here keeps one rendering path: the specs flow
-# through build_figure_specs and mermaid_source() exactly like the inline set.
+# Synthesis and chapter-concept diagrams live as one JSON object per line in
+# data/figures/synthesis_extra.jsonl. Each row owns its Mermaid source and reader
+# metadata; build_figure_specs() and mermaid_source() share this single source.
 _EXTRA_DIAGRAMS_PATH = Path(__file__).resolve().parents[2] / "data" / "figures" / "synthesis_extra.jsonl"
 
 

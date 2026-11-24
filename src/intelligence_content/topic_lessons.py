@@ -29,9 +29,9 @@ class TopicLessonFields:
 
 
 def transfer_task_for_entry(entry: TopicEntry, coursebook: CoursebookProfile, *, lesson_index: int = 1, chapter_title: str = "") -> str:
-    raw = entry.raw_title.lower()
+    title = entry.display_title.lower()
     for keywords, template in transfer_task_keyword_routes():
-        if _match_keywords(raw, keywords):
+        if _match_keywords(title, keywords):
             return template
     if entry.risk_category not in {"standard", "ageint_pattern_registry"}:
         templates = (

@@ -48,9 +48,9 @@ extension workflow.
 
 Topic lessons inside each chapter resolve through `topic_lessons.resolve_topic_lesson_fields()`:
 
-1. **Keyword routes** — token-bound matches on display/raw titles (`_12_concept_routes*.py`; data in `data/concept_routes*.yaml`).
+1. **Safe identity and keyword routes** — canonical safe pattern identity wins, then token-bound matches use the educational display title (`_12_concept_routes*.py`; data in `data/concept_routes*.yaml`). Raw source wording remains provenance and cannot override the taught subject.
 2. **Category frames** — topic-first risk categories from `risk_routes.py` + `data/topic_risk_routes.yaml`; chapter defaults only when topic-level classification is `standard`.
-3. **Synthesis** — topic-anchored fallback prose; when `display_title` matches `GENERIC_DISPLAY_TITLE_MARKERS`, anchors on `raw_title` (`_12_topic_frames.py`).
+3. **Synthesis** — fallback prose remains anchored to the safe displayed subject (`_12_topic_frames.py`), not an unsafe raw heading.
 
 Evidence and artifact prompt strings resolve through `topic_prompt_routes.py` over
 `data/topic_prompt_routes.yaml`. Why-it-matters and misconception rotation resolve
@@ -59,6 +59,10 @@ through `topic_rotation_templates.py` over `data/topic_rotation_templates.yaml`.
 
 Coursebook profiles and safety worksheet tables load from `data/coursebook_profiles.yaml`
 and `data/safety_artifact_tables.yaml` via `_data_loaders.py` (`_06_part.py`, `_08_part.py`).
+
+Chapter `content_profile` and `practice_lens` overrides are passed consistently to primers, lessons, examples, subsection maps and assessment. Optional source-section `teaching_note` Markdown supplies domain-specific worked reasoning after the concept paragraph; it is authored instruction, not evidence of efficacy. Chapter `worked_example` may select `model_scoped_inference` or `offline_evidence_contract` from `_worked_examples.py`. These are complete synthetic examples, not live model or production-security evaluations.
+
+Inherited citation bundles are explicitly contextual. Renderers bind editorial annotations to their own keys rather than selecting the longest annotation as topic evidence. Claim-specific support still requires the actual passage, version, applicability and dependency check. Unknown citation keys fail closed even when they have an `official_` or `scholarly_` prefix; source-lane eligibility and lexical audit success do not establish entailment.
 
 `intelligence_content` shards use explicit imports (no `merge_part_modules`); package
 `__init__.py` re-exports the public API only.
@@ -77,9 +81,10 @@ assume `intelligence_content`-style explicit imports apply repo-wide yet.
 
 See [`src/intelligence_content/AGENTS.md`](../src/intelligence_content/AGENTS.md) for the full routing table.
 
-Quality gates in `tests/test_topic_content_quality.py` and
-`tests/test_chapter_fragment_quality.py` cap Tier C `in the … lane:` markers
-(≤15% per chapter), `"teams confuse source material"` boilerplate (≤20%),
-collapsed cognitive-security base titles (≤1 per chapter), governance-bounded
-lesson headers (0), and category-concept repetition (≤25% per chapter). Sixteen
-representative chapters (one per part) are spot-checked for domain titles.
+Topic-route tests protect whole-token matching and safe-subject precedence,
+including raw-source keyword collisions. Teaching-phase checks protect ordering;
+reference audits protect resolvable identities. Native Pandoc/BibTeX/PDF tests
+protect bibliography attribution and missing-metadata handling. Actual PDF/HTML
+inspection and executable-case checks supplement those contracts. Word counts,
+title-keyword density, repetition thresholds and copied prose snapshots do not
+establish substantive coverage or source-to-claim fit and are not quality gates.

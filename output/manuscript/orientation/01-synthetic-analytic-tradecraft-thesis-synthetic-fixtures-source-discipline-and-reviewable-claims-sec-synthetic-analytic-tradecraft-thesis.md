@@ -37,11 +37,14 @@ separates doctrine, reform, postmortem, empirical, and forecasting evidence;
 the SAT evidence boundary [@fig:ageint-sat-evidence-boundary] prevents
 universal debiasing claims; the SAT method contract
 [@fig:ageint-synthetic-tradecraft-method-contract] binds source-family
-triangulation (the same point supported by more than one independent *kind* of
-source — an official standard *and* a peer-reviewed study, say, not two blog
-posts), synthetic fixtures, analytic field separation,
-negative-control testing, reviewer challenge, and artifact-evidence reporting;
-and the first-principles decomposition
+triangulation, synthetic fixtures, analytic field separation, negative-control
+testing, reviewer challenge, and artifact-evidence reporting. Here triangulation
+requires tracing upstream evidence, not just counting publishers or source types:
+an official standard and a scholarly article may repeat the same underlying
+study. A standard can support a normative requirement without demonstrating its
+empirical effectiveness; an empirical study supports only the result and scope
+its methods warrant. Record those support relations separately.
+The first-principles decomposition
 [@fig:ageint-first-principles-tradecraft-decomposition] forces observation,
 inference, assumption, likelihood, confidence, dissent, and decision boundary
 fields to remain separate.

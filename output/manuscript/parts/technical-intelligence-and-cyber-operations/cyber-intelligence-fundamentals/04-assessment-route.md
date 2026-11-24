@@ -1,10 +1,10 @@
 ### Cyber Intelligence Fundamentals assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-cyber-intelligence-fundamentals]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-cyber-intelligence-fundamentals].
 
 ### Cyber Intelligence Fundamentals assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-cyber-intelligence-fundamentals]; [@ageint258].
+**Navigation.** Parent section: [@sec:chapter-cyber-intelligence-fundamentals].
 
 #### Cyber Intelligence Fundamentals capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Cyber defensive taxonomy mapping using p
 
 #### Cyber Intelligence Fundamentals assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Cyber defensive taxonomy mapping using published labels and fabricated alerts** | Completed **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **MITRE ATT&CK Framework: Cyber defensive taxonomy mapping using published labels and fabricated alerts** | Completed **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Reconnaissance through Resource Development: Cyber defensive taxonomy mapping using published labels and fabricated alerts** | Completed **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **MITRE ATT&CK Framework: Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **Reconnaissance through Resource Development: Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **Cyber access-and-execution taxonomy review using fabricated alerts** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: verify that taxonomy labels are descriptive, indicators are contextualized, incident categories are reviewable, and outputs remain detection or assurance oriented. |
+| **Cyber credential-and-movement taxonomy review using fabricated alerts**; **Cyber command, data-loss, and impact taxonomy review using fabricated alerts**; **Unified Kill Chain: Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **Threat Intelligence Sharing: Cyber defensive taxonomy mapping using published labels and fabricated alerts** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Nation-State Cyber Espionage: Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **Chinese State-Affiliated Hacking: Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **Russian Cyber Operations: Cyber defensive taxonomy mapping using published labels and fabricated alerts**; **Living-Off-The-Land Techniques in APT Operations: Cyber defensive taxonomy mapping using published labels and fabricated alerts** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude exploit steps, evasion instructions, malware construction, credential misuse, phishing instructions, and live response actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Cyber defensive taxonomy mapping using published labels and fabricated alerts; MITRE ATT&CK Framework: Cyber defensive taxonomy mapping using published labels and fabricated alerts** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Cyber defensive taxonomy mapping using published labels and fabricated alerts; MITRE ATT&CK Framework: Cyber defensive taxonomy mapping using published labels and fabricated alerts**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Cyber Intelligence Fundamentals refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint258]; [@ageint261].
 
-**Triangulation anchors.** In module 12's review-checklist section, directly verified anchors for the **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** lane include [@official_nist_sp_800_150]; [@official_oasis_stix_21]; [@official_oasis_taxii_21]; [@official_mitre_attack_enterprise]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 12's review-checklist section, the **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** catalog routes include [@official_nist_sp_800_150]; [@official_oasis_stix_21]; [@official_oasis_taxii_21]; [@official_mitre_attack_enterprise]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Cyber defensive taxonomy mapping using published labels and fabricated alerts; MITRE ATT&CK Framework: Cyber defensive taxonomy mapping using published labels and fabricated alerts**. [@ageint258]; [@ageint261].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

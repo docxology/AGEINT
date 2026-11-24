@@ -9,9 +9,10 @@ traced back to a real source. Nothing here is operational — every exercise use
 synthetic or public material, and every claim is built to be challenged rather
 than believed.
 
-Read it as a map, not a textbook to read front to back: [@sec:curriculum-map]
-lets you choose a domain part, [@sec:reader-paths] gives each reader a fast path,
-and [@sec:safety-rail] states what the atlas refuses to teach.
+For a first session, go directly to [@sec:reader-paths] and use its proposed
+75-minute route; no atlas survey is required. For a longer course,
+[@sec:curriculum-map] helps select a domain part. [@sec:safety-rail] states the
+boundary for both routes.
 
 > **For maintainers.** This page is generated. The source templates under
 > `docs/manuscript/templates/` keep guide-derived values — titles, labels, counts,
@@ -24,24 +25,12 @@ section shows the exact path.
 
 ## How to use this atlas: navigation path, evidence checks, and verifier handoff {#sec:how-to-use-this-atlas}
 
-Read AGEINT as a navigable curriculum-and-assurance atlas rather than a linear
-textbook or empirical evaluation report. Start with [@sec:curriculum-map] and
-[@fig:ageint-curriculum-map] to choose the part, open the linked part
-introduction to see the module sequence, then use each chapter overview for the
-figures, source lane, and assessment artifact that matter for the current
-decision. Keep [@sec:bibliography_atlas] open when checking a claim, because it
-preserves source identity, provenance type, source tier, and refresh context in
-one place.
-
-Use the first pages as signposts, not as a preface to skip. The handoff is
-intentionally explicit and always moves in the same direction:
-
-domain part -> module overview -> practice studio -> evidence contract ->
-governance boundary -> assessment route -> bibliography/source lane ->
-verifier reports.
-
-Work the table below in order: orient, then match each claim to its evidence,
-then verify before trusting anything.
+For a single session, start with [@sec:reader-paths] and the completed case in
+[@sec:analytic-workflow]. For a course, use [@sec:curriculum-map] and
+[@fig:ageint-curriculum-map] to choose a part, then follow its module overviews
+to a practice studio, evidence contract, governance boundary, and assessment.
+Consult [@sec:bibliography_atlas] when checking source identity, provenance,
+support role, and refresh context—not as required preliminary reading.
 
 | Step | Where to go | Why this step matters |
 |---|---|---|
@@ -98,11 +87,14 @@ separates doctrine, reform, postmortem, empirical, and forecasting evidence;
 the SAT evidence boundary [@fig:ageint-sat-evidence-boundary] prevents
 universal debiasing claims; the SAT method contract
 [@fig:ageint-synthetic-tradecraft-method-contract] binds source-family
-triangulation (the same point supported by more than one independent *kind* of
-source — an official standard *and* a peer-reviewed study, say, not two blog
-posts), synthetic fixtures, analytic field separation,
-negative-control testing, reviewer challenge, and artifact-evidence reporting;
-and the first-principles decomposition
+triangulation, synthetic fixtures, analytic field separation, negative-control
+testing, reviewer challenge, and artifact-evidence reporting. Here triangulation
+requires tracing upstream evidence, not just counting publishers or source types:
+an official standard and a scholarly article may repeat the same underlying
+study. A standard can support a normative requirement without demonstrating its
+empirical effectiveness; an empirical study supports only the result and scope
+its methods warrant. Record those support relations separately.
+The first-principles decomposition
 [@fig:ageint-first-principles-tradecraft-decomposition] forces observation,
 inference, assumption, likelihood, confidence, dissent, and decision boundary
 fields to remain separate.
@@ -130,6 +122,47 @@ reviewer challenge and artifact-evidence reporting under the last two.
 | Learner | Follow the module sequence from primer to practice studio, evidence contract, and governance boundary, then meet the assessment route in [@sec:assessment-integrity-protocol] before drafting a capstone packet against [@sec:capstone-workflow]. | claim ledger entry, uncertainty note, and blocked-use statement |
 | Assurance reviewer | Trace each material claim through [@sec:source-lane-map], [@sec:bibliography_atlas], [@sec:hria-and-dpia-worksheet], [@sec:orientation-figures-and-course-links], and [@sec:verifier-first-artifact-evidence]. | source key, review owner, caveat, and reproducible artifact path |
 | Builder or maintainer | Treat generated output as an audit surface; update data, templates, manifest code, or figure specs, then rebuild and compare verifier reports. | changed source file, regeneration command, and validation result |
+
+**Proposed first session: one reviewable claim in 60–90 minutes.** The following
+75-minute allocation is a teaching proposal, not an evaluated learning-outcome
+claim. Use the eight-step procedure, claim-record schema, and completed synthetic
+case in [@sec:analytic-workflow]; do not read the rest of the atlas first.
+
+**Input packet and roles.** Supply the case question, its initial evidence cards
+with locators and origin information, a blank claim record, the safety boundary,
+and a short rubric. Keep the completed answer and challenge card separate until
+review. Assign a human facilitator, analyst, and reviewer; pairs can share
+facilitation, but a person other than the author must review the final record.
+A solo learner can draft now and obtain that human review before reuse.
+
+| Suggested time | Learner action | Evidence retained |
+|---|---|---|
+| 5 minutes | Read the question and excluded actions; agree on the permitted classroom audience. | Scope and blocked-use statement. |
+| 10 minutes | Inspect the supplied records and trace shared origins. | Source-origin map with exact locators and missing information. |
+| 20 minutes | Apply the procedure to one claim, separating observation, inference, assumptions, alternatives, likelihood, and confidence. | Draft claim record; unsupported conclusions may remain on hold. |
+| 10 minutes | Exchange with a reviewer who checks the passages and the strongest alternative. | Specific source-to-claim challenge and requested correction. |
+| 15 minutes | Receive the withheld contradictory card and run the duplicate/removal controls in the linked case. | Before/after record and explanation of what changed or properly stayed unchanged. |
+| 15 minutes | Debrief, revise, and obtain a human disposition. | Versioned claim packet marked accept for bounded classroom reuse, revise, hold, or reject, with owner and refresh trigger. |
+
+The deliverable is the claim record, source-origin map, challenge log, and signed
+human disposition—not a polished brief. Debrief by asking which evidence actually
+supported the claim, whether a copied report inflated confidence, what the
+contradiction changed, and what next observation could resolve the remaining
+uncertainty. Neither source count nor fluent writing earns acceptance.
+
+Use selectable text, large print or read-aloud cards, text equivalents for
+figures, and written, spoken, or dictated responses against the same evidence
+criteria. Adjust pacing and breaks; speed is not assessed. Printed cards and a
+paper ledger provide a complete offline/manual route. Agent use is optional,
+must be declared if used, and cannot replace source inspection or human review.
+No accounts, network access, live systems, or personal data are needed.
+
+**Scale the same packet, not the paperwork.** A single session ends with one
+reviewed claim. A module adds its domain sources, studio task, and governance
+boundary, then revises the same record. A unit capstone integrates the reviewed
+module claims into the packet in [@sec:capstone-workflow], checks dependencies
+across claims, and assigns a separate human reuse decision. Preserve unresolved
+claims and dissent rather than upgrading them merely because the course grew.
 
 ## Curriculum map: parts, modules, and source-backed route choices {#sec:curriculum-map}
 
@@ -204,16 +237,14 @@ text, rendered pixels, and link-safe PDF output; artifact-readiness claims need
 fresh builds and current audits; reviewer dispositions need a task ledger and
 negative control.
 
-The claim-calibration verifier adds the machine-checkable edge to that protocol
-[@fig:ageint-claim-calibration-and-visual-semantics]. Artifact telemetry such as
-citation counts, figure counts, page counts, link counts, and validator pass
-states is useful readiness evidence, but it is not a statistical result,
-learning-outcome estimate, operational-performance benchmark, or universal
-safety claim. The audit therefore fails unsupported proof-language,
-measured-performance claims, p-value or significance language, and decorative
-formalisms without direct support and limitation text, while allowing explicit
-boundary language and misconception checks that warn the reader what a source
-cannot establish.
+The claim-calibration verifier adds a machine-checkable screening layer
+[@fig:ageint-claim-calibration-and-visual-semantics]. Citation counts, figure
+counts, link checks, and validator pass states describe artifact properties,
+not semantic support, learning outcomes, operational performance, or safety.
+Its wording rules and source metadata can flag review candidates; a green audit
+does not establish that a passage entails a claim, sources are independent, or
+contradictory evidence was considered. A human must inspect the source-to-claim
+link and record a disposition using [@sec:analytic-workflow].
 
 | Claim class | Validation question | Required evidence | Failure mode |
 |---|---|---|---|
@@ -252,7 +283,12 @@ reading a chapter in detail.
 
 ## Research anchor atlas: curated sources, lanes, tiers, and claim scope {#sec:research-anchor-atlas}
 
-{{INTELLIGENCE_RESEARCH_ROWS}}
+The full curated-source table appears once in [@sec:bibliography-rows].
+Use those rows to find each anchor's identity, lane, tier, and bounded support
+role; use [@sec:source-refresh-ledger] for checked dates, refresh cadence, and
+due-status evidence. [@sec:source-lane-map] provides the shorter lane-level view.
+Presence in the atlas is navigation metadata, not proof that a source supports
+a particular claim.
 
 ## Source lane map: provenance lanes, support strength, and refresh context {#sec:source-lane-map}
 
@@ -358,21 +394,15 @@ performance evidence. Technical and theoretical analogies, including
 active-inference material, remain bounded by their direct domain sources and do
 not become deployment evidence without separate evaluation support.
 
-The same stance now has a machine-checkable extension. Citation presence is
-necessary but not sufficient for AGEINT scholarship, so the generated manuscript
-is checked for source-family mix, uncited claim-bearing sections, thin
-claim-bearing support, and sections whose support comes from only one broad
-family. The audit distinguishes hard failures from review warnings: a
-claim-bearing overview, lesson, worked example, architecture source section,
-research-governance section, assessment review, or unit introduction with zero
-or one unique citation fails the current artifact evidence; a section with
-multiple citations from one source family is reported as a review target for
-future triangulation. The control surface is summarized in
-[@fig:ageint-scholarship-triangulation-map], and the machine-readable companion
-report is written to `output/reports/scholarship_quality.json` during the
-current-evidence pass. This keeps source-guide inheritance visible while still
-preferring official, standards, law/policy, public-domain, and scholarly anchors
-whenever a section makes a stronger governance, technical, or empirical claim
+The scholarship audit checks citation presence, source-family mix, and thin
+claim-bearing sections. Its count thresholds and family warnings are screening
+rules, not grading criteria or tests of evidentiary independence: two publishers
+may share one upstream observation, while two genuinely separate studies can
+belong to one source family. Normative authority and empirical results must be
+assessed for their distinct claim roles. The control surface is summarized in
+[@fig:ageint-scholarship-triangulation-map], with a companion report at
+`output/reports/scholarship_quality.json`. Human review must still trace origins,
+inspect exact passages, and seek contradictory evidence
 [@scholarly_rethlefsen_2021_prisma_s]; [@official_nist_ai_rmf];
 [@official_nist_ai_600_1].
 
@@ -393,8 +423,9 @@ both positive counts and false-certification controls.
 
 ## Verifier-first artifact evidence: build freshness, audits, and negative controls {#sec:verifier-first-artifact-evidence}
 
-AGEINT uses the RedTeam rule that a green validator is evidence only after the
-validator has been challenged. The artifact-evidence control loop in
+A green validator describes only the properties its checks exercised; negative
+controls help expose missed failures but do not establish semantic correctness.
+The artifact-evidence control loop in
 [@fig:ageint-artifact-evidence-control-loop] binds source-owned curriculum
 inputs, generated manuscript sections, citation inventories, figure metadata,
 PDF annotations, and current evidence reports into one falsifiable chain. This

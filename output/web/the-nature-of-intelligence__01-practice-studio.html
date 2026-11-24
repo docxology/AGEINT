@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,226 +182,677 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="dissemination-and-marking-control-lens-path-for-the-nature-of-intelligence-lesson-cluster-safe-artifact-and-review">Dissemination-and-Marking
 Control Lens path for The Nature of Intelligence: lesson cluster, safe
 artifact, and review</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-the-nature-of-intelligence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-the-nature-of-intelligence">[@sec:chapter-the-nature-of-intelligence]</span>.</p>
 <h3
 id="the-nature-of-intelligence-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">The
 Nature of Intelligence practice studio: topic lessons, safe worked
 example, and knowledge check</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-the-nature-of-intelligence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-the-nature-of-intelligence">[@sec:chapter-the-nature-of-intelligence]</span>.</p>
 <h3
 id="the-nature-of-intelligence-topic-lessons-source-backed-concepts-and-transfer-tasks">The
 Nature of Intelligence topic lessons: source-backed concepts and
 transfer tasks</h3>
-<p>This module builds intelligence as a governed information cycle:
-requirements become collection, collection becomes evaluated evidence,
-evidence becomes analytic judgment, and judgment becomes a disseminated
-product with markings, records, feedback, and oversight. The sequence
-opens with <strong>Defining Intelligence: Collection, Analysis,
-Production, Dissemination</strong>, <strong>The Intelligence Cycle
-(Classic, Revised, and Critique)</strong>, <strong>Types: Strategic,
-Operational, Tactical, Technical Intelligence</strong> and applies the
-<strong>Dissemination-and-Marking Control Lens</strong> practice frame
-through concept, evidence, artifact, misconception, and transfer
-tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-foundations-of-intelligence-tradecraft-module-map]; module
-overview [sec:chapter-the-nature-of-intelligence]; curriculum atlas
-[sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 1’s topic-lessons
-section, directly verified anchors for the <strong>Governed Intelligence
-Cycle and Dissemination Architecture</strong> lane include
+<p><strong>The Nature of Intelligence</strong> builds intelligence as a
+governed information cycle: requirements become collection, collection
+becomes evaluated evidence, evidence becomes analytic judgment, and
+judgment becomes a disseminated product with markings, records,
+feedback, and oversight. The sequence opens with <strong>Information,
+Reporting, Finished Judgment, and Decision Support</strong>, <strong>The
+Intelligence Cycle: Iteration, Feedback, and Limits</strong>,
+<strong>Strategic, Operational, Tactical Uses and Technical
+Specialties</strong> and applies the <strong>Dissemination-and-Marking
+Control Lens</strong> practice frame through concept, evidence,
+artifact, misconception, and transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-foundations-of-intelligence-tradecraft-module-map">[@fig:part-foundations-of-intelligence-tradecraft-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-the-nature-of-intelligence">[@sec:chapter-the-nature-of-intelligence]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 1’s
+topic-lessons section, the <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_203];
-[official_odni_icd_204]; [official_odni_icd_504]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+[official_odni_icd_204]; [official_odni_icd_504]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
 <h4
-id="lesson-1-defining-intelligence-collection-analysis-production-dissemination">Lesson
-1: Defining Intelligence: Collection, Analysis, Production,
-Dissemination</h4>
-<p><strong>Concept.</strong> <strong>Defining Intelligence: Collection,
-Analysis, Production, Dissemination</strong> applies structured analytic
+id="lesson-1-information-reporting-finished-judgment-and-decision-support">Lesson
+1: Information, Reporting, Finished Judgment, and Decision Support</h4>
+<p><strong>Concept.</strong> <strong>Information, Reporting, Finished
+Judgment, and Decision Support</strong> applies structured analytic
 methods with explicit alternatives, evidence tables, and calibrated
 confidence—not rhetorical certainty.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Defining
-Intelligence</strong> to separate intelligence work from ordinary
-research by naming authority, audience, caveats, and feedback. A
-defensible treatment names the judgment it enables for cycle mapping and
-audience-aware product design review, the proof limit that collapsing
-reporting, inference, and judgment into one line would otherwise hide,
-and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Defining Intelligence:
-Collection, Analysis, Production, Dissemination</strong> rests on
-[ageint309], [ageint310], and [ageint300]. The lead source’s own note
-reads: The OASIS Standard specification for TAXII (Trusted Automated
-Exchange of Intelligence Information) Version 2.1, published in 2021 by
-the OASIS Cyber Threat Intelligence Technical Committee. Use them for
-the working definition that <strong>Defining Intelligence: Collection,
-Analysis, Production, Dissemination</strong> can defend, where that
-scope ends, and the refresh check owed before this evidence transfers.
-External triangulation uses [official_intelligence_gov_how_ic_works];
-[official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Defining
-Intelligence</strong>, work from the cited evidence behind this row.
-[ageint309] An OASIS standard specification defining STIX (Structured
-Threat Information Expression), a language for exchanging cyber threat
-intelligence in a standardized, machine-readable form. It establishes a
-graph-based model with STIX Domain Objects, Cyber-observable Objects,
-and Relationship Objects, plus meta objects, bundles, and a patterning
-language for detection. [ageint310] The OASIS Standard specification for
-TAXII (Trusted Automated Exchange of Intelligence Information) Version
-2.1, published in 2021 by the OASIS Cyber Threat Intelligence Technical
-Committee. It defines a RESTful, HTTPS-based API protocol for sharing
-cyber threat intelligence between organizations, supporting two
-communication models: Collections (request-response) and Channels
-(publish-subscribe). [ageint300] MITRE ATLAS knowledge base for
-adversarial threats to AI systems, used for defensive AI red-team
-assurance and misuse taxonomy. From each source, pull the bounded claim
-it can carry for this topic, its provenance, the stated uncertainty, and
-the one condition that would overturn that judgment.</p>
-<p><strong>Student artifact.</strong> For <strong>Defining
-Intelligence</strong>, build a <strong>dissemination map with audience,
-caveat, marking, records, and feedback fields</strong> for this cycle
-mapping and audience-aware product design topic. The artifact must
-separate the source descriptor, the bounded judgment about
-<strong>Defining Intelligence</strong>, the analytic caveat, the
-confidence note, the excluded-inference boundary, and the reviewer who
-logs dissent. Shape <strong>Defining Intelligence</strong> work as a
-<strong>requirements-to-product traceability ledger</strong> that names
-evidence, uncertainty, reviewer, and stop condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Defining Intelligence</strong>: that a confident narrative is
-the same as a tested, source-backed judgment with its alternatives and
-confidence stated.</p>
-<p><strong>Transfer task.</strong> Reuse the <strong>Defining
-Intelligence</strong> audit pattern from this module on a different
-sample record set with a new reviewer and blocked-use note.</p>
-<h4
-id="lesson-2-the-intelligence-cycle-classic-revised-and-critique">Lesson
-2: The Intelligence Cycle (Classic, Revised, and Critique)</h4>
-<p><strong>Concept.</strong> <strong>The Intelligence Cycle (Classic,
-Revised, and Critique)</strong> traces requirements through collection,
-processing, analysis, dissemination, and feedback while naming authority
-and audience at each transition.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>The Intelligence Cycle (Classic, Revised, and
-Critique)</strong>, collapsing reporting, inference, and judgment into
-one line undermines cycle mapping and audience-aware product design
-review; the lesson builds the habit to separate intelligence work from
-ordinary research by naming authority, audience, caveats, and
-feedback.</p>
-<p><strong>Source support.</strong> <strong>The Intelligence Cycle
-(Classic, Revised, and Critique)</strong> rests on [ageint297] and
-[ageint298]. The closest source to this row notes: Official ODNI
-Intelligence Community Directive 203 analytic standards source for
-objectivity, independence, timeliness, alternatives, confidence,
-sourcing, and accuracy in analytic products. Use them for the claim that
-<strong>The Intelligence Cycle (Classic, Revised, and Critique)</strong>
-lets you defend here, the limit it has to respect, and the re-check owed
-before reuse. External triangulation uses
+<p><strong>Worked reasoning and limits.</strong> Information is recorded
+content; reporting communicates observations or claims; analysis
+evaluates their basis and implications; finished intelligence presents
+bounded judgments to a decision-maker, who remains responsible for
+action. <strong>Completed synthetic case:</strong> bulletin B1 at 08:00
+forecasts severe rain; fictional depot log L1 at 08:10 records water at
+one entrance. The evaluated observation is one affected entrance, not a
+closed depot; the assessment is that access may be disrupted, with low
+confidence about duration, and the product asks the logistics
+decision-owner to review available alternatives rather than announcing
+closure. At 08:30 correction L2 says the water was from a pipe: preserve
+L1, withdraw the storm-causation inference, and stop reusing the
+superseded brief; this exercises <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>, not
+a measured forecast method. The inherited STIX/TAXII/ATLAS citations are
+interoperability context, not evidence for these definitions; the
+official IC explanation supports the raw/finished distinction
+[official_intelligence_gov_how_ic_works].</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>Information,
+Reporting, Finished Judgment, and Decision Support</strong> to separate
+intelligence work from ordinary research by naming authority, audience,
+caveats, and feedback. A defensible treatment names the judgment it
+enables for cycle mapping and audience-aware product design review, the
+proof limit that collapsing reporting, inference, and judgment into one
+line would otherwise hide, and the reviewer accountable for
+challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Information, Reporting, Finished Judgment, and Decision
+Support</strong>: [ageint309], [ageint310], and [ageint300]. These
+citations preserve source identity, not automatic topical relevance,
+empirical validation or normative authority. No claim-specific primary
+support is established by this source-guide association alone. Profile
+context—not claim-specific validation—uses
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>The Intelligence
-Cycle (Classic, Revised, and Critique)</strong>, reason from the sources
-cited in this row. [ageint297] Official ODNI Intelligence Community
-Directive 203 analytic standards source for objectivity, independence,
-timeliness, alternatives, confidence, sourcing, and accuracy in analytic
-products. [ageint298] Official ODNI index for Intelligence Community
-Directives used to locate current directive source material and preserve
-directive-context citations. Read each cited work for what it can
-support about this topic, where that claim originated, how confident it
-is, and what evidence would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>The Intelligence Cycle
-(Classic, Revised, and Critique)</strong>, build a <strong>dissemination
-map with audience, caveat, marking, records, and feedback
-fields</strong> for this cycle mapping and audience-aware product design
-topic. The artifact must separate the source descriptor, the bounded
-judgment about <strong>Intelligence Cycle</strong>, the analytic caveat,
-the confidence note, the excluded-inference boundary, and the reviewer
-who logs dissent. Shape this subject work as a
-<strong>requirements-to-product traceability ledger</strong> that
-records its evidence, the residual uncertainty, the named reviewer, and
-the stop condition.</p>
-<p><strong>Misconception check.</strong> Correct the misconception about
-<strong>The Intelligence Cycle (Classic, Revised, and
-Critique)</strong>: that a confident narrative is the same as a tested,
-source-backed judgment with its alternatives and confidence stated.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>The Intelligence
-Cycle (Classic, Revised, and Critique)</strong> from this module to a
-second motif by preserving cycle mapping and audience-aware product
-design, replacing action with audit, and naming the blocked use.</p>
-<h4
-id="lesson-3-types-strategic-operational-tactical-technical-intelligence">Lesson
-3: Types: Strategic, Operational, Tactical, Technical Intelligence</h4>
-<p><strong>Concept.</strong> <strong>Types: Strategic, Operational,
-Tactical, Technical Intelligence</strong> applies structured analytic
-methods with explicit alternatives, evidence tables, and calibrated
-confidence—not rhetorical certainty.</p>
-<p><strong>Why it matters.</strong> Analysts use <strong>Types:
-Strategic, Operational, Tactical, Technical Intelligence</strong> to
-separate intelligence work from ordinary research by naming authority,
-audience, caveats, and feedback. A defensible treatment names the
-judgment it enables for cycle mapping and audience-aware product design
-review, the proof limit that collapsing reporting, inference, and
-judgment into one line would otherwise hide, and the reviewer
-accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>Types: Strategic,
-Operational, Tactical, Technical Intelligence</strong> rests on
-[ageint309], [ageint310], and [ageint300]. The lead source’s own note
-reads: It defines a RESTful, HTTPS-based API protocol for sharing cyber
-threat intelligence between organizations, supporting two communication
-models: Collections (request-response) and Channels (publish-subscribe).
-Use them for the working definition that <strong>Types: Strategic,
-Operational, Tactical, Technical Intelligence</strong> can defend, where
-that scope ends, and the refresh check owed before this evidence
-transfers. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Types: Strategic,
-Operational, Tactical, Technical Intelligence</strong>, work from the
-cited evidence behind this row. [ageint309] An OASIS standard
-specification defining STIX (Structured Threat Information Expression),
-a language for exchanging cyber threat intelligence in a standardized,
-machine-readable form. It establishes a graph-based model with STIX
-Domain Objects, Cyber-observable Objects, and Relationship Objects, plus
-meta objects, bundles, and a patterning language for detection.
-[ageint310] The OASIS Standard specification for TAXII (Trusted
-Automated Exchange of Intelligence Information) Version 2.1, published
-in 2021 by the OASIS Cyber Threat Intelligence Technical Committee. It
-defines a RESTful, HTTPS-based API protocol for sharing cyber threat
-intelligence between organizations, supporting two communication models:
-Collections (request-response) and Channels (publish-subscribe).
-[ageint300] MITRE ATLAS knowledge base for adversarial threats to AI
+<p><strong>Evidence to inspect.</strong> For <strong>Information,
+Reporting, Finished Judgment, and Decision Support</strong>, inspect the
+original passages. Curriculum annotation for [ageint309]: An OASIS
+standard specification defining STIX (Structured Threat Information
+Expression), a language for exchanging cyber threat intelligence in a
+standardized, machine-readable form. It establishes a graph-based model
+with STIX Domain Objects, Cyber-observable Objects, and Relationship
+Objects, plus meta objects, bundles, and a patterning language for
+detection. Curriculum annotation for [ageint310]: The OASIS Standard
+specification for TAXII (Trusted Automated Exchange of Intelligence
+Information) Version 2.1, approved 10 June 2021. It defines a RESTful,
+HTTPS-based API for exchanging cyber threat intelligence through
+Collections in a request-response model, including discovery, API roots,
+JSON serialization, content negotiation, object retrieval with filtering
+and pagination, and status monitoring. Curriculum annotation for
+[ageint300]: MITRE ATLAS knowledge base for adversarial threats to AI
 systems, used for defensive AI red-team assurance and misuse taxonomy.
-Work source by source: name the bounded claim, its origin, the residual
-uncertainty, and the trigger that would change how this topic is
-judged.</p>
-<p><strong>Student artifact.</strong> For <strong>Types</strong>, build
-a <strong>dissemination map with audience, caveat, marking, records, and
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Information,
+Reporting, Finished Judgment, and Decision Support</strong>, build a
+<strong>dissemination map with audience, caveat, marking, records, and
 feedback fields</strong> for this cycle mapping and audience-aware
 product design topic. The artifact must separate the source descriptor,
-the bounded judgment about <strong>Types</strong>, the analytic caveat,
-the confidence note, the excluded-inference boundary, and the reviewer
-who logs dissent. Shape <strong>Types: Strategic, Operational, Tactical,
-Technical Intelligence</strong> work as a
-<strong>requirements-to-product traceability ledger</strong> that names
-evidence, uncertainty, reviewer, and stop condition.</p>
+the bounded judgment about <strong>Information Reporting Finished
+Judgment and</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+the same topic work as a <strong>requirements-to-product traceability
+ledger</strong> that logs the evidence, the uncertainty, the responsible
+reviewer, and the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>Types: Strategic, Operational, Tactical, Technical
-Intelligence</strong>: that a confident narrative is the same as a
+<strong>Information, Reporting, Finished Judgment, and Decision
+Support</strong>: that a confident narrative is the same as a tested,
+source-backed judgment with its alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Information, Reporting, Finished Judgment, and Decision
+Support</strong> to another artifact while keeping cycle mapping and
+audience-aware product design and reviewer ownership explicit.</p>
+<h4
+id="lesson-2-the-intelligence-cycle-iteration-feedback-and-limits">Lesson
+2: The Intelligence Cycle: Iteration, Feedback, and Limits</h4>
+<p><strong>Concept.</strong> <strong>The Intelligence Cycle: Iteration,
+Feedback, and Limits</strong> traces requirements through collection,
+processing, analysis, dissemination, and feedback while naming authority
+and audience at each transition.</p>
+<p><strong>Worked reasoning and limits.</strong> The official six-stage
+account names planning, collection, processing, analysis, dissemination,
+and evaluation, but explicitly makes evaluation ongoing rather than a
+final quality stamp [official_intelligence_gov_how_ic_works]. A new
+question can emerge during analysis, and a correction can require
+withdrawal after dissemination; arrows therefore represent dependencies
+and feedback, not a universal sequence or permission to collect.
+Diagnostic question: does an unfilled requirement authorize new
+collection? No: it records an evidence gap; purpose, applicable
+authority, and an accountable decision are separate prerequisites. ICD
+analytic standards support reasoning duties, not the empirical
+superiority of a particular cycle diagram.</p>
+<p><strong>Why it matters.</strong> <strong>The Intelligence
+Cycle</strong> connects classroom vocabulary to Governed Intelligence
+Cycle and Dissemination Architecture practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>The Intelligence Cycle: Iteration, Feedback, and
+Limits</strong>: [ageint297] and [ageint298]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_203].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>The Intelligence
+Cycle</strong>, inspect the original passages. Curriculum annotation for
+[ageint297]: Official ODNI Intelligence Community Directive 203 analytic
+standards source for objectivity, independence, timeliness,
+alternatives, confidence, sourcing, and accuracy in analytic products.
+Curriculum annotation for [ageint298]: Official ODNI index for
+Intelligence Community Directives used to locate current directive
+source material and preserve directive-context citations. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>The Intelligence
+Cycle</strong>, build a <strong>dissemination map with audience, caveat,
+marking, records, and feedback fields</strong> for this cycle mapping
+and audience-aware product design topic. The artifact must separate the
+source descriptor, the bounded judgment about <strong>Intelligence
+Cycle</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+<strong>The Intelligence Cycle</strong> work as a
+<strong>requirements-to-product traceability ledger</strong> that states
+the evidence used, what stays uncertain, who reviews it, and when to
+stop.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>The Intelligence Cycle</strong>: that a confident narrative is
+the same as a tested, source-backed judgment with its alternatives and
+confidence stated.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>The Intelligence Cycle</strong> to another artifact while
+keeping cycle mapping and audience-aware product design and reviewer
+ownership explicit.</p>
+<h4
+id="lesson-3-strategic-operational-tactical-uses-and-technical-specialties">Lesson
+3: Strategic, Operational, Tactical Uses and Technical Specialties</h4>
+<p><strong>Concept.</strong> <strong>Strategic, Operational, Tactical
+Uses and Technical Specialties</strong> applies structured analytic
+methods with explicit alternatives, evidence tables, and calibrated
+confidence—not rhetorical certainty.</p>
+<p><strong>Worked reasoning and limits.</strong> Strategic, operational,
+and tactical describe decision scope, planning horizon, and intended
+use, not fixed file formats or guaranteed time intervals. The same
+synthetic depot observation could inform long-term resilience
+investment, next-week distribution planning, or today’s access decision;
+each product needs different uncertainty and timeliness statements.
+Technical intelligence describes subject matter or specialized analysis
+and can support all three levels, so it is not simply a mutually
+exclusive fourth rung. Inherited threat-sharing standards do not define
+these planning levels; use doctrine as bounded terminology rather than
+as proof that one level is more reliable [official_joint_pub_2_0].</p>
+<p><strong>Why it matters.</strong> <strong>Strategic, Operational,
+Tactical Uses and Technical Specialties</strong> matters in the
+<strong>Governed Intelligence Cycle and Dissemination
+Architecture</strong> lane because cycle mapping and audience-aware
+product design evidence must stay separate from judgment; collapsing
+reporting, inference, and judgment into one line is a common
+failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Strategic, Operational, Tactical Uses and Technical
+Specialties</strong>: [ageint309], [ageint310], and [ageint300]. These
+citations preserve source identity, not automatic topical relevance,
+empirical validation or normative authority. No claim-specific primary
+support is established by this source-guide association alone. Profile
+context—not claim-specific validation—uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_203].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Strategic,
+Operational, Tactical Uses and Technical Specialties</strong>, inspect
+the original passages. Curriculum annotation for [ageint309]: An OASIS
+standard specification defining STIX (Structured Threat Information
+Expression), a language for exchanging cyber threat intelligence in a
+standardized, machine-readable form. It establishes a graph-based model
+with STIX Domain Objects, Cyber-observable Objects, and Relationship
+Objects, plus meta objects, bundles, and a patterning language for
+detection. Curriculum annotation for [ageint310]: The OASIS Standard
+specification for TAXII (Trusted Automated Exchange of Intelligence
+Information) Version 2.1, approved 10 June 2021. It defines a RESTful,
+HTTPS-based API for exchanging cyber threat intelligence through
+Collections in a request-response model, including discovery, API roots,
+JSON serialization, content negotiation, object retrieval with filtering
+and pagination, and status monitoring. Curriculum annotation for
+[ageint300]: MITRE ATLAS knowledge base for adversarial threats to AI
+systems, used for defensive AI red-team assurance and misuse taxonomy.
+These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Strategic,
+Operational, Tactical Uses and Technical Specialties</strong>, build a
+<strong>dissemination map with audience, caveat, marking, records, and
+feedback fields</strong> for this cycle mapping and audience-aware
+product design topic. The artifact must separate the source descriptor,
+the bounded judgment about <strong>Strategic Operational Tactical Uses
+and</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+the same topic work as a <strong>requirements-to-product traceability
+ledger</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
+<p><strong>Misconception check.</strong> Correct the misconception about
+<strong>Strategic, Operational, Tactical Uses and Technical
+Specialties</strong>: that a confident narrative is the same as a
 tested, source-backed judgment with its alternatives and confidence
 stated.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Types: Strategic,
-Operational, Tactical, Technical Intelligence</strong> from this module
-to a second motif by preserving cycle mapping and audience-aware product
-design, replacing action with audit, and naming the blocked use.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>Strategic, Operational, Tactical Uses and Technical
+Specialties</strong> to another artifact while keeping cycle mapping and
+audience-aware product design and reviewer ownership explicit.</p>
 <h4
 id="lesson-4-intelligence-as-social-and-epistemological-practice">Lesson
 4: Intelligence as Social and Epistemological Practice</h4>
@@ -402,12 +860,21 @@ id="lesson-4-intelligence-as-social-and-epistemological-practice">Lesson
 Epistemological Practice</strong> applies structured analytic methods
 with explicit alternatives, evidence tables, and calibrated
 confidence—not rhetorical certainty.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Intelligence as Social and Epistemological Practice</strong>,
-collapsing reporting, inference, and judgment into one line undermines
-cycle mapping and audience-aware product design review; the lesson
-builds the habit to separate intelligence work from ordinary research by
-naming authority, audience, caveats, and feedback.</p>
+<p><strong>Worked reasoning and limits.</strong> An epistemic judgment
+asks what is warranted by evidence; a social practice also asks whose
+reports are heard, how translation and institutional incentives shape
+them, and who can contest the conclusion. Agreement among analysts is
+not independent corroboration if everyone read the same bulletin. In the
+depot case, a manager’s endorsement changes the institutional status of
+the brief but adds no observation about the entrance; the model answer
+keeps authority, evidence, and confidence separate. The inherited
+philosophical account supplies a perspective, not a tested algorithm for
+eliminating bias.</p>
+<p><strong>Why it matters.</strong> <strong>Intelligence as Social and
+Epistemological Practice</strong> connects classroom vocabulary to
+Governed Intelligence Cycle and Dissemination Architecture practice:
+learners document evidence, caveats, and reviewer ownership rather than
+repeating labels.</p>
 <p><strong>Source support.</strong> <strong>Intelligence as Social and
 Epistemological Practice</strong> uses curated analytic-tradecraft
 anchors [official_odni_icd_203]; [official_cia_tradecraft_primer];
@@ -429,8 +896,8 @@ anchors [official_odni_icd_203]; [official_cia_tradecraft_primer];
 [official_belfer_mcmahon_2024_ai_tradecraft_standards]. The inherited
 guide citation(s) [ageint001] remain context only; primary support must
 keep likelihood, confidence, assumptions, alternatives, dissent, source
-quality, ACH limits, and refresh duty separate. External triangulation
-uses [official_intelligence_gov_how_ic_works];
+quality, ACH limits, and refresh duty separate. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
 [official_odni_icd_203].</p>
 <p><strong>Evidence to inspect.</strong> For <strong>Intelligence as
 Social and Epistemological Practice</strong>, use the curated
@@ -477,13 +944,26 @@ judgment with its alternatives and confidence stated.</p>
 another artifact while keeping cycle mapping and audience-aware product
 design and reviewer ownership explicit.</p>
 <h4
-id="lesson-5-national-corporate-and-private-intelligence-structural-differences">Lesson
-5: National, Corporate, and Private Intelligence: Structural
-Differences</h4>
+id="lesson-5-national-corporate-and-private-intelligence-purpose-and-authority">Lesson
+5: National, Corporate, and Private Intelligence: Purpose and
+Authority</h4>
 <p><strong>Concept.</strong> <strong>National, Corporate, and Private
-Intelligence: Structural Differences</strong> applies structured
-analytic methods with explicit alternatives, evidence tables, and
-calibrated confidence—not rhetorical certainty.</p>
+Intelligence: Purpose and Authority</strong> applies structured analytic
+methods with explicit alternatives, evidence tables, and calibrated
+confidence—not rhetorical certainty.</p>
+<p><strong>Worked reasoning and limits.</strong> Compare purpose,
+audience, data-access basis, and accountability separately: national
+work serves public mandates and institution-specific oversight;
+corporate analysis supports organizational decisions; private research
+serves an agreed client purpose. Those descriptions do not transfer
+state powers, restricted access, secrecy privileges, or surveillance
+authority to a company, contractor, or student. Public availability is
+not blanket permission for profiling or reuse, and a contract or consent
+does not remove other legal duties. For a supplied fictional market
+report, contractual permission to read the report supports that
+classroom use only; uncertainty about reuse of underlying personal
+records requires a hold, not an inference of government-like
+authority.</p>
 <p><strong>Why it matters.</strong> Analysts use <strong>National,
 Corporate, and Private Intelligence</strong> to separate intelligence
 work from ordinary research by naming authority, audience, caveats, and
@@ -491,26 +971,28 @@ feedback. A defensible treatment names the judgment it enables for cycle
 mapping and audience-aware product design review, the proof limit that
 collapsing reporting, inference, and judgment into one line would
 otherwise hide, and the reviewer accountable for challenge.</p>
-<p><strong>Source support.</strong> <strong>National, Corporate, and
-Private Intelligence: Structural Differences</strong> rests on
-[ageint297] and [ageint298]. The lead source’s own note reads: Official
-ODNI Intelligence Community Directive 203 analytic standards source for
-objectivity, independence, timeliness, alternatives, confidence,
-sourcing, and accuracy in analytic products. Use them for fixing what
-<strong>National, Corporate, and Private Intelligence: Structural
-Differences</strong> covers, marking the boundary it must not cross, and
-timing the next source refresh. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>National,
-Corporate, and Private Intelligence</strong> in the evidence the row
-cites. [ageint297] Official ODNI Intelligence Community Directive 203
-analytic standards source for objectivity, independence, timeliness,
-alternatives, confidence, sourcing, and accuracy in analytic products.
-[ageint298] Official ODNI index for Intelligence Community Directives
-used to locate current directive source material and preserve
-directive-context citations. From each source, pull the bounded claim it
-can carry for this topic, its provenance, the stated uncertainty, and
-the one condition that would overturn that judgment.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>National, Corporate, and Private Intelligence: Purpose and
+Authority</strong>: [ageint298] and [ageint297]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_203].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>National,
+Corporate, and Private Intelligence</strong>, inspect the original
+passages. Curriculum annotation for [ageint298]: Official ODNI index for
+Intelligence Community Directives used to locate current directive
+source material and preserve directive-context citations. Curriculum
+annotation for [ageint297]: Official ODNI Intelligence Community
+Directive 203 analytic standards source for objectivity, independence,
+timeliness, alternatives, confidence, sourcing, and accuracy in analytic
+products. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>National, Corporate,
 and Private Intelligence</strong>, build a <strong>dissemination map
 with audience, caveat, marking, records, and feedback fields</strong>
@@ -520,108 +1002,137 @@ artifact must separate the source descriptor, the bounded judgment about
 analytic caveat, the confidence note, the excluded-inference boundary,
 and the reviewer who logs dissent. Shape <strong>National, Corporate,
 and Private Intelligence</strong> work as a
-<strong>requirements-to-product traceability ledger</strong> that states
-the evidence used, what stays uncertain, who reviews it, and when to
-stop.</p>
+<strong>requirements-to-product traceability ledger</strong> that logs
+the evidence, the uncertainty, the responsible reviewer, and the halt
+condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>National, Corporate, and Private Intelligence</strong>: that a
 confident narrative is the same as a tested, source-backed judgment with
 its alternatives and confidence stated.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>National, Corporate,
-and Private Intelligence</strong> from this module to a second motif by
-preserving cycle mapping and audience-aware product design, replacing
-action with audit, and naming the blocked use.</p>
+<p><strong>Transfer task.</strong> Apply this module’s safe boundary for
+<strong>National, Corporate, and Private Intelligence</strong> to
+another artifact while keeping cycle mapping and audience-aware product
+design and reviewer ownership explicit.</p>
 <h4
-id="lesson-6-the-ethics-of-intelligence-eo-12333-fisa-icd-203-allied-law">Lesson
-6: The Ethics of Intelligence: EO 12333, FISA, ICD 203, Allied Law</h4>
-<p><strong>Concept.</strong> <strong>The Ethics of Intelligence: EO
-12333, FISA, ICD 203, Allied Law</strong> — Calibrate confidence to
-evidence strength, source quality, and alternative explanations—not to
-rhetorical certainty.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>The Ethics of Intelligence</strong>, collapsing reporting,
-inference, and judgment into one line undermines cycle mapping and
-audience-aware product design review; the lesson builds the habit to
-separate intelligence work from ordinary research by naming authority,
-audience, caveats, and feedback.</p>
-<p><strong>Source support.</strong> <strong>The Ethics of Intelligence:
-EO 12333, FISA, ICD 203, Allied Law</strong> rests on [ageint002]. Its
-anchor reference records: ICD 203 directs the heads of IC elements to
-designate a similar individual or office to respond. Use it for the
-working definition that <strong>The Ethics of Intelligence: EO 12333,
-FISA, ICD 203, Allied Law</strong> can defend, where that scope ends,
-and the refresh check owed before this evidence transfers. External
-triangulation uses [official_intelligence_gov_how_ic_works];
+id="lesson-6-law-executive-instruments-analytic-standards-and-ethics">Lesson
+6: Law, Executive Instruments, Analytic Standards, and Ethics</h4>
+<p><strong>Concept.</strong> <strong>Law, Executive Instruments,
+Analytic Standards, and Ethics</strong> applies structured analytic
+methods with explicit alternatives, evidence tables, and calibrated
+confidence—not rhetorical certainty.</p>
+<p><strong>Worked reasoning and limits.</strong> These are different
+instrument types: FISA is a U.S. statutory framework; EO 12333 is an
+executive instrument; ICD 203 sets analytic standards; an ethical
+recommendation concerns justified conduct and can demand restraint
+beyond a legal minimum. None is a universal allied-law code, and
+analytic objectivity or classroom approval creates no collection
+authority. Record jurisdiction, instrument version/date, applicable
+activity, responsible approver, and unresolved scope before drawing a
+legal conclusion; older DCI-era EO text must be labeled historical
+rather than treated as a current consolidated instrument. With no
+applicable dated authority supplied, the correct classroom disposition
+is no new collection and referral to qualified review, not a claim that
+the named laws either permit or forbid every case.</p>
+<p><strong>Why it matters.</strong> <strong>Law, Executive Instruments,
+Analytic Standards, and Ethics</strong> matters in the <strong>Governed
+Intelligence Cycle and Dissemination Architecture</strong> lane because
+cycle mapping and audience-aware product design evidence must stay
+separate from judgment; collapsing reporting, inference, and judgment
+into one line is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Law, Executive Instruments, Analytic Standards, and
+Ethics</strong>: [ageint002]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_intelligence_gov_how_ic_works];
 [official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>The Ethics of
-Intelligence</strong>, reason from the sources cited in this row.
-[ageint002] ICD 203 directs the heads of IC elements to designate a
-similar individual or office to respond. Each source above earns its
-place in this topic only when you can state its bounded claim, its
-provenance, its uncertainty, and the fact that would retire it.</p>
-<p><strong>Student artifact.</strong> For <strong>The Ethics of
-Intelligence</strong>, build a <strong>dissemination map with audience,
-caveat, marking, records, and feedback fields</strong> for this cycle
-mapping and audience-aware product design topic. The artifact must
-separate the source descriptor, the bounded judgment about
-<strong>Ethics of Intelligence</strong>, the analytic caveat, the
-confidence note, the excluded-inference boundary, and the reviewer who
-logs dissent. Shape <strong>The Ethics of Intelligence</strong> work as
-a <strong>requirements-to-product traceability ledger</strong> that
-records its evidence, the residual uncertainty, the named reviewer, and
-the stop condition.</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Law, Executive
+Instruments, Analytic Standards, and Ethics</strong>, inspect the
+original passages. No displayable curriculum annotation is available for
+[ageint002]. These editorial descriptions are not source-authored
+quotations or independently verified lesson support. Record a passage
+and locator, distinguishing primary findings, normative requirements,
+proposals and context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Law, Executive
+Instruments, Analytic Standards, and Ethics</strong>, build a
+<strong>dissemination map with audience, caveat, marking, records, and
+feedback fields</strong> for this cycle mapping and audience-aware
+product design topic. The artifact must separate the source descriptor,
+the bounded judgment about <strong>Law Executive Instruments Analytic
+Standards</strong>, the analytic caveat, the confidence note, the
+excluded-inference boundary, and the reviewer who logs dissent. Shape
+the same topic work as a <strong>requirements-to-product traceability
+ledger</strong> that names evidence, uncertainty, reviewer, and stop
+condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>The Ethics of Intelligence</strong>: that a legal source grants
-authority without scope and oversight.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>The Ethics of
-Intelligence</strong> from this module to a second motif by preserving
-cycle mapping and audience-aware product design, replacing action with
-audit, and naming the blocked use.</p>
+<strong>Law, Executive Instruments, Analytic Standards, and
+Ethics</strong>: that a confident narrative is the same as a tested,
+source-backed judgment with its alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Law, Executive
+Instruments, Analytic Standards, and Ethics</strong> from this module to
+a second motif by preserving cycle mapping and audience-aware product
+design, replacing action with audit, and naming the blocked use.</p>
 <h4
-id="lesson-7-active-inference-as-a-unifying-cognitive-framework-for-intelligence">Lesson
-7: Active Inference as a Unifying Cognitive Framework for
-Intelligence</h4>
-<p><strong>Concept.</strong> <strong>Active Inference as a Unifying
-Cognitive Framework for Intelligence</strong> treats active inference as
-an agent-modeling vocabulary: beliefs, actions, expected observations,
-and policy selection are classroom concepts, not proof that an
-intelligence agent should act autonomously.</p>
+id="lesson-7-active-inference-as-a-proposed-modeling-perspective">Lesson
+7: Active Inference as a Proposed Modeling Perspective</h4>
+<p><strong>Concept.</strong> <strong>Active Inference as a Proposed
+Modeling Perspective</strong> treats active inference as an
+agent-modeling vocabulary: beliefs, actions, expected observations, and
+policy selection are classroom concepts, not proof that an intelligence
+agent should act autonomously.</p>
+<p><strong>Worked reasoning and limits.</strong> Active inference is
+presented here as a theoretical modeling perspective and a limited
+analyst-update analogy, not an established unifying method or evidence
+of intelligence effectiveness. The cited organizational application
+distinguishes repetitive work from the harder one-of-a-kind project
+setting; that boundary matters when observations do not recur under a
+stable model [ageint003]. In the depot example, revising a storm
+explanation after the pipe correction illustrates belief revision, but
+supplies neither a fitted generative model nor evidence that free-energy
+optimization improved the judgment. A classroom analogy must stop where
+its assumptions about recurrence, observations, or model adequacy
+fail.</p>
 <p><strong>Why it matters.</strong> <strong>Active Inference</strong>
-connects classroom vocabulary to Governed Intelligence Cycle and
-Dissemination Architecture practice: learners document evidence,
-caveats, and reviewer ownership rather than repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Active Inference as a
-Unifying Cognitive Framework for Intelligence</strong> rests on
-[ageint003]. The lead source’s own note reads: It maps concepts such as
-variational free energy, prediction error, generative models, and Markov
-blankets onto industrial engineering and quality management practices,
-treating organizational survival as the maintenance of process control
-limits. Use it for pinning down the scope of <strong>Active Inference as
-a Unifying Cognitive Framework for Intelligence</strong>, the edge of
-that scope, and when these citations need re-verifying before transfer.
-External triangulation uses [official_intelligence_gov_how_ic_works];
-[official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Active
-Inference</strong> against the works cited for this row. [ageint003] A
-2021 peer-reviewed article by Stephen Fox in the journal Entropy that
-relates the active inference framework to social organization. It maps
-concepts such as variational free energy, prediction error, generative
-models, and Markov blankets onto industrial engineering and quality
-management practices, treating organizational survival as the
-maintenance of process control limits. Each source above earns its place
-in this topic only when you can state its bounded claim, its provenance,
-its uncertainty, and the fact that would retire it.</p>
+matters in the <strong>Governed Intelligence Cycle and Dissemination
+Architecture</strong> lane because cycle mapping and audience-aware
+product design evidence must stay separate from judgment; collapsing
+reporting, inference, and judgment into one line is a common
+failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Active Inference as a Proposed Modeling Perspective</strong>:
+[ageint003]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_intelligence_gov_how_ic_works]; [official_odni_icd_203].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Active
+Inference</strong>, inspect the original passages. Curriculum annotation
+for [ageint003]: A 2021 peer-reviewed article by Stephen Fox in the
+journal Entropy that relates the active inference framework to social
+organization. It maps concepts such as variational free energy,
+prediction error, generative models, and Markov blankets onto industrial
+engineering and quality management practices, treating organizational
+survival as the maintenance of process control limits. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
 <p><strong>Student artifact.</strong> For <strong>Active
 Inference</strong>, build a <strong>dissemination map with audience,
 caveat, marking, records, and feedback fields</strong> for this cycle
 mapping and audience-aware product design topic. The artifact must
 separate the source descriptor, the bounded judgment about
-<strong>Active Inference as a Unifying</strong>, the analytic caveat,
+<strong>Active Inference as a Proposed</strong>, the analytic caveat,
 the confidence note, the excluded-inference boundary, and the reviewer
 who logs dissent. Shape <strong>Active Inference</strong> work as a
-<strong>requirements-to-product traceability ledger</strong> that states
-the evidence used, what stays uncertain, who reviews it, and when to
-stop.</p>
+<strong>requirements-to-product traceability ledger</strong> that
+records its evidence, the residual uncertainty, the named reviewer, and
+the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Active Inference</strong>: that a confident narrative is the
 same as a tested, source-backed judgment with its alternatives and
@@ -631,63 +1142,77 @@ Inference</strong>, transfer the idea to a non-AI chapter by naming the
 assumed model, the surprising observation, and the review point before
 any decision follows.</p>
 <h4
-id="lesson-8-the-ai-inflection-point-how-artificial-intelligence-reshapes-every-phase-of-the-intelligence-cycle">Lesson
-8: The AI Inflection Point: How Artificial Intelligence Reshapes Every
-Phase of the Intelligence Cycle</h4>
-<p><strong>Concept.</strong> <strong>The AI Inflection Point: How
-Artificial Intelligence Reshapes Every Phase of the Intelligence
-Cycle</strong> traces requirements through collection, processing,
-analysis, dissemination, and feedback while naming authority and
-audience at each transition.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>The AI Inflection Point</strong>, collapsing reporting,
-inference, and judgment into one line undermines cycle mapping and
-audience-aware product design review; the lesson builds the habit to
-separate intelligence work from ordinary research by naming authority,
-audience, caveats, and feedback.</p>
-<p><strong>Source support.</strong> <strong>The AI Inflection Point: How
-Artificial Intelligence Reshapes Every Phase of the Intelligence
-Cycle</strong> rests on [ageint004] and [ageint005]. Its anchor
-reference records: 1, March 2026). Use them for fixing what <strong>The
-AI Inflection Point: How Artificial Intelligence Reshapes Every Phase of
-the Intelligence Cycle</strong> covers, marking the boundary it must not
-cross, and timing the next source refresh. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_203].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>The AI Inflection
-Point</strong>, reason from the sources cited in this row. [ageint004]
-Tom Mulligan argues that artificial intelligence will enhance rather
-than replace human intelligence professionals, contending that the
-future of intelligence lies in human-machine collaboration. He maintains
-that uniquely human qualities such as intuition, experience, and
-independent judgment become more valuable as adversaries gain access to
-the same AI tools. [ageint005] A blog post on SemperVerus summarizing a
-CIA Studies in Intelligence article, “Espionage in Our AI Future: Why
-Human Intelligence Still Matters” (Vol. 70, No. 1, March 2026). It
-argues that as AI makes technical intelligence cheaper and AI-driven
-fabrication more pervasive, human intelligence becomes relatively more
-valuable, since human specialists are needed to verify source
-reliability over time. Each source above earns its place in this topic
-only when you can state its bounded claim, its provenance, its
-uncertainty, and the fact that would retire it.</p>
-<p><strong>Student artifact.</strong> For <strong>The AI Inflection
-Point</strong>, build a <strong>dissemination map with audience, caveat,
-marking, records, and feedback fields</strong> for this cycle mapping
-and audience-aware product design topic. The artifact must separate the
-source descriptor, the bounded judgment about <strong>AI Inflection
-Point</strong>, the analytic caveat, the confidence note, the
-excluded-inference boundary, and the reviewer who logs dissent. Shape
-<strong>The AI Inflection Point</strong> work as a
-<strong>requirements-to-product traceability ledger</strong> that logs
-the evidence, the uncertainty, the responsible reviewer, and the halt
-condition.</p>
+id="lesson-8-ai-and-the-intelligence-cycle-proposed-changes-and-evidence-gaps">Lesson
+8: AI and the Intelligence Cycle: Proposed Changes and Evidence
+Gaps</h4>
+<p><strong>Concept.</strong> <strong>AI and the Intelligence Cycle:
+Proposed Changes and Evidence Gaps</strong> traces requirements through
+collection, processing, analysis, dissemination, and feedback while
+naming authority and audience at each transition.</p>
+<p><strong>Worked reasoning and limits.</strong> AI may assist
+translation, triage, retrieval, and drafting, but a proposed use is not
+a measured improvement in accuracy, timeliness, cost, or rights
+protection. Translation can erase qualifiers, retrieval can multiply one
+source into apparent corroboration, and fluent drafting can conceal an
+unsupported implication. The inherited podcast and commentary support
+attributed forecasts, not the universal premise that every phase is
+already transformed; related summaries of the same professional essay
+are not independent evidence. A defensible comparison would need a
+specified task, baseline, error analysis, and consequential limitations;
+absent those, retain the forecast as untested and keep the accountable
+analyst’s decision separate.</p>
+<p><strong>Why it matters.</strong> <strong>AI and the Intelligence
+Cycle</strong> connects classroom vocabulary to Governed Intelligence
+Cycle and Dissemination Architecture practice: learners document
+evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>AI and the Intelligence Cycle: Proposed Changes and Evidence
+Gaps</strong>: [ageint004] and [ageint005]. These citations preserve
+source identity, not automatic topical relevance, empirical validation
+or normative authority. No claim-specific primary support is established
+by this source-guide association alone. Profile context—not
+claim-specific validation—uses [official_intelligence_gov_how_ic_works];
+[official_odni_icd_203].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>AI and the
+Intelligence Cycle</strong>, inspect the original passages. Curriculum
+annotation for [ageint004]: Tom Mulligan argues that artificial
+intelligence will enhance rather than replace human intelligence
+professionals, contending that the future of intelligence lies in
+human-machine collaboration. He maintains that uniquely human qualities
+such as intuition, experience, and independent judgment become more
+valuable as adversaries gain access to the same AI tools. Curriculum
+annotation for [ageint005]: A blog post on SemperVerus summarizing a CIA
+Studies in Intelligence article, “Espionage in Our AI Future: Why Human
+Intelligence Still Matters” (Vol. 70, No. 1, March 2026). It argues that
+as AI makes technical intelligence cheaper and AI-driven fabrication
+more pervasive, human intelligence becomes relatively more valuable,
+since human specialists are needed to verify source reliability over
+time. These editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>AI and the
+Intelligence Cycle</strong>, build a <strong>dissemination map with
+audience, caveat, marking, records, and feedback fields</strong> for
+this cycle mapping and audience-aware product design topic. The artifact
+must separate the source descriptor, the bounded judgment about
+<strong>AI and the Intelligence Cycle</strong>, the analytic caveat, the
+confidence note, the excluded-inference boundary, and the reviewer who
+logs dissent. Shape <strong>AI and the Intelligence Cycle</strong> work
+as a <strong>requirements-to-product traceability ledger</strong> that
+states the evidence used, what stays uncertain, who reviews it, and when
+to stop.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
-<strong>The AI Inflection Point</strong>: that a confident narrative is
-the same as a tested, source-backed judgment with its alternatives and
-confidence stated.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>The AI Inflection
-Point</strong> from this module to a second motif by preserving cycle
-mapping and audience-aware product design, replacing action with audit,
-and naming the blocked use.</p>
+<strong>AI and the Intelligence Cycle</strong>: that a confident
+narrative is the same as a tested, source-backed judgment with its
+alternatives and confidence stated.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AI and the
+Intelligence Cycle</strong> from this module to a second motif by
+preserving cycle mapping and audience-aware product design, replacing
+action with audit, and naming the blocked use.</p>
 <h3
 id="the-nature-of-intelligence-worked-safe-example-synthetic-inputs-evidence-and-review">The
 Nature of Intelligence worked safe example: synthetic inputs, evidence,
@@ -695,14 +1220,14 @@ and review</h3>
 <p>Worked example: a synthetic analyst team rebuilds a storm-impact
 brief after discovering a stale requirement and overloaded reading
 queue. [ageint238]; [ageint237].</p>
-<p><strong>Triangulation anchors.</strong> In module 1’s worked-example
-section, directly verified anchors for the <strong>Governed Intelligence
-Cycle and Dissemination Architecture</strong> lane include
+<p><strong>Contextual source routes.</strong> For module 1’s
+worked-example section, the <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_203];
-[official_odni_icd_204]; [official_odni_icd_504]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+[official_odni_icd_204]; [official_odni_icd_504]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline:
 <strong>intelligence-cycle governance</strong>. Learners use a
 <strong>requirements-to-product traceability ledger</strong> and keep
@@ -710,44 +1235,50 @@ this boundary visible: Activities stay inside public, synthetic, or
 instructor-provided materials and never become live collection or
 tasking.</p>
 <p><strong>Frame.</strong> The classroom question centers on
-<strong>Defining Intelligence: Collection, Analysis, Production,
-Dissemination</strong>. Excluded actions stay explicit, and the
+<strong>Information, Reporting, Finished Judgment, and Decision
+Support</strong>. Excluded actions stay explicit, and the
 <strong>Dissemination-and-Marking Control Lens</strong> planning
 question is: Which audience, release authority, marking vocabulary,
 records duty, and feedback loop governs this intelligence artifact?</p>
-<p><strong>Inputs.</strong> For the <strong>Defining Intelligence:
-Collection, Analysis, Production, Dissemination</strong> scenario, use
-public weather bulletins, public infrastructure maps, historical outage
-summaries, and instructor-provided toy records. The
-Dissemination-and-Marking Control Lens intake note records provenance,
-sensitivity, fit-to-purpose, and why the fixture is enough for this
-bounded exercise.</p>
-<p><strong>Analysis.</strong> For <strong>Defining Intelligence:
-Collection, Analysis, Production, Dissemination</strong>, students map
-the requirement, tag each source, separate observation from judgment,
-assign caveats, and record the dissemination audience. Pause whenever an
-inference about Defining Intelligence: Collection, Analysis, Production,
-Dissemination appears without evidence, confidence outruns support, or
-an agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>Defining
-Intelligence: Collection, Analysis, Production, Dissemination</strong>
-classroom scenario; unit artifact = requirements-to-product traceability
-ledger; evidence = allowed inputs; method = cycle mapping and
-audience-aware product design; output = a one-page release-neutral brief
-with source descriptors, confidence language, caveats, and a feedback
-owner; boundary = no external action; reviewer = instructor or named
-peer.</p>
-<p><strong>Flawed answer to revise.</strong> Treating <strong>Defining
-Intelligence: Collection, Analysis, Production, Dissemination</strong>
-as “Dissemination-and-Marking Control Lens confirms it” is not enough.
-The revision ties the claim to cycle mapping and audience-aware product
-design, adds the missing caveat, states confidence, and records the
-reviewer who accepted the bounded judgment.</p>
-<p><strong>Debrief.</strong> The reuse note for <strong>Defining
-Intelligence: Collection, Analysis, Production, Dissemination</strong>
-records the defensible claim, the assumption most likely to fail, the
-evidence that would change confidence, and the review condition for
-stopping reuse.</p>
+<p><strong>Inputs.</strong> For the <strong>Information, Reporting,
+Finished Judgment, and Decision Support</strong> scenario, use
+instructor-supplied fictional bulletin A forecasting tomorrow’s storm,
+map B dated two years earlier, notice C cancelling today’s buses, and a
+requirement card asking whether tomorrow’s seminar should be postponed.
+The Dissemination-and-Marking Control Lens intake note records
+provenance, sensitivity, fit-to-purpose, and why the fixture is enough
+for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>Information, Reporting,
+Finished Judgment, and Decision Support</strong>, students first fix the
+decision, horizon, customer, and deadline; then log each item’s date and
+scope, separate forecast from observation, and identify the missing
+tomorrow-service notice; finally restore C’s date after a date-hidden
+comparison and reject any inference that today’s cancellation proves
+tomorrow’s status. Stop at the deadline and hand the unresolved service
+check to the instructor rather than extending collection. Pause whenever
+an inference about Information, Reporting, Finished Judgment, and
+Decision Support appears without evidence, confidence outruns support,
+or an agent output is treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a release-neutral brief
+stating that storm disruption is possible but tomorrow’s bus status is
+unresolved, with limited evidentiary confidence, a source ledger,
+instructor review before circulation, and a feedback question about
+whether the decision need is answered Retain it as the
+<strong>requirements-to-product traceability ledger</strong> for this
+classroom fixture, with the stated source IDs, uncertainty, review
+disposition, and excluded-action boundary.</p>
+<p><strong>Flawed answer to revise.</strong> Treating
+<strong>Information, Reporting, Finished Judgment, and Decision
+Support</strong> as “Dissemination-and-Marking Control Lens confirms it”
+is not enough. The revision ties the claim to cycle mapping and
+audience-aware product design, adds the missing caveat, states
+confidence, and records the reviewer who accepted the bounded
+judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>Information,
+Reporting, Finished Judgment, and Decision Support</strong> records the
+defensible claim, the assumption most likely to fail, the evidence that
+would change confidence, and the review condition for stopping
+reuse.</p>
 <h3
 id="the-nature-of-intelligence-practice-sequence-studio-moves-artifact-steps-and-limits">The
 Nature of Intelligence practice sequence: studio moves, artifact steps,
@@ -755,18 +1286,17 @@ and limits</h3>
 <p>The studio sequence uses the <strong>Dissemination-and-Marking
 Control Lens</strong> practice lens. Moves 1-3 form the compressed path;
 the full seminar path adds challenge, handoff, and a review memo for
-<strong>Defining Intelligence: Collection, Analysis, Production,
-Dissemination; The Intelligence Cycle</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 1’s
-practice-sequence section, directly verified anchors for the
-<strong>Governed Intelligence Cycle and Dissemination
-Architecture</strong> lane include
+<strong>Information, Reporting, Finished Judgment, and Decision Support;
+The Intelligence Cycle: Iteration, Feedback, and Limits</strong>.</p>
+<p><strong>Contextual source routes.</strong> For module 1’s
+practice-sequence section, the <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_203];
-[official_odni_icd_204]; [official_odni_icd_504]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<table>
+[official_odni_icd_204]; [official_odni_icd_504]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -784,10 +1314,10 @@ provenance.</p>
 <tbody>
 <tr>
 <td>1. Distinguish</td>
-<td>Compare Defining Intelligence: Collection, Analysis, Production,
-Dissemination, The Intelligence Cycle, Types: Strategic, Operational,
-Tactical, Technical Intelligence; name what each topic can and cannot
-prove.</td>
+<td>Compare Information, Reporting, Finished Judgment, and Decision
+Support, The Intelligence Cycle: Iteration, Feedback, and Limits,
+Strategic, Operational, Tactical Uses and Technical Specialties; name
+what each topic can and cannot prove.</td>
 <td>Glossary-and-contrast card.</td>
 <td>Terms match the <strong>Governed Intelligence Cycle and
 Dissemination Architecture</strong> lane.</td>
@@ -803,17 +1333,16 @@ explicit.</td>
 </tr>
 <tr>
 <td>3. Evidence</td>
-<td>Fill the artifact fields for Defining Intelligence: Collection,
-Analysis, Production, Dissemination: dissemination map with audience,
-caveat, marking, records, and feedback fields.</td>
+<td>Fill the artifact fields for Information, Reporting, Finished
+Judgment, and Decision Support: dissemination map with audience, caveat,
+marking, records, and feedback fields.</td>
 <td>Evidence packet.</td>
 <td>Sources, caveats, confidence, and uncertainty stay separable.</td>
 </tr>
 <tr>
 <td>3a. Unit artifact</td>
 <td>Add the requirements-to-product traceability ledger fields for
-Defining Intelligence: Collection, Analysis, Production,
-Dissemination.</td>
+Information, Reporting, Finished Judgment, and Decision Support.</td>
 <td>Unit profile note.</td>
 <td>Evidence artifacts include requirement card, source descriptor.</td>
 </tr>
@@ -835,7 +1364,7 @@ feedback.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="the-nature-of-intelligence-instructor-notes-source-reasoning-review-points-and-studio-focus">The
 Nature of Intelligence instructor notes: source reasoning, review
@@ -843,35 +1372,37 @@ points, and studio focus</h4>
 <p>Ask learners to verbalize the difference between a source, an
 inference, and a decision. Require a revision whenever a claim cannot be
 traced to a source descriptor or a human review point. Keep the focus on
-<strong>Defining Intelligence: Collection, Analysis, Production,
-Dissemination; The Intelligence Cycle</strong>. [ageint238];
-[ageint237].</p>
+<strong>Information, Reporting, Finished Judgment, and Decision Support;
+The Intelligence Cycle: Iteration, Feedback, and Limits</strong>.
+[ageint238]; [ageint237].</p>
 <h4
 id="the-nature-of-intelligence-extension-exercise-peer-validation-and-refresh-trigger-review">The
 Nature of Intelligence extension exercise: peer validation and refresh
 trigger review</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-the-nature-of-intelligence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-the-nature-of-intelligence">[@sec:chapter-the-nature-of-intelligence]</span>.</p>
 <p>Have learners swap artifacts and apply the
 <strong>Dissemination-and-Marking Control Lens</strong> validation rule
 to someone else’s work. The receiving learner must identify one
 strength, one missing caveat, and one refresh trigger for
-<strong>Defining Intelligence: Collection, Analysis, Production,
-Dissemination; The Intelligence Cycle</strong>.</p>
+<strong>Information, Reporting, Finished Judgment, and Decision Support;
+The Intelligence Cycle: Iteration, Feedback, and Limits</strong>.</p>
 <h3
 id="the-nature-of-intelligence-knowledge-check-misconceptions-evidence-and-reviewer-prompts">The
 Nature of Intelligence knowledge check: misconceptions, evidence, and
 reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-the-nature-of-intelligence]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-the-nature-of-intelligence">[@sec:chapter-the-nature-of-intelligence]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>Defining Intelligence: Collection, Analysis,
-Production, Dissemination</strong> is defined here; name the source
-descriptor that supports the definition.</li>
-<li>Contrast <strong>Defining Intelligence: Collection, Analysis,
-Production, Dissemination</strong> with <strong>The Intelligence
-Cycle</strong> using the <strong>Dissemination-and-Marking Control
-Lens</strong> artifact fields.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>Information, Reporting, Finished
+Judgment, and Decision Support</strong>.</li>
+<li>Transfer the <strong>Dissemination-and-Marking Control Lens</strong>
+artifact from <strong>Information, Reporting, Finished Judgment, and
+Decision Support</strong> to the final topic, <strong>AI and the
+Intelligence Cycle: Proposed Changes and Evidence Gaps</strong>; explain
+what changes and what cannot transfer.</li>
 <li>Identify one failure mode from the <strong>Governed Intelligence
 Cycle and Dissemination Architecture</strong> lane and the evidence that
 would reveal it.</li>
@@ -886,13 +1417,13 @@ id="the-nature-of-intelligence-answer-quality-rubric-source-evidence-uncertainty
 Nature of Intelligence answer quality rubric: source evidence,
 uncertainty, and safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>Defining Intelligence: Collection,
-Analysis, Production, Dissemination</strong> without source evidence,
-uncertainty, or a safe transfer task.</p>
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of <strong>Information,
+Reporting, Finished Judgment, and Decision Support</strong> without
+source evidence, uncertainty, or a safe transfer task.</p>
 </main>
 </body>
 </html>

@@ -12,11 +12,11 @@ This module teaches the **Historical and Declassified Intelligence Services** la
 
 ## Historical and Declassified Intelligence Services frame for American Intelligence History: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 ### American Intelligence History orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 ### American Intelligence History conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Historical Case-Translation Lens** disti
 
 ### American Intelligence History learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 - Connect **Declassified source-protection and institutional-control case study and OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study** to **Historical and Declassified Intelligence Services** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,16 +40,14 @@ Learners move from vocabulary and the **Historical Case-Translation Lens** disti
 
 ### American Intelligence History core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 | Term | Working definition |
 |---|---|
 | Declassification context | the release channel, date, and limits of an official historical source |
-| Redaction caveat | the warning that missing text may change interpretation |
-| Institutional lesson | the durable governance or analytic principle drawn from a case |
+| Redaction caveat | a warning that withheld text and selective release constrain interpretation; neither hidden contents nor absence of an event can be inferred |
+| Institutional lesson | a context-bounded governance or analytic principle supported by a case, whose transfer to another institution or era requires justification |
 | Presentism | the error of forcing modern assumptions onto a historical record |
 | Modern analogy | a bounded comparison that preserves differences between eras |
 | Oversight failure | a documented breakdown in review, records, or accountability visible in the archive |
 | Source-protection lesson | the historical principle about protecting people and methods without reconstructing live tradecraft |
-| Declassified source-protection and… | Key terms: Declassified, protection, institutional. |
-| OSS Secret Intelligence Manual: Declassified… | Key terms: OSS, Secret, Manual. |

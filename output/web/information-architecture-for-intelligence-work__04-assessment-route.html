@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>04-assessment-route.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,53 +182,454 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h3
 id="information-architecture-for-intelligence-work-assessment-route-capstone-artifacts-refresh-duties-reviewer-challenges-and-handoff">Information
 Architecture for Intelligence Work assessment route: capstone artifacts,
 refresh duties, reviewer challenges, and handoff</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-information-architecture-for-intelligence-work];
-[ageint251].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-information-architecture-for-intelligence-work">[@sec:chapter-information-architecture-for-intelligence-work]</span>.</p>
 <h3
 id="information-architecture-for-intelligence-work-assessment-pathway-capstone-artifacts-and-mastery-evidence">Information
 Architecture for Intelligence Work assessment pathway: capstone
 artifacts and mastery evidence</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-information-architecture-for-intelligence-work];
-[ageint251].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-information-architecture-for-intelligence-work">[@sec:chapter-information-architecture-for-intelligence-work]</span>.</p>
 <h4
 id="information-architecture-for-intelligence-work-capstone-pathway-reviewable-packet-and-excluded-use">Information
 Architecture for Intelligence Work capstone pathway: reviewable packet
 and excluded use</h4>
 <p>The capstone deliverable is a reviewable packet that plugs into the
 broader unit thread. Run it through the canonical phase, artifact, and
-review-gate ladder in the shared method-and-assurance reference
-([sec:method-assurance-reference]); the local topic cluster is
-<strong>Personal Knowledge Management Systems for Intelligence
-Professionals; Zettelkasten: German Note-Taking System for
-Researchers</strong>.</p>
+review-gate ladder in the shared method-and-assurance reference (<span
+class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>);
+the local topic cluster is <strong>Personal Knowledge Management Systems
+for Intelligence Professionals; Zettelkasten: Linked Atomic Notes and
+Evidence Boundaries</strong>.</p>
 <p>Minimum module submission: one-page analytic memo, source-lane map,
 claim ledger, safe-lab packet, rubric self-assessment, and debrief note.
 The packet must name what is excluded, who may approve reuse, and what
 would trigger a source refresh for <strong>Personal Knowledge Management
-Systems for Intelligence Professionals; Zettelkasten: German Note-Taking
-System for Researchers</strong> and [ageint251]; [ageint268].</p>
+Systems for Intelligence Professionals; Zettelkasten: Linked Atomic
+Notes and Evidence Boundaries</strong> and [ageint251]; [ageint268].</p>
 <h4
 id="information-architecture-for-intelligence-work-instructor-facilitation-notes-studio-roles-and-pause-points">Information
 Architecture for Intelligence Work instructor facilitation notes: studio
 roles and pause points</h4>
 <p>Facilitate as a bounded studio around <strong>Personal Knowledge
-Management Systems for Intelligence Professionals; Zettelkasten: German
-Note-Taking System for Researchers</strong>, not as a lecture-only
+Management Systems for Intelligence Professionals; Zettelkasten: Linked
+Atomic Notes and Evidence Boundaries</strong>, not as a lecture-only
 session.</p>
 <ul>
 <li>Start with the authority card and excluded-action list before
 showing examples from <strong>Personal Knowledge Management Systems for
-Intelligence Professionals; Zettelkasten: German Note-Taking System for
-Researchers</strong> and [ageint251]; [ageint268].</li>
+Intelligence Professionals; Zettelkasten: Linked Atomic Notes and
+Evidence Boundaries</strong> and [ageint251]; [ageint268].</li>
 <li>Assign one learner to maintain the claim ledger and one learner to
 challenge source quality.</li>
 <li>Keep agent prompts visible enough for review and separate from final
@@ -235,51 +643,68 @@ preserved, rights impact, and next refresh owner.</li>
 id="information-architecture-for-intelligence-work-assessment-rubric-topic-evidence-and-mastery-criteria">Information
 Architecture for Intelligence Work assessment rubric: topic evidence and
 mastery criteria</h4>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
 </colgroup>
 <thead>
 <tr>
-<th>Topic</th>
+<th>Topics or pattern identities (complete coverage)</th>
 <th>Evidence of mastery</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Personal Knowledge Management (PKM) Systems for Intelligence
-Professionals</strong></td>
-<td>Completed <strong>dissemination map with audience, caveat, marking,
-records, and feedback fields</strong> with source descriptor, caveat,
-uncertainty, blocked-use note, and named reviewer for this topic.</td>
+Professionals</strong>; <strong>Zettelkasten: Linked Atomic Notes and
+Evidence Boundaries</strong>; <strong>Obsidian, Roam Research, LogSeq:
+Tool-Evaluation Questions</strong></td>
+<td><strong>Source warrant:</strong> reconstruct a consequential claim
+from an exact source locator; separate observation from inference and
+apply this check: separate urgency from authority, workload from
+quality, and personal tempo claims from measured task-switching
+cost.</td>
 </tr>
 <tr>
-<td><strong>Zettelkasten: German Note-Taking System for
-Researchers</strong></td>
-<td>Completed <strong>dissemination map with audience, caveat, marking,
-records, and feedback fields</strong> with source descriptor, caveat,
-uncertainty, blocked-use note, and named reviewer for this topic.</td>
+<td><strong>Second Brain as External Notes: Capture Is Not
+Understanding</strong>; <strong>Information Diet and Source
+Hygiene</strong>; <strong>Distraction Architecture: Retrieval, Re-Entry,
+and Necessary Interruptions</strong></td>
+<td><strong>Competing explanation:</strong> compare two accounts of the
+same evidence; identify a discriminating observation and a claim neither
+account can yet support.</td>
 </tr>
 <tr>
-<td><strong>Obsidian, Roam Research, LogSeq: PKM Tools for
-Analysts</strong></td>
-<td>Completed <strong>dissemination map with audience, caveat, marking,
-records, and feedback fields</strong> with source descriptor, caveat,
-uncertainty, blocked-use note, and named reviewer for this topic.</td>
+<td><strong>Collaborative Intelligence: Shared Notes, Source of Truth,
+and Correction Propagation</strong>; <strong>The Analyst’s Toolkit:
+Governed Storage, Retrieval, and Lifecycle Limits</strong></td>
+<td><strong>Revision and transfer:</strong> revise or defend the
+judgment after the withheld evidence arrives; identify what cannot
+transfer to another benign case. Apply the boundary: exclude live
+operational tempo mandates, surveillance of people, performance
+coercion, and unreviewed tasking under fatigue.</td>
 </tr>
 </tbody>
-</table>
-<p>The general competency and mastery rubric is the canonical five-row
-rubric in the shared method-and-assurance reference
-([sec:method-assurance-reference]), covering conceptual command,
-analytic rigor, agentic design, governance and rights, and safety
-posture. Score the artifact for <strong>Personal Knowledge Management
-Systems for Intelligence Professionals; Zettelkasten: German Note-Taking
-System for Researchers</strong> against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded
-posture stay visible.</p>
+</table></div>
+<p>The groups cover every listed topic, not just the opening topics. For
+pattern registries, each identity includes its methods, defensive
+application, and architecture aspects in one reviewable artifact. The
+row identifies a focused reasoning operation; the studio’s source trace,
+competing explanation, and withheld-evidence revision remain required
+for every topic or pattern in <strong>Personal Knowledge Management
+Systems for Intelligence Professionals; Zettelkasten: Linked Atomic
+Notes and Evidence Boundaries</strong>. For the transfer challenge,
+compare the final listed topic or pattern with the first: explain which
+claim, permission, or evidence assumption fails to carry over after the
+instructor’s new evidence. For a single-topic module, change the benign
+case instead. A justified abstention or refusal to transfer can
+demonstrate mastery; an unsupported confident answer cannot. Use the
+canonical five-row rubric in the shared method-and-assurance reference
+(<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>)
+for conceptual command, analytic rigor, agentic design, governance and
+rights, and safety posture.</p>
 <h3
 id="information-architecture-for-intelligence-work-refresh-map-source-changes-safety-triggers-and-retest-duties">Information
 Architecture for Intelligence Work refresh map: source changes, safety
@@ -288,55 +713,57 @@ triggers, and retest duties</h3>
 triggers, tool incidents, and instructor debrief findings each produce a
 visible owner, action, and retest condition before the module is reused
 against [ageint251]; [ageint268] and <strong>Personal Knowledge
-Management Systems for Intelligence Professionals; Zettelkasten: German
-Note-Taking System for Researchers</strong>.</p>
+Management Systems for Intelligence Professionals; Zettelkasten: Linked
+Atomic Notes and Evidence Boundaries</strong>.</p>
 <h4
 id="information-architecture-for-intelligence-work-refresh-triggers-source-changes-and-required-actions">Information
 Architecture for Intelligence Work refresh triggers: source changes and
 required actions</h4>
 <p>Refresh against the canonical trigger-and-action table in the shared
-method-and-assurance reference ([sec:method-assurance-reference]). When
-a source-guide reference, official standard, AI or public-sector policy,
-interface specification, safety audit, or instructor debrief signal
-appears, take the matching required action before reuse for
+method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>).
+When a source-guide reference, official standard, AI or public-sector
+policy, interface specification, safety audit, or instructor debrief
+signal appears, take the matching required action before reuse for
 <strong>Personal Knowledge Management Systems for Intelligence
-Professionals; Zettelkasten: German Note-Taking System for
-Researchers</strong>. The local signals begin with [ageint251];
+Professionals; Zettelkasten: Linked Atomic Notes and Evidence
+Boundaries</strong>. The local signals begin with [ageint251];
 [ageint268].</p>
 <h4
 id="information-architecture-for-intelligence-work-claim-and-evidence-ledger-claim-classes-caveats-and-owners">Information
 Architecture for Intelligence Work claim and evidence ledger: claim
 classes, caveats, and owners</h4>
 <p>The claim and evidence ledger follows the canonical claim-class
-ladder in the shared method-and-assurance reference
-([sec:method-assurance-reference]). Apply the source-spine,
-research-backed governance, agentic-workflow, empirical or evaluated
-capability, safety, and cross-module claim classes to every assertion,
-attaching the required evidence and clearing the matching review gate
-before reuse. The local topic cluster is <strong>Personal Knowledge
-Management Systems for Intelligence Professionals; Zettelkasten: German
-Note-Taking System for Researchers</strong>, and the source spine for
-these checks begins with [ageint251]; [ageint268].</p>
+ladder in the shared method-and-assurance reference (<span
+class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>).
+Apply the source-spine, research-backed governance, agentic-workflow,
+empirical or evaluated capability, safety, and cross-module claim
+classes to every assertion, attaching the required evidence and clearing
+the matching review gate before reuse. The local topic cluster is
+<strong>Personal Knowledge Management Systems for Intelligence
+Professionals; Zettelkasten: Linked Atomic Notes and Evidence
+Boundaries</strong>, and the source spine for these checks begins with
+[ageint251]; [ageint268].</p>
 <h3
 id="information-architecture-for-intelligence-work-reviewer-challenge-route-checklist-failure-evidence-and-remediation">Information
 Architecture for Intelligence Work reviewer challenge route: checklist,
 failure evidence, and remediation</h3>
 <p>Before marking the work complete, verify the local source spine
 beginning with [ageint251]; [ageint268].</p>
-<p><strong>Triangulation anchors.</strong> In module 44’s
-review-checklist section, directly verified anchors for the
-<strong>Governed Intelligence Cycle and Dissemination
-Architecture</strong> lane include
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_203];
-[official_odni_icd_204]; [official_odni_icd_504]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+<p><strong>Contextual source routes.</strong> For module 44’s
+review-checklist section, the <strong>Operator Productivity and
+Cognitive Performance</strong> catalog routes include
+[official_odni_icd_203];
+[scholarly_heuer_psychology_intelligence_analysis];
+[official_nist_sp_800_161r1]. Check the actual passage, edition, claim
+scope and access limitations before use. Route membership does not
+establish relevance, independent corroboration or efficacy.</p>
 <ul>
 <li>The module source spine resolves to Pandoc citation keys and no raw
 source URLs are pasted into prose, here covering <strong>Personal
 Knowledge Management Systems for Intelligence Professionals;
-Zettelkasten: German Note-Taking System for Researchers</strong>.
+Zettelkasten: Linked Atomic Notes and Evidence Boundaries</strong>.
 [ageint251]; [ageint268].</li>
 <li>Every research-backed claim has a directly verified source anchor or
 is clearly marked as source-guide context.</li>
@@ -354,15 +781,19 @@ id="information-architecture-for-intelligence-work-learning-path-links-module-ma
 Architecture for Intelligence Work learning-path links: module map,
 overview, and curriculum atlas</h3>
 <p>Follow the cross-links to move between <strong>Personal Knowledge
-Management Systems for Intelligence Professionals; Zettelkasten: German
-Note-Taking System for Researchers</strong> and the rest of the
+Management Systems for Intelligence Professionals; Zettelkasten: Linked
+Atomic Notes and Evidence Boundaries</strong> and the rest of the
 curriculum without losing the source spine: orientation first, then the
 parent unit, then the modules on either side. Primary sources:
 [ageint251]; [ageint268].</p>
-<p>[sec:curriculum_orientation],
-[sec:part-productivity-intelligence-and-cognitive-performance],
-[sec:chapter-the-intelligent-operator-as-cognitive-athlete],
-[sec:part-industrial-and-cyber-physical-intelligence]</p>
+<p><span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:part-productivity-intelligence-and-cognitive-performance">[@sec:part-productivity-intelligence-and-cognitive-performance]</span>,
+<span class="citation"
+data-cites="sec:chapter-the-intelligent-operator-as-cognitive-athlete">[@sec:chapter-the-intelligent-operator-as-cognitive-athlete]</span>,
+<span class="citation"
+data-cites="sec:part-industrial-and-cyber-physical-intelligence">[@sec:part-industrial-and-cyber-physical-intelligence]</span></p>
 </main>
 </body>
 </html>

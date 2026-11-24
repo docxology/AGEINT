@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>00-overview.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,9 +182,411 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1
 id="sec:chapter-counterintelligence-fundamentals">Counterintelligence
 Fundamentals</h1>
@@ -185,17 +594,22 @@ Fundamentals</h1>
 id="counterintelligence-fundamentals-figures-and-course-links-visual-evidence-source-flow-and-navigation">Counterintelligence
 Fundamentals figures and course links: visual evidence, source flow, and
 navigation</h3>
-<p>The module uses
-[fig:counterintelligence-detection-investigation-loop] and
-[fig:part-counterintelligence-module-map] to map its evidence flow,
-safety boundaries, review artifacts, and refresh cues.</p>
-<p>Navigation links: [sec:curriculum_orientation],
-[sec:part-counterintelligence],
-[sec:chapter-counterintelligence-against-non-state-actors].</p>
+<p>The module uses <span class="citation"
+data-cites="fig:counterintelligence-detection-investigation-loop">[@fig:counterintelligence-detection-investigation-loop]</span>
+and <span class="citation"
+data-cites="fig:part-counterintelligence-module-map">[@fig:part-counterintelligence-module-map]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:part-counterintelligence">[@sec:part-counterintelligence]</span>,
+<span class="citation"
+data-cites="sec:chapter-counterintelligence-against-non-state-actors">[@sec:chapter-counterintelligence-against-non-state-actors]</span>.</p>
 <figure id="fig:counterintelligence-detection-investigation-loop">
-<img
-src="../../../../figures/mermaid/counterintelligence-detection-investigation-loop.png"
-alt="The oversight-bounded cycle by which an anomaly indicator becomes a governed counterintelligence investigation with damage assessment and legal review at every gate." />
+<a class="figure-full-size-link" href="../figures/mermaid/counterintelligence-detection-investigation-loop.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The oversight-bounded cycle by which an anomaly indicator becomes a governed…"><img
+src="../figures/mermaid/counterintelligence-detection-investigation-loop.png"
+alt="Top-down governance loop: anomaly indicators feed a triage and analysis node, which passes a legal-and-policy review gate before an approved inquiry; the inquiry leads to a finding node that branches to either closure-with-feedback or substantiated, where substantiated routes to damage assessment and mitigation, then to oversight reporting, and feedback returns to update indicators and baselines." aria-details="fig-counterintelligence-detection-investigation-loop-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>The oversight-bounded cycle by which an
 anomaly indicator becomes a governed counterintelligence investigation
 with damage assessment and legal review at every gate. The captioned
@@ -203,7 +617,7 @@ view belongs to the counterintelligence / counterintelligence
 fundamentals section and should be read as a map of Anomaly indicator,
 Triage and analysis, Approved inquiry, and Close with feedback, not as a
 capability score or live-task instruction.</figcaption>
-</figure>
+<details id="fig-counterintelligence-detection-investigation-loop-long-description" class="figure-long-description" data-figure-label="fig:counterintelligence-detection-investigation-loop"><summary>Detailed description of figure counterintelligence detection investigation loop</summary><p>This process-flow figure is assigned to the counterintelligence / counterintelligence fundamentals section and should be read as an accessible equivalent for Counterintelligence Detection and Investigation Governance Loop. The short alternative identifies the figure as: Top-down governance loop: anomaly indicators feed a triage and analysis node, which passes a legal-and-policy review gate before an approved inquiry; the inquiry leads to a finding node that branches to either closure-with-feedback or substantiated, where substantiated routes to damage assessment and mitigation, then to oversight reporting, and feedback returns to update indicators and baselines. The full visual conveys Anomaly indicator, Triage and analysis, Approved inquiry, Close with feedback, Damage assessment, Mitigation and control, Oversight reporting, and Update baselines. The caption explains the reader task as follows: The oversight-bounded cycle by which an anomaly indicator becomes a governed counterintelligence investigation with damage assessment and legal review at every gate. The captioned view belongs to the counterintelligence / counterintelligence fundamentals section and should be read as a map of Anomaly indicator, Triage and analysis, Approved inquiry, and Close with feedback, not as a capability score or live-task instruction. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <p>This module teaches the <strong>Counterintelligence and
 Source-Integrity Defense</strong> lane through a bounded, source-backed
 coursebook chapter. [ageint238]; [ageint240].</p>
@@ -211,14 +625,14 @@ coursebook chapter. [ageint238]; [ageint240].</p>
 id="counterintelligence-and-source-integrity-defense-frame-for-counterintelligence-fundamentals-source-context-topic-focus-and-reader-task">Counterintelligence
 and Source-Integrity Defense frame for Counterintelligence Fundamentals:
 source context, topic focus, and reader task</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-counterintelligence-fundamentals]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-counterintelligence-fundamentals">[@sec:chapter-counterintelligence-fundamentals]</span>.</p>
 <h3
 id="counterintelligence-fundamentals-orientation-reader-task-conceptual-primer-outcomes-and-vocabulary">Counterintelligence
 Fundamentals orientation: reader task, conceptual primer, outcomes, and
 vocabulary</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-counterintelligence-fundamentals]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-counterintelligence-fundamentals">[@sec:chapter-counterintelligence-fundamentals]</span>.</p>
 <h3
 id="counterintelligence-fundamentals-conceptual-primer-source-context-core-model-and-reader-task">Counterintelligence
 Fundamentals conceptual primer: source context, core model, and reader
@@ -255,8 +669,8 @@ and dissent fields</strong> with safety and rights gates.</p>
 id="counterintelligence-fundamentals-learning-outcomes-analytic-moves-evidence-duties-and-transfer">Counterintelligence
 Fundamentals learning outcomes: analytic moves, evidence duties, and
 transfer</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-counterintelligence-fundamentals]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-counterintelligence-fundamentals">[@sec:chapter-counterintelligence-fundamentals]</span>.</p>
 <ul>
 <li>Connect <strong>Source-vetting and insider-threat review using
 sample personnel records and Offensive vs Defensive Counterintelligence:
@@ -284,9 +698,9 @@ not provide surveillance or handling playbooks.</li>
 id="counterintelligence-fundamentals-core-vocabulary-source-terms-method-roles-and-safety-limits">Counterintelligence
 Fundamentals core vocabulary: source terms, method roles, and safety
 limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-counterintelligence-fundamentals]; [ageint238].</p>
-<table>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-counterintelligence-fundamentals">[@sec:chapter-counterintelligence-fundamentals]</span>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -300,8 +714,9 @@ limits</h3>
 <tbody>
 <tr>
 <td>Source integrity</td>
-<td>confidence that evidence has not been distorted, laundered, or
-compromised</td>
+<td>the assessed preservation of evidence origin, content, and context;
+an intact chain does not establish that the underlying claim is
+true</td>
 </tr>
 <tr>
 <td>Compromise signal</td>
@@ -314,24 +729,17 @@ review</td>
 </tr>
 <tr>
 <td>Insider risk</td>
-<td>risk created by trusted access combined with motive, pressure, or
-control failure</td>
+<td>risk associated with trusted access and possible error, misuse, or
+control failure; an anomaly does not establish motive or identify a
+culprit</td>
 </tr>
 <tr>
 <td>Protected disclosure</td>
 <td>a safe channel for reporting concerns without exposing sensitive
 details</td>
 </tr>
-<tr>
-<td>Source-vetting and insider-threat review using…</td>
-<td>Key terms: vetting, insider, threat.</td>
-</tr>
-<tr>
-<td>Offensive vs Defensive Counterintelligence:…</td>
-<td>Key terms: Offensive, Defensive, Counterintelligence.</td>
-</tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

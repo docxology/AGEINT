@@ -14,21 +14,15 @@ performance evidence. Technical and theoretical analogies, including
 active-inference material, remain bounded by their direct domain sources and do
 not become deployment evidence without separate evaluation support.
 
-The same stance now has a machine-checkable extension. Citation presence is
-necessary but not sufficient for AGEINT scholarship, so the generated manuscript
-is checked for source-family mix, uncited claim-bearing sections, thin
-claim-bearing support, and sections whose support comes from only one broad
-family. The audit distinguishes hard failures from review warnings: a
-claim-bearing overview, lesson, worked example, architecture source section,
-research-governance section, assessment review, or unit introduction with zero
-or one unique citation fails the current artifact evidence; a section with
-multiple citations from one source family is reported as a review target for
-future triangulation. The control surface is summarized in
-[@fig:ageint-scholarship-triangulation-map], and the machine-readable companion
-report is written to `output/reports/scholarship_quality.json` during the
-current-evidence pass. This keeps source-guide inheritance visible while still
-preferring official, standards, law/policy, public-domain, and scholarly anchors
-whenever a section makes a stronger governance, technical, or empirical claim
+The scholarship audit checks citation presence, source-family mix, and thin
+claim-bearing sections. Its count thresholds and family warnings are screening
+rules, not grading criteria or tests of evidentiary independence: two publishers
+may share one upstream observation, while two genuinely separate studies can
+belong to one source family. Normative authority and empirical results must be
+assessed for their distinct claim roles. The control surface is summarized in
+[@fig:ageint-scholarship-triangulation-map], with a companion report at
+`output/reports/scholarship_quality.json`. Human review must still trace origins,
+inspect exact passages, and seek contradictory evidence
 [@scholarly_rethlefsen_2021_prisma_s]; [@official_nist_ai_rmf];
 [@official_nist_ai_600_1].
 

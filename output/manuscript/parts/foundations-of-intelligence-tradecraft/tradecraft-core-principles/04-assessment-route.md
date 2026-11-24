@@ -1,22 +1,22 @@
 ### Tradecraft: Core Principles assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-tradecraft-core-principles]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-tradecraft-core-principles].
 
 ### Tradecraft: Core Principles assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-tradecraft-core-principles]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-tradecraft-core-principles].
 
 #### Tradecraft: Core Principles capstone pathway: reviewable packet and excluded use
 
-The capstone deliverable is a reviewable packet that plugs into the broader unit thread. Run it through the canonical phase, artifact, and review-gate ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]); the local topic cluster is **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance**.
+The capstone deliverable is a reviewable packet that plugs into the broader unit thread. Run it through the canonical phase, artifact, and review-gate ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]); the local topic cluster is **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**.
 
-Minimum module submission: one-page analytic memo, source-lane map, claim ledger, safe-lab packet, rubric self-assessment, and debrief note. The packet must name what is excluded, who may approve reuse, and what would trigger a source refresh for **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance** and [@ageint237]; [@ageint266].
+Minimum module submission: one-page analytic memo, source-lane map, claim ledger, safe-lab packet, rubric self-assessment, and debrief note. The packet must name what is excluded, who may approve reuse, and what would trigger a source refresh for **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance** and [@ageint237]; [@ageint266].
 
 #### Tradecraft: Core Principles instructor facilitation notes: studio roles and pause points
 
-Facilitate as a bounded studio around **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance**, not as a lecture-only session.
+Facilitate as a bounded studio around **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**, not as a lecture-only session.
 
-- Start with the authority card and excluded-action list before showing examples from **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance** and [@ageint237]; [@ageint266].
+- Start with the authority card and excluded-action list before showing examples from **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance** and [@ageint237]; [@ageint266].
 - Assign one learner to maintain the claim ledger and one learner to challenge source quality.
 - Keep agent prompts visible enough for review and separate from final judgment.
 - Pause any activity that drifts toward live systems, real people, sensitive data, or external action.
@@ -24,43 +24,48 @@ Facilitate as a bounded studio around **What Is Tradecraft? Historical Definitio
 
 #### Tradecraft: Core Principles assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **What Is Tradecraft? Historical Definitions and Evolution** | Completed **analytic note with hypotheses, evidence table, confidence, and dissent fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Operations security (OPSEC) governance** | Completed **analytic note with hypotheses, evidence table, confidence, and dissent fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Compartmentation and need-to-know governance** | Completed **analytic note with hypotheses, evidence table, confidence, and dissent fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Tradecraft: Historical Practice and Analytic Discipline**; **Operations security (OPSEC) governance**; **Compartmentation and need-to-know governance** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: separate raw reporting, inference, judgment, and recommendation before synthesis. |
+| **Cover identity governance literacy**; **Plausible Deniability: Attribution Claims and Accountability**; **Versioned Evidence Memory without Person Tracking** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Situational Awareness: Observation, Interpretation, and Uncertainty**; **Public Intelligence Vocabulary and Glossary Error Checking**; **Classical Tradecraft in AI Commentary: Forecasts, Not Operational Guidance** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: avoid policy advocacy, certainty inflation, source laundering, and claims without traceable evidence. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Tradecraft: Core Principles refresh map: source changes, safety triggers, and retest duties
 
 Source changes, unsafe wording, inaccessible artifacts, rights triggers, tool
 incidents, and instructor debrief findings each produce a visible owner, action,
-and retest condition before the module is reused against [@ageint237]; [@ageint266] and **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance**.
+and retest condition before the module is reused against [@ageint237]; [@ageint266] and **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**.
 
 #### Tradecraft: Core Principles refresh triggers: source changes and required actions
 
-Refresh against the canonical trigger-and-action table in the shared method-and-assurance reference ([@sec:method-assurance-reference]). When a source-guide reference, official standard, AI or public-sector policy, interface specification, safety audit, or instructor debrief signal appears, take the matching required action before reuse for **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance**. The local signals begin with [@ageint237]; [@ageint266].
+Refresh against the canonical trigger-and-action table in the shared method-and-assurance reference ([@sec:method-assurance-reference]). When a source-guide reference, official standard, AI or public-sector policy, interface specification, safety audit, or instructor debrief signal appears, take the matching required action before reuse for **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**. The local signals begin with [@ageint237]; [@ageint266].
 
 #### Tradecraft: Core Principles claim and evidence ledger: claim classes, caveats, and owners
 
-The claim and evidence ledger follows the canonical claim-class ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]). Apply the source-spine, research-backed governance, agentic-workflow, empirical or evaluated capability, safety, and cross-module claim classes to every assertion, attaching the required evidence and clearing the matching review gate before reuse. The local topic cluster is **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance**, and the source spine for these checks begins with [@ageint237]; [@ageint266].
+The claim and evidence ledger follows the canonical claim-class ladder in the shared method-and-assurance reference ([@sec:method-assurance-reference]). Apply the source-spine, research-backed governance, agentic-workflow, empirical or evaluated capability, safety, and cross-module claim classes to every assertion, attaching the required evidence and clearing the matching review gate before reuse. The local topic cluster is **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**, and the source spine for these checks begins with [@ageint237]; [@ageint266].
 
 ### Tradecraft: Core Principles reviewer challenge route: checklist, failure evidence, and remediation
 
 Before marking the work complete, verify the local source spine beginning with [@ageint237]; [@ageint266].
 
-**Triangulation anchors.** In module 3's review-checklist section, directly verified anchors for the **Governed Intelligence Cycle and Dissemination Architecture** lane include [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_203]; [@official_odni_icd_204]; [@official_odni_icd_504]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 3's review-checklist section, the **Governed Intelligence Cycle and Dissemination Architecture** catalog routes include [@official_intelligence_gov_how_ic_works]; [@official_odni_icd_203]; [@official_odni_icd_204]; [@official_odni_icd_504]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
-- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance**. [@ageint237]; [@ageint266].
+- The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance**. [@ageint237]; [@ageint266].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.
 - Agentic affordances are limited to retrieval, comparison, drafting, simulation, critique, and audit support.
 - The lab packet uses public, benign, owned-lab, or synthetic material only.
@@ -70,6 +75,6 @@ Before marking the work complete, verify the local source spine beginning with [
 
 ### Tradecraft: Core Principles learning-path links: module map, overview, and curriculum atlas
 
-Follow the cross-links to move between **What Is Tradecraft? Historical Definitions and Evolution; Operations security governance** and the rest of the curriculum without losing the source spine: orientation first, then the parent unit, then the modules on either side. Primary sources: [@ageint237]; [@ageint266].
+Follow the cross-links to move between **Tradecraft: Historical Practice and Analytic Discipline; Operations security governance** and the rest of the curriculum without losing the source spine: orientation first, then the parent unit, then the modules on either side. Primary sources: [@ageint237]; [@ageint266].
 
 [@sec:curriculum_orientation], [@sec:part-foundations-of-intelligence-tradecraft], [@sec:chapter-intelligence-community-architectures], [@sec:part-human-intelligence-humint]

@@ -1,17 +1,15 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  MSG["Protected message"]
-  CONF["Confidentiality: AES (FIPS 197)"]
-  INT["Integrity: SHS hashing (FIPS 180-4)"]
-  AUTHN["Authentication: DSS signatures (FIPS 186-5)"]
-  KEY["Key lifecycle: SP 800-57"]
-  MSG --> CONF
-  MSG --> INT
-  MSG --> AUTHN
-  KEY --> CONF
-  KEY --> AUTHN
-  CONF --> DEC{"Assurance decision"}
-  INT --> DEC
-  AUTHN --> DEC
-  DEC -->|"pass"| OK["Verified message"]
-  DEC -->|"fail"| FLAG["Flag for review"]
+    MSG["Synthetic message and trust-context cards"] --> CONF["FIPS 197: AES<br/>confidentiality under stated use<br/>not authenticated messaging by itself"]
+    MSG --> INT["FIPS 180-4: SHS<br/>change comparison against trusted digest<br/>untrusted checksum is not authenticity"]
+    MSG --> SIG["FIPS 186-5: DSS<br/>signature verification with trusted<br/>identity/key binding and valid conditions"]
+    KEY["SP 800-57 key lifecycle<br/>key status, trust and usage assumptions"] --> CONF
+    KEY --> SIG
+    CONF --> DEC{"Record each scoped property<br/>and trust assumptions"}
+    INT --> DEC
+    SIG --> DEC
+    DEC -->|Failed| FAIL["Record failure<br/>restrict claim and review"]
+    DEC -->|Unavailable or unknown| UNKNOWN["Hold verification claim<br/>missing trusted reference or key evidence"]
+    DEC -->|Verified within stated scope| OK["Property-specific result only<br/>separate factual-content assessment"]
+    CONTROL["Classroom controls<br/>record and untrusted checksum both altered<br/>validly signed false statement"] -.-> OK
+    OK --> LIMIT["Cryptographic validity is not factual truth<br/>No covert communication or live key activity"]

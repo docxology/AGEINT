@@ -2,25 +2,31 @@
 
 ## PRODUCTIVITY INTELLIGENCE AND COGNITIVE PERFORMANCE learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-productivity-intelligence-and-cognitive-performance]; [@ageint262].
+**Navigation.** Parent section: [@sec:part-productivity-intelligence-and-cognitive-performance].
 
 ### analyst cognitive performance discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-productivity-intelligence-and-cognitive-performance]; [@ageint262].
+**Navigation.** Parent section: [@sec:part-productivity-intelligence-and-cognitive-performance].
 
 This unit teaches **analyst cognitive performance**. Productivity lessons frame workload, attention, external memory, handoffs, and review rhythm as quality controls for intelligence work.
 
 ### analyst cognitive performance source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-productivity-intelligence-and-cognitive-performance]; [@ageint262].
+**Navigation.** Parent section: [@sec:part-productivity-intelligence-and-cognitive-performance].
 
 Use source-guide and governance anchors for records, review, accessibility, and accountable workflow claims.
 
 ### analyst cognitive performance practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-productivity-intelligence-and-cognitive-performance]; [@ageint262].
+**Navigation.** Parent section: [@sec:part-productivity-intelligence-and-cognitive-performance].
 
-The recurring practice artifact is a **workload and decision-hygiene card** that draws on workload signal, focus-block plan, handoff memo, and review checkpoint. The unit keeps its learning spine explicit. Learners identify overload, protect focus, preserve handoffs, and define re-entry context after interruption.
+The recurring practice artifact is a **workload and decision-hygiene card** that draws on workload signal, focus-block plan, handoff memo, and review checkpoint. The unit keeps its learning spine explicit. Classroom packet: a fictional analyst has four reading tasks, one review due at noon, three interruptions, and self-rated high temporal demand. Task B lacks a source link; task D has no deadline.
+
+1. Capture queue state, dependencies, review deadline, and interruption re-entry notes without recording health information.
+2. Separate urgent review from optional reading; reserve an accessible focus interval and a review checkpoint, then name a handoff owner for B's missing link.
+3. Compare two queues with equal completed-task counts: the queue missing the noon review must not receive the same quality judgment.
+4. Submit a workload card deferring D, preserving the review and rest boundary, and marking B not ready until its source arrives. A high self-rating signals discussion, not diagnosis, incapacity, or proven performance loss.
+Stop adding tasks when the review cannot fit; hand the unresolved source and queue decision to the instructor or relief reviewer, not an automated worker-ranking system.
 
 ### analyst cognitive performance safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint262]; [@ageint263].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint262]; [@ageint263].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint262]; [@ageint263].
 
 Capstone thread:
 
@@ -53,7 +59,7 @@ The unit uses [@fig:part-productivity-intelligence-and-cognitive-performance-mod
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-advanced-analysis-methods], [@sec:chapter-the-intelligent-operator-as-cognitive-athlete].
 
-![The unit module map traces the part's chapters as a linear reading sequence. It is anchored to the productivity intelligence and cognitive performance section; use it to inspect 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-productivity-intelligence-and-cognitive-performance-module-map.png){#fig:part-productivity-intelligence-and-cognitive-performance-module-map}
+![The PRODUCTIVITY INTELLIGENCE AND COGNITIVE PERFORMANCE module map traces the part's chapters as a linear reading sequence. It is anchored to the productivity intelligence and cognitive performance section; use it to inspect 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../figures/mermaid/part-productivity-intelligence-and-cognitive-performance-module-map.png){#fig:part-productivity-intelligence-and-cognitive-performance-module-map}
 
 ![This part frames sustained intelligence work as two coupled loops — the cognitive athlete who manages workload, focus, and decision hygiene, and the information architecture that externalizes memory and preserves handoffs — both feeding a workload-and-decision-hygiene card gated so no optimization overrides safety or review.](../../../figures/mermaid/part-productivity-cognitive-performance-loops.png){#fig:part-productivity-cognitive-performance-loops}
 

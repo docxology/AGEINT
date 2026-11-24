@@ -1,15 +1,44 @@
 concept_keyword_routes:
 - keywords:
+  - mcp
+  - model context protocol
+  - tool governance
+  frame: Evaluate MCP host, client, and server boundaries using tool schemas, consent, provenance, and deny-by-default
+    permissions; protocol capability and server metadata never grant execution authority.
+- keywords:
+  - cognitive controller
+  - controller stack
+  - reasoning agents
+  frame: Distinguish a software reasoning controller's proposed plans from application state, permission checks,
+    tool results, and human decisions. Brain is an architectural metaphor here, not a claim about human neurocognition.
+- keywords:
+  - perception modules
+  - multimodal ingestion
+  frame: Trace software ingestion from supplied text, images, or audio through transforms, provenance, information loss,
+    and missing observations; multimodal input does not establish authenticity or human perception.
+- keywords:
+  - unified taxonomy
+  frame: Read perception, brain, planning, action, and collaboration as software architecture labels; distinguish input
+    ingestion, model proposals, application state, permission enforcement, and delegated evidence.
+- keywords:
+  - claim-ledger memory
+  - evidence-memory
+  frame: Maintain claim memory as versioned source dependencies, correction history, retention decisions, and contamination
+    checks; remembered text is not independent evidence, and this exercise does not track people or assets.
+- keywords:
+  - soviet and russian institutions
+  - british intelligence
+  - israeli institutions
+  - chinese institutions
+  - institutional architecture
+  frame: Compare dated public institutional roles, legal mandates, oversight, and evidence gaps. Distinguish historical
+    lineage from current institutions; names or organizational succession alone do not establish present authority.
+- keywords:
   - free energy
   - predictive processing
-  frame: Treat the free-energy principle as computational-neuroscience theory, define prediction error, generative model,
-    and uncertainty in plain language, then show how the theory helps an analyst notice when a model is explaining too
-    much from too little evidence.
-- keywords:
-  - computational model
-  - active inference
-  frame: 'Treat active inference as an agent-modeling vocabulary: beliefs, actions, expected observations, and policy selection
-    are classroom concepts, not proof that an intelligence agent should act autonomously.'
+  frame: Treat the free-energy principle as computational-neuroscience theory. Define the generative model, variational
+    approximation, and observations; distinguish prediction error from variational free energy and posterior approximation
+    from evidence that the model is true. An internally consistent update does not establish deception or factual reliability.
 - keywords:
   - shared protentions
   - multi-agent active inference
@@ -17,14 +46,27 @@ concept_keyword_routes:
     dissent, uncertainty, and human review.
 - keywords:
   - social organization
-  - intelligence communit
   frame: 'Map the theory to institutions: priorities, feedback, incentives, review loops, and records shape what an intelligence
-    community notices and ignores.'
+    community notices and ignores. Treat this as a modeling perspective, not validated institutional equivalence.'
 - keywords:
   - verses
   - multi-scale
   frame: 'Read the architecture claim as a layered-systems example: separate public research claims, implementation assumptions,
     evaluation evidence, and governance limits.'
+- keywords:
+  - cognitive security through the active inference
+  frame: Separate the active-inference model of beliefs and observations from cognitive-security claims about provenance,
+    deception, or resilience. Model-based surprise alone does not establish hostile intent or a validated security control.
+- keywords:
+  - applications of active inference
+  - tu delft
+  frame: Read the application study as scholarly modeling work; identify its question, assumptions, method, and applicability
+    limits before borrowing an intelligence lesson. Theoretical coherence is not operational effectiveness.
+- keywords:
+  - computational model
+  - active inference
+  frame: 'Treat active inference as an agent-modeling vocabulary: beliefs, actions, expected observations, and policy selection
+    are classroom concepts, not proof that an intelligence agent should act autonomously.'
 - keywords:
   - external vectordb
   - persistent memory
@@ -61,12 +103,20 @@ concept_keyword_routes:
   - human source
   - agent handling
   - case officer
+  - human agent
+  - agent-handling
+  - agent-tasking
   frame: 'Treat human-source work as a governed relationship: validation, consent, reporting, source protection, and oversight—not
     contact activity.'
 - keywords:
-  - mice
   - rascls
-  frame: Use the motivation taxonomy to recognize recruitment-risk narratives and ethics constraints, not to design persuasion.
+  frame: RASCLS names reciprocity, authority, scarcity, commitment, liking, and social proof as historical influence vocabulary,
+    whereas MICE classifies money, ideology, coercion/compromise, and ego. Neither mnemonic validates person-level motive
+    prediction or authorizes contact, profiling, or persuasion.
+- keywords:
+  - mice
+  frame: MICE names money, ideology, coercion/compromise, and ego as a historical motivation taxonomy. Use it to critique
+    recruitment-risk narratives and consent boundaries, not to predict an individual's motives or design recruitment.
 - keywords:
   - recruitment
   - spotting
@@ -87,7 +137,8 @@ concept_keyword_routes:
   - signals intelligence
   frame: Frame SIGINT as authority-bound collection with minimization, handling rules, and communications-security implications.
 - keywords:
-  - metadata
+  - communications metadata
+  - signals metadata
   - traffic analysis
   frame: Treat metadata as a distinct evidence class with its own minimization, correlation limits, and legal review requirements.
 - keywords:
@@ -130,9 +181,10 @@ concept_keyword_routes:
   - imint
   frame: Treat location evidence as a quality and uncertainty problem, separating map interpretation from targeting or attribution.
 - keywords:
-  - resolution
-  - accuracy
-  - scale
+  - spatial resolution
+  - temporal resolution
+  - resolution and accuracy
+  - map scale
   frame: Compare resolution, accuracy, and temporal fitness before drawing a geospatial conclusion from imagery or map products.
 - keywords:
   - cyber intelligence
@@ -266,11 +318,6 @@ concept_keyword_routes:
   - run card
   - agent identity
   frame: Document agent identity, tool permissions, stop conditions, logs, and human approval points for every delegated run.
-- keywords:
-  - mcp
-  - model context protocol
-  - tool governance
-  frame: Evaluate tool protocols by allowlists, logging, provenance of retrieved content, and deny-by-default policies.
 - keywords:
   - pattern registry
   - design pattern

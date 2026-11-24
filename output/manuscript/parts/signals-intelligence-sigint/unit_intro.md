@@ -2,25 +2,31 @@
 
 ## SIGNALS INTELLIGENCE (SIGINT) learning spine and source route: unit purpose, module order, and evidence handoff
 
-**Evidence anchor.** [@sec:part-signals-intelligence-sigint]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-signals-intelligence-sigint].
 
 ### signals-intelligence governance discipline spine: domain question and learning focus
 
-**Evidence anchor.** [@sec:part-signals-intelligence-sigint]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-signals-intelligence-sigint].
 
 This unit teaches **signals-intelligence governance**. SIGINT is taught as legal, technical, and minimization-aware interpretation of signal-derived evidence, not interception procedure.
 
 ### signals-intelligence governance source-use contract: citation roles and evidence limits
 
-**Evidence anchor.** [@sec:part-signals-intelligence-sigint]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-signals-intelligence-sigint].
 
 Use source-guide citations for discipline concepts and directive/legal anchors for authority, minimization, retention, and dissemination claims.
 
 ### signals-intelligence governance practice artifact: recurring packet and retained evidence
 
-**Evidence anchor.** [@sec:part-signals-intelligence-sigint]; [@ageint255].
+**Navigation.** Parent section: [@sec:part-signals-intelligence-sigint].
 
-The recurring practice artifact is a **signal-evidence minimization card** that draws on authority boundary note, minimization field, signal-quality caveat, and dissemination restriction. The unit keeps its learning spine explicit. Learners separate signal availability, collection authority, analytic inference, and dissemination controls.
+The recurring practice artifact is a **signal-evidence minimization card** that draws on authority boundary note, minimization field, signal-quality caveat, and dissemination restriction. The unit keeps its learning spine explicit. Classroom packet: instructor-generated signal records show a fictional beacon observed at 10:00 and absent at 10:05; a receiver-status card records receiver downtime from 10:04 to 10:06. The scope card permits analysis of these records only.
+
+1. Separate observed samples, missing samples, receiver health, and collection scope; remove the irrelevant device-owner field.
+2. Align timestamps and compare transmitter shutdown with receiver failure as explanations.
+3. Use a second toy beacon also absent during receiver downtime as the negative control.
+4. Produce a minimization card stating that reception was interrupted but transmitter shutdown and operator intent are unresolved; technical visibility supplies neither collection authority nor permission to disseminate identifiers.
+Stop if the exercise would require interception, decryption, or expanded collection. Hand the timing gap and scope question to the instructor, not to a live operator.
 
 ### signals-intelligence governance safety boundary: accountable, synthetic, and evidence-bounded limits
 
@@ -32,7 +38,7 @@ Learners carry one unit capstone thread through the part: define an accountable 
 
 This unit's deliverables are a source-canon card, claim/evidence ledger, safe-practice lab packet, failure-mode note, instructor rubric, and debrief memo. The full source-lane and evidence-package ledgers appear in the orientation and appendices; this unit introduction keeps only the learner-facing spine for [@ageint255]; [@ageint258].
 
-This unit's safety gates are scope authorization, rights review, data provenance, tool allowlisting, human oversight, rollback, and evidence-bounded output. A missing gate turns the activity into a tabletop, audit, or written governance exercise until the gate is restored against [@ageint255]; [@ageint258].
+This unit's safety gates are documented authority for the exact activity, rights review, permitted data provenance, tool allowlisting, human oversight, and evidence-bounded output. A missing or unknown gate pauses the affected activity, including processing or sharing already supplied data. A written risk exception cannot waive authority or rights. A replacement tabletop may begin only after independently permitted synthetic inputs, tools and review responsibilities are established; it does not inherit permission from the stopped activity. Inspect the applicable source context: [@ageint255]; [@ageint258].
 
 Capstone thread:
 
@@ -53,9 +59,9 @@ The unit uses [@fig:part-signals-intelligence-sigint-module-map] and [@fig:part-
 
 Navigation links: [@sec:curriculum_orientation], [@sec:chapter-source-protection-and-ci-integration], [@sec:chapter-sigint-fundamentals].
 
-![The unit module map traces the part's chapters as a linear reading sequence. Its reader value is to make 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last visible at a glance, with the signals intelligence sigint section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-signals-intelligence-sigint-module-map.png){#fig:part-signals-intelligence-sigint-module-map}
+![The SIGNALS INTELLIGENCE (SIGINT) module map traces the part's chapters as a linear reading sequence. Its reader value is to make 2 module nodes in the unit's ordered, source-backed reading sequence from its first module to its last visible at a glance, with the signals intelligence sigint section as the source section and defensive review as the boundary.](../../../figures/mermaid/part-signals-intelligence-sigint-module-map.png){#fig:part-signals-intelligence-sigint-module-map}
 
-![Part III shows SIGINT as a legally gated, layered pipeline where authorities and minimization rules govern collection disciplines (ch7), feed a processing stack into cryptanalysis (ch8), with the modern crypto frontier reshaping what is feasible. In the signals intelligence sigint section, it lets readers compare Legal and Authorization Gate, Collection Authorities and Warrants, Minimization and Privacy Rules, and SIGINT Disciplines, ch7 so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../figures/mermaid/part-sigint-authorized-stack.png){#fig:part-sigint-authorized-stack}
+![Conceptual SIGINT literacy map for supplied static records, not collection authority or an operational processing stack. Public metadata is not a permission exemption. Encryption and signatures concern specified properties under assumptions, not the truth or intent of a message. No reception, interception, cryptanalytic attack or endpoint exploitation is exercised.](../../../figures/mermaid/part-sigint-authorized-stack.png){#fig:part-sigint-authorized-stack}
 
 ### SIGNALS INTELLIGENCE (SIGINT) module roster and source-lane inventory: citations, lanes, and learner route
 

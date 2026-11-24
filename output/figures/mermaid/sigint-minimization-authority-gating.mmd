@@ -1,21 +1,18 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  REQ["Collection Request"]
-  AUTH{"Lawful Authority?"}
-  DENY([Deny and Log])
-  SCOPE([Targeting Scope Limits])
-  MIN["Minimization Filter"]
-  REL{"Pertinent and Permitted?"}
-  RET([Retention and Analysis])
-  PURGE([Purge Non-Pertinent Data])
-  AUDIT["Compliance Audit"]
-  REQ --> AUTH
-  AUTH -->|no| DENY
-  AUTH -->|yes| SCOPE
-  SCOPE --> MIN
-  MIN --> REL
-  REL -->|yes| RET
-  REL -->|no| PURGE
-  RET --> AUDIT
-  PURGE --> AUDIT
-  AUDIT --> AUTH
+    REQ["Proposed collection or data use"] --> AUTH{"Applicable authority<br/>and scope confirmed?"}
+    AUTH -->|Absent| DENY["Deny request and log<br/>review existing-material duties"]
+    AUTH -->|Unknown| HOLD["Hold further processing<br/>restrict access pending named review"]
+    AUTH -->|Confirmed| SCOPE["Purpose and scope limits<br/>protected-person and privacy rules"]
+    SCOPE --> REL{"Use and retention permitted<br/>under applicable minimization rules?"}
+    REL -->|Yes| RET["Bounded retention and analysis<br/>purpose, access and expiry limits"]
+    REL -->|Unknown| HOLD
+    REL -->|No| DISP{"Named legal and records review<br/>preservation or deletion duty?"}
+    DENY --> DISP
+    HOLD --> DISP
+    DISP -->|Preservation duty applies| PRES["Preserve under restricted access<br/>no new analytic use authorized"]
+    DISP -->|Deletion authorized, no overriding hold| DEL["Authorized disposition<br/>document deletion and basis"]
+    DISP -->|Duty unresolved| HOLD
+    RET --> AUD["Compliance record<br/>authority, basis, owner and review date"]
+    PRES --> AUD
+    DEL --> AUD

@@ -9,6 +9,7 @@ try:
     from citation_workflow import source_citation_spine, source_citation_spine_inline
     from intelligence_content import capstone_scaffold_rows, part_research_brief, profile_triangulation_anchors, safe_topic_entries
     from manuscript_manifest.types import section_label as _label
+    from prose_policy import source_identifier_text
     from unit_education import render_unit_profile_markdown
 except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
     from ..citation_workflow import (  # type: ignore[no-redef]
@@ -21,6 +22,7 @@ except ImportError:  # pragma: no cover - exercised by thin CLI wrappers
         profile_triangulation_anchors,
         safe_topic_entries,
     )
+    from ..prose_policy import source_identifier_text  # type: ignore[no-redef]
     from ..unit_education import render_unit_profile_markdown  # type: ignore[no-redef]
     from .types import section_label as _label  # type: ignore[no-redef]
 
@@ -87,60 +89,61 @@ def _chapter_topic_context(chapter: dict[str, Any], part: dict[str, Any], *, lim
     # authored subject phrase: a lesson title like "History of Social
     # Engineering" must not have its embedded chapter-title substring
     # ("Social Engineering") neutralised into "History of the module".
-    return f"**{compact_topic_cluster(topics)}**"
+    return f"**{source_identifier_text(compact_topic_cluster(topics))}**"
 
 
 def _cognitive_attack_framework() -> str:
     return (
-        "## How adversaries target cognition\n\n"
-        "This unit is organized around the NATO/INSS reconception of cognitive warfare, summarized for "
-        "the unit in [@fig:ageint-cognitive-attack-layers], which distinguishes three layers of "
-        "engagement by their target. The biological layer targets cognitive capacity itself through "
-        "neuroscience-informed pressure on the nervous system, with AI optimizing delivery timing and "
-        "channel selection. The psychological layer targets cognitive interpretation, manipulating "
-        "individual cognition and exploiting biases at scale, with AI tailoring influence to "
-        "vulnerability profiles. The social layer targets cognitive cohesion, fracturing shared "
-        "narratives and weaponizing identity to manufacture epistemic chaos, with AI coordinating "
-        "synthetic influence across platforms [@scholarly_ccdcoe_cognitive_warfare_reconception]. "
-        "Holding the three layers apart matters because each demands a different defense -- resilience "
-        "of attention, inoculation against manipulation, and protection of shared sense-making -- and a "
-        "defender who conflates them will mismatch the countermeasure to the attack. Every exercise in "
-        "this unit stays defensive, synthetic, and evidence-bounded: the taxonomy is taught to build "
-        "inoculation and detection, never to script influence "
-        "[@official_darpa_intrinsic_cognitive_security]."
+        "## Cognitive-security models: source scope before defensive use\n\n"
+        "The CCDCOE research summary frames cognitive warfare as pressure on the structures through "
+        "which a social system interprets evidence, establishes trust, and coordinates decisions. "
+        "Its systemic invariants include epistemic frameworks, values, collective identity, trust "
+        "architectures, and expectations about the future. This is a conceptual account, not evidence "
+        "that disagreement, distress, or institutional failure was caused by a cognitive attack. "
+        "The unit map [@fig:ageint-cognitive-attack-layers] separates those source concepts from "
+        "AGEINT's proposed defensive checks; it does not attribute a biological/psychological/social "
+        "attack taxonomy to that source [@scholarly_ccdcoe_cognitive_warfare_reconception].\n\n"
+        "For a classroom case, first record the observable artifact and its origin, then compare "
+        "ordinary error, ambiguity, missing context, and deliberate interference as live alternatives. "
+        "A defender may check provenance, preserve dissent, and clarify decision ownership without "
+        "profiling an audience or inferring an adversary. Assign the next check to the alternative "
+        "it would discriminate; if the evidence cannot distinguish them, retain an unresolved judgment. "
+        "These are instructional safeguards, not a claim of demonstrated protection.\n\n"
+        "DARPA's Intrinsic Cognitive Security program is a separate, mixed-reality research effort "
+        "aiming to develop and validate formal, model-scoped mitigation guarantees. A program goal "
+        "does not establish a guarantee for an LLM, a human population, or this curriculum. "
+        "Keep mixed-reality cognition, social-system theory, and agent-software security distinct "
+        "when borrowing an analogy [@official_darpa_intrinsic_cognitive_security]."
     )
 
 
 def _epistemic_stack_framework() -> str:
     return (
-        "## The unified epistemic coherence stack\n\n"
-        "This unit synthesizes the book's defensive techniques into one five-layer architecture for "
-        "maintaining epistemic coherence, shown for the unit in [@fig:ageint-unified-epistemic-stack]. "
-        "The base is a technical substrate -- formal verification in the spirit of intrinsic cognitive "
-        "security, prompt-infection defense, sandboxing and worktree isolation, and provenance signals "
-        "such as SynthID and C2PA. Above it sits operational security -- MAESTRO threat modeling, CDR "
-        "degradation monitoring, zero-trust identity, and circuit breakers. Above that is structured "
-        "reasoning and tradecraft -- analysis of competing hypotheses, pre-mortem red teaming, and "
-        "key-assumptions auditing, now executable as AI-augmented structured analytic techniques at "
-        "scale. The fourth layer is epistemic integrity -- verifier agents and intent-alignment "
-        "monitoring that protect the trustworthiness of what the system believes. The top layer is "
-        "institutional governance -- analytic standards, red-team programs, and error-budget "
-        "governance. The load-bearing claim is that each layer is necessary but insufficient alone, and "
-        "the layers are mutually reinforcing: a technical fix without governance, or tradecraft without "
-        "integrity checks, leaves an exploitable seam [@scholarly_deepmind_epistemic_agent_trust]; "
-        "[@official_darpa_intrinsic_cognitive_security].\n\n"
-        "## From reliability theory to AI governance\n\n"
-        "The governance layer is not invented from scratch; it borrows from High-Reliability "
-        "Organization theory. As the crosswalk in [@fig:ageint-hro-governance-crosswalk] shows, Weick "
-        "and Sutcliffe's five HRO principles map directly onto observable AI-agent controls: "
-        "preoccupation with failure becomes safety-SLI monitoring and drift detection; reluctance to "
-        "simplify becomes multi-hypothesis behavioral analysis; sensitivity to operations becomes "
-        "real-time tool-invocation auditing and context-window analysis; commitment to resilience "
-        "becomes circuit breakers, chaos engineering, and progressive rollout behind "
-        "service-level-objective gates; and deference to expertise becomes human-in-the-loop authority "
-        "for high-stakes actions under least privilege. The crosswalk turns an organizational "
-        "philosophy into a checklist of testable mechanisms, which is exactly how this unit asks "
-        "learners to use it [@scholarly_mandel_tetlock_judgment_correctives]; "
+        "## An instructional epistemic coherence stack\n\n"
+        "AGEINT groups its defensive checks into a proposed five-layer teaching architecture, shown "
+        "in [@fig:ageint-unified-epistemic-stack]: technical integrity, operational controls, "
+        "structured reasoning, epistemic review, and institutional governance. The grouping is "
+        "author-defined; neither the ordering nor the necessity or sufficiency of its layers has "
+        "been empirically established here. Sandboxing limits permissions, provenance records "
+        "describe origins, and human review challenges conclusions; none alone establishes truth. "
+        "A provenance signature is not a factuality certificate, and a verifier agent may share "
+        "the generating agent's sources and failure modes.\n\n"
+        "The cited epistemic-agent paper proposes a normative roadmap centered on competence, "
+        "falsifiability, and epistemically virtuous behavior. Use it to formulate review questions, "
+        "not as an evaluation showing that this stack protects a system's beliefs. DARPA's "
+        "mixed-reality program likewise does not validate general agent assurance "
+        "[@scholarly_deepmind_epistemic_agent_trust]; [@official_darpa_intrinsic_cognitive_security].\n\n"
+        "## Reliability-inspired governance: analogy and test obligation\n\n"
+        "The crosswalk [@fig:ageint-hro-governance-crosswalk] is an instructional analogy between "
+        "high-reliability organizational principles and candidate agent controls. For each proposed "
+        "mapping, name the failure it addresses, the observable signal, the person empowered to stop "
+        "the exercise, and the synthetic negative control that would reveal a missed failure. "
+        "For example, a review queue may miss a contradicted claim even when every tool call is logged; "
+        "test the claim-review handoff rather than treating the presence of logs as assurance. "
+        "Do not infer analytic accuracy from a reliability metaphor or a completed checklist. "
+        "The judgment-correctives literature specifically challenges untested claims for analytic "
+        "methods; agent red-team guidance supplies a review discipline rather than validation of "
+        "this crosswalk [@scholarly_mandel_tetlock_judgment_correctives]; "
         "[@official_csa_nist_ai_agent_red_teaming_standards]."
     )
 
@@ -170,11 +173,14 @@ def _part_summary(part: dict[str, Any]) -> str:
         "debrief memo. The full source-lane and evidence-package ledgers appear "
         "in the orientation and appendices; this unit introduction keeps only "
         f"the learner-facing spine for {source_context}\n\n"
-        "This unit's safety gates are scope authorization, rights review, data "
-        "provenance, tool allowlisting, human oversight, rollback, and "
-        "evidence-bounded output. A missing gate turns the activity into a "
-        "tabletop, audit, or written governance exercise until the gate is "
-        f"restored against {source_context}\n\n"
+        "This unit's safety gates are documented authority for the exact activity, "
+        "rights review, permitted data provenance, tool allowlisting, human oversight, "
+        "and evidence-bounded output. A missing or unknown gate pauses the affected "
+        "activity, including processing or sharing already supplied data. A written "
+        "risk exception cannot waive authority or rights. A replacement tabletop "
+        "may begin only after independently permitted synthetic inputs, tools and "
+        "review responsibilities are established; it does not inherit permission "
+        f"from the stopped activity. Inspect the applicable source context: {source_context}\n\n"
         "Capstone thread:\n\n"
         f"{capstone_scaffold_rows()}\n\n"
         f"{part_research_brief(part)}"
@@ -229,57 +235,6 @@ def _claim_evidence_ledger(chapter: dict[str, Any], part: dict[str, Any]) -> str
     )
 
 
-def _safe_practice_lab(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"Build a safe lab packet using public, benign, owned-lab, or synthetic material only; source checks begin with {source_context}",
-            "",
-            "| Lab step | Required artifact | Safety gate |",
-            "|---|---|---|",
-            ("| Scope | One-sentence accountable learning objective plus excluded actions | Instructor signs off before any tool or dataset is named. |"),
-            ("| Evidence | Source list with provenance, timestamps, and caveats | No credentials, private data, live targets, or sensitive records. |"),
-            ("| Agent support | Prompt, tool allowlist, budget, logging plan, and stop condition | Agent may summarize, compare, retrieve, or audit; it may not act externally. |"),
-            ("| Output | Map, memo, matrix, rubric, or tabletop packet | Output must preserve uncertainty and separate observation from judgment. |"),
-            ("| Debrief | What changed, what remains unknown, and what would require human review | No deployment or operational follow-through. |"),
-        ]
-    )
-
-
-def _failure_mode_drill(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"Use the drill to stress-test the work before treating the artifact as complete; the drill starts from {source_context}",
-            "",
-            "| Failure mode | Drill question | Recovery move |",
-            "|---|---|---|",
-            ("| Source laundering | Which claim lost its original source, timestamp, or caveat? | Reattach the source descriptor or remove the claim. |"),
-            ("| Automation bias | Which agent output looks authoritative without independent support? | Add competing explanations and human review. |"),
-            ("| Boundary drift | Which step could become collection, targeting, exploitation, influence, or cyber-physical action? | Replace it with a tabletop, audit, or governance exercise. |"),
-            ("| Overconfident synthesis | Which uncertainty did the prose smooth over? | Restore confidence language, alternatives, and unresolved questions. |"),
-            ("| Handoff loss | What would the next reviewer be unable to reproduce? | Add inputs, transformation notes, output schema, and review owner. |"),
-        ]
-    )
-
-
-def _instructor_artifact(chapter: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    return "\n".join(
-        [
-            f"Instructors should collect a compact artifact bundle anchored to {source_context}",
-            "",
-            "| Artifact | Minimum contents |",
-            "|---|---|",
-            "| Source-canon card | Guide citation spine, verified anchors, and update date. |",
-            "| Claim ledger | Claims, evidence, uncertainty, and reviewer initials. |",
-            "| Lab packet | Synthetic dataset description, tool allowlist, and stop conditions. |",
-            "| Safety note | Prohibited actions, safe substitutions, and escalation triggers. |",
-            "| Assessment note | Rubric scores, feedback, and required revision before reuse. |",
-        ]
-    )
-
-
 def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = None) -> str:
     source_context = _chapter_source_context(chapter)
     topic_context = _chapter_topic_context(chapter, part) if part is not None else "the local topic cluster"
@@ -298,23 +253,5 @@ def _review_checklist(chapter: dict[str, Any], part: dict[str, Any] | None = Non
             "- The lab packet uses public, benign, owned-lab, or synthetic material only.",
             "- The artifact names assumptions, caveats, uncertainty, excluded actions, and human review points.",
             "- No Figure, Section, Equation, chapter, or appendix numbers are hard-coded outside generated labels.",
-        ]
-    )
-
-
-def _authority_accountability_model(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    source_context = _chapter_source_context(chapter)
-    topic_context = _chapter_topic_context(chapter, part)
-    return "\n".join(
-        [
-            f"Use this accountability model before applying the work in any exercise. Topic: {topic_context}.",
-            "",
-            "| Accountability layer | Required decision | Evidence retained |",
-            "|---|---|---|",
-            (f"| Sponsor | Why this unit needs the module now | accountable learning objective, excluded actions, and source context {source_context} |"),
-            "| Instructor | Which data, tools, and roles are allowed | signed scope card and stop condition |",
-            ("| Human reviewer | Which claims, recommendations, and agent outputs need approval | review initials, caveats, and revision notes |"),
-            ("| Learner | Which assumptions and uncertainties remain | claim ledger, confidence statement, and handoff memo |"),
-            ("| System steward | Which logs, prompts, sources, and outputs are retained | retention rule, access boundary, and deletion or refresh date |"),
         ]
     )

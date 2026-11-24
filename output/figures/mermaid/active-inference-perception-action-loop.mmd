@@ -1,12 +1,15 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  M[Generative model of the world] --> P[Predicted observations]
-  S([Sensory observations]) --> E{Prediction error / free energy}
-  P --> E
-  E -->|Perceptual inference| B[Update beliefs and hidden-state estimates]
-  B --> M
-  E -->|Active inference| Q[Select policy minimizing expected free energy]
-  B --> Q
-  Q --> ACT[Action on environment]
-  ACT --> W([World state changes])
-  W --> S
+    M["Specified generative model"] --> P["Predicted observations"]
+    S["Observed signals"] --> PE["Prediction error<br/>predicted-observed discrepancy"]
+    P --> PE
+    M --> VI["Variational inference objective<br/>free energy = complexity<br/>minus expected log likelihood"]
+    S --> VI
+    PE -. "may inform under model assumptions" .-> VI
+    VI --> B["Update approximate beliefs<br/>and hidden-state estimates"]
+    B --> M
+    B --> Q["Prospective policy evaluation<br/>expected free energy<br/>under modeled preferences and uncertainty"]
+    Q --> R["Synthetic classroom action<br/>named human review"]
+    R --> W["Changed synthetic observations"]
+    W --> S
+    Q -.-> N["Different model-dependent quantities<br/>Neither low error nor low free energy<br/>establishes factual truth"]

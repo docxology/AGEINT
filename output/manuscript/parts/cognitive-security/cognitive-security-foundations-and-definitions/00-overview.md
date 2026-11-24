@@ -12,11 +12,11 @@ This module teaches the **Cognitive Security and Influence Resilience** lane thr
 
 ## Cognitive Security and Influence Resilience frame for Cognitive Security: Foundations and Definitions: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-foundations-and-definitions]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-foundations-and-definitions].
 
 ### Cognitive Security: Foundations and Definitions orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-foundations-and-definitions]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-foundations-and-definitions].
 
 ### Cognitive Security: Foundations and Definitions conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Cognitive-Resilience Lens** distinction 
 
 ### Cognitive Security: Foundations and Definitions learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-foundations-and-definitions]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-foundations-and-definitions].
 
 - Connect **Cognitive security definitions and scope and Comprehensive Definition: State and Process Against Malign Influence** to **Cognitive Security and Influence Resilience** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,16 +40,14 @@ Learners move from vocabulary and the **Cognitive-Resilience Lens** distinction 
 
 ### Cognitive Security: Foundations and Definitions core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-foundations-and-definitions]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-foundations-and-definitions].
 
 | Term | Working definition |
 |---|---|
 | Narrative provenance | where a claim, frame, or story came from and how it spread |
-| Prebunking | transparent education that helps people recognize misleading patterns before exposure |
+| Prebunking | transparent education about misleading patterns before exposure; its effectiveness and transfer require evidence rather than assumption |
 | Audience harm | a privacy, dignity, autonomy, or trust risk for people receiving information |
 | Attribution caution | the rule that intent and origin claims need strong evidence |
 | Resilience response | a transparent education, correction, or process improvement that avoids manipulation |
-| MISO boundary | the line between accountable public messaging analysis and covert influence design |
-| Inoculation | building recognition of manipulation tactics without deploying persuasion against a population |
-| Cognitive security definitions and scope | Key terms: Cognitive, security, definitions. |
-| Comprehensive Definition: State and Process… | Key terms: Comprehensive, Definition, State. |
+| MISO boundary | the separation between this classroom analysis and authorized military influence activities; MISO is not defined simply as covert messaging |
+| Inoculation | an approach intended to build recognition of misleading tactics; it does not imply immunity or proven efficacy for a particular audience |

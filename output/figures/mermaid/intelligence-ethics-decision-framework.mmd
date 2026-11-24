@@ -1,15 +1,10 @@
-%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+%%{init: {"theme":"neutral","themeVariables":{"fontSize":"24px","fontFamily":"Arial, sans-serif","primaryColor":"#dbeafe","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","secondaryColor":"#dcfce7","tertiaryColor":"#fef3c7"},"flowchart":{"htmlLabels":true,"nodeSpacing":28,"rankSpacing":24,"curve":"basis","subGraphTitleMargin":{"top":8,"bottom":12}}}}%%
 flowchart TB
-  A["Proposed activity"] --> B["Deontological duties and rights lens"]
-  A --> C["Consequentialist harm and benefit lens"]
-  A --> D["Virtue and integrity lens"]
-  A --> E["Proportionality vs less intrusive means"]
-  B --> F{"Lawful or classroom authority exists?"}
-  C --> F
-  D --> F
-  E --> F
-  F -->|"No"| Z["Stop and document rationale"]
-  F -->|"Yes"| G{"Independent oversight and audit trail?"}
-  G -->|"No"| Z
-  G -->|"Yes"| H["Confirm redress path for affected people"]
-  H --> I(["Approved bounded activity in impact register"])
+  A["Fictional exercise"] --> P{"Purpose AND<br/>exact permission?"}
+  P -->|"missing / unknown"| STOP["STOP: no waiver<br/>record prerequisite"]
+  P -->|"documented"| R["Rights, harms,<br/>alternatives"]
+  R --> G{"Independent review<br/>audit + redress?"}
+  G -->|"missing / unknown"| STOP
+  G -->|"available"| D{"Human disposition<br/>reasons + dissent"}
+  D -->|"hold / reject"| STOP
+  D -->|"bounded approval"| OUT["Fictional reuse only<br/>Reopen on change"]

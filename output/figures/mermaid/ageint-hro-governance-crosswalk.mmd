@@ -1,23 +1,29 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
-flowchart LR
-    subgraph HRO["HRO Principles"]
-        direction TB
-        p1["Preoccupation with failure<br/>attention to near-misses<br/>and weak signals"]
-        p2["Reluctance to simplify<br/>demand deep root cause;<br/>resist reductive explanations"]
-        p3["Sensitivity to operations<br/>awareness of current<br/>operational state"]
-        p4["Commitment to resilience<br/>invest in corrective<br/>and adaptive capacity"]
-        p5["Deference to expertise<br/>authority follows<br/>demonstrated competence"]
+flowchart TB
+    root["HRO principles / proposed governance questions<br/>Author-defined analogy, not validated mappings"]
+    subgraph R1["Notice failure"]
+        direction LR
+        p1["Preoccupation with failure<br/>near-misses and weak signals"] -. "analogy" .-> g1["What failed or nearly failed?<br/>retain incident evidence<br/>pause for any critical breach"]
     end
-    subgraph GOV["AI Agent Governance"]
-        direction TB
-        g1["Safety SLI monitoring<br/>PolicyCompliance at or above 99 percent;<br/>CDR health probes; drift detection"]
-        g2["MAESTRO seven-layer modeling;<br/>multi-hypothesis behavioral analysis"]
-        g3["Real-time tool invocation auditing;<br/>context-window analysis; observability"]
-        g4["Circuit breakers; chaos engineering;<br/>progressive rollout with SLO gates"]
-        g5["Human-in-the-loop for high stakes;<br/>minimum necessary privilege"]
+    subgraph R2["Preserve complexity"]
+        direction LR
+        p2["Reluctance to simplify<br/>resist reductive explanations"] -. "analogy" .-> g2["What alternatives remain?<br/>compare hypotheses<br/>record contradictions"]
     end
-    p1 --> g1
-    p2 --> g2
-    p3 --> g3
-    p4 --> g4
-    p5 --> g5
+    subgraph R3["Inspect current conditions"]
+        direction LR
+        p3["Sensitivity to operations<br/>current operational state"] -. "analogy" .-> g3["What is authorized now?<br/>inspect tool calls<br/>and evidence freshness"]
+    end
+    subgraph R4["Prepare recovery"]
+        direction LR
+        p4["Commitment to resilience<br/>corrective and adaptive capacity"] -. "analogy" .-> g4["Can recovery be reviewed?<br/>constrain restoration trials<br/>require human sign-off"]
+    end
+    subgraph R5["Locate accountable judgment"]
+        direction LR
+        p5["Deference to expertise<br/>relevant demonstrated competence"] -. "analogy" .-> g5["Who may decide and why?<br/>name a qualified human reviewer<br/>preserve legal authority"]
+    end
+    root --> R1
+    R1 ~~~ R2
+    R2 ~~~ R3
+    R3 ~~~ R4
+    R4 ~~~ R5
+    R5 --> limit["Authorization, privacy or unsafe-action breach<br/>Pause immediately - no aggregate allowance"]

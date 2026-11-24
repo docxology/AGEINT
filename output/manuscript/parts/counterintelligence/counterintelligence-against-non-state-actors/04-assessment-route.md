@@ -1,10 +1,10 @@
 ### Counterintelligence Against Non-State Actors assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-counterintelligence-against-non-state-actors]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-counterintelligence-against-non-state-actors].
 
 ### Counterintelligence Against Non-State Actors assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-counterintelligence-against-non-state-actors]; [@ageint239].
+**Navigation.** Parent section: [@sec:chapter-counterintelligence-against-non-state-actors].
 
 #### Counterintelligence Against Non-State Actors capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Source-vetting and insider-threat review
 
 #### Counterintelligence Against Non-State Actors assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Source-vetting and insider-threat review using sample personnel records** | Completed **analytic note with hypotheses, evidence table, confidence, and dissent fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Non-state actor indicator review with attribution caution and governance boundaries** | Completed **analytic note with hypotheses, evidence table, confidence, and dissent fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **CI in Hybrid Threat Environments: Source-vetting and insider-threat review using sample personnel records** | Completed **analytic note with hypotheses, evidence table, confidence, and dissent fields** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Source-vetting and insider-threat review using sample personnel records**; **Non-state actor indicator review with attribution caution and governance boundaries** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: separate raw reporting, inference, judgment, and recommendation before synthesis. |
+| **CI in Hybrid Threat Environments: Source-vetting and insider-threat review using sample personnel records**; **Attribution Problems in State CI: Source-vetting and insider-threat review using sample personnel records** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Corporate Counterintelligence and Trade Secret: Source-vetting and insider-threat review using sample personnel records** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: avoid policy advocacy, certainty inflation, source laundering, and claims without traceable evidence. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Source-vetting and insider-threat review using sample personnel records; Non-state actor indicator review with attribution caution and governance boundaries** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Source-vetting and insider-threat review using sample personnel records; Non-state actor indicator review with attribution caution and governance boundaries**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Counterintelligence Against Non-State Actors refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint239]; [@ageint240].
 
-**Triangulation anchors.** In module 23's review-checklist section, directly verified anchors for the **Counterintelligence and Source-Integrity Defense** lane include [@official_ncsc_counterintelligence_strategy]; [@official_odni_eo_12333]; [@official_odni_icd_206]; [@official_odni_icd_203]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 23's review-checklist section, the **Counterintelligence and Source-Integrity Defense** catalog routes include [@official_ncsc_counterintelligence_strategy]; [@official_odni_eo_12333]; [@official_odni_icd_206]; [@official_odni_icd_203]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Source-vetting and insider-threat review using sample personnel records; Non-state actor indicator review with attribution caution and governance boundaries**. [@ageint239]; [@ageint240].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

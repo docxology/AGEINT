@@ -1,10 +1,10 @@
 ### OSINT Techniques and Tools assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 ### OSINT Techniques and Tools assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 #### OSINT Techniques and Tools capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Search-exposure provenance review using 
 
 #### OSINT Techniques and Tools assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Search-exposure provenance review using instructor-provided records** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Social-source provenance and minimization review using toy records** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Graph-analysis provenance review using instructor-provided records** | Completed **requirements matrix with source descriptors, caveats, and collection limits** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Search-exposure provenance review using instructor-provided records**; **Social-source provenance and minimization review using toy records**; **Graph-analysis provenance review using instructor-provided records** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: show priority, authority, minimization, corroboration, and source quality before any claim is reused. |
+| **Custom-source integration governance review using toy records**; **Automated-source aggregation governance review using toy records**; **Identity-data minimization review using instructor-provided records** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **OSINT Framework (osintframework.com): Module Taxonomy**; **Offline OSINT Environments: VM Architecture and Isolation**; **IntelTechniques OSINT 11th Edition Methods and Workflows** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude live collection, recruitment, surveillance, interception, tracking, and identity exposure. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### OSINT Techniques and Tools refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint251]; [@ageint252].
 
-**Triangulation anchors.** In module 10's review-checklist section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 10's review-checklist section, the **Open-Source and Geospatial Intelligence Integrity** catalog routes include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**. [@ageint251]; [@ageint252].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

@@ -1,15 +1,15 @@
 ### Structured Analytic Techniques (SATs) governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 ### Structured Analytic Techniques (SATs) analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 41's governance-boundary section, directly verified anchors for the **Analytic Tradecraft and Source Integrity** lane include [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 41's governance-boundary section, the **Analytic Tradecraft and Source Integrity** catalog routes include [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 Research lane: **Analytic Tradecraft and Source Integrity** for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**. [@ageint237]; [@ageint266].
 
 **Curriculum topic spine:** **CIA Tradecraft Primer: SATs for Intelligence Analysis**, **ICD 203 Analytic Standards: The Nine Tradecraft Standards**, **Psychology of Intelligence Analysis (Heuer, CIA 1999)**.
-**Verified anchor cluster:** [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]; [@official_cia_sherman_kent_profession]; [@official_cia_kent_analyst_policymaker_relations]; [@official_dia_tradecraft_primer].
+**Recorded source cluster; inspection and scope limits apply:** [@official_odni_icd_203]; [@official_odni_icd_206]; [@official_odni_objectivity]; [@official_cia_tradecraft_primer]; [@official_cia_sherman_kent_profession]; [@official_cia_kent_analyst_policymaker_relations]; [@official_dia_tradecraft_primer].
 
 **Conceptual depth:** turning uncertainty into reviewable judgment through sourcing, alternatives, separated likelihood and confidence language, warning indicators, and explicit analytic lineage.
 
@@ -43,7 +43,7 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint237]; [
 
 ### Structured Analytic Techniques (SATs) agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 AGEINT translation is bounded by the **Analytic Tradecraft and Source Integrity** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **CIA Tradecraft P
 
 #### Structured Analytic Techniques (SATs) permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -66,7 +66,7 @@ Keep all practice accountable, synthetic, defensive, logged, reversible, and evi
 
 ### Structured Analytic Techniques (SATs) governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 Governance is practiced as a gate on the **Analytic Tradecraft and Source Integrity**
 lane. Learners use the **Structured-Judgment Lens** to decide who is accountable for the exercise,
@@ -77,19 +77,18 @@ agent-assisted artifact must stop for human review while using **CIA Tradecraft 
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint237]; [@ageint266]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint237]; [@ageint266]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Analytic Tradecraft and Source Integrity** failure modes and the **Structured-Judgment Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### Structured Analytic Techniques (SATs) evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Structured-Judgment Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**.
 
@@ -99,7 +98,7 @@ The source assurance check ties the current verified anchor set to the local cha
 
 | Assurance question | Direct source evidence | Chapter artifact |
 |---|---|---|
-| What does the module inherit from `official_odni_icd_203` for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**? | Intelligence Community Directive 203: Analytic Standards; lane `source_quality_spine`; checked 2026-05-21. | analytic note with hypotheses, evidence table, confidence, and dissent fields; Official ODNI analytic tradecraft standards directive. |
+| What does the module inherit from `official_odni_icd_203` for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**? | Intelligence Community Directive 203: Analytic Standards; lane `source_quality_spine`; checked 2026-05-21. | analytic note with hypotheses, evidence table, confidence, and dissent fields; source-quality triangulation and claim-boundary review |
 | What does the module inherit from `official_odni_icd_206` for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**? | Intelligence Community Directive 206: Sourcing Requirements for Disseminated Analytic Products; lane `analytic_tradecraft`; checked 2026-05-21. | analytic note with hypotheses, evidence table, confidence, and dissent fields; Official sourcing directive for traceability, citations, source descriptors, and source summaries. |
 | What does the module inherit from `official_odni_objectivity` for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**? | Objectivity and IC Analytic Standards; lane `analytic_tradecraft`; checked 2026-05-21. | analytic note with hypotheses, evidence table, confidence, and dissent fields; Official ODNI explanation of analytic objectivity, ombuds, and tradecraft standards. |
 | What does the module inherit from `official_cia_tradecraft_primer` for **CIA Tradecraft Primer: SATs for Intelligence Analysis; ICD 203 Analytic Standards: The Nine Tradecraft Standards**? | A Tradecraft Primer: Structured Analytic Techniques for Improving Intelligence Analysis; lane `analytic_tradecraft`; checked 2026-05-21. | analytic note with hypotheses, evidence table, confidence, and dissent fields; Official structured analytic techniques primer for bias checks, alternatives, and warning analysis. |

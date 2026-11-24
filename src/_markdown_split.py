@@ -141,6 +141,17 @@ def split_by_line_budget(relative_path: str, text: str, *, max_lines: int = DEFA
             return fragments
     lines = text.splitlines()
     fragments: list[tuple[str, str]] = []
-    for index in range(0, len(lines), max_lines - 5):
-        fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(lines[index : index + max_lines - 5]).rstrip()))
+    start = 0
+    capacity = max_lines - 5
+    while start < len(lines):
+        end = min(start + capacity, len(lines))
+        if end < len(lines):
+            boundary = end
+            while boundary > start and not lines[boundary - 1].strip():
+                boundary -= 1
+            # A budget boundary must not strand a heading before its body.
+            if boundary > start + 1 and re.match(r"^#{1,6}\s+", lines[boundary - 1]):
+                end = boundary - 1
+        fragments.append((path_with_suffix(relative_path, f"{len(fragments) + 1:02d}"), "\n".join(lines[start:end]).rstrip()))
+        start = end
     return fragments

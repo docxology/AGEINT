@@ -7,10 +7,10 @@ and generated topic-lesson prose. Business logic for lesson **Concept**,
 
 Part modules (`_01_part.py` … `_12_topic_frames.py`) use **explicit imports** per shard
 (no `merge_part_modules` in this package). Keep each file ≤500 lines (enforced by
-`tests/test_file_size_inventory.py`). Keyword routes split across
-Concept routes load from `data/concept_routes.yaml` and
-`data/concept_routes_supplement.yaml` via `_data_loaders.py`; `_12_concept_routes*.py`
-modules expose matchers only.
+`tests/test_file_size_inventory.py`). Concept routes load from
+`data/concept_routes.yaml` and `data/concept_routes_supplement.yaml` via
+`_data_loaders.merged_concept_keyword_routes()`. `_12_concept_routes.py` owns
+the ordered merged routes and matchers; there are no per-table re-export modules.
 
 ## Topic frame routing (three tiers)
 
@@ -18,9 +18,9 @@ Generated topic lessons resolve frames in order:
 
 | Tier | Source | When it applies |
 | --- | --- | --- |
-| **A — keyword** | `_12_concept_routes*.py` → `CONCEPT_KEYWORD_ROUTES` | Token- or phrase-bound match on `display_title` + `raw_title` via `_match_keywords()` |
+| **A — identity/keyword** | `_12_concept_routes.py` → `CONCEPT_KEYWORD_ROUTES` | Canonical safe pattern identity wins; token- or phrase-bound matching uses the educational `display_title`, never unsafe inherited raw wording |
 | **B — category** | `_12_topic_frames.py` → `CATEGORY_CONCEPT_FRAMES` | Subcategory from `_category_frame_key()` after topic-first `TopicEntry.risk_category` |
-| **C — synthesis** | `_12_topic_frames.py` → `synthesized_*()` | Fallback anchored on `raw_title` when `display_title` matches `GENERIC_DISPLAY_TITLE_MARKERS` |
+| **C — synthesis** | `_12_topic_frames.py` → `synthesized_*()` | Fallback remains anchored to the safe displayed subject; raw wording is provenance, not a second content-routing input |
 
 Public entry points (called from `_11_part.py` via `topic_lessons.py`):
 
@@ -51,10 +51,8 @@ Keyword matching (`_12_concept_routes._match_keywords`):
 | `topic_frame_api.py` | Stable re-export of frame helpers for `topic_lessons.py` |
 | `topic_lesson_voice.py` | Reader-voice helpers (`for_topic`, evidence/artifact sentence shaping) |
 | `topic_prompt_routes.py` | YAML evaluators for evidence/artifact prompts |
-| `_07_risk_categories.py` | Re-exports YAML evaluator from `risk_routes.py` |
 | `risk_routes.py` | Ordered rule evaluation over `data/topic_risk_routes.yaml`; import `topic_risk_category` from here |
 | `_07_safe_titles.py` | `safe_curriculum_treatment()`, `GENERIC_DISPLAY_TITLE_MARKERS`, `is_generic_display_title()` |
-| `_07_part.py` | Re-exports risk helpers; `REQUIRED_SOURCE_LANES` constants |
 
 Topic-first routing applies chapter defaults (`cognitive_resilience`, `analytic_tradecraft`,
 `operational_tradecraft_governance`, etc.) only after all title-specific classifiers
@@ -99,7 +97,6 @@ Display-title contract (`topic_entries.safe_topic_entries`):
 - `tests/test_chapter_fragment_quality.py` — overview primer, worked-practice profile refs, architecture-source echoes, required module sections
 - `tests/test_topic_frame_routing.py` — token-boundary keyword regressions; OPSEC/compartmentation/ACH routing; YAML risk-, prompt-, and rotation-route parity fixtures
 - `tests/test_topic_lessons.py` — rotation stability, transfer-task branches, unified resolver smoke
-- `tests/test_intelligence_content_imports.py` — each shard imports without merge seeding
 
 ## Editing rules
 

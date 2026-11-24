@@ -1,10 +1,10 @@
 ### American Intelligence History assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 ### American Intelligence History assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 #### American Intelligence History capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Declassified source-protection and insti
 
 #### American Intelligence History assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Declassified source-protection and institutional-control case study** | Completed **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study** | Completed **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **OSS Provisional Basic Field Manual: Declassified source-protection and institutional-control case study** | Completed **historical case card with provenance, redaction caveats, timeline, lesson, and evidence-bounded boundary** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Declassified source-protection and institutional-control case study**; **OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study**; **OSS Provisional Basic Field Manual: Declassified source-protection and institutional-control case study**; **Hybrid-threat indicator review using sample scenarios and policy thresholds**; **OSS Special Weapons and Devices: Declassified source-protection and institutional-control case study**; **Simple Sabotage Field Manual: Declassified source-protection and institutional-control case study** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: distinguish what the record shows, what remains redacted or unknown, and which governance lesson is defensibly transferable. |
+| **Morale Operations Field Manual: Declassified source-protection and institutional-control case study**; **CIA Cold War Operations: Declassified source-protection and institutional-control case study**; **CIA Manual of Trickery and: Declassified source-protection and institutional-control case study**; **Principles of Tradecraft: Declassified source-protection and institutional-control case study**; **Cognitive influence-analysis case review using sample materials**; **Studies in Intelligence: Declassified source-protection and institutional-control case study** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Declassified source-protection and institutional-control case study (28.3.1)**; **Declassified source-protection and institutional-control case study (28.3.2)**; **History of SIGINT at the: Declassified source-protection and institutional-control case study**; **NSA WWII Declassified: Declassified source-protection and institutional-control case study** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude reconstruction of current sources, methods, tactics, cover, or collection workflows from historical material. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Declassified source-protection and institutional-control case study; OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Declassified source-protection and institutional-control case study; OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### American Intelligence History refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint266]; [@ageint269].
 
-**Triangulation anchors.** In module 28's review-checklist section, directly verified anchors for the **Historical and Declassified Intelligence Services** lane include [@official_cia_center_for_study_of_intelligence]; [@official_nsa_historical_releases]; [@official_nro_declassified_programs]; [@official_nara_cia_records]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 28's review-checklist section, the **Historical and Declassified Intelligence Services** catalog routes include [@official_cia_center_for_study_of_intelligence]; [@official_nsa_historical_releases]; [@official_nro_declassified_programs]; [@official_nara_cia_records]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Declassified source-protection and institutional-control case study; OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study**. [@ageint266]; [@ageint269].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

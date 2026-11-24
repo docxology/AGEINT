@@ -1,15 +1,15 @@
 ### Financial Intelligence (FININT) governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 ### Financial Intelligence (FININT) analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 17's governance-boundary section, directly verified anchors for the **Financial Intelligence and Economic-Security Due Diligence** lane include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 17's governance-boundary section, the **Financial Intelligence and Economic-Security Due Diligence** catalog routes include [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 Research lane: **Financial Intelligence and Economic-Security Due Diligence** for **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries**. [@ageint251]; [@ageint252].
 
 **Curriculum topic spine:** **FININT Foundations: Collection, Analysis, Reporting**, **Financial due-diligence typology exercise using synthetic records and compliance boundaries**, **Non-state actor indicator review with attribution caution and governance boundaries**.
-**Verified anchor cluster:** [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]; [@official_fatf_virtual_assets_guidance]; [@official_bis_fintech_digital_transformation].
+**Recorded source cluster; inspection and scope limits apply:** [@official_fincen_advisories]; [@official_fincen_boi]; [@official_fatf_recommendations]; [@official_ofac_sanctions_programs]; [@official_ofac_compliance_commitments]; [@official_fatf_virtual_assets_guidance]; [@official_bis_fintech_digital_transformation].
 
 **Conceptual depth:** defensive economic intelligence that links financial-crime signals, sanctions programs, export controls, beneficial-ownership uncertainty, and supply-chain due diligence to lawful compliance and policy analysis.
 
@@ -43,7 +43,7 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint251]; [
 
 ### Financial Intelligence (FININT) agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 AGEINT translation is bounded by the **Financial Intelligence and Economic-Security Due Diligence** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **FININT Foundatio
 
 #### Financial Intelligence (FININT) permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -66,7 +66,7 @@ Keep all practice accountable, synthetic, defensive, logged, reversible, and evi
 
 ### Financial Intelligence (FININT) governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-financial-intelligence-finint].
 
 Governance is practiced as a gate on the **Financial Intelligence and Economic-Security Due Diligence**
 lane. Learners use the **Economic-Security Due-Diligence Lens** to decide who is accountable for the exercise,
@@ -77,19 +77,18 @@ agent-assisted artifact must stop for human review while using **FININT Foundati
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint251]; [@ageint252]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint251]; [@ageint252]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Financial Intelligence and Economic-Security Due Diligence** failure modes and the **Economic-Security Due-Diligence Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### Financial Intelligence (FININT) evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-financial-intelligence-finint]; [@ageint251].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Economic-Security Due-Diligence Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **FININT Foundations: Collection, Analysis, Reporting; Financial due-diligence typology exercise using synthetic records and compliance boundaries**.
 

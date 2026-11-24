@@ -17,6 +17,7 @@ def test_expected_map_covers_registry_and_quality_audit() -> None:
     assert EXPECTED_SCHEMA_VERSIONS["figures/figure_registry.json"] == "1.5"
     assert EXPECTED_SCHEMA_VERSIONS["figures/visual_quality_audit.json"] == "1.0"
     assert EXPECTED_SCHEMA_VERSIONS["reports/source_metadata.json"] == "1.0"
+    assert EXPECTED_SCHEMA_VERSIONS["reports/publication_readiness.json"] == "2.0"
 
 
 def test_committed_registry_loads_through_the_gate() -> None:
@@ -59,3 +60,14 @@ def test_paths_outside_output_root_are_ungated(tmp_path: Path) -> None:
     outsider.write_text("[]", encoding="utf-8")
     assert expected_schema_version(outsider, output_root=tmp_path) is None
     assert load_json_with_schema(outsider, output_root=tmp_path) == []
+
+
+@pytest.mark.parametrize("version", [None, "1.0", "3.0"])
+def test_publication_readiness_rejects_incompatible_schema(tmp_path: Path, version: str | None) -> None:
+    artifact = tmp_path / "reports" / "publication_readiness.json"
+    artifact.parent.mkdir()
+    artifact.write_text(json.dumps({"schema_version": version}), encoding="utf-8")
+    with pytest.raises(SchemaVersionError, match="expected '2.0'"):
+        load_json_with_schema(artifact, output_root=tmp_path)
+    artifact.write_text(json.dumps({"schema_version": "2.0"}), encoding="utf-8")
+    assert load_json_with_schema(artifact, output_root=tmp_path)["schema_version"] == "2.0"

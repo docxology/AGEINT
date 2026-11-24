@@ -14,11 +14,11 @@ This module teaches the **Cognitive Security and Influence Resilience** lane thr
 
 ## Cognitive Security and Influence Resilience frame for Psychological Inoculation and Prebunking: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-psychological-inoculation-and-prebunking]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-psychological-inoculation-and-prebunking].
 
 ### Psychological Inoculation and Prebunking orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-psychological-inoculation-and-prebunking]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-psychological-inoculation-and-prebunking].
 
 ### Psychological Inoculation and Prebunking conceptual primer: source context, core model, and reader task
 
@@ -32,7 +32,7 @@ Learners move from vocabulary and the **Cognitive-Resilience Lens** distinction 
 
 ### Psychological Inoculation and Prebunking learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-psychological-inoculation-and-prebunking]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-psychological-inoculation-and-prebunking].
 
 - Connect **Psychological inoculation and prebunking literacy and Psychological Inoculation Against Misinformation: Psychological inoculation and prebunking literacy** to **Cognitive Security and Influence Resilience** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **narrative-risk map with provenance, uncertainty, audience harms, and response options** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -42,16 +42,14 @@ Learners move from vocabulary and the **Cognitive-Resilience Lens** distinction 
 
 ### Psychological Inoculation and Prebunking core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-psychological-inoculation-and-prebunking]; [@ageint242].
+**Navigation.** Parent section: [@sec:chapter-psychological-inoculation-and-prebunking].
 
 | Term | Working definition |
 |---|---|
 | Narrative provenance | where a claim, frame, or story came from and how it spread |
-| Prebunking | transparent education that helps people recognize misleading patterns before exposure |
+| Prebunking | transparent education about misleading patterns before exposure; its effectiveness and transfer require evidence rather than assumption |
 | Audience harm | a privacy, dignity, autonomy, or trust risk for people receiving information |
 | Attribution caution | the rule that intent and origin claims need strong evidence |
 | Resilience response | a transparent education, correction, or process improvement that avoids manipulation |
-| MISO boundary | the line between accountable public messaging analysis and covert influence design |
-| Inoculation | building recognition of manipulation tactics without deploying persuasion against a population |
-| Psychological inoculation and prebunking… | Key terms: Psychological, inoculation, prebunking. |
-| Psychological Inoculation Against… | Key terms: Psychological, Inoculation, Against. |
+| MISO boundary | the separation between this classroom analysis and authorized military influence activities; MISO is not defined simply as covert messaging |
+| Inoculation | an approach intended to build recognition of misleading tactics; it does not imply immunity or proven efficacy for a particular audience |

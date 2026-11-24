@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,23 +182,425 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1 id="sec:part-industrial-and-cyber-physical-intelligence">INDUSTRIAL
 AND CYBER-PHYSICAL INTELLIGENCE</h1>
 <h2
 id="industrial-and-cyber-physical-intelligence-learning-spine-and-source-route-unit-purpose-module-order-and-evidence-handoff">INDUSTRIAL
 AND CYBER-PHYSICAL INTELLIGENCE learning spine and source route: unit
 purpose, module order, and evidence handoff</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:part-industrial-and-cyber-physical-intelligence]; [ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-industrial-and-cyber-physical-intelligence">[@sec:part-industrial-and-cyber-physical-intelligence]</span>.</p>
 <h3
 id="safety-aware-ics-and-ot-intelligence-discipline-spine-domain-question-and-learning-focus">safety-aware
 ICS and OT intelligence discipline spine: domain question and learning
 focus</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:part-industrial-and-cyber-physical-intelligence]; [ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-industrial-and-cyber-physical-intelligence">[@sec:part-industrial-and-cyber-physical-intelligence]</span>.</p>
 <p>This unit teaches <strong>safety-aware ICS and OT
 intelligence</strong>. ICS/OT lessons connect cyber observations to
 engineering state, consequence, operator decision, recovery evidence,
@@ -200,21 +609,39 @@ and safety governance.</p>
 id="safety-aware-ics-and-ot-intelligence-source-use-contract-citation-roles-and-evidence-limits">safety-aware
 ICS and OT intelligence source-use contract: citation roles and evidence
 limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:part-industrial-and-cyber-physical-intelligence]; [ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-industrial-and-cyber-physical-intelligence">[@sec:part-industrial-and-cyber-physical-intelligence]</span>.</p>
 <p>Use CISA ICS, NIST secure-development, DevSecOps, and MITRE anchors
 for defensive coverage and controlled release claims.</p>
 <h3
 id="safety-aware-ics-and-ot-intelligence-practice-artifact-recurring-packet-and-retained-evidence">safety-aware
 ICS and OT intelligence practice artifact: recurring packet and retained
 evidence</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:part-industrial-and-cyber-physical-intelligence]; [ageint255].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-industrial-and-cyber-physical-intelligence">[@sec:part-industrial-and-cyber-physical-intelligence]</span>.</p>
 <p>The recurring practice artifact is a <strong>cyber-physical tabletop
 evidence packet</strong> that draws on asset-consequence map, operator
 decision log, recovery evidence, and safety stop card. The unit keeps
-its learning spine explicit. Learners map assets to consequence,
-classify observations defensively, and preserve recovery evidence.</p>
+its learning spine explicit. Classroom packet: a fictional tank’s toy
+display shows a high level at 09:10, two independent sensor cards show
+normal level, a pre-change display sample is normal, a network alert
+shares the anomaly time, and the maintenance note says display scaling
+changed. Nothing connects to equipment.</p>
+<ol type="1">
+<li>Map display, sensor, process consequence, and operator role; align
+clocks before linking events.</li>
+<li>Compare scaling error, sensor fault, and cyber interference; map
+only behavior actually described to a defensive taxonomy.</li>
+<li>Use a second normal sensor and a pre-change display sample as
+controls: the alert alone must not establish a physical excursion or
+attacker.</li>
+<li>Submit a tabletop packet marking physical level and cause unresolved
+pending the engineering check. Recovery requires consistent readings and
+operator acceptance in the fictional record, not merely disappearance of
+the alert; that evidence is missing. Invoke the safety stop card and
+hand the discrepancy to the instructor acting as engineering authority.
+Do not issue device commands or simulate a process change.</li>
+</ol>
 <h3
 id="safety-aware-ics-and-ot-intelligence-safety-boundary-accountable-synthetic-and-evidence-bounded-limits">safety-aware
 ICS and OT intelligence safety boundary: accountable, synthetic, and
@@ -236,13 +663,17 @@ ledger, safe-practice lab packet, failure-mode note, instructor rubric,
 and debrief memo. The full source-lane and evidence-package ledgers
 appear in the orientation and appendices; this unit introduction keeps
 only the learner-facing spine for [ageint255]; [ageint256].</p>
-<p>This unit’s safety gates are scope authorization, rights review, data
-provenance, tool allowlisting, human oversight, rollback, and
-evidence-bounded output. A missing gate turns the activity into a
-tabletop, audit, or written governance exercise until the gate is
-restored against [ageint255]; [ageint256].</p>
+<p>This unit’s safety gates are documented authority for the exact
+activity, rights review, permitted data provenance, tool allowlisting,
+human oversight, and evidence-bounded output. A missing or unknown gate
+pauses the affected activity, including processing or sharing already
+supplied data. A written risk exception cannot waive authority or
+rights. A replacement tabletop may begin only after independently
+permitted synthetic inputs, tools and review responsibilities are
+established; it does not inherit permission from the stopped activity.
+Inspect the applicable source context: [ageint255]; [ageint256].</p>
 <p>Capstone thread:</p>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -292,7 +723,7 @@ handoff owner</td>
 <td>all unresolved questions and future approvals are explicit</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Research lane:</strong> ICS/OT Cyber-Physical Defense and
 Tabletop Readiness. Core anchors: [official_nist_csf_2];
 [official_nist_sp_800_160r1]; [official_nist_sp_800_82r3]. Conceptual
@@ -307,41 +738,46 @@ path is being exercised defensively? [ageint255]; [ageint256].</p>
 id="industrial-and-cyber-physical-intelligence-visual-navigation-and-module-map-evidence-flow-order-and-safety-cues">INDUSTRIAL
 AND CYBER-PHYSICAL INTELLIGENCE visual navigation and module map:
 evidence flow, order, and safety cues</h3>
-<p>The unit uses
-[fig:part-industrial-and-cyber-physical-intelligence-module-map] and
-[fig:part-industrial-cyber-to-physical-defensive-chain] to map its
-evidence flow, safety boundaries, review artifacts, and refresh
-cues.</p>
-<p>Navigation links: [sec:curriculum_orientation],
-[sec:chapter-information-architecture-for-intelligence-work],
-[sec:chapter-industrial-control-systems-ics-and-operational-technology].</p>
+<p>The unit uses <span class="citation"
+data-cites="fig:part-industrial-and-cyber-physical-intelligence-module-map">[@fig:part-industrial-and-cyber-physical-intelligence-module-map]</span>
+and <span class="citation"
+data-cites="fig:part-industrial-cyber-to-physical-defensive-chain">[@fig:part-industrial-cyber-to-physical-defensive-chain]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:chapter-information-architecture-for-intelligence-work">[@sec:chapter-information-architecture-for-intelligence-work]</span>,
+<span class="citation"
+data-cites="sec:chapter-industrial-control-systems-ics-and-operational-technology">[@sec:chapter-industrial-control-systems-ics-and-operational-technology]</span>.</p>
 <figure
 id="fig:part-industrial-and-cyber-physical-intelligence-module-map">
-<img
-src="../../../figures/mermaid/part-industrial-and-cyber-physical-intelligence-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence." />
-<figcaption>The unit module map traces the part’s
-chapters as a linear reading sequence. In the industrial and cyber
-physical intelligence section, it lets readers compare 5 module nodes in
-the unit’s ordered, source-backed reading sequence from its first module
-to its last so the visual functions as a traceable course aid rather
-than an unscoped assertion.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/part-industrial-and-cyber-physical-intelligence-module-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE module map traces the part’s chapters as a…"><img
+src="../figures/mermaid/part-industrial-and-cyber-physical-intelligence-module-map.png"
+alt="Flow chart of INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE chapter titles in reading order. Labeled content highlights 5 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, with the visual tied back to the industrial and cyber physical intelligence section." aria-details="fig-part-industrial-and-cyber-physical-intelligence-module-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>The INDUSTRIAL AND CYBER-PHYSICAL
+INTELLIGENCE module map traces the part’s chapters as a linear reading
+sequence. In the industrial and cyber physical intelligence section, it
+lets readers compare 5 module nodes in the unit’s ordered, source-backed
+reading sequence from its first module to its last so the visual
+functions as a traceable course aid rather than an unscoped
+assertion.</figcaption>
+<details id="fig-part-industrial-and-cyber-physical-intelligence-module-map-long-description" class="figure-long-description" data-figure-label="fig:part-industrial-and-cyber-physical-intelligence-module-map"><summary>Detailed description of figure part industrial and cyber physical intelligence module map</summary><p>This process-flow figure is assigned to the industrial and cyber physical intelligence section and should be read as an accessible equivalent for INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE Module Map. The short alternative identifies the figure as: Flow chart of INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE chapter titles in reading order. Labeled content highlights 5 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, with the visual tied back to the industrial and cyber physical intelligence section. The full visual conveys 5 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last. The caption explains the reader task as follows: The INDUSTRIAL AND CYBER-PHYSICAL INTELLIGENCE module map traces the part&#x27;s chapters as a linear reading sequence. In the industrial and cyber physical intelligence section, it lets readers compare 5 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:part-industrial-cyber-to-physical-defensive-chain">
-<img
-src="../../../figures/mermaid/part-industrial-cyber-to-physical-defensive-chain.png"
-alt="This part builds a defensive chain from cyber observation through engineering state, physical consequence, operator decision, and recovery evidence, with each of the five chapters feeding a stage and a hard safety boundary forbidding live…" />
+<a class="figure-full-size-link" href="../figures/mermaid/part-industrial-cyber-to-physical-defensive-chain.png" target="_blank" rel="noopener" aria-label="Open full-size figure, This part builds a defensive chain from cyber observation through engineering state…"><img
+src="../figures/mermaid/part-industrial-cyber-to-physical-defensive-chain.png"
+alt="Flowchart with five small subgraphs labeled foundations (chapter 45 ICS and OT assets, architecture, safety state), threat modeling (chapter 46 MITRE ATT&amp;CK for ICS, defensive coverage), learning from history (chapter 47 historical ICS incident analysis), collective defense (chapter 48 threat-intel sharing for critical infrastructure), and agentic application (chapter 49 AGEINT applied to ICS, defensive only). A central chain runs cyber observation to engineering state to physical consequence to operator decision log to recovery evidence. Chapter 49 feeds cyber observation, chapter 45 feeds engineering state, chapter 46 feeds physical consequence, chapter 47 feeds operator decision log, and chapter 48 feeds recovery evidence. Recovery evidence flows to cyber-physical tabletop evidence packet, and a dotted edge from a safety boundary node (no live control, exploit, or response) also constrains that packet." aria-details="fig-part-industrial-cyber-to-physical-defensive-chain-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>This part builds a defensive chain from
 cyber observation through engineering state, physical consequence,
 operator decision, and recovery evidence, with each of the five chapters
 feeding a stage and a hard safety boundary forbidding live control,
 exploitation, or operational response.</figcaption>
-</figure>
+<details id="fig-part-industrial-cyber-to-physical-defensive-chain-long-description" class="figure-long-description" data-figure-label="fig:part-industrial-cyber-to-physical-defensive-chain"><summary>Detailed description of figure part industrial cyber to physical defensive chain</summary><p>This process-flow figure is assigned to the industrial and cyber physical intelligence section and should be read as an accessible equivalent for Industrial and Cyber-Physical Intelligence: Cyber-to-Physical Defensive Chain. The short alternative identifies the figure as: Flowchart with five small subgraphs labeled foundations (chapter 45 ICS and OT assets, architecture, safety state), threat modeling (chapter 46 MITRE ATT&amp;CK for ICS, defensive coverage), learning from history (chapter 47 historical ICS incident analysis), collective defense (chapter 48 threat-intel sharing for critical infrastructure), and agentic application (chapter 49 AGEINT applied to ICS, defensive only). A central chain runs cyber observation to engineering state to physical consequence to operator decision log to recovery evidence. Chapter 49 feeds cyber observation, chapter 45 feeds engineering state, chapter 46 feeds physical consequence, chapter 47 feeds operator decision log, and chapter 48 feeds recovery evidence. Recovery evidence flows to cyber-physical tabletop evidence packet, and a dotted edge from a safety boundary node (no live control, exploit, or response) also constrains that packet. The full visual conveys Foundations, Ch45: ICS and OT assets, architecture, safety state, Threat modeling, Ch46: MITRE ATT&amp;CK for ICS, defensive coverage, Learning from history, Ch47: Historical ICS incident analysis, Collective defense, and Ch48: Threat-intel sharing for critical infrastructure. The caption explains the reader task as follows: This part builds a defensive chain from cyber observation through engineering state, physical consequence, operator decision, and recovery evidence, with each of the five chapters feeding a stage and a hard safety boundary forbidding live control, exploitation, or operational response. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <h3
 id="industrial-and-cyber-physical-intelligence-module-roster-and-source-lane-inventory-citations-lanes-and-learner-route">INDUSTRIAL
 AND CYBER-PHYSICAL INTELLIGENCE module roster and source-lane inventory:
 citations, lanes, and learner route</h3>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -357,42 +793,47 @@ citations, lanes, and learner route</h3>
 <tbody>
 <tr>
 <td>Industrial Control Systems (ICS) and Operational Technology</td>
-<td>[sec:chapter-industrial-control-systems-ics-and-operational-technology]</td>
+<td><span class="citation"
+data-cites="sec:chapter-industrial-control-systems-ics-and-operational-technology">[@sec:chapter-industrial-control-systems-ics-and-operational-technology]</span></td>
 <td>[ageint255]; [ageint256]; [ageint270]; [ageint273]; [ageint276];
 [ageint285]; [ageint286]; [ageint290]; [ageint294]; [ageint208];
 [ageint209]; [ageint210]; [ageint211]; [ageint212].</td>
 </tr>
 <tr>
 <td>MITRE ATT&amp;CK for ICS</td>
-<td>[sec:chapter-mitre-att-ck-for-ics]</td>
+<td><span class="citation"
+data-cites="sec:chapter-mitre-att-ck-for-ics">[@sec:chapter-mitre-att-ck-for-ics]</span></td>
 <td>[ageint255]; [ageint257]; [ageint261]; [ageint274]; [ageint278];
 [ageint280]; [ageint287]; [ageint288]; [ageint295]; [ageint213];
 [ageint214]; [ageint215]; [ageint216].</td>
 </tr>
 <tr>
 <td>Historical ICS Cyber Incidents: Intelligence Analysis</td>
-<td>[sec:chapter-historical-ics-cyber-incidents-intelligence-analysis]</td>
+<td><span class="citation"
+data-cites="sec:chapter-historical-ics-cyber-incidents-intelligence-analysis">[@sec:chapter-historical-ics-cyber-incidents-intelligence-analysis]</span></td>
 <td>[ageint252]; [ageint255]; [ageint270]; [ageint279]; [ageint282];
 [ageint284]; [ageint289]; [ageint291]; [ageint296]; [ageint217];
 [ageint218]; [ageint219]; [ageint220].</td>
 </tr>
 <tr>
 <td>Threat Intelligence Sharing for Critical Infrastructure</td>
-<td>[sec:chapter-threat-intelligence-sharing-for-critical-infrastructure]</td>
+<td><span class="citation"
+data-cites="sec:chapter-threat-intelligence-sharing-for-critical-infrastructure">[@sec:chapter-threat-intelligence-sharing-for-critical-infrastructure]</span></td>
 <td>[ageint253]; [ageint258]; [ageint261]; [ageint275]; [ageint276];
 [ageint283]; [ageint286]; [ageint293]; [ageint295]; [ageint077];
 [ageint218]; [ageint307]; [ageint305]; [ageint304].</td>
 </tr>
 <tr>
 <td>AGEINT Applied to ICS and Cyber-Physical Intelligence</td>
-<td>[sec:chapter-ageint-applied-to-ics-and-cyber-physical-intelligence]</td>
+<td><span class="citation"
+data-cites="sec:chapter-ageint-applied-to-ics-and-cyber-physical-intelligence">[@sec:chapter-ageint-applied-to-ics-and-cyber-physical-intelligence]</span></td>
 <td>[ageint255]; [ageint256]; [ageint257]; [ageint273]; [ageint274];
 [ageint275]; [ageint286]; [ageint287]; [ageint292]; [ageint213];
 [ageint307]; [ageint305]; [ageint304]; [ageint299]; [ageint306];
 [ageint312]; [ageint300].</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

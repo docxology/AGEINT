@@ -23,8 +23,9 @@ Root `pyproject.toml` includes `pillow` for pipeline Stage 02. Run `uv sync` at 
 Rebuild, then:
 
 ```bash
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+# From the prepared SDK root:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 Fix cross-refs in `src/manuscript_manifest/` or `src/markdown_refs.py`, not in generated output.
@@ -37,27 +38,20 @@ Install headless Chrome for `mmdc`, or use placeholder figures for smoke runs (`
 
 Session fixture runs full `run_build()` once. Subsequent tests reuse `output/`.
 
-## Evidence or artifact prompt parity failures: regenerate YAML parity fixtures
+## Topic prompt or rotation regressions: inspect semantics, not prose parity
 
-Regenerate the committed tables and parity fixture:
+Use focused routing regressions rather than re-pinning generated prose:
 
 ```bash
-uv run python scripts/generate_topic_prompt_routes_yaml.py
-uv run python scripts/generate_prompt_parity_fixture.py
-uv run pytest tests/test_topic_frame_routing.py::test_evidence_and_artifact_prompts_match_curriculum_parity_fixture -v
+uv run pytest tests/test_topic_frame_routing.py tests/test_topic_lessons.py tests/test_source_grounding.py -v
+uv run python scripts/validate_declarative_yaml.py
 uv run python scripts/build_curriculum.py
 ```
 
-Risk-category parity follows the same pattern with `scripts/generate_risk_routes_yaml.py` and `tests/fixtures/risk_category_parity.json`.
+Inspect the actual safe display subject, canonical pattern identity and chapter profile/lens override. Raw inherited source wording must not change the taught subject. Review reference fitness separately: official status, an inherited citation or a long annotation is not evidence for an unrelated technical claim.
 
-## Rotation field parity failures: regenerate rotation fixtures
+Risk-category fixture data remains classification-boundary input, not an instruction to preserve incorrect prose. Prompt and rotation prose snapshots and their generators were removed; do not recreate them.
 
-```bash
-uv run python scripts/generate_topic_rotation_templates_yaml.py
-uv run python scripts/generate_rotation_parity_fixture.py
-uv run pytest tests/test_topic_frame_routing.py::test_rotation_fields_match_curriculum_parity_fixture -v
-uv run python scripts/build_curriculum.py
-```
 
 ## Shard import errors after intelligence-content edits: update package imports
 

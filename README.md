@@ -11,403 +11,488 @@
   <img src="output/figures/python/ageint-graphical-abstract.png" alt="AGEINT Synthetic Tradecraft System Atlas. Bounded agentic assistance (retrieve, reason, tool, memory, handoff) feeds a central synthetic analytic tradecraft core, surrounded by collection and assurance domains such as HUMINT, SIGINT, OSINT, GEOINT, FININT, cyber, cognitive security and governance. Outputs pass a human review gate to products, halts, citations, figures, PDF, metadata and red-team checks, all resting on a source spine and evidence floor." width="560">
 </p>
 
-AGEINT is a modular curriculum for Agentic Intelligence: atlas, library, course,
-textbook, cookbook, and playbook. It converts a source guide into a semantic
-manuscript, registry-backed figures, generated BibTeX, and auditable runtime
-variables. Everything here builds from a standalone checkout of this repository;
-the one exception is the combined PDF (`AGEINT.pdf`), which is rendered by a
-sibling template repository's pandoc/xelatex pipeline rather than by a script in
-this repo.
+A source-built atlas, library, course, textbook, cookbook, and playbook for
+**Agentic Intelligence**. AGEINT turns curriculum shards and evidence-scoped
+research anchors into a semantic manuscript, figures, bibliography, and
+inspectable reports. The shared research SDK compiles the PDF and HTML editions.
 
-The project is deliberately evidence-bounded. It can teach intelligence
-tradecraft, IC-cycle governance, OSINT/GEOINT integrity, FININT/economic
-security, declassified intelligence history, agentic-AI governance, cognitive
-security, counterintelligence, cyber defense, and ICS/OT readiness, but all
-examples stay educational, synthetic, accountable, defensive, and bounded by
-legal and human oversight constraints.
+**Read:** [PDF snapshot](AGEINT.pdf) · [published releases](https://github.com/docxology/AGEINT/releases) · [documentation](docs/README.md)  
+**Work:** [commands](#commands) · [source map](#source) · [verification and releases](#github-actions-and-releases) · [troubleshooting](#troubleshooting)
 
-## Citation and DOI
+**Source edition: 0.2.0.** A version in source, a checked-in reader, or an old
+`ok: true` report is not proof that this edition has been published or freshly
+qualified. Full publication requires the genuinely released SDK **v5.2.0** and
+the exact-source acceptance workflow. See [current state](#current-state-and-next-actions)
+and [citation and DOI](#citation-and-doi) before reusing an artifact.
 
-- **Repository:** <https://github.com/docxology/AGEINT>
-- **Concept DOI (cite this — resolves to the latest version):** [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274)
-- **Version DOI (Edition 0.1):** [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275)
-- **License:** text CC BY 4.0; code Apache-2.0
+## Read and learn
 
-> Friedman, Daniel Ari. *AGEINT: Agentic Intelligence — A Modular Atlas, Library,
-> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (Edition 0.1,
-> 2026). Active Inference Institute. <https://github.com/docxology/AGEINT>.
-> <https://doi.org/10.5281/zenodo.20732274>.
+| Your goal | Start here | A useful result |
+| --- | --- | --- |
+| Read the curriculum | [PDF](AGEINT.pdf), or an HTML reader from a verified release | Follow the orientation, a unit workflow, then its chapter exercises |
+| Study independently | [Learner support and assessment](docs/learner_support_assessment.md) | Record a bounded claim, its sources, alternatives, limits, and a justified decision or abstention |
+| Teach or facilitate | [Instructor guide](docs/instructor_guide.md) | Select a learning path, use fictional/synthetic cases, and assess the evidence trail rather than confidence alone |
+| Improve content or citations | [Source map](#source) and [citation workflow](docs/citation_workflow.md) | Change authored source, preserve identities, rebuild, and inspect the resulting reader |
+| Build or verify an edition | [Commands](#commands) and [Actions contracts](.github/workflows/README.md) | Produce artifacts whose Source, SDK, clock, tests, and audit evidence agree |
 
-The DOI and repository are baked into the rendered title page and citation block
-of `output/pdf/AGEINT_combined.pdf`.
+The curriculum covers intelligence tradecraft, OSINT/GEOINT integrity,
+FININT/economic security, intelligence history, agentic-AI governance,
+cognitive security, counterintelligence, cyber defense, and ICS/OT readiness.
+Human-source subjects and software agents are distinct; exercises remain
+educational, defensive, synthetic, accountable, and subject to legal and human
+oversight. They are not live-target operating instructions.
 
-## Source
+### Open the HTML reader locally
 
-- Runtime curriculum source: `data/curriculum/`
-- Optional historical guide filename: `SIST-Guide-TOC-and-Bibliography-v2.md` is recognized when present but is not required for normal builds
-- Source templates: `docs/manuscript/templates/*.md`
-- Resolved manuscript: `output/manuscript/`
-- Figure registry and assets: `output/figures/figure_registry.json`
-- Bibliography: generated to `docs/manuscript/references-*.bib` and `output/manuscript/references-*.bib`
-- Scholarship anchors: `data/research_anchors/`, `src/intelligence_content/`, and `src/manuscript_variables/`
+GitHub's HTML file preview is **not** the running book. From a checkout that
+contains `output/web/index.html`, serve the common output root:
 
-## Current generated scope
+```bash
+# Working directory: AGEINT repository root. No SDK is needed to serve existing files.
+python3 -m http.server 8000 --bind 127.0.0.1 --directory output
+```
 
-- Parts: 16
-- Chapters: 51
-- Methods appendices: 9
-- AGEINT patterns: 20
-- Parsed references: 312
-- Curated official/scholarly/professional research anchors: 462
-- Source-quality support anchors: 10
-- Registered figures: 177 (115 Mermaid, 52 Python, 4 historical, 6 AI-generated; square-normalized canvases; current registry has no placeholder plates and every row carries caption, alt text, long-description metadata, PNG metadata, and visual-semantics fields)
-- Non-numbered generated visuals: 1 deterministic Python-rendered title-page cover at `output/figures/cover/ageint-cover-synthesis.png` and 1 front-matter Evidence Transit Map at `output/figures/frontmatter/ageint-evidence-transit-map.png` (both live outside the numbered registry)
+Open <http://127.0.0.1:8000/web/index.html>. Keep `web/`, its local browser
+assets, and sibling `figures/` together; serving only `output/web/` breaks
+relative figure URLs. This reads an existing snapshot, not a fresh build.
+If the checkout has no HTML edition, use the PDF or a verified reader bundle.
+Do not assume every reader feature works through `file://`.
 
-These counts are rebuild-time measurements: verify with
-`python3 -c "import json;print(json.load(open('output/data/curriculum_outline.json'))['stats'])"`
-or re-run `scripts/build_curriculum.py`; see [`TODO.md`](TODO.md) Verified State
-for the last measured pass.
+For a downloaded `AGEINT-reader.zip`, use a new extraction directory:
 
-## Current state and next actions
+```bash
+unzip AGEINT-reader.zip -d reader
+python3 -m http.server 8000 --bind 127.0.0.1 --directory reader
+```
 
-- Backlog (canonical, forward-only): [`TODO.md`](TODO.md) — its `Open` section
-  holds the next useful work; `tasks.yaml` is the taskboard source of truth.
-- Status: `output/reports/publication_readiness.json` (`ok` field) and
-  `output/reports/current_artifact_evidence.json` are the generated status
-  surfaces; re-run the audits in Commands below to refresh them.
+Open the same `/web/index.html` URL. Runtime assets are local; scholarly links
+remain external references that you choose to open.
+
+## Source and generated scope
+
+Source rows describe current authored inputs; output rows describe the retained
+generated snapshot. Source curation does not rebuild or qualify the reader.
+Rebuild and inspect generated artifacts before claiming a current release.
+
+| Surface | Count | Source of truth |
+| --- | ---: | --- |
+| Parts | 16 | `data/curriculum/stats.json` |
+| Chapters | 51 | `data/curriculum/stats.json` |
+| Methods appendices | 9 | `data/curriculum/stats.json` |
+| AGEINT patterns | 20 | `output/data/curriculum_outline.json` |
+| Numbered curriculum references | 315 | `data/curriculum/references/` (authored source) |
+| Curated research anchors | 462 | `data/research_anchors/` |
+| Source-quality support anchors | 10 | `data/research_anchors/source-quality-anchors.jsonl` |
+| Source-metadata rows | 472 | `output/reports/source_metadata.json` |
+| Registered figures | 177 | `output/figures/figure_registry.json` |
+
+The numbered registry contains 115 Mermaid, 52 Python, 4 historical, and
+6 AI-generated figures. Non-numbered cover and Evidence Transit Map assets
+live outside that registry. Inspect their provenance rather than treating a
+figure count, caption, or successful render as evidence for a scientific claim.
+
+Read the existing curriculum snapshot without rebuilding:
+
+```bash
+python3 -c "import json; from pathlib import Path; print(json.loads(Path('output/data/curriculum_outline.json').read_text())['stats'])"
+```
+
+Historical measurements are in [TODO's historical verification section](TODO.md#historical-pre-refactor-verification-2026-11-06),
+not a nonexistent "Verified State" section. Current work is in
+[Open](TODO.md#open) and the native [taskboard](tasks.yaml).
 
 ## Commands
 
+Examples use a POSIX-style shell. Git and [uv](https://docs.astral.sh/uv/getting-started/installation/)
+are needed for development; Python alone can serve existing readers. Use an
+empty destination or a separate development checkout. Builds and report writers
+modify files: preserve local changes and original failed evidence first.
+
+### 1. Standalone development — compile sources, not a release book
+
+AGEINT's standalone compatibility floor is **Python 3.11**; the checkout's
+[`.python-version`](.python-version) selects its default development interpreter.
+Start outside an activated SDK environment so nested uv commands do not
+reconcile the SDK's frozen environment against AGEINT's different dependency
+metadata.
+
 ```bash
-uv run python scripts/build_curriculum.py
-AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py  # strict Mermaid PNGs
-uv run python scripts/generate_figures.py
-uv run pytest tests/ --cov=src --cov-fail-under=90
-uv run python scripts/audit_artifact_evidence.py --write --format markdown
-uv run python scripts/audit_scholarship_quality.py --write --format markdown
-uv run python scripts/audit_source_metadata.py --write --format markdown
-uv run python scripts/audit_agency_source_coverage.py --write --format markdown
-uv run python scripts/audit_claim_calibration.py --write --format markdown
-uv run python scripts/audit_reference_quality.py --write --format markdown
+git clone https://github.com/docxology/AGEINT.git AGEINT-dev
+cd AGEINT-dev
+uv sync --locked --extra dev
 
-# Coverage floor: 90% for `src/`; use the test command above for the current measured result.
-# Stage 02 pipeline analysis runs build_curriculum.py only (see docs/manuscript/config.yaml analysis.scripts).
-
-# From the sibling template repo root (AGEINT linked under projects/working/AGEINT):
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
-
-# PDF render (from the sibling template repo root, AGEINT linked under
-# projects/working/AGEINT): re-renders the combined PDF and copies it back
-# into this repo — the render/copy stages this repo does not itself carry.
-uv run python scripts/maintenance/rerender_working_pdfs.py --project AGEINT
+# Compiles source data, variables, bibliography, manuscript, and figures.
+# This writes generated files; it does not compile the PDF/HTML book.
+uv run --no-sync python scripts/build_curriculum.py
 ```
 
-Use `--regenerate-source-template-library` only when intentionally resetting the
-neutral source templates from `src/manuscript_templates.py`.
+The build already generates figures; do **not** follow it with another complete
+`generate_figures.py` run. Default development rendering may use deterministic
+text-plate fallbacks when Mermaid/browser tooling is unavailable. That result
+is useful for development, **not strict reader or release acceptance**.
+
+A focused source-identity check is:
+
+```bash
+uv run --no-sync python -m pytest tests/test_source_identity.py
+```
+
+The limited standalone CI lane additionally prepares Poppler and runs:
+
+```bash
+uv run --no-sync python -m pytest tests/   --cov=src --cov-report=term-missing --cov-fail-under=84
+```
+
+That **84% compatibility lane does not replace the full 90% acceptance gate**.
+`built_output` only reads existing artifacts; pytest does not rebuild missing or
+stale publications. Keep original freshness/count/heading failures visible.
+Use the explicit build above or the fresh-checkout acceptance workflow for a
+new edition; neither replaces reviewed publication-output promotion.
+
+### 2. Full PDF/HTML workflow — prepared, pinned shared SDK
+
+**Prerequisite:** a genuinely published, non-draft, non-prerelease SDK
+[`v5.2.0`](https://github.com/docxology/template/releases/tag/v5.2.0), plus its
+native document toolchain. If that release is unavailable, stop this stable
+route; do not substitute floating `main` or relabel a development candidate.
+[Manual candidate verification](#github-actions-and-releases) is a separate,
+non-publication route.
+
+The SDK requires Python **3.14 or later**; the complete hosted AGEINT lane uses
+**3.14**. AGEINT does not install a second compiler. Prepare the SDK's pinned
+Mermaid/Node/browser, Pandoc/crossref, XeLaTeX/BibTeX, and native-reader tools
+using its own setup instructions. AGEINT's standalone `uv sync` does not
+provision these system tools. The [hosted verification workflow](.github/workflows/manuscript.yml)
+uses the SDK's setup actions for a reproducible prepared environment.
+
+From a new parent directory, clone AGEINT **inside** the SDK as a regular
+checkout, not an external symlink. Offline asset publication enforces confinement.
+The `projects/active/` checkout is local project state, not something to add to
+the SDK's public tracked tree.
+
+```bash
+git clone --branch v5.2.0 --recurse-submodules   https://github.com/docxology/template.git template
+cd template
+git clone https://github.com/docxology/AGEINT.git projects/active/AGEINT
+
+# Working directory remains the SDK root.
+uv sync --frozen --group dev --group rendering --python 3.14
+export AGEINT_TEMPLATE_REPO="$PWD"
+export VIRTUAL_ENV="$PWD/.venv" UV_PROJECT_ENVIRONMENT="$PWD/.venv"
+export UV_PYTHON="$PWD/.venv/bin/python" UV_NO_SYNC=1 UV_FROZEN=true
+export PATH="$PWD/.venv/bin:$PATH"
+export PYTHONPATH="$PWD:$PWD/projects/active/AGEINT/src"
+export SOURCE_DATE_EPOCH="$(git -C projects/active/AGEINT log -1 --format=%ct)"
+export AGEINT_REQUIRE_RENDERED_FIGURES=1
+export ENABLE_PDF=1 ENABLE_HTML=1 ENABLE_SLIDES=0 ENABLE_DOCX=0 ENABLE_EPUB=0
+
+python -m infrastructure.reporting.native_dependency_preparation --repo-root .
+(cd projects/active/AGEINT && python scripts/build_curriculum.py)
+
+python -m infrastructure.validation.cli markdown   projects/active/AGEINT/output/manuscript --repo-root . --strict
+python -m infrastructure.validation.cli prerender   projects/active/AGEINT/output/manuscript --repo-root .
+python scripts/pipeline/stage_03_render.py   --project active/AGEINT --skip-manuscript-hydration
+python -m infrastructure.validation.cli pdf   projects/active/AGEINT/output/pdf/AGEINT_combined.pdf
+python scripts/pipeline/stage_04_validate.py --project active/AGEINT
+
+# Mirror the authoritative PDF; do not compile a second root PDF.
+cp projects/active/AGEINT/output/pdf/AGEINT_combined.pdf   projects/active/AGEINT/AGEINT.pdf
+```
+
+`AGEINT_TEMPLATE_REPO` selects a checkout; it does not install the SDK or waive
+its runtime/guard requirements. Keep using the selected SDK Python. Do not run
+a new standalone dependency sync over this prepared environment.
+
+`--skip-manuscript-hydration` preserves AGEINT's already generated semantic
+manuscript. The native renderer owns the PDF/HTML. `stage_05_copy.py` is optional
+copied-output packaging, not a replacement for native rendering.
+
+### 3. Verification and audits
+
+From AGEINT's root **in that same prepared SDK environment**, run the complete
+suite before claiming a newly rendered edition is qualified:
+
+```bash
+cd "$AGEINT_TEMPLATE_REPO/projects/active/AGEINT"
+python -m pytest tests/ --cov=src --cov-fail-under=90
+python scripts/audit_release_metadata.py --expected-tag v0.2.0 --format json
+```
+
+The complete workflow inventories reader bytes before and after tests and
+rejects mutation. A passing local test command is not the exact-source hosted
+acceptance handoff, nor permission to promote or publish outputs.
+
+Audit commands run from AGEINT's root with its prepared interpreter. Default
+output is Markdown on stdout; `--format json` selects JSON stdout. Nonzero
+means a failing report or a CLI/runtime error, not a reason to suppress a gate.
+
+| Script under `scripts/` | Checks | Saved report with `--write` |
+| --- | --- | --- |
+| `audit_scholarship_quality.py` | Citation/support structure | `scholarship_quality.{json,md}` |
+| `audit_source_metadata.py` | Explicit source lane/tier metadata | `source_metadata.{json,md}` |
+| `audit_agency_source_coverage.py` | Agency/pack/routing coverage | `agency_source_coverage.{json,md}` |
+| `audit_claim_calibration.py` | Evidence and claim-boundary language | `claim_calibration.{json,md}` |
+| `audit_reference_quality.py` | Resolvable, informative references/headings | `reference_quality.{json,md}` |
+| `audit_orchestration_contract.py` | Native build/audit/source-pack contracts | `orchestration_contract.{json,md}` |
+| `audit_source_refresh_due.py` | Review-date/cadence metadata | `source_refresh_due.{json,md}` |
+| `audit_artifact_evidence.py` | Live aggregate artifact evidence | `current_artifact_evidence.{json,md}` |
+| `audit_publication_readiness.py` | Aggregate readiness and actual SDK parent guard | `publication_readiness.{json,md}` |
+| `audit_heading_support.py` | Generated heading support | No `--write`; stdout only |
+| `audit_pdf_quality.py` | PDF/manuscript quality | No `--write`; stdout only |
+| `audit_release_metadata.py` | Version/tag/source metadata alignment | No `--write`; stdout only |
+
+Saved report pairs live under `output/reports/`. `--write --format json` still
+writes **both** JSON and Markdown. Artifact-evidence writing also refreshes six
+subordinate report pairs; it is not a read-only command.
+
+After intentional build/render work, collect evidence in the existing order:
+
+```bash
+python scripts/audit_scholarship_quality.py --write --format json
+python scripts/audit_source_metadata.py --write --format json
+python scripts/audit_agency_source_coverage.py --write --format json
+python scripts/audit_claim_calibration.py --write --format json
+python scripts/audit_reference_quality.py --write --format json
+python scripts/audit_orchestration_contract.py --write --format json
+python scripts/audit_source_refresh_due.py --write --format json
+python scripts/audit_heading_support.py --format json
+python scripts/audit_pdf_quality.py --format json
+python scripts/audit_artifact_evidence.py --write --format json
+python scripts/audit_publication_readiness.py --write --format json
+
+# SDK root: finalize stable output inventory after all saved reports.
+(cd "$AGEINT_TEMPLATE_REPO" && python scripts/pipeline/stage_04_validate.py --project active/AGEINT)
+# AGEINT root: final read-only readiness recheck, no publication authority.
+python scripts/audit_publication_readiness.py --format json
+```
+
+The hosted lane follows the same post-writer native validation and packages
+only unchanged validated bytes. See its
+[full acceptance order](.github/workflows/manuscript.yml).
+
+The readiness command runs the **actual parent guard**. A missing, failed, timed-out, or skipped guard blocks readiness.
+`--skip-parent-guard` is informational and cannot produce passing acceptance. `ok` is local preflight evidence, not
+proof of source entailment, learning gains, legal compliance, production safety, hosted acceptance, a Git tag, or a DOI
+deposit.
+
+### Focused refreshes and reproducible clocks
+
+Use these only for their stated scope; neither replaces the full workflow:
+
+```bash
+# AGEINT root, prepared environment: refresh figures without a full build.
+python scripts/generate_figures.py --no-allow-placeholder-figures
+
+# Inspect existing reports/inputs without requesting report-file writes.
+python scripts/audit_artifact_evidence.py --format json
+python scripts/audit_source_refresh_due.py --format json
+```
+
+`SOURCE_DATE_EPOCH` pins the UTC build instant for byte-comparable generation. Reuse the producer's epoch when
+reproducing its evidence; do not backdate a run to hide overdue source reviews. Invalid/negative epochs fail. A
+deterministic clock does not mean every source was freshly retrieved. Review-date audits inspect metadata, not live URLs
+or the truth of a claim.
+
+`--regenerate-source-template-library` (also `--regenerate-source-templates`)
+on `build_curriculum.py` deliberately resets the neutral authored template
+library. It is **not** an ordinary rebuild option; preserve intentional template
+edits before using it. There is no output-directory or PDF switch on that CLI.
+
+## GitHub Actions and releases
+
+| Workflow | Purpose | Boundary |
+| --- | --- | --- |
+| [CI](.github/workflows/ci.yml) | Locked lint; Python 3.11/3.12/3.15 standalone compatibility; complete verification job | Standalone 84% coverage is not release acceptance |
+| [Complete manuscript verification](.github/workflows/manuscript.yml) | Strict fresh build, genuine SDK PDF/HTML, ≥90% tests, reader immutability, native and aggregate gates, actual parent guard | Stable SDK by default; manual immutable candidate is development-only |
+| [Source freshness](.github/workflows/source-freshness.yml) | Scheduled/manual review-date and cadence checks | Not live source retrieval; remote run may create drift issues |
+| [Release AGEINT](.github/workflows/release.yml) | Exact-main acceptance, identity/hash handoff, create-only tag and release | Maintainer publication action, not a verification shortcut |
+
+Authenticated GitHub CLI users can inspect and deliberately dispatch verification:
+
+```bash
+gh run list --repo docxology/AGEINT --workflow ci.yml --limit 5
+gh run list --repo docxology/AGEINT --workflow manuscript.yml --limit 5
+
+# Submits verification work, not publication; stable SDK must exist.
+gh workflow run manuscript.yml --repo docxology/AGEINT --ref main
+```
+
+For manual development against a reviewed immutable SDK candidate:
+
+```bash
+: "${SDK_CANDIDATE_SHA:?Set the reviewed full lowercase 40-hex SDK commit SHA}"
+gh workflow run manuscript.yml --repo docxology/AGEINT --ref main   -f "sdk-candidate=$SDK_CANDIDATE_SHA"
+```
+
+The workflow checks the exact checkout and records candidate identity. It does
+not convert candidate results into stable-SDK release evidence. No floating
+branch or candidate override is allowed for publication.
+
+After selecting the exact run, use a new download directory:
+
+```bash
+: "${AGEINT_RUN_ID:?Set the exact completed verification run ID}"
+gh run watch "$AGEINT_RUN_ID" --repo docxology/AGEINT --exit-status
+gh run download "$AGEINT_RUN_ID" --repo docxology/AGEINT --dir verified
+(cd verified/verified-ageint-* && shasum -a 256 --check SHA256SUMS)
+```
+
+Only a successful `verified-ageint-<source>-<run-id>-<attempt>` handoff is acceptance evidence.
+`ageint-inspection-only-*` explicitly says `acceptance: false`; `ageint-diagnostics-only-*` retains failure evidence.
+Neither can replace the verified artifact. Actions artifacts are retained for 14 days; do not confuse that operational
+retention with archival publication.
+
+The verified handoff contains `AGEINT.pdf`, `AGEINT-reader.zip`, `AGEINT-evidence.zip`, `AGEINT-generated.tar.gz`,
+`source-sdk.json`, and `SHA256SUMS`. Check all hashes and the exact AGEINT/SDK/run/attempt identity before reuse or
+reviewed generated-output promotion. Preserve local edits and original reports; never replace them with an inspection
+snapshot to imply success.
+
+### Maintainer publication only
+
+Before dispatch, source version/edition/CFF metadata must agree; the current
+version's native task milestone and its explicit prerequisites must qualify;
+Source must be exact current `main`; the stable SDK release must exist; and
+publication must be authorized. Do **not** pre-create the tag:
+
+```bash
+# PUBLICATION ACTION: creates a new tag and GitHub release after fresh acceptance.
+gh workflow run release.yml --repo docxology/AGEINT --ref main -f tag=v0.2.0
+```
+
+Release reruns complete acceptance rather than trusting a previous green run, rechecks current `main` and stable SDK
+identity, and verifies same-run asset hashes. Existing tags/releases are refused, not moved or overwritten. A partial
+publication can leave a tag; do not delete or move it to force a retry. A configured archive integration may have
+separate consequences and approvals. Source metadata and this README do not authorize a new deposit or mint a DOI.
+
+## Source
+
+| Change | Authoritative surface | Follow through |
+| --- | --- | --- |
+| Curriculum/topic content | `data/curriculum/`, especially chapter `sections.jsonl` | Shard-first build; inspect generated reader and evidence boundaries |
+| Neutral templates and reader structure | `docs/manuscript/templates/`, `src/manuscript_manifest/`, `src/intelligence_content/` | Rebuild; validate headings, references, citations, and reader navigation |
+| Sources and citations | `data/research_anchors/`, `data/source_identity/`, source-pack YAML, `src/manuscript_variables/` | Follow [citation workflow](docs/citation_workflow.md); preserve locked keys/identities, append new references |
+| Figures | `src/figures/`, declarative source tables, registry producers | Real render plus caption/alt-text/provenance review; no placeholder qualification |
+| Build/audit behavior | `src/` business logic; thin wrappers in `scripts/` | Update behavioral consumers and [orchestration contracts](docs/orchestration_contract.md) |
+| Version and publication | `pyproject.toml`, `CITATION.cff`, manuscript/book config, `tasks.yaml` | Version-derived prerequisites and exact-source release workflow |
+
+When present, `SIST-Guide-TOC-and-Bibliography-v2.md` is an optional historical input. Normal builds use curriculum
+shards without restoring that file. Do not reintroduce numbered authored chapters under `docs/manuscript/` or hand-edit
+`output/manuscript/`: source templates and manifest/content modules own it. Use Pandoc citation/cross-reference labels
+rather than hard-coded figure, section, or equation numbers. [Syntax guide](docs/syntax_guide.md).
 
 ## Architecture
 
-The source manuscript stays small and neutral. `src/curriculum.py` composes the
-sharded curriculum, `src/build_pipeline.py` orchestrates the build,
-`src/manuscript_manifest/` creates semantic output paths and generated section
-contexts, `src/manuscript_variables/` writes runtime variables and BibTeX,
-`src/intelligence_content/` owns verified research profiles, deterministic
-agency source packs, and three-tier topic lesson frames (keyword → category →
-synthesis), `src/source_metadata.py` audits
-explicit lane/tier metadata for curated and support anchors, and `src/figures/`
-renders all registry-backed figures. Smoke builds may fall back to deterministic text plates
-when Mermaid/Chrome is unavailable, but the checked-in registry should remain
-free of placeholders; set `AGEINT_REQUIRE_RENDERED_FIGURES=1` to fail instead of
-falling back. Generated chapter architecture lives in
-`src/manuscript_manifest/`: source-guide H1 chapter titles stay stable, while
-repeated governance, rights, assurance, practice, assessment, capstone,
-refresh, and source-map material is composed into reader-facing sections at
-build time. `src/scholarship_quality.py` audits generated claim-bearing
-sections for uncited or thin support and flags single-source-family sections as
-review warnings; `src/source_metadata.py` audits the 462 curated anchors plus
-10 source-quality support anchors so blank lane/tier fields cannot silently
-fall back while rendered artifacts remain green; `src/agency_source_coverage.py`
-audits the 56-anchor official US IC expansion for agency, pack, lane, tier,
-checked-date, claim-scope, assurance, rights, and profile-routing metadata; and
-`src/claim_calibration.py`
-audits high-risk empirical, statistical, governance, safety, visual,
-artifact-readiness, and formalism language against source-support strength and
-boundary wording. `src/reference_quality.py` audits generated section/module
-links, Markdown-file links, generic body headings, lesson cross-links, and
-citation-table context so reader-facing references are both resolvable and
-informative. The artifact-evidence manifest reports 0 single-source-family
-claim-bearing review warnings under the current source-strength classifier;
-the readiness gates treat any such family as a review row, not a blocker.
+```mermaid
+flowchart TD
+  A[Curriculum shards and source anchors] --> B[AGEINT build]
+  T[Templates and content modules] --> B
+  B --> M[Semantic manuscript and bibliography]
+  B --> F[Figures and registry]
+  M --> R[Prepared shared SDK native renderer]
+  F --> R
+  R --> P[PDF and local-asset HTML]
+  P --> V[AGEINT tests and live audits]
+  V --> G[Parent guard and final SDK validation]
+  G --> H[Identity-bound verified handoff]
+  H --> Q[Separately authorized create-only release]
+```
 
-**PDF rendering is external to this repository.** The combined PDF
-(`AGEINT.pdf` at the repo root, mirrored at `output/pdf/AGEINT_combined.pdf`)
-is produced by a shared research-project template's pandoc/xelatex render
-stage, not by any script inside this repo. `scripts/build_curriculum.py` and
-`scripts/generate_figures.py` produce everything that render step consumes —
-the semantic manuscript, the figure registry, and the generated BibTeX — but
-the PDF composition itself runs from the template checkout against this
-project linked under its `projects/working/` tree. Refreshing the PDF is
-therefore a manual, out-of-band step rather than something this repo's own
-CI performs; `scripts/audit_pdf_quality.py` (and the two audit scripts whose
-aggregate verdict includes it) stay informational in
-[`.github/workflows/ci.yml`](.github/workflows/ci.yml) and
-[`.github/workflows/manuscript.yml`](.github/workflows/manuscript.yml) for
-that reason.
+AGEINT owns curriculum composition, authored/generated boundaries, source
+metadata, figure registry, and release gates. The SDK owns native rendering;
+there is no second Pandoc/TeX/BibTeX driver here. The build writes a source-bound
+stamp only after its producers complete. Generated readers and audit records
+remain evidence with specific identities, not primary authoring surfaces.
 
-Generated files under `output/` are not primary authoring surfaces. Edit
-`data/curriculum/` shards first when the guide is absent; otherwise update
-templates, manifest/content modules, or source-anchor data, then rebuild.
-Cross-references are label-backed (`[@sec:...]`, `[@fig:...]`, `[@ageintNNN]`)
-so prose points to generated identifiers instead of literal target names. Do
-not improve section titles or body prose by hand-editing `output/manuscript`.
-Generated chapter H3/H4 scaffolds are chapter-specific reader landmarks, while
-lesson-level navigation uses **Learning-path links** with unit-map, module, and
-curriculum-atlas references.
-Use [`docs/citation_workflow.md`](docs/citation_workflow.md) as the canonical
-recipe for adding, extending, counting, and validating citations.
+## Current state and next actions
 
-See [`docs/output_inventory.md`](docs/output_inventory.md) for the generated artifact contract.
+| Surface | Authority |
+| --- | --- |
+| [`TODO.md`](TODO.md#open) | Human next actions and separately deferred author decisions |
+| [`tasks.yaml`](tasks.yaml) | Native taskboard source and version-derived release dependencies |
+| [`ISA.md`](ISA.md), [`CHANGELOG.md`](CHANGELOG.md) | Historical execution/change records, not a second active backlog |
+| `output/reports/current_artifact_evidence.{json,md}` | Recomputed artifact evidence for its own source/run |
+| `output/reports/publication_readiness.{json,md}` | Evaluated local preflight gates, not publication authority |
+| Matching GitHub verification/release | Exact-source hosted acceptance and actual publication records |
+
+Do not duplicate open work in another task format or infer that a taskboard server is connected merely because a YAML
+header names it. Inspect report identity, source freshness, guard execution, and unmet prerequisites—not just `ok`.
+Checked-in historical reports may predate the current contract; an old successful candidate or release milestone cannot
+qualify today's source.
+
+## Troubleshooting
+
+| Symptom | Check / safe next action |
+| --- | --- |
+| Wrong interpreter or SDK import errors | Use one prepared SDK environment for the full route; check `AGEINT_TEMPLATE_REPO` and explicit interpreter/cwd. Do not sync standalone metadata over that environment. |
+| Missing stable SDK tag/release | Stop the stable path; wait for the genuine release or use explicitly marked manual candidate verification for development only. |
+| Mermaid/browser missing or fallback plates | Prepare the SDK's pinned native toolchain; use strict rendering. A text plate or permissive build is not acceptance. |
+| HTML has missing figures/math or incomplete context | Serve the common bundle/output root over HTTP; use canonical `web/index.html`, not isolated section previews or a `file://` assumption. |
+| Stale build stamp, counts, references, or heading support | Preserve the failure and local edits; correct authored inputs and intentionally produce a fresh edition in a separate checkout. Do not alter counts or suppress the check. |
+| Parent guard skipped, missing, failed, or timed out | Run the real guard in the compatible prepared SDK context. Skipping it cannot close readiness. |
+| Overdue/invalid source-review dates | Inspect [refresh ledger](docs/source_refresh_ledger.md) and original sources; record a real review. Changing a date is not verification. |
+| Existing tag/release or mismatched asset hash | Stop publication; inspect the exact source/run/assets. Do not clobber, retag, or mix artifacts. |
+
+See [troubleshooting](docs/troubleshooting.md), [rendering pipeline](docs/rendering_pipeline.md),
+and [Actions contracts](.github/workflows/README.md) for detailed diagnostics.
 
 ## Scholarship posture
 
-Perplexity may be used for discovery and second opinions, but the manuscript
-cites directly verified sources. The current anchor set includes official and
-standards sources from ODNI, CIA, DIA, NIST, CISA, NSA, Five Eyes partners,
-IMDA, OECD, ISO, IETF, OASIS, OWASP, MITRE, NATO, the EU, UNESCO, OHCHR,
-World Bank, ILO, W3C, OpenAPI, Council of Europe, PCLOB, NARA, NRO, NGA,
-FinCEN, OFAC, FATF, BIS, WIPO, DataCite, C2PA, the Model Context Protocol
-Project, the Agent2Agent Protocol project, the UK NCSC, the International AI
-Safety Report, and a policy-scholarship cognitive security source from GCSP.
+Discovery tools provide leads, not verification. Bind claims to directly
+inspected official, standards, public-domain, or scholarly sources; preserve
+access limits, corrections, uncertainty, and source dependence. The locked
+`ageint001`–`ageint231` reference identities remain stable; additions are
+append-only, with the documented guide range through `ageint312`.
 
-The v2 source layer adds lane metadata for AI conformity/compliance, education
-and assessment, public-sector agentic AI, cross-border data/data spaces,
-human-rights governance, agent interoperability standards, workforce
-governance, and model/data provenance. The original `ageint001` through
-`ageint231` source identities are locked in `data/source_identity/`;
-new guide references are append-only after that range and currently extend
-through `ageint312`. The deep pass adds accessibility and digital inclusion,
-procurement/vendor governance, agent incident response, AI red-team assurance,
-public-sector transparency, and rights-impact privacy review. The evidence
-package pass adds model card reporting, dataset documentation, algorithmic
-transparency reporting, records retention/auditability, secure release/change
-control, risk exception governance, learner support/accommodations, assurance
-evaluation evidence, and procurement performance monitoring.
+The source layer covers governance, accessibility, procurement, incident
+response, red-team assurance, provenance, rights/privacy, intelligence
+tradecraft, and agent interoperability. Source annotations and metadata are
+editorial context, not manufactured evidence. A populated metadata row or a
+successful rebuild is not a fresh review of every source.
 
-The May 24, 2026 source refresh brought the curated anchor set to 172 directly
-verified official, standards, public-domain, or scholarly sources. It adds
-Canada, OECD, UN, NIST, and CISA anchors for bounded agentic-AI governance,
-algorithmic impact assessment, public AI registers, AI incident reporting,
-NIST Dioptra evaluation, secure AI deployment, OT procurement, OT asset
-inventory, and definitive OT architecture evidence. Earlier May 22 anchors
-remain for CISA AI red teaming/TEVV, CISA AI data-security best practices,
-NIST's critical-infrastructure AI RMF profile concept note, OECD public-sector
-AI governance, and the NARA 2025 AI compliance plan. A separate 2026-05-22
-verified batch raises the curated set to 186 anchors, adding NATO CCDCOE
-cognitive-warfare research, DARPA Intrinsic Cognitive Security, CSA frameworks
-(CDR, MAESTRO, securing autonomous agents, NIST agent red-teaming), the OWASP
-agentic threats-and-mitigations reference, frontier-lab agent research from
-Anthropic and Google DeepMind, multi-agent prompt-injection and agentic
-systems-security preprints, the Mandel-Tetlock analytic-debiasing study, and the
-UNU Macau bounded-agency policy analysis. Two 2026-06-06 internet-citation
-passes raise the curated set to 202 anchors by adding NIST AI 100-4
-synthetic-content transparency, NIST AI 100-5 global AI standards engagement,
-the U.S. AI Safety Institute/NIST AI 800-1 misuse-risk draft, the International
-AI Safety Report 2026, MCP specification and security best practices, the A2A
-protocol specification, NCSC secure-AI-development guidance, MITRE D3FEND,
-OASIS CSAF, CycloneDX, SPDX, NIST OSCAL, SLSA, in-toto, and Sigstore. Draft
-status is retained where applicable rather than treated as final policy.
+Structural/heuristic audit success does **not** establish passage entailment,
+independent corroboration, learning gains, model reliability, legal compliance,
+production safety, diagnostic validity, or live-model effectiveness. ACH
+consistency is not a Bayesian likelihood ratio. Proposed cognitive-security
+frameworks or candidate neuromarkers are not validated assurance claims.
+See [source lanes](docs/source_lane_map.md), [source identity](docs/source_identity_stability.md),
+[research](docs/research.md), and [adversarial assurance](docs/adversarial_assurance.md).
 
-A 2026-06-08 primary-literature pass added the foundational primaries behind the curriculum's theoretical and
-technical claims: Friston's free-energy-principle and active-inference papers
-plus the Parr-Pezzulo-Friston textbook (the unifying cognitive framework); the
-canonical agentic-LLM architecture papers (ReAct, Reflexion, Generative Agents,
-Chain-of-Thought, Toolformer) and the Wooldridge multi-agent-systems foundations;
-peer-reviewed HUMINT elicitation science (the CIA MICE-to-RASCLS article and the
-High-Value Detainee Interrogation Group / rapport-based-interviewing literature);
-Heuer & Pherson's structured-analytic-techniques reference; the NIST FIPS 197 /
-186-5 / 180-4 and SP 800-57 cryptographic standards behind the SIGINT assurance
-material; and McGuire's 1961 founding inoculation-theory experiment. These
-upgrade provenance for claims previously anchored to secondary sources without
-changing any argument.
+## Citation and DOI
 
-A 2026-06-09 Data Cards pass raises the curated set to 225 anchors by adding
-the Data Cards dataset-documentation paper, tightening source-tier language for
-practitioner and vendor source-guide rows, and replacing the decorative AGEINT
-boundary plate with a deterministic control matrix.
+- Repository: <https://github.com/docxology/AGEINT>.
+- Concept DOI, identifying the archived work: [10.5281/zenodo.20732274](https://doi.org/10.5281/zenodo.20732274).
+- Historical **Edition 0.1.0 only**: [10.5281/zenodo.20732275](https://doi.org/10.5281/zenodo.20732275).
+- Machine-readable citation: [`CITATION.cff`](CITATION.cff), from the edition you actually use.
+- [License](LICENSE): curriculum/manuscript/docs/figures **CC BY 4.0**; code/scripts/tests/config/workflows **Apache-2.0**.
 
-A 2026-06-10 source-method and active-inference pass raises the curated set to
-228 anchors by adding Buckley et al. on active inference, PRISMA-S for
-source-construction reporting, and Greshake et al. on indirect prompt injection.
+> Friedman, Daniel Ari. *AGEINT: Agentic Intelligence — A Modular Atlas, Library,
+> Course, Textbook, Cookbook, and Playbook for Agentic Intelligence* (source
+> edition 0.2.0, 2026). Active Inference Institute.
+> <https://github.com/docxology/AGEINT>. <https://doi.org/10.5281/zenodo.20732274>.
 
-A 2026-06-11 internet-backed visualization pass raises the curated set to 232
-anchors by adding NIST AI 800-2 benchmark-evaluation draft guidance, OECD's
-agentic-AI landscape paper, NSA MCP security design guidance, and the Science
-Advances psychological-inoculation study. It also raises the figure registry to
-154 with source-backed standards, evaluation, synthetic-content, data-security,
-source-refresh, and freshness/coverage visuals.
-
-A 2026-06-11 analytic-tradecraft integration pass raises the curated set to 248
-anchors by adding CIA/Kent tradecraft history, warning-intelligence, post-9/11
-and Iraq WMD reform/postmortem sources, NATO alternative analysis, SAT
-evaluation evidence, forecasting calibration, and failure-theory sources. It
-also raised the then-current figure registry to 163 with source-backed tradecraft
-schematics and one evidence-derived chart for source-quality boundaries,
-first-principles claim decomposition, red-team negative controls, evidence
-ladders, probability/confidence separation, SAT evidence boundaries, and
-warning/failure feedback.
-
-A 2026-06-14 official US Intelligence Community source-pack pass raises the
-curated set to 304 anchors by adding 56 directly verified CIA, DIA, ODNI,
-Intelligence.gov, NSA, NGA, FBI, and NRO public sources. The new shard is
-functional, not just numerical: `data/agency_source_packs.yaml` routes named
-packs into intelligence profiles, `source_agency` and `source_pack` metadata
-travel through reference dictionaries, `agency_source_coverage_ok` joins the
-artifact-evidence and publication-readiness gates, and the registry grows to 172
-figures with an agency-source coverage dashboard. CIA Studies/CSI professional
-literature is treated as official public professional context, not automatically
-as current agency policy or measured AGEINT benchmark evidence.
-
-A 2026-06-15 SI/OPSEC/cognitive-security literature-integration pass adds 36
-directly verified scholarly, official, and public-domain sources
-from the synthetic-intelligence, analytic-tradecraft, OPSEC, cognitive-security,
-adversarial-ML, AI incident, OSINT leakage, deepfake, disinformation, social
-engineering, and active-inference discovery inventories. The pasted literature
-reviews remain discovery inputs only; final manuscript citations point to the
-verified source URLs in `data/research_anchors/intelligence-anchors-305-340.jsonl`.
-The registry grows to 177 figures with a source-backed SI/tradecraft/OPSEC/
-cognitive-security convergence map.
-
-A 2026-06-15 SAT literature-integration pass raises the curated set to 367
-anchors by adding 27 directly verified scholarly, official, public, and
-publisher-backed structured-analytic-technique sources after dedupe against
-Heuer, Heuer/Pherson, CIA tradecraft, ICD 203, RAND, Dhami, Mandel/Tetlock,
-Barnes/Mandel, Ard, and other existing anchors. The new shard is
-`data/research_anchors/intelligence-anchors-341-367.jsonl`; it routes through
-analytic tradecraft, SAT evidence, analytic cognition, failure postmortem,
-warning, forecasting-calibration, and analyst-assistance profiles while keeping
-SAT claims bounded as review artifacts rather than universal bias remedies or
-autonomous judgment replacements.
-
-A 2026-06-16 citation-expansion pass reviews 106 proposed citation headings,
-imports 95 directly verified and deduplicated anchors, and records 11 deferred
-candidates in `docs/citation_expansion_2026_06_16.md`. The new
-`data/research_anchors/intelligence-anchors-368-417.jsonl` and
-`data/research_anchors/intelligence-anchors-418-462.jsonl` shards are routed
-through non-agency research packs in `data/research_source_packs.yaml` so
-collection, cyber/ICS, influence/CI, history/legal/SAT, and agentic-AI
-chapters inherit richer evidence without overloading the agency-source pack
-contract. Accepted rows use bounded claim scopes and explicitly exclude
-collection tasking, exploit steps, covert-action guidance, manipulation
-playbooks, unsafe cyber-physical actions, and live-target procedures.
-
-A 2026-06-12 local verifier-first, scholarship-quality, and Synthetic Analytic
-Tradecraft orientation pass keeps the same source corpus but raises the figure
-registry to 168 with the
-`ageint-artifact-evidence-control-loop` and
-`ageint-scholarship-triangulation-map` control figures and the
-`ageint-synthetic-tradecraft-method-contract` and
-`ageint-analysis-validation-matrix` method figures plus the
-`ageint-analysis-validation-family-coverage` coverage figure. It adds generated
-evidence manifests that bind the rebuilt manuscript, citation inventory,
-scholarship source-family audit, figure quality audit, rendered-reference audit,
-PDF quality/link audit, and stale-output scans into
-`output/reports/current_artifact_evidence.{json,md}` and
-`output/reports/scholarship_quality.{json,md}`. The current local manifest
-reports 330 configured generated Markdown files, 16,604 generated Markdown
-citation occurrences, 177 registered figures plus one non-numbered cover-art
-PNG, a non-stale 1,858-page ~34 MB PDF, 6,289 PDF URI links, 0 Markdown-file,
-`file:`, or launch-action PDF targets, 0 uncited or thin claim-bearing generated
-files, and six single-source-family claim-bearing review warnings, with passing
-SAT method and analysis-validation contracts plus source-metadata explicitness
-and claim-calibration checks. A follow-on RedTeam pass makes the analysis-validation claim classes
-canonical in `src/analysis_validation.py`, so the prose protocol, matrix
-renderer, scholarship audit, and artifact-evidence manifest now fail if a lane
-such as artifact readiness or reviewer disposition drops out while the heading
-and figure reference still remain. A second RedTeam follow-up adds a canonical
-manuscript-family-to-validation-lane map so a new claim-bearing generated family
-cannot enter the manuscript surface without a matching review lane, evidence
-signal, failure signal, and registry-backed coverage visual.
-
-A 2026-06-13 metadata-verifier hardening pass keeps the same source corpus but
-closes the legacy lane/tier fallback dependency. It makes 119 previously blank
-metadata rows explicit: 109 legacy intelligence anchors now carry
-`source_lane` from their existing `domain` and `source_tier` from their existing
-`source_type`, while 10 source-quality support anchors carry
-`source_quality_spine` / `source_quality_anchor` semantics. The new
-`scripts/audit_source_metadata.py` report writes
-`output/reports/source_metadata.{json,md}` and is wired into
-`current_artifact_evidence.{json,md}` as `source_metadata_ok`, so a blank
-lane/tier row or support-anchor semantic mismatch fails local readiness. The
-same pass raised the then-current registry to 169 figures with
-`ageint-source-metadata-integrity`, a Python control-matrix figure for source
-metadata explicitness and refresh coverage.
-
-A 2026-06-13 cover, abstract, and TOC hardening pass keeps the same source
-corpus and figure registry count while adding deterministic cover art outside
-the numbered figure registry. The abstract is now one substantial plaintext
-Synthetic Analytic Tradecraft contract rather than a graphical-abstract wrapper.
-The graphical abstract itself is now the registry-backed Python
-`ageint-graphical-abstract` Synthetic Tradecraft System Atlas in orientation,
-not a Mermaid stack or title-page cover. The PDF table of contents is
-intentionally limited to H1/H2 entries; each module exposes three chapter-specific
-H2 landmarks (source/profile frame, practice-lens path, assurance handoff), while
-H3/H4 scaffolds remain in the body for local navigation and
-cross-reference targets. The compact LaTeX preamble also carries TOC spacing
-controls so multi-digit section numbers do not collide with headings.
-
-A 2026-06-14 claim-calibration and visual-semantics hardening pass keeps the
-same source corpus and adds the registry-backed
-`ageint-claim-calibration-and-visual-semantics` control figure. The figure
-registry schema is now `1.5`: every row declares semantic role, evidence role,
-quantitative status, unit, denominator, counting rule, and interpretation limit,
-and generated PNG metadata embeds the same fields. The new
-`scripts/audit_claim_calibration.py` report writes
-`output/reports/claim_calibration.{json,md}` and is wired into
-`current_artifact_evidence.{json,md}` as `claim_calibration_ok`, so unsupported
-proof-language, p-value language, measured-performance claims, unsupported
-formalisms, or weak-source-only high-risk claims fail local readiness.
-
-A 2026-06-14 abstract/readiness hardening pass makes the Abstract one continuous
-reader-facing Synthetic Analytic Tradecraft paragraph instead of a multi-block
-front-matter summary. That paragraph integrates source-quality and research
-anchor counts inline, shows the learner/reviewer path through evidence packets,
-negative controls, human review, rollback, refresh triggers, figure semantics,
-and validator gates, and explicitly states that artifact telemetry is not a
-benchmark for model capability, learning outcomes, operational effectiveness,
-statistical significance, or safety performance. This is still a local-readiness
-claim, not a publication decision.
-
-After this pass, claim calibration reports 9,107 candidate rows, 0 hard fails,
-482 boundary-allowed rows, and 5,129 review rows; scholarship quality reports 0
-hard fails and keeps six single-source-family rows as non-blocking review
-warnings.
-
-These counts are rebuild-time measurements, not hand-authored release claims:
-`output/data/curriculum_outline.json` carries the curriculum stats, and
-`output/figures/figure_registry.json` carries the figure count, hashes, and
-rendering provenance. Source-anchor rows include `checked_as_of` metadata and
-must be refreshed when source URLs, standards versions, legal text, or supported
-claim scope changes.
-
-## Public readiness
-
-AGEINT is locally publication-ready as a preflight packet, not as a public
-release. The 2026-06-16 `publication_readiness` report is `ok: true`: artifact
-evidence is green, the source-refresh dashboard reports 472 current metadata
-rows and 0 due-soon/due/stale rows, the artifact manifest has `issues: []`, the
-parent tracked-project confidentiality guard passes, the release-surface scan
-finds 0 private/local path or Markdown-file-link issues, the source/license
-posture is recorded, and the fresh PDF audit reports 1,858 pages, 6,289 URI
-links, 0 file actions, and 0 bad link targets. `ageint-27` is therefore closed.
-`ageint-m1` remains todo because no public release, push, PR, archive,
-promotion, publication upload, DOI, or release record has been approved or
-performed.
+Source publication identity is rendered into the title/citation surface. The
+concept DOI does not mint or establish a new 0.2.0 version DOI/deposit. Cite an
+archived edition's actual version DOI when edition-specific provenance matters.
 
 ## Safety posture
 
-Dual-use subjects are represented as history, governance, tabletop exercises,
-synthetic-data labs, public-domain imagery, source-integrity review, and
-defensive analysis. Do not add live target lists, operational collection steps,
-evasion recipes, exploit instructions, persuasion playbooks, or unsafe
-cyber-physical procedures.
+Dual-use subjects are history, governance, tabletop exercises, synthetic-data
+labs, public-domain imagery, source-integrity review, and defensive analysis.
+Do not add live target lists, operational collection steps, evasion recipes,
+exploit instructions, manipulation playbooks, covert-action procedures, or
+unsafe cyber-physical actions. Retain human review, permission, rights, and
+accountability boundaries.
+
+## Further documentation
+
+[Documentation hub](docs/README.md) · [quickstart](docs/quickstart.md) ·
+[instructor guide](docs/instructor_guide.md) · [learner support](docs/learner_support_assessment.md) ·
+[citation workflow](docs/citation_workflow.md) · [output inventory](docs/output_inventory.md) ·
+[readiness](docs/publication_readiness.md) · [forking](docs/forking_guide.md) ·
+[agent rules](AGENTS.md) · [scripts](scripts/README.md)
+
+## Dated research notes
+
+Original [source and curriculum chronology](docs/research_history.md) is preserved separately so this workflow guide
+stays bounded. Dated counts and verification wording are historical, not current acceptance or a fresh review of every
+source.

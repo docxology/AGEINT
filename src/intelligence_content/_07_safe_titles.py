@@ -232,10 +232,10 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
             return "Imagery quality literacy: resolution, temporal fit, and uncertainty review"
         return base_title
     if risk_category == "humint_recruitment_risk":
-        if "mice" in lower:
-            return "MICE Framework for recruitment-risk literacy"
         if "rascls" in lower:
             return "RASCLS tradecraft vocabulary for recruitment-risk literacy"
+        if "mice" in lower:
+            return "MICE Framework for recruitment-risk literacy"
         if "spotting" in lower:
             return "Spotting indicators literacy for recruitment-risk review"
         if "assessment" in lower and "development" in lower:
@@ -270,6 +270,11 @@ def _contextual_safe_title(raw_title: str, risk_category: str, base_title: str) 
 
 def safe_curriculum_treatment(title: str, part_title: str = "", chapter_title: str = "") -> str:
     """Rewrite high-risk source-guide treatment labels into safe curriculum labels."""
+    # Descriptive institutional comparison needs dating and evidence limits, not
+    # erasure of the institution. Method/collection topics still take safe routes.
+    if re.match(r"^(?:Soviet/Russian|British|Israeli|Chinese) Architecture:", title, re.IGNORECASE):
+        subject = title.split(":", 1)[0]
+        return f"{subject}: dated public institutional comparison"
     risk_category = topic_risk_category(title, part_title, chapter_title)
     if risk_category == "standard":
         return title

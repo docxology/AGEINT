@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>unit_intro.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,22 +182,424 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h1 id="sec:part-cognitive-security">COGNITIVE SECURITY</h1>
 <h2
 id="cognitive-security-learning-spine-and-source-route-unit-purpose-module-order-and-evidence-handoff">COGNITIVE
 SECURITY learning spine and source route: unit purpose, module order,
 and evidence handoff</h2>
-<p><strong>Evidence anchor.</strong> [sec:part-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-cognitive-security">[@sec:part-cognitive-security]</span>.</p>
 <h3
 id="cognitive-resilience-and-epistemic-integrity-discipline-spine-domain-question-and-learning-focus">cognitive
 resilience and epistemic integrity discipline spine: domain question and
 learning focus</h3>
-<p><strong>Evidence anchor.</strong> [sec:part-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-cognitive-security">[@sec:part-cognitive-security]</span>.</p>
 <p>This unit teaches <strong>cognitive resilience and epistemic
 integrity</strong>. Cognitive-security lessons protect attention, trust,
 memory, and judgment by tracing provenance, correction paths, and
@@ -199,21 +608,37 @@ transparent education.</p>
 id="cognitive-resilience-and-epistemic-integrity-source-use-contract-citation-roles-and-evidence-limits">cognitive
 resilience and epistemic integrity source-use contract: citation roles
 and evidence limits</h3>
-<p><strong>Evidence anchor.</strong> [sec:part-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-cognitive-security">[@sec:part-cognitive-security]</span>.</p>
 <p>Use CISA, NATO, and analytic-tradecraft anchors for influence
 mitigation, information-threat analysis, and confidence discipline.</p>
 <h3
 id="cognitive-resilience-and-epistemic-integrity-practice-artifact-recurring-packet-and-retained-evidence">cognitive
 resilience and epistemic integrity practice artifact: recurring packet
 and retained evidence</h3>
-<p><strong>Evidence anchor.</strong> [sec:part-cognitive-security];
-[ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:part-cognitive-security">[@sec:part-cognitive-security]</span>.</p>
 <p>The recurring practice artifact is a <strong>epistemic-integrity
 review packet</strong> that draws on provenance chain, correction
 option, harm note, and confidence language. The unit keeps its learning
-spine explicit. Learners separate narrative spread from intent, document
-uncertainty, and choose transparent resilience moves.</p>
+spine explicit. Classroom packet: a synthetic seminar summary turns
+‘evidence is inconclusive’ into ‘the method works’; two later summaries
+copy it, and the original excerpt remains available.</p>
+<ol type="1">
+<li>Underline the proposition and uncertainty qualifier in each version,
+then trace the copying chain.</li>
+<li>Compare changed wording with the original and separate observed
+confidence inflation from unknown author intent.</li>
+<li>Remove the copied summaries as a control: repetition must not
+strengthen the efficacy claim. Restore the original qualifier and check
+that the conclusion changes.</li>
+<li>Submit an epistemic-integrity packet rejecting ‘works’ as
+unsupported, preserving the inconclusive result and listing the affected
+derivative notes for correction. Neither spread nor fluent wording
+proves malicious intent. Stop use of the inflated claim in the classroom
+brief; hand a visible correction and version list to the instructor. Do
+not infer a clinical condition or profile readers.</li>
+</ol>
 <h3
 id="cognitive-resilience-and-epistemic-integrity-safety-boundary-accountable-synthetic-and-evidence-bounded-limits">cognitive
 resilience and epistemic integrity safety boundary: accountable,
@@ -235,13 +660,17 @@ ledger, safe-practice lab packet, failure-mode note, instructor rubric,
 and debrief memo. The full source-lane and evidence-package ledgers
 appear in the orientation and appendices; this unit introduction keeps
 only the learner-facing spine for [ageint238]; [ageint239].</p>
-<p>This unit’s safety gates are scope authorization, rights review, data
-provenance, tool allowlisting, human oversight, rollback, and
-evidence-bounded output. A missing gate turns the activity into a
-tabletop, audit, or written governance exercise until the gate is
-restored against [ageint238]; [ageint239].</p>
+<p>This unit’s safety gates are documented authority for the exact
+activity, rights review, permitted data provenance, tool allowlisting,
+human oversight, and evidence-bounded output. A missing or unknown gate
+pauses the affected activity, including processing or sharing already
+supplied data. A written risk exception cannot waive authority or
+rights. A replacement tabletop may begin only after independently
+permitted synthetic inputs, tools and review responsibilities are
+established; it does not inherit permission from the stopped activity.
+Inspect the applicable source context: [ageint238]; [ageint239].</p>
 <p>Capstone thread:</p>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -291,7 +720,7 @@ handoff owner</td>
 <td>all unresolved questions and future approvals are explicit</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Research lane:</strong> Cognitive Security and Influence
 Resilience. Core anchors: [official_cisa_foreign_influence];
 [official_nato_counter_information_threats];
@@ -303,88 +732,104 @@ and protected-audience considerations. <strong>Practice lens:</strong>
 Cognitive-Resilience Lens; How does the module protect autonomy,
 attention, trust, and decision quality without designing persuasion?
 [ageint238]; [ageint239].</p>
-<h2 id="how-adversaries-target-cognition">How adversaries target
-cognition</h2>
-<p>This unit is organized around the NATO/INSS reconception of cognitive
-warfare, summarized for the unit in
-[fig:ageint-cognitive-attack-layers], which distinguishes three layers
-of engagement by their target. The biological layer targets cognitive
-capacity itself through neuroscience-informed pressure on the nervous
-system, with AI optimizing delivery timing and channel selection. The
-psychological layer targets cognitive interpretation, manipulating
-individual cognition and exploiting biases at scale, with AI tailoring
-influence to vulnerability profiles. The social layer targets cognitive
-cohesion, fracturing shared narratives and weaponizing identity to
-manufacture epistemic chaos, with AI coordinating synthetic influence
-across platforms [scholarly_ccdcoe_cognitive_warfare_reconception].
-Holding the three layers apart matters because each demands a different
-defense – resilience of attention, inoculation against manipulation, and
-protection of shared sense-making – and a defender who conflates them
-will mismatch the countermeasure to the attack. Every exercise in this
-unit stays defensive, synthetic, and evidence-bounded: the taxonomy is
-taught to build inoculation and detection, never to script influence
+<h2
+id="cognitive-security-models-source-scope-before-defensive-use">Cognitive-security
+models: source scope before defensive use</h2>
+<p>The CCDCOE research summary frames cognitive warfare as pressure on
+the structures through which a social system interprets evidence,
+establishes trust, and coordinates decisions. Its systemic invariants
+include epistemic frameworks, values, collective identity, trust
+architectures, and expectations about the future. This is a conceptual
+account, not evidence that disagreement, distress, or institutional
+failure was caused by a cognitive attack. The unit map <span
+class="citation"
+data-cites="fig:ageint-cognitive-attack-layers">[@fig:ageint-cognitive-attack-layers]</span>
+separates those source concepts from AGEINT’s proposed defensive checks;
+it does not attribute a biological/psychological/social attack taxonomy
+to that source [scholarly_ccdcoe_cognitive_warfare_reconception].</p>
+<p>For a classroom case, first record the observable artifact and its
+origin, then compare ordinary error, ambiguity, missing context, and
+deliberate interference as live alternatives. A defender may check
+provenance, preserve dissent, and clarify decision ownership without
+profiling an audience or inferring an adversary. Assign the next check
+to the alternative it would discriminate; if the evidence cannot
+distinguish them, retain an unresolved judgment. These are instructional
+safeguards, not a claim of demonstrated protection.</p>
+<p>DARPA’s Intrinsic Cognitive Security program is a separate,
+mixed-reality research effort aiming to develop and validate formal,
+model-scoped mitigation guarantees. A program goal does not establish a
+guarantee for an LLM, a human population, or this curriculum. Keep
+mixed-reality cognition, social-system theory, and agent-software
+security distinct when borrowing an analogy
 [official_darpa_intrinsic_cognitive_security].</p>
 <h3
 id="cognitive-security-visual-navigation-and-module-map-evidence-flow-order-and-safety-cues">COGNITIVE
 SECURITY visual navigation and module map: evidence flow, order, and
 safety cues</h3>
-<p>The unit uses [fig:part-cognitive-security-module-map],
-[fig:ageint-cognitive-attack-layers], [fig:part-cogsec-defensive-chain],
-and [fig:ageint-cognitive-security-plate] to map its evidence flow,
-safety boundaries, review artifacts, and refresh cues.</p>
-<p>Navigation links: [sec:curriculum_orientation],
-[sec:chapter-ageint-python-code-library],
-[sec:chapter-cognitive-security-foundations-and-definitions].</p>
+<p>The unit uses <span class="citation"
+data-cites="fig:part-cognitive-security-module-map">[@fig:part-cognitive-security-module-map]</span>,
+<span class="citation"
+data-cites="fig:ageint-cognitive-attack-layers">[@fig:ageint-cognitive-attack-layers]</span>,
+<span class="citation"
+data-cites="fig:part-cogsec-defensive-chain">[@fig:part-cogsec-defensive-chain]</span>,
+and <span class="citation"
+data-cites="fig:ageint-cognitive-security-plate">[@fig:ageint-cognitive-security-plate]</span>
+to map its evidence flow, safety boundaries, review artifacts, and
+refresh cues.</p>
+<p>Navigation links: <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>,
+<span class="citation"
+data-cites="sec:chapter-ageint-python-code-library">[@sec:chapter-ageint-python-code-library]</span>,
+<span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span>.</p>
 <figure id="fig:part-cognitive-security-module-map">
-<img
-src="../../../figures/mermaid/part-cognitive-security-module-map.png"
-alt="The unit module map traces the part’s chapters as a linear reading sequence." />
-<figcaption>The unit module map traces the part’s
-chapters as a linear reading sequence. The captioned view belongs to the
-cognitive security section and should be read as a map of 4 module nodes
-in the unit’s ordered, source-backed reading sequence from its first
-module to its last, not as a capability score or live-task
-instruction.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/part-cognitive-security-module-map.png" target="_blank" rel="noopener" aria-label="Open full-size figure, The COGNITIVE SECURITY module map traces the part’s chapters as a linear reading sequence."><img
+src="../figures/mermaid/part-cognitive-security-module-map.png"
+alt="Flow chart of COGNITIVE SECURITY chapter titles in reading order. Labeled content highlights 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, with the visual tied back to the cognitive security section." aria-details="fig-part-cognitive-security-module-map-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>The COGNITIVE SECURITY module map traces
+the part’s chapters as a linear reading sequence. The captioned view
+belongs to the cognitive security section and should be read as a map of
+4 module nodes in the unit’s ordered, source-backed reading sequence
+from its first module to its last, not as a capability score or
+live-task instruction.</figcaption>
+<details id="fig-part-cognitive-security-module-map-long-description" class="figure-long-description" data-figure-label="fig:part-cognitive-security-module-map"><summary>Detailed description of figure part cognitive security module map</summary><p>This process-flow figure is assigned to the cognitive security section and should be read as an accessible equivalent for COGNITIVE SECURITY Module Map. The short alternative identifies the figure as: Flow chart of COGNITIVE SECURITY chapter titles in reading order. Labeled content highlights 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, with the visual tied back to the cognitive security section. The full visual conveys 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last. The caption explains the reader task as follows: The COGNITIVE SECURITY module map traces the part&#x27;s chapters as a linear reading sequence. The captioned view belongs to the cognitive security section and should be read as a map of 4 module nodes in the unit&#x27;s ordered, source-backed reading sequence from its first module to its last, not as a capability score or live-task instruction. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-cognitive-attack-layers">
-<img src="../../../figures/mermaid/ageint-cognitive-attack-layers.png"
-alt="The NATO/INSS cognitive warfare taxonomy distinguishes biological, psychological, and social attack layers by their target, mechanism, and the role AI plays in each." />
-<figcaption>The NATO/INSS cognitive warfare taxonomy
-distinguishes biological, psychological, and social attack layers by
-their target, mechanism, and the role AI plays in each. The captioned
-view belongs to the cognitive security section and should be read as a
-map of NATO/INSS Cognitive Warfare 2026 three layers of engagement,
-Biological layer, Target cognitive capacity, and Mechanism
-neuroscience-informed targeting of the nervous system, not as a
-capability score or live-task instruction.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/ageint-cognitive-attack-layers.png" target="_blank" rel="noopener" aria-label="Open full-size figure, A CCDCOE-hosted study frames cognitive security around systemic invariants, including…"><img src="../figures/mermaid/ageint-cognitive-attack-layers.png"
+alt="Three paired rows distinguish grouped systemic invariants from a CCDCOE-hosted study and author-proposed classroom checks: evidence standards, trust and identity, and values and future orientation. The grouping is explicitly instructional." aria-details="fig-ageint-cognitive-attack-layers-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>A CCDCOE-hosted study frames cognitive
+security around systemic invariants, including epistemic frameworks,
+trust, collective identity, values, and future orientation. AGEINT
+groups these concepts for teaching and proposes corresponding
+evidence-review questions; the grouping and checks are not a source
+taxonomy or validated defense. The study does not necessarily represent
+CCDCOE or NATO policy.</figcaption>
+<details id="fig-ageint-cognitive-attack-layers-long-description" class="figure-long-description" data-figure-label="fig:ageint-cognitive-attack-layers"><summary>Detailed description of figure ageint cognitive attack layers</summary><p>This diagram is assigned to the cognitive security section and should be read as an accessible equivalent for AGEINT Systemic Invariants and Proposed Classroom Checks. The short alternative identifies the figure as: Three paired rows distinguish grouped systemic invariants from a CCDCOE-hosted study and author-proposed classroom checks: evidence standards, trust and identity, and values and future orientation. The grouping is explicitly instructional. The full visual conveys CCDCOE-hosted study concepts distinguished from author-proposed classroom checks, instructional grouping of epistemic frameworks, trust and collective identity, values and future orientation, claim records and contradiction review, provenance without identity profiling, and declared purpose with named review ownership, and no source taxonomy, validated defense or implied CCDCOE or NATO policy endorsement. The caption explains the reader task as follows: A CCDCOE-hosted study frames cognitive security around systemic invariants, including epistemic frameworks, trust, collective identity, values, and future orientation. AGEINT groups these concepts for teaching and proposes corresponding evidence-review questions; the grouping and checks are not a source taxonomy or validated defense. The study does not necessarily represent CCDCOE or NATO policy. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:part-cogsec-defensive-chain">
-<img src="../../../figures/mermaid/part-cogsec-defensive-chain.png"
-alt="Conceptual part map moving from cognitive-defense definitions through neurocognitive mechanisms and bounded prebunking education into governed operations where measurement and rights safeguards feed back to refine education design." />
-<figcaption>Conceptual part map moving from
-cognitive-defense definitions through neurocognitive mechanisms and
-bounded prebunking education into governed operations where measurement
-and rights safeguards feed back to refine education design. Its reader
-value is to make Foundations (Ch37), Definitions: defending cognition,
-not censoring, Mechanism Layer (Ch38), and Neurocognitive mechanisms and
-vulnerabilities visible at a glance, with the cognitive security section
-as the source section and defensive review as the boundary.</figcaption>
-</figure>
+<a class="figure-full-size-link" href="../figures/mermaid/part-cogsec-defensive-chain.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Conceptual study map, not a demonstrated causal mechanism or durable-protection pipeline."><img src="../figures/mermaid/part-cogsec-defensive-chain.png"
+alt="Cognitive-security definitions lead to separate review of proposed neurocognitive mechanisms, measured intervention studies and ordinary-error alternatives. Candidate neuromarkers do not diagnose people or validate an intervention. Source-bounded study outcomes inform a transparent opt-in fictional lesson with recognition and false-alarm controls, rights review and an unresolved-evidence branch. No causal neuroscience-to-immunity chain is asserted." aria-details="fig-part-cogsec-defensive-chain-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
+<figcaption>Conceptual study map, not a demonstrated
+causal mechanism or durable-protection pipeline. Neurocognitive
+hypotheses, candidate measures, intervention outcomes and classroom
+exercises have different evidentiary status. Review corrections,
+disputed extraction, outcome denominators and follow-up; neither a
+detector nor a biological analogy establishes truth, intent or
+individual susceptibility.</figcaption>
+<details id="fig-part-cogsec-defensive-chain-long-description" class="figure-long-description" data-figure-label="fig:part-cogsec-defensive-chain"><summary>Detailed description of figure part cogsec defensive chain</summary><p>This matrix-style figure is assigned to the cognitive security section and should be read as an accessible equivalent for Cognitive Security: From Definitions to Governed Operations. The short alternative identifies the figure as: Cognitive-security definitions lead to separate review of proposed neurocognitive mechanisms, measured intervention studies and ordinary-error alternatives. Candidate neuromarkers do not diagnose people or validate an intervention. Source-bounded study outcomes inform a transparent opt-in fictional lesson with recognition and false-alarm controls, rights review and an unresolved-evidence branch. No causal neuroscience-to-immunity chain is asserted. The full visual conveys Ch37: define claims and protected interests, Ch38: proposed mechanisms and candidate measures No person-level diagnosis or susceptibility score, Ch39: inspect studies, corrections and critique Separate recognition, discernment and behavior, Evidence questions and unresolved limits, Ch40: transparent opt-in fictional lesson Neutral items, false alarms and consent, Hold or redesign; no accusation or persuasion, and Bounded educational result No durable-effect or clinical inference. The caption explains the reader task as follows: Conceptual study map, not a demonstrated causal mechanism or durable-protection pipeline. Neurocognitive hypotheses, candidate measures, intervention outcomes and classroom exercises have different evidentiary status. Review corrections, disputed extraction, outcome denominators and follow-up; neither a detector nor a biological analogy establishes truth, intent or individual susceptibility. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <figure id="fig:ageint-cognitive-security-plate">
-<img src="../../../figures/ai/ageint-cognitive-security-plate.png"
-alt="Deterministic teaching plate for cognitive security as defensive inoculation, provenance tracking, and uncertainty management." />
+<a class="figure-full-size-link" href="../figures/ai/ageint-cognitive-security-plate.png" target="_blank" rel="noopener" aria-label="Open full-size figure, Deterministic teaching plate for cognitive security as defensive inoculation, provenance…"><img src="../figures/ai/ageint-cognitive-security-plate.png"
+alt="Deterministic teaching plate with cognitive security zones for claim checking, prebunking, source tracing, uncertainty review, and rights boundaries. Labeled content highlights Claim check, Prebunking lesson, Source trace, Uncertainty review, and Rights boundary, with the visual tied back to the cognitive security section." aria-details="fig-ageint-cognitive-security-plate-long-description" /><span class="figure-full-size-label" aria-hidden="true">Open full-size figure</span></a>
 <figcaption>Deterministic teaching plate for
 cognitive security as defensive inoculation, provenance tracking, and
 uncertainty management. In the cognitive security section, it lets
 readers compare Claim check, Prebunking lesson, Source trace, and
 Uncertainty review so the visual functions as a traceable course aid
 rather than an unscoped assertion.</figcaption>
-</figure>
+<details id="fig-ageint-cognitive-security-plate-long-description" class="figure-long-description" data-figure-label="fig:ageint-cognitive-security-plate"><summary>Detailed description of figure ageint cognitive security plate</summary><p>This synthetic concept plate is assigned to the cognitive security section and should be read as an accessible equivalent for Cognitive Security Concept Plate. The short alternative identifies the figure as: Deterministic teaching plate with cognitive security zones for claim checking, prebunking, source tracing, uncertainty review, and rights boundaries. Labeled content highlights Claim check, Prebunking lesson, Source trace, Uncertainty review, and Rights boundary, with the visual tied back to the cognitive security section. The full visual conveys Claim check, Prebunking lesson, Source trace, Uncertainty review, and Rights boundary. The caption explains the reader task as follows: Deterministic teaching plate for cognitive security as defensive inoculation, provenance tracking, and uncertainty management. In the cognitive security section, it lets readers compare Claim check, Prebunking lesson, Source trace, and Uncertainty review so the visual functions as a traceable course aid rather than an unscoped assertion. Use the figure to inspect structure, evidence boundaries, provenance cues, review ownership, and refresh triggers; do not treat color, placement, or arrow direction as hidden scoring, operational instruction, or empirical measurement unless the caption explicitly says a count or metric is being shown.</p></details></figure>
 <h3
 id="cognitive-security-module-roster-and-source-lane-inventory-citations-lanes-and-learner-route">COGNITIVE
 SECURITY module roster and source-lane inventory: citations, lanes, and
 learner route</h3>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -400,7 +845,8 @@ learner route</h3>
 <tbody>
 <tr>
 <td>Cognitive Security: Foundations and Definitions</td>
-<td>[sec:chapter-cognitive-security-foundations-and-definitions]</td>
+<td><span class="citation"
+data-cites="sec:chapter-cognitive-security-foundations-and-definitions">[@sec:chapter-cognitive-security-foundations-and-definitions]</span></td>
 <td>[ageint238]; [ageint239]; [ageint244]; [ageint273]; [ageint276];
 [ageint285]; [ageint286]; [ageint290]; [ageint294]; [ageint165];
 [ageint166]; [ageint167]; [ageint095]; [ageint096]; [ageint168];
@@ -410,7 +856,8 @@ learner route</h3>
 </tr>
 <tr>
 <td>Neurocognitive Mechanisms of Cognitive Security</td>
-<td>[sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</td>
+<td><span class="citation"
+data-cites="sec:chapter-neurocognitive-mechanisms-of-cognitive-security">[@sec:chapter-neurocognitive-mechanisms-of-cognitive-security]</span></td>
 <td>[ageint238]; [ageint240]; [ageint244]; [ageint274]; [ageint278];
 [ageint280]; [ageint287]; [ageint288]; [ageint295]; [ageint176];
 [ageint177]; [ageint178]; [ageint179]; [ageint180]; [ageint308];
@@ -418,7 +865,8 @@ learner route</h3>
 </tr>
 <tr>
 <td>Psychological Inoculation and Prebunking</td>
-<td>[sec:chapter-psychological-inoculation-and-prebunking]</td>
+<td><span class="citation"
+data-cites="sec:chapter-psychological-inoculation-and-prebunking">[@sec:chapter-psychological-inoculation-and-prebunking]</span></td>
 <td>[ageint242]; [ageint243]; [ageint245]; [ageint279]; [ageint282];
 [ageint284]; [ageint289]; [ageint291]; [ageint296]; [ageint181];
 [ageint182]; [ageint183]; [ageint152]; [ageint184]; [ageint185];
@@ -426,14 +874,15 @@ learner route</h3>
 </tr>
 <tr>
 <td>Cognitive Security Operations</td>
-<td>[sec:chapter-cognitive-security-operations]</td>
+<td><span class="citation"
+data-cites="sec:chapter-cognitive-security-operations">[@sec:chapter-cognitive-security-operations]</span></td>
 <td>[ageint238]; [ageint239]; [ageint246]; [ageint275]; [ageint276];
 [ageint283]; [ageint286]; [ageint293]; [ageint295]; [ageint095];
 [ageint105]; [ageint188]; [ageint106]; [ageint003]; [ageint096];
 [ageint300]; [ageint304]; [ageint306].</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </main>
 </body>
 </html>

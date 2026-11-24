@@ -12,11 +12,11 @@ This module teaches the **Counterintelligence and Source-Integrity Defense** lan
 
 ## Counterintelligence and Source-Integrity Defense frame for Counterintelligence Fundamentals: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-counterintelligence-fundamentals]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-counterintelligence-fundamentals].
 
 ### Counterintelligence Fundamentals orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-counterintelligence-fundamentals]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-counterintelligence-fundamentals].
 
 ### Counterintelligence Fundamentals conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Structured-Judgment Lens** distinction t
 
 ### Counterintelligence Fundamentals learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-counterintelligence-fundamentals]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-counterintelligence-fundamentals].
 
 - Connect **Source-vetting and insider-threat review using sample personnel records and Offensive vs Defensive Counterintelligence: Source-vetting and insider-threat review using sample personnel records** to **Counterintelligence and Source-Integrity Defense** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **analytic note with hypotheses, evidence table, confidence, and dissent fields** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Structured-Judgment Lens** distinction t
 
 ### Counterintelligence Fundamentals core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-counterintelligence-fundamentals]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-counterintelligence-fundamentals].
 
 | Term | Working definition |
 |---|---|
-| Source integrity | confidence that evidence has not been distorted, laundered, or compromised |
+| Source integrity | the assessed preservation of evidence origin, content, and context; an intact chain does not establish that the underlying claim is true |
 | Compromise signal | a clue that access, identity, or source reliability needs review |
 | Corroboration | independent support that reduces single-source vulnerability |
-| Insider risk | risk created by trusted access combined with motive, pressure, or control failure |
+| Insider risk | risk associated with trusted access and possible error, misuse, or control failure; an anomaly does not establish motive or identify a culprit |
 | Protected disclosure | a safe channel for reporting concerns without exposing sensitive details |
-| Source-vetting and insider-threat review using… | Key terms: vetting, insider, threat. |
-| Offensive vs Defensive Counterintelligence:… | Key terms: Offensive, Defensive, Counterintelligence. |

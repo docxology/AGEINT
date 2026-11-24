@@ -1,25 +1,11 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  Cheka["Cheka, 1917"]
-  OGPU["OGPU, 1923"]
-  NKVD["NKVD, 1934"]
-  MGB["MGB and MVD, late 1940s"]
-  KGB["KGB, 1954"]
-  GRU["Military Intelligence GRU, 1918"]
-  SVR["SVR, Foreign Intelligence"]
-  FSB["FSB, Federal Security Service"]
-  FSO["FSO, Federal Protective Service"]
-  Modern["Modern Russian Services"]
-  Caveat["Declassified Record and Provenance Caveat"]
-  Cheka --> OGPU
-  OGPU --> NKVD
-  NKVD --> MGB
-  MGB --> KGB
-  KGB --> SVR
-  KGB --> FSB
-  KGB --> FSO
-  SVR --> Modern
-  FSB --> Modern
-  FSO --> Modern
-  GRU --> Modern
-  Caveat --> Modern
+    ROOT["Selected historical labels<br/>study map, not a complete lineage"] --> EARLY["Early Soviet examples<br/>Cheka: 1917 founding label<br/>OGPU: 1923 and NKVD: 1934 labels"]
+    ROOT --> LATE["Later Soviet examples<br/>MGB and MVD: distinct organizations<br/>KGB: 1954 founding label"]
+    ROOT --> POST["Post-1991 names in the chapter<br/>SVR, FSB and FSO<br/>separate transition histories required"]
+    ROOT --> MIL["Military-intelligence tradition<br/>GRU discussed separately<br/>not a KGB successor branch"]
+    EARLY -. "compare dated records" .-> CHECK["For each asserted transition<br/>issuer, effective date, mandate<br/>intermediate bodies and source provenance"]
+    LATE -.-> CHECK
+    POST -.-> CHECK
+    MIL -.-> CHECK
+    CHECK --> LIMIT["Dashed links are study questions<br/>No direct succession or methods-continuity proof<br/>No current organization or conduct asserted"]

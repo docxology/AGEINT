@@ -1,15 +1,15 @@
 ### American Intelligence History governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 ### American Intelligence History analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 28's governance-boundary section, directly verified anchors for the **Historical and Declassified Intelligence Services** lane include [@official_cia_center_for_study_of_intelligence]; [@official_nsa_historical_releases]; [@official_nro_declassified_programs]; [@official_nara_cia_records]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 28's governance-boundary section, the **Historical and Declassified Intelligence Services** catalog routes include [@official_cia_center_for_study_of_intelligence]; [@official_nsa_historical_releases]; [@official_nro_declassified_programs]; [@official_nara_cia_records]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 Research lane: **Historical and Declassified Intelligence Services** for **Declassified source-protection and institutional-control case study; OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study**. [@ageint266]; [@ageint269].
 
 **Curriculum topic spine:** **Declassified source-protection and institutional-control case study**, **OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study**, **OSS Provisional Basic Field Manual: Declassified source-protection and institutional-control case study**.
-**Verified anchor cluster:** [@official_cia_center_for_study_of_intelligence]; [@official_nsa_historical_releases]; [@official_nro_declassified_programs]; [@official_nara_cia_records]; [@official_odni_objectivity]; [@scholarly_heuer_psychology_intelligence_analysis]; [@official_cia_tradecraft_primer].
+**Recorded source cluster; inspection and scope limits apply:** [@official_cia_center_for_study_of_intelligence]; [@official_nsa_historical_releases]; [@official_nro_declassified_programs]; [@official_nara_cia_records]; [@official_odni_objectivity]; [@scholarly_heuer_psychology_intelligence_analysis]; [@official_cia_tradecraft_primer].
 
 **Conceptual depth:** turning declassified records and official histories into safe institutional lessons about analytic judgment, secrecy, oversight, technical-intelligence evolution, and reform.
 
@@ -43,7 +43,7 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint266]; [
 
 ### American Intelligence History agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 AGEINT translation is bounded by the **Historical and Declassified Intelligence Services** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **Declassified sou
 
 #### American Intelligence History permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -66,7 +66,7 @@ Keep all practice accountable, synthetic, defensive, logged, reversible, and evi
 
 ### American Intelligence History governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
+**Navigation.** Parent section: [@sec:chapter-american-intelligence-history].
 
 Governance is practiced as a gate on the **Historical and Declassified Intelligence Services**
 lane. Learners use the **Historical Case-Translation Lens** to decide who is accountable for the exercise,
@@ -77,19 +77,18 @@ agent-assisted artifact must stop for human review while using **Declassified so
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint266]; [@ageint269]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint266]; [@ageint269]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Historical and Declassified Intelligence Services** failure modes and the **Historical Case-Translation Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### American Intelligence History evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-american-intelligence-history]; [@ageint266].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Historical Case-Translation Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **Declassified source-protection and institutional-control case study; OSS Secret Intelligence Manual: Declassified source-protection and institutional-control case study**.
 

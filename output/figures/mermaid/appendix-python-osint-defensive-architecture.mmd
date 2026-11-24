@@ -1,14 +1,8 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  Q["Analyst query"] --> GOV["Governance layer: rate limits, ToS check, minimization"]
-  GOV --> COL["Collector modules"]
-  subgraph COL["Collector modules"]
-    direction LR
-    W["Web and domain"]
-    SO["Social and people"]
-    GE["Geospatial and imagery"]
-  end
-  COL --> PROV["Provenance and audit logging"]
-  PROV --> NORM["Normalized evidence store"]
-  NORM --> AN["Analysis and corroboration"]
-  GOV -->|"deny if out of policy"| STOP["Blocked-use note"]
+  Q["Question and permitted supplied-record packet"] --> G{"Fixture permission and minimization confirmed?"}
+  G -->|"no or unknown"| H["Hold; no new acquisition"]
+  G -->|"yes"| I["Static web, social and imagery record cards"]
+  I --> P["Trace originals, copies, event time,<br/>publication time and transformations"]
+  P --> C["Compare claim fit, contradictions<br/>and missing evidence"]
+  C --> O["Bounded source-fit record or unresolved hold<br/>No live collection or person targeting"]

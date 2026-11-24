@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>02-evidence-contract.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,27 +182,429 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
 id="tradecraft-core-principles-assurance-handoff-evidence-governance-refresh-and-capstone">Tradecraft:
 Core Principles assurance handoff: evidence, governance, refresh, and
 capstone</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <h3
 id="tradecraft-core-principles-evidence-contract-source-spine-verified-anchors-transfer-architecture-and-claim-limits">Tradecraft:
 Core Principles evidence contract: source spine, verified anchors,
 transfer architecture, and claim limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <h3
 id="tradecraft-core-principles-transfer-architecture-module-inputs-outputs-and-review-boundary">Tradecraft:
 Core Principles transfer architecture: module inputs, outputs, and
 review boundary</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <h4
 id="tradecraft-core-principles-lineage-and-source-tradition-profile-concepts-and-first-anchors">Tradecraft:
 Core Principles lineage and source tradition: profile, concepts, and
@@ -209,11 +618,11 @@ stay explicit. [ageint237]; [ageint266].</p>
 id="tradecraft-core-principles-working-model-inputs-constraints-transforms-outputs-and-oversight">Tradecraft:
 Core Principles working model: inputs, constraints, transforms, outputs,
 and oversight</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <p>The work is modeled as inputs, constraints, transforms, outputs,
-feedback, and oversight for <strong>What Is Tradecraft? Historical
-Definitions and Evolution; Operations security governance</strong>, with
+feedback, and oversight for <strong>Tradecraft: Historical Practice and
+Analytic Discipline; Operations security governance</strong>, with
 provenance and reviewability throughout.</p>
 <h4
 id="tradecraft-core-principles-knowledge-architecture-inputs-transforms-outputs-and-failure-checks">Tradecraft:
@@ -234,12 +643,12 @@ weak records, and product reuse without feedback.</li>
 id="tradecraft-core-principles-transfer-contracts-authority-evidence-tools-and-auditable-output">Tradecraft:
 Core Principles transfer contracts: authority, evidence, tools, and
 auditable output</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <ul>
 <li><strong>Authority contract:</strong> define why the work is being
 practiced, who reviews it, and which actions are excluded for
-<strong>What Is Tradecraft? Historical Definitions and Evolution;
+<strong>Tradecraft: Historical Practice and Analytic Discipline;
 Operations security governance</strong>.</li>
 <li><strong>Evidence contract:</strong> keep the <strong>Governed
 Intelligence Cycle and Dissemination Architecture</strong> source
@@ -256,28 +665,28 @@ that another reviewer can audit.</li>
 id="tradecraft-core-principles-profile-emphasis-and-local-focus-method-stack-and-topic-cluster">Tradecraft:
 Core Principles profile emphasis and local focus: method stack and topic
 cluster</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <p>The matched profile emphasizes treating the intelligence cycle as a
 governed information system whose collection, processing, analysis,
 dissemination, evaluation, marking, and records obligations stay
 explicit. The method stack is cycle mapping, priority-to-product
 traceability, data-lifecycle mapping, classification vocabulary review,
 dissemination-caveat audit, customer feedback, and oversight
-checkpointing; the local topic cluster is <strong>What Is Tradecraft?
-Historical Definitions and Evolution; Operations security
+checkpointing; the local topic cluster is <strong>Tradecraft: Historical
+Practice and Analytic Discipline; Operations security
 governance</strong>.</p>
 <h3
 id="tradecraft-core-principles-evidence-spine-source-roles-citation-support-and-claim-limits">Tradecraft:
 Core Principles evidence spine: source roles, citation support, and
 claim limits</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
 <p>Guide citations preserve the inherited bibliography, verified anchors
 supply lane constraints, and the <strong>Governed Intelligence Cycle and
 Dissemination Architecture</strong> profile tells reviewers what
 evidence is strong enough for the module artifact built around
-<strong>What Is Tradecraft? Historical Definitions and Evolution;
+<strong>Tradecraft: Historical Practice and Analytic Discipline;
 Operations security governance</strong>.</p>
 <h4
 id="tradecraft-core-principles-guide-source-spine-inherited-keys-and-local-citation-roles">Tradecraft:
@@ -287,14 +696,14 @@ roles</h4>
 [ageint278]; [ageint279]; [ageint283]; [ageint290]; [ageint291];
 [ageint294]; [ageint013]; [ageint014]; [ageint015]; [ageint016];
 [ageint017]; [ageint018]; [ageint005]; [ageint019]; [ageint297];
-[ageint298].</p>
+[ageint298]; [ageint305]; [ageint304]; [ageint303].</p>
 <h4
 id="tradecraft-core-principles-verified-source-canon-direct-anchors-and-claim-boundaries">Tradecraft:
 Core Principles verified source canon: direct anchors and claim
 boundaries</h4>
 <p>The source canon has three tiers; the local spine begins with
 [ageint237]; [ageint266].</p>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -313,7 +722,8 @@ boundaries</h4>
 <td>[ageint237]; [ageint266]; [ageint269]; [ageint278]; [ageint279];
 [ageint283]; [ageint290]; [ageint291]; [ageint294]; [ageint013];
 [ageint014]; [ageint015]; [ageint016]; [ageint017]; [ageint018];
-[ageint005]; [ageint019]; [ageint297]; [ageint298].</td>
+[ageint005]; [ageint019]; [ageint297]; [ageint298]; [ageint305];
+[ageint304]; [ageint303].</td>
 <td>Preserves the inherited AGEINT outline and <code>ageintNNN</code>
 keys.</td>
 </tr>
@@ -331,25 +741,25 @@ constraints.</td>
 defensive boundary for generated prose.</td>
 </tr>
 </tbody>
-</table>
-<p><strong>Triangulation anchors.</strong> In module 3’s source-canon
-section, directly verified anchors for the <strong>Governed Intelligence
-Cycle and Dissemination Architecture</strong> lane include
+</table></div>
+<p><strong>Contextual source routes.</strong> For module 3’s
+source-canon section, the <strong>Governed Intelligence Cycle and
+Dissemination Architecture</strong> catalog routes include
 [official_intelligence_gov_how_ic_works]; [official_odni_icd_203];
-[official_odni_icd_204]; [official_odni_icd_504]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<p>Maintenance rule: Perplexity may suggest candidates for <strong>What
-Is Tradecraft? Historical Definitions and Evolution; Operations security
-governance</strong> and [ageint237]; [ageint266], but only directly
-verified source URLs are encoded as citations.</p>
+[official_odni_icd_204]; [official_odni_icd_504]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<p>Maintenance rule: Perplexity may suggest candidates for
+<strong>Tradecraft: Historical Practice and Analytic Discipline;
+Operations security governance</strong> and [ageint237]; [ageint266],
+but only directly verified source URLs are encoded as citations.</p>
 <h4
 id="tradecraft-core-principles-intelligence-practice-lens-evidence-artifact-and-safety-check">Tradecraft:
 Core Principles intelligence practice lens: evidence artifact and safety
 check</h4>
 <p>Practice lens: <strong>Structured-Judgment Lens</strong> for
-<strong>What Is Tradecraft? Historical Definitions and Evolution;
+<strong>Tradecraft: Historical Practice and Analytic Discipline;
 Operations security governance</strong>. [ageint237]; [ageint266].</p>
 <p><strong>Planning question:</strong> Which assumptions, alternatives,
 confidence statements, and source limits must stay visible for
@@ -357,9 +767,9 @@ review?</p>
 <p><strong>Evidence artifact:</strong> analytic note with hypotheses,
 evidence table, confidence, and dissent fields.</p>
 <p><strong>Validation rule:</strong> separate raw reporting, inference,
-judgment, and recommendation before synthesis. Applied to <strong>What
-Is Tradecraft? Historical Definitions and Evolution; Operations security
-governance</strong>.</p>
+judgment, and recommendation before synthesis. Applied to
+<strong>Tradecraft: Historical Practice and Analytic Discipline;
+Operations security governance</strong>.</p>
 <p><strong>Handoff contract:</strong> handoff preserves alternatives,
 uncertainty, caveats, and revision history for downstream modules.</p>
 <p><strong>Safety check:</strong> avoid policy advocacy, certainty
@@ -368,9 +778,9 @@ inflation, source laundering, and claims without traceable evidence.</p>
 id="tradecraft-core-principles-runtime-to-reader-map-generated-sections-and-verifier-surfaces">Tradecraft:
 Core Principles runtime-to-reader map: generated sections and verifier
 surfaces</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
-<table style="width:100%;">
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table style="width:99%;" data-responsive-table="true">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 16%" />
@@ -398,11 +808,11 @@ original: V2 source-lane extension: bind Tradecraft: Core Principles to
 source-lane evidence, claim-ledger review, safe substitution,
 compliance/rights mapping, instructor deliverables, and explicit refresh
 triggers</td>
-<td>Requirements-to-Evidence Lens</td>
-<td>requirements matrix with source descriptors, caveats, and collection
-limits</td>
-<td>exclude live collection, recruitment, surveillance, interception,
-tracking, and identity exposure</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
 </tr>
 <tr>
 <td>Bounded autonomy, procurement, incident-response, and assurance
@@ -437,9 +847,9 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>What Is Tradecraft? Historical Definitions and Evolution</td>
+<td>Tradecraft: Historical Practice and Analytic Discipline</td>
 <td>3.1</td>
-<td>3.1 What Is Tradecraft? Historical Definitions and Evolution</td>
+<td>3.1 Tradecraft: Historical Practice and Analytic Discipline</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -450,44 +860,42 @@ claims without traceable evidence</td>
 <td>Operations security (OPSEC) governance</td>
 <td>3.2</td>
 <td>3.2 source title transformed into safe curriculum treatment;
-original: Operational Security (OPSEC): Process and the Five-Step
-Method</td>
-<td>AI/Data Accountability Lens</td>
-<td>AI/data impact card with authority, provenance, model version,
-impact score, register status, human owner, and review cadence</td>
-<td>reject automated adverse action, hidden surveillance expansion,
-unowned outputs, unreviewed model drift, and opaque downstream
-reuse</td>
+original: OPSEC: A Completed Synthetic Document-Release</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
 </tr>
 <tr>
 <td>Compartmentation and need-to-know governance</td>
 <td>3.3</td>
 <td>3.3 source title transformed into safe curriculum treatment;
-original: Compartmentation: Need-to-Know vs. Need-to-Share</td>
-<td>AI/Data Accountability Lens</td>
-<td>AI/data impact card with authority, provenance, model version,
-impact score, register status, human owner, and review cadence</td>
-<td>reject automated adverse action, hidden surveillance expansion,
-unowned outputs, unreviewed model drift, and opaque downstream
-reuse</td>
+original: Compartmentation: Protection without Erasing Necessary
+Context</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Cover and legend governance literacy</td>
+<td>Cover identity governance literacy</td>
 <td>3.4</td>
 <td>3.4 source title transformed into safe curriculum treatment;
-original: Cover: Official, Non-Official Cover (NOC), Deep Cover,
-Legends</td>
-<td>AI/Data Accountability Lens</td>
-<td>AI/data impact card with authority, provenance, model version,
-impact score, register status, human owner, and review cadence</td>
-<td>reject automated adverse action, hidden surveillance expansion,
-unowned outputs, unreviewed model drift, and opaque downstream
-reuse</td>
+original: Historical Cover Vocabulary and Limits of Public
+Descriptions</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
 </tr>
 <tr>
-<td>The Principle of Plausible Deniability</td>
+<td>Plausible Deniability: Attribution Claims and Accountability</td>
 <td>3.5</td>
-<td>3.5 The Principle of Plausible Deniability</td>
+<td>3.5 Plausible Deniability: Attribution Claims and
+Accountability</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -495,11 +903,9 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Claim-ledger memory exercise that tracks evidence changes rather
-than people</td>
+<td>Versioned Evidence Memory without Person Tracking</td>
 <td>3.6</td>
-<td>3.6 source title transformed into safe curriculum treatment;
-original: Pattern-of-Life Analysis and How to Disrupt It</td>
+<td>3.6 Versioned Evidence Memory without Person Tracking</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -507,9 +913,11 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Situational Awareness: Urban and Rural Tradecraft</td>
+<td>Situational Awareness: Observation, Interpretation, and
+Uncertainty</td>
 <td>3.7</td>
-<td>3.7 Situational Awareness: Urban and Rural Tradecraft</td>
+<td>3.7 Situational Awareness: Observation, Interpretation, and
+Uncertainty</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -517,9 +925,9 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Code Words, Glossaries, and the Language of Espionage</td>
+<td>Public Intelligence Vocabulary and Glossary Error Checking</td>
 <td>3.8</td>
-<td>3.8 Code Words, Glossaries, and the Language of Espionage</td>
+<td>3.8 Public Intelligence Vocabulary and Glossary Error Checking</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -527,11 +935,11 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Historical clandestine-communications ethics</td>
+<td>Classical Tradecraft in AI Commentary: Forecasts, Not Operational
+Guidance</td>
 <td>3.9</td>
-<td>3.9 source title transformed into safe curriculum treatment;
-original: Return of Classical Tradecraft in the AI Era: Dead Drops,
-Brush Passes, In-Person Exchanges</td>
+<td>3.9 Classical Tradecraft in AI Commentary: Forecasts, Not
+Operational Guidance</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -539,14 +947,14 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="tradecraft-core-principles-reusable-subsection-contract-topic-rows-artifacts-and-safety-duties">Tradecraft:
 Core Principles reusable subsection contract: topic rows, artifacts, and
 safety duties</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-tradecraft-core-principles]; [ageint237].</p>
-<table>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -563,7 +971,7 @@ safety duties</h4>
 </thead>
 <tbody>
 <tr>
-<td>What Is Tradecraft? Historical Definitions and Evolution</td>
+<td>Tradecraft: Historical Practice and Analytic Discipline</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -572,33 +980,14 @@ claims without traceable evidence</td>
 </tr>
 <tr>
 <td>Operations security (OPSEC) governance</td>
-<td>AI/Data Accountability Lens</td>
-<td>AI/data impact card with authority, provenance, model version,
-impact score, register status, human owner, and review cadence</td>
-<td>reject automated adverse action, hidden surveillance expansion,
-unowned outputs, unreviewed model drift, and opaque downstream
-reuse</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
 </tr>
 <tr>
 <td>Compartmentation and need-to-know governance</td>
-<td>AI/Data Accountability Lens</td>
-<td>AI/data impact card with authority, provenance, model version,
-impact score, register status, human owner, and review cadence</td>
-<td>reject automated adverse action, hidden surveillance expansion,
-unowned outputs, unreviewed model drift, and opaque downstream
-reuse</td>
-</tr>
-<tr>
-<td>Cover and legend governance literacy</td>
-<td>AI/Data Accountability Lens</td>
-<td>AI/data impact card with authority, provenance, model version,
-impact score, register status, human owner, and review cadence</td>
-<td>reject automated adverse action, hidden surveillance expansion,
-unowned outputs, unreviewed model drift, and opaque downstream
-reuse</td>
-</tr>
-<tr>
-<td>The Principle of Plausible Deniability</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -606,8 +995,7 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Claim-ledger memory exercise that tracks evidence changes rather
-than people</td>
+<td>Cover identity governance literacy</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -615,7 +1003,7 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Situational Awareness: Urban and Rural Tradecraft</td>
+<td>Plausible Deniability: Attribution Claims and Accountability</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -623,7 +1011,7 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Code Words, Glossaries, and the Language of Espionage</td>
+<td>Versioned Evidence Memory without Person Tracking</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -631,7 +1019,25 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 <tr>
-<td>Historical clandestine-communications ethics</td>
+<td>Situational Awareness: Observation, Interpretation, and
+Uncertainty</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Public Intelligence Vocabulary and Glossary Error Checking</td>
+<td>Structured-Judgment Lens</td>
+<td>analytic note with hypotheses, evidence table, confidence, and
+dissent fields</td>
+<td>avoid policy advocacy, certainty inflation, source laundering, and
+claims without traceable evidence</td>
+</tr>
+<tr>
+<td>Classical Tradecraft in AI Commentary: Forecasts, Not Operational
+Guidance</td>
 <td>Structured-Judgment Lens</td>
 <td>analytic note with hypotheses, evidence table, confidence, and
 dissent fields</td>
@@ -639,17 +1045,17 @@ dissent fields</td>
 claims without traceable evidence</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="tradecraft-core-principles-annotated-source-ledger-real-titles-and-local-contribution">Tradecraft:
 Core Principles annotated source ledger: real titles and local
 contribution</h4>
 <p>Each source cited by this <strong>Governed Intelligence Cycle and
 Dissemination Architecture</strong> module is paired below with its real
-title and a one-line note on what it contributes to <strong>What Is
-Tradecraft? Historical Definitions and Evolution; Operations security
+title and a one-line note on what it contributes to <strong>Tradecraft:
+Historical Practice and Analytic Discipline; Operations security
 governance</strong>.</p>
-<table>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -660,7 +1066,7 @@ governance</strong>.</p>
 <tr>
 <th>Source</th>
 <th>Cited work</th>
-<th>What it contributes</th>
+<th>Curriculum annotation</th>
 <th>Status</th>
 </tr>
 </thead>
@@ -671,7 +1077,8 @@ governance</strong>.</p>
 Intelligence: An Accountability Framework for Federal Agencies and Other
 Entities</a></td>
 <td>Official GAO AI accountability framework.</td>
-<td>original source-guide</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint266]</td>
@@ -683,7 +1090,8 @@ exchanging provenance information on the web. It defines provenance as
 information about the entities, activities, and people involved in
 producing data, used to assess quality, reliability, and
 trustworthiness.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint269]</td>
@@ -695,7 +1103,8 @@ offers 35 best practices for publishing and consuming data on the Web,
 covering metadata, licensing and provenance, data quality, dataset
 versioning, persistent URIs, machine-readable formats, vocabulary reuse,
 access methods, preservation, and feedback.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint278]</td>
@@ -707,7 +1116,8 @@ of the Council on Public Procurement</a></td>
 2015 on the proposal of the Public Governance Committee. It frames
 public procurement as a pillar of strategic governance and service
 delivery and sets out principles for governments to follow.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint279]</td>
@@ -719,7 +1129,8 @@ disclosure of government contracting data across the procurement
 lifecycle. It provides a common data model spanning planning, tender,
 award, contract, and implementation stages, along with a primer,
 implementation guidance, technical schemas, and validation tooling.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint283]</td>
@@ -731,7 +1142,8 @@ the Council on Open Government (OECD/LEGAL/0438), adopted on 14 December
 2017. It defines open government as a culture of governance promoting
 transparency, integrity, accountability, and stakeholder participation
 in support of democracy and inclusive growth.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint290]</td>
@@ -744,7 +1156,8 @@ model development across the software lifecycle. Produced in response to
 Executive Order 14110, it addresses AI model producers, developers
 building on those models, and acquirers of AI systems, and is designed
 to be used alongside NIST SP 800-218.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint291]</td>
@@ -756,7 +1169,8 @@ technology accessibility. It establishes mandatory accessibility
 requirements for federal agencies and voluntary guidelines for
 telecommunications manufacturers, covering hardware, software, websites,
 electronic documents, and support services.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint294]</td>
@@ -770,7 +1184,8 @@ intelligence. Issued under Executive Order 14179, it instructs agencies
 to accelerate adoption of AI to improve public services and government
 efficiency while maintaining safeguards for civil rights, civil
 liberties, and privacy.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint013]</td>
@@ -784,20 +1199,21 @@ concepts and types of tradecraft, cover and operational security, casing
 and surveillance, clandestine communication, and information
 gathering.</td>
 <td>verified source-guide context; do not use as primary analytic
-support</td>
+support; annotation metadata, not claim verification</td>
 </tr>
 <tr>
 <td>[ageint014]</td>
 <td><a
 href="https://trdcrft.com/tradecraft-covert-operative-tactics-and-techniques/">Tradecraft:
-Covert Operative Tactics and Techniques</a></td>
+Covert Operative Tactics and Techniques / TRDCRFT</a></td>
 <td>An educational article from TRDCRFT defining tradecraft as the
 techniques, strategies, and tools used by intelligence operatives to
 pursue objectives while maintaining secrecy and operational security. It
 surveys core disciplines such as surveillance and counter-surveillance,
 cover and disguise, technical and human intelligence work, and the
 field’s evolution toward digital and cyber methods.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint015]</td>
@@ -811,7 +1227,7 @@ identity assumed by a covert agent. It distinguishes official cover
 acknowledgment, less protection). The article surveys historical
 examples of front organizations and assumed identities.</td>
 <td>verified source-guide context; do not use as primary analytic
-support</td>
+support; annotation metadata, not claim verification</td>
 </tr>
 <tr>
 <td>[ageint016]</td>
@@ -820,7 +1236,8 @@ href="https://2009-2017.state.gov/documents/organization/209870.pdf">Surveillanc
 Detection - State.gov</a></td>
 <td>Place where victim can be controlled with limited avenues of
 escape.</td>
-<td>original source-guide</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint017]</td>
@@ -833,7 +1250,8 @@ dictionary of espionage terminology. It defines operational roles
 (agent, handler, case officer), intelligence disciplines such as HUMINT,
 SIGINT, and IMINT, major organizations (CIA, FBI, KGB, MI5, MI6, NSA),
 and historical equipment like the Enigma machine and U-2 aircraft.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint018]</td>
@@ -845,7 +1263,8 @@ Intelligence journal by RAND researcher Thomas Mulligan. It argues that
 as AI makes deepfakes and synthetic communications easier, trust in
 digital channels erodes, paradoxically increasing the value of
 traditional human intelligence methods.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint005]</td>
@@ -858,7 +1277,8 @@ Matters” (Vol. 70, No. 1, March 2026). It argues that as AI makes
 technical intelligence cheaper and AI-driven fabrication more pervasive,
 human intelligence becomes relatively more valuable, since human
 specialists are needed to verify source reliability over time.</td>
-<td>verified source-guide</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint019]</td>
@@ -867,7 +1287,8 @@ href="https://www.cia.gov/resources/csi/studies-in-intelligence/studies-in-intel
 in Our AI Future: Why Human Intelligence Still Matters - CSI</a></td>
 <td>By Thomas Mulligan, a researcher at the RAND Corporation who served
 in CIA during 2008–14.</td>
-<td>original source-guide</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint297]</td>
@@ -878,7 +1299,8 @@ Community Directive 203: Analytic Standards</a></td>
 standards source for objectivity, independence, timeliness,
 alternatives, confidence, sourcing, and accuracy in analytic
 products.</td>
-<td>original source-guide</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 <tr>
 <td>[ageint298]</td>
@@ -888,14 +1310,55 @@ Community Directives</a></td>
 <td>Official ODNI index for Intelligence Community Directives used to
 locate current directive source material and preserve directive-context
 citations.</td>
-<td>original source-guide</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
+</tr>
+<tr>
+<td>[ageint305]</td>
+<td><a href="https://www.nccoe.nist.gov/devsecops">DevSecOps</a></td>
+<td>Official NIST NCCoE DevSecOps project page for software factory,
+secure pipeline, and continuous authorization source support.</td>
+<td>original source-guide; annotation metadata, not claim
+verification</td>
+</tr>
+<tr>
+<td>[ageint304]</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/final">Secure
+Software Development Framework (SSDF) Version 1.1: Recommendations for
+Mitigating the Risk of Software Vulnerabilities</a></td>
+<td>NIST SP 800-218, the Secure Software Development Framework Version
+1.1 published in February 2022, establishes a set of high-level
+practices for integrating security into software development lifecycles
+in order to reduce vulnerabilities in released software, mitigate the
+impact of exploited vulnerabilities, and address root causes to prevent
+recurrences.</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
+</tr>
+<tr>
+<td>[ageint303]</td>
+<td><a
+href="https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity/software-security-supply-chains-software-1">Software
+Security in Supply Chains</a></td>
+<td>An official NIST page on software supply chain security issued under
+Executive Order 14028, focused on the Software Bill of Materials as a
+formal record of software components and their supply chain. It explains
+the benefits of SBOMs for vulnerability identification and supply-chain
+transparency, recommends machine-readable formats such as SPDX,
+CycloneDX, and SWID, and describes foundational, sustaining, and
+enhancing levels of implementation.</td>
+<td>verified source-guide; annotation metadata, not claim
+verification</td>
 </tr>
 </tbody>
-</table>
-<p><strong>Where this sits.</strong> This module’s overview is
-[sec:chapter-tradecraft-core-principles]; return to the curriculum atlas
-[sec:curriculum_orientation] for the reader paths, evidence map, and
-safety gates that govern this module.</p>
+</table></div>
+<p><strong>Where this sits.</strong> This module’s overview is <span
+class="citation"
+data-cites="sec:chapter-tradecraft-core-principles">[@sec:chapter-tradecraft-core-principles]</span>;
+return to the curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>
+for the reader paths, evidence map, and safety gates that govern this
+module.</p>
 </main>
 </body>
 </html>

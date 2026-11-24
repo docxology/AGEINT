@@ -38,15 +38,11 @@ def clean_bibtex_text(value: object) -> str:
 
 
 def reference_author(ref: dict[str, Any]) -> str:
-    if ref.get("author"):
-        return clean_bibtex_text(ref["author"])
-    number = ref.get("number")
-    if isinstance(number, int):
-        return f"SIST Guide Reference {number:03d}"
-    key_digits = re.sub(r"\D+", "", str(ref.get("key", "")))
-    if key_digits:
-        return f"SIST Guide Reference {int(key_digits):03d}"
-    return "SIST Guide Reference"
+    mode = str(ref.get("author_mode", "names"))
+    if mode not in {"names", "literal"}:
+        raise ValueError(f"Unsupported author mode: {mode}")
+    author = clean_bibtex_text(ref["author"]) if ref.get("author") else ""
+    return f"{{{author}}}" if author and mode == "literal" else author
 
 
 def join_note_parts(parts: list[str]) -> str:

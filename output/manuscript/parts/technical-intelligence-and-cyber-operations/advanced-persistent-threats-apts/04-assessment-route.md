@@ -1,10 +1,10 @@
 ### Advanced Persistent Threats (APTs) assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-advanced-persistent-threats-apts]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-advanced-persistent-threats-apts].
 
 ### Advanced Persistent Threats (APTs) assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-advanced-persistent-threats-apts]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-advanced-persistent-threats-apts].
 
 #### Advanced Persistent Threats (APTs) capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **APT Definitions, Lifecycle, and Attribut
 
 #### Advanced Persistent Threats (APTs) assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **APT Definitions, Lifecycle, and Attribution** | Completed **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **APT Risk Propagation Models: ATT&CK-Based Analysis** | Completed **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Nation-State vs. Ideological Actor Attack Patterns** | Completed **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **APT Definitions, Lifecycle, and Attribution**; **APT Risk Propagation Models: ATT&CK-Based Analysis**; **Nation-State vs. Ideological Actor Attack Patterns** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: verify that taxonomy labels are descriptive, indicators are contextualized, incident categories are reviewable, and outputs remain detection or assurance oriented. |
+| **Cyber infrastructure-abuse indicator review using fabricated records**; **Incident-Record Review: Limits of the Inherited Mandiant Methodology Claim**; **Threat Hunting Against APT Actors** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **APT Attribution: Technical Indicators vs. Geopolitical Context** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude exploit steps, evasion instructions, malware construction, credential misuse, phishing instructions, and live response actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **APT Definitions, Lifecycle, and Attribution; APT Risk Propagation Models: ATT&CK-Based Analysis** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**APT Definitions, Lifecycle, and Attribution; APT Risk Propagation Models: ATT&CK-Based Analysis**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Advanced Persistent Threats (APTs) refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint237]; [@ageint258].
 
-**Triangulation anchors.** In module 13's review-checklist section, directly verified anchors for the **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** lane include [@official_nist_sp_800_150]; [@official_oasis_stix_21]; [@official_oasis_taxii_21]; [@official_mitre_attack_enterprise]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 13's review-checklist section, the **Cyber Threat Intelligence, Incident Response, and Supply-Chain Defense** catalog routes include [@official_nist_sp_800_150]; [@official_oasis_stix_21]; [@official_oasis_taxii_21]; [@official_mitre_attack_enterprise]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **APT Definitions, Lifecycle, and Attribution; APT Risk Propagation Models: ATT&CK-Based Analysis**. [@ageint237]; [@ageint258].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

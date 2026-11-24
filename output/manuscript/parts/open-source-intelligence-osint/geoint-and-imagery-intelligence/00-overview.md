@@ -6,7 +6,7 @@ The module uses [@fig:geoint-imagery-confidence-ladder], [@fig:historical-forbid
 
 Navigation links: [@sec:curriculum_orientation], [@sec:part-open-source-intelligence-osint], [@sec:chapter-osint-techniques-and-tools], [@sec:part-technical-intelligence-and-cyber-operations].
 
-![This diagram presents a confidence ladder that ties an imagery interpretation's defensibility to resolution fit, temporal fit, corroboration, and an explicit sensitive-site boundary that separates map reading from targeting or attribution. In the open source intelligence osint / geoint and imagery intelligence section, it lets readers compare Imagery observation and metadata, Sensitive-site minimization boundary, Low confidence: caveat heavily, and Moderate confidence so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../../figures/mermaid/geoint-imagery-confidence-ladder.png){#fig:geoint-imagery-confidence-ladder}
+![This instructional appraisal separates imagery fitness from confidence judgment. Acquisition timing, resolution, processing limitations, origin independence, and conflicting observations must be assessed against a specific claim; stale imagery may be unsuitable rather than moderately informative. Confidence requires a documented argument and named review, not automatic promotion from multiple sources or a minimization check. Classroom gaps request supplied fixtures, not live re-tasking. Outputs are classroom interpretations, not targeting or actor-attribution products.](../../../../figures/mermaid/geoint-imagery-confidence-ladder.png){#fig:geoint-imagery-confidence-ladder}
 
 ![Public-domain USGS EROS declassified imagery of the Forbidden City as a local historical image for GEOINT source-provenance discussion. Its reader value is to make U.S. Geological Survey provenance, 1966 approx. collection context, public-domain status, and analytic reuse boundary visible at a glance, with the open source intelligence osint / geoint and imagery intelligence section as the source section and defensive review as the boundary.](../../../../figures/historical/historical-forbidden-city.png){#fig:historical-forbidden-city}
 
@@ -16,17 +16,17 @@ This module teaches the **Open-Source and Geospatial Intelligence Integrity** la
 
 ## Open-Source and Geospatial Intelligence Integrity frame for GEOINT and Imagery Intelligence: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-geoint-and-imagery-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-geoint-and-imagery-intelligence].
 
 ### GEOINT and Imagery Intelligence orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-geoint-and-imagery-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-geoint-and-imagery-intelligence].
 
 ### GEOINT and Imagery Intelligence conceptual primer: source context, core model, and reader task
 
 This chapter teaches OSINT and GEOINT as public-source reasoning disciplines: availability does not equal reliability, relevance, legality, or ethical reuse. The chapter uses **Requirements-to-Evidence Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**.
 
-The central distinction is to separate discovery from collection expansion, and map or media interpretation from targeting. Core topics include **Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples; Imagery collection-platform literacy: resolution and revisit tradeoffs**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
+The central distinction is to separate discovery from collection expansion, and map or media interpretation from targeting. Core topics include **Imagery quality literacy: resolution, temporal fit, and uncertainty; GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples; Commercial Platforms and Public Programmes: GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
 Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint253]; [@ageint255].
 
@@ -34,7 +34,7 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### GEOINT and Imagery Intelligence learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-geoint-and-imagery-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-geoint-and-imagery-intelligence].
 
 - Connect **Imagery quality literacy: resolution, temporal fit, and uncertainty and GEOINT data-quality audit using provided imagery metadata and non-sensitive synthetic change examples** to **Open-Source and Geospatial Intelligence Integrity** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **requirements matrix with source descriptors, caveats, and collection limits** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -44,14 +44,12 @@ Learners move from vocabulary and the **Requirements-to-Evidence Lens** distinct
 
 ### GEOINT and Imagery Intelligence core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-geoint-and-imagery-intelligence]; [@ageint253].
+**Navigation.** Parent section: [@sec:chapter-geoint-and-imagery-intelligence].
 
 | Term | Working definition |
 |---|---|
-| Provenance | the origin, chain, and transformation history of a source |
-| Corroboration | the comparison of independent sources before reuse |
+| Provenance | the origin, custody, and transformation history of a source, which helps evaluate a claim but does not prove its truth or grant reuse permission |
+| Corroboration | comparison of relevant, sufficiently independent evidence for a specific claim; copied sources do not become independent through repetition |
 | Recency | the time relationship between source creation, discovery, and claim |
 | Geospatial quality | accuracy, completeness, temporal fitness, and usability of location data |
 | Minimization | limiting retained information to what the accountable question requires |
-| Imagery quality literacy: resolution, temporal… | Key terms: Imagery, quality, literacy. |
-| GEOINT data-quality audit using provided… | Key terms: GEOINT, data, quality. |

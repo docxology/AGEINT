@@ -1,10 +1,10 @@
 ### Cognitive Security: Foundations and Definitions assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-foundations-and-definitions]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-foundations-and-definitions].
 
 ### Cognitive Security: Foundations and Definitions assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-cognitive-security-foundations-and-definitions]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-cognitive-security-foundations-and-definitions].
 
 #### Cognitive Security: Foundations and Definitions capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **Cognitive security definitions and scope
 
 #### Cognitive Security: Foundations and Definitions assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **Cognitive security definitions and scope** | Completed **narrative-risk map with provenance, uncertainty, audience harms, and response options** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Comprehensive Definition: State and Process Against Malign Influence** | Completed **narrative-risk map with provenance, uncertainty, audience harms, and response options** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **Cognitive Security vs. Cybersecurity vs. Information Security** | Completed **narrative-risk map with provenance, uncertainty, audience harms, and response options** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **Cognitive security definitions and scope**; **Comprehensive Definition: State and Process Against Malign Influence**; **Cognitive Security vs. Cybersecurity vs. Information Security**; **Three Pillars: Awareness + Situation Awareness + Purposeful Action**; **Unveiling the Multifaceted Concept of Cognitive Security (Elsevier, 2025)**; **Cognitive Security in the Age of AI: Policy Perspective** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: distinguish observation, attribution, impact assessment, and resilience response. |
+| **AI Development Should Prioritize Cognitive Security: Position Paper**; **DARPA cognitive-security research literacy**; **Mixed-reality influence typology literacy**; **Model-Scoped Formal Methods for Mixed-Reality: Mixed-reality influence typology literacy**; **Behavioral Outcomes of Human Cognitive Security (arXiv, March 2026)**; **Defining Comprehensive Cognitive Security in the Digital Era (SSRN 2024)** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **Ethics of Cognitive Security (YorkSpace Dissertation)**; **Epistemic security and knowledge-integrity**; **Seger: Epistemic security and knowledge-integrity**; **Epistemic Security: Epistemic security and knowledge-integrity**; **Tackling Threats to Informed Decision-Making (Turing Institute)**; **Epistemic Governance in Crisis: Epistemic security and knowledge-integrity** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: exclude manipulation scripts, impersonation, persuasion targeting, and operational influence planning. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **Cognitive security definitions and scope; Comprehensive Definition: State and Process Against Malign Influence** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**Cognitive security definitions and scope; Comprehensive Definition: State and Process Against Malign Influence**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Cognitive Security: Foundations and Definitions refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint238]; [@ageint239].
 
-**Triangulation anchors.** In module 37's review-checklist section, directly verified anchors for the **Cognitive Security and Influence Resilience** lane include [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 37's review-checklist section, the **Cognitive Security and Influence Resilience** catalog routes include [@official_cisa_foreign_influence]; [@official_nato_counter_information_threats]; [@official_cisa_election_security_influence]; [@official_nato_hybrid_threats]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **Cognitive security definitions and scope; Comprehensive Definition: State and Process Against Malign Influence**. [@ageint238]; [@ageint239].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

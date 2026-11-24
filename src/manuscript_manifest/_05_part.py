@@ -117,10 +117,7 @@ def _rendered_fragments(section: ManuscriptSection, rendered: str) -> list[tuple
 def _write_generated_config(project_root: Path, out_dir: Path, front_matter_files: list[str], units: list[dict[str, Any]], appendix_files: list[str]) -> None:
     source_config = project_root / "docs" / "manuscript" / "config.yaml"
     if not source_config.is_file():
-        raise FileNotFoundError(
-            f"Missing source manuscript config: {source_config.as_posix()}. "
-            "The generated output config would silently lose book/paper metadata without it."
-        )
+        raise FileNotFoundError(f"Missing source manuscript config: {source_config.as_posix()}. The generated output config would silently lose book/paper metadata without it.")
     base = source_config.read_text(encoding="utf-8").rstrip()
     front_matter_options = _source_front_matter_options(base)
     if front_matter_options:
@@ -198,9 +195,10 @@ def render_manuscript(project_root: Path, curriculum: Curriculum, variables: dic
             unresolved_keys = ", ".join(sorted(set(unresolved)))
             raise ValueError(f"Unresolved AGEINT manuscript tokens: {unresolved_keys}")
         rendered = sanitize_rendered_section_title_mentions(rendered, rendered_title_rules)
-        rendered = add_heading_support(rendered, section.relative_path)
+        rendered = add_heading_support(rendered)
         fragments = _rendered_fragments(section, rendered)
         for relative_path, text in fragments:
+            text = add_heading_support(text, section_text=rendered)
             target = out_dir / relative_path
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(text.rstrip() + "\n", encoding="utf-8")

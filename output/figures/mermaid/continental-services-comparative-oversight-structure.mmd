@@ -1,28 +1,12 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  Top["Allied Continental and Israeli Services"]
-  IL["Israel Mossad and Shin Bet"]
-  FR["France DGSE and DGSI"]
-  DE["Germany BND and BfV"]
-  IT["Italy AISE and AISI"]
-  Foreign["Foreign Intelligence Collection"]
-  Domestic["Domestic Security and Counterintelligence"]
-  Mandate["Legal Mandate and Charter"]
-  Oversight["Parliamentary or Ministerial Oversight"]
-  Rules["Source-Protection and Declassification Rules"]
-  Top --> IL
-  Top --> FR
-  Top --> DE
-  Top --> IT
-  IL --> Foreign
-  IL --> Domestic
-  FR --> Foreign
-  FR --> Domestic
-  DE --> Foreign
-  DE --> Domestic
-  IT --> Foreign
-  IT --> Domestic
-  Foreign --> Mandate
-  Domestic --> Mandate
-  Mandate --> Oversight
-  Oversight --> Rules
+    TOP["Selected service names from the chapter<br/>comparison worksheet, not a current org chart"] --> IL["Israel examples<br/>Mossad and Shin Bet"]
+    TOP --> FR["France examples<br/>DGSE and DGSI"]
+    TOP --> DE["Germany examples<br/>BND and BfV"]
+    TOP --> IT["Italy examples<br/>AISE and AISI"]
+    IL -. "dated source required" .-> Q["Compare separately<br/>mandate and effective date<br/>functional scope and oversight body"]
+    FR -.-> Q
+    DE -.-> Q
+    IT -.-> Q
+    Q --> RECORD["Record legal powers and limits<br/>release rules and source provenance<br/>unknown or superseded status"]
+    RECORD --> LIMIT["No universal foreign/domestic split<br/>No equivalent powers or practices inferred<br/>No present arrangements without current records"]

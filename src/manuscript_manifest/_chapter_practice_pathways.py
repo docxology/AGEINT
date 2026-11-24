@@ -1,67 +1,45 @@
-"""Practice studio, pathway assessment, and synthesis block generators for manuscript chapters.
-
-Extracted from _03_part.py so both modules remain comfortably under the 500-line cap.
-"""
+"""Pathway assessment and synthesis block generators for manuscript chapters."""
 
 from __future__ import annotations
 
 from typing import Any
 
 from intelligence_content import practice_lens_for_titles, safe_topic_entries
+from prose_policy import source_identifier_text
 
-from ._01_part import _chapter_topic_context, _failure_mode_drill, _instructor_artifact, _safe_practice_lab
-from ._02_part import _capstone_deliverable, _instructor_facilitation_notes, _safe_substitution_patterns
+from ._01_part import _chapter_topic_context
+from ._02_part import _capstone_deliverable, _instructor_facilitation_notes
 from ._heading_titles import chapter_detail_titles
 
 
-def _domain_practice_studio(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    title = chapter["title"]
-    lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    topic_context = _chapter_topic_context(chapter, part)
-    return f"""The studio converts reading into a reviewable artifact for {topic_context}. Start with
-the lens question: **{lens.planning_question}**
-
-### {title} studio moves: glossary, concept map, analytic note, and agent review
-
-- Build a glossary card for each module source section.
-- Create a concept map that links the module to prior curriculum areas and later AGEINT or cognitive-security material.
-- Write a concise analytic note that states assumptions, evidence, confidence, alternatives, and oversight constraints.
-- Pair each agent-assisted step with a human review decision, a stop condition, and a retained evidence artifact.
-
-**Practice rail:** use public, benign, owned-lab, or synthetic material; preserve provenance and uncertainty notes.
-
-### {title} safe practice lab: accountable inputs and retained safety gates
-
-{_safe_practice_lab(chapter)}
-
-### {title} failure modes: source drift, unsafe transfer, and weak evidence
-
-{_failure_mode_drill(chapter)}
-
-### {title} safe substitution patterns: defensive artifacts for risky motifs
-
-{_safe_substitution_patterns(chapter)}
-
-### {title} instructor artifact: review packet and facilitation evidence
-
-{_instructor_artifact(chapter)}
-"""
-
-
 def _topic_assessment_rows(chapter: dict[str, Any], part: dict[str, Any]) -> str:
-    """Topic-specific assessment rows tied to the chapter practice lens artifact."""
+    """Cover every topic, grouping pattern aspects under their preserved identity."""
     title = str(chapter["title"])
     lens = practice_lens_for_titles(str(part["title"]), title, chapter=chapter)
-    rows: list[str] = []
+    topics: list[str] = []
     seen_topics: set[str] = set()
     for entry in safe_topic_entries(chapter, part):
-        topic_key = entry.display_title.strip().lower()
+        is_pattern = entry.risk_category == "ageint_pattern_registry"
+        topic_key = entry.source_locus if is_pattern else entry.display_title.strip().lower()
         if topic_key in seen_topics:
             continue
         seen_topics.add(topic_key)
-        rows.append(f"| **{entry.display_title}** | Completed **{lens.evidence_artifact}** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |")
-        if len(rows) >= 3:
-            break
+        topic_title = entry.display_title
+        if is_pattern:
+            topic_title = topic_title.split(" (source identity preserved", 1)[0]
+        topics.append(topic_title)
+    if not topics:
+        return ""
+    operations = (
+        f"**Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: {lens.validation_rule}.",
+        "**Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support.",
+        f"**Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: {lens.safety_check}.",
+    )
+    group_size = (len(topics) + len(operations) - 1) // len(operations)
+    rows = []
+    for operation, start in zip(operations, range(0, len(topics), group_size)):
+        topic_labels = "; ".join(f"**{source_identifier_text(topic)}**" for topic in topics[start : start + group_size])
+        rows.append(f"| {topic_labels} | {operation} |")
     return "\n".join(rows)
 
 
@@ -73,7 +51,7 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
     topic_rubric = ""
     if topic_rows:
         topic_rubric = f"""
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
 {topic_rows}
 """
@@ -87,14 +65,19 @@ def _assessment_and_capstone_pathway(chapter: dict[str, Any], part: dict[str, An
 
 #### {details["rubric"]}
 {topic_rubric}
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for {topic_context} against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+{topic_context}. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 """
 
 
@@ -116,18 +99,23 @@ surface, so a mature design must monitor the monitors [@official_csa_maestro_thr
 #### Governance control: SRE circuit breaker
 
 Knowing where attacks land is not the same as bounding their blast radius. The
-SRE circuit-breaker teaching pattern, depicted in [@fig:ageint-sre-circuit-breaker],
-adapts reliability vocabulary into an author-defined governance exercise for
-agents with three states. In CLOSED the agent operates normally, its autonomy
-earned by a clean safety record; when the safety error budget is exhausted --
-for this curriculum, when the PolicyCompliance service-level indicator falls
-below 99 percent -- the breaker trips to OPEN and a human takes over; after a
-recovery period plus validation it moves to HALF_OPEN with limited capability,
-returning to CLOSED only if the clean record holds and snapping back to OPEN on
-any new violation. Activation triggers include policy-bypass attempts,
-LLM-provider errors, tool-timeout cascades, trust-score degradation, and
-reasoning loops or deadlocks. Teach this as a defensive governance exercise:
-define the PolicyCompliance SLI for a synthetic agent, set its error budget, and
-rehearse the OPEN-state human takeover as a tabletop rather than a live
-breaker [@scholarly_systems_security_agentic_computing].
+author-defined SRE circuit-breaker teaching pattern, depicted in
+[@fig:ageint-sre-circuit-breaker], borrows reliability vocabulary for a synthetic
+governance tabletop, not a validated agent-safety threshold. In CLOSED the agent
+operates only within explicit human-approved permissions. An illustrative
+reliability budget may cover non-safety failures such as unavailable service or
+tool timeouts; its limits must be declared for that exercise, not generalized
+into a universal compliance percentage.
+
+Authorization violations, private-data disclosure, and unsafe-action attempts
+or execution are zero-tolerance breaches: immediately pause the affected agent
+workflow, move to OPEN, preserve the record, and escalate to the accountable human.
+Successful routine actions cannot offset these breaches in an averaged SLI.
+Human review must establish containment and validate remediation before approving
+limited restoration in HALF_OPEN, with restricted permissions and explicit stop
+conditions. Any recurrence returns the workflow to OPEN. Returning to CLOSED
+requires a separate, recorded human approval; a clean record or elapsed recovery
+period never authorizes more autonomy automatically. Rehearse these transitions
+with synthetic incident records, not live actions
+[@scholarly_systems_security_agentic_computing].
 """

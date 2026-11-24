@@ -20,11 +20,11 @@ This module teaches the **Analytic Tradecraft and Source Integrity** lane throug
 
 ## Analytic Tradecraft and Source Integrity frame for Structured Analytic Techniques (SATs): source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 ### Structured Analytic Techniques (SATs) orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 ### Structured Analytic Techniques (SATs) conceptual primer: source context, core model, and reader task
 
@@ -38,7 +38,7 @@ Learners move from vocabulary and the **Structured-Judgment Lens** distinction t
 
 ### Structured Analytic Techniques (SATs) learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 - Connect **CIA Tradecraft Primer: SATs for Intelligence Analysis and ICD 203 Analytic Standards: The Nine Tradecraft Standards** to **Analytic Tradecraft and Source Integrity** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **analytic note with hypotheses, evidence table, confidence, and dissent fields** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -48,14 +48,12 @@ Learners move from vocabulary and the **Structured-Judgment Lens** distinction t
 
 ### Structured Analytic Techniques (SATs) core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-structured-analytic-techniques-sats]; [@ageint237].
+**Navigation.** Parent section: [@sec:chapter-structured-analytic-techniques-sats].
 
 | Term | Working definition |
 |---|---|
 | Source descriptor | a compact statement of where evidence came from and what it can support |
 | Assumption | a claim accepted for analysis that still needs challenge |
 | Alternative hypothesis | a plausible explanation that competes with the favored account |
-| Confidence | a calibrated expression of evidentiary strength and analytic uncertainty |
+| Confidence | an assessment of the evidence base and reasoning behind a judgment, distinct from the likelihood that an event will occur; calibration requires suitable repeated judgments and outcomes |
 | Dissent | a documented disagreement that preserves minority reasoning for review |
-| CIA Tradecraft Primer: SATs for Intelligence… | Key terms: CIA, Tradecraft, Primer. |
-| ICD 203 Analytic Standards: The Nine Tradecraft… | Key terms: ICD, Analytic, Standards. |

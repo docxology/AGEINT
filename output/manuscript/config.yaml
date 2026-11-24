@@ -295,6 +295,7 @@ units:
       - file: ageint-design-patterns-and-archetypes/01-practice-studio-01.md
       - file: ageint-design-patterns-and-archetypes/01-practice-studio-02.md
       - file: ageint-design-patterns-and-archetypes/01-practice-studio-03.md
+      - file: ageint-design-patterns-and-archetypes/01-practice-studio-04.md
       - file: ageint-design-patterns-and-archetypes/02-evidence-contract.md
       - file: ageint-design-patterns-and-archetypes/03-governance-boundary.md
       - file: ageint-design-patterns-and-archetypes/04-assessment-route.md
@@ -359,7 +360,8 @@ units:
     directory: parts/productivity-intelligence-and-cognitive-performance
     chapters:
       - file: the-intelligent-operator-as-cognitive-athlete/00-overview.md
-      - file: the-intelligent-operator-as-cognitive-athlete/01-practice-studio.md
+      - file: the-intelligent-operator-as-cognitive-athlete/01-practice-studio-01.md
+      - file: the-intelligent-operator-as-cognitive-athlete/01-practice-studio-02.md
       - file: the-intelligent-operator-as-cognitive-athlete/02-evidence-contract.md
       - file: the-intelligent-operator-as-cognitive-athlete/03-governance-boundary.md
       - file: the-intelligent-operator-as-cognitive-athlete/04-assessment-route.md
@@ -411,4 +413,4 @@ units:
       - file: ethics-of-intelligence-and-cognitive-security/04-assessment-route.md
 appendices:
   include_reference: true
-  reference: [{file: "python-osint-library.md"}, {file: "langchain-langgraph-ageint-patterns.md"}, {file: "crewai-multi-agent-operations.md"}, {file: "autogen-and-mcp-patterns.md"}, {file: "cryptographic-methods.md"}, {file: "att-ck-and-kill-chain-mapping-templates.md"}, {file: "cognitive-security-and-inoculation-methods.md"}, {file: "source-verification-and-claim-ledger-workbook.md"}, {file: "instructor-capstone-rubric-and-red-team-review-pack.md"}, {file: "bibliography-atlas/00-bibliography-atlas-navigation-figures-and-source-links-visual-route-through-citation-evidence.md"}, {file: "bibliography-atlas/01-current-source-additions-and-refreshes-newly-checked-anchors-and-changed-caveats-sec-current-source-additions-and-refreshes.md"}, {file: "bibliography-atlas/02-source-refresh-ledger-cadence-checked-dates-and-due-status-evidence-sec-source-refresh-ledger.md"}, {file: "bibliography-atlas/03-citation-workflow-and-source-section-coverage.md"}, {file: "bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata-01.md"}, {file: "bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata-02.md"}, {file: "bibliography-atlas/05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md"}, {file: "bibliography-atlas/05-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md"}, {file: "references.md"}]
+  reference: [{file: "python-osint-library.md"}, {file: "langchain-langgraph-ageint-patterns.md"}, {file: "crewai-multi-agent-operations.md"}, {file: "autogen-and-mcp-patterns.md"}, {file: "cryptographic-methods.md"}, {file: "att-ck-and-kill-chain-mapping-templates.md"}, {file: "cognitive-security-and-inoculation-methods.md"}, {file: "source-verification-and-claim-ledger-workbook.md"}, {file: "instructor-capstone-rubric-and-red-team-review-pack.md"}, {file: "bibliography-atlas/00-bibliography-atlas-navigation-figures-and-source-links-visual-route-through-citation-evidence.md"}, {file: "bibliography-atlas/01-checked-since-source-selections-recorded-dates-and-caveats-sec-current-source-additions-and-refreshes.md"}, {file: "bibliography-atlas/02-source-refresh-ledger-cadence-checked-dates-and-due-status-evidence-sec-source-refresh-ledger.md"}, {file: "bibliography-atlas/03-citation-workflow-and-source-section-coverage.md"}, {file: "bibliography-atlas/04-add-or-extend-a-citation-preserve-identity-and-record-metadata.md"}, {file: "bibliography-atlas/05-bind-the-claim-not-merely-the-citation-01.md"}, {file: "bibliography-atlas/05-bind-the-claim-not-merely-the-citation-02.md"}, {file: "bibliography-atlas/06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-01.md"}, {file: "bibliography-atlas/06-bibliography-atlas-rows-guide-keys-curated-anchors-and-support-source-roles-sec-bibliography-rows-02.md"}, {file: "references.md"}]

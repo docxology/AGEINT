@@ -1,14 +1,13 @@
-%%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
+%%{init: {"theme":"neutral","themeVariables":{"fontSize":"24px","fontFamily":"Arial, sans-serif","primaryColor":"#dbeafe","primaryBorderColor":"#475569","primaryTextColor":"#0f172a","lineColor":"#475569","secondaryColor":"#dcfce7","tertiaryColor":"#fef3c7"},"flowchart":{"htmlLabels":true,"nodeSpacing":28,"rankSpacing":24,"curve":"basis","subGraphTitleMargin":{"top":8,"bottom":12}}}}%%
 flowchart TB
-  EXE["Executive systems, control"] --> EXP["Information threat exposure"]
-  AFF["Affective systems, emotion"] --> EXP
-  INT["Integrative network systems"] --> EXP
-  EXP --> MARK["Susceptibility and resilience markers"]
-  MARK --> LOAD["Cognitive load metrics"]
-  LOAD --> TLX["NASA TLX and biometrics"]
-  MARK --> CTRL["Resilience controls"]
-  CTRL --> INOC["Inoculation and prebunking"]
-  CTRL --> WORK["Workload management"]
-  CTRL --> CHK["Analytic checklists"]
-  TLX --> WORK
-  CHK --> EXE
+  HYP["Workload + context<br/>hypothesized associations"]
+  HYP -. "self-report" .-> TLX["NASA TLX<br/>reported workload"]
+  HYP -. "optional research" .-> BIO["EEG / physiology<br/>confounded signals"]
+  HYP -. "classroom option" .-> SUPPORT["Voluntary workload support<br/>no biometrics needed"]
+  TLX --> RIGHTS["Sensitive-data review<br/>basis, consent, minimization"]
+  BIO --> RIGHTS
+  RIGHTS --> VALID{"Validity for stated task?<br/>population + confounds"}
+  VALID -->|"insufficient / unknown"| ABSTAIN["Abstain"]
+  VALID -->|"bounded grounds"| DESC["Descriptive association only<br/>not causal or diagnostic"]
+  DESC --> LIMIT["No person-level diagnosis,<br/>intent or susceptibility claims"]
+  SUPPORT --> EVAL["Evaluate benefit<br/>separately"]

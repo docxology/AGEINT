@@ -1,14 +1,14 @@
 ## OSINT Techniques and Tools assurance handoff: evidence, governance, refresh, and capstone
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 ### OSINT Techniques and Tools evidence contract: source spine, verified anchors, transfer architecture, and claim limits
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 ### OSINT Techniques and Tools transfer architecture: module inputs, outputs, and review boundary
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 #### OSINT Techniques and Tools lineage and source tradition: profile, concepts, and first anchors
 
@@ -16,35 +16,35 @@ This sits in the **Open-Source and Geospatial Intelligence Integrity** lineage: 
 
 #### OSINT Techniques and Tools working model: inputs, constraints, transforms, outputs, and oversight
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 The work is modeled as inputs, constraints, transforms, outputs, feedback, and oversight for **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**, with provenance and reviewability throughout.
 
 #### OSINT Techniques and Tools knowledge architecture: inputs, transforms, outputs, and failure checks
 
-- **Inputs:** source materials, domain constraints, learner questions, verified anchors, and artifact requirements. [@ageint251]; [@ageint252].
-- **Transforms:** evidence normalization, structured reasoning, source evaluation, governance review, and handoff preparation.
-- **Outputs:** annotated map, decision memo, rubric, tabletop packet, or audit artifact.
-- **Failure modes:** over-automation, misplaced confidence, policy drift, and confusing simulation with deployment.
+- **Inputs:** supplied public-source records, acquisition and publication times, origin families, sensor metadata, and reuse permissions. [@ageint251]; [@ageint252].
+- **Transforms:** trace originals, distinguish availability from permission, compare spatial and temporal fit, test registration, and challenge apparent corroboration.
+- **Outputs:** provenance and claim-fitness table, uncertainty bounds, resolved comparison or explicit evidence gap, and minimized handoff.
+- **Failure modes:** map precision as certainty, old media as current observation, source-count confidence, or identity and location targeting.
 
 #### OSINT Techniques and Tools transfer contracts: authority, evidence, tools, and auditable output
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 - **Authority contract:** define why the work is being practiced, who reviews it, and which actions are excluded for **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**.
 - **Evidence contract:** keep the **Open-Source and Geospatial Intelligence Integrity** source descriptors, transformations, claims, uncertainty, and confidence separable.
 - **Tool contract:** bind any agent assistance to explicit tools, permissions, budgets, logging, and rollback conditions.
-- **Output contract:** render the chapter artifact as annotated map, decision memo, rubric, tabletop packet, or audit artifact that another reviewer can audit.
+- **Output contract:** render the chapter artifact as provenance and claim-fitness table, uncertainty bounds, resolved comparison or explicit evidence gap, and minimized handoff that another reviewer can audit.
 
 #### OSINT Techniques and Tools profile emphasis and local focus: method stack and topic cluster
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 The matched profile emphasizes public-source discovery converted into accountable intelligence through provenance, corroboration, minimization, and relevance tests. The method stack is source triage, provenance capture, corroboration matrix, recency audit, geospatial context review, and confidence calibration; the local topic cluster is **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**.
 
 ### OSINT Techniques and Tools evidence spine: source roles, citation support, and claim limits
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 Guide citations preserve the inherited bibliography, verified anchors supply
 lane constraints, and the **Open-Source and Geospatial Intelligence Integrity** profile tells reviewers what
@@ -64,7 +64,7 @@ The source canon has three tiers; the local spine begins with [@ageint251]; [@ag
 | Verified anchors | Official, standards, public-domain, or scholarly sources in `references-*.bib` | Supplies governance, quality, legal, safety, and technical constraints. |
 | Runtime profile | The profile matched to the current unit and current module | Selects the practice lens, method stack, failure modes, and defensive boundary for generated prose. |
 
-**Triangulation anchors.** In module 10's source-canon section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 10's source-canon section, the **Open-Source and Geospatial Intelligence Integrity** catalog routes include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 Maintenance rule: Perplexity may suggest candidates for **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records** and [@ageint251]; [@ageint252], but only directly verified source URLs are encoded as citations.
 
@@ -84,7 +84,7 @@ Practice lens: **Requirements-to-Evidence Lens** for **Search-exposure provenanc
 
 #### OSINT Techniques and Tools runtime-to-reader map: generated sections and verifier surfaces
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 | Rendered title | Source loci | Source provenance | Practice lens | Evidence artifact | Safety check |
 |---|---|---|---|---|---|
@@ -103,7 +103,7 @@ Practice lens: **Requirements-to-Evidence Lens** for **Search-exposure provenanc
 
 #### OSINT Techniques and Tools reusable subsection contract: topic rows, artifacts, and safety duties
 
-**Evidence anchor.** [@sec:chapter-osint-techniques-and-tools]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-techniques-and-tools].
 
 | Lesson topic | Practice lens | Evidence artifact | Safety check |
 |---|---|---|---|
@@ -122,23 +122,23 @@ Practice lens: **Requirements-to-Evidence Lens** for **Search-exposure provenanc
 Each source cited by this **Open-Source and Geospatial Intelligence Integrity** module is paired below with its
 real title and a one-line note on what it contributes to **Search-exposure provenance review using instructor-provided records; Social-source provenance and minimization review using toy records**.
 
-| Source | Cited work | What it contributes | Status |
+| Source | Cited work | Curriculum annotation | Status |
 |---|---|---|---|
-| [@ageint251] | [European Data Governance Act](https://digital-strategy.ec.europa.eu/en/policies/data-governance-act) | The European Commission page explaining the Data Governance Act, an EU regulation that became applicable in September 2023 to build trust in data sharing and ease reuse of data. It outlines four mechanisms: facilitating reuse of protected public-sector data, establishing trusted data intermediaries, enabling voluntary data sharing by citizens and businesses, and removing barriers to cross-sector and cross-border data use. | verified source-guide |
-| [@ageint252] | [Data Act Explained](https://digital-strategy.ec.europa.eu/en/policies/data-act-explained) | An official European Commission explainer on the EU Data Act, which became applicable on 12 September 2025. | verified source-guide |
-| [@ageint269] | [Data on the Web Best Practices](https://www.w3.org/TR/dwbp/) | A W3C Recommendation, "Data on the Web Best Practices," published January 31, 2017 by the Data on the Web Best Practices Working Group. It offers 35 best practices for publishing and consuming data on the Web, covering metadata, licensing and provenance, data quality, dataset versioning, persistent URIs, machine-readable formats, vocabulary reuse, access methods, preservation, and feedback. | verified source-guide |
-| [@ageint276] | [What is a Data Protection Impact Assessment and When Is This Mandatory?](https://www.edpb.europa.eu/sme-data-protection-guide/faq-frequently-asked-questions/answer/what-data-protection-impact_en) | A European Data Protection Board FAQ page, part of its data protection guide for small businesses, explaining Data Protection Impact Assessments (DPIAs) and when they are mandatory. It describes a DPIA as a written assessment of the impact of a planned processing operation, required when processing poses high risks to individuals' rights. | verified source-guide |
-| [@ageint277] | [Endorsed WP29 Guidelines](https://www.edpb.europa.eu/our-work-tools/general-guidance/endorsed-wp29-guidelines_en) | This is a European Data Protection Board webpage listing guidelines and documents originating from the Article 29 Working Party that the EDPB endorsed at its first plenary meeting. The catalogued materials relate to the GDPR and cover topics such as consent and transparency, data breach notification, automated decision-making and profiling, data protection impact assessments, data protection officers, and binding corporate rules. | verified source-guide |
-| [@ageint284] | [Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | The W3C Recommendation for Verifiable Credential Data Integrity 1.0, published May 2025, defining mechanisms for ensuring the authenticity and integrity of verifiable credentials using cryptographic proofs. It specifies a process of data transformation, hashing, and proof generation, and a corresponding verification procedure, along with a proof data model containing properties such as type, verification method, purpose, and proof value. | verified source-guide |
-| [@ageint288] | [Algorithmic Transparency Recording Standard Hub](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub) | A GOV.UK collection page serving as the hub for the UK Algorithmic Transparency Recording Standard (ATRS), maintained by the Government Digital Service. It provides a standardized template for documenting public-sector use of algorithmic tools, completion guidance, policy on scope and compliance, and a searchable repository of published transparency records. | verified source-guide |
-| [@ageint289] | [Guidance for Organisations Using the Algorithmic Transparency Recording Standard](https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard) | This is a GOV.UK guidance page published by the Government Digital Service that instructs public sector organizations on completing the Algorithmic Transparency Recording Standard (ATRS) template and publishing their records to the GOV.UK repository. It applies both to central government bodies required to publish under mandatory policy and to other public sector bodies doing so voluntarily. | verified source-guide |
-| [@ageint293] | [Inventory of NARA Artificial Intelligence (AI) Use Cases](https://www.archives.gov/ai) | The National Archives and Records Administration (NARA) official inventory of its artificial intelligence use cases, documenting 14 projects across deployed, pilot, and planned stages. Deployed efforts include workplace productivity tools, automated tagging for museum experiences, and historical record retrieval, while pilots cover PII detection and redaction, semantic search, and metadata generation, and planned work targets FOIA processing and public search. | verified source-guide |
-| [@ageint050] | [Thoughts on Bazzell's New Book? [Open Source Intelligence](https://www.reddit.com/r/OSINT/comments/egnki0/thoughts_on_bazzells_new_book_open_source/) | Mike wrote he wants to make the OSINT investigator more self reliant, able to do his job. | original source-guide |
-| [@ageint051] | Cited source (see bibliography) | See bibliography for scope. | original source-guide |
-| [@ageint052] | [What is Open Source Intelligence & Top 10 Tools - Lampyre](https://lampyre.io/blog/what-is-open-source-intelligence-top-10-tools/) | This article defines open source intelligence as the practice of gathering information from publicly available data for security, business, and investigative purposes, drawing on websites, social media, government records, and public databases. | verified source-guide |
-| [@ageint053] | [A Guide to Choosing the Right Tool for Your Needs](https://www.linkedin.com/pulse/guide-choosing-right-tool-your-needs-lijin-thomas-abraham-pmp) | See bibliography for scope. | verified practitioner context; secondary evidence only |
-| [@ageint054] | [What are your preferred OSINT tools? : r/hacking](https://www.reddit.com/r/hacking/comments/vr7bah/what_are_your_preferred_osint_tools/) | Recommended OSINT tools and their benefits. Top open source intelligence websites. | original source-guide |
-| [@ageint055] | [IntelTechniques Books](https://inteltechniques.com/book1.html) | OSINT Techniques. Resources for Uncovering Online Information - 11th Edition (2024). | original source-guide |
-| [@ageint056] | [IntelTechniques - OSINT 11 2025.04.02 .pdf - elhacker.INFO](https://elhacker.info/manuales/Hacking%20y%20Seguridad%20informatica/IntelTechniques%20-%20OSINT%2011%202025.04.02%20.pdf) | All tutorials in this book were confirmed accurate as of November 1, 2024. | original source-guide |
+| [@ageint251] | [European Data Governance Act](https://digital-strategy.ec.europa.eu/en/policies/data-governance-act) | The European Commission page explaining the Data Governance Act, an EU regulation that became applicable in September 2023 to build trust in data sharing and ease reuse of data. It outlines four mechanisms: facilitating reuse of protected public-sector data, establishing trusted data intermediaries, enabling voluntary data sharing by citizens and businesses, and removing barriers to cross-sector and cross-border data use. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint252] | [Data Act Explained](https://digital-strategy.ec.europa.eu/en/policies/data-act-explained) | An official European Commission explainer on the EU Data Act, which became applicable on 12 September 2025. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint269] | [Data on the Web Best Practices](https://www.w3.org/TR/dwbp/) | A W3C Recommendation, "Data on the Web Best Practices," published January 31, 2017 by the Data on the Web Best Practices Working Group. It offers 35 best practices for publishing and consuming data on the Web, covering metadata, licensing and provenance, data quality, dataset versioning, persistent URIs, machine-readable formats, vocabulary reuse, access methods, preservation, and feedback. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint276] | [What is a Data Protection Impact Assessment and When Is This Mandatory?](https://www.edpb.europa.eu/sme-data-protection-guide/faq-frequently-asked-questions/answer/what-data-protection-impact_en) | A European Data Protection Board FAQ page, part of its data protection guide for small businesses, explaining Data Protection Impact Assessments (DPIAs) and when they are mandatory. It describes a DPIA as a written assessment of the impact of a planned processing operation, required when processing poses high risks to individuals' rights. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint277] | [Endorsed WP29 Guidelines](https://www.edpb.europa.eu/our-work-tools/general-guidance/endorsed-wp29-guidelines_en) | This is a European Data Protection Board webpage listing guidelines and documents originating from the Article 29 Working Party that the EDPB endorsed at its first plenary meeting. The catalogued materials relate to the GDPR and cover topics such as consent and transparency, data breach notification, automated decision-making and profiling, data protection impact assessments, data protection officers, and binding corporate rules. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint284] | [Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | The W3C Recommendation for Verifiable Credential Data Integrity 1.0, published May 2025, defining mechanisms for ensuring the authenticity and integrity of verifiable credentials using cryptographic proofs. It specifies a process of data transformation, hashing, and proof generation, and a corresponding verification procedure, along with a proof data model containing properties such as type, verification method, purpose, and proof value. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint288] | [Algorithmic Transparency Recording Standard Hub](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub) | A GOV.UK collection page serving as the hub for the UK Algorithmic Transparency Recording Standard (ATRS), maintained by the Government Digital Service. It provides a standardized template for documenting public-sector use of algorithmic tools, completion guidance, policy on scope and compliance, and a searchable repository of published transparency records. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint289] | [Guidance for Organisations Using the Algorithmic Transparency Recording Standard](https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard) | This is a GOV.UK guidance page published by the Government Digital Service that instructs public sector organizations on completing the Algorithmic Transparency Recording Standard (ATRS) template and publishing their records to the GOV.UK repository. It applies both to central government bodies required to publish under mandatory policy and to other public sector bodies doing so voluntarily. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint293] | [Inventory of NARA Artificial Intelligence (AI) Use Cases](https://www.archives.gov/ai) | The National Archives and Records Administration (NARA) official inventory of its artificial intelligence use cases, documenting 14 projects across deployed, pilot, and planned stages. Deployed efforts include workplace productivity tools, automated tagging for museum experiences, and historical record retrieval, while pilots cover PII detection and redaction, semantic search, and metadata generation, and planned work targets FOIA processing and public search. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint050] | [Thoughts on Bazzell's New Book? [Open Source Intelligence](https://www.reddit.com/r/OSINT/comments/egnki0/thoughts_on_bazzells_new_book_open_source/) | No displayable curriculum annotation; see original work for scope. | original source-guide; annotation metadata, not claim verification |
+| [@ageint051] | Cited source (see bibliography) | No displayable curriculum annotation; see original work for scope. | original source-guide; annotation metadata, not claim verification |
+| [@ageint052] | [What is Open Source Intelligence & Top 10 Tools - Lampyre](https://lampyre.io/blog/what-is-open-source-intelligence-top-10-tools/) | This article defines open source intelligence as the practice of gathering information from publicly available data for security, business, and investigative purposes, drawing on websites, social media, government records, and public databases. | verified source-guide; annotation metadata, not claim verification |
+| [@ageint053] | [A Guide to Choosing the Right Tool for Your Needs](https://www.linkedin.com/pulse/guide-choosing-right-tool-your-needs-lijin-thomas-abraham-pmp) | No displayable curriculum annotation; see original work for scope. | verified practitioner context; secondary evidence only; annotation metadata, not claim verification |
+| [@ageint054] | [What are your preferred OSINT tools? : r/hacking](https://www.reddit.com/r/hacking/comments/vr7bah/what_are_your_preferred_osint_tools/) | Recommended OSINT tools and their benefits. Top open source intelligence websites. | original source-guide; annotation metadata, not claim verification |
+| [@ageint055] | [IntelTechniques Books](https://inteltechniques.com/book1.html) | OSINT Techniques. Resources for Uncovering Online Information - 11th Edition (2024). | original source-guide; annotation metadata, not claim verification |
+| [@ageint056] | [IntelTechniques - OSINT 11 2025.04.02 .pdf - elhacker.INFO](https://elhacker.info/manuales/Hacking%20y%20Seguridad%20informatica/IntelTechniques%20-%20OSINT%2011%202025.04.02%20.pdf) | All tutorials in this book were confirmed accurate as of November 1, 2024. | original source-guide; annotation metadata, not claim verification |
 
 **Where this sits.** This module's overview is [@sec:chapter-osint-techniques-and-tools]; return to the curriculum atlas [@sec:curriculum_orientation] for the reader paths, evidence map, and safety gates that govern this module.

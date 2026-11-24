@@ -1,4 +1,4 @@
-# References {.unnumbered}
+# References {#sec:references .unnumbered}
 
 The render pipeline reads `references-*.bib`, which is generated from parsed
 curriculum data plus official source-quality anchors. Manuscript prose should

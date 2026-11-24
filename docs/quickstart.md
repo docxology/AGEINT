@@ -1,20 +1,23 @@
 # Quickstart: AGEINT build, validation, and editing entry points
 
-Run the parser/build step and tests from the AGEINT root. Run markdown/prerender validation from the sibling template root against the working checkout path.
+Run explicit generation from AGEINT's root when building a new development
+edition. Pytest's published-output fixture is read-only: when diagnosing an
+existing publication, preserve its original failures before rebuilding.
+Run markdown/prerender validation from the prepared SDK root; the complete
+environment and acceptance recipes are in the [root workflow](../README.md#commands).
 
 ```bash
 uv run python scripts/build_curriculum.py
-uv run python scripts/generate_figures.py
 uv run python scripts/audit_orchestration_contract.py --format json
-uv run pytest tests/ --cov=src --cov-fail-under=90
+uv run pytest tests/ --cov=src --cov-fail-under=84  # Standalone core, not release acceptance.
 uv run pytest tests/test_source_identity.py
 
-# Optional: require full Mermaid/Chrome figure renders (no placeholders)
+# Development-only strict source rendering; full release acceptance also needs the SDK recipe.
 AGEINT_REQUIRE_RENDERED_FIGURES=1 uv run python scripts/build_curriculum.py
 
-# From the template repo root:
-uv run python -m infrastructure.validation.cli markdown projects/working/AGEINT/output/manuscript --repo-root .
-uv run python -m infrastructure.validation.cli prerender projects/working/AGEINT/output/manuscript --repo-root .
+# From the prepared SDK root; full 90% verification is in rendering_pipeline.md:
+.venv/bin/python -m infrastructure.validation.cli markdown projects/active/AGEINT/output/manuscript --repo-root . --strict
+.venv/bin/python -m infrastructure.validation.cli prerender projects/active/AGEINT/output/manuscript --repo-root .
 ```
 
 ## Editing workflow: update source surfaces, rebuild, and run gates

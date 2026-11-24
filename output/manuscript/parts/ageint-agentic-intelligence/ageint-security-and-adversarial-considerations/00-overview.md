@@ -8,9 +8,9 @@ Navigation links: [@sec:curriculum_orientation], [@sec:part-ageint-agentic-intel
 
 ![The CSA MAESTRO model stacks seven layers of the agentic AI lifecycle, with the L6 Security/Compliance layer cross-cutting every other layer because security agents are themselves attack surfaces. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect L6: Security and Compliance cross-cutting layer security agents are themselves attack surfaces monitor the monitors, MAESTRO lifecycle stack, L7: Agent Ecosystem impersonation, marketplace manipulation, goal manipulation, and L5: Evaluation and Observability metric manipulation, detection evasion while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../../figures/mermaid/ageint-maestro-seven-layer.png){#fig:ageint-maestro-seven-layer}
 
-![The author-defined SRE circuit-breaker teaching pattern state diagram shows when a supervised agent remains CLOSED, when safety-budget exhaustion forces OPEN human takeover, and how HALF_OPEN restoration is constrained by validation evidence. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect CLOSED normal supervised operation, OPEN human takeover after policy, provider, timeout, trust, or reasoning-loop triggers, HALF_OPEN limited restoration after recovery validation, and clean-record return path while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../../figures/mermaid/ageint-sre-circuit-breaker.png){#fig:ageint-sre-circuit-breaker}
+![This author-defined SRE analogy separates reliability monitoring from non-negotiable safety boundaries. Any authorization, privacy, or unsafe-action breach immediately pauses actions, regardless of aggregate success rates. A named human must review retained evidence, corrective changes, and trial scope before a constrained trial, then sign off on its results before restoring authorized operation; elapsed time alone never restores it.](../../../../figures/mermaid/ageint-sre-circuit-breaker.png){#fig:ageint-sre-circuit-breaker}
 
-![This diagram shows how an agentic intelligence system is bounded by least-privilege tooling, human review gates, observability, and kill-switch stop conditions before any action takes effect. It is anchored to the ageint agentic intelligence / ageint security and adversarial considerations section; use it to inspect A top-to-bottom governance . Perception feeds belief update, which feeds intent formation. Intent passes through a policy, tool-allowlist gate. A risk classifier branches to either a human-in-the- review gate for high-risk actions or a bounded action executor for low-risk actions. The human gate also reaches the executor. The executor sends results to an observability log, and which feeds both a kill-switch  detector while preserving the distinction between curriculum structure, evidence boundary, and accountable practice.](../../../../figures/mermaid/ageint-governance-loop-oversight.png){#fig:ageint-governance-loop-oversight}
+![This author-defined governance schematic distinguishes pre-action safeguards from after-action monitoring. Every proposed action requires a current permission, scope, argument, and privacy check plus a clear externally enforced stop interlock; high-risk or irreversible proposals also require named human approval. A human stop or critical breach pauses further execution. Observability can reveal failures but cannot undo irreversible effects or prove the guards complete.](../../../../figures/mermaid/ageint-governance-loop-oversight.png){#fig:ageint-governance-loop-oversight}
 
 ![Source-backed conceptual schematic crosswalking current official and standards sources for agent identity, protocol boundaries, security threats, data provenance, and adversarial assurance. In the ageint agentic intelligence / ageint security and adversarial considerations section, it lets readers compare Source families, NIST agent standards / AI RMF, OECD agentic AI concepts, and MCP spec + security so the visual functions as a traceable course aid rather than an unscoped assertion.](../../../../figures/mermaid/ageint-agentic-standards-landscape.png){#fig:ageint-agentic-standards-landscape}
 
@@ -34,17 +34,17 @@ This module teaches the **Agentic AI Governance and Tool Security** lane through
 
 ## Agentic AI Governance and Tool Security frame for AGEINT Security and Adversarial Considerations: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-ageint-security-and-adversarial-considerations]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-ageint-security-and-adversarial-considerations].
 
 ### AGEINT Security and Adversarial Considerations orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-ageint-security-and-adversarial-considerations]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-ageint-security-and-adversarial-considerations].
 
 ### AGEINT Security and Adversarial Considerations conceptual primer: source context, core model, and reader task
 
-This chapter teaches agentic AI as delegated action under control: identity, authority, tool permissions, memory, logs, stop conditions, and recoverability define what an agent may do. The chapter uses **Defensive Cyber-Intelligence Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Agent Framework Security Vulnerabilities; Python REPL sandbox and approval-gate**.
+This chapter teaches agentic AI as delegated action under control: identity, authority, tool permissions, memory, logs, stop conditions, and recoverability define what an agent may do. The chapter uses **Defensive Cyber-Intelligence Lens** to connect definitions, evidence tests, practice artifacts, and review gates for **Agent Framework Security Vulnerabilities; PythonREPLTool risk: execution capability versus authorization**.
 
-The central distinction is to separate agent assistance from autonomous external action. Core topics include **Agent Framework Security Vulnerabilities; Python REPL sandbox and approval-gate; Cyber credential-and-movement taxonomy review using fabricated alerts**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
+The central distinction is to separate agent assistance from autonomous external action. Core topics include **Agent Framework Security Vulnerabilities; PythonREPLTool risk: execution capability versus authorization; Cross-agent permission and contamination risk: source-guide CrewAI example**. Each topic covers meaning, evidentiary support, common misconceptions, and safety boundaries.
 
 Governance requirements use verified official, standards, public-domain, or scholarly anchors such as [@official_oecd_agentic_ai]; [@official_canada_agentic_ai_guide]; [@official_nist_ai_rmf]. Technical, theoretical, or empirical statements require direct domain sources and are limited to what those sources establish. [@ageint234]; [@ageint235].
 
@@ -52,9 +52,9 @@ Learners move from vocabulary and the **Defensive Cyber-Intelligence Lens** dist
 
 ### AGEINT Security and Adversarial Considerations learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-ageint-security-and-adversarial-considerations]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-ageint-security-and-adversarial-considerations].
 
-- Connect **Agent Framework Security Vulnerabilities and Python REPL sandbox and approval-gate** to **Agentic AI Governance and Tool Security** by naming shared vocabulary, evidence burden, and audience-facing caveats.
+- Connect **Agent Framework Security Vulnerabilities and PythonREPLTool risk: execution capability versus authorization** to **Agentic AI Governance and Tool Security** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build a **defensive CTI packet with indicator context, taxonomy mapping, confidence, handling rule, and control implication** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
 - Apply the key distinction: separate agent assistance from autonomous external action; show where an apparently useful shortcut would cross that line.
 - Diagnose failure modes such as excessive agency, shadow tools, indirect prompt injection, memory poisoning, confused authority, and unbounded action chains, then write one recovery move for each failure mode that preserves the learning objective.
@@ -62,7 +62,7 @@ Learners move from vocabulary and the **Defensive Cyber-Intelligence Lens** dist
 
 ### AGEINT Security and Adversarial Considerations core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-ageint-security-and-adversarial-considerations]; [@ageint234].
+**Navigation.** Parent section: [@sec:chapter-ageint-security-and-adversarial-considerations].
 
 | Term | Working definition |
 |---|---|
@@ -74,6 +74,4 @@ Learners move from vocabulary and the **Defensive Cyber-Intelligence Lens** dist
 | AI incident | a logged event where an AI system creates or plausibly creates harm or loss of control |
 | Prompt injection | untrusted content that attempts to override instructions or authority boundaries |
 | Pattern registry | the catalog of approved agent behaviors, prompts, and evaluation hooks |
-| Adversarial eval | structured tests that probe agent misuse, injection, and over-delegation before release |
-| Agent Framework Security Vulnerabilities | Key terms: Agent, Framework, Security. |
-| Python REPL sandbox and approval-gate | Key terms: Python, REPL, sandbox. |
+| Adversarial eval | structured tests of specified misuse, injection, or delegation failure modes; passing fixtures is not proof of general resistance |

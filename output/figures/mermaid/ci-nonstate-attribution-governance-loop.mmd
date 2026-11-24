@@ -1,15 +1,12 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  A["Indicator or Tip"] --> B["Threat Triage Against CI Priorities"]
-  B --> C["Lawful Collection and Records Review"]
-  C --> D["Pattern and Network Analysis"]
-  D --> E["Attribution Hypotheses"]
-  E --> F{"Attribution Confidence Sufficient"}
-  F -->|"No"| G["Document Gaps and Re-Collect"]
-  G --> C
-  F -->|"Yes"| H["Legal and Oversight Review"]
-  H --> I["Coordination with Partners and Agencies"]
-  I --> J["Protective and Mitigation Measures"]
-  J --> K["Audit Trail and Civil-Liberties Check"]
-  K --> L["Lessons Learned Feedback"]
-  L --> B
+    A["Synthetic indicator or tip"] --> AUTH{"Specific lawful purpose<br/>authority, necessity and minimization<br/>confirmed before records use?"}
+    AUTH -->|No or unknown| STOP["Stop or close<br/>record rights boundary"]
+    AUTH -->|Yes| E["Review supplied records only<br/>access, copying and disclosure evidence"]
+    E --> ALT["Test benign alternatives<br/>authorized contractor access<br/>error or incomplete logs"]
+    ALT --> CLAIMS["Separate conduct, actor and intent claims<br/>affiliation is not culpability<br/>sponsorship needs separate evidence"]
+    CLAIMS --> REV{"Named human reviews<br/>support, contradictions and gaps"}
+    REV -->|Unresolved| GAP["Retain unresolved finding<br/>bounded instructor-fixture request<br/>or close with rationale"]
+    REV -->|Unsupported concern| CLOSE["Close without accusation<br/>document correction or retraction"]
+    REV -->|Bounded judgment defensible| NOTE["Classroom assessment<br/>confidence basis and caveats"]
+    NOTE --> LIMIT["Confidence is not authority<br/>No external collection, disclosure<br/>accusation or action authorized"]

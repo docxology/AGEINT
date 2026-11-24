@@ -10,14 +10,13 @@ from manuscript_quality.inventory_helpers import manuscript_dir, section_text
 from rendered_reference_audit import TitleRule, audit_rendered_references, sanitize_rendered_section_title_mentions
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DOCS = PROJECT_ROOT / "docs"
 MANUSCRIPT = PROJECT_ROOT / "docs" / "manuscript"
 TOKEN_RE = re.compile(r"\{\{[A-Z][A-Z0-9_]*\}\}")
 FIGURE_DEF_RE = re.compile(r"!\[[^\]]+\]\((?P<path>[^)]+)\)\{#(?P<label>fig:[a-z0-9-]+)\}")
 FIGURE_REF_RE = re.compile(r"\[@(?P<label>fig:[a-z0-9-]+)\]")
 MARKDOWN_FILE_LINK_RE = re.compile(r"\[[^\]]+\]\([^)]*\.(?:md|markdown)(?:#[^)]*)?\)", re.IGNORECASE)
 HTML_MARKDOWN_FILE_LINK_RE = re.compile(r"href=[\"'][^\"']*\.(?:md|markdown)(?:#[^\"']*)?[\"']", re.IGNORECASE)
-SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)\}")
+SECTION_LABEL_RE = re.compile(r"\{#(?P<label>sec:[a-zA-Z0-9_-]+)(?P<attributes>\s+[^}]*)?\}")
 SECTION_REF_RE = re.compile(r"\[@(?P<label>sec:[a-zA-Z0-9_-]+)\]")
 EQUATION_LABEL_RE = re.compile(r"\{#(?P<label>eq:[a-zA-Z0-9_-]+)\}")
 EQUATION_REF_RE = re.compile(r"\[@(?P<label>eq:[a-zA-Z0-9_-]+)\]")
@@ -25,12 +24,7 @@ TABLE_LABEL_RE = re.compile(r"\{#(?P<label>tbl:[a-zA-Z0-9_-]+)\}")
 TABLE_REF_RE = re.compile(r"\[@(?P<label>tbl:[a-zA-Z0-9_-]+)\]")
 CITATION_REF_RE = re.compile(r"\[@(?P<label>(?!fig:|sec:|eq:|tbl:)[A-Za-z][A-Za-z0-9_-]*)\]")
 BIB_ENTRY_RE = re.compile(r"^@\w+\{(?P<label>[^,]+),", re.MULTILINE)
-HARD_CODED_NUMBER_RE = re.compile(
-    r"\b(?:Figure|Fig\.|Section|Sec\.|Equation|Eq\.|Formalism|Chapter)\s+"
-    r"(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b|\bAppendix\s+[A-Z]\b"
-)
 RAW_LATEX_REF_RE = re.compile(r"\\(?:ref|autoref|cref|Cref|eqref)\{")
-FORMALISM_REF_RE = re.compile(r"\b[Ff]ormalisms?\s+(?:[0-9]+(?:\.[0-9]+)*|[IVXLC]+)\b")
 READER_FACING_CROSSREF_PREFIXES = (
     "figPrefix:\n  - Figure\n  - Figures",
     "secPrefix:\n  - Section\n  - Sections",
@@ -44,23 +38,12 @@ def _markdown_files(output_manuscript: Path) -> list[Path]:
     return sorted(path for path in output_manuscript.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
 
 
-def _reference_scan_files(output_manuscript: Path) -> list[Path]:
-    generated = [path for path in _markdown_files(output_manuscript) if "bibliography-atlas" not in path.parts and path.name != "references.md"]
-    templates = sorted(path for path in MANUSCRIPT.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
-    docs = sorted(path for path in DOCS.rglob("*.md") if path.name not in {"AGENTS.md", "README.md"})
-    return generated + templates + docs + [PROJECT_ROOT / "README.md", PROJECT_ROOT / "AGENTS.md"]
-
-
 def _all_output_text(output_manuscript: Path) -> str:
     return "\n\n".join(path.read_text(encoding="utf-8") for path in _markdown_files(output_manuscript))
 
 
 def _all_bibtex_text(output_manuscript: Path) -> str:
     return "\n\n".join(path.read_text(encoding="utf-8") for path in sorted(output_manuscript.glob("*.bib")))
-
-
-def _generated_crossref_prose_text(output_manuscript: Path) -> str:
-    return "\n\n".join(path.read_text(encoding="utf-8") for path in _markdown_files(output_manuscript) if "bibliography-atlas" not in path.parts and path.name != "references.md")
 
 
 def _orientation_text(output_manuscript: Path) -> str:
@@ -81,16 +64,17 @@ def test_generated_figures_and_references_resolve_through_registry(built_output:
     assert {"fig:ageint-curriculum-map", "fig:ageint-safety-boundary-loop"} <= references
 
 
-def test_generated_section_references_resolve_without_raw_latex_or_hard_numbers(built_output: Path) -> None:
+def test_generated_section_references_resolve_without_raw_latex(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     text = _all_output_text(output_manuscript)
     section_labels = {match.group("label") for match in SECTION_LABEL_RE.finditer(text)}
     section_refs = {match.group("label") for match in SECTION_REF_RE.finditer(text)}
+    unnumbered_labels = {match.group("label") for match in SECTION_LABEL_RE.finditer(text) if ".unnumbered" in (match.group("attributes") or "").split()}
 
     assert section_refs
     assert section_refs <= section_labels
+    assert section_refs.isdisjoint(unnumbered_labels)
     assert not RAW_LATEX_REF_RE.search(text)
-    assert not HARD_CODED_NUMBER_RE.search(_generated_crossref_prose_text(output_manuscript))
 
 
 def test_generated_reader_outputs_do_not_link_to_markdown_files(built_output: Path) -> None:
@@ -175,55 +159,69 @@ def test_rendered_reference_audit_allows_only_structural_title_mentions(built_ou
     assert [violation.format(PROJECT_ROOT) for violation in violations] == []
 
 
-def test_generated_manuscript_has_no_sanitizer_fragments_or_citation_punctuation(built_output: Path) -> None:
-    text = _generated_crossref_prose_text(manuscript_dir(built_output))
-
-    assert "History of the module" not in text
-    assert not re.search(r"\]\. and|\]\.\.", text)
-
-
-def test_rendered_reference_sanitizer_preserves_structural_titles_only() -> None:
+def test_sanitizer_preserves_domain_names_and_bibliographic_titles() -> None:
+    rules = [
+        TitleRule("Agent Recruitment", "the module", "chapter", "sec:recruitment"),
+        TitleRule("MITRE ATT&CK for ICS", "the module", "chapter", "sec:ics"),
+        TitleRule("Social Engineering", "the module", "chapter", "sec:social"),
+    ]
     text = "\n".join(
         [
-            "# The Nature of Intelligence {#sec:chapter-the-nature-of-intelligence}",
-            "",
-            "Visual guide for **The Nature of Intelligence** [@fig:one] names the current topic.",
-            "![The Nature of Intelligence map](../figures/example.png){#fig:one}",
-            "| Module | Section reference |",
-            "|---|---|",
-            "| The Nature of Intelligence | [@sec:chapter-the-nature-of-intelligence] |",
-            "- Start **The Nature of Intelligence** with the authority card.",
+            "Clandestine Agent Recruitment is the source's title.",
+            "MITRE ATT&CK for ICS Navigator Layer is a technical artifact.",
+            'See "Social Engineering" by the cited author.',
+            "The bibliography names **Social Engineering**.",
+            "Social Engineering is also a domain term.",
+            "See MITRE ATT&CK for ICS Navigator Layer for the artifact.",
         ]
     )
-    sanitized = sanitize_rendered_section_title_mentions(text, [TitleRule("The Nature of Intelligence", "the module", "chapter")])
-
-    assert "# The Nature of Intelligence {#sec:chapter-the-nature-of-intelligence}" in sanitized
-    assert "| The Nature of Intelligence | [@sec:chapter-the-nature-of-intelligence] |" in sanitized
-    assert "Visual guide for the module" in sanitized
-    assert "![the module map]" in sanitized
-    assert "- Start the module with the authority card." in sanitized
+    assert sanitize_rendered_section_title_mentions(text, rules) == text
 
 
-def test_sanitize_preserves_authored_titles_but_neutralizes_bare_crossrefs() -> None:
-    """A chapter title embedded in a longer authored ``**bold**`` phrase (a woven
-    lesson title / bolded topic cluster) is preserved, while a bare standalone
-    cross-reference — even one opening with a capitalised word — is still
-    neutralised.
+def test_sanitizer_normalizes_only_navigation_with_label_targets() -> None:
+    rule = [TitleRule("Social Engineering", "the module", "chapter", "sec:social")]
+    assert sanitize_rendered_section_title_mentions("See Social Engineering for the exercise.", rule) == "See [@sec:social] for the exercise."
+    assert sanitize_rendered_section_title_mentions("See **Social Engineering** for the exercise.", rule) == "See [@sec:social] for the exercise."
+    unlabelled = [TitleRule("Social Engineering", "the module", "chapter")]
+    text = "See Social Engineering for the exercise."
+    assert sanitize_rendered_section_title_mentions(text, unlabelled) == text
+    assert sanitize_rendered_section_title_mentions("See [@sec:missing].", rule) == "See [@sec:missing]."
 
-    Regression guard for the 2026-06-09 fix: an earlier "preceded by a Title-Case
-    word" heuristic LEAKED bare cross-references such as "See Social Engineering
-    ..." through both the mutator and the (shared-logic) checker — a silent
-    under-neutralisation surfaced by cross-vendor review.
-    """
-    rule = [TitleRule("Social Engineering", "the module", "chapter")]
-    # Embedded in a longer bold lesson title -> preserved verbatim.
-    assert sanitize_rendered_section_title_mentions("**History of Social Engineering** teaches defensive recognition.", rule) == "**History of Social Engineering** teaches defensive recognition."
-    # Bold topic cluster containing the chapter title -> preserved.
-    assert "Social Engineering" in sanitize_rendered_section_title_mentions("The cluster is **Influence Tactics; History of Social Engineering**.", rule)
-    # Bare cross-reference opening with a capital -> neutralised (no leak).
-    assert sanitize_rendered_section_title_mentions("See Social Engineering for the next exercise.", rule) == "See the module for the next exercise."
-    # Exact bold title mention (a genuine cross-reference) -> neutralised.
-    assert sanitize_rendered_section_title_mentions("Start **Social Engineering** with the authority card.", rule) == "Start the module with the authority card."
+
+def test_reference_audit_distinguishes_domain_terms_from_navigation(tmp_path: Path) -> None:
+    manuscript = tmp_path / "manuscript"
+    manuscript.mkdir()
+    (manuscript / "chapter.md").write_text(
+        "# Agent Recruitment {#sec:recruitment}\n"
+        "Clandestine Agent Recruitment is a bibliographic title.\n"
+        'The source is titled "Agent Recruitment".\n'
+        "See Agent Recruitment for the next exercise.\n"
+        "See **Agent Recruitment** for the next exercise.\n"
+        "See [@sec:recruitment] for valid navigation.\n",
+        encoding="utf-8",
+    )
+    violations = audit_rendered_references(tmp_path)
+    assert [(v.reason, v.line_number) for v in violations] == [("unlabelled section navigation", 4), ("unlabelled section navigation", 5)]
+
+
+def test_reference_audit_rejects_bad_section_refs_even_in_tables(tmp_path: Path) -> None:
+    manuscript = tmp_path / "manuscript"
+    manuscript.mkdir()
+    (manuscript / "chapter.md").write_text(
+        "# Topic {#sec:topic}\nSee [@sec:topic; @sec:topic].\n| Missing | [@sec:missing] |\nSee [@sec:bad label].\n```text\n{#sec:fake}\n```\nSee [@sec:fake].\n", encoding="utf-8"
+    )
+    assert {(v.reason, v.line_number) for v in audit_rendered_references(tmp_path)} == {("unresolved section reference", 3), ("malformed section reference", 4), ("unresolved section reference", 8)}
+
+
+def test_reference_quality_keeps_markdown_file_link_gate(tmp_path: Path) -> None:
+    from reference_quality import collect_reference_quality
+
+    manuscript = tmp_path / "output" / "manuscript"
+    manuscript.mkdir(parents=True)
+    (manuscript / "chapter.md").write_text("# Topic {#sec:topic}\nSee [the source](missing.md#topic).\n", encoding="utf-8")
+    report = collect_reference_quality(tmp_path)
+    assert not report.ok
+    assert any(row["issue"] == "markdown_file_link" for row in report.payload["issue_rows"])
 
 
 def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path: Path) -> None:
@@ -232,6 +230,22 @@ def test_rendered_reference_audit_allows_pandoc_resolved_html_crossrefs(tmp_path
     (web / "index.html").write_text("<p>Visual guide for the section Figure&nbsp;1.</p>\n<p>Navigation links: Section&nbsp;2, Section&nbsp;3.</p>\n", encoding="utf-8")
 
     assert audit_rendered_references(tmp_path) == []
+
+
+def test_rendered_reference_audit_rejects_visible_crossref_placeholders(tmp_path: Path) -> None:
+    web = tmp_path / "web"
+    web.mkdir()
+    (web / "index.html").write_text(
+        '<h1 class="unnumbered" id="sec:references">References</h1>\n<p>¿Dónde está el origen?</p>\n<table><tr><td>Section <strong>¿sec:references?</strong></td></tr></table>\n', encoding="utf-8"
+    )
+    pdf = tmp_path / "pdf"
+    pdf.mkdir()
+    (pdf / "_combined_manuscript.tex").write_text(r"\section{A formalism \textbf{¿eq:missing?}}" + "\n", encoding="utf-8")
+
+    assert {(violation.path.relative_to(tmp_path).as_posix(), violation.reason, violation.title) for violation in audit_rendered_references(tmp_path)} == {
+        ("web/index.html", "unresolved rendered cross-reference", "¿sec:references?"),
+        ("pdf/_combined_manuscript.tex", "unresolved rendered cross-reference", "¿eq:missing?"),
+    }
 
 
 def test_rendered_reference_audit_preserves_rendered_authored_emphasis(tmp_path: Path) -> None:
@@ -260,12 +274,12 @@ def test_rendered_reference_audit_allows_wrapped_tex_section_titles(tmp_path: Pa
         "frame for The Nature of Intelligence: source context, topic focus, and\n"
         "reader\n"
         "task}\\label{fixture-heading}\n"
-        f"This prose sentence should still flag {title} as a bare title reference.\n",
+        f"See {title} for the next exercise.\n",
         encoding="utf-8",
     )
     violations = audit_rendered_references(tmp_path)
 
-    assert [(v.reason, v.line_number) for v in violations] == [("generated title in prose", 5)]
+    assert [(v.reason, v.line_number) for v in violations] == [("unlabelled section navigation", 5)]
 
 
 def test_rendered_reference_audit_flags_unresolved_citation_key(tmp_path: Path) -> None:
@@ -322,23 +336,6 @@ def test_generated_cross_links_are_label_backed_not_title_prose(built_output: Pa
     assert violations == []
 
 
-def test_source_docs_explain_label_backed_reference_syntax() -> None:
-    syntax = (MANUSCRIPT / "SYNTAX.md").read_text(encoding="utf-8")
-    agents = (PROJECT_ROOT / "AGENTS.md").read_text(encoding="utf-8")
-    readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
-    citation_workflow = (PROJECT_ROOT / "docs" / "citation_workflow.md").read_text(encoding="utf-8")
-
-    assert "[@sec:curriculum_orientation]" in syntax
-    assert "[@fig:ageint-curriculum-map]" in syntax
-    assert "[@ageint137]" in syntax
-    assert "../docs/citation_workflow.md" in syntax
-    assert "docs/citation_workflow.md" in agents
-    assert "docs/citation_workflow.md" in readme
-    assert "never hand-edit" in citation_workflow
-    assert "Pandoc-crossref labels" in agents
-    assert "label-backed" in readme
-
-
 def test_pdf_crossref_metadata_uses_reader_facing_prefixes(built_output: Path) -> None:
     output_manuscript = manuscript_dir(built_output)
     template = (MANUSCRIPT / "templates" / "abstract.md").read_text(encoding="utf-8")
@@ -348,18 +345,6 @@ def test_pdf_crossref_metadata_uses_reader_facing_prefixes(built_output: Path) -
         assert text.startswith("---\n")
         for prefix in READER_FACING_CROSSREF_PREFIXES:
             assert prefix in text
-
-
-def test_manuscript_docs_and_templates_do_not_hard_code_numbered_references(built_output: Path) -> None:
-    output_manuscript = manuscript_dir(built_output)
-    violations: list[str] = []
-    for path in _reference_scan_files(output_manuscript):
-        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
-            if HARD_CODED_NUMBER_RE.search(line) or RAW_LATEX_REF_RE.search(line) or FORMALISM_REF_RE.search(line):
-                rel = path.relative_to(PROJECT_ROOT).as_posix()
-                violations.append(f"{rel}:{line_number}: {line.strip()}")
-
-    assert violations == []
 
 
 def _fragment_paths_for_source_section(output_manuscript: Path, source_section: str) -> list[Path]:

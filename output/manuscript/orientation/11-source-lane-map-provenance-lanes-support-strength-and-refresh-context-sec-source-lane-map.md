@@ -54,7 +54,7 @@
 | cryptography_standards | 3 | semiannual | Supports bounded AGEINT discussion of cryptography_standards and related source evidence. It does not authorize collection tasking, exploit steps, covert-action guidance, manipulation playbooks, unsafe cyber-physical actions, or live-target procedures. |
 | current_threat_baseline | 1 | annual | public threat-context grounding and warning-topic baseline, not operational targeting or AGEINT benchmark evidence |
 | cyber_defense_guidance_index | 1 | quarterly | defensive cyber guidance index support for source routing and refresh duties |
-| cyber_threat_intelligence | 17 | annual, semiannual | 8 scoped claim families |
+| cyber_threat_intelligence | 17 | annual, semiannual | 9 scoped claim families |
 | dataset_documentation | 2 | annual | 2 scoped claim families |
 | declassified_analytic_history | 2 | annual | 2 scoped claim families |
 | declassified_reconnaissance_history | 1 | annual | declassified reconnaissance history support for historical and GEOINT source-provenance lessons |
@@ -101,7 +101,7 @@
 | learner_support_accommodations | 1 | semiannual | learner support plans, accessibility exception documentation, alternative means, and artifact remediation |
 | legal_authorities_intelligence_collection | 1 | annual | Supports bounded AGEINT discussion of legal_authorities_intelligence_collection and related source evidence. It does not authorize collection tasking, exploit steps, covert-action guidance, manipulation playbooks, unsafe cyber-physical actions, or live-target procedures. |
 | legal_authorities_surveillance | 3 | annual | Supports bounded AGEINT discussion of legal_authorities_surveillance and related source evidence. It does not authorize collection tasking, exploit steps, covert-action guidance, manipulation playbooks, unsafe cyber-physical actions, or live-target procedures. |
-| legal_oversight | 9 | annual | curriculum grounding and source-backed synthesis |
+| legal_oversight | 9 | annual | 2 scoped claim families |
 | legal_oversight_intelligence | 1 | annual | Supports bounded AGEINT discussion of legal_oversight_intelligence and related source evidence. It does not authorize collection tasking, exploit steps, covert-action guidance, manipulation playbooks, unsafe cyber-physical actions, or live-target procedures. |
 | llm_architecture | 1 | semiannual | Supports bounded AGEINT discussion of llm_architecture and related source evidence. It does not authorize collection tasking, exploit steps, covert-action guidance, manipulation playbooks, unsafe cyber-physical actions, or live-target procedures. |
 | llm_evaluation | 2 | semiannual | Supports bounded AGEINT discussion of llm_evaluation and related source evidence. It does not authorize collection tasking, exploit steps, covert-action guidance, manipulation playbooks, unsafe cyber-physical actions, or live-target procedures. |

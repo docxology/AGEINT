@@ -8,7 +8,6 @@ from pathlib import Path
 from intelligence_content import INTELLIGENCE_RESEARCH_ANCHORS
 from manuscript_variables import SOURCE_QUALITY_ANCHORS
 from manuscript_manifest._heading_titles import chapter_detail_titles, chapter_teaching_titles
-from safety_contract import BLOCKED_OPERATIONAL_PHRASES, DIRECT_TASK_MOTIF_RE
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 MANUSCRIPT = PROJECT_ROOT / "docs" / "manuscript"
@@ -64,7 +63,6 @@ GENERIC_DETAIL_SECTION_KEYS = {
     "Refresh triggers": "refresh_triggers",
     "Claim and evidence ledger": "claim_ledger",
 }
-RETIRED_GENERIC_HEADING_LABELS = {"Discipline spine", "Source-use contract", "Practice artifact", "Safety boundary", "Instructor notes", "Extension", "Answer quality rubric"}
 REQUIRED_MODULE_SECTIONS = set(GENERIC_TEACHING_SECTION_KEYS)
 RAW_PSEUDO_HEADING_PREFIXES = {"V2 source-lane extension:", "Deep expansion:", "Evidence-package expansion:", "V2 AGEINT-depth extension:"}
 REMOVED_REPEATED_MODULE_SECTIONS = {
@@ -85,51 +83,6 @@ REMOVED_REPEATED_MODULE_SECTIONS = {
     "Instructor question bank",
     "Remediation backlog",
 }
-REMOVED_META_PHRASES = {
-    "converts the source-guide outline into",
-    "an AGEINT curriculum unit with atlas",
-    "playbook affordances",
-    "Students should leave with",
-    "Explain the role of",
-    "This module is part of",
-    "Generated section context",
-    "Visual references for this generated section",
-    "Source-guide topic translated",
-    "Treat source locus",
-    "Runtime subsection",
-}
-REMOVED_FILLER_PHRASES = {
-    "Source-guide topic translated into a safe classroom concept",
-    "The classroom move is to define the concept",
-    "reviewable artifact instead of a loose idea",
-    "Learners use those sources",
-    "Generated section context",
-    "Visual references for this generated section",
-    "safe classroom concept for evidence review",
-}
-REMOVED_GENERATED_SCAFFOLD_PHRASES = {
-    "as a coursebook concept",
-    "fields fields",
-    "generic",
-    "placeholder",
-    "scaffold",
-    "scaffolding",
-    "scaffolds",
-    "reusable methods scaffold",
-    "Capstone scaffold",
-    "Primary visual reference:",
-    "then restate the idea",
-    "reviewer who has not read the source guide",
-    "- Explain **",
-    "**Concept.** Explain how",
-    "The teaching task is",
-    "Each lesson card teaches",
-    "runtime subsection",
-    "runtime-derived subsection",
-    "source-guide subsection",
-    "Which wording, scaffold",
-}
-REMOVED_GENERIC_CONCEPT_PHRASES = {"defensible claim whose meaning", "treats each source topic through", "parsed AGEINT source spine", "study sequence has three passes"}
 SOURCE_QUALITY_KEYS = {anchor["key"] for anchor in SOURCE_QUALITY_ANCHORS} | {anchor.key for anchor in INTELLIGENCE_RESEARCH_ANCHORS}
 REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_nsf_ai_agent_ecosystems",
@@ -201,9 +154,6 @@ REQUIRED_REFRESHED_ANCHOR_KEYS = {
     "official_nsa_mcp_security_design_considerations",
     "scholarly_roozenbeek_2022_psychological_inoculation",
 }
-# Re-export for manuscript-safety tests (canonical set lives in src/safety_contract.py).
-BLOCKED_OPERATIONAL_PATTERN_PHRASES = BLOCKED_OPERATIONAL_PHRASES
-DIRECT_STUDENT_TASK_MOTIFS = DIRECT_TASK_MOTIF_RE
 REQUIRED_SOURCE_LANES = {
     "ai_conformity_compliance",
     "education_assessment",
@@ -228,24 +178,6 @@ REQUIRED_SOURCE_LANES = {
     "learner_support_accommodations",
     "assurance_evaluation_evidence",
     "procurement_performance_monitoring",
-}
-REQUIRED_V2_DOCS = {
-    "accessibility_rights_review.md",
-    "adversarial_assurance.md",
-    "agent_incident_response.md",
-    "data_lineage_registry.md",
-    "evidence_package_map.md",
-    "instructor_guide.md",
-    "learner_support_assessment.md",
-    "procurement_vendor_governance.md",
-    "records_retention_audit.md",
-    "release_change_control.md",
-    "safety_audit.md",
-    "source_identity_stability.md",
-    "source_lane_map.md",
-    "source_refresh_ledger.md",
-    "transparency_notice_workflow.md",
-    "v2_expansion_map.md",
 }
 
 

@@ -25,7 +25,7 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown", help="Output format.")
     parser.add_argument("--write", action="store_true", help="Write output/reports/publication_readiness.{json,md}.")
-    parser.add_argument("--skip-parent-guard", action="store_true", help="Do not run the parent template tracked-project confidentiality guard.")
+    parser.add_argument("--skip-parent-guard", action="store_true", help="Informational only: skip the parent confidentiality guard; readiness remains false and exit status is nonzero.")
     return parser
 
 

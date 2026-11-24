@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="pandoc 3.10" />
+  <meta name="generator" content="pandoc 3.13" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>01-practice-studio.md.web</title>
   <style>
@@ -11,7 +11,10 @@
     */
     html {
       color: #1a1a1a;
+      color: light-dark(#1a1a1a, #fdfdfd);
       background-color: #fdfdfd;
+      background-color: light-dark(#fdfdfd, #1a1a1a);
+      color-scheme: light dark;
     }
     body {
       margin: 0 auto;
@@ -36,12 +39,16 @@
     }
     @media print {
       html {
-        background-color: white;
+        color-scheme: light only;
       }
-      body {
+      html, body, pre, code {
         background-color: transparent;
+      }
+      body, a, a:visited, blockquote {
         color: black;
-        font-size: 12pt;
+      }
+      pre, code {
+        padding: 0;
       }
       p, h2, h3 {
         orphans: 3;
@@ -54,11 +61,8 @@
     p {
       margin: 1em 0;
     }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
+    a, a:visited {
+      color: inherit;
     }
     img {
       max-width: 100%;
@@ -87,8 +91,11 @@
     blockquote {
       margin: 1em 0 1em 1.7em;
       padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
+      border-left: 2px solid;
+      border-color: #e6e6e6;
+      border-color: light-dark(#e6e6e6, #4c4c4c);
       color: #606060;
+      color: light-dark(#606060, #b6b6b6);
     }
     code {
       white-space: pre-wrap;
@@ -112,7 +119,7 @@
     }
     hr {
       border: none;
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       height: 1px;
       margin: 1em 0;
     }
@@ -129,11 +136,11 @@
     }
     tbody {
       margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
     }
     th {
-      border-top: 1px solid #1a1a1a;
+      border-top: 1px solid currentColor;
       padding: 0.25em 0.5em 0.25em 0.5em;
     }
     td {
@@ -175,148 +182,586 @@
   </style>
 
 <link data-template-favicon rel="icon" href="favicon.ico">
+
+<style>
+:root {
+  --brand-1: #5b6ee0;
+  --web-bg: #f8f8f8;
+  --web-surface: #ffffff;
+  --web-text: #2c3e50;
+  --web-border: #bdc3c7;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-1: #7e8ce8;
+    --web-bg: #0f1420;
+    --web-surface: #161c2b;
+    --web-text: #e6eaf2;
+    --web-border: #2a3447;
+  }
+}
+.theorem-box {
+  border-left: 4px solid var(--brand-1);
+  background: var(--web-surface);
+  padding: 0.6em 1em;
+  margin: 1.1em 0;
+  border-radius: 0 4px 4px 0;
+}
+.theorem-box.definition { border-left-style: dashed; }
+.theorem-box > p:first-child { margin-top: 0; }
+.theorem-box > p:last-child { margin-bottom: 0; }
+.figure-long-description {
+  border: 1px solid var(--web-border);
+  border-radius: 4px;
+  margin-block: 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.figure-long-description > summary { cursor: pointer; font-weight: 700; }
+.figure-long-description > p { max-width: 80ch; overflow-wrap: anywhere; }
+.figure-exact-values { max-width: 80ch; overflow-wrap: anywhere; }
+code { overflow-wrap: anywhere; word-break: break-word; }
+pre {
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+pre code { overflow-wrap: inherit; white-space: inherit; word-break: inherit; }
+div.sourceCode { max-width: 100%; overflow: visible; }
+pre.sourceCode { background: #2c3e50; color: #ecf0f1; }
+pre.sourceCode code,
+pre.sourceCode code span { color: inherit; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+mjx-container[display="true"] { max-width: 100%; overflow: visible; }
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--brand-1);
+  outline-offset: 3px;
+}
+.table-scroll > table { margin-block: 0; display: table; min-width: 100%; width: 100%; }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  line-height: 1.6;
+  width: min(100%, 800px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  color: #1a1a1a;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+main,
+nav,
+section,
+article,
+figure,
+figcaption {
+  min-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-120%);
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skip-link:visited {
+  color: #ffffff;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  figure img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+code {
+  background-color: #ecf0f1;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Liberation Mono', 'Courier New', monospace;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+pre {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 100%;
+  overflow: visible;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  overflow-wrap: inherit;
+  white-space: inherit;
+  word-break: inherit;
+}
+
+div.sourceCode {
+  max-width: 100%;
+  overflow: visible;
+}
+
+pre.sourceCode {
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+pre.sourceCode code,
+pre.sourceCode code span {
+  color: inherit;
+}
+
+pre > code.sourceCode {
+  white-space: pre-wrap;
+}
+
+pre > code.sourceCode > span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-gutter: stable;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.table-scroll > table {
+  margin-block: 0;
+  display: table;
+  min-width: 100%;
+  width: 100%;
+}
+
+figure {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #1f6f8b;
+  color: white;
+}
+
+/* Preserve a complete inline-code header within the table's scroll region. */
+th code {
+  color: inherit;
+  background-color: transparent;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+  overflow-wrap: anywhere;
+}
+
+a:visited {
+  color: #8f1d1d;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+a:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 3px;
+}
+
+.toc {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.toc a,
+#TOC a {
+  color: #b91c1c;
+  display: inline-block;
+  min-height: 28px;
+  line-height: 1.5;
+  padding-block: 2px;
+}
+
+.toc li,
+#TOC li {
+  margin-block: 1px;
+}
+
+.math {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow: visible;
+  padding-bottom: 0.25rem;
+}
+
+.figure {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.figure img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* A reading column keeps prose comfortable, but dense scientific figures need
+   a larger inspection surface.  The rendered image remains responsive and the
+   explicit link opens its source-resolution asset without changing the PDF. */
+.figure-full-size-link {
+  color: inherit;
+  display: block;
+  max-width: 100%;
+  text-align: center;
+}
+
+.figure-full-size-link img {
+  cursor: zoom-in;
+  margin-bottom: 0.45rem;
+}
+
+.figure-full-size-label {
+  color: #1f6f8b;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.figure-full-size-link:focus-visible {
+  outline: 3px solid #1f6f8b;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1000px) {
+  /* Wide figure links stay within the viewport but extend beyond the prose
+     column. Do not clip their labels at the narrower body boundary. */
+  body {
+    overflow-x: visible;
+  }
+
+  .figure-full-size-link {
+    left: 50%;
+    max-width: none;
+    position: relative;
+    transform: translateX(-50%);
+    width: min(1080px, calc(100vw - 3rem));
+  }
+}
+
+.figure-caption {
+  font-style: italic;
+  color: #4b5563;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.figure-long-description,
+.figure-exact-values {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+</style>
+<script data-template-source-font-loader src="assets/source-web-fonts.js"></script>
 </head>
 <body>
-<main id="main-content">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<main id="main-content" tabindex="-1">
 <h2
-id="requirements-to-evidence-lens-path-for-source-protection-and-ci-integration-lesson-cluster-safe-artifact-and-review">Requirements-to-Evidence
+id="structured-judgment-lens-path-for-source-protection-and-ci-integration-lesson-cluster-safe-artifact-and-review">Structured-Judgment
 Lens path for Source Protection and CI Integration: lesson cluster, safe
 artifact, and review</h2>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-source-protection-and-ci-integration]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-source-protection-and-ci-integration">[@sec:chapter-source-protection-and-ci-integration]</span>.</p>
 <h3
 id="source-protection-and-ci-integration-practice-studio-topic-lessons-safe-worked-example-and-knowledge-check">Source
 Protection and CI Integration practice studio: topic lessons, safe
 worked example, and knowledge check</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-source-protection-and-ci-integration]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-source-protection-and-ci-integration">[@sec:chapter-source-protection-and-ci-integration]</span>.</p>
 <h3
 id="source-protection-and-ci-integration-topic-lessons-source-backed-concepts-and-transfer-tasks">Source
 Protection and CI Integration topic lessons: source-backed concepts and
 transfer tasks</h3>
-<p>This module builds collection management as requirements discipline:
-a source method is considered only after the priority, authority,
-minimization rule, source risk, and evaluation plan are explicit. The
-sequence opens with <strong>Identifying Penetration: Signs of
-Compromise</strong>, <strong>Compartmentation and need-to-know
-governance</strong>, <strong>Lie Detection, Vetting, Polygraph, and Its
-Alternatives</strong> and applies the <strong>Requirements-to-Evidence
-Lens</strong> practice frame through concept, evidence, artifact,
-misconception, and transfer tasks.</p>
-<p><strong>Learning-path links.</strong> Unit module map
-[fig:part-human-intelligence-humint-module-map]; module overview
-[sec:chapter-source-protection-and-ci-integration]; curriculum atlas
-[sec:curriculum_orientation].</p>
-<p><strong>Triangulation anchors.</strong> In module 6’s topic-lessons
-section, directly verified anchors for the <strong>Collection Management
-and Multi-INT Requirements Discipline</strong> lane include
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
-[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<h4 id="lesson-1-identifying-penetration-signs-of-compromise">Lesson 1:
-Identifying Penetration: Signs of Compromise</h4>
-<p><strong>Concept.</strong> <strong>Identifying Penetration: Signs of
-Compromise</strong> applies Identifying, Penetration, Signs within
-Collection Management and Multi-INT Requirements Discipline: learners
-use separate collection discipline concepts from operational
-recruitment, interception, or tasking procedures and requirements
-decomposition and source-discipline fit evidence before any judgment
-moves forward.</p>
-<p><strong>Why it matters.</strong> <strong>Identifying
-Penetration</strong> connects classroom vocabulary to Collection
-Management and Multi-INT Requirements Discipline practice: learners
-document evidence, caveats, and reviewer ownership rather than repeating
-labels.</p>
-<p><strong>Source support.</strong> <strong>Identifying Penetration:
-Signs of Compromise</strong> rests on [ageint307], [ageint305], and
-[ageint304]. Its anchor reference records: NIST SP 800-218, the Secure
-Software Development Framework Version 1.1 published in February 2022,
+<p><strong>Source Protection and CI Integration</strong> builds
+counterintelligence as source-integrity defense: the class studies how
+institutions protect evidence, people, access, and judgment from
+deception and compromise. The sequence opens with <strong>Source-Quality
+Anomalies: Competing Explanations and Protected</strong>,
+<strong>Compartmentation and need-to-know governance</strong>,
+<strong>Polygraph and Lie-Detection Claims: Physiology Is Not
+Truth</strong> and applies the <strong>Structured-Judgment Lens</strong>
+practice frame through concept, evidence, artifact, misconception, and
+transfer tasks.</p>
+<p><strong>Learning-path links.</strong> Unit module map <span
+class="citation"
+data-cites="fig:part-human-intelligence-humint-module-map">[@fig:part-human-intelligence-humint-module-map]</span>;
+module overview <span class="citation"
+data-cites="sec:chapter-source-protection-and-ci-integration">[@sec:chapter-source-protection-and-ci-integration]</span>;
+curriculum atlas <span class="citation"
+data-cites="sec:curriculum_orientation">[@sec:curriculum_orientation]</span>.</p>
+<p><strong>Contextual source routes.</strong> For module 6’s
+topic-lessons section, the <strong>Counterintelligence and
+Source-Integrity Defense</strong> catalog routes include
+[official_ncsc_counterintelligence_strategy]; [official_odni_eo_12333];
+[official_odni_icd_206]; [official_odni_icd_203]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<h4
+id="lesson-1-source-quality-anomalies-competing-explanations-and-protected">Lesson
+1: Source-Quality Anomalies: Competing Explanations and Protected</h4>
+<p><strong>Concept.</strong> <strong>Source-Quality Anomalies: Competing
+Explanations and Protected</strong> is taught in the
+<strong>Counterintelligence and Source-Integrity Defense</strong> lane.
+The analytic distinction is to separate defensive awareness from
+surveillance, handling, or operational security playbooks. Apply it to
+the supplied evidence; a topic label alone establishes neither a
+mechanism nor a conclusion.</p>
+<p><strong>Worked reasoning and limits.</strong> <strong>Completed
+synthetic case:</strong> report R1 about a fictional reading-room
+closure says Tuesday, translated R2 says Thursday, and both cite notice
+N; supplied N is missing its date field. The observed discrepancy
+supports a source-quality concern, while translation error, stale
+versions, copied contamination, and deliberate alteration remain
+competing explanations; it does not establish penetration or anyone’s
+intent. When an instructor supplies the complete N showing Tuesday, the
+reviewer corrects R2, records that an error is established but its cause
+is still unresolved, and sends only the case labels, contradiction, and
+caveat to the authorized review role. The disposition is protected
+review rather than accusation; no learner investigates, contacts anyone,
+or infers compromise from access opportunity alone, and any real
+identity/sensitive access or unclear authority stops the exercise.
+Inherited ICS/DevSecOps/SSDF citations do not validate a human-source
+compromise detector; absence of detected indicators is not positive
+report validation.</p>
+<p><strong>Why it matters.</strong> <strong>Source-Quality
+Anomalies</strong> matters in the <strong>Counterintelligence and
+Source-Integrity Defense</strong> lane because deception-aware source
+review and defensive escalation evidence must stay separate from
+judgment; source compromise is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Source-Quality Anomalies: Competing Explanations and
+Protected</strong>: [ageint307], [ageint305], and [ageint304]. These
+citations preserve source identity, not automatic topical relevance,
+empirical validation or normative authority. No claim-specific primary
+support is established by this source-guide association alone. Profile
+context—not claim-specific validation—uses
+[official_ncsc_counterintelligence_strategy];
+[official_odni_eo_12333].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Source-Quality
+Anomalies</strong>, inspect the original passages. Curriculum annotation
+for [ageint307]: Official CISA Industrial Control Systems recommended
+practices page for defensive ICS/OT safety, resilience, and
+incident-preparation guidance. Curriculum annotation for [ageint305]:
+Official NIST NCCoE DevSecOps project page for software factory, secure
+pipeline, and continuous authorization source support. Curriculum
+annotation for [ageint304]: NIST SP 800-218, the Secure Software
+Development Framework Version 1.1 published in February 2022,
 establishes a set of high-level practices for integrating security into
 software development lifecycles in order to reduce vulnerabilities in
 released software, mitigate the impact of exploited vulnerabilities, and
-address root causes to prevent recurrences. Use them for fixing what
-<strong>Identifying Penetration: Signs of Compromise</strong> covers,
-marking the boundary it must not cross, and timing the next source
-refresh. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>Identifying
-Penetration</strong> against the works cited for this row. [ageint307]
-Official CISA Industrial Control Systems recommended practices page for
-defensive ICS/OT safety, resilience, and incident-preparation guidance.
-[ageint305] Official NIST NCCoE DevSecOps project page for software
-factory, secure pipeline, and continuous authorization source support.
-[ageint304] NIST SP 800-218, the Secure Software Development Framework
-Version 1.1 published in February 2022, establishes a set of high-level
-practices for integrating security into software development lifecycles
-in order to reduce vulnerabilities in released software, mitigate the
-impact of exploited vulnerabilities, and address root causes to prevent
-recurrences. From each source, pull the bounded claim it can carry for
-this topic, its provenance, the stated uncertainty, and the one
-condition that would overturn that judgment.</p>
-<p><strong>Student artifact.</strong> For <strong>Identifying
-Penetration</strong>, build a <strong>requirements matrix with source
-descriptors, caveats, and collection limits</strong> for this
-requirements decomposition and source-discipline fit topic. The artifact
-must name the source descriptor, the bounded claim about
-<strong>Identifying Penetration</strong>, the caveat that limits it, the
-uncertainty note, the out-of-scope-use boundary, and the reviewer
-accountable for challenge. Shape <strong>Identifying
-Penetration</strong> work as a <strong>source-risk and validation ethics
-worksheet</strong> that names evidence, uncertainty, reviewer, and stop
-condition.</p>
+address root causes to prevent recurrences. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Source-Quality
+Anomalies</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+deception-aware source review and defensive escalation topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>Source-Quality Anomalies</strong>, the caveat that limits it,
+the uncertainty note, the out-of-scope-use boundary, and the reviewer
+accountable for challenge. Shape <strong>Source-Quality
+Anomalies</strong> work as a <strong>source-risk and validation ethics
+worksheet</strong> that records its evidence, the residual uncertainty,
+the named reviewer, and the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-Identifying Penetration: Signs of Compromise can be used while ignoring
-the rule to separate collection discipline concepts from operational
-recruitment, interception, or tasking procedures.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Identifying
-Penetration</strong> to a second module by preserving requirements
-decomposition and source-discipline fit, changing the source evidence,
+Source-Quality Anomalies: Competing Explanations and Protected can be
+used while ignoring the rule to separate defensive awareness from
+surveillance, handling, or operational security playbooks.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Source-Quality
+Anomalies</strong> to a second module by preserving deception-aware
+source review and defensive escalation, changing the source evidence,
 and naming a new reviewer.</p>
 <h4 id="lesson-2-compartmentation-and-need-to-know-governance">Lesson 2:
 Compartmentation and need-to-know governance</h4>
 <p><strong>Concept.</strong> <strong>Compartmentation and need-to-know
-governance</strong> treats agents as software actors with explicit
-permissions, logs, stop conditions, and human approval—not autonomous
-decision makers.</p>
+governance</strong> maps compartment boundaries, access lists, and
+need-to-know fields before any information moves across teams.</p>
+<p><strong>Worked reasoning and limits.</strong> Here agent means human
+source, not software agent; compartmentation limits sensitive
+identity/access information, but a reviewer still needs enough
+report-basis and caveat information to evaluate the claim. In a
+synthetic access card, the classroom analyst receives ‘translated
+hearsay from notice N,’ while the authorized custodian alone holds the
+original restricted descriptor; no identity is needed to see the shared
+origin. Withholding the shared-origin fact would falsely make R1/R2 look
+independent, while releasing the identity would add risk without
+improving the inference. Protection and analytic traceability must
+therefore be designed together rather than equating more secrecy with
+better validation.</p>
 <p><strong>Why it matters.</strong> <strong>Compartmentation and
 need-to-know governance</strong> connects classroom vocabulary to
-Collection Management and Multi-INT Requirements Discipline practice:
-learners document evidence, caveats, and reviewer ownership rather than
-repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Compartmentation and
-need-to-know governance</strong> rests on [ageint029]. The closest
-source to this row notes: It surveys the roles of case officers in
-managing sources, recruitment and training of agents, protective
-measures such as fronts and cutouts, agent classifications including
-unwitting sources, and counterintelligence methods for identifying
-foreign operatives and reducing security breaches. Use it for pinning
-down the scope of <strong>Compartmentation and need-to-know
-governance</strong>, the edge of that scope, and when these citations
-need re-verifying before transfer. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Compartmentation
-and need-to-know governance</strong> in the evidence the row cites.
-[ageint029] A roughly 28-page Scribd document titled “Agent Handling in
-Counterintelligence” providing an educational overview of intelligence
-operations. It surveys the roles of case officers in managing sources,
-recruitment and training of agents, protective measures such as fronts
-and cutouts, agent classifications including unwitting sources, and
-counterintelligence methods for identifying foreign operatives and
-reducing security breaches. Work source by source: name the bounded
-claim, its origin, the residual uncertainty, and the trigger that would
-change how this topic is judged.</p>
-<p><strong>Student artifact.</strong> Build a <strong>requirements
-matrix with source descriptors, caveats, and collection limits</strong>
-for this requirements decomposition and source-discipline fit topic. The
+Counterintelligence and Source-Integrity Defense practice: learners
+document evidence, caveats, and reviewer ownership rather than repeating
+labels.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Compartmentation and need-to-know governance</strong>:
+[ageint029]. These citations preserve source identity, not automatic
+topical relevance, empirical validation or normative authority. No
+claim-specific primary support is established by this source-guide
+association alone. Profile context—not claim-specific validation—uses
+[official_ncsc_counterintelligence_strategy];
+[official_odni_eo_12333].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Compartmentation
+and need-to-know governance</strong>, inspect the original passages.
+Curriculum annotation for [ageint029]: A roughly 28-page Scribd document
+titled “Agent Handling in Counterintelligence” providing an educational
+overview of intelligence operations. It surveys the roles of case
+officers in managing sources, recruitment and training of agents,
+protective measures such as fronts and cutouts, agent classifications
+including unwitting sources, and counterintelligence methods for
+identifying foreign operatives and reducing security breaches. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> Build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this deception-aware source review and defensive escalation topic. The
 artifact must name the governance descriptor, the bounded claim about
 <strong>Compartmentation and need-to-know governance</strong>, the
 compartmentation caveat, the uncertainty note, the non-authorization
-boundary, and the reviewer who signs oversight. Shape this subject work
-as a <strong>source-risk and validation ethics worksheet</strong> that
-logs the evidence, the uncertainty, the responsible reviewer, and the
-halt condition.</p>
+boundary, and the reviewer who signs oversight. Shape the same topic
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that logs the evidence, the uncertainty, the responsible reviewer, and
+the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception about
 <strong>Compartmentation and need-to-know governance</strong>: that
 governance vocabulary about tradecraft confers operational authorization
@@ -326,219 +771,281 @@ and need-to-know governance</strong> audit pattern from this module on a
 different sample record set with a new reviewer and blocked-use
 note.</p>
 <h4
-id="lesson-3-lie-detection-vetting-polygraph-and-its-alternatives">Lesson
-3: Lie Detection, Vetting, Polygraph, and Its Alternatives</h4>
-<p><strong>Concept.</strong> <strong>Lie Detection, Vetting, Polygraph,
-and Its Alternatives</strong> connects insider-threat review to access
-control, behavior indicators, and accountable escalation paths.</p>
-<p><strong>Why it matters.</strong> <strong>Lie Detection, Vetting,
-Polygraph, and Its Alternatives</strong> connects classroom vocabulary
-to Collection Management and Multi-INT Requirements Discipline practice:
-learners document evidence, caveats, and reviewer ownership rather than
-repeating labels.</p>
-<p><strong>Source support.</strong> <strong>Lie Detection, Vetting,
-Polygraph, and Its Alternatives</strong> rests on [ageint307],
-[ageint305], and [ageint304]. The closest source to this row notes: NIST
-SP 800-218, the Secure Software Development Framework Version 1.1
-published in February 2022, establishes a set of high-level practices
-for integrating security into software development lifecycles in order
-to reduce vulnerabilities in released software, mitigate the impact of
-exploited vulnerabilities, and address root causes to prevent
-recurrences. Use them for pinning down the scope of <strong>Lie
-Detection, Vetting, Polygraph, and Its Alternatives</strong>, the edge
-of that scope, and when these citations need re-verifying before
-transfer. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Lie Detection,
-Vetting, Polygraph, and Its Alternatives</strong>, work from the cited
-evidence behind this row. [ageint307] Official CISA Industrial Control
-Systems recommended practices page for defensive ICS/OT safety,
-resilience, and incident-preparation guidance. [ageint305] Official NIST
-NCCoE DevSecOps project page for software factory, secure pipeline, and
-continuous authorization source support. [ageint304] NIST SP 800-218,
-the Secure Software Development Framework Version 1.1 published in
-February 2022, establishes a set of high-level practices for integrating
-security into software development lifecycles in order to reduce
-vulnerabilities in released software, mitigate the impact of exploited
-vulnerabilities, and address root causes to prevent recurrences. From
-each source, pull the bounded claim it can carry for this topic, its
-provenance, the stated uncertainty, and the one condition that would
-overturn that judgment.</p>
-<p><strong>Student artifact.</strong> For <strong>Lie Detection,
-Vetting, Polygraph, and Its Alternatives</strong>, build a
-<strong>requirements matrix with source descriptors, caveats, and
-collection limits</strong> for this requirements decomposition and
-source-discipline fit topic. The artifact must name the source
-descriptor, the bounded claim about <strong>Lie Detection Vetting
-Polygraph and</strong>, the caveat that limits it, the uncertainty note,
-the out-of-scope-use boundary, and the reviewer accountable for
-challenge. Shape this subject work as a <strong>source-risk and
-validation ethics worksheet</strong> that names evidence, uncertainty,
-reviewer, and stop condition.</p>
+id="lesson-3-polygraph-and-lie-detection-claims-physiology-is-not-truth">Lesson
+3: Polygraph and Lie-Detection Claims: Physiology Is Not Truth</h4>
+<p><strong>Concept.</strong> <strong>Polygraph and Lie-Detection Claims:
+Physiology Is Not Truth</strong> frames CI topics as source-vetting,
+anomaly review, and institutional protection—not operational
+entrapment.</p>
+<p><strong>Worked reasoning and limits.</strong> Polygraph measures
+physiological responses; a response, an inferred emotion, an inference
+of deception, and the accuracy of a particular report are different
+propositions. No appropriate empirical polygraph-validation source is
+supplied here, and the inherited IT-security citations do not establish
+screening accuracy or report truth. <strong>Entirely invented
+arithmetic, not device performance:</strong> among 1,000 fictional
+records with 10 stipulated positive cases, suppose a hypothetical screen
+flags 8 of those 10 and 99 of the other 990; only 8 of 107 flags
+correspond to the stipulated condition, and 2 positives are missed. This
+shows dependence on assumed prevalence and error rates, not real-world
+accuracy, and ‘not flagged’ is not validation. The completed decision is
+insufficient evidence for truth/compromise, no real testing or biometric
+inference, and no adverse judgment from the screen; independent report
+evidence and protected review remain necessary.</p>
+<p><strong>Why it matters.</strong> <strong>Polygraph and Lie-Detection
+Claims</strong> matters in the <strong>Counterintelligence and
+Source-Integrity Defense</strong> lane because deception-aware source
+review and defensive escalation evidence must stay separate from
+judgment; source compromise is a common failure.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Polygraph and Lie-Detection Claims: Physiology Is Not
+Truth</strong>: [ageint307], [ageint305], and [ageint304]. These
+citations preserve source identity, not automatic topical relevance,
+empirical validation or normative authority. No claim-specific primary
+support is established by this source-guide association alone. Profile
+context—not claim-specific validation—uses
+[official_ncsc_counterintelligence_strategy];
+[official_odni_eo_12333].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Polygraph and
+Lie-Detection Claims</strong>, inspect the original passages. Curriculum
+annotation for [ageint307]: Official CISA Industrial Control Systems
+recommended practices page for defensive ICS/OT safety, resilience, and
+incident-preparation guidance. Curriculum annotation for [ageint305]:
+Official NIST NCCoE DevSecOps project page for software factory, secure
+pipeline, and continuous authorization source support. Curriculum
+annotation for [ageint304]: NIST SP 800-218, the Secure Software
+Development Framework Version 1.1 published in February 2022,
+establishes a set of high-level practices for integrating security into
+software development lifecycles in order to reduce vulnerabilities in
+released software, mitigate the impact of exploited vulnerabilities, and
+address root causes to prevent recurrences. These editorial descriptions
+are not source-authored quotations or independently verified lesson
+support. Record a passage and locator, distinguishing primary findings,
+normative requirements, proposals and context using <span
+class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Polygraph and
+Lie-Detection Claims</strong>, build a <strong>analytic note with
+hypotheses, evidence table, confidence, and dissent fields</strong> for
+this deception-aware source review and defensive escalation topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>Polygraph and Lie-Detection Claims</strong>, the caveat that
+limits it, the uncertainty note, the out-of-scope-use boundary, and the
+reviewer accountable for challenge. Shape <strong>Polygraph and
+Lie-Detection Claims</strong> work as a <strong>source-risk and
+validation ethics worksheet</strong> that records its evidence, the
+residual uncertainty, the named reviewer, and the stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-Lie Detection, Vetting, Polygraph, and Its Alternatives establishes
+Polygraph and Lie-Detection Claims: Physiology Is Not Truth establishes
 intent without reviewing alternative explanations.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Lie Detection,
-Vetting, Polygraph, and Its Alternatives</strong> to a second module by
-preserving requirements decomposition and source-discipline fit,
-changing the source evidence, and naming a new reviewer.</p>
-<h4 id="lesson-4-the-double-agent-operation">Lesson 4: The Double-Agent
-Operation</h4>
-<p><strong>Concept.</strong> <strong>The Double-Agent Operation</strong>
-treats agents as software actors with explicit permissions, logs, stop
-conditions, and human approval—not autonomous decision makers.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Polygraph and
+Lie-Detection Claims</strong> to a second module by preserving
+deception-aware source review and defensive escalation, changing the
+source evidence, and naming a new reviewer.</p>
+<h4
+id="lesson-4-double-agent-accounts-defensive-deception-and-source-integrity-literacy">Lesson
+4: Double-Agent Accounts: Defensive Deception and Source-Integrity
+Literacy</h4>
+<p><strong>Concept.</strong> <strong>Double-Agent Accounts: Defensive
+Deception and Source-Integrity Literacy</strong> compares deception
+indicators with alternative explanations and uncertainty before any
+operational inference.</p>
+<p><strong>Worked reasoning and limits.</strong> A double-agent account
+concerns a human-source relationship and competing claims of allegiance
+or control; it is not a software-agent pattern. A report’s contradiction
+may justify re-examining provenance, but does not establish that the
+source is controlled by an adversary. In the reading-room case, even a
+supplied correction resolving the weekday leaves intent unknown;
+deliberate deception would require separate positive evidence, not a
+label inferred from inconsistency. Read historical accounts critically
+for source dependence and retrospective certainty, without running an
+operation, testing loyalties, or tasking anyone.</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>The Double-Agent Operation</strong>, opportunistic collection
-undermines requirements decomposition and source-discipline fit review;
-the lesson builds the habit to separate collection discipline concepts
-from operational recruitment, interception, or tasking procedures.</p>
-<p><strong>Source support.</strong> <strong>The Double-Agent
-Operation</strong> rests on [ageint029]. The most specific cited work
-observes: A roughly 28-page Scribd document titled “Agent Handling in
-Counterintelligence” providing an educational overview of intelligence
-operations. Use it for the working definition that <strong>The
-Double-Agent Operation</strong> can defend, where that scope ends, and
-the refresh check owed before this evidence transfers. External
-triangulation uses [official_intelligence_gov_how_ic_works];
-[official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Read <strong>The Double-Agent
-Operation</strong> against the works cited for this row. [ageint029] A
-roughly 28-page Scribd document titled “Agent Handling in
-Counterintelligence” providing an educational overview of intelligence
-operations. It surveys the roles of case officers in managing sources,
-recruitment and training of agents, protective measures such as fronts
-and cutouts, agent classifications including unwitting sources, and
-counterintelligence methods for identifying foreign operatives and
-reducing security breaches. Read each cited work for what it can support
-about this topic, where that claim originated, how confident it is, and
-what evidence would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>The Double-Agent
-Operation</strong>, build a <strong>requirements matrix with source
-descriptors, caveats, and collection limits</strong> for this
-requirements decomposition and source-discipline fit topic. The artifact
-must name the source descriptor, the bounded claim about
-<strong>Double-Agent Operation</strong>, the caveat that limits it, the
+<strong>Double-Agent Accounts</strong>, source compromise undermines
+deception-aware source review and defensive escalation review; the
+lesson builds the habit to separate defensive awareness from
+surveillance, handling, or operational security playbooks.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Double-Agent Accounts: Defensive Deception and Source-Integrity
+Literacy</strong>: [ageint029]. These citations preserve source
+identity, not automatic topical relevance, empirical validation or
+normative authority. No claim-specific primary support is established by
+this source-guide association alone. Profile context—not claim-specific
+validation—uses [official_ncsc_counterintelligence_strategy];
+[official_odni_eo_12333].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Double-Agent
+Accounts</strong>, inspect the original passages. Curriculum annotation
+for [ageint029]: A roughly 28-page Scribd document titled “Agent
+Handling in Counterintelligence” providing an educational overview of
+intelligence operations. It surveys the roles of case officers in
+managing sources, recruitment and training of agents, protective
+measures such as fronts and cutouts, agent classifications including
+unwitting sources, and counterintelligence methods for identifying
+foreign operatives and reducing security breaches. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Double-Agent
+Accounts</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+deception-aware source review and defensive escalation topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>Double-Agent Accounts</strong>, the caveat that limits it, the
 uncertainty note, the out-of-scope-use boundary, and the reviewer
-accountable for challenge. Shape this subject work as a
-<strong>source-risk and validation ethics worksheet</strong> that
-records its evidence, the residual uncertainty, the named reviewer, and
-the stop condition.</p>
+accountable for challenge. Shape <strong>Double-Agent Accounts</strong>
+work as a <strong>source-risk and validation ethics worksheet</strong>
+that logs the evidence, the uncertainty, the responsible reviewer, and
+the halt condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-The Double-Agent Operation replaces human review whenever evidence looks
-plausible.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>The Double-Agent
-Operation</strong> to a second module by preserving requirements
-decomposition and source-discipline fit, changing the source evidence,
+Double-Agent Accounts: Defensive Deception and Source-Integrity Literacy
+replaces human review whenever evidence looks plausible.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Double-Agent
+Accounts</strong> to a second module by preserving deception-aware
+source review and defensive escalation, changing the source evidence,
 and naming a new reviewer.</p>
 <h4
-id="lesson-5-non-state-actor-indicator-review-with-attribution-caution-and-governance-boundaries">Lesson
-5: Non-state actor indicator review with attribution caution and
-governance boundaries</h4>
-<p><strong>Concept.</strong> <strong>Non-state actor indicator review
-with attribution caution and governance boundaries</strong> uses
-attribution indicators cautiously by separating technical similarity,
-context, confidence, and geopolitical inference.</p>
+id="lesson-5-non-state-threat-accounts-evidence-attribution-and-disclosure-limits">Lesson
+5: Non-State Threat Accounts: Evidence, Attribution, and Disclosure
+Limits</h4>
+<p><strong>Concept.</strong> <strong>Non-State Threat Accounts:
+Evidence, Attribution, and Disclosure Limits</strong> uses attribution
+indicators cautiously by separating technical similarity, context,
+confidence, and geopolitical inference.</p>
+<p><strong>Worked reasoning and limits.</strong> A threat account must
+distinguish observed information gathering, an assessed organization,
+and an inference of hostile purpose; none follows solely from a person’s
+associations or interest in a public topic. The inherited commentary’s
+biographical or rhetorical fragments do not validate current actor
+attribution or a detection method. In a supplied synthetic concern,
+summarize the artifact and access issue with case labels, preserve
+benign alternatives, and route it through the authorized
+protected-review channel. Do not name suspects, infer protected traits,
+contact organizations, or gather new intelligence.</p>
 <p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Non-state actor indicator review</strong>, opportunistic
-collection undermines requirements decomposition and source-discipline
-fit review; the lesson builds the habit to separate collection
-discipline concepts from operational recruitment, interception, or
-tasking procedures.</p>
-<p><strong>Source support.</strong> <strong>Non-state actor indicator
-review with attribution caution and governance boundaries</strong> rests
-on [ageint033]. The lead source’s own note reads: How seriously is the
-U.S. Use it for the claim that <strong>Non-state actor indicator review
-with attribution caution and governance boundaries</strong> lets you
-defend here, the limit it has to respect, and the re-check owed before
-reuse. External triangulation uses
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> For <strong>Non-state actor
-indicator review</strong>, work from the cited evidence behind this row.
-[ageint033] How seriously is the U.S. Intelligence Community (IC)
-considering this challenge to U.S. Each source above earns its place in
-this topic only when you can state its bounded claim, its provenance,
-its uncertainty, and the fact that would retire it.</p>
-<p><strong>Student artifact.</strong> For <strong>Non-state actor
-indicator review</strong>, build a <strong>requirements matrix with
-source descriptors, caveats, and collection limits</strong> for this
-requirements decomposition and source-discipline fit topic. The artifact
-must name the actor descriptor, the bounded claim about <strong>state
-actor indicator review with</strong>, the attribution caveat, the
-uncertainty note, the non-targeting boundary, and the reviewer who
-approves the assessment. Shape <strong>Non-state actor indicator
-review</strong> work as a <strong>source-risk and validation ethics
+<strong>Non-State Threat Accounts</strong>, source compromise undermines
+deception-aware source review and defensive escalation review; the
+lesson builds the habit to separate defensive awareness from
+surveillance, handling, or operational security playbooks.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>Non-State Threat Accounts: Evidence, Attribution, and Disclosure
+Limits</strong>: [ageint033]. These citations preserve source identity,
+not automatic topical relevance, empirical validation or normative
+authority. No claim-specific primary support is established by this
+source-guide association alone. Profile context—not claim-specific
+validation—uses [official_ncsc_counterintelligence_strategy];
+[official_odni_eo_12333].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>Non-State Threat
+Accounts</strong>, inspect the original passages. No displayable
+curriculum annotation is available for [ageint033]. These editorial
+descriptions are not source-authored quotations or independently
+verified lesson support. Record a passage and locator, distinguishing
+primary findings, normative requirements, proposals and context using
+<span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>Non-State Threat
+Accounts</strong>, build a <strong>analytic note with hypotheses,
+evidence table, confidence, and dissent fields</strong> for this
+deception-aware source review and defensive escalation topic. The
+artifact must name the source descriptor, the bounded claim about
+<strong>State Threat Accounts</strong>, the caveat that limits it, the
+uncertainty note, the out-of-scope-use boundary, and the reviewer
+accountable for challenge. Shape <strong>Non-State Threat
+Accounts</strong> work as a <strong>source-risk and validation ethics
 worksheet</strong> that names evidence, uncertainty, reviewer, and stop
 condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-lacking a state sponsor places an actor outside the reach of governance,
-accountability, and applicable rules.</p>
-<p><strong>Transfer task.</strong> Reuse the <strong>Non-state actor
-indicator review</strong> audit pattern from this module on a different
-sample record set with a new reviewer and blocked-use note.</p>
+Non-State Threat Accounts: Evidence, Attribution, and Disclosure Limits
+can be used while ignoring the rule to separate defensive awareness from
+surveillance, handling, or operational security playbooks.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>Non-State Threat
+Accounts</strong> to a second module by preserving deception-aware
+source review and defensive escalation, changing the source evidence,
+and naming a new reviewer.</p>
 <h4
-id="lesson-6-espionage-in-the-ai-era-why-humint-will-grow-in-importance">Lesson
-6: Espionage in the AI Era: Why HUMINT Will Grow in Importance</h4>
-<p><strong>Concept.</strong> <strong>Espionage in the AI Era: Why HUMINT
-Will Grow in Importance</strong> treats human-source work as a governed
-relationship: validation, consent, reporting, source protection, and
-oversight—not contact activity.</p>
-<p><strong>Why it matters.</strong> Without explicit treatment of
-<strong>Espionage in the AI Era: Why HUMINT Will Grow in
-Importance</strong>, opportunistic collection undermines requirements
-decomposition and source-discipline fit review; the lesson builds the
-habit to separate collection discipline concepts from operational
-recruitment, interception, or tasking procedures.</p>
-<p><strong>Source support.</strong> <strong>Espionage in the AI Era: Why
-HUMINT Will Grow in Importance</strong> rests on [ageint019] and
-[ageint034]. The closest source to this row notes: By Thomas Mulligan, a
-researcher at the RAND Corporation who served in CIA during 2008–14. Use
-them for pinning down the scope of <strong>Espionage in the AI Era: Why
-HUMINT Will Grow in Importance</strong>, the edge of that scope, and
-when these citations need re-verifying before transfer. External
-triangulation uses [official_intelligence_gov_how_ic_works];
-[official_odni_icd_204].</p>
-<p><strong>Evidence to inspect.</strong> Ground <strong>Espionage in the
-AI Era: Why HUMINT Will Grow in Importance</strong> in the evidence the
-row cites. [ageint019] By Thomas Mulligan, a researcher at the RAND
-Corporation who served in CIA during 2008–14. [ageint034] Thomas
-Mulligan is a researcher at the RAND Corporation and former CIA officer.
-Ana P. Read each cited work for what it can support about this topic,
-where that claim originated, how confident it is, and what evidence
-would change it.</p>
-<p><strong>Student artifact.</strong> For <strong>Espionage in the AI
-Era</strong>, build a <strong>requirements matrix with source
-descriptors, caveats, and collection limits</strong> for this
-requirements decomposition and source-discipline fit topic. The artifact
-must name the source descriptor, the bounded claim about
-<strong>Espionage in the AI Era</strong>, the caveat that limits it, the
-uncertainty note, the out-of-scope-use boundary, and the reviewer
-accountable for challenge. Shape <strong>Espionage in the AI Era: Why
-HUMINT Will Grow in Importance</strong> work as a <strong>source-risk
-and validation ethics worksheet</strong> that names evidence,
-uncertainty, reviewer, and stop condition.</p>
+id="lesson-6-ai-era-humint-an-attributed-forecast-and-its-counterarguments">Lesson
+6: AI-Era HUMINT: An Attributed Forecast and Its Counterarguments</h4>
+<p><strong>Concept.</strong> <strong>AI-Era HUMINT: An Attributed
+Forecast and Its Counterarguments</strong> treats human-source work as a
+governed relationship: validation, consent, reporting, source
+protection, and oversight—not contact activity.</p>
+<p><strong>Worked reasoning and limits.</strong> The underlying
+professional essay argues for continuing or growing HUMINT importance; a
+related summary is the same argument’s source family, not independent
+confirmation. Increased digital fabrication might increase demand for
+contextual human reporting, but human reports can also repeat synthetic
+material, be mistranslated, or carry mistaken inferences. No comparative
+forecast, trend magnitude, or causal advantage is established by these
+records. A correct answer retains the argument and its assumptions,
+names what counterevidence would weaken it, and refuses to equate human
+origin, in-person contact, or lack of compromise indicators with
+truth.</p>
+<p><strong>Why it matters.</strong> Analysts use <strong>AI-Era HUMINT:
+An Attributed Forecast and Its Counterarguments</strong> to separate
+defensive awareness from surveillance, handling, or operational security
+playbooks. A defensible treatment names the judgment it enables for
+deception-aware source review and defensive escalation review, the proof
+limit that source compromise would otherwise hide, and the reviewer
+accountable for challenge.</p>
+<p><strong>Source support.</strong> Inherited source-guide context for
+<strong>AI-Era HUMINT: An Attributed Forecast and Its
+Counterarguments</strong>: [ageint019] and [ageint034]. These citations
+preserve source identity, not automatic topical relevance, empirical
+validation or normative authority. No claim-specific primary support is
+established by this source-guide association alone. Profile context—not
+claim-specific validation—uses
+[official_ncsc_counterintelligence_strategy];
+[official_odni_eo_12333].</p>
+<p><strong>Evidence to inspect.</strong> For <strong>AI-Era HUMINT: An
+Attributed Forecast and Its Counterarguments</strong>, inspect the
+original passages. Curriculum annotation for [ageint019]: By Thomas
+Mulligan, a researcher at the RAND Corporation who served in CIA during
+2008–14. Curriculum annotation for [ageint034]: Thomas Mulligan is a
+researcher at the RAND Corporation and former CIA officer. These
+editorial descriptions are not source-authored quotations or
+independently verified lesson support. Record a passage and locator,
+distinguishing primary findings, normative requirements, proposals and
+context using <span class="citation"
+data-cites="sec:analytic-workflow">[@sec:analytic-workflow]</span>;
+unsupported claims remain gaps.</p>
+<p><strong>Student artifact.</strong> For <strong>AI-Era
+HUMINT</strong>, build a <strong>analytic note with hypotheses, evidence
+table, confidence, and dissent fields</strong> for this deception-aware
+source review and defensive escalation topic. The artifact must name the
+source descriptor, the bounded claim about <strong>AI-Era
+HUMINT</strong>, the caveat that limits it, the uncertainty note, the
+out-of-scope-use boundary, and the reviewer accountable for challenge.
+Shape <strong>AI-Era HUMINT: An Attributed Forecast and Its
+Counterarguments</strong> work as a <strong>source-risk and validation
+ethics worksheet</strong> that names evidence, uncertainty, reviewer,
+and stop condition.</p>
 <p><strong>Misconception check.</strong> Correct the misconception that
-Espionage in the AI Era: Why HUMINT Will Grow in Importance is optional
-whenever separate collection discipline concepts from operational
-recruitment, interception, or tasking procedures feels inconvenient.</p>
-<p><strong>Transfer task.</strong> Transfer <strong>Espionage in the AI
-Era: Why HUMINT Will Grow in Importance</strong> to a second module by
-preserving requirements decomposition and source-discipline fit,
+AI-Era HUMINT: An Attributed Forecast and Its Counterarguments is
+optional whenever separate defensive awareness from surveillance,
+handling, or operational security playbooks feels inconvenient.</p>
+<p><strong>Transfer task.</strong> Transfer <strong>AI-Era HUMINT: An
+Attributed Forecast and Its Counterarguments</strong> to a second module
+by preserving deception-aware source review and defensive escalation,
 changing the source evidence, and naming a new reviewer.</p>
 <h3
 id="source-protection-and-ci-integration-worked-safe-example-synthetic-inputs-evidence-and-review">Source
 Protection and CI Integration worked safe example: synthetic inputs,
 evidence, and review</h3>
-<p>Worked example: a synthetic policy cell compares public indicators of
-hybrid pressure against an approved collection plan for a benign
-border-disruption exercise. [ageint238]; [ageint241].</p>
-<p><strong>Triangulation anchors.</strong> In module 6’s worked-example
-section, directly verified anchors for the <strong>Collection Management
-and Multi-INT Requirements Discipline</strong> lane include
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
-[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
+<p>Worked example: a sample research lab reviews a synthetic
+source-quality anomaly after a disputed report. [ageint238];
+[ageint241].</p>
+<p><strong>Contextual source routes.</strong> For module 6’s
+worked-example section, the <strong>Counterintelligence and
+Source-Integrity Defense</strong> catalog routes include
+[official_ncsc_counterintelligence_strategy]; [official_odni_eo_12333];
+[official_odni_icd_206]; [official_odni_icd_203]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
 <p><strong>Unit discipline spine.</strong> Discipline:
 <strong>human-source literacy and source protection</strong>. Learners
 use a <strong>source-risk and validation ethics worksheet</strong> and
@@ -546,59 +1053,66 @@ keep this boundary visible: No elicitation, impersonation, covert
 contact, or operational source-management procedures; all cases use
 classroom fixtures.</p>
 <p><strong>Frame.</strong> The classroom question centers on
-<strong>Identifying Penetration: Signs of Compromise</strong>. Excluded
-actions stay explicit, and the <strong>Requirements-to-Evidence
-Lens</strong> planning question is: What accountable requirement
-justifies the evidence, and which source discipline is the least
-intrusive fit?</p>
-<p><strong>Inputs.</strong> For the <strong>Identifying Penetration:
-Signs of Compromise</strong> scenario, use public notices, synthetic
-interview summaries, public logistics records, and an instructor scope
-card. The Requirements-to-Evidence Lens intake note records provenance,
-sensitivity, fit-to-purpose, and why the fixture is enough for this
-bounded exercise.</p>
-<p><strong>Analysis.</strong> For <strong>Identifying Penetration: Signs
-of Compromise</strong>, students rank requirements, choose the least
-intrusive source discipline, list excluded actions, and evaluate
-evidence quality. Pause whenever an inference about Identifying
-Penetration: Signs of Compromise appears without evidence, confidence
-outruns support, or an agent output is treated as judgment.</p>
-<p><strong>Filled artifact.</strong> Purpose = <strong>Identifying
-Penetration: Signs of Compromise</strong> classroom scenario; unit
-artifact = source-risk and validation ethics worksheet; evidence =
-allowed inputs; method = requirements decomposition and
-source-discipline fit; output = a requirements-to-evidence matrix with
-discipline fit, source caveats, minimization notes, and gaps; boundary =
-no external action; reviewer = instructor or named peer.</p>
+<strong>Source-Quality Anomalies: Competing Explanations and
+Protected</strong>. Excluded actions stay explicit, and the
+<strong>Structured-Judgment Lens</strong> planning question is: Which
+assumptions, alternatives, confidence statements, and source limits must
+stay visible for review?</p>
+<p><strong>Inputs.</strong> For the <strong>Source-Quality Anomalies:
+Competing Explanations and Protected</strong> scenario, use toy download
+logs with an unusual hour, an authorized backup roster covering that
+hour, a second scheduled backup, two conflicting report versions, and no
+edit history. The Structured-Judgment Lens intake note records
+provenance, sensitivity, fit-to-purpose, and why the fixture is enough
+for this bounded exercise.</p>
+<p><strong>Analysis.</strong> For <strong>Source-Quality Anomalies:
+Competing Explanations and Protected</strong>, students first preserve
+version identifiers and separate access timing from content change; then
+compare scheduled backup, transcription error, and unauthorized
+modification hypotheses; use the second backup as a benign timing
+control. Do not infer motive from an unusual hour; stop person-level
+inquiry and hand the minimized version discrepancy through the supplied
+protected-review channel. Pause whenever an inference about
+Source-Quality Anomalies: Competing Explanations and Protected appears
+without evidence, confidence outruns support, or an agent output is
+treated as judgment.</p>
+<p><strong>Completed synthetic result.</strong> a challenge memo
+treating backup as an explanation for timing, leaving the report
+discrepancy unresolved pending edit history, and retaining both versions
+and alternative hypotheses for the instructor; no insider accusation or
+claim of proven compromise is warranted Retain it as the
+<strong>source-risk and validation ethics worksheet</strong> for this
+classroom fixture, with the stated source IDs, uncertainty, review
+disposition, and excluded-action boundary.</p>
 <p><strong>Flawed answer to revise.</strong> Treating
-<strong>Identifying Penetration: Signs of Compromise</strong> as
-“Requirements-to-Evidence Lens confirms it” is not enough. The revision
-ties the claim to requirements decomposition and source-discipline fit,
-adds the missing caveat, states confidence, and records the reviewer who
-accepted the bounded judgment.</p>
-<p><strong>Debrief.</strong> The reuse note for <strong>Identifying
-Penetration: Signs of Compromise</strong> records the defensible claim,
-the assumption most likely to fail, the evidence that would change
-confidence, and the review condition for stopping reuse.</p>
+<strong>Source-Quality Anomalies: Competing Explanations and
+Protected</strong> as “Structured-Judgment Lens confirms it” is not
+enough. The revision ties the claim to deception-aware source review and
+defensive escalation, adds the missing caveat, states confidence, and
+records the reviewer who accepted the bounded judgment.</p>
+<p><strong>Debrief.</strong> The reuse note for <strong>Source-Quality
+Anomalies: Competing Explanations and Protected</strong> records the
+defensible claim, the assumption most likely to fail, the evidence that
+would change confidence, and the review condition for stopping
+reuse.</p>
 <h3
 id="source-protection-and-ci-integration-practice-sequence-studio-moves-artifact-steps-and-limits">Source
 Protection and CI Integration practice sequence: studio moves, artifact
 steps, and limits</h3>
-<p>The studio sequence uses the <strong>Requirements-to-Evidence
+<p>The studio sequence uses the <strong>Structured-Judgment
 Lens</strong> practice lens. Moves 1-3 form the compressed path; the
 full seminar path adds challenge, handoff, and a review memo for
-<strong>Identifying Penetration: Signs of Compromise; Compartmentation
-and need-to-know governance</strong>.</p>
-<p><strong>Triangulation anchors.</strong> In module 6’s
-practice-sequence section, directly verified anchors for the
-<strong>Collection Management and Multi-INT Requirements
-Discipline</strong> lane include
-[official_intelligence_gov_how_ic_works]; [official_odni_icd_204];
-[official_joint_pub_2_0]; [official_ic_osint_strategy]. Use them to test
-source-guide claims, method boundaries, governance constraints, and
-safety gates without replacing the module’s <code>ageintNNN</code>
-provenance.</p>
-<table>
+<strong>Source-Quality Anomalies: Competing Explanations and Protected;
+Compartmentation and need-to-know governance</strong>.</p>
+<p><strong>Contextual source routes.</strong> For module 6’s
+practice-sequence section, the <strong>Counterintelligence and
+Source-Integrity Defense</strong> catalog routes include
+[official_ncsc_counterintelligence_strategy]; [official_odni_eo_12333];
+[official_odni_icd_206]; [official_odni_icd_203]. Check the actual
+passage, edition, claim scope and access limitations before use. Route
+membership does not establish relevance, independent corroboration or
+efficacy.</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Scrollable data table"><table data-responsive-table="true">
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -616,48 +1130,49 @@ provenance.</p>
 <tbody>
 <tr>
 <td>1. Distinguish</td>
-<td>Compare Identifying Penetration: Signs of Compromise,
-Compartmentation and need-to-know governance, Lie Detection, Vetting,
-Polygraph, and Its Alternatives; name what each topic can and cannot
-prove.</td>
+<td>Compare Source-Quality Anomalies: Competing Explanations and
+Protected, Compartmentation and need-to-know governance, Polygraph and
+Lie-Detection Claims: Physiology Is Not Truth; name what each topic can
+and cannot prove.</td>
 <td>Glossary-and-contrast card.</td>
-<td>Terms match the <strong>Collection Management and Multi-INT
-Requirements Discipline</strong> lane.</td>
+<td>Terms match the <strong>Counterintelligence and Source-Integrity
+Defense</strong> lane.</td>
 </tr>
 <tr>
 <td>2. Frame</td>
-<td>Answer the lens question: What accountable requirement justifies the
-evidence, and which source discipline is the least intrusive fit?</td>
+<td>Answer the lens question: Which assumptions, alternatives,
+confidence statements, and source limits must stay visible for
+review?</td>
 <td>Scope card.</td>
 <td>Authority, excluded actions, data boundary, and reviewer are
 explicit.</td>
 </tr>
 <tr>
 <td>3. Evidence</td>
-<td>Fill the artifact fields for Identifying Penetration: Signs of
-Compromise: requirements matrix with source descriptors, caveats, and
-collection limits.</td>
+<td>Fill the artifact fields for Source-Quality Anomalies: Competing
+Explanations and Protected: analytic note with hypotheses, evidence
+table, confidence, and dissent fields.</td>
 <td>Evidence packet.</td>
 <td>Sources, caveats, confidence, and uncertainty stay separable.</td>
 </tr>
 <tr>
 <td>3a. Unit artifact</td>
 <td>Add the source-risk and validation ethics worksheet fields for
-Identifying Penetration: Signs of Compromise.</td>
+Source-Quality Anomalies: Competing Explanations and Protected.</td>
 <td>Unit profile note.</td>
 <td>Evidence artifacts include validation note, pressure-risk
 checklist.</td>
 </tr>
 <tr>
 <td>4. Challenge</td>
-<td>Test the misconception that Identifying Penetration: Signs of
-Compromise can be used while ignoring the rule to separate collection
-discipline concepts from operational recruitment, interception, or
-tasking procedures.</td>
+<td>Test the misconception that Source-Quality Anomalies: Competing
+Explanations and Protected can be used while ignoring the rule to
+separate defensive awareness from surveillance, handling, or operational
+security playbooks.</td>
 <td>Failure-mode note.</td>
-<td>The artifact applies the key distinction: separate collection
-discipline concepts from operational recruitment, interception, or
-tasking procedures.</td>
+<td>The artifact applies the key distinction: separate defensive
+awareness from surveillance, handling, or operational security
+playbooks.</td>
 </tr>
 <tr>
 <td>5. Handoff</td>
@@ -667,7 +1182,7 @@ tasking procedures.</td>
 risk are visible.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h4
 id="source-protection-and-ci-integration-instructor-notes-source-reasoning-review-points-and-studio-focus">Source
 Protection and CI Integration instructor notes: source reasoning, review
@@ -675,56 +1190,59 @@ points, and studio focus</h4>
 <p>Ask learners to verbalize the difference between a source, an
 inference, and a decision. Require a revision whenever a claim cannot be
 traced to a source descriptor or a human review point. Keep the focus on
-<strong>Identifying Penetration: Signs of Compromise; Compartmentation
-and need-to-know governance</strong>. [ageint238]; [ageint241].</p>
+<strong>Source-Quality Anomalies: Competing Explanations and Protected;
+Compartmentation and need-to-know governance</strong>. [ageint238];
+[ageint241].</p>
 <h4
 id="source-protection-and-ci-integration-extension-exercise-peer-validation-and-refresh-trigger-review">Source
 Protection and CI Integration extension exercise: peer validation and
 refresh trigger review</h4>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-source-protection-and-ci-integration]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-source-protection-and-ci-integration">[@sec:chapter-source-protection-and-ci-integration]</span>.</p>
 <p>Have learners swap artifacts and apply the
-<strong>Requirements-to-Evidence Lens</strong> validation rule to
-someone else’s work. The receiving learner must identify one strength,
-one missing caveat, and one refresh trigger for <strong>Identifying
-Penetration: Signs of Compromise; Compartmentation and need-to-know
-governance</strong>.</p>
+<strong>Structured-Judgment Lens</strong> validation rule to someone
+else’s work. The receiving learner must identify one strength, one
+missing caveat, and one refresh trigger for <strong>Source-Quality
+Anomalies: Competing Explanations and Protected; Compartmentation and
+need-to-know governance</strong>.</p>
 <h3
 id="source-protection-and-ci-integration-knowledge-check-misconceptions-evidence-and-reviewer-prompts">Source
 Protection and CI Integration knowledge check: misconceptions, evidence,
 and reviewer prompts</h3>
-<p><strong>Evidence anchor.</strong>
-[sec:chapter-source-protection-and-ci-integration]; [ageint238].</p>
+<p><strong>Navigation.</strong> Parent section: <span class="citation"
+data-cites="sec:chapter-source-protection-and-ci-integration">[@sec:chapter-source-protection-and-ci-integration]</span>.</p>
 <ol type="1">
-<li>Explain how <strong>Identifying Penetration: Signs of
-Compromise</strong> is defined here; name the source descriptor that
-supports the definition.</li>
-<li>Contrast <strong>Identifying Penetration: Signs of
-Compromise</strong> with <strong>Compartmentation and need-to-know
-governance</strong> using the <strong>Requirements-to-Evidence
-Lens</strong> artifact fields.</li>
-<li>Identify one failure mode from the <strong>Collection Management and
-Multi-INT Requirements Discipline</strong> lane and the evidence that
-would reveal it.</li>
-<li>Answer the coursebook review question: Which gray-zone indicator
-changes the least-intrusive source choice without crossing into
-operational tasking?</li>
-<li>Correct this misconception: that Identifying Penetration: Signs of
-Compromise can be used while ignoring the rule to separate collection
-discipline concepts from operational recruitment, interception, or
-tasking procedures.</li>
+<li>For every topic in this module, identify a source-supported
+distinction, an unsupported inference to reject, and the exact evidence
+needed to decide. Start with <strong>Source-Quality Anomalies: Competing
+Explanations and Protected</strong>.</li>
+<li>Transfer the <strong>Structured-Judgment Lens</strong> artifact from
+<strong>Source-Quality Anomalies: Competing Explanations and
+Protected</strong> to the final topic, <strong>AI-Era HUMINT: An
+Attributed Forecast and Its Counterarguments</strong>; explain what
+changes and what cannot transfer.</li>
+<li>Identify one failure mode from the <strong>Counterintelligence and
+Source-Integrity Defense</strong> lane and the evidence that would
+reveal it.</li>
+<li>Answer the coursebook review question: Which explanation preserves
+uncertainty without ignoring a possible compromise signal?</li>
+<li>Correct this misconception: that Source-Quality Anomalies: Competing
+Explanations and Protected can be used while ignoring the rule to
+separate defensive awareness from surveillance, handling, or operational
+security playbooks.</li>
 </ol>
 <h4
 id="source-protection-and-ci-integration-answer-quality-rubric-source-evidence-uncertainty-and-safe-transfer">Source
 Protection and CI Integration answer quality rubric: source evidence,
 uncertainty, and safe transfer</h4>
 <p>Judge answers with the canonical mastery evidence standard in the
-shared method-and-assurance reference
-([sec:method-assurance-reference]): a strong answer uses source
-evidence, distinguishes observation from judgment, names uncertainty,
-and states the safe boundary, while a revise-level answer gives a
-memorized definition of <strong>Identifying Penetration: Signs of
-Compromise</strong> without source evidence, uncertainty, or a safe
+shared method-and-assurance reference (<span class="citation"
+data-cites="sec:method-assurance-reference">[@sec:method-assurance-reference]</span>):
+a strong answer uses source evidence, distinguishes observation from
+judgment, names uncertainty, and states the safe boundary, while a
+revise-level answer gives a memorized definition of
+<strong>Source-Quality Anomalies: Competing Explanations and
+Protected</strong> without source evidence, uncertainty, or a safe
 transfer task.</p>
 </main>
 </body>

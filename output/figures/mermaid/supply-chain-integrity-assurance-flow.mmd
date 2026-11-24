@@ -1,21 +1,15 @@
 %%{init: {'theme':'neutral','themeVariables':{'fontSize':'18px','fontFamily':'Arial, sans-serif','primaryColor':'#dbeafe','primaryBorderColor':'#475569','primaryTextColor':'#0f172a','lineColor':'#475569','secondaryColor':'#dcfce7','tertiaryColor':'#fef3c7'},'flowchart':{'htmlLabels':true,'nodeSpacing':38,'rankSpacing':46,'curve':'basis','subGraphTitleMargin':{'top':8,'bottom':12}}}}%%
 flowchart TB
-  INTAKE(["Dependency intake"])
-  PROV["Package provenance evidence"]
-  TRUST["Maintainer-trust signal"]
-  BUILD["Build-integrity attestation"]
-  SBOM["SBOM record: components listed"]
-  REVIEW["Vulnerability and control-gap review"]
-  GATE{"Reviewer escalation gate"}
-  ACCEPT(["Accept with documented caveats"])
-  ESCALATE(["Escalate: stop condition reached"])
-  INTAKE --> PROV
-  INTAKE --> TRUST
-  INTAKE --> BUILD
-  PROV --> SBOM
-  TRUST --> SBOM
-  BUILD --> SBOM
-  SBOM --> REVIEW
-  REVIEW --> GATE
-  GATE -->|"gaps acceptable"| ACCEPT
-  GATE -->|"gaps material"| ESCALATE
+    INTAKE["Synthetic release packet<br/>artifact, version and digest"] --> SBOM["SBOM inventory<br/>declared components and completeness limits"]
+    INTAKE --> PROV["Build provenance and attestation<br/>artifact binding and declared process"]
+    INTAKE --> TRUST["Identity trust evidence<br/>expected signer and builder<br/>verification status"]
+    INTAKE --> AFFECT["Affectedness evidence<br/>version, configuration and advisory scope"]
+    INTAKE --> TEST["Test and review evidence<br/>coverage, results and limitations"]
+    SBOM --> REVIEW{"Compare separate evidence objects<br/>against artifact and declared policy"}
+    PROV --> REVIEW
+    TRUST --> REVIEW
+    AFFECT --> REVIEW
+    TEST --> REVIEW
+    REVIEW -->|Missing, mismatched or contradictory| HOLD["Hold assurance claim<br/>record gaps and named escalation"]
+    REVIEW -->|Scoped evidence supports a decision| HUMAN["Named reviewer records<br/>decision, caveats and expiry"]
+    HUMAN --> LIMIT["No SBOM or signature certifies content safety<br/>No deployment authorized by classroom exercise"]

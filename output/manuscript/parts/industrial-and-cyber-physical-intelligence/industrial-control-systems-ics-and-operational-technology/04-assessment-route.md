@@ -1,10 +1,10 @@
 ### Industrial Control Systems (ICS) and Operational Technology assessment route: capstone artifacts, refresh duties, reviewer challenges, and handoff
 
-**Evidence anchor.** [@sec:chapter-industrial-control-systems-ics-and-operational-technology]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
 ### Industrial Control Systems (ICS) and Operational Technology assessment pathway: capstone artifacts and mastery evidence
 
-**Evidence anchor.** [@sec:chapter-industrial-control-systems-ics-and-operational-technology]; [@ageint255].
+**Navigation.** Parent section: [@sec:chapter-industrial-control-systems-ics-and-operational-technology].
 
 #### Industrial Control Systems (ICS) and Operational Technology capstone pathway: reviewable packet and excluded use
 
@@ -24,20 +24,25 @@ Facilitate as a bounded studio around **ICS Architecture: SCADA, DCS, PLC, HMI; 
 
 #### Industrial Control Systems (ICS) and Operational Technology assessment rubric: topic evidence and mastery criteria
 
-| Topic | Evidence of mastery |
+| Topics or pattern identities (complete coverage) | Evidence of mastery |
 |---|---|
-| **ICS Architecture: SCADA, DCS, PLC, HMI — Definitions and Roles** | Completed **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **SCADA: Supervisory Control and Data Acquisition — Large Geographic Systems** | Completed **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
-| **DCS: Distributed Control Systems — Chemical, Refining, Power** | Completed **tabletop packet with OT asset inventory, architecture record, consequences, injects, and debrief rubric** with source descriptor, caveat, uncertainty, blocked-use note, and named reviewer for this topic. |
+| **ICS Architecture: SCADA, DCS, PLC, HMI — Definitions and Roles**; **SCADA: Supervisory Control and Data Acquisition — Large Geographic Systems**; **DCS: Distributed Control Systems — Chemical, Refining, Power**; **PLC: Programmable Logic Controllers — Field-Level Execution** | **Source warrant:** reconstruct a consequential claim from an exact source locator; separate observation from inference and apply this check: validate against safety, availability, engineering state, incident scope, and after-action learning. |
+| **OT and IT: Process-dependent Safety, Availability, and Information Constraints**; **Air-gap Claims and Changing Connectivity Assumptions**; **Securing ICS: Components, Protocols, Performance, Vulnerability**; **2026 Cybersecurity Guide to ICS (Claroty)** | **Competing explanation:** compare two accounts of the same evidence; identify a discriminating observation and a claim neither account can yet support. |
+| **OT vs. ICS vs. SCADA Security (Palo Alto Networks)**; **Operational Technology Cybersecurity (Idaho National Laboratory)** | **Revision and transfer:** revise or defend the judgment after the withheld evidence arrives; identify what cannot transfer to another benign case. Apply the boundary: keep exercises lab-only or tabletop; exclude exploitation, process manipulation, unsafe actuation, and live-control actions. |
 
-The general competency and mastery rubric is the canonical
-five-row rubric in the shared method-and-assurance reference
-([@sec:method-assurance-reference]), covering conceptual command, analytic
-rigor, agentic design, governance and rights, and safety posture. Score the
-artifact for **ICS Architecture: SCADA, DCS, PLC, HMI; SCADA: Supervisory Control and Data Acquisition** against that rubric together with the
-topic-specific evidence rows above so conceptual command, uncertainty
-handling, oversight design, rights evidence, and evidence-bounded posture stay
-visible.
+The groups cover every listed topic, not just the opening topics. For pattern
+registries, each identity includes its methods, defensive application, and
+architecture aspects in one reviewable artifact. The row identifies a focused
+reasoning operation; the studio's source trace, competing explanation, and
+withheld-evidence revision remain required for every topic or pattern in
+**ICS Architecture: SCADA, DCS, PLC, HMI; SCADA: Supervisory Control and Data Acquisition**. For the transfer challenge, compare the final listed topic or
+pattern with the first: explain which claim, permission, or evidence assumption
+fails to carry over after the instructor's new evidence. For a single-topic
+module, change the benign case instead. A justified abstention or refusal to
+transfer can demonstrate mastery; an unsupported confident answer cannot.
+Use the canonical five-row rubric in the shared method-and-assurance reference
+([@sec:method-assurance-reference]) for conceptual command, analytic rigor,
+agentic design, governance and rights, and safety posture.
 
 
 ### Industrial Control Systems (ICS) and Operational Technology refresh map: source changes, safety triggers, and retest duties
@@ -58,7 +63,7 @@ The claim and evidence ledger follows the canonical claim-class ladder in the sh
 
 Before marking the work complete, verify the local source spine beginning with [@ageint255]; [@ageint256].
 
-**Triangulation anchors.** In module 45's review-checklist section, directly verified anchors for the **ICS/OT Cyber-Physical Defense and Tabletop Readiness** lane include [@official_nist_csf_2]; [@official_nist_sp_800_160r1]; [@official_nist_sp_800_82r3]; [@official_isa_iec_62443]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 45's review-checklist section, the **ICS/OT Cyber-Physical Defense and Tabletop Readiness** catalog routes include [@official_nist_csf_2]; [@official_nist_sp_800_160r1]; [@official_nist_sp_800_82r3]; [@official_isa_iec_62443]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 - The module source spine resolves to Pandoc citation keys and no raw source URLs are pasted into prose, here covering **ICS Architecture: SCADA, DCS, PLC, HMI; SCADA: Supervisory Control and Data Acquisition**. [@ageint255]; [@ageint256].
 - Every research-backed claim has a directly verified source anchor or is clearly marked as source-guide context.

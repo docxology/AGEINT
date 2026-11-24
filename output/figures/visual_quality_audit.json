@@ -920,10 +920,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 29,
+      "alt_text_words": 31,
       "aspect_ratio": 1.0,
-      "bytes": 146048,
-      "caption_words": 79,
+      "bytes": 113976,
+      "caption_words": 51,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -945,7 +945,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-cdr-degradation-cascade",
-      "long_description_words": 224,
+      "long_description_words": 220,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1028,10 +1028,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 69,
+      "alt_text_words": 30,
       "aspect_ratio": 1.0,
-      "bytes": 51485,
-      "caption_words": 86,
+      "bytes": 238167,
+      "caption_words": 57,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1053,7 +1053,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-sre-circuit-breaker",
-      "long_description_words": 277,
+      "long_description_words": 242,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1082,10 +1082,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 34,
+      "alt_text_words": 29,
       "aspect_ratio": 1.0,
-      "bytes": 186335,
-      "caption_words": 84,
+      "bytes": 195061,
+      "caption_words": 53,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1107,7 +1107,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-cognitive-decoherence-cdr-isomorphism",
-      "long_description_words": 264,
+      "long_description_words": 226,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1136,9 +1136,9 @@
       "width": 1400
     },
     {
-      "alt_text_words": 24,
+      "alt_text_words": 31,
       "aspect_ratio": 1.0,
-      "bytes": 252821,
+      "bytes": 220800,
       "caption_words": 56,
       "checks": {
         "alt_text_min_words": true,
@@ -1161,7 +1161,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-unified-epistemic-stack",
-      "long_description_words": 258,
+      "long_description_words": 218,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1190,10 +1190,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 24,
+      "alt_text_words": 30,
       "aspect_ratio": 1.0,
-      "bytes": 235237,
-      "caption_words": 71,
+      "bytes": 192342,
+      "caption_words": 52,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1215,7 +1215,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-cognitive-attack-layers",
-      "long_description_words": 223,
+      "long_description_words": 219,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1244,10 +1244,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 77,
+      "alt_text_words": 29,
       "aspect_ratio": 1.0,
-      "bytes": 290523,
-      "caption_words": 77,
+      "bytes": 163075,
+      "caption_words": 51,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1269,7 +1269,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-hro-governance-crosswalk",
-      "long_description_words": 304,
+      "long_description_words": 217,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1406,10 +1406,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 69,
+      "alt_text_words": 41,
       "aspect_ratio": 1.0,
-      "bytes": 197882,
-      "caption_words": 61,
+      "bytes": 171128,
+      "caption_words": 54,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1431,7 +1431,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:humint-source-vetting-governance",
-      "long_description_words": 233,
+      "long_description_words": 239,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1460,10 +1460,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 79,
+      "alt_text_words": 39,
       "aspect_ratio": 1.0,
-      "bytes": 123600,
-      "caption_words": 57,
+      "bytes": 178610,
+      "caption_words": 56,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1485,7 +1485,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:sigint-minimization-authority-gating",
-      "long_description_words": 232,
+      "long_description_words": 244,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1514,10 +1514,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 75,
+      "alt_text_words": 41,
       "aspect_ratio": 1.0,
-      "bytes": 161202,
-      "caption_words": 56,
+      "bytes": 244525,
+      "caption_words": 60,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1539,7 +1539,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:cryptographic-assurance-layers",
-      "long_description_words": 229,
+      "long_description_words": 253,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1622,10 +1622,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 39,
+      "alt_text_words": 40,
       "aspect_ratio": 1.0,
-      "bytes": 97504,
-      "caption_words": 74,
+      "bytes": 124363,
+      "caption_words": 70,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1647,7 +1647,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:geoint-imagery-confidence-ladder",
-      "long_description_words": 225,
+      "long_description_words": 263,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1730,10 +1730,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 42,
+      "alt_text_words": 44,
       "aspect_ratio": 1.0,
-      "bytes": 179362,
-      "caption_words": 68,
+      "bytes": 195402,
+      "caption_words": 61,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1755,7 +1755,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:supply-chain-integrity-assurance-flow",
-      "long_description_words": 232,
+      "long_description_words": 249,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1784,10 +1784,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 43,
+      "alt_text_words": 44,
       "aspect_ratio": 1.0,
-      "bytes": 111842,
-      "caption_words": 80,
+      "bytes": 241575,
+      "caption_words": 61,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -1809,7 +1809,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:finint-typology-review-governance-workflow",
-      "long_description_words": 240,
+      "long_description_words": 249,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -1838,9 +1838,9 @@
       "width": 1400
     },
     {
-      "alt_text_words": 53,
+      "alt_text_words": 45,
       "aspect_ratio": 1.0,
-      "bytes": 184758,
+      "bytes": 110993,
       "caption_words": 61,
       "checks": {
         "alt_text_min_words": true,
@@ -1863,7 +1863,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:disinformation-detection-attribution-confidence",
-      "long_description_words": 225,
+      "long_description_words": 254,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -2000,10 +2000,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 50,
+      "alt_text_words": 39,
       "aspect_ratio": 1.0,
-      "bytes": 166984,
-      "caption_words": 61,
+      "bytes": 110925,
+      "caption_words": 63,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -2025,7 +2025,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:gray-zone-attribution-escalation-ladder",
-      "long_description_words": 221,
+      "long_description_words": 254,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -2108,10 +2108,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 79,
+      "alt_text_words": 44,
       "aspect_ratio": 1.0,
-      "bytes": 98914,
-      "caption_words": 118,
+      "bytes": 123938,
+      "caption_words": 61,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -2133,7 +2133,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-governance-loop-oversight",
-      "long_description_words": 389,
+      "long_description_words": 263,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -2162,10 +2162,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 54,
+      "alt_text_words": 42,
       "aspect_ratio": 1.0,
-      "bytes": 130748,
-      "caption_words": 117,
+      "bytes": 133004,
+      "caption_words": 64,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -2187,7 +2187,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:active-inference-perception-action-loop",
-      "long_description_words": 338,
+      "long_description_words": 264,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -2918,10 +2918,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 56,
+      "alt_text_words": 39,
       "aspect_ratio": 1.0,
-      "bytes": 118100,
-      "caption_words": 72,
+      "bytes": 140780,
+      "caption_words": 63,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -2943,7 +2943,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:tempest-emsec-defensive-layers",
-      "long_description_words": 258,
+      "long_description_words": 252,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -2972,10 +2972,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 48,
+      "alt_text_words": 42,
       "aspect_ratio": 1.0,
-      "bytes": 118965,
-      "caption_words": 61,
+      "bytes": 126717,
+      "caption_words": 66,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -2997,7 +2997,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:imint-exploitation-confidence-ladder",
-      "long_description_words": 227,
+      "long_description_words": 258,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3080,10 +3080,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 50,
+      "alt_text_words": 43,
       "aspect_ratio": 1.0,
-      "bytes": 110012,
-      "caption_words": 77,
+      "bytes": 129551,
+      "caption_words": 67,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3105,7 +3105,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:cognitive-security-defensive-control-stack",
-      "long_description_words": 263,
+      "long_description_words": 268,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3134,10 +3134,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 50,
+      "alt_text_words": 44,
       "aspect_ratio": 1.0,
-      "bytes": 106121,
-      "caption_words": 69,
+      "bytes": 128794,
+      "caption_words": 64,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3159,7 +3159,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ci-nonstate-attribution-governance-loop",
-      "long_description_words": 243,
+      "long_description_words": 253,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3296,10 +3296,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 90,
+      "alt_text_words": 36,
       "aspect_ratio": 1.0,
-      "bytes": 90001,
-      "caption_words": 67,
+      "bytes": 215496,
+      "caption_words": 69,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3321,7 +3321,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:soviet-russian-intelligence-organizational-lineage",
-      "long_description_words": 274,
+      "long_description_words": 258,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3350,10 +3350,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 84,
+      "alt_text_words": 44,
       "aspect_ratio": 1.0,
-      "bytes": 75598,
-      "caption_words": 69,
+      "bytes": 194186,
+      "caption_words": 67,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3375,7 +3375,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ukusa-five-eyes-relationship-map",
-      "long_description_words": 273,
+      "long_description_words": 259,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3404,10 +3404,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 84,
+      "alt_text_words": 46,
       "aspect_ratio": 1.0,
-      "bytes": 164732,
-      "caption_words": 76,
+      "bytes": 214870,
+      "caption_words": 67,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3429,7 +3429,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:continental-services-comparative-oversight-structure",
-      "long_description_words": 288,
+      "long_description_words": 265,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3674,10 +3674,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 29,
+      "alt_text_words": 52,
       "aspect_ratio": 1.0,
-      "bytes": 138018,
-      "caption_words": 64,
+      "bytes": 161529,
+      "caption_words": 63,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3699,7 +3699,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:neurocognitive-resilience-model",
-      "long_description_words": 210,
+      "long_description_words": 296,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3944,10 +3944,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 85,
+      "alt_text_words": 59,
       "aspect_ratio": 1.0,
-      "bytes": 142531,
-      "caption_words": 81,
+      "bytes": 126141,
+      "caption_words": 46,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -3969,7 +3969,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:ageint-ics-defensive-assurance-loop",
-      "long_description_words": 298,
+      "long_description_words": 237,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -3998,10 +3998,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 100,
+      "alt_text_words": 68,
       "aspect_ratio": 1.0,
-      "bytes": 181779,
-      "caption_words": 71,
+      "bytes": 135104,
+      "caption_words": 53,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -4023,7 +4023,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:intelligence-ethics-decision-framework",
-      "long_description_words": 303,
+      "long_description_words": 249,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -4106,10 +4106,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 45,
+      "alt_text_words": 58,
       "aspect_ratio": 1.0,
-      "bytes": 85173,
-      "caption_words": 64,
+      "bytes": 213145,
+      "caption_words": 42,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -4131,7 +4131,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:part-humint-defensive-lifecycle",
-      "long_description_words": 227,
+      "long_description_words": 244,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -4160,10 +4160,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 44,
+      "alt_text_words": 51,
       "aspect_ratio": 1.0,
-      "bytes": 109013,
-      "caption_words": 75,
+      "bytes": 123947,
+      "caption_words": 49,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -4592,10 +4592,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 76,
+      "alt_text_words": 61,
       "aspect_ratio": 1.0,
-      "bytes": 154660,
-      "caption_words": 74,
+      "bytes": 192946,
+      "caption_words": 47,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -4617,7 +4617,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:part-ageint-layered-stack",
-      "long_description_words": 272,
+      "long_description_words": 247,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -4646,10 +4646,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 69,
+      "alt_text_words": 52,
       "aspect_ratio": 1.0,
-      "bytes": 142526,
-      "caption_words": 68,
+      "bytes": 162067,
+      "caption_words": 45,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -4671,7 +4671,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:part-cogsec-defensive-chain",
-      "long_description_words": 253,
+      "long_description_words": 246,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -4700,10 +4700,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 130,
+      "alt_text_words": 61,
       "aspect_ratio": 1.0,
-      "bytes": 153214,
-      "caption_words": 89,
+      "bytes": 93339,
+      "caption_words": 45,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -4725,7 +4725,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:part-epistemic-rigor-coherence-stack-cycle",
-      "long_description_words": 358,
+      "long_description_words": 246,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -5024,10 +5024,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 33,
+      "alt_text_words": 55,
       "aspect_ratio": 1.0,
-      "bytes": 113931,
-      "caption_words": 63,
+      "bytes": 139285,
+      "caption_words": 42,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -5049,7 +5049,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:appendix-python-osint-defensive-architecture",
-      "long_description_words": 211,
+      "long_description_words": 228,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -5078,10 +5078,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 34,
+      "alt_text_words": 61,
       "aspect_ratio": 1.0,
-      "bytes": 137920,
-      "caption_words": 67,
+      "bytes": 136477,
+      "caption_words": 47,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -5103,7 +5103,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:appendix-langgraph-agent-state-machine",
-      "long_description_words": 204,
+      "long_description_words": 226,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -5132,10 +5132,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 49,
+      "alt_text_words": 55,
       "aspect_ratio": 1.0,
-      "bytes": 147027,
-      "caption_words": 62,
+      "bytes": 191839,
+      "caption_words": 40,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -5157,7 +5157,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:appendix-crewai-multi-agent-roles",
-      "long_description_words": 212,
+      "long_description_words": 222,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -5186,10 +5186,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 27,
+      "alt_text_words": 57,
       "aspect_ratio": 1.0,
-      "bytes": 99730,
-      "caption_words": 57,
+      "bytes": 124888,
+      "caption_words": 45,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -5211,7 +5211,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:appendix-mcp-host-client-server",
-      "long_description_words": 190,
+      "long_description_words": 238,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -5240,10 +5240,10 @@
       "width": 1400
     },
     {
-      "alt_text_words": 26,
+      "alt_text_words": 43,
       "aspect_ratio": 1.0,
-      "bytes": 152716,
-      "caption_words": 65,
+      "bytes": 289487,
+      "caption_words": 71,
       "checks": {
         "alt_text_min_words": true,
         "caption_min_words": true,
@@ -5265,7 +5265,7 @@
       "interpretation_limit": "Node position, color, and arrows are explanatory, not a measured capability score, statistical weight, source-quality ranking, or operational sequence.",
       "kind": "mermaid",
       "label": "fig:appendix-crypto-assurance-methods",
-      "long_description_words": 204,
+      "long_description_words": 266,
       "metadata_keys": [
         "AGEINT.AltText",
         "AGEINT.Caption",
@@ -6214,7 +6214,7 @@
     {
       "alt_text_words": 42,
       "aspect_ratio": 1.0,
-      "bytes": 75281,
+      "bytes": 75399,
       "caption_words": 53,
       "checks": {
         "alt_text_min_words": true,
@@ -6322,7 +6322,7 @@
     {
       "alt_text_words": 37,
       "aspect_ratio": 1.0,
-      "bytes": 160480,
+      "bytes": 159395,
       "caption_words": 55,
       "checks": {
         "alt_text_min_words": true,
@@ -7834,7 +7834,7 @@
     {
       "alt_text_words": 33,
       "aspect_ratio": 1.0,
-      "bytes": 302032,
+      "bytes": 302740,
       "caption_words": 72,
       "checks": {
         "alt_text_min_words": true,

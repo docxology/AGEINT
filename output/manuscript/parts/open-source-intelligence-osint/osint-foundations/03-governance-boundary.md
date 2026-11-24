@@ -1,15 +1,15 @@
 ### OSINT Foundations governance boundary: synthesis, agent-assistance rules, rights, and assurance gates
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 ### OSINT Foundations analytic synthesis: source-backed claims and forbidden leaps
 
-**Triangulation anchors.** In module 9's governance-boundary section, directly verified anchors for the **Open-Source and Geospatial Intelligence Integrity** lane include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Use them to test source-guide claims, method boundaries, governance constraints, and safety gates without replacing the module's `ageintNNN` provenance.
+**Contextual source routes.** For module 9's governance-boundary section, the **Open-Source and Geospatial Intelligence Integrity** catalog routes include [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]. Check the actual passage, edition, claim scope and access limitations before use. Route membership does not establish relevance, independent corroboration or efficacy.
 
 Research lane: **Open-Source and Geospatial Intelligence Integrity** for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**. [@ageint251]; [@ageint253].
 
 **Curriculum topic spine:** **History and Rise of OSINT in the Intelligence Community**, **IC OSINT Strategy 2024–2026**, **OSINT vs. HUMINT vs. SIGINT: Comparative Value and Fusion**.
-**Verified anchor cluster:** [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]; [@official_nga_geoint_ai]; [@official_odni_icd_206]; [@official_odni_icd_203].
+**Recorded source cluster; inspection and scope limits apply:** [@official_ic_osint_strategy]; [@official_state_osint_strategy]; [@official_iso_19157_data_quality]; [@official_nga_strategy]; [@official_nga_geoint_ai]; [@official_odni_icd_206]; [@official_odni_icd_203].
 
 **Conceptual depth:** public-source discovery converted into accountable intelligence through provenance, corroboration, minimization, and relevance tests.
 
@@ -43,7 +43,7 @@ direct source URL in `references-*.bib`. Local checks start with [@ageint251]; [
 
 ### OSINT Foundations agentic boundary: assist, approve, block, and record
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 AGEINT translation is bounded by the **Open-Source and Geospatial Intelligence Integrity** lane.
 Agents may organize sources, retrieve context, compare alternatives, draft
@@ -53,7 +53,7 @@ manipulation, or cyber-physical action; examples stay tied to **History and Rise
 
 #### OSINT Foundations permitted defensive utility: curriculum uses and safe outputs
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 The defensive utility is curriculum design, tabletop preparation,
 risk assessment, governance review, source evaluation, and resilience planning.
@@ -66,7 +66,7 @@ Keep all practice accountable, synthetic, defensive, logged, reversible, and evi
 
 ### OSINT Foundations governance assurance: authority, rights, evidence, and human review
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
+**Navigation.** Parent section: [@sec:chapter-osint-foundations].
 
 Governance is practiced as a gate on the **Open-Source and Geospatial Intelligence Integrity**
 lane. Learners use the **Requirements-to-Evidence Lens** to decide who is accountable for the exercise,
@@ -77,19 +77,18 @@ agent-assisted artifact must stop for human review while using **History and Ris
 
 | Gate | Coursebook check | Evidence retained |
 |---|---|---|
-| Authority | The exercise has a lawful, educational, or defensive purpose and named reviewer. | scope card, excluded-action list, and reviewer initials |
-| Evidence | Claims in this module remain tied to guide citations or verified anchors starting with [@ageint251]; [@ageint253]. | claim ledger, source descriptors, caveats, and confidence language |
+| Authority | A legitimate educational or defensive purpose AND documented permission for the exact activity, data and tools are required, with a named reviewer. Classroom approval covers only the permitted fictional exercise; unknown or missing authority is a hold. | applicable rule and scope, data-use permission, excluded-action list, and accountable reviewer |
+| Evidence | Separate contextual citations from the claim-specific passage, version, source dependence and limitations; begin the source review with [@ageint251]; [@ageint253]. | claim ledger, locators, source descriptors, alternatives, and separate likelihood/confidence fields |
 | Rights and access | Privacy, accessibility, learner support, and affected-group impacts are considered before reuse. | rights note, accommodation path, and unresolved-risk owner |
 | Agent control | Any agent assistance stays bounded to retrieval, comparison, drafting, simulation, critique, or audit. | tool allowlist, prompt/output record, stop condition, and rollback note |
 | Assurance | The artifact is challenged against **Open-Source and Geospatial Intelligence Integrity** failure modes and the **Requirements-to-Evidence Lens** safety check. | failure-mode note, remediation item, retest result, and refresh trigger |
 
 #### OSINT Foundations evidence package handoff: appendices, records, and reuse
 
-**Evidence anchor.** [@sec:chapter-osint-foundations]; [@ageint251].
-
-Detailed model/data cards, transparency notices, retention
-rows, release gates, risk exceptions, incident drills, procurement checks, and
-learner-support workflows live in the generated appendices and source-support docs.
+Detailed model/data cards, transparency notices, retention rows, release gates,
+risk exceptions, incident drills, procurement and learner-support forms live in
+the shared orientation sections and [@sec:method-assurance-reference]. The methods
+appendices apply and link those forms rather than duplicating them.
 The local **Requirements-to-Evidence Lens** evidence gate stays compact enough to apply during
 reading, practice, and revision for **History and Rise of OSINT in the Intelligence Community; IC OSINT Strategy 2024–2026**.
 

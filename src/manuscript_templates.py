@@ -46,6 +46,8 @@ to the canonical table in this section.
 
 {{CANONICAL_CLAIM_LEDGER_ROWS}}
 
+{{CANONICAL_ANALYSIS_WORKFLOW}}
+
 ## Competency and mastery rubric: scoring dimensions and visible proof
 
 {{CANONICAL_COMPETENCY_RUBRIC_ROWS}}
@@ -115,13 +117,14 @@ volatile standards can be reviewed without changing citation keys.
 
 {{VISUAL_SYNTHESIS}}
 
-## Current-source additions and refreshes: newly checked anchors and changed caveats {#sec:current-source-additions-and-refreshes}
+## Checked-since source selections: recorded dates and caveats {#sec:current-source-additions-and-refreshes}
 
-The current-source table isolates anchors added or materially refreshed in the
-latest internet-citation pass. It is deliberately narrower than the full ledger:
-rows appear here only when the source URL was verified for this pass, a moved URL
-was refreshed, or a retrieval caveat changed the claim boundary. Draft sources
-retain draft-status caveats rather than being treated as final guidance.
+This convenience view selects records with a checked date on or after
+2026-06-06, or a verification note mentioning that cutoff. It is not a list of
+sources freshly inspected in the latest build or review. Read each recorded
+date, source edition, scope and access caveat; blocked full text and metadata-only
+inspection must not be treated as primary-passage verification. Drafts remain
+drafts. The full ledger below retains the complete recorded refresh history.
 
 {{CURRENT_SOURCE_UPDATE_ROWS}}
 
@@ -133,7 +136,7 @@ retain draft-status caveats rather than being treated as final guidance.
 
 {{BIBLIOGRAPHY_ATLAS_ROWS}}
 """,
-    "references.md": """# References {.unnumbered}
+    "references.md": """# References {#sec:references .unnumbered}
 
 The render pipeline reads `references-*.bib`, which is generated from parsed
 curriculum data plus official source-quality anchors. Manuscript prose should

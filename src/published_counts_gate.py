@@ -1,7 +1,7 @@
 """Build-time verification gate for published AGEINT counts.
 
-Recomputes the parts/chapters/appendices/patterns/references counts directly
-from the sharded source data under ``data/curriculum/`` and the figure count
+Recomputes the parts/chapters/appendices/patterns/references and nonblank
+authored-teaching-note counts directly from ``data/curriculum/`` and the figure count
 from the figure registry, then compares them to the stats published in the
 build mirror artifact ``output/data/curriculum_outline.json`` (or to the
 counts carried by the same build). Any disagreement raises ``ValueError`` so
@@ -16,7 +16,7 @@ from typing import Any
 
 from _jsonl import read_jsonl
 
-CURRICULUM_COUNT_KEYS = ("parts", "chapters", "appendices", "patterns", "references")
+CURRICULUM_COUNT_KEYS = ("parts", "chapters", "appendices", "patterns", "references", "authored_teaching_note_count")
 
 
 def recompute_source_counts(source_dir: Path) -> dict[str, int]:
@@ -30,10 +30,19 @@ def recompute_source_counts(source_dir: Path) -> dict[str, int]:
     parts_dir = source_dir / "parts"
     parts: list[Path] = sorted(parts_dir.glob("*/part.json"))
     chapters = 0
+    teaching_notes = 0
     for part_path in parts:
         chapters_dir = part_path.parent / "chapters"
         if chapters_dir.is_dir():
-            chapters += sum(1 for path in chapters_dir.iterdir() if (path.is_dir() and (path / "chapter.json").is_file()) or (path.is_file() and path.suffix == ".json"))
+            for path in sorted(chapters_dir.iterdir()):
+                if path.is_dir() and (path / "chapter.json").is_file():
+                    sections = read_jsonl(path / "sections.jsonl")
+                elif path.is_file() and path.suffix == ".json":
+                    sections = json.loads(path.read_text(encoding="utf-8")).get("sections", [])
+                else:
+                    continue
+                chapters += 1
+                teaching_notes += sum(1 for section in sections if isinstance(note := section.get("teaching_note"), str) and note.strip())
     appendices = len(sorted((source_dir / "appendices").glob("*.json")))
     patterns = len(json.loads((source_dir / "patterns.json").read_text(encoding="utf-8")))
     reference_keys: set[str] = set()
@@ -42,7 +51,7 @@ def recompute_source_counts(source_dir: Path) -> dict[str, int]:
             key = str(row.get("key") or "")
             if key:
                 reference_keys.add(key)
-    return {"parts": len(parts), "chapters": chapters, "appendices": appendices, "patterns": patterns, "references": len(reference_keys)}
+    return {"parts": len(parts), "chapters": chapters, "appendices": appendices, "patterns": patterns, "references": len(reference_keys), "authored_teaching_note_count": teaching_notes}
 
 
 def recompute_figure_count(figure_registry_path: Path) -> int:
@@ -64,7 +73,7 @@ def compare_counts(recomputed: dict[str, int], published: dict[str, Any], *, fig
     mismatches: list[str] = []
     for key in CURRICULUM_COUNT_KEYS:
         published_value = published.get(key)
-        if not isinstance(published_value, int):
+        if type(published_value) is not int:
             mismatches.append(f"{key}: published stats missing/non-integer ({published_value!r})")
             continue
         if recomputed[key] != published_value:

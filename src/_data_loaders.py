@@ -273,8 +273,14 @@ def coursebook_profiles_payload() -> list[dict[str, Any]]:
     return rendered
 
 
-def validate_declarative_tables() -> dict[str, int]:
-    """Validate authoritative YAML tables and return row counts for reporting."""
+def validate_declarative_tables(project_root: Path = _PROJECT_ROOT) -> dict[str, int]:
+    """Validate built-in YAML tables and the selected project's required config."""
+    source_config = Path(project_root) / "docs" / "manuscript" / "config.yaml"
+    if not source_config.is_file():
+        raise FileNotFoundError(
+            f"Missing source manuscript config: {source_config.as_posix()}. "
+            "The generated output config would silently lose book/paper metadata without it."
+        )
     profile_count = len(coursebook_profiles_payload())
     safety_payload = safety_artifact_tables_payload()
     risk_payload = topic_risk_routes_payload()

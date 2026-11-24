@@ -6,17 +6,17 @@ The module uses [@fig:intelligence-ethics-decision-framework] and [@fig:part-leg
 
 Navigation links: [@sec:curriculum_orientation], [@sec:part-legal-ethical-and-oversight-frameworks], [@sec:chapter-legal-authorities-and-constraints], [@sec:appendix-python-osint-library].
 
-![A governance gate that tests a proposed activity for authority, proportionality, rights, oversight, and redress before any work may proceed. Its reader value is to make Proposed activity, Deontological duties and rights lens, Consequentialist harm and benefit lens, and Virtue and integrity lens visible at a glance, with the legal ethical and oversight frameworks / ethics of intelligence and cognitive security section as the source section and defensive review as the boundary.](../../../../figures/mermaid/intelligence-ethics-decision-framework.png){#fig:intelligence-ethics-decision-framework}
+![Proposed classroom review sequence, not a legal compliance algorithm. Educational purpose does not substitute for permission; classroom approval cannot authorize real collection, private-data processing or disclosure. Missing authority, unresolved rights or unusable redress requires hold or redesign. Only independently permitted replacement fixtures may be considered, and a risk exception cannot waive these gates.](../../../../figures/mermaid/intelligence-ethics-decision-framework.png){#fig:intelligence-ethics-decision-framework}
 
 This module teaches the **Legal, Ethical, and Oversight Architecture** lane through a bounded, source-backed coursebook chapter. [@ageint238]; [@ageint239].
 
 ## Legal, Ethical, and Oversight Architecture frame for Ethics of Intelligence and Cognitive Security: source context, topic focus, and reader task
 
-**Evidence anchor.** [@sec:chapter-ethics-of-intelligence-and-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-ethics-of-intelligence-and-cognitive-security].
 
 ### Ethics of Intelligence and Cognitive Security orientation: reader task, conceptual primer, outcomes, and vocabulary
 
-**Evidence anchor.** [@sec:chapter-ethics-of-intelligence-and-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-ethics-of-intelligence-and-cognitive-security].
 
 ### Ethics of Intelligence and Cognitive Security conceptual primer: source context, core model, and reader task
 
@@ -30,7 +30,7 @@ Learners move from vocabulary and the **Oversight-and-Rights Lens** distinction 
 
 ### Ethics of Intelligence and Cognitive Security learning outcomes: analytic moves, evidence duties, and transfer
 
-**Evidence anchor.** [@sec:chapter-ethics-of-intelligence-and-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-ethics-of-intelligence-and-cognitive-security].
 
 - Connect **Intelligence Ethics: Deontological, Consequentialist, Virtue Frameworks and The Ethics of Cognitive Security (YorkSpace Dissertation)** to **Legal, Ethical, and Oversight Architecture** by naming shared vocabulary, evidence burden, and audience-facing caveats.
 - Build an **authority-and-impact register with approvals, limits, public notice, audit owners, and review dates** that keeps observation, inference, uncertainty, source quality, reviewer decision, and refresh trigger separate.
@@ -40,14 +40,12 @@ Learners move from vocabulary and the **Oversight-and-Rights Lens** distinction 
 
 ### Ethics of Intelligence and Cognitive Security core vocabulary: source terms, method roles, and safety limits
 
-**Evidence anchor.** [@sec:chapter-ethics-of-intelligence-and-cognitive-security]; [@ageint238].
+**Navigation.** Parent section: [@sec:chapter-ethics-of-intelligence-and-cognitive-security].
 
 | Term | Working definition |
 |---|---|
-| Authority | the legal, institutional, or classroom basis for an activity |
-| Proportionality | the test that a method is no more intrusive than the need justifies |
+| Authority | a specified basis for an activity tied to actor, purpose, jurisdiction, data status, and applicable rule; classroom permission is not real legal authority |
+| Proportionality | a context-specific assessment of justified intrusion and impact under applicable rules, not a substitute for lawful authority or a universal legal test |
 | Oversight | independent review that can challenge or constrain the activity |
 | Redress | a path for affected people to contest or correct harm |
 | Audit trail | retained evidence that enables later review of decisions and outputs |
-| Intelligence Ethics: Deontological,… | Key terms: Ethics, Deontological, Consequentialist. |
-| The Ethics of Cognitive Security (YorkSpace… | Key terms: Ethics, Cognitive, Security. |
