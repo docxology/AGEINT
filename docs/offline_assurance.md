@@ -20,21 +20,27 @@ artifacts remain intact.
 Use a clean AGEINT checkout containing this documentation and a separate
 [Template checkout at revision `87704feae0a4490ef7dad9c931d268e8c30273c2`](https://github.com/docxology/template/tree/87704feae0a4490ef7dad9c931d268e8c30273c2).
 Use the [Template prerequisites](https://github.com/docxology/template/blob/87704feae0a4490ef7dad9c931d268e8c30273c2/docs/RUN_GUIDE.md) for Pandoc, pandoc-crossref and XeLaTeX.
-Set `ageint_checkout` to the absolute path of the clean source checkout. Run
-from Template, using an unused `projects/working/AGEINT` slot.
+Set `ageint_checkout` to the absolute path of the clean source checkout. From
+Template, use the dedicated `projects/working/AGEINT-assurance` slot. Registration
+stops the example if that slot is already occupied.
 
 ```sh
-uv sync --locked --no-dev
-proof_parent=$(mktemp -d)
-proof_project="$proof_parent/AGEINT"
-uv run --no-sync python "$ageint_checkout/docs/examples/assurance-note/stage.py" "$proof_project"
-git -C "$proof_project" init -q
-git -C "$proof_project" add docs
-git -C "$proof_project" -c user.name="Local verification" -c user.email="verification@example.invalid" commit -qm "Stage assurance example"
-mkdir -p projects/working
-ln -s "$proof_project" projects/working/AGEINT
-uv run --no-sync python scripts/pipeline/stage_03_render.py --project working/AGEINT --skip-manuscript-hydration
-uv run --no-sync python scripts/pipeline/stage_04_validate.py --project working/AGEINT
+(
+    set -eu
+    uv sync --locked --no-dev
+    proof_parent=$(mktemp -d)
+    proof_project="$proof_parent/AGEINT-assurance"
+    uv run --no-sync python "$ageint_checkout/docs/examples/assurance-note/stage.py" "$proof_project"
+    git -C "$proof_project" init -q
+    git -C "$proof_project" add docs
+    git -C "$proof_project" -c user.name="Local verification" -c user.email="verification@example.invalid" commit -qm "Stage assurance example"
+    mkdir -p projects/working
+    ln -s "$proof_project" projects/working/
+    trap 'if [ "$(readlink projects/working/AGEINT-assurance)" = "$proof_project" ]; then unlink projects/working/AGEINT-assurance; fi' EXIT
+    uv run --no-sync python scripts/pipeline/stage_03_render.py --project working/AGEINT-assurance --skip-manuscript-hydration
+    uv run --no-sync python scripts/pipeline/stage_04_validate.py --project working/AGEINT-assurance
+    printf 'Assurance output is in %s/output/\n' "$proof_project"
+)
 ```
 
 The staged project contains `docs/source_receipt.json` with the source revision
