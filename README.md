@@ -394,17 +394,16 @@ claim scope changes.
 
 ## Public readiness
 
-AGEINT is locally publication-ready as a preflight packet, not as a public
-release. The 2026-06-16 `publication_readiness` report is `ok: true`: artifact
-evidence is green, the source-refresh dashboard reports 472 current metadata
-rows and 0 due-soon/due/stale rows, the artifact manifest has `issues: []`, the
-parent tracked-project confidentiality guard passes, the release-surface scan
-finds 0 private/local path or Markdown-file-link issues, the source/license
-posture is recorded, and the fresh PDF audit reports 1,858 pages, 6,289 URI
-links, 0 file actions, and 0 bad link targets. `ageint-27` is therefore closed.
-`ageint-m1` remains todo because no public release, push, PR, archive,
-promotion, publication upload, DOI, or release record has been approved or
-performed.
+[Edition 0.1](https://github.com/docxology/AGEINT/releases/tag/v0.1.0) was
+published on June 17, 2026. Use the [version DOI](https://doi.org/10.5281/zenodo.20732275)
+for that edition. Current source and generated reports are maintained on the
+default branch and can describe later snapshots.
+
+The June 16 preflight recorded passing checks for that candidate. The
+[publication-readiness guide](docs/publication_readiness.md) explains the
+recorded checks and the limits of a local preflight. For an independently
+reproducible check with synthetic data, use the
+[offline assurance example](docs/offline_assurance.md).
 
 ## Safety posture
 
