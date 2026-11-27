@@ -1,0 +1,21 @@
+paper:
+  title: "A Local Publication Record Assurance Example"
+  subtitle: "An AGEINT documentation note using synthetic records"
+authors:
+  - name: "AGEINT documentation"
+publication:
+  transmission_bookends:
+    enabled: false
+keywords:
+  - publication assurance
+  - evidence boundaries
+  - reproducibility
+metadata:
+  language: en
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false
