@@ -2,7 +2,20 @@
 
 - **Project:** AGEINT
 - **Manuscript title:** AGEINT: Agentic Intelligence
-- **Location:** `docs/manuscript/` (canonical manuscript source; the render consumes the refreshed copy under `output/manuscript/`, and the sibling template's `infrastructure.core.project_paths.resolve_source_manuscript_dir` prefers a conventional root `manuscript/` tree only when it holds real Markdown/TeX source — a config-only dir cannot shadow this one)
-  **Invariant:** keep the root `manuscript/` directory absent or config-only — a tree there holding real Markdown/TeX source would win `resolve_source_manuscript_dir` and shadow this canonical one.
-- **Type:** Active publication-target manuscript (0 section files)
-- **Status file purpose:** Tracks publication-readiness of the manuscript content in this directory. Migrated from the legacy top-level `manuscript/` location.
+
+## Source and generated sections
+
+`docs/manuscript/` is the canonical source directory. It holds the
+configuration, preamble, and bibliography. Tokenized section templates live
+under `templates/`. The renderer uses the generated sections and ordering
+configuration under `output/manuscript/`.
+
+Template's `resolve_source_manuscript_dir` gives a root `manuscript/` directory
+precedence when it contains manuscript Markdown or TeX. Keep that path absent
+or configuration-only to use the canonical source.
+
+## Verification
+
+The [citation-provenance evidence](../evidence/citation-provenance.md) covers
+the retained citation audit and its isolated render. [Issue #23](https://github.com/docxology/AGEINT/issues/23)
+tracks full publication verification against the current source.
