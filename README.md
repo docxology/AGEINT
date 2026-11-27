@@ -1,5 +1,7 @@
 # AGEINT — Agentic Intelligence Curriculum
 
+For public project navigation, start with the [documentation index](docs/README.md). The [offline assurance example](docs/offline_assurance.md) has an independent, synthetic verification build.
+
 <p align="center">
   <a href="https://github.com/docxology/AGEINT/actions/workflows/ci.yml"><img alt="ci.yml workflow status on main" src="https://github.com/docxology/AGEINT/actions/workflows/ci.yml/badge.svg?branch=main"></a>
   <a href="https://doi.org/10.5281/zenodo.20732274"><img alt="Digital Object Identifier (DOI), concept record: 10.5281/zenodo.20732274" src="https://zenodo.org/badge/DOI/10.5281/zenodo.20732274.svg"></a>

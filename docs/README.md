@@ -1,5 +1,7 @@
 # AGEINT Docs: local curriculum contracts and verification guides
 
+The [offline assurance guide](offline_assurance.md) explains how to verify the self-contained synthetic example and how it relates to the existing publication workflow.
+
 Project-local documentation for the AGEINT curriculum.
 
 ## Current source snapshot: live counts, anchors, figures, and readiness limits

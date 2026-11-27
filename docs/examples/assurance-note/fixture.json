@@ -1,0 +1,6 @@
+[
+  {"id": "index", "expected": "Public index", "observed": "Public index"},
+  {"id": "summary", "expected": "Publication summary", "observed": "Publication summary"},
+  {"id": "coverage", "expected": "Coverage checked", "observed": "Coverage pending"},
+  {"id": "receipt", "expected": "Publication receipt", "observed": null}
+]
