@@ -13,6 +13,9 @@ then update docs against the rebuilt output and run the AGEINT tests.
 Project docs preserve the same safety boundary as the manuscript:
 defensive, educational, accountable, synthetic, and evidence-bounded.
 
+For the synthetic assurance example, use the [isolated evidence replay](offline_assurance.md)
+and preserve its scoped claim when updating documentation.
+
 ## Current count contract: live scope values that docs must preserve
 
 The live documentation count contract is 16 parts, 51 chapters, 9 appendices,

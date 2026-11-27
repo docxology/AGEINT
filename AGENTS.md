@@ -115,6 +115,10 @@ flowchart LR
 
 ## Verification
 
+For documentation-only work on the synthetic assurance example, follow
+[the isolated verification guide](docs/offline_assurance.md). It produces its own
+receipt and leaves the native curriculum and published artifacts untouched.
+
 Run the project test suite before claiming completion:
 
 ```bash

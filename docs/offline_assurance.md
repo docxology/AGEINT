@@ -48,8 +48,7 @@ A changed or absent record stays visible in the outcome counts. This check
 covers a self-contained example and provides no claim about the full curriculum,
 its source citations, native test coverage, or release readiness.
 
-The existing public CI workflow runs on pull requests targeting the default
-branch and on pushes to that branch. The native manuscript workflow also has
-path-filtered triggers, a manual trigger, and a schedule. Its rebuilt output
-and reports can be retained as workflow artifacts. The local commands above
-do not invoke those workflows.
+The repository defines branch-triggered CI and a path-filtered manuscript
+workflow. Check the [Actions workflow list](https://github.com/docxology/AGEINT/actions)
+for current enablement. The local commands above run independently of those
+workflows.
