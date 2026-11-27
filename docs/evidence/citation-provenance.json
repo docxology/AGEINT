@@ -1,0 +1,79 @@
+{
+  "source_evidence": {
+    "repository": "docxology/AGEINT",
+    "commit": "3509aac412f81068f5c833c19f65146960ffb66a",
+    "report_generated_at": "2026-09-07T19:25:04+00:00",
+    "materials": [
+      {
+        "path": "docs/citation_workflow.md",
+        "git_blob": "0906b3d5b67a091b196e619ea72d74f2e849c6db",
+        "sha256": "ce147185b5fc1e94d451c2594491133a942f374dd0fa0c5872547ec72aeabbc3"
+      },
+      {
+        "path": "output/manuscript/appendices/bibliography-atlas/03-citation-workflow-and-source-section-coverage.md",
+        "git_blob": "c6b200e676a7f740758f5b7c11e41dfef6606f40",
+        "sha256": "f51b0029f80935f044f4a5652231cf8c10cabd437359d0e36f5cc4fa587b3d27"
+      },
+      {
+        "path": "output/reports/current_artifact_evidence.json",
+        "git_blob": "c1114b0bb37a179eac29ecceea170af181ed59f4",
+        "sha256": "33a661bb454bc90ace57dc793cc7c9e6285c9fc534dd406b67f3a2ae0c07968d"
+      }
+    ],
+    "source": {
+      "source_sections": 723,
+      "source_unique_citation_keys": 301,
+      "source_citation_occurrences": 1468,
+      "source_zero_citation_sections": 0
+    },
+    "generated": {
+      "generated_markdown_files": 330,
+      "generated_markdown_citation_occurrences": 16629
+    },
+    "metadata": {
+      "metadata_records": 472,
+      "intelligence_anchor_count": 462,
+      "source_quality_anchor_count": 10
+    }
+  },
+  "isolated_render": {
+    "selection": "Citation Provenance in the AGEINT Curriculum",
+    "local_source_commit": "325479849edc515d516d667653066da27a2089ea",
+    "template_commit": "87704feae0a4490ef7dad9c931d268e8c30273c2",
+    "template_alias": "working/AGEINT-citation-provenance",
+    "stage_03_result": "pass",
+    "stage_04_checks": {
+      "Artifact manifest": true,
+      "Enabled render outputs": true,
+      "Evidence registry": true,
+      "Figure registry": true,
+      "Markdown validation": true,
+      "Output structure": true,
+      "PDF validation": true,
+      "Project design overlays": true,
+      "Transmission bookends": true
+    },
+    "outputs": [
+      {
+        "path": "output/pdf/AGEINT-citation-provenance_combined.pdf",
+        "size": 62154,
+        "sha256": "3c8adde549bf1329b1b9f2987626e5a1401c69df62b9f4f31d646c2955b4940b"
+      },
+      {
+        "path": "output/web/index.html",
+        "size": 26268,
+        "sha256": "2a3d4c2384a9c21e538e20bda0e6239196aeec733de52943e99909b03ed58038"
+      },
+      {
+        "path": "output/reports/validation_report.json",
+        "size": 9364,
+        "sha256": "e06715b833aeead94a79ee7f66626448c13ffffd36ff26dd5e638faaed56b137"
+      },
+      {
+        "path": "output/reports/rendered_provenance.json",
+        "size": 3139,
+        "sha256": "17bf71de0d69ed1a852281adebbcdfdbfd1a6ba5edb841b32b093d6252b8a602"
+      }
+    ]
+  }
+}
